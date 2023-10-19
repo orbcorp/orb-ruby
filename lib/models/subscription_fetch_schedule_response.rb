@@ -1,24 +1,25 @@
 require 'model'
 
 module Models
-    class SubscriptionFetchScheduleResponse < Model
+end
 
-            class Plan < Model
+class Models::SubscriptionFetchScheduleResponse < Model
 
-                    # @!attribute [rw] id
-                    required :id, String
-                    # @!attribute [rw] external_plan_id
-                    required :external_plan_id, String
-                    # @!attribute [rw] name
-                    required :name, String
+        class Plan < Model
 
-            end
-            # @!attribute [rw] end_date
-            required :end_date, String
-            # @!attribute [rw] plan
-            required :plan, Plan
-            # @!attribute [rw] start_date
-            required :start_date, String
+                # @!attribute [rw] id
+                required :id, String
+                # @!attribute [rw] external_plan_id
+                required :external_plan_id, String
+                # @!attribute [rw] name
+                required :name, String
 
-    end
+        end
+        # @!attribute [rw] end_date
+        required :end_date, String
+        # @!attribute [rw] plan
+        required :plan, Plan
+        # @!attribute [rw] start_date
+        required :start_date, String
+
 end

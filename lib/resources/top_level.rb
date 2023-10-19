@@ -1,6 +1,5 @@
-require 'model'
-
 require 'models/top_level_ping_response'
+require 'model'
 
 module Resources
     class TopLevelResource

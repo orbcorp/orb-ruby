@@ -1,6 +1,5 @@
-require 'model'
-
 require 'models/subscription'
+require 'model'
 
 module Resources
     module Coupons

@@ -1,14 +1,9 @@
-require 'model'
-
-require 'models/backfill_create_response'
-
-require 'models/backfill_list_response'
-
 require 'models/backfill_close_response'
-
+require 'models/backfill_create_response'
 require 'models/backfill_fetch_response'
-
+require 'models/backfill_list_response'
 require 'models/backfill_revert_response'
+require 'model'
 
 module Resources
     module Events

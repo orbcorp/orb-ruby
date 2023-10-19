@@ -1,10 +1,11 @@
 require 'model'
 
 module Models
-    class EventDeprecateResponse < Model
+end
 
-            # @!attribute [rw] deprecated
-            required :deprecated, String
+class Models::EventDeprecateResponse < Model
 
-    end
+        # @!attribute [rw] deprecated
+        required :deprecated, String
+
 end

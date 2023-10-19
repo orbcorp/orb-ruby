@@ -1,46 +1,25 @@
-# api_key
-
-require 'resources/top_level'
-
-require 'resources/coupons'
-
+require 'resources/coupons/coupons'
 require 'resources/coupons/subscriptions'
-
 require 'resources/credit_notes'
-
-require 'resources/customers'
-
-require 'resources/customers/costs'
-
-require 'resources/customers/usage'
-
-require 'resources/customers/credits'
-
-require 'resources/customers/credits/ledger'
-
 require 'resources/customers/balance_transactions'
-
-require 'resources/events'
-
+require 'resources/customers/costs'
+require 'resources/customers/credits/credits'
+require 'resources/customers/credits/ledger'
+require 'resources/customers/customers'
+require 'resources/customers/usage'
 require 'resources/events/backfills'
-
+require 'resources/events/events'
 require 'resources/invoice_line_items'
-
 require 'resources/invoices'
-
 require 'resources/items'
-
 require 'resources/metrics'
-
-require 'resources/plans'
-
 require 'resources/plans/external_plan_id'
-
-require 'resources/prices'
-
+require 'resources/plans/plans'
 require 'resources/prices/external_price_id'
-
+require 'resources/prices/prices'
 require 'resources/subscriptions'
+require 'resources/top_level'
+# api_key
 
 require 'base_client'
 

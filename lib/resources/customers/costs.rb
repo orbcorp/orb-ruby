@@ -1,8 +1,6 @@
-require 'model'
-
-require 'models/cost_list_response'
-
 require 'models/cost_list_by_external_id_response'
+require 'models/cost_list_response'
+require 'model'
 
 module Resources
     module Customers

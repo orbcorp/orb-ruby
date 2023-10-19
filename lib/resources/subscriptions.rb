@@ -1,10 +1,7 @@
-require 'model'
-
 require 'models/subscription'
-
 require 'models/subscription_fetch_costs_response'
-
 require 'models/subscription_fetch_schedule_response'
+require 'model'
 
 module Resources
     class SubscriptionsResource

@@ -1,10 +1,11 @@
 require 'model'
 
 module Models
-    class EventUpdateResponse < Model
+end
 
-            # @!attribute [rw] amended
-            required :amended, String
+class Models::EventUpdateResponse < Model
 
-    end
+        # @!attribute [rw] amended
+        required :amended, String
+
 end

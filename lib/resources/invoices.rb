@@ -1,8 +1,6 @@
-require 'model'
-
 require 'models/invoice'
-
 require 'models/invoice_fetch_upcoming_response'
+require 'model'
 
 module Resources
     class InvoicesResource

@@ -1,10 +1,11 @@
 require 'model'
 
 module Models
-    class TopLevelPingResponse < Model
+end
 
-            # @!attribute [rw] response
-            required :response, String
+class Models::TopLevelPingResponse < Model
 
-    end
+        # @!attribute [rw] response
+        required :response, String
+
 end

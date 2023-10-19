@@ -1,8 +1,6 @@
-require 'model'
-
-require 'models/item_list_response'
-
 require 'models/item_fetch_response'
+require 'models/item_list_response'
+require 'model'
 
 module Resources
     class ItemsResource

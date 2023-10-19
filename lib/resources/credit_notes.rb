@@ -1,6 +1,5 @@
-require 'model'
-
 require 'models/credit_note'
+require 'model'
 
 module Resources
     class CreditNotesResource

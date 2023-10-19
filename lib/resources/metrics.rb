@@ -1,10 +1,7 @@
-require 'model'
-
 require 'models/metric_create_response'
-
-require 'models/metric_list_response'
-
 require 'models/metric_fetch_response'
+require 'models/metric_list_response'
+require 'model'
 
 module Resources
     class MetricsResource

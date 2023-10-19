@@ -1,8 +1,6 @@
-require 'model'
-
 require 'models/balance_transaction_create_response'
-
 require 'models/balance_transaction_list_response'
+require 'model'
 
 module Resources
     module Customers

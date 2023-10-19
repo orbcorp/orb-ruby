@@ -1,22 +1,22 @@
+require 'models/subscription'
 require 'model'
 
-require 'models/subscription'
-
 module Models
-    class Subscriptions < Model
+end
 
-            class PaginationMetadata < Model
+class Models::Subscriptions < Model
 
-                    # @!attribute [rw] has_more
-                    required :has_more, BooleanModel
-                    # @!attribute [rw] next_cursor
-                    required :next_cursor, String
+        class PaginationMetadata < Model
 
-            end
-            # @!attribute [rw] data
-            required :data, ArrayOf.new(Models::Subscription)
-            # @!attribute [rw] pagination_metadata
-            required :pagination_metadata, PaginationMetadata
+                # @!attribute [rw] has_more
+                required :has_more, BooleanModel
+                # @!attribute [rw] next_cursor
+                required :next_cursor, String
 
-    end
+        end
+        # @!attribute [rw] data
+        required :data, ArrayOf.new(Models::Subscription)
+        # @!attribute [rw] pagination_metadata
+        required :pagination_metadata, PaginationMetadata
+
 end

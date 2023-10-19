@@ -1,6 +1,5 @@
-require 'model'
-
 require 'models/invoice_line_item_create_response'
+require 'model'
 
 module Resources
     class InvoiceLineItemsResource

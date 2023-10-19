@@ -1,6 +1,5 @@
-require 'model'
-
 require 'models/plan'
+require 'model'
 
 module Resources
     module Plans
