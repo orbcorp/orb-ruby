@@ -41,30 +41,11 @@ class BaseClient
     @host = env_uri.host
     @scheme = env_uri.scheme&.to_sym
     @port = env_uri.port
-    # TODO(Ruby) real auth
-    @api_key = 'KEY'
-    @api_key_header = 'API_KEY'
   end
 
-  # begin auth. could extract this section.
-
-  # TODO: initialize api key
-  def authenticate!(security_scheme, request_args)
-    add_api_key_header!(request_args, @api_key_header, @api_key)
+  def auth_headers
+    {}
   end
-
-  # TODO: do we not support api keys in queries? I don't see it in python yet.
-  def add_api_key_header!(request_args, header_name, key)
-    request_args[:headers] ||= {}
-    request_args[:headers][header_name] = key
-  end
-
-  # TODO: api key query
-  # TODO bearer
-  # TODO oauth
-  # TODO basic auth
-
-  # end auth.
 
   def prep_request(**options)
     request_content = options[:request_content]
@@ -99,14 +80,10 @@ class BaseClient
 
     security_scheme = options[:security_scheme]
 
-    request_args = { method: method, path: (@base_path || '') + (options[:path] || ''),
-                     body: body, headers: headers.filter { |_k, v| !v.nil? }.transform_values(&:to_s),
+      { method: method, path: (@base_path || '') + (options[:path] || ''),
+                     body: body, headers: headers.merge(auth_headers).filter { |_k, v| !v.nil? }.transform_values(&:to_s),
                      host: options[:host] || @host, scheme: options[:scheme] || @scheme,
                      port: @port}
-    # tricky to do authentication in immutable style without deep-merge
-    authenticate!(security_scheme, request_args)
-
-    request_args
   end
 
   def request(**options)

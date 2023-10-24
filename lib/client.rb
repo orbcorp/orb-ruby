@@ -28,10 +28,15 @@ require 'pooled_net_requester'
 class Client < BaseClient
 
         attr_reader(:default_params, :resources_top_level_resource, :resources_coupons_resource, :resources_coupons_subscriptions_resource, :resources_credit_notes_resource, :resources_customers_resource, :resources_customers_costs_resource, :resources_customers_usage_resource, :resources_customers_credits_resource, :resources_customers_credits_ledger_resource, :resources_customers_balance_transactions_resource, :resources_events_resource, :resources_events_backfills_resource, :resources_invoice_line_items_resource, :resources_invoices_resource, :resources_items_resource, :resources_metrics_resource, :resources_plans_resource, :resources_plans_external_plan_id_resource, :resources_prices_resource, :resources_prices_external_price_id_resource, :resources_subscriptions_resource)
+        def auth_headers
+            {"Authorization" => "Bearer #{@api_key}"}
+        end
         def initialize(environment:, api_key:nil, requester:nil)
             environments = {production: "https://api.withorb.com/v1"}
             @default_headers = {}
             @default_params = {}
+            @api_key = [
+                  api_key, ENV['ORB_API_KEY']].find {|value| !value.nil?}
             super(server_uri_string: environments[environment.to_sym], headers: @default_headers)
 
             @requester = requester || PooledNetRequester.new
