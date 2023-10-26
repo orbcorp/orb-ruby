@@ -9,7 +9,7 @@ module Resources
                 @client = client
             end
             def list(cursor: nil, limit: nil)
-                response = @client.request(method: :get, path: "/items", body: {}, query: {cursor: cursor, limit: limit})
+                response = @client.request(method: :get, path: "/items", body: {}, query: {cursor: cursor, limit: limit, })
 
                 Models::ItemListResponse.convert(**response)
             end

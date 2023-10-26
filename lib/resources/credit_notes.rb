@@ -8,7 +8,7 @@ module Resources
                 @client = client
             end
             def list(cursor: nil, limit: nil)
-                response = @client.request(method: :get, path: "/credit_notes", body: {}, query: {cursor: cursor, limit: limit})
+                response = @client.request(method: :get, path: "/credit_notes", body: {}, query: {cursor: cursor, limit: limit, })
 
                 Models::CreditNote.convert(**response)
             end

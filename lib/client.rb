@@ -32,7 +32,7 @@ class Client < BaseClient
             {"Authorization" => "Bearer #{@api_key}"}
         end
         def initialize(environment:, api_key:nil, requester:nil)
-            environments = {production: "https://api.withorb.com/v1"}
+            environments = {production: "https://api.withorb.com/v1", }
             @default_headers = {}
             @default_params = {}
             @api_key = [

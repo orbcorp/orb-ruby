@@ -9,7 +9,7 @@ module Resources
                     @client = client
                 end
                 def update(other_external_plan_id, external_plan_id: nil, metadata: nil)
-                    response = @client.request(method: :put, path: "/plans/external_plan_id/#{other_external_plan_id}", body: {external_plan_id: external_plan_id, metadata: metadata})
+                    response = @client.request(method: :put, path: "/plans/external_plan_id/#{other_external_plan_id}", body: {external_plan_id: external_plan_id, metadata: metadata, })
 
                     Models::Plan.convert(**response)
                 end

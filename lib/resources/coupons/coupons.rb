@@ -8,12 +8,12 @@ module Resources
                 @client = client
             end
             def create(discount: nil, redemption_code: nil, duration_in_months: nil, max_redemptions: nil)
-                response = @client.request(method: :post, path: "/coupons", body: {discount: discount, redemption_code: redemption_code, duration_in_months: duration_in_months, max_redemptions: max_redemptions})
+                response = @client.request(method: :post, path: "/coupons", body: {discount: discount, redemption_code: redemption_code, duration_in_months: duration_in_months, max_redemptions: max_redemptions, })
 
                 Models::Coupon.convert(**response)
             end
             def list(cursor: nil, limit: nil, redemption_code: nil, show_archived: nil)
-                response = @client.request(method: :get, path: "/coupons", body: {}, query: {cursor: cursor, limit: limit, redemption_code: redemption_code, show_archived: show_archived})
+                response = @client.request(method: :get, path: "/coupons", body: {}, query: {cursor: cursor, limit: limit, redemption_code: redemption_code, show_archived: show_archived, })
 
                 Models::Coupon.convert(**response)
             end
