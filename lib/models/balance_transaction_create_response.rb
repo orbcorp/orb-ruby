@@ -20,7 +20,7 @@ class Models::BalanceTransactionCreateResponse < Model
         # @!attribute [rw] id
         required :id, String
         # @!attribute [rw] action
-        required :action, Enum.new([:"applied_to_invoice", :"prorated_refund", :"manual_adjustment"])
+        required :action, Enum.new([:"applied_to_invoice", :"manual_adjustment", :"prorated_refund", :"revert_prorated_refund", :"return_from_voiding", :"credit_note_applied", :"credit_note_voided", :"overpayment_refund"])
         # @!attribute [rw] amount
         required :amount, String
         # @!attribute [rw] created_at

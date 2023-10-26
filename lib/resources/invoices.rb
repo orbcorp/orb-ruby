@@ -14,7 +14,7 @@ module Resources
                 Models::Invoice.convert(**response)
             end
             def list(amount: nil, amount_gt: nil, amount_lt: nil, cursor: nil, customer_id: nil, date_type: nil, due_date: nil, due_date_window: nil, due_date_gt: nil, due_date_lt: nil, external_customer_id: nil, invoice_date_gt: nil, invoice_date_gte: nil, invoice_date_lt: nil, invoice_date_lte: nil, is_recurring: nil, limit: nil, status: nil, subscription_id: nil)
-                response = @client.request(method: :get, path: "/invoices", body: {}, query: {amount: amount, amount[gt]: amount_gt, amount[lt]: amount_lt, cursor: cursor, customer_id: customer_id, date_type: date_type, due_date: due_date, due_date_window: due_date_window, due_date[gt]: due_date_gt, due_date[lt]: due_date_lt, external_customer_id: external_customer_id, invoice_date[gt]: invoice_date_gt, invoice_date[gte]: invoice_date_gte, invoice_date[lt]: invoice_date_lt, invoice_date[lte]: invoice_date_lte, is_recurring: is_recurring, limit: limit, status: status, subscription_id: subscription_id, })
+                response = @client.request(method: :get, path: "/invoices", body: {}, query: {amount: amount, amount[gt]: amount_gt, amount[lt]: amount_lt, cursor: cursor, customer_id: customer_id, date_type: date_type, due_date: due_date, due_date_window: due_date_window, due_date[gt]: due_date_gt, due_date[lt]: due_date_lt, external_customer_id: external_customer_id, invoice_date[gt]: invoice_date_gt, invoice_date[gte]: invoice_date_gte, invoice_date[lt]: invoice_date_lt, invoice_date[lte]: invoice_date_lte, is_recurring: is_recurring, limit: limit, status[]: status, subscription_id: subscription_id, })
 
                 Models::Invoice.convert(**response)
             end

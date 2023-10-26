@@ -13,8 +13,48 @@ class Models::CreditNote < Model
                 required :external_customer_id, String
 
         end
+        class Discounts < Model
+
+                class AppliesToPrices < Model
+
+                        # @!attribute [rw] id
+                        required :id, String
+                        # @!attribute [rw] name
+                        required :name, String
+
+                end
+                # @!attribute [rw] amount_applied
+                required :amount_applied, String
+                # @!attribute [rw] discount_type
+                required :discount_type, Enum.new([:"percentage"])
+                # @!attribute [rw] percentage_discount
+                required :percentage_discount, Float
+                # @!attribute [rw] applies_to_prices
+                optional :applies_to_prices, ArrayOf.new(AppliesToPrices)
+                # @!attribute [rw] reason
+                optional :reason, String
+
+        end
         class LineItems < Model
 
+                class Discounts < Model
+
+                        # @!attribute [rw] id
+                        required :id, String
+                        # @!attribute [rw] amount_applied
+                        required :amount_applied, String
+                        # @!attribute [rw] applies_to_price_ids
+                        required :applies_to_price_ids, ArrayOf.new(String)
+                        # @!attribute [rw] discount_type
+                        required :discount_type, Enum.new([:"percentage", :"amount"])
+                        # @!attribute [rw] percentage_discount
+                        required :percentage_discount, Float
+                        # @!attribute [rw] amount_discount
+                        optional :amount_discount, String
+                        # @!attribute [rw] reason
+                        optional :reason, String
+
+                end
                 class SubLineItems < Model
 
                         # @!attribute [rw] amount
@@ -25,12 +65,22 @@ class Models::CreditNote < Model
                         required :quantity, Float
 
                 end
+                class TaxAmounts < Model
+
+                        # @!attribute [rw] amount
+                        required :amount, String
+                        # @!attribute [rw] tax_rate_description
+                        required :tax_rate_description, String
+                        # @!attribute [rw] tax_rate_percentage
+                        required :tax_rate_percentage, String
+
+                end
                 # @!attribute [rw] id
                 required :id, String
                 # @!attribute [rw] amount
                 required :amount, String
                 # @!attribute [rw] discounts
-                required :discounts, ArrayOf.new(Unknown)
+                required :discounts, ArrayOf.new(Discounts)
                 # @!attribute [rw] name
                 required :name, String
                 # @!attribute [rw] quantity
@@ -40,7 +90,29 @@ class Models::CreditNote < Model
                 # @!attribute [rw] subtotal
                 required :subtotal, String
                 # @!attribute [rw] tax_amounts
-                required :tax_amounts, ArrayOf.new(Unknown)
+                required :tax_amounts, ArrayOf.new(TaxAmounts)
+
+        end
+        class MaximumAmountAdjustment < Model
+
+                class AppliesToPrices < Model
+
+                        # @!attribute [rw] id
+                        required :id, String
+                        # @!attribute [rw] name
+                        required :name, String
+
+                end
+                # @!attribute [rw] amount_applied
+                required :amount_applied, String
+                # @!attribute [rw] discount_type
+                required :discount_type, Enum.new([:"percentage"])
+                # @!attribute [rw] percentage_discount
+                required :percentage_discount, Float
+                # @!attribute [rw] applies_to_prices
+                optional :applies_to_prices, ArrayOf.new(AppliesToPrices)
+                # @!attribute [rw] reason
+                optional :reason, String
 
         end
         # @!attribute [rw] id
@@ -54,13 +126,13 @@ class Models::CreditNote < Model
         # @!attribute [rw] customer
         required :customer, Customer
         # @!attribute [rw] discounts
-        required :discounts, ArrayOf.new(Unknown)
+        required :discounts, ArrayOf.new(Discounts)
         # @!attribute [rw] invoice_id
         required :invoice_id, String
         # @!attribute [rw] line_items
         required :line_items, ArrayOf.new(LineItems)
         # @!attribute [rw] maximum_amount_adjustment
-        required :maximum_amount_adjustment, Unknown
+        required :maximum_amount_adjustment, MaximumAmountAdjustment
         # @!attribute [rw] memo
         required :memo, String
         # @!attribute [rw] minimum_amount_refunded
