@@ -34,7 +34,7 @@ end
 class BaseClient
   attr_reader :accounts, :http_bin
 
-  def initialize(server_uri_string:, requester: nil, headers:nil)
+  def initialize(server_uri_string:, requester: nil, headers: nil)
     @requester = requester || PooledNetRequester.new
     env_uri = URI.parse(server_uri_string)
     @headers = headers
@@ -47,67 +47,73 @@ class BaseClient
     {}
   end
 
+  def resolve_uri_elements(req)
+    if req[:url]
+      uri = URI.parse(req[:url])
+      {
+        host: uri.host,
+        scheme: uri.scheme,
+        path: uri.path,
+        query: uri.query,
+        port: uri.port
+      }
+    else
+      req.slice(:host, :scheme, :path, :port, :query)
+    end
+  end
+
   def prep_request(**options)
     request_content = options[:request_content]
     response_content = options[:response_content]
     headers = @headers
-    case response_content
-    when :json, nil # TODO(Ruby) content types other than JSON
-      headers['Content-Type'] = 'application/json'
-    else
-      raise NotImplementedError
-    end
-    case request_content
-    when :json, nil # TODO(Ruby) content types other than JSON
-      headers['Accept'] = 'application/json'
-    else
-      raise NotImplementedError
-    end
+
+    headers['Content-Type'] = 'application/json'
+
+    headers['Accept'] = 'application/json'
 
     method = options[:method]
-    case method
-    when :post
-      case request_content
-      when :json, nil
-        # TODO: bodies that aren't hashes
-        body = JSON.dump options[:body].to_h
-      else
-        raise NotImplementedError, "unknown request content type #{request_content}"
-      end
-    else
-      body = nil
-    end
+    body = case method
+           when :post
+
+             # TODO(Ruby): bodies that aren't JSON, dummy. Same for responses.
+             JSON.dump options[:body].to_h
+
+           end
 
     security_scheme = options[:security_scheme]
 
       { method: method, path: (@base_path || '') + (options[:path] || ''),
                      body: body, headers: headers.merge(auth_headers).filter { |_k, v| !v.nil? }.transform_values(&:to_s),
                      host: options[:host] || @host, scheme: options[:scheme] || @scheme,
-                     port: @port}
+                     port: @port}.merge(resolve_uri_elements(options))
   end
 
+  # TODO: (Ruby) specialized Ruby methods for http methods
   def request(**options)
-    response_content = options[:response_content]
     request_args = prep_request(**options)
     # TODO: client-side errors (DNS resolution, timeouts, etc)
     # TODO: response codes we don't like, 400 etc.
     # TODO: passing retry config
     response = with_retry { @requester.execute request_args }
 
-    # TODO: responses that aren't JSON
-    case response_content || :json
-    when :json
-      # TODO: responses that aren't hashes
-      raw_data = JSON.parse(response.body)
-      response_class = options[:response_class]
+    # TODO: responses that aren't hashes
+    raw_data = JSON.parse(response.body)
+    if options[:page]
+        page = options[:page].new(
+          client: self,
+          json: raw_data,
+          request: options
+        )
+        page.convert(**raw_data)
+        return page
+    end
 
-      if response_class
-        response_class.convert raw_data
-      else
-        raw_data
-      end
+    model = options[:model]
+
+    if model
+      model.convert(**raw_data)
     else
-      raise NotImplementedError, "unknown response content type #{response_content}"
+      raw_data
     end
   end
 end

@@ -8,9 +8,9 @@ module Resources
                 @client = client
             end
             def ping
-                response = @client.request(method: :get, path: "/ping", body: {})
+                request = {method: :get, path: "/ping", body: {}, query: nil, }
 
-                Models::TopLevelPingResponse.convert(**response)
+                @client.request(model: Models::TopLevelPingResponse, **request)
             end
 
     end

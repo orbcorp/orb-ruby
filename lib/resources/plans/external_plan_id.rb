@@ -9,14 +9,14 @@ module Resources
                     @client = client
                 end
                 def update(other_external_plan_id, external_plan_id: nil, metadata: nil)
-                    response = @client.request(method: :put, path: "/plans/external_plan_id/#{other_external_plan_id}", body: {external_plan_id: external_plan_id, metadata: metadata, })
+                    request = {method: :put, path: "/plans/external_plan_id/#{other_external_plan_id}", body: {external_plan_id: external_plan_id, metadata: metadata, }, query: nil, }
 
-                    Models::Plan.convert(**response)
+                    @client.request(model: Models::Plan, **request)
                 end
                 def fetch(external_plan_id)
-                    response = @client.request(method: :get, path: "/plans/external_plan_id/#{external_plan_id}", body: {})
+                    request = {method: :get, path: "/plans/external_plan_id/#{external_plan_id}", body: {}, query: nil, }
 
-                    Models::Plan.convert(**response)
+                    @client.request(model: Models::Plan, **request)
                 end
 
         end

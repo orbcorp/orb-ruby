@@ -23,7 +23,11 @@ require 'resources/top_level'
 
 require 'base_client'
 
+require 'base_pagination'
+
 require 'pooled_net_requester'
+
+require 'util'
 
 class Client < BaseClient
 
@@ -67,3 +71,4 @@ end
 
 c = Client.new environment: 'local'
               pp c.resources_default_path_params_resource.global_with_standard nil, 'yarp'
+              pp c.resources_pagination_tests_cursor_resource.list.auto_paging_each {|x| puts "got one record"; puts x; puts x.to_h}

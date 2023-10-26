@@ -1,21 +1,27 @@
 require 'models/credit_note'
+require 'pagination'
 require 'model'
 
 module Resources
+    class CreditNotePage < Page
+      required :data, ArrayOf.new(Models::CreditNote)
+
+    end
+
     class CreditNotesResource
 
             def initialize(client:)
                 @client = client
             end
             def list(cursor: nil, limit: nil)
-                response = @client.request(method: :get, path: "/credit_notes", body: {}, query: {cursor: cursor, limit: limit, })
+                request = {method: :get, path: "/credit_notes", body: {}, query: {cursor: cursor, limit: limit, }, }
 
-                Models::CreditNote.convert(**response)
+                @client.request(page: CreditNotePage, **request)
             end
             def fetch(credit_note_id)
-                response = @client.request(method: :get, path: "/credit_notes/#{credit_note_id}", body: {})
+                request = {method: :get, path: "/credit_notes/#{credit_note_id}", body: {}, query: nil, }
 
-                Models::CreditNote.convert(**response)
+                @client.request(model: Models::CreditNote, **request)
             end
 
     end

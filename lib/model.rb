@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 # frozen_string_literal: true
 
 # TODO: OpenAPI supports reference cycles,
@@ -53,23 +53,29 @@ class ArrayOf
   end
 
   def convert(value)
-    # TODO: responding to 'not an enumerable' by just bailing out with nil?
-    value.map.with_index do |item, index|
-      @items.convert(item).nest [index]
+    # TODO(Ruby): responding to 'not an enumerable' by just bailing out with nil?
+    value.map do |item|
+      @items.convert(**item)
     end
   end
 end
 
 class Model
   include Converter
+
   def self.add_field(fn, t, mode)
     @fields ||= {}
-    @fields[fn] = { type: t, mode: mode }
-    attr_reader fn
+    @fields[fn.to_sym] = { type: t, mode: mode }
+
+    define_method(fn) do
+      @data[fn.to_sym]
+    end
 
     case mode
     when :rw, :w
-      attr_writer fn
+      define_method("#{fn}=") do |val|
+        @data[fn.to_sym] = val
+      end
     end
   end
 
@@ -84,7 +90,7 @@ class Model
   end
 
   class << self
-    attr_reader :fields
+    attr_accessor :fields
   end
 
   def self.convert_field(data, model)
@@ -105,37 +111,39 @@ class Model
 
   def self.convert(**data)
     model = new
+    model.convert(**data)
+    model
+  end
+
+  def convert(**data)
     # TODO: what if data isn't a hash?
     data.each do |field_name, value|
       next if value.nil?
 
       # TODO: decide whether raw data should have only symbols, only string keys, or both
-      field = @fields[field_name.to_sym] || fields[field_name.to_s]
+      field = self.class.fields[field_name.to_sym] || self.class.fields[field_name.to_s]
       if field
         next if field[:mode] == :w
 
-        result = convert_field(value, field[:type])
+        result = self.class.convert_field(value, field[:type])
         # TODO: error handling: if `convert_field` throws, just put back whatever we got from the raw json?
-        model.instance_variable_set "@#{field_name}", result
+        @data[field_name.to_sym] = result
       else
-        model.instance_variable_set "@#{field_name}", value
+        @data[field_name.to_sym] = value
       end
     end
-    model
   end
 
+  # TODO(Ruby) recursive to_h
   def to_h
-    out = {}
+    out = @data
     self.class.fields.each do |field_name, _|
       out[field_name] = instance_variable_get("@#{field_name.to_sym}")
     end
     out
   end
 
-  def initialize(**data)
-    self.class.fields.each do |field_name, field_spec|
-      value = data[field_name.to_sym]
-      instance_variable_set "@#{field_name}", value unless field_spec == :r
-    end
+  def initialize(**_data)
+    @data = {}
   end
 end
