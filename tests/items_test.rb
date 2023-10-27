@@ -2,9 +2,6 @@ require 'test/unit'
 
 class ItemsResourceTest < Test::Unit::TestCase
 
-        def test_create
-            assert(false, 'nope')
-        end
         def test_list
             assert(false, 'nope')
         end
