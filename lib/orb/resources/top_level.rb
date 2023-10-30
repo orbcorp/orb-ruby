@@ -8,7 +8,7 @@ module Orb
                     @client = client
                 end
                 def ping
-                    request = {method: :get, path: "/ping", body: {}, query: nil, }
+                    request = {method: :get, path: "/ping", query: nil, }
 
                     @client.request(model: Orb::Models::TopLevelPingResponse, **request)
                 end

@@ -1,3 +1,4 @@
+require 'orb/model'
 require 'orb/models/customer'
 require 'orb/pagination'
 require 'orb/resources/customers/balance_transactions'
@@ -21,37 +22,37 @@ module Orb
                     @credits = Orb::Resources::Customers::CreditsResource.new(client: client)
                     @balance_transactions = Orb::Resources::Customers::BalanceTransactionsResource.new(client: client)
                 end
-                def create(email: nil, name: nil, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, billing_address: nil, currency: nil, email_delivery: nil, external_customer_id: nil, metadata: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_id: nil, timezone: nil)
+                def create(email: Orb::NotGiven.instance, name: Orb::NotGiven.instance, accounting_sync_configuration: Orb::NotGiven.instance, additional_emails: Orb::NotGiven.instance, auto_collection: Orb::NotGiven.instance, billing_address: Orb::NotGiven.instance, currency: Orb::NotGiven.instance, email_delivery: Orb::NotGiven.instance, external_customer_id: Orb::NotGiven.instance, metadata: Orb::NotGiven.instance, payment_provider: Orb::NotGiven.instance, payment_provider_id: Orb::NotGiven.instance, reporting_configuration: Orb::NotGiven.instance, shipping_address: Orb::NotGiven.instance, tax_id: Orb::NotGiven.instance, timezone: Orb::NotGiven.instance)
                     request = {method: :post, path: "/customers", body: {email: email, name: name, accounting_sync_configuration: accounting_sync_configuration, additional_emails: additional_emails, auto_collection: auto_collection, billing_address: billing_address, currency: currency, email_delivery: email_delivery, external_customer_id: external_customer_id, metadata: metadata, payment_provider: payment_provider, payment_provider_id: payment_provider_id, reporting_configuration: reporting_configuration, shipping_address: shipping_address, tax_id: tax_id, timezone: timezone, }, query: nil, }
 
                     @client.request(model: Orb::Models::Customer, **request)
                 end
-                def update(customer_id, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_id: nil)
+                def update(customer_id, accounting_sync_configuration: Orb::NotGiven.instance, additional_emails: Orb::NotGiven.instance, auto_collection: Orb::NotGiven.instance, billing_address: Orb::NotGiven.instance, currency: Orb::NotGiven.instance, email: Orb::NotGiven.instance, email_delivery: Orb::NotGiven.instance, external_customer_id: Orb::NotGiven.instance, metadata: Orb::NotGiven.instance, name: Orb::NotGiven.instance, payment_provider: Orb::NotGiven.instance, payment_provider_id: Orb::NotGiven.instance, reporting_configuration: Orb::NotGiven.instance, shipping_address: Orb::NotGiven.instance, tax_id: Orb::NotGiven.instance)
                     request = {method: :put, path: "/customers/#{customer_id}", body: {accounting_sync_configuration: accounting_sync_configuration, additional_emails: additional_emails, auto_collection: auto_collection, billing_address: billing_address, currency: currency, email: email, email_delivery: email_delivery, external_customer_id: external_customer_id, metadata: metadata, name: name, payment_provider: payment_provider, payment_provider_id: payment_provider_id, reporting_configuration: reporting_configuration, shipping_address: shipping_address, tax_id: tax_id, }, query: nil, }
 
                     @client.request(model: Orb::Models::Customer, **request)
                 end
-                def list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil)
-                    request = {method: :get, path: "/customers", body: {}, query: {created_at[gt]: created_at_gt, created_at[gte]: created_at_gte, created_at[lt]: created_at_lt, created_at[lte]: created_at_lte, cursor: cursor, limit: limit, }, }
+                def list(created_at_gt: Orb::NotGiven.instance, created_at_gte: Orb::NotGiven.instance, created_at_lt: Orb::NotGiven.instance, created_at_lte: Orb::NotGiven.instance, cursor: Orb::NotGiven.instance, limit: Orb::NotGiven.instance)
+                    request = {method: :get, path: "/customers", query: {created_at[gt]: created_at_gt, created_at[gte]: created_at_gte, created_at[lt]: created_at_lt, created_at[lte]: created_at_lte, cursor: cursor, limit: limit, }, }
 
                     @client.request(page: CustomerPage, **request)
                 end
                 def delete(customer_id)
-                    request = {method: :delete, path: "/customers/#{customer_id}", body: {}, query: nil, }
+                    request = {method: :delete, path: "/customers/#{customer_id}", query: nil, }
 
-                    @client.request(**request)
+                    @client.request(model: NilClass, **request)
                 end
                 def fetch(customer_id)
-                    request = {method: :get, path: "/customers/#{customer_id}", body: {}, query: nil, }
+                    request = {method: :get, path: "/customers/#{customer_id}", query: nil, }
 
                     @client.request(model: Orb::Models::Customer, **request)
                 end
                 def fetch_by_external_id(external_customer_id)
-                    request = {method: :get, path: "/customers/external_customer_id/#{external_customer_id}", body: {}, query: nil, }
+                    request = {method: :get, path: "/customers/external_customer_id/#{external_customer_id}", query: nil, }
 
                     @client.request(model: Orb::Models::Customer, **request)
                 end
-                def update_by_external_id(id, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_id: nil)
+                def update_by_external_id(id, accounting_sync_configuration: Orb::NotGiven.instance, additional_emails: Orb::NotGiven.instance, auto_collection: Orb::NotGiven.instance, billing_address: Orb::NotGiven.instance, currency: Orb::NotGiven.instance, email: Orb::NotGiven.instance, email_delivery: Orb::NotGiven.instance, external_customer_id: Orb::NotGiven.instance, metadata: Orb::NotGiven.instance, name: Orb::NotGiven.instance, payment_provider: Orb::NotGiven.instance, payment_provider_id: Orb::NotGiven.instance, reporting_configuration: Orb::NotGiven.instance, shipping_address: Orb::NotGiven.instance, tax_id: Orb::NotGiven.instance)
                     request = {method: :put, path: "/customers/external_customer_id/#{id}", body: {accounting_sync_configuration: accounting_sync_configuration, additional_emails: additional_emails, auto_collection: auto_collection, billing_address: billing_address, currency: currency, email: email, email_delivery: email_delivery, external_customer_id: external_customer_id, metadata: metadata, name: name, payment_provider: payment_provider, payment_provider_id: payment_provider_id, reporting_configuration: reporting_configuration, shipping_address: shipping_address, tax_id: tax_id, }, query: nil, }
 
                     @client.request(model: Orb::Models::Customer, **request)

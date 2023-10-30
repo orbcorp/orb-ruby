@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 # frozen_string_literal: true
 
 # TODO: OpenAPI supports reference cycles,
@@ -7,18 +7,64 @@
 
 # TODO: type-guided serialization
 
+require 'singleton'
+
 module Orb
+  class NotGiven
+  include Singleton
+  end
   # TODO: move model types into a module
   module Converter
     def convert(convert)
       raise NotImplementedError
     end
+
+    def self.convert(type, value)
+      if type.is_a?(Class) && type.superclass == Model
+        type.convert(**(value || {}))
+      elsif type.is_a?(Converter) || type.include?(Converter)
+        type.convert(value)
+      elsif type.is_a?(Class)
+        # TODO: selective hardcoded coercion here,
+        # eg int->float
+        if type == NilClass
+          nil
+        elsif type == Float && value.is_a?(Numeric)
+          value.to_f
+        elsif [Integer, String].include? type
+          value
+        end
+      else
+        raise StandardError.new("can't coerce #{value.class} to #{type}")
+      end
+    end
+
+    # Is `value` a member of the type of this converter's output?
+    # XXX this isn't coercion. The value must already be exactly correct.
+    # It uses JSON schema's notion of type.
+    # So, eg, Ruby doesn't have booleans, but this function's domain does.
+    def same_type?(value)
+      raise NotImplementedError
+    end
+
+    # dispatch function for `same_type`, to include `String` and other
+    # base classes
+    def self.same_type?(type, value)
+      if type.is_a?(Converter) || type.include?(Converter)
+        type.same_type? value
+      else
+        value.is_a? type
+      end
+    end
   end
 
   class Unknown
     include Converter
-    def convert(value)
+    def self.convert(value)
       value
+    end
+    def self.same_type?(value)
+      true
     end
   end
 
@@ -26,8 +72,11 @@ module Orb
   # may not even be needed.
   class BooleanModel
     include Converter
-    def convert(value)
+    def self.convert(value)
       value
+    end
+    def self.same_type?(value)
+      [true, false].include? value
     end
   end
 
@@ -36,7 +85,8 @@ module Orb
 
     # NB we don't do runtime validation, so `options` is just an FYI
     # for the reader.
-    def initialize(_options)
+    def initialize(options)
+      @options = options
     end
 
     def convert(value)
@@ -45,6 +95,10 @@ module Orb
       else
         value
       end
+    end
+
+    def same_type?(value)
+      options.include? value
     end
   end
 
@@ -56,12 +110,23 @@ module Orb
 
     def convert(value)
       # TODO: responding to 'not an enumerable' by just bailing out with nil?
-      value.map { |item| @items.convert(**item) }
+      value.map { |item|
+        Converter.convert(@items, item)
+      }
+    end
+
+    def same_type?(value)
+      value.is_a?(Array) && value.all? {|item|
+      Converter.same_type?(@items, item)}
     end
   end
 
   class Model
     include Converter
+
+    def self.same_type?(value)
+      value.is_a? self
+    end
 
     def self.add_field(fn, t, mode)
       @fields ||= {}
@@ -123,8 +188,8 @@ module Orb
         if field
           next if field[:mode] == :w
 
-          result = self.class.convert_field(value, field[:type])
-          # TODO: error handling: if `convert_field` throws, just put back whatever we got from the raw json?
+          result = Converter.convert(field[:type], value)
+          # TODO: error handling: if conversion throws, just put back whatever we got from the raw json?
           @data[field_name.to_sym] = result
         else
           @data[field_name.to_sym] = value

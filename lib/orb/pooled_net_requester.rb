@@ -48,9 +48,15 @@ module Orb
         case req[:method]
         when :get
           conn.get(uri_string, req[:headers])
+        when :patch
+          conn.patch(uri_string, req[:body], req[:headers])
+        when :put
+          conn.put(uri_string, req[:body], req[:headers])
         when :post
           conn.post(uri_string, req[:body], req[:headers])
           # TODO: more verbs
+        when :delete
+          conn.delete(uri_string, req[:headers])
         else
           raise NotImplementedError.new, req[:method]
         end

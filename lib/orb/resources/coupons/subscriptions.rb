@@ -1,3 +1,4 @@
+require 'orb/model'
 require 'orb/models/subscription'
 require 'orb/pagination'
 module Orb
@@ -14,8 +15,8 @@ module Orb
                     def initialize(client:)
                         @client = client
                     end
-                    def list(coupon_id, cursor: nil, limit: nil)
-                        request = {method: :get, path: "/coupons/#{coupon_id}/subscriptions", body: {}, query: {cursor: cursor, limit: limit, }, }
+                    def list(coupon_id, cursor: Orb::NotGiven.instance, limit: Orb::NotGiven.instance)
+                        request = {method: :get, path: "/coupons/#{coupon_id}/subscriptions", query: {cursor: cursor, limit: limit, }, }
 
                         @client.request(page: SubscriptionPage, **request)
                     end

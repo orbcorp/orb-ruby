@@ -10,8 +10,6 @@ require 'orb/resources/plans/plans'
 require 'orb/resources/prices/prices'
 require 'orb/resources/subscriptions'
 require 'orb/resources/top_level'
-# api_key
-
 require 'orb/base_client'
 
 require 'orb/base_pagination'
@@ -27,13 +25,13 @@ module Orb
             def auth_headers
                 {"Authorization" => "Bearer #{@api_key}"}
             end
-            def initialize(environment:, api_key:nil, requester:nil)
+            def initialize(environment:nil, api_key:nil, requester:nil, base_url:nil)
                 environments = {production: "https://api.withorb.com/v1", }
                 @default_headers = {}
                 @default_params = {}
                 @api_key = [
                       api_key, ENV['ORB_API_KEY']].find {|value| !value.nil?}
-                super(server_uri_string: environments[environment.to_sym], headers: @default_headers)
+                super(server_uri_string: environments[environment&.to_sym] || base_url, headers: @default_headers)
 
                 @requester = requester || Orb::PooledNetRequester.new
                 @top_level = Orb::Resources::TopLevelResource.new(client: self)
@@ -52,7 +50,3 @@ module Orb
 
     end
 end
-
-c = Orb::Client.new environment: 'local'
-pp c.default_path_params.global_with_standard nil, 'yarp'
-pp c.pagination_tests.cursor.list.auto_paging_each {|x| puts "got one record"; puts x; puts x.to_h}

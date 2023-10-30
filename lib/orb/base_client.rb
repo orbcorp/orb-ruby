@@ -48,7 +48,7 @@ module Orb
     end
 
     def resolve_uri_elements(req)
-      if req[:url]
+      uri_components = if req[:url]
         uri = URI.parse(req[:url])
         {
           host: uri.host,
@@ -60,6 +60,9 @@ module Orb
       else
         req.slice(:host, :scheme, :path, :port, :query)
       end
+
+      uri_components[:query] = uri_components[:query]&.filter {|k,v| !v.is_a? NotGiven}
+      uri_components
     end
 
     def prep_request(**options)
@@ -71,15 +74,25 @@ module Orb
 
       headers["Accept"] = "application/json"
 
-      method = options[:method]
+      method = options[:method].to_sym
       body =
         case method
-        when :post
-          # TODO(Ruby): bodies that aren't JSON, dummy. Same for responses.
-          JSON.dump options[:body].to_h
+        when :post, :put, :patch
+          body = options[:body]
+          if body
+            # TODO(Ruby): bodies that aren't JSON, dummy. Same for responses.
+            # TODO(Ruby): bodies that aren't hashes.
+            to_send =
+              if body.is_a? Hash
+                body.filter { |k, v| !v.is_a? NotGiven }.to_h
+              else
+                body
+              end
+            JSON.dump to_send
+          end
+        else
+          nil
         end
-
-      security_scheme = options[:security_scheme]
 
       security_scheme = options[:security_scheme]
 
@@ -106,8 +119,21 @@ module Orb
       # TODO: passing retry config
       response = with_retry { @requester.execute request_args }
 
-      # TODO: responses that aren't hashes
-      raw_data = JSON.parse(response.body)
+      raw_data =
+        case response.content_type
+        when "application/problem+json"
+          # TODO(PR #2724) after that PR merges, this block shouldn't be necessary
+          raise StandardError.new("Failed with #{response.code}")
+        when "application/json"
+          begin
+            JSON.parse(response.body)
+          rescue JSON::ParserError
+            response.body
+          end
+          # TODO parsing other response types
+        else
+          response.body
+        end
       if options[:page]
         page =
           options[:page].new(client: self, json: raw_data, request: options)
@@ -117,7 +143,7 @@ module Orb
 
       model = options[:model]
 
-      model ? model.convert(**raw_data) : raw_data
+      model ? Converter.convert(model, raw_data) : raw_data
     end
   end
 end
