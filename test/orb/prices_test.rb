@@ -5,9 +5,7 @@ require 'test/unit'
 class PricesResourceTest < Test::Unit::TestCase
 
         def setup
-            @orb = Orb::Client.new(
-                      base_url: "http://localhost:4010"
-                    )
+            @orb = Orb::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
         end
         def test_create_required_params
             response = @orb.prices.create(cadence: "annual", currency: "string", item_id: "string", model_type: "unit", name: "Annual fee", unit_config: {"unit_amount" => "string", })

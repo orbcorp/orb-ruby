@@ -7,9 +7,7 @@ require 'test/unit'
 class SubscriptionsResourceTest < Test::Unit::TestCase
 
         def setup
-            @orb = Orb::Client.new(
-                      base_url: "http://localhost:4010"
-                    )
+            @orb = Orb::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
         end
         def test_create
             response = @orb.subscriptions.create()

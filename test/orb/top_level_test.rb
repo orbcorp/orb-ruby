@@ -6,9 +6,7 @@ require 'test/unit'
 class TopLevelResourceTest < Test::Unit::TestCase
 
         def setup
-            @orb = Orb::Client.new(
-                      base_url: "http://localhost:4010"
-                    )
+            @orb = Orb::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
         end
         def test_ping
             response = @orb.top_level.ping()

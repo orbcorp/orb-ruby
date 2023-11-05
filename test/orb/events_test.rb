@@ -9,9 +9,7 @@ require 'test/unit'
 class EventsResourceTest < Test::Unit::TestCase
 
         def setup
-            @orb = Orb::Client.new(
-                      base_url: "http://localhost:4010"
-                    )
+            @orb = Orb::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
         end
         def test_update_required_params
             response = @orb.events.update("string", event_name: "string", properties: {}, timestamp: "2020-12-09T16:09:53Z")

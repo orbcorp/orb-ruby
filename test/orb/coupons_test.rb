@@ -6,9 +6,7 @@ require 'test/unit'
 class CouponsResourceTest < Test::Unit::TestCase
 
         def setup
-            @orb = Orb::Client.new(
-                      base_url: "http://localhost:4010"
-                    )
+            @orb = Orb::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
         end
         def test_create_required_params
             response = @orb.coupons.create(discount: {"discount_type" => "percentage", "applies_to_price_ids" => ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"], "percentage_discount" => 0.15, }, redemption_code: "HALFOFF")

@@ -7,9 +7,7 @@ require 'test/unit'
 class InvoicesResourceTest < Test::Unit::TestCase
 
         def setup
-            @orb = Orb::Client.new(
-                      base_url: "http://localhost:4010"
-                    )
+            @orb = Orb::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
         end
         def test_create_required_params
             response = @orb.invoices.create(currency: "USD", invoice_date: "2019-12-27T18:11:19.117Z", line_items: [{"start_date" => "2023-09-22", "end_date" => "2023-09-22", "quantity" => 1, "name" => "Line Item Name", "item_id" => "4khy3nwzktxv7", "model_type" => "unit", "unit_config" => {"unit_amount" => "string", }, }, {"start_date" => "2023-09-22", "end_date" => "2023-09-22", "quantity" => 1, "name" => "Line Item Name", "item_id" => "4khy3nwzktxv7", "model_type" => "unit", "unit_config" => {"unit_amount" => "string", }, }, {"start_date" => "2023-09-22", "end_date" => "2023-09-22", "quantity" => 1, "name" => "Line Item Name", "item_id" => "4khy3nwzktxv7", "model_type" => "unit", "unit_config" => {"unit_amount" => "string", }, }], net_terms: 0)
