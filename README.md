@@ -25,7 +25,7 @@ orb = Orb.new(api_key: "My API Key", # defaults to ENV["ORB_API_KEY"]
 
 customer = orb.customers.create(email: "example-customer@withorb.com", name: "My Customer");
 
-puts customer
+puts customer.id
 ```
 
 ## Advanced
