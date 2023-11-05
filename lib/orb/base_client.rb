@@ -48,20 +48,23 @@ module Orb
     end
 
     def resolve_uri_elements(req)
-      uri_components = if req[:url]
-        uri = URI.parse(req[:url])
-        {
-          host: uri.host,
-          scheme: uri.scheme,
-          path: uri.path,
-          query: uri.query,
-          port: uri.port
-        }
-      else
-        req.slice(:host, :scheme, :path, :port, :query)
-      end
+      uri_components =
+        if req[:url]
+          uri = URI.parse(req[:url])
+          {
+            host: uri.host,
+            scheme: uri.scheme,
+            path: uri.path,
+            query: uri.query,
+            port: uri.port
+          }
+        else
+          req.slice(:host, :scheme, :path, :port, :query)
+        end
 
-      uri_components[:query] = uri_components[:query]&.filter {|k,v| !v.is_a? NotGiven}
+      uri_components[:query] = uri_components[:query]&.filter do |k, v|
+        !v.is_a? NotGiven
+      end
       uri_components
     end
 

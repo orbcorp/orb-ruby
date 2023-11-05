@@ -7,11 +7,11 @@
 
 # TODO: type-guided serialization
 
-require 'singleton'
+require "singleton"
 
 module Orb
   class NotGiven
-  include Singleton
+    include Singleton
   end
   # TODO: move model types into a module
   module Converter
@@ -110,14 +110,12 @@ module Orb
 
     def convert(value)
       # TODO: responding to 'not an enumerable' by just bailing out with nil?
-      value.map { |item|
-        Converter.convert(@items, item)
-      }
+      value.map { |item| Converter.convert(@items, item) }
     end
 
     def same_type?(value)
-      value.is_a?(Array) && value.all? {|item|
-      Converter.same_type?(@items, item)}
+      value.is_a?(Array) &&
+        value.all? { |item| Converter.same_type?(@items, item) }
     end
   end
 

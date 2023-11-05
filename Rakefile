@@ -1,9 +1,8 @@
 require "rake/testtask"
+require "syntax_tree/rake/write_task"
 
-task default: %i[test]
+task default: %i[test, format]
 
-Rake::TestTask.new do |t|
-  t.pattern = "./test/**/*_test.rb"
-end
+SyntaxTree::Rake::WriteTask.new('format') { |t| t.source_files = "lib/**/*.rb" }
 
-# TODO(Ruby testing) add formatting task
+Rake::TestTask.new { |t| t.pattern = "./test/**/*_test.rb" }

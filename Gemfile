@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'connection_pool'
-gem 'sorbet-static', :group => :development
-gem 'tapioca', require: false, :group => :development
-gen 'rake', :group => :development
+gem 'rake', :group => :development
+gem 'syntax_tree', :group => :development
+gem 'test-unit', :group => :development
