@@ -16,16 +16,8 @@ module Orb
         # @!attribute [rw] timestamp
         required :timestamp, String
       end
-      class PaginationMetadata < Orb::Model
-        # @!attribute [rw] has_more
-        required :has_more, Orb::BooleanModel
-        # @!attribute [rw] next_cursor
-        required :next_cursor, String
-      end
       # @!attribute [rw] data
       required :data, Orb::ArrayOf.new(Data)
-      # @!attribute [rw] pagination_metadata
-      required :pagination_metadata, PaginationMetadata
     end
   end
 end

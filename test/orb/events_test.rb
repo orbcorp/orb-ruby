@@ -23,8 +23,8 @@ class EventsResourceTest < Test::Unit::TestCase
             response = @orb.events.ingest(events: [{"event_name" => "string", "timestamp" => "2020-12-09T16:09:53Z", "properties" => {}, "idempotency_key" => "string", }, {"event_name" => "string", "timestamp" => "2020-12-09T16:09:53Z", "properties" => {}, "idempotency_key" => "string", }, {"event_name" => "string", "timestamp" => "2020-12-09T16:09:53Z", "properties" => {}, "idempotency_key" => "string", }])
             assert(Orb::Converter.same_type?(Orb::Models::EventIngestResponse, response), response.class.to_s)
         end
-        def test_search
-            response = @orb.events.search()
+        def test_search_required_params
+            response = @orb.events.search(event_ids: ["string", "string", "string"])
             assert(Orb::Converter.same_type?(Orb::Models::EventSearchResponse, response), response.class.to_s)
         end
 

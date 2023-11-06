@@ -64,31 +64,14 @@ module Orb
 
         @client.request(model: Orb::Models::EventIngestResponse, **request)
       end
-      def search(
-        cursor: Orb::NotGiven.instance,
-        limit: Orb::NotGiven.instance,
-        timestamp_gt: Orb::NotGiven.instance,
-        timestamp_gte: Orb::NotGiven.instance,
-        timestamp_lt: Orb::NotGiven.instance,
-        timestamp_lte: Orb::NotGiven.instance,
-        event_ids: Orb::NotGiven.instance,
-        invoice_id: Orb::NotGiven.instance
-      )
+      def search(event_ids: Orb::NotGiven.instance)
         request = {
           method: :post,
           path: "/events/search",
           body: {
-            event_ids: event_ids,
-            invoice_id: invoice_id
+            event_ids: event_ids
           },
-          query: {
-            cursor: cursor,
-            limit: limit,
-            "timestamp[gt]": timestamp_gt,
-            "timestamp[gte]": timestamp_gte,
-            "timestamp[lt]": timestamp_lt,
-            "timestamp[lte]": timestamp_lte
-          }
+          query: nil
         }
 
         @client.request(model: Orb::Models::EventSearchResponse, **request)
