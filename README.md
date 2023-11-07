@@ -28,6 +28,49 @@ customer = orb.customers.create(email: "example-customer@withorb.com", name: "My
 puts customer.id
 ```
 
+## Handling errors
+
+When the library is unable to connect to the API,
+or if the API returns a non-success status code (i.e., 4xx or 5xx response),
+a subclass of `Orb::HTTP::Error` will be thrown:
+
+```rb
+begin
+  customer = orb.customers.create(email: "example-customer@withorb.com", name: "My Customer")
+rescue Orb::HTTP::Error => err
+  puts err.code # 400
+end
+```
+
+Error codes are as followed:
+
+| Status Code | Error Type                 |
+| ----------- | -------------------------- |
+| 400         | `BadRequestError`          |
+| 401         | `AuthenticationError`      |
+| 403         | `PermissionDeniedError`    |
+| 404         | `NotFoundError`            |
+| 409         | `ConflictError`            |
+| 422         | `UnprocessableEntityError` |
+| 429         | `RateLimitError`           |
+| >=500       | `InternalServerError`      |
+| (else)      | `APIStatusError`           |
+| N/A         | `APIConnectionError`       |
+
+### Retries
+
+Certain errors will be automatically retried 2 times by default, with a short exponential backoff.
+Connection errors (for example, due to a network connectivity problem), 408 Request Timeout, 409 Conflict,
+429 Rate Limit, and >=500 Internal errors will all be retried by default.
+
+You can use the `max_retries` option to configure or disable this:
+
+```rb
+# Configure the default for all requests:
+orb = Orb.new(max_retries: 0, # default is 2
+);
+```
+
 ## Advanced
 
 ### How to tell whether `nil` means `null` or missing
