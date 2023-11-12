@@ -7,8 +7,8 @@ module Orb
         required :id, String
         # @!attribute [rw] external_plan_id
         required :external_plan_id, String
-        # @!attribute [rw] name
-        required :name, String
+        # @!attribute [rw] name_
+        required :name_, String
       end
       # @!attribute [rw] end_date
       required :end_date, String

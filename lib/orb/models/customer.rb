@@ -195,8 +195,8 @@ module Orb
       required :external_customer_id, String
       # @!attribute [rw] metadata
       required :metadata, Hash
-      # @!attribute [rw] name
-      required :name, String
+      # @!attribute [rw] name_
+      required :name_, String
       # @!attribute [rw] payment_provider
       required :payment_provider,
                Orb::Enum.new(

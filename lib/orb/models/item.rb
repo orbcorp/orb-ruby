@@ -25,8 +25,8 @@ module Orb
       required :created_at, String
       # @!attribute [rw] external_connections
       required :external_connections, Orb::ArrayOf.new(ExternalConnections)
-      # @!attribute [rw] name
-      required :name, String
+      # @!attribute [rw] name_
+      required :name_, String
     end
   end
 end

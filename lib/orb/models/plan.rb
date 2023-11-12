@@ -7,8 +7,8 @@ module Orb
         required :id, String
         # @!attribute [rw] external_plan_id
         required :external_plan_id, String
-        # @!attribute [rw] name
-        required :name, String
+        # @!attribute [rw] name_
+        required :name_, String
       end
       class Maximum < Orb::Model
         # @!attribute [rw] applies_to_price_ids
@@ -54,8 +54,8 @@ module Orb
         required :minimum, Minimum
         # @!attribute [rw] minimum_amount
         required :minimum_amount, String
-        # @!attribute [rw] name
-        required :name, String
+        # @!attribute [rw] name_
+        required :name_, String
         # @!attribute [rw] order
         required :order, Integer
       end
@@ -64,8 +64,8 @@ module Orb
         required :id, String
         # @!attribute [rw] created_at
         required :created_at, String
-        # @!attribute [rw] name
-        required :name, String
+        # @!attribute [rw] name_
+        required :name_, String
       end
       class TrialConfig < Orb::Model
         # @!attribute [rw] trial_period
@@ -103,8 +103,8 @@ module Orb
       required :minimum, Minimum
       # @!attribute [rw] minimum_amount
       required :minimum_amount, String
-      # @!attribute [rw] name
-      required :name, String
+      # @!attribute [rw] name_
+      required :name_, String
       # @!attribute [rw] net_terms
       required :net_terms, Integer
       # @!attribute [rw] plan_phases

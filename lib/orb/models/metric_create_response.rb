@@ -11,8 +11,8 @@ module Orb
       required :item, Orb::Models::Item
       # @!attribute [rw] metadata
       required :metadata, Hash
-      # @!attribute [rw] name
-      required :name, String
+      # @!attribute [rw] name_
+      required :name_, String
       # @!attribute [rw] status
       required :status, Orb::Enum.new([:"active", :"draft", :"archived"])
     end

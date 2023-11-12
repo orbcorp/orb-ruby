@@ -12,8 +12,8 @@ module Orb
         class AppliesToPrices < Orb::Model
           # @!attribute [rw] id
           required :id, String
-          # @!attribute [rw] name
-          required :name, String
+          # @!attribute [rw] name_
+          required :name_, String
         end
         # @!attribute [rw] amount_applied
         required :amount_applied, String
@@ -46,8 +46,8 @@ module Orb
         class SubLineItems < Orb::Model
           # @!attribute [rw] amount
           required :amount, String
-          # @!attribute [rw] name
-          required :name, String
+          # @!attribute [rw] name_
+          required :name_, String
           # @!attribute [rw] quantity
           required :quantity, Float
         end
@@ -65,8 +65,8 @@ module Orb
         required :amount, String
         # @!attribute [rw] discounts
         required :discounts, Orb::ArrayOf.new(Discounts)
-        # @!attribute [rw] name
-        required :name, String
+        # @!attribute [rw] name_
+        required :name_, String
         # @!attribute [rw] quantity
         required :quantity, Float
         # @!attribute [rw] sub_line_items
@@ -80,8 +80,8 @@ module Orb
         class AppliesToPrices < Orb::Model
           # @!attribute [rw] id
           required :id, String
-          # @!attribute [rw] name
-          required :name, String
+          # @!attribute [rw] name_
+          required :name_, String
         end
         # @!attribute [rw] amount_applied
         required :amount_applied, String

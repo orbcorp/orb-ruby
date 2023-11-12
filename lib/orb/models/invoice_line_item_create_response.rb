@@ -40,8 +40,8 @@ module Orb
       required :minimum, Minimum
       # @!attribute [rw] minimum_amount
       required :minimum_amount, String
-      # @!attribute [rw] name
-      required :name, String
+      # @!attribute [rw] name_
+      required :name_, String
       # @!attribute [rw] price
       required :price, Orb::Unknown
       # @!attribute [rw] quantity
