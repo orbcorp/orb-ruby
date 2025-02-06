@@ -31,7 +31,7 @@ module Orb
         ) -> void
         | (?Orb::Models::coupon_create_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::coupon_create_params
+      def to_hash: -> Orb::Models::coupon_create_params
 
       type discount =
         Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount
@@ -53,7 +53,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::CouponCreateParams::Discount::new_coupon_percentage_discount
+          def to_hash: -> Orb::Models::CouponCreateParams::Discount::new_coupon_percentage_discount
         end
 
         type new_coupon_amount_discount =
@@ -71,7 +71,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::CouponCreateParams::Discount::new_coupon_amount_discount
+          def to_hash: -> Orb::Models::CouponCreateParams::Discount::new_coupon_amount_discount
         end
 
         private def self.variants: -> [[:percentage, Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount], [:amount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]]

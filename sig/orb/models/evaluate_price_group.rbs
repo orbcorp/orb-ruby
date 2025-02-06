@@ -22,7 +22,7 @@ module Orb
         ) -> void
         | (?Orb::Models::evaluate_price_group | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::evaluate_price_group
+      def to_hash: -> Orb::Models::evaluate_price_group
 
       type grouping_value = String | Float | bool
 

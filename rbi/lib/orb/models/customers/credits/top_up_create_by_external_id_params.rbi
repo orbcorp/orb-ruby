@@ -8,21 +8,6 @@ module Orb
           extend Orb::RequestParameters::Converter
           include Orb::RequestParameters
 
-          Shape = T.type_alias do
-            T.all(
-              {
-                amount: String,
-                currency: String,
-                invoice_settings: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::InvoiceSettings,
-                per_unit_cost_basis: String,
-                threshold: String,
-                expires_after: T.nilable(Integer),
-                expires_after_unit: T.nilable(Symbol)
-              },
-              Orb::RequestParameters::Shape
-            )
-          end
-
           sig { returns(String) }
           attr_accessor :amount
 
@@ -53,7 +38,7 @@ module Orb
               threshold: String,
               expires_after: T.nilable(Integer),
               expires_after_unit: T.nilable(Symbol),
-              request_options: Orb::RequestOpts
+              request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
             ).void
           end
           def initialize(
@@ -67,19 +52,23 @@ module Orb
             request_options: {}
           ); end
 
-          sig { returns(Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                amount: String,
+                currency: String,
+                invoice_settings: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::InvoiceSettings,
+                per_unit_cost_basis: String,
+                threshold: String,
+                expires_after: T.nilable(Integer),
+                expires_after_unit: T.nilable(Symbol),
+                request_options: Orb::RequestOptions
+              }
+            )
+          end
+          def to_hash; end
 
           class InvoiceSettings < Orb::BaseModel
-            Shape = T.type_alias do
-              {
-                auto_collection: T::Boolean,
-                net_terms: Integer,
-                memo: T.nilable(String),
-                require_successful_payment: T::Boolean
-              }
-            end
-
             sig { returns(T::Boolean) }
             attr_accessor :auto_collection
 
@@ -106,9 +95,16 @@ module Orb
             def initialize(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil); end
 
             sig do
-              returns(Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::InvoiceSettings::Shape)
+              override.returns(
+                {
+                  auto_collection: T::Boolean,
+                  net_terms: Integer,
+                  memo: T.nilable(String),
+                  require_successful_payment: T::Boolean
+                }
+              )
             end
-            def to_h; end
+            def to_hash; end
           end
 
           class ExpiresAfterUnit < Orb::Enum

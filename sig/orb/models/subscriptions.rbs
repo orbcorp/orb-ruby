@@ -18,7 +18,7 @@ module Orb
         ) -> void
         | (?Orb::Models::subscriptions_api | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::subscriptions_api
+      def to_hash: -> Orb::Models::subscriptions_api
     end
   end
 end

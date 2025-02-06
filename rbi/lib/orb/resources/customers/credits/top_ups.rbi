@@ -15,7 +15,7 @@ module Orb
               threshold: String,
               expires_after: T.nilable(Integer),
               expires_after_unit: T.nilable(Symbol),
-              request_options: Orb::RequestOpts
+              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
             ).returns(Orb::Models::Customers::Credits::TopUpCreateResponse)
           end
           def create(
@@ -35,12 +35,18 @@ module Orb
               customer_id: String,
               cursor: T.nilable(String),
               limit: Integer,
-              request_options: Orb::RequestOpts
+              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
             ).returns(Orb::Page[Orb::Models::Customers::Credits::TopUpListResponse])
           end
           def list(customer_id, cursor: nil, limit: nil, request_options: {}); end
 
-          sig { params(top_up_id: String, customer_id: String, request_options: Orb::RequestOpts).void }
+          sig do
+            params(
+              top_up_id: String,
+              customer_id: String,
+              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            ).void
+          end
           def delete(top_up_id, customer_id:, request_options: {}); end
 
           sig do
@@ -53,7 +59,7 @@ module Orb
               threshold: String,
               expires_after: T.nilable(Integer),
               expires_after_unit: T.nilable(Symbol),
-              request_options: Orb::RequestOpts
+              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
             ).returns(Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse)
           end
           def create_by_external_id(
@@ -69,7 +75,11 @@ module Orb
           ); end
 
           sig do
-            params(top_up_id: String, external_customer_id: String, request_options: Orb::RequestOpts).void
+            params(
+              top_up_id: String,
+              external_customer_id: String,
+              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            ).void
           end
           def delete_by_external_id(top_up_id, external_customer_id:, request_options: {}); end
 
@@ -78,7 +88,7 @@ module Orb
               external_customer_id: String,
               cursor: T.nilable(String),
               limit: Integer,
-              request_options: Orb::RequestOpts
+              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
             ).returns(Orb::Page[Orb::Models::Customers::Credits::TopUpListByExternalIDResponse])
           end
           def list_by_external_id(external_customer_id, cursor: nil, limit: nil, request_options: {}); end

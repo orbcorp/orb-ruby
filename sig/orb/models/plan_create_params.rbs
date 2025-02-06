@@ -49,7 +49,7 @@ module Orb
         ) -> void
         | (?Orb::Models::plan_create_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::plan_create_params
+      def to_hash: -> Orb::Models::plan_create_params
 
       type price =
         Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice
@@ -151,7 +151,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_unit_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_unit_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -179,7 +179,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::unit_config
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::unit_config
           end
 
           type billing_cycle_configuration =
@@ -203,7 +203,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -236,7 +236,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -322,7 +322,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_package_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_package_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -353,7 +353,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::package_config
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::package_config
           end
 
           type billing_cycle_configuration =
@@ -377,7 +377,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -410,7 +410,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -496,7 +496,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_matrix_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_matrix_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -537,7 +537,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::matrix_config
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::matrix_config
 
             type matrix_value =
               { dimension_values: Array[String?], unit_amount: String }
@@ -554,7 +554,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::MatrixConfig::matrix_value
+              def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::MatrixConfig::matrix_value
             end
           end
 
@@ -579,7 +579,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -612,7 +612,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -698,7 +698,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_tiered_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_tiered_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -731,7 +731,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::tiered_config
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::tiered_config
 
             type tier =
               { first_unit: Float, unit_amount: String, last_unit: Float? }
@@ -754,7 +754,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::TieredConfig::tier
+              def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::TieredConfig::tier
             end
           end
 
@@ -779,7 +779,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -812,7 +812,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -898,7 +898,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_tiered_bps_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_tiered_bps_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -931,7 +931,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::tiered_bps_config
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::tiered_bps_config
 
             type tier =
               {
@@ -962,7 +962,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::TieredBpsConfig::tier
+              def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::TieredBpsConfig::tier
             end
           end
 
@@ -987,7 +987,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -1020,7 +1020,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -1106,7 +1106,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_bps_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_bps_price
 
           type bps_config = { bps: Float, per_unit_maximum: String? }
 
@@ -1122,7 +1122,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::bps_config
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::bps_config
           end
 
           type cadence =
@@ -1160,7 +1160,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -1193,7 +1193,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -1279,7 +1279,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_bulk_bps_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_bulk_bps_price
 
           type bulk_bps_config =
             {
@@ -1298,7 +1298,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::bulk_bps_config
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::bulk_bps_config
 
             type tier =
               { bps: Float, maximum_amount: String?, per_unit_maximum: String? }
@@ -1321,7 +1321,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BulkBpsConfig::tier
+              def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BulkBpsConfig::tier
             end
           end
 
@@ -1360,7 +1360,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -1393,7 +1393,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -1479,7 +1479,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_bulk_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_bulk_price
 
           type bulk_config =
             {
@@ -1498,7 +1498,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::bulk_config
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::bulk_config
 
             type tier = { unit_amount: String, maximum_units: Float? }
 
@@ -1514,7 +1514,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BulkConfig::tier
+              def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BulkConfig::tier
             end
           end
 
@@ -1553,7 +1553,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -1586,7 +1586,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -1672,7 +1672,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_threshold_total_amount_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_threshold_total_amount_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -1709,7 +1709,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -1742,7 +1742,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -1828,7 +1828,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_tiered_package_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_tiered_package_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -1865,7 +1865,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -1898,7 +1898,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -1984,7 +1984,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_tiered_with_minimum_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_tiered_with_minimum_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -2021,7 +2021,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -2054,7 +2054,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -2140,7 +2140,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_unit_with_percent_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_unit_with_percent_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -2177,7 +2177,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -2210,7 +2210,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -2296,7 +2296,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_package_with_allocation_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_package_with_allocation_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -2333,7 +2333,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -2366,7 +2366,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -2452,7 +2452,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_tier_with_proration_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_tier_with_proration_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -2489,7 +2489,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -2522,7 +2522,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -2608,7 +2608,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_unit_with_proration_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_unit_with_proration_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -2645,7 +2645,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -2678,7 +2678,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -2764,7 +2764,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_grouped_allocation_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_grouped_allocation_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -2801,7 +2801,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -2834,7 +2834,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -2920,7 +2920,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_grouped_with_prorated_minimum_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_grouped_with_prorated_minimum_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -2957,7 +2957,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -2990,7 +2990,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -3076,7 +3076,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_grouped_with_metered_minimum_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_grouped_with_metered_minimum_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -3113,7 +3113,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -3146,7 +3146,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -3232,7 +3232,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_matrix_with_display_name_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_matrix_with_display_name_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -3269,7 +3269,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -3302,7 +3302,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -3388,7 +3388,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_bulk_with_proration_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_bulk_with_proration_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -3425,7 +3425,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -3458,7 +3458,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -3544,7 +3544,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_grouped_tiered_package_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_grouped_tiered_package_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -3581,7 +3581,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -3614,7 +3614,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -3700,7 +3700,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_max_group_tiered_package_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_max_group_tiered_package_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -3737,7 +3737,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -3770,7 +3770,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -3856,7 +3856,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_scalable_matrix_with_unit_pricing_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_scalable_matrix_with_unit_pricing_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -3893,7 +3893,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -3926,7 +3926,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -4012,7 +4012,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PlanCreateParams::Price::new_plan_scalable_matrix_with_tiered_pricing_price
+          def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_scalable_matrix_with_tiered_pricing_price
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -4049,7 +4049,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::billing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::billing_cycle_configuration
 
             type duration_unit = :day | :month
 
@@ -4082,7 +4082,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::invoicing_cycle_configuration
+            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::invoicing_cycle_configuration
 
             type duration_unit = :day | :month
 

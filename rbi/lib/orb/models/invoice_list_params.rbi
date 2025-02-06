@@ -6,33 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            amount: T.nilable(String),
-            amount_gt: T.nilable(String),
-            amount_lt: T.nilable(String),
-            cursor: T.nilable(String),
-            customer_id: T.nilable(String),
-            date_type: T.nilable(Symbol),
-            due_date: T.nilable(Date),
-            due_date_window: T.nilable(String),
-            due_date_gt: T.nilable(Date),
-            due_date_lt: T.nilable(Date),
-            external_customer_id: T.nilable(String),
-            invoice_date_gt: T.nilable(Time),
-            invoice_date_gte: T.nilable(Time),
-            invoice_date_lt: T.nilable(Time),
-            invoice_date_lte: T.nilable(Time),
-            is_recurring: T.nilable(T::Boolean),
-            limit: Integer,
-            status: T.nilable(T::Array[Symbol]),
-            subscription_id: T.nilable(String)
-          },
-          Orb::RequestParameters::Shape
-        )
-      end
-
       sig { returns(T.nilable(String)) }
       attr_accessor :amount
 
@@ -114,7 +87,7 @@ module Orb
           limit: Integer,
           status: T.nilable(T::Array[Symbol]),
           subscription_id: T.nilable(String),
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -140,8 +113,33 @@ module Orb
         request_options: {}
       ); end
 
-      sig { returns(Orb::Models::InvoiceListParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            amount: T.nilable(String),
+            amount_gt: T.nilable(String),
+            amount_lt: T.nilable(String),
+            cursor: T.nilable(String),
+            customer_id: T.nilable(String),
+            date_type: T.nilable(Symbol),
+            due_date: T.nilable(Date),
+            due_date_window: T.nilable(String),
+            due_date_gt: T.nilable(Date),
+            due_date_lt: T.nilable(Date),
+            external_customer_id: T.nilable(String),
+            invoice_date_gt: T.nilable(Time),
+            invoice_date_gte: T.nilable(Time),
+            invoice_date_lt: T.nilable(Time),
+            invoice_date_lte: T.nilable(Time),
+            is_recurring: T.nilable(T::Boolean),
+            limit: Integer,
+            status: T.nilable(T::Array[Symbol]),
+            subscription_id: T.nilable(String),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class DateType < Orb::Enum
         abstract!

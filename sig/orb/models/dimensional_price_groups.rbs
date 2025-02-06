@@ -20,7 +20,7 @@ module Orb
           ?Orb::Models::dimensional_price_groups_api | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::dimensional_price_groups_api
+      def to_hash: -> Orb::Models::dimensional_price_groups_api
     end
   end
 end

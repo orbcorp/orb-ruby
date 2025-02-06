@@ -6,17 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            line_items: T::Array[Orb::Models::CreditNoteCreateParams::LineItem],
-            memo: T.nilable(String),
-            reason: T.nilable(Symbol)
-          },
-          Orb::RequestParameters::Shape
-        )
-      end
-
       sig { returns(T::Array[Orb::Models::CreditNoteCreateParams::LineItem]) }
       attr_accessor :line_items
 
@@ -31,17 +20,24 @@ module Orb
           line_items: T::Array[Orb::Models::CreditNoteCreateParams::LineItem],
           memo: T.nilable(String),
           reason: T.nilable(Symbol),
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(line_items:, memo: nil, reason: nil, request_options: {}); end
 
-      sig { returns(Orb::Models::CreditNoteCreateParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            line_items: T::Array[Orb::Models::CreditNoteCreateParams::LineItem],
+            memo: T.nilable(String),
+            reason: T.nilable(Symbol),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class LineItem < Orb::BaseModel
-        Shape = T.type_alias { {amount: String, invoice_line_item_id: String} }
-
         sig { returns(String) }
         attr_accessor :amount
 
@@ -51,8 +47,8 @@ module Orb
         sig { params(amount: String, invoice_line_item_id: String).void }
         def initialize(amount:, invoice_line_item_id:); end
 
-        sig { returns(Orb::Models::CreditNoteCreateParams::LineItem::Shape) }
-        def to_h; end
+        sig { override.returns({amount: String, invoice_line_item_id: String}) }
+        def to_hash; end
       end
 
       class Reason < Orb::Enum

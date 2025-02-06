@@ -7,15 +7,11 @@ module Orb
         extend Orb::RequestParameters::Converter
         include Orb::RequestParameters
 
-        Shape = T.type_alias { T.all({}, Orb::RequestParameters::Shape) }
-
-        sig { params(request_options: Orb::RequestOpts).void }
+        sig { params(request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])).void }
         def initialize(request_options: {}); end
 
-        sig do
-          returns(Orb::Models::DimensionalPriceGroups::ExternalDimensionalPriceGroupIDRetrieveParams::Shape)
-        end
-        def to_h; end
+        sig { override.returns({request_options: Orb::RequestOptions}) }
+        def to_hash; end
       end
     end
   end

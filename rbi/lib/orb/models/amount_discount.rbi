@@ -3,15 +3,6 @@
 module Orb
   module Models
     class AmountDiscount < Orb::BaseModel
-      Shape = T.type_alias do
-        {
-          amount_discount: String,
-          applies_to_price_ids: T::Array[String],
-          discount_type: Symbol,
-          reason: T.nilable(String)
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :amount_discount
 
@@ -34,8 +25,17 @@ module Orb
       end
       def initialize(amount_discount:, applies_to_price_ids:, discount_type:, reason: nil); end
 
-      sig { returns(Orb::Models::AmountDiscount::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            amount_discount: String,
+            applies_to_price_ids: T::Array[String],
+            discount_type: Symbol,
+            reason: T.nilable(String)
+          }
+        )
+      end
+      def to_hash; end
 
       class DiscountType < Orb::Enum
         abstract!

@@ -3,18 +3,10 @@
 module Orb
   module Models
     class EvaluatePriceGroup < Orb::BaseModel
-      Shape = T.type_alias do
-        {
-          amount: String,
-          grouping_values: T::Array[Orb::Models::EvaluatePriceGroup::GroupingValue::Variants],
-          quantity: Float
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :amount
 
-      sig { returns(T::Array[Orb::Models::EvaluatePriceGroup::GroupingValue::Variants]) }
+      sig { returns(T::Array[T.any(String, Float, T::Boolean)]) }
       attr_accessor :grouping_values
 
       sig { returns(Float) }
@@ -23,19 +15,25 @@ module Orb
       sig do
         params(
           amount: String,
-          grouping_values: T::Array[Orb::Models::EvaluatePriceGroup::GroupingValue::Variants],
+          grouping_values: T::Array[T.any(String, Float, T::Boolean)],
           quantity: Float
         ).void
       end
       def initialize(amount:, grouping_values:, quantity:); end
 
-      sig { returns(Orb::Models::EvaluatePriceGroup::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            amount: String,
+            grouping_values: T::Array[T.any(String, Float, T::Boolean)],
+            quantity: Float
+          }
+        )
+      end
+      def to_hash; end
 
       class GroupingValue < Orb::Union
         abstract!
-
-        Variants = T.type_alias { T.any(String, Float, T::Boolean) }
 
         sig { override.returns([[NilClass, String], [NilClass, Float], [NilClass, T::Boolean]]) }
         private_class_method def self.variants; end

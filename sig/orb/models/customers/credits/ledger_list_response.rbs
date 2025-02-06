@@ -77,7 +77,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::increment_ledger_entry
+            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::increment_ledger_entry
 
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
@@ -100,7 +100,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::credit_block
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -117,7 +117,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::customer
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::customer
             end
 
             type entry_status = :committed | :pending
@@ -207,7 +207,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::decrement_ledger_entry
+            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::decrement_ledger_entry
 
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
@@ -230,7 +230,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::credit_block
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -247,7 +247,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::customer
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::customer
             end
 
             type entry_status = :committed | :pending
@@ -329,7 +329,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::expiration_change_ledger_entry
+            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::expiration_change_ledger_entry
 
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
@@ -352,7 +352,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::credit_block
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -369,7 +369,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::customer
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::customer
             end
 
             type entry_status = :committed | :pending
@@ -447,7 +447,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::credit_block_expiry_ledger_entry
+            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::credit_block_expiry_ledger_entry
 
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
@@ -470,7 +470,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::credit_block
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -487,7 +487,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::customer
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::customer
             end
 
             type entry_status = :committed | :pending
@@ -573,7 +573,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::void_ledger_entry
+            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::void_ledger_entry
 
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
@@ -596,7 +596,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::credit_block
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -613,7 +613,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::customer
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::customer
             end
 
             type entry_status = :committed | :pending
@@ -703,7 +703,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::void_initiated_ledger_entry
+            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::void_initiated_ledger_entry
 
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
@@ -726,7 +726,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::credit_block
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -743,7 +743,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::customer
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::customer
             end
 
             type entry_status = :committed | :pending
@@ -821,7 +821,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::amendment_ledger_entry
+            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::amendment_ledger_entry
 
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
@@ -844,7 +844,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::credit_block
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -861,7 +861,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::customer
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::customer
             end
 
             type entry_status = :committed | :pending

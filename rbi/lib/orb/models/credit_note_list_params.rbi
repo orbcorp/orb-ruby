@@ -6,10 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all({cursor: T.nilable(String), limit: Integer}, Orb::RequestParameters::Shape)
-      end
-
       sig { returns(T.nilable(String)) }
       attr_accessor :cursor
 
@@ -19,11 +15,19 @@ module Orb
       sig { params(limit: Integer).void }
       attr_writer :limit
 
-      sig { params(cursor: T.nilable(String), limit: Integer, request_options: Orb::RequestOpts).void }
+      sig do
+        params(
+          cursor: T.nilable(String),
+          limit: Integer,
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+        ).void
+      end
       def initialize(cursor: nil, limit: nil, request_options: {}); end
 
-      sig { returns(Orb::Models::CreditNoteListParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns({cursor: T.nilable(String), limit: Integer, request_options: Orb::RequestOptions})
+      end
+      def to_hash; end
     end
   end
 end

@@ -53,7 +53,7 @@ module Orb
         ) -> void
         | (?Orb::Models::alert_list_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::alert_list_params
+      def to_hash: -> Orb::Models::alert_list_params
     end
   end
 end

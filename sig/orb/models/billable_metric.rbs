@@ -34,7 +34,7 @@ module Orb
         ) -> void
         | (?Orb::Models::billable_metric | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::billable_metric
+      def to_hash: -> Orb::Models::billable_metric
 
       type status = :active | :draft | :archived
 

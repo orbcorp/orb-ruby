@@ -6,16 +6,16 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias { T.all({name: String}, Orb::RequestParameters::Shape) }
-
       sig { returns(String) }
       attr_accessor :name
 
-      sig { params(name: String, request_options: Orb::RequestOpts).void }
+      sig do
+        params(name: String, request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])).void
+      end
       def initialize(name:, request_options: {}); end
 
-      sig { returns(Orb::Models::ItemCreateParams::Shape) }
-      def to_h; end
+      sig { override.returns({name: String, request_options: Orb::RequestOptions}) }
+      def to_hash; end
     end
   end
 end

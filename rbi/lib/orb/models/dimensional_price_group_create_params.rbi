@@ -6,19 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            billable_metric_id: String,
-            dimensions: T::Array[String],
-            name: String,
-            external_dimensional_price_group_id: T.nilable(String),
-            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
-          },
-          Orb::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :billable_metric_id
 
@@ -41,7 +28,7 @@ module Orb
           name: String,
           external_dimensional_price_group_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -53,8 +40,19 @@ module Orb
         request_options: {}
       ); end
 
-      sig { returns(Orb::Models::DimensionalPriceGroupCreateParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            billable_metric_id: String,
+            dimensions: T::Array[String],
+            name: String,
+            external_dimensional_price_group_id: T.nilable(String),
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

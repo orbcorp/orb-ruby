@@ -45,7 +45,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Customers::balance_transaction_list_params
+        def to_hash: -> Orb::Models::Customers::balance_transaction_list_params
       end
     end
   end

@@ -112,7 +112,7 @@ module Orb
           #
           #   @option params [String, nil] :minimum_amount
           #
-          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Orb::Page<Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry>]
           #
@@ -280,7 +280,7 @@ module Orb
           #
           #   @option params [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason, nil] :void_reason Can only be specified when `entry_type=void`. The reason for the void.
           #
-          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry]
           #
@@ -447,7 +447,7 @@ module Orb
           #
           #   @option params [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason, nil] :void_reason Can only be specified when `entry_type=void`. The reason for the void.
           #
-          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry]
           #
@@ -569,7 +569,7 @@ module Orb
           #
           #   @option params [String, nil] :minimum_amount
           #
-          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Orb::Page<Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry>]
           #

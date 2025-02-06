@@ -65,7 +65,7 @@ module Orb
         #   @option params [Boolean] :replace_existing_events If true, replaces all existing events in the timeframe with the newly ingested
         #     events. If false, adds the newly ingested events to the existing events.
         #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Events::BackfillCreateResponse]
         #
@@ -95,7 +95,7 @@ module Orb
         #
         #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
         #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Page<Orb::Models::Events::BackfillListResponse>]
         #
@@ -120,7 +120,7 @@ module Orb
         #
         # @param params [Orb::Models::Events::BackfillCloseParams, Hash{Symbol=>Object}] .
         #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Events::BackfillCloseResponse]
         #
@@ -139,7 +139,7 @@ module Orb
         #
         # @param params [Orb::Models::Events::BackfillFetchParams, Hash{Symbol=>Object}] .
         #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Events::BackfillFetchResponse]
         #
@@ -164,7 +164,7 @@ module Orb
         #
         # @param params [Orb::Models::Events::BackfillRevertParams, Hash{Symbol=>Object}] .
         #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Events::BackfillRevertResponse]
         #

@@ -50,7 +50,7 @@ module Orb
           | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::subscription_price_intervals_params
+      def to_hash: -> Orb::Models::subscription_price_intervals_params
 
       type add =
         {
@@ -105,7 +105,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::add
+        def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::add
 
         type start_date = Time | Orb::Models::billing_cycle_relative_date
 
@@ -142,7 +142,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::allocation_price
+          def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::allocation_price
 
           type cadence =
             :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -180,7 +180,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::amount_discount_creation_params
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::amount_discount_creation_params
           end
 
           type percentage_discount_creation_params =
@@ -198,7 +198,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::percentage_discount_creation_params
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::percentage_discount_creation_params
           end
 
           type usage_discount_creation_params =
@@ -216,7 +216,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::usage_discount_creation_params
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::usage_discount_creation_params
           end
 
           private def self.variants: -> [[:amount, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::AmountDiscountCreationParams], [:percentage, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::PercentageDiscountCreationParams], [:usage, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams]]
@@ -243,7 +243,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::fixed_fee_quantity_transition
+          def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::fixed_fee_quantity_transition
         end
 
         type price =
@@ -349,7 +349,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_unit_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_unit_price
 
             type cadence =
               :annual
@@ -382,7 +382,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::unit_config
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::unit_config
             end
 
             type billing_cycle_configuration =
@@ -406,7 +406,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -439,7 +439,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -525,7 +525,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_package_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_package_price
 
             type cadence =
               :annual
@@ -561,7 +561,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::package_config
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::package_config
             end
 
             type billing_cycle_configuration =
@@ -585,7 +585,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -618,7 +618,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -704,7 +704,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_matrix_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_matrix_price
 
             type cadence =
               :annual
@@ -750,7 +750,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::matrix_config
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::matrix_config
 
               type matrix_value =
                 { dimension_values: Array[String?], unit_amount: String }
@@ -770,7 +770,7 @@ module Orb
                     | Orb::BaseModel data
                   ) -> void
 
-                def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::matrix_value
+                def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::matrix_value
               end
             end
 
@@ -795,7 +795,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -828,7 +828,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -914,7 +914,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_matrix_with_allocation_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_matrix_with_allocation_price
 
             type cadence =
               :annual
@@ -964,7 +964,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::matrix_with_allocation_config
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::matrix_with_allocation_config
 
               type matrix_value =
                 { dimension_values: Array[String?], unit_amount: String }
@@ -984,7 +984,7 @@ module Orb
                     | Orb::BaseModel data
                   ) -> void
 
-                def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::matrix_value
+                def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::matrix_value
               end
             end
 
@@ -1009,7 +1009,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -1042,7 +1042,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -1128,7 +1128,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_price
 
             type cadence =
               :annual
@@ -1166,7 +1166,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::tiered_config
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::tiered_config
 
               type tier =
                 { first_unit: Float, unit_amount: String, last_unit: Float? }
@@ -1189,7 +1189,7 @@ module Orb
                     | Orb::BaseModel data
                   ) -> void
 
-                def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::tier
+                def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::tier
               end
             end
 
@@ -1214,7 +1214,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -1247,7 +1247,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -1333,7 +1333,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_bps_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_bps_price
 
             type cadence =
               :annual
@@ -1371,7 +1371,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::tiered_bps_config
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::tiered_bps_config
 
               type tier =
                 {
@@ -1402,7 +1402,7 @@ module Orb
                     | Orb::BaseModel data
                   ) -> void
 
-                def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::tier
+                def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::tier
               end
             end
 
@@ -1427,7 +1427,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -1460,7 +1460,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -1546,7 +1546,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_bps_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_bps_price
 
             type bps_config = { bps: Float, per_unit_maximum: String? }
 
@@ -1562,7 +1562,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::bps_config
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::bps_config
             end
 
             type cadence =
@@ -1605,7 +1605,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -1638,7 +1638,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -1724,7 +1724,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_bulk_bps_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_bulk_bps_price
 
             type bulk_bps_config =
               {
@@ -1743,7 +1743,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::bulk_bps_config
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::bulk_bps_config
 
               type tier =
                 {
@@ -1770,7 +1770,7 @@ module Orb
                     | Orb::BaseModel data
                   ) -> void
 
-                def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::tier
+                def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::tier
               end
             end
 
@@ -1814,7 +1814,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -1847,7 +1847,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -1933,7 +1933,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_bulk_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_bulk_price
 
             type bulk_config =
               {
@@ -1952,7 +1952,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::bulk_config
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::bulk_config
 
               type tier = { unit_amount: String, maximum_units: Float? }
 
@@ -1968,7 +1968,7 @@ module Orb
                     | Orb::BaseModel data
                   ) -> void
 
-                def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::tier
+                def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::tier
               end
             end
 
@@ -2012,7 +2012,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -2045,7 +2045,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -2131,7 +2131,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_threshold_total_amount_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_threshold_total_amount_price
 
             type cadence =
               :annual
@@ -2173,7 +2173,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -2206,7 +2206,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -2292,7 +2292,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_package_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_package_price
 
             type cadence =
               :annual
@@ -2334,7 +2334,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -2367,7 +2367,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -2453,7 +2453,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_tiered_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_tiered_price
 
             type cadence =
               :annual
@@ -2495,7 +2495,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -2528,7 +2528,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -2614,7 +2614,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_max_group_tiered_package_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_max_group_tiered_package_price
 
             type cadence =
               :annual
@@ -2656,7 +2656,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -2689,7 +2689,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -2775,7 +2775,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_with_minimum_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_with_minimum_price
 
             type cadence =
               :annual
@@ -2817,7 +2817,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -2850,7 +2850,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -2936,7 +2936,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_package_with_allocation_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_package_with_allocation_price
 
             type cadence =
               :annual
@@ -2978,7 +2978,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -3011,7 +3011,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -3097,7 +3097,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_package_with_minimum_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_package_with_minimum_price
 
             type cadence =
               :annual
@@ -3139,7 +3139,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -3172,7 +3172,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -3258,7 +3258,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_unit_with_percent_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_unit_with_percent_price
 
             type cadence =
               :annual
@@ -3300,7 +3300,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -3333,7 +3333,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -3419,7 +3419,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_with_proration_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_with_proration_price
 
             type cadence =
               :annual
@@ -3461,7 +3461,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -3494,7 +3494,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -3580,7 +3580,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_unit_with_proration_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_unit_with_proration_price
 
             type cadence =
               :annual
@@ -3622,7 +3622,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -3655,7 +3655,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -3741,7 +3741,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_allocation_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_allocation_price
 
             type cadence =
               :annual
@@ -3783,7 +3783,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -3816,7 +3816,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -3902,7 +3902,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_with_prorated_minimum_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_with_prorated_minimum_price
 
             type cadence =
               :annual
@@ -3944,7 +3944,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -3977,7 +3977,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -4063,7 +4063,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_with_metered_minimum_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_with_metered_minimum_price
 
             type cadence =
               :annual
@@ -4105,7 +4105,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -4138,7 +4138,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -4224,7 +4224,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_matrix_with_display_name_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_matrix_with_display_name_price
 
             type cadence =
               :annual
@@ -4266,7 +4266,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -4299,7 +4299,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -4385,7 +4385,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_bulk_with_proration_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_bulk_with_proration_price
 
             type cadence =
               :annual
@@ -4427,7 +4427,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -4460,7 +4460,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -4546,7 +4546,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_tiered_package_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_tiered_package_price
 
             type cadence =
               :annual
@@ -4588,7 +4588,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -4621,7 +4621,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -4707,7 +4707,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_scalable_matrix_with_unit_pricing_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_scalable_matrix_with_unit_pricing_price
 
             type cadence =
               :annual
@@ -4749,7 +4749,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -4782,7 +4782,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -4868,7 +4868,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_scalable_matrix_with_tiered_pricing_price
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_scalable_matrix_with_tiered_pricing_price
 
             type cadence =
               :annual
@@ -4910,7 +4910,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::billing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::billing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -4943,7 +4943,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::invoicing_cycle_configuration
+              def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::invoicing_cycle_configuration
 
               type duration_unit = :day | :month
 
@@ -4985,7 +4985,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::add_adjustment
+        def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::add_adjustment
 
         type adjustment =
           Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount
@@ -5026,7 +5026,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_percentage_discount
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_percentage_discount
           end
 
           type new_usage_discount =
@@ -5060,7 +5060,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_usage_discount
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_usage_discount
           end
 
           type new_amount_discount =
@@ -5094,7 +5094,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_amount_discount
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_amount_discount
           end
 
           type new_minimum =
@@ -5132,7 +5132,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_minimum
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_minimum
           end
 
           type new_maximum =
@@ -5166,7 +5166,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_maximum
+            def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_maximum
           end
 
           private def self.variants: -> [[:percentage_discount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount], [:usage_discount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewUsageDiscount], [:amount_discount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewAmountDiscount], [:minimum, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMinimum], [:maximum, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMaximum]]
@@ -5222,7 +5222,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::edit
+        def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::edit
 
         type end_date = Time | Orb::Models::billing_cycle_relative_date
 
@@ -5245,7 +5245,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::Edit::fixed_fee_quantity_transition
+          def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Edit::fixed_fee_quantity_transition
         end
 
         type start_date = Time | Orb::Models::billing_cycle_relative_date
@@ -5284,7 +5284,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::SubscriptionPriceIntervalsParams::edit_adjustment
+        def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::edit_adjustment
 
         type end_date = Time | Orb::Models::billing_cycle_relative_date
 

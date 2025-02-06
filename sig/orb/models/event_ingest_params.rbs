@@ -29,7 +29,7 @@ module Orb
         ) -> void
         | (?Orb::Models::event_ingest_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::event_ingest_params
+      def to_hash: -> Orb::Models::event_ingest_params
 
       type event =
         {
@@ -67,7 +67,7 @@ module Orb
             ?Orb::Models::EventIngestParams::event | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::EventIngestParams::event
+        def to_hash: -> Orb::Models::EventIngestParams::event
       end
     end
   end

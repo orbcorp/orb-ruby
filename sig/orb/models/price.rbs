@@ -136,7 +136,7 @@ module Orb
           ) -> void
           | (?Orb::Models::Price::unit_price | Orb::BaseModel data) -> void
 
-        def to_h: -> Orb::Models::Price::unit_price
+        def to_hash: -> Orb::Models::Price::unit_price
 
         type billable_metric = { id: String }
 
@@ -150,7 +150,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::UnitPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -174,7 +174,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::UnitPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -214,7 +214,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::UnitPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -238,7 +238,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::UnitPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -263,7 +263,7 @@ module Orb
               ?Orb::Models::Price::UnitPrice::item | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitPrice::item
+          def to_hash: -> Orb::Models::Price::UnitPrice::item
         end
 
         type maximum =
@@ -283,7 +283,7 @@ module Orb
               ?Orb::Models::Price::UnitPrice::maximum | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitPrice::maximum
+          def to_hash: -> Orb::Models::Price::UnitPrice::maximum
         end
 
         type minimum =
@@ -303,7 +303,7 @@ module Orb
               ?Orb::Models::Price::UnitPrice::minimum | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitPrice::minimum
+          def to_hash: -> Orb::Models::Price::UnitPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -326,7 +326,7 @@ module Orb
               ?Orb::Models::Price::UnitPrice::unit_config | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitPrice::unit_config
+          def to_hash: -> Orb::Models::Price::UnitPrice::unit_config
         end
 
         type dimensional_price_configuration =
@@ -350,7 +350,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::UnitPrice::dimensional_price_configuration
         end
       end
 
@@ -460,7 +460,7 @@ module Orb
           ) -> void
           | (?Orb::Models::Price::package_price | Orb::BaseModel data) -> void
 
-        def to_h: -> Orb::Models::Price::package_price
+        def to_hash: -> Orb::Models::Price::package_price
 
         type billable_metric = { id: String }
 
@@ -474,7 +474,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::PackagePrice::billable_metric
+          def to_hash: -> Orb::Models::Price::PackagePrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -498,7 +498,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::PackagePrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::PackagePrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -538,7 +538,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::PackagePrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::PackagePrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -562,7 +562,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::PackagePrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::PackagePrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -587,7 +587,7 @@ module Orb
               ?Orb::Models::Price::PackagePrice::item | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::PackagePrice::item
+          def to_hash: -> Orb::Models::Price::PackagePrice::item
         end
 
         type maximum =
@@ -607,7 +607,7 @@ module Orb
               ?Orb::Models::Price::PackagePrice::maximum | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::PackagePrice::maximum
+          def to_hash: -> Orb::Models::Price::PackagePrice::maximum
         end
 
         type minimum =
@@ -627,7 +627,7 @@ module Orb
               ?Orb::Models::Price::PackagePrice::minimum | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::PackagePrice::minimum
+          def to_hash: -> Orb::Models::Price::PackagePrice::minimum
         end
 
         type package_config = { package_amount: String, package_size: Integer }
@@ -644,7 +644,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::PackagePrice::package_config
+          def to_hash: -> Orb::Models::Price::PackagePrice::package_config
         end
 
         type price_type = :usage_price | :fixed_price
@@ -677,7 +677,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::PackagePrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::PackagePrice::dimensional_price_configuration
         end
       end
 
@@ -787,7 +787,7 @@ module Orb
           ) -> void
           | (?Orb::Models::Price::matrix_price | Orb::BaseModel data) -> void
 
-        def to_h: -> Orb::Models::Price::matrix_price
+        def to_hash: -> Orb::Models::Price::matrix_price
 
         type billable_metric = { id: String }
 
@@ -801,7 +801,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::MatrixPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -825,7 +825,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::MatrixPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -865,7 +865,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::MatrixPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -889,7 +889,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::MatrixPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -914,7 +914,7 @@ module Orb
               ?Orb::Models::Price::MatrixPrice::item | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixPrice::item
+          def to_hash: -> Orb::Models::Price::MatrixPrice::item
         end
 
         type matrix_config =
@@ -942,7 +942,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixPrice::matrix_config
+          def to_hash: -> Orb::Models::Price::MatrixPrice::matrix_config
 
           type matrix_value =
             { dimension_values: Array[String?], unit_amount: String }
@@ -959,7 +959,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Price::MatrixPrice::MatrixConfig::matrix_value
+            def to_hash: -> Orb::Models::Price::MatrixPrice::MatrixConfig::matrix_value
           end
         end
 
@@ -980,7 +980,7 @@ module Orb
               ?Orb::Models::Price::MatrixPrice::maximum | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixPrice::maximum
+          def to_hash: -> Orb::Models::Price::MatrixPrice::maximum
         end
 
         type minimum =
@@ -1000,7 +1000,7 @@ module Orb
               ?Orb::Models::Price::MatrixPrice::minimum | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixPrice::minimum
+          def to_hash: -> Orb::Models::Price::MatrixPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -1033,7 +1033,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::MatrixPrice::dimensional_price_configuration
         end
       end
 
@@ -1143,7 +1143,7 @@ module Orb
           ) -> void
           | (?Orb::Models::Price::tiered_price | Orb::BaseModel data) -> void
 
-        def to_h: -> Orb::Models::Price::tiered_price
+        def to_hash: -> Orb::Models::Price::tiered_price
 
         type billable_metric = { id: String }
 
@@ -1157,7 +1157,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::TieredPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -1181,7 +1181,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::TieredPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -1221,7 +1221,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::TieredPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -1245,7 +1245,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::TieredPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -1270,7 +1270,7 @@ module Orb
               ?Orb::Models::Price::TieredPrice::item | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPrice::item
+          def to_hash: -> Orb::Models::Price::TieredPrice::item
         end
 
         type maximum =
@@ -1290,7 +1290,7 @@ module Orb
               ?Orb::Models::Price::TieredPrice::maximum | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPrice::maximum
+          def to_hash: -> Orb::Models::Price::TieredPrice::maximum
         end
 
         type minimum =
@@ -1310,7 +1310,7 @@ module Orb
               ?Orb::Models::Price::TieredPrice::minimum | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPrice::minimum
+          def to_hash: -> Orb::Models::Price::TieredPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -1337,7 +1337,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPrice::tiered_config
+          def to_hash: -> Orb::Models::Price::TieredPrice::tiered_config
 
           type tier =
             { first_unit: Float, unit_amount: String, last_unit: Float? }
@@ -1360,7 +1360,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Price::TieredPrice::TieredConfig::tier
+            def to_hash: -> Orb::Models::Price::TieredPrice::TieredConfig::tier
           end
         end
 
@@ -1385,7 +1385,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::TieredPrice::dimensional_price_configuration
         end
       end
 
@@ -1497,7 +1497,7 @@ module Orb
             ?Orb::Models::Price::tiered_bps_price | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::tiered_bps_price
+        def to_hash: -> Orb::Models::Price::tiered_bps_price
 
         type billable_metric = { id: String }
 
@@ -1511,7 +1511,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredBpsPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::TieredBpsPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -1535,7 +1535,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredBpsPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::TieredBpsPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -1575,7 +1575,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredBpsPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::TieredBpsPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -1599,7 +1599,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredBpsPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::TieredBpsPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -1624,7 +1624,7 @@ module Orb
               ?Orb::Models::Price::TieredBpsPrice::item | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredBpsPrice::item
+          def to_hash: -> Orb::Models::Price::TieredBpsPrice::item
         end
 
         type maximum =
@@ -1644,7 +1644,7 @@ module Orb
               ?Orb::Models::Price::TieredBpsPrice::maximum | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredBpsPrice::maximum
+          def to_hash: -> Orb::Models::Price::TieredBpsPrice::maximum
         end
 
         type minimum =
@@ -1664,7 +1664,7 @@ module Orb
               ?Orb::Models::Price::TieredBpsPrice::minimum | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredBpsPrice::minimum
+          def to_hash: -> Orb::Models::Price::TieredBpsPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -1693,7 +1693,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredBpsPrice::tiered_bps_config
+          def to_hash: -> Orb::Models::Price::TieredBpsPrice::tiered_bps_config
 
           type tier =
             {
@@ -1724,7 +1724,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::tier
+            def to_hash: -> Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::tier
           end
         end
 
@@ -1749,7 +1749,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredBpsPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::TieredBpsPrice::dimensional_price_configuration
         end
       end
 
@@ -1859,7 +1859,7 @@ module Orb
           ) -> void
           | (?Orb::Models::Price::bps_price | Orb::BaseModel data) -> void
 
-        def to_h: -> Orb::Models::Price::bps_price
+        def to_hash: -> Orb::Models::Price::bps_price
 
         type billable_metric = { id: String }
 
@@ -1873,7 +1873,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BpsPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::BpsPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -1897,7 +1897,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BpsPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::BpsPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -1922,7 +1922,7 @@ module Orb
               ?Orb::Models::Price::BpsPrice::bps_config | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BpsPrice::bps_config
+          def to_hash: -> Orb::Models::Price::BpsPrice::bps_config
         end
 
         type cadence =
@@ -1953,7 +1953,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BpsPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::BpsPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -1977,7 +1977,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BpsPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::BpsPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -2002,7 +2002,7 @@ module Orb
               ?Orb::Models::Price::BpsPrice::item | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BpsPrice::item
+          def to_hash: -> Orb::Models::Price::BpsPrice::item
         end
 
         type maximum =
@@ -2022,7 +2022,7 @@ module Orb
               ?Orb::Models::Price::BpsPrice::maximum | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BpsPrice::maximum
+          def to_hash: -> Orb::Models::Price::BpsPrice::maximum
         end
 
         type minimum =
@@ -2042,7 +2042,7 @@ module Orb
               ?Orb::Models::Price::BpsPrice::minimum | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BpsPrice::minimum
+          def to_hash: -> Orb::Models::Price::BpsPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -2075,7 +2075,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BpsPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::BpsPrice::dimensional_price_configuration
         end
       end
 
@@ -2185,7 +2185,7 @@ module Orb
           ) -> void
           | (?Orb::Models::Price::bulk_bps_price | Orb::BaseModel data) -> void
 
-        def to_h: -> Orb::Models::Price::bulk_bps_price
+        def to_hash: -> Orb::Models::Price::bulk_bps_price
 
         type billable_metric = { id: String }
 
@@ -2199,7 +2199,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkBpsPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::BulkBpsPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -2223,7 +2223,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkBpsPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::BulkBpsPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -2252,7 +2252,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkBpsPrice::bulk_bps_config
+          def to_hash: -> Orb::Models::Price::BulkBpsPrice::bulk_bps_config
 
           type tier =
             { bps: Float, maximum_amount: String?, per_unit_maximum: String? }
@@ -2275,7 +2275,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::tier
+            def to_hash: -> Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::tier
           end
         end
 
@@ -2307,7 +2307,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkBpsPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::BulkBpsPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -2331,7 +2331,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkBpsPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::BulkBpsPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -2356,7 +2356,7 @@ module Orb
               ?Orb::Models::Price::BulkBpsPrice::item | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkBpsPrice::item
+          def to_hash: -> Orb::Models::Price::BulkBpsPrice::item
         end
 
         type maximum =
@@ -2376,7 +2376,7 @@ module Orb
               ?Orb::Models::Price::BulkBpsPrice::maximum | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkBpsPrice::maximum
+          def to_hash: -> Orb::Models::Price::BulkBpsPrice::maximum
         end
 
         type minimum =
@@ -2396,7 +2396,7 @@ module Orb
               ?Orb::Models::Price::BulkBpsPrice::minimum | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkBpsPrice::minimum
+          def to_hash: -> Orb::Models::Price::BulkBpsPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -2429,7 +2429,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkBpsPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::BulkBpsPrice::dimensional_price_configuration
         end
       end
 
@@ -2539,7 +2539,7 @@ module Orb
           ) -> void
           | (?Orb::Models::Price::bulk_price | Orb::BaseModel data) -> void
 
-        def to_h: -> Orb::Models::Price::bulk_price
+        def to_hash: -> Orb::Models::Price::bulk_price
 
         type billable_metric = { id: String }
 
@@ -2553,7 +2553,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::BulkPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -2577,7 +2577,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::BulkPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -2603,7 +2603,7 @@ module Orb
               ?Orb::Models::Price::BulkPrice::bulk_config | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkPrice::bulk_config
+          def to_hash: -> Orb::Models::Price::BulkPrice::bulk_config
 
           type tier = { unit_amount: String, maximum_units: Float? }
 
@@ -2619,7 +2619,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Price::BulkPrice::BulkConfig::tier
+            def to_hash: -> Orb::Models::Price::BulkPrice::BulkConfig::tier
           end
         end
 
@@ -2651,7 +2651,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::BulkPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -2675,7 +2675,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::BulkPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -2700,7 +2700,7 @@ module Orb
               ?Orb::Models::Price::BulkPrice::item | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkPrice::item
+          def to_hash: -> Orb::Models::Price::BulkPrice::item
         end
 
         type maximum =
@@ -2720,7 +2720,7 @@ module Orb
               ?Orb::Models::Price::BulkPrice::maximum | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkPrice::maximum
+          def to_hash: -> Orb::Models::Price::BulkPrice::maximum
         end
 
         type minimum =
@@ -2740,7 +2740,7 @@ module Orb
               ?Orb::Models::Price::BulkPrice::minimum | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkPrice::minimum
+          def to_hash: -> Orb::Models::Price::BulkPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -2773,7 +2773,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::BulkPrice::dimensional_price_configuration
         end
       end
 
@@ -2886,7 +2886,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::threshold_total_amount_price
+        def to_hash: -> Orb::Models::Price::threshold_total_amount_price
 
         type billable_metric = { id: String }
 
@@ -2900,7 +2900,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ThresholdTotalAmountPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::ThresholdTotalAmountPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -2924,7 +2924,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ThresholdTotalAmountPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::ThresholdTotalAmountPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -2964,7 +2964,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ThresholdTotalAmountPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::ThresholdTotalAmountPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -2988,7 +2988,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ThresholdTotalAmountPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::ThresholdTotalAmountPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -3014,7 +3014,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ThresholdTotalAmountPrice::item
+          def to_hash: -> Orb::Models::Price::ThresholdTotalAmountPrice::item
         end
 
         type maximum =
@@ -3035,7 +3035,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ThresholdTotalAmountPrice::maximum
+          def to_hash: -> Orb::Models::Price::ThresholdTotalAmountPrice::maximum
         end
 
         type minimum =
@@ -3056,7 +3056,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ThresholdTotalAmountPrice::minimum
+          def to_hash: -> Orb::Models::Price::ThresholdTotalAmountPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -3089,7 +3089,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ThresholdTotalAmountPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::ThresholdTotalAmountPrice::dimensional_price_configuration
         end
       end
 
@@ -3201,7 +3201,7 @@ module Orb
             ?Orb::Models::Price::tiered_package_price | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::tiered_package_price
+        def to_hash: -> Orb::Models::Price::tiered_package_price
 
         type billable_metric = { id: String }
 
@@ -3215,7 +3215,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPackagePrice::billable_metric
+          def to_hash: -> Orb::Models::Price::TieredPackagePrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -3239,7 +3239,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPackagePrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::TieredPackagePrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -3279,7 +3279,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPackagePrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::TieredPackagePrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -3303,7 +3303,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPackagePrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::TieredPackagePrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -3329,7 +3329,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPackagePrice::item
+          def to_hash: -> Orb::Models::Price::TieredPackagePrice::item
         end
 
         type maximum =
@@ -3350,7 +3350,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPackagePrice::maximum
+          def to_hash: -> Orb::Models::Price::TieredPackagePrice::maximum
         end
 
         type minimum =
@@ -3371,7 +3371,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPackagePrice::minimum
+          def to_hash: -> Orb::Models::Price::TieredPackagePrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -3404,7 +3404,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPackagePrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::TieredPackagePrice::dimensional_price_configuration
         end
       end
 
@@ -3516,7 +3516,7 @@ module Orb
             ?Orb::Models::Price::grouped_tiered_price | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::grouped_tiered_price
+        def to_hash: -> Orb::Models::Price::grouped_tiered_price
 
         type billable_metric = { id: String }
 
@@ -3530,7 +3530,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedTieredPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::GroupedTieredPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -3554,7 +3554,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedTieredPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::GroupedTieredPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -3594,7 +3594,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedTieredPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::GroupedTieredPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -3618,7 +3618,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedTieredPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::GroupedTieredPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -3644,7 +3644,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedTieredPrice::item
+          def to_hash: -> Orb::Models::Price::GroupedTieredPrice::item
         end
 
         type maximum =
@@ -3665,7 +3665,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedTieredPrice::maximum
+          def to_hash: -> Orb::Models::Price::GroupedTieredPrice::maximum
         end
 
         type minimum =
@@ -3686,7 +3686,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedTieredPrice::minimum
+          def to_hash: -> Orb::Models::Price::GroupedTieredPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -3719,7 +3719,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedTieredPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::GroupedTieredPrice::dimensional_price_configuration
         end
       end
 
@@ -3831,7 +3831,7 @@ module Orb
             ?Orb::Models::Price::tiered_with_minimum_price | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::tiered_with_minimum_price
+        def to_hash: -> Orb::Models::Price::tiered_with_minimum_price
 
         type billable_metric = { id: String }
 
@@ -3845,7 +3845,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredWithMinimumPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::TieredWithMinimumPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -3869,7 +3869,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredWithMinimumPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::TieredWithMinimumPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -3909,7 +3909,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredWithMinimumPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::TieredWithMinimumPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -3933,7 +3933,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredWithMinimumPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::TieredWithMinimumPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -3959,7 +3959,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredWithMinimumPrice::item
+          def to_hash: -> Orb::Models::Price::TieredWithMinimumPrice::item
         end
 
         type maximum =
@@ -3980,7 +3980,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredWithMinimumPrice::maximum
+          def to_hash: -> Orb::Models::Price::TieredWithMinimumPrice::maximum
         end
 
         type minimum =
@@ -4001,7 +4001,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredWithMinimumPrice::minimum
+          def to_hash: -> Orb::Models::Price::TieredWithMinimumPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -4034,7 +4034,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredWithMinimumPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::TieredWithMinimumPrice::dimensional_price_configuration
         end
       end
 
@@ -4147,7 +4147,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::tiered_package_with_minimum_price
+        def to_hash: -> Orb::Models::Price::tiered_package_with_minimum_price
 
         type billable_metric = { id: String }
 
@@ -4161,7 +4161,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPackageWithMinimumPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::TieredPackageWithMinimumPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -4185,7 +4185,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPackageWithMinimumPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::TieredPackageWithMinimumPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -4225,7 +4225,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPackageWithMinimumPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::TieredPackageWithMinimumPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -4249,7 +4249,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPackageWithMinimumPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::TieredPackageWithMinimumPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -4275,7 +4275,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPackageWithMinimumPrice::item
+          def to_hash: -> Orb::Models::Price::TieredPackageWithMinimumPrice::item
         end
 
         type maximum =
@@ -4296,7 +4296,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPackageWithMinimumPrice::maximum
+          def to_hash: -> Orb::Models::Price::TieredPackageWithMinimumPrice::maximum
         end
 
         type minimum =
@@ -4317,7 +4317,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPackageWithMinimumPrice::minimum
+          def to_hash: -> Orb::Models::Price::TieredPackageWithMinimumPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -4350,7 +4350,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredPackageWithMinimumPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::TieredPackageWithMinimumPrice::dimensional_price_configuration
         end
       end
 
@@ -4463,7 +4463,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::package_with_allocation_price
+        def to_hash: -> Orb::Models::Price::package_with_allocation_price
 
         type billable_metric = { id: String }
 
@@ -4477,7 +4477,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::PackageWithAllocationPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::PackageWithAllocationPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -4501,7 +4501,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::PackageWithAllocationPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::PackageWithAllocationPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -4541,7 +4541,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::PackageWithAllocationPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::PackageWithAllocationPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -4565,7 +4565,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::PackageWithAllocationPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::PackageWithAllocationPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -4591,7 +4591,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::PackageWithAllocationPrice::item
+          def to_hash: -> Orb::Models::Price::PackageWithAllocationPrice::item
         end
 
         type maximum =
@@ -4612,7 +4612,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::PackageWithAllocationPrice::maximum
+          def to_hash: -> Orb::Models::Price::PackageWithAllocationPrice::maximum
         end
 
         type minimum =
@@ -4633,7 +4633,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::PackageWithAllocationPrice::minimum
+          def to_hash: -> Orb::Models::Price::PackageWithAllocationPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -4666,7 +4666,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::PackageWithAllocationPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::PackageWithAllocationPrice::dimensional_price_configuration
         end
       end
 
@@ -4778,7 +4778,7 @@ module Orb
             ?Orb::Models::Price::unit_with_percent_price | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::unit_with_percent_price
+        def to_hash: -> Orb::Models::Price::unit_with_percent_price
 
         type billable_metric = { id: String }
 
@@ -4792,7 +4792,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitWithPercentPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::UnitWithPercentPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -4816,7 +4816,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitWithPercentPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::UnitWithPercentPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -4856,7 +4856,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitWithPercentPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::UnitWithPercentPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -4880,7 +4880,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitWithPercentPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::UnitWithPercentPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -4906,7 +4906,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitWithPercentPrice::item
+          def to_hash: -> Orb::Models::Price::UnitWithPercentPrice::item
         end
 
         type maximum =
@@ -4927,7 +4927,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitWithPercentPrice::maximum
+          def to_hash: -> Orb::Models::Price::UnitWithPercentPrice::maximum
         end
 
         type minimum =
@@ -4948,7 +4948,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitWithPercentPrice::minimum
+          def to_hash: -> Orb::Models::Price::UnitWithPercentPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -4981,7 +4981,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitWithPercentPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::UnitWithPercentPrice::dimensional_price_configuration
         end
       end
 
@@ -5094,7 +5094,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::matrix_with_allocation_price
+        def to_hash: -> Orb::Models::Price::matrix_with_allocation_price
 
         type billable_metric = { id: String }
 
@@ -5108,7 +5108,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixWithAllocationPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::MatrixWithAllocationPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -5132,7 +5132,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixWithAllocationPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::MatrixWithAllocationPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -5172,7 +5172,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixWithAllocationPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::MatrixWithAllocationPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -5196,7 +5196,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixWithAllocationPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::MatrixWithAllocationPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -5222,7 +5222,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixWithAllocationPrice::item
+          def to_hash: -> Orb::Models::Price::MatrixWithAllocationPrice::item
         end
 
         type matrix_with_allocation_config =
@@ -5254,7 +5254,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixWithAllocationPrice::matrix_with_allocation_config
+          def to_hash: -> Orb::Models::Price::MatrixWithAllocationPrice::matrix_with_allocation_config
 
           type matrix_value =
             { dimension_values: Array[String?], unit_amount: String }
@@ -5271,7 +5271,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::matrix_value
+            def to_hash: -> Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::matrix_value
           end
         end
 
@@ -5293,7 +5293,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixWithAllocationPrice::maximum
+          def to_hash: -> Orb::Models::Price::MatrixWithAllocationPrice::maximum
         end
 
         type minimum =
@@ -5314,7 +5314,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixWithAllocationPrice::minimum
+          def to_hash: -> Orb::Models::Price::MatrixWithAllocationPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -5347,7 +5347,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixWithAllocationPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::MatrixWithAllocationPrice::dimensional_price_configuration
         end
       end
 
@@ -5460,7 +5460,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::tiered_with_proration_price
+        def to_hash: -> Orb::Models::Price::tiered_with_proration_price
 
         type billable_metric = { id: String }
 
@@ -5474,7 +5474,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredWithProrationPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::TieredWithProrationPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -5498,7 +5498,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredWithProrationPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::TieredWithProrationPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -5538,7 +5538,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredWithProrationPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::TieredWithProrationPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -5562,7 +5562,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredWithProrationPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::TieredWithProrationPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -5588,7 +5588,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredWithProrationPrice::item
+          def to_hash: -> Orb::Models::Price::TieredWithProrationPrice::item
         end
 
         type maximum =
@@ -5609,7 +5609,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredWithProrationPrice::maximum
+          def to_hash: -> Orb::Models::Price::TieredWithProrationPrice::maximum
         end
 
         type minimum =
@@ -5630,7 +5630,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredWithProrationPrice::minimum
+          def to_hash: -> Orb::Models::Price::TieredWithProrationPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -5663,7 +5663,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::TieredWithProrationPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::TieredWithProrationPrice::dimensional_price_configuration
         end
       end
 
@@ -5775,7 +5775,7 @@ module Orb
             ?Orb::Models::Price::unit_with_proration_price | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::unit_with_proration_price
+        def to_hash: -> Orb::Models::Price::unit_with_proration_price
 
         type billable_metric = { id: String }
 
@@ -5789,7 +5789,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitWithProrationPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::UnitWithProrationPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -5813,7 +5813,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitWithProrationPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::UnitWithProrationPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -5853,7 +5853,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitWithProrationPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::UnitWithProrationPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -5877,7 +5877,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitWithProrationPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::UnitWithProrationPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -5903,7 +5903,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitWithProrationPrice::item
+          def to_hash: -> Orb::Models::Price::UnitWithProrationPrice::item
         end
 
         type maximum =
@@ -5924,7 +5924,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitWithProrationPrice::maximum
+          def to_hash: -> Orb::Models::Price::UnitWithProrationPrice::maximum
         end
 
         type minimum =
@@ -5945,7 +5945,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitWithProrationPrice::minimum
+          def to_hash: -> Orb::Models::Price::UnitWithProrationPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -5978,7 +5978,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::UnitWithProrationPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::UnitWithProrationPrice::dimensional_price_configuration
         end
       end
 
@@ -6090,7 +6090,7 @@ module Orb
             ?Orb::Models::Price::grouped_allocation_price | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::grouped_allocation_price
+        def to_hash: -> Orb::Models::Price::grouped_allocation_price
 
         type billable_metric = { id: String }
 
@@ -6104,7 +6104,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedAllocationPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::GroupedAllocationPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -6128,7 +6128,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedAllocationPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::GroupedAllocationPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -6168,7 +6168,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedAllocationPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::GroupedAllocationPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -6192,7 +6192,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedAllocationPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::GroupedAllocationPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -6218,7 +6218,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedAllocationPrice::item
+          def to_hash: -> Orb::Models::Price::GroupedAllocationPrice::item
         end
 
         type maximum =
@@ -6239,7 +6239,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedAllocationPrice::maximum
+          def to_hash: -> Orb::Models::Price::GroupedAllocationPrice::maximum
         end
 
         type minimum =
@@ -6260,7 +6260,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedAllocationPrice::minimum
+          def to_hash: -> Orb::Models::Price::GroupedAllocationPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -6293,7 +6293,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedAllocationPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::GroupedAllocationPrice::dimensional_price_configuration
         end
       end
 
@@ -6406,7 +6406,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::grouped_with_prorated_minimum_price
+        def to_hash: -> Orb::Models::Price::grouped_with_prorated_minimum_price
 
         type billable_metric = { id: String }
 
@@ -6420,7 +6420,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedWithProratedMinimumPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::GroupedWithProratedMinimumPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -6444,7 +6444,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedWithProratedMinimumPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::GroupedWithProratedMinimumPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -6484,7 +6484,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedWithProratedMinimumPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::GroupedWithProratedMinimumPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -6508,7 +6508,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedWithProratedMinimumPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::GroupedWithProratedMinimumPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -6534,7 +6534,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedWithProratedMinimumPrice::item
+          def to_hash: -> Orb::Models::Price::GroupedWithProratedMinimumPrice::item
         end
 
         type maximum =
@@ -6555,7 +6555,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedWithProratedMinimumPrice::maximum
+          def to_hash: -> Orb::Models::Price::GroupedWithProratedMinimumPrice::maximum
         end
 
         type minimum =
@@ -6576,7 +6576,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedWithProratedMinimumPrice::minimum
+          def to_hash: -> Orb::Models::Price::GroupedWithProratedMinimumPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -6609,7 +6609,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedWithProratedMinimumPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::GroupedWithProratedMinimumPrice::dimensional_price_configuration
         end
       end
 
@@ -6722,7 +6722,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::grouped_with_metered_minimum_price
+        def to_hash: -> Orb::Models::Price::grouped_with_metered_minimum_price
 
         type billable_metric = { id: String }
 
@@ -6736,7 +6736,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedWithMeteredMinimumPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::GroupedWithMeteredMinimumPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -6760,7 +6760,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedWithMeteredMinimumPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::GroupedWithMeteredMinimumPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -6800,7 +6800,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedWithMeteredMinimumPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::GroupedWithMeteredMinimumPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -6824,7 +6824,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedWithMeteredMinimumPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::GroupedWithMeteredMinimumPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -6850,7 +6850,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedWithMeteredMinimumPrice::item
+          def to_hash: -> Orb::Models::Price::GroupedWithMeteredMinimumPrice::item
         end
 
         type maximum =
@@ -6871,7 +6871,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedWithMeteredMinimumPrice::maximum
+          def to_hash: -> Orb::Models::Price::GroupedWithMeteredMinimumPrice::maximum
         end
 
         type minimum =
@@ -6892,7 +6892,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedWithMeteredMinimumPrice::minimum
+          def to_hash: -> Orb::Models::Price::GroupedWithMeteredMinimumPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -6925,7 +6925,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedWithMeteredMinimumPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::GroupedWithMeteredMinimumPrice::dimensional_price_configuration
         end
       end
 
@@ -7038,7 +7038,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::matrix_with_display_name_price
+        def to_hash: -> Orb::Models::Price::matrix_with_display_name_price
 
         type billable_metric = { id: String }
 
@@ -7052,7 +7052,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixWithDisplayNamePrice::billable_metric
+          def to_hash: -> Orb::Models::Price::MatrixWithDisplayNamePrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -7076,7 +7076,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixWithDisplayNamePrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::MatrixWithDisplayNamePrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -7116,7 +7116,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixWithDisplayNamePrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::MatrixWithDisplayNamePrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -7140,7 +7140,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixWithDisplayNamePrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::MatrixWithDisplayNamePrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -7166,7 +7166,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixWithDisplayNamePrice::item
+          def to_hash: -> Orb::Models::Price::MatrixWithDisplayNamePrice::item
         end
 
         type maximum =
@@ -7187,7 +7187,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixWithDisplayNamePrice::maximum
+          def to_hash: -> Orb::Models::Price::MatrixWithDisplayNamePrice::maximum
         end
 
         type minimum =
@@ -7208,7 +7208,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixWithDisplayNamePrice::minimum
+          def to_hash: -> Orb::Models::Price::MatrixWithDisplayNamePrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -7241,7 +7241,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MatrixWithDisplayNamePrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::MatrixWithDisplayNamePrice::dimensional_price_configuration
         end
       end
 
@@ -7353,7 +7353,7 @@ module Orb
             ?Orb::Models::Price::bulk_with_proration_price | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::bulk_with_proration_price
+        def to_hash: -> Orb::Models::Price::bulk_with_proration_price
 
         type billable_metric = { id: String }
 
@@ -7367,7 +7367,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkWithProrationPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::BulkWithProrationPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -7391,7 +7391,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkWithProrationPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::BulkWithProrationPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -7431,7 +7431,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkWithProrationPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::BulkWithProrationPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -7455,7 +7455,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkWithProrationPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::BulkWithProrationPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -7481,7 +7481,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkWithProrationPrice::item
+          def to_hash: -> Orb::Models::Price::BulkWithProrationPrice::item
         end
 
         type maximum =
@@ -7502,7 +7502,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkWithProrationPrice::maximum
+          def to_hash: -> Orb::Models::Price::BulkWithProrationPrice::maximum
         end
 
         type minimum =
@@ -7523,7 +7523,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkWithProrationPrice::minimum
+          def to_hash: -> Orb::Models::Price::BulkWithProrationPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -7556,7 +7556,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::BulkWithProrationPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::BulkWithProrationPrice::dimensional_price_configuration
         end
       end
 
@@ -7669,7 +7669,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::grouped_tiered_package_price
+        def to_hash: -> Orb::Models::Price::grouped_tiered_package_price
 
         type billable_metric = { id: String }
 
@@ -7683,7 +7683,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedTieredPackagePrice::billable_metric
+          def to_hash: -> Orb::Models::Price::GroupedTieredPackagePrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -7707,7 +7707,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedTieredPackagePrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::GroupedTieredPackagePrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -7747,7 +7747,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedTieredPackagePrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::GroupedTieredPackagePrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -7771,7 +7771,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedTieredPackagePrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::GroupedTieredPackagePrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -7797,7 +7797,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedTieredPackagePrice::item
+          def to_hash: -> Orb::Models::Price::GroupedTieredPackagePrice::item
         end
 
         type maximum =
@@ -7818,7 +7818,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedTieredPackagePrice::maximum
+          def to_hash: -> Orb::Models::Price::GroupedTieredPackagePrice::maximum
         end
 
         type minimum =
@@ -7839,7 +7839,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedTieredPackagePrice::minimum
+          def to_hash: -> Orb::Models::Price::GroupedTieredPackagePrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -7872,7 +7872,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::GroupedTieredPackagePrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::GroupedTieredPackagePrice::dimensional_price_configuration
         end
       end
 
@@ -7985,7 +7985,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::max_group_tiered_package_price
+        def to_hash: -> Orb::Models::Price::max_group_tiered_package_price
 
         type billable_metric = { id: String }
 
@@ -7999,7 +7999,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MaxGroupTieredPackagePrice::billable_metric
+          def to_hash: -> Orb::Models::Price::MaxGroupTieredPackagePrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -8023,7 +8023,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MaxGroupTieredPackagePrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::MaxGroupTieredPackagePrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -8063,7 +8063,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MaxGroupTieredPackagePrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::MaxGroupTieredPackagePrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -8087,7 +8087,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MaxGroupTieredPackagePrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::MaxGroupTieredPackagePrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -8113,7 +8113,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MaxGroupTieredPackagePrice::item
+          def to_hash: -> Orb::Models::Price::MaxGroupTieredPackagePrice::item
         end
 
         type maximum =
@@ -8134,7 +8134,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MaxGroupTieredPackagePrice::maximum
+          def to_hash: -> Orb::Models::Price::MaxGroupTieredPackagePrice::maximum
         end
 
         type minimum =
@@ -8155,7 +8155,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MaxGroupTieredPackagePrice::minimum
+          def to_hash: -> Orb::Models::Price::MaxGroupTieredPackagePrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -8188,7 +8188,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::MaxGroupTieredPackagePrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::MaxGroupTieredPackagePrice::dimensional_price_configuration
         end
       end
 
@@ -8301,7 +8301,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::scalable_matrix_with_unit_pricing_price
+        def to_hash: -> Orb::Models::Price::scalable_matrix_with_unit_pricing_price
 
         type billable_metric = { id: String }
 
@@ -8315,7 +8315,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -8339,7 +8339,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -8379,7 +8379,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -8403,7 +8403,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -8429,7 +8429,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::item
+          def to_hash: -> Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::item
         end
 
         type maximum =
@@ -8450,7 +8450,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::maximum
+          def to_hash: -> Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::maximum
         end
 
         type minimum =
@@ -8471,7 +8471,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::minimum
+          def to_hash: -> Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -8504,7 +8504,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::dimensional_price_configuration
         end
       end
 
@@ -8617,7 +8617,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Price::scalable_matrix_with_tiered_pricing_price
+        def to_hash: -> Orb::Models::Price::scalable_matrix_with_tiered_pricing_price
 
         type billable_metric = { id: String }
 
@@ -8631,7 +8631,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::billable_metric
+          def to_hash: -> Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::billable_metric
         end
 
         type billing_cycle_configuration =
@@ -8655,7 +8655,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::billing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::billing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -8695,7 +8695,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::credit_allocation
+          def to_hash: -> Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::credit_allocation
         end
 
         type invoicing_cycle_configuration =
@@ -8719,7 +8719,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::invoicing_cycle_configuration
+          def to_hash: -> Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::invoicing_cycle_configuration
 
           type duration_unit = :day | :month
 
@@ -8745,7 +8745,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::item
+          def to_hash: -> Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::item
         end
 
         type maximum =
@@ -8766,7 +8766,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::maximum
+          def to_hash: -> Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::maximum
         end
 
         type minimum =
@@ -8787,7 +8787,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::minimum
+          def to_hash: -> Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::minimum
         end
 
         type price_type = :usage_price | :fixed_price
@@ -8820,7 +8820,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::dimensional_price_configuration
+          def to_hash: -> Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::dimensional_price_configuration
         end
       end
 

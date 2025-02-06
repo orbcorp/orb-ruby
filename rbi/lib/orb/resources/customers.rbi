@@ -28,10 +28,14 @@ module Orb
           payment_provider_id: T.nilable(String),
           reporting_configuration: T.nilable(Orb::Models::CustomerCreateParams::ReportingConfiguration),
           shipping_address: T.nilable(Orb::Models::CustomerCreateParams::ShippingAddress),
-          tax_configuration: T.nilable(Orb::Models::CustomerCreateParams::TaxConfiguration::Variants),
+          tax_configuration: T.nilable(
+            T.any(
+              Orb::Models::CustomerCreateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerCreateParams::TaxConfiguration::NewTaxJarConfiguration
+            )
+          ),
           tax_id: T.nilable(Orb::Models::CustomerCreateParams::TaxID),
           timezone: T.nilable(String),
-          request_options: Orb::RequestOpts
+          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Customer)
       end
       def create(
@@ -72,9 +76,13 @@ module Orb
           payment_provider_id: T.nilable(String),
           reporting_configuration: T.nilable(Orb::Models::CustomerUpdateParams::ReportingConfiguration),
           shipping_address: T.nilable(Orb::Models::CustomerUpdateParams::ShippingAddress),
-          tax_configuration: T.nilable(Orb::Models::CustomerUpdateParams::TaxConfiguration::Variants),
+          tax_configuration: T.nilable(
+            T.any(
+              Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration
+            )
+          ),
           tax_id: T.nilable(Orb::Models::CustomerUpdateParams::TaxID),
-          request_options: Orb::RequestOpts
+          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Customer)
       end
       def update(
@@ -106,7 +114,7 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           limit: Integer,
-          request_options: Orb::RequestOpts
+          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Page[Orb::Models::Customer])
       end
       def list(
@@ -119,21 +127,44 @@ module Orb
         request_options: {}
       ); end
 
-      sig { params(customer_id: String, request_options: Orb::RequestOpts).void }
+      sig do
+        params(
+          customer_id: String,
+          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+        ).void
+      end
       def delete(customer_id, request_options: {}); end
 
-      sig { params(customer_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Customer) }
+      sig do
+        params(
+          customer_id: String,
+          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+        ).returns(Orb::Models::Customer)
+      end
       def fetch(customer_id, request_options: {}); end
 
       sig do
-        params(external_customer_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Customer)
+        params(
+          external_customer_id: String,
+          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+        ).returns(Orb::Models::Customer)
       end
       def fetch_by_external_id(external_customer_id, request_options: {}); end
 
-      sig { params(external_customer_id: String, request_options: Orb::RequestOpts).void }
+      sig do
+        params(
+          external_customer_id: String,
+          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+        ).void
+      end
       def sync_payment_methods_from_gateway(external_customer_id, request_options: {}); end
 
-      sig { params(customer_id: String, request_options: Orb::RequestOpts).void }
+      sig do
+        params(
+          customer_id: String,
+          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+        ).void
+      end
       def sync_payment_methods_from_gateway_by_external_customer_id(customer_id, request_options: {}); end
 
       sig do
@@ -153,9 +184,13 @@ module Orb
           payment_provider_id: T.nilable(String),
           reporting_configuration: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration),
           shipping_address: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress),
-          tax_configuration: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Variants),
+          tax_configuration: T.nilable(
+            T.any(
+              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration
+            )
+          ),
           tax_id: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::TaxID),
-          request_options: Orb::RequestOpts
+          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Customer)
       end
       def update_by_external_id(

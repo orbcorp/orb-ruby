@@ -6,19 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            auto_collection: T.nilable(T::Boolean),
-            default_invoice_memo: T.nilable(String),
-            invoicing_threshold: T.nilable(String),
-            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-            net_terms: T.nilable(Integer)
-          },
-          Orb::RequestParameters::Shape
-        )
-      end
-
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :auto_collection
 
@@ -41,7 +28,7 @@ module Orb
           invoicing_threshold: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           net_terms: T.nilable(Integer),
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -53,8 +40,19 @@ module Orb
         request_options: {}
       ); end
 
-      sig { returns(Orb::Models::SubscriptionUpdateParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            auto_collection: T.nilable(T::Boolean),
+            default_invoice_memo: T.nilable(String),
+            invoicing_threshold: T.nilable(String),
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            net_terms: T.nilable(Integer),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

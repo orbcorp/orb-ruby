@@ -3,13 +3,6 @@
 module Orb
   module Models
     class DimensionalPriceGroupsAPI < Orb::BaseModel
-      Shape = T.type_alias do
-        {
-          data: T::Array[Orb::Models::DimensionalPriceGroup],
-          pagination_metadata: Orb::Models::PaginationMetadata
-        }
-      end
-
       sig { returns(T::Array[Orb::Models::DimensionalPriceGroup]) }
       attr_accessor :data
 
@@ -24,8 +17,15 @@ module Orb
       end
       def initialize(data:, pagination_metadata:); end
 
-      sig { returns(Orb::Models::DimensionalPriceGroupsAPI::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            data: T::Array[Orb::Models::DimensionalPriceGroup],
+            pagination_metadata: Orb::Models::PaginationMetadata
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

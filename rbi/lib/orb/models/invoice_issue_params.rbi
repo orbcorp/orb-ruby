@@ -6,19 +6,22 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias { T.all({synchronous: T::Boolean}, Orb::RequestParameters::Shape) }
-
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :synchronous
 
       sig { params(synchronous: T::Boolean).void }
       attr_writer :synchronous
 
-      sig { params(synchronous: T::Boolean, request_options: Orb::RequestOpts).void }
+      sig do
+        params(
+          synchronous: T::Boolean,
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+        ).void
+      end
       def initialize(synchronous: nil, request_options: {}); end
 
-      sig { returns(Orb::Models::InvoiceIssueParams::Shape) }
-      def to_h; end
+      sig { override.returns({synchronous: T::Boolean, request_options: Orb::RequestOptions}) }
+      def to_hash; end
     end
   end
 end

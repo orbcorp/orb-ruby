@@ -57,7 +57,7 @@ module Orb
         ) -> void
         | (?Orb::Models::invoice_create_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::invoice_create_params
+      def to_hash: -> Orb::Models::invoice_create_params
 
       type line_item =
         {
@@ -99,7 +99,7 @@ module Orb
             ?Orb::Models::InvoiceCreateParams::line_item | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::InvoiceCreateParams::line_item
+        def to_hash: -> Orb::Models::InvoiceCreateParams::line_item
 
         type model_type = :unit
 
@@ -121,7 +121,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::InvoiceCreateParams::LineItem::unit_config
+          def to_hash: -> Orb::Models::InvoiceCreateParams::LineItem::unit_config
         end
       end
     end

@@ -13,7 +13,7 @@ module Orb
         (subscription_id: String?, request_options: Orb::request_opts) -> void
         | (?Orb::Models::alert_enable_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::alert_enable_params
+      def to_hash: -> Orb::Models::alert_enable_params
     end
   end
 end

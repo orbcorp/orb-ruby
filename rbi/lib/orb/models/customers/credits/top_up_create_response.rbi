@@ -5,19 +5,6 @@ module Orb
     module Customers
       module Credits
         class TopUpCreateResponse < Orb::BaseModel
-          Shape = T.type_alias do
-            {
-              id: String,
-              amount: String,
-              currency: String,
-              invoice_settings: Orb::Models::Customers::Credits::TopUpCreateResponse::InvoiceSettings,
-              per_unit_cost_basis: String,
-              threshold: String,
-              expires_after: T.nilable(Integer),
-              expires_after_unit: T.nilable(Symbol)
-            }
-          end
-
           sig { returns(String) }
           attr_accessor :id
 
@@ -65,19 +52,23 @@ module Orb
             expires_after_unit: nil
           ); end
 
-          sig { returns(Orb::Models::Customers::Credits::TopUpCreateResponse::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                id: String,
+                amount: String,
+                currency: String,
+                invoice_settings: Orb::Models::Customers::Credits::TopUpCreateResponse::InvoiceSettings,
+                per_unit_cost_basis: String,
+                threshold: String,
+                expires_after: T.nilable(Integer),
+                expires_after_unit: T.nilable(Symbol)
+              }
+            )
+          end
+          def to_hash; end
 
           class InvoiceSettings < Orb::BaseModel
-            Shape = T.type_alias do
-              {
-                auto_collection: T::Boolean,
-                net_terms: Integer,
-                memo: T.nilable(String),
-                require_successful_payment: T::Boolean
-              }
-            end
-
             sig { returns(T::Boolean) }
             attr_accessor :auto_collection
 
@@ -103,8 +94,17 @@ module Orb
             end
             def initialize(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil); end
 
-            sig { returns(Orb::Models::Customers::Credits::TopUpCreateResponse::InvoiceSettings::Shape) }
-            def to_h; end
+            sig do
+              override.returns(
+                {
+                  auto_collection: T::Boolean,
+                  net_terms: Integer,
+                  memo: T.nilable(String),
+                  require_successful_payment: T::Boolean
+                }
+              )
+            end
+            def to_hash; end
           end
 
           class ExpiresAfterUnit < Orb::Enum

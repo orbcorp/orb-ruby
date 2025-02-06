@@ -38,7 +38,7 @@ module Orb
         ) -> void
         | (?Orb::Models::coupon | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::coupon
+      def to_hash: -> Orb::Models::coupon
 
       type discount =
         Orb::Models::PercentageDiscount | Orb::Models::AmountDiscount

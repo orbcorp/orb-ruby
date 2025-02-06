@@ -30,7 +30,7 @@ module Orb
         ) -> void
         | (?Orb::Models::trial_discount | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::trial_discount
+      def to_hash: -> Orb::Models::trial_discount
 
       type discount_type = :trial
 
