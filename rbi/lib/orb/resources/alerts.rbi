@@ -30,15 +30,15 @@ module Orb
         ).returns(Orb::Page[Orb::Models::Alert])
       end
       def list(
-        created_at_gt:,
-        created_at_gte:,
-        created_at_lt:,
-        created_at_lte:,
-        cursor:,
-        customer_id:,
-        external_customer_id:,
-        limit:,
-        subscription_id:,
+        created_at_gt: nil,
+        created_at_gte: nil,
+        created_at_lt: nil,
+        created_at_lte: nil,
+        cursor: nil,
+        customer_id: nil,
+        external_customer_id: nil,
+        limit: nil,
+        subscription_id: nil,
         request_options: {}
       ); end
 
@@ -51,7 +51,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::Alert)
       end
-      def create_for_customer(customer_id, currency:, type:, thresholds:, request_options: {}); end
+      def create_for_customer(customer_id, currency:, type:, thresholds: nil, request_options: {}); end
 
       sig do
         params(
@@ -66,7 +66,7 @@ module Orb
         external_customer_id,
         currency:,
         type:,
-        thresholds:,
+        thresholds: nil,
         request_options: {}
       )
       end
@@ -80,7 +80,8 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::Alert)
       end
-      def create_for_subscription(subscription_id, thresholds:, type:, metric_id:, request_options: {}); end
+      def create_for_subscription(subscription_id, thresholds:, type:, metric_id: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -89,7 +90,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::Alert)
       end
-      def disable(alert_configuration_id, subscription_id:, request_options: {}); end
+      def disable(alert_configuration_id, subscription_id: nil, request_options: {}); end
 
       sig do
         params(
@@ -98,7 +99,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::Alert)
       end
-      def enable(alert_configuration_id, subscription_id:, request_options: {}); end
+      def enable(alert_configuration_id, subscription_id: nil, request_options: {}); end
 
       sig { params(client: Orb::Client).void }
       def initialize(client:); end

@@ -13,7 +13,7 @@ module Orb
             request_options: Orb::RequestOpts
           ).returns(Orb::Models::Events::EventVolumes)
         end
-        def list(timeframe_start:, cursor:, limit:, timeframe_end:, request_options: {}); end
+        def list(timeframe_start:, cursor: nil, limit: nil, timeframe_end: nil, request_options: {}); end
 
         sig { params(client: Orb::Client).void }
         def initialize(client:); end
