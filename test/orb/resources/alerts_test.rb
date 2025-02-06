@@ -19,7 +19,7 @@ class Orb::Test::Resources::AlertsTest < Minitest::Test
   end
 
   def test_update_required_params
-    response = @orb.alerts.update("alert_configuration_id", thresholds: [{"value" => 0}])
+    response = @orb.alerts.update("alert_configuration_id", thresholds: [{value: 0}])
 
     assert_pattern do
       response => Orb::Models::Alert
@@ -42,7 +42,7 @@ class Orb::Test::Resources::AlertsTest < Minitest::Test
   end
 
   def test_create_for_customer_required_params
-    response = @orb.alerts.create_for_customer("customer_id", currency: "currency", type: "usage_exceeded")
+    response = @orb.alerts.create_for_customer("customer_id", currency: "currency", type: :usage_exceeded)
 
     assert_pattern do
       response => Orb::Models::Alert
@@ -53,7 +53,7 @@ class Orb::Test::Resources::AlertsTest < Minitest::Test
     response = @orb.alerts.create_for_external_customer(
       "external_customer_id",
       currency: "currency",
-      type: "usage_exceeded"
+      type: :usage_exceeded
     )
 
     assert_pattern do
@@ -64,8 +64,8 @@ class Orb::Test::Resources::AlertsTest < Minitest::Test
   def test_create_for_subscription_required_params
     response = @orb.alerts.create_for_subscription(
       "subscription_id",
-      thresholds: [{"value" => 0}],
-      type: "usage_exceeded"
+      thresholds: [{value: 0}],
+      type: :usage_exceeded
     )
 
     assert_pattern do

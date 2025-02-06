@@ -40,7 +40,7 @@ class Orb::Test::Resources::SubscriptionsTest < Minitest::Test
   end
 
   def test_cancel_required_params
-    response = @orb.subscriptions.cancel("subscription_id", cancel_option: "end_of_subscription_term")
+    response = @orb.subscriptions.cancel("subscription_id", cancel_option: :end_of_subscription_term)
 
     assert_pattern do
       response => Orb::Models::SubscriptionCancelResponse
@@ -97,7 +97,7 @@ class Orb::Test::Resources::SubscriptionsTest < Minitest::Test
   end
 
   def test_schedule_plan_change_required_params
-    response = @orb.subscriptions.schedule_plan_change("subscription_id", change_option: "requested_date")
+    response = @orb.subscriptions.schedule_plan_change("subscription_id", change_option: :requested_date)
 
     assert_pattern do
       response => Orb::Models::SubscriptionSchedulePlanChangeResponse
