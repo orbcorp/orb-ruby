@@ -10,7 +10,7 @@ module Orb
         (request_options: Orb::request_opts) -> void
         | (?Orb::Models::invoice_void_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::invoice_void_params
+      def to_hash: -> Orb::Models::invoice_void_params
     end
   end
 end

@@ -4,21 +4,6 @@ module Orb
   module Models
     module Events
       class BackfillRevertResponse < Orb::BaseModel
-        Shape = T.type_alias do
-          {
-            id: String,
-            close_time: T.nilable(Time),
-            created_at: Time,
-            customer_id: T.nilable(String),
-            events_ingested: Integer,
-            reverted_at: T.nilable(Time),
-            status: Symbol,
-            timeframe_end: Time,
-            timeframe_start: Time,
-            deprecation_filter: T.nilable(String)
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -76,8 +61,23 @@ module Orb
           deprecation_filter: nil
         ); end
 
-        sig { returns(Orb::Models::Events::BackfillRevertResponse::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              id: String,
+              close_time: T.nilable(Time),
+              created_at: Time,
+              customer_id: T.nilable(String),
+              events_ingested: Integer,
+              reverted_at: T.nilable(Time),
+              status: Symbol,
+              timeframe_end: Time,
+              timeframe_start: Time,
+              deprecation_filter: T.nilable(String)
+            }
+          )
+        end
+        def to_hash; end
 
         class Status < Orb::Enum
           abstract!

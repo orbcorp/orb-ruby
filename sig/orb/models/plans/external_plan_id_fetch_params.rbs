@@ -14,7 +14,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Plans::external_plan_id_fetch_params
+        def to_hash: -> Orb::Models::Plans::external_plan_id_fetch_params
       end
     end
   end

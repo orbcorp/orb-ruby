@@ -6,24 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            currency: String,
-            invoice_date: Time,
-            line_items: T::Array[Orb::Models::InvoiceCreateParams::LineItem],
-            net_terms: Integer,
-            customer_id: T.nilable(String),
-            discount: T.nilable(Orb::Models::Discount::Variants),
-            external_customer_id: T.nilable(String),
-            memo: T.nilable(String),
-            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-            will_auto_issue: T::Boolean
-          },
-          Orb::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :currency
 
@@ -39,7 +21,18 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :customer_id
 
-      sig { returns(T.nilable(Orb::Models::Discount::Variants)) }
+      sig do
+        returns(
+          T.nilable(
+            T.any(
+              Orb::Models::PercentageDiscount,
+              Orb::Models::TrialDiscount,
+              Orb::Models::Discount::UsageDiscount,
+              Orb::Models::AmountDiscount
+            )
+          )
+        )
+      end
       attr_accessor :discount
 
       sig { returns(T.nilable(String)) }
@@ -64,12 +57,19 @@ module Orb
           line_items: T::Array[Orb::Models::InvoiceCreateParams::LineItem],
           net_terms: Integer,
           customer_id: T.nilable(String),
-          discount: T.nilable(Orb::Models::Discount::Variants),
+          discount: T.nilable(
+            T.any(
+              Orb::Models::PercentageDiscount,
+              Orb::Models::TrialDiscount,
+              Orb::Models::Discount::UsageDiscount,
+              Orb::Models::AmountDiscount
+            )
+          ),
           external_customer_id: T.nilable(String),
           memo: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           will_auto_issue: T::Boolean,
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -86,22 +86,33 @@ module Orb
         request_options: {}
       ); end
 
-      sig { returns(Orb::Models::InvoiceCreateParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            currency: String,
+            invoice_date: Time,
+            line_items: T::Array[Orb::Models::InvoiceCreateParams::LineItem],
+            net_terms: Integer,
+            customer_id: T.nilable(String),
+            discount: T.nilable(
+              T.any(
+                Orb::Models::PercentageDiscount,
+                Orb::Models::TrialDiscount,
+                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::AmountDiscount
+              )
+            ),
+            external_customer_id: T.nilable(String),
+            memo: T.nilable(String),
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            will_auto_issue: T::Boolean,
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class LineItem < Orb::BaseModel
-        Shape = T.type_alias do
-          {
-            end_date: Date,
-            item_id: String,
-            model_type: Symbol,
-            name: String,
-            quantity: Float,
-            start_date: Date,
-            unit_config: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig
-          }
-        end
-
         sig { returns(Date) }
         attr_accessor :end_date
 
@@ -136,8 +147,20 @@ module Orb
         end
         def initialize(end_date:, item_id:, model_type:, name:, quantity:, start_date:, unit_config:); end
 
-        sig { returns(Orb::Models::InvoiceCreateParams::LineItem::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              end_date: Date,
+              item_id: String,
+              model_type: Symbol,
+              name: String,
+              quantity: Float,
+              start_date: Date,
+              unit_config: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig
+            }
+          )
+        end
+        def to_hash; end
 
         class ModelType < Orb::Enum
           abstract!
@@ -149,16 +172,14 @@ module Orb
         end
 
         class UnitConfig < Orb::BaseModel
-          Shape = T.type_alias { {unit_amount: String} }
-
           sig { returns(String) }
           attr_accessor :unit_amount
 
           sig { params(unit_amount: String).void }
           def initialize(unit_amount:); end
 
-          sig { returns(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig::Shape) }
-          def to_h; end
+          sig { override.returns({unit_amount: String}) }
+          def to_hash; end
         end
       end
     end

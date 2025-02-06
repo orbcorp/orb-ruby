@@ -83,7 +83,7 @@ module Orb
         ) -> void
         | (?Orb::Models::customer_create_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::customer_create_params
+      def to_hash: -> Orb::Models::customer_create_params
 
       type accounting_sync_configuration =
         {
@@ -106,7 +106,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::CustomerCreateParams::accounting_sync_configuration
+        def to_hash: -> Orb::Models::CustomerCreateParams::accounting_sync_configuration
 
         type accounting_provider =
           { external_provider_id: String, provider_type: String }
@@ -123,7 +123,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::CustomerCreateParams::AccountingSyncConfiguration::accounting_provider
+          def to_hash: -> Orb::Models::CustomerCreateParams::AccountingSyncConfiguration::accounting_provider
         end
       end
 
@@ -164,7 +164,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::CustomerCreateParams::billing_address
+        def to_hash: -> Orb::Models::CustomerCreateParams::billing_address
       end
 
       type payment_provider =
@@ -192,7 +192,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::CustomerCreateParams::reporting_configuration
+        def to_hash: -> Orb::Models::CustomerCreateParams::reporting_configuration
       end
 
       type shipping_address =
@@ -232,7 +232,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::CustomerCreateParams::shipping_address
+        def to_hash: -> Orb::Models::CustomerCreateParams::shipping_address
       end
 
       type tax_configuration =
@@ -265,7 +265,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::CustomerCreateParams::TaxConfiguration::new_avalara_tax_configuration
+          def to_hash: -> Orb::Models::CustomerCreateParams::TaxConfiguration::new_avalara_tax_configuration
         end
 
         type new_tax_jar_configuration =
@@ -283,7 +283,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::CustomerCreateParams::TaxConfiguration::new_tax_jar_configuration
+          def to_hash: -> Orb::Models::CustomerCreateParams::TaxConfiguration::new_tax_jar_configuration
         end
 
         private def self.variants: -> [[:avalara, Orb::Models::CustomerCreateParams::TaxConfiguration::NewAvalaraTaxConfiguration], [:taxjar, Orb::Models::CustomerCreateParams::TaxConfiguration::NewTaxJarConfiguration]]
@@ -313,7 +313,7 @@ module Orb
             ?Orb::Models::CustomerCreateParams::tax_id | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::CustomerCreateParams::tax_id
+        def to_hash: -> Orb::Models::CustomerCreateParams::tax_id
 
         type country =
           :AD

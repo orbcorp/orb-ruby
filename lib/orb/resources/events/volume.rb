@@ -35,7 +35,7 @@ module Orb
         #     time.If the specified time isn't hour-aligned, the response includes the event
         #     volumecount for the hour the time falls in.
         #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Events::EventVolumes]
         #

@@ -54,7 +54,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Customers::balance_transaction_create_response
+        def to_hash: -> Orb::Models::Customers::balance_transaction_create_response
 
         type action =
           :applied_to_invoice
@@ -91,7 +91,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Customers::BalanceTransactionCreateResponse::credit_note
+          def to_hash: -> Orb::Models::Customers::BalanceTransactionCreateResponse::credit_note
         end
 
         type invoice = { id: String }
@@ -106,7 +106,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Customers::BalanceTransactionCreateResponse::invoice
+          def to_hash: -> Orb::Models::Customers::BalanceTransactionCreateResponse::invoice
         end
 
         type type_ = :increment | :decrement

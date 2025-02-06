@@ -14,7 +14,7 @@ module Orb
           | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::subscription_unschedule_cancellation_params
+      def to_hash: -> Orb::Models::subscription_unschedule_cancellation_params
     end
   end
 end

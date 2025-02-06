@@ -73,7 +73,7 @@ module Orb
       #   @option params [String, nil] :external_customer_id An alias for the Orb customer, whose mapping is specified when creating the
       #     customer
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::EventUpdateResponse]
       #
@@ -133,7 +133,7 @@ module Orb
       #
       # @param params [Orb::Models::EventDeprecateParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::EventDeprecateResponse]
       #
@@ -359,7 +359,7 @@ module Orb
       #   @option params [Boolean] :debug Query param: Flag to enable additional debug information in the endpoint
       #     response
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::EventIngestResponse]
       #
@@ -405,7 +405,7 @@ module Orb
       #   @option params [Time, nil] :timeframe_start The start of the timeframe, inclusive, in which to search events. If not
       #     specified, the one week ago is used.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::EventSearchResponse]
       #

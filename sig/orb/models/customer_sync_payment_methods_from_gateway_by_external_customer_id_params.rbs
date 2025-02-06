@@ -14,7 +14,7 @@ module Orb
           | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::customer_sync_payment_methods_from_gateway_by_external_customer_id_params
+      def to_hash: -> Orb::Models::customer_sync_payment_methods_from_gateway_by_external_customer_id_params
     end
   end
 end

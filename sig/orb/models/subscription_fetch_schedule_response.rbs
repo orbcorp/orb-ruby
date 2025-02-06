@@ -29,7 +29,7 @@ module Orb
           | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::subscription_fetch_schedule_response
+      def to_hash: -> Orb::Models::subscription_fetch_schedule_response
 
       type plan = { id: String?, external_plan_id: String?, name: String? }
 
@@ -47,7 +47,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::SubscriptionFetchScheduleResponse::plan
+        def to_hash: -> Orb::Models::SubscriptionFetchScheduleResponse::plan
       end
     end
   end

@@ -53,7 +53,7 @@ module Orb
             ?Orb::Models::Events::backfill_create_response | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Events::backfill_create_response
+        def to_hash: -> Orb::Models::Events::backfill_create_response
 
         type status = :pending | :reflected | :pending_revert | :reverted
 

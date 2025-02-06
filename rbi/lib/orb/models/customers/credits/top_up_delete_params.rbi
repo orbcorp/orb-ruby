@@ -8,16 +8,22 @@ module Orb
           extend Orb::RequestParameters::Converter
           include Orb::RequestParameters
 
-          Shape = T.type_alias { T.all({customer_id: String}, Orb::RequestParameters::Shape) }
-
           sig { returns(String) }
           attr_accessor :customer_id
 
-          sig { params(customer_id: String, request_options: Orb::RequestOpts).void }
+          sig do
+            params(
+              customer_id: String,
+              request_options: T.any(
+                Orb::RequestOptions,
+                T::Hash[Symbol, T.anything]
+              )
+            ).void
+          end
           def initialize(customer_id:, request_options: {}); end
 
-          sig { returns(Orb::Models::Customers::Credits::TopUpDeleteParams::Shape) }
-          def to_h; end
+          sig { override.returns({customer_id: String, request_options: Orb::RequestOptions}) }
+          def to_hash; end
         end
       end
     end

@@ -34,7 +34,7 @@ module Orb
         ) -> void
         | (?Orb::Models::dimensional_price_group | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::dimensional_price_group
+      def to_hash: -> Orb::Models::dimensional_price_group
     end
   end
 end

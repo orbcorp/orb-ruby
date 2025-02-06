@@ -179,7 +179,7 @@ module Orb
         ) -> void
         | (?Orb::Models::price_create_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::price_create_params
+      def to_hash: -> Orb::Models::price_create_params
 
       type cadence =
         :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -214,7 +214,7 @@ module Orb
             ?Orb::Models::PriceCreateParams::unit_config | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::PriceCreateParams::unit_config
+        def to_hash: -> Orb::Models::PriceCreateParams::unit_config
       end
 
       type billing_cycle_configuration =
@@ -238,7 +238,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::PriceCreateParams::billing_cycle_configuration
+        def to_hash: -> Orb::Models::PriceCreateParams::billing_cycle_configuration
 
         type duration_unit = :day | :month
 
@@ -271,7 +271,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::PriceCreateParams::invoicing_cycle_configuration
+        def to_hash: -> Orb::Models::PriceCreateParams::invoicing_cycle_configuration
 
         type duration_unit = :day | :month
 
@@ -297,7 +297,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::PriceCreateParams::package_config
+        def to_hash: -> Orb::Models::PriceCreateParams::package_config
       end
 
       type matrix_config =
@@ -324,7 +324,7 @@ module Orb
             ?Orb::Models::PriceCreateParams::matrix_config | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::PriceCreateParams::matrix_config
+        def to_hash: -> Orb::Models::PriceCreateParams::matrix_config
 
         type matrix_value =
           { dimension_values: Array[String?], unit_amount: String }
@@ -341,7 +341,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PriceCreateParams::MatrixConfig::matrix_value
+          def to_hash: -> Orb::Models::PriceCreateParams::MatrixConfig::matrix_value
         end
       end
 
@@ -374,7 +374,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::PriceCreateParams::matrix_with_allocation_config
+        def to_hash: -> Orb::Models::PriceCreateParams::matrix_with_allocation_config
 
         type matrix_value =
           { dimension_values: Array[String?], unit_amount: String }
@@ -391,7 +391,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::matrix_value
+          def to_hash: -> Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::matrix_value
         end
       end
 
@@ -409,7 +409,7 @@ module Orb
             ?Orb::Models::PriceCreateParams::tiered_config | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::PriceCreateParams::tiered_config
+        def to_hash: -> Orb::Models::PriceCreateParams::tiered_config
 
         type tier =
           { first_unit: Float, unit_amount: String, last_unit: Float? }
@@ -428,7 +428,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PriceCreateParams::TieredConfig::tier
+          def to_hash: -> Orb::Models::PriceCreateParams::TieredConfig::tier
         end
       end
 
@@ -447,7 +447,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::PriceCreateParams::tiered_bps_config
+        def to_hash: -> Orb::Models::PriceCreateParams::tiered_bps_config
 
         type tier =
           {
@@ -478,7 +478,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PriceCreateParams::TieredBpsConfig::tier
+          def to_hash: -> Orb::Models::PriceCreateParams::TieredBpsConfig::tier
         end
       end
 
@@ -495,7 +495,7 @@ module Orb
             ?Orb::Models::PriceCreateParams::bps_config | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::PriceCreateParams::bps_config
+        def to_hash: -> Orb::Models::PriceCreateParams::bps_config
       end
 
       type bulk_bps_config =
@@ -513,7 +513,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::PriceCreateParams::bulk_bps_config
+        def to_hash: -> Orb::Models::PriceCreateParams::bulk_bps_config
 
         type tier =
           { bps: Float, maximum_amount: String?, per_unit_maximum: String? }
@@ -536,7 +536,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PriceCreateParams::BulkBpsConfig::tier
+          def to_hash: -> Orb::Models::PriceCreateParams::BulkBpsConfig::tier
         end
       end
 
@@ -554,7 +554,7 @@ module Orb
             ?Orb::Models::PriceCreateParams::bulk_config | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::PriceCreateParams::bulk_config
+        def to_hash: -> Orb::Models::PriceCreateParams::bulk_config
 
         type tier = { unit_amount: String, maximum_units: Float? }
 
@@ -570,7 +570,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::PriceCreateParams::BulkConfig::tier
+          def to_hash: -> Orb::Models::PriceCreateParams::BulkConfig::tier
         end
       end
     end

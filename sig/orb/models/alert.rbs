@@ -50,7 +50,7 @@ module Orb
         ) -> void
         | (?Orb::Models::alert | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::alert
+      def to_hash: -> Orb::Models::alert
 
       type customer = { id: String, external_customer_id: String? }
 
@@ -63,7 +63,7 @@ module Orb
           (id: String, external_customer_id: String?) -> void
           | (?Orb::Models::Alert::customer | Orb::BaseModel data) -> void
 
-        def to_h: -> Orb::Models::Alert::customer
+        def to_hash: -> Orb::Models::Alert::customer
       end
 
       type metric = { id: String }
@@ -75,7 +75,7 @@ module Orb
           (id: String) -> void
           | (?Orb::Models::Alert::metric | Orb::BaseModel data) -> void
 
-        def to_h: -> Orb::Models::Alert::metric
+        def to_hash: -> Orb::Models::Alert::metric
       end
 
       type plan =
@@ -104,7 +104,7 @@ module Orb
           ) -> void
           | (?Orb::Models::Alert::plan | Orb::BaseModel data) -> void
 
-        def to_h: -> Orb::Models::Alert::plan
+        def to_hash: -> Orb::Models::Alert::plan
       end
 
       type subscription = { id: String }
@@ -116,7 +116,7 @@ module Orb
           (id: String) -> void
           | (?Orb::Models::Alert::subscription | Orb::BaseModel data) -> void
 
-        def to_h: -> Orb::Models::Alert::subscription
+        def to_hash: -> Orb::Models::Alert::subscription
       end
 
       type threshold = { value: Float }
@@ -128,7 +128,7 @@ module Orb
           (value: Float) -> void
           | (?Orb::Models::Alert::threshold | Orb::BaseModel data) -> void
 
-        def to_h: -> Orb::Models::Alert::threshold
+        def to_hash: -> Orb::Models::Alert::threshold
       end
 
       type type_ =

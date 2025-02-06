@@ -15,7 +15,7 @@ module Orb
           ?Orb::Models::invoice_fetch_upcoming_params | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::invoice_fetch_upcoming_params
+      def to_hash: -> Orb::Models::invoice_fetch_upcoming_params
     end
   end
 end

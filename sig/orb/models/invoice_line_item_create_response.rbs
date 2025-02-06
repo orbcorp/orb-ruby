@@ -92,7 +92,7 @@ module Orb
           ?Orb::Models::invoice_line_item_create_response | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::invoice_line_item_create_response
+      def to_hash: -> Orb::Models::invoice_line_item_create_response
 
       type adjustment =
         Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscountAdjustment
@@ -143,7 +143,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::InvoiceLineItemCreateResponse::Adjustment::amount_discount_adjustment
+          def to_hash: -> Orb::Models::InvoiceLineItemCreateResponse::Adjustment::amount_discount_adjustment
         end
 
         type percentage_discount_adjustment =
@@ -187,7 +187,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::InvoiceLineItemCreateResponse::Adjustment::percentage_discount_adjustment
+          def to_hash: -> Orb::Models::InvoiceLineItemCreateResponse::Adjustment::percentage_discount_adjustment
         end
 
         type usage_discount_adjustment =
@@ -231,7 +231,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::InvoiceLineItemCreateResponse::Adjustment::usage_discount_adjustment
+          def to_hash: -> Orb::Models::InvoiceLineItemCreateResponse::Adjustment::usage_discount_adjustment
         end
 
         type minimum_adjustment =
@@ -279,7 +279,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::InvoiceLineItemCreateResponse::Adjustment::minimum_adjustment
+          def to_hash: -> Orb::Models::InvoiceLineItemCreateResponse::Adjustment::minimum_adjustment
         end
 
         type maximum_adjustment =
@@ -323,7 +323,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::InvoiceLineItemCreateResponse::Adjustment::maximum_adjustment
+          def to_hash: -> Orb::Models::InvoiceLineItemCreateResponse::Adjustment::maximum_adjustment
         end
 
         private def self.variants: -> [[:amount_discount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscountAdjustment], [:percentage_discount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscountAdjustment], [:usage_discount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscountAdjustment], [:minimum, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MinimumAdjustment], [:maximum, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MaximumAdjustment]]
@@ -344,7 +344,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::InvoiceLineItemCreateResponse::maximum
+        def to_hash: -> Orb::Models::InvoiceLineItemCreateResponse::maximum
       end
 
       type minimum =
@@ -362,7 +362,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::InvoiceLineItemCreateResponse::minimum
+        def to_hash: -> Orb::Models::InvoiceLineItemCreateResponse::minimum
       end
 
       type sub_line_item =
@@ -408,7 +408,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::matrix_sub_line_item
+          def to_hash: -> Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::matrix_sub_line_item
 
           type grouping = { key: String, value: String? }
 
@@ -424,7 +424,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::grouping
+            def to_hash: -> Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::grouping
           end
 
           type matrix_config = { dimension_values: Array[String?] }
@@ -439,7 +439,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::matrix_config
+            def to_hash: -> Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::matrix_config
           end
         end
 
@@ -480,7 +480,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::tier_sub_line_item
+          def to_hash: -> Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::tier_sub_line_item
 
           type grouping = { key: String, value: String? }
 
@@ -496,7 +496,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::grouping
+            def to_hash: -> Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::grouping
           end
 
           type tier_config =
@@ -520,7 +520,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::tier_config
+            def to_hash: -> Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::tier_config
           end
         end
 
@@ -557,7 +557,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::other_sub_line_item
+          def to_hash: -> Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::other_sub_line_item
 
           type grouping = { key: String, value: String? }
 
@@ -573,7 +573,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem::grouping
+            def to_hash: -> Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem::grouping
           end
         end
 
@@ -605,7 +605,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::InvoiceLineItemCreateResponse::tax_amount
+        def to_hash: -> Orb::Models::InvoiceLineItemCreateResponse::tax_amount
       end
     end
   end

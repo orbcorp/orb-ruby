@@ -6,19 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            event_name: String,
-            properties: T.anything,
-            timestamp: Time,
-            customer_id: T.nilable(String),
-            external_customer_id: T.nilable(String)
-          },
-          Orb::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :event_name
 
@@ -41,7 +28,7 @@ module Orb
           timestamp: Time,
           customer_id: T.nilable(String),
           external_customer_id: T.nilable(String),
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -54,8 +41,19 @@ module Orb
       )
       end
 
-      sig { returns(Orb::Models::EventUpdateParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            event_name: String,
+            properties: T.anything,
+            timestamp: Time,
+            customer_id: T.nilable(String),
+            external_customer_id: T.nilable(String),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

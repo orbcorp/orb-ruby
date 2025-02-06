@@ -41,7 +41,7 @@ module Orb
         ) -> void
         | (?Orb::Models::price_evaluate_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::price_evaluate_params
+      def to_hash: -> Orb::Models::price_evaluate_params
     end
   end
 end

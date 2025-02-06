@@ -3,21 +3,6 @@
 module Orb
   module Models
     class Alert < Orb::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          created_at: Time,
-          currency: T.nilable(String),
-          customer: T.nilable(Orb::Models::Alert::Customer),
-          enabled: T::Boolean,
-          metric: T.nilable(Orb::Models::Alert::Metric),
-          plan: T.nilable(Orb::Models::Alert::Plan),
-          subscription: T.nilable(Orb::Models::Alert::Subscription),
-          thresholds: T.nilable(T::Array[Orb::Models::Alert::Threshold]),
-          type: Symbol
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -76,12 +61,25 @@ module Orb
       )
       end
 
-      sig { returns(Orb::Models::Alert::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            created_at: Time,
+            currency: T.nilable(String),
+            customer: T.nilable(Orb::Models::Alert::Customer),
+            enabled: T::Boolean,
+            metric: T.nilable(Orb::Models::Alert::Metric),
+            plan: T.nilable(Orb::Models::Alert::Plan),
+            subscription: T.nilable(Orb::Models::Alert::Subscription),
+            thresholds: T.nilable(T::Array[Orb::Models::Alert::Threshold]),
+            type: Symbol
+          }
+        )
+      end
+      def to_hash; end
 
       class Customer < Orb::BaseModel
-        Shape = T.type_alias { {id: String, external_customer_id: T.nilable(String)} }
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -91,33 +89,22 @@ module Orb
         sig { params(id: String, external_customer_id: T.nilable(String)).void }
         def initialize(id:, external_customer_id:); end
 
-        sig { returns(Orb::Models::Alert::Customer::Shape) }
-        def to_h; end
+        sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
+        def to_hash; end
       end
 
       class Metric < Orb::BaseModel
-        Shape = T.type_alias { {id: String} }
-
         sig { returns(String) }
         attr_accessor :id
 
         sig { params(id: String).void }
         def initialize(id:); end
 
-        sig { returns(Orb::Models::Alert::Metric::Shape) }
-        def to_h; end
+        sig { override.returns({id: String}) }
+        def to_hash; end
       end
 
       class Plan < Orb::BaseModel
-        Shape = T.type_alias do
-          {
-            id: T.nilable(String),
-            external_plan_id: T.nilable(String),
-            name: T.nilable(String),
-            plan_version: String
-          }
-        end
-
         sig { returns(T.nilable(String)) }
         attr_accessor :id
 
@@ -140,34 +127,39 @@ module Orb
         end
         def initialize(id:, external_plan_id:, name:, plan_version:); end
 
-        sig { returns(Orb::Models::Alert::Plan::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              id: T.nilable(String),
+              external_plan_id: T.nilable(String),
+              name: T.nilable(String),
+              plan_version: String
+            }
+          )
+        end
+        def to_hash; end
       end
 
       class Subscription < Orb::BaseModel
-        Shape = T.type_alias { {id: String} }
-
         sig { returns(String) }
         attr_accessor :id
 
         sig { params(id: String).void }
         def initialize(id:); end
 
-        sig { returns(Orb::Models::Alert::Subscription::Shape) }
-        def to_h; end
+        sig { override.returns({id: String}) }
+        def to_hash; end
       end
 
       class Threshold < Orb::BaseModel
-        Shape = T.type_alias { {value: Float} }
-
         sig { returns(Float) }
         attr_accessor :value
 
         sig { params(value: Float).void }
         def initialize(value:); end
 
-        sig { returns(Orb::Models::Alert::Threshold::Shape) }
-        def to_h; end
+        sig { override.returns({value: Float}) }
+        def to_hash; end
       end
 
       class Type < Orb::Enum

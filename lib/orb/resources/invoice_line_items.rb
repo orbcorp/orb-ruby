@@ -21,7 +21,7 @@ module Orb
       #
       #   @option params [Date] :start_date A date string to specify the line item's start date in the customer's timezone.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::InvoiceLineItemCreateResponse]
       #

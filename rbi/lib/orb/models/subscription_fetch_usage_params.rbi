@@ -6,24 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            billable_metric_id: T.nilable(String),
-            first_dimension_key: T.nilable(String),
-            first_dimension_value: T.nilable(String),
-            granularity: T.nilable(Symbol),
-            group_by: T.nilable(String),
-            second_dimension_key: T.nilable(String),
-            second_dimension_value: T.nilable(String),
-            timeframe_end: T.nilable(Time),
-            timeframe_start: T.nilable(Time),
-            view_mode: T.nilable(Symbol)
-          },
-          Orb::RequestParameters::Shape
-        )
-      end
-
       sig { returns(T.nilable(String)) }
       attr_accessor :billable_metric_id
 
@@ -66,7 +48,7 @@ module Orb
           timeframe_end: T.nilable(Time),
           timeframe_start: T.nilable(Time),
           view_mode: T.nilable(Symbol),
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -83,8 +65,24 @@ module Orb
         request_options: {}
       ); end
 
-      sig { returns(Orb::Models::SubscriptionFetchUsageParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            billable_metric_id: T.nilable(String),
+            first_dimension_key: T.nilable(String),
+            first_dimension_value: T.nilable(String),
+            granularity: T.nilable(Symbol),
+            group_by: T.nilable(String),
+            second_dimension_key: T.nilable(String),
+            second_dimension_value: T.nilable(String),
+            timeframe_end: T.nilable(Time),
+            timeframe_start: T.nilable(Time),
+            view_mode: T.nilable(Symbol),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class Granularity < Orb::Enum
         abstract!

@@ -33,7 +33,7 @@ module Orb
       #   @option params [Symbol, Orb::Models::PlanCreateParams::Status] :status The status of the plan to create (either active or draft). If not specified,
       #     this defaults to active.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Plan]
       #
@@ -65,7 +65,7 @@ module Orb
       #     by setting the value to `null`, and the entire metadata mapping can be cleared
       #     by setting `metadata` to `null`.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Plan]
       #
@@ -103,7 +103,7 @@ module Orb
       #
       #   @option params [Symbol, Orb::Models::PlanListParams::Status] :status The plan status to filter to ('active', 'archived', or 'draft').
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Page<Orb::Models::Plan>]
       #
@@ -141,7 +141,7 @@ module Orb
       #
       # @param params [Orb::Models::PlanFetchParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Plan]
       #

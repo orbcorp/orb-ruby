@@ -3,30 +3,16 @@
 module Orb
   module Models
     class EventSearchResponse < Orb::BaseModel
-      Shape = T.type_alias { {data: T::Array[Orb::Models::EventSearchResponse::Data]} }
-
       sig { returns(T::Array[Orb::Models::EventSearchResponse::Data]) }
       attr_accessor :data
 
       sig { params(data: T::Array[Orb::Models::EventSearchResponse::Data]).void }
       def initialize(data:); end
 
-      sig { returns(Orb::Models::EventSearchResponse::Shape) }
-      def to_h; end
+      sig { override.returns({data: T::Array[Orb::Models::EventSearchResponse::Data]}) }
+      def to_hash; end
 
       class Data < Orb::BaseModel
-        Shape = T.type_alias do
-          {
-            id: String,
-            customer_id: T.nilable(String),
-            deprecated: T::Boolean,
-            event_name: String,
-            external_customer_id: T.nilable(String),
-            properties: T.anything,
-            timestamp: Time
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -70,8 +56,20 @@ module Orb
         )
         end
 
-        sig { returns(Orb::Models::EventSearchResponse::Data::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              id: String,
+              customer_id: T.nilable(String),
+              deprecated: T::Boolean,
+              event_name: String,
+              external_customer_id: T.nilable(String),
+              properties: T.anything,
+              timestamp: Time
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end

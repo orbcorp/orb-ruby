@@ -23,7 +23,7 @@ module Orb
         (has_more: bool, next_cursor: String?) -> void
         | (?pagination_metadata | Orb::BaseModel data) -> void
 
-      def to_h: -> pagination_metadata
+      def to_hash: -> pagination_metadata
     end
   end
 end

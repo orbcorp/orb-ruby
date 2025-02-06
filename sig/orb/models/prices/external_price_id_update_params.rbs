@@ -20,7 +20,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Prices::external_price_id_update_params
+        def to_hash: -> Orb::Models::Prices::external_price_id_update_params
       end
     end
   end

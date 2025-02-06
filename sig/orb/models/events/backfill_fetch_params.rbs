@@ -13,7 +13,7 @@ module Orb
             ?Orb::Models::Events::backfill_fetch_params | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Events::backfill_fetch_params
+        def to_hash: -> Orb::Models::Events::backfill_fetch_params
       end
     end
   end

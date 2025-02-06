@@ -31,7 +31,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Customers::balance_transaction_create_params
+        def to_hash: -> Orb::Models::Customers::balance_transaction_create_params
 
         type type_ = :increment | :decrement
 

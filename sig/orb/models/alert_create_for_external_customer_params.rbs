@@ -30,7 +30,7 @@ module Orb
           | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::alert_create_for_external_customer_params
+      def to_hash: -> Orb::Models::alert_create_for_external_customer_params
 
       type type_ =
         :usage_exceeded
@@ -61,7 +61,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::AlertCreateForExternalCustomerParams::threshold
+        def to_hash: -> Orb::Models::AlertCreateForExternalCustomerParams::threshold
       end
     end
   end

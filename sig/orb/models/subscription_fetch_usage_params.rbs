@@ -57,7 +57,7 @@ module Orb
           ?Orb::Models::subscription_fetch_usage_params | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::subscription_fetch_usage_params
+      def to_hash: -> Orb::Models::subscription_fetch_usage_params
 
       type granularity = :day
 

@@ -6,19 +6,14 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            discount: Orb::Models::CouponCreateParams::Discount::Variants,
-            redemption_code: String,
-            duration_in_months: T.nilable(Integer),
-            max_redemptions: T.nilable(Integer)
-          },
-          Orb::RequestParameters::Shape
+      sig do
+        returns(
+          T.any(
+            Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
+            Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
+          )
         )
       end
-
-      sig { returns(Orb::Models::CouponCreateParams::Discount::Variants) }
       attr_accessor :discount
 
       sig { returns(String) }
@@ -32,11 +27,14 @@ module Orb
 
       sig do
         params(
-          discount: Orb::Models::CouponCreateParams::Discount::Variants,
+          discount: T.any(
+            Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
+            Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
+          ),
           redemption_code: String,
           duration_in_months: T.nilable(Integer),
           max_redemptions: T.nilable(Integer),
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -48,22 +46,26 @@ module Orb
       )
       end
 
-      sig { returns(Orb::Models::CouponCreateParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            discount: T.any(
+              Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
+              Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
+            ),
+            redemption_code: String,
+            duration_in_months: T.nilable(Integer),
+            max_redemptions: T.nilable(Integer),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class Discount < Orb::Union
         abstract!
 
-        Variants = T.type_alias do
-          T.any(
-            Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
-            Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
-          )
-        end
-
         class NewCouponPercentageDiscount < Orb::BaseModel
-          Shape = T.type_alias { {discount_type: Symbol, percentage_discount: Float} }
-
           sig { returns(Symbol) }
           attr_accessor :discount_type
 
@@ -73,13 +75,11 @@ module Orb
           sig { params(percentage_discount: Float, discount_type: Symbol).void }
           def initialize(percentage_discount:, discount_type: :percentage); end
 
-          sig { returns(Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount::Shape) }
-          def to_h; end
+          sig { override.returns({discount_type: Symbol, percentage_discount: Float}) }
+          def to_hash; end
         end
 
         class NewCouponAmountDiscount < Orb::BaseModel
-          Shape = T.type_alias { {amount_discount: String, discount_type: Symbol} }
-
           sig { returns(String) }
           attr_accessor :amount_discount
 
@@ -89,8 +89,8 @@ module Orb
           sig { params(amount_discount: String, discount_type: Symbol).void }
           def initialize(amount_discount:, discount_type: :amount); end
 
-          sig { returns(Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount::Shape) }
-          def to_h; end
+          sig { override.returns({amount_discount: String, discount_type: Symbol}) }
+          def to_hash; end
         end
 
         sig do

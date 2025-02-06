@@ -18,7 +18,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Customers::Credits::top_up_delete_params
+          def to_hash: -> Orb::Models::Customers::Credits::top_up_delete_params
         end
       end
     end

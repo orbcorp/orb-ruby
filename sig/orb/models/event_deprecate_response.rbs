@@ -9,7 +9,7 @@ module Orb
         (deprecated: String) -> void
         | (?Orb::Models::event_deprecate_response | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::event_deprecate_response
+      def to_hash: -> Orb::Models::event_deprecate_response
     end
   end
 end

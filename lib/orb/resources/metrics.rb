@@ -21,7 +21,7 @@ module Orb
       #     by setting the value to `null`, and the entire metadata mapping can be cleared
       #     by setting `metadata` to `null`.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::BillableMetric]
       #
@@ -48,7 +48,7 @@ module Orb
       #     by setting the value to `null`, and the entire metadata mapping can be cleared
       #     by setting `metadata` to `null`.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::BillableMetric]
       #
@@ -82,7 +82,7 @@ module Orb
       #
       #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Page<Orb::Models::BillableMetric>]
       #
@@ -105,7 +105,7 @@ module Orb
       #
       # @param params [Orb::Models::MetricFetchParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::BillableMetric]
       #

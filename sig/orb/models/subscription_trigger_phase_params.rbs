@@ -15,7 +15,7 @@ module Orb
           ?Orb::Models::subscription_trigger_phase_params | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::subscription_trigger_phase_params
+      def to_hash: -> Orb::Models::subscription_trigger_phase_params
     end
   end
 end
