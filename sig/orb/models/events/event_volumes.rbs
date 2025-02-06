@@ -1,0 +1,40 @@
+module Orb
+  module Models
+    
+    class EventVolumes = Events::EventVolumes
+
+    module Events
+      type event_volumes =
+        { data: Array[Orb::Models::Events::EventVolumes::Data] }
+
+      class EventVolumes < Orb::BaseModel
+        attr_accessor data: Array[Orb::Models::Events::EventVolumes::Data]
+
+        def initialize:
+          (data: Array[Orb::Models::Events::EventVolumes::Data]) -> void
+          | (?Orb::Models::Events::event_volumes | Orb::BaseModel data) -> void
+
+        def to_h: -> Orb::Models::Events::event_volumes
+
+        type data =
+          { count: Integer, timeframe_end: Time, timeframe_start: Time }
+
+        class Data < Orb::BaseModel
+          attr_accessor count: Integer
+
+          attr_accessor timeframe_end: Time
+
+          attr_accessor timeframe_start: Time
+
+          def initialize:
+            (count: Integer, timeframe_end: Time, timeframe_start: Time) -> void
+            | (
+              ?Orb::Models::Events::EventVolumes::data | Orb::BaseModel data
+            ) -> void
+
+          def to_h: -> Orb::Models::Events::EventVolumes::data
+        end
+      end
+    end
+  end
+end

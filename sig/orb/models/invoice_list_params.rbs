@@ -1,0 +1,120 @@
+module Orb
+  module Models
+    type invoice_list_params =
+      {
+        amount: String?,
+        amount_gt: String?,
+        amount_lt: String?,
+        cursor: String?,
+        customer_id: String?,
+        date_type: Orb::Models::InvoiceListParams::date_type?,
+        due_date: Date?,
+        due_date_window: String?,
+        due_date_gt: Date?,
+        due_date_lt: Date?,
+        external_customer_id: String?,
+        invoice_date_gt: Time?,
+        invoice_date_gte: Time?,
+        invoice_date_lt: Time?,
+        invoice_date_lte: Time?,
+        is_recurring: bool?,
+        limit: Integer,
+        status: Array[Orb::Models::InvoiceListParams::status]?,
+        subscription_id: String?
+      }
+      & Orb::request_parameters
+
+    class InvoiceListParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor amount: String?
+
+      attr_accessor amount_gt: String?
+
+      attr_accessor amount_lt: String?
+
+      attr_accessor cursor: String?
+
+      attr_accessor customer_id: String?
+
+      attr_accessor date_type: Orb::Models::InvoiceListParams::date_type?
+
+      attr_accessor due_date: Date?
+
+      attr_accessor due_date_window: String?
+
+      attr_accessor due_date_gt: Date?
+
+      attr_accessor due_date_lt: Date?
+
+      attr_accessor external_customer_id: String?
+
+      attr_accessor invoice_date_gt: Time?
+
+      attr_accessor invoice_date_gte: Time?
+
+      attr_accessor invoice_date_lt: Time?
+
+      attr_accessor invoice_date_lte: Time?
+
+      attr_accessor is_recurring: bool?
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> void
+
+      attr_accessor status: Array[Orb::Models::InvoiceListParams::status]?
+
+      attr_accessor subscription_id: String?
+
+      def initialize:
+        (
+          amount: String?,
+          amount_gt: String?,
+          amount_lt: String?,
+          cursor: String?,
+          customer_id: String?,
+          date_type: Orb::Models::InvoiceListParams::date_type?,
+          due_date: Date?,
+          due_date_window: String?,
+          due_date_gt: Date?,
+          due_date_lt: Date?,
+          external_customer_id: String?,
+          invoice_date_gt: Time?,
+          invoice_date_gte: Time?,
+          invoice_date_lt: Time?,
+          invoice_date_lte: Time?,
+          is_recurring: bool?,
+          limit: Integer,
+          status: Array[Orb::Models::InvoiceListParams::status]?,
+          subscription_id: String?,
+          request_options: Orb::request_opts
+        ) -> void
+        | (?Orb::Models::invoice_list_params | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::invoice_list_params
+
+      type date_type = :due_date | :invoice_date
+
+      class DateType < Orb::Enum
+        DUE_DATE: :due_date
+        INVOICE_DATE: :invoice_date
+
+        def self.values: -> Array[Orb::Models::InvoiceListParams::date_type]
+      end
+
+      type status = :draft | :issued | :paid | :synced | :void
+
+      class Status < Orb::Enum
+        DRAFT: :draft
+        ISSUED: :issued
+        PAID: :paid
+        SYNCED: :synced
+        VOID: :void
+
+        def self.values: -> Array[Orb::Models::InvoiceListParams::status]
+      end
+    end
+  end
+end

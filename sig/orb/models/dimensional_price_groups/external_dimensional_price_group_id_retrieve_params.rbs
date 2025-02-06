@@ -1,0 +1,22 @@
+module Orb
+  module Models
+    module DimensionalPriceGroups
+      type external_dimensional_price_group_id_retrieve_params =
+        {  } & Orb::request_parameters
+
+      class ExternalDimensionalPriceGroupIDRetrieveParams < Orb::BaseModel
+        extend Orb::RequestParameters::Converter
+        include Orb::RequestParameters
+
+        def initialize:
+          (request_options: Orb::request_opts) -> void
+          | (
+            ?Orb::Models::DimensionalPriceGroups::external_dimensional_price_group_id_retrieve_params
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::DimensionalPriceGroups::external_dimensional_price_group_id_retrieve_params
+      end
+    end
+  end
+end

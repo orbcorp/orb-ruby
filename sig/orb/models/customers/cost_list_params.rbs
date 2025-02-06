@@ -1,0 +1,50 @@
+module Orb
+  module Models
+    module Customers
+      type cost_list_params =
+        {
+          currency: String?,
+          timeframe_end: Time?,
+          timeframe_start: Time?,
+          view_mode: Orb::Models::Customers::CostListParams::view_mode?
+        }
+        & Orb::request_parameters
+
+      class CostListParams < Orb::BaseModel
+        extend Orb::RequestParameters::Converter
+        include Orb::RequestParameters
+
+        attr_accessor currency: String?
+
+        attr_accessor timeframe_end: Time?
+
+        attr_accessor timeframe_start: Time?
+
+        attr_accessor view_mode: Orb::Models::Customers::CostListParams::view_mode?
+
+        def initialize:
+          (
+            currency: String?,
+            timeframe_end: Time?,
+            timeframe_start: Time?,
+            view_mode: Orb::Models::Customers::CostListParams::view_mode?,
+            request_options: Orb::request_opts
+          ) -> void
+          | (
+            ?Orb::Models::Customers::cost_list_params | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::Customers::cost_list_params
+
+        type view_mode = :periodic | :cumulative
+
+        class ViewMode < Orb::Enum
+          PERIODIC: :periodic
+          CUMULATIVE: :cumulative
+
+          def self.values: -> Array[Orb::Models::Customers::CostListParams::view_mode]
+        end
+      end
+    end
+  end
+end

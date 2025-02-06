@@ -1,0 +1,48 @@
+module Orb
+  module Resources
+    class Items
+      def create:
+        (
+          Orb::Models::ItemCreateParams | Hash[Symbol, top] params
+        ) -> Orb::Models::Item
+        | (
+          name: String,
+          request_options: Orb::request_opts
+        ) -> Orb::Models::Item
+
+      def update:
+        (
+          String item_id,
+          ?Orb::Models::ItemUpdateParams | Hash[Symbol, top] params
+        ) -> Orb::Models::Item
+        | (
+          String item_id,
+          external_connections: Array[Orb::Models::ItemUpdateParams::ExternalConnection]?,
+          name: String?,
+          request_options: Orb::request_opts
+        ) -> Orb::Models::Item
+
+      def list:
+        (
+          ?Orb::Models::ItemListParams | Hash[Symbol, top] params
+        ) -> Orb::Page[Orb::Models::Item]
+        | (
+          cursor: String?,
+          limit: Integer,
+          request_options: Orb::request_opts
+        ) -> Orb::Page[Orb::Models::Item]
+
+      def fetch:
+        (
+          String item_id,
+          ?Orb::Models::ItemFetchParams | Hash[Symbol, top] params
+        ) -> Orb::Models::Item
+        | (
+          String item_id,
+          request_options: Orb::request_opts
+        ) -> Orb::Models::Item
+
+      def initialize: (client: Orb::Client) -> void
+    end
+  end
+end

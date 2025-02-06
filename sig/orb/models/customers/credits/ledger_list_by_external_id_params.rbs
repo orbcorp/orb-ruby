@@ -1,0 +1,100 @@
+module Orb
+  module Models
+    module Customers
+      module Credits
+        type ledger_list_by_external_id_params =
+          {
+            created_at_gt: Time?,
+            created_at_gte: Time?,
+            created_at_lt: Time?,
+            created_at_lte: Time?,
+            currency: String?,
+            cursor: String?,
+            entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDParams::entry_status?,
+            entry_type: Orb::Models::Customers::Credits::LedgerListByExternalIDParams::entry_type?,
+            limit: Integer,
+            minimum_amount: String?
+          }
+          & Orb::request_parameters
+
+        class LedgerListByExternalIDParams < Orb::BaseModel
+          extend Orb::RequestParameters::Converter
+          include Orb::RequestParameters
+
+          attr_accessor created_at_gt: Time?
+
+          attr_accessor created_at_gte: Time?
+
+          attr_accessor created_at_lt: Time?
+
+          attr_accessor created_at_lte: Time?
+
+          attr_accessor currency: String?
+
+          attr_accessor cursor: String?
+
+          attr_accessor entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDParams::entry_status?
+
+          attr_accessor entry_type: Orb::Models::Customers::Credits::LedgerListByExternalIDParams::entry_type?
+
+          attr_reader limit: Integer?
+
+          def limit=: (Integer) -> void
+
+          attr_accessor minimum_amount: String?
+
+          def initialize:
+            (
+              created_at_gt: Time?,
+              created_at_gte: Time?,
+              created_at_lt: Time?,
+              created_at_lte: Time?,
+              currency: String?,
+              cursor: String?,
+              entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDParams::entry_status?,
+              entry_type: Orb::Models::Customers::Credits::LedgerListByExternalIDParams::entry_type?,
+              limit: Integer,
+              minimum_amount: String?,
+              request_options: Orb::request_opts
+            ) -> void
+            | (
+              ?Orb::Models::Customers::Credits::ledger_list_by_external_id_params
+              | Orb::BaseModel data
+            ) -> void
+
+          def to_h: -> Orb::Models::Customers::Credits::ledger_list_by_external_id_params
+
+          type entry_status = :committed | :pending
+
+          class EntryStatus < Orb::Enum
+            COMMITTED: :committed
+            PENDING: :pending
+
+            def self.values: -> Array[Orb::Models::Customers::Credits::LedgerListByExternalIDParams::entry_status]
+          end
+
+          type entry_type =
+            :increment
+            | :decrement
+            | :expiration_change
+            | :credit_block_expiry
+            | :void
+            | :void_initiated
+            | :amendment
+
+          class EntryType < Orb::Enum
+            INCREMENT: :increment
+            DECREMENT: :decrement
+            EXPIRATION_CHANGE: :expiration_change
+            CREDIT_BLOCK_EXPIRY: :credit_block_expiry
+            VOID: :void
+            VOID_INITIATED: :void_initiated
+            AMENDMENT: :amendment
+
+            def self.values: -> Array[Orb::Models::Customers::Credits::LedgerListByExternalIDParams::entry_type]
+          end
+        end
+      end
+    end
+  end
+end

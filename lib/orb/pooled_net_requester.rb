@@ -1,66 +1,94 @@
-# typed: true
 # frozen_string_literal: true
 
-require "connection_pool"
-require "net/http"
-require_relative "requester"
-
-# TODO: read https://gist.github.com/TheRusskiy/bcec13fda6589d13ef8a658bda561a7e.
-# since it looks like net conn options also change reuse identity.
-# TODO parameterizing this -- max conns, etc
 module Orb
+  # @private
+  #
   class PooledNetRequester
-    include Requester
-
     def initialize
       @mutex = Mutex.new
       @pools = {}
     end
 
-    def get_pool(req)
-      hostname = req[:host]
-      scheme = req[:scheme]
-      port =
-        req[:port] ||
-          case scheme.to_sym
-          when :https
-            Net::HTTP.https_default_port
-          else
-            Net::HTTP.http_default_port
-          end
+    # @private
+    #
+    # @param url [URL::Generic]
+    # @param timeout [Float]
+    #
+    # @return [ConnectionPool]
+    #
+    private def get_pool(url)
+      origin = Orb::Util.uri_origin(url)
       @mutex.synchronize do
-        @pools[hostname] ||= ConnectionPool.new do
-          conn = Net::HTTP.new(hostname, port = port)
-          conn.use_ssl = scheme.to_sym == :https
-          conn.start
-          conn
+        @pools[origin] ||= ConnectionPool.new(size: Etc.nprocessors) do
+          port =
+            case [url.port, url.scheme]
+            in [Integer, _]
+              url.port
+            in [nil, "http" | "ws"]
+              Net::HTTP.http_default_port
+            in [nil, "https" | "wss"]
+              Net::HTTP.https_default_port
+            end
+
+          session = Net::HTTP.new(url.host, port)
+          session.use_ssl = %w[https wss].include?(url.scheme)
+          session.max_retries = 0
+          session
         end
-        @pools[hostname]
       end
     end
 
+    # @private
+    #
+    # @param req [Hash{Symbol => Object}]
+    #   @option req [Symbol] :method
+    #   @option req [URI::Generic] :url
+    #   @option req [Hash{String => String}] :headers
+    #   @option req [String, Hash] :body
+    #   @option req [Float] :timeout
+    #
+    # @return [Net::HTTPResponse]
+    #
     def execute(req)
-      get_pool(req).with do |conn|
-        # Net can't understand posting to a URI representing only path + query,
-        # so we concatenate
-        query_string = ("?#{URI.encode_www_form(req[:query])}" if req[:query])
-        uri_string = (req[:path] || "/") + (query_string || "")
-        case req[:method]
-        when :get
-          conn.get(uri_string, req[:headers])
-        when :patch
-          conn.patch(uri_string, req[:body], req[:headers])
-        when :put
-          conn.put(uri_string, req[:body], req[:headers])
-        when :post
-          conn.post(uri_string, req[:body], req[:headers])
-          # TODO: more verbs
-        when :delete
-          conn.delete(uri_string, req[:headers])
-        else
-          raise NotImplementedError.new, req[:method]
-        end
+      method, url, headers, body, timeout = req.fetch_values(:method, :url, :headers, :body, :timeout)
+
+      request = Net::HTTPGenericRequest.new(
+        method.to_s.upcase,
+        !body.nil?,
+        ![:head, :options].include?(method),
+        url.to_s
+      )
+
+      headers.each { |k, v| request[k] = v }
+      case body
+      in String | nil
+        request.body = body
+      in IO | StringIO
+        request.body_stream = body
       end
+
+      # This timeout is for acquiring a connection from the pool
+      # The default 5 seconds seems too short, lets just have a nearly unbounded queue for now
+      #
+      # TODO: revisit this around granular timeout / concurrency control
+      get_pool(url).with(timeout: 600) do |conn|
+        conn.open_timeout = timeout
+        conn.read_timeout = timeout
+        conn.write_timeout = timeout
+        conn.continue_timeout = timeout
+
+        conn.start unless conn.started?
+
+        conn.request(request)
+        # rubocop:disable Lint/RescueException
+      rescue Exception => e
+        # rubocop:enable Lint/RescueException
+        # should close connection on all errors to ensure no invalid state persists
+        conn.finish if conn.started?
+        raise e
+      end
+    rescue ConnectionPool::TimeoutError
+      raise Orb::APITimeoutError.new(url: url)
     end
   end
 end

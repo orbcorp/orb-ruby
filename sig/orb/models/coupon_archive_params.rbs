@@ -1,0 +1,16 @@
+module Orb
+  module Models
+    type coupon_archive_params = {  } & Orb::request_parameters
+
+    class CouponArchiveParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      def initialize:
+        (request_options: Orb::request_opts) -> void
+        | (?Orb::Models::coupon_archive_params | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::coupon_archive_params
+    end
+  end
+end

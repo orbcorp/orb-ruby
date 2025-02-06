@@ -1,0 +1,93 @@
+module Orb
+  module Models
+    module Customers
+      type cost_list_by_external_id_response =
+        {
+          data: Array[Orb::Models::Customers::CostListByExternalIDResponse::Data]
+        }
+
+      class CostListByExternalIDResponse < Orb::BaseModel
+        attr_accessor data: Array[Orb::Models::Customers::CostListByExternalIDResponse::Data]
+
+        def initialize:
+          (
+            data: Array[Orb::Models::Customers::CostListByExternalIDResponse::Data]
+          ) -> void
+          | (
+            ?Orb::Models::Customers::cost_list_by_external_id_response
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::Customers::cost_list_by_external_id_response
+
+        type data =
+          {
+            per_price_costs: Array[Orb::Models::Customers::CostListByExternalIDResponse::Data::PerPriceCost],
+            subtotal: String,
+            timeframe_end: Time,
+            timeframe_start: Time,
+            total: String
+          }
+
+        class Data < Orb::BaseModel
+          attr_accessor per_price_costs: Array[Orb::Models::Customers::CostListByExternalIDResponse::Data::PerPriceCost]
+
+          attr_accessor subtotal: String
+
+          attr_accessor timeframe_end: Time
+
+          attr_accessor timeframe_start: Time
+
+          attr_accessor total: String
+
+          def initialize:
+            (
+              per_price_costs: Array[Orb::Models::Customers::CostListByExternalIDResponse::Data::PerPriceCost],
+              subtotal: String,
+              timeframe_end: Time,
+              timeframe_start: Time,
+              total: String
+            ) -> void
+            | (
+              ?Orb::Models::Customers::CostListByExternalIDResponse::data
+              | Orb::BaseModel data
+            ) -> void
+
+          def to_h: -> Orb::Models::Customers::CostListByExternalIDResponse::data
+
+          type per_price_cost =
+            {
+              price: Orb::Models::price,
+              subtotal: String,
+              total: String,
+              quantity: Float?
+            }
+
+          class PerPriceCost < Orb::BaseModel
+            attr_accessor price: Orb::Models::price
+
+            attr_accessor subtotal: String
+
+            attr_accessor total: String
+
+            attr_accessor quantity: Float?
+
+            def initialize:
+              (
+                price: Orb::Models::price,
+                subtotal: String,
+                total: String,
+                quantity: Float?
+              ) -> void
+              | (
+                ?Orb::Models::Customers::CostListByExternalIDResponse::Data::per_price_cost
+                | Orb::BaseModel data
+              ) -> void
+
+            def to_h: -> Orb::Models::Customers::CostListByExternalIDResponse::Data::per_price_cost
+          end
+        end
+      end
+    end
+  end
+end

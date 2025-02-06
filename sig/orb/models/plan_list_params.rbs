@@ -1,0 +1,63 @@
+module Orb
+  module Models
+    type plan_list_params =
+      {
+        created_at_gt: Time?,
+        created_at_gte: Time?,
+        created_at_lt: Time?,
+        created_at_lte: Time?,
+        cursor: String?,
+        limit: Integer,
+        status: Orb::Models::PlanListParams::status
+      }
+      & Orb::request_parameters
+
+    class PlanListParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor created_at_gt: Time?
+
+      attr_accessor created_at_gte: Time?
+
+      attr_accessor created_at_lt: Time?
+
+      attr_accessor created_at_lte: Time?
+
+      attr_accessor cursor: String?
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> void
+
+      attr_reader status: Orb::Models::PlanListParams::status?
+
+      def status=: (Orb::Models::PlanListParams::status) -> void
+
+      def initialize:
+        (
+          created_at_gt: Time?,
+          created_at_gte: Time?,
+          created_at_lt: Time?,
+          created_at_lte: Time?,
+          cursor: String?,
+          limit: Integer,
+          status: Orb::Models::PlanListParams::status,
+          request_options: Orb::request_opts
+        ) -> void
+        | (?Orb::Models::plan_list_params | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::plan_list_params
+
+      type status = :active | :archived | :draft
+
+      class Status < Orb::Enum
+        ACTIVE: :active
+        ARCHIVED: :archived
+        DRAFT: :draft
+
+        def self.values: -> Array[Orb::Models::PlanListParams::status]
+      end
+    end
+  end
+end

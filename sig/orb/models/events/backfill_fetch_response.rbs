@@ -1,0 +1,71 @@
+module Orb
+  module Models
+    module Events
+      type backfill_fetch_response =
+        {
+          id: String,
+          close_time: Time?,
+          created_at: Time,
+          customer_id: String?,
+          events_ingested: Integer,
+          reverted_at: Time?,
+          status: Orb::Models::Events::BackfillFetchResponse::status,
+          timeframe_end: Time,
+          timeframe_start: Time,
+          deprecation_filter: String?
+        }
+
+      class BackfillFetchResponse < Orb::BaseModel
+        attr_accessor id: String
+
+        attr_accessor close_time: Time?
+
+        attr_accessor created_at: Time
+
+        attr_accessor customer_id: String?
+
+        attr_accessor events_ingested: Integer
+
+        attr_accessor reverted_at: Time?
+
+        attr_accessor status: Orb::Models::Events::BackfillFetchResponse::status
+
+        attr_accessor timeframe_end: Time
+
+        attr_accessor timeframe_start: Time
+
+        attr_accessor deprecation_filter: String?
+
+        def initialize:
+          (
+            id: String,
+            close_time: Time?,
+            created_at: Time,
+            customer_id: String?,
+            events_ingested: Integer,
+            reverted_at: Time?,
+            status: Orb::Models::Events::BackfillFetchResponse::status,
+            timeframe_end: Time,
+            timeframe_start: Time,
+            deprecation_filter: String?
+          ) -> void
+          | (
+            ?Orb::Models::Events::backfill_fetch_response | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::Events::backfill_fetch_response
+
+        type status = :pending | :reflected | :pending_revert | :reverted
+
+        class Status < Orb::Enum
+          PENDING: :pending
+          REFLECTED: :reflected
+          PENDING_REVERT: :pending_revert
+          REVERTED: :reverted
+
+          def self.values: -> Array[Orb::Models::Events::BackfillFetchResponse::status]
+        end
+      end
+    end
+  end
+end

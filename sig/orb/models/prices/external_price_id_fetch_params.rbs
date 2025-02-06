@@ -1,0 +1,21 @@
+module Orb
+  module Models
+    module Prices
+      type external_price_id_fetch_params = {  } & Orb::request_parameters
+
+      class ExternalPriceIDFetchParams < Orb::BaseModel
+        extend Orb::RequestParameters::Converter
+        include Orb::RequestParameters
+
+        def initialize:
+          (request_options: Orb::request_opts) -> void
+          | (
+            ?Orb::Models::Prices::external_price_id_fetch_params
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::Prices::external_price_id_fetch_params
+      end
+    end
+  end
+end

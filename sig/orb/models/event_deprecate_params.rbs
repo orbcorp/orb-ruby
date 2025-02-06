@@ -1,0 +1,16 @@
+module Orb
+  module Models
+    type event_deprecate_params = {  } & Orb::request_parameters
+
+    class EventDeprecateParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      def initialize:
+        (request_options: Orb::request_opts) -> void
+        | (?Orb::Models::event_deprecate_params | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::event_deprecate_params
+    end
+  end
+end

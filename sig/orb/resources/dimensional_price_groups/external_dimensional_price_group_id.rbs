@@ -1,0 +1,20 @@
+module Orb
+  module Resources
+    class DimensionalPriceGroups
+      class ExternalDimensionalPriceGroupID
+        def retrieve:
+          (
+            String external_dimensional_price_group_id,
+            ?Orb::Models::DimensionalPriceGroups::ExternalDimensionalPriceGroupIDRetrieveParams
+            | Hash[Symbol, top] params
+          ) -> Orb::Models::DimensionalPriceGroup
+          | (
+            String external_dimensional_price_group_id,
+            request_options: Orb::request_opts
+          ) -> Orb::Models::DimensionalPriceGroup
+
+        def initialize: (client: Orb::Client) -> void
+      end
+    end
+  end
+end

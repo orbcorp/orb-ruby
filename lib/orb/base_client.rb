@@ -1,281 +1,452 @@
-# typed: true
 # frozen_string_literal: true
 
-require "json"
-require_relative "pooled_net_requester"
-require "uri"
-
-# convert the OpenAPI domain to raw HTTP:
-# - apply security schemes
-# - coerce requests/responses to and from content types
-# - add server host and scheme, base api paths to URI
-# - apply retries
 module Orb
+  # @private
+  #
+  # @abstract
+  #
   class BaseClient
-    DEFAULT_MAX_RETRIES = 2
-    attr_reader :accounts, :http_bin
+    # from whatwg fetch spec
+    MAX_REDIRECTS = 20
 
-    def initialize(
-      server_uri_string:,
-      requester: nil,
-      headers: nil,
-      max_retries: nil
-    )
-      @requester = requester || PooledNetRequester.new
-      env_uri = URI.parse(server_uri_string)
-      @headers = headers
-      @host = env_uri.host
-      @scheme = env_uri.scheme&.to_sym
-      @port = env_uri.port
-      @max_retries = max_retries || DEFAULT_MAX_RETRIES
-    end
-
-    def auth_headers
-      {}
-    end
-
-    def resolve_uri_elements(req)
-      uri_components =
-        if req[:url]
-          uri = URI.parse(req[:url])
-          {
-            host: uri.host,
-            scheme: uri.scheme,
-            path: uri.path,
-            query: uri.query,
-            port: uri.port
-          }
-        else
-          req.slice(:host, :scheme, :path, :port, :query)
+    # @private
+    #
+    # @param req [Hash{Symbol=>Object}]
+    #
+    # @raise [ArgumentError]
+    #
+    def self.validate!(req)
+      keys = [:method, :path, :query, :headers, :body, :unwrap, :page, :model, :options]
+      case req
+      in Hash
+        req.each_key do |k|
+          unless keys.include?(k)
+            raise ArgumentError.new("Request `req` keys must be one of #{keys}, got #{k.inspect}")
+          end
         end
-
-      uri_components[:query] = uri_components[:query]&.filter do |k, v|
-        !v.is_a? NotGiven
+      else
+        raise ArgumentError.new("Request `req` must be a Hash or RequestOptions, got #{req.inspect}")
       end
-      uri_components
     end
 
-    def prep_request(**options)
-      request_content = options[:request_content]
-      response_content = options[:response_content]
-      headers = @headers.dup
+    # @private
+    #
+    # @return [Orb::PooledNetRequester]
+    attr_accessor :requester
 
-      headers["Content-Type"] = "application/json"
+    # @private
+    #
+    # @param base_url [String]
+    # @param timeout [Float]
+    # @param max_retries [Integer]
+    # @param initial_retry_delay [Float]
+    # @param max_retry_delay [Float]
+    # @param headers [Hash{String=>String, nil}]
+    # @param idempotency_header [String, nil]
+    #
+    def initialize(
+      base_url:,
+      timeout: 0.0,
+      max_retries: 0,
+      initial_retry_delay: 0.0,
+      max_retry_delay: 0.0,
+      headers: {},
+      idempotency_header: nil
+    )
+      @requester = Orb::PooledNetRequester.new
+      @headers = Orb::Util.normalized_headers(
+        {
+          "X-Stainless-Lang" => "ruby",
+          "X-Stainless-Package-Version" => Orb::VERSION,
+          "X-Stainless-Runtime" => RUBY_ENGINE,
+          "X-Stainless-Runtime-Version" => RUBY_ENGINE_VERSION,
+          "Content-Type" => "application/json",
+          "Accept" => "application/json"
+        },
+        headers
+      )
+      @base_url = Orb::Util.parse_uri(base_url)
+      @idempotency_header = idempotency_header&.to_s&.downcase
+      @max_retries = max_retries
+      @timeout = timeout
+      @initial_retry_delay = initial_retry_delay
+      @max_retry_delay = max_retry_delay
+    end
 
-      headers["Accept"] = "application/json"
+    # @private
+    #
+    # @return [Hash{String=>String}]
+    #
+    private def auth_headers = {}
 
-      method = options[:method].to_sym
+    # @private
+    #
+    # @return [String]
+    #
+    private def generate_idempotency_key = "stainless-ruby-retry-#{SecureRandom.uuid}"
+
+    # @private
+    #
+    # @param req [Hash{Symbol=>Object}] .
+    #
+    #   @option req [Symbol] :method
+    #
+    #   @option req [String, Array<String>] :path
+    #
+    #   @option req [Hash{String=>Array<String>, String, nil}, nil] :query
+    #
+    #   @option req [Hash{String=>String, nil}, nil] :headers
+    #
+    #   @option req [Object, nil] :body
+    #
+    #   @option req [Symbol, nil] :unwrap
+    #
+    #   @option req [Class, nil] :page
+    #
+    #   @option req [Orb::Converter, Class, nil] :model
+    #
+    # @param opts [Hash{Symbol=>Object}] .
+    #
+    #   @option opts [String, nil] :idempotency_key
+    #
+    #   @option opts [Hash{String=>Array<String>, String, nil}, nil] :extra_query
+    #
+    #   @option opts [Hash{String=>String, nil}, nil] :extra_headers
+    #
+    #   @option opts [Hash{Symbol=>Object}, nil] :extra_body
+    #
+    #   @option opts [Integer, nil] :max_retries
+    #
+    #   @option opts [Float, nil] :timeout
+    #
+    # @return [Hash{Symbol=>Object}]
+    #
+    private def build_request(req, opts)
+      method, uninterpolated_path = req.fetch_values(:method, :path)
+
+      path = Orb::Util.interpolate_path(uninterpolated_path)
+
+      headers = Orb::Util.normalized_headers(
+        @headers,
+        auth_headers,
+        *[req[:headers], opts[:extra_headers]].compact
+      )
+
+      if @idempotency_header &&
+         !headers.key?(@idempotency_header) &&
+         !Net::HTTP::IDEMPOTENT_METHODS_.include?(method.to_s.upcase)
+        headers[@idempotency_header] = opts.fetch(:idempotency_key) { generate_idempotency_key }
+      end
+
+      unless headers.key?("x-stainless-retry-count")
+        headers["x-stainless-retry-count"] = "0"
+      end
+
+      timeout = opts.fetch(:timeout, @timeout).to_f.clamp((0..))
+      unless headers.key?("x-stainless-read-timeout") or timeout.zero?
+        headers["x-stainless-read-timeout"] = timeout.to_s
+      end
+
+      headers.reject! { |_, v| v.to_s.empty? }
+
       body =
         case method
-        when :post, :put, :patch
-          body = options[:body]
-          if body
-            # TODO(Ruby): bodies that aren't JSON, dummy. Same for responses.
-            # TODO(Ruby): bodies that aren't hashes.
-            to_send =
-              if body.is_a? Hash
-                body.filter { |k, v| !v.is_a? NotGiven }.to_h
-              else
-                body
-              end
-            JSON.dump to_send
-          end
-        else
+        in :get | :head | :options | :trace
           nil
+        else
+          Orb::Util.deep_merge(*[req[:body], opts[:extra_body]].compact)
         end
 
-      security_scheme = options[:security_scheme]
-
-      {
-        method: method,
-        path: (@base_path || "") + (options[:path] || ""),
-        body: body,
-        headers:
-          headers
-            .merge(auth_headers)
-            .filter { |_k, v| !v.nil? }
-            .transform_values(&:to_s),
-        host: options[:host] || @host,
-        scheme: options[:scheme] || @scheme,
-        port: @port
-      }.merge(resolve_uri_elements(options))
+      url = Orb::Util.join_parsed_uri(@base_url, {**req, path: path})
+      headers, encoded = Orb::Util.encode_content(headers, body)
+      max_retries = opts.fetch(:max_retries, @max_retries)
+      {method: method, url: url, headers: headers, body: encoded, max_retries: max_retries, timeout: timeout}
     end
 
-    def should_retry?(response)
-      should_retry_header = response.header["x-should-retry"]
-
-      case should_retry_header
-      when "true"
-        true
-      when "false"
-        false
-      else
-        response_code = response.code.to_i
+    # @private
+    #
+    # @param status [Integer]
+    # @param headers [Hash{String=>String}]
+    #
+    # @return [Boolean]
+    #
+    private def should_retry?(status, headers:)
+      coerced = Orb::Util.coerce_boolean(headers["x-should-retry"])
+      case [coerced, status]
+      in [true | false, _]
+        coerced
+      in [_, 408 | 409 | 429 | (500..)]
         # retry on:
         # 408: timeouts
         # 409: locks
         # 429: rate limits
         # 500+: unknown errors
-        [408, 409, 429].include?(response_code) || response_code >= 500
+        true
+      else
+        false
       end
     end
 
-    def make_status_error(err_msg:, body:, response:)
-      raise NotImplementedError
-    end
-
-    def make_status_error_from_response(response)
-      err_body =
-        begin
-          JSON.parse(response.body)
-        rescue StandardError
-          response
-        end
-
-      # NB: we include the body in the error message as well as returning it,
-      # since logging error messages is a common and quick way to assess what's wrong with a response.
-      err_msg = "Error code: #{response.code}; Response: #{response.body}"
-
-      make_status_error(err_msg: err_msg, body: err_body, response: response)
-    end
-
-    # About the Retry-After header: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After
+    # @private
     #
-    # <http-date>". See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After#syntax for
-    # details.
-    def header_based_retry(response)
+    # @param headers [Hash{String=>String}]
+    # @param retry_count [Integer]
+    #
+    # @return [Float]
+    #
+    private def retry_delay(headers, retry_count:)
+      # Non-standard extension
+      span = Float(headers["retry-after-ms"], exception: false)&.then { _1 / 1000 }
+      return span if span
+
+      retry_header = headers["retry-after"]
+      return span if (span = Float(retry_header, exception: false))
+
+      span = retry_header && Orb::Util.suppress(ArgumentError) do
+        Time.httpdate(retry_header) - Time.now
+      end
+      return span if span
+
+      scale = retry_count**2
+      jitter = 1 - (0.25 * rand)
+      (@initial_retry_delay * scale * jitter).clamp(0, @max_retry_delay)
+    end
+
+    # @private
+    #
+    # @param request [Hash{Symbol=>Object}] .
+    #
+    #   @option request [Symbol] :method
+    #
+    #   @option request [URI::Generic] :url
+    #
+    #   @option request [Hash{String=>String}] :headers
+    #
+    #   @option request [Object] :body
+    #
+    #   @option request [Integer] :max_retries
+    #
+    #   @option request [Float] :timeout
+    #
+    # @param status [Integer]
+    #
+    # @param location_header [String]
+    #
+    # @return [Hash{Symbol=>Object}]
+    #
+    private def follow_redirect(request, status:, location_header:)
+      method, url, headers = request.fetch_values(:method, :url, :headers)
+      location =
+        Orb::Util.suppress(ArgumentError) do
+          URI.join(url, location_header)
+        end
+
+      unless location
+        message = "Server responded with status #{status} but no valid location header."
+        raise Orb::APIConnectionError.new(url: url, message: message)
+      end
+
+      request = {**request, url: location}
+
+      case [url.scheme, location.scheme]
+      in ["https", "http"]
+        message = "Tried to redirect to a insecure URL"
+        raise Orb::APIConnectionError.new(url: url, message: message)
+      else
+        nil
+      end
+
+      # from whatwg fetch spec
+      case [status, method]
+      in [301 | 302, :post] | [303, _]
+        drop = %w[content-encoding content-language content-length content-location content-type]
+        request = {
+          **request,
+          method: method == :head ? :head : :get,
+          headers: headers.except(*drop),
+          body: nil
+        }
+      else
+      end
+
+      # from undici
+      if Orb::Util.uri_origin(url) != Orb::Util.uri_origin(location)
+        drop = %w[authorization cookie host proxy-authorization]
+        request = {**request, headers: request.fetch(:headers).except(*drop)}
+      end
+
+      request
+    end
+
+    # @private
+    #
+    # @param request [Hash{Symbol=>Object}] .
+    #
+    #   @option request [Symbol] :method
+    #
+    #   @option request [URI::Generic] :url
+    #
+    #   @option request [Hash{String=>String}] :headers
+    #
+    #   @option request [Object] :body
+    #
+    #   @option request [Integer] :max_retries
+    #
+    #   @option request [Float] :timeout
+    #
+    # @param redirect_count [Integer]
+    #
+    # @param retry_count [Integer]
+    #
+    # @param send_retry_header [Boolean]
+    #
+    # @raise [Orb::APIError]
+    # @return [Net::HTTPResponse]
+    #
+    private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
+      url, headers, body, max_retries = request.fetch_values(:url, :headers, :body, :max_retries)
+      no_retry = retry_count >= max_retries || body.is_a?(IO) || body.is_a?(StringIO)
+
+      if send_retry_header
+        headers["x-stainless-retry-count"] = retry_count.to_s
+      end
+
       begin
-        retry_after = response.header["retry-after"]
-        retry_after
-          .split(",")
-          .map do |element|
-            as_int =
-              begin
-                Integer(element)
-              rescue StandardError
-              end
+        response = @requester.execute(request)
+        status = Integer(response.code)
+      rescue Orb::APIConnectionError => e
+        status = e
+      end
 
-            as_datetime =
-              begin
-                Time.httpdate(element) - Time.now
-              rescue StandardError
-              end
+      case status
+      in ..299
+        response
+      in 300..399 if redirect_count >= MAX_REDIRECTS
+        message = "Failed to complete the request within #{MAX_REDIRECTS} redirects."
+        raise Orb::APIConnectionError.new(url: url, message: message)
+      in 300..399
+        request = follow_redirect(request, status: status, location_header: response["location"])
+        send_request(
+          request,
+          redirect_count: redirect_count + 1,
+          retry_count: retry_count,
+          send_retry_header: send_retry_header
+        )
+      in Orb::APIConnectionError if retry_count >= max_retries
+        raise status
+      in (400..) if no_retry || (response && !should_retry?(status, headers: response))
+        body = Orb::Util.decode_content(response, suppress_error: true)
 
-            [as_int, as_datetime].filter { |x| x }.max
-          end
-      rescue StandardError
+        raise Orb::APIStatusError.for(
+          url: url,
+          status: status,
+          body: body,
+          request: nil,
+          response: response
+        )
+      in (400..) | Orb::APIConnectionError
+        delay = retry_delay(response, retry_count: retry_count)
+        sleep(delay)
+
+        send_request(
+          request,
+          redirect_count: redirect_count,
+          retry_count: retry_count + 1,
+          send_retry_header: send_retry_header
+        )
       end
     end
 
-    def with_retry(request)
-      delay = 0.5
-      max_delay = 8.0
-      tries = 0
-      loop do
-        begin
-          response = @requester.execute request
-          is_ok = response.code.to_i < 400
-          return response if is_ok
-        rescue Net::HTTPBadResponse
-          if tries >= @max_retries
-            raise HTTP::APIConnectionError.new(request: request)
-          end
-        rescue Timeout::Error
-          if tries >= @max_retries
-            raise HTTP::APITimeoutError.new(request: request)
-          end
-        end
+    # @private
+    #
+    # @param req [Hash{Symbol=>Object}] .
+    #
+    #   @option req [Symbol] :method
+    #
+    #   @option req [String, Array<String>] :path
+    #
+    #   @option req [Hash{String=>Array<String>, String, nil}, nil] :query
+    #
+    #   @option req [Hash{String=>String, nil}, nil] :headers
+    #
+    #   @option req [Object, nil] :body
+    #
+    #   @option req [Symbol, nil] :unwrap
+    #
+    #   @option req [Class, nil] :page
+    #
+    #   @option req [Orb::Converter, Class, nil] :model
+    #
+    #   @option req [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :options
+    #
+    # @param response [nil]
+    #
+    # @return [Object]
+    #
+    private def parse_response(req, response)
+      parsed = Orb::Util.decode_content(response)
+      unwrapped = Orb::Util.dig(parsed, req[:unwrap])
 
-        if tries >= @max_retries && !should_retry?(response)
-          raise make_status_error_from_response(response)
-        end
-
-        tries += 1
-        sleep delay
-        base_delay = header_based_retry(response) || (delay * (2**tries))
-        jitter_factor = 1 - 0.25 * rand
-        delay = [max_delay, [0, base_delay * jitter_factor].max].min
+      page = req[:page]
+      model = req.fetch(:model, Orb::Unknown)
+      case [page, model]
+      in [Class, Class | Orb::Converter | nil]
+        page.new(client: self, req: req, headers: response, unwrapped: unwrapped)
+      in [nil, Class | Orb::Converter]
+        Orb::Converter.coerce(model, unwrapped)
+      in [nil, nil]
+        unwrapped
       end
     end
 
-    # TODO: (Ruby) specialized Ruby methods for http methods
-    def request(**options)
-      request_args = prep_request(**options)
-      # TODO: client-side errors (DNS resolution, timeouts, etc)
-      # TODO: response codes we don't like, 400 etc.
-      # TODO: passing retry config
-      response = with_retry(request_args)
+    # Execute the request specified by `req`. This is the method that all resource
+    #   methods call into.
+    #
+    # @param req [Hash{Symbol=>Object}] .
+    #
+    #   @option req [Symbol] :method
+    #
+    #   @option req [String, Array<String>] :path
+    #
+    #   @option req [Hash{String=>Array<String>, String, nil}, nil] :query
+    #
+    #   @option req [Hash{String=>String, nil}, nil] :headers
+    #
+    #   @option req [Object, nil] :body
+    #
+    #   @option req [Symbol, nil] :unwrap
+    #
+    #   @option req [Class, nil] :page
+    #
+    #   @option req [Orb::Converter, Class, nil] :model
+    #
+    #   @option req [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :options
+    #
+    # @raise [Orb::APIError]
+    # @return [Object]
+    #
+    def request(req)
+      self.class.validate!(req)
+      opts = req[:options].to_h
+      Orb::RequestOptions.validate!(opts)
+      request = build_request(req, opts)
 
-      raw_data =
-        case response.content_type
-        when "application/problem+json"
-          # TODO(PR #2724) after that PR merges, this block shouldn't be necessary
-          raise StandardError.new("Failed with #{response.code}")
-        when "application/json"
-          begin
-            JSON.parse(response.body)
-          rescue JSON::ParserError
-            response.body
-          end
-          # TODO parsing other response types
-        else
-          response.body
-        end
-      if options[:page]
-        page =
-          options[:page].new(client: self, json: raw_data, request: options)
-        page.convert(**raw_data)
-        return page
-      end
-
-      model = options[:model]
-
-      model ? Converter.convert(model, raw_data) : raw_data
-    end
-  end
-
-  module HTTP
-    class Error < StandardError
-    end
-
-    class ResponseError < Error
-      attr_reader :err_msg, :response, :body, :code
-      def initialize(err_msg:, response:, body:)
-        @err_msg = err_msg
-        @response = response
-        @body = body
-        @code = response.code.to_i
-      end
+      # Don't send the current retry count in the headers if the caller modified the header defaults.
+      send_retry_header = request.fetch(:headers)["x-stainless-retry-count"] == "0"
+      response = send_request(
+        request,
+        redirect_count: 0,
+        retry_count: 0,
+        send_retry_header: send_retry_header
+      )
+      parse_response(req, response)
     end
 
-    class RequestError < Error
-      attr_reader :request
-      def initialize(request:)
-        @request = request
-      end
-    end
-
-    class BadRequestError < ResponseError
-    end
-    class AuthenticationError < ResponseError
-    end
-    class PermissionDeniedError < ResponseError
-    end
-    class NotFoundError < ResponseError
-    end
-    class ConflictError < ResponseError
-    end
-    class UnprocessableEntityError < ResponseError
-    end
-    class RateLimitError < ResponseError
-    end
-    class InternalServerError < ResponseError
-    end
-    class APIStatusError < ResponseError
-    end
-    class APIConnectionError < RequestError
-    end
-    class APITimeoutError < RequestError
+    # @return [String]
+    #
+    def inspect
+      base_url = Orb::Util.unparse_uri(@base_url)
+      "#<#{self.class.name}:0x#{object_id.to_s(16)} base_url=#{base_url} max_retries=#{@max_retries} timeout=#{@timeout}>"
     end
   end
 end

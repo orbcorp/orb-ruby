@@ -1,0 +1,12 @@
+module Orb
+  module Models
+    type invoice_level_discount =
+      Orb::Models::PercentageDiscount
+      | Orb::Models::AmountDiscount
+      | Orb::Models::TrialDiscount
+
+    class InvoiceLevelDiscount < Orb::Union
+      private def self.variants: -> [[:percentage, Orb::Models::PercentageDiscount], [:amount, Orb::Models::AmountDiscount], [:trial, Orb::Models::TrialDiscount]]
+    end
+  end
+end

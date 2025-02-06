@@ -1,0 +1,126 @@
+module Orb
+  module Models
+    module Customers
+      module Credits
+        type ledger_create_entry_params =
+          {
+            amount: Float,
+            entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryParams::entry_type,
+            currency: String?,
+            description: String?,
+            effective_date: Time?,
+            expiry_date: Time?,
+            invoice_settings: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?,
+            metadata: Hash[Symbol, String?]?,
+            per_unit_cost_basis: String?,
+            target_expiry_date: Date,
+            block_id: String,
+            void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryParams::void_reason?
+          }
+          & Orb::request_parameters
+
+        class LedgerCreateEntryParams < Orb::BaseModel
+          extend Orb::RequestParameters::Converter
+          include Orb::RequestParameters
+
+          attr_accessor amount: Float
+
+          attr_accessor entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryParams::entry_type
+
+          attr_accessor currency: String?
+
+          attr_accessor description: String?
+
+          attr_accessor effective_date: Time?
+
+          attr_accessor expiry_date: Time?
+
+          attr_accessor invoice_settings: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?
+
+          attr_accessor metadata: Hash[Symbol, String?]?
+
+          attr_accessor per_unit_cost_basis: String?
+
+          attr_accessor target_expiry_date: Date
+
+          attr_accessor block_id: String
+
+          attr_accessor void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryParams::void_reason?
+
+          def initialize:
+            (
+              amount: Float,
+              entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryParams::entry_type,
+              expiry_date: Time?,
+              target_expiry_date: Date,
+              block_id: String,
+              currency: String?,
+              description: String?,
+              effective_date: Time?,
+              invoice_settings: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?,
+              metadata: Hash[Symbol, String?]?,
+              per_unit_cost_basis: String?,
+              void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryParams::void_reason?,
+              request_options: Orb::request_opts
+            ) -> void
+            | (
+              ?Orb::Models::Customers::Credits::ledger_create_entry_params
+              | Orb::BaseModel data
+            ) -> void
+
+          def to_h: -> Orb::Models::Customers::Credits::ledger_create_entry_params
+
+          type entry_type = :amendment
+
+          class EntryType < Orb::Enum
+            AMENDMENT: :amendment
+
+            def self.values: -> Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::entry_type]
+          end
+
+          type invoice_settings =
+            {
+              auto_collection: bool,
+              net_terms: Integer,
+              memo: String?,
+              require_successful_payment: bool
+            }
+
+          class InvoiceSettings < Orb::BaseModel
+            attr_accessor auto_collection: bool
+
+            attr_accessor net_terms: Integer
+
+            attr_accessor memo: String?
+
+            attr_reader require_successful_payment: bool?
+
+            def require_successful_payment=: (bool) -> void
+
+            def initialize:
+              (
+                auto_collection: bool,
+                net_terms: Integer,
+                memo: String?,
+                require_successful_payment: bool
+              ) -> void
+              | (
+                ?Orb::Models::Customers::Credits::LedgerCreateEntryParams::invoice_settings
+                | Orb::BaseModel data
+              ) -> void
+
+            def to_h: -> Orb::Models::Customers::Credits::LedgerCreateEntryParams::invoice_settings
+          end
+
+          type void_reason = :refund
+
+          class VoidReason < Orb::Enum
+            REFUND: :refund
+
+            def self.values: -> Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::void_reason]
+          end
+        end
+      end
+    end
+  end
+end

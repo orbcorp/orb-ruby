@@ -1,0 +1,54 @@
+module Orb
+  module Models
+    type subscription_update_fixed_fee_quantity_params =
+      {
+        price_id: String,
+        quantity: Float,
+        change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option,
+        effective_date: Date?
+      }
+      & Orb::request_parameters
+
+    class SubscriptionUpdateFixedFeeQuantityParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor price_id: String
+
+      attr_accessor quantity: Float
+
+      attr_reader change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option?
+
+      def change_option=: (
+        Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option
+      ) -> void
+
+      attr_accessor effective_date: Date?
+
+      def initialize:
+        (
+          price_id: String,
+          quantity: Float,
+          change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option,
+          effective_date: Date?,
+          request_options: Orb::request_opts
+        ) -> void
+        | (
+          ?Orb::Models::subscription_update_fixed_fee_quantity_params
+          | Orb::BaseModel data
+        ) -> void
+
+      def to_h: -> Orb::Models::subscription_update_fixed_fee_quantity_params
+
+      type change_option = :immediate | :upcoming_invoice | :effective_date
+
+      class ChangeOption < Orb::Enum
+        IMMEDIATE: :immediate
+        UPCOMING_INVOICE: :upcoming_invoice
+        EFFECTIVE_DATE: :effective_date
+
+        def self.values: -> Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option]
+      end
+    end
+  end
+end

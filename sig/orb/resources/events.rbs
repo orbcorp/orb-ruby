@@ -1,0 +1,58 @@
+module Orb
+  module Resources
+    class Events
+      attr_reader backfills: Orb::Resources::Events::Backfills
+
+      attr_reader volume: Orb::Resources::Events::Volume
+
+      def update:
+        (
+          String event_id,
+          Orb::Models::EventUpdateParams | Hash[Symbol, top] params
+        ) -> Orb::Models::EventUpdateResponse
+        | (
+          String event_id,
+          event_name: String,
+          properties: top,
+          timestamp: Time,
+          customer_id: String?,
+          external_customer_id: String?,
+          request_options: Orb::request_opts
+        ) -> Orb::Models::EventUpdateResponse
+
+      def deprecate:
+        (
+          String event_id,
+          ?Orb::Models::EventDeprecateParams | Hash[Symbol, top] params
+        ) -> Orb::Models::EventDeprecateResponse
+        | (
+          String event_id,
+          request_options: Orb::request_opts
+        ) -> Orb::Models::EventDeprecateResponse
+
+      def ingest:
+        (
+          Orb::Models::EventIngestParams | Hash[Symbol, top] params
+        ) -> Orb::Models::EventIngestResponse
+        | (
+          events: Array[Orb::Models::EventIngestParams::Event],
+          backfill_id: String?,
+          debug: bool,
+          request_options: Orb::request_opts
+        ) -> Orb::Models::EventIngestResponse
+
+      def search:
+        (
+          Orb::Models::EventSearchParams | Hash[Symbol, top] params
+        ) -> Orb::Models::EventSearchResponse
+        | (
+          event_ids: Array[String],
+          timeframe_end: Time?,
+          timeframe_start: Time?,
+          request_options: Orb::request_opts
+        ) -> Orb::Models::EventSearchResponse
+
+      def initialize: (client: Orb::Client) -> void
+    end
+  end
+end
