@@ -1,0 +1,54 @@
+module Orb
+  module Models
+    type subscription_fetch_schedule_response =
+      {
+        created_at: Time,
+        end_date: Time?,
+        plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
+        start_date: Time
+      }
+
+    class SubscriptionFetchScheduleResponse < Orb::BaseModel
+      attr_accessor created_at: Time
+
+      attr_accessor end_date: Time?
+
+      attr_accessor plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan
+
+      attr_accessor start_date: Time
+
+      def initialize:
+        (
+          created_at: Time,
+          end_date: Time?,
+          plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
+          start_date: Time
+        ) -> void
+        | (
+          ?Orb::Models::subscription_fetch_schedule_response
+          | Orb::BaseModel data
+        ) -> void
+
+      def to_h: -> Orb::Models::subscription_fetch_schedule_response
+
+      type plan = { id: String?, external_plan_id: String?, name: String? }
+
+      class Plan < Orb::BaseModel
+        attr_accessor id: String?
+
+        attr_accessor external_plan_id: String?
+
+        attr_accessor name: String?
+
+        def initialize:
+          (id: String?, external_plan_id: String?, name: String?) -> void
+          | (
+            ?Orb::Models::SubscriptionFetchScheduleResponse::plan
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::SubscriptionFetchScheduleResponse::plan
+      end
+    end
+  end
+end

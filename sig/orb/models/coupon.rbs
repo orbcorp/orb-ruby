@@ -1,0 +1,51 @@
+module Orb
+  module Models
+    type coupon =
+      {
+        id: String,
+        archived_at: Time?,
+        discount: Orb::Models::Coupon::discount,
+        duration_in_months: Integer?,
+        max_redemptions: Integer?,
+        redemption_code: String,
+        times_redeemed: Integer
+      }
+
+    class Coupon < Orb::BaseModel
+      attr_accessor id: String
+
+      attr_accessor archived_at: Time?
+
+      attr_accessor discount: Orb::Models::Coupon::discount
+
+      attr_accessor duration_in_months: Integer?
+
+      attr_accessor max_redemptions: Integer?
+
+      attr_accessor redemption_code: String
+
+      attr_accessor times_redeemed: Integer
+
+      def initialize:
+        (
+          id: String,
+          archived_at: Time?,
+          discount: Orb::Models::Coupon::discount,
+          duration_in_months: Integer?,
+          max_redemptions: Integer?,
+          redemption_code: String,
+          times_redeemed: Integer
+        ) -> void
+        | (?Orb::Models::coupon | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::coupon
+
+      type discount =
+        Orb::Models::PercentageDiscount | Orb::Models::AmountDiscount
+
+      class Discount < Orb::Union
+        private def self.variants: -> [[:percentage, Orb::Models::PercentageDiscount], [:amount, Orb::Models::AmountDiscount]]
+      end
+    end
+  end
+end

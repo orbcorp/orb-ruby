@@ -1,0 +1,49 @@
+module Orb
+  module Models
+    type subscription_update_trial_params =
+      {
+        trial_end_date: Orb::Models::SubscriptionUpdateTrialParams::trial_end_date,
+        shift: bool
+      }
+      & Orb::request_parameters
+
+    class SubscriptionUpdateTrialParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor trial_end_date: Orb::Models::SubscriptionUpdateTrialParams::trial_end_date
+
+      attr_reader shift: bool?
+
+      def shift=: (bool) -> void
+
+      def initialize:
+        (
+          trial_end_date: Orb::Models::SubscriptionUpdateTrialParams::trial_end_date,
+          shift: bool,
+          request_options: Orb::request_opts
+        ) -> void
+        | (
+          ?Orb::Models::subscription_update_trial_params | Orb::BaseModel data
+        ) -> void
+
+      def to_h: -> Orb::Models::subscription_update_trial_params
+
+      type trial_end_date =
+        Time
+        | Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::union_member1
+
+      class TrialEndDate < Orb::Union
+        type union_member1 = :immediate
+
+        class UnionMember1 < Orb::Enum
+          IMMEDIATE: :immediate
+
+          def self.values: -> Array[Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::union_member1]
+        end
+
+        private def self.variants: -> [[nil, Time], [nil, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::union_member1]]
+      end
+    end
+  end
+end

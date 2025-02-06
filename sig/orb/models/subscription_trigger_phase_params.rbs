@@ -1,0 +1,21 @@
+module Orb
+  module Models
+    type subscription_trigger_phase_params =
+      { effective_date: Date? } & Orb::request_parameters
+
+    class SubscriptionTriggerPhaseParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor effective_date: Date?
+
+      def initialize:
+        (effective_date: Date?, request_options: Orb::request_opts) -> void
+        | (
+          ?Orb::Models::subscription_trigger_phase_params | Orb::BaseModel data
+        ) -> void
+
+      def to_h: -> Orb::Models::subscription_trigger_phase_params
+    end
+  end
+end

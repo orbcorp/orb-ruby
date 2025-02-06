@@ -1,0 +1,19 @@
+module Orb
+  module Models
+    type customer_fetch_by_external_id_params = {  } & Orb::request_parameters
+
+    class CustomerFetchByExternalIDParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      def initialize:
+        (request_options: Orb::request_opts) -> void
+        | (
+          ?Orb::Models::customer_fetch_by_external_id_params
+          | Orb::BaseModel data
+        ) -> void
+
+      def to_h: -> Orb::Models::customer_fetch_by_external_id_params
+    end
+  end
+end

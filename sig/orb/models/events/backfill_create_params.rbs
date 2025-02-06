@@ -1,0 +1,55 @@
+module Orb
+  module Models
+    module Events
+      type backfill_create_params =
+        {
+          timeframe_end: Time,
+          timeframe_start: Time,
+          close_time: Time?,
+          customer_id: String?,
+          deprecation_filter: String?,
+          external_customer_id: String?,
+          replace_existing_events: bool
+        }
+        & Orb::request_parameters
+
+      class BackfillCreateParams < Orb::BaseModel
+        extend Orb::RequestParameters::Converter
+        include Orb::RequestParameters
+
+        attr_accessor timeframe_end: Time
+
+        attr_accessor timeframe_start: Time
+
+        attr_accessor close_time: Time?
+
+        attr_accessor customer_id: String?
+
+        attr_accessor deprecation_filter: String?
+
+        attr_accessor external_customer_id: String?
+
+        attr_reader replace_existing_events: bool?
+
+        def replace_existing_events=: (bool) -> void
+
+        def initialize:
+          (
+            timeframe_end: Time,
+            timeframe_start: Time,
+            close_time: Time?,
+            customer_id: String?,
+            deprecation_filter: String?,
+            external_customer_id: String?,
+            replace_existing_events: bool,
+            request_options: Orb::request_opts
+          ) -> void
+          | (
+            ?Orb::Models::Events::backfill_create_params | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::Events::backfill_create_params
+      end
+    end
+  end
+end

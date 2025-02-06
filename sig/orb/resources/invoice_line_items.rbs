@@ -1,0 +1,21 @@
+module Orb
+  module Resources
+    class InvoiceLineItems
+      def create:
+        (
+          Orb::Models::InvoiceLineItemCreateParams | Hash[Symbol, top] params
+        ) -> Orb::Models::InvoiceLineItemCreateResponse
+        | (
+          amount: String,
+          end_date: Date,
+          invoice_id: String,
+          name: String,
+          quantity: Float,
+          start_date: Date,
+          request_options: Orb::request_opts
+        ) -> Orb::Models::InvoiceLineItemCreateResponse
+
+      def initialize: (client: Orb::Client) -> void
+    end
+  end
+end

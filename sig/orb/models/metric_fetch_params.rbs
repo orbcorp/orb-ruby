@@ -1,0 +1,16 @@
+module Orb
+  module Models
+    type metric_fetch_params = {  } & Orb::request_parameters
+
+    class MetricFetchParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      def initialize:
+        (request_options: Orb::request_opts) -> void
+        | (?Orb::Models::metric_fetch_params | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::metric_fetch_params
+    end
+  end
+end

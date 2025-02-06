@@ -1,0 +1,45 @@
+module Orb
+  module Models
+    module Events
+      type volume_list_params =
+        {
+          timeframe_start: Time,
+          cursor: String?,
+          limit: Integer,
+          timeframe_end: Time
+        }
+        & Orb::request_parameters
+
+      class VolumeListParams < Orb::BaseModel
+        extend Orb::RequestParameters::Converter
+        include Orb::RequestParameters
+
+        attr_accessor timeframe_start: Time
+
+        attr_accessor cursor: String?
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> void
+
+        attr_reader timeframe_end: Time?
+
+        def timeframe_end=: (Time) -> void
+
+        def initialize:
+          (
+            timeframe_start: Time,
+            cursor: String?,
+            limit: Integer,
+            timeframe_end: Time,
+            request_options: Orb::request_opts
+          ) -> void
+          | (
+            ?Orb::Models::Events::volume_list_params | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::Events::volume_list_params
+      end
+    end
+  end
+end
