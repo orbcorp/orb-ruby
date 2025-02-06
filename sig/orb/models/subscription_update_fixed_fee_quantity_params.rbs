@@ -38,7 +38,7 @@ module Orb
           | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::subscription_update_fixed_fee_quantity_params
+      def to_hash: -> Orb::Models::subscription_update_fixed_fee_quantity_params
 
       type change_option = :immediate | :upcoming_invoice | :effective_date
 

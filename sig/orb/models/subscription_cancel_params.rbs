@@ -25,7 +25,7 @@ module Orb
           ?Orb::Models::subscription_cancel_params | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::subscription_cancel_params
+      def to_hash: -> Orb::Models::subscription_cancel_params
 
       type cancel_option =
         :end_of_subscription_term | :immediate | :requested_date

@@ -17,7 +17,7 @@ module Orb
         ) -> void
         | (?Orb::Models::alert_update_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::alert_update_params
+      def to_hash: -> Orb::Models::alert_update_params
 
       type threshold = { value: Float }
 
@@ -30,7 +30,7 @@ module Orb
             ?Orb::Models::AlertUpdateParams::threshold | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::AlertUpdateParams::threshold
+        def to_hash: -> Orb::Models::AlertUpdateParams::threshold
       end
     end
   end

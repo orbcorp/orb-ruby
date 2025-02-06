@@ -53,7 +53,7 @@ module Orb
         ) -> void
         | (?Orb::Models::subscription_list_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::subscription_list_params
+      def to_hash: -> Orb::Models::subscription_list_params
 
       type status = :active | :ended | :upcoming
 

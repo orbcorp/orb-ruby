@@ -6,17 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            currency: String,
-            type: Symbol,
-            thresholds: T.nilable(T::Array[Orb::Models::AlertCreateForCustomerParams::Threshold])
-          },
-          Orb::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :currency
 
@@ -31,13 +20,22 @@ module Orb
           currency: String,
           type: Symbol,
           thresholds: T.nilable(T::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]),
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(currency:, type:, thresholds: nil, request_options: {}); end
 
-      sig { returns(Orb::Models::AlertCreateForCustomerParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            currency: String,
+            type: Symbol,
+            thresholds: T.nilable(T::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class Type < Orb::Enum
         abstract!
@@ -53,16 +51,14 @@ module Orb
       end
 
       class Threshold < Orb::BaseModel
-        Shape = T.type_alias { {value: Float} }
-
         sig { returns(Float) }
         attr_accessor :value
 
         sig { params(value: Float).void }
         def initialize(value:); end
 
-        sig { returns(Orb::Models::AlertCreateForCustomerParams::Threshold::Shape) }
-        def to_h; end
+        sig { override.returns({value: Float}) }
+        def to_hash; end
       end
     end
   end

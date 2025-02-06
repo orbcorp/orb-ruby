@@ -37,7 +37,7 @@ module Orb
       #   @option params [Boolean] :will_auto_issue When true, this invoice will automatically be issued upon creation. When false,
       #     the resulting invoice will require manual review to issue. Defaulted to false.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Invoice]
       #
@@ -66,7 +66,7 @@ module Orb
       #     by setting the value to `null`, and the entire metadata mapping can be cleared
       #     by setting `metadata` to `null`.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Invoice]
       #
@@ -139,7 +139,7 @@ module Orb
       #
       #   @option params [String, nil] :subscription_id
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Page<Orb::Models::Invoice>]
       #
@@ -162,7 +162,7 @@ module Orb
       #
       # @param params [Orb::Models::InvoiceFetchParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Invoice]
       #
@@ -183,7 +183,7 @@ module Orb
       #
       #   @option params [String] :subscription_id
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::InvoiceFetchUpcomingResponse]
       #
@@ -215,7 +215,7 @@ module Orb
       #     provider, a successful response from this endpoint guarantees the invoice is
       #     present in the provider.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Invoice]
       #
@@ -243,7 +243,7 @@ module Orb
       #
       #   @option params [String, nil] :notes An optional note to associate with the payment.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Invoice]
       #
@@ -265,7 +265,7 @@ module Orb
       #
       # @param params [Orb::Models::InvoicePayParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Invoice]
       #
@@ -290,7 +290,7 @@ module Orb
       #
       # @param params [Orb::Models::InvoiceVoidParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Invoice]
       #

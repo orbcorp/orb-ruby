@@ -16,7 +16,7 @@ module Orb
         ) -> void
         | (?Orb::Models::price_update_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::price_update_params
+      def to_hash: -> Orb::Models::price_update_params
     end
   end
 end

@@ -416,7 +416,7 @@ module Orb
     sig { params(key: Symbol).returns(T.nilable(T.anything)) }
     def [](key); end
 
-    sig { returns(T::Hash[Symbol, T.anything]) }
+    sig { overridable.returns(T::Hash[Symbol, T.anything]) }
     def to_h; end
 
     alias_method :to_hash, :to_h

@@ -6,23 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            created_at_gt: T.nilable(Time),
-            created_at_gte: T.nilable(Time),
-            created_at_lt: T.nilable(Time),
-            created_at_lte: T.nilable(Time),
-            cursor: T.nilable(String),
-            customer_id: T.nilable(String),
-            external_customer_id: T.nilable(String),
-            limit: Integer,
-            subscription_id: T.nilable(String)
-          },
-          Orb::RequestParameters::Shape
-        )
-      end
-
       sig { returns(T.nilable(Time)) }
       attr_accessor :created_at_gt
 
@@ -64,7 +47,7 @@ module Orb
           external_customer_id: T.nilable(String),
           limit: Integer,
           subscription_id: T.nilable(String),
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -80,8 +63,23 @@ module Orb
         request_options: {}
       ); end
 
-      sig { returns(Orb::Models::AlertListParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            created_at_gt: T.nilable(Time),
+            created_at_gte: T.nilable(Time),
+            created_at_lt: T.nilable(Time),
+            created_at_lte: T.nilable(Time),
+            cursor: T.nilable(String),
+            customer_id: T.nilable(String),
+            external_customer_id: T.nilable(String),
+            limit: Integer,
+            subscription_id: T.nilable(String),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

@@ -16,7 +16,7 @@ module Orb
           | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::subscription_unschedule_fixed_fee_quantity_updates_params
+      def to_hash: -> Orb::Models::subscription_unschedule_fixed_fee_quantity_updates_params
     end
   end
 end

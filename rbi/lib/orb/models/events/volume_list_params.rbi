@@ -7,13 +7,6 @@ module Orb
         extend Orb::RequestParameters::Converter
         include Orb::RequestParameters
 
-        Shape = T.type_alias do
-          T.all(
-            {timeframe_start: Time, cursor: T.nilable(String), limit: Integer, timeframe_end: Time},
-            Orb::RequestParameters::Shape
-          )
-        end
-
         sig { returns(Time) }
         attr_accessor :timeframe_start
 
@@ -38,14 +31,24 @@ module Orb
             cursor: T.nilable(String),
             limit: Integer,
             timeframe_end: Time,
-            request_options: Orb::RequestOpts
+            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
         def initialize(timeframe_start:, cursor: nil, limit: nil, timeframe_end: nil, request_options: {})
         end
 
-        sig { returns(Orb::Models::Events::VolumeListParams::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              timeframe_start: Time,
+              cursor: T.nilable(String),
+              limit: Integer,
+              timeframe_end: Time,
+              request_options: Orb::RequestOptions
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end

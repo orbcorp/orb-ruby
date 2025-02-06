@@ -6,10 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all({cancel_option: Symbol, cancellation_date: T.nilable(Time)}, Orb::RequestParameters::Shape)
-      end
-
       sig { returns(Symbol) }
       attr_accessor :cancel_option
 
@@ -20,13 +16,21 @@ module Orb
         params(
           cancel_option: Symbol,
           cancellation_date: T.nilable(Time),
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(cancel_option:, cancellation_date: nil, request_options: {}); end
 
-      sig { returns(Orb::Models::SubscriptionCancelParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            cancel_option: Symbol,
+            cancellation_date: T.nilable(Time),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class CancelOption < Orb::Enum
         abstract!

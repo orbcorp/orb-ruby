@@ -23,8 +23,6 @@ module Orb
     def initialize(client:, req:, headers:, unwrapped:); end
 
     class PaginationMetadata < Orb::BaseModel
-      Shape = T.type_alias { {has_more: T::Boolean, next_cursor: T.nilable(String)} }
-
       sig { returns(T::Boolean) }
       attr_accessor :has_more
 
@@ -34,8 +32,8 @@ module Orb
       sig { params(has_more: T::Boolean, next_cursor: T.nilable(String)).void }
       def initialize(has_more:, next_cursor:); end
 
-      sig { returns(PaginationMetadata::Shape) }
-      def to_h; end
+      sig { override.returns({has_more: T::Boolean, next_cursor: T.nilable(String)}) }
+      def to_hash; end
     end
   end
 end

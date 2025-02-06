@@ -5,25 +5,7 @@ module Orb
     class Discount < Orb::Union
       abstract!
 
-      Variants = T.type_alias do
-        T.any(
-          Orb::Models::PercentageDiscount,
-          Orb::Models::TrialDiscount,
-          Orb::Models::Discount::UsageDiscount,
-          Orb::Models::AmountDiscount
-        )
-      end
-
       class UsageDiscount < Orb::BaseModel
-        Shape = T.type_alias do
-          {
-            applies_to_price_ids: T::Array[String],
-            discount_type: Symbol,
-            usage_discount: Float,
-            reason: T.nilable(String)
-          }
-        end
-
         sig { returns(T::Array[String]) }
         attr_accessor :applies_to_price_ids
 
@@ -46,8 +28,17 @@ module Orb
         end
         def initialize(applies_to_price_ids:, usage_discount:, reason: nil, discount_type: :usage); end
 
-        sig { returns(Orb::Models::Discount::UsageDiscount::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              applies_to_price_ids: T::Array[String],
+              discount_type: Symbol,
+              usage_discount: Float,
+              reason: T.nilable(String)
+            }
+          )
+        end
+        def to_hash; end
       end
 
       sig do

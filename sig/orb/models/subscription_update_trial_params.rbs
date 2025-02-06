@@ -27,7 +27,7 @@ module Orb
           ?Orb::Models::subscription_update_trial_params | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::subscription_update_trial_params
+      def to_hash: -> Orb::Models::subscription_update_trial_params
 
       type trial_end_date =
         Time

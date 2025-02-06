@@ -4,18 +4,6 @@ module Orb
   module Models
     module Customers
       class CreditListByExternalIDResponse < Orb::BaseModel
-        Shape = T.type_alias do
-          {
-            id: String,
-            balance: Float,
-            effective_date: T.nilable(Time),
-            expiry_date: T.nilable(Time),
-            maximum_initial_balance: T.nilable(Float),
-            per_unit_cost_basis: T.nilable(String),
-            status: Symbol
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -59,8 +47,20 @@ module Orb
         )
         end
 
-        sig { returns(Orb::Models::Customers::CreditListByExternalIDResponse::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              id: String,
+              balance: Float,
+              effective_date: T.nilable(Time),
+              expiry_date: T.nilable(Time),
+              maximum_initial_balance: T.nilable(Float),
+              per_unit_cost_basis: T.nilable(String),
+              status: Symbol
+            }
+          )
+        end
+        def to_hash; end
 
         class Status < Orb::Enum
           abstract!

@@ -7,10 +7,6 @@ module Orb
         extend Orb::RequestParameters::Converter
         include Orb::RequestParameters
 
-        Shape = T.type_alias do
-          T.all({amount: String, type: Symbol, description: T.nilable(String)}, Orb::RequestParameters::Shape)
-        end
-
         sig { returns(String) }
         attr_accessor :amount
 
@@ -25,13 +21,22 @@ module Orb
             amount: String,
             type: Symbol,
             description: T.nilable(String),
-            request_options: Orb::RequestOpts
+            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
         def initialize(amount:, type:, description: nil, request_options: {}); end
 
-        sig { returns(Orb::Models::Customers::BalanceTransactionCreateParams::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              amount: String,
+              type: Symbol,
+              description: T.nilable(String),
+              request_options: Orb::RequestOptions
+            }
+          )
+        end
+        def to_hash; end
 
         class Type < Orb::Enum
           abstract!

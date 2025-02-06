@@ -33,7 +33,7 @@ module Orb
           ?Orb::Models::subscription_fetch_costs_params | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::subscription_fetch_costs_params
+      def to_hash: -> Orb::Models::subscription_fetch_costs_params
 
       type view_mode = :periodic | :cumulative
 

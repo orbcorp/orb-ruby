@@ -10,7 +10,7 @@ module Orb
         (request_options: Orb::request_opts) -> void
         | (?Orb::Models::metric_fetch_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::metric_fetch_params
+      def to_hash: -> Orb::Models::metric_fetch_params
     end
   end
 end

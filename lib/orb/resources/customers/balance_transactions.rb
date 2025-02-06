@@ -17,7 +17,7 @@ module Orb
         #
         #   @option params [String, nil] :description An optional description that can be specified around this entry.
         #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Customers::BalanceTransactionCreateResponse]
         #
@@ -78,7 +78,7 @@ module Orb
         #
         #   @option params [Time, nil] :operation_time_lte
         #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Page<Orb::Models::Customers::BalanceTransactionListResponse>]
         #

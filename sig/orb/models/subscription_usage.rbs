@@ -22,7 +22,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::SubscriptionUsage::ungrouped_subscription_usage
+        def to_hash: -> Orb::Models::SubscriptionUsage::ungrouped_subscription_usage
 
         type data =
           {
@@ -49,7 +49,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::data
+          def to_hash: -> Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::data
 
           type billable_metric = { id: String, name: String }
 
@@ -65,7 +65,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::billable_metric
+            def to_hash: -> Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::billable_metric
           end
 
           type usage =
@@ -89,7 +89,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::usage
+            def to_hash: -> Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::usage
           end
 
           type view_mode = :periodic | :cumulative
@@ -124,7 +124,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::SubscriptionUsage::grouped_subscription_usage
+        def to_hash: -> Orb::Models::SubscriptionUsage::grouped_subscription_usage
 
         type data =
           {
@@ -155,7 +155,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::data
+          def to_hash: -> Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::data
 
           type billable_metric = { id: String, name: String }
 
@@ -171,7 +171,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::billable_metric
+            def to_hash: -> Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::billable_metric
           end
 
           type metric_group = { property_key: String, property_value: String }
@@ -188,7 +188,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::metric_group
+            def to_hash: -> Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::metric_group
           end
 
           type usage =
@@ -212,7 +212,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::usage
+            def to_hash: -> Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::usage
           end
 
           type view_mode = :periodic | :cumulative

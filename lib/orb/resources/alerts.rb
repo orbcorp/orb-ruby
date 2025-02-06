@@ -9,7 +9,7 @@ module Orb
       #
       # @param params [Orb::Models::AlertRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Alert]
       #
@@ -30,7 +30,7 @@ module Orb
       #
       #   @option params [Array<Orb::Models::AlertUpdateParams::Threshold>] :thresholds The thresholds that define the values at which the alert will be triggered.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Alert]
       #
@@ -78,7 +78,7 @@ module Orb
       #
       #   @option params [String, nil] :subscription_id Fetch alerts scoped to this subscription_id
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Page<Orb::Models::Alert>]
       #
@@ -113,7 +113,7 @@ module Orb
       #
       #   @option params [Array<Orb::Models::AlertCreateForCustomerParams::Threshold>, nil] :thresholds The thresholds that define the values at which the alert will be triggered.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Alert]
       #
@@ -147,7 +147,7 @@ module Orb
       #
       #   @option params [Array<Orb::Models::AlertCreateForExternalCustomerParams::Threshold>, nil] :thresholds The thresholds that define the values at which the alert will be triggered.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Alert]
       #
@@ -184,7 +184,7 @@ module Orb
       #
       #   @option params [String, nil] :metric_id The metric to track usage for.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Alert]
       #
@@ -209,7 +209,7 @@ module Orb
       #
       #   @option params [String, nil] :subscription_id Used to update the status of a plan alert scoped to this subscription_id
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Alert]
       #
@@ -234,7 +234,7 @@ module Orb
       #
       #   @option params [String, nil] :subscription_id Used to update the status of a plan alert scoped to this subscription_id
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Alert]
       #

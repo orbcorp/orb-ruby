@@ -6,17 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            events: T::Array[Orb::Models::EventIngestParams::Event],
-            backfill_id: T.nilable(String),
-            debug: T::Boolean
-          },
-          Orb::RequestParameters::Shape
-        )
-      end
-
       sig { returns(T::Array[Orb::Models::EventIngestParams::Event]) }
       attr_accessor :events
 
@@ -34,26 +23,24 @@ module Orb
           events: T::Array[Orb::Models::EventIngestParams::Event],
           backfill_id: T.nilable(String),
           debug: T::Boolean,
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(events:, backfill_id: nil, debug: nil, request_options: {}); end
 
-      sig { returns(Orb::Models::EventIngestParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            events: T::Array[Orb::Models::EventIngestParams::Event],
+            backfill_id: T.nilable(String),
+            debug: T::Boolean,
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class Event < Orb::BaseModel
-        Shape = T.type_alias do
-          {
-            event_name: String,
-            idempotency_key: String,
-            properties: T.anything,
-            timestamp: Time,
-            customer_id: T.nilable(String),
-            external_customer_id: T.nilable(String)
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :event_name
 
@@ -92,8 +79,19 @@ module Orb
         )
         end
 
-        sig { returns(Orb::Models::EventIngestParams::Event::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              event_name: String,
+              idempotency_key: String,
+              properties: T.anything,
+              timestamp: Time,
+              customer_id: T.nilable(String),
+              external_customer_id: T.nilable(String)
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end

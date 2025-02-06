@@ -180,7 +180,7 @@ module Orb
       #     `"America/Los_Angeles"`. This defaults to your account's timezone if not set.
       #     This cannot be changed after customer creation.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Customer]
       #
@@ -355,7 +355,7 @@ module Orb
       #     | Venezuela            | `ve_rif`     | Venezuelan RIF Number                                                                                   |
       #     | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Customer]
       #
@@ -392,7 +392,7 @@ module Orb
       #
       #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Page<Orb::Models::Customer>]
       #
@@ -428,7 +428,7 @@ module Orb
       #
       # @param params [Orb::Models::CustomerDeleteParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
       #
@@ -452,7 +452,7 @@ module Orb
       #
       # @param params [Orb::Models::CustomerFetchParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Customer]
       #
@@ -475,7 +475,7 @@ module Orb
       #
       # @param params [Orb::Models::CustomerFetchByExternalIDParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Customer]
       #
@@ -499,7 +499,7 @@ module Orb
       #
       # @param params [Orb::Models::CustomerSyncPaymentMethodsFromGatewayParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
       #
@@ -526,7 +526,7 @@ module Orb
       #
       # @param params [Orb::Models::CustomerSyncPaymentMethodsFromGatewayByExternalCustomerIDParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
       #
@@ -698,7 +698,7 @@ module Orb
       #     | Venezuela            | `ve_rif`     | Venezuelan RIF Number                                                                                   |
       #     | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Customer]
       #

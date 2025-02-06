@@ -110,7 +110,7 @@ module Orb
         ) -> void
         | (?Orb::Models::subscription | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::subscription
+      def to_hash: -> Orb::Models::subscription
 
       type adjustment_interval =
         {
@@ -145,7 +145,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Subscription::adjustment_interval
+        def to_hash: -> Orb::Models::Subscription::adjustment_interval
 
         type adjustment =
           Orb::Models::Subscription::AdjustmentInterval::Adjustment::AmountDiscountAdjustment
@@ -196,7 +196,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::amount_discount_adjustment
+            def to_hash: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::amount_discount_adjustment
           end
 
           type percentage_discount_adjustment =
@@ -240,7 +240,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::percentage_discount_adjustment
+            def to_hash: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::percentage_discount_adjustment
           end
 
           type usage_discount_adjustment =
@@ -284,7 +284,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::usage_discount_adjustment
+            def to_hash: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::usage_discount_adjustment
           end
 
           type minimum_adjustment =
@@ -332,7 +332,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::minimum_adjustment
+            def to_hash: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::minimum_adjustment
           end
 
           type maximum_adjustment =
@@ -376,7 +376,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::maximum_adjustment
+            def to_hash: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::maximum_adjustment
           end
 
           private def self.variants: -> [[:amount_discount, Orb::Models::Subscription::AdjustmentInterval::Adjustment::AmountDiscountAdjustment], [:percentage_discount, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PercentageDiscountAdjustment], [:usage_discount, Orb::Models::Subscription::AdjustmentInterval::Adjustment::UsageDiscountAdjustment], [:minimum, Orb::Models::Subscription::AdjustmentInterval::Adjustment::MinimumAdjustment], [:maximum, Orb::Models::Subscription::AdjustmentInterval::Adjustment::MaximumAdjustment]]
@@ -400,7 +400,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Subscription::billing_cycle_anchor_configuration
+        def to_hash: -> Orb::Models::Subscription::billing_cycle_anchor_configuration
       end
 
       type discount_interval =
@@ -446,7 +446,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Subscription::DiscountInterval::amount_discount_interval
+          def to_hash: -> Orb::Models::Subscription::DiscountInterval::amount_discount_interval
         end
 
         type percentage_discount_interval =
@@ -486,7 +486,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Subscription::DiscountInterval::percentage_discount_interval
+          def to_hash: -> Orb::Models::Subscription::DiscountInterval::percentage_discount_interval
         end
 
         type usage_discount_interval =
@@ -526,7 +526,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Subscription::DiscountInterval::usage_discount_interval
+          def to_hash: -> Orb::Models::Subscription::DiscountInterval::usage_discount_interval
         end
 
         private def self.variants: -> [[:amount, Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval], [:percentage, Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval], [:usage, Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval]]
@@ -556,7 +556,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Subscription::fixed_fee_quantity_schedule
+        def to_hash: -> Orb::Models::Subscription::fixed_fee_quantity_schedule
       end
 
       type maximum_interval =
@@ -591,7 +591,7 @@ module Orb
             ?Orb::Models::Subscription::maximum_interval | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Subscription::maximum_interval
+        def to_hash: -> Orb::Models::Subscription::maximum_interval
       end
 
       type minimum_interval =
@@ -626,7 +626,7 @@ module Orb
             ?Orb::Models::Subscription::minimum_interval | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Subscription::minimum_interval
+        def to_hash: -> Orb::Models::Subscription::minimum_interval
       end
 
       type price_interval =
@@ -673,7 +673,7 @@ module Orb
             ?Orb::Models::Subscription::price_interval | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Subscription::price_interval
+        def to_hash: -> Orb::Models::Subscription::price_interval
 
         type fixed_fee_quantity_transition =
           { effective_date: Time, price_id: String, quantity: Integer }
@@ -692,7 +692,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Subscription::PriceInterval::fixed_fee_quantity_transition
+          def to_hash: -> Orb::Models::Subscription::PriceInterval::fixed_fee_quantity_transition
         end
       end
 
@@ -712,7 +712,7 @@ module Orb
             ?Orb::Models::Subscription::redeemed_coupon | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Subscription::redeemed_coupon
+        def to_hash: -> Orb::Models::Subscription::redeemed_coupon
       end
 
       type status = :active | :ended | :upcoming
@@ -736,7 +736,7 @@ module Orb
             ?Orb::Models::Subscription::trial_info | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Subscription::trial_info
+        def to_hash: -> Orb::Models::Subscription::trial_info
       end
     end
   end

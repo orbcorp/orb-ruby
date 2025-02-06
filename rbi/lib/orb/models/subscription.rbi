@@ -3,36 +3,6 @@
 module Orb
   module Models
     class Subscription < Orb::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          active_plan_phase_order: T.nilable(Integer),
-          adjustment_intervals: T::Array[Orb::Models::Subscription::AdjustmentInterval],
-          auto_collection: T.nilable(T::Boolean),
-          billing_cycle_anchor_configuration: Orb::Models::Subscription::BillingCycleAnchorConfiguration,
-          billing_cycle_day: Integer,
-          created_at: Time,
-          current_billing_period_end_date: T.nilable(Time),
-          current_billing_period_start_date: T.nilable(Time),
-          customer: Orb::Models::Customer,
-          default_invoice_memo: T.nilable(String),
-          discount_intervals: T::Array[Orb::Models::Subscription::DiscountInterval::Variants],
-          end_date: T.nilable(Time),
-          fixed_fee_quantity_schedule: T::Array[Orb::Models::Subscription::FixedFeeQuantitySchedule],
-          invoicing_threshold: T.nilable(String),
-          maximum_intervals: T::Array[Orb::Models::Subscription::MaximumInterval],
-          metadata: T::Hash[Symbol, String],
-          minimum_intervals: T::Array[Orb::Models::Subscription::MinimumInterval],
-          net_terms: Integer,
-          plan: Orb::Models::Plan,
-          price_intervals: T::Array[Orb::Models::Subscription::PriceInterval],
-          redeemed_coupon: T.nilable(Orb::Models::Subscription::RedeemedCoupon),
-          start_date: Time,
-          status: Symbol,
-          trial_info: Orb::Models::Subscription::TrialInfo
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -66,7 +36,15 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :default_invoice_memo
 
-      sig { returns(T::Array[Orb::Models::Subscription::DiscountInterval::Variants]) }
+      sig do
+        returns(
+          T::Array[T.any(
+            Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval,
+            Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval,
+            Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval
+          )]
+        )
+      end
       attr_accessor :discount_intervals
 
       sig { returns(T.nilable(Time)) }
@@ -121,7 +99,9 @@ module Orb
           current_billing_period_start_date: T.nilable(Time),
           customer: Orb::Models::Customer,
           default_invoice_memo: T.nilable(String),
-          discount_intervals: T::Array[Orb::Models::Subscription::DiscountInterval::Variants],
+          discount_intervals: T::Array[T.any(
+            Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval, Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval, Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval
+          )],
           end_date: T.nilable(Time),
           fixed_fee_quantity_schedule: T::Array[Orb::Models::Subscription::FixedFeeQuantitySchedule],
           invoicing_threshold: T.nilable(String),
@@ -165,24 +145,58 @@ module Orb
         trial_info:
       ); end
 
-      sig { returns(Orb::Models::Subscription::Shape) }
-      def to_h; end
-
-      class AdjustmentInterval < Orb::BaseModel
-        Shape = T.type_alias do
+      sig do
+        override.returns(
           {
             id: String,
-            adjustment: Orb::Models::Subscription::AdjustmentInterval::Adjustment::Variants,
-            applies_to_price_interval_ids: T::Array[String],
+            active_plan_phase_order: T.nilable(Integer),
+            adjustment_intervals: T::Array[Orb::Models::Subscription::AdjustmentInterval],
+            auto_collection: T.nilable(T::Boolean),
+            billing_cycle_anchor_configuration: Orb::Models::Subscription::BillingCycleAnchorConfiguration,
+            billing_cycle_day: Integer,
+            created_at: Time,
+            current_billing_period_end_date: T.nilable(Time),
+            current_billing_period_start_date: T.nilable(Time),
+            customer: Orb::Models::Customer,
+            default_invoice_memo: T.nilable(String),
+            discount_intervals: T::Array[T.any(
+              Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval,
+              Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval,
+              Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval
+            )],
             end_date: T.nilable(Time),
-            start_date: Time
+            fixed_fee_quantity_schedule: T::Array[Orb::Models::Subscription::FixedFeeQuantitySchedule],
+            invoicing_threshold: T.nilable(String),
+            maximum_intervals: T::Array[Orb::Models::Subscription::MaximumInterval],
+            metadata: T::Hash[Symbol, String],
+            minimum_intervals: T::Array[Orb::Models::Subscription::MinimumInterval],
+            net_terms: Integer,
+            plan: Orb::Models::Plan,
+            price_intervals: T::Array[Orb::Models::Subscription::PriceInterval],
+            redeemed_coupon: T.nilable(Orb::Models::Subscription::RedeemedCoupon),
+            start_date: Time,
+            status: Symbol,
+            trial_info: Orb::Models::Subscription::TrialInfo
           }
-        end
+        )
+      end
+      def to_hash; end
 
+      class AdjustmentInterval < Orb::BaseModel
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(Orb::Models::Subscription::AdjustmentInterval::Adjustment::Variants) }
+        sig do
+          returns(
+            T.any(
+              Orb::Models::Subscription::AdjustmentInterval::Adjustment::AmountDiscountAdjustment,
+              Orb::Models::Subscription::AdjustmentInterval::Adjustment::PercentageDiscountAdjustment,
+              Orb::Models::Subscription::AdjustmentInterval::Adjustment::UsageDiscountAdjustment,
+              Orb::Models::Subscription::AdjustmentInterval::Adjustment::MinimumAdjustment,
+              Orb::Models::Subscription::AdjustmentInterval::Adjustment::MaximumAdjustment
+            )
+          )
+        end
         attr_accessor :adjustment
 
         sig { returns(T::Array[String]) }
@@ -197,7 +211,9 @@ module Orb
         sig do
           params(
             id: String,
-            adjustment: Orb::Models::Subscription::AdjustmentInterval::Adjustment::Variants,
+            adjustment: T.any(
+              Orb::Models::Subscription::AdjustmentInterval::Adjustment::AmountDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PercentageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::UsageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::MinimumAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::MaximumAdjustment
+            ),
             applies_to_price_interval_ids: T::Array[String],
             end_date: T.nilable(Time),
             start_date: Time
@@ -205,35 +221,25 @@ module Orb
         end
         def initialize(id:, adjustment:, applies_to_price_interval_ids:, end_date:, start_date:); end
 
-        sig { returns(Orb::Models::Subscription::AdjustmentInterval::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              id: String,
+              adjustment: T.any(
+                Orb::Models::Subscription::AdjustmentInterval::Adjustment::AmountDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PercentageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::UsageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::MinimumAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::MaximumAdjustment
+              ),
+              applies_to_price_interval_ids: T::Array[String],
+              end_date: T.nilable(Time),
+              start_date: Time
+            }
+          )
+        end
+        def to_hash; end
 
         class Adjustment < Orb::Union
           abstract!
 
-          Variants = T.type_alias do
-            T.any(
-              Orb::Models::Subscription::AdjustmentInterval::Adjustment::AmountDiscountAdjustment,
-              Orb::Models::Subscription::AdjustmentInterval::Adjustment::PercentageDiscountAdjustment,
-              Orb::Models::Subscription::AdjustmentInterval::Adjustment::UsageDiscountAdjustment,
-              Orb::Models::Subscription::AdjustmentInterval::Adjustment::MinimumAdjustment,
-              Orb::Models::Subscription::AdjustmentInterval::Adjustment::MaximumAdjustment
-            )
-          end
-
           class AmountDiscountAdjustment < Orb::BaseModel
-            Shape = T.type_alias do
-              {
-                id: String,
-                adjustment_type: Symbol,
-                amount_discount: String,
-                applies_to_price_ids: T::Array[String],
-                is_invoice_level: T::Boolean,
-                plan_phase_order: T.nilable(Integer),
-                reason: T.nilable(String)
-              }
-            end
-
             sig { returns(String) }
             attr_accessor :id
 
@@ -277,24 +283,22 @@ module Orb
             ); end
 
             sig do
-              returns(Orb::Models::Subscription::AdjustmentInterval::Adjustment::AmountDiscountAdjustment::Shape)
+              override.returns(
+                {
+                  id: String,
+                  adjustment_type: Symbol,
+                  amount_discount: String,
+                  applies_to_price_ids: T::Array[String],
+                  is_invoice_level: T::Boolean,
+                  plan_phase_order: T.nilable(Integer),
+                  reason: T.nilable(String)
+                }
+              )
             end
-            def to_h; end
+            def to_hash; end
           end
 
           class PercentageDiscountAdjustment < Orb::BaseModel
-            Shape = T.type_alias do
-              {
-                id: String,
-                adjustment_type: Symbol,
-                applies_to_price_ids: T::Array[String],
-                is_invoice_level: T::Boolean,
-                percentage_discount: Float,
-                plan_phase_order: T.nilable(Integer),
-                reason: T.nilable(String)
-              }
-            end
-
             sig { returns(String) }
             attr_accessor :id
 
@@ -338,24 +342,22 @@ module Orb
             ); end
 
             sig do
-              returns(Orb::Models::Subscription::AdjustmentInterval::Adjustment::PercentageDiscountAdjustment::Shape)
+              override.returns(
+                {
+                  id: String,
+                  adjustment_type: Symbol,
+                  applies_to_price_ids: T::Array[String],
+                  is_invoice_level: T::Boolean,
+                  percentage_discount: Float,
+                  plan_phase_order: T.nilable(Integer),
+                  reason: T.nilable(String)
+                }
+              )
             end
-            def to_h; end
+            def to_hash; end
           end
 
           class UsageDiscountAdjustment < Orb::BaseModel
-            Shape = T.type_alias do
-              {
-                id: String,
-                adjustment_type: Symbol,
-                applies_to_price_ids: T::Array[String],
-                is_invoice_level: T::Boolean,
-                plan_phase_order: T.nilable(Integer),
-                reason: T.nilable(String),
-                usage_discount: Float
-              }
-            end
-
             sig { returns(String) }
             attr_accessor :id
 
@@ -399,25 +401,22 @@ module Orb
             ); end
 
             sig do
-              returns(Orb::Models::Subscription::AdjustmentInterval::Adjustment::UsageDiscountAdjustment::Shape)
+              override.returns(
+                {
+                  id: String,
+                  adjustment_type: Symbol,
+                  applies_to_price_ids: T::Array[String],
+                  is_invoice_level: T::Boolean,
+                  plan_phase_order: T.nilable(Integer),
+                  reason: T.nilable(String),
+                  usage_discount: Float
+                }
+              )
             end
-            def to_h; end
+            def to_hash; end
           end
 
           class MinimumAdjustment < Orb::BaseModel
-            Shape = T.type_alias do
-              {
-                id: String,
-                adjustment_type: Symbol,
-                applies_to_price_ids: T::Array[String],
-                is_invoice_level: T::Boolean,
-                item_id: String,
-                minimum_amount: String,
-                plan_phase_order: T.nilable(Integer),
-                reason: T.nilable(String)
-              }
-            end
-
             sig { returns(String) }
             attr_accessor :id
 
@@ -466,24 +465,23 @@ module Orb
             ); end
 
             sig do
-              returns(Orb::Models::Subscription::AdjustmentInterval::Adjustment::MinimumAdjustment::Shape)
+              override.returns(
+                {
+                  id: String,
+                  adjustment_type: Symbol,
+                  applies_to_price_ids: T::Array[String],
+                  is_invoice_level: T::Boolean,
+                  item_id: String,
+                  minimum_amount: String,
+                  plan_phase_order: T.nilable(Integer),
+                  reason: T.nilable(String)
+                }
+              )
             end
-            def to_h; end
+            def to_hash; end
           end
 
           class MaximumAdjustment < Orb::BaseModel
-            Shape = T.type_alias do
-              {
-                id: String,
-                adjustment_type: Symbol,
-                applies_to_price_ids: T::Array[String],
-                is_invoice_level: T::Boolean,
-                maximum_amount: String,
-                plan_phase_order: T.nilable(Integer),
-                reason: T.nilable(String)
-              }
-            end
-
             sig { returns(String) }
             attr_accessor :id
 
@@ -527,9 +525,19 @@ module Orb
             ); end
 
             sig do
-              returns(Orb::Models::Subscription::AdjustmentInterval::Adjustment::MaximumAdjustment::Shape)
+              override.returns(
+                {
+                  id: String,
+                  adjustment_type: Symbol,
+                  applies_to_price_ids: T::Array[String],
+                  is_invoice_level: T::Boolean,
+                  maximum_amount: String,
+                  plan_phase_order: T.nilable(Integer),
+                  reason: T.nilable(String)
+                }
+              )
             end
-            def to_h; end
+            def to_hash; end
           end
 
           sig do
@@ -554,8 +562,6 @@ module Orb
       end
 
       class BillingCycleAnchorConfiguration < Orb::BaseModel
-        Shape = T.type_alias { {day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)} }
-
         sig { returns(Integer) }
         attr_accessor :day
 
@@ -568,33 +574,14 @@ module Orb
         sig { params(day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)).void }
         def initialize(day:, month: nil, year: nil); end
 
-        sig { returns(Orb::Models::Subscription::BillingCycleAnchorConfiguration::Shape) }
-        def to_h; end
+        sig { override.returns({day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)}) }
+        def to_hash; end
       end
 
       class DiscountInterval < Orb::Union
         abstract!
 
-        Variants = T.type_alias do
-          T.any(
-            Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval,
-            Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval,
-            Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval
-          )
-        end
-
         class AmountDiscountInterval < Orb::BaseModel
-          Shape = T.type_alias do
-            {
-              amount_discount: String,
-              applies_to_price_ids: T::Array[String],
-              applies_to_price_interval_ids: T::Array[String],
-              discount_type: Symbol,
-              end_date: T.nilable(Time),
-              start_date: Time
-            }
-          end
-
           sig { returns(String) }
           attr_accessor :amount_discount
 
@@ -632,22 +619,22 @@ module Orb
             discount_type: :amount
           ); end
 
-          sig { returns(Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                amount_discount: String,
+                applies_to_price_ids: T::Array[String],
+                applies_to_price_interval_ids: T::Array[String],
+                discount_type: Symbol,
+                end_date: T.nilable(Time),
+                start_date: Time
+              }
+            )
+          end
+          def to_hash; end
         end
 
         class PercentageDiscountInterval < Orb::BaseModel
-          Shape = T.type_alias do
-            {
-              applies_to_price_ids: T::Array[String],
-              applies_to_price_interval_ids: T::Array[String],
-              discount_type: Symbol,
-              end_date: T.nilable(Time),
-              percentage_discount: Float,
-              start_date: Time
-            }
-          end
-
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -685,22 +672,22 @@ module Orb
             discount_type: :percentage
           ); end
 
-          sig { returns(Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                applies_to_price_ids: T::Array[String],
+                applies_to_price_interval_ids: T::Array[String],
+                discount_type: Symbol,
+                end_date: T.nilable(Time),
+                percentage_discount: Float,
+                start_date: Time
+              }
+            )
+          end
+          def to_hash; end
         end
 
         class UsageDiscountInterval < Orb::BaseModel
-          Shape = T.type_alias do
-            {
-              applies_to_price_ids: T::Array[String],
-              applies_to_price_interval_ids: T::Array[String],
-              discount_type: Symbol,
-              end_date: T.nilable(Time),
-              start_date: Time,
-              usage_discount: Float
-            }
-          end
-
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -738,8 +725,19 @@ module Orb
             discount_type: :usage
           ); end
 
-          sig { returns(Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                applies_to_price_ids: T::Array[String],
+                applies_to_price_interval_ids: T::Array[String],
+                discount_type: Symbol,
+                end_date: T.nilable(Time),
+                start_date: Time,
+                usage_discount: Float
+              }
+            )
+          end
+          def to_hash; end
         end
 
         sig do
@@ -755,10 +753,6 @@ module Orb
       end
 
       class FixedFeeQuantitySchedule < Orb::BaseModel
-        Shape = T.type_alias do
-          {end_date: T.nilable(Time), price_id: String, quantity: Float, start_date: Time}
-        end
-
         sig { returns(T.nilable(Time)) }
         attr_accessor :end_date
 
@@ -774,21 +768,13 @@ module Orb
         sig { params(end_date: T.nilable(Time), price_id: String, quantity: Float, start_date: Time).void }
         def initialize(end_date:, price_id:, quantity:, start_date:); end
 
-        sig { returns(Orb::Models::Subscription::FixedFeeQuantitySchedule::Shape) }
-        def to_h; end
+        sig do
+          override.returns({end_date: T.nilable(Time), price_id: String, quantity: Float, start_date: Time})
+        end
+        def to_hash; end
       end
 
       class MaximumInterval < Orb::BaseModel
-        Shape = T.type_alias do
-          {
-            applies_to_price_ids: T::Array[String],
-            applies_to_price_interval_ids: T::Array[String],
-            end_date: T.nilable(Time),
-            maximum_amount: String,
-            start_date: Time
-          }
-        end
-
         sig { returns(T::Array[String]) }
         attr_accessor :applies_to_price_ids
 
@@ -822,21 +808,21 @@ module Orb
         )
         end
 
-        sig { returns(Orb::Models::Subscription::MaximumInterval::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              applies_to_price_ids: T::Array[String],
+              applies_to_price_interval_ids: T::Array[String],
+              end_date: T.nilable(Time),
+              maximum_amount: String,
+              start_date: Time
+            }
+          )
+        end
+        def to_hash; end
       end
 
       class MinimumInterval < Orb::BaseModel
-        Shape = T.type_alias do
-          {
-            applies_to_price_ids: T::Array[String],
-            applies_to_price_interval_ids: T::Array[String],
-            end_date: T.nilable(Time),
-            minimum_amount: String,
-            start_date: Time
-          }
-        end
-
         sig { returns(T::Array[String]) }
         attr_accessor :applies_to_price_ids
 
@@ -870,24 +856,21 @@ module Orb
         )
         end
 
-        sig { returns(Orb::Models::Subscription::MinimumInterval::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              applies_to_price_ids: T::Array[String],
+              applies_to_price_interval_ids: T::Array[String],
+              end_date: T.nilable(Time),
+              minimum_amount: String,
+              start_date: Time
+            }
+          )
+        end
+        def to_hash; end
       end
 
       class PriceInterval < Orb::BaseModel
-        Shape = T.type_alias do
-          {
-            id: String,
-            billing_cycle_day: Integer,
-            current_billing_period_end_date: T.nilable(Time),
-            current_billing_period_start_date: T.nilable(Time),
-            end_date: T.nilable(Time),
-            fixed_fee_quantity_transitions: T.nilable(T::Array[Orb::Models::Subscription::PriceInterval::FixedFeeQuantityTransition]),
-            price: Orb::Models::Price::Variants,
-            start_date: Time
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -908,7 +891,39 @@ module Orb
         end
         attr_accessor :fixed_fee_quantity_transitions
 
-        sig { returns(Orb::Models::Price::Variants) }
+        sig do
+          returns(
+            T.any(
+              Orb::Models::Price::UnitPrice,
+              Orb::Models::Price::PackagePrice,
+              Orb::Models::Price::MatrixPrice,
+              Orb::Models::Price::TieredPrice,
+              Orb::Models::Price::TieredBpsPrice,
+              Orb::Models::Price::BpsPrice,
+              Orb::Models::Price::BulkBpsPrice,
+              Orb::Models::Price::BulkPrice,
+              Orb::Models::Price::ThresholdTotalAmountPrice,
+              Orb::Models::Price::TieredPackagePrice,
+              Orb::Models::Price::GroupedTieredPrice,
+              Orb::Models::Price::TieredWithMinimumPrice,
+              Orb::Models::Price::TieredPackageWithMinimumPrice,
+              Orb::Models::Price::PackageWithAllocationPrice,
+              Orb::Models::Price::UnitWithPercentPrice,
+              Orb::Models::Price::MatrixWithAllocationPrice,
+              Orb::Models::Price::TieredWithProrationPrice,
+              Orb::Models::Price::UnitWithProrationPrice,
+              Orb::Models::Price::GroupedAllocationPrice,
+              Orb::Models::Price::GroupedWithProratedMinimumPrice,
+              Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+              Orb::Models::Price::MatrixWithDisplayNamePrice,
+              Orb::Models::Price::BulkWithProrationPrice,
+              Orb::Models::Price::GroupedTieredPackagePrice,
+              Orb::Models::Price::MaxGroupTieredPackagePrice,
+              Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+            )
+          )
+        end
         attr_accessor :price
 
         sig { returns(Time) }
@@ -922,7 +937,35 @@ module Orb
             current_billing_period_start_date: T.nilable(Time),
             end_date: T.nilable(Time),
             fixed_fee_quantity_transitions: T.nilable(T::Array[Orb::Models::Subscription::PriceInterval::FixedFeeQuantityTransition]),
-            price: Orb::Models::Price::Variants,
+            price: T.any(
+              Orb::Models::Price::UnitPrice,
+              Orb::Models::Price::PackagePrice,
+              Orb::Models::Price::MatrixPrice,
+              Orb::Models::Price::TieredPrice,
+              Orb::Models::Price::TieredBpsPrice,
+              Orb::Models::Price::BpsPrice,
+              Orb::Models::Price::BulkBpsPrice,
+              Orb::Models::Price::BulkPrice,
+              Orb::Models::Price::ThresholdTotalAmountPrice,
+              Orb::Models::Price::TieredPackagePrice,
+              Orb::Models::Price::GroupedTieredPrice,
+              Orb::Models::Price::TieredWithMinimumPrice,
+              Orb::Models::Price::TieredPackageWithMinimumPrice,
+              Orb::Models::Price::PackageWithAllocationPrice,
+              Orb::Models::Price::UnitWithPercentPrice,
+              Orb::Models::Price::MatrixWithAllocationPrice,
+              Orb::Models::Price::TieredWithProrationPrice,
+              Orb::Models::Price::UnitWithProrationPrice,
+              Orb::Models::Price::GroupedAllocationPrice,
+              Orb::Models::Price::GroupedWithProratedMinimumPrice,
+              Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+              Orb::Models::Price::MatrixWithDisplayNamePrice,
+              Orb::Models::Price::BulkWithProrationPrice,
+              Orb::Models::Price::GroupedTieredPackagePrice,
+              Orb::Models::Price::MaxGroupTieredPackagePrice,
+              Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+            ),
             start_date: Time
           ).void
         end
@@ -937,12 +980,51 @@ module Orb
           start_date:
         ); end
 
-        sig { returns(Orb::Models::Subscription::PriceInterval::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              id: String,
+              billing_cycle_day: Integer,
+              current_billing_period_end_date: T.nilable(Time),
+              current_billing_period_start_date: T.nilable(Time),
+              end_date: T.nilable(Time),
+              fixed_fee_quantity_transitions: T.nilable(T::Array[Orb::Models::Subscription::PriceInterval::FixedFeeQuantityTransition]),
+              price: T.any(
+                Orb::Models::Price::UnitPrice,
+                Orb::Models::Price::PackagePrice,
+                Orb::Models::Price::MatrixPrice,
+                Orb::Models::Price::TieredPrice,
+                Orb::Models::Price::TieredBpsPrice,
+                Orb::Models::Price::BpsPrice,
+                Orb::Models::Price::BulkBpsPrice,
+                Orb::Models::Price::BulkPrice,
+                Orb::Models::Price::ThresholdTotalAmountPrice,
+                Orb::Models::Price::TieredPackagePrice,
+                Orb::Models::Price::GroupedTieredPrice,
+                Orb::Models::Price::TieredWithMinimumPrice,
+                Orb::Models::Price::TieredPackageWithMinimumPrice,
+                Orb::Models::Price::PackageWithAllocationPrice,
+                Orb::Models::Price::UnitWithPercentPrice,
+                Orb::Models::Price::MatrixWithAllocationPrice,
+                Orb::Models::Price::TieredWithProrationPrice,
+                Orb::Models::Price::UnitWithProrationPrice,
+                Orb::Models::Price::GroupedAllocationPrice,
+                Orb::Models::Price::GroupedWithProratedMinimumPrice,
+                Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+                Orb::Models::Price::MatrixWithDisplayNamePrice,
+                Orb::Models::Price::BulkWithProrationPrice,
+                Orb::Models::Price::GroupedTieredPackagePrice,
+                Orb::Models::Price::MaxGroupTieredPackagePrice,
+                Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+                Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+              ),
+              start_date: Time
+            }
+          )
+        end
+        def to_hash; end
 
         class FixedFeeQuantityTransition < Orb::BaseModel
-          Shape = T.type_alias { {effective_date: Time, price_id: String, quantity: Integer} }
-
           sig { returns(Time) }
           attr_accessor :effective_date
 
@@ -955,14 +1037,12 @@ module Orb
           sig { params(effective_date: Time, price_id: String, quantity: Integer).void }
           def initialize(effective_date:, price_id:, quantity:); end
 
-          sig { returns(Orb::Models::Subscription::PriceInterval::FixedFeeQuantityTransition::Shape) }
-          def to_h; end
+          sig { override.returns({effective_date: Time, price_id: String, quantity: Integer}) }
+          def to_hash; end
         end
       end
 
       class RedeemedCoupon < Orb::BaseModel
-        Shape = T.type_alias { {coupon_id: String, end_date: T.nilable(Time), start_date: Time} }
-
         sig { returns(String) }
         attr_accessor :coupon_id
 
@@ -975,8 +1055,8 @@ module Orb
         sig { params(coupon_id: String, end_date: T.nilable(Time), start_date: Time).void }
         def initialize(coupon_id:, end_date:, start_date:); end
 
-        sig { returns(Orb::Models::Subscription::RedeemedCoupon::Shape) }
-        def to_h; end
+        sig { override.returns({coupon_id: String, end_date: T.nilable(Time), start_date: Time}) }
+        def to_hash; end
       end
 
       class Status < Orb::Enum
@@ -991,16 +1071,14 @@ module Orb
       end
 
       class TrialInfo < Orb::BaseModel
-        Shape = T.type_alias { {end_date: T.nilable(Time)} }
-
         sig { returns(T.nilable(Time)) }
         attr_accessor :end_date
 
         sig { params(end_date: T.nilable(Time)).void }
         def initialize(end_date:); end
 
-        sig { returns(Orb::Models::Subscription::TrialInfo::Shape) }
-        def to_h; end
+        sig { override.returns({end_date: T.nilable(Time)}) }
+        def to_hash; end
       end
     end
   end

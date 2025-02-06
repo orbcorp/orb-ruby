@@ -11,7 +11,7 @@ module Orb
             timeframe_end: T.nilable(Time),
             timeframe_start: T.nilable(Time),
             view_mode: T.nilable(Symbol),
-            request_options: Orb::RequestOpts
+            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Orb::Models::Customers::CostListResponse)
         end
         def list(
@@ -31,7 +31,7 @@ module Orb
             timeframe_end: T.nilable(Time),
             timeframe_start: T.nilable(Time),
             view_mode: T.nilable(Symbol),
-            request_options: Orb::RequestOpts
+            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Orb::Models::Customers::CostListByExternalIDResponse)
         end
         def list_by_external_id(

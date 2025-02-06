@@ -43,7 +43,7 @@ module Orb
           ?Orb::Models::subscription_fetch_schedule_params | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::subscription_fetch_schedule_params
+      def to_hash: -> Orb::Models::subscription_fetch_schedule_params
     end
   end
 end

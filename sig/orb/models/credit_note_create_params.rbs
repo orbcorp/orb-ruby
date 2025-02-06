@@ -29,7 +29,7 @@ module Orb
           ?Orb::Models::credit_note_create_params | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::credit_note_create_params
+      def to_hash: -> Orb::Models::credit_note_create_params
 
       type line_item = { amount: String, invoice_line_item_id: String }
 
@@ -45,7 +45,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::CreditNoteCreateParams::line_item
+        def to_hash: -> Orb::Models::CreditNoteCreateParams::line_item
       end
 
       type reason =

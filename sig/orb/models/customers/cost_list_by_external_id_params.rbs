@@ -35,7 +35,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Customers::cost_list_by_external_id_params
+        def to_hash: -> Orb::Models::Customers::cost_list_by_external_id_params
 
         type view_mode = :periodic | :cumulative
 

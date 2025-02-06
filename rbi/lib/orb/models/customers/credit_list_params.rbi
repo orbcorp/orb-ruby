@@ -7,18 +7,6 @@ module Orb
         extend Orb::RequestParameters::Converter
         include Orb::RequestParameters
 
-        Shape = T.type_alias do
-          T.all(
-            {
-              currency: T.nilable(String),
-              cursor: T.nilable(String),
-              include_all_blocks: T::Boolean,
-              limit: Integer
-            },
-            Orb::RequestParameters::Shape
-          )
-        end
-
         sig { returns(T.nilable(String)) }
         attr_accessor :currency
 
@@ -43,14 +31,24 @@ module Orb
             cursor: T.nilable(String),
             include_all_blocks: T::Boolean,
             limit: Integer,
-            request_options: Orb::RequestOpts
+            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
         def initialize(currency: nil, cursor: nil, include_all_blocks: nil, limit: nil, request_options: {})
         end
 
-        sig { returns(Orb::Models::Customers::CreditListParams::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              currency: T.nilable(String),
+              cursor: T.nilable(String),
+              include_all_blocks: T::Boolean,
+              limit: Integer,
+              request_options: Orb::RequestOptions
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end
