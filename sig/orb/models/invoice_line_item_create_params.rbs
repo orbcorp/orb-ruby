@@ -1,0 +1,47 @@
+module Orb
+  module Models
+    type invoice_line_item_create_params =
+      {
+        amount: String,
+        end_date: Date,
+        invoice_id: String,
+        name: String,
+        quantity: Float,
+        start_date: Date
+      }
+      & Orb::request_parameters
+
+    class InvoiceLineItemCreateParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor amount: String
+
+      attr_accessor end_date: Date
+
+      attr_accessor invoice_id: String
+
+      attr_accessor name: String
+
+      attr_accessor quantity: Float
+
+      attr_accessor start_date: Date
+
+      def initialize:
+        (
+          amount: String,
+          end_date: Date,
+          invoice_id: String,
+          name: String,
+          quantity: Float,
+          start_date: Date,
+          request_options: Orb::request_opts
+        ) -> void
+        | (
+          ?Orb::Models::invoice_line_item_create_params | Orb::BaseModel data
+        ) -> void
+
+      def to_h: -> Orb::Models::invoice_line_item_create_params
+    end
+  end
+end

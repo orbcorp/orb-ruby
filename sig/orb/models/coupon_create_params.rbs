@@ -1,0 +1,81 @@
+module Orb
+  module Models
+    type coupon_create_params =
+      {
+        discount: Orb::Models::CouponCreateParams::discount,
+        redemption_code: String,
+        duration_in_months: Integer?,
+        max_redemptions: Integer?
+      }
+      & Orb::request_parameters
+
+    class CouponCreateParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor discount: Orb::Models::CouponCreateParams::discount
+
+      attr_accessor redemption_code: String
+
+      attr_accessor duration_in_months: Integer?
+
+      attr_accessor max_redemptions: Integer?
+
+      def initialize:
+        (
+          discount: Orb::Models::CouponCreateParams::discount,
+          redemption_code: String,
+          duration_in_months: Integer?,
+          max_redemptions: Integer?,
+          request_options: Orb::request_opts
+        ) -> void
+        | (?Orb::Models::coupon_create_params | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::coupon_create_params
+
+      type discount =
+        Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount
+        | Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
+
+      class Discount < Orb::Union
+        type new_coupon_percentage_discount =
+          { discount_type: :percentage, percentage_discount: Float }
+
+        class NewCouponPercentageDiscount < Orb::BaseModel
+          attr_accessor discount_type: :percentage
+
+          attr_accessor percentage_discount: Float
+
+          def initialize:
+            (percentage_discount: Float, discount_type: :percentage) -> void
+            | (
+              ?Orb::Models::CouponCreateParams::Discount::new_coupon_percentage_discount
+              | Orb::BaseModel data
+            ) -> void
+
+          def to_h: -> Orb::Models::CouponCreateParams::Discount::new_coupon_percentage_discount
+        end
+
+        type new_coupon_amount_discount =
+          { amount_discount: String, discount_type: :amount }
+
+        class NewCouponAmountDiscount < Orb::BaseModel
+          attr_accessor amount_discount: String
+
+          attr_accessor discount_type: :amount
+
+          def initialize:
+            (amount_discount: String, discount_type: :amount) -> void
+            | (
+              ?Orb::Models::CouponCreateParams::Discount::new_coupon_amount_discount
+              | Orb::BaseModel data
+            ) -> void
+
+          def to_h: -> Orb::Models::CouponCreateParams::Discount::new_coupon_amount_discount
+        end
+
+        private def self.variants: -> [[:percentage, Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount], [:amount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]]
+      end
+    end
+  end
+end

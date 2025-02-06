@@ -1,0 +1,74 @@
+module Orb
+  module Models
+    type event_ingest_params =
+      {
+        events: Array[Orb::Models::EventIngestParams::Event],
+        backfill_id: String?,
+        debug: bool
+      }
+      & Orb::request_parameters
+
+    class EventIngestParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor events: Array[Orb::Models::EventIngestParams::Event]
+
+      attr_accessor backfill_id: String?
+
+      attr_reader debug: bool?
+
+      def debug=: (bool) -> void
+
+      def initialize:
+        (
+          events: Array[Orb::Models::EventIngestParams::Event],
+          backfill_id: String?,
+          debug: bool,
+          request_options: Orb::request_opts
+        ) -> void
+        | (?Orb::Models::event_ingest_params | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::event_ingest_params
+
+      type event =
+        {
+          event_name: String,
+          idempotency_key: String,
+          properties: top,
+          timestamp: Time,
+          customer_id: String?,
+          external_customer_id: String?
+        }
+
+      class Event < Orb::BaseModel
+        attr_accessor event_name: String
+
+        attr_accessor idempotency_key: String
+
+        attr_accessor properties: top
+
+        attr_accessor timestamp: Time
+
+        attr_accessor customer_id: String?
+
+        attr_accessor external_customer_id: String?
+
+        def initialize:
+          (
+            event_name: String,
+            idempotency_key: String,
+            properties: top,
+            timestamp: Time,
+            customer_id: String?,
+            external_customer_id: String?
+          ) -> void
+          | (
+            ?Orb::Models::EventIngestParams::event | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::EventIngestParams::event
+      end
+    end
+  end
+end

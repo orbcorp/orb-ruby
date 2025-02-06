@@ -1,0 +1,22 @@
+module Orb
+  module Models
+    type subscription_unschedule_fixed_fee_quantity_updates_params =
+      { price_id: String } & Orb::request_parameters
+
+    class SubscriptionUnscheduleFixedFeeQuantityUpdatesParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor price_id: String
+
+      def initialize:
+        (price_id: String, request_options: Orb::request_opts) -> void
+        | (
+          ?Orb::Models::subscription_unschedule_fixed_fee_quantity_updates_params
+          | Orb::BaseModel data
+        ) -> void
+
+      def to_h: -> Orb::Models::subscription_unschedule_fixed_fee_quantity_updates_params
+    end
+  end
+end

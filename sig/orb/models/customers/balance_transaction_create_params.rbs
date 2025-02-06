@@ -1,0 +1,47 @@
+module Orb
+  module Models
+    module Customers
+      type balance_transaction_create_params =
+        {
+          amount: String,
+          type: Orb::Models::Customers::BalanceTransactionCreateParams::type_,
+          description: String?
+        }
+        & Orb::request_parameters
+
+      class BalanceTransactionCreateParams < Orb::BaseModel
+        extend Orb::RequestParameters::Converter
+        include Orb::RequestParameters
+
+        attr_accessor amount: String
+
+        attr_accessor type: Orb::Models::Customers::BalanceTransactionCreateParams::type_
+
+        attr_accessor description: String?
+
+        def initialize:
+          (
+            amount: String,
+            type: Orb::Models::Customers::BalanceTransactionCreateParams::type_,
+            description: String?,
+            request_options: Orb::request_opts
+          ) -> void
+          | (
+            ?Orb::Models::Customers::balance_transaction_create_params
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::Customers::balance_transaction_create_params
+
+        type type_ = :increment | :decrement
+
+        class Type < Orb::Enum
+          INCREMENT: :increment
+          DECREMENT: :decrement
+
+          def self.values: -> Array[Orb::Models::Customers::BalanceTransactionCreateParams::type_]
+        end
+      end
+    end
+  end
+end

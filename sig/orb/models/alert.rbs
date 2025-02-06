@@ -1,0 +1,152 @@
+module Orb
+  module Models
+    type alert =
+      {
+        id: String,
+        created_at: Time,
+        currency: String?,
+        customer: Orb::Models::Alert::Customer?,
+        enabled: bool,
+        metric: Orb::Models::Alert::Metric?,
+        plan: Orb::Models::Alert::Plan?,
+        subscription: Orb::Models::Alert::Subscription?,
+        thresholds: Array[Orb::Models::Alert::Threshold]?,
+        type: Orb::Models::Alert::type_
+      }
+
+    class Alert < Orb::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor currency: String?
+
+      attr_accessor customer: Orb::Models::Alert::Customer?
+
+      attr_accessor enabled: bool
+
+      attr_accessor metric: Orb::Models::Alert::Metric?
+
+      attr_accessor plan: Orb::Models::Alert::Plan?
+
+      attr_accessor subscription: Orb::Models::Alert::Subscription?
+
+      attr_accessor thresholds: Array[Orb::Models::Alert::Threshold]?
+
+      attr_accessor type: Orb::Models::Alert::type_
+
+      def initialize:
+        (
+          id: String,
+          created_at: Time,
+          currency: String?,
+          customer: Orb::Models::Alert::Customer?,
+          enabled: bool,
+          metric: Orb::Models::Alert::Metric?,
+          plan: Orb::Models::Alert::Plan?,
+          subscription: Orb::Models::Alert::Subscription?,
+          thresholds: Array[Orb::Models::Alert::Threshold]?,
+          type: Orb::Models::Alert::type_
+        ) -> void
+        | (?Orb::Models::alert | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::alert
+
+      type customer = { id: String, external_customer_id: String? }
+
+      class Customer < Orb::BaseModel
+        attr_accessor id: String
+
+        attr_accessor external_customer_id: String?
+
+        def initialize:
+          (id: String, external_customer_id: String?) -> void
+          | (?Orb::Models::Alert::customer | Orb::BaseModel data) -> void
+
+        def to_h: -> Orb::Models::Alert::customer
+      end
+
+      type metric = { id: String }
+
+      class Metric < Orb::BaseModel
+        attr_accessor id: String
+
+        def initialize:
+          (id: String) -> void
+          | (?Orb::Models::Alert::metric | Orb::BaseModel data) -> void
+
+        def to_h: -> Orb::Models::Alert::metric
+      end
+
+      type plan =
+        {
+          id: String?,
+          external_plan_id: String?,
+          name: String?,
+          plan_version: String
+        }
+
+      class Plan < Orb::BaseModel
+        attr_accessor id: String?
+
+        attr_accessor external_plan_id: String?
+
+        attr_accessor name: String?
+
+        attr_accessor plan_version: String
+
+        def initialize:
+          (
+            id: String?,
+            external_plan_id: String?,
+            name: String?,
+            plan_version: String
+          ) -> void
+          | (?Orb::Models::Alert::plan | Orb::BaseModel data) -> void
+
+        def to_h: -> Orb::Models::Alert::plan
+      end
+
+      type subscription = { id: String }
+
+      class Subscription < Orb::BaseModel
+        attr_accessor id: String
+
+        def initialize:
+          (id: String) -> void
+          | (?Orb::Models::Alert::subscription | Orb::BaseModel data) -> void
+
+        def to_h: -> Orb::Models::Alert::subscription
+      end
+
+      type threshold = { value: Float }
+
+      class Threshold < Orb::BaseModel
+        attr_accessor value: Float
+
+        def initialize:
+          (value: Float) -> void
+          | (?Orb::Models::Alert::threshold | Orb::BaseModel data) -> void
+
+        def to_h: -> Orb::Models::Alert::threshold
+      end
+
+      type type_ =
+        :usage_exceeded
+        | :cost_exceeded
+        | :credit_balance_depleted
+        | :credit_balance_dropped
+        | :credit_balance_recovered
+
+      class Type < Orb::Enum
+        USAGE_EXCEEDED: :usage_exceeded
+        COST_EXCEEDED: :cost_exceeded
+        CREDIT_BALANCE_DEPLETED: :credit_balance_depleted
+        CREDIT_BALANCE_DROPPED: :credit_balance_dropped
+        CREDIT_BALANCE_RECOVERED: :credit_balance_recovered
+
+        def self.values: -> Array[Orb::Models::Alert::type_]
+      end
+    end
+  end
+end

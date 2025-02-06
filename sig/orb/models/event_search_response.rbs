@@ -1,0 +1,59 @@
+module Orb
+  module Models
+    type event_search_response =
+      { data: Array[Orb::Models::EventSearchResponse::Data] }
+
+    class EventSearchResponse < Orb::BaseModel
+      attr_accessor data: Array[Orb::Models::EventSearchResponse::Data]
+
+      def initialize:
+        (data: Array[Orb::Models::EventSearchResponse::Data]) -> void
+        | (?Orb::Models::event_search_response | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::event_search_response
+
+      type data =
+        {
+          id: String,
+          customer_id: String?,
+          deprecated: bool,
+          event_name: String,
+          external_customer_id: String?,
+          properties: top,
+          timestamp: Time
+        }
+
+      class Data < Orb::BaseModel
+        attr_accessor id: String
+
+        attr_accessor customer_id: String?
+
+        attr_accessor deprecated: bool
+
+        attr_accessor event_name: String
+
+        attr_accessor external_customer_id: String?
+
+        attr_accessor properties: top
+
+        attr_accessor timestamp: Time
+
+        def initialize:
+          (
+            id: String,
+            customer_id: String?,
+            deprecated: bool,
+            event_name: String,
+            external_customer_id: String?,
+            properties: top,
+            timestamp: Time
+          ) -> void
+          | (
+            ?Orb::Models::EventSearchResponse::data | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::EventSearchResponse::data
+      end
+    end
+  end
+end

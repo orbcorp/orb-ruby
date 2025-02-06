@@ -1,0 +1,69 @@
+module Orb
+  module Models
+    type subscription_list_params =
+      {
+        created_at_gt: Time?,
+        created_at_gte: Time?,
+        created_at_lt: Time?,
+        created_at_lte: Time?,
+        cursor: String?,
+        customer_id: Array[String]?,
+        external_customer_id: String?,
+        limit: Integer,
+        status: Orb::Models::SubscriptionListParams::status?
+      }
+      & Orb::request_parameters
+
+    class SubscriptionListParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor created_at_gt: Time?
+
+      attr_accessor created_at_gte: Time?
+
+      attr_accessor created_at_lt: Time?
+
+      attr_accessor created_at_lte: Time?
+
+      attr_accessor cursor: String?
+
+      attr_accessor customer_id: Array[String]?
+
+      attr_accessor external_customer_id: String?
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> void
+
+      attr_accessor status: Orb::Models::SubscriptionListParams::status?
+
+      def initialize:
+        (
+          created_at_gt: Time?,
+          created_at_gte: Time?,
+          created_at_lt: Time?,
+          created_at_lte: Time?,
+          cursor: String?,
+          customer_id: Array[String]?,
+          external_customer_id: String?,
+          limit: Integer,
+          status: Orb::Models::SubscriptionListParams::status?,
+          request_options: Orb::request_opts
+        ) -> void
+        | (?Orb::Models::subscription_list_params | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::subscription_list_params
+
+      type status = :active | :ended | :upcoming
+
+      class Status < Orb::Enum
+        ACTIVE: :active
+        ENDED: :ended
+        UPCOMING: :upcoming
+
+        def self.values: -> Array[Orb::Models::SubscriptionListParams::status]
+      end
+    end
+  end
+end

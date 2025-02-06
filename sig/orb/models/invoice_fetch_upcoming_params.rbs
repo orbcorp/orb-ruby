@@ -1,0 +1,21 @@
+module Orb
+  module Models
+    type invoice_fetch_upcoming_params =
+      { subscription_id: String } & Orb::request_parameters
+
+    class InvoiceFetchUpcomingParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor subscription_id: String
+
+      def initialize:
+        (subscription_id: String, request_options: Orb::request_opts) -> void
+        | (
+          ?Orb::Models::invoice_fetch_upcoming_params | Orb::BaseModel data
+        ) -> void
+
+      def to_h: -> Orb::Models::invoice_fetch_upcoming_params
+    end
+  end
+end

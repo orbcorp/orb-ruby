@@ -1,0 +1,80 @@
+module Orb
+  module Models
+    type subscription_fetch_usage_params =
+      {
+        billable_metric_id: String?,
+        first_dimension_key: String?,
+        first_dimension_value: String?,
+        granularity: Orb::Models::SubscriptionFetchUsageParams::granularity?,
+        group_by: String?,
+        second_dimension_key: String?,
+        second_dimension_value: String?,
+        timeframe_end: Time?,
+        timeframe_start: Time?,
+        view_mode: Orb::Models::SubscriptionFetchUsageParams::view_mode?
+      }
+      & Orb::request_parameters
+
+    class SubscriptionFetchUsageParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor billable_metric_id: String?
+
+      attr_accessor first_dimension_key: String?
+
+      attr_accessor first_dimension_value: String?
+
+      attr_accessor granularity: Orb::Models::SubscriptionFetchUsageParams::granularity?
+
+      attr_accessor group_by: String?
+
+      attr_accessor second_dimension_key: String?
+
+      attr_accessor second_dimension_value: String?
+
+      attr_accessor timeframe_end: Time?
+
+      attr_accessor timeframe_start: Time?
+
+      attr_accessor view_mode: Orb::Models::SubscriptionFetchUsageParams::view_mode?
+
+      def initialize:
+        (
+          billable_metric_id: String?,
+          first_dimension_key: String?,
+          first_dimension_value: String?,
+          granularity: Orb::Models::SubscriptionFetchUsageParams::granularity?,
+          group_by: String?,
+          second_dimension_key: String?,
+          second_dimension_value: String?,
+          timeframe_end: Time?,
+          timeframe_start: Time?,
+          view_mode: Orb::Models::SubscriptionFetchUsageParams::view_mode?,
+          request_options: Orb::request_opts
+        ) -> void
+        | (
+          ?Orb::Models::subscription_fetch_usage_params | Orb::BaseModel data
+        ) -> void
+
+      def to_h: -> Orb::Models::subscription_fetch_usage_params
+
+      type granularity = :day
+
+      class Granularity < Orb::Enum
+        DAY: :day
+
+        def self.values: -> Array[Orb::Models::SubscriptionFetchUsageParams::granularity]
+      end
+
+      type view_mode = :periodic | :cumulative
+
+      class ViewMode < Orb::Enum
+        PERIODIC: :periodic
+        CUMULATIVE: :cumulative
+
+        def self.values: -> Array[Orb::Models::SubscriptionFetchUsageParams::view_mode]
+      end
+    end
+  end
+end

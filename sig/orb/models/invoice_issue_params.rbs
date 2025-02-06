@@ -1,0 +1,20 @@
+module Orb
+  module Models
+    type invoice_issue_params = { synchronous: bool } & Orb::request_parameters
+
+    class InvoiceIssueParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_reader synchronous: bool?
+
+      def synchronous=: (bool) -> void
+
+      def initialize:
+        (synchronous: bool, request_options: Orb::request_opts) -> void
+        | (?Orb::Models::invoice_issue_params | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::invoice_issue_params
+    end
+  end
+end

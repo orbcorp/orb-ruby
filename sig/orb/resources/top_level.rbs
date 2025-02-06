@@ -1,0 +1,15 @@
+module Orb
+  module Resources
+    class TopLevel
+      def ping:
+        (
+          ?Orb::Models::TopLevelPingParams | Hash[Symbol, top] params
+        ) -> Orb::Models::TopLevelPingResponse
+        | (
+          request_options: Orb::request_opts
+        ) -> Orb::Models::TopLevelPingResponse
+
+      def initialize: (client: Orb::Client) -> void
+    end
+  end
+end

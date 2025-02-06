@@ -1,0 +1,74 @@
+module Orb
+  module Models
+    type item_update_params =
+      {
+        external_connections: Array[Orb::Models::ItemUpdateParams::ExternalConnection]?,
+        name: String?
+      }
+      & Orb::request_parameters
+
+    class ItemUpdateParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor external_connections: Array[Orb::Models::ItemUpdateParams::ExternalConnection]?
+
+      attr_accessor name: String?
+
+      def initialize:
+        (
+          external_connections: Array[Orb::Models::ItemUpdateParams::ExternalConnection]?,
+          name: String?,
+          request_options: Orb::request_opts
+        ) -> void
+        | (?Orb::Models::item_update_params | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::item_update_params
+
+      type external_connection =
+        {
+          external_connection_name: Orb::Models::ItemUpdateParams::ExternalConnection::external_connection_name,
+          external_entity_id: String
+        }
+
+      class ExternalConnection < Orb::BaseModel
+        attr_accessor external_connection_name: Orb::Models::ItemUpdateParams::ExternalConnection::external_connection_name
+
+        attr_accessor external_entity_id: String
+
+        def initialize:
+          (
+            external_connection_name: Orb::Models::ItemUpdateParams::ExternalConnection::external_connection_name,
+            external_entity_id: String
+          ) -> void
+          | (
+            ?Orb::Models::ItemUpdateParams::external_connection
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::ItemUpdateParams::external_connection
+
+        type external_connection_name =
+          :stripe
+          | :quickbooks
+          | :"bill.com"
+          | :netsuite
+          | :taxjar
+          | :avalara
+          | :anrok
+
+        class ExternalConnectionName < Orb::Enum
+          STRIPE: :stripe
+          QUICKBOOKS: :quickbooks
+          BILL_COM: :"bill.com"
+          NETSUITE: :netsuite
+          TAXJAR: :taxjar
+          AVALARA: :avalara
+          ANROK: :anrok
+
+          def self.values: -> Array[Orb::Models::ItemUpdateParams::ExternalConnection::external_connection_name]
+        end
+      end
+    end
+  end
+end

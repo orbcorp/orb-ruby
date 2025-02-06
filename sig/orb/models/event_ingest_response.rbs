@@ -1,0 +1,58 @@
+module Orb
+  module Models
+    type event_ingest_response =
+      {
+        validation_failed: Array[Orb::Models::EventIngestResponse::ValidationFailed],
+        debug: Orb::Models::EventIngestResponse::Debug?
+      }
+
+    class EventIngestResponse < Orb::BaseModel
+      attr_accessor validation_failed: Array[Orb::Models::EventIngestResponse::ValidationFailed]
+
+      attr_accessor debug: Orb::Models::EventIngestResponse::Debug?
+
+      def initialize:
+        (
+          validation_failed: Array[Orb::Models::EventIngestResponse::ValidationFailed],
+          debug: Orb::Models::EventIngestResponse::Debug?
+        ) -> void
+        | (?Orb::Models::event_ingest_response | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::event_ingest_response
+
+      type validation_failed =
+        { idempotency_key: String, validation_errors: Array[String] }
+
+      class ValidationFailed < Orb::BaseModel
+        attr_accessor idempotency_key: String
+
+        attr_accessor validation_errors: Array[String]
+
+        def initialize:
+          (idempotency_key: String, validation_errors: Array[String]) -> void
+          | (
+            ?Orb::Models::EventIngestResponse::validation_failed
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::EventIngestResponse::validation_failed
+      end
+
+      type debug = { duplicate: Array[String], ingested: Array[String] }
+
+      class Debug < Orb::BaseModel
+        attr_accessor duplicate: Array[String]
+
+        attr_accessor ingested: Array[String]
+
+        def initialize:
+          (duplicate: Array[String], ingested: Array[String]) -> void
+          | (
+            ?Orb::Models::EventIngestResponse::debug | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::EventIngestResponse::debug
+      end
+    end
+  end
+end
