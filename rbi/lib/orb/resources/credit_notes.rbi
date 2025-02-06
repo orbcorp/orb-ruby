@@ -11,7 +11,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::CreditNote)
       end
-      def create(line_items:, memo:, reason:, request_options: {}); end
+      def create(line_items:, memo: nil, reason: nil, request_options: {}); end
 
       sig do
         params(
@@ -20,7 +20,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Page[Orb::Models::CreditNote])
       end
-      def list(cursor:, limit:, request_options: {}); end
+      def list(cursor: nil, limit: nil, request_options: {}); end
 
       sig do
         params(credit_note_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::CreditNote)

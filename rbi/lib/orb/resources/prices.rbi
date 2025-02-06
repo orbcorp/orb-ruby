@@ -14,15 +14,6 @@ module Orb
           model_type: Symbol,
           name: String,
           unit_config: Orb::Models::PriceCreateParams::UnitConfig,
-          billable_metric_id: T.nilable(String),
-          billed_in_advance: T.nilable(T::Boolean),
-          billing_cycle_configuration: T.nilable(Orb::Models::PriceCreateParams::BillingCycleConfiguration),
-          conversion_rate: T.nilable(Float),
-          external_price_id: T.nilable(String),
-          fixed_price_quantity: T.nilable(Float),
-          invoice_grouping_key: T.nilable(String),
-          invoicing_cycle_configuration: T.nilable(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration),
-          metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           package_config: Orb::Models::PriceCreateParams::PackageConfig,
           matrix_config: Orb::Models::PriceCreateParams::MatrixConfig,
           matrix_with_allocation_config: Orb::Models::PriceCreateParams::MatrixWithAllocationConfig,
@@ -49,6 +40,15 @@ module Orb
           grouped_tiered_package_config: T::Hash[Symbol, T.anything],
           scalable_matrix_with_unit_pricing_config: T::Hash[Symbol, T.anything],
           scalable_matrix_with_tiered_pricing_config: T::Hash[Symbol, T.anything],
+          billable_metric_id: T.nilable(String),
+          billed_in_advance: T.nilable(T::Boolean),
+          billing_cycle_configuration: T.nilable(Orb::Models::PriceCreateParams::BillingCycleConfiguration),
+          conversion_rate: T.nilable(Float),
+          external_price_id: T.nilable(String),
+          fixed_price_quantity: T.nilable(Float),
+          invoice_grouping_key: T.nilable(String),
+          invoicing_cycle_configuration: T.nilable(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration),
+          metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::Price::Variants)
       end
@@ -59,15 +59,6 @@ module Orb
         model_type:,
         name:,
         unit_config:,
-        billable_metric_id:,
-        billed_in_advance:,
-        billing_cycle_configuration:,
-        conversion_rate:,
-        external_price_id:,
-        fixed_price_quantity:,
-        invoice_grouping_key:,
-        invoicing_cycle_configuration:,
-        metadata:,
         package_config:,
         matrix_config:,
         matrix_with_allocation_config:,
@@ -94,6 +85,15 @@ module Orb
         grouped_tiered_package_config:,
         scalable_matrix_with_unit_pricing_config:,
         scalable_matrix_with_tiered_pricing_config:,
+        billable_metric_id: nil,
+        billed_in_advance: nil,
+        billing_cycle_configuration: nil,
+        conversion_rate: nil,
+        external_price_id: nil,
+        fixed_price_quantity: nil,
+        invoice_grouping_key: nil,
+        invoicing_cycle_configuration: nil,
+        metadata: nil,
         request_options: {}
       ); end
 
@@ -104,7 +104,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::Price::Variants)
       end
-      def update(price_id, metadata:, request_options: {}); end
+      def update(price_id, metadata: nil, request_options: {}); end
 
       sig do
         params(
@@ -113,7 +113,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Page[Orb::Models::Price::Variants])
       end
-      def list(cursor:, limit:, request_options: {}); end
+      def list(cursor: nil, limit: nil, request_options: {}); end
 
       sig do
         params(
@@ -131,10 +131,10 @@ module Orb
         price_id,
         timeframe_end:,
         timeframe_start:,
-        customer_id:,
-        external_customer_id:,
-        filter:,
-        grouping_keys:,
+        customer_id: nil,
+        external_customer_id: nil,
+        filter: nil,
+        grouping_keys: nil,
         request_options: {}
       ); end
 

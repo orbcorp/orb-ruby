@@ -15,7 +15,14 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::Coupon)
       end
-      def create(discount:, redemption_code:, duration_in_months:, max_redemptions:, request_options: {}); end
+      def create(
+        discount:,
+        redemption_code:,
+        duration_in_months: nil,
+        max_redemptions: nil,
+        request_options: {}
+      )
+      end
 
       sig do
         params(
@@ -26,7 +33,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Page[Orb::Models::Coupon])
       end
-      def list(cursor:, limit:, redemption_code:, show_archived:, request_options: {}); end
+      def list(cursor: nil, limit: nil, redemption_code: nil, show_archived: nil, request_options: {}); end
 
       sig { params(coupon_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Coupon) }
       def archive(coupon_id, request_options: {}); end

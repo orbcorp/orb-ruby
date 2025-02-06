@@ -23,11 +23,11 @@ module Orb
         currency:,
         name:,
         prices:,
-        default_invoice_memo:,
-        external_plan_id:,
-        metadata:,
-        net_terms:,
-        status:,
+        default_invoice_memo: nil,
+        external_plan_id: nil,
+        metadata: nil,
+        net_terms: nil,
+        status: nil,
         request_options: {}
       ); end
 
@@ -39,7 +39,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::Plan)
       end
-      def update(plan_id, external_plan_id:, metadata:, request_options: {}); end
+      def update(plan_id, external_plan_id: nil, metadata: nil, request_options: {}); end
 
       sig do
         params(
@@ -54,13 +54,13 @@ module Orb
         ).returns(Orb::Page[Orb::Models::Plan])
       end
       def list(
-        created_at_gt:,
-        created_at_gte:,
-        created_at_lt:,
-        created_at_lte:,
-        cursor:,
-        limit:,
-        status:,
+        created_at_gt: nil,
+        created_at_gte: nil,
+        created_at_lt: nil,
+        created_at_lte: nil,
+        cursor: nil,
+        limit: nil,
+        status: nil,
         request_options: {}
       ); end
 

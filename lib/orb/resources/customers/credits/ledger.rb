@@ -248,6 +248,14 @@ module Orb
           #
           #   @option params [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType] :entry_type
           #
+          #   @option params [Time, nil] :expiry_date An ISO 8601 format date that identifies the origination credit block to expire
+          #
+          #   @option params [Date] :target_expiry_date A future date (specified in YYYY-MM-DD format) used for expiration change,
+          #     denoting when credits transferred (as part of a partial block expiration) should
+          #     expire.
+          #
+          #   @option params [String] :block_id The ID of the block to reverse a decrement from.
+          #
           #   @option params [String, nil] :currency The currency or custom pricing unit to use for this ledger entry. If this is a
           #     real-world currency, it must match the customer's invoicing currency.
           #
@@ -257,8 +265,6 @@ module Orb
           #
           #   @option params [Time, nil] :effective_date An ISO 8601 format date that denotes when this credit balance should become
           #     available for use.
-          #
-          #   @option params [Time, nil] :expiry_date An ISO 8601 format date that identifies the origination credit block to expire
           #
           #   @option params [Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, nil] :invoice_settings Passing `invoice_settings` automatically generates an invoice for the newly
           #     added credits. If `invoice_settings` is passed, you must specify
@@ -271,12 +277,6 @@ module Orb
           #
           #   @option params [String, nil] :per_unit_cost_basis Can only be specified when entry_type=increment. How much, in the customer's
           #     currency, a customer paid for a single credit in this block
-          #
-          #   @option params [Date] :target_expiry_date A future date (specified in YYYY-MM-DD format) used for expiration change,
-          #     denoting when credits transferred (as part of a partial block expiration) should
-          #     expire.
-          #
-          #   @option params [String] :block_id The ID of the block to reverse a decrement from.
           #
           #   @option params [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason, nil] :void_reason Can only be specified when `entry_type=void`. The reason for the void.
           #
@@ -415,6 +415,14 @@ module Orb
           #
           #   @option params [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType] :entry_type
           #
+          #   @option params [Time, nil] :expiry_date An ISO 8601 format date that identifies the origination credit block to expire
+          #
+          #   @option params [Date] :target_expiry_date A future date (specified in YYYY-MM-DD format) used for expiration change,
+          #     denoting when credits transferred (as part of a partial block expiration) should
+          #     expire.
+          #
+          #   @option params [String] :block_id The ID of the block to reverse a decrement from.
+          #
           #   @option params [String, nil] :currency The currency or custom pricing unit to use for this ledger entry. If this is a
           #     real-world currency, it must match the customer's invoicing currency.
           #
@@ -424,8 +432,6 @@ module Orb
           #
           #   @option params [Time, nil] :effective_date An ISO 8601 format date that denotes when this credit balance should become
           #     available for use.
-          #
-          #   @option params [Time, nil] :expiry_date An ISO 8601 format date that identifies the origination credit block to expire
           #
           #   @option params [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings, nil] :invoice_settings Passing `invoice_settings` automatically generates an invoice for the newly
           #     added credits. If `invoice_settings` is passed, you must specify
@@ -438,12 +444,6 @@ module Orb
           #
           #   @option params [String, nil] :per_unit_cost_basis Can only be specified when entry_type=increment. How much, in the customer's
           #     currency, a customer paid for a single credit in this block
-          #
-          #   @option params [Date] :target_expiry_date A future date (specified in YYYY-MM-DD format) used for expiration change,
-          #     denoting when credits transferred (as part of a partial block expiration) should
-          #     expire.
-          #
-          #   @option params [String] :block_id The ID of the block to reverse a decrement from.
           #
           #   @option params [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason, nil] :void_reason Can only be specified when `entry_type=void`. The reason for the void.
           #

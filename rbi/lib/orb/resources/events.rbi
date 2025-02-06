@@ -25,11 +25,10 @@ module Orb
         event_name:,
         properties:,
         timestamp:,
-        customer_id:,
-        external_customer_id:,
+        customer_id: nil,
+        external_customer_id: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
         params(
@@ -47,7 +46,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::EventIngestResponse)
       end
-      def ingest(events:, backfill_id:, debug:, request_options: {}); end
+      def ingest(events:, backfill_id: nil, debug: nil, request_options: {}); end
 
       sig do
         params(
@@ -57,7 +56,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::EventSearchResponse)
       end
-      def search(event_ids:, timeframe_end:, timeframe_start:, request_options: {}); end
+      def search(event_ids:, timeframe_end: nil, timeframe_start: nil, request_options: {}); end
 
       sig { params(client: Orb::Client).void }
       def initialize(client:); end
