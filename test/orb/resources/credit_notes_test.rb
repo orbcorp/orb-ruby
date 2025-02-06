@@ -14,8 +14,8 @@ class Orb::Test::Resources::CreditNotesTest < Minitest::Test
     response = @orb.credit_notes.create(
       line_items: [
         {
-          "amount" => "amount",
-          "invoice_line_item_id" => "4khy3nwzktxv7"
+          amount: "amount",
+          invoice_line_item_id: "4khy3nwzktxv7"
         }
       ]
     )

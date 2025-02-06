@@ -11,7 +11,7 @@ class Orb::Test::Resources::Customers::BalanceTransactionsTest < Minitest::Test
   end
 
   def test_create_required_params
-    response = @orb.customers.balance_transactions.create("customer_id", amount: "amount", type: "increment")
+    response = @orb.customers.balance_transactions.create("customer_id", amount: "amount", type: :increment)
 
     assert_pattern do
       response => Orb::Models::Customers::BalanceTransactionCreateResponse

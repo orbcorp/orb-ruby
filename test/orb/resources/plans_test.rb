@@ -16,11 +16,11 @@ class Orb::Test::Resources::PlansTest < Minitest::Test
       name: "name",
       prices: [
         {
-          "cadence" => "annual",
-          "item_id" => "item_id",
-          "model_type" => "unit",
-          "name" => "Annual fee",
-          "unit_config" => {"unit_amount" => "unit_amount"}
+          cadence: :annual,
+          item_id: "item_id",
+          model_type: :unit,
+          name: "Annual fee",
+          unit_config: {unit_amount: "unit_amount"}
         }
       ]
     )
