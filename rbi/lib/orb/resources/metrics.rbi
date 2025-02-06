@@ -13,7 +13,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::BillableMetric)
       end
-      def create(description:, item_id:, name:, sql:, metadata: nil, request_options: {}); end
+      def create(description:, item_id:, name:, sql:, metadata: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -22,7 +23,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::BillableMetric)
       end
-      def update(metric_id, metadata: nil, request_options: {}); end
+      def update(metric_id, metadata: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -43,7 +45,8 @@ module Orb
         cursor: nil,
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -51,10 +54,12 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::BillableMetric)
       end
-      def fetch(metric_id, request_options: {}); end
+      def fetch(metric_id, request_options: {})
+      end
 
       sig { params(client: Orb::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

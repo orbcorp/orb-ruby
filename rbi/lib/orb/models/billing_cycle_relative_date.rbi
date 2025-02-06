@@ -9,7 +9,8 @@ module Orb
       END_OF_TERM = :end_of_term
 
       sig { override.returns(T::Array[Symbol]) }
-      def self.values; end
+      def self.values
+      end
     end
   end
 end

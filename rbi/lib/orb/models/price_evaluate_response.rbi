@@ -7,10 +7,12 @@ module Orb
       attr_accessor :data
 
       sig { params(data: T::Array[Orb::Models::EvaluatePriceGroup]).void }
-      def initialize(data:); end
+      def initialize(data:)
+      end
 
       sig { override.returns({data: T::Array[Orb::Models::EvaluatePriceGroup]}) }
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

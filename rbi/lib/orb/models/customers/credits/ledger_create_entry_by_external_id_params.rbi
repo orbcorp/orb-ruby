@@ -77,7 +77,8 @@ module Orb
             per_unit_cost_basis: nil,
             void_reason: nil,
             request_options: {}
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -98,7 +99,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class EntryType < Orb::Enum
             abstract!
@@ -106,7 +108,8 @@ module Orb
             AMENDMENT = :amendment
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
 
           class InvoiceSettings < Orb::BaseModel
@@ -133,7 +136,8 @@ module Orb
                 require_successful_payment: T::Boolean
               ).void
             end
-            def initialize(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil); end
+            def initialize(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil)
+            end
 
             sig do
               override.returns(
@@ -145,7 +149,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class VoidReason < Orb::Enum
@@ -154,7 +159,8 @@ module Orb
             REFUND = T.let(:refund, T.nilable(Symbol))
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

@@ -111,7 +111,8 @@ module Orb
         status: nil,
         subscription_id: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -139,7 +140,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class DateType < Orb::Enum
         abstract!
@@ -148,7 +150,8 @@ module Orb
         INVOICE_DATE = T.let(:invoice_date, T.nilable(Symbol))
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class Status < Orb::Enum
@@ -161,7 +164,8 @@ module Orb
         VOID = :void
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

@@ -28,7 +28,8 @@ module Orb
         customer_id: nil,
         external_customer_id: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -36,7 +37,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::EventDeprecateResponse)
       end
-      def deprecate(event_id, request_options: {}); end
+      def deprecate(event_id, request_options: {})
+      end
 
       sig do
         params(
@@ -46,7 +48,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::EventIngestResponse)
       end
-      def ingest(events:, backfill_id: nil, debug: nil, request_options: {}); end
+      def ingest(events:, backfill_id: nil, debug: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -56,10 +59,12 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::EventSearchResponse)
       end
-      def search(event_ids:, timeframe_end: nil, timeframe_start: nil, request_options: {}); end
+      def search(event_ids:, timeframe_end: nil, timeframe_start: nil, request_options: {})
+      end
 
       sig { params(client: Orb::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

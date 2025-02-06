@@ -113,7 +113,8 @@ module Orb
         timezone:,
         accounting_sync_configuration: nil,
         reporting_configuration: nil
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -142,7 +143,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class BillingAddress < Orb::BaseModel
         sig { returns(T.nilable(String)) }
@@ -173,7 +175,8 @@ module Orb
             state: T.nilable(String)
           ).void
         end
-        def initialize(city:, country:, line1:, line2:, postal_code:, state:); end
+        def initialize(city:, country:, line1:, line2:, postal_code:, state:)
+        end
 
         sig do
           override.returns(
@@ -187,7 +190,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class PaymentProvider < Orb::Enum
@@ -200,7 +204,8 @@ module Orb
         NETSUITE = T.let(:netsuite, T.nilable(Symbol))
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class ShippingAddress < Orb::BaseModel
@@ -232,7 +237,8 @@ module Orb
             state: T.nilable(String)
           ).void
         end
-        def initialize(city:, country:, line1:, line2:, postal_code:, state:); end
+        def initialize(city:, country:, line1:, line2:, postal_code:, state:)
+        end
 
         sig do
           override.returns(
@@ -246,7 +252,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class TaxID < Orb::BaseModel
@@ -260,10 +267,12 @@ module Orb
         attr_accessor :value
 
         sig { params(country: Symbol, type: Symbol, value: String).void }
-        def initialize(country:, type:, value:); end
+        def initialize(country:, type:, value:)
+        end
 
         sig { override.returns({country: Symbol, type: Symbol, value: String}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class Country < Orb::Enum
           abstract!
@@ -348,7 +357,8 @@ module Orb
           ZA = :ZA
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class Type < Orb::Enum
@@ -427,7 +437,8 @@ module Orb
           ZA_VAT = :za_vat
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
 
@@ -444,7 +455,8 @@ module Orb
             excluded: T::Boolean
           ).void
         end
-        def initialize(accounting_providers:, excluded:); end
+        def initialize(accounting_providers:, excluded:)
+        end
 
         sig do
           override.returns(
@@ -453,7 +465,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class AccountingProvider < Orb::BaseModel
           sig { returns(T.nilable(String)) }
@@ -463,10 +476,12 @@ module Orb
           attr_accessor :provider_type
 
           sig { params(external_provider_id: T.nilable(String), provider_type: Symbol).void }
-          def initialize(external_provider_id:, provider_type:); end
+          def initialize(external_provider_id:, provider_type:)
+          end
 
           sig { override.returns({external_provider_id: T.nilable(String), provider_type: Symbol}) }
-          def to_hash; end
+          def to_hash
+          end
 
           class ProviderType < Orb::Enum
             abstract!
@@ -475,7 +490,8 @@ module Orb
             NETSUITE = :netsuite
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
       end
@@ -485,10 +501,12 @@ module Orb
         attr_accessor :exempt
 
         sig { params(exempt: T::Boolean).void }
-        def initialize(exempt:); end
+        def initialize(exempt:)
+        end
 
         sig { override.returns({exempt: T::Boolean}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

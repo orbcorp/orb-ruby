@@ -68,7 +68,8 @@ module Orb
             limit: nil,
             minimum_amount: nil,
             request_options: {}
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -87,7 +88,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class EntryStatus < Orb::Enum
             abstract!
@@ -96,7 +98,8 @@ module Orb
             PENDING = T.let(:pending, T.nilable(Symbol))
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
 
           class EntryType < Orb::Enum
@@ -111,7 +114,8 @@ module Orb
             AMENDMENT = T.let(:amendment, T.nilable(Symbol))
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

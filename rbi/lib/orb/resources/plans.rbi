@@ -54,7 +54,8 @@ module Orb
         net_terms: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -64,7 +65,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Plan)
       end
-      def update(plan_id, external_plan_id: nil, metadata: nil, request_options: {}); end
+      def update(plan_id, external_plan_id: nil, metadata: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -87,7 +89,8 @@ module Orb
         limit: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -95,10 +98,12 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Plan)
       end
-      def fetch(plan_id, request_options: {}); end
+      def fetch(plan_id, request_options: {})
+      end
 
       sig { params(client: Orb::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

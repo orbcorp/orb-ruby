@@ -14,7 +14,8 @@ module Orb
           )
         ).returns(Orb::Models::Item)
       end
-      def create(name:, request_options: {}); end
+      def create(name:, request_options: {})
+      end
 
       sig do
         params(
@@ -24,7 +25,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Item)
       end
-      def update(item_id, external_connections: nil, name: nil, request_options: {}); end
+      def update(item_id, external_connections: nil, name: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -33,7 +35,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Page[Orb::Models::Item])
       end
-      def list(cursor: nil, limit: nil, request_options: {}); end
+      def list(cursor: nil, limit: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -41,10 +44,12 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Item)
       end
-      def fetch(item_id, request_options: {}); end
+      def fetch(item_id, request_options: {})
+      end
 
       sig { params(client: Orb::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

@@ -22,7 +22,8 @@ module Orb
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(trial_end_date:, shift: nil, request_options: {}); end
+      def initialize(trial_end_date:, shift: nil, request_options: {})
+      end
 
       sig do
         override.returns(
@@ -33,7 +34,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class TrialEndDate < Orb::Union
         abstract!
@@ -44,11 +46,13 @@ module Orb
           IMMEDIATE = :immediate
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         sig { override.returns([[NilClass, Time], [NilClass, Symbol]]) }
-        private_class_method def self.variants; end
+        private_class_method def self.variants
+        end
       end
     end
   end

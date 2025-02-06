@@ -57,7 +57,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Add < Orb::BaseModel
         sig { returns(T.any(Time, Symbol)) }
@@ -167,7 +168,8 @@ module Orb
           minimum_amount: nil,
           price: nil,
           price_id: nil
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -219,13 +221,15 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class StartDate < Orb::Union
           abstract!
 
           sig { override.returns([[NilClass, Time], [NilClass, Symbol]]) }
-          private_class_method def self.variants; end
+          private_class_method def self.variants
+          end
         end
 
         class AllocationPrice < Orb::BaseModel
@@ -249,7 +253,8 @@ module Orb
               expires_at_end_of_cadence: T::Boolean
             ).void
           end
-          def initialize(amount:, cadence:, currency:, expires_at_end_of_cadence:); end
+          def initialize(amount:, cadence:, currency:, expires_at_end_of_cadence:)
+          end
 
           sig do
             override.returns(
@@ -261,7 +266,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class Cadence < Orb::Enum
             abstract!
@@ -274,7 +280,8 @@ module Orb
             CUSTOM = :custom
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -289,10 +296,12 @@ module Orb
             attr_accessor :discount_type
 
             sig { params(amount_discount: Float, discount_type: Symbol).void }
-            def initialize(amount_discount:, discount_type: :amount); end
+            def initialize(amount_discount:, discount_type: :amount)
+            end
 
             sig { override.returns({amount_discount: Float, discount_type: Symbol}) }
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class PercentageDiscountCreationParams < Orb::BaseModel
@@ -303,10 +312,12 @@ module Orb
             attr_accessor :percentage_discount
 
             sig { params(percentage_discount: Float, discount_type: Symbol).void }
-            def initialize(percentage_discount:, discount_type: :percentage); end
+            def initialize(percentage_discount:, discount_type: :percentage)
+            end
 
             sig { override.returns({discount_type: Symbol, percentage_discount: Float}) }
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class UsageDiscountCreationParams < Orb::BaseModel
@@ -317,10 +328,12 @@ module Orb
             attr_accessor :usage_discount
 
             sig { params(usage_discount: Float, discount_type: Symbol).void }
-            def initialize(usage_discount:, discount_type: :usage); end
+            def initialize(usage_discount:, discount_type: :usage)
+            end
 
             sig { override.returns({discount_type: Symbol, usage_discount: Float}) }
-            def to_hash; end
+            def to_hash
+            end
           end
 
           sig do
@@ -341,14 +354,16 @@ module Orb
               ]
             )
           end
-          private_class_method def self.variants; end
+          private_class_method def self.variants
+          end
         end
 
         class EndDate < Orb::Union
           abstract!
 
           sig { override.returns([[NilClass, Time], [NilClass, Symbol]]) }
-          private_class_method def self.variants; end
+          private_class_method def self.variants
+          end
         end
 
         class FixedFeeQuantityTransition < Orb::BaseModel
@@ -359,10 +374,12 @@ module Orb
           attr_accessor :quantity
 
           sig { params(effective_date: Time, quantity: Integer).void }
-          def initialize(effective_date:, quantity:); end
+          def initialize(effective_date:, quantity:)
+          end
 
           sig { override.returns({effective_date: Time, quantity: Integer}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class Price < Orb::Union
@@ -455,7 +472,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :unit
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -478,7 +496,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -491,7 +510,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class UnitConfig < Orb::BaseModel
@@ -499,10 +519,12 @@ module Orb
               attr_accessor :unit_amount
 
               sig { params(unit_amount: String).void }
-              def initialize(unit_amount:); end
+              def initialize(unit_amount:)
+              end
 
               sig { override.returns({unit_amount: String}) }
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -513,10 +535,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -525,7 +549,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -537,10 +562,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -549,7 +576,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -641,7 +669,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :package
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -664,7 +693,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -677,7 +707,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class PackageConfig < Orb::BaseModel
@@ -688,10 +719,12 @@ module Orb
               attr_accessor :package_size
 
               sig { params(package_amount: String, package_size: Integer).void }
-              def initialize(package_amount:, package_size:); end
+              def initialize(package_amount:, package_size:)
+              end
 
               sig { override.returns({package_amount: String, package_size: Integer}) }
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -702,10 +735,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -714,7 +749,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -726,10 +762,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -738,7 +776,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -830,7 +869,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :matrix
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -853,7 +893,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -866,7 +907,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class MatrixConfig < Orb::BaseModel
@@ -888,7 +930,8 @@ module Orb
                   matrix_values: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue]
                 ).void
               end
-              def initialize(default_unit_amount:, dimensions:, matrix_values:); end
+              def initialize(default_unit_amount:, dimensions:, matrix_values:)
+              end
 
               sig do
                 override.returns(
@@ -899,7 +942,8 @@ module Orb
                   }
                 )
               end
-              def to_hash; end
+              def to_hash
+              end
 
               class MatrixValue < Orb::BaseModel
                 sig { returns(T::Array[T.nilable(String)]) }
@@ -909,10 +953,12 @@ module Orb
                 attr_accessor :unit_amount
 
                 sig { params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).void }
-                def initialize(dimension_values:, unit_amount:); end
+                def initialize(dimension_values:, unit_amount:)
+                end
 
                 sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
-                def to_hash; end
+                def to_hash
+                end
               end
             end
 
@@ -924,10 +970,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -936,7 +984,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -948,10 +997,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -960,7 +1011,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -1052,7 +1104,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :matrix_with_allocation
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -1075,7 +1128,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -1088,7 +1142,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class MatrixWithAllocationConfig < Orb::BaseModel
@@ -1114,7 +1169,8 @@ module Orb
                   matrix_values: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue]
                 ).void
               end
-              def initialize(allocation:, default_unit_amount:, dimensions:, matrix_values:); end
+              def initialize(allocation:, default_unit_amount:, dimensions:, matrix_values:)
+              end
 
               sig do
                 override.returns(
@@ -1126,7 +1182,8 @@ module Orb
                   }
                 )
               end
-              def to_hash; end
+              def to_hash
+              end
 
               class MatrixValue < Orb::BaseModel
                 sig { returns(T::Array[T.nilable(String)]) }
@@ -1136,10 +1193,12 @@ module Orb
                 attr_accessor :unit_amount
 
                 sig { params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).void }
-                def initialize(dimension_values:, unit_amount:); end
+                def initialize(dimension_values:, unit_amount:)
+                end
 
                 sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
-                def to_hash; end
+                def to_hash
+                end
               end
             end
 
@@ -1151,10 +1210,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -1163,7 +1224,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -1175,10 +1237,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -1187,7 +1251,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -1279,7 +1344,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :tiered
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -1302,7 +1368,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -1315,7 +1382,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class TieredConfig < Orb::BaseModel
@@ -1329,12 +1397,14 @@ module Orb
                   tiers: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier]
                 ).void
               end
-              def initialize(tiers:); end
+              def initialize(tiers:)
+              end
 
               sig do
                 override.returns({tiers: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier]})
               end
-              def to_hash; end
+              def to_hash
+              end
 
               class Tier < Orb::BaseModel
                 sig { returns(Float) }
@@ -1347,12 +1417,14 @@ module Orb
                 attr_accessor :last_unit
 
                 sig { params(first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)).void }
-                def initialize(first_unit:, unit_amount:, last_unit: nil); end
+                def initialize(first_unit:, unit_amount:, last_unit: nil)
+                end
 
                 sig do
                   override.returns({first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)})
                 end
-                def to_hash; end
+                def to_hash
+                end
               end
             end
 
@@ -1364,10 +1436,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -1376,7 +1450,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -1388,10 +1463,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -1400,7 +1477,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -1492,7 +1570,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :tiered_bps
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -1515,7 +1594,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -1528,7 +1608,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class TieredBpsConfig < Orb::BaseModel
@@ -1542,12 +1623,14 @@ module Orb
                   tiers: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier]
                 ).void
               end
-              def initialize(tiers:); end
+              def initialize(tiers:)
+              end
 
               sig do
                 override.returns({tiers: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier]})
               end
-              def to_hash; end
+              def to_hash
+              end
 
               class Tier < Orb::BaseModel
                 sig { returns(Float) }
@@ -1570,7 +1653,8 @@ module Orb
                     per_unit_maximum: T.nilable(String)
                   ).void
                 end
-                def initialize(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil); end
+                def initialize(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil)
+                end
 
                 sig do
                   override.returns(
@@ -1582,7 +1666,8 @@ module Orb
                     }
                   )
                 end
-                def to_hash; end
+                def to_hash
+                end
               end
             end
 
@@ -1594,10 +1679,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -1606,7 +1693,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -1618,10 +1706,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -1630,7 +1720,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -1722,7 +1813,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :bps
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -1748,7 +1840,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class BpsConfig < Orb::BaseModel
               sig { returns(Float) }
@@ -1758,10 +1851,12 @@ module Orb
               attr_accessor :per_unit_maximum
 
               sig { params(bps: Float, per_unit_maximum: T.nilable(String)).void }
-              def initialize(bps:, per_unit_maximum: nil); end
+              def initialize(bps:, per_unit_maximum: nil)
+              end
 
               sig { override.returns({bps: Float, per_unit_maximum: T.nilable(String)}) }
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class Cadence < Orb::Enum
@@ -1775,7 +1870,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -1786,10 +1882,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -1798,7 +1896,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -1810,10 +1909,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -1822,7 +1923,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -1914,7 +2016,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :bulk_bps
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -1940,7 +2043,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class BulkBpsConfig < Orb::BaseModel
               sig do
@@ -1953,12 +2057,14 @@ module Orb
                   tiers: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier]
                 ).void
               end
-              def initialize(tiers:); end
+              def initialize(tiers:)
+              end
 
               sig do
                 override.returns({tiers: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier]})
               end
-              def to_hash; end
+              def to_hash
+              end
 
               class Tier < Orb::BaseModel
                 sig { returns(Float) }
@@ -1977,7 +2083,8 @@ module Orb
                     per_unit_maximum: T.nilable(String)
                   ).void
                 end
-                def initialize(bps:, maximum_amount: nil, per_unit_maximum: nil); end
+                def initialize(bps:, maximum_amount: nil, per_unit_maximum: nil)
+                end
 
                 sig do
                   override.returns(
@@ -1988,7 +2095,8 @@ module Orb
                     }
                   )
                 end
-                def to_hash; end
+                def to_hash
+                end
               end
             end
 
@@ -2003,7 +2111,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -2014,10 +2123,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -2026,7 +2137,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -2038,10 +2150,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -2050,7 +2164,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -2142,7 +2257,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :bulk
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -2168,7 +2284,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class BulkConfig < Orb::BaseModel
               sig do
@@ -2181,12 +2298,14 @@ module Orb
                   tiers: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier]
                 ).void
               end
-              def initialize(tiers:); end
+              def initialize(tiers:)
+              end
 
               sig do
                 override.returns({tiers: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier]})
               end
-              def to_hash; end
+              def to_hash
+              end
 
               class Tier < Orb::BaseModel
                 sig { returns(String) }
@@ -2196,10 +2315,12 @@ module Orb
                 attr_accessor :maximum_units
 
                 sig { params(unit_amount: String, maximum_units: T.nilable(Float)).void }
-                def initialize(unit_amount:, maximum_units: nil); end
+                def initialize(unit_amount:, maximum_units: nil)
+                end
 
                 sig { override.returns({unit_amount: String, maximum_units: T.nilable(Float)}) }
-                def to_hash; end
+                def to_hash
+                end
               end
             end
 
@@ -2214,7 +2335,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -2225,10 +2347,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -2237,7 +2361,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -2249,10 +2374,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -2261,7 +2388,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -2351,7 +2479,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :threshold_total_amount
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -2374,7 +2503,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -2387,7 +2517,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -2398,10 +2529,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -2410,7 +2543,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -2422,10 +2556,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -2434,7 +2570,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -2524,7 +2661,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :tiered_package
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -2547,7 +2685,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -2560,7 +2699,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -2571,10 +2711,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -2583,7 +2725,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -2595,10 +2738,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -2607,7 +2752,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -2697,7 +2843,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :grouped_tiered
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -2720,7 +2867,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -2733,7 +2881,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -2744,10 +2893,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -2756,7 +2907,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -2768,10 +2920,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -2780,7 +2934,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -2870,7 +3025,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :max_group_tiered_package
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -2893,7 +3049,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -2906,7 +3063,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -2917,10 +3075,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -2929,7 +3089,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -2941,10 +3102,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -2953,7 +3116,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -3043,7 +3207,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :tiered_with_minimum
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -3066,7 +3231,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -3079,7 +3245,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -3090,10 +3257,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -3102,7 +3271,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -3114,10 +3284,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -3126,7 +3298,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -3216,7 +3389,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :package_with_allocation
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -3239,7 +3413,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -3252,7 +3427,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -3263,10 +3439,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -3275,7 +3453,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -3287,10 +3466,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -3299,7 +3480,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -3389,7 +3571,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :tiered_package_with_minimum
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -3412,7 +3595,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -3425,7 +3609,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -3436,10 +3621,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -3448,7 +3635,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -3460,10 +3648,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -3472,7 +3662,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -3562,7 +3753,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :unit_with_percent
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -3585,7 +3777,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -3598,7 +3791,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -3609,10 +3803,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -3621,7 +3817,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -3633,10 +3830,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -3645,7 +3844,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -3735,7 +3935,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :tiered_with_proration
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -3758,7 +3959,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -3771,7 +3973,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -3782,10 +3985,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -3794,7 +3999,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -3806,10 +4012,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -3818,7 +4026,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -3908,7 +4117,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :unit_with_proration
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -3931,7 +4141,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -3944,7 +4155,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -3955,10 +4167,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -3967,7 +4181,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -3979,10 +4194,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -3991,7 +4208,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -4081,7 +4299,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :grouped_allocation
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -4104,7 +4323,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -4117,7 +4337,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -4128,10 +4349,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -4140,7 +4363,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -4152,10 +4376,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -4164,7 +4390,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -4254,7 +4481,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :grouped_with_prorated_minimum
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -4277,7 +4505,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -4290,7 +4519,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -4301,10 +4531,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -4313,7 +4545,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -4325,10 +4558,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -4337,7 +4572,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -4427,7 +4663,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :grouped_with_metered_minimum
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -4450,7 +4687,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -4463,7 +4701,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -4474,10 +4713,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -4486,7 +4727,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -4498,10 +4740,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -4510,7 +4754,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -4600,7 +4845,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :matrix_with_display_name
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -4623,7 +4869,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -4636,7 +4883,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -4647,10 +4895,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -4659,7 +4909,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -4671,10 +4922,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -4683,7 +4936,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -4773,7 +5027,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :bulk_with_proration
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -4796,7 +5051,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -4809,7 +5065,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -4820,10 +5077,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -4832,7 +5091,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -4844,10 +5104,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -4856,7 +5118,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -4946,7 +5209,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :grouped_tiered_package
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -4969,7 +5233,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -4982,7 +5247,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -4993,10 +5259,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -5005,7 +5273,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -5017,10 +5286,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -5029,7 +5300,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -5119,7 +5391,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :scalable_matrix_with_unit_pricing
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -5142,7 +5415,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -5155,7 +5429,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -5166,10 +5441,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -5178,7 +5455,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -5190,10 +5468,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -5202,7 +5482,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -5292,7 +5573,8 @@ module Orb
               invoicing_cycle_configuration: nil,
               metadata: nil,
               model_type: :scalable_matrix_with_tiered_pricing
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -5315,7 +5597,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Cadence < Orb::Enum
               abstract!
@@ -5328,7 +5611,8 @@ module Orb
               CUSTOM = :custom
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -5339,10 +5623,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -5351,7 +5637,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -5363,10 +5650,12 @@ module Orb
               attr_accessor :duration_unit
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
-              def initialize(duration:, duration_unit:); end
+              def initialize(duration:, duration_unit:)
+              end
 
               sig { override.returns({duration: Integer, duration_unit: Symbol}) }
-              def to_hash; end
+              def to_hash
+              end
 
               class DurationUnit < Orb::Enum
                 abstract!
@@ -5375,7 +5664,8 @@ module Orb
                 MONTH = :month
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
@@ -5476,7 +5766,8 @@ module Orb
               ]
             )
           end
-          private_class_method def self.variants; end
+          private_class_method def self.variants
+          end
         end
       end
 
@@ -5505,7 +5796,8 @@ module Orb
             end_date: T.nilable(T.any(Time, Symbol))
           ).void
         end
-        def initialize(adjustment:, start_date:, end_date: nil); end
+        def initialize(adjustment:, start_date:, end_date: nil)
+        end
 
         sig do
           override.returns(
@@ -5518,7 +5810,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Adjustment < Orb::Union
           abstract!
@@ -5565,7 +5858,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class NewUsageDiscount < Orb::BaseModel
@@ -5610,7 +5904,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class NewAmountDiscount < Orb::BaseModel
@@ -5655,7 +5950,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class NewMinimum < Orb::BaseModel
@@ -5706,7 +6002,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class NewMaximum < Orb::BaseModel
@@ -5751,7 +6048,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
           end
 
           sig do
@@ -5777,21 +6075,24 @@ module Orb
               ]
             )
           end
-          private_class_method def self.variants; end
+          private_class_method def self.variants
+          end
         end
 
         class StartDate < Orb::Union
           abstract!
 
           sig { override.returns([[NilClass, Time], [NilClass, Symbol]]) }
-          private_class_method def self.variants; end
+          private_class_method def self.variants
+          end
         end
 
         class EndDate < Orb::Union
           abstract!
 
           sig { override.returns([[NilClass, Time], [NilClass, Symbol]]) }
-          private_class_method def self.variants; end
+          private_class_method def self.variants
+          end
         end
       end
 
@@ -5831,7 +6132,8 @@ module Orb
           end_date: nil,
           fixed_fee_quantity_transitions: nil,
           start_date: nil
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -5844,13 +6146,15 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class EndDate < Orb::Union
           abstract!
 
           sig { override.returns([[NilClass, Time], [NilClass, Symbol]]) }
-          private_class_method def self.variants; end
+          private_class_method def self.variants
+          end
         end
 
         class FixedFeeQuantityTransition < Orb::BaseModel
@@ -5861,17 +6165,20 @@ module Orb
           attr_accessor :quantity
 
           sig { params(effective_date: Time, quantity: Integer).void }
-          def initialize(effective_date:, quantity:); end
+          def initialize(effective_date:, quantity:)
+          end
 
           sig { override.returns({effective_date: Time, quantity: Integer}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class StartDate < Orb::Union
           abstract!
 
           sig { override.returns([[NilClass, Time], [NilClass, Symbol]]) }
-          private_class_method def self.variants; end
+          private_class_method def self.variants
+          end
         end
       end
 
@@ -5895,7 +6202,8 @@ module Orb
             start_date: T.any(Time, Symbol)
           ).void
         end
-        def initialize(adjustment_interval_id:, end_date: nil, start_date: nil); end
+        def initialize(adjustment_interval_id:, end_date: nil, start_date: nil)
+        end
 
         sig do
           override.returns(
@@ -5906,20 +6214,23 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class EndDate < Orb::Union
           abstract!
 
           sig { override.returns([[NilClass, Time], [NilClass, Symbol]]) }
-          private_class_method def self.variants; end
+          private_class_method def self.variants
+          end
         end
 
         class StartDate < Orb::Union
           abstract!
 
           sig { override.returns([[NilClass, Time], [NilClass, Symbol]]) }
-          private_class_method def self.variants; end
+          private_class_method def self.variants
+          end
         end
       end
     end

@@ -19,7 +19,8 @@ module Orb
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(external_connections: nil, name: nil, request_options: {}); end
+      def initialize(external_connections: nil, name: nil, request_options: {})
+      end
 
       sig do
         override.returns(
@@ -28,7 +29,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class ExternalConnection < Orb::BaseModel
         sig { returns(Symbol) }
@@ -38,10 +40,12 @@ module Orb
         attr_accessor :external_entity_id
 
         sig { params(external_connection_name: Symbol, external_entity_id: String).void }
-        def initialize(external_connection_name:, external_entity_id:); end
+        def initialize(external_connection_name:, external_entity_id:)
+        end
 
         sig { override.returns({external_connection_name: Symbol, external_entity_id: String}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class ExternalConnectionName < Orb::Enum
           abstract!
@@ -55,7 +59,8 @@ module Orb
           ANROK = :anrok
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

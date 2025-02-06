@@ -7,10 +7,12 @@ module Orb
     Input = T.type_alias { T.any(Orb::Converter, T::Class[T.anything]) }
 
     sig { overridable.params(value: T.anything).returns(T.anything) }
-    def coerce(value); end
+    def coerce(value)
+    end
 
     sig { overridable.params(value: T.anything).returns(T.anything) }
-    def dump(value); end
+    def dump(value)
+    end
 
     sig do
       overridable.params(value: T.anything).returns(
@@ -20,7 +22,8 @@ module Orb
         )
       )
     end
-    def try_strict_coerce(value); end
+    def try_strict_coerce(value)
+    end
 
     sig do
       params(
@@ -35,16 +38,20 @@ module Orb
         )
       ).returns(T.proc.returns(T.anything).void)
     end
-    def self.type_info(spec); end
+    def self.type_info(spec)
+    end
 
     sig { params(target: Orb::Converter::Input, value: T.anything).returns(T.anything) }
-    def self.coerce(target, value); end
+    def self.coerce(target, value)
+    end
 
     sig { params(target: Orb::Converter::Input, value: T.anything).returns(T.anything) }
-    def self.dump(target, value); end
+    def self.dump(target, value)
+    end
 
     sig { params(target: Orb::Converter::Input, value: T.anything).returns(T.anything) }
-    def self.try_strict_coerce(target, value); end
+    def self.try_strict_coerce(target, value)
+    end
   end
 
   class Unknown
@@ -53,16 +60,20 @@ module Orb
     extend Orb::Converter
 
     sig { params(other: T.anything).returns(T::Boolean) }
-    def self.===(other); end
+    def self.===(other)
+    end
 
     sig { params(other: T.anything).returns(T::Boolean) }
-    def self.==(other); end
+    def self.==(other)
+    end
 
     sig { override.params(value: T.anything).returns(T.anything) }
-    def self.coerce(value); end
+    def self.coerce(value)
+    end
 
     sig { override.params(value: T.anything).returns(T.anything) }
-    def self.dump(value); end
+    def self.dump(value)
+    end
 
     sig do
       override.params(value: T.anything).returns(
@@ -72,7 +83,8 @@ module Orb
         )
       )
     end
-    def self.try_strict_coerce(value); end
+    def self.try_strict_coerce(value)
+    end
   end
 
   class BooleanModel
@@ -81,16 +93,20 @@ module Orb
     extend Orb::Converter
 
     sig { params(other: T.anything).returns(T::Boolean) }
-    def self.===(other); end
+    def self.===(other)
+    end
 
     sig { params(other: T.anything).returns(T::Boolean) }
-    def self.==(other); end
+    def self.==(other)
+    end
 
     sig { override.params(value: T.any(T::Boolean, T.anything)).returns(T.any(T::Boolean, T.anything)) }
-    def self.coerce(value); end
+    def self.coerce(value)
+    end
 
     sig { override.params(value: T.any(T::Boolean, T.anything)).returns(T.any(T::Boolean, T.anything)) }
-    def self.dump(value); end
+    def self.dump(value)
+    end
 
     sig do
       override.params(value: T.anything).returns(
@@ -100,7 +116,8 @@ module Orb
         )
       )
     end
-    def self.try_strict_coerce(value); end
+    def self.try_strict_coerce(value)
+    end
   end
 
   class Enum
@@ -109,22 +126,28 @@ module Orb
     extend Orb::Converter
 
     sig { overridable.returns(T::Array[T.any(NilClass, T::Boolean, Integer, Float, Symbol)]) }
-    def self.values; end
+    def self.values
+    end
 
     sig { void }
-    private_class_method def self.finalize!; end
+    private_class_method def self.finalize!
+    end
 
     sig { params(other: T.anything).returns(T::Boolean) }
-    def self.===(other); end
+    def self.===(other)
+    end
 
     sig { params(other: T.anything).returns(T::Boolean) }
-    def self.==(other); end
+    def self.==(other)
+    end
 
     sig { override.params(value: T.any(String, Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
-    def self.coerce(value); end
+    def self.coerce(value)
+    end
 
     sig { override.params(value: T.any(Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
-    def self.dump(value); end
+    def self.dump(value)
+    end
 
     sig do
       override.params(value: T.anything).returns(
@@ -134,7 +157,8 @@ module Orb
         )
       )
     end
-    def self.try_strict_coerce(value); end
+    def self.try_strict_coerce(value)
+    end
   end
 
   class Union
@@ -144,13 +168,16 @@ module Orb
     extend Orb::Converter
 
     sig { returns(T::Array[[T.nilable(Symbol), Proc]]) }
-    private_class_method def self.known_variants; end
+    private_class_method def self.known_variants
+    end
 
     sig { overridable.returns(T::Array[[T.nilable(Symbol), T.anything]]) }
-    private_class_method def self.variants; end
+    private_class_method def self.variants
+    end
 
     sig { params(property: Symbol).void }
-    private_class_method def self.discriminator(property); end
+    private_class_method def self.discriminator(property)
+    end
 
     sig do
       params(
@@ -163,22 +190,28 @@ module Orb
         spec: T.any(T::Hash[Symbol, T.anything], T.proc.returns(Orb::Converter::Input), Orb::Converter::Input)
       ).void
     end
-    private_class_method def self.variant(key, spec = nil); end
+    private_class_method def self.variant(key, spec = nil)
+    end
 
     sig { params(value: T.anything).returns(T.nilable(Orb::Converter::Input)) }
-    private_class_method def self.resolve_variant(value); end
+    private_class_method def self.resolve_variant(value)
+    end
 
     sig { params(other: T.anything).returns(T::Boolean) }
-    def self.===(other); end
+    def self.===(other)
+    end
 
     sig { params(other: T.anything).returns(T::Boolean) }
-    def self.==(other); end
+    def self.==(other)
+    end
 
     sig { override.params(value: T.anything).returns(T.anything) }
-    def self.coerce(value); end
+    def self.coerce(value)
+    end
 
     sig { override.params(value: T.anything).returns(T.anything) }
-    def self.dump(value); end
+    def self.dump(value)
+    end
 
     sig do
       override.params(value: T.anything).returns(
@@ -188,7 +221,8 @@ module Orb
         )
       )
     end
-    def self.try_strict_coerce(value); end
+    def self.try_strict_coerce(value)
+    end
   end
 
   class ArrayOf
@@ -197,10 +231,12 @@ module Orb
     include Orb::Converter
 
     sig { params(other: T.anything).returns(T::Boolean) }
-    def ===(other); end
+    def ===(other)
+    end
 
     sig { params(other: T.anything).returns(T::Boolean) }
-    def ==(other); end
+    def ==(other)
+    end
 
     sig do
       override.params(
@@ -210,7 +246,8 @@ module Orb
         )
       ).returns(T.any(T::Array[T.anything], T.anything))
     end
-    def coerce(value); end
+    def coerce(value)
+    end
 
     sig do
       override.params(
@@ -220,7 +257,8 @@ module Orb
         )
       ).returns(T.any(T::Array[T.anything], T.anything))
     end
-    def dump(value); end
+    def dump(value)
+    end
 
     sig do
       override.params(value: T.anything).returns(
@@ -230,10 +268,12 @@ module Orb
         )
       )
     end
-    def try_strict_coerce(value); end
+    def try_strict_coerce(value)
+    end
 
     sig { returns(Orb::Converter::Input) }
-    protected def item_type; end
+    protected def item_type
+    end
 
     sig do
       params(
@@ -245,7 +285,8 @@ module Orb
         spec: T::Hash[Symbol, T.anything]
       ).void
     end
-    def initialize(type_info, spec = {}); end
+    def initialize(type_info, spec = {})
+    end
   end
 
   class HashOf
@@ -254,10 +295,12 @@ module Orb
     include Orb::Converter
 
     sig { params(other: T.anything).returns(T::Boolean) }
-    def ===(other); end
+    def ===(other)
+    end
 
     sig { params(other: T.anything).returns(T::Boolean) }
-    def ==(other); end
+    def ==(other)
+    end
 
     sig do
       override.params(
@@ -267,7 +310,8 @@ module Orb
         )
       ).returns(T.any(T::Hash[Symbol, T.anything], T.anything))
     end
-    def coerce(value); end
+    def coerce(value)
+    end
 
     sig do
       override.params(
@@ -277,7 +321,8 @@ module Orb
         )
       ).returns(T.any(T::Hash[Symbol, T.anything], T.anything))
     end
-    def dump(value); end
+    def dump(value)
+    end
 
     sig do
       override.params(value: T.anything).returns(
@@ -287,10 +332,12 @@ module Orb
         )
       )
     end
-    def try_strict_coerce(value); end
+    def try_strict_coerce(value)
+    end
 
     sig { returns(Orb::Converter::Input) }
-    protected def item_type; end
+    protected def item_type
+    end
 
     sig do
       params(
@@ -302,7 +349,8 @@ module Orb
         spec: T::Hash[Symbol, T.anything]
       ).void
     end
-    def initialize(type_info, spec = {}); end
+    def initialize(type_info, spec = {})
+    end
   end
 
   class BaseModel
@@ -319,13 +367,16 @@ module Orb
                 T.all(Orb::BaseModel::KnownFieldShape, {type_fn: T.proc.returns(Orb::Converter::Input)})]
       )
     end
-    def self.known_fields; end
+    def self.known_fields
+    end
 
     sig { returns(T::Hash[Symbol, T.all(Orb::BaseModel::KnownFieldShape, {type: Orb::Converter::Input})]) }
-    def self.fields; end
+    def self.fields
+    end
 
     sig { returns(T::Hash[Symbol, T.proc.returns(T::Class[T.anything])]) }
-    def self.defaults; end
+    def self.defaults
+    end
 
     sig do
       params(
@@ -345,7 +396,8 @@ module Orb
         spec: T::Hash[Symbol, T.anything]
       ).void
     end
-    private_class_method def self.add_field(name_sym, required:, type_info:, spec:); end
+    private_class_method def self.add_field(name_sym, required:, type_info:, spec:)
+    end
 
     sig do
       params(
@@ -358,7 +410,8 @@ module Orb
         spec: T::Hash[Symbol, T.anything]
       ).void
     end
-    def self.required(name_sym, type_info, spec = {}); end
+    def self.required(name_sym, type_info, spec = {})
+    end
 
     sig do
       params(
@@ -371,16 +424,20 @@ module Orb
         spec: T::Hash[Symbol, T.anything]
       ).void
     end
-    def self.optional(name_sym, type_info, spec = {}); end
+    def self.optional(name_sym, type_info, spec = {})
+    end
 
     sig { params(blk: T.proc.void).void }
-    private_class_method def self.request_only(&blk); end
+    private_class_method def self.request_only(&blk)
+    end
 
     sig { params(blk: T.proc.void).void }
-    private_class_method def self.response_only(&blk); end
+    private_class_method def self.response_only(&blk)
+    end
 
     sig { params(other: T.anything).returns(T::Boolean) }
-    def ==(other); end
+    def ==(other)
+    end
 
     sig do
       override.params(
@@ -391,7 +448,8 @@ module Orb
         )
       ).returns(T.any(T.attached_class, T.anything))
     end
-    def self.coerce(value); end
+    def self.coerce(value)
+    end
 
     sig do
       override.params(
@@ -401,7 +459,8 @@ module Orb
         )
       ).returns(T.any(T::Hash[T.anything, T.anything], T.anything))
     end
-    def self.dump(value); end
+    def self.dump(value)
+    end
 
     sig do
       override.params(value: T.anything).returns(
@@ -411,26 +470,33 @@ module Orb
         )
       )
     end
-    def self.try_strict_coerce(value); end
+    def self.try_strict_coerce(value)
+    end
 
     sig { params(key: Symbol).returns(T.nilable(T.anything)) }
-    def [](key); end
+    def [](key)
+    end
 
     sig { overridable.returns(T::Hash[Symbol, T.anything]) }
-    def to_h; end
+    def to_h
+    end
 
     alias_method :to_hash, :to_h
 
     sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.anything]) }
-    def deconstruct_keys(keys); end
+    def deconstruct_keys(keys)
+    end
 
     sig { params(data: T.any(T::Hash[Symbol, T.anything], T.self_type)).void }
-    def initialize(data = {}); end
+    def initialize(data = {})
+    end
 
     sig { returns(String) }
-    def to_s; end
+    def to_s
+    end
 
     sig { returns(String) }
-    def inspect; end
+    def inspect
+    end
   end
 end

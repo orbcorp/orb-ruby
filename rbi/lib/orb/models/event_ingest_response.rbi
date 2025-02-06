@@ -15,7 +15,8 @@ module Orb
           debug: T.nilable(Orb::Models::EventIngestResponse::Debug)
         ).void
       end
-      def initialize(validation_failed:, debug: nil); end
+      def initialize(validation_failed:, debug: nil)
+      end
 
       sig do
         override.returns(
@@ -25,7 +26,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class ValidationFailed < Orb::BaseModel
         sig { returns(String) }
@@ -35,10 +37,12 @@ module Orb
         attr_accessor :validation_errors
 
         sig { params(idempotency_key: String, validation_errors: T::Array[String]).void }
-        def initialize(idempotency_key:, validation_errors:); end
+        def initialize(idempotency_key:, validation_errors:)
+        end
 
         sig { override.returns({idempotency_key: String, validation_errors: T::Array[String]}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Debug < Orb::BaseModel
@@ -49,10 +53,12 @@ module Orb
         attr_accessor :ingested
 
         sig { params(duplicate: T::Array[String], ingested: T::Array[String]).void }
-        def initialize(duplicate:, ingested:); end
+        def initialize(duplicate:, ingested:)
+        end
 
         sig { override.returns({duplicate: T::Array[String], ingested: T::Array[String]}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

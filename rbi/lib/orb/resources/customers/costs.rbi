@@ -41,10 +41,12 @@ module Orb
           timeframe_start: nil,
           view_mode: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig { params(client: Orb::Client).void }
-        def initialize(client:); end
+        def initialize(client:)
+        end
       end
     end
   end

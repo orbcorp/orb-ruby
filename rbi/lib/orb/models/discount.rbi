@@ -26,7 +26,8 @@ module Orb
             discount_type: Symbol
           ).void
         end
-        def initialize(applies_to_price_ids:, usage_discount:, reason: nil, discount_type: :usage); end
+        def initialize(applies_to_price_ids:, usage_discount:, reason: nil, discount_type: :usage)
+        end
 
         sig do
           override.returns(
@@ -38,7 +39,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
 
       sig do
@@ -51,7 +53,8 @@ module Orb
           ]
         )
       end
-      private_class_method def self.variants; end
+      private_class_method def self.variants
+      end
     end
   end
 end

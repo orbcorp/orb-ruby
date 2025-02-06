@@ -36,7 +36,8 @@ module Orb
             limit: nil,
             minimum_amount: nil,
             request_options: {}
-          ); end
+          )
+          end
 
           sig do
             params(
@@ -79,7 +80,8 @@ module Orb
             per_unit_cost_basis: nil,
             void_reason: nil,
             request_options: {}
-          ); end
+          )
+          end
 
           sig do
             params(
@@ -116,7 +118,8 @@ module Orb
             per_unit_cost_basis: nil,
             void_reason: nil,
             request_options: {}
-          ); end
+          )
+          end
 
           sig do
             params(
@@ -149,10 +152,12 @@ module Orb
             limit: nil,
             minimum_amount: nil,
             request_options: {}
-          ); end
+          )
+          end
 
           sig { params(client: Orb::Client).void }
-          def initialize(client:); end
+          def initialize(client:)
+          end
         end
       end
     end

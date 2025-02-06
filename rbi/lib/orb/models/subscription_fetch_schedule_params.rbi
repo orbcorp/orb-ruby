@@ -46,7 +46,8 @@ module Orb
         start_date_lt: nil,
         start_date_lte: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -61,7 +62,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end
