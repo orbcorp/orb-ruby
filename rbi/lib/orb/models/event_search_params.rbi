@@ -23,7 +23,8 @@ module Orb
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(event_ids:, timeframe_end: nil, timeframe_start: nil, request_options: {}); end
+      def initialize(event_ids:, timeframe_end: nil, timeframe_start: nil, request_options: {})
+      end
 
       sig do
         override.returns(
@@ -35,7 +36,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

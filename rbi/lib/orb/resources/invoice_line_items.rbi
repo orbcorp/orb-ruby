@@ -14,10 +14,12 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::InvoiceLineItemCreateResponse)
       end
-      def create(amount:, end_date:, invoice_id:, name:, quantity:, start_date:, request_options: {}); end
+      def create(amount:, end_date:, invoice_id:, name:, quantity:, start_date:, request_options: {})
+      end
 
       sig { params(client: Orb::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

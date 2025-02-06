@@ -10,12 +10,14 @@ module Orb
         attr_accessor :data
 
         sig { params(data: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]).void }
-        def initialize(data:); end
+        def initialize(data:)
+        end
 
         sig do
           override.returns({data: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]})
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Data < Orb::BaseModel
           sig { returns(Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric) }
@@ -34,7 +36,8 @@ module Orb
               view_mode: Symbol
             ).void
           end
-          def initialize(billable_metric:, usage:, view_mode:); end
+          def initialize(billable_metric:, usage:, view_mode:)
+          end
 
           sig do
             override.returns(
@@ -43,7 +46,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class BillableMetric < Orb::BaseModel
             sig { returns(String) }
@@ -53,10 +57,12 @@ module Orb
             attr_accessor :name
 
             sig { params(id: String, name: String).void }
-            def initialize(id:, name:); end
+            def initialize(id:, name:)
+            end
 
             sig { override.returns({id: String, name: String}) }
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class Usage < Orb::BaseModel
@@ -70,10 +76,12 @@ module Orb
             attr_accessor :timeframe_start
 
             sig { params(quantity: Float, timeframe_end: Time, timeframe_start: Time).void }
-            def initialize(quantity:, timeframe_end:, timeframe_start:); end
+            def initialize(quantity:, timeframe_end:, timeframe_start:)
+            end
 
             sig { override.returns({quantity: Float, timeframe_end: Time, timeframe_start: Time}) }
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class ViewMode < Orb::Enum
@@ -83,7 +91,8 @@ module Orb
             CUMULATIVE = :cumulative
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
       end
@@ -101,7 +110,8 @@ module Orb
             pagination_metadata: T.nilable(Orb::Models::PaginationMetadata)
           ).void
         end
-        def initialize(data:, pagination_metadata: nil); end
+        def initialize(data:, pagination_metadata: nil)
+        end
 
         sig do
           override.returns(
@@ -111,7 +121,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Data < Orb::BaseModel
           sig { returns(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric) }
@@ -134,7 +145,8 @@ module Orb
               view_mode: Symbol
             ).void
           end
-          def initialize(billable_metric:, metric_group:, usage:, view_mode:); end
+          def initialize(billable_metric:, metric_group:, usage:, view_mode:)
+          end
 
           sig do
             override.returns(
@@ -143,7 +155,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class BillableMetric < Orb::BaseModel
             sig { returns(String) }
@@ -153,10 +166,12 @@ module Orb
             attr_accessor :name
 
             sig { params(id: String, name: String).void }
-            def initialize(id:, name:); end
+            def initialize(id:, name:)
+            end
 
             sig { override.returns({id: String, name: String}) }
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class MetricGroup < Orb::BaseModel
@@ -167,10 +182,12 @@ module Orb
             attr_accessor :property_value
 
             sig { params(property_key: String, property_value: String).void }
-            def initialize(property_key:, property_value:); end
+            def initialize(property_key:, property_value:)
+            end
 
             sig { override.returns({property_key: String, property_value: String}) }
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class Usage < Orb::BaseModel
@@ -184,10 +201,12 @@ module Orb
             attr_accessor :timeframe_start
 
             sig { params(quantity: Float, timeframe_end: Time, timeframe_start: Time).void }
-            def initialize(quantity:, timeframe_end:, timeframe_start:); end
+            def initialize(quantity:, timeframe_end:, timeframe_start:)
+            end
 
             sig { override.returns({quantity: Float, timeframe_end: Time, timeframe_start: Time}) }
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class ViewMode < Orb::Enum
@@ -197,7 +216,8 @@ module Orb
             CUMULATIVE = :cumulative
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
       end
@@ -210,7 +230,8 @@ module Orb
           ]
         )
       end
-      private_class_method def self.variants; end
+      private_class_method def self.variants
+      end
     end
   end
 end

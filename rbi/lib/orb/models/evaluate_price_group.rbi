@@ -19,7 +19,8 @@ module Orb
           quantity: Float
         ).void
       end
-      def initialize(amount:, grouping_values:, quantity:); end
+      def initialize(amount:, grouping_values:, quantity:)
+      end
 
       sig do
         override.returns(
@@ -30,13 +31,15 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class GroupingValue < Orb::Union
         abstract!
 
         sig { override.returns([[NilClass, String], [NilClass, Float], [NilClass, T::Boolean]]) }
-        private_class_method def self.variants; end
+        private_class_method def self.variants
+        end
       end
     end
   end

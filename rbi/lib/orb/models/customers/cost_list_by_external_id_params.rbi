@@ -48,7 +48,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class ViewMode < Orb::Enum
           abstract!
@@ -57,7 +58,8 @@ module Orb
           CUMULATIVE = T.let(:cumulative, T.nilable(Symbol))
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

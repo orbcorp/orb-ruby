@@ -28,7 +28,8 @@ module Orb
             expires_after: nil,
             expires_after_unit: nil,
             request_options: {}
-          ); end
+          )
+          end
 
           sig do
             params(
@@ -38,7 +39,8 @@ module Orb
               request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
             ).returns(Orb::Page[Orb::Models::Customers::Credits::TopUpListResponse])
           end
-          def list(customer_id, cursor: nil, limit: nil, request_options: {}); end
+          def list(customer_id, cursor: nil, limit: nil, request_options: {})
+          end
 
           sig do
             params(
@@ -47,7 +49,8 @@ module Orb
               request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
             ).void
           end
-          def delete(top_up_id, customer_id:, request_options: {}); end
+          def delete(top_up_id, customer_id:, request_options: {})
+          end
 
           sig do
             params(
@@ -72,7 +75,8 @@ module Orb
             expires_after: nil,
             expires_after_unit: nil,
             request_options: {}
-          ); end
+          )
+          end
 
           sig do
             params(
@@ -81,7 +85,8 @@ module Orb
               request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
             ).void
           end
-          def delete_by_external_id(top_up_id, external_customer_id:, request_options: {}); end
+          def delete_by_external_id(top_up_id, external_customer_id:, request_options: {})
+          end
 
           sig do
             params(
@@ -91,10 +96,12 @@ module Orb
               request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
             ).returns(Orb::Page[Orb::Models::Customers::Credits::TopUpListByExternalIDResponse])
           end
-          def list_by_external_id(external_customer_id, cursor: nil, limit: nil, request_options: {}); end
+          def list_by_external_id(external_customer_id, cursor: nil, limit: nil, request_options: {})
+          end
 
           sig { params(client: Orb::Client).void }
-          def initialize(client:); end
+          def initialize(client:)
+          end
         end
       end
     end

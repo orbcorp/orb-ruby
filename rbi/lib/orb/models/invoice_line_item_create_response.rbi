@@ -212,7 +212,8 @@ module Orb
         sub_line_items:,
         subtotal:,
         tax_amounts:
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -283,7 +284,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Adjustment < Orb::Union
         abstract!
@@ -329,7 +331,8 @@ module Orb
             plan_phase_order:,
             reason:,
             adjustment_type: :amount_discount
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -344,7 +347,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class PercentageDiscountAdjustment < Orb::BaseModel
@@ -388,7 +392,8 @@ module Orb
             plan_phase_order:,
             reason:,
             adjustment_type: :percentage_discount
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -403,7 +408,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class UsageDiscountAdjustment < Orb::BaseModel
@@ -447,7 +453,8 @@ module Orb
             reason:,
             usage_discount:,
             adjustment_type: :usage_discount
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -462,7 +469,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class MinimumAdjustment < Orb::BaseModel
@@ -511,7 +519,8 @@ module Orb
             plan_phase_order:,
             reason:,
             adjustment_type: :minimum
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -527,7 +536,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class MaximumAdjustment < Orb::BaseModel
@@ -571,7 +581,8 @@ module Orb
             plan_phase_order:,
             reason:,
             adjustment_type: :maximum
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -586,7 +597,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         sig do
@@ -603,7 +615,8 @@ module Orb
             ]
           )
         end
-        private_class_method def self.variants; end
+        private_class_method def self.variants
+        end
       end
 
       class Maximum < Orb::BaseModel
@@ -614,10 +627,12 @@ module Orb
         attr_accessor :maximum_amount
 
         sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-        def initialize(applies_to_price_ids:, maximum_amount:); end
+        def initialize(applies_to_price_ids:, maximum_amount:)
+        end
 
         sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Minimum < Orb::BaseModel
@@ -628,10 +643,12 @@ module Orb
         attr_accessor :minimum_amount
 
         sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-        def initialize(applies_to_price_ids:, minimum_amount:); end
+        def initialize(applies_to_price_ids:, minimum_amount:)
+        end
 
         sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class SubLineItem < Orb::Union
@@ -670,7 +687,8 @@ module Orb
               type: Symbol
             ).void
           end
-          def initialize(amount:, grouping:, matrix_config:, name:, quantity:, type: :matrix); end
+          def initialize(amount:, grouping:, matrix_config:, name:, quantity:, type: :matrix)
+          end
 
           sig do
             override.returns(
@@ -684,7 +702,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class Grouping < Orb::BaseModel
             sig { returns(String) }
@@ -694,10 +713,12 @@ module Orb
             attr_accessor :value
 
             sig { params(key: String, value: T.nilable(String)).void }
-            def initialize(key:, value:); end
+            def initialize(key:, value:)
+            end
 
             sig { override.returns({key: String, value: T.nilable(String)}) }
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class MatrixConfig < Orb::BaseModel
@@ -705,10 +726,12 @@ module Orb
             attr_accessor :dimension_values
 
             sig { params(dimension_values: T::Array[T.nilable(String)]).void }
-            def initialize(dimension_values:); end
+            def initialize(dimension_values:)
+            end
 
             sig { override.returns({dimension_values: T::Array[T.nilable(String)]}) }
-            def to_hash; end
+            def to_hash
+            end
           end
         end
 
@@ -745,7 +768,8 @@ module Orb
               type: Symbol
             ).void
           end
-          def initialize(amount:, grouping:, name:, quantity:, tier_config:, type: :tier); end
+          def initialize(amount:, grouping:, name:, quantity:, tier_config:, type: :tier)
+          end
 
           sig do
             override.returns(
@@ -759,7 +783,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class Grouping < Orb::BaseModel
             sig { returns(String) }
@@ -769,10 +794,12 @@ module Orb
             attr_accessor :value
 
             sig { params(key: String, value: T.nilable(String)).void }
-            def initialize(key:, value:); end
+            def initialize(key:, value:)
+            end
 
             sig { override.returns({key: String, value: T.nilable(String)}) }
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class TierConfig < Orb::BaseModel
@@ -786,10 +813,12 @@ module Orb
             attr_accessor :unit_amount
 
             sig { params(first_unit: Float, last_unit: T.nilable(Float), unit_amount: String).void }
-            def initialize(first_unit:, last_unit:, unit_amount:); end
+            def initialize(first_unit:, last_unit:, unit_amount:)
+            end
 
             sig { override.returns({first_unit: Float, last_unit: T.nilable(Float), unit_amount: String}) }
-            def to_hash; end
+            def to_hash
+            end
           end
         end
 
@@ -820,7 +849,8 @@ module Orb
               type: Symbol
             ).void
           end
-          def initialize(amount:, grouping:, name:, quantity:, type: :"'null'"); end
+          def initialize(amount:, grouping:, name:, quantity:, type: :"'null'")
+          end
 
           sig do
             override.returns(
@@ -833,7 +863,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class Grouping < Orb::BaseModel
             sig { returns(String) }
@@ -843,10 +874,12 @@ module Orb
             attr_accessor :value
 
             sig { params(key: String, value: T.nilable(String)).void }
-            def initialize(key:, value:); end
+            def initialize(key:, value:)
+            end
 
             sig { override.returns({key: String, value: T.nilable(String)}) }
-            def to_hash; end
+            def to_hash
+            end
           end
         end
 
@@ -859,7 +892,8 @@ module Orb
             ]
           )
         end
-        private_class_method def self.variants; end
+        private_class_method def self.variants
+        end
       end
 
       class TaxAmount < Orb::BaseModel
@@ -875,7 +909,8 @@ module Orb
         sig do
           params(amount: String, tax_rate_description: String, tax_rate_percentage: T.nilable(String)).void
         end
-        def initialize(amount:, tax_rate_description:, tax_rate_percentage:); end
+        def initialize(amount:, tax_rate_description:, tax_rate_percentage:)
+        end
 
         sig do
           override.returns(
@@ -886,7 +921,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

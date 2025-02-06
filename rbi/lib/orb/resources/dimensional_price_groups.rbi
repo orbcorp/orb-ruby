@@ -23,7 +23,8 @@ module Orb
         external_dimensional_price_group_id: nil,
         metadata: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -31,7 +32,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::DimensionalPriceGroup)
       end
-      def retrieve(dimensional_price_group_id, request_options: {}); end
+      def retrieve(dimensional_price_group_id, request_options: {})
+      end
 
       sig do
         params(
@@ -40,10 +42,12 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Page[Orb::Models::DimensionalPriceGroup])
       end
-      def list(cursor: nil, limit: nil, request_options: {}); end
+      def list(cursor: nil, limit: nil, request_options: {})
+      end
 
       sig { params(client: Orb::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

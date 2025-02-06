@@ -18,10 +18,12 @@ module Orb
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(synchronous: nil, request_options: {}); end
+      def initialize(synchronous: nil, request_options: {})
+      end
 
       sig { override.returns({synchronous: T::Boolean, request_options: Orb::RequestOptions}) }
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

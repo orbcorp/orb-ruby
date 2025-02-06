@@ -23,7 +23,8 @@ module Orb
           reason: T.nilable(String)
         ).void
       end
-      def initialize(applies_to_price_ids:, discount_type:, percentage_discount:, reason: nil); end
+      def initialize(applies_to_price_ids:, discount_type:, percentage_discount:, reason: nil)
+      end
 
       sig do
         override.returns(
@@ -35,7 +36,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class DiscountType < Orb::Enum
         abstract!
@@ -43,7 +45,8 @@ module Orb
         PERCENTAGE = :percentage
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

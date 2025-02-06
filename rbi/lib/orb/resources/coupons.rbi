@@ -36,7 +36,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Page[Orb::Models::Coupon])
       end
-      def list(cursor: nil, limit: nil, redemption_code: nil, show_archived: nil, request_options: {}); end
+      def list(cursor: nil, limit: nil, redemption_code: nil, show_archived: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -44,7 +45,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Coupon)
       end
-      def archive(coupon_id, request_options: {}); end
+      def archive(coupon_id, request_options: {})
+      end
 
       sig do
         params(
@@ -52,10 +54,12 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Coupon)
       end
-      def fetch(coupon_id, request_options: {}); end
+      def fetch(coupon_id, request_options: {})
+      end
 
       sig { params(client: Orb::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

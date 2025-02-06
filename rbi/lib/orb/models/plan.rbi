@@ -222,7 +222,8 @@ module Orb
         status:,
         trial_config:,
         version:
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -295,7 +296,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Adjustment < Orb::Union
         abstract!
@@ -341,7 +343,8 @@ module Orb
             plan_phase_order:,
             reason:,
             adjustment_type: :amount_discount
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -356,7 +359,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class PercentageDiscountAdjustment < Orb::BaseModel
@@ -400,7 +404,8 @@ module Orb
             plan_phase_order:,
             reason:,
             adjustment_type: :percentage_discount
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -415,7 +420,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class UsageDiscountAdjustment < Orb::BaseModel
@@ -459,7 +465,8 @@ module Orb
             reason:,
             usage_discount:,
             adjustment_type: :usage_discount
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -474,7 +481,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class MinimumAdjustment < Orb::BaseModel
@@ -523,7 +531,8 @@ module Orb
             plan_phase_order:,
             reason:,
             adjustment_type: :minimum
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -539,7 +548,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class MaximumAdjustment < Orb::BaseModel
@@ -583,7 +593,8 @@ module Orb
             plan_phase_order:,
             reason:,
             adjustment_type: :maximum
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -598,7 +609,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         sig do
@@ -612,7 +624,8 @@ module Orb
             ]
           )
         end
-        private_class_method def self.variants; end
+        private_class_method def self.variants
+        end
       end
 
       class BasePlan < Orb::BaseModel
@@ -628,7 +641,8 @@ module Orb
         sig do
           params(id: T.nilable(String), external_plan_id: T.nilable(String), name: T.nilable(String)).void
         end
-        def initialize(id:, external_plan_id:, name:); end
+        def initialize(id:, external_plan_id:, name:)
+        end
 
         sig do
           override.returns(
@@ -639,7 +653,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Maximum < Orb::BaseModel
@@ -650,10 +665,12 @@ module Orb
         attr_accessor :maximum_amount
 
         sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-        def initialize(applies_to_price_ids:, maximum_amount:); end
+        def initialize(applies_to_price_ids:, maximum_amount:)
+        end
 
         sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Minimum < Orb::BaseModel
@@ -664,10 +681,12 @@ module Orb
         attr_accessor :minimum_amount
 
         sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-        def initialize(applies_to_price_ids:, minimum_amount:); end
+        def initialize(applies_to_price_ids:, minimum_amount:)
+        end
 
         sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class PlanPhase < Orb::BaseModel
@@ -749,7 +768,8 @@ module Orb
           minimum_amount:,
           name:,
           order:
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -775,7 +795,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class DurationUnit < Orb::Enum
           abstract!
@@ -787,7 +808,8 @@ module Orb
           ANNUAL = T.let(:annual, T.nilable(Symbol))
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class Maximum < Orb::BaseModel
@@ -798,10 +820,12 @@ module Orb
           attr_accessor :maximum_amount
 
           sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:); end
+          def initialize(applies_to_price_ids:, maximum_amount:)
+          end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::BaseModel
@@ -812,10 +836,12 @@ module Orb
           attr_accessor :minimum_amount
 
           sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:); end
+          def initialize(applies_to_price_ids:, minimum_amount:)
+          end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
 
@@ -830,10 +856,12 @@ module Orb
         attr_accessor :name
 
         sig { params(id: String, created_at: Time, name: String).void }
-        def initialize(id:, created_at:, name:); end
+        def initialize(id:, created_at:, name:)
+        end
 
         sig { override.returns({id: String, created_at: Time, name: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Status < Orb::Enum
@@ -844,7 +872,8 @@ module Orb
         DRAFT = :draft
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class TrialConfig < Orb::BaseModel
@@ -855,10 +884,12 @@ module Orb
         attr_accessor :trial_period_unit
 
         sig { params(trial_period: T.nilable(Integer), trial_period_unit: Symbol).void }
-        def initialize(trial_period:, trial_period_unit:); end
+        def initialize(trial_period:, trial_period_unit:)
+        end
 
         sig { override.returns({trial_period: T.nilable(Integer), trial_period_unit: Symbol}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class TrialPeriodUnit < Orb::Enum
           abstract!
@@ -866,7 +897,8 @@ module Orb
           DAYS = :days
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

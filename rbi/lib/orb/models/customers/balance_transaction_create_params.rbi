@@ -24,7 +24,8 @@ module Orb
             request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
-        def initialize(amount:, type:, description: nil, request_options: {}); end
+        def initialize(amount:, type:, description: nil, request_options: {})
+        end
 
         sig do
           override.returns(
@@ -36,7 +37,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Type < Orb::Enum
           abstract!
@@ -45,7 +47,8 @@ module Orb
           DECREMENT = :decrement
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

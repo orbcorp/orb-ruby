@@ -57,7 +57,8 @@ module Orb
         tax_id: nil,
         timezone: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -104,7 +105,8 @@ module Orb
         tax_configuration: nil,
         tax_id: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -125,7 +127,8 @@ module Orb
         cursor: nil,
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -133,7 +136,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).void
       end
-      def delete(customer_id, request_options: {}); end
+      def delete(customer_id, request_options: {})
+      end
 
       sig do
         params(
@@ -141,7 +145,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Customer)
       end
-      def fetch(customer_id, request_options: {}); end
+      def fetch(customer_id, request_options: {})
+      end
 
       sig do
         params(
@@ -149,7 +154,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Customer)
       end
-      def fetch_by_external_id(external_customer_id, request_options: {}); end
+      def fetch_by_external_id(external_customer_id, request_options: {})
+      end
 
       sig do
         params(
@@ -157,7 +163,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).void
       end
-      def sync_payment_methods_from_gateway(external_customer_id, request_options: {}); end
+      def sync_payment_methods_from_gateway(external_customer_id, request_options: {})
+      end
 
       sig do
         params(
@@ -165,7 +172,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).void
       end
-      def sync_payment_methods_from_gateway_by_external_customer_id(customer_id, request_options: {}); end
+      def sync_payment_methods_from_gateway_by_external_customer_id(customer_id, request_options: {})
+      end
 
       sig do
         params(
@@ -212,10 +220,12 @@ module Orb
         tax_configuration: nil,
         tax_id: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig { params(client: Orb::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

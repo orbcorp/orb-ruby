@@ -17,10 +17,12 @@ module Orb
               request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
             ).void
           end
-          def initialize(external_customer_id:, request_options: {}); end
+          def initialize(external_customer_id:, request_options: {})
+          end
 
           sig { override.returns({external_customer_id: String, request_options: Orb::RequestOptions}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
     end

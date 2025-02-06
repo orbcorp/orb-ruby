@@ -123,7 +123,8 @@ module Orb
         invoicing_cycle_configuration: nil,
         metadata: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -160,7 +161,8 @@ module Orb
                     Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
                   ))
       end
-      def update(price_id, metadata: nil, request_options: {}); end
+      def update(price_id, metadata: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -197,7 +199,8 @@ module Orb
           Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
         )])
       end
-      def list(cursor: nil, limit: nil, request_options: {}); end
+      def list(cursor: nil, limit: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -220,7 +223,8 @@ module Orb
         filter: nil,
         grouping_keys: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -256,10 +260,12 @@ module Orb
                     Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
                   ))
       end
-      def fetch(price_id, request_options: {}); end
+      def fetch(price_id, request_options: {})
+      end
 
       sig { params(client: Orb::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

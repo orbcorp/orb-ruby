@@ -19,7 +19,8 @@ module Orb
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(cancel_option:, cancellation_date: nil, request_options: {}); end
+      def initialize(cancel_option:, cancellation_date: nil, request_options: {})
+      end
 
       sig do
         override.returns(
@@ -30,7 +31,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class CancelOption < Orb::Enum
         abstract!
@@ -40,7 +42,8 @@ module Orb
         REQUESTED_DATE = :requested_date
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

@@ -9,7 +9,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Alert)
       end
-      def retrieve(alert_id, request_options: {}); end
+      def retrieve(alert_id, request_options: {})
+      end
 
       sig do
         params(
@@ -18,7 +19,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Alert)
       end
-      def update(alert_configuration_id, thresholds:, request_options: {}); end
+      def update(alert_configuration_id, thresholds:, request_options: {})
+      end
 
       sig do
         params(
@@ -45,7 +47,8 @@ module Orb
         limit: nil,
         subscription_id: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -56,7 +59,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Alert)
       end
-      def create_for_customer(customer_id, currency:, type:, thresholds: nil, request_options: {}); end
+      def create_for_customer(customer_id, currency:, type:, thresholds: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -95,7 +99,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Alert)
       end
-      def disable(alert_configuration_id, subscription_id: nil, request_options: {}); end
+      def disable(alert_configuration_id, subscription_id: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -104,10 +109,12 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Alert)
       end
-      def enable(alert_configuration_id, subscription_id: nil, request_options: {}); end
+      def enable(alert_configuration_id, subscription_id: nil, request_options: {})
+      end
 
       sig { params(client: Orb::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

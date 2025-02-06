@@ -56,7 +56,8 @@ module Orb
     attr_reader :dimensional_price_groups
 
     sig { returns(T::Hash[String, String]) }
-    private def auth_headers; end
+    private def auth_headers
+    end
 
     sig do
       params(
@@ -77,6 +78,7 @@ module Orb
       initial_retry_delay: DEFAULT_INITIAL_RETRY_DELAY,
       max_retry_delay: DEFAULT_MAX_RETRY_DELAY,
       idempotency_header: "Idempotency-Key"
-    ); end
+    )
+    end
   end
 end
