@@ -1,0 +1,53 @@
+module Orb
+  class Client < Orb::BaseClient
+    DEFAULT_MAX_RETRIES: 2
+
+    DEFAULT_TIMEOUT_IN_SECONDS: Float
+
+    DEFAULT_INITIAL_RETRY_DELAY: Float
+
+    DEFAULT_MAX_RETRY_DELAY: Float
+
+    attr_reader api_key: String
+
+    attr_reader top_level: Orb::Resources::TopLevel
+
+    attr_reader coupons: Orb::Resources::Coupons
+
+    attr_reader credit_notes: Orb::Resources::CreditNotes
+
+    attr_reader customers: Orb::Resources::Customers
+
+    attr_reader events: Orb::Resources::Events
+
+    attr_reader invoice_line_items: Orb::Resources::InvoiceLineItems
+
+    attr_reader invoices: Orb::Resources::Invoices
+
+    attr_reader items: Orb::Resources::Items
+
+    attr_reader metrics: Orb::Resources::Metrics
+
+    attr_reader plans: Orb::Resources::Plans
+
+    attr_reader prices: Orb::Resources::Prices
+
+    attr_reader subscriptions: Orb::Resources::Subscriptions
+
+    attr_reader alerts: Orb::Resources::Alerts
+
+    attr_reader dimensional_price_groups: Orb::Resources::DimensionalPriceGroups
+
+    private def auth_headers: -> Hash[String, String]
+
+    def initialize: (
+      base_url: String?,
+      api_key: String?,
+      max_retries: Integer,
+      timeout: Float,
+      initial_retry_delay: Float,
+      max_retry_delay: Float,
+      idempotency_header: String
+    ) -> void
+  end
+end

@@ -1,0 +1,32 @@
+module Orb
+  module Models
+    module Coupons
+      type subscription_list_params =
+        { cursor: String?, limit: Integer } & Orb::request_parameters
+
+      class SubscriptionListParams < Orb::BaseModel
+        extend Orb::RequestParameters::Converter
+        include Orb::RequestParameters
+
+        attr_accessor cursor: String?
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> void
+
+        def initialize:
+          (
+            cursor: String?,
+            limit: Integer,
+            request_options: Orb::request_opts
+          ) -> void
+          | (
+            ?Orb::Models::Coupons::subscription_list_params
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::Coupons::subscription_list_params
+      end
+    end
+  end
+end

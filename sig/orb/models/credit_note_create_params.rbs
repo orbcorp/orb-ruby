@@ -1,0 +1,64 @@
+module Orb
+  module Models
+    type credit_note_create_params =
+      {
+        line_items: Array[Orb::Models::CreditNoteCreateParams::LineItem],
+        memo: String?,
+        reason: Orb::Models::CreditNoteCreateParams::reason?
+      }
+      & Orb::request_parameters
+
+    class CreditNoteCreateParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor line_items: Array[Orb::Models::CreditNoteCreateParams::LineItem]
+
+      attr_accessor memo: String?
+
+      attr_accessor reason: Orb::Models::CreditNoteCreateParams::reason?
+
+      def initialize:
+        (
+          line_items: Array[Orb::Models::CreditNoteCreateParams::LineItem],
+          memo: String?,
+          reason: Orb::Models::CreditNoteCreateParams::reason?,
+          request_options: Orb::request_opts
+        ) -> void
+        | (
+          ?Orb::Models::credit_note_create_params | Orb::BaseModel data
+        ) -> void
+
+      def to_h: -> Orb::Models::credit_note_create_params
+
+      type line_item = { amount: String, invoice_line_item_id: String }
+
+      class LineItem < Orb::BaseModel
+        attr_accessor amount: String
+
+        attr_accessor invoice_line_item_id: String
+
+        def initialize:
+          (amount: String, invoice_line_item_id: String) -> void
+          | (
+            ?Orb::Models::CreditNoteCreateParams::line_item
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::CreditNoteCreateParams::line_item
+      end
+
+      type reason =
+        :duplicate | :fraudulent | :order_change | :product_unsatisfactory
+
+      class Reason < Orb::Enum
+        DUPLICATE: :duplicate
+        FRAUDULENT: :fraudulent
+        ORDER_CHANGE: :order_change
+        PRODUCT_UNSATISFACTORY: :product_unsatisfactory
+
+        def self.values: -> Array[Orb::Models::CreditNoteCreateParams::reason]
+      end
+    end
+  end
+end

@@ -1,0 +1,47 @@
+module Orb
+  module Models
+    type customer_list_params =
+      {
+        created_at_gt: Time?,
+        created_at_gte: Time?,
+        created_at_lt: Time?,
+        created_at_lte: Time?,
+        cursor: String?,
+        limit: Integer
+      }
+      & Orb::request_parameters
+
+    class CustomerListParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor created_at_gt: Time?
+
+      attr_accessor created_at_gte: Time?
+
+      attr_accessor created_at_lt: Time?
+
+      attr_accessor created_at_lte: Time?
+
+      attr_accessor cursor: String?
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> void
+
+      def initialize:
+        (
+          created_at_gt: Time?,
+          created_at_gte: Time?,
+          created_at_lt: Time?,
+          created_at_lte: Time?,
+          cursor: String?,
+          limit: Integer,
+          request_options: Orb::request_opts
+        ) -> void
+        | (?Orb::Models::customer_list_params | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::customer_list_params
+    end
+  end
+end

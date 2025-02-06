@@ -1,0 +1,15 @@
+module Orb
+  module Models
+    type event_deprecate_response = { deprecated: String }
+
+    class EventDeprecateResponse < Orb::BaseModel
+      attr_accessor deprecated: String
+
+      def initialize:
+        (deprecated: String) -> void
+        | (?Orb::Models::event_deprecate_response | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::event_deprecate_response
+    end
+  end
+end

@@ -1,0 +1,15 @@
+module Orb
+  module Models
+    type event_update_response = { amended: String }
+
+    class EventUpdateResponse < Orb::BaseModel
+      attr_accessor amended: String
+
+      def initialize:
+        (amended: String) -> void
+        | (?Orb::Models::event_update_response | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::event_update_response
+    end
+  end
+end

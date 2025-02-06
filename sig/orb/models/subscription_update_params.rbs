@@ -1,0 +1,43 @@
+module Orb
+  module Models
+    type subscription_update_params =
+      {
+        auto_collection: bool?,
+        default_invoice_memo: String?,
+        invoicing_threshold: String?,
+        metadata: Hash[Symbol, String?]?,
+        net_terms: Integer?
+      }
+      & Orb::request_parameters
+
+    class SubscriptionUpdateParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor auto_collection: bool?
+
+      attr_accessor default_invoice_memo: String?
+
+      attr_accessor invoicing_threshold: String?
+
+      attr_accessor metadata: Hash[Symbol, String?]?
+
+      attr_accessor net_terms: Integer?
+
+      def initialize:
+        (
+          auto_collection: bool?,
+          default_invoice_memo: String?,
+          invoicing_threshold: String?,
+          metadata: Hash[Symbol, String?]?,
+          net_terms: Integer?,
+          request_options: Orb::request_opts
+        ) -> void
+        | (
+          ?Orb::Models::subscription_update_params | Orb::BaseModel data
+        ) -> void
+
+      def to_h: -> Orb::Models::subscription_update_params
+    end
+  end
+end

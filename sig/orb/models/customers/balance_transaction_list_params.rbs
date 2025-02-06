@@ -1,0 +1,52 @@
+module Orb
+  module Models
+    module Customers
+      type balance_transaction_list_params =
+        {
+          cursor: String?,
+          limit: Integer,
+          operation_time_gt: Time?,
+          operation_time_gte: Time?,
+          operation_time_lt: Time?,
+          operation_time_lte: Time?
+        }
+        & Orb::request_parameters
+
+      class BalanceTransactionListParams < Orb::BaseModel
+        extend Orb::RequestParameters::Converter
+        include Orb::RequestParameters
+
+        attr_accessor cursor: String?
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> void
+
+        attr_accessor operation_time_gt: Time?
+
+        attr_accessor operation_time_gte: Time?
+
+        attr_accessor operation_time_lt: Time?
+
+        attr_accessor operation_time_lte: Time?
+
+        def initialize:
+          (
+            cursor: String?,
+            limit: Integer,
+            operation_time_gt: Time?,
+            operation_time_gte: Time?,
+            operation_time_lt: Time?,
+            operation_time_lte: Time?,
+            request_options: Orb::request_opts
+          ) -> void
+          | (
+            ?Orb::Models::Customers::balance_transaction_list_params
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::Customers::balance_transaction_list_params
+      end
+    end
+  end
+end

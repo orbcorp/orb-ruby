@@ -1,0 +1,46 @@
+module Orb
+  module Models
+    module Customers
+      type credit_list_by_external_id_params =
+        {
+          currency: String?,
+          cursor: String?,
+          include_all_blocks: bool,
+          limit: Integer
+        }
+        & Orb::request_parameters
+
+      class CreditListByExternalIDParams < Orb::BaseModel
+        extend Orb::RequestParameters::Converter
+        include Orb::RequestParameters
+
+        attr_accessor currency: String?
+
+        attr_accessor cursor: String?
+
+        attr_reader include_all_blocks: bool?
+
+        def include_all_blocks=: (bool) -> void
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> void
+
+        def initialize:
+          (
+            currency: String?,
+            cursor: String?,
+            include_all_blocks: bool,
+            limit: Integer,
+            request_options: Orb::request_opts
+          ) -> void
+          | (
+            ?Orb::Models::Customers::credit_list_by_external_id_params
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::Customers::credit_list_by_external_id_params
+      end
+    end
+  end
+end

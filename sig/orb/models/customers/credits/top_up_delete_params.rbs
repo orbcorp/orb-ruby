@@ -1,0 +1,26 @@
+module Orb
+  module Models
+    module Customers
+      module Credits
+        type top_up_delete_params =
+          { customer_id: String } & Orb::request_parameters
+
+        class TopUpDeleteParams < Orb::BaseModel
+          extend Orb::RequestParameters::Converter
+          include Orb::RequestParameters
+
+          attr_accessor customer_id: String
+
+          def initialize:
+            (customer_id: String, request_options: Orb::request_opts) -> void
+            | (
+              ?Orb::Models::Customers::Credits::top_up_delete_params
+              | Orb::BaseModel data
+            ) -> void
+
+          def to_h: -> Orb::Models::Customers::Credits::top_up_delete_params
+        end
+      end
+    end
+  end
+end

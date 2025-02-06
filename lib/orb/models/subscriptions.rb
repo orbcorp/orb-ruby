@@ -1,18 +1,32 @@
-require "orb/model"
-require "orb/models/subscription"
+# frozen_string_literal: true
+
 module Orb
   module Models
-    class Subscriptions < Orb::Model
-      class PaginationMetadata < Orb::Model
-        # @!attribute [rw] has_more
-        required :has_more, Orb::BooleanModel
-        # @!attribute [rw] next_cursor
-        required :next_cursor, String
-      end
-      # @!attribute [rw] data
-      required :data, Orb::ArrayOf.new(Orb::Models::Subscription)
-      # @!attribute [rw] pagination_metadata
-      required :pagination_metadata, PaginationMetadata
+    # @example
+    # ```ruby
+    # subscriptions_api => {
+    #   data: -> { Orb::ArrayOf[Orb::Models::Subscription] === _1 },
+    #   pagination_metadata: Orb::Models::PaginationMetadata
+    # }
+    # ```
+    class SubscriptionsAPI < Orb::BaseModel
+      # @!attribute data
+      #
+      #   @return [Array<Orb::Models::Subscription>]
+      required :data, -> { Orb::ArrayOf[Orb::Models::Subscription] }
+
+      # @!attribute pagination_metadata
+      #
+      #   @return [Orb::Models::PaginationMetadata]
+      required :pagination_metadata, -> { Orb::Models::PaginationMetadata }
+
+      # @!parse
+      #   # @param data [Array<Orb::Models::Subscription>]
+      #   # @param pagination_metadata [Orb::Models::PaginationMetadata]
+      #   #
+      #   def initialize(data:, pagination_metadata:, **) = super
+
+      # def initialize: (Hash | Orb::BaseModel) -> void
     end
   end
 end

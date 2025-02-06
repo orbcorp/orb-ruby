@@ -1,0 +1,18 @@
+module Orb
+  module Models
+    type subscription_fetch_params = {  } & Orb::request_parameters
+
+    class SubscriptionFetchParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      def initialize:
+        (request_options: Orb::request_opts) -> void
+        | (
+          ?Orb::Models::subscription_fetch_params | Orb::BaseModel data
+        ) -> void
+
+      def to_h: -> Orb::Models::subscription_fetch_params
+    end
+  end
+end

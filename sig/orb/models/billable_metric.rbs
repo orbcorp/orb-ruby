@@ -1,0 +1,50 @@
+module Orb
+  module Models
+    type billable_metric =
+      {
+        id: String,
+        description: String?,
+        item: Orb::Models::Item,
+        metadata: Hash[Symbol, String],
+        name: String,
+        status: Orb::Models::BillableMetric::status
+      }
+
+    class BillableMetric < Orb::BaseModel
+      attr_accessor id: String
+
+      attr_accessor description: String?
+
+      attr_accessor item: Orb::Models::Item
+
+      attr_accessor metadata: Hash[Symbol, String]
+
+      attr_accessor name: String
+
+      attr_accessor status: Orb::Models::BillableMetric::status
+
+      def initialize:
+        (
+          id: String,
+          description: String?,
+          item: Orb::Models::Item,
+          metadata: Hash[Symbol, String],
+          name: String,
+          status: Orb::Models::BillableMetric::status
+        ) -> void
+        | (?Orb::Models::billable_metric | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::billable_metric
+
+      type status = :active | :draft | :archived
+
+      class Status < Orb::Enum
+        ACTIVE: :active
+        DRAFT: :draft
+        ARCHIVED: :archived
+
+        def self.values: -> Array[Orb::Models::BillableMetric::status]
+      end
+    end
+  end
+end

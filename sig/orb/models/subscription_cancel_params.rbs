@@ -1,0 +1,42 @@
+module Orb
+  module Models
+    type subscription_cancel_params =
+      {
+        cancel_option: Orb::Models::SubscriptionCancelParams::cancel_option,
+        cancellation_date: Time?
+      }
+      & Orb::request_parameters
+
+    class SubscriptionCancelParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor cancel_option: Orb::Models::SubscriptionCancelParams::cancel_option
+
+      attr_accessor cancellation_date: Time?
+
+      def initialize:
+        (
+          cancel_option: Orb::Models::SubscriptionCancelParams::cancel_option,
+          cancellation_date: Time?,
+          request_options: Orb::request_opts
+        ) -> void
+        | (
+          ?Orb::Models::subscription_cancel_params | Orb::BaseModel data
+        ) -> void
+
+      def to_h: -> Orb::Models::subscription_cancel_params
+
+      type cancel_option =
+        :end_of_subscription_term | :immediate | :requested_date
+
+      class CancelOption < Orb::Enum
+        END_OF_SUBSCRIPTION_TERM: :end_of_subscription_term
+        IMMEDIATE: :immediate
+        REQUESTED_DATE: :requested_date
+
+        def self.values: -> Array[Orb::Models::SubscriptionCancelParams::cancel_option]
+      end
+    end
+  end
+end

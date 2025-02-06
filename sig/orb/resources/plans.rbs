@@ -1,0 +1,62 @@
+module Orb
+  module Resources
+    class Plans
+      attr_reader external_plan_id: Orb::Resources::Plans::ExternalPlanID
+
+      def create:
+        (
+          Orb::Models::PlanCreateParams | Hash[Symbol, top] params
+        ) -> Orb::Models::Plan
+        | (
+          currency: String,
+          name: String,
+          prices: Array[Orb::Models::PlanCreateParams::price],
+          default_invoice_memo: String?,
+          external_plan_id: String?,
+          metadata: Hash[Symbol, String?]?,
+          net_terms: Integer?,
+          status: Orb::Models::PlanCreateParams::status,
+          request_options: Orb::request_opts
+        ) -> Orb::Models::Plan
+
+      def update:
+        (
+          String plan_id,
+          ?Orb::Models::PlanUpdateParams | Hash[Symbol, top] params
+        ) -> Orb::Models::Plan
+        | (
+          String plan_id,
+          external_plan_id: String?,
+          metadata: Hash[Symbol, String?]?,
+          request_options: Orb::request_opts
+        ) -> Orb::Models::Plan
+
+      def list:
+        (
+          ?Orb::Models::PlanListParams | Hash[Symbol, top] params
+        ) -> Orb::Page[Orb::Models::Plan]
+        | (
+          created_at_gt: Time?,
+          created_at_gte: Time?,
+          created_at_lt: Time?,
+          created_at_lte: Time?,
+          cursor: String?,
+          limit: Integer,
+          status: Orb::Models::PlanListParams::status,
+          request_options: Orb::request_opts
+        ) -> Orb::Page[Orb::Models::Plan]
+
+      def fetch:
+        (
+          String plan_id,
+          ?Orb::Models::PlanFetchParams | Hash[Symbol, top] params
+        ) -> Orb::Models::Plan
+        | (
+          String plan_id,
+          request_options: Orb::request_opts
+        ) -> Orb::Models::Plan
+
+      def initialize: (client: Orb::Client) -> void
+    end
+  end
+end

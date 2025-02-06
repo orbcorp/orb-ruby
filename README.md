@@ -1,108 +1,124 @@
 # Orb Ruby API library
 
-The Orb Ruby library provides convenient access to the Orb REST API from any Ruby 2.7+
-application. The library includes model classes for all request params and response fields.
+The Orb Ruby library provides convenient access to the Orb REST API from any Ruby 3.0+
+application.
 
 ## Documentation
 
-The API documentation can be found [here](https://www.withorb.com/https://docs.withorb.com/reference/api-reference).
+Documentation for the most recent release of this gem can be found [on RubyDoc](https://gemdocs.org/gems/orb/latest).
+
+The underlying REST API documentation can be found on [docs.withorb.com](https://docs.withorb.com/reference/api-reference).
 
 ## Installation
 
+To use this gem during the beta, install directly from GitHub with Bundler by
+adding the following to your application's `Gemfile`:
+
+```ruby
+gem "orb", git: "https://github.com/orbcorp/orb-ruby", branch: "main"
+```
+
+To fetch an initial copy of the gem:
+
 ```sh
-gem install orb
+bundle install
+```
+
+To update the version used by your application when updates are pushed to
+GitHub:
+
+```sh
+bundle update orb
 ```
 
 ## Usage
 
-The full API of this library can be found in [api.md](https://www.github.com/orbcorp/orb-ruby/blob/main/api.md).
-
 ```ruby
-require 'orb'
+require "bundler/setup"
+require "orb"
 
-orb = Orb.new(api_key: "My API Key", # defaults to ENV["ORB_API_KEY"]
-);
+orb = Orb::Client.new(
+  api_key: "My API Key" # defaults to ENV["ORB_API_KEY"]
+)
 
-customer = orb.customers.create(email: "example-customer@withorb.com", name: "My Customer");
+customer = orb.customers.create(email: "example-customer@withorb.com", name: "My Customer")
 
-puts customer.id
+puts(customer.id)
 ```
 
-## Handling errors
+### Errors
 
-When the library is unable to connect to the API,
-or if the API returns a non-success status code (i.e., 4xx or 5xx response),
-a subclass of `Orb::HTTP::Error` will be thrown:
+When the library is unable to connect to the API, or if the API returns a
+non-success status code (i.e., 4xx or 5xx response), a subclass of
+`Orb::Error` will be thrown:
 
-```rb
+```ruby
 begin
   customer = orb.customers.create(email: "example-customer@withorb.com", name: "My Customer")
-rescue Orb::HTTP::Error => err
-  puts err.code # 400
+rescue Orb::Error => e
+  puts(e.code) # 400
 end
 ```
 
 Error codes are as followed:
 
-| Status Code | Error Type                 |
-| ----------- | -------------------------- |
-| 400         | `BadRequestError`          |
-| 401         | `AuthenticationError`      |
-| 403         | `PermissionDeniedError`    |
-| 404         | `NotFoundError`            |
-| 409         | `ConflictError`            |
-| 422         | `UnprocessableEntityError` |
-| 429         | `RateLimitError`           |
-| >=500       | `InternalServerError`      |
-| (else)      | `APIStatusError`           |
-| N/A         | `APIConnectionError`       |
+| Cause            | Error Type                 |
+| ---------------- | -------------------------- |
+| HTTP 400         | `BadRequestError`          |
+| HTTP 401         | `AuthenticationError`      |
+| HTTP 403         | `PermissionDeniedError`    |
+| HTTP 404         | `NotFoundError`            |
+| HTTP 409         | `ConflictError`            |
+| HTTP 422         | `UnprocessableEntityError` |
+| HTTP 429         | `RateLimitError`           |
+| HTTP >=500       | `InternalServerError`      |
+| Other HTTP error | `APIStatusError`           |
+| Timeout          | `APITimeoutError`          |
+| Network error    | `APIConnectionError`       |
 
 ### Retries
 
-Certain errors will be automatically retried 2 times by default, with a short exponential backoff.
-Connection errors (for example, due to a network connectivity problem), 408 Request Timeout, 409 Conflict,
-429 Rate Limit, and >=500 Internal errors will all be retried by default.
+Certain errors will be automatically retried 2 times by default, with a short
+exponential backoff. Connection errors (for example, due to a network
+connectivity problem), 408 Request Timeout, 409 Conflict, 429 Rate Limit, >=500 Internal errors,
+and timeouts will all be retried by default.
 
 You can use the `max_retries` option to configure or disable this:
 
-```rb
+```ruby
 # Configure the default for all requests:
-orb = Orb.new(max_retries: 0, # default is 2
-);
+orb = Orb::Client.new(
+  max_retries: 0 # default is 2
+)
+
+# Or, configure per-request:
+orb.customers.create(email: "example-customer@withorb.com", name: "My Customer", max_retries: 5)
 ```
 
-## Advanced
+### Timeouts
 
-### How to tell whether `nil` means `null` or missing
+By default, requests will time out after 60 seconds.
+Timeouts are applied separately to the initial connection and the overall request time,
+so in some cases a request could wait 2\*timeout seconds before it fails.
 
-In an API response, a field may be explicitly `nil`, or missing entirely; in either case, its value is `nil` in this library. You can differentiate the two cases with `.model_fields_set`:
+You can use the `timeout` option to configure or disable this:
 
 ```ruby
-if response.my_field.nil?
-  if response.model_fields_set.include? :my_field
-    puts 'Got json like {my_field: null}.'
-  else
-    puts 'Got json like {}, without a my_field key present at all.'
-  end
-end
+# Configure the default for all requests:
+orb = Orb::Client.new(
+  timeout: nil # default is 60
+)
+
+# Or, configure per-request:
+orb.customers.create(email: "example-customer@withorb.com", name: "My Customer", timeout: 5)
 ```
-
-### Configuring the HTTP client
-
-To avoid dependency clashes, Orb Ruby uses `Net::HTTP` by default. You can use your own http client by implementing your own request handler. TODO: docs forthcoming.
 
 ## Versioning
 
-This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) conventions, though certain backwards-incompatible changes may be released as minor versions:
-
-1. Changes that only affect type hints/type documentation, without breaking runtime behavior.
-2. Changes to library internals which are technically public but not intended or documented for external use. _(Please open a GitHub issue to let us know if you are relying on such internals)_.
-3. Changes that we do not expect to impact the vast majority of users in practice.
-
-We take backwards compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
-
-We are keen for your feedback; please open an [issue](https://www.github.com/orbcorp/orb-ruby/issues) with questions, bugs, or suggestions.
+This package follows [SemVer](https://semver.org/spec/v2.0.0.html) conventions. As the
+library is in initial development and has a major version of `0`, APIs may change
+at any time.
 
 ## Requirements
 
-Ruby 2.7 or higher.
+Ruby 3.0 or higher.

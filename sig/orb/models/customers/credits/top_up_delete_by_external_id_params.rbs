@@ -1,0 +1,29 @@
+module Orb
+  module Models
+    module Customers
+      module Credits
+        type top_up_delete_by_external_id_params =
+          { external_customer_id: String } & Orb::request_parameters
+
+        class TopUpDeleteByExternalIDParams < Orb::BaseModel
+          extend Orb::RequestParameters::Converter
+          include Orb::RequestParameters
+
+          attr_accessor external_customer_id: String
+
+          def initialize:
+            (
+              external_customer_id: String,
+              request_options: Orb::request_opts
+            ) -> void
+            | (
+              ?Orb::Models::Customers::Credits::top_up_delete_by_external_id_params
+              | Orb::BaseModel data
+            ) -> void
+
+          def to_h: -> Orb::Models::Customers::Credits::top_up_delete_by_external_id_params
+        end
+      end
+    end
+  end
+end

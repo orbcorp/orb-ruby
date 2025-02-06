@@ -1,0 +1,129 @@
+module Orb
+  module Models
+    type invoice_create_params =
+      {
+        currency: String,
+        invoice_date: Time,
+        line_items: Array[Orb::Models::InvoiceCreateParams::LineItem],
+        net_terms: Integer,
+        customer_id: String?,
+        discount: Orb::Models::discount?,
+        external_customer_id: String?,
+        memo: String?,
+        metadata: Hash[Symbol, String?]?,
+        will_auto_issue: bool
+      }
+      & Orb::request_parameters
+
+    class InvoiceCreateParams < Orb::BaseModel
+      extend Orb::RequestParameters::Converter
+      include Orb::RequestParameters
+
+      attr_accessor currency: String
+
+      attr_accessor invoice_date: Time
+
+      attr_accessor line_items: Array[Orb::Models::InvoiceCreateParams::LineItem]
+
+      attr_accessor net_terms: Integer
+
+      attr_accessor customer_id: String?
+
+      attr_accessor discount: Orb::Models::discount?
+
+      attr_accessor external_customer_id: String?
+
+      attr_accessor memo: String?
+
+      attr_accessor metadata: Hash[Symbol, String?]?
+
+      attr_reader will_auto_issue: bool?
+
+      def will_auto_issue=: (bool) -> void
+
+      def initialize:
+        (
+          currency: String,
+          invoice_date: Time,
+          line_items: Array[Orb::Models::InvoiceCreateParams::LineItem],
+          net_terms: Integer,
+          customer_id: String?,
+          discount: Orb::Models::discount?,
+          external_customer_id: String?,
+          memo: String?,
+          metadata: Hash[Symbol, String?]?,
+          will_auto_issue: bool,
+          request_options: Orb::request_opts
+        ) -> void
+        | (?Orb::Models::invoice_create_params | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::invoice_create_params
+
+      type line_item =
+        {
+          end_date: Date,
+          item_id: String,
+          model_type: Orb::Models::InvoiceCreateParams::LineItem::model_type,
+          name: String,
+          quantity: Float,
+          start_date: Date,
+          unit_config: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig
+        }
+
+      class LineItem < Orb::BaseModel
+        attr_accessor end_date: Date
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: Orb::Models::InvoiceCreateParams::LineItem::model_type
+
+        attr_accessor name: String
+
+        attr_accessor quantity: Float
+
+        attr_accessor start_date: Date
+
+        attr_accessor unit_config: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig
+
+        def initialize:
+          (
+            end_date: Date,
+            item_id: String,
+            model_type: Orb::Models::InvoiceCreateParams::LineItem::model_type,
+            name: String,
+            quantity: Float,
+            start_date: Date,
+            unit_config: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig
+          ) -> void
+          | (
+            ?Orb::Models::InvoiceCreateParams::line_item | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::InvoiceCreateParams::line_item
+
+        type model_type = :unit
+
+        class ModelType < Orb::Enum
+          UNIT: :unit
+
+          def self.values: -> Array[Orb::Models::InvoiceCreateParams::LineItem::model_type]
+        end
+
+        type unit_config = { unit_amount: String }
+
+        class UnitConfig < Orb::BaseModel
+          attr_accessor unit_amount: String
+
+          def initialize:
+            (unit_amount: String) -> void
+            | (
+              ?Orb::Models::InvoiceCreateParams::LineItem::unit_config
+              | Orb::BaseModel data
+            ) -> void
+
+          def to_h: -> Orb::Models::InvoiceCreateParams::LineItem::unit_config
+        end
+      end
+    end
+  end
+end

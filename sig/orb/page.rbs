@@ -1,0 +1,29 @@
+module Orb
+  class Page[Elem]
+    include Orb::BasePage[Elem]
+
+    attr_accessor data: Array[Elem]
+
+    attr_accessor pagination_metadata: PaginationMetadata
+
+    def initialize: (
+      client: Orb::BaseClient,
+      req: Orb::BaseClient::request,
+      headers: Hash[String, String],
+      unwrapped: Hash[Symbol, top]
+    ) -> void
+
+    type pagination_metadata = { has_more: bool, next_cursor: String? }
+    class PaginationMetadata < Orb::BaseModel
+      attr_accessor has_more: bool
+
+      attr_accessor next_cursor: String?
+
+      def initialize:
+        (has_more: bool, next_cursor: String?) -> void
+        | (?pagination_metadata | Orb::BaseModel data) -> void
+
+      def to_h: -> pagination_metadata
+    end
+  end
+end

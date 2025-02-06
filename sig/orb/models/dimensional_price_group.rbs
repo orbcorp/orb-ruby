@@ -1,0 +1,40 @@
+module Orb
+  module Models
+    type dimensional_price_group =
+      {
+        id: String,
+        billable_metric_id: String,
+        dimensions: Array[String],
+        external_dimensional_price_group_id: String?,
+        metadata: Hash[Symbol, String],
+        name: String
+      }
+
+    class DimensionalPriceGroup < Orb::BaseModel
+      attr_accessor id: String
+
+      attr_accessor billable_metric_id: String
+
+      attr_accessor dimensions: Array[String]
+
+      attr_accessor external_dimensional_price_group_id: String?
+
+      attr_accessor metadata: Hash[Symbol, String]
+
+      attr_accessor name: String
+
+      def initialize:
+        (
+          id: String,
+          billable_metric_id: String,
+          dimensions: Array[String],
+          external_dimensional_price_group_id: String?,
+          metadata: Hash[Symbol, String],
+          name: String
+        ) -> void
+        | (?Orb::Models::dimensional_price_group | Orb::BaseModel data) -> void
+
+      def to_h: -> Orb::Models::dimensional_price_group
+    end
+  end
+end

@@ -1,0 +1,232 @@
+module Orb
+  module Models
+    type subscription_usage =
+      Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage
+      | Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage
+
+    class SubscriptionUsage < Orb::Union
+      type ungrouped_subscription_usage =
+        {
+          data: Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]
+        }
+
+      class UngroupedSubscriptionUsage < Orb::BaseModel
+        attr_accessor data: Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]
+
+        def initialize:
+          (
+            data: Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]
+          ) -> void
+          | (
+            ?Orb::Models::SubscriptionUsage::ungrouped_subscription_usage
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::SubscriptionUsage::ungrouped_subscription_usage
+
+        type data =
+          {
+            billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric,
+            usage: Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage],
+            view_mode: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::view_mode
+          }
+
+        class Data < Orb::BaseModel
+          attr_accessor billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric
+
+          attr_accessor usage: Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage]
+
+          attr_accessor view_mode: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::view_mode
+
+          def initialize:
+            (
+              billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric,
+              usage: Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage],
+              view_mode: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::view_mode
+            ) -> void
+            | (
+              ?Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::data
+              | Orb::BaseModel data
+            ) -> void
+
+          def to_h: -> Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::data
+
+          type billable_metric = { id: String, name: String }
+
+          class BillableMetric < Orb::BaseModel
+            attr_accessor id: String
+
+            attr_accessor name: String
+
+            def initialize:
+              (id: String, name: String) -> void
+              | (
+                ?Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::billable_metric
+                | Orb::BaseModel data
+              ) -> void
+
+            def to_h: -> Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::billable_metric
+          end
+
+          type usage =
+            { quantity: Float, timeframe_end: Time, timeframe_start: Time }
+
+          class Usage < Orb::BaseModel
+            attr_accessor quantity: Float
+
+            attr_accessor timeframe_end: Time
+
+            attr_accessor timeframe_start: Time
+
+            def initialize:
+              (
+                quantity: Float,
+                timeframe_end: Time,
+                timeframe_start: Time
+              ) -> void
+              | (
+                ?Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::usage
+                | Orb::BaseModel data
+              ) -> void
+
+            def to_h: -> Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::usage
+          end
+
+          type view_mode = :periodic | :cumulative
+
+          class ViewMode < Orb::Enum
+            PERIODIC: :periodic
+            CUMULATIVE: :cumulative
+
+            def self.values: -> Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::view_mode]
+          end
+        end
+      end
+
+      type grouped_subscription_usage =
+        {
+          data: Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data],
+          pagination_metadata: Orb::Models::PaginationMetadata?
+        }
+
+      class GroupedSubscriptionUsage < Orb::BaseModel
+        attr_accessor data: Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data]
+
+        attr_accessor pagination_metadata: Orb::Models::PaginationMetadata?
+
+        def initialize:
+          (
+            data: Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data],
+            pagination_metadata: Orb::Models::PaginationMetadata?
+          ) -> void
+          | (
+            ?Orb::Models::SubscriptionUsage::grouped_subscription_usage
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_h: -> Orb::Models::SubscriptionUsage::grouped_subscription_usage
+
+        type data =
+          {
+            billable_metric: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric,
+            metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup,
+            usage: Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage],
+            view_mode: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::view_mode
+          }
+
+        class Data < Orb::BaseModel
+          attr_accessor billable_metric: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric
+
+          attr_accessor metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup
+
+          attr_accessor usage: Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage]
+
+          attr_accessor view_mode: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::view_mode
+
+          def initialize:
+            (
+              billable_metric: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric,
+              metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup,
+              usage: Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage],
+              view_mode: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::view_mode
+            ) -> void
+            | (
+              ?Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::data
+              | Orb::BaseModel data
+            ) -> void
+
+          def to_h: -> Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::data
+
+          type billable_metric = { id: String, name: String }
+
+          class BillableMetric < Orb::BaseModel
+            attr_accessor id: String
+
+            attr_accessor name: String
+
+            def initialize:
+              (id: String, name: String) -> void
+              | (
+                ?Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::billable_metric
+                | Orb::BaseModel data
+              ) -> void
+
+            def to_h: -> Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::billable_metric
+          end
+
+          type metric_group = { property_key: String, property_value: String }
+
+          class MetricGroup < Orb::BaseModel
+            attr_accessor property_key: String
+
+            attr_accessor property_value: String
+
+            def initialize:
+              (property_key: String, property_value: String) -> void
+              | (
+                ?Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::metric_group
+                | Orb::BaseModel data
+              ) -> void
+
+            def to_h: -> Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::metric_group
+          end
+
+          type usage =
+            { quantity: Float, timeframe_end: Time, timeframe_start: Time }
+
+          class Usage < Orb::BaseModel
+            attr_accessor quantity: Float
+
+            attr_accessor timeframe_end: Time
+
+            attr_accessor timeframe_start: Time
+
+            def initialize:
+              (
+                quantity: Float,
+                timeframe_end: Time,
+                timeframe_start: Time
+              ) -> void
+              | (
+                ?Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::usage
+                | Orb::BaseModel data
+              ) -> void
+
+            def to_h: -> Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::usage
+          end
+
+          type view_mode = :periodic | :cumulative
+
+          class ViewMode < Orb::Enum
+            PERIODIC: :periodic
+            CUMULATIVE: :cumulative
+
+            def self.values: -> Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::view_mode]
+          end
+        end
+      end
+
+      private def self.variants: -> [[nil, Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage], [nil, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]]
+    end
+  end
+end
