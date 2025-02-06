@@ -15,7 +15,8 @@ module Orb
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(thresholds:, request_options: {}); end
+      def initialize(thresholds:, request_options: {})
+      end
 
       sig do
         override.returns(
@@ -25,17 +26,20 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Threshold < Orb::BaseModel
         sig { returns(Float) }
         attr_accessor :value
 
         sig { params(value: Float).void }
-        def initialize(value:); end
+        def initialize(value:)
+        end
 
         sig { override.returns({value: Float}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

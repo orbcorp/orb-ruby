@@ -77,7 +77,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Customer < Orb::BaseModel
         sig { returns(String) }
@@ -87,10 +88,12 @@ module Orb
         attr_accessor :external_customer_id
 
         sig { params(id: String, external_customer_id: T.nilable(String)).void }
-        def initialize(id:, external_customer_id:); end
+        def initialize(id:, external_customer_id:)
+        end
 
         sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Metric < Orb::BaseModel
@@ -98,10 +101,12 @@ module Orb
         attr_accessor :id
 
         sig { params(id: String).void }
-        def initialize(id:); end
+        def initialize(id:)
+        end
 
         sig { override.returns({id: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Plan < Orb::BaseModel
@@ -125,7 +130,8 @@ module Orb
             plan_version: String
           ).void
         end
-        def initialize(id:, external_plan_id:, name:, plan_version:); end
+        def initialize(id:, external_plan_id:, name:, plan_version:)
+        end
 
         sig do
           override.returns(
@@ -137,7 +143,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Subscription < Orb::BaseModel
@@ -145,10 +152,12 @@ module Orb
         attr_accessor :id
 
         sig { params(id: String).void }
-        def initialize(id:); end
+        def initialize(id:)
+        end
 
         sig { override.returns({id: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Threshold < Orb::BaseModel
@@ -156,10 +165,12 @@ module Orb
         attr_accessor :value
 
         sig { params(value: Float).void }
-        def initialize(value:); end
+        def initialize(value:)
+        end
 
         sig { override.returns({value: Float}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Type < Orb::Enum
@@ -172,7 +183,8 @@ module Orb
         CREDIT_BALANCE_RECOVERED = :credit_balance_recovered
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

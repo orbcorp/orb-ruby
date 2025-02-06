@@ -59,7 +59,8 @@ module Orb
           invoice:,
           starting_balance:,
           type:
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -77,7 +78,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Action < Orb::Enum
           abstract!
@@ -92,7 +94,8 @@ module Orb
           OVERPAYMENT_REFUND = :overpayment_refund
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class CreditNote < Orb::BaseModel
@@ -100,10 +103,12 @@ module Orb
           attr_accessor :id
 
           sig { params(id: String).void }
-          def initialize(id:); end
+          def initialize(id:)
+          end
 
           sig { override.returns({id: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class Invoice < Orb::BaseModel
@@ -111,10 +116,12 @@ module Orb
           attr_accessor :id
 
           sig { params(id: String).void }
-          def initialize(id:); end
+          def initialize(id:)
+          end
 
           sig { override.returns({id: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class Type < Orb::Enum
@@ -124,7 +131,8 @@ module Orb
           DECREMENT = :decrement
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

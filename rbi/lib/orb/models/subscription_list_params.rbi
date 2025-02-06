@@ -61,7 +61,8 @@ module Orb
         limit: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -79,7 +80,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Status < Orb::Enum
         abstract!
@@ -89,7 +91,8 @@ module Orb
         UPCOMING = T.let(:upcoming, T.nilable(Symbol))
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

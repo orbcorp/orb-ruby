@@ -23,7 +23,8 @@ module Orb
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(currency:, type:, thresholds: nil, request_options: {}); end
+      def initialize(currency:, type:, thresholds: nil, request_options: {})
+      end
 
       sig do
         override.returns(
@@ -35,7 +36,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Type < Orb::Enum
         abstract!
@@ -47,7 +49,8 @@ module Orb
         CREDIT_BALANCE_RECOVERED = :credit_balance_recovered
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class Threshold < Orb::BaseModel
@@ -55,10 +58,12 @@ module Orb
         attr_accessor :value
 
         sig { params(value: Float).void }
-        def initialize(value:); end
+        def initialize(value:)
+        end
 
         sig { override.returns({value: Float}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

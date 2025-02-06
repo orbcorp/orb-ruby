@@ -20,7 +20,8 @@ module Orb
         unwrapped: T::Hash[Symbol, T.anything]
       ).void
     end
-    def initialize(client:, req:, headers:, unwrapped:); end
+    def initialize(client:, req:, headers:, unwrapped:)
+    end
 
     class PaginationMetadata < Orb::BaseModel
       sig { returns(T::Boolean) }
@@ -30,10 +31,12 @@ module Orb
       attr_accessor :next_cursor
 
       sig { params(has_more: T::Boolean, next_cursor: T.nilable(String)).void }
-      def initialize(has_more:, next_cursor:); end
+      def initialize(has_more:, next_cursor:)
+      end
 
       sig { override.returns({has_more: T::Boolean, next_cursor: T.nilable(String)}) }
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

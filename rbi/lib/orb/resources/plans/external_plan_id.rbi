@@ -12,7 +12,8 @@ module Orb
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Orb::Models::Plan)
         end
-        def update(other_external_plan_id, external_plan_id: nil, metadata: nil, request_options: {}); end
+        def update(other_external_plan_id, external_plan_id: nil, metadata: nil, request_options: {})
+        end
 
         sig do
           params(
@@ -20,10 +21,12 @@ module Orb
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Orb::Models::Plan)
         end
-        def fetch(external_plan_id, request_options: {}); end
+        def fetch(external_plan_id, request_options: {})
+        end
 
         sig { params(client: Orb::Client).void }
-        def initialize(client:); end
+        def initialize(client:)
+        end
       end
     end
   end

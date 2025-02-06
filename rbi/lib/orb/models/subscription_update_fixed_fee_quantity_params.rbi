@@ -30,7 +30,8 @@ module Orb
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(price_id:, quantity:, change_option: nil, effective_date: nil, request_options: {}); end
+      def initialize(price_id:, quantity:, change_option: nil, effective_date: nil, request_options: {})
+      end
 
       sig do
         override.returns(
@@ -43,7 +44,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class ChangeOption < Orb::Enum
         abstract!
@@ -53,7 +55,8 @@ module Orb
         EFFECTIVE_DATE = :effective_date
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

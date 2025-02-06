@@ -23,7 +23,8 @@ module Orb
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(line_items:, memo: nil, reason: nil, request_options: {}); end
+      def initialize(line_items:, memo: nil, reason: nil, request_options: {})
+      end
 
       sig do
         override.returns(
@@ -35,7 +36,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class LineItem < Orb::BaseModel
         sig { returns(String) }
@@ -45,10 +47,12 @@ module Orb
         attr_accessor :invoice_line_item_id
 
         sig { params(amount: String, invoice_line_item_id: String).void }
-        def initialize(amount:, invoice_line_item_id:); end
+        def initialize(amount:, invoice_line_item_id:)
+        end
 
         sig { override.returns({amount: String, invoice_line_item_id: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Reason < Orb::Enum
@@ -60,7 +64,8 @@ module Orb
         PRODUCT_UNSATISFACTORY = T.let(:product_unsatisfactory, T.nilable(Symbol))
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

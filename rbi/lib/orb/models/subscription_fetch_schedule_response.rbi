@@ -23,7 +23,8 @@ module Orb
           start_date: Time
         ).void
       end
-      def initialize(created_at:, end_date:, plan:, start_date:); end
+      def initialize(created_at:, end_date:, plan:, start_date:)
+      end
 
       sig do
         override.returns(
@@ -35,7 +36,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Plan < Orb::BaseModel
         sig { returns(T.nilable(String)) }
@@ -50,7 +52,8 @@ module Orb
         sig do
           params(id: T.nilable(String), external_plan_id: T.nilable(String), name: T.nilable(String)).void
         end
-        def initialize(id:, external_plan_id:, name:); end
+        def initialize(id:, external_plan_id:, name:)
+        end
 
         sig do
           override.returns(
@@ -61,7 +64,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

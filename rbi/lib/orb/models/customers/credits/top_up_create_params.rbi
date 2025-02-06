@@ -50,7 +50,8 @@ module Orb
             expires_after: nil,
             expires_after_unit: nil,
             request_options: {}
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -66,7 +67,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class InvoiceSettings < Orb::BaseModel
             sig { returns(T::Boolean) }
@@ -92,7 +94,8 @@ module Orb
                 require_successful_payment: T::Boolean
               ).void
             end
-            def initialize(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil); end
+            def initialize(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil)
+            end
 
             sig do
               override.returns(
@@ -104,7 +107,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class ExpiresAfterUnit < Orb::Enum
@@ -114,7 +118,8 @@ module Orb
             MONTH = T.let(:month, T.nilable(Symbol))
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

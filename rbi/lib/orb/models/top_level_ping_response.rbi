@@ -7,10 +7,12 @@ module Orb
       attr_accessor :response
 
       sig { params(response: String).void }
-      def initialize(response:); end
+      def initialize(response:)
+      end
 
       sig { override.returns({response: String}) }
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end
