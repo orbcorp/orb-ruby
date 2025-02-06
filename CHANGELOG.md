@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2025-02-06)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* inline sorbet type aliases ([#11](https://github.com/orbcorp/orb-ruby/issues/11)) ([6a9e53b](https://github.com/orbcorp/orb-ruby/commit/6a9e53bc2ca595dc364d24344fd4699943185320))
+
+
+### Bug Fixes
+
+* temporarily run CI without bundler cache ([#13](https://github.com/orbcorp/orb-ruby/issues/13)) ([ea23c80](https://github.com/orbcorp/orb-ruby/commit/ea23c80e845b00492b113262bfe1d0e1cc0d0e89))
+
+
+### Chores
+
+* formatting change for `*.rbi` files ([#12](https://github.com/orbcorp/orb-ruby/issues/12)) ([cf7f557](https://github.com/orbcorp/orb-ruby/commit/cf7f557bf34c636a7df13c9d38c7be4f1895c24f))
+* **internal:** version bump ([#9](https://github.com/orbcorp/orb-ruby/issues/9)) ([87701c3](https://github.com/orbcorp/orb-ruby/commit/87701c374f150d57cc7db255d2b2fed4fe952138))
+
 ## 0.1.0-alpha.3 (2025-02-06)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
