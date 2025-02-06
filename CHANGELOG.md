@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2025-02-06)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Bug Fixes
+
+* sorbet request method signatures should support default values ([#8](https://github.com/orbcorp/orb-ruby/issues/8)) ([8c16b32](https://github.com/orbcorp/orb-ruby/commit/8c16b3236ef57d2dfec07abc397460a0f8a4abb9))
+
+
+### Chores
+
+* **internal:** version bump ([#6](https://github.com/orbcorp/orb-ruby/issues/6)) ([c9eff92](https://github.com/orbcorp/orb-ruby/commit/c9eff92e7d797af0922215f92007a5eeefc4219f))
+
 ## 0.1.0-alpha.2 (2025-02-06)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
