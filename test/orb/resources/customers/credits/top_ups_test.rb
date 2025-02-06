@@ -15,7 +15,7 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Minitest::Test
       "customer_id",
       amount: "amount",
       currency: "currency",
-      invoice_settings: {"auto_collection" => true, "net_terms" => 0},
+      invoice_settings: {auto_collection: true, net_terms: 0},
       per_unit_cost_basis: "per_unit_cost_basis",
       threshold: "threshold"
     )
@@ -51,7 +51,7 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Minitest::Test
       "external_customer_id",
       amount: "amount",
       currency: "currency",
-      invoice_settings: {"auto_collection" => true, "net_terms" => 0},
+      invoice_settings: {auto_collection: true, net_terms: 0},
       per_unit_cost_basis: "per_unit_cost_basis",
       threshold: "threshold"
     )

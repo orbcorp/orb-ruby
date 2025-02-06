@@ -56,7 +56,7 @@ non-success status code (i.e., 4xx or 5xx response), a subclass of
 begin
   customer = orb.customers.create(email: "example-customer@withorb.com", name: "My Customer")
 rescue Orb::Error => e
-  puts(e.code) # 400
+  puts(e.status) # 400
 end
 ```
 
@@ -92,7 +92,11 @@ orb = Orb::Client.new(
 )
 
 # Or, configure per-request:
-orb.customers.create(email: "example-customer@withorb.com", name: "My Customer", max_retries: 5)
+orb.customers.create(
+  email: "example-customer@withorb.com",
+  name: "My Customer",
+  request_options: {max_retries: 5}
+)
 ```
 
 ### Timeouts
@@ -110,7 +114,11 @@ orb = Orb::Client.new(
 )
 
 # Or, configure per-request:
-orb.customers.create(email: "example-customer@withorb.com", name: "My Customer", timeout: 5)
+orb.customers.create(
+  email: "example-customer@withorb.com",
+  name: "My Customer",
+  request_options: {timeout: 5}
+)
 ```
 
 ## Versioning
