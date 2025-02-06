@@ -35,10 +35,10 @@ class Orb::Test::Resources::EventsTest < Minitest::Test
     response = @orb.events.ingest(
       events: [
         {
-          "event_name" => "event_name",
-          "idempotency_key" => "idempotency_key",
-          "properties" => {},
-          "timestamp" => "2020-12-09T16:09:53Z"
+          event_name: "event_name",
+          idempotency_key: "idempotency_key",
+          properties: {},
+          timestamp: "2020-12-09T16:09:53Z"
         }
       ]
     )
