@@ -14,7 +14,14 @@ module Orb
             request_options: Orb::RequestOpts
           ).returns(Orb::Models::Customers::CostListResponse)
         end
-        def list(customer_id, currency:, timeframe_end:, timeframe_start:, view_mode:, request_options: {})
+        def list(
+          customer_id,
+          currency: nil,
+          timeframe_end: nil,
+          timeframe_start: nil,
+          view_mode: nil,
+          request_options: {}
+        )
         end
 
         sig do
@@ -29,13 +36,12 @@ module Orb
         end
         def list_by_external_id(
           external_customer_id,
-          currency:,
-          timeframe_end:,
-          timeframe_start:,
-          view_mode:,
+          currency: nil,
+          timeframe_end: nil,
+          timeframe_start: nil,
+          view_mode: nil,
           request_options: {}
-        )
-        end
+        ); end
 
         sig { params(client: Orb::Client).void }
         def initialize(client:); end

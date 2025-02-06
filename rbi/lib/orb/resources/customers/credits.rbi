@@ -20,7 +20,15 @@ module Orb
             request_options: Orb::RequestOpts
           ).returns(Orb::Page[Orb::Models::Customers::CreditListResponse])
         end
-        def list(customer_id, currency:, cursor:, include_all_blocks:, limit:, request_options: {}); end
+        def list(
+          customer_id,
+          currency: nil,
+          cursor: nil,
+          include_all_blocks: nil,
+          limit: nil,
+          request_options: {}
+        )
+        end
 
         sig do
           params(
@@ -34,10 +42,10 @@ module Orb
         end
         def list_by_external_id(
           external_customer_id,
-          currency:,
-          cursor:,
-          include_all_blocks:,
-          limit:,
+          currency: nil,
+          cursor: nil,
+          include_all_blocks: nil,
+          limit: nil,
           request_options: {}
         )
         end

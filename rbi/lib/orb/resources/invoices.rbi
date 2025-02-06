@@ -23,12 +23,12 @@ module Orb
         invoice_date:,
         line_items:,
         net_terms:,
-        customer_id:,
-        discount:,
-        external_customer_id:,
-        memo:,
-        metadata:,
-        will_auto_issue:,
+        customer_id: nil,
+        discount: nil,
+        external_customer_id: nil,
+        memo: nil,
+        metadata: nil,
+        will_auto_issue: nil,
         request_options: {}
       ); end
 
@@ -39,7 +39,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::Invoice)
       end
-      def update(invoice_id, metadata:, request_options: {}); end
+      def update(invoice_id, metadata: nil, request_options: {}); end
 
       sig do
         params(
@@ -66,25 +66,25 @@ module Orb
         ).returns(Orb::Page[Orb::Models::Invoice])
       end
       def list(
-        amount:,
-        amount_gt:,
-        amount_lt:,
-        cursor:,
-        customer_id:,
-        date_type:,
-        due_date:,
-        due_date_window:,
-        due_date_gt:,
-        due_date_lt:,
-        external_customer_id:,
-        invoice_date_gt:,
-        invoice_date_gte:,
-        invoice_date_lt:,
-        invoice_date_lte:,
-        is_recurring:,
-        limit:,
-        status:,
-        subscription_id:,
+        amount: nil,
+        amount_gt: nil,
+        amount_lt: nil,
+        cursor: nil,
+        customer_id: nil,
+        date_type: nil,
+        due_date: nil,
+        due_date_window: nil,
+        due_date_gt: nil,
+        due_date_lt: nil,
+        external_customer_id: nil,
+        invoice_date_gt: nil,
+        invoice_date_gte: nil,
+        invoice_date_lt: nil,
+        invoice_date_lte: nil,
+        is_recurring: nil,
+        limit: nil,
+        status: nil,
+        subscription_id: nil,
         request_options: {}
       ); end
 
@@ -106,7 +106,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::Invoice)
       end
-      def issue(invoice_id, synchronous:, request_options: {}); end
+      def issue(invoice_id, synchronous: nil, request_options: {}); end
 
       sig do
         params(
@@ -117,7 +117,8 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::Invoice)
       end
-      def mark_paid(invoice_id, payment_received_date:, external_id:, notes:, request_options: {}); end
+      def mark_paid(invoice_id, payment_received_date:, external_id: nil, notes: nil, request_options: {})
+      end
 
       sig { params(invoice_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Invoice) }
       def pay(invoice_id, request_options: {}); end

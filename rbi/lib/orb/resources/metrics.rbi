@@ -13,7 +13,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::BillableMetric)
       end
-      def create(description:, item_id:, name:, sql:, metadata:, request_options: {}); end
+      def create(description:, item_id:, name:, sql:, metadata: nil, request_options: {}); end
 
       sig do
         params(
@@ -22,7 +22,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::BillableMetric)
       end
-      def update(metric_id, metadata:, request_options: {}); end
+      def update(metric_id, metadata: nil, request_options: {}); end
 
       sig do
         params(
@@ -36,15 +36,14 @@ module Orb
         ).returns(Orb::Page[Orb::Models::BillableMetric])
       end
       def list(
-        created_at_gt:,
-        created_at_gte:,
-        created_at_lt:,
-        created_at_lte:,
-        cursor:,
-        limit:,
+        created_at_gt: nil,
+        created_at_gte: nil,
+        created_at_lt: nil,
+        created_at_lte: nil,
+        cursor: nil,
+        limit: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
         params(metric_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::BillableMetric)

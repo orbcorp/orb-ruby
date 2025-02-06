@@ -20,8 +20,8 @@ module Orb
         billable_metric_id:,
         dimensions:,
         name:,
-        external_dimensional_price_group_id:,
-        metadata:,
+        external_dimensional_price_group_id: nil,
+        metadata: nil,
         request_options: {}
       ); end
 
@@ -40,7 +40,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Page[Orb::Models::DimensionalPriceGroup])
       end
-      def list(cursor:, limit:, request_options: {}); end
+      def list(cursor: nil, limit: nil, request_options: {}); end
 
       sig { params(client: Orb::Client).void }
       def initialize(client:); end

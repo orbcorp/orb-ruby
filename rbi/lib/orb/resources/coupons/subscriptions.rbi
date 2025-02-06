@@ -12,7 +12,7 @@ module Orb
             request_options: Orb::RequestOpts
           ).returns(Orb::Page[Orb::Models::Subscription])
         end
-        def list(coupon_id, cursor:, limit:, request_options: {}); end
+        def list(coupon_id, cursor: nil, limit: nil, request_options: {}); end
 
         sig { params(client: Orb::Client).void }
         def initialize(client:); end

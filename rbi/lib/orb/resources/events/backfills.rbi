@@ -19,11 +19,11 @@ module Orb
         def create(
           timeframe_end:,
           timeframe_start:,
-          close_time:,
-          customer_id:,
-          deprecation_filter:,
-          external_customer_id:,
-          replace_existing_events:,
+          close_time: nil,
+          customer_id: nil,
+          deprecation_filter: nil,
+          external_customer_id: nil,
+          replace_existing_events: nil,
           request_options: {}
         ); end
 
@@ -34,7 +34,7 @@ module Orb
             request_options: Orb::RequestOpts
           ).returns(Orb::Page[Orb::Models::Events::BackfillListResponse])
         end
-        def list(cursor:, limit:, request_options: {}); end
+        def list(cursor: nil, limit: nil, request_options: {}); end
 
         sig do
           params(

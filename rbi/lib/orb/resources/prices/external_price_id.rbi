@@ -11,7 +11,7 @@ module Orb
             request_options: Orb::RequestOpts
           ).returns(Orb::Models::Price::Variants)
         end
-        def update(external_price_id, metadata:, request_options: {}); end
+        def update(external_price_id, metadata: nil, request_options: {}); end
 
         sig do
           params(
