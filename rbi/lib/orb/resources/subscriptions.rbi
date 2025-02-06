@@ -39,36 +39,36 @@ module Orb
         ).returns(Orb::Models::SubscriptionCreateResponse)
       end
       def create(
-        add_adjustments:,
-        add_prices:,
-        align_billing_with_subscription_start_date:,
-        auto_collection:,
-        aws_region:,
-        billing_cycle_anchor_configuration:,
-        coupon_redemption_code:,
-        credits_overage_rate:,
-        customer_id:,
-        default_invoice_memo:,
-        end_date:,
-        external_customer_id:,
-        external_marketplace:,
-        external_marketplace_reporting_id:,
-        external_plan_id:,
-        filter:,
-        initial_phase_order:,
-        invoicing_threshold:,
-        metadata:,
-        net_terms:,
-        per_credit_overage_amount:,
-        plan_id:,
-        plan_version_number:,
-        price_overrides:,
-        remove_adjustments:,
-        remove_prices:,
-        replace_adjustments:,
-        replace_prices:,
-        start_date:,
-        trial_duration_days:,
+        add_adjustments: nil,
+        add_prices: nil,
+        align_billing_with_subscription_start_date: nil,
+        auto_collection: nil,
+        aws_region: nil,
+        billing_cycle_anchor_configuration: nil,
+        coupon_redemption_code: nil,
+        credits_overage_rate: nil,
+        customer_id: nil,
+        default_invoice_memo: nil,
+        end_date: nil,
+        external_customer_id: nil,
+        external_marketplace: nil,
+        external_marketplace_reporting_id: nil,
+        external_plan_id: nil,
+        filter: nil,
+        initial_phase_order: nil,
+        invoicing_threshold: nil,
+        metadata: nil,
+        net_terms: nil,
+        per_credit_overage_amount: nil,
+        plan_id: nil,
+        plan_version_number: nil,
+        price_overrides: nil,
+        remove_adjustments: nil,
+        remove_prices: nil,
+        replace_adjustments: nil,
+        replace_prices: nil,
+        start_date: nil,
+        trial_duration_days: nil,
         request_options: {}
       ); end
 
@@ -85,11 +85,11 @@ module Orb
       end
       def update(
         subscription_id,
-        auto_collection:,
-        default_invoice_memo:,
-        invoicing_threshold:,
-        metadata:,
-        net_terms:,
+        auto_collection: nil,
+        default_invoice_memo: nil,
+        invoicing_threshold: nil,
+        metadata: nil,
+        net_terms: nil,
         request_options: {}
       ); end
 
@@ -108,15 +108,15 @@ module Orb
         ).returns(Orb::Page[Orb::Models::Subscription])
       end
       def list(
-        created_at_gt:,
-        created_at_gte:,
-        created_at_lt:,
-        created_at_lte:,
-        cursor:,
-        customer_id:,
-        external_customer_id:,
-        limit:,
-        status:,
+        created_at_gt: nil,
+        created_at_gte: nil,
+        created_at_lt: nil,
+        created_at_lte: nil,
+        cursor: nil,
+        customer_id: nil,
+        external_customer_id: nil,
+        limit: nil,
+        status: nil,
         request_options: {}
       ); end
 
@@ -128,7 +128,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::SubscriptionCancelResponse)
       end
-      def cancel(subscription_id, cancel_option:, cancellation_date:, request_options: {}); end
+      def cancel(subscription_id, cancel_option:, cancellation_date: nil, request_options: {}); end
 
       sig do
         params(subscription_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Subscription)
@@ -147,13 +147,12 @@ module Orb
       end
       def fetch_costs(
         subscription_id,
-        currency:,
-        timeframe_end:,
-        timeframe_start:,
-        view_mode:,
+        currency: nil,
+        timeframe_end: nil,
+        timeframe_start: nil,
+        view_mode: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
         params(
@@ -169,12 +168,12 @@ module Orb
       end
       def fetch_schedule(
         subscription_id,
-        cursor:,
-        limit:,
-        start_date_gt:,
-        start_date_gte:,
-        start_date_lt:,
-        start_date_lte:,
+        cursor: nil,
+        limit: nil,
+        start_date_gt: nil,
+        start_date_gte: nil,
+        start_date_lt: nil,
+        start_date_lte: nil,
         request_options: {}
       ); end
 
@@ -196,16 +195,16 @@ module Orb
       end
       def fetch_usage(
         subscription_id,
-        billable_metric_id:,
-        first_dimension_key:,
-        first_dimension_value:,
-        granularity:,
-        group_by:,
-        second_dimension_key:,
-        second_dimension_value:,
-        timeframe_end:,
-        timeframe_start:,
-        view_mode:,
+        billable_metric_id: nil,
+        first_dimension_key: nil,
+        first_dimension_value: nil,
+        granularity: nil,
+        group_by: nil,
+        second_dimension_key: nil,
+        second_dimension_value: nil,
+        timeframe_end: nil,
+        timeframe_start: nil,
+        view_mode: nil,
         request_options: {}
       ); end
 
@@ -221,10 +220,10 @@ module Orb
       end
       def price_intervals(
         subscription_id,
-        add:,
-        add_adjustments:,
-        edit:,
-        edit_adjustments:,
+        add: nil,
+        add_adjustments: nil,
+        edit: nil,
+        edit_adjustments: nil,
         request_options: {}
       )
       end
@@ -263,30 +262,30 @@ module Orb
       def schedule_plan_change(
         subscription_id,
         change_option:,
-        add_adjustments:,
-        add_prices:,
-        align_billing_with_plan_change_date:,
-        auto_collection:,
-        billing_cycle_alignment:,
-        billing_cycle_anchor_configuration:,
-        change_date:,
-        coupon_redemption_code:,
-        credits_overage_rate:,
-        default_invoice_memo:,
-        external_plan_id:,
-        filter:,
-        initial_phase_order:,
-        invoicing_threshold:,
-        net_terms:,
-        per_credit_overage_amount:,
-        plan_id:,
-        plan_version_number:,
-        price_overrides:,
-        remove_adjustments:,
-        remove_prices:,
-        replace_adjustments:,
-        replace_prices:,
-        trial_duration_days:,
+        add_adjustments: nil,
+        add_prices: nil,
+        align_billing_with_plan_change_date: nil,
+        auto_collection: nil,
+        billing_cycle_alignment: nil,
+        billing_cycle_anchor_configuration: nil,
+        change_date: nil,
+        coupon_redemption_code: nil,
+        credits_overage_rate: nil,
+        default_invoice_memo: nil,
+        external_plan_id: nil,
+        filter: nil,
+        initial_phase_order: nil,
+        invoicing_threshold: nil,
+        net_terms: nil,
+        per_credit_overage_amount: nil,
+        plan_id: nil,
+        plan_version_number: nil,
+        price_overrides: nil,
+        remove_adjustments: nil,
+        remove_prices: nil,
+        replace_adjustments: nil,
+        replace_prices: nil,
+        trial_duration_days: nil,
         request_options: {}
       ); end
 
@@ -297,7 +296,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::SubscriptionTriggerPhaseResponse)
       end
-      def trigger_phase(subscription_id, effective_date:, request_options: {}); end
+      def trigger_phase(subscription_id, effective_date: nil, request_options: {}); end
 
       sig do
         params(
@@ -338,8 +337,8 @@ module Orb
         subscription_id,
         price_id:,
         quantity:,
-        change_option:,
-        effective_date:,
+        change_option: nil,
+        effective_date: nil,
         request_options: {}
       )
       end
@@ -352,7 +351,7 @@ module Orb
           request_options: Orb::RequestOpts
         ).returns(Orb::Models::SubscriptionUpdateTrialResponse)
       end
-      def update_trial(subscription_id, trial_end_date:, shift:, request_options: {}); end
+      def update_trial(subscription_id, trial_end_date:, shift: nil, request_options: {}); end
 
       sig { params(client: Orb::Client).void }
       def initialize(client:); end

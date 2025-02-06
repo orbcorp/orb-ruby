@@ -13,7 +13,7 @@ module Orb
             request_options: Orb::RequestOpts
           ).returns(Orb::Models::Customers::BalanceTransactionCreateResponse)
         end
-        def create(customer_id, amount:, type:, description:, request_options: {}); end
+        def create(customer_id, amount:, type:, description: nil, request_options: {}); end
 
         sig do
           params(
@@ -29,12 +29,12 @@ module Orb
         end
         def list(
           customer_id,
-          cursor:,
-          limit:,
-          operation_time_gt:,
-          operation_time_gte:,
-          operation_time_lt:,
-          operation_time_lte:,
+          cursor: nil,
+          limit: nil,
+          operation_time_gt: nil,
+          operation_time_gte: nil,
+          operation_time_lt: nil,
+          operation_time_lte: nil,
           request_options: {}
         ); end
 

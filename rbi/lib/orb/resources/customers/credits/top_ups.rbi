@@ -25,8 +25,8 @@ module Orb
             invoice_settings:,
             per_unit_cost_basis:,
             threshold:,
-            expires_after:,
-            expires_after_unit:,
+            expires_after: nil,
+            expires_after_unit: nil,
             request_options: {}
           ); end
 
@@ -38,7 +38,7 @@ module Orb
               request_options: Orb::RequestOpts
             ).returns(Orb::Page[Orb::Models::Customers::Credits::TopUpListResponse])
           end
-          def list(customer_id, cursor:, limit:, request_options: {}); end
+          def list(customer_id, cursor: nil, limit: nil, request_options: {}); end
 
           sig { params(top_up_id: String, customer_id: String, request_options: Orb::RequestOpts).void }
           def delete(top_up_id, customer_id:, request_options: {}); end
@@ -63,8 +63,8 @@ module Orb
             invoice_settings:,
             per_unit_cost_basis:,
             threshold:,
-            expires_after:,
-            expires_after_unit:,
+            expires_after: nil,
+            expires_after_unit: nil,
             request_options: {}
           ); end
 
@@ -81,7 +81,7 @@ module Orb
               request_options: Orb::RequestOpts
             ).returns(Orb::Page[Orb::Models::Customers::Credits::TopUpListByExternalIDResponse])
           end
-          def list_by_external_id(external_customer_id, cursor:, limit:, request_options: {}); end
+          def list_by_external_id(external_customer_id, cursor: nil, limit: nil, request_options: {}); end
 
           sig { params(client: Orb::Client).void }
           def initialize(client:); end

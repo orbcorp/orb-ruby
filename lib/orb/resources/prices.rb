@@ -31,31 +31,6 @@ module Orb
       #
       #   @option params [Orb::Models::PriceCreateParams::UnitConfig] :unit_config
       #
-      #   @option params [String, nil] :billable_metric_id The id of the billable metric for the price. Only needed if the price is
-      #     usage-based.
-      #
-      #   @option params [Boolean, nil] :billed_in_advance If the Price represents a fixed cost, the price will be billed in-advance if
-      #     this is true, and in-arrears if this is false.
-      #
-      #   @option params [Orb::Models::PriceCreateParams::BillingCycleConfiguration, nil] :billing_cycle_configuration For custom cadence: specifies the duration of the billing period in days or
-      #     months.
-      #
-      #   @option params [Float, nil] :conversion_rate The per unit conversion rate of the price currency to the invoicing currency.
-      #
-      #   @option params [String, nil] :external_price_id An alias for the price.
-      #
-      #   @option params [Float, nil] :fixed_price_quantity If the Price represents a fixed cost, this represents the quantity of units
-      #     applied.
-      #
-      #   @option params [String, nil] :invoice_grouping_key The property used to group this price on an invoice
-      #
-      #   @option params [Orb::Models::PriceCreateParams::InvoicingCycleConfiguration, nil] :invoicing_cycle_configuration Within each billing cycle, specifies the cadence at which invoices are produced.
-      #     If unspecified, a single invoice is produced per billing cycle.
-      #
-      #   @option params [Hash{Symbol=>String, nil}, nil] :metadata User-specified key/value pairs for the resource. Individual keys can be removed
-      #     by setting the value to `null`, and the entire metadata mapping can be cleared
-      #     by setting `metadata` to `null`.
-      #
       #   @option params [Orb::Models::PriceCreateParams::PackageConfig] :package_config
       #
       #   @option params [Orb::Models::PriceCreateParams::MatrixConfig] :matrix_config
@@ -107,6 +82,31 @@ module Orb
       #   @option params [Hash{Symbol=>Object}] :scalable_matrix_with_unit_pricing_config
       #
       #   @option params [Hash{Symbol=>Object}] :scalable_matrix_with_tiered_pricing_config
+      #
+      #   @option params [String, nil] :billable_metric_id The id of the billable metric for the price. Only needed if the price is
+      #     usage-based.
+      #
+      #   @option params [Boolean, nil] :billed_in_advance If the Price represents a fixed cost, the price will be billed in-advance if
+      #     this is true, and in-arrears if this is false.
+      #
+      #   @option params [Orb::Models::PriceCreateParams::BillingCycleConfiguration, nil] :billing_cycle_configuration For custom cadence: specifies the duration of the billing period in days or
+      #     months.
+      #
+      #   @option params [Float, nil] :conversion_rate The per unit conversion rate of the price currency to the invoicing currency.
+      #
+      #   @option params [String, nil] :external_price_id An alias for the price.
+      #
+      #   @option params [Float, nil] :fixed_price_quantity If the Price represents a fixed cost, this represents the quantity of units
+      #     applied.
+      #
+      #   @option params [String, nil] :invoice_grouping_key The property used to group this price on an invoice
+      #
+      #   @option params [Orb::Models::PriceCreateParams::InvoicingCycleConfiguration, nil] :invoicing_cycle_configuration Within each billing cycle, specifies the cadence at which invoices are produced.
+      #     If unspecified, a single invoice is produced per billing cycle.
+      #
+      #   @option params [Hash{Symbol=>String, nil}, nil] :metadata User-specified key/value pairs for the resource. Individual keys can be removed
+      #     by setting the value to `null`, and the entire metadata mapping can be cleared
+      #     by setting `metadata` to `null`.
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
       #

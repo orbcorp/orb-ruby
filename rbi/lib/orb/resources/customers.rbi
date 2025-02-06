@@ -37,21 +37,21 @@ module Orb
       def create(
         email:,
         name:,
-        accounting_sync_configuration:,
-        additional_emails:,
-        auto_collection:,
-        billing_address:,
-        currency:,
-        email_delivery:,
-        external_customer_id:,
-        metadata:,
-        payment_provider:,
-        payment_provider_id:,
-        reporting_configuration:,
-        shipping_address:,
-        tax_configuration:,
-        tax_id:,
-        timezone:,
+        accounting_sync_configuration: nil,
+        additional_emails: nil,
+        auto_collection: nil,
+        billing_address: nil,
+        currency: nil,
+        email_delivery: nil,
+        external_customer_id: nil,
+        metadata: nil,
+        payment_provider: nil,
+        payment_provider_id: nil,
+        reporting_configuration: nil,
+        shipping_address: nil,
+        tax_configuration: nil,
+        tax_id: nil,
+        timezone: nil,
         request_options: {}
       ); end
 
@@ -79,22 +79,22 @@ module Orb
       end
       def update(
         customer_id,
-        accounting_sync_configuration:,
-        additional_emails:,
-        auto_collection:,
-        billing_address:,
-        currency:,
-        email:,
-        email_delivery:,
-        external_customer_id:,
-        metadata:,
-        name:,
-        payment_provider:,
-        payment_provider_id:,
-        reporting_configuration:,
-        shipping_address:,
-        tax_configuration:,
-        tax_id:,
+        accounting_sync_configuration: nil,
+        additional_emails: nil,
+        auto_collection: nil,
+        billing_address: nil,
+        currency: nil,
+        email: nil,
+        email_delivery: nil,
+        external_customer_id: nil,
+        metadata: nil,
+        name: nil,
+        payment_provider: nil,
+        payment_provider_id: nil,
+        reporting_configuration: nil,
+        shipping_address: nil,
+        tax_configuration: nil,
+        tax_id: nil,
         request_options: {}
       ); end
 
@@ -110,15 +110,14 @@ module Orb
         ).returns(Orb::Page[Orb::Models::Customer])
       end
       def list(
-        created_at_gt:,
-        created_at_gte:,
-        created_at_lt:,
-        created_at_lte:,
-        cursor:,
-        limit:,
+        created_at_gt: nil,
+        created_at_gte: nil,
+        created_at_lt: nil,
+        created_at_lte: nil,
+        cursor: nil,
+        limit: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig { params(customer_id: String, request_options: Orb::RequestOpts).void }
       def delete(customer_id, request_options: {}); end
@@ -161,22 +160,22 @@ module Orb
       end
       def update_by_external_id(
         id,
-        accounting_sync_configuration:,
-        additional_emails:,
-        auto_collection:,
-        billing_address:,
-        currency:,
-        email:,
-        email_delivery:,
-        external_customer_id:,
-        metadata:,
-        name:,
-        payment_provider:,
-        payment_provider_id:,
-        reporting_configuration:,
-        shipping_address:,
-        tax_configuration:,
-        tax_id:,
+        accounting_sync_configuration: nil,
+        additional_emails: nil,
+        auto_collection: nil,
+        billing_address: nil,
+        currency: nil,
+        email: nil,
+        email_delivery: nil,
+        external_customer_id: nil,
+        metadata: nil,
+        name: nil,
+        payment_provider: nil,
+        payment_provider_id: nil,
+        reporting_configuration: nil,
+        shipping_address: nil,
+        tax_configuration: nil,
+        tax_id: nil,
         request_options: {}
       ); end
 
