@@ -10,7 +10,7 @@ module Orb
         (data: Array[Orb::Models::EventSearchResponse::Data]) -> void
         | (?Orb::Models::event_search_response | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::event_search_response
+      def to_hash: -> Orb::Models::event_search_response
 
       type data =
         {
@@ -52,7 +52,7 @@ module Orb
             ?Orb::Models::EventSearchResponse::data | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::EventSearchResponse::data
+        def to_hash: -> Orb::Models::EventSearchResponse::data
       end
     end
   end

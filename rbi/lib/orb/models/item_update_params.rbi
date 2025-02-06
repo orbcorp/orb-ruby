@@ -6,16 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            external_connections: T.nilable(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection]),
-            name: T.nilable(String)
-          },
-          Orb::RequestParameters::Shape
-        )
-      end
-
       sig { returns(T.nilable(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection])) }
       attr_accessor :external_connections
 
@@ -26,17 +16,21 @@ module Orb
         params(
           external_connections: T.nilable(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection]),
           name: T.nilable(String),
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(external_connections: nil, name: nil, request_options: {}); end
 
-      sig { returns(Orb::Models::ItemUpdateParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            external_connections: T.nilable(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection]), name: T.nilable(String), request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class ExternalConnection < Orb::BaseModel
-        Shape = T.type_alias { {external_connection_name: Symbol, external_entity_id: String} }
-
         sig { returns(Symbol) }
         attr_accessor :external_connection_name
 
@@ -46,8 +40,8 @@ module Orb
         sig { params(external_connection_name: Symbol, external_entity_id: String).void }
         def initialize(external_connection_name:, external_entity_id:); end
 
-        sig { returns(Orb::Models::ItemUpdateParams::ExternalConnection::Shape) }
-        def to_h; end
+        sig { override.returns({external_connection_name: Symbol, external_entity_id: String}) }
+        def to_hash; end
 
         class ExternalConnectionName < Orb::Enum
           abstract!

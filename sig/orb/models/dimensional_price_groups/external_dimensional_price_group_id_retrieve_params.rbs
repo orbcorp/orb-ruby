@@ -15,7 +15,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::DimensionalPriceGroups::external_dimensional_price_group_id_retrieve_params
+        def to_hash: -> Orb::Models::DimensionalPriceGroups::external_dimensional_price_group_id_retrieve_params
       end
     end
   end

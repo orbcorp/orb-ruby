@@ -3,15 +3,6 @@
 module Orb
   module Models
     class SubscriptionFetchScheduleResponse < Orb::BaseModel
-      Shape = T.type_alias do
-        {
-          created_at: Time,
-          end_date: T.nilable(Time),
-          plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
-          start_date: Time
-        }
-      end
-
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -34,14 +25,19 @@ module Orb
       end
       def initialize(created_at:, end_date:, plan:, start_date:); end
 
-      sig { returns(Orb::Models::SubscriptionFetchScheduleResponse::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            created_at: Time,
+            end_date: T.nilable(Time),
+            plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
+            start_date: Time
+          }
+        )
+      end
+      def to_hash; end
 
       class Plan < Orb::BaseModel
-        Shape = T.type_alias do
-          {id: T.nilable(String), external_plan_id: T.nilable(String), name: T.nilable(String)}
-        end
-
         sig { returns(T.nilable(String)) }
         attr_accessor :id
 
@@ -56,8 +52,16 @@ module Orb
         end
         def initialize(id:, external_plan_id:, name:); end
 
-        sig { returns(Orb::Models::SubscriptionFetchScheduleResponse::Plan::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              id: T.nilable(String),
+              external_plan_id: T.nilable(String),
+              name: T.nilable(String)
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end

@@ -10,7 +10,7 @@ module Orb
         (request_options: Orb::request_opts) -> void
         | (?Orb::Models::alert_retrieve_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::alert_retrieve_params
+      def to_hash: -> Orb::Models::alert_retrieve_params
     end
   end
 end

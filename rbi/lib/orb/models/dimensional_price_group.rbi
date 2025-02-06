@@ -3,17 +3,6 @@
 module Orb
   module Models
     class DimensionalPriceGroup < Orb::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          billable_metric_id: String,
-          dimensions: T::Array[String],
-          external_dimensional_price_group_id: T.nilable(String),
-          metadata: T::Hash[Symbol, String],
-          name: String
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -52,8 +41,19 @@ module Orb
       )
       end
 
-      sig { returns(Orb::Models::DimensionalPriceGroup::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            billable_metric_id: String,
+            dimensions: T::Array[String],
+            external_dimensional_price_group_id: T.nilable(String),
+            metadata: T::Hash[Symbol, String],
+            name: String
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

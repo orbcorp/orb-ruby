@@ -176,7 +176,7 @@ module Orb
           ?Orb::Models::invoice_fetch_upcoming_response | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::invoice_fetch_upcoming_response
+      def to_hash: -> Orb::Models::invoice_fetch_upcoming_response
 
       type auto_collection =
         {
@@ -207,7 +207,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::auto_collection
+        def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::auto_collection
       end
 
       type billing_address =
@@ -247,7 +247,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::billing_address
+        def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::billing_address
       end
 
       type credit_note =
@@ -291,7 +291,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::credit_note
+        def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::credit_note
       end
 
       type customer = { id: String, external_customer_id: String? }
@@ -308,7 +308,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::customer
+        def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::customer
       end
 
       type customer_balance_transaction =
@@ -364,7 +364,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::customer_balance_transaction
+        def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::customer_balance_transaction
 
         type action =
           :applied_to_invoice
@@ -401,7 +401,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::credit_note
+          def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::credit_note
         end
 
         type invoice = { id: String }
@@ -416,7 +416,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::invoice
+          def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::invoice
         end
 
         type type_ = :increment | :decrement
@@ -454,7 +454,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::customer_tax_id
+        def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::customer_tax_id
 
         type country =
           :AD
@@ -872,7 +872,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::line_item
+        def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::line_item
 
         type adjustment =
           Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscountAdjustment
@@ -923,7 +923,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::amount_discount_adjustment
+            def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::amount_discount_adjustment
           end
 
           type percentage_discount_adjustment =
@@ -967,7 +967,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::percentage_discount_adjustment
+            def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::percentage_discount_adjustment
           end
 
           type usage_discount_adjustment =
@@ -1011,7 +1011,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::usage_discount_adjustment
+            def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::usage_discount_adjustment
           end
 
           type minimum_adjustment =
@@ -1059,7 +1059,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::minimum_adjustment
+            def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::minimum_adjustment
           end
 
           type maximum_adjustment =
@@ -1103,7 +1103,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::maximum_adjustment
+            def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::maximum_adjustment
           end
 
           private def self.variants: -> [[:amount_discount, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscountAdjustment], [:percentage_discount, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscountAdjustment], [:usage_discount, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscountAdjustment], [:minimum, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MinimumAdjustment], [:maximum, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MaximumAdjustment]]
@@ -1127,7 +1127,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::maximum
+          def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::maximum
         end
 
         type minimum =
@@ -1148,7 +1148,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::minimum
+          def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::minimum
         end
 
         type sub_line_item =
@@ -1194,7 +1194,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::matrix_sub_line_item
+            def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::matrix_sub_line_item
 
             type grouping = { key: String, value: String? }
 
@@ -1210,7 +1210,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::grouping
+              def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::grouping
             end
 
             type matrix_config = { dimension_values: Array[String?] }
@@ -1225,7 +1225,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::matrix_config
+              def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::matrix_config
             end
           end
 
@@ -1266,7 +1266,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::tier_sub_line_item
+            def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::tier_sub_line_item
 
             type grouping = { key: String, value: String? }
 
@@ -1282,7 +1282,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::grouping
+              def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::grouping
             end
 
             type tier_config =
@@ -1306,7 +1306,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::tier_config
+              def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::tier_config
             end
           end
 
@@ -1343,7 +1343,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::other_sub_line_item
+            def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::other_sub_line_item
 
             type grouping = { key: String, value: String? }
 
@@ -1359,7 +1359,7 @@ module Orb
                   | Orb::BaseModel data
                 ) -> void
 
-              def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::grouping
+              def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::grouping
             end
           end
 
@@ -1391,7 +1391,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::tax_amount
+          def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::tax_amount
         end
       end
 
@@ -1410,7 +1410,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::maximum
+        def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::maximum
       end
 
       type minimum =
@@ -1428,7 +1428,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::minimum
+        def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::minimum
       end
 
       type payment_attempt =
@@ -1468,7 +1468,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::payment_attempt
+        def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::payment_attempt
 
         type payment_provider = :stripe
 
@@ -1516,7 +1516,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::shipping_address
+        def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::shipping_address
       end
 
       type status = :issued | :paid | :synced | :void | :draft
@@ -1543,7 +1543,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::InvoiceFetchUpcomingResponse::subscription
+        def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::subscription
       end
     end
   end

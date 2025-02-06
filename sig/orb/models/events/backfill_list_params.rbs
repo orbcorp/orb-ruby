@@ -24,7 +24,7 @@ module Orb
             ?Orb::Models::Events::backfill_list_params | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Events::backfill_list_params
+        def to_hash: -> Orb::Models::Events::backfill_list_params
       end
     end
   end

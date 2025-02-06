@@ -3,25 +3,13 @@
 module Orb
   module Models
     class Coupon < Orb::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          archived_at: T.nilable(Time),
-          discount: Orb::Models::Coupon::Discount::Variants,
-          duration_in_months: T.nilable(Integer),
-          max_redemptions: T.nilable(Integer),
-          redemption_code: String,
-          times_redeemed: Integer
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
       sig { returns(T.nilable(Time)) }
       attr_accessor :archived_at
 
-      sig { returns(Orb::Models::Coupon::Discount::Variants) }
+      sig { returns(T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount)) }
       attr_accessor :discount
 
       sig { returns(T.nilable(Integer)) }
@@ -40,7 +28,7 @@ module Orb
         params(
           id: String,
           archived_at: T.nilable(Time),
-          discount: Orb::Models::Coupon::Discount::Variants,
+          discount: T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount),
           duration_in_months: T.nilable(Integer),
           max_redemptions: T.nilable(Integer),
           redemption_code: String,
@@ -58,13 +46,23 @@ module Orb
       )
       end
 
-      sig { returns(Orb::Models::Coupon::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            archived_at: T.nilable(Time),
+            discount: T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount),
+            duration_in_months: T.nilable(Integer),
+            max_redemptions: T.nilable(Integer),
+            redemption_code: String,
+            times_redeemed: Integer
+          }
+        )
+      end
+      def to_hash; end
 
       class Discount < Orb::Union
         abstract!
-
-        Variants = T.type_alias { T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount) }
 
         sig do
           override.returns([[Symbol, Orb::Models::PercentageDiscount], [Symbol, Orb::Models::AmountDiscount]])

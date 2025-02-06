@@ -14,13 +14,7 @@ module Orb
         unwrap: T.nilable(Symbol),
         page: T.nilable(T::Class[Orb::BaseModel]),
         model: T.nilable(Orb::Converter::Input),
-        options: T.nilable(
-          T.any(
-            Orb::RequestOptions,
-            Orb::RequestOptions::Shape,
-            T::Hash[Symbol, T.anything]
-          )
-        )
+        options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
       }
     end
 
@@ -75,7 +69,7 @@ module Orb
     sig do
       params(
         req: Orb::BaseClient::RequestShape,
-        opts: Orb::RequestOptions::Shape
+        opts: T::Hash[Symbol, T.anything]
       ).returns(Orb::BaseClient::NormalizedRequestShape)
     end
     private def build_request(req, opts); end
@@ -118,13 +112,7 @@ module Orb
         unwrap: T.nilable(Symbol),
         page: T.nilable(T::Class[Orb::BaseModel]),
         model: T.nilable(Orb::Converter::Input),
-        options: T.nilable(
-          T.any(
-            Orb::RequestOptions,
-            Orb::RequestOptions::Shape,
-            T::Hash[Symbol, T.anything]
-          )
-        )
+        options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
       ).returns(T.anything)
     end
     def request(

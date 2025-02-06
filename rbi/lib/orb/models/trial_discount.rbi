@@ -3,16 +3,6 @@
 module Orb
   module Models
     class TrialDiscount < Orb::BaseModel
-      Shape = T.type_alias do
-        {
-          applies_to_price_ids: T::Array[String],
-          discount_type: Symbol,
-          reason: T.nilable(String),
-          trial_amount_discount: T.nilable(String),
-          trial_percentage_discount: T.nilable(Float)
-        }
-      end
-
       sig { returns(T::Array[String]) }
       attr_accessor :applies_to_price_ids
 
@@ -45,8 +35,18 @@ module Orb
         trial_percentage_discount: nil
       ); end
 
-      sig { returns(Orb::Models::TrialDiscount::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            applies_to_price_ids: T::Array[String],
+            discount_type: Symbol,
+            reason: T.nilable(String),
+            trial_amount_discount: T.nilable(String),
+            trial_percentage_discount: T.nilable(Float)
+          }
+        )
+      end
+      def to_hash; end
 
       class DiscountType < Orb::Enum
         abstract!

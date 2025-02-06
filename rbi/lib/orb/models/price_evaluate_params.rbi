@@ -6,20 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            timeframe_end: Time,
-            timeframe_start: Time,
-            customer_id: T.nilable(String),
-            external_customer_id: T.nilable(String),
-            filter: T.nilable(String),
-            grouping_keys: T::Array[String]
-          },
-          Orb::RequestParameters::Shape
-        )
-      end
-
       sig { returns(Time) }
       attr_accessor :timeframe_end
 
@@ -49,7 +35,7 @@ module Orb
           external_customer_id: T.nilable(String),
           filter: T.nilable(String),
           grouping_keys: T::Array[String],
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -62,8 +48,20 @@ module Orb
         request_options: {}
       ); end
 
-      sig { returns(Orb::Models::PriceEvaluateParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            timeframe_end: Time,
+            timeframe_start: Time,
+            customer_id: T.nilable(String),
+            external_customer_id: T.nilable(String),
+            filter: T.nilable(String),
+            grouping_keys: T::Array[String],
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

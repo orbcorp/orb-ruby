@@ -10,7 +10,7 @@ module Orb
         #
         # @param params [Orb::Models::DimensionalPriceGroups::ExternalDimensionalPriceGroupIDRetrieveParams, Hash{Symbol=>Object}] .
         #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::DimensionalPriceGroup]
         #

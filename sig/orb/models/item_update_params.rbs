@@ -23,7 +23,7 @@ module Orb
         ) -> void
         | (?Orb::Models::item_update_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::item_update_params
+      def to_hash: -> Orb::Models::item_update_params
 
       type external_connection =
         {
@@ -46,7 +46,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::ItemUpdateParams::external_connection
+        def to_hash: -> Orb::Models::ItemUpdateParams::external_connection
 
         type external_connection_name =
           :stripe

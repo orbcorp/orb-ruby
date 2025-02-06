@@ -6,20 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            cursor: T.nilable(String),
-            limit: Integer,
-            start_date_gt: T.nilable(Time),
-            start_date_gte: T.nilable(Time),
-            start_date_lt: T.nilable(Time),
-            start_date_lte: T.nilable(Time)
-          },
-          Orb::RequestParameters::Shape
-        )
-      end
-
       sig { returns(T.nilable(String)) }
       attr_accessor :cursor
 
@@ -49,7 +35,7 @@ module Orb
           start_date_gte: T.nilable(Time),
           start_date_lt: T.nilable(Time),
           start_date_lte: T.nilable(Time),
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -62,8 +48,20 @@ module Orb
         request_options: {}
       ); end
 
-      sig { returns(Orb::Models::SubscriptionFetchScheduleParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            cursor: T.nilable(String),
+            limit: Integer,
+            start_date_gt: T.nilable(Time),
+            start_date_gte: T.nilable(Time),
+            start_date_lt: T.nilable(Time),
+            start_date_lte: T.nilable(Time),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

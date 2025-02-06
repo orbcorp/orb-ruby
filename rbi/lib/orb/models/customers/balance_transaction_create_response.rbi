@@ -4,21 +4,6 @@ module Orb
   module Models
     module Customers
       class BalanceTransactionCreateResponse < Orb::BaseModel
-        Shape = T.type_alias do
-          {
-            id: String,
-            action: Symbol,
-            amount: String,
-            created_at: Time,
-            credit_note: T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote),
-            description: T.nilable(String),
-            ending_balance: String,
-            invoice: T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice),
-            starting_balance: String,
-            type: Symbol
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -76,8 +61,23 @@ module Orb
           type:
         ); end
 
-        sig { returns(Orb::Models::Customers::BalanceTransactionCreateResponse::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              id: String,
+              action: Symbol,
+              amount: String,
+              created_at: Time,
+              credit_note: T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote),
+              description: T.nilable(String),
+              ending_balance: String,
+              invoice: T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice),
+              starting_balance: String,
+              type: Symbol
+            }
+          )
+        end
+        def to_hash; end
 
         class Action < Orb::Enum
           abstract!
@@ -96,29 +96,25 @@ module Orb
         end
 
         class CreditNote < Orb::BaseModel
-          Shape = T.type_alias { {id: String} }
-
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).void }
           def initialize(id:); end
 
-          sig { returns(Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote::Shape) }
-          def to_h; end
+          sig { override.returns({id: String}) }
+          def to_hash; end
         end
 
         class Invoice < Orb::BaseModel
-          Shape = T.type_alias { {id: String} }
-
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).void }
           def initialize(id:); end
 
-          sig { returns(Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice::Shape) }
-          def to_h; end
+          sig { override.returns({id: String}) }
+          def to_hash; end
         end
 
         class Type < Orb::Enum

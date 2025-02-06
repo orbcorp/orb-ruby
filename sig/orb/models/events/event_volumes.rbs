@@ -14,7 +14,7 @@ module Orb
           (data: Array[Orb::Models::Events::EventVolumes::Data]) -> void
           | (?Orb::Models::Events::event_volumes | Orb::BaseModel data) -> void
 
-        def to_h: -> Orb::Models::Events::event_volumes
+        def to_hash: -> Orb::Models::Events::event_volumes
 
         type data =
           { count: Integer, timeframe_end: Time, timeframe_start: Time }
@@ -32,7 +32,7 @@ module Orb
               ?Orb::Models::Events::EventVolumes::data | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Events::EventVolumes::data
+          def to_hash: -> Orb::Models::Events::EventVolumes::data
         end
       end
     end

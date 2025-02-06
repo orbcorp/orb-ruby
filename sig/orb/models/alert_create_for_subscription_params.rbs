@@ -30,7 +30,7 @@ module Orb
           | Orb::BaseModel data
         ) -> void
 
-      def to_h: -> Orb::Models::alert_create_for_subscription_params
+      def to_hash: -> Orb::Models::alert_create_for_subscription_params
 
       type threshold = { value: Float }
 
@@ -44,7 +44,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::AlertCreateForSubscriptionParams::threshold
+        def to_hash: -> Orb::Models::AlertCreateForSubscriptionParams::threshold
       end
 
       type type_ =

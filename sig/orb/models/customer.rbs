@@ -94,7 +94,7 @@ module Orb
         ) -> void
         | (?Orb::Models::customer | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::customer
+      def to_hash: -> Orb::Models::customer
 
       type billing_address =
         {
@@ -132,7 +132,7 @@ module Orb
             ?Orb::Models::Customer::billing_address | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Customer::billing_address
+        def to_hash: -> Orb::Models::Customer::billing_address
       end
 
       type payment_provider =
@@ -184,7 +184,7 @@ module Orb
             ?Orb::Models::Customer::shipping_address | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Customer::shipping_address
+        def to_hash: -> Orb::Models::Customer::shipping_address
       end
 
       type tax_id =
@@ -209,7 +209,7 @@ module Orb
           ) -> void
           | (?Orb::Models::Customer::tax_id | Orb::BaseModel data) -> void
 
-        def to_h: -> Orb::Models::Customer::tax_id
+        def to_hash: -> Orb::Models::Customer::tax_id
 
         type country =
           :AD
@@ -545,7 +545,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Customer::accounting_sync_configuration
+        def to_hash: -> Orb::Models::Customer::accounting_sync_configuration
 
         type accounting_provider =
           {
@@ -568,7 +568,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Customer::AccountingSyncConfiguration::accounting_provider
+          def to_hash: -> Orb::Models::Customer::AccountingSyncConfiguration::accounting_provider
 
           type provider_type = :quickbooks | :netsuite
 
@@ -593,7 +593,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Customer::reporting_configuration
+        def to_hash: -> Orb::Models::Customer::reporting_configuration
       end
     end
   end

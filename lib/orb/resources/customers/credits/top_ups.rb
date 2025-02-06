@@ -34,7 +34,7 @@ module Orb
           #
           #   @option params [Symbol, Orb::Models::Customers::Credits::TopUpCreateParams::ExpiresAfterUnit, nil] :expires_after_unit The unit of expires_after.
           #
-          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Orb::Models::Customers::Credits::TopUpCreateResponse]
           #
@@ -60,7 +60,7 @@ module Orb
           #
           #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
           #
-          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Orb::Page<Orb::Models::Customers::Credits::TopUpListResponse>]
           #
@@ -84,7 +84,7 @@ module Orb
           #
           #   @option params [String] :customer_id
           #
-          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [nil]
           #
@@ -130,7 +130,7 @@ module Orb
           #
           #   @option params [Symbol, Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::ExpiresAfterUnit, nil] :expires_after_unit The unit of expires_after.
           #
-          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse]
           #
@@ -153,7 +153,7 @@ module Orb
           #
           #   @option params [String] :external_customer_id
           #
-          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [nil]
           #
@@ -185,7 +185,7 @@ module Orb
           #
           #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
           #
-          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Orb::Page<Orb::Models::Customers::Credits::TopUpListByExternalIDResponse>]
           #

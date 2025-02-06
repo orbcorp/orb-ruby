@@ -38,7 +38,7 @@ module Orb
             ?Orb::Models::Events::volume_list_params | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Events::volume_list_params
+        def to_hash: -> Orb::Models::Events::volume_list_params
       end
     end
   end

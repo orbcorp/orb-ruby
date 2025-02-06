@@ -6,19 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            description: T.nilable(String),
-            item_id: String,
-            name: String,
-            sql: String,
-            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
-          },
-          Orb::RequestParameters::Shape
-        )
-      end
-
       sig { returns(T.nilable(String)) }
       attr_accessor :description
 
@@ -41,13 +28,24 @@ module Orb
           name: String,
           sql: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(description:, item_id:, name:, sql:, metadata: nil, request_options: {}); end
 
-      sig { returns(Orb::Models::MetricCreateParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            description: T.nilable(String),
+            item_id: String,
+            name: String,
+            sql: String,
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

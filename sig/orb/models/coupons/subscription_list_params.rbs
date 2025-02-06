@@ -25,7 +25,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Coupons::subscription_list_params
+        def to_hash: -> Orb::Models::Coupons::subscription_list_params
       end
     end
   end

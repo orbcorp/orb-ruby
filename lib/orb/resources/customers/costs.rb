@@ -137,7 +137,7 @@ module Orb
         #     discounts, it's strongly recommended that you use the default cumulative
         #     behavior.
         #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Customers::CostListResponse]
         #
@@ -285,7 +285,7 @@ module Orb
         #     discounts, it's strongly recommended that you use the default cumulative
         #     behavior.
         #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Customers::CostListByExternalIDResponse]
         #

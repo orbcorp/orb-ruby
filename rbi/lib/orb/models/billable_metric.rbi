@@ -3,17 +3,6 @@
 module Orb
   module Models
     class BillableMetric < Orb::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          description: T.nilable(String),
-          item: Orb::Models::Item,
-          metadata: T::Hash[Symbol, String],
-          name: String,
-          status: Symbol
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -44,8 +33,19 @@ module Orb
       end
       def initialize(id:, description:, item:, metadata:, name:, status:); end
 
-      sig { returns(Orb::Models::BillableMetric::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            description: T.nilable(String),
+            item: Orb::Models::Item,
+            metadata: T::Hash[Symbol, String],
+            name: String,
+            status: Symbol
+          }
+        )
+      end
+      def to_hash; end
 
       class Status < Orb::Enum
         abstract!

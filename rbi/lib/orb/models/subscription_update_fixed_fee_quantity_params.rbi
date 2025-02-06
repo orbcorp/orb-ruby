@@ -6,13 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {price_id: String, quantity: Float, change_option: Symbol, effective_date: T.nilable(Date)},
-          Orb::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :price_id
 
@@ -34,13 +27,23 @@ module Orb
           quantity: Float,
           change_option: Symbol,
           effective_date: T.nilable(Date),
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(price_id:, quantity:, change_option: nil, effective_date: nil, request_options: {}); end
 
-      sig { returns(Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            price_id: String,
+            quantity: Float,
+            change_option: Symbol,
+            effective_date: T.nilable(Date),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class ChangeOption < Orb::Enum
         abstract!

@@ -10,7 +10,7 @@ module Orb
           name: String,
           sql: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: Orb::RequestOpts
+          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::BillableMetric)
       end
       def create(description:, item_id:, name:, sql:, metadata: nil, request_options: {}); end
@@ -19,7 +19,7 @@ module Orb
         params(
           metric_id: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: Orb::RequestOpts
+          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::BillableMetric)
       end
       def update(metric_id, metadata: nil, request_options: {}); end
@@ -32,7 +32,7 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           limit: Integer,
-          request_options: Orb::RequestOpts
+          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Page[Orb::Models::BillableMetric])
       end
       def list(
@@ -46,7 +46,10 @@ module Orb
       ); end
 
       sig do
-        params(metric_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::BillableMetric)
+        params(
+          metric_id: String,
+          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+        ).returns(Orb::Models::BillableMetric)
       end
       def fetch(metric_id, request_options: {}); end
 

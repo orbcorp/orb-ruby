@@ -348,7 +348,7 @@ module Orb
       #     value specified in the plan. If `0` is provided, the trial on the plan will be
       #     skipped.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionCreateResponse]
       #
@@ -391,7 +391,7 @@ module Orb
       #     invoice is due on issue, whereas a value of `30` represents that the customer
       #     has a month to pay the invoice.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Subscription]
       #
@@ -437,7 +437,7 @@ module Orb
       #
       #   @option params [Symbol, Orb::Models::SubscriptionListParams::Status, nil] :status
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Page<Orb::Models::Subscription>]
       #
@@ -524,7 +524,7 @@ module Orb
       #   @option params [Time, nil] :cancellation_date The date that the cancellation should take effect. This parameter can only be
       #     passed if the `cancel_option` is `requested_date`.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionCancelResponse]
       #
@@ -546,7 +546,7 @@ module Orb
       #
       # @param params [Orb::Models::SubscriptionFetchParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Subscription]
       #
@@ -585,7 +585,7 @@ module Orb
       #     discounts, it's strongly recommended that you use the default cumulative
       #     behavior.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionFetchCostsResponse]
       #
@@ -622,7 +622,7 @@ module Orb
       #
       #   @option params [Time, nil] :start_date_lte
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Page<Orb::Models::SubscriptionFetchScheduleResponse>]
       #
@@ -862,7 +862,7 @@ module Orb
       #     discounts, it's strongly recommended that you use the default cumulative
       #     behavior.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]
       #
@@ -962,7 +962,7 @@ module Orb
       #
       #   @option params [Array<Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment>] :edit_adjustments A list of adjustments to edit on the subscription.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionPriceIntervalsResponse]
       #
@@ -1243,7 +1243,7 @@ module Orb
       #     value specified in the plan. If `0` is provided, the trial on the plan will be
       #     skipped.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionSchedulePlanChangeResponse]
       #
@@ -1268,7 +1268,7 @@ module Orb
       #   @option params [Date, nil] :effective_date The date on which the phase change should take effect. If not provided, defaults
       #     to today in the customer's timezone.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionTriggerPhaseResponse]
       #
@@ -1294,7 +1294,7 @@ module Orb
       #
       # @param params [Orb::Models::SubscriptionUnscheduleCancellationParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionUnscheduleCancellationResponse]
       #
@@ -1319,7 +1319,7 @@ module Orb
       #
       #   @option params [String] :price_id Price for which the updates should be cleared. Must be a fixed fee.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse]
       #
@@ -1341,7 +1341,7 @@ module Orb
       #
       # @param params [Orb::Models::SubscriptionUnschedulePendingPlanChangesParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse]
       #
@@ -1385,7 +1385,7 @@ module Orb
       #     customer's timezone. Ifthis parameter is not passed in, the quantity change is
       #     effective according to `change_option`.
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse]
       #
@@ -1429,7 +1429,7 @@ module Orb
       #   @option params [Boolean] :shift If true, shifts subsequent price and adjustment intervals (preserving their
       #     durations, but adjusting their absolute dates).
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionUpdateTrialResponse]
       #

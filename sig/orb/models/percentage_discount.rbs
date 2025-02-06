@@ -26,7 +26,7 @@ module Orb
         ) -> void
         | (?Orb::Models::percentage_discount | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::percentage_discount
+      def to_hash: -> Orb::Models::percentage_discount
 
       type discount_type = :percentage
 

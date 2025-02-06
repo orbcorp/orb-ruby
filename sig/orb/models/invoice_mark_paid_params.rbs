@@ -23,7 +23,7 @@ module Orb
         ) -> void
         | (?Orb::Models::invoice_mark_paid_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::invoice_mark_paid_params
+      def to_hash: -> Orb::Models::invoice_mark_paid_params
     end
   end
 end

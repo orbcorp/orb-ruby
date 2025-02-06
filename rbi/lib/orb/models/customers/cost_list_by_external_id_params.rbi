@@ -7,18 +7,6 @@ module Orb
         extend Orb::RequestParameters::Converter
         include Orb::RequestParameters
 
-        Shape = T.type_alias do
-          T.all(
-            {
-              currency: T.nilable(String),
-              timeframe_end: T.nilable(Time),
-              timeframe_start: T.nilable(Time),
-              view_mode: T.nilable(Symbol)
-            },
-            Orb::RequestParameters::Shape
-          )
-        end
-
         sig { returns(T.nilable(String)) }
         attr_accessor :currency
 
@@ -37,7 +25,7 @@ module Orb
             timeframe_end: T.nilable(Time),
             timeframe_start: T.nilable(Time),
             view_mode: T.nilable(Symbol),
-            request_options: Orb::RequestOpts
+            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
         def initialize(
@@ -49,8 +37,18 @@ module Orb
         )
         end
 
-        sig { returns(Orb::Models::Customers::CostListByExternalIDParams::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              currency: T.nilable(String),
+              timeframe_end: T.nilable(Time),
+              timeframe_start: T.nilable(Time),
+              view_mode: T.nilable(Symbol),
+              request_options: Orb::RequestOptions
+            }
+          )
+        end
+        def to_hash; end
 
         class ViewMode < Orb::Enum
           abstract!

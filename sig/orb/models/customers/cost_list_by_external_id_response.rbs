@@ -18,7 +18,7 @@ module Orb
             | Orb::BaseModel data
           ) -> void
 
-        def to_h: -> Orb::Models::Customers::cost_list_by_external_id_response
+        def to_hash: -> Orb::Models::Customers::cost_list_by_external_id_response
 
         type data =
           {
@@ -53,7 +53,7 @@ module Orb
               | Orb::BaseModel data
             ) -> void
 
-          def to_h: -> Orb::Models::Customers::CostListByExternalIDResponse::data
+          def to_hash: -> Orb::Models::Customers::CostListByExternalIDResponse::data
 
           type per_price_cost =
             {
@@ -84,7 +84,7 @@ module Orb
                 | Orb::BaseModel data
               ) -> void
 
-            def to_h: -> Orb::Models::Customers::CostListByExternalIDResponse::Data::per_price_cost
+            def to_hash: -> Orb::Models::Customers::CostListByExternalIDResponse::Data::per_price_cost
           end
         end
       end

@@ -3,27 +3,6 @@
 module Orb
   module Models
     class CreditNote < Orb::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          created_at: Time,
-          credit_note_number: String,
-          credit_note_pdf: T.nilable(String),
-          customer: Orb::Models::CreditNote::Customer,
-          invoice_id: String,
-          line_items: T::Array[Orb::Models::CreditNote::LineItem],
-          maximum_amount_adjustment: T.nilable(Orb::Models::CreditNote::MaximumAmountAdjustment),
-          memo: T.nilable(String),
-          minimum_amount_refunded: T.nilable(String),
-          reason: T.nilable(Symbol),
-          subtotal: String,
-          total: String,
-          type: Symbol,
-          voided_at: T.nilable(Time),
-          discounts: T::Array[Orb::Models::CreditNote::Discount]
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -114,12 +93,31 @@ module Orb
         discounts: nil
       ); end
 
-      sig { returns(Orb::Models::CreditNote::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            created_at: Time,
+            credit_note_number: String,
+            credit_note_pdf: T.nilable(String),
+            customer: Orb::Models::CreditNote::Customer,
+            invoice_id: String,
+            line_items: T::Array[Orb::Models::CreditNote::LineItem],
+            maximum_amount_adjustment: T.nilable(Orb::Models::CreditNote::MaximumAmountAdjustment),
+            memo: T.nilable(String),
+            minimum_amount_refunded: T.nilable(String),
+            reason: T.nilable(Symbol),
+            subtotal: String,
+            total: String,
+            type: Symbol,
+            voided_at: T.nilable(Time),
+            discounts: T::Array[Orb::Models::CreditNote::Discount]
+          }
+        )
+      end
+      def to_hash; end
 
       class Customer < Orb::BaseModel
-        Shape = T.type_alias { {id: String, external_customer_id: T.nilable(String)} }
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -129,23 +127,11 @@ module Orb
         sig { params(id: String, external_customer_id: T.nilable(String)).void }
         def initialize(id:, external_customer_id:); end
 
-        sig { returns(Orb::Models::CreditNote::Customer::Shape) }
-        def to_h; end
+        sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
+        def to_hash; end
       end
 
       class LineItem < Orb::BaseModel
-        Shape = T.type_alias do
-          {
-            id: String,
-            amount: String,
-            name: String,
-            quantity: T.nilable(Float),
-            subtotal: String,
-            tax_amounts: T::Array[Orb::Models::CreditNote::LineItem::TaxAmount],
-            discounts: T::Array[Orb::Models::CreditNote::LineItem::Discount]
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -183,14 +169,22 @@ module Orb
         end
         def initialize(id:, amount:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil); end
 
-        sig { returns(Orb::Models::CreditNote::LineItem::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              id: String,
+              amount: String,
+              name: String,
+              quantity: T.nilable(Float),
+              subtotal: String,
+              tax_amounts: T::Array[Orb::Models::CreditNote::LineItem::TaxAmount],
+              discounts: T::Array[Orb::Models::CreditNote::LineItem::Discount]
+            }
+          )
+        end
+        def to_hash; end
 
         class TaxAmount < Orb::BaseModel
-          Shape = T.type_alias do
-            {amount: String, tax_rate_description: String, tax_rate_percentage: T.nilable(String)}
-          end
-
           sig { returns(String) }
           attr_accessor :amount
 
@@ -205,23 +199,19 @@ module Orb
           end
           def initialize(amount:, tax_rate_description:, tax_rate_percentage:); end
 
-          sig { returns(Orb::Models::CreditNote::LineItem::TaxAmount::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                amount: String,
+                tax_rate_description: String,
+                tax_rate_percentage: T.nilable(String)
+              }
+            )
+          end
+          def to_hash; end
         end
 
         class Discount < Orb::BaseModel
-          Shape = T.type_alias do
-            {
-              id: String,
-              amount_applied: String,
-              applies_to_price_ids: T::Array[String],
-              discount_type: Symbol,
-              percentage_discount: Float,
-              amount_discount: T.nilable(String),
-              reason: T.nilable(String)
-            }
-          end
-
           sig { returns(String) }
           attr_accessor :id
 
@@ -264,8 +254,20 @@ module Orb
             reason: nil
           ); end
 
-          sig { returns(Orb::Models::CreditNote::LineItem::Discount::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                id: String,
+                amount_applied: String,
+                applies_to_price_ids: T::Array[String],
+                discount_type: Symbol,
+                percentage_discount: Float,
+                amount_discount: T.nilable(String),
+                reason: T.nilable(String)
+              }
+            )
+          end
+          def to_hash; end
 
           class DiscountType < Orb::Enum
             abstract!
@@ -280,16 +282,6 @@ module Orb
       end
 
       class MaximumAmountAdjustment < Orb::BaseModel
-        Shape = T.type_alias do
-          {
-            amount_applied: String,
-            discount_type: Symbol,
-            percentage_discount: Float,
-            applies_to_prices: T.nilable(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice]),
-            reason: T.nilable(String)
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :amount_applied
 
@@ -323,8 +315,18 @@ module Orb
         )
         end
 
-        sig { returns(Orb::Models::CreditNote::MaximumAmountAdjustment::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              amount_applied: String,
+              discount_type: Symbol,
+              percentage_discount: Float,
+              applies_to_prices: T.nilable(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice]),
+              reason: T.nilable(String)
+            }
+          )
+        end
+        def to_hash; end
 
         class DiscountType < Orb::Enum
           abstract!
@@ -336,8 +338,6 @@ module Orb
         end
 
         class AppliesToPrice < Orb::BaseModel
-          Shape = T.type_alias { {id: String, name: String} }
-
           sig { returns(String) }
           attr_accessor :id
 
@@ -347,8 +347,8 @@ module Orb
           sig { params(id: String, name: String).void }
           def initialize(id:, name:); end
 
-          sig { returns(Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice::Shape) }
-          def to_h; end
+          sig { override.returns({id: String, name: String}) }
+          def to_hash; end
         end
       end
 
@@ -375,16 +375,6 @@ module Orb
       end
 
       class Discount < Orb::BaseModel
-        Shape = T.type_alias do
-          {
-            amount_applied: String,
-            discount_type: Symbol,
-            percentage_discount: Float,
-            applies_to_prices: T.nilable(T::Array[Orb::Models::CreditNote::Discount::AppliesToPrice]),
-            reason: T.nilable(String)
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :amount_applied
 
@@ -418,8 +408,18 @@ module Orb
         )
         end
 
-        sig { returns(Orb::Models::CreditNote::Discount::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              amount_applied: String,
+              discount_type: Symbol,
+              percentage_discount: Float,
+              applies_to_prices: T.nilable(T::Array[Orb::Models::CreditNote::Discount::AppliesToPrice]),
+              reason: T.nilable(String)
+            }
+          )
+        end
+        def to_hash; end
 
         class DiscountType < Orb::Enum
           abstract!
@@ -431,8 +431,6 @@ module Orb
         end
 
         class AppliesToPrice < Orb::BaseModel
-          Shape = T.type_alias { {id: String, name: String} }
-
           sig { returns(String) }
           attr_accessor :id
 
@@ -442,8 +440,8 @@ module Orb
           sig { params(id: String, name: String).void }
           def initialize(id:, name:); end
 
-          sig { returns(Orb::Models::CreditNote::Discount::AppliesToPrice::Shape) }
-          def to_h; end
+          sig { override.returns({id: String, name: String}) }
+          def to_hash; end
         end
       end
     end

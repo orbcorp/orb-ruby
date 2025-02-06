@@ -20,7 +20,7 @@ module Orb
         ) -> void
         | (?Orb::Models::plan_update_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::plan_update_params
+      def to_hash: -> Orb::Models::plan_update_params
     end
   end
 end

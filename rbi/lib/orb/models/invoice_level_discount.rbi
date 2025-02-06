@@ -5,10 +5,6 @@ module Orb
     class InvoiceLevelDiscount < Orb::Union
       abstract!
 
-      Variants = T.type_alias do
-        T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount)
-      end
-
       sig do
         override.returns(
           [

@@ -8,26 +8,6 @@ module Orb
           extend Orb::RequestParameters::Converter
           include Orb::RequestParameters
 
-          Shape = T.type_alias do
-            T.all(
-              {
-                amount: Float,
-                entry_type: Symbol,
-                currency: T.nilable(String),
-                description: T.nilable(String),
-                effective_date: T.nilable(Time),
-                expiry_date: T.nilable(Time),
-                invoice_settings: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                per_unit_cost_basis: T.nilable(String),
-                target_expiry_date: Date,
-                block_id: String,
-                void_reason: T.nilable(Symbol)
-              },
-              Orb::RequestParameters::Shape
-            )
-          end
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -80,7 +60,7 @@ module Orb
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               per_unit_cost_basis: T.nilable(String),
               void_reason: T.nilable(Symbol),
-              request_options: Orb::RequestOpts
+              request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
             ).void
           end
           def initialize(
@@ -99,8 +79,26 @@ module Orb
             request_options: {}
           ); end
 
-          sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                amount: Float,
+                entry_type: Symbol,
+                currency: T.nilable(String),
+                description: T.nilable(String),
+                effective_date: T.nilable(Time),
+                expiry_date: T.nilable(Time),
+                invoice_settings: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                per_unit_cost_basis: T.nilable(String),
+                target_expiry_date: Date,
+                block_id: String,
+                void_reason: T.nilable(Symbol),
+                request_options: Orb::RequestOptions
+              }
+            )
+          end
+          def to_hash; end
 
           class EntryType < Orb::Enum
             abstract!
@@ -112,15 +110,6 @@ module Orb
           end
 
           class InvoiceSettings < Orb::BaseModel
-            Shape = T.type_alias do
-              {
-                auto_collection: T::Boolean,
-                net_terms: Integer,
-                memo: T.nilable(String),
-                require_successful_payment: T::Boolean
-              }
-            end
-
             sig { returns(T::Boolean) }
             attr_accessor :auto_collection
 
@@ -147,9 +136,16 @@ module Orb
             def initialize(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil); end
 
             sig do
-              returns(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::Shape)
+              override.returns(
+                {
+                  auto_collection: T::Boolean,
+                  net_terms: Integer,
+                  memo: T.nilable(String),
+                  require_successful_payment: T::Boolean
+                }
+              )
             end
-            def to_h; end
+            def to_hash; end
           end
 
           class VoidReason < Orb::Enum

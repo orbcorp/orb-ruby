@@ -17,7 +17,7 @@ module Orb
             cursor: T.nilable(String),
             include_all_blocks: T::Boolean,
             limit: Integer,
-            request_options: Orb::RequestOpts
+            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Orb::Page[Orb::Models::Customers::CreditListResponse])
         end
         def list(
@@ -37,7 +37,7 @@ module Orb
             cursor: T.nilable(String),
             include_all_blocks: T::Boolean,
             limit: Integer,
-            request_options: Orb::RequestOpts
+            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Orb::Page[Orb::Models::Customers::CreditListByExternalIDResponse])
         end
         def list_by_external_id(

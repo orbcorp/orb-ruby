@@ -6,55 +6,6 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            cadence: Symbol,
-            currency: String,
-            item_id: String,
-            model_type: Symbol,
-            name: String,
-            unit_config: Orb::Models::PriceCreateParams::UnitConfig,
-            billable_metric_id: T.nilable(String),
-            billed_in_advance: T.nilable(T::Boolean),
-            billing_cycle_configuration: T.nilable(Orb::Models::PriceCreateParams::BillingCycleConfiguration),
-            conversion_rate: T.nilable(Float),
-            external_price_id: T.nilable(String),
-            fixed_price_quantity: T.nilable(Float),
-            invoice_grouping_key: T.nilable(String),
-            invoicing_cycle_configuration: T.nilable(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration),
-            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-            package_config: Orb::Models::PriceCreateParams::PackageConfig,
-            matrix_config: Orb::Models::PriceCreateParams::MatrixConfig,
-            matrix_with_allocation_config: Orb::Models::PriceCreateParams::MatrixWithAllocationConfig,
-            tiered_config: Orb::Models::PriceCreateParams::TieredConfig,
-            tiered_bps_config: Orb::Models::PriceCreateParams::TieredBpsConfig,
-            bps_config: Orb::Models::PriceCreateParams::BpsConfig,
-            bulk_bps_config: Orb::Models::PriceCreateParams::BulkBpsConfig,
-            bulk_config: Orb::Models::PriceCreateParams::BulkConfig,
-            threshold_total_amount_config: T::Hash[Symbol, T.anything],
-            tiered_package_config: T::Hash[Symbol, T.anything],
-            grouped_tiered_config: T::Hash[Symbol, T.anything],
-            max_group_tiered_package_config: T::Hash[Symbol, T.anything],
-            tiered_with_minimum_config: T::Hash[Symbol, T.anything],
-            package_with_allocation_config: T::Hash[Symbol, T.anything],
-            tiered_package_with_minimum_config: T::Hash[Symbol, T.anything],
-            unit_with_percent_config: T::Hash[Symbol, T.anything],
-            tiered_with_proration_config: T::Hash[Symbol, T.anything],
-            unit_with_proration_config: T::Hash[Symbol, T.anything],
-            grouped_allocation_config: T::Hash[Symbol, T.anything],
-            grouped_with_prorated_minimum_config: T::Hash[Symbol, T.anything],
-            grouped_with_metered_minimum_config: T::Hash[Symbol, T.anything],
-            matrix_with_display_name_config: T::Hash[Symbol, T.anything],
-            bulk_with_proration_config: T::Hash[Symbol, T.anything],
-            grouped_tiered_package_config: T::Hash[Symbol, T.anything],
-            scalable_matrix_with_unit_pricing_config: T::Hash[Symbol, T.anything],
-            scalable_matrix_with_tiered_pricing_config: T::Hash[Symbol, T.anything]
-          },
-          Orb::RequestParameters::Shape
-        )
-      end
-
       sig { returns(Symbol) }
       attr_accessor :cadence
 
@@ -221,7 +172,7 @@ module Orb
           invoice_grouping_key: T.nilable(String),
           invoicing_cycle_configuration: T.nilable(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -269,8 +220,55 @@ module Orb
         request_options: {}
       ); end
 
-      sig { returns(Orb::Models::PriceCreateParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            cadence: Symbol,
+            currency: String,
+            item_id: String,
+            model_type: Symbol,
+            name: String,
+            unit_config: Orb::Models::PriceCreateParams::UnitConfig,
+            billable_metric_id: T.nilable(String),
+            billed_in_advance: T.nilable(T::Boolean),
+            billing_cycle_configuration: T.nilable(Orb::Models::PriceCreateParams::BillingCycleConfiguration),
+            conversion_rate: T.nilable(Float),
+            external_price_id: T.nilable(String),
+            fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
+            invoicing_cycle_configuration: T.nilable(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration),
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            package_config: Orb::Models::PriceCreateParams::PackageConfig,
+            matrix_config: Orb::Models::PriceCreateParams::MatrixConfig,
+            matrix_with_allocation_config: Orb::Models::PriceCreateParams::MatrixWithAllocationConfig,
+            tiered_config: Orb::Models::PriceCreateParams::TieredConfig,
+            tiered_bps_config: Orb::Models::PriceCreateParams::TieredBpsConfig,
+            bps_config: Orb::Models::PriceCreateParams::BpsConfig,
+            bulk_bps_config: Orb::Models::PriceCreateParams::BulkBpsConfig,
+            bulk_config: Orb::Models::PriceCreateParams::BulkConfig,
+            threshold_total_amount_config: T::Hash[Symbol, T.anything],
+            tiered_package_config: T::Hash[Symbol, T.anything],
+            grouped_tiered_config: T::Hash[Symbol, T.anything],
+            max_group_tiered_package_config: T::Hash[Symbol, T.anything],
+            tiered_with_minimum_config: T::Hash[Symbol, T.anything],
+            package_with_allocation_config: T::Hash[Symbol, T.anything],
+            tiered_package_with_minimum_config: T::Hash[Symbol, T.anything],
+            unit_with_percent_config: T::Hash[Symbol, T.anything],
+            tiered_with_proration_config: T::Hash[Symbol, T.anything],
+            unit_with_proration_config: T::Hash[Symbol, T.anything],
+            grouped_allocation_config: T::Hash[Symbol, T.anything],
+            grouped_with_prorated_minimum_config: T::Hash[Symbol, T.anything],
+            grouped_with_metered_minimum_config: T::Hash[Symbol, T.anything],
+            matrix_with_display_name_config: T::Hash[Symbol, T.anything],
+            bulk_with_proration_config: T::Hash[Symbol, T.anything],
+            grouped_tiered_package_config: T::Hash[Symbol, T.anything],
+            scalable_matrix_with_unit_pricing_config: T::Hash[Symbol, T.anything],
+            scalable_matrix_with_tiered_pricing_config: T::Hash[Symbol, T.anything],
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class Cadence < Orb::Enum
         abstract!
@@ -296,21 +294,17 @@ module Orb
       end
 
       class UnitConfig < Orb::BaseModel
-        Shape = T.type_alias { {unit_amount: String} }
-
         sig { returns(String) }
         attr_accessor :unit_amount
 
         sig { params(unit_amount: String).void }
         def initialize(unit_amount:); end
 
-        sig { returns(Orb::Models::PriceCreateParams::UnitConfig::Shape) }
-        def to_h; end
+        sig { override.returns({unit_amount: String}) }
+        def to_hash; end
       end
 
       class BillingCycleConfiguration < Orb::BaseModel
-        Shape = T.type_alias { {duration: Integer, duration_unit: Symbol} }
-
         sig { returns(Integer) }
         attr_accessor :duration
 
@@ -320,8 +314,8 @@ module Orb
         sig { params(duration: Integer, duration_unit: Symbol).void }
         def initialize(duration:, duration_unit:); end
 
-        sig { returns(Orb::Models::PriceCreateParams::BillingCycleConfiguration::Shape) }
-        def to_h; end
+        sig { override.returns({duration: Integer, duration_unit: Symbol}) }
+        def to_hash; end
 
         class DurationUnit < Orb::Enum
           abstract!
@@ -335,8 +329,6 @@ module Orb
       end
 
       class InvoicingCycleConfiguration < Orb::BaseModel
-        Shape = T.type_alias { {duration: Integer, duration_unit: Symbol} }
-
         sig { returns(Integer) }
         attr_accessor :duration
 
@@ -346,8 +338,8 @@ module Orb
         sig { params(duration: Integer, duration_unit: Symbol).void }
         def initialize(duration:, duration_unit:); end
 
-        sig { returns(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::Shape) }
-        def to_h; end
+        sig { override.returns({duration: Integer, duration_unit: Symbol}) }
+        def to_hash; end
 
         class DurationUnit < Orb::Enum
           abstract!
@@ -361,8 +353,6 @@ module Orb
       end
 
       class PackageConfig < Orb::BaseModel
-        Shape = T.type_alias { {package_amount: String, package_size: Integer} }
-
         sig { returns(String) }
         attr_accessor :package_amount
 
@@ -372,19 +362,11 @@ module Orb
         sig { params(package_amount: String, package_size: Integer).void }
         def initialize(package_amount:, package_size:); end
 
-        sig { returns(Orb::Models::PriceCreateParams::PackageConfig::Shape) }
-        def to_h; end
+        sig { override.returns({package_amount: String, package_size: Integer}) }
+        def to_hash; end
       end
 
       class MatrixConfig < Orb::BaseModel
-        Shape = T.type_alias do
-          {
-            default_unit_amount: String,
-            dimensions: T::Array[T.nilable(String)],
-            matrix_values: T::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue]
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :default_unit_amount
 
@@ -403,12 +385,18 @@ module Orb
         end
         def initialize(default_unit_amount:, dimensions:, matrix_values:); end
 
-        sig { returns(Orb::Models::PriceCreateParams::MatrixConfig::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              default_unit_amount: String,
+              dimensions: T::Array[T.nilable(String)],
+              matrix_values: T::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue]
+            }
+          )
+        end
+        def to_hash; end
 
         class MatrixValue < Orb::BaseModel
-          Shape = T.type_alias { {dimension_values: T::Array[T.nilable(String)], unit_amount: String} }
-
           sig { returns(T::Array[T.nilable(String)]) }
           attr_accessor :dimension_values
 
@@ -418,21 +406,12 @@ module Orb
           sig { params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).void }
           def initialize(dimension_values:, unit_amount:); end
 
-          sig { returns(Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue::Shape) }
-          def to_h; end
+          sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
+          def to_hash; end
         end
       end
 
       class MatrixWithAllocationConfig < Orb::BaseModel
-        Shape = T.type_alias do
-          {
-            allocation: Float,
-            default_unit_amount: String,
-            dimensions: T::Array[T.nilable(String)],
-            matrix_values: T::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
-          }
-        end
-
         sig { returns(Float) }
         attr_accessor :allocation
 
@@ -455,12 +434,19 @@ module Orb
         end
         def initialize(allocation:, default_unit_amount:, dimensions:, matrix_values:); end
 
-        sig { returns(Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              allocation: Float,
+              default_unit_amount: String,
+              dimensions: T::Array[T.nilable(String)],
+              matrix_values: T::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
+            }
+          )
+        end
+        def to_hash; end
 
         class MatrixValue < Orb::BaseModel
-          Shape = T.type_alias { {dimension_values: T::Array[T.nilable(String)], unit_amount: String} }
-
           sig { returns(T::Array[T.nilable(String)]) }
           attr_accessor :dimension_values
 
@@ -470,26 +456,22 @@ module Orb
           sig { params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).void }
           def initialize(dimension_values:, unit_amount:); end
 
-          sig { returns(Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue::Shape) }
-          def to_h; end
+          sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
+          def to_hash; end
         end
       end
 
       class TieredConfig < Orb::BaseModel
-        Shape = T.type_alias { {tiers: T::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]} }
-
         sig { returns(T::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]) }
         attr_accessor :tiers
 
         sig { params(tiers: T::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]).void }
         def initialize(tiers:); end
 
-        sig { returns(Orb::Models::PriceCreateParams::TieredConfig::Shape) }
-        def to_h; end
+        sig { override.returns({tiers: T::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]}) }
+        def to_hash; end
 
         class Tier < Orb::BaseModel
-          Shape = T.type_alias { {first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)} }
-
           sig { returns(Float) }
           attr_accessor :first_unit
 
@@ -502,33 +484,22 @@ module Orb
           sig { params(first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)).void }
           def initialize(first_unit:, unit_amount:, last_unit: nil); end
 
-          sig { returns(Orb::Models::PriceCreateParams::TieredConfig::Tier::Shape) }
-          def to_h; end
+          sig { override.returns({first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)}) }
+          def to_hash; end
         end
       end
 
       class TieredBpsConfig < Orb::BaseModel
-        Shape = T.type_alias { {tiers: T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]} }
-
         sig { returns(T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]) }
         attr_accessor :tiers
 
         sig { params(tiers: T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]).void }
         def initialize(tiers:); end
 
-        sig { returns(Orb::Models::PriceCreateParams::TieredBpsConfig::Shape) }
-        def to_h; end
+        sig { override.returns({tiers: T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]}) }
+        def to_hash; end
 
         class Tier < Orb::BaseModel
-          Shape = T.type_alias do
-            {
-              bps: Float,
-              minimum_amount: String,
-              maximum_amount: T.nilable(String),
-              per_unit_maximum: T.nilable(String)
-            }
-          end
-
           sig { returns(Float) }
           attr_accessor :bps
 
@@ -551,14 +522,21 @@ module Orb
           end
           def initialize(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil); end
 
-          sig { returns(Orb::Models::PriceCreateParams::TieredBpsConfig::Tier::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                bps: Float,
+                minimum_amount: String,
+                maximum_amount: T.nilable(String),
+                per_unit_maximum: T.nilable(String)
+              }
+            )
+          end
+          def to_hash; end
         end
       end
 
       class BpsConfig < Orb::BaseModel
-        Shape = T.type_alias { {bps: Float, per_unit_maximum: T.nilable(String)} }
-
         sig { returns(Float) }
         attr_accessor :bps
 
@@ -568,27 +546,21 @@ module Orb
         sig { params(bps: Float, per_unit_maximum: T.nilable(String)).void }
         def initialize(bps:, per_unit_maximum: nil); end
 
-        sig { returns(Orb::Models::PriceCreateParams::BpsConfig::Shape) }
-        def to_h; end
+        sig { override.returns({bps: Float, per_unit_maximum: T.nilable(String)}) }
+        def to_hash; end
       end
 
       class BulkBpsConfig < Orb::BaseModel
-        Shape = T.type_alias { {tiers: T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]} }
-
         sig { returns(T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]) }
         attr_accessor :tiers
 
         sig { params(tiers: T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]).void }
         def initialize(tiers:); end
 
-        sig { returns(Orb::Models::PriceCreateParams::BulkBpsConfig::Shape) }
-        def to_h; end
+        sig { override.returns({tiers: T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]}) }
+        def to_hash; end
 
         class Tier < Orb::BaseModel
-          Shape = T.type_alias do
-            {bps: Float, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String)}
-          end
-
           sig { returns(Float) }
           attr_accessor :bps
 
@@ -603,26 +575,30 @@ module Orb
           end
           def initialize(bps:, maximum_amount: nil, per_unit_maximum: nil); end
 
-          sig { returns(Orb::Models::PriceCreateParams::BulkBpsConfig::Tier::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                bps: Float,
+                maximum_amount: T.nilable(String),
+                per_unit_maximum: T.nilable(String)
+              }
+            )
+          end
+          def to_hash; end
         end
       end
 
       class BulkConfig < Orb::BaseModel
-        Shape = T.type_alias { {tiers: T::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]} }
-
         sig { returns(T::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]) }
         attr_accessor :tiers
 
         sig { params(tiers: T::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]).void }
         def initialize(tiers:); end
 
-        sig { returns(Orb::Models::PriceCreateParams::BulkConfig::Shape) }
-        def to_h; end
+        sig { override.returns({tiers: T::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]}) }
+        def to_hash; end
 
         class Tier < Orb::BaseModel
-          Shape = T.type_alias { {unit_amount: String, maximum_units: T.nilable(Float)} }
-
           sig { returns(String) }
           attr_accessor :unit_amount
 
@@ -632,8 +608,8 @@ module Orb
           sig { params(unit_amount: String, maximum_units: T.nilable(Float)).void }
           def initialize(unit_amount:, maximum_units: nil); end
 
-          sig { returns(Orb::Models::PriceCreateParams::BulkConfig::Tier::Shape) }
-          def to_h; end
+          sig { override.returns({unit_amount: String, maximum_units: T.nilable(Float)}) }
+          def to_hash; end
         end
       end
     end

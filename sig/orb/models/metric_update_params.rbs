@@ -16,7 +16,7 @@ module Orb
         ) -> void
         | (?Orb::Models::metric_update_params | Orb::BaseModel data) -> void
 
-      def to_h: -> Orb::Models::metric_update_params
+      def to_hash: -> Orb::Models::metric_update_params
     end
   end
 end

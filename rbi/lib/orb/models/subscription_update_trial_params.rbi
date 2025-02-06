@@ -6,17 +6,7 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            trial_end_date: Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::Variants,
-            shift: T::Boolean
-          },
-          Orb::RequestParameters::Shape
-        )
-      end
-
-      sig { returns(Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::Variants) }
+      sig { returns(T.any(Time, Symbol)) }
       attr_accessor :trial_end_date
 
       sig { returns(T.nilable(T::Boolean)) }
@@ -27,20 +17,26 @@ module Orb
 
       sig do
         params(
-          trial_end_date: Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::Variants,
+          trial_end_date: T.any(Time, Symbol),
           shift: T::Boolean,
-          request_options: Orb::RequestOpts
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(trial_end_date:, shift: nil, request_options: {}); end
 
-      sig { returns(Orb::Models::SubscriptionUpdateTrialParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            trial_end_date: T.any(Time, Symbol),
+            shift: T::Boolean,
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class TrialEndDate < Orb::Union
         abstract!
-
-        Variants = T.type_alias { T.any(Time, Symbol) }
 
         class UnionMember1 < Orb::Enum
           abstract!
