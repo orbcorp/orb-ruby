@@ -91,7 +91,8 @@ module Orb
         type:,
         voided_at:,
         discounts: nil
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -115,7 +116,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Customer < Orb::BaseModel
         sig { returns(String) }
@@ -125,10 +127,12 @@ module Orb
         attr_accessor :external_customer_id
 
         sig { params(id: String, external_customer_id: T.nilable(String)).void }
-        def initialize(id:, external_customer_id:); end
+        def initialize(id:, external_customer_id:)
+        end
 
         sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class LineItem < Orb::BaseModel
@@ -167,7 +171,8 @@ module Orb
             discounts: T::Array[Orb::Models::CreditNote::LineItem::Discount]
           ).void
         end
-        def initialize(id:, amount:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil); end
+        def initialize(id:, amount:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil)
+        end
 
         sig do
           override.returns(
@@ -182,7 +187,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class TaxAmount < Orb::BaseModel
           sig { returns(String) }
@@ -197,7 +203,8 @@ module Orb
           sig do
             params(amount: String, tax_rate_description: String, tax_rate_percentage: T.nilable(String)).void
           end
-          def initialize(amount:, tax_rate_description:, tax_rate_percentage:); end
+          def initialize(amount:, tax_rate_description:, tax_rate_percentage:)
+          end
 
           sig do
             override.returns(
@@ -208,7 +215,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class Discount < Orb::BaseModel
@@ -252,7 +260,8 @@ module Orb
             percentage_discount:,
             amount_discount: nil,
             reason: nil
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -267,7 +276,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class DiscountType < Orb::Enum
             abstract!
@@ -276,7 +286,8 @@ module Orb
             AMOUNT = :amount
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
       end
@@ -326,7 +337,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class DiscountType < Orb::Enum
           abstract!
@@ -334,7 +346,8 @@ module Orb
           PERCENTAGE = :percentage
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class AppliesToPrice < Orb::BaseModel
@@ -345,10 +358,12 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).void }
-          def initialize(id:, name:); end
+          def initialize(id:, name:)
+          end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
 
@@ -361,7 +376,8 @@ module Orb
         PRODUCT_UNSATISFACTORY = T.let(:"Product unsatisfactory", T.nilable(Symbol))
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class Type < Orb::Enum
@@ -371,7 +387,8 @@ module Orb
         ADJUSTMENT = :adjustment
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class Discount < Orb::BaseModel
@@ -419,7 +436,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class DiscountType < Orb::Enum
           abstract!
@@ -427,7 +445,8 @@ module Orb
           PERCENTAGE = :percentage
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class AppliesToPrice < Orb::BaseModel
@@ -438,10 +457,12 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).void }
-          def initialize(id:, name:); end
+          def initialize(id:, name:)
+          end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
     end

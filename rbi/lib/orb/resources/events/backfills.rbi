@@ -25,7 +25,8 @@ module Orb
           external_customer_id: nil,
           replace_existing_events: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           params(
@@ -34,7 +35,8 @@ module Orb
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Orb::Page[Orb::Models::Events::BackfillListResponse])
         end
-        def list(cursor: nil, limit: nil, request_options: {}); end
+        def list(cursor: nil, limit: nil, request_options: {})
+        end
 
         sig do
           params(
@@ -42,7 +44,8 @@ module Orb
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Orb::Models::Events::BackfillCloseResponse)
         end
-        def close(backfill_id, request_options: {}); end
+        def close(backfill_id, request_options: {})
+        end
 
         sig do
           params(
@@ -50,7 +53,8 @@ module Orb
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Orb::Models::Events::BackfillFetchResponse)
         end
-        def fetch(backfill_id, request_options: {}); end
+        def fetch(backfill_id, request_options: {})
+        end
 
         sig do
           params(
@@ -58,10 +62,12 @@ module Orb
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Orb::Models::Events::BackfillRevertResponse)
         end
-        def revert(backfill_id, request_options: {}); end
+        def revert(backfill_id, request_options: {})
+        end
 
         sig { params(client: Orb::Client).void }
-        def initialize(client:); end
+        def initialize(client:)
+        end
       end
     end
   end

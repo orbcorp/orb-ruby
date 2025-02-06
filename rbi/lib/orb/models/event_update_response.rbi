@@ -7,10 +7,12 @@ module Orb
       attr_accessor :amended
 
       sig { params(amended: String).void }
-      def initialize(amended:); end
+      def initialize(amended:)
+      end
 
       sig { override.returns({amended: String}) }
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

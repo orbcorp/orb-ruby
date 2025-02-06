@@ -82,7 +82,8 @@ module Orb
               metadata:,
               starting_balance:,
               entry_type: :increment
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -103,7 +104,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class CreditBlock < Orb::BaseModel
               sig { returns(String) }
@@ -118,7 +120,8 @@ module Orb
               sig do
                 params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:); end
+              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              end
 
               sig do
                 override.returns(
@@ -129,7 +132,8 @@ module Orb
                   }
                 )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class Customer < Orb::BaseModel
@@ -140,10 +144,12 @@ module Orb
               attr_accessor :external_customer_id
 
               sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:); end
+              def initialize(id:, external_customer_id:)
+              end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class EntryStatus < Orb::Enum
@@ -153,7 +159,8 @@ module Orb
               PENDING = :pending
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
           end
 
@@ -247,7 +254,8 @@ module Orb
               invoice_id: nil,
               price_id: nil,
               entry_type: :decrement
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -271,7 +279,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class CreditBlock < Orb::BaseModel
               sig { returns(String) }
@@ -286,7 +295,8 @@ module Orb
               sig do
                 params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:); end
+              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              end
 
               sig do
                 override.returns(
@@ -297,7 +307,8 @@ module Orb
                   }
                 )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class Customer < Orb::BaseModel
@@ -308,10 +319,12 @@ module Orb
               attr_accessor :external_customer_id
 
               sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:); end
+              def initialize(id:, external_customer_id:)
+              end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class EntryStatus < Orb::Enum
@@ -321,7 +334,8 @@ module Orb
               PENDING = :pending
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
           end
 
@@ -405,7 +419,8 @@ module Orb
               new_block_expiry_date:,
               starting_balance:,
               entry_type: :expiration_change
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -427,7 +442,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class CreditBlock < Orb::BaseModel
               sig { returns(String) }
@@ -442,7 +458,8 @@ module Orb
               sig do
                 params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:); end
+              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              end
 
               sig do
                 override.returns(
@@ -453,7 +470,8 @@ module Orb
                   }
                 )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class Customer < Orb::BaseModel
@@ -464,10 +482,12 @@ module Orb
               attr_accessor :external_customer_id
 
               sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:); end
+              def initialize(id:, external_customer_id:)
+              end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class EntryStatus < Orb::Enum
@@ -477,7 +497,8 @@ module Orb
               PENDING = :pending
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
           end
 
@@ -556,7 +577,8 @@ module Orb
               metadata:,
               starting_balance:,
               entry_type: :credit_block_expiry
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -577,7 +599,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class CreditBlock < Orb::BaseModel
               sig { returns(String) }
@@ -592,7 +615,8 @@ module Orb
               sig do
                 params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:); end
+              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              end
 
               sig do
                 override.returns(
@@ -603,7 +627,8 @@ module Orb
                   }
                 )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class Customer < Orb::BaseModel
@@ -614,10 +639,12 @@ module Orb
               attr_accessor :external_customer_id
 
               sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:); end
+              def initialize(id:, external_customer_id:)
+              end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class EntryStatus < Orb::Enum
@@ -627,7 +654,8 @@ module Orb
               PENDING = :pending
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
           end
 
@@ -716,7 +744,8 @@ module Orb
               void_amount:,
               void_reason:,
               entry_type: :void
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -739,7 +768,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class CreditBlock < Orb::BaseModel
               sig { returns(String) }
@@ -754,7 +784,8 @@ module Orb
               sig do
                 params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:); end
+              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              end
 
               sig do
                 override.returns(
@@ -765,7 +796,8 @@ module Orb
                   }
                 )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class Customer < Orb::BaseModel
@@ -776,10 +808,12 @@ module Orb
               attr_accessor :external_customer_id
 
               sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:); end
+              def initialize(id:, external_customer_id:)
+              end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class EntryStatus < Orb::Enum
@@ -789,7 +823,8 @@ module Orb
               PENDING = :pending
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
           end
 
@@ -883,7 +918,8 @@ module Orb
               void_amount:,
               void_reason:,
               entry_type: :void_initiated
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -907,7 +943,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class CreditBlock < Orb::BaseModel
               sig { returns(String) }
@@ -922,7 +959,8 @@ module Orb
               sig do
                 params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:); end
+              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              end
 
               sig do
                 override.returns(
@@ -933,7 +971,8 @@ module Orb
                   }
                 )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class Customer < Orb::BaseModel
@@ -944,10 +983,12 @@ module Orb
               attr_accessor :external_customer_id
 
               sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:); end
+              def initialize(id:, external_customer_id:)
+              end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class EntryStatus < Orb::Enum
@@ -957,7 +998,8 @@ module Orb
               PENDING = :pending
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
           end
 
@@ -1036,7 +1078,8 @@ module Orb
               metadata:,
               starting_balance:,
               entry_type: :amendment
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -1057,7 +1100,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class CreditBlock < Orb::BaseModel
               sig { returns(String) }
@@ -1072,7 +1116,8 @@ module Orb
               sig do
                 params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:); end
+              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              end
 
               sig do
                 override.returns(
@@ -1083,7 +1128,8 @@ module Orb
                   }
                 )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class Customer < Orb::BaseModel
@@ -1094,10 +1140,12 @@ module Orb
               attr_accessor :external_customer_id
 
               sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:); end
+              def initialize(id:, external_customer_id:)
+              end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class EntryStatus < Orb::Enum
@@ -1107,7 +1155,8 @@ module Orb
               PENDING = :pending
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
           end
 
@@ -1142,7 +1191,8 @@ module Orb
               ]
             )
           end
-          private_class_method def self.variants; end
+          private_class_method def self.variants
+          end
         end
       end
     end

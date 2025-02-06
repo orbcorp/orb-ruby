@@ -51,7 +51,8 @@ module Orb
         end
 
         sig { params(client: Orb::Client).void }
-        def initialize(client:); end
+        def initialize(client:)
+        end
       end
     end
   end

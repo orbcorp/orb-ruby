@@ -39,7 +39,8 @@ module Orb
                       Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
                     ))
         end
-        def update(external_price_id, metadata: nil, request_options: {}); end
+        def update(external_price_id, metadata: nil, request_options: {})
+        end
 
         sig do
           params(
@@ -75,10 +76,12 @@ module Orb
                       Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
                     ))
         end
-        def fetch(external_price_id, request_options: {}); end
+        def fetch(external_price_id, request_options: {})
+        end
 
         sig { params(client: Orb::Client).void }
-        def initialize(client:); end
+        def initialize(client:)
+        end
       end
     end
   end

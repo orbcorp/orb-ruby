@@ -20,10 +20,12 @@ module Orb
               )
             ).void
           end
-          def initialize(customer_id:, request_options: {}); end
+          def initialize(customer_id:, request_options: {})
+          end
 
           sig { override.returns({customer_id: String, request_options: Orb::RequestOptions}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
     end

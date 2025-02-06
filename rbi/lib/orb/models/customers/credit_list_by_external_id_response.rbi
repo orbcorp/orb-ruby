@@ -60,7 +60,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Status < Orb::Enum
           abstract!
@@ -69,7 +70,8 @@ module Orb
           PENDING_PAYMENT = :pending_payment
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

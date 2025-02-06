@@ -33,7 +33,8 @@ module Orb
         reason: nil,
         trial_amount_discount: nil,
         trial_percentage_discount: nil
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -46,7 +47,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class DiscountType < Orb::Enum
         abstract!
@@ -54,7 +56,8 @@ module Orb
         TRIAL = :trial
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

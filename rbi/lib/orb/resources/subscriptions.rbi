@@ -70,7 +70,8 @@ module Orb
         start_date: nil,
         trial_duration_days: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -91,7 +92,8 @@ module Orb
         metadata: nil,
         net_terms: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -118,7 +120,8 @@ module Orb
         limit: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -128,7 +131,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::SubscriptionCancelResponse)
       end
-      def cancel(subscription_id, cancel_option:, cancellation_date: nil, request_options: {}); end
+      def cancel(subscription_id, cancel_option:, cancellation_date: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -136,7 +140,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Subscription)
       end
-      def fetch(subscription_id, request_options: {}); end
+      def fetch(subscription_id, request_options: {})
+      end
 
       sig do
         params(
@@ -155,7 +160,8 @@ module Orb
         timeframe_start: nil,
         view_mode: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -178,7 +184,8 @@ module Orb
         start_date_lt: nil,
         start_date_lte: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -212,7 +219,8 @@ module Orb
         timeframe_start: nil,
         view_mode: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -293,7 +301,8 @@ module Orb
         replace_prices: nil,
         trial_duration_days: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -302,7 +311,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::SubscriptionTriggerPhaseResponse)
       end
-      def trigger_phase(subscription_id, effective_date: nil, request_options: {}); end
+      def trigger_phase(subscription_id, effective_date: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -310,7 +320,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::SubscriptionUnscheduleCancellationResponse)
       end
-      def unschedule_cancellation(subscription_id, request_options: {}); end
+      def unschedule_cancellation(subscription_id, request_options: {})
+      end
 
       sig do
         params(
@@ -319,7 +330,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse)
       end
-      def unschedule_fixed_fee_quantity_updates(subscription_id, price_id:, request_options: {}); end
+      def unschedule_fixed_fee_quantity_updates(subscription_id, price_id:, request_options: {})
+      end
 
       sig do
         params(
@@ -327,7 +339,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse)
       end
-      def unschedule_pending_plan_changes(subscription_id, request_options: {}); end
+      def unschedule_pending_plan_changes(subscription_id, request_options: {})
+      end
 
       sig do
         params(
@@ -357,10 +370,12 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::SubscriptionUpdateTrialResponse)
       end
-      def update_trial(subscription_id, trial_end_date:, shift: nil, request_options: {}); end
+      def update_trial(subscription_id, trial_end_date:, shift: nil, request_options: {})
+      end
 
       sig { params(client: Orb::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

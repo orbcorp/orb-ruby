@@ -7,10 +7,12 @@ module Orb
       attr_accessor :data
 
       sig { params(data: T::Array[Orb::Models::EventSearchResponse::Data]).void }
-      def initialize(data:); end
+      def initialize(data:)
+      end
 
       sig { override.returns({data: T::Array[Orb::Models::EventSearchResponse::Data]}) }
-      def to_hash; end
+      def to_hash
+      end
 
       class Data < Orb::BaseModel
         sig { returns(String) }
@@ -69,7 +71,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

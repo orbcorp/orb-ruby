@@ -31,7 +31,8 @@ module Orb
           status: Symbol
         ).void
       end
-      def initialize(id:, description:, item:, metadata:, name:, status:); end
+      def initialize(id:, description:, item:, metadata:, name:, status:)
+      end
 
       sig do
         override.returns(
@@ -45,7 +46,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Status < Orb::Enum
         abstract!
@@ -55,7 +57,8 @@ module Orb
         ARCHIVED = :archived
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

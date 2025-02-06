@@ -60,7 +60,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Discount < Orb::Union
         abstract!
@@ -73,10 +74,12 @@ module Orb
           attr_accessor :percentage_discount
 
           sig { params(percentage_discount: Float, discount_type: Symbol).void }
-          def initialize(percentage_discount:, discount_type: :percentage); end
+          def initialize(percentage_discount:, discount_type: :percentage)
+          end
 
           sig { override.returns({discount_type: Symbol, percentage_discount: Float}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class NewCouponAmountDiscount < Orb::BaseModel
@@ -87,10 +90,12 @@ module Orb
           attr_accessor :discount_type
 
           sig { params(amount_discount: String, discount_type: Symbol).void }
-          def initialize(amount_discount:, discount_type: :amount); end
+          def initialize(amount_discount:, discount_type: :amount)
+          end
 
           sig { override.returns({amount_discount: String, discount_type: Symbol}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         sig do
@@ -101,7 +106,8 @@ module Orb
             ]
           )
         end
-        private_class_method def self.variants; end
+        private_class_method def self.variants
+        end
       end
     end
   end

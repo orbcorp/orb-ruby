@@ -8,10 +8,12 @@ module Orb
         attr_accessor :data
 
         sig { params(data: T::Array[Orb::Models::Customers::CostListByExternalIDResponse::Data]).void }
-        def initialize(data:); end
+        def initialize(data:)
+        end
 
         sig { override.returns({data: T::Array[Orb::Models::Customers::CostListByExternalIDResponse::Data]}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class Data < Orb::BaseModel
           sig { returns(T::Array[Orb::Models::Customers::CostListByExternalIDResponse::Data::PerPriceCost]) }
@@ -38,7 +40,8 @@ module Orb
               total: String
             ).void
           end
-          def initialize(per_price_costs:, subtotal:, timeframe_end:, timeframe_start:, total:); end
+          def initialize(per_price_costs:, subtotal:, timeframe_end:, timeframe_start:, total:)
+          end
 
           sig do
             override.returns(
@@ -47,7 +50,8 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class PerPriceCost < Orb::BaseModel
             sig do
@@ -130,7 +134,8 @@ module Orb
                 quantity: T.nilable(Float)
               ).void
             end
-            def initialize(price:, subtotal:, total:, quantity: nil); end
+            def initialize(price:, subtotal:, total:, quantity: nil)
+            end
 
             sig do
               override.returns(
@@ -170,7 +175,8 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
           end
         end
       end

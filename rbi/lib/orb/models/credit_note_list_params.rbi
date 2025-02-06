@@ -22,12 +22,14 @@ module Orb
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(cursor: nil, limit: nil, request_options: {}); end
+      def initialize(cursor: nil, limit: nil, request_options: {})
+      end
 
       sig do
         override.returns({cursor: T.nilable(String), limit: Integer, request_options: Orb::RequestOptions})
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

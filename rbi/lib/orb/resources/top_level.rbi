@@ -14,10 +14,12 @@ module Orb
           )
         ).returns(Orb::Models::TopLevelPingResponse)
       end
-      def ping(request_options: {}); end
+      def ping(request_options: {})
+      end
 
       sig { params(client: Orb::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

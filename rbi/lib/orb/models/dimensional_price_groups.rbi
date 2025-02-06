@@ -15,7 +15,8 @@ module Orb
           pagination_metadata: Orb::Models::PaginationMetadata
         ).void
       end
-      def initialize(data:, pagination_metadata:); end
+      def initialize(data:, pagination_metadata:)
+      end
 
       sig do
         override.returns(
@@ -25,7 +26,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

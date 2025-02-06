@@ -37,7 +37,8 @@ module Orb
         metadata: nil,
         will_auto_issue: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -46,7 +47,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Invoice)
       end
-      def update(invoice_id, metadata: nil, request_options: {}); end
+      def update(invoice_id, metadata: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -93,7 +95,8 @@ module Orb
         status: nil,
         subscription_id: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -101,7 +104,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Invoice)
       end
-      def fetch(invoice_id, request_options: {}); end
+      def fetch(invoice_id, request_options: {})
+      end
 
       sig do
         params(
@@ -109,7 +113,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::InvoiceFetchUpcomingResponse)
       end
-      def fetch_upcoming(subscription_id:, request_options: {}); end
+      def fetch_upcoming(subscription_id:, request_options: {})
+      end
 
       sig do
         params(
@@ -118,7 +123,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Invoice)
       end
-      def issue(invoice_id, synchronous: nil, request_options: {}); end
+      def issue(invoice_id, synchronous: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -138,7 +144,8 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Invoice)
       end
-      def pay(invoice_id, request_options: {}); end
+      def pay(invoice_id, request_options: {})
+      end
 
       sig do
         params(
@@ -146,10 +153,12 @@ module Orb
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::Invoice)
       end
-      def void(invoice_id, request_options: {}); end
+      def void(invoice_id, request_options: {})
+      end
 
       sig { params(client: Orb::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

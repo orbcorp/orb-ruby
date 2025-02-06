@@ -13,7 +13,8 @@ module Orb
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Orb::Models::Customers::BalanceTransactionCreateResponse)
         end
-        def create(customer_id, amount:, type:, description: nil, request_options: {}); end
+        def create(customer_id, amount:, type:, description: nil, request_options: {})
+        end
 
         sig do
           params(
@@ -36,10 +37,12 @@ module Orb
           operation_time_lt: nil,
           operation_time_lte: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig { params(client: Orb::Client).void }
-        def initialize(client:); end
+        def initialize(client:)
+        end
       end
     end
   end

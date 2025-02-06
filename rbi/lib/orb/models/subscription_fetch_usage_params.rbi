@@ -63,7 +63,8 @@ module Orb
         timeframe_start: nil,
         view_mode: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -82,7 +83,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Granularity < Orb::Enum
         abstract!
@@ -90,7 +92,8 @@ module Orb
         DAY = T.let(:day, T.nilable(Symbol))
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class ViewMode < Orb::Enum
@@ -100,7 +103,8 @@ module Orb
         CUMULATIVE = T.let(:cumulative, T.nilable(Symbol))
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

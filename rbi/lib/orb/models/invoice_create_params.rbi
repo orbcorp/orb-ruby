@@ -84,7 +84,8 @@ module Orb
         metadata: nil,
         will_auto_issue: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -110,7 +111,8 @@ module Orb
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class LineItem < Orb::BaseModel
         sig { returns(Date) }
@@ -145,7 +147,8 @@ module Orb
             unit_config: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig
           ).void
         end
-        def initialize(end_date:, item_id:, model_type:, name:, quantity:, start_date:, unit_config:); end
+        def initialize(end_date:, item_id:, model_type:, name:, quantity:, start_date:, unit_config:)
+        end
 
         sig do
           override.returns(
@@ -160,7 +163,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class ModelType < Orb::Enum
           abstract!
@@ -168,7 +172,8 @@ module Orb
           UNIT = :unit
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class UnitConfig < Orb::BaseModel
@@ -176,10 +181,12 @@ module Orb
           attr_accessor :unit_amount
 
           sig { params(unit_amount: String).void }
-          def initialize(unit_amount:); end
+          def initialize(unit_amount:)
+          end
 
           sig { override.returns({unit_amount: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
     end
