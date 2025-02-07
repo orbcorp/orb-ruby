@@ -2,8 +2,8 @@ module Orb
   module Models
     type subscription_create_params =
       {
-        add_adjustments: Array[Orb::Models::SubscriptionCreateParams::AddAdjustment]?,
-        add_prices: Array[Orb::Models::SubscriptionCreateParams::AddPrice]?,
+        add_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::AddAdjustment]?,
+        add_prices: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice]?,
         align_billing_with_subscription_start_date: bool,
         auto_collection: bool?,
         aws_region: String?,
@@ -20,16 +20,16 @@ module Orb
         filter: String?,
         initial_phase_order: Integer?,
         invoicing_threshold: String?,
-        metadata: Hash[Symbol, String?]?,
+        metadata: ::Hash[Symbol, String?]?,
         net_terms: Integer?,
         per_credit_overage_amount: Float?,
         plan_id: String?,
         plan_version_number: Integer?,
-        price_overrides: Array[top]?,
-        remove_adjustments: Array[Orb::Models::SubscriptionCreateParams::RemoveAdjustment]?,
-        remove_prices: Array[Orb::Models::SubscriptionCreateParams::RemovePrice]?,
-        replace_adjustments: Array[Orb::Models::SubscriptionCreateParams::ReplaceAdjustment]?,
-        replace_prices: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice]?,
+        price_overrides: ::Array[top]?,
+        remove_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::RemoveAdjustment]?,
+        remove_prices: ::Array[Orb::Models::SubscriptionCreateParams::RemovePrice]?,
+        replace_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::ReplaceAdjustment]?,
+        replace_prices: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice]?,
         start_date: Time?,
         trial_duration_days: Integer?
       }
@@ -39,9 +39,9 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      attr_accessor add_adjustments: Array[Orb::Models::SubscriptionCreateParams::AddAdjustment]?
+      attr_accessor add_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::AddAdjustment]?
 
-      attr_accessor add_prices: Array[Orb::Models::SubscriptionCreateParams::AddPrice]?
+      attr_accessor add_prices: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice]?
 
       attr_reader align_billing_with_subscription_start_date: bool?
 
@@ -77,7 +77,7 @@ module Orb
 
       attr_accessor invoicing_threshold: String?
 
-      attr_accessor metadata: Hash[Symbol, String?]?
+      attr_accessor metadata: ::Hash[Symbol, String?]?
 
       attr_accessor net_terms: Integer?
 
@@ -87,15 +87,15 @@ module Orb
 
       attr_accessor plan_version_number: Integer?
 
-      attr_accessor price_overrides: Array[top]?
+      attr_accessor price_overrides: ::Array[top]?
 
-      attr_accessor remove_adjustments: Array[Orb::Models::SubscriptionCreateParams::RemoveAdjustment]?
+      attr_accessor remove_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::RemoveAdjustment]?
 
-      attr_accessor remove_prices: Array[Orb::Models::SubscriptionCreateParams::RemovePrice]?
+      attr_accessor remove_prices: ::Array[Orb::Models::SubscriptionCreateParams::RemovePrice]?
 
-      attr_accessor replace_adjustments: Array[Orb::Models::SubscriptionCreateParams::ReplaceAdjustment]?
+      attr_accessor replace_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::ReplaceAdjustment]?
 
-      attr_accessor replace_prices: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice]?
+      attr_accessor replace_prices: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice]?
 
       attr_accessor start_date: Time?
 
@@ -103,8 +103,8 @@ module Orb
 
       def initialize:
         (
-          add_adjustments: Array[Orb::Models::SubscriptionCreateParams::AddAdjustment]?,
-          add_prices: Array[Orb::Models::SubscriptionCreateParams::AddPrice]?,
+          add_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::AddAdjustment]?,
+          add_prices: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice]?,
           align_billing_with_subscription_start_date: bool,
           auto_collection: bool?,
           aws_region: String?,
@@ -121,16 +121,16 @@ module Orb
           filter: String?,
           initial_phase_order: Integer?,
           invoicing_threshold: String?,
-          metadata: Hash[Symbol, String?]?,
+          metadata: ::Hash[Symbol, String?]?,
           net_terms: Integer?,
           per_credit_overage_amount: Float?,
           plan_id: String?,
           plan_version_number: Integer?,
-          price_overrides: Array[top]?,
-          remove_adjustments: Array[Orb::Models::SubscriptionCreateParams::RemoveAdjustment]?,
-          remove_prices: Array[Orb::Models::SubscriptionCreateParams::RemovePrice]?,
-          replace_adjustments: Array[Orb::Models::SubscriptionCreateParams::ReplaceAdjustment]?,
-          replace_prices: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice]?,
+          price_overrides: ::Array[top]?,
+          remove_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::RemoveAdjustment]?,
+          remove_prices: ::Array[Orb::Models::SubscriptionCreateParams::RemovePrice]?,
+          replace_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::ReplaceAdjustment]?,
+          replace_prices: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice]?,
           start_date: Time?,
           trial_duration_days: Integer?,
           request_options: Orb::request_opts
@@ -183,7 +183,7 @@ module Orb
           type new_percentage_discount =
             {
               adjustment_type: :percentage_discount,
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               percentage_discount: Float,
               is_invoice_level: bool
             }
@@ -191,7 +191,7 @@ module Orb
           class NewPercentageDiscount < Orb::BaseModel
             attr_accessor adjustment_type: :percentage_discount
 
-            attr_accessor applies_to_price_ids: Array[String]
+            attr_accessor applies_to_price_ids: ::Array[String]
 
             attr_accessor percentage_discount: Float
 
@@ -201,7 +201,7 @@ module Orb
 
             def initialize:
               (
-                applies_to_price_ids: Array[String],
+                applies_to_price_ids: ::Array[String],
                 percentage_discount: Float,
                 is_invoice_level: bool,
                 adjustment_type: :percentage_discount
@@ -217,7 +217,7 @@ module Orb
           type new_usage_discount =
             {
               adjustment_type: :usage_discount,
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               usage_discount: Float,
               is_invoice_level: bool
             }
@@ -225,7 +225,7 @@ module Orb
           class NewUsageDiscount < Orb::BaseModel
             attr_accessor adjustment_type: :usage_discount
 
-            attr_accessor applies_to_price_ids: Array[String]
+            attr_accessor applies_to_price_ids: ::Array[String]
 
             attr_accessor usage_discount: Float
 
@@ -235,7 +235,7 @@ module Orb
 
             def initialize:
               (
-                applies_to_price_ids: Array[String],
+                applies_to_price_ids: ::Array[String],
                 usage_discount: Float,
                 is_invoice_level: bool,
                 adjustment_type: :usage_discount
@@ -252,7 +252,7 @@ module Orb
             {
               adjustment_type: :amount_discount,
               amount_discount: String,
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               is_invoice_level: bool
             }
 
@@ -261,7 +261,7 @@ module Orb
 
             attr_accessor amount_discount: String
 
-            attr_accessor applies_to_price_ids: Array[String]
+            attr_accessor applies_to_price_ids: ::Array[String]
 
             attr_reader is_invoice_level: bool?
 
@@ -270,7 +270,7 @@ module Orb
             def initialize:
               (
                 amount_discount: String,
-                applies_to_price_ids: Array[String],
+                applies_to_price_ids: ::Array[String],
                 is_invoice_level: bool,
                 adjustment_type: :amount_discount
               ) -> void
@@ -285,7 +285,7 @@ module Orb
           type new_minimum =
             {
               adjustment_type: :minimum,
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               item_id: String,
               minimum_amount: String,
               is_invoice_level: bool
@@ -294,7 +294,7 @@ module Orb
           class NewMinimum < Orb::BaseModel
             attr_accessor adjustment_type: :minimum
 
-            attr_accessor applies_to_price_ids: Array[String]
+            attr_accessor applies_to_price_ids: ::Array[String]
 
             attr_accessor item_id: String
 
@@ -306,7 +306,7 @@ module Orb
 
             def initialize:
               (
-                applies_to_price_ids: Array[String],
+                applies_to_price_ids: ::Array[String],
                 item_id: String,
                 minimum_amount: String,
                 is_invoice_level: bool,
@@ -323,7 +323,7 @@ module Orb
           type new_maximum =
             {
               adjustment_type: :maximum,
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String,
               is_invoice_level: bool
             }
@@ -331,7 +331,7 @@ module Orb
           class NewMaximum < Orb::BaseModel
             attr_accessor adjustment_type: :maximum
 
-            attr_accessor applies_to_price_ids: Array[String]
+            attr_accessor applies_to_price_ids: ::Array[String]
 
             attr_accessor maximum_amount: String
 
@@ -341,7 +341,7 @@ module Orb
 
             def initialize:
               (
-                applies_to_price_ids: Array[String],
+                applies_to_price_ids: ::Array[String],
                 maximum_amount: String,
                 is_invoice_level: bool,
                 adjustment_type: :maximum
@@ -360,7 +360,7 @@ module Orb
 
       type add_price =
         {
-          discounts: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Discount]?,
+          discounts: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Discount]?,
           end_date: Time?,
           external_price_id: String?,
           maximum_amount: String?,
@@ -372,7 +372,7 @@ module Orb
         }
 
       class AddPrice < Orb::BaseModel
-        attr_accessor discounts: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Discount]?
+        attr_accessor discounts: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Discount]?
 
         attr_accessor end_date: Time?
 
@@ -392,7 +392,7 @@ module Orb
 
         def initialize:
           (
-            discounts: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Discount]?,
+            discounts: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Discount]?,
             end_date: Time?,
             external_price_id: String?,
             maximum_amount: String?,
@@ -447,7 +447,7 @@ module Orb
             USAGE: :usage
             AMOUNT: :amount
 
-            def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Discount::discount_type]
+            def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Discount::discount_type]
           end
         end
 
@@ -488,7 +488,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -521,7 +521,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -540,7 +540,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :unit
               ) -> void
@@ -567,7 +567,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::cadence]
             end
 
             type unit_config = { unit_amount: String }
@@ -614,7 +614,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -647,7 +647,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -668,7 +668,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -701,7 +701,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -720,7 +720,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :package
               ) -> void
@@ -747,7 +747,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::cadence]
             end
 
             type package_config =
@@ -797,7 +797,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -830,7 +830,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -851,7 +851,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -884,7 +884,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -903,7 +903,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :matrix
               ) -> void
@@ -930,28 +930,28 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::cadence]
             end
 
             type matrix_config =
               {
                 default_unit_amount: String,
-                dimensions: Array[String?],
-                matrix_values: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue]
+                dimensions: ::Array[String?],
+                matrix_values: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue]
               }
 
             class MatrixConfig < Orb::BaseModel
               attr_accessor default_unit_amount: String
 
-              attr_accessor dimensions: Array[String?]
+              attr_accessor dimensions: ::Array[String?]
 
-              attr_accessor matrix_values: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue]
+              attr_accessor matrix_values: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue]
 
               def initialize:
                 (
                   default_unit_amount: String,
-                  dimensions: Array[String?],
-                  matrix_values: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue]
+                  dimensions: ::Array[String?],
+                  matrix_values: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue]
                 ) -> void
                 | (
                   ?Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::matrix_config
@@ -961,16 +961,16 @@ module Orb
               def to_hash: -> Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::matrix_config
 
               type matrix_value =
-                { dimension_values: Array[String?], unit_amount: String }
+                { dimension_values: ::Array[String?], unit_amount: String }
 
               class MatrixValue < Orb::BaseModel
-                attr_accessor dimension_values: Array[String?]
+                attr_accessor dimension_values: ::Array[String?]
 
                 attr_accessor unit_amount: String
 
                 def initialize:
                   (
-                    dimension_values: Array[String?],
+                    dimension_values: ::Array[String?],
                     unit_amount: String
                   ) -> void
                   | (
@@ -1011,7 +1011,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -1044,7 +1044,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -1065,7 +1065,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -1098,7 +1098,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -1117,7 +1117,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :tiered
               ) -> void
@@ -1144,20 +1144,20 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::cadence]
             end
 
             type tiered_config =
               {
-                tiers: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier]
+                tiers: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier]
               }
 
             class TieredConfig < Orb::BaseModel
-              attr_accessor tiers: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier]
+              attr_accessor tiers: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier]
 
               def initialize:
                 (
-                  tiers: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier]
+                  tiers: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier]
                 ) -> void
                 | (
                   ?Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::tiered_config
@@ -1220,7 +1220,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -1253,7 +1253,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -1274,7 +1274,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -1307,7 +1307,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -1326,7 +1326,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :tiered_bps
               ) -> void
@@ -1353,20 +1353,20 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::cadence]
             end
 
             type tiered_bps_config =
               {
-                tiers: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier]
+                tiers: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier]
               }
 
             class TieredBpsConfig < Orb::BaseModel
-              attr_accessor tiers: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier]
+              attr_accessor tiers: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier]
 
               def initialize:
                 (
-                  tiers: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier]
+                  tiers: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier]
                 ) -> void
                 | (
                   ?Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::tiered_bps_config
@@ -1437,7 +1437,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -1470,7 +1470,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -1491,7 +1491,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -1524,7 +1524,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -1543,7 +1543,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :bps
               ) -> void
@@ -1587,7 +1587,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -1619,7 +1619,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -1652,7 +1652,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -1673,7 +1673,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -1706,7 +1706,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -1725,7 +1725,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :bulk_bps
               ) -> void
@@ -1738,15 +1738,15 @@ module Orb
 
             type bulk_bps_config =
               {
-                tiers: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier]
+                tiers: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier]
               }
 
             class BulkBpsConfig < Orb::BaseModel
-              attr_accessor tiers: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier]
+              attr_accessor tiers: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier]
 
               def initialize:
                 (
-                  tiers: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier]
+                  tiers: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier]
                 ) -> void
                 | (
                   ?Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::bulk_bps_config
@@ -1800,7 +1800,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -1832,7 +1832,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -1865,7 +1865,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -1886,7 +1886,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -1919,7 +1919,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -1938,7 +1938,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :bulk
               ) -> void
@@ -1951,15 +1951,15 @@ module Orb
 
             type bulk_config =
               {
-                tiers: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier]
+                tiers: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier]
               }
 
             class BulkConfig < Orb::BaseModel
-              attr_accessor tiers: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier]
+              attr_accessor tiers: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier]
 
               def initialize:
                 (
-                  tiers: Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier]
+                  tiers: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier]
                 ) -> void
                 | (
                   ?Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::bulk_config
@@ -2002,7 +2002,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -2034,7 +2034,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -2067,7 +2067,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -2078,7 +2078,7 @@ module Orb
               item_id: String,
               model_type: :threshold_total_amount,
               name: String,
-              threshold_total_amount_config: Hash[Symbol, top],
+              threshold_total_amount_config: ::Hash[Symbol, top],
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration?,
@@ -2088,7 +2088,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -2101,7 +2101,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor threshold_total_amount_config: Hash[Symbol, top]
+            attr_accessor threshold_total_amount_config: ::Hash[Symbol, top]
 
             attr_accessor billable_metric_id: String?
 
@@ -2121,7 +2121,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -2130,7 +2130,7 @@ module Orb
                 cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::cadence,
                 item_id: String,
                 name: String,
-                threshold_total_amount_config: Hash[Symbol, top],
+                threshold_total_amount_config: ::Hash[Symbol, top],
                 billable_metric_id: String?,
                 billed_in_advance: bool?,
                 billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration?,
@@ -2140,7 +2140,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :threshold_total_amount
               ) -> void
@@ -2167,7 +2167,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -2199,7 +2199,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -2232,7 +2232,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -2243,7 +2243,7 @@ module Orb
               item_id: String,
               model_type: :tiered_package,
               name: String,
-              tiered_package_config: Hash[Symbol, top],
+              tiered_package_config: ::Hash[Symbol, top],
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration?,
@@ -2253,7 +2253,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -2266,7 +2266,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor tiered_package_config: Hash[Symbol, top]
+            attr_accessor tiered_package_config: ::Hash[Symbol, top]
 
             attr_accessor billable_metric_id: String?
 
@@ -2286,7 +2286,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -2295,7 +2295,7 @@ module Orb
                 cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::cadence,
                 item_id: String,
                 name: String,
-                tiered_package_config: Hash[Symbol, top],
+                tiered_package_config: ::Hash[Symbol, top],
                 billable_metric_id: String?,
                 billed_in_advance: bool?,
                 billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration?,
@@ -2305,7 +2305,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :tiered_package
               ) -> void
@@ -2332,7 +2332,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -2364,7 +2364,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -2397,7 +2397,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -2408,7 +2408,7 @@ module Orb
               item_id: String,
               model_type: :tiered_with_minimum,
               name: String,
-              tiered_with_minimum_config: Hash[Symbol, top],
+              tiered_with_minimum_config: ::Hash[Symbol, top],
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration?,
@@ -2418,7 +2418,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -2431,7 +2431,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor tiered_with_minimum_config: Hash[Symbol, top]
+            attr_accessor tiered_with_minimum_config: ::Hash[Symbol, top]
 
             attr_accessor billable_metric_id: String?
 
@@ -2451,7 +2451,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -2460,7 +2460,7 @@ module Orb
                 cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::cadence,
                 item_id: String,
                 name: String,
-                tiered_with_minimum_config: Hash[Symbol, top],
+                tiered_with_minimum_config: ::Hash[Symbol, top],
                 billable_metric_id: String?,
                 billed_in_advance: bool?,
                 billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration?,
@@ -2470,7 +2470,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :tiered_with_minimum
               ) -> void
@@ -2497,7 +2497,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -2529,7 +2529,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -2562,7 +2562,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -2573,7 +2573,7 @@ module Orb
               item_id: String,
               model_type: :unit_with_percent,
               name: String,
-              unit_with_percent_config: Hash[Symbol, top],
+              unit_with_percent_config: ::Hash[Symbol, top],
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration?,
@@ -2583,7 +2583,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -2596,7 +2596,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor unit_with_percent_config: Hash[Symbol, top]
+            attr_accessor unit_with_percent_config: ::Hash[Symbol, top]
 
             attr_accessor billable_metric_id: String?
 
@@ -2616,7 +2616,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -2625,7 +2625,7 @@ module Orb
                 cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::cadence,
                 item_id: String,
                 name: String,
-                unit_with_percent_config: Hash[Symbol, top],
+                unit_with_percent_config: ::Hash[Symbol, top],
                 billable_metric_id: String?,
                 billed_in_advance: bool?,
                 billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration?,
@@ -2635,7 +2635,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :unit_with_percent
               ) -> void
@@ -2662,7 +2662,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -2694,7 +2694,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -2727,7 +2727,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -2738,7 +2738,7 @@ module Orb
               item_id: String,
               model_type: :package_with_allocation,
               name: String,
-              package_with_allocation_config: Hash[Symbol, top],
+              package_with_allocation_config: ::Hash[Symbol, top],
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration?,
@@ -2748,7 +2748,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -2761,7 +2761,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor package_with_allocation_config: Hash[Symbol, top]
+            attr_accessor package_with_allocation_config: ::Hash[Symbol, top]
 
             attr_accessor billable_metric_id: String?
 
@@ -2781,7 +2781,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -2790,7 +2790,7 @@ module Orb
                 cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::cadence,
                 item_id: String,
                 name: String,
-                package_with_allocation_config: Hash[Symbol, top],
+                package_with_allocation_config: ::Hash[Symbol, top],
                 billable_metric_id: String?,
                 billed_in_advance: bool?,
                 billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration?,
@@ -2800,7 +2800,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :package_with_allocation
               ) -> void
@@ -2827,7 +2827,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -2859,7 +2859,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -2892,7 +2892,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -2903,7 +2903,7 @@ module Orb
               item_id: String,
               model_type: :tiered_with_proration,
               name: String,
-              tiered_with_proration_config: Hash[Symbol, top],
+              tiered_with_proration_config: ::Hash[Symbol, top],
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration?,
@@ -2913,7 +2913,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -2926,7 +2926,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor tiered_with_proration_config: Hash[Symbol, top]
+            attr_accessor tiered_with_proration_config: ::Hash[Symbol, top]
 
             attr_accessor billable_metric_id: String?
 
@@ -2946,7 +2946,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -2955,7 +2955,7 @@ module Orb
                 cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::cadence,
                 item_id: String,
                 name: String,
-                tiered_with_proration_config: Hash[Symbol, top],
+                tiered_with_proration_config: ::Hash[Symbol, top],
                 billable_metric_id: String?,
                 billed_in_advance: bool?,
                 billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration?,
@@ -2965,7 +2965,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :tiered_with_proration
               ) -> void
@@ -2992,7 +2992,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -3024,7 +3024,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -3057,7 +3057,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -3068,7 +3068,7 @@ module Orb
               item_id: String,
               model_type: :unit_with_proration,
               name: String,
-              unit_with_proration_config: Hash[Symbol, top],
+              unit_with_proration_config: ::Hash[Symbol, top],
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration?,
@@ -3078,7 +3078,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -3091,7 +3091,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor unit_with_proration_config: Hash[Symbol, top]
+            attr_accessor unit_with_proration_config: ::Hash[Symbol, top]
 
             attr_accessor billable_metric_id: String?
 
@@ -3111,7 +3111,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -3120,7 +3120,7 @@ module Orb
                 cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::cadence,
                 item_id: String,
                 name: String,
-                unit_with_proration_config: Hash[Symbol, top],
+                unit_with_proration_config: ::Hash[Symbol, top],
                 billable_metric_id: String?,
                 billed_in_advance: bool?,
                 billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration?,
@@ -3130,7 +3130,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :unit_with_proration
               ) -> void
@@ -3157,7 +3157,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -3189,7 +3189,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -3222,7 +3222,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -3230,7 +3230,7 @@ module Orb
           type new_subscription_grouped_allocation_price =
             {
               cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::cadence,
-              grouped_allocation_config: Hash[Symbol, top],
+              grouped_allocation_config: ::Hash[Symbol, top],
               item_id: String,
               model_type: :grouped_allocation,
               name: String,
@@ -3243,14 +3243,14 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
           class NewSubscriptionGroupedAllocationPrice < Orb::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::cadence
 
-            attr_accessor grouped_allocation_config: Hash[Symbol, top]
+            attr_accessor grouped_allocation_config: ::Hash[Symbol, top]
 
             attr_accessor item_id: String
 
@@ -3276,14 +3276,14 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
             def initialize:
               (
                 cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::cadence,
-                grouped_allocation_config: Hash[Symbol, top],
+                grouped_allocation_config: ::Hash[Symbol, top],
                 item_id: String,
                 name: String,
                 billable_metric_id: String?,
@@ -3295,7 +3295,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :grouped_allocation
               ) -> void
@@ -3322,7 +3322,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -3354,7 +3354,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -3387,7 +3387,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -3395,7 +3395,7 @@ module Orb
           type new_subscription_grouped_with_prorated_minimum_price =
             {
               cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::cadence,
-              grouped_with_prorated_minimum_config: Hash[Symbol, top],
+              grouped_with_prorated_minimum_config: ::Hash[Symbol, top],
               item_id: String,
               model_type: :grouped_with_prorated_minimum,
               name: String,
@@ -3408,14 +3408,14 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
           class NewSubscriptionGroupedWithProratedMinimumPrice < Orb::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::cadence
 
-            attr_accessor grouped_with_prorated_minimum_config: Hash[Symbol, top]
+            attr_accessor grouped_with_prorated_minimum_config: ::Hash[Symbol, top]
 
             attr_accessor item_id: String
 
@@ -3441,14 +3441,14 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
             def initialize:
               (
                 cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::cadence,
-                grouped_with_prorated_minimum_config: Hash[Symbol, top],
+                grouped_with_prorated_minimum_config: ::Hash[Symbol, top],
                 item_id: String,
                 name: String,
                 billable_metric_id: String?,
@@ -3460,7 +3460,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :grouped_with_prorated_minimum
               ) -> void
@@ -3487,7 +3487,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -3519,7 +3519,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -3552,14 +3552,14 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
 
           type new_subscription_bulk_with_proration_price =
             {
-              bulk_with_proration_config: Hash[Symbol, top],
+              bulk_with_proration_config: ::Hash[Symbol, top],
               cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::cadence,
               item_id: String,
               model_type: :bulk_with_proration,
@@ -3573,12 +3573,12 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
           class NewSubscriptionBulkWithProrationPrice < Orb::BaseModel
-            attr_accessor bulk_with_proration_config: Hash[Symbol, top]
+            attr_accessor bulk_with_proration_config: ::Hash[Symbol, top]
 
             attr_accessor cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::cadence
 
@@ -3606,13 +3606,13 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
             def initialize:
               (
-                bulk_with_proration_config: Hash[Symbol, top],
+                bulk_with_proration_config: ::Hash[Symbol, top],
                 cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::cadence,
                 item_id: String,
                 name: String,
@@ -3625,7 +3625,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :bulk_with_proration
               ) -> void
@@ -3652,7 +3652,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -3684,7 +3684,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -3717,7 +3717,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -3753,7 +3753,7 @@ module Orb
         AWS: :aws
         AZURE: :azure
 
-        def self.values: -> Array[Orb::Models::SubscriptionCreateParams::external_marketplace]
+        def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::external_marketplace]
       end
 
       type remove_adjustment = { adjustment_id: String }
@@ -3822,7 +3822,7 @@ module Orb
           type new_percentage_discount =
             {
               adjustment_type: :percentage_discount,
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               percentage_discount: Float,
               is_invoice_level: bool
             }
@@ -3830,7 +3830,7 @@ module Orb
           class NewPercentageDiscount < Orb::BaseModel
             attr_accessor adjustment_type: :percentage_discount
 
-            attr_accessor applies_to_price_ids: Array[String]
+            attr_accessor applies_to_price_ids: ::Array[String]
 
             attr_accessor percentage_discount: Float
 
@@ -3840,7 +3840,7 @@ module Orb
 
             def initialize:
               (
-                applies_to_price_ids: Array[String],
+                applies_to_price_ids: ::Array[String],
                 percentage_discount: Float,
                 is_invoice_level: bool,
                 adjustment_type: :percentage_discount
@@ -3856,7 +3856,7 @@ module Orb
           type new_usage_discount =
             {
               adjustment_type: :usage_discount,
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               usage_discount: Float,
               is_invoice_level: bool
             }
@@ -3864,7 +3864,7 @@ module Orb
           class NewUsageDiscount < Orb::BaseModel
             attr_accessor adjustment_type: :usage_discount
 
-            attr_accessor applies_to_price_ids: Array[String]
+            attr_accessor applies_to_price_ids: ::Array[String]
 
             attr_accessor usage_discount: Float
 
@@ -3874,7 +3874,7 @@ module Orb
 
             def initialize:
               (
-                applies_to_price_ids: Array[String],
+                applies_to_price_ids: ::Array[String],
                 usage_discount: Float,
                 is_invoice_level: bool,
                 adjustment_type: :usage_discount
@@ -3891,7 +3891,7 @@ module Orb
             {
               adjustment_type: :amount_discount,
               amount_discount: String,
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               is_invoice_level: bool
             }
 
@@ -3900,7 +3900,7 @@ module Orb
 
             attr_accessor amount_discount: String
 
-            attr_accessor applies_to_price_ids: Array[String]
+            attr_accessor applies_to_price_ids: ::Array[String]
 
             attr_reader is_invoice_level: bool?
 
@@ -3909,7 +3909,7 @@ module Orb
             def initialize:
               (
                 amount_discount: String,
-                applies_to_price_ids: Array[String],
+                applies_to_price_ids: ::Array[String],
                 is_invoice_level: bool,
                 adjustment_type: :amount_discount
               ) -> void
@@ -3924,7 +3924,7 @@ module Orb
           type new_minimum =
             {
               adjustment_type: :minimum,
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               item_id: String,
               minimum_amount: String,
               is_invoice_level: bool
@@ -3933,7 +3933,7 @@ module Orb
           class NewMinimum < Orb::BaseModel
             attr_accessor adjustment_type: :minimum
 
-            attr_accessor applies_to_price_ids: Array[String]
+            attr_accessor applies_to_price_ids: ::Array[String]
 
             attr_accessor item_id: String
 
@@ -3945,7 +3945,7 @@ module Orb
 
             def initialize:
               (
-                applies_to_price_ids: Array[String],
+                applies_to_price_ids: ::Array[String],
                 item_id: String,
                 minimum_amount: String,
                 is_invoice_level: bool,
@@ -3962,7 +3962,7 @@ module Orb
           type new_maximum =
             {
               adjustment_type: :maximum,
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String,
               is_invoice_level: bool
             }
@@ -3970,7 +3970,7 @@ module Orb
           class NewMaximum < Orb::BaseModel
             attr_accessor adjustment_type: :maximum
 
-            attr_accessor applies_to_price_ids: Array[String]
+            attr_accessor applies_to_price_ids: ::Array[String]
 
             attr_accessor maximum_amount: String
 
@@ -3980,7 +3980,7 @@ module Orb
 
             def initialize:
               (
-                applies_to_price_ids: Array[String],
+                applies_to_price_ids: ::Array[String],
                 maximum_amount: String,
                 is_invoice_level: bool,
                 adjustment_type: :maximum
@@ -4000,7 +4000,7 @@ module Orb
       type replace_price =
         {
           replaces_price_id: String,
-          discounts: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Discount]?,
+          discounts: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Discount]?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
           maximum_amount: String?,
@@ -4012,7 +4012,7 @@ module Orb
       class ReplacePrice < Orb::BaseModel
         attr_accessor replaces_price_id: String
 
-        attr_accessor discounts: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Discount]?
+        attr_accessor discounts: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Discount]?
 
         attr_accessor external_price_id: String?
 
@@ -4029,7 +4029,7 @@ module Orb
         def initialize:
           (
             replaces_price_id: String,
-            discounts: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Discount]?,
+            discounts: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Discount]?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             maximum_amount: String?,
@@ -4082,7 +4082,7 @@ module Orb
             USAGE: :usage
             AMOUNT: :amount
 
-            def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Discount::discount_type]
+            def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Discount::discount_type]
           end
         end
 
@@ -4123,7 +4123,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -4156,7 +4156,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -4175,7 +4175,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :unit
               ) -> void
@@ -4202,7 +4202,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::cadence]
             end
 
             type unit_config = { unit_amount: String }
@@ -4249,7 +4249,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -4282,7 +4282,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -4303,7 +4303,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -4336,7 +4336,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -4355,7 +4355,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :package
               ) -> void
@@ -4382,7 +4382,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::cadence]
             end
 
             type package_config =
@@ -4432,7 +4432,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -4465,7 +4465,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -4486,7 +4486,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -4519,7 +4519,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -4538,7 +4538,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :matrix
               ) -> void
@@ -4565,28 +4565,28 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::cadence]
             end
 
             type matrix_config =
               {
                 default_unit_amount: String,
-                dimensions: Array[String?],
-                matrix_values: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue]
+                dimensions: ::Array[String?],
+                matrix_values: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue]
               }
 
             class MatrixConfig < Orb::BaseModel
               attr_accessor default_unit_amount: String
 
-              attr_accessor dimensions: Array[String?]
+              attr_accessor dimensions: ::Array[String?]
 
-              attr_accessor matrix_values: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue]
+              attr_accessor matrix_values: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue]
 
               def initialize:
                 (
                   default_unit_amount: String,
-                  dimensions: Array[String?],
-                  matrix_values: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue]
+                  dimensions: ::Array[String?],
+                  matrix_values: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue]
                 ) -> void
                 | (
                   ?Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::matrix_config
@@ -4596,16 +4596,16 @@ module Orb
               def to_hash: -> Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::matrix_config
 
               type matrix_value =
-                { dimension_values: Array[String?], unit_amount: String }
+                { dimension_values: ::Array[String?], unit_amount: String }
 
               class MatrixValue < Orb::BaseModel
-                attr_accessor dimension_values: Array[String?]
+                attr_accessor dimension_values: ::Array[String?]
 
                 attr_accessor unit_amount: String
 
                 def initialize:
                   (
-                    dimension_values: Array[String?],
+                    dimension_values: ::Array[String?],
                     unit_amount: String
                   ) -> void
                   | (
@@ -4646,7 +4646,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -4679,7 +4679,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -4700,7 +4700,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -4733,7 +4733,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -4752,7 +4752,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :tiered
               ) -> void
@@ -4779,20 +4779,20 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::cadence]
             end
 
             type tiered_config =
               {
-                tiers: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier]
+                tiers: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier]
               }
 
             class TieredConfig < Orb::BaseModel
-              attr_accessor tiers: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier]
+              attr_accessor tiers: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier]
 
               def initialize:
                 (
-                  tiers: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier]
+                  tiers: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier]
                 ) -> void
                 | (
                   ?Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::tiered_config
@@ -4855,7 +4855,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -4888,7 +4888,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -4909,7 +4909,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -4942,7 +4942,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -4961,7 +4961,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :tiered_bps
               ) -> void
@@ -4988,20 +4988,20 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::cadence]
             end
 
             type tiered_bps_config =
               {
-                tiers: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier]
+                tiers: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier]
               }
 
             class TieredBpsConfig < Orb::BaseModel
-              attr_accessor tiers: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier]
+              attr_accessor tiers: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier]
 
               def initialize:
                 (
-                  tiers: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier]
+                  tiers: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier]
                 ) -> void
                 | (
                   ?Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::tiered_bps_config
@@ -5072,7 +5072,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -5105,7 +5105,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -5126,7 +5126,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -5159,7 +5159,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -5178,7 +5178,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :bps
               ) -> void
@@ -5222,7 +5222,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -5254,7 +5254,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -5287,7 +5287,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -5308,7 +5308,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -5341,7 +5341,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -5360,7 +5360,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :bulk_bps
               ) -> void
@@ -5373,15 +5373,15 @@ module Orb
 
             type bulk_bps_config =
               {
-                tiers: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier]
+                tiers: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier]
               }
 
             class BulkBpsConfig < Orb::BaseModel
-              attr_accessor tiers: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier]
+              attr_accessor tiers: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier]
 
               def initialize:
                 (
-                  tiers: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier]
+                  tiers: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier]
                 ) -> void
                 | (
                   ?Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::bulk_bps_config
@@ -5435,7 +5435,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -5467,7 +5467,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -5500,7 +5500,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -5521,7 +5521,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -5554,7 +5554,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -5573,7 +5573,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :bulk
               ) -> void
@@ -5586,15 +5586,15 @@ module Orb
 
             type bulk_config =
               {
-                tiers: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier]
+                tiers: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier]
               }
 
             class BulkConfig < Orb::BaseModel
-              attr_accessor tiers: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier]
+              attr_accessor tiers: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier]
 
               def initialize:
                 (
-                  tiers: Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier]
+                  tiers: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier]
                 ) -> void
                 | (
                   ?Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::bulk_config
@@ -5637,7 +5637,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -5669,7 +5669,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -5702,7 +5702,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -5713,7 +5713,7 @@ module Orb
               item_id: String,
               model_type: :threshold_total_amount,
               name: String,
-              threshold_total_amount_config: Hash[Symbol, top],
+              threshold_total_amount_config: ::Hash[Symbol, top],
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration?,
@@ -5723,7 +5723,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -5736,7 +5736,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor threshold_total_amount_config: Hash[Symbol, top]
+            attr_accessor threshold_total_amount_config: ::Hash[Symbol, top]
 
             attr_accessor billable_metric_id: String?
 
@@ -5756,7 +5756,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -5765,7 +5765,7 @@ module Orb
                 cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::cadence,
                 item_id: String,
                 name: String,
-                threshold_total_amount_config: Hash[Symbol, top],
+                threshold_total_amount_config: ::Hash[Symbol, top],
                 billable_metric_id: String?,
                 billed_in_advance: bool?,
                 billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration?,
@@ -5775,7 +5775,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :threshold_total_amount
               ) -> void
@@ -5802,7 +5802,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -5834,7 +5834,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -5867,7 +5867,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -5878,7 +5878,7 @@ module Orb
               item_id: String,
               model_type: :tiered_package,
               name: String,
-              tiered_package_config: Hash[Symbol, top],
+              tiered_package_config: ::Hash[Symbol, top],
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration?,
@@ -5888,7 +5888,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -5901,7 +5901,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor tiered_package_config: Hash[Symbol, top]
+            attr_accessor tiered_package_config: ::Hash[Symbol, top]
 
             attr_accessor billable_metric_id: String?
 
@@ -5921,7 +5921,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -5930,7 +5930,7 @@ module Orb
                 cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::cadence,
                 item_id: String,
                 name: String,
-                tiered_package_config: Hash[Symbol, top],
+                tiered_package_config: ::Hash[Symbol, top],
                 billable_metric_id: String?,
                 billed_in_advance: bool?,
                 billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration?,
@@ -5940,7 +5940,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :tiered_package
               ) -> void
@@ -5967,7 +5967,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -5999,7 +5999,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -6032,7 +6032,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -6043,7 +6043,7 @@ module Orb
               item_id: String,
               model_type: :tiered_with_minimum,
               name: String,
-              tiered_with_minimum_config: Hash[Symbol, top],
+              tiered_with_minimum_config: ::Hash[Symbol, top],
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration?,
@@ -6053,7 +6053,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -6066,7 +6066,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor tiered_with_minimum_config: Hash[Symbol, top]
+            attr_accessor tiered_with_minimum_config: ::Hash[Symbol, top]
 
             attr_accessor billable_metric_id: String?
 
@@ -6086,7 +6086,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -6095,7 +6095,7 @@ module Orb
                 cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::cadence,
                 item_id: String,
                 name: String,
-                tiered_with_minimum_config: Hash[Symbol, top],
+                tiered_with_minimum_config: ::Hash[Symbol, top],
                 billable_metric_id: String?,
                 billed_in_advance: bool?,
                 billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration?,
@@ -6105,7 +6105,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :tiered_with_minimum
               ) -> void
@@ -6132,7 +6132,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -6164,7 +6164,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -6197,7 +6197,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -6208,7 +6208,7 @@ module Orb
               item_id: String,
               model_type: :unit_with_percent,
               name: String,
-              unit_with_percent_config: Hash[Symbol, top],
+              unit_with_percent_config: ::Hash[Symbol, top],
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration?,
@@ -6218,7 +6218,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -6231,7 +6231,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor unit_with_percent_config: Hash[Symbol, top]
+            attr_accessor unit_with_percent_config: ::Hash[Symbol, top]
 
             attr_accessor billable_metric_id: String?
 
@@ -6251,7 +6251,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -6260,7 +6260,7 @@ module Orb
                 cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::cadence,
                 item_id: String,
                 name: String,
-                unit_with_percent_config: Hash[Symbol, top],
+                unit_with_percent_config: ::Hash[Symbol, top],
                 billable_metric_id: String?,
                 billed_in_advance: bool?,
                 billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration?,
@@ -6270,7 +6270,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :unit_with_percent
               ) -> void
@@ -6297,7 +6297,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -6329,7 +6329,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -6362,7 +6362,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -6373,7 +6373,7 @@ module Orb
               item_id: String,
               model_type: :package_with_allocation,
               name: String,
-              package_with_allocation_config: Hash[Symbol, top],
+              package_with_allocation_config: ::Hash[Symbol, top],
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration?,
@@ -6383,7 +6383,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -6396,7 +6396,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor package_with_allocation_config: Hash[Symbol, top]
+            attr_accessor package_with_allocation_config: ::Hash[Symbol, top]
 
             attr_accessor billable_metric_id: String?
 
@@ -6416,7 +6416,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -6425,7 +6425,7 @@ module Orb
                 cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::cadence,
                 item_id: String,
                 name: String,
-                package_with_allocation_config: Hash[Symbol, top],
+                package_with_allocation_config: ::Hash[Symbol, top],
                 billable_metric_id: String?,
                 billed_in_advance: bool?,
                 billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration?,
@@ -6435,7 +6435,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :package_with_allocation
               ) -> void
@@ -6462,7 +6462,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -6494,7 +6494,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -6527,7 +6527,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -6538,7 +6538,7 @@ module Orb
               item_id: String,
               model_type: :tiered_with_proration,
               name: String,
-              tiered_with_proration_config: Hash[Symbol, top],
+              tiered_with_proration_config: ::Hash[Symbol, top],
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration?,
@@ -6548,7 +6548,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -6561,7 +6561,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor tiered_with_proration_config: Hash[Symbol, top]
+            attr_accessor tiered_with_proration_config: ::Hash[Symbol, top]
 
             attr_accessor billable_metric_id: String?
 
@@ -6581,7 +6581,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -6590,7 +6590,7 @@ module Orb
                 cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::cadence,
                 item_id: String,
                 name: String,
-                tiered_with_proration_config: Hash[Symbol, top],
+                tiered_with_proration_config: ::Hash[Symbol, top],
                 billable_metric_id: String?,
                 billed_in_advance: bool?,
                 billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration?,
@@ -6600,7 +6600,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :tiered_with_proration
               ) -> void
@@ -6627,7 +6627,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -6659,7 +6659,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -6692,7 +6692,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -6703,7 +6703,7 @@ module Orb
               item_id: String,
               model_type: :unit_with_proration,
               name: String,
-              unit_with_proration_config: Hash[Symbol, top],
+              unit_with_proration_config: ::Hash[Symbol, top],
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration?,
@@ -6713,7 +6713,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
@@ -6726,7 +6726,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor unit_with_proration_config: Hash[Symbol, top]
+            attr_accessor unit_with_proration_config: ::Hash[Symbol, top]
 
             attr_accessor billable_metric_id: String?
 
@@ -6746,7 +6746,7 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
@@ -6755,7 +6755,7 @@ module Orb
                 cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::cadence,
                 item_id: String,
                 name: String,
-                unit_with_proration_config: Hash[Symbol, top],
+                unit_with_proration_config: ::Hash[Symbol, top],
                 billable_metric_id: String?,
                 billed_in_advance: bool?,
                 billing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration?,
@@ -6765,7 +6765,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :unit_with_proration
               ) -> void
@@ -6792,7 +6792,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -6824,7 +6824,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -6857,7 +6857,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -6865,7 +6865,7 @@ module Orb
           type new_subscription_grouped_allocation_price =
             {
               cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::cadence,
-              grouped_allocation_config: Hash[Symbol, top],
+              grouped_allocation_config: ::Hash[Symbol, top],
               item_id: String,
               model_type: :grouped_allocation,
               name: String,
@@ -6878,14 +6878,14 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
           class NewSubscriptionGroupedAllocationPrice < Orb::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::cadence
 
-            attr_accessor grouped_allocation_config: Hash[Symbol, top]
+            attr_accessor grouped_allocation_config: ::Hash[Symbol, top]
 
             attr_accessor item_id: String
 
@@ -6911,14 +6911,14 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
             def initialize:
               (
                 cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::cadence,
-                grouped_allocation_config: Hash[Symbol, top],
+                grouped_allocation_config: ::Hash[Symbol, top],
                 item_id: String,
                 name: String,
                 billable_metric_id: String?,
@@ -6930,7 +6930,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :grouped_allocation
               ) -> void
@@ -6957,7 +6957,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -6989,7 +6989,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -7022,7 +7022,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -7030,7 +7030,7 @@ module Orb
           type new_subscription_grouped_with_prorated_minimum_price =
             {
               cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::cadence,
-              grouped_with_prorated_minimum_config: Hash[Symbol, top],
+              grouped_with_prorated_minimum_config: ::Hash[Symbol, top],
               item_id: String,
               model_type: :grouped_with_prorated_minimum,
               name: String,
@@ -7043,14 +7043,14 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
           class NewSubscriptionGroupedWithProratedMinimumPrice < Orb::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::cadence
 
-            attr_accessor grouped_with_prorated_minimum_config: Hash[Symbol, top]
+            attr_accessor grouped_with_prorated_minimum_config: ::Hash[Symbol, top]
 
             attr_accessor item_id: String
 
@@ -7076,14 +7076,14 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
             def initialize:
               (
                 cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::cadence,
-                grouped_with_prorated_minimum_config: Hash[Symbol, top],
+                grouped_with_prorated_minimum_config: ::Hash[Symbol, top],
                 item_id: String,
                 name: String,
                 billable_metric_id: String?,
@@ -7095,7 +7095,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :grouped_with_prorated_minimum
               ) -> void
@@ -7122,7 +7122,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -7154,7 +7154,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -7187,14 +7187,14 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
 
           type new_subscription_bulk_with_proration_price =
             {
-              bulk_with_proration_config: Hash[Symbol, top],
+              bulk_with_proration_config: ::Hash[Symbol, top],
               cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::cadence,
               item_id: String,
               model_type: :bulk_with_proration,
@@ -7208,12 +7208,12 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
 
           class NewSubscriptionBulkWithProrationPrice < Orb::BaseModel
-            attr_accessor bulk_with_proration_config: Hash[Symbol, top]
+            attr_accessor bulk_with_proration_config: ::Hash[Symbol, top]
 
             attr_accessor cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::cadence
 
@@ -7241,13 +7241,13 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration?
 
-            attr_accessor metadata: Hash[Symbol, String?]?
+            attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
 
             def initialize:
               (
-                bulk_with_proration_config: Hash[Symbol, top],
+                bulk_with_proration_config: ::Hash[Symbol, top],
                 cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::cadence,
                 item_id: String,
                 name: String,
@@ -7260,7 +7260,7 @@ module Orb
                 fixed_price_quantity: Float?,
                 invoice_grouping_key: String?,
                 invoicing_cycle_configuration: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration?,
-                metadata: Hash[Symbol, String?]?,
+                metadata: ::Hash[Symbol, String?]?,
                 reference_id: String?,
                 model_type: :bulk_with_proration
               ) -> void
@@ -7287,7 +7287,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::cadence]
+              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -7319,7 +7319,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -7352,7 +7352,7 @@ module Orb
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end

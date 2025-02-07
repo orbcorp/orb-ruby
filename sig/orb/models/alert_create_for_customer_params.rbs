@@ -4,7 +4,7 @@ module Orb
       {
         currency: String,
         type: Orb::Models::AlertCreateForCustomerParams::type_,
-        thresholds: Array[Orb::Models::AlertCreateForCustomerParams::Threshold]?
+        thresholds: ::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]?
       }
       & Orb::request_parameters
 
@@ -16,13 +16,13 @@ module Orb
 
       attr_accessor type: Orb::Models::AlertCreateForCustomerParams::type_
 
-      attr_accessor thresholds: Array[Orb::Models::AlertCreateForCustomerParams::Threshold]?
+      attr_accessor thresholds: ::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]?
 
       def initialize:
         (
           currency: String,
           type: Orb::Models::AlertCreateForCustomerParams::type_,
-          thresholds: Array[Orb::Models::AlertCreateForCustomerParams::Threshold]?,
+          thresholds: ::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]?,
           request_options: Orb::request_opts
         ) -> void
         | (
@@ -45,7 +45,7 @@ module Orb
         CREDIT_BALANCE_DROPPED: :credit_balance_dropped
         CREDIT_BALANCE_RECOVERED: :credit_balance_recovered
 
-        def self.values: -> Array[Orb::Models::AlertCreateForCustomerParams::type_]
+        def self.values: -> ::Array[Orb::Models::AlertCreateForCustomerParams::type_]
       end
 
       type threshold = { value: Float }

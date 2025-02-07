@@ -6,7 +6,7 @@ module Orb
           (
             String coupon_id,
             ?Orb::Models::Coupons::SubscriptionListParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Orb::Page[Orb::Models::Subscription]
           | (
             String coupon_id,

@@ -35,7 +35,7 @@ module Orb
         IMMEDIATE: :immediate
         REQUESTED_DATE: :requested_date
 
-        def self.values: -> Array[Orb::Models::SubscriptionCancelParams::cancel_option]
+        def self.values: -> ::Array[Orb::Models::SubscriptionCancelParams::cancel_option]
       end
     end
   end

@@ -7,7 +7,7 @@ module Orb
             (
               String customer_id,
               Orb::Models::Customers::Credits::TopUpCreateParams
-              | Hash[Symbol, top] params
+              | ::Hash[Symbol, top] params
             ) -> Orb::Models::Customers::Credits::TopUpCreateResponse
             | (
               String customer_id,
@@ -25,7 +25,7 @@ module Orb
             (
               String customer_id,
               ?Orb::Models::Customers::Credits::TopUpListParams
-              | Hash[Symbol, top] params
+              | ::Hash[Symbol, top] params
             ) -> Orb::Page[Orb::Models::Customers::Credits::TopUpListResponse]
             | (
               String customer_id,
@@ -38,7 +38,7 @@ module Orb
             (
               String top_up_id,
               Orb::Models::Customers::Credits::TopUpDeleteParams
-              | Hash[Symbol, top] params
+              | ::Hash[Symbol, top] params
             ) -> nil
             | (
               String top_up_id,
@@ -50,7 +50,7 @@ module Orb
             (
               String external_customer_id,
               Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams
-              | Hash[Symbol, top] params
+              | ::Hash[Symbol, top] params
             ) -> Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse
             | (
               String external_customer_id,
@@ -68,7 +68,7 @@ module Orb
             (
               String top_up_id,
               Orb::Models::Customers::Credits::TopUpDeleteByExternalIDParams
-              | Hash[Symbol, top] params
+              | ::Hash[Symbol, top] params
             ) -> nil
             | (
               String top_up_id,
@@ -80,7 +80,7 @@ module Orb
             (
               String external_customer_id,
               ?Orb::Models::Customers::Credits::TopUpListByExternalIDParams
-              | Hash[Symbol, top] params
+              | ::Hash[Symbol, top] params
             ) -> Orb::Page[Orb::Models::Customers::Credits::TopUpListByExternalIDResponse]
             | (
               String external_customer_id,

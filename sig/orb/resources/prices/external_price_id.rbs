@@ -6,11 +6,11 @@ module Orb
           (
             String external_price_id,
             ?Orb::Models::Prices::ExternalPriceIDUpdateParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Orb::Models::price
           | (
             String external_price_id,
-            metadata: Hash[Symbol, String?]?,
+            metadata: ::Hash[Symbol, String?]?,
             request_options: Orb::request_opts
           ) -> Orb::Models::price
 
@@ -18,7 +18,7 @@ module Orb
           (
             String external_price_id,
             ?Orb::Models::Prices::ExternalPriceIDFetchParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Orb::Models::price
           | (
             String external_price_id,

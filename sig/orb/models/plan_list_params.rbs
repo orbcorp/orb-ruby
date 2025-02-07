@@ -56,7 +56,7 @@ module Orb
         ARCHIVED: :archived
         DRAFT: :draft
 
-        def self.values: -> Array[Orb::Models::PlanListParams::status]
+        def self.values: -> ::Array[Orb::Models::PlanListParams::status]
       end
     end
   end

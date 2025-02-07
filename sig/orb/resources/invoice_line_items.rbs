@@ -3,7 +3,7 @@ module Orb
     class InvoiceLineItems
       def create:
         (
-          Orb::Models::InvoiceLineItemCreateParams | Hash[Symbol, top] params
+          Orb::Models::InvoiceLineItemCreateParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::InvoiceLineItemCreateResponse
         | (
           amount: String,

@@ -42,7 +42,7 @@ module Orb
           PERIODIC: :periodic
           CUMULATIVE: :cumulative
 
-          def self.values: -> Array[Orb::Models::Customers::CostListParams::view_mode]
+          def self.values: -> ::Array[Orb::Models::Customers::CostListParams::view_mode]
         end
       end
     end

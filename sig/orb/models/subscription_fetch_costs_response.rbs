@@ -1,13 +1,15 @@
 module Orb
   module Models
     type subscription_fetch_costs_response =
-      { data: Array[Orb::Models::SubscriptionFetchCostsResponse::Data] }
+      { data: ::Array[Orb::Models::SubscriptionFetchCostsResponse::Data] }
 
     class SubscriptionFetchCostsResponse < Orb::BaseModel
-      attr_accessor data: Array[Orb::Models::SubscriptionFetchCostsResponse::Data]
+      attr_accessor data: ::Array[Orb::Models::SubscriptionFetchCostsResponse::Data]
 
       def initialize:
-        (data: Array[Orb::Models::SubscriptionFetchCostsResponse::Data]) -> void
+        (
+          data: ::Array[Orb::Models::SubscriptionFetchCostsResponse::Data]
+        ) -> void
         | (
           ?Orb::Models::subscription_fetch_costs_response | Orb::BaseModel data
         ) -> void
@@ -16,7 +18,7 @@ module Orb
 
       type data =
         {
-          per_price_costs: Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost],
+          per_price_costs: ::Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost],
           subtotal: String,
           timeframe_end: Time,
           timeframe_start: Time,
@@ -24,7 +26,7 @@ module Orb
         }
 
       class Data < Orb::BaseModel
-        attr_accessor per_price_costs: Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost]
+        attr_accessor per_price_costs: ::Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost]
 
         attr_accessor subtotal: String
 
@@ -36,7 +38,7 @@ module Orb
 
         def initialize:
           (
-            per_price_costs: Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost],
+            per_price_costs: ::Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost],
             subtotal: String,
             timeframe_end: Time,
             timeframe_start: Time,

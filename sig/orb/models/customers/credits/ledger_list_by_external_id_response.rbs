@@ -25,7 +25,7 @@ module Orb
               entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::entry_status,
               entry_type: :increment,
               ledger_sequence_number: Integer,
-              metadata: Hash[Symbol, String],
+              metadata: ::Hash[Symbol, String],
               starting_balance: Float
             }
 
@@ -52,7 +52,7 @@ module Orb
 
             attr_accessor ledger_sequence_number: Integer
 
-            attr_accessor metadata: Hash[Symbol, String]
+            attr_accessor metadata: ::Hash[Symbol, String]
 
             attr_accessor starting_balance: Float
 
@@ -68,7 +68,7 @@ module Orb
                 ending_balance: Float,
                 entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::entry_status,
                 ledger_sequence_number: Integer,
-                metadata: Hash[Symbol, String],
+                metadata: ::Hash[Symbol, String],
                 starting_balance: Float,
                 entry_type: :increment
               ) -> void
@@ -126,7 +126,7 @@ module Orb
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> Array[Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::entry_status]
+              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::entry_status]
             end
           end
 
@@ -143,7 +143,7 @@ module Orb
               entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::entry_status,
               entry_type: :decrement,
               ledger_sequence_number: Integer,
-              metadata: Hash[Symbol, String],
+              metadata: ::Hash[Symbol, String],
               starting_balance: Float,
               event_id: String?,
               invoice_id: String?,
@@ -173,7 +173,7 @@ module Orb
 
             attr_accessor ledger_sequence_number: Integer
 
-            attr_accessor metadata: Hash[Symbol, String]
+            attr_accessor metadata: ::Hash[Symbol, String]
 
             attr_accessor starting_balance: Float
 
@@ -195,7 +195,7 @@ module Orb
                 ending_balance: Float,
                 entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::entry_status,
                 ledger_sequence_number: Integer,
-                metadata: Hash[Symbol, String],
+                metadata: ::Hash[Symbol, String],
                 starting_balance: Float,
                 event_id: String?,
                 invoice_id: String?,
@@ -256,7 +256,7 @@ module Orb
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> Array[Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::entry_status]
+              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::entry_status]
             end
           end
 
@@ -273,7 +273,7 @@ module Orb
               entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::entry_status,
               entry_type: :expiration_change,
               ledger_sequence_number: Integer,
-              metadata: Hash[Symbol, String],
+              metadata: ::Hash[Symbol, String],
               new_block_expiry_date: Time?,
               starting_balance: Float
             }
@@ -301,7 +301,7 @@ module Orb
 
             attr_accessor ledger_sequence_number: Integer
 
-            attr_accessor metadata: Hash[Symbol, String]
+            attr_accessor metadata: ::Hash[Symbol, String]
 
             attr_accessor new_block_expiry_date: Time?
 
@@ -319,7 +319,7 @@ module Orb
                 ending_balance: Float,
                 entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::entry_status,
                 ledger_sequence_number: Integer,
-                metadata: Hash[Symbol, String],
+                metadata: ::Hash[Symbol, String],
                 new_block_expiry_date: Time?,
                 starting_balance: Float,
                 entry_type: :expiration_change
@@ -378,7 +378,7 @@ module Orb
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> Array[Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::entry_status]
+              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::entry_status]
             end
           end
 
@@ -395,7 +395,7 @@ module Orb
               entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::entry_status,
               entry_type: :credit_block_expiry,
               ledger_sequence_number: Integer,
-              metadata: Hash[Symbol, String],
+              metadata: ::Hash[Symbol, String],
               starting_balance: Float
             }
 
@@ -422,7 +422,7 @@ module Orb
 
             attr_accessor ledger_sequence_number: Integer
 
-            attr_accessor metadata: Hash[Symbol, String]
+            attr_accessor metadata: ::Hash[Symbol, String]
 
             attr_accessor starting_balance: Float
 
@@ -438,7 +438,7 @@ module Orb
                 ending_balance: Float,
                 entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::entry_status,
                 ledger_sequence_number: Integer,
-                metadata: Hash[Symbol, String],
+                metadata: ::Hash[Symbol, String],
                 starting_balance: Float,
                 entry_type: :credit_block_expiry
               ) -> void
@@ -496,7 +496,7 @@ module Orb
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> Array[Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::entry_status]
+              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::entry_status]
             end
           end
 
@@ -513,7 +513,7 @@ module Orb
               entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::entry_status,
               entry_type: :void,
               ledger_sequence_number: Integer,
-              metadata: Hash[Symbol, String],
+              metadata: ::Hash[Symbol, String],
               starting_balance: Float,
               void_amount: Float,
               void_reason: String?
@@ -542,7 +542,7 @@ module Orb
 
             attr_accessor ledger_sequence_number: Integer
 
-            attr_accessor metadata: Hash[Symbol, String]
+            attr_accessor metadata: ::Hash[Symbol, String]
 
             attr_accessor starting_balance: Float
 
@@ -562,7 +562,7 @@ module Orb
                 ending_balance: Float,
                 entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::entry_status,
                 ledger_sequence_number: Integer,
-                metadata: Hash[Symbol, String],
+                metadata: ::Hash[Symbol, String],
                 starting_balance: Float,
                 void_amount: Float,
                 void_reason: String?,
@@ -622,7 +622,7 @@ module Orb
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> Array[Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::entry_status]
+              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::entry_status]
             end
           end
 
@@ -639,7 +639,7 @@ module Orb
               entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::entry_status,
               entry_type: :void_initiated,
               ledger_sequence_number: Integer,
-              metadata: Hash[Symbol, String],
+              metadata: ::Hash[Symbol, String],
               new_block_expiry_date: Time,
               starting_balance: Float,
               void_amount: Float,
@@ -669,7 +669,7 @@ module Orb
 
             attr_accessor ledger_sequence_number: Integer
 
-            attr_accessor metadata: Hash[Symbol, String]
+            attr_accessor metadata: ::Hash[Symbol, String]
 
             attr_accessor new_block_expiry_date: Time
 
@@ -691,7 +691,7 @@ module Orb
                 ending_balance: Float,
                 entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::entry_status,
                 ledger_sequence_number: Integer,
-                metadata: Hash[Symbol, String],
+                metadata: ::Hash[Symbol, String],
                 new_block_expiry_date: Time,
                 starting_balance: Float,
                 void_amount: Float,
@@ -752,7 +752,7 @@ module Orb
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> Array[Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::entry_status]
+              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::entry_status]
             end
           end
 
@@ -769,7 +769,7 @@ module Orb
               entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::entry_status,
               entry_type: :amendment,
               ledger_sequence_number: Integer,
-              metadata: Hash[Symbol, String],
+              metadata: ::Hash[Symbol, String],
               starting_balance: Float
             }
 
@@ -796,7 +796,7 @@ module Orb
 
             attr_accessor ledger_sequence_number: Integer
 
-            attr_accessor metadata: Hash[Symbol, String]
+            attr_accessor metadata: ::Hash[Symbol, String]
 
             attr_accessor starting_balance: Float
 
@@ -812,7 +812,7 @@ module Orb
                 ending_balance: Float,
                 entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::entry_status,
                 ledger_sequence_number: Integer,
-                metadata: Hash[Symbol, String],
+                metadata: ::Hash[Symbol, String],
                 starting_balance: Float,
                 entry_type: :amendment
               ) -> void
@@ -870,7 +870,7 @@ module Orb
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> Array[Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::entry_status]
+              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::entry_status]
             end
           end
 

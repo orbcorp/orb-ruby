@@ -6,7 +6,7 @@ module Orb
           (
             String customer_id,
             Orb::Models::Customers::BalanceTransactionCreateParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Orb::Models::Customers::BalanceTransactionCreateResponse
           | (
             String customer_id,
@@ -20,7 +20,7 @@ module Orb
           (
             String customer_id,
             ?Orb::Models::Customers::BalanceTransactionListParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Orb::Page[Orb::Models::Customers::BalanceTransactionListResponse]
           | (
             String customer_id,

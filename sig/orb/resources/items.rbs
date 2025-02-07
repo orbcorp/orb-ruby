@@ -3,7 +3,7 @@ module Orb
     class Items
       def create:
         (
-          Orb::Models::ItemCreateParams | Hash[Symbol, top] params
+          Orb::Models::ItemCreateParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::Item
         | (
           name: String,
@@ -13,18 +13,18 @@ module Orb
       def update:
         (
           String item_id,
-          ?Orb::Models::ItemUpdateParams | Hash[Symbol, top] params
+          ?Orb::Models::ItemUpdateParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::Item
         | (
           String item_id,
-          external_connections: Array[Orb::Models::ItemUpdateParams::ExternalConnection]?,
+          external_connections: ::Array[Orb::Models::ItemUpdateParams::ExternalConnection]?,
           name: String?,
           request_options: Orb::request_opts
         ) -> Orb::Models::Item
 
       def list:
         (
-          ?Orb::Models::ItemListParams | Hash[Symbol, top] params
+          ?Orb::Models::ItemListParams | ::Hash[Symbol, top] params
         ) -> Orb::Page[Orb::Models::Item]
         | (
           cursor: String?,
@@ -35,7 +35,7 @@ module Orb
       def fetch:
         (
           String item_id,
-          ?Orb::Models::ItemFetchParams | Hash[Symbol, top] params
+          ?Orb::Models::ItemFetchParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::Item
         | (
           String item_id,

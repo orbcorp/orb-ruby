@@ -5,7 +5,7 @@ module Orb
         def list:
           (
             String customer_id,
-            ?Orb::Models::Customers::CostListParams | Hash[Symbol, top] params
+            ?Orb::Models::Customers::CostListParams | ::Hash[Symbol, top] params
           ) -> Orb::Models::Customers::CostListResponse
           | (
             String customer_id,
@@ -20,7 +20,7 @@ module Orb
           (
             String external_customer_id,
             ?Orb::Models::Customers::CostListByExternalIDParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Orb::Models::Customers::CostListByExternalIDResponse
           | (
             String external_customer_id,

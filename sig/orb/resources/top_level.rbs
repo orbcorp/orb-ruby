@@ -3,7 +3,7 @@ module Orb
     class TopLevel
       def ping:
         (
-          ?Orb::Models::TopLevelPingParams | Hash[Symbol, top] params
+          ?Orb::Models::TopLevelPingParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::TopLevelPingResponse
         | (
           request_options: Orb::request_opts

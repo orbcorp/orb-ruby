@@ -3,7 +3,7 @@ module Orb
     type customer =
       {
         id: String,
-        additional_emails: Array[String],
+        additional_emails: ::Array[String],
         auto_collection: bool,
         balance: String,
         billing_address: Orb::Models::Customer::BillingAddress?,
@@ -13,7 +13,7 @@ module Orb
         email_delivery: bool,
         exempt_from_automated_tax: bool?,
         external_customer_id: String?,
-        metadata: Hash[Symbol, String],
+        metadata: ::Hash[Symbol, String],
         name: String,
         payment_provider: Orb::Models::Customer::payment_provider?,
         payment_provider_id: String?,
@@ -28,7 +28,7 @@ module Orb
     class Customer < Orb::BaseModel
       attr_accessor id: String
 
-      attr_accessor additional_emails: Array[String]
+      attr_accessor additional_emails: ::Array[String]
 
       attr_accessor auto_collection: bool
 
@@ -48,7 +48,7 @@ module Orb
 
       attr_accessor external_customer_id: String?
 
-      attr_accessor metadata: Hash[Symbol, String]
+      attr_accessor metadata: ::Hash[Symbol, String]
 
       attr_accessor name: String
 
@@ -71,7 +71,7 @@ module Orb
       def initialize:
         (
           id: String,
-          additional_emails: Array[String],
+          additional_emails: ::Array[String],
           auto_collection: bool,
           balance: String,
           billing_address: Orb::Models::Customer::BillingAddress?,
@@ -81,7 +81,7 @@ module Orb
           email_delivery: bool,
           exempt_from_automated_tax: bool?,
           external_customer_id: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           name: String,
           payment_provider: Orb::Models::Customer::payment_provider?,
           payment_provider_id: String?,
@@ -145,7 +145,7 @@ module Orb
         STRIPE_INVOICE: :stripe_invoice
         NETSUITE: :netsuite
 
-        def self.values: -> Array[Orb::Models::Customer::payment_provider]
+        def self.values: -> ::Array[Orb::Models::Customer::payment_provider]
       end
 
       type shipping_address =
@@ -371,7 +371,7 @@ module Orb
           VN: :VN
           ZA: :ZA
 
-          def self.values: -> Array[Orb::Models::Customer::TaxID::country]
+          def self.values: -> ::Array[Orb::Models::Customer::TaxID::country]
         end
 
         type type_ =
@@ -520,24 +520,24 @@ module Orb
           VN_TIN: :vn_tin
           ZA_VAT: :za_vat
 
-          def self.values: -> Array[Orb::Models::Customer::TaxID::type_]
+          def self.values: -> ::Array[Orb::Models::Customer::TaxID::type_]
         end
       end
 
       type accounting_sync_configuration =
         {
-          accounting_providers: Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider],
+          accounting_providers: ::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider],
           excluded: bool
         }
 
       class AccountingSyncConfiguration < Orb::BaseModel
-        attr_accessor accounting_providers: Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider]
+        attr_accessor accounting_providers: ::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider]
 
         attr_accessor excluded: bool
 
         def initialize:
           (
-            accounting_providers: Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider],
+            accounting_providers: ::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider],
             excluded: bool
           ) -> void
           | (
@@ -576,7 +576,7 @@ module Orb
             QUICKBOOKS: :quickbooks
             NETSUITE: :netsuite
 
-            def self.values: -> Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type]
+            def self.values: -> ::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type]
           end
         end
       end

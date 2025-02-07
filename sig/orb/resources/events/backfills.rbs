@@ -4,7 +4,8 @@ module Orb
       class Backfills
         def create:
           (
-            Orb::Models::Events::BackfillCreateParams | Hash[Symbol, top] params
+            Orb::Models::Events::BackfillCreateParams
+            | ::Hash[Symbol, top] params
           ) -> Orb::Models::Events::BackfillCreateResponse
           | (
             timeframe_end: Time,
@@ -19,7 +20,8 @@ module Orb
 
         def list:
           (
-            ?Orb::Models::Events::BackfillListParams | Hash[Symbol, top] params
+            ?Orb::Models::Events::BackfillListParams
+            | ::Hash[Symbol, top] params
           ) -> Orb::Page[Orb::Models::Events::BackfillListResponse]
           | (
             cursor: String?,
@@ -30,7 +32,8 @@ module Orb
         def close:
           (
             String backfill_id,
-            ?Orb::Models::Events::BackfillCloseParams | Hash[Symbol, top] params
+            ?Orb::Models::Events::BackfillCloseParams
+            | ::Hash[Symbol, top] params
           ) -> Orb::Models::Events::BackfillCloseResponse
           | (
             String backfill_id,
@@ -40,7 +43,8 @@ module Orb
         def fetch:
           (
             String backfill_id,
-            ?Orb::Models::Events::BackfillFetchParams | Hash[Symbol, top] params
+            ?Orb::Models::Events::BackfillFetchParams
+            | ::Hash[Symbol, top] params
           ) -> Orb::Models::Events::BackfillFetchResponse
           | (
             String backfill_id,
@@ -51,7 +55,7 @@ module Orb
           (
             String backfill_id,
             ?Orb::Models::Events::BackfillRevertParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Orb::Models::Events::BackfillRevertResponse
           | (
             String backfill_id,

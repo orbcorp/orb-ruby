@@ -6,12 +6,12 @@ module Orb
           (
             String other_external_plan_id,
             ?Orb::Models::Plans::ExternalPlanIDUpdateParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Orb::Models::Plan
           | (
             String other_external_plan_id,
             external_plan_id: String?,
-            metadata: Hash[Symbol, String?]?,
+            metadata: ::Hash[Symbol, String?]?,
             request_options: Orb::request_opts
           ) -> Orb::Models::Plan
 
@@ -19,7 +19,7 @@ module Orb
           (
             String external_plan_id,
             ?Orb::Models::Plans::ExternalPlanIDFetchParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Orb::Models::Plan
           | (
             String external_plan_id,
