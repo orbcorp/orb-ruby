@@ -151,102 +151,14 @@ module Orb
         def to_hash: -> Orb::Models::SubscriptionSchedulePlanChangeResponse::adjustment_interval
 
         type adjustment =
-          Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::AmountDiscountAdjustment
-          | Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PercentageDiscountAdjustment
-          | Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::UsageDiscountAdjustment
-          | Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::MinimumAdjustment
-          | Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::MaximumAdjustment
+          Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment
+          | Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment
+          | Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment
+          | Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment
+          | Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
 
         class Adjustment < Orb::Union
-          type amount_discount_adjustment =
-            {
-              id: String,
-              adjustment_type: :amount_discount,
-              amount_discount: String,
-              applies_to_price_ids: ::Array[String],
-              is_invoice_level: bool,
-              plan_phase_order: Integer?,
-              reason: String?
-            }
-
-          class AmountDiscountAdjustment < Orb::BaseModel
-            attr_accessor id: String
-
-            attr_accessor adjustment_type: :amount_discount
-
-            attr_accessor amount_discount: String
-
-            attr_accessor applies_to_price_ids: ::Array[String]
-
-            attr_accessor is_invoice_level: bool
-
-            attr_accessor plan_phase_order: Integer?
-
-            attr_accessor reason: String?
-
-            def initialize:
-              (
-                id: String,
-                amount_discount: String,
-                applies_to_price_ids: ::Array[String],
-                is_invoice_level: bool,
-                plan_phase_order: Integer?,
-                reason: String?,
-                adjustment_type: :amount_discount
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::amount_discount_adjustment
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::amount_discount_adjustment
-          end
-
-          type percentage_discount_adjustment =
-            {
-              id: String,
-              adjustment_type: :percentage_discount,
-              applies_to_price_ids: ::Array[String],
-              is_invoice_level: bool,
-              percentage_discount: Float,
-              plan_phase_order: Integer?,
-              reason: String?
-            }
-
-          class PercentageDiscountAdjustment < Orb::BaseModel
-            attr_accessor id: String
-
-            attr_accessor adjustment_type: :percentage_discount
-
-            attr_accessor applies_to_price_ids: ::Array[String]
-
-            attr_accessor is_invoice_level: bool
-
-            attr_accessor percentage_discount: Float
-
-            attr_accessor plan_phase_order: Integer?
-
-            attr_accessor reason: String?
-
-            def initialize:
-              (
-                id: String,
-                applies_to_price_ids: ::Array[String],
-                is_invoice_level: bool,
-                percentage_discount: Float,
-                plan_phase_order: Integer?,
-                reason: String?,
-                adjustment_type: :percentage_discount
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::percentage_discount_adjustment
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::percentage_discount_adjustment
-          end
-
-          type usage_discount_adjustment =
+          type plan_phase_usage_discount_adjustment =
             {
               id: String,
               adjustment_type: :usage_discount,
@@ -257,7 +169,7 @@ module Orb
               usage_discount: Float
             }
 
-          class UsageDiscountAdjustment < Orb::BaseModel
+          class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :usage_discount
@@ -283,14 +195,102 @@ module Orb
                 adjustment_type: :usage_discount
               ) -> void
               | (
-                ?Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::usage_discount_adjustment
+                ?Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::plan_phase_usage_discount_adjustment
                 | Orb::BaseModel data
               ) -> void
 
-            def to_hash: -> Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::usage_discount_adjustment
+            def to_hash: -> Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::plan_phase_usage_discount_adjustment
           end
 
-          type minimum_adjustment =
+          type plan_phase_amount_discount_adjustment =
+            {
+              id: String,
+              adjustment_type: :amount_discount,
+              amount_discount: String,
+              applies_to_price_ids: ::Array[String],
+              is_invoice_level: bool,
+              plan_phase_order: Integer?,
+              reason: String?
+            }
+
+          class PlanPhaseAmountDiscountAdjustment < Orb::BaseModel
+            attr_accessor id: String
+
+            attr_accessor adjustment_type: :amount_discount
+
+            attr_accessor amount_discount: String
+
+            attr_accessor applies_to_price_ids: ::Array[String]
+
+            attr_accessor is_invoice_level: bool
+
+            attr_accessor plan_phase_order: Integer?
+
+            attr_accessor reason: String?
+
+            def initialize:
+              (
+                id: String,
+                amount_discount: String,
+                applies_to_price_ids: ::Array[String],
+                is_invoice_level: bool,
+                plan_phase_order: Integer?,
+                reason: String?,
+                adjustment_type: :amount_discount
+              ) -> void
+              | (
+                ?Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::plan_phase_amount_discount_adjustment
+                | Orb::BaseModel data
+              ) -> void
+
+            def to_hash: -> Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::plan_phase_amount_discount_adjustment
+          end
+
+          type plan_phase_percentage_discount_adjustment =
+            {
+              id: String,
+              adjustment_type: :percentage_discount,
+              applies_to_price_ids: ::Array[String],
+              is_invoice_level: bool,
+              percentage_discount: Float,
+              plan_phase_order: Integer?,
+              reason: String?
+            }
+
+          class PlanPhasePercentageDiscountAdjustment < Orb::BaseModel
+            attr_accessor id: String
+
+            attr_accessor adjustment_type: :percentage_discount
+
+            attr_accessor applies_to_price_ids: ::Array[String]
+
+            attr_accessor is_invoice_level: bool
+
+            attr_accessor percentage_discount: Float
+
+            attr_accessor plan_phase_order: Integer?
+
+            attr_accessor reason: String?
+
+            def initialize:
+              (
+                id: String,
+                applies_to_price_ids: ::Array[String],
+                is_invoice_level: bool,
+                percentage_discount: Float,
+                plan_phase_order: Integer?,
+                reason: String?,
+                adjustment_type: :percentage_discount
+              ) -> void
+              | (
+                ?Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::plan_phase_percentage_discount_adjustment
+                | Orb::BaseModel data
+              ) -> void
+
+            def to_hash: -> Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::plan_phase_percentage_discount_adjustment
+          end
+
+          type plan_phase_minimum_adjustment =
             {
               id: String,
               adjustment_type: :minimum,
@@ -302,7 +302,7 @@ module Orb
               reason: String?
             }
 
-          class MinimumAdjustment < Orb::BaseModel
+          class PlanPhaseMinimumAdjustment < Orb::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :minimum
@@ -331,14 +331,14 @@ module Orb
                 adjustment_type: :minimum
               ) -> void
               | (
-                ?Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::minimum_adjustment
+                ?Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::plan_phase_minimum_adjustment
                 | Orb::BaseModel data
               ) -> void
 
-            def to_hash: -> Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::minimum_adjustment
+            def to_hash: -> Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::plan_phase_minimum_adjustment
           end
 
-          type maximum_adjustment =
+          type plan_phase_maximum_adjustment =
             {
               id: String,
               adjustment_type: :maximum,
@@ -349,7 +349,7 @@ module Orb
               reason: String?
             }
 
-          class MaximumAdjustment < Orb::BaseModel
+          class PlanPhaseMaximumAdjustment < Orb::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :maximum
@@ -375,14 +375,14 @@ module Orb
                 adjustment_type: :maximum
               ) -> void
               | (
-                ?Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::maximum_adjustment
+                ?Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::plan_phase_maximum_adjustment
                 | Orb::BaseModel data
               ) -> void
 
-            def to_hash: -> Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::maximum_adjustment
+            def to_hash: -> Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::plan_phase_maximum_adjustment
           end
 
-          private def self.variants: -> [[:amount_discount, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::AmountDiscountAdjustment], [:percentage_discount, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PercentageDiscountAdjustment], [:usage_discount, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::UsageDiscountAdjustment], [:minimum, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::MinimumAdjustment], [:maximum, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::MaximumAdjustment]]
+          private def self.variants: -> [[:usage_discount, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment], [:amount_discount, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment], [:percentage_discount, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment], [:minimum, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment], [:maximum, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]]
         end
       end
 

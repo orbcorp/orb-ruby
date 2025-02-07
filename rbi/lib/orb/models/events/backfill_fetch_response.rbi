@@ -19,6 +19,9 @@ module Orb
         sig { returns(Integer) }
         attr_accessor :events_ingested
 
+        sig { returns(T::Boolean) }
+        attr_accessor :replace_existing_events
+
         sig { returns(T.nilable(Time)) }
         attr_accessor :reverted_at
 
@@ -41,6 +44,7 @@ module Orb
             created_at: Time,
             customer_id: T.nilable(String),
             events_ingested: Integer,
+            replace_existing_events: T::Boolean,
             reverted_at: T.nilable(Time),
             status: Symbol,
             timeframe_end: Time,
@@ -54,6 +58,7 @@ module Orb
           created_at:,
           customer_id:,
           events_ingested:,
+          replace_existing_events:,
           reverted_at:,
           status:,
           timeframe_end:,
@@ -70,6 +75,7 @@ module Orb
               created_at: Time,
               customer_id: T.nilable(String),
               events_ingested: Integer,
+              replace_existing_events: T::Boolean,
               reverted_at: T.nilable(Time),
               status: Symbol,
               timeframe_end: Time,
