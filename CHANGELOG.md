@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2025-02-07)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Features
+
+* **api:** api update ([#20](https://github.com/orbcorp/orb-ruby/issues/20)) ([42c0f92](https://github.com/orbcorp/orb-ruby/commit/42c0f9247cb57c4d6654b596261612c1a6dafbd0))
+* bundle typing manifests with gem release ([#17](https://github.com/orbcorp/orb-ruby/issues/17)) ([68023cc](https://github.com/orbcorp/orb-ruby/commit/68023ccc8969d72343cb78714878f908aa15627a))
+
+
+### Chores
+
+* do not git ignore `bin/` ([#16](https://github.com/orbcorp/orb-ruby/issues/16)) ([fc125dd](https://github.com/orbcorp/orb-ruby/commit/fc125dd7dc0ba99427bba5779d115d5231c9999c))
+* fully qualify `Array` and `Hash` in rbs files to avoid collisions ([#19](https://github.com/orbcorp/orb-ruby/issues/19)) ([291a741](https://github.com/orbcorp/orb-ruby/commit/291a741ba6f569df26328854a3a951502a652fae))
+* **internal:** codegen related update ([#18](https://github.com/orbcorp/orb-ruby/issues/18)) ([88b565d](https://github.com/orbcorp/orb-ruby/commit/88b565db466d101670a2951ba881e24304ce633a))
+* **internal:** version bump ([#14](https://github.com/orbcorp/orb-ruby/issues/14)) ([338b17a](https://github.com/orbcorp/orb-ruby/commit/338b17ad3c66fa1641fc51860b6845b8606652c5))
+
 ## 0.1.0-alpha.4 (2025-02-06)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
