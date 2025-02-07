@@ -8,6 +8,7 @@ module Orb
           created_at: Time,
           customer_id: String?,
           events_ingested: Integer,
+          replace_existing_events: bool,
           reverted_at: Time?,
           status: Orb::Models::Events::BackfillListResponse::status,
           timeframe_end: Time,
@@ -26,6 +27,8 @@ module Orb
 
         attr_accessor events_ingested: Integer
 
+        attr_accessor replace_existing_events: bool
+
         attr_accessor reverted_at: Time?
 
         attr_accessor status: Orb::Models::Events::BackfillListResponse::status
@@ -43,6 +46,7 @@ module Orb
             created_at: Time,
             customer_id: String?,
             events_ingested: Integer,
+            replace_existing_events: bool,
             reverted_at: Time?,
             status: Orb::Models::Events::BackfillListResponse::status,
             timeframe_end: Time,

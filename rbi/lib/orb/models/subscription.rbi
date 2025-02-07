@@ -191,11 +191,11 @@ module Orb
         sig do
           returns(
             T.any(
-              Orb::Models::Subscription::AdjustmentInterval::Adjustment::AmountDiscountAdjustment,
-              Orb::Models::Subscription::AdjustmentInterval::Adjustment::PercentageDiscountAdjustment,
-              Orb::Models::Subscription::AdjustmentInterval::Adjustment::UsageDiscountAdjustment,
-              Orb::Models::Subscription::AdjustmentInterval::Adjustment::MinimumAdjustment,
-              Orb::Models::Subscription::AdjustmentInterval::Adjustment::MaximumAdjustment
+              Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment,
+              Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment,
+              Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment,
+              Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment,
+              Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
             )
           )
         end
@@ -214,7 +214,7 @@ module Orb
           params(
             id: String,
             adjustment: T.any(
-              Orb::Models::Subscription::AdjustmentInterval::Adjustment::AmountDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PercentageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::UsageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::MinimumAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::MaximumAdjustment
+              Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
             ),
             applies_to_price_interval_ids: T::Array[String],
             end_date: T.nilable(Time),
@@ -229,7 +229,7 @@ module Orb
             {
               id: String,
               adjustment: T.any(
-                Orb::Models::Subscription::AdjustmentInterval::Adjustment::AmountDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PercentageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::UsageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::MinimumAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::MaximumAdjustment
+                Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
               ),
               applies_to_price_interval_ids: T::Array[String],
               end_date: T.nilable(Time),
@@ -243,129 +243,7 @@ module Orb
         class Adjustment < Orb::Union
           abstract!
 
-          class AmountDiscountAdjustment < Orb::BaseModel
-            sig { returns(String) }
-            attr_accessor :id
-
-            sig { returns(Symbol) }
-            attr_accessor :adjustment_type
-
-            sig { returns(String) }
-            attr_accessor :amount_discount
-
-            sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
-
-            sig { returns(T::Boolean) }
-            attr_accessor :is_invoice_level
-
-            sig { returns(T.nilable(Integer)) }
-            attr_accessor :plan_phase_order
-
-            sig { returns(T.nilable(String)) }
-            attr_accessor :reason
-
-            sig do
-              params(
-                id: String,
-                amount_discount: String,
-                applies_to_price_ids: T::Array[String],
-                is_invoice_level: T::Boolean,
-                plan_phase_order: T.nilable(Integer),
-                reason: T.nilable(String),
-                adjustment_type: Symbol
-              ).void
-            end
-            def initialize(
-              id:,
-              amount_discount:,
-              applies_to_price_ids:,
-              is_invoice_level:,
-              plan_phase_order:,
-              reason:,
-              adjustment_type: :amount_discount
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  amount_discount: String,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  plan_phase_order: T.nilable(Integer),
-                  reason: T.nilable(String)
-                }
-              )
-            end
-            def to_hash
-            end
-          end
-
-          class PercentageDiscountAdjustment < Orb::BaseModel
-            sig { returns(String) }
-            attr_accessor :id
-
-            sig { returns(Symbol) }
-            attr_accessor :adjustment_type
-
-            sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
-
-            sig { returns(T::Boolean) }
-            attr_accessor :is_invoice_level
-
-            sig { returns(Float) }
-            attr_accessor :percentage_discount
-
-            sig { returns(T.nilable(Integer)) }
-            attr_accessor :plan_phase_order
-
-            sig { returns(T.nilable(String)) }
-            attr_accessor :reason
-
-            sig do
-              params(
-                id: String,
-                applies_to_price_ids: T::Array[String],
-                is_invoice_level: T::Boolean,
-                percentage_discount: Float,
-                plan_phase_order: T.nilable(Integer),
-                reason: T.nilable(String),
-                adjustment_type: Symbol
-              ).void
-            end
-            def initialize(
-              id:,
-              applies_to_price_ids:,
-              is_invoice_level:,
-              percentage_discount:,
-              plan_phase_order:,
-              reason:,
-              adjustment_type: :percentage_discount
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  percentage_discount: Float,
-                  plan_phase_order: T.nilable(Integer),
-                  reason: T.nilable(String)
-                }
-              )
-            end
-            def to_hash
-            end
-          end
-
-          class UsageDiscountAdjustment < Orb::BaseModel
+          class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -426,7 +304,129 @@ module Orb
             end
           end
 
-          class MinimumAdjustment < Orb::BaseModel
+          class PlanPhaseAmountDiscountAdjustment < Orb::BaseModel
+            sig { returns(String) }
+            attr_accessor :id
+
+            sig { returns(Symbol) }
+            attr_accessor :adjustment_type
+
+            sig { returns(String) }
+            attr_accessor :amount_discount
+
+            sig { returns(T::Array[String]) }
+            attr_accessor :applies_to_price_ids
+
+            sig { returns(T::Boolean) }
+            attr_accessor :is_invoice_level
+
+            sig { returns(T.nilable(Integer)) }
+            attr_accessor :plan_phase_order
+
+            sig { returns(T.nilable(String)) }
+            attr_accessor :reason
+
+            sig do
+              params(
+                id: String,
+                amount_discount: String,
+                applies_to_price_ids: T::Array[String],
+                is_invoice_level: T::Boolean,
+                plan_phase_order: T.nilable(Integer),
+                reason: T.nilable(String),
+                adjustment_type: Symbol
+              ).void
+            end
+            def initialize(
+              id:,
+              amount_discount:,
+              applies_to_price_ids:,
+              is_invoice_level:,
+              plan_phase_order:,
+              reason:,
+              adjustment_type: :amount_discount
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  adjustment_type: Symbol,
+                  amount_discount: String,
+                  applies_to_price_ids: T::Array[String],
+                  is_invoice_level: T::Boolean,
+                  plan_phase_order: T.nilable(Integer),
+                  reason: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
+          end
+
+          class PlanPhasePercentageDiscountAdjustment < Orb::BaseModel
+            sig { returns(String) }
+            attr_accessor :id
+
+            sig { returns(Symbol) }
+            attr_accessor :adjustment_type
+
+            sig { returns(T::Array[String]) }
+            attr_accessor :applies_to_price_ids
+
+            sig { returns(T::Boolean) }
+            attr_accessor :is_invoice_level
+
+            sig { returns(Float) }
+            attr_accessor :percentage_discount
+
+            sig { returns(T.nilable(Integer)) }
+            attr_accessor :plan_phase_order
+
+            sig { returns(T.nilable(String)) }
+            attr_accessor :reason
+
+            sig do
+              params(
+                id: String,
+                applies_to_price_ids: T::Array[String],
+                is_invoice_level: T::Boolean,
+                percentage_discount: Float,
+                plan_phase_order: T.nilable(Integer),
+                reason: T.nilable(String),
+                adjustment_type: Symbol
+              ).void
+            end
+            def initialize(
+              id:,
+              applies_to_price_ids:,
+              is_invoice_level:,
+              percentage_discount:,
+              plan_phase_order:,
+              reason:,
+              adjustment_type: :percentage_discount
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  adjustment_type: Symbol,
+                  applies_to_price_ids: T::Array[String],
+                  is_invoice_level: T::Boolean,
+                  percentage_discount: Float,
+                  plan_phase_order: T.nilable(Integer),
+                  reason: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
+          end
+
+          class PlanPhaseMinimumAdjustment < Orb::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -493,7 +493,7 @@ module Orb
             end
           end
 
-          class MaximumAdjustment < Orb::BaseModel
+          class PlanPhaseMaximumAdjustment < Orb::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -559,15 +559,24 @@ module Orb
               [
                 [
                   Symbol,
-                  Orb::Models::Subscription::AdjustmentInterval::Adjustment::AmountDiscountAdjustment
+                  Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment
                 ],
                 [
                   Symbol,
-                  Orb::Models::Subscription::AdjustmentInterval::Adjustment::PercentageDiscountAdjustment
+                  Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment
                 ],
-                [Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::UsageDiscountAdjustment],
-                [Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::MinimumAdjustment],
-                [Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::MaximumAdjustment]
+                [
+                  Symbol,
+                  Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment
+                ],
+                [
+                  Symbol,
+                  Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment
+                ],
+                [
+                  Symbol,
+                  Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
+                ]
               ]
             )
           end
