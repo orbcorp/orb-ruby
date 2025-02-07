@@ -6,7 +6,7 @@ module Orb
         item_id: String,
         name: String,
         sql: String,
-        metadata: Hash[Symbol, String?]?
+        metadata: ::Hash[Symbol, String?]?
       }
       & Orb::request_parameters
 
@@ -22,7 +22,7 @@ module Orb
 
       attr_accessor sql: String
 
-      attr_accessor metadata: Hash[Symbol, String?]?
+      attr_accessor metadata: ::Hash[Symbol, String?]?
 
       def initialize:
         (
@@ -30,7 +30,7 @@ module Orb
           item_id: String,
           name: String,
           sql: String,
-          metadata: Hash[Symbol, String?]?,
+          metadata: ::Hash[Symbol, String?]?,
           request_options: Orb::request_opts
         ) -> void
         | (?Orb::Models::metric_create_params | Orb::BaseModel data) -> void

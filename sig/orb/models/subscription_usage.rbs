@@ -7,15 +7,15 @@ module Orb
     class SubscriptionUsage < Orb::Union
       type ungrouped_subscription_usage =
         {
-          data: Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]
+          data: ::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]
         }
 
       class UngroupedSubscriptionUsage < Orb::BaseModel
-        attr_accessor data: Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]
+        attr_accessor data: ::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]
 
         def initialize:
           (
-            data: Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]
+            data: ::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]
           ) -> void
           | (
             ?Orb::Models::SubscriptionUsage::ungrouped_subscription_usage
@@ -27,21 +27,21 @@ module Orb
         type data =
           {
             billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric,
-            usage: Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage],
+            usage: ::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage],
             view_mode: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::view_mode
           }
 
         class Data < Orb::BaseModel
           attr_accessor billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric
 
-          attr_accessor usage: Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage]
+          attr_accessor usage: ::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage]
 
           attr_accessor view_mode: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::view_mode
 
           def initialize:
             (
               billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric,
-              usage: Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage],
+              usage: ::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage],
               view_mode: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::view_mode
             ) -> void
             | (
@@ -98,25 +98,25 @@ module Orb
             PERIODIC: :periodic
             CUMULATIVE: :cumulative
 
-            def self.values: -> Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::view_mode]
+            def self.values: -> ::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::view_mode]
           end
         end
       end
 
       type grouped_subscription_usage =
         {
-          data: Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data],
+          data: ::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data],
           pagination_metadata: Orb::Models::PaginationMetadata?
         }
 
       class GroupedSubscriptionUsage < Orb::BaseModel
-        attr_accessor data: Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data]
+        attr_accessor data: ::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data]
 
         attr_accessor pagination_metadata: Orb::Models::PaginationMetadata?
 
         def initialize:
           (
-            data: Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data],
+            data: ::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data],
             pagination_metadata: Orb::Models::PaginationMetadata?
           ) -> void
           | (
@@ -130,7 +130,7 @@ module Orb
           {
             billable_metric: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric,
             metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup,
-            usage: Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage],
+            usage: ::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage],
             view_mode: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::view_mode
           }
 
@@ -139,7 +139,7 @@ module Orb
 
           attr_accessor metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup
 
-          attr_accessor usage: Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage]
+          attr_accessor usage: ::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage]
 
           attr_accessor view_mode: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::view_mode
 
@@ -147,7 +147,7 @@ module Orb
             (
               billable_metric: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric,
               metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup,
-              usage: Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage],
+              usage: ::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage],
               view_mode: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::view_mode
             ) -> void
             | (
@@ -221,7 +221,7 @@ module Orb
             PERIODIC: :periodic
             CUMULATIVE: :cumulative
 
-            def self.values: -> Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::view_mode]
+            def self.values: -> ::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::view_mode]
           end
         end
       end

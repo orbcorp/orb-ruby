@@ -4,7 +4,7 @@ module Orb
       {
         id: String,
         created_at: Time,
-        external_connections: Array[Orb::Models::Item::ExternalConnection],
+        external_connections: ::Array[Orb::Models::Item::ExternalConnection],
         name: String
       }
 
@@ -13,7 +13,7 @@ module Orb
 
       attr_accessor created_at: Time
 
-      attr_accessor external_connections: Array[Orb::Models::Item::ExternalConnection]
+      attr_accessor external_connections: ::Array[Orb::Models::Item::ExternalConnection]
 
       attr_accessor name: String
 
@@ -21,7 +21,7 @@ module Orb
         (
           id: String,
           created_at: Time,
-          external_connections: Array[Orb::Models::Item::ExternalConnection],
+          external_connections: ::Array[Orb::Models::Item::ExternalConnection],
           name: String
         ) -> void
         | (?Orb::Models::item | Orb::BaseModel data) -> void
@@ -68,7 +68,7 @@ module Orb
           AVALARA: :avalara
           ANROK: :anrok
 
-          def self.values: -> Array[Orb::Models::Item::ExternalConnection::external_connection_name]
+          def self.values: -> ::Array[Orb::Models::Item::ExternalConnection::external_connection_name]
         end
       end
     end

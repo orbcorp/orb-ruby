@@ -63,7 +63,7 @@ module Orb
           PENDING_REVERT: :pending_revert
           REVERTED: :reverted
 
-          def self.values: -> Array[Orb::Models::Events::BackfillCloseResponse::status]
+          def self.values: -> ::Array[Orb::Models::Events::BackfillCloseResponse::status]
         end
       end
     end

@@ -76,7 +76,7 @@ module Orb
           CREDIT_NOTE_VOIDED: :credit_note_voided
           OVERPAYMENT_REFUND: :overpayment_refund
 
-          def self.values: -> Array[Orb::Models::Customers::BalanceTransactionListResponse::action]
+          def self.values: -> ::Array[Orb::Models::Customers::BalanceTransactionListResponse::action]
         end
 
         type credit_note = { id: String }
@@ -115,7 +115,7 @@ module Orb
           INCREMENT: :increment
           DECREMENT: :decrement
 
-          def self.values: -> Array[Orb::Models::Customers::BalanceTransactionListResponse::type_]
+          def self.values: -> ::Array[Orb::Models::Customers::BalanceTransactionListResponse::type_]
         end
       end
     end

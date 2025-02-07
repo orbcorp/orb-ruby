@@ -10,7 +10,7 @@ module Orb
         metric: Orb::Models::Alert::Metric?,
         plan: Orb::Models::Alert::Plan?,
         subscription: Orb::Models::Alert::Subscription?,
-        thresholds: Array[Orb::Models::Alert::Threshold]?,
+        thresholds: ::Array[Orb::Models::Alert::Threshold]?,
         type: Orb::Models::Alert::type_
       }
 
@@ -31,7 +31,7 @@ module Orb
 
       attr_accessor subscription: Orb::Models::Alert::Subscription?
 
-      attr_accessor thresholds: Array[Orb::Models::Alert::Threshold]?
+      attr_accessor thresholds: ::Array[Orb::Models::Alert::Threshold]?
 
       attr_accessor type: Orb::Models::Alert::type_
 
@@ -45,7 +45,7 @@ module Orb
           metric: Orb::Models::Alert::Metric?,
           plan: Orb::Models::Alert::Plan?,
           subscription: Orb::Models::Alert::Subscription?,
-          thresholds: Array[Orb::Models::Alert::Threshold]?,
+          thresholds: ::Array[Orb::Models::Alert::Threshold]?,
           type: Orb::Models::Alert::type_
         ) -> void
         | (?Orb::Models::alert | Orb::BaseModel data) -> void
@@ -145,7 +145,7 @@ module Orb
         CREDIT_BALANCE_DROPPED: :credit_balance_dropped
         CREDIT_BALANCE_RECOVERED: :credit_balance_recovered
 
-        def self.values: -> Array[Orb::Models::Alert::type_]
+        def self.values: -> ::Array[Orb::Models::Alert::type_]
       end
     end
   end

@@ -2,13 +2,15 @@ module Orb
   module Models
     module Customers
       type cost_list_response =
-        { data: Array[Orb::Models::Customers::CostListResponse::Data] }
+        { data: ::Array[Orb::Models::Customers::CostListResponse::Data] }
 
       class CostListResponse < Orb::BaseModel
-        attr_accessor data: Array[Orb::Models::Customers::CostListResponse::Data]
+        attr_accessor data: ::Array[Orb::Models::Customers::CostListResponse::Data]
 
         def initialize:
-          (data: Array[Orb::Models::Customers::CostListResponse::Data]) -> void
+          (
+            data: ::Array[Orb::Models::Customers::CostListResponse::Data]
+          ) -> void
           | (
             ?Orb::Models::Customers::cost_list_response | Orb::BaseModel data
           ) -> void
@@ -17,7 +19,7 @@ module Orb
 
         type data =
           {
-            per_price_costs: Array[Orb::Models::Customers::CostListResponse::Data::PerPriceCost],
+            per_price_costs: ::Array[Orb::Models::Customers::CostListResponse::Data::PerPriceCost],
             subtotal: String,
             timeframe_end: Time,
             timeframe_start: Time,
@@ -25,7 +27,7 @@ module Orb
           }
 
         class Data < Orb::BaseModel
-          attr_accessor per_price_costs: Array[Orb::Models::Customers::CostListResponse::Data::PerPriceCost]
+          attr_accessor per_price_costs: ::Array[Orb::Models::Customers::CostListResponse::Data::PerPriceCost]
 
           attr_accessor subtotal: String
 
@@ -37,7 +39,7 @@ module Orb
 
           def initialize:
             (
-              per_price_costs: Array[Orb::Models::Customers::CostListResponse::Data::PerPriceCost],
+              per_price_costs: ::Array[Orb::Models::Customers::CostListResponse::Data::PerPriceCost],
               subtotal: String,
               timeframe_end: Time,
               timeframe_start: Time,

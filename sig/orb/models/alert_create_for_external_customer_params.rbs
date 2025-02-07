@@ -4,7 +4,7 @@ module Orb
       {
         currency: String,
         type: Orb::Models::AlertCreateForExternalCustomerParams::type_,
-        thresholds: Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold]?
+        thresholds: ::Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold]?
       }
       & Orb::request_parameters
 
@@ -16,13 +16,13 @@ module Orb
 
       attr_accessor type: Orb::Models::AlertCreateForExternalCustomerParams::type_
 
-      attr_accessor thresholds: Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold]?
+      attr_accessor thresholds: ::Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold]?
 
       def initialize:
         (
           currency: String,
           type: Orb::Models::AlertCreateForExternalCustomerParams::type_,
-          thresholds: Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold]?,
+          thresholds: ::Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold]?,
           request_options: Orb::request_opts
         ) -> void
         | (
@@ -46,7 +46,7 @@ module Orb
         CREDIT_BALANCE_DROPPED: :credit_balance_dropped
         CREDIT_BALANCE_RECOVERED: :credit_balance_recovered
 
-        def self.values: -> Array[Orb::Models::AlertCreateForExternalCustomerParams::type_]
+        def self.values: -> ::Array[Orb::Models::AlertCreateForExternalCustomerParams::type_]
       end
 
       type threshold = { value: Float }

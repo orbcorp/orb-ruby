@@ -3,10 +3,10 @@ module Orb
     class CreditNotes
       def create:
         (
-          Orb::Models::CreditNoteCreateParams | Hash[Symbol, top] params
+          Orb::Models::CreditNoteCreateParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::CreditNote
         | (
-          line_items: Array[Orb::Models::CreditNoteCreateParams::LineItem],
+          line_items: ::Array[Orb::Models::CreditNoteCreateParams::LineItem],
           memo: String?,
           reason: Orb::Models::CreditNoteCreateParams::reason?,
           request_options: Orb::request_opts
@@ -14,7 +14,7 @@ module Orb
 
       def list:
         (
-          ?Orb::Models::CreditNoteListParams | Hash[Symbol, top] params
+          ?Orb::Models::CreditNoteListParams | ::Hash[Symbol, top] params
         ) -> Orb::Page[Orb::Models::CreditNote]
         | (
           cursor: String?,
@@ -25,7 +25,7 @@ module Orb
       def fetch:
         (
           String credit_note_id,
-          ?Orb::Models::CreditNoteFetchParams | Hash[Symbol, top] params
+          ?Orb::Models::CreditNoteFetchParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::CreditNote
         | (
           String credit_note_id,

@@ -4,13 +4,13 @@ module Orb
       {
         currency: String,
         invoice_date: Time,
-        line_items: Array[Orb::Models::InvoiceCreateParams::LineItem],
+        line_items: ::Array[Orb::Models::InvoiceCreateParams::LineItem],
         net_terms: Integer,
         customer_id: String?,
         discount: Orb::Models::discount?,
         external_customer_id: String?,
         memo: String?,
-        metadata: Hash[Symbol, String?]?,
+        metadata: ::Hash[Symbol, String?]?,
         will_auto_issue: bool
       }
       & Orb::request_parameters
@@ -23,7 +23,7 @@ module Orb
 
       attr_accessor invoice_date: Time
 
-      attr_accessor line_items: Array[Orb::Models::InvoiceCreateParams::LineItem]
+      attr_accessor line_items: ::Array[Orb::Models::InvoiceCreateParams::LineItem]
 
       attr_accessor net_terms: Integer
 
@@ -35,7 +35,7 @@ module Orb
 
       attr_accessor memo: String?
 
-      attr_accessor metadata: Hash[Symbol, String?]?
+      attr_accessor metadata: ::Hash[Symbol, String?]?
 
       attr_reader will_auto_issue: bool?
 
@@ -45,13 +45,13 @@ module Orb
         (
           currency: String,
           invoice_date: Time,
-          line_items: Array[Orb::Models::InvoiceCreateParams::LineItem],
+          line_items: ::Array[Orb::Models::InvoiceCreateParams::LineItem],
           net_terms: Integer,
           customer_id: String?,
           discount: Orb::Models::discount?,
           external_customer_id: String?,
           memo: String?,
-          metadata: Hash[Symbol, String?]?,
+          metadata: ::Hash[Symbol, String?]?,
           will_auto_issue: bool,
           request_options: Orb::request_opts
         ) -> void
@@ -106,7 +106,7 @@ module Orb
         class ModelType < Orb::Enum
           UNIT: :unit
 
-          def self.values: -> Array[Orb::Models::InvoiceCreateParams::LineItem::model_type]
+          def self.values: -> ::Array[Orb::Models::InvoiceCreateParams::LineItem::model_type]
         end
 
         type unit_config = { unit_amount: String }

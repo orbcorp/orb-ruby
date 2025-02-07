@@ -70,7 +70,7 @@ module Orb
             COMMITTED: :committed
             PENDING: :pending
 
-            def self.values: -> Array[Orb::Models::Customers::Credits::LedgerListByExternalIDParams::entry_status]
+            def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListByExternalIDParams::entry_status]
           end
 
           type entry_type =
@@ -91,7 +91,7 @@ module Orb
             VOID_INITIATED: :void_initiated
             AMENDMENT: :amendment
 
-            def self.values: -> Array[Orb::Models::Customers::Credits::LedgerListByExternalIDParams::entry_type]
+            def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListByExternalIDParams::entry_type]
           end
         end
       end

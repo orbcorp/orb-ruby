@@ -64,7 +64,7 @@ module Orb
       class Granularity < Orb::Enum
         DAY: :day
 
-        def self.values: -> Array[Orb::Models::SubscriptionFetchUsageParams::granularity]
+        def self.values: -> ::Array[Orb::Models::SubscriptionFetchUsageParams::granularity]
       end
 
       type view_mode = :periodic | :cumulative
@@ -73,7 +73,7 @@ module Orb
         PERIODIC: :periodic
         CUMULATIVE: :cumulative
 
-        def self.values: -> Array[Orb::Models::SubscriptionFetchUsageParams::view_mode]
+        def self.values: -> ::Array[Orb::Models::SubscriptionFetchUsageParams::view_mode]
       end
     end
   end

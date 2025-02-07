@@ -6,7 +6,7 @@ module Orb
       START_OF_TERM: :start_of_term
       END_OF_TERM: :end_of_term
 
-      def self.values: -> Array[Orb::Models::billing_cycle_relative_date]
+      def self.values: -> ::Array[Orb::Models::billing_cycle_relative_date]
     end
   end
 end

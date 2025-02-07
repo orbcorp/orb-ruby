@@ -1,13 +1,13 @@
 module Orb
   module Models
     type event_search_response =
-      { data: Array[Orb::Models::EventSearchResponse::Data] }
+      { data: ::Array[Orb::Models::EventSearchResponse::Data] }
 
     class EventSearchResponse < Orb::BaseModel
-      attr_accessor data: Array[Orb::Models::EventSearchResponse::Data]
+      attr_accessor data: ::Array[Orb::Models::EventSearchResponse::Data]
 
       def initialize:
-        (data: Array[Orb::Models::EventSearchResponse::Data]) -> void
+        (data: ::Array[Orb::Models::EventSearchResponse::Data]) -> void
         | (?Orb::Models::event_search_response | Orb::BaseModel data) -> void
 
       def to_hash: -> Orb::Models::event_search_response

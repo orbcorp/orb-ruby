@@ -47,7 +47,7 @@ module Orb
           item: Orb::Models::Price::UnitPrice::Item,
           maximum: Orb::Models::Price::UnitPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::UnitPrice::Minimum?,
           minimum_amount: String?,
           model_type: :unit,
@@ -89,7 +89,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::UnitPrice::Minimum?
 
@@ -124,7 +124,7 @@ module Orb
             item: Orb::Models::Price::UnitPrice::Item,
             maximum: Orb::Models::Price::UnitPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::UnitPrice::Minimum?,
             minimum_amount: String?,
             name: String,
@@ -182,7 +182,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::UnitPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::UnitPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -197,7 +197,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::UnitPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::UnitPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -246,7 +246,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -267,16 +267,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -287,16 +287,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -312,7 +312,7 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::UnitPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::UnitPrice::price_type]
         end
 
         type unit_config = { unit_amount: String }
@@ -331,18 +331,18 @@ module Orb
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -371,7 +371,7 @@ module Orb
           item: Orb::Models::Price::PackagePrice::Item,
           maximum: Orb::Models::Price::PackagePrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::PackagePrice::Minimum?,
           minimum_amount: String?,
           model_type: :package,
@@ -413,7 +413,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::PackagePrice::Minimum?
 
@@ -448,7 +448,7 @@ module Orb
             item: Orb::Models::Price::PackagePrice::Item,
             maximum: Orb::Models::Price::PackagePrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::PackagePrice::Minimum?,
             minimum_amount: String?,
             name: String,
@@ -506,7 +506,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::PackagePrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::PackagePrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -521,7 +521,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::PackagePrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::PackagePrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -570,7 +570,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -591,16 +591,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -611,16 +611,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -653,23 +653,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::PackagePrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::PackagePrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -699,7 +699,7 @@ module Orb
           matrix_config: Orb::Models::Price::MatrixPrice::MatrixConfig,
           maximum: Orb::Models::Price::MatrixPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::MatrixPrice::Minimum?,
           minimum_amount: String?,
           model_type: :matrix,
@@ -742,7 +742,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::MatrixPrice::Minimum?
 
@@ -776,7 +776,7 @@ module Orb
             matrix_config: Orb::Models::Price::MatrixPrice::MatrixConfig,
             maximum: Orb::Models::Price::MatrixPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::MatrixPrice::Minimum?,
             minimum_amount: String?,
             name: String,
@@ -833,7 +833,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::MatrixPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::MatrixPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -848,7 +848,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::MatrixPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::MatrixPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -897,7 +897,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -920,22 +920,22 @@ module Orb
         type matrix_config =
           {
             default_unit_amount: String,
-            dimensions: Array[String?],
-            matrix_values: Array[Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue]
+            dimensions: ::Array[String?],
+            matrix_values: ::Array[Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue]
           }
 
         class MatrixConfig < Orb::BaseModel
           attr_accessor default_unit_amount: String
 
-          attr_accessor dimensions: Array[String?]
+          attr_accessor dimensions: ::Array[String?]
 
-          attr_accessor matrix_values: Array[Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue]
+          attr_accessor matrix_values: ::Array[Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue]
 
           def initialize:
             (
               default_unit_amount: String,
-              dimensions: Array[String?],
-              matrix_values: Array[Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue]
+              dimensions: ::Array[String?],
+              matrix_values: ::Array[Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue]
             ) -> void
             | (
               ?Orb::Models::Price::MatrixPrice::matrix_config
@@ -945,15 +945,15 @@ module Orb
           def to_hash: -> Orb::Models::Price::MatrixPrice::matrix_config
 
           type matrix_value =
-            { dimension_values: Array[String?], unit_amount: String }
+            { dimension_values: ::Array[String?], unit_amount: String }
 
           class MatrixValue < Orb::BaseModel
-            attr_accessor dimension_values: Array[String?]
+            attr_accessor dimension_values: ::Array[String?]
 
             attr_accessor unit_amount: String
 
             def initialize:
-              (dimension_values: Array[String?], unit_amount: String) -> void
+              (dimension_values: ::Array[String?], unit_amount: String) -> void
               | (
                 ?Orb::Models::Price::MatrixPrice::MatrixConfig::matrix_value
                 | Orb::BaseModel data
@@ -964,16 +964,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -984,16 +984,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -1009,23 +1009,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::MatrixPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::MatrixPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -1054,7 +1054,7 @@ module Orb
           item: Orb::Models::Price::TieredPrice::Item,
           maximum: Orb::Models::Price::TieredPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::TieredPrice::Minimum?,
           minimum_amount: String?,
           model_type: :tiered,
@@ -1096,7 +1096,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::TieredPrice::Minimum?
 
@@ -1131,7 +1131,7 @@ module Orb
             item: Orb::Models::Price::TieredPrice::Item,
             maximum: Orb::Models::Price::TieredPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::TieredPrice::Minimum?,
             minimum_amount: String?,
             name: String,
@@ -1189,7 +1189,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::TieredPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::TieredPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -1204,7 +1204,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::TieredPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::TieredPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -1253,7 +1253,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -1274,16 +1274,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -1294,16 +1294,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -1319,18 +1319,20 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::TieredPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::TieredPrice::price_type]
         end
 
         type tiered_config =
-          { tiers: Array[Orb::Models::Price::TieredPrice::TieredConfig::Tier] }
+          {
+            tiers: ::Array[Orb::Models::Price::TieredPrice::TieredConfig::Tier]
+          }
 
         class TieredConfig < Orb::BaseModel
-          attr_accessor tiers: Array[Orb::Models::Price::TieredPrice::TieredConfig::Tier]
+          attr_accessor tiers: ::Array[Orb::Models::Price::TieredPrice::TieredConfig::Tier]
 
           def initialize:
             (
-              tiers: Array[Orb::Models::Price::TieredPrice::TieredConfig::Tier]
+              tiers: ::Array[Orb::Models::Price::TieredPrice::TieredConfig::Tier]
             ) -> void
             | (
               ?Orb::Models::Price::TieredPrice::tiered_config
@@ -1366,18 +1368,18 @@ module Orb
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -1406,7 +1408,7 @@ module Orb
           item: Orb::Models::Price::TieredBpsPrice::Item,
           maximum: Orb::Models::Price::TieredBpsPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::TieredBpsPrice::Minimum?,
           minimum_amount: String?,
           model_type: :tiered_bps,
@@ -1448,7 +1450,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::TieredBpsPrice::Minimum?
 
@@ -1483,7 +1485,7 @@ module Orb
             item: Orb::Models::Price::TieredBpsPrice::Item,
             maximum: Orb::Models::Price::TieredBpsPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::TieredBpsPrice::Minimum?,
             minimum_amount: String?,
             name: String,
@@ -1543,7 +1545,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -1558,7 +1560,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::TieredBpsPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::TieredBpsPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -1607,7 +1609,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -1628,16 +1630,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -1648,16 +1650,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -1673,20 +1675,20 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::TieredBpsPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::TieredBpsPrice::price_type]
         end
 
         type tiered_bps_config =
           {
-            tiers: Array[Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier]
+            tiers: ::Array[Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier]
           }
 
         class TieredBpsConfig < Orb::BaseModel
-          attr_accessor tiers: Array[Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier]
+          attr_accessor tiers: ::Array[Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier]
 
           def initialize:
             (
-              tiers: Array[Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier]
+              tiers: ::Array[Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier]
             ) -> void
             | (
               ?Orb::Models::Price::TieredBpsPrice::tiered_bps_config
@@ -1730,18 +1732,18 @@ module Orb
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -1771,7 +1773,7 @@ module Orb
           item: Orb::Models::Price::BpsPrice::Item,
           maximum: Orb::Models::Price::BpsPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::BpsPrice::Minimum?,
           minimum_amount: String?,
           model_type: :bps,
@@ -1814,7 +1816,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::BpsPrice::Minimum?
 
@@ -1848,7 +1850,7 @@ module Orb
             item: Orb::Models::Price::BpsPrice::Item,
             maximum: Orb::Models::Price::BpsPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::BpsPrice::Minimum?,
             minimum_amount: String?,
             name: String,
@@ -1905,7 +1907,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::BpsPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::BpsPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -1936,7 +1938,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::BpsPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::BpsPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -1985,7 +1987,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -2006,16 +2008,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -2026,16 +2028,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -2051,23 +2053,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::BpsPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::BpsPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -2097,7 +2099,7 @@ module Orb
           item: Orb::Models::Price::BulkBpsPrice::Item,
           maximum: Orb::Models::Price::BulkBpsPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::BulkBpsPrice::Minimum?,
           minimum_amount: String?,
           model_type: :bulk_bps,
@@ -2140,7 +2142,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::BulkBpsPrice::Minimum?
 
@@ -2174,7 +2176,7 @@ module Orb
             item: Orb::Models::Price::BulkBpsPrice::Item,
             maximum: Orb::Models::Price::BulkBpsPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::BulkBpsPrice::Minimum?,
             minimum_amount: String?,
             name: String,
@@ -2231,21 +2233,21 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
         type bulk_bps_config =
           {
-            tiers: Array[Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier]
+            tiers: ::Array[Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier]
           }
 
         class BulkBpsConfig < Orb::BaseModel
-          attr_accessor tiers: Array[Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier]
+          attr_accessor tiers: ::Array[Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier]
 
           def initialize:
             (
-              tiers: Array[Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier]
+              tiers: ::Array[Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier]
             ) -> void
             | (
               ?Orb::Models::Price::BulkBpsPrice::bulk_bps_config
@@ -2290,7 +2292,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::BulkBpsPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::BulkBpsPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -2339,7 +2341,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -2360,16 +2362,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -2380,16 +2382,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -2405,23 +2407,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::BulkBpsPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::BulkBpsPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -2451,7 +2453,7 @@ module Orb
           item: Orb::Models::Price::BulkPrice::Item,
           maximum: Orb::Models::Price::BulkPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::BulkPrice::Minimum?,
           minimum_amount: String?,
           model_type: :bulk,
@@ -2494,7 +2496,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::BulkPrice::Minimum?
 
@@ -2528,7 +2530,7 @@ module Orb
             item: Orb::Models::Price::BulkPrice::Item,
             maximum: Orb::Models::Price::BulkPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::BulkPrice::Minimum?,
             minimum_amount: String?,
             name: String,
@@ -2585,19 +2587,19 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::BulkPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::BulkPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
         type bulk_config =
-          { tiers: Array[Orb::Models::Price::BulkPrice::BulkConfig::Tier] }
+          { tiers: ::Array[Orb::Models::Price::BulkPrice::BulkConfig::Tier] }
 
         class BulkConfig < Orb::BaseModel
-          attr_accessor tiers: Array[Orb::Models::Price::BulkPrice::BulkConfig::Tier]
+          attr_accessor tiers: ::Array[Orb::Models::Price::BulkPrice::BulkConfig::Tier]
 
           def initialize:
             (
-              tiers: Array[Orb::Models::Price::BulkPrice::BulkConfig::Tier]
+              tiers: ::Array[Orb::Models::Price::BulkPrice::BulkConfig::Tier]
             ) -> void
             | (
               ?Orb::Models::Price::BulkPrice::bulk_config | Orb::BaseModel data
@@ -2634,7 +2636,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::BulkPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::BulkPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -2683,7 +2685,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -2704,16 +2706,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -2724,16 +2726,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -2749,23 +2751,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::BulkPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::BulkPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -2794,14 +2796,14 @@ module Orb
           item: Orb::Models::Price::ThresholdTotalAmountPrice::Item,
           maximum: Orb::Models::Price::ThresholdTotalAmountPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::ThresholdTotalAmountPrice::Minimum?,
           minimum_amount: String?,
           model_type: :threshold_total_amount,
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::ThresholdTotalAmountPrice::price_type,
-          threshold_total_amount_config: Hash[Symbol, top],
+          threshold_total_amount_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::Models::Price::ThresholdTotalAmountPrice::DimensionalPriceConfiguration?
         }
 
@@ -2836,7 +2838,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::ThresholdTotalAmountPrice::Minimum?
 
@@ -2850,7 +2852,7 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::ThresholdTotalAmountPrice::price_type
 
-        attr_accessor threshold_total_amount_config: Hash[Symbol, top]
+        attr_accessor threshold_total_amount_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::Models::Price::ThresholdTotalAmountPrice::DimensionalPriceConfiguration?
 
@@ -2871,13 +2873,13 @@ module Orb
             item: Orb::Models::Price::ThresholdTotalAmountPrice::Item,
             maximum: Orb::Models::Price::ThresholdTotalAmountPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::ThresholdTotalAmountPrice::Minimum?,
             minimum_amount: String?,
             name: String,
             plan_phase_order: Integer?,
             price_type: Orb::Models::Price::ThresholdTotalAmountPrice::price_type,
-            threshold_total_amount_config: Hash[Symbol, top],
+            threshold_total_amount_config: ::Hash[Symbol, top],
             dimensional_price_configuration: Orb::Models::Price::ThresholdTotalAmountPrice::DimensionalPriceConfiguration?,
             model_type: :threshold_total_amount
           ) -> void
@@ -2932,7 +2934,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -2947,7 +2949,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::ThresholdTotalAmountPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmountPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -2996,7 +2998,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -3018,16 +3020,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -3039,16 +3041,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -3065,23 +3067,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::ThresholdTotalAmountPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmountPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -3110,14 +3112,14 @@ module Orb
           item: Orb::Models::Price::TieredPackagePrice::Item,
           maximum: Orb::Models::Price::TieredPackagePrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::TieredPackagePrice::Minimum?,
           minimum_amount: String?,
           model_type: :tiered_package,
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredPackagePrice::price_type,
-          tiered_package_config: Hash[Symbol, top],
+          tiered_package_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::Models::Price::TieredPackagePrice::DimensionalPriceConfiguration?
         }
 
@@ -3152,7 +3154,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::TieredPackagePrice::Minimum?
 
@@ -3166,7 +3168,7 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::TieredPackagePrice::price_type
 
-        attr_accessor tiered_package_config: Hash[Symbol, top]
+        attr_accessor tiered_package_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::Models::Price::TieredPackagePrice::DimensionalPriceConfiguration?
 
@@ -3187,13 +3189,13 @@ module Orb
             item: Orb::Models::Price::TieredPackagePrice::Item,
             maximum: Orb::Models::Price::TieredPackagePrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::TieredPackagePrice::Minimum?,
             minimum_amount: String?,
             name: String,
             plan_phase_order: Integer?,
             price_type: Orb::Models::Price::TieredPackagePrice::price_type,
-            tiered_package_config: Hash[Symbol, top],
+            tiered_package_config: ::Hash[Symbol, top],
             dimensional_price_configuration: Orb::Models::Price::TieredPackagePrice::DimensionalPriceConfiguration?,
             model_type: :tiered_package
           ) -> void
@@ -3247,7 +3249,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -3262,7 +3264,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::TieredPackagePrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::TieredPackagePrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -3311,7 +3313,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -3333,16 +3335,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -3354,16 +3356,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -3380,23 +3382,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::TieredPackagePrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::TieredPackagePrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -3421,12 +3423,12 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
-          grouped_tiered_config: Hash[Symbol, top],
+          grouped_tiered_config: ::Hash[Symbol, top],
           invoicing_cycle_configuration: Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration?,
           item: Orb::Models::Price::GroupedTieredPrice::Item,
           maximum: Orb::Models::Price::GroupedTieredPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::GroupedTieredPrice::Minimum?,
           minimum_amount: String?,
           model_type: :grouped_tiered,
@@ -3459,7 +3461,7 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
-        attr_accessor grouped_tiered_config: Hash[Symbol, top]
+        attr_accessor grouped_tiered_config: ::Hash[Symbol, top]
 
         attr_accessor invoicing_cycle_configuration: Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration?
 
@@ -3469,7 +3471,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::GroupedTieredPrice::Minimum?
 
@@ -3498,12 +3500,12 @@ module Orb
             discount: Orb::Models::discount?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
-            grouped_tiered_config: Hash[Symbol, top],
+            grouped_tiered_config: ::Hash[Symbol, top],
             invoicing_cycle_configuration: Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration?,
             item: Orb::Models::Price::GroupedTieredPrice::Item,
             maximum: Orb::Models::Price::GroupedTieredPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::GroupedTieredPrice::Minimum?,
             minimum_amount: String?,
             name: String,
@@ -3562,7 +3564,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -3577,7 +3579,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::GroupedTieredPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::GroupedTieredPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -3626,7 +3628,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -3648,16 +3650,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -3669,16 +3671,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -3695,23 +3697,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::GroupedTieredPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::GroupedTieredPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -3740,14 +3742,14 @@ module Orb
           item: Orb::Models::Price::TieredWithMinimumPrice::Item,
           maximum: Orb::Models::Price::TieredWithMinimumPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::TieredWithMinimumPrice::Minimum?,
           minimum_amount: String?,
           model_type: :tiered_with_minimum,
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredWithMinimumPrice::price_type,
-          tiered_with_minimum_config: Hash[Symbol, top],
+          tiered_with_minimum_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::Models::Price::TieredWithMinimumPrice::DimensionalPriceConfiguration?
         }
 
@@ -3782,7 +3784,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::TieredWithMinimumPrice::Minimum?
 
@@ -3796,7 +3798,7 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::TieredWithMinimumPrice::price_type
 
-        attr_accessor tiered_with_minimum_config: Hash[Symbol, top]
+        attr_accessor tiered_with_minimum_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::Models::Price::TieredWithMinimumPrice::DimensionalPriceConfiguration?
 
@@ -3817,13 +3819,13 @@ module Orb
             item: Orb::Models::Price::TieredWithMinimumPrice::Item,
             maximum: Orb::Models::Price::TieredWithMinimumPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::TieredWithMinimumPrice::Minimum?,
             minimum_amount: String?,
             name: String,
             plan_phase_order: Integer?,
             price_type: Orb::Models::Price::TieredWithMinimumPrice::price_type,
-            tiered_with_minimum_config: Hash[Symbol, top],
+            tiered_with_minimum_config: ::Hash[Symbol, top],
             dimensional_price_configuration: Orb::Models::Price::TieredWithMinimumPrice::DimensionalPriceConfiguration?,
             model_type: :tiered_with_minimum
           ) -> void
@@ -3877,7 +3879,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -3892,7 +3894,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::TieredWithMinimumPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::TieredWithMinimumPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -3941,7 +3943,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -3963,16 +3965,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -3984,16 +3986,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -4010,23 +4012,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::TieredWithMinimumPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::TieredWithMinimumPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -4055,14 +4057,14 @@ module Orb
           item: Orb::Models::Price::TieredPackageWithMinimumPrice::Item,
           maximum: Orb::Models::Price::TieredPackageWithMinimumPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::TieredPackageWithMinimumPrice::Minimum?,
           minimum_amount: String?,
           model_type: :tiered_package_with_minimum,
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredPackageWithMinimumPrice::price_type,
-          tiered_package_with_minimum_config: Hash[Symbol, top],
+          tiered_package_with_minimum_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::Models::Price::TieredPackageWithMinimumPrice::DimensionalPriceConfiguration?
         }
 
@@ -4097,7 +4099,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::TieredPackageWithMinimumPrice::Minimum?
 
@@ -4111,7 +4113,7 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::TieredPackageWithMinimumPrice::price_type
 
-        attr_accessor tiered_package_with_minimum_config: Hash[Symbol, top]
+        attr_accessor tiered_package_with_minimum_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::Models::Price::TieredPackageWithMinimumPrice::DimensionalPriceConfiguration?
 
@@ -4132,13 +4134,13 @@ module Orb
             item: Orb::Models::Price::TieredPackageWithMinimumPrice::Item,
             maximum: Orb::Models::Price::TieredPackageWithMinimumPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::TieredPackageWithMinimumPrice::Minimum?,
             minimum_amount: String?,
             name: String,
             plan_phase_order: Integer?,
             price_type: Orb::Models::Price::TieredPackageWithMinimumPrice::price_type,
-            tiered_package_with_minimum_config: Hash[Symbol, top],
+            tiered_package_with_minimum_config: ::Hash[Symbol, top],
             dimensional_price_configuration: Orb::Models::Price::TieredPackageWithMinimumPrice::DimensionalPriceConfiguration?,
             model_type: :tiered_package_with_minimum
           ) -> void
@@ -4193,7 +4195,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -4208,7 +4210,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::TieredPackageWithMinimumPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimumPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -4257,7 +4259,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -4279,16 +4281,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -4300,16 +4302,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -4326,23 +4328,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::TieredPackageWithMinimumPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimumPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -4371,12 +4373,12 @@ module Orb
           item: Orb::Models::Price::PackageWithAllocationPrice::Item,
           maximum: Orb::Models::Price::PackageWithAllocationPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::PackageWithAllocationPrice::Minimum?,
           minimum_amount: String?,
           model_type: :package_with_allocation,
           name: String,
-          package_with_allocation_config: Hash[Symbol, top],
+          package_with_allocation_config: ::Hash[Symbol, top],
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::PackageWithAllocationPrice::price_type,
           dimensional_price_configuration: Orb::Models::Price::PackageWithAllocationPrice::DimensionalPriceConfiguration?
@@ -4413,7 +4415,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::PackageWithAllocationPrice::Minimum?
 
@@ -4423,7 +4425,7 @@ module Orb
 
         attr_accessor name: String
 
-        attr_accessor package_with_allocation_config: Hash[Symbol, top]
+        attr_accessor package_with_allocation_config: ::Hash[Symbol, top]
 
         attr_accessor plan_phase_order: Integer?
 
@@ -4448,11 +4450,11 @@ module Orb
             item: Orb::Models::Price::PackageWithAllocationPrice::Item,
             maximum: Orb::Models::Price::PackageWithAllocationPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::PackageWithAllocationPrice::Minimum?,
             minimum_amount: String?,
             name: String,
-            package_with_allocation_config: Hash[Symbol, top],
+            package_with_allocation_config: ::Hash[Symbol, top],
             plan_phase_order: Integer?,
             price_type: Orb::Models::Price::PackageWithAllocationPrice::price_type,
             dimensional_price_configuration: Orb::Models::Price::PackageWithAllocationPrice::DimensionalPriceConfiguration?,
@@ -4509,7 +4511,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -4524,7 +4526,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::PackageWithAllocationPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::PackageWithAllocationPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -4573,7 +4575,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -4595,16 +4597,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -4616,16 +4618,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -4642,23 +4644,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::PackageWithAllocationPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::PackageWithAllocationPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -4687,14 +4689,14 @@ module Orb
           item: Orb::Models::Price::UnitWithPercentPrice::Item,
           maximum: Orb::Models::Price::UnitWithPercentPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::UnitWithPercentPrice::Minimum?,
           minimum_amount: String?,
           model_type: :unit_with_percent,
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::UnitWithPercentPrice::price_type,
-          unit_with_percent_config: Hash[Symbol, top],
+          unit_with_percent_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::Models::Price::UnitWithPercentPrice::DimensionalPriceConfiguration?
         }
 
@@ -4729,7 +4731,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::UnitWithPercentPrice::Minimum?
 
@@ -4743,7 +4745,7 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::UnitWithPercentPrice::price_type
 
-        attr_accessor unit_with_percent_config: Hash[Symbol, top]
+        attr_accessor unit_with_percent_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::Models::Price::UnitWithPercentPrice::DimensionalPriceConfiguration?
 
@@ -4764,13 +4766,13 @@ module Orb
             item: Orb::Models::Price::UnitWithPercentPrice::Item,
             maximum: Orb::Models::Price::UnitWithPercentPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::UnitWithPercentPrice::Minimum?,
             minimum_amount: String?,
             name: String,
             plan_phase_order: Integer?,
             price_type: Orb::Models::Price::UnitWithPercentPrice::price_type,
-            unit_with_percent_config: Hash[Symbol, top],
+            unit_with_percent_config: ::Hash[Symbol, top],
             dimensional_price_configuration: Orb::Models::Price::UnitWithPercentPrice::DimensionalPriceConfiguration?,
             model_type: :unit_with_percent
           ) -> void
@@ -4824,7 +4826,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -4839,7 +4841,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::UnitWithPercentPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::UnitWithPercentPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -4888,7 +4890,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -4910,16 +4912,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -4931,16 +4933,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -4957,23 +4959,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::UnitWithPercentPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::UnitWithPercentPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -5003,7 +5005,7 @@ module Orb
           matrix_with_allocation_config: Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig,
           maximum: Orb::Models::Price::MatrixWithAllocationPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::MatrixWithAllocationPrice::Minimum?,
           minimum_amount: String?,
           model_type: :matrix_with_allocation,
@@ -5046,7 +5048,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::MatrixWithAllocationPrice::Minimum?
 
@@ -5080,7 +5082,7 @@ module Orb
             matrix_with_allocation_config: Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig,
             maximum: Orb::Models::Price::MatrixWithAllocationPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::MatrixWithAllocationPrice::Minimum?,
             minimum_amount: String?,
             name: String,
@@ -5140,7 +5142,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -5155,7 +5157,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::MatrixWithAllocationPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::MatrixWithAllocationPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -5204,7 +5206,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -5229,8 +5231,8 @@ module Orb
           {
             allocation: Float,
             default_unit_amount: String,
-            dimensions: Array[String?],
-            matrix_values: Array[Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue]
+            dimensions: ::Array[String?],
+            matrix_values: ::Array[Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue]
           }
 
         class MatrixWithAllocationConfig < Orb::BaseModel
@@ -5238,16 +5240,16 @@ module Orb
 
           attr_accessor default_unit_amount: String
 
-          attr_accessor dimensions: Array[String?]
+          attr_accessor dimensions: ::Array[String?]
 
-          attr_accessor matrix_values: Array[Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue]
+          attr_accessor matrix_values: ::Array[Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue]
 
           def initialize:
             (
               allocation: Float,
               default_unit_amount: String,
-              dimensions: Array[String?],
-              matrix_values: Array[Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue]
+              dimensions: ::Array[String?],
+              matrix_values: ::Array[Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue]
             ) -> void
             | (
               ?Orb::Models::Price::MatrixWithAllocationPrice::matrix_with_allocation_config
@@ -5257,15 +5259,15 @@ module Orb
           def to_hash: -> Orb::Models::Price::MatrixWithAllocationPrice::matrix_with_allocation_config
 
           type matrix_value =
-            { dimension_values: Array[String?], unit_amount: String }
+            { dimension_values: ::Array[String?], unit_amount: String }
 
           class MatrixValue < Orb::BaseModel
-            attr_accessor dimension_values: Array[String?]
+            attr_accessor dimension_values: ::Array[String?]
 
             attr_accessor unit_amount: String
 
             def initialize:
-              (dimension_values: Array[String?], unit_amount: String) -> void
+              (dimension_values: ::Array[String?], unit_amount: String) -> void
               | (
                 ?Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::matrix_value
                 | Orb::BaseModel data
@@ -5276,16 +5278,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -5297,16 +5299,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -5323,23 +5325,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::MatrixWithAllocationPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::MatrixWithAllocationPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -5368,14 +5370,14 @@ module Orb
           item: Orb::Models::Price::TieredWithProrationPrice::Item,
           maximum: Orb::Models::Price::TieredWithProrationPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::TieredWithProrationPrice::Minimum?,
           minimum_amount: String?,
           model_type: :tiered_with_proration,
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredWithProrationPrice::price_type,
-          tiered_with_proration_config: Hash[Symbol, top],
+          tiered_with_proration_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::Models::Price::TieredWithProrationPrice::DimensionalPriceConfiguration?
         }
 
@@ -5410,7 +5412,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::TieredWithProrationPrice::Minimum?
 
@@ -5424,7 +5426,7 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::TieredWithProrationPrice::price_type
 
-        attr_accessor tiered_with_proration_config: Hash[Symbol, top]
+        attr_accessor tiered_with_proration_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::Models::Price::TieredWithProrationPrice::DimensionalPriceConfiguration?
 
@@ -5445,13 +5447,13 @@ module Orb
             item: Orb::Models::Price::TieredWithProrationPrice::Item,
             maximum: Orb::Models::Price::TieredWithProrationPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::TieredWithProrationPrice::Minimum?,
             minimum_amount: String?,
             name: String,
             plan_phase_order: Integer?,
             price_type: Orb::Models::Price::TieredWithProrationPrice::price_type,
-            tiered_with_proration_config: Hash[Symbol, top],
+            tiered_with_proration_config: ::Hash[Symbol, top],
             dimensional_price_configuration: Orb::Models::Price::TieredWithProrationPrice::DimensionalPriceConfiguration?,
             model_type: :tiered_with_proration
           ) -> void
@@ -5506,7 +5508,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -5521,7 +5523,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::TieredWithProrationPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::TieredWithProrationPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -5570,7 +5572,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -5592,16 +5594,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -5613,16 +5615,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -5639,23 +5641,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::TieredWithProrationPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::TieredWithProrationPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -5684,14 +5686,14 @@ module Orb
           item: Orb::Models::Price::UnitWithProrationPrice::Item,
           maximum: Orb::Models::Price::UnitWithProrationPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::UnitWithProrationPrice::Minimum?,
           minimum_amount: String?,
           model_type: :unit_with_proration,
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::UnitWithProrationPrice::price_type,
-          unit_with_proration_config: Hash[Symbol, top],
+          unit_with_proration_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::Models::Price::UnitWithProrationPrice::DimensionalPriceConfiguration?
         }
 
@@ -5726,7 +5728,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::UnitWithProrationPrice::Minimum?
 
@@ -5740,7 +5742,7 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::UnitWithProrationPrice::price_type
 
-        attr_accessor unit_with_proration_config: Hash[Symbol, top]
+        attr_accessor unit_with_proration_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::Models::Price::UnitWithProrationPrice::DimensionalPriceConfiguration?
 
@@ -5761,13 +5763,13 @@ module Orb
             item: Orb::Models::Price::UnitWithProrationPrice::Item,
             maximum: Orb::Models::Price::UnitWithProrationPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::UnitWithProrationPrice::Minimum?,
             minimum_amount: String?,
             name: String,
             plan_phase_order: Integer?,
             price_type: Orb::Models::Price::UnitWithProrationPrice::price_type,
-            unit_with_proration_config: Hash[Symbol, top],
+            unit_with_proration_config: ::Hash[Symbol, top],
             dimensional_price_configuration: Orb::Models::Price::UnitWithProrationPrice::DimensionalPriceConfiguration?,
             model_type: :unit_with_proration
           ) -> void
@@ -5821,7 +5823,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -5836,7 +5838,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::UnitWithProrationPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::UnitWithProrationPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -5885,7 +5887,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -5907,16 +5909,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -5928,16 +5930,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -5954,23 +5956,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::UnitWithProrationPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::UnitWithProrationPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -5995,12 +5997,12 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
-          grouped_allocation_config: Hash[Symbol, top],
+          grouped_allocation_config: ::Hash[Symbol, top],
           invoicing_cycle_configuration: Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration?,
           item: Orb::Models::Price::GroupedAllocationPrice::Item,
           maximum: Orb::Models::Price::GroupedAllocationPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::GroupedAllocationPrice::Minimum?,
           minimum_amount: String?,
           model_type: :grouped_allocation,
@@ -6033,7 +6035,7 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
-        attr_accessor grouped_allocation_config: Hash[Symbol, top]
+        attr_accessor grouped_allocation_config: ::Hash[Symbol, top]
 
         attr_accessor invoicing_cycle_configuration: Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration?
 
@@ -6043,7 +6045,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::GroupedAllocationPrice::Minimum?
 
@@ -6072,12 +6074,12 @@ module Orb
             discount: Orb::Models::discount?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
-            grouped_allocation_config: Hash[Symbol, top],
+            grouped_allocation_config: ::Hash[Symbol, top],
             invoicing_cycle_configuration: Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration?,
             item: Orb::Models::Price::GroupedAllocationPrice::Item,
             maximum: Orb::Models::Price::GroupedAllocationPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::GroupedAllocationPrice::Minimum?,
             minimum_amount: String?,
             name: String,
@@ -6136,7 +6138,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -6151,7 +6153,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::GroupedAllocationPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::GroupedAllocationPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -6200,7 +6202,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -6222,16 +6224,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -6243,16 +6245,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -6269,23 +6271,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::GroupedAllocationPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::GroupedAllocationPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -6310,12 +6312,12 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
-          grouped_with_prorated_minimum_config: Hash[Symbol, top],
+          grouped_with_prorated_minimum_config: ::Hash[Symbol, top],
           invoicing_cycle_configuration: Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration?,
           item: Orb::Models::Price::GroupedWithProratedMinimumPrice::Item,
           maximum: Orb::Models::Price::GroupedWithProratedMinimumPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::GroupedWithProratedMinimumPrice::Minimum?,
           minimum_amount: String?,
           model_type: :grouped_with_prorated_minimum,
@@ -6348,7 +6350,7 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
-        attr_accessor grouped_with_prorated_minimum_config: Hash[Symbol, top]
+        attr_accessor grouped_with_prorated_minimum_config: ::Hash[Symbol, top]
 
         attr_accessor invoicing_cycle_configuration: Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration?
 
@@ -6358,7 +6360,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::GroupedWithProratedMinimumPrice::Minimum?
 
@@ -6387,12 +6389,12 @@ module Orb
             discount: Orb::Models::discount?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
-            grouped_with_prorated_minimum_config: Hash[Symbol, top],
+            grouped_with_prorated_minimum_config: ::Hash[Symbol, top],
             invoicing_cycle_configuration: Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration?,
             item: Orb::Models::Price::GroupedWithProratedMinimumPrice::Item,
             maximum: Orb::Models::Price::GroupedWithProratedMinimumPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::GroupedWithProratedMinimumPrice::Minimum?,
             minimum_amount: String?,
             name: String,
@@ -6452,7 +6454,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -6467,7 +6469,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::GroupedWithProratedMinimumPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimumPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -6516,7 +6518,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -6538,16 +6540,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -6559,16 +6561,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -6585,23 +6587,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::GroupedWithProratedMinimumPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimumPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -6626,12 +6628,12 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
-          grouped_with_metered_minimum_config: Hash[Symbol, top],
+          grouped_with_metered_minimum_config: ::Hash[Symbol, top],
           invoicing_cycle_configuration: Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration?,
           item: Orb::Models::Price::GroupedWithMeteredMinimumPrice::Item,
           maximum: Orb::Models::Price::GroupedWithMeteredMinimumPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::GroupedWithMeteredMinimumPrice::Minimum?,
           minimum_amount: String?,
           model_type: :grouped_with_metered_minimum,
@@ -6664,7 +6666,7 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
-        attr_accessor grouped_with_metered_minimum_config: Hash[Symbol, top]
+        attr_accessor grouped_with_metered_minimum_config: ::Hash[Symbol, top]
 
         attr_accessor invoicing_cycle_configuration: Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration?
 
@@ -6674,7 +6676,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::GroupedWithMeteredMinimumPrice::Minimum?
 
@@ -6703,12 +6705,12 @@ module Orb
             discount: Orb::Models::discount?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
-            grouped_with_metered_minimum_config: Hash[Symbol, top],
+            grouped_with_metered_minimum_config: ::Hash[Symbol, top],
             invoicing_cycle_configuration: Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration?,
             item: Orb::Models::Price::GroupedWithMeteredMinimumPrice::Item,
             maximum: Orb::Models::Price::GroupedWithMeteredMinimumPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::GroupedWithMeteredMinimumPrice::Minimum?,
             minimum_amount: String?,
             name: String,
@@ -6768,7 +6770,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -6783,7 +6785,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::GroupedWithMeteredMinimumPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimumPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -6832,7 +6834,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -6854,16 +6856,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -6875,16 +6877,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -6901,23 +6903,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::GroupedWithMeteredMinimumPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimumPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -6944,10 +6946,10 @@ module Orb
           fixed_price_quantity: Float?,
           invoicing_cycle_configuration: Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration?,
           item: Orb::Models::Price::MatrixWithDisplayNamePrice::Item,
-          matrix_with_display_name_config: Hash[Symbol, top],
+          matrix_with_display_name_config: ::Hash[Symbol, top],
           maximum: Orb::Models::Price::MatrixWithDisplayNamePrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::MatrixWithDisplayNamePrice::Minimum?,
           minimum_amount: String?,
           model_type: :matrix_with_display_name,
@@ -6984,13 +6986,13 @@ module Orb
 
         attr_accessor item: Orb::Models::Price::MatrixWithDisplayNamePrice::Item
 
-        attr_accessor matrix_with_display_name_config: Hash[Symbol, top]
+        attr_accessor matrix_with_display_name_config: ::Hash[Symbol, top]
 
         attr_accessor maximum: Orb::Models::Price::MatrixWithDisplayNamePrice::Maximum?
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::MatrixWithDisplayNamePrice::Minimum?
 
@@ -7021,10 +7023,10 @@ module Orb
             fixed_price_quantity: Float?,
             invoicing_cycle_configuration: Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration?,
             item: Orb::Models::Price::MatrixWithDisplayNamePrice::Item,
-            matrix_with_display_name_config: Hash[Symbol, top],
+            matrix_with_display_name_config: ::Hash[Symbol, top],
             maximum: Orb::Models::Price::MatrixWithDisplayNamePrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::MatrixWithDisplayNamePrice::Minimum?,
             minimum_amount: String?,
             name: String,
@@ -7084,7 +7086,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -7099,7 +7101,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::MatrixWithDisplayNamePrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayNamePrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -7148,7 +7150,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -7170,16 +7172,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -7191,16 +7193,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -7217,23 +7219,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::MatrixWithDisplayNamePrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayNamePrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -7250,7 +7252,7 @@ module Orb
           id: String,
           billable_metric: Orb::Models::Price::BulkWithProrationPrice::BillableMetric?,
           billing_cycle_configuration: Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration,
-          bulk_with_proration_config: Hash[Symbol, top],
+          bulk_with_proration_config: ::Hash[Symbol, top],
           cadence: Orb::Models::Price::BulkWithProrationPrice::cadence,
           conversion_rate: Float?,
           created_at: Time,
@@ -7263,7 +7265,7 @@ module Orb
           item: Orb::Models::Price::BulkWithProrationPrice::Item,
           maximum: Orb::Models::Price::BulkWithProrationPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::BulkWithProrationPrice::Minimum?,
           minimum_amount: String?,
           model_type: :bulk_with_proration,
@@ -7280,7 +7282,7 @@ module Orb
 
         attr_accessor billing_cycle_configuration: Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration
 
-        attr_accessor bulk_with_proration_config: Hash[Symbol, top]
+        attr_accessor bulk_with_proration_config: ::Hash[Symbol, top]
 
         attr_accessor cadence: Orb::Models::Price::BulkWithProrationPrice::cadence
 
@@ -7306,7 +7308,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::BulkWithProrationPrice::Minimum?
 
@@ -7327,7 +7329,7 @@ module Orb
             id: String,
             billable_metric: Orb::Models::Price::BulkWithProrationPrice::BillableMetric?,
             billing_cycle_configuration: Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration,
-            bulk_with_proration_config: Hash[Symbol, top],
+            bulk_with_proration_config: ::Hash[Symbol, top],
             cadence: Orb::Models::Price::BulkWithProrationPrice::cadence,
             conversion_rate: Float?,
             created_at: Time,
@@ -7340,7 +7342,7 @@ module Orb
             item: Orb::Models::Price::BulkWithProrationPrice::Item,
             maximum: Orb::Models::Price::BulkWithProrationPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::BulkWithProrationPrice::Minimum?,
             minimum_amount: String?,
             name: String,
@@ -7399,7 +7401,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -7414,7 +7416,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::BulkWithProrationPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::BulkWithProrationPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -7463,7 +7465,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -7485,16 +7487,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -7506,16 +7508,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -7532,23 +7534,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::BulkWithProrationPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::BulkWithProrationPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -7573,12 +7575,12 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
-          grouped_tiered_package_config: Hash[Symbol, top],
+          grouped_tiered_package_config: ::Hash[Symbol, top],
           invoicing_cycle_configuration: Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration?,
           item: Orb::Models::Price::GroupedTieredPackagePrice::Item,
           maximum: Orb::Models::Price::GroupedTieredPackagePrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::GroupedTieredPackagePrice::Minimum?,
           minimum_amount: String?,
           model_type: :grouped_tiered_package,
@@ -7611,7 +7613,7 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
-        attr_accessor grouped_tiered_package_config: Hash[Symbol, top]
+        attr_accessor grouped_tiered_package_config: ::Hash[Symbol, top]
 
         attr_accessor invoicing_cycle_configuration: Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration?
 
@@ -7621,7 +7623,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::GroupedTieredPackagePrice::Minimum?
 
@@ -7650,12 +7652,12 @@ module Orb
             discount: Orb::Models::discount?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
-            grouped_tiered_package_config: Hash[Symbol, top],
+            grouped_tiered_package_config: ::Hash[Symbol, top],
             invoicing_cycle_configuration: Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration?,
             item: Orb::Models::Price::GroupedTieredPackagePrice::Item,
             maximum: Orb::Models::Price::GroupedTieredPackagePrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::GroupedTieredPackagePrice::Minimum?,
             minimum_amount: String?,
             name: String,
@@ -7715,7 +7717,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -7730,7 +7732,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::GroupedTieredPackagePrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::GroupedTieredPackagePrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -7779,7 +7781,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -7801,16 +7803,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -7822,16 +7824,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -7848,23 +7850,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::GroupedTieredPackagePrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::GroupedTieredPackagePrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -7891,10 +7893,10 @@ module Orb
           fixed_price_quantity: Float?,
           invoicing_cycle_configuration: Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration?,
           item: Orb::Models::Price::MaxGroupTieredPackagePrice::Item,
-          max_group_tiered_package_config: Hash[Symbol, top],
+          max_group_tiered_package_config: ::Hash[Symbol, top],
           maximum: Orb::Models::Price::MaxGroupTieredPackagePrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::MaxGroupTieredPackagePrice::Minimum?,
           minimum_amount: String?,
           model_type: :max_group_tiered_package,
@@ -7931,13 +7933,13 @@ module Orb
 
         attr_accessor item: Orb::Models::Price::MaxGroupTieredPackagePrice::Item
 
-        attr_accessor max_group_tiered_package_config: Hash[Symbol, top]
+        attr_accessor max_group_tiered_package_config: ::Hash[Symbol, top]
 
         attr_accessor maximum: Orb::Models::Price::MaxGroupTieredPackagePrice::Maximum?
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::MaxGroupTieredPackagePrice::Minimum?
 
@@ -7968,10 +7970,10 @@ module Orb
             fixed_price_quantity: Float?,
             invoicing_cycle_configuration: Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration?,
             item: Orb::Models::Price::MaxGroupTieredPackagePrice::Item,
-            max_group_tiered_package_config: Hash[Symbol, top],
+            max_group_tiered_package_config: ::Hash[Symbol, top],
             maximum: Orb::Models::Price::MaxGroupTieredPackagePrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::MaxGroupTieredPackagePrice::Minimum?,
             minimum_amount: String?,
             name: String,
@@ -8031,7 +8033,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -8046,7 +8048,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::MaxGroupTieredPackagePrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackagePrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -8095,7 +8097,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -8117,16 +8119,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -8138,16 +8140,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -8164,23 +8166,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::MaxGroupTieredPackagePrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackagePrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -8209,14 +8211,14 @@ module Orb
           item: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Item,
           maximum: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Minimum?,
           minimum_amount: String?,
           model_type: :scalable_matrix_with_unit_pricing,
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::price_type,
-          scalable_matrix_with_unit_pricing_config: Hash[Symbol, top],
+          scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::DimensionalPriceConfiguration?
         }
 
@@ -8251,7 +8253,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Minimum?
 
@@ -8265,7 +8267,7 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::price_type
 
-        attr_accessor scalable_matrix_with_unit_pricing_config: Hash[Symbol, top]
+        attr_accessor scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::DimensionalPriceConfiguration?
 
@@ -8286,13 +8288,13 @@ module Orb
             item: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Item,
             maximum: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Minimum?,
             minimum_amount: String?,
             name: String,
             plan_phase_order: Integer?,
             price_type: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::price_type,
-            scalable_matrix_with_unit_pricing_config: Hash[Symbol, top],
+            scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
             dimensional_price_configuration: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::DimensionalPriceConfiguration?,
             model_type: :scalable_matrix_with_unit_pricing
           ) -> void
@@ -8347,7 +8349,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -8362,7 +8364,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -8411,7 +8413,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -8433,16 +8435,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -8454,16 +8456,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -8480,23 +8482,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (
@@ -8525,14 +8527,14 @@ module Orb
           item: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Item,
           maximum: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Maximum?,
           maximum_amount: String?,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           minimum: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Minimum?,
           minimum_amount: String?,
           model_type: :scalable_matrix_with_tiered_pricing,
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::price_type,
-          scalable_matrix_with_tiered_pricing_config: Hash[Symbol, top],
+          scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::DimensionalPriceConfiguration?
         }
 
@@ -8567,7 +8569,7 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor metadata: Hash[Symbol, String]
+        attr_accessor metadata: ::Hash[Symbol, String]
 
         attr_accessor minimum: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Minimum?
 
@@ -8581,7 +8583,7 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::price_type
 
-        attr_accessor scalable_matrix_with_tiered_pricing_config: Hash[Symbol, top]
+        attr_accessor scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::DimensionalPriceConfiguration?
 
@@ -8602,13 +8604,13 @@ module Orb
             item: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Item,
             maximum: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Maximum?,
             maximum_amount: String?,
-            metadata: Hash[Symbol, String],
+            metadata: ::Hash[Symbol, String],
             minimum: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Minimum?,
             minimum_amount: String?,
             name: String,
             plan_phase_order: Integer?,
             price_type: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::price_type,
-            scalable_matrix_with_tiered_pricing_config: Hash[Symbol, top],
+            scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
             dimensional_price_configuration: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::DimensionalPriceConfiguration?,
             model_type: :scalable_matrix_with_tiered_pricing
           ) -> void
@@ -8663,7 +8665,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::duration_unit]
           end
         end
 
@@ -8678,7 +8680,7 @@ module Orb
           ANNUAL: :annual
           CUSTOM: :custom
 
-          def self.values: -> Array[Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::cadence]
+          def self.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::cadence]
         end
 
         type credit_allocation = { allows_rollover: bool, currency: String }
@@ -8727,7 +8729,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::duration_unit]
+            def self.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::duration_unit]
           end
         end
 
@@ -8749,16 +8751,16 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: Array[String], maximum_amount: String }
+          { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
         class Maximum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               maximum_amount: String
             ) -> void
             | (
@@ -8770,16 +8772,16 @@ module Orb
         end
 
         type minimum =
-          { applies_to_price_ids: Array[String], minimum_amount: String }
+          { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
         class Minimum < Orb::BaseModel
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
 
           def initialize:
             (
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               minimum_amount: String
             ) -> void
             | (
@@ -8796,23 +8798,23 @@ module Orb
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
 
-          def self.values: -> Array[Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::price_type]
+          def self.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::price_type]
         end
 
         type dimensional_price_configuration =
           {
-            dimension_values: Array[String],
+            dimension_values: ::Array[String],
             dimensional_price_group_id: String
           }
 
         class DimensionalPriceConfiguration < Orb::BaseModel
-          attr_accessor dimension_values: Array[String]
+          attr_accessor dimension_values: ::Array[String]
 
           attr_accessor dimensional_price_group_id: String
 
           def initialize:
             (
-              dimension_values: Array[String],
+              dimension_values: ::Array[String],
               dimensional_price_group_id: String
             ) -> void
             | (

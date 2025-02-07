@@ -50,7 +50,7 @@ module Orb
           ACTIVE: :active
           PENDING_PAYMENT: :pending_payment
 
-          def self.values: -> Array[Orb::Models::Customers::CreditListByExternalIDResponse::status]
+          def self.values: -> ::Array[Orb::Models::Customers::CreditListByExternalIDResponse::status]
         end
       end
     end

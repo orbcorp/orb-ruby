@@ -39,7 +39,7 @@ module Orb
           INCREMENT: :increment
           DECREMENT: :decrement
 
-          def self.values: -> Array[Orb::Models::Customers::BalanceTransactionCreateParams::type_]
+          def self.values: -> ::Array[Orb::Models::Customers::BalanceTransactionCreateParams::type_]
         end
       end
     end

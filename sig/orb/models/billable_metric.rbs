@@ -5,7 +5,7 @@ module Orb
         id: String,
         description: String?,
         item: Orb::Models::Item,
-        metadata: Hash[Symbol, String],
+        metadata: ::Hash[Symbol, String],
         name: String,
         status: Orb::Models::BillableMetric::status
       }
@@ -17,7 +17,7 @@ module Orb
 
       attr_accessor item: Orb::Models::Item
 
-      attr_accessor metadata: Hash[Symbol, String]
+      attr_accessor metadata: ::Hash[Symbol, String]
 
       attr_accessor name: String
 
@@ -28,7 +28,7 @@ module Orb
           id: String,
           description: String?,
           item: Orb::Models::Item,
-          metadata: Hash[Symbol, String],
+          metadata: ::Hash[Symbol, String],
           name: String,
           status: Orb::Models::BillableMetric::status
         ) -> void
@@ -43,7 +43,7 @@ module Orb
         DRAFT: :draft
         ARCHIVED: :archived
 
-        def self.values: -> Array[Orb::Models::BillableMetric::status]
+        def self.values: -> ::Array[Orb::Models::BillableMetric::status]
       end
     end
   end
