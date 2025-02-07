@@ -11,7 +11,7 @@ module Orb
             effective_date: Time?,
             expiry_date: Time?,
             invoice_settings: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings?,
-            metadata: Hash[Symbol, String?]?,
+            metadata: ::Hash[Symbol, String?]?,
             per_unit_cost_basis: String?,
             target_expiry_date: Date,
             block_id: String,
@@ -37,7 +37,7 @@ module Orb
 
           attr_accessor invoice_settings: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings?
 
-          attr_accessor metadata: Hash[Symbol, String?]?
+          attr_accessor metadata: ::Hash[Symbol, String?]?
 
           attr_accessor per_unit_cost_basis: String?
 
@@ -58,7 +58,7 @@ module Orb
               description: String?,
               effective_date: Time?,
               invoice_settings: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               per_unit_cost_basis: String?,
               void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::void_reason?,
               request_options: Orb::request_opts
@@ -75,7 +75,7 @@ module Orb
           class EntryType < Orb::Enum
             AMENDMENT: :amendment
 
-            def self.values: -> Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::entry_type]
+            def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::entry_type]
           end
 
           type invoice_settings =
@@ -117,7 +117,7 @@ module Orb
           class VoidReason < Orb::Enum
             REFUND: :refund
 
-            def self.values: -> Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::void_reason]
+            def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::void_reason]
           end
         end
       end

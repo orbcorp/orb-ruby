@@ -5,7 +5,7 @@ module Orb
 
       def create:
         (
-          Orb::Models::CouponCreateParams | Hash[Symbol, top] params
+          Orb::Models::CouponCreateParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::Coupon
         | (
           discount: Orb::Models::CouponCreateParams::discount,
@@ -17,7 +17,7 @@ module Orb
 
       def list:
         (
-          ?Orb::Models::CouponListParams | Hash[Symbol, top] params
+          ?Orb::Models::CouponListParams | ::Hash[Symbol, top] params
         ) -> Orb::Page[Orb::Models::Coupon]
         | (
           cursor: String?,
@@ -30,7 +30,7 @@ module Orb
       def archive:
         (
           String coupon_id,
-          ?Orb::Models::CouponArchiveParams | Hash[Symbol, top] params
+          ?Orb::Models::CouponArchiveParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::Coupon
         | (
           String coupon_id,
@@ -40,7 +40,7 @@ module Orb
       def fetch:
         (
           String coupon_id,
-          ?Orb::Models::CouponFetchParams | Hash[Symbol, top] params
+          ?Orb::Models::CouponFetchParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::Coupon
         | (
           String coupon_id,

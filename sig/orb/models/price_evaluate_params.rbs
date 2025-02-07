@@ -7,7 +7,7 @@ module Orb
         customer_id: String?,
         external_customer_id: String?,
         filter: String?,
-        grouping_keys: Array[String]
+        grouping_keys: ::Array[String]
       }
       & Orb::request_parameters
 
@@ -25,9 +25,9 @@ module Orb
 
       attr_accessor filter: String?
 
-      attr_reader grouping_keys: Array[String]?
+      attr_reader grouping_keys: ::Array[String]?
 
-      def grouping_keys=: (Array[String]) -> void
+      def grouping_keys=: (::Array[String]) -> void
 
       def initialize:
         (
@@ -36,7 +36,7 @@ module Orb
           customer_id: String?,
           external_customer_id: String?,
           filter: String?,
-          grouping_keys: Array[String],
+          grouping_keys: ::Array[String],
           request_options: Orb::request_opts
         ) -> void
         | (?Orb::Models::price_evaluate_params | Orb::BaseModel data) -> void

@@ -7,7 +7,7 @@ module Orb
         created_at_lt: Time?,
         created_at_lte: Time?,
         cursor: String?,
-        customer_id: Array[String]?,
+        customer_id: ::Array[String]?,
         external_customer_id: String?,
         limit: Integer,
         status: Orb::Models::SubscriptionListParams::status?
@@ -28,7 +28,7 @@ module Orb
 
       attr_accessor cursor: String?
 
-      attr_accessor customer_id: Array[String]?
+      attr_accessor customer_id: ::Array[String]?
 
       attr_accessor external_customer_id: String?
 
@@ -45,7 +45,7 @@ module Orb
           created_at_lt: Time?,
           created_at_lte: Time?,
           cursor: String?,
-          customer_id: Array[String]?,
+          customer_id: ::Array[String]?,
           external_customer_id: String?,
           limit: Integer,
           status: Orb::Models::SubscriptionListParams::status?,
@@ -62,7 +62,7 @@ module Orb
         ENDED: :ended
         UPCOMING: :upcoming
 
-        def self.values: -> Array[Orb::Models::SubscriptionListParams::status]
+        def self.values: -> ::Array[Orb::Models::SubscriptionListParams::status]
       end
     end
   end

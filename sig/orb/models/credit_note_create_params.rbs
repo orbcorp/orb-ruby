@@ -2,7 +2,7 @@ module Orb
   module Models
     type credit_note_create_params =
       {
-        line_items: Array[Orb::Models::CreditNoteCreateParams::LineItem],
+        line_items: ::Array[Orb::Models::CreditNoteCreateParams::LineItem],
         memo: String?,
         reason: Orb::Models::CreditNoteCreateParams::reason?
       }
@@ -12,7 +12,7 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      attr_accessor line_items: Array[Orb::Models::CreditNoteCreateParams::LineItem]
+      attr_accessor line_items: ::Array[Orb::Models::CreditNoteCreateParams::LineItem]
 
       attr_accessor memo: String?
 
@@ -20,7 +20,7 @@ module Orb
 
       def initialize:
         (
-          line_items: Array[Orb::Models::CreditNoteCreateParams::LineItem],
+          line_items: ::Array[Orb::Models::CreditNoteCreateParams::LineItem],
           memo: String?,
           reason: Orb::Models::CreditNoteCreateParams::reason?,
           request_options: Orb::request_opts
@@ -57,7 +57,7 @@ module Orb
         ORDER_CHANGE: :order_change
         PRODUCT_UNSATISFACTORY: :product_unsatisfactory
 
-        def self.values: -> Array[Orb::Models::CreditNoteCreateParams::reason]
+        def self.values: -> ::Array[Orb::Models::CreditNoteCreateParams::reason]
       end
     end
   end

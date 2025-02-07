@@ -5,13 +5,13 @@ module Orb
         email: String,
         name: String,
         accounting_sync_configuration: Orb::Models::CustomerCreateParams::AccountingSyncConfiguration?,
-        additional_emails: Array[String]?,
+        additional_emails: ::Array[String]?,
         auto_collection: bool?,
         billing_address: Orb::Models::CustomerCreateParams::BillingAddress?,
         currency: String?,
         email_delivery: bool?,
         external_customer_id: String?,
-        metadata: Hash[Symbol, String?]?,
+        metadata: ::Hash[Symbol, String?]?,
         payment_provider: Orb::Models::CustomerCreateParams::payment_provider?,
         payment_provider_id: String?,
         reporting_configuration: Orb::Models::CustomerCreateParams::ReportingConfiguration?,
@@ -32,7 +32,7 @@ module Orb
 
       attr_accessor accounting_sync_configuration: Orb::Models::CustomerCreateParams::AccountingSyncConfiguration?
 
-      attr_accessor additional_emails: Array[String]?
+      attr_accessor additional_emails: ::Array[String]?
 
       attr_accessor auto_collection: bool?
 
@@ -44,7 +44,7 @@ module Orb
 
       attr_accessor external_customer_id: String?
 
-      attr_accessor metadata: Hash[Symbol, String?]?
+      attr_accessor metadata: ::Hash[Symbol, String?]?
 
       attr_accessor payment_provider: Orb::Models::CustomerCreateParams::payment_provider?
 
@@ -65,13 +65,13 @@ module Orb
           email: String,
           name: String,
           accounting_sync_configuration: Orb::Models::CustomerCreateParams::AccountingSyncConfiguration?,
-          additional_emails: Array[String]?,
+          additional_emails: ::Array[String]?,
           auto_collection: bool?,
           billing_address: Orb::Models::CustomerCreateParams::BillingAddress?,
           currency: String?,
           email_delivery: bool?,
           external_customer_id: String?,
-          metadata: Hash[Symbol, String?]?,
+          metadata: ::Hash[Symbol, String?]?,
           payment_provider: Orb::Models::CustomerCreateParams::payment_provider?,
           payment_provider_id: String?,
           reporting_configuration: Orb::Models::CustomerCreateParams::ReportingConfiguration?,
@@ -87,18 +87,18 @@ module Orb
 
       type accounting_sync_configuration =
         {
-          accounting_providers: Array[Orb::Models::CustomerCreateParams::AccountingSyncConfiguration::AccountingProvider]?,
+          accounting_providers: ::Array[Orb::Models::CustomerCreateParams::AccountingSyncConfiguration::AccountingProvider]?,
           excluded: bool?
         }
 
       class AccountingSyncConfiguration < Orb::BaseModel
-        attr_accessor accounting_providers: Array[Orb::Models::CustomerCreateParams::AccountingSyncConfiguration::AccountingProvider]?
+        attr_accessor accounting_providers: ::Array[Orb::Models::CustomerCreateParams::AccountingSyncConfiguration::AccountingProvider]?
 
         attr_accessor excluded: bool?
 
         def initialize:
           (
-            accounting_providers: Array[Orb::Models::CustomerCreateParams::AccountingSyncConfiguration::AccountingProvider]?,
+            accounting_providers: ::Array[Orb::Models::CustomerCreateParams::AccountingSyncConfiguration::AccountingProvider]?,
             excluded: bool?
           ) -> void
           | (
@@ -177,7 +177,7 @@ module Orb
         STRIPE_INVOICE: :stripe_invoice
         NETSUITE: :netsuite
 
-        def self.values: -> Array[Orb::Models::CustomerCreateParams::payment_provider]
+        def self.values: -> ::Array[Orb::Models::CustomerCreateParams::payment_provider]
       end
 
       type reporting_configuration = { exempt: bool }
@@ -475,7 +475,7 @@ module Orb
           VN: :VN
           ZA: :ZA
 
-          def self.values: -> Array[Orb::Models::CustomerCreateParams::TaxID::country]
+          def self.values: -> ::Array[Orb::Models::CustomerCreateParams::TaxID::country]
         end
 
         type type_ =
@@ -624,7 +624,7 @@ module Orb
           VN_TIN: :vn_tin
           ZA_VAT: :za_vat
 
-          def self.values: -> Array[Orb::Models::CustomerCreateParams::TaxID::type_]
+          def self.values: -> ::Array[Orb::Models::CustomerCreateParams::TaxID::type_]
         end
       end
     end

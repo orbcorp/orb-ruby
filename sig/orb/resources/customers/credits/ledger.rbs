@@ -7,7 +7,7 @@ module Orb
             (
               String customer_id,
               ?Orb::Models::Customers::Credits::LedgerListParams
-              | Hash[Symbol, top] params
+              | ::Hash[Symbol, top] params
             ) -> Orb::Page[Orb::Models::Customers::Credits::ledger_list_response]
             | (
               String customer_id,
@@ -28,7 +28,7 @@ module Orb
             (
               String customer_id,
               Orb::Models::Customers::Credits::LedgerCreateEntryParams
-              | Hash[Symbol, top] params
+              | ::Hash[Symbol, top] params
             ) -> Orb::Models::Customers::Credits::ledger_create_entry_response
             | (
               String customer_id,
@@ -41,7 +41,7 @@ module Orb
               description: String?,
               effective_date: Time?,
               invoice_settings: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               per_unit_cost_basis: String?,
               void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryParams::void_reason?,
               request_options: Orb::request_opts
@@ -51,7 +51,7 @@ module Orb
             (
               String external_customer_id,
               Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams
-              | Hash[Symbol, top] params
+              | ::Hash[Symbol, top] params
             ) -> Orb::Models::Customers::Credits::ledger_create_entry_by_external_id_response
             | (
               String external_customer_id,
@@ -64,7 +64,7 @@ module Orb
               description: String?,
               effective_date: Time?,
               invoice_settings: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings?,
-              metadata: Hash[Symbol, String?]?,
+              metadata: ::Hash[Symbol, String?]?,
               per_unit_cost_basis: String?,
               void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::void_reason?,
               request_options: Orb::request_opts
@@ -74,7 +74,7 @@ module Orb
             (
               String external_customer_id,
               ?Orb::Models::Customers::Credits::LedgerListByExternalIDParams
-              | Hash[Symbol, top] params
+              | ::Hash[Symbol, top] params
             ) -> Orb::Page[Orb::Models::Customers::Credits::ledger_list_by_external_id_response]
             | (
               String external_customer_id,

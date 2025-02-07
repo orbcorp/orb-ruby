@@ -89,7 +89,7 @@ module Orb
             DAY: :day
             MONTH: :month
 
-            def self.values: -> Array[Orb::Models::Customers::Credits::TopUpCreateResponse::expires_after_unit]
+            def self.values: -> ::Array[Orb::Models::Customers::Credits::TopUpCreateResponse::expires_after_unit]
           end
         end
       end

@@ -2,7 +2,7 @@ module Orb
   module Models
     module Plans
       type external_plan_id_update_params =
-        { external_plan_id: String?, metadata: Hash[Symbol, String?]? }
+        { external_plan_id: String?, metadata: ::Hash[Symbol, String?]? }
         & Orb::request_parameters
 
       class ExternalPlanIDUpdateParams < Orb::BaseModel
@@ -11,12 +11,12 @@ module Orb
 
         attr_accessor external_plan_id: String?
 
-        attr_accessor metadata: Hash[Symbol, String?]?
+        attr_accessor metadata: ::Hash[Symbol, String?]?
 
         def initialize:
           (
             external_plan_id: String?,
-            metadata: Hash[Symbol, String?]?,
+            metadata: ::Hash[Symbol, String?]?,
             request_options: Orb::request_opts
           ) -> void
           | (

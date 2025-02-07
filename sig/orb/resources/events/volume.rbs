@@ -4,7 +4,7 @@ module Orb
       class Volume
         def list:
           (
-            Orb::Models::Events::VolumeListParams | Hash[Symbol, top] params
+            Orb::Models::Events::VolumeListParams | ::Hash[Symbol, top] params
           ) -> Orb::Models::Events::EventVolumes
           | (
             timeframe_start: Time,

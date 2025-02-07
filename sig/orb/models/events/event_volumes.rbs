@@ -5,13 +5,13 @@ module Orb
 
     module Events
       type event_volumes =
-        { data: Array[Orb::Models::Events::EventVolumes::Data] }
+        { data: ::Array[Orb::Models::Events::EventVolumes::Data] }
 
       class EventVolumes < Orb::BaseModel
-        attr_accessor data: Array[Orb::Models::Events::EventVolumes::Data]
+        attr_accessor data: ::Array[Orb::Models::Events::EventVolumes::Data]
 
         def initialize:
-          (data: Array[Orb::Models::Events::EventVolumes::Data]) -> void
+          (data: ::Array[Orb::Models::Events::EventVolumes::Data]) -> void
           | (?Orb::Models::Events::event_volumes | Orb::BaseModel data) -> void
 
         def to_hash: -> Orb::Models::Events::event_volumes
