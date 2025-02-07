@@ -39,7 +39,7 @@ module Orb
         class UnionMember1 < Orb::Enum
           IMMEDIATE: :immediate
 
-          def self.values: -> Array[Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::union_member1]
+          def self.values: -> ::Array[Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::union_member1]
         end
 
         private def self.variants: -> [[nil, Time], [nil, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::union_member1]]

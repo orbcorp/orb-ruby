@@ -6,14 +6,14 @@ module Orb
       def create:
         (
           Orb::Models::DimensionalPriceGroupCreateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Orb::Models::DimensionalPriceGroup
         | (
           billable_metric_id: String,
-          dimensions: Array[String],
+          dimensions: ::Array[String],
           name: String,
           external_dimensional_price_group_id: String?,
-          metadata: Hash[Symbol, String?]?,
+          metadata: ::Hash[Symbol, String?]?,
           request_options: Orb::request_opts
         ) -> Orb::Models::DimensionalPriceGroup
 
@@ -21,7 +21,7 @@ module Orb
         (
           String dimensional_price_group_id,
           ?Orb::Models::DimensionalPriceGroupRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Orb::Models::DimensionalPriceGroup
         | (
           String dimensional_price_group_id,
@@ -31,7 +31,7 @@ module Orb
       def list:
         (
           ?Orb::Models::DimensionalPriceGroupListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Orb::Page[Orb::Models::DimensionalPriceGroup]
         | (
           cursor: String?,

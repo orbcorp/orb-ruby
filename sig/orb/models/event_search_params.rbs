@@ -1,14 +1,18 @@
 module Orb
   module Models
     type event_search_params =
-      { event_ids: Array[String], timeframe_end: Time?, timeframe_start: Time? }
+      {
+        event_ids: ::Array[String],
+        timeframe_end: Time?,
+        timeframe_start: Time?
+      }
       & Orb::request_parameters
 
     class EventSearchParams < Orb::BaseModel
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      attr_accessor event_ids: Array[String]
+      attr_accessor event_ids: ::Array[String]
 
       attr_accessor timeframe_end: Time?
 
@@ -16,7 +20,7 @@ module Orb
 
       def initialize:
         (
-          event_ids: Array[String],
+          event_ids: ::Array[String],
           timeframe_end: Time?,
           timeframe_start: Time?,
           request_options: Orb::request_opts

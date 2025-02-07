@@ -47,7 +47,7 @@ module Orb
         UPCOMING_INVOICE: :upcoming_invoice
         EFFECTIVE_DATE: :effective_date
 
-        def self.values: -> Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option]
+        def self.values: -> ::Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option]
       end
     end
   end

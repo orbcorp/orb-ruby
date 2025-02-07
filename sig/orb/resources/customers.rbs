@@ -9,19 +9,19 @@ module Orb
 
       def create:
         (
-          Orb::Models::CustomerCreateParams | Hash[Symbol, top] params
+          Orb::Models::CustomerCreateParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::Customer
         | (
           email: String,
           name: String,
           accounting_sync_configuration: Orb::Models::CustomerCreateParams::AccountingSyncConfiguration?,
-          additional_emails: Array[String]?,
+          additional_emails: ::Array[String]?,
           auto_collection: bool?,
           billing_address: Orb::Models::CustomerCreateParams::BillingAddress?,
           currency: String?,
           email_delivery: bool?,
           external_customer_id: String?,
-          metadata: Hash[Symbol, String?]?,
+          metadata: ::Hash[Symbol, String?]?,
           payment_provider: Orb::Models::CustomerCreateParams::payment_provider?,
           payment_provider_id: String?,
           reporting_configuration: Orb::Models::CustomerCreateParams::ReportingConfiguration?,
@@ -35,19 +35,19 @@ module Orb
       def update:
         (
           String customer_id,
-          ?Orb::Models::CustomerUpdateParams | Hash[Symbol, top] params
+          ?Orb::Models::CustomerUpdateParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::Customer
         | (
           String customer_id,
           accounting_sync_configuration: Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration?,
-          additional_emails: Array[String]?,
+          additional_emails: ::Array[String]?,
           auto_collection: bool?,
           billing_address: Orb::Models::CustomerUpdateParams::BillingAddress?,
           currency: String?,
           email: String?,
           email_delivery: bool?,
           external_customer_id: String?,
-          metadata: Hash[Symbol, String?]?,
+          metadata: ::Hash[Symbol, String?]?,
           name: String?,
           payment_provider: Orb::Models::CustomerUpdateParams::payment_provider?,
           payment_provider_id: String?,
@@ -60,7 +60,7 @@ module Orb
 
       def list:
         (
-          ?Orb::Models::CustomerListParams | Hash[Symbol, top] params
+          ?Orb::Models::CustomerListParams | ::Hash[Symbol, top] params
         ) -> Orb::Page[Orb::Models::Customer]
         | (
           created_at_gt: Time?,
@@ -75,14 +75,14 @@ module Orb
       def delete:
         (
           String customer_id,
-          ?Orb::Models::CustomerDeleteParams | Hash[Symbol, top] params
+          ?Orb::Models::CustomerDeleteParams | ::Hash[Symbol, top] params
         ) -> nil
         | (String customer_id, request_options: Orb::request_opts) -> nil
 
       def fetch:
         (
           String customer_id,
-          ?Orb::Models::CustomerFetchParams | Hash[Symbol, top] params
+          ?Orb::Models::CustomerFetchParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::Customer
         | (
           String customer_id,
@@ -93,7 +93,7 @@ module Orb
         (
           String external_customer_id,
           ?Orb::Models::CustomerFetchByExternalIDParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Orb::Models::Customer
         | (
           String external_customer_id,
@@ -104,7 +104,7 @@ module Orb
         (
           String external_customer_id,
           ?Orb::Models::CustomerSyncPaymentMethodsFromGatewayParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> nil
         | (
           String external_customer_id,
@@ -115,7 +115,7 @@ module Orb
         (
           String customer_id,
           ?Orb::Models::CustomerSyncPaymentMethodsFromGatewayByExternalCustomerIDParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> nil
         | (String customer_id, request_options: Orb::request_opts) -> nil
 
@@ -123,19 +123,19 @@ module Orb
         (
           String id,
           ?Orb::Models::CustomerUpdateByExternalIDParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Orb::Models::Customer
         | (
           String id,
           accounting_sync_configuration: Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration?,
-          additional_emails: Array[String]?,
+          additional_emails: ::Array[String]?,
           auto_collection: bool?,
           billing_address: Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress?,
           currency: String?,
           email: String?,
           email_delivery: bool?,
           external_customer_id: String?,
-          metadata: Hash[Symbol, String?]?,
+          metadata: ::Hash[Symbol, String?]?,
           name: String?,
           payment_provider: Orb::Models::CustomerUpdateByExternalIDParams::payment_provider?,
           payment_provider_id: String?,

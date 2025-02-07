@@ -2,7 +2,7 @@ module Orb
   module Models
     type event_ingest_params =
       {
-        events: Array[Orb::Models::EventIngestParams::Event],
+        events: ::Array[Orb::Models::EventIngestParams::Event],
         backfill_id: String?,
         debug: bool
       }
@@ -12,7 +12,7 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      attr_accessor events: Array[Orb::Models::EventIngestParams::Event]
+      attr_accessor events: ::Array[Orb::Models::EventIngestParams::Event]
 
       attr_accessor backfill_id: String?
 
@@ -22,7 +22,7 @@ module Orb
 
       def initialize:
         (
-          events: Array[Orb::Models::EventIngestParams::Event],
+          events: ::Array[Orb::Models::EventIngestParams::Event],
           backfill_id: String?,
           debug: bool,
           request_options: Orb::request_opts

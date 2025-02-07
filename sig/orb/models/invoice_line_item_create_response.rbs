@@ -4,7 +4,7 @@ module Orb
       {
         id: String,
         adjusted_subtotal: String,
-        adjustments: Array[Orb::Models::InvoiceLineItemCreateResponse::adjustment],
+        adjustments: ::Array[Orb::Models::InvoiceLineItemCreateResponse::adjustment],
         amount: String,
         credits_applied: String,
         discount: Orb::Models::discount?,
@@ -19,9 +19,9 @@ module Orb
         price: Orb::Models::price?,
         quantity: Float,
         start_date: Time,
-        sub_line_items: Array[Orb::Models::InvoiceLineItemCreateResponse::sub_line_item],
+        sub_line_items: ::Array[Orb::Models::InvoiceLineItemCreateResponse::sub_line_item],
         subtotal: String,
-        tax_amounts: Array[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount]
+        tax_amounts: ::Array[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount]
       }
 
     class InvoiceLineItemCreateResponse < Orb::BaseModel
@@ -29,7 +29,7 @@ module Orb
 
       attr_accessor adjusted_subtotal: String
 
-      attr_accessor adjustments: Array[Orb::Models::InvoiceLineItemCreateResponse::adjustment]
+      attr_accessor adjustments: ::Array[Orb::Models::InvoiceLineItemCreateResponse::adjustment]
 
       attr_accessor amount: String
 
@@ -59,17 +59,17 @@ module Orb
 
       attr_accessor start_date: Time
 
-      attr_accessor sub_line_items: Array[Orb::Models::InvoiceLineItemCreateResponse::sub_line_item]
+      attr_accessor sub_line_items: ::Array[Orb::Models::InvoiceLineItemCreateResponse::sub_line_item]
 
       attr_accessor subtotal: String
 
-      attr_accessor tax_amounts: Array[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount]
+      attr_accessor tax_amounts: ::Array[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount]
 
       def initialize:
         (
           id: String,
           adjusted_subtotal: String,
-          adjustments: Array[Orb::Models::InvoiceLineItemCreateResponse::adjustment],
+          adjustments: ::Array[Orb::Models::InvoiceLineItemCreateResponse::adjustment],
           amount: String,
           credits_applied: String,
           discount: Orb::Models::discount?,
@@ -84,9 +84,9 @@ module Orb
           price: Orb::Models::price?,
           quantity: Float,
           start_date: Time,
-          sub_line_items: Array[Orb::Models::InvoiceLineItemCreateResponse::sub_line_item],
+          sub_line_items: ::Array[Orb::Models::InvoiceLineItemCreateResponse::sub_line_item],
           subtotal: String,
-          tax_amounts: Array[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount]
+          tax_amounts: ::Array[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount]
         ) -> void
         | (
           ?Orb::Models::invoice_line_item_create_response | Orb::BaseModel data
@@ -107,7 +107,7 @@ module Orb
             id: String,
             adjustment_type: :amount_discount,
             amount_discount: String,
-            applies_to_price_ids: Array[String],
+            applies_to_price_ids: ::Array[String],
             is_invoice_level: bool,
             plan_phase_order: Integer?,
             reason: String?
@@ -120,7 +120,7 @@ module Orb
 
           attr_accessor amount_discount: String
 
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor is_invoice_level: bool
 
@@ -132,7 +132,7 @@ module Orb
             (
               id: String,
               amount_discount: String,
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               is_invoice_level: bool,
               plan_phase_order: Integer?,
               reason: String?,
@@ -150,7 +150,7 @@ module Orb
           {
             id: String,
             adjustment_type: :percentage_discount,
-            applies_to_price_ids: Array[String],
+            applies_to_price_ids: ::Array[String],
             is_invoice_level: bool,
             percentage_discount: Float,
             plan_phase_order: Integer?,
@@ -162,7 +162,7 @@ module Orb
 
           attr_accessor adjustment_type: :percentage_discount
 
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor is_invoice_level: bool
 
@@ -175,7 +175,7 @@ module Orb
           def initialize:
             (
               id: String,
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               is_invoice_level: bool,
               percentage_discount: Float,
               plan_phase_order: Integer?,
@@ -194,7 +194,7 @@ module Orb
           {
             id: String,
             adjustment_type: :usage_discount,
-            applies_to_price_ids: Array[String],
+            applies_to_price_ids: ::Array[String],
             is_invoice_level: bool,
             plan_phase_order: Integer?,
             reason: String?,
@@ -206,7 +206,7 @@ module Orb
 
           attr_accessor adjustment_type: :usage_discount
 
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor is_invoice_level: bool
 
@@ -219,7 +219,7 @@ module Orb
           def initialize:
             (
               id: String,
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               is_invoice_level: bool,
               plan_phase_order: Integer?,
               reason: String?,
@@ -238,7 +238,7 @@ module Orb
           {
             id: String,
             adjustment_type: :minimum,
-            applies_to_price_ids: Array[String],
+            applies_to_price_ids: ::Array[String],
             is_invoice_level: bool,
             item_id: String,
             minimum_amount: String,
@@ -251,7 +251,7 @@ module Orb
 
           attr_accessor adjustment_type: :minimum
 
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor is_invoice_level: bool
 
@@ -266,7 +266,7 @@ module Orb
           def initialize:
             (
               id: String,
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               is_invoice_level: bool,
               item_id: String,
               minimum_amount: String,
@@ -286,7 +286,7 @@ module Orb
           {
             id: String,
             adjustment_type: :maximum,
-            applies_to_price_ids: Array[String],
+            applies_to_price_ids: ::Array[String],
             is_invoice_level: bool,
             maximum_amount: String,
             plan_phase_order: Integer?,
@@ -298,7 +298,7 @@ module Orb
 
           attr_accessor adjustment_type: :maximum
 
-          attr_accessor applies_to_price_ids: Array[String]
+          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor is_invoice_level: bool
 
@@ -311,7 +311,7 @@ module Orb
           def initialize:
             (
               id: String,
-              applies_to_price_ids: Array[String],
+              applies_to_price_ids: ::Array[String],
               is_invoice_level: bool,
               maximum_amount: String,
               plan_phase_order: Integer?,
@@ -330,15 +330,18 @@ module Orb
       end
 
       type maximum =
-        { applies_to_price_ids: Array[String], maximum_amount: String }
+        { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
       class Maximum < Orb::BaseModel
-        attr_accessor applies_to_price_ids: Array[String]
+        attr_accessor applies_to_price_ids: ::Array[String]
 
         attr_accessor maximum_amount: String
 
         def initialize:
-          (applies_to_price_ids: Array[String], maximum_amount: String) -> void
+          (
+            applies_to_price_ids: ::Array[String],
+            maximum_amount: String
+          ) -> void
           | (
             ?Orb::Models::InvoiceLineItemCreateResponse::maximum
             | Orb::BaseModel data
@@ -348,15 +351,18 @@ module Orb
       end
 
       type minimum =
-        { applies_to_price_ids: Array[String], minimum_amount: String }
+        { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
       class Minimum < Orb::BaseModel
-        attr_accessor applies_to_price_ids: Array[String]
+        attr_accessor applies_to_price_ids: ::Array[String]
 
         attr_accessor minimum_amount: String
 
         def initialize:
-          (applies_to_price_ids: Array[String], minimum_amount: String) -> void
+          (
+            applies_to_price_ids: ::Array[String],
+            minimum_amount: String
+          ) -> void
           | (
             ?Orb::Models::InvoiceLineItemCreateResponse::minimum
             | Orb::BaseModel data
@@ -427,13 +433,13 @@ module Orb
             def to_hash: -> Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::grouping
           end
 
-          type matrix_config = { dimension_values: Array[String?] }
+          type matrix_config = { dimension_values: ::Array[String?] }
 
           class MatrixConfig < Orb::BaseModel
-            attr_accessor dimension_values: Array[String?]
+            attr_accessor dimension_values: ::Array[String?]
 
             def initialize:
-              (dimension_values: Array[String?]) -> void
+              (dimension_values: ::Array[String?]) -> void
               | (
                 ?Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::matrix_config
                 | Orb::BaseModel data

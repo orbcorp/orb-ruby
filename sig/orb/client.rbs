@@ -38,7 +38,7 @@ module Orb
 
     attr_reader dimensional_price_groups: Orb::Resources::DimensionalPriceGroups
 
-    private def auth_headers: -> Hash[String, String]
+    private def auth_headers: -> ::Hash[String, String]
 
     def initialize: (
       base_url: String?,

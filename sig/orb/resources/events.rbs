@@ -8,7 +8,7 @@ module Orb
       def update:
         (
           String event_id,
-          Orb::Models::EventUpdateParams | Hash[Symbol, top] params
+          Orb::Models::EventUpdateParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::EventUpdateResponse
         | (
           String event_id,
@@ -23,7 +23,7 @@ module Orb
       def deprecate:
         (
           String event_id,
-          ?Orb::Models::EventDeprecateParams | Hash[Symbol, top] params
+          ?Orb::Models::EventDeprecateParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::EventDeprecateResponse
         | (
           String event_id,
@@ -32,10 +32,10 @@ module Orb
 
       def ingest:
         (
-          Orb::Models::EventIngestParams | Hash[Symbol, top] params
+          Orb::Models::EventIngestParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::EventIngestResponse
         | (
-          events: Array[Orb::Models::EventIngestParams::Event],
+          events: ::Array[Orb::Models::EventIngestParams::Event],
           backfill_id: String?,
           debug: bool,
           request_options: Orb::request_opts
@@ -43,10 +43,10 @@ module Orb
 
       def search:
         (
-          Orb::Models::EventSearchParams | Hash[Symbol, top] params
+          Orb::Models::EventSearchParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::EventSearchResponse
         | (
-          event_ids: Array[String],
+          event_ids: ::Array[String],
           timeframe_end: Time?,
           timeframe_start: Time?,
           request_options: Orb::request_opts

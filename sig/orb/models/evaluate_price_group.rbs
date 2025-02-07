@@ -3,21 +3,21 @@ module Orb
     type evaluate_price_group =
       {
         amount: String,
-        grouping_values: Array[Orb::Models::EvaluatePriceGroup::grouping_value],
+        grouping_values: ::Array[Orb::Models::EvaluatePriceGroup::grouping_value],
         quantity: Float
       }
 
     class EvaluatePriceGroup < Orb::BaseModel
       attr_accessor amount: String
 
-      attr_accessor grouping_values: Array[Orb::Models::EvaluatePriceGroup::grouping_value]
+      attr_accessor grouping_values: ::Array[Orb::Models::EvaluatePriceGroup::grouping_value]
 
       attr_accessor quantity: Float
 
       def initialize:
         (
           amount: String,
-          grouping_values: Array[Orb::Models::EvaluatePriceGroup::grouping_value],
+          grouping_values: ::Array[Orb::Models::EvaluatePriceGroup::grouping_value],
           quantity: Float
         ) -> void
         | (?Orb::Models::evaluate_price_group | Orb::BaseModel data) -> void

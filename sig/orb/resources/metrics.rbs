@@ -3,31 +3,31 @@ module Orb
     class Metrics
       def create:
         (
-          Orb::Models::MetricCreateParams | Hash[Symbol, top] params
+          Orb::Models::MetricCreateParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::BillableMetric
         | (
           description: String?,
           item_id: String,
           name: String,
           sql: String,
-          metadata: Hash[Symbol, String?]?,
+          metadata: ::Hash[Symbol, String?]?,
           request_options: Orb::request_opts
         ) -> Orb::Models::BillableMetric
 
       def update:
         (
           String metric_id,
-          ?Orb::Models::MetricUpdateParams | Hash[Symbol, top] params
+          ?Orb::Models::MetricUpdateParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::BillableMetric
         | (
           String metric_id,
-          metadata: Hash[Symbol, String?]?,
+          metadata: ::Hash[Symbol, String?]?,
           request_options: Orb::request_opts
         ) -> Orb::Models::BillableMetric
 
       def list:
         (
-          ?Orb::Models::MetricListParams | Hash[Symbol, top] params
+          ?Orb::Models::MetricListParams | ::Hash[Symbol, top] params
         ) -> Orb::Page[Orb::Models::BillableMetric]
         | (
           created_at_gt: Time?,
@@ -42,7 +42,7 @@ module Orb
       def fetch:
         (
           String metric_id,
-          ?Orb::Models::MetricFetchParams | Hash[Symbol, top] params
+          ?Orb::Models::MetricFetchParams | ::Hash[Symbol, top] params
         ) -> Orb::Models::BillableMetric
         | (
           String metric_id,
