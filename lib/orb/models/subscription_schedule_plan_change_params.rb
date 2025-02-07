@@ -305,8 +305,7 @@ module Orb
 
         # @!attribute end_date
         #   The end date of the adjustment interval. This is the date that the adjustment
-        #     will stop affecting prices on the subscription. If null, the adjustment will
-        #     start when the phase or subscription starts.
+        #     will stop affecting prices on the subscription.
         #
         #   @return [Time, nil]
         optional :end_date, Time, nil?: true

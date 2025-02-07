@@ -45,6 +45,14 @@ module Orb
         #   @return [Integer]
         required :events_ingested, Integer
 
+        # @!attribute replace_existing_events
+        #   If `true`, existing events in the backfill's timeframe will be replaced with the
+        #     newly ingested events associated with the backfill. If `false`, newly ingested
+        #     events will be added to the existing events.
+        #
+        #   @return [Boolean]
+        required :replace_existing_events, Orb::BooleanModel
+
         # @!attribute reverted_at
         #   The time at which this backfill was reverted.
         #
@@ -84,6 +92,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param customer_id [String, nil]
         #   # @param events_ingested [Integer]
+        #   # @param replace_existing_events [Boolean]
         #   # @param reverted_at [Time, nil]
         #   # @param status [Symbol, Orb::Models::Events::BackfillCreateResponse::Status]
         #   # @param timeframe_end [Time]
@@ -96,6 +105,7 @@ module Orb
         #     created_at:,
         #     customer_id:,
         #     events_ingested:,
+        #     replace_existing_events:,
         #     reverted_at:,
         #     status:,
         #     timeframe_end:,
