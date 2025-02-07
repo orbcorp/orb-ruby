@@ -280,7 +280,7 @@ module Orb
 
         # @!attribute adjustment
         #
-        #   @return [Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::AmountDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PercentageDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::UsageDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::MinimumAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::MaximumAdjustment]
+        #   @return [Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
         required :adjustment,
                  union: -> { Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment }
 
@@ -304,7 +304,7 @@ module Orb
 
         # @!parse
         #   # @param id [String]
-        #   # @param adjustment [Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::AmountDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PercentageDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::UsageDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::MinimumAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::MaximumAdjustment]
+        #   # @param adjustment [Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
         #   # @param applies_to_price_interval_ids [Array<String>]
         #   # @param end_date [Time, nil]
         #   # @param start_date [Time]
@@ -318,213 +318,55 @@ module Orb
         # @example
         # ```ruby
         # case adjustment
-        # in {adjustment_type: "amount_discount", id: String, amount_discount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
-        #   # Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::AmountDiscountAdjustment ...
-        # in {adjustment_type: "percentage_discount", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
-        #   # Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PercentageDiscountAdjustment ...
         # in {adjustment_type: "usage_discount", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
-        #   # Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::UsageDiscountAdjustment ...
+        #   # Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment ...
+        # in {adjustment_type: "amount_discount", id: String, amount_discount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
+        #   # Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment ...
+        # in {adjustment_type: "percentage_discount", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+        #   # Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment ...
         # in {adjustment_type: "minimum", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
-        #   # Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::MinimumAdjustment ...
+        #   # Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment ...
         # in {adjustment_type: "maximum", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
-        #   # Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::MaximumAdjustment ...
+        #   # Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment ...
         # end
         # ```
         #
         # @example
         # ```ruby
         # case adjustment
-        # in Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::AmountDiscountAdjustment
+        # in Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment
         #   # ...
-        # in Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PercentageDiscountAdjustment
+        # in Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment
         #   # ...
-        # in Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::UsageDiscountAdjustment
+        # in Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment
         #   # ...
-        # in Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::MinimumAdjustment
+        # in Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment
         #   # ...
-        # in Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::MaximumAdjustment
+        # in Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
         #   # ...
         # end
         # ```
         class Adjustment < Orb::Union
           discriminator :adjustment_type
 
+          variant :usage_discount,
+                  -> { Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment }
+
           variant :amount_discount,
-                  -> { Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::AmountDiscountAdjustment }
+                  -> { Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment }
 
           variant :percentage_discount,
-                  -> { Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PercentageDiscountAdjustment }
-
-          variant :usage_discount,
-                  -> { Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::UsageDiscountAdjustment }
+                  -> { Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment }
 
           variant :minimum,
-                  -> { Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::MinimumAdjustment }
+                  -> { Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment }
 
           variant :maximum,
-                  -> { Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::MaximumAdjustment }
+                  -> { Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment }
 
           # @example
           # ```ruby
-          # amount_discount_adjustment => {
-          #   id: String,
-          #   adjustment_type: :amount_discount,
-          #   amount_discount: String,
-          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-          #   is_invoice_level: Orb::BooleanModel,
-          #   **_
-          # }
-          # ```
-          class AmountDiscountAdjustment < Orb::BaseModel
-            # @!attribute id
-            #
-            #   @return [String]
-            required :id, String
-
-            # @!attribute adjustment_type
-            #
-            #   @return [Symbol, :amount_discount]
-            required :adjustment_type, const: :amount_discount
-
-            # @!attribute amount_discount
-            #   The amount by which to discount the prices this adjustment applies to in a given
-            #     billing period.
-            #
-            #   @return [String]
-            required :amount_discount, String
-
-            # @!attribute applies_to_price_ids
-            #   The price IDs that this adjustment applies to.
-            #
-            #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
-
-            # @!attribute is_invoice_level
-            #   True for adjustments that apply to an entire invocice, false for adjustments
-            #     that apply to only one price.
-            #
-            #   @return [Boolean]
-            required :is_invoice_level, Orb::BooleanModel
-
-            # @!attribute plan_phase_order
-            #   The plan phase in which this adjustment is active.
-            #
-            #   @return [Integer, nil]
-            required :plan_phase_order, Integer, nil?: true
-
-            # @!attribute reason
-            #   The reason for the adjustment.
-            #
-            #   @return [String, nil]
-            required :reason, String, nil?: true
-
-            # @!parse
-            #   # @param id [String]
-            #   # @param amount_discount [String]
-            #   # @param applies_to_price_ids [Array<String>]
-            #   # @param is_invoice_level [Boolean]
-            #   # @param plan_phase_order [Integer, nil]
-            #   # @param reason [String, nil]
-            #   # @param adjustment_type [Symbol, :amount_discount]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     amount_discount:,
-            #     applies_to_price_ids:,
-            #     is_invoice_level:,
-            #     plan_phase_order:,
-            #     reason:,
-            #     adjustment_type: :amount_discount,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::BaseModel) -> void
-          end
-
-          # @example
-          # ```ruby
-          # percentage_discount_adjustment => {
-          #   id: String,
-          #   adjustment_type: :percentage_discount,
-          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-          #   is_invoice_level: Orb::BooleanModel,
-          #   percentage_discount: Float,
-          #   **_
-          # }
-          # ```
-          class PercentageDiscountAdjustment < Orb::BaseModel
-            # @!attribute id
-            #
-            #   @return [String]
-            required :id, String
-
-            # @!attribute adjustment_type
-            #
-            #   @return [Symbol, :percentage_discount]
-            required :adjustment_type, const: :percentage_discount
-
-            # @!attribute applies_to_price_ids
-            #   The price IDs that this adjustment applies to.
-            #
-            #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
-
-            # @!attribute is_invoice_level
-            #   True for adjustments that apply to an entire invocice, false for adjustments
-            #     that apply to only one price.
-            #
-            #   @return [Boolean]
-            required :is_invoice_level, Orb::BooleanModel
-
-            # @!attribute percentage_discount
-            #   The percentage (as a value between 0 and 1) by which to discount the price
-            #     intervals this adjustment applies to in a given billing period.
-            #
-            #   @return [Float]
-            required :percentage_discount, Float
-
-            # @!attribute plan_phase_order
-            #   The plan phase in which this adjustment is active.
-            #
-            #   @return [Integer, nil]
-            required :plan_phase_order, Integer, nil?: true
-
-            # @!attribute reason
-            #   The reason for the adjustment.
-            #
-            #   @return [String, nil]
-            required :reason, String, nil?: true
-
-            # @!parse
-            #   # @param id [String]
-            #   # @param applies_to_price_ids [Array<String>]
-            #   # @param is_invoice_level [Boolean]
-            #   # @param percentage_discount [Float]
-            #   # @param plan_phase_order [Integer, nil]
-            #   # @param reason [String, nil]
-            #   # @param adjustment_type [Symbol, :percentage_discount]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     applies_to_price_ids:,
-            #     is_invoice_level:,
-            #     percentage_discount:,
-            #     plan_phase_order:,
-            #     reason:,
-            #     adjustment_type: :percentage_discount,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::BaseModel) -> void
-          end
-
-          # @example
-          # ```ruby
-          # usage_discount_adjustment => {
+          # plan_phase_usage_discount_adjustment => {
           #   id: String,
           #   adjustment_type: :usage_discount,
           #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
@@ -533,7 +375,7 @@ module Orb
           #   **_
           # }
           # ```
-          class UsageDiscountAdjustment < Orb::BaseModel
+          class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -603,7 +445,165 @@ module Orb
 
           # @example
           # ```ruby
-          # minimum_adjustment => {
+          # plan_phase_amount_discount_adjustment => {
+          #   id: String,
+          #   adjustment_type: :amount_discount,
+          #   amount_discount: String,
+          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+          #   is_invoice_level: Orb::BooleanModel,
+          #   **_
+          # }
+          # ```
+          class PlanPhaseAmountDiscountAdjustment < Orb::BaseModel
+            # @!attribute id
+            #
+            #   @return [String]
+            required :id, String
+
+            # @!attribute adjustment_type
+            #
+            #   @return [Symbol, :amount_discount]
+            required :adjustment_type, const: :amount_discount
+
+            # @!attribute amount_discount
+            #   The amount by which to discount the prices this adjustment applies to in a given
+            #     billing period.
+            #
+            #   @return [String]
+            required :amount_discount, String
+
+            # @!attribute applies_to_price_ids
+            #   The price IDs that this adjustment applies to.
+            #
+            #   @return [Array<String>]
+            required :applies_to_price_ids, Orb::ArrayOf[String]
+
+            # @!attribute is_invoice_level
+            #   True for adjustments that apply to an entire invocice, false for adjustments
+            #     that apply to only one price.
+            #
+            #   @return [Boolean]
+            required :is_invoice_level, Orb::BooleanModel
+
+            # @!attribute plan_phase_order
+            #   The plan phase in which this adjustment is active.
+            #
+            #   @return [Integer, nil]
+            required :plan_phase_order, Integer, nil?: true
+
+            # @!attribute reason
+            #   The reason for the adjustment.
+            #
+            #   @return [String, nil]
+            required :reason, String, nil?: true
+
+            # @!parse
+            #   # @param id [String]
+            #   # @param amount_discount [String]
+            #   # @param applies_to_price_ids [Array<String>]
+            #   # @param is_invoice_level [Boolean]
+            #   # @param plan_phase_order [Integer, nil]
+            #   # @param reason [String, nil]
+            #   # @param adjustment_type [Symbol, :amount_discount]
+            #   #
+            #   def initialize(
+            #     id:,
+            #     amount_discount:,
+            #     applies_to_price_ids:,
+            #     is_invoice_level:,
+            #     plan_phase_order:,
+            #     reason:,
+            #     adjustment_type: :amount_discount,
+            #     **
+            #   )
+            #     super
+            #   end
+
+            # def initialize: (Hash | Orb::BaseModel) -> void
+          end
+
+          # @example
+          # ```ruby
+          # plan_phase_percentage_discount_adjustment => {
+          #   id: String,
+          #   adjustment_type: :percentage_discount,
+          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+          #   is_invoice_level: Orb::BooleanModel,
+          #   percentage_discount: Float,
+          #   **_
+          # }
+          # ```
+          class PlanPhasePercentageDiscountAdjustment < Orb::BaseModel
+            # @!attribute id
+            #
+            #   @return [String]
+            required :id, String
+
+            # @!attribute adjustment_type
+            #
+            #   @return [Symbol, :percentage_discount]
+            required :adjustment_type, const: :percentage_discount
+
+            # @!attribute applies_to_price_ids
+            #   The price IDs that this adjustment applies to.
+            #
+            #   @return [Array<String>]
+            required :applies_to_price_ids, Orb::ArrayOf[String]
+
+            # @!attribute is_invoice_level
+            #   True for adjustments that apply to an entire invocice, false for adjustments
+            #     that apply to only one price.
+            #
+            #   @return [Boolean]
+            required :is_invoice_level, Orb::BooleanModel
+
+            # @!attribute percentage_discount
+            #   The percentage (as a value between 0 and 1) by which to discount the price
+            #     intervals this adjustment applies to in a given billing period.
+            #
+            #   @return [Float]
+            required :percentage_discount, Float
+
+            # @!attribute plan_phase_order
+            #   The plan phase in which this adjustment is active.
+            #
+            #   @return [Integer, nil]
+            required :plan_phase_order, Integer, nil?: true
+
+            # @!attribute reason
+            #   The reason for the adjustment.
+            #
+            #   @return [String, nil]
+            required :reason, String, nil?: true
+
+            # @!parse
+            #   # @param id [String]
+            #   # @param applies_to_price_ids [Array<String>]
+            #   # @param is_invoice_level [Boolean]
+            #   # @param percentage_discount [Float]
+            #   # @param plan_phase_order [Integer, nil]
+            #   # @param reason [String, nil]
+            #   # @param adjustment_type [Symbol, :percentage_discount]
+            #   #
+            #   def initialize(
+            #     id:,
+            #     applies_to_price_ids:,
+            #     is_invoice_level:,
+            #     percentage_discount:,
+            #     plan_phase_order:,
+            #     reason:,
+            #     adjustment_type: :percentage_discount,
+            #     **
+            #   )
+            #     super
+            #   end
+
+            # def initialize: (Hash | Orb::BaseModel) -> void
+          end
+
+          # @example
+          # ```ruby
+          # plan_phase_minimum_adjustment => {
           #   id: String,
           #   adjustment_type: :minimum,
           #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
@@ -612,7 +612,7 @@ module Orb
           #   **_
           # }
           # ```
-          class MinimumAdjustment < Orb::BaseModel
+          class PlanPhaseMinimumAdjustment < Orb::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -690,7 +690,7 @@ module Orb
 
           # @example
           # ```ruby
-          # maximum_adjustment => {
+          # plan_phase_maximum_adjustment => {
           #   id: String,
           #   adjustment_type: :maximum,
           #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
@@ -699,7 +699,7 @@ module Orb
           #   **_
           # }
           # ```
-          class MaximumAdjustment < Orb::BaseModel
+          class PlanPhaseMaximumAdjustment < Orb::BaseModel
             # @!attribute id
             #
             #   @return [String]
