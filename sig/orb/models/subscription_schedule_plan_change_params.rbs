@@ -350,6 +350,7 @@ module Orb
 
       type add_price =
         {
+          allocation_price: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice?,
           discounts: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount]?,
           end_date: Time?,
           external_price_id: String?,
@@ -362,6 +363,8 @@ module Orb
         }
 
       class AddPrice < Orb::BaseModel
+        attr_accessor allocation_price: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice?
+
         attr_accessor discounts: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount]?
 
         attr_accessor end_date: Time?
@@ -382,6 +385,7 @@ module Orb
 
         def initialize:
           (
+            allocation_price: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice?,
             discounts: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount]?,
             end_date: Time?,
             external_price_id: String?,
@@ -398,6 +402,52 @@ module Orb
           ) -> void
 
         def to_hash: -> Orb::Models::SubscriptionSchedulePlanChangeParams::add_price
+
+        type allocation_price =
+          {
+            amount: String,
+            cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice::cadence,
+            currency: String,
+            expires_at_end_of_cadence: bool
+          }
+
+        class AllocationPrice < Orb::BaseModel
+          attr_accessor amount: String
+
+          attr_accessor cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice::cadence
+
+          attr_accessor currency: String
+
+          attr_accessor expires_at_end_of_cadence: bool
+
+          def initialize:
+            (
+              amount: String,
+              cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice::cadence,
+              currency: String,
+              expires_at_end_of_cadence: bool
+            ) -> void
+            | (
+              ?Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::allocation_price
+              | Orb::BaseModel data
+            ) -> void
+
+          def to_hash: -> Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::allocation_price
+
+          type cadence =
+            :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
+
+          class Cadence < Orb::Enum
+            ONE_TIME: :one_time
+            MONTHLY: :monthly
+            QUARTERLY: :quarterly
+            SEMI_ANNUAL: :semi_annual
+            ANNUAL: :annual
+            CUSTOM: :custom
+
+            def self.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice::cadence]
+          end
+        end
 
         type discount =
           {
@@ -3991,6 +4041,7 @@ module Orb
       type replace_price =
         {
           replaces_price_id: String,
+          allocation_price: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice?,
           discounts: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount]?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
@@ -4002,6 +4053,8 @@ module Orb
 
       class ReplacePrice < Orb::BaseModel
         attr_accessor replaces_price_id: String
+
+        attr_accessor allocation_price: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice?
 
         attr_accessor discounts: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount]?
 
@@ -4020,6 +4073,7 @@ module Orb
         def initialize:
           (
             replaces_price_id: String,
+            allocation_price: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice?,
             discounts: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount]?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
@@ -4034,6 +4088,52 @@ module Orb
           ) -> void
 
         def to_hash: -> Orb::Models::SubscriptionSchedulePlanChangeParams::replace_price
+
+        type allocation_price =
+          {
+            amount: String,
+            cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice::cadence,
+            currency: String,
+            expires_at_end_of_cadence: bool
+          }
+
+        class AllocationPrice < Orb::BaseModel
+          attr_accessor amount: String
+
+          attr_accessor cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice::cadence
+
+          attr_accessor currency: String
+
+          attr_accessor expires_at_end_of_cadence: bool
+
+          def initialize:
+            (
+              amount: String,
+              cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice::cadence,
+              currency: String,
+              expires_at_end_of_cadence: bool
+            ) -> void
+            | (
+              ?Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::allocation_price
+              | Orb::BaseModel data
+            ) -> void
+
+          def to_hash: -> Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::allocation_price
+
+          type cadence =
+            :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
+
+          class Cadence < Orb::Enum
+            ONE_TIME: :one_time
+            MONTHLY: :monthly
+            QUARTERLY: :quarterly
+            SEMI_ANNUAL: :semi_annual
+            ANNUAL: :annual
+            CUSTOM: :custom
+
+            def self.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice::cadence]
+          end
+        end
 
         type discount =
           {
