@@ -375,6 +375,7 @@ module Orb
           | :credit_note_applied
           | :credit_note_voided
           | :overpayment_refund
+          | :external_payment
 
         class Action < Orb::Enum
           APPLIED_TO_INVOICE: :applied_to_invoice
@@ -385,6 +386,7 @@ module Orb
           CREDIT_NOTE_APPLIED: :credit_note_applied
           CREDIT_NOTE_VOIDED: :credit_note_voided
           OVERPAYMENT_REFUND: :overpayment_refund
+          EXTERNAL_PAYMENT: :external_payment
 
           def self.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::action]
         end

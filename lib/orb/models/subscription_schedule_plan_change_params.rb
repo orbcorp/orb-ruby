@@ -648,15 +648,23 @@ module Orb
       # @example
       # ```ruby
       # add_price => {
+      #   allocation_price: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice,
       #   discounts: -> { Orb::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount] === _1 },
       #   end_date: Time,
       #   external_price_id: String,
       #   maximum_amount: String,
-      #   minimum_amount: String,
       #   **_
       # }
       # ```
       class AddPrice < Orb::BaseModel
+        # @!attribute allocation_price
+        #   The definition of a new allocation price to create and add to the subscription.
+        #
+        #   @return [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice, nil]
+        optional :allocation_price,
+                 -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice },
+                 nil?: true
+
         # @!attribute discounts
         #   [DEPRECATED] Use add_adjustments instead. The subscription's discounts for this
         #     price.
@@ -723,6 +731,7 @@ module Orb
         optional :start_date, Time, nil?: true
 
         # @!parse
+        #   # @param allocation_price [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice, nil]
         #   # @param discounts [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount>, nil]
         #   # @param end_date [Time, nil]
         #   # @param external_price_id [String, nil]
@@ -734,6 +743,7 @@ module Orb
         #   # @param start_date [Time, nil]
         #   #
         #   def initialize(
+        #     allocation_price: nil,
         #     discounts: nil,
         #     end_date: nil,
         #     external_price_id: nil,
@@ -749,6 +759,95 @@ module Orb
         #   end
 
         # def initialize: (Hash | Orb::BaseModel) -> void
+
+        # @example
+        # ```ruby
+        # allocation_price => {
+        #   amount: String,
+        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice::Cadence,
+        #   currency: String,
+        #   expires_at_end_of_cadence: Orb::BooleanModel
+        # }
+        # ```
+        class AllocationPrice < Orb::BaseModel
+          # @!attribute amount
+          #   An amount of the currency to allocate to the customer at the specified cadence.
+          #
+          #   @return [String]
+          required :amount, String
+
+          # @!attribute cadence
+          #   The cadence at which to allocate the amount to the customer.
+          #
+          #   @return [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice::Cadence]
+          required :cadence,
+                   enum: -> {
+                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice::Cadence
+                   }
+
+          # @!attribute currency
+          #   An ISO 4217 currency string or a custom pricing unit identifier in which to bill
+          #     this price.
+          #
+          #   @return [String]
+          required :currency, String
+
+          # @!attribute expires_at_end_of_cadence
+          #   Whether the allocated amount should expire at the end of the cadence or roll
+          #     over to the next period.
+          #
+          #   @return [Boolean]
+          required :expires_at_end_of_cadence, Orb::BooleanModel
+
+          # @!parse
+          #   # The definition of a new allocation price to create and add to the subscription.
+          #   #
+          #   # @param amount [String]
+          #   # @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice::Cadence]
+          #   # @param currency [String]
+          #   # @param expires_at_end_of_cadence [Boolean]
+          #   #
+          #   def initialize(amount:, cadence:, currency:, expires_at_end_of_cadence:, **) = super
+
+          # def initialize: (Hash | Orb::BaseModel) -> void
+
+          # @abstract
+          #
+          # The cadence at which to allocate the amount to the customer.
+          #
+          # @example
+          # ```ruby
+          # case cadence
+          # in :one_time
+          #   # ...
+          # in :monthly
+          #   # ...
+          # in :quarterly
+          #   # ...
+          # in :semi_annual
+          #   # ...
+          # in :annual
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
+          class Cadence < Orb::Enum
+            ONE_TIME = :one_time
+            MONTHLY = :monthly
+            QUARTERLY = :quarterly
+            SEMI_ANNUAL = :semi_annual
+            ANNUAL = :annual
+            CUSTOM = :custom
+
+            finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
+          end
+        end
 
         # @example
         # ```ruby
@@ -7713,10 +7812,10 @@ module Orb
       # ```ruby
       # replace_price => {
       #   replaces_price_id: String,
+      #   allocation_price: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice,
       #   discounts: -> { Orb::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount] === _1 },
       #   external_price_id: String,
       #   fixed_price_quantity: Float,
-      #   maximum_amount: String,
       #   **_
       # }
       # ```
@@ -7726,6 +7825,14 @@ module Orb
         #
         #   @return [String]
         required :replaces_price_id, String
+
+        # @!attribute allocation_price
+        #   The definition of a new allocation price to create and add to the subscription.
+        #
+        #   @return [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice, nil]
+        optional :allocation_price,
+                 -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice },
+                 nil?: true
 
         # @!attribute discounts
         #   [DEPRECATED] Use add_adjustments instead. The subscription's discounts for the
@@ -7780,6 +7887,7 @@ module Orb
 
         # @!parse
         #   # @param replaces_price_id [String]
+        #   # @param allocation_price [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice, nil]
         #   # @param discounts [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount>, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
@@ -7790,6 +7898,7 @@ module Orb
         #   #
         #   def initialize(
         #     replaces_price_id:,
+        #     allocation_price: nil,
         #     discounts: nil,
         #     external_price_id: nil,
         #     fixed_price_quantity: nil,
@@ -7803,6 +7912,95 @@ module Orb
         #   end
 
         # def initialize: (Hash | Orb::BaseModel) -> void
+
+        # @example
+        # ```ruby
+        # allocation_price => {
+        #   amount: String,
+        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice::Cadence,
+        #   currency: String,
+        #   expires_at_end_of_cadence: Orb::BooleanModel
+        # }
+        # ```
+        class AllocationPrice < Orb::BaseModel
+          # @!attribute amount
+          #   An amount of the currency to allocate to the customer at the specified cadence.
+          #
+          #   @return [String]
+          required :amount, String
+
+          # @!attribute cadence
+          #   The cadence at which to allocate the amount to the customer.
+          #
+          #   @return [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice::Cadence]
+          required :cadence,
+                   enum: -> {
+                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice::Cadence
+                   }
+
+          # @!attribute currency
+          #   An ISO 4217 currency string or a custom pricing unit identifier in which to bill
+          #     this price.
+          #
+          #   @return [String]
+          required :currency, String
+
+          # @!attribute expires_at_end_of_cadence
+          #   Whether the allocated amount should expire at the end of the cadence or roll
+          #     over to the next period.
+          #
+          #   @return [Boolean]
+          required :expires_at_end_of_cadence, Orb::BooleanModel
+
+          # @!parse
+          #   # The definition of a new allocation price to create and add to the subscription.
+          #   #
+          #   # @param amount [String]
+          #   # @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice::Cadence]
+          #   # @param currency [String]
+          #   # @param expires_at_end_of_cadence [Boolean]
+          #   #
+          #   def initialize(amount:, cadence:, currency:, expires_at_end_of_cadence:, **) = super
+
+          # def initialize: (Hash | Orb::BaseModel) -> void
+
+          # @abstract
+          #
+          # The cadence at which to allocate the amount to the customer.
+          #
+          # @example
+          # ```ruby
+          # case cadence
+          # in :one_time
+          #   # ...
+          # in :monthly
+          #   # ...
+          # in :quarterly
+          #   # ...
+          # in :semi_annual
+          #   # ...
+          # in :annual
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
+          class Cadence < Orb::Enum
+            ONE_TIME = :one_time
+            MONTHLY = :monthly
+            QUARTERLY = :quarterly
+            SEMI_ANNUAL = :semi_annual
+            ANNUAL = :annual
+            CUSTOM = :custom
+
+            finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
+          end
+        end
 
         # @example
         # ```ruby
