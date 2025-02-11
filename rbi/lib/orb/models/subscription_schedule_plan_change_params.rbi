@@ -513,6 +513,11 @@ module Orb
 
       class AddPrice < Orb::BaseModel
         sig do
+          returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice))
+        end
+        attr_accessor :allocation_price
+
+        sig do
           returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount]))
         end
         attr_accessor :discounts
@@ -551,6 +556,7 @@ module Orb
 
         sig do
           params(
+            allocation_price: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice),
             discounts: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount]),
             end_date: T.nilable(Time),
             external_price_id: T.nilable(String),
@@ -567,6 +573,7 @@ module Orb
           ).void
         end
         def initialize(
+          allocation_price: nil,
           discounts: nil,
           end_date: nil,
           external_price_id: nil,
@@ -582,6 +589,7 @@ module Orb
         sig do
           override.returns(
             {
+              allocation_price: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice),
               discounts: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount]),
               end_date: T.nilable(Time),
               external_price_id: T.nilable(String),
@@ -599,6 +607,59 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        class AllocationPrice < Orb::BaseModel
+          sig { returns(String) }
+          attr_accessor :amount
+
+          sig { returns(Symbol) }
+          attr_accessor :cadence
+
+          sig { returns(String) }
+          attr_accessor :currency
+
+          sig { returns(T::Boolean) }
+          attr_accessor :expires_at_end_of_cadence
+
+          sig do
+            params(
+              amount: String,
+              cadence: Symbol,
+              currency: String,
+              expires_at_end_of_cadence: T::Boolean
+            ).void
+          end
+          def initialize(amount:, cadence:, currency:, expires_at_end_of_cadence:)
+          end
+
+          sig do
+            override.returns(
+              {
+                amount: String,
+                cadence: Symbol,
+                currency: String,
+                expires_at_end_of_cadence: T::Boolean
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class Cadence < Orb::Enum
+            abstract!
+
+            ONE_TIME = :one_time
+            MONTHLY = :monthly
+            QUARTERLY = :quarterly
+            SEMI_ANNUAL = :semi_annual
+            ANNUAL = :annual
+            CUSTOM = :custom
+
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
+            end
+          end
         end
 
         class Discount < Orb::BaseModel
@@ -4806,6 +4867,11 @@ module Orb
         attr_accessor :replaces_price_id
 
         sig do
+          returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice))
+        end
+        attr_accessor :allocation_price
+
+        sig do
           returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount]))
         end
         attr_accessor :discounts
@@ -4839,6 +4905,7 @@ module Orb
         sig do
           params(
             replaces_price_id: String,
+            allocation_price: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice),
             discounts: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount]),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
@@ -4854,6 +4921,7 @@ module Orb
         end
         def initialize(
           replaces_price_id:,
+          allocation_price: nil,
           discounts: nil,
           external_price_id: nil,
           fixed_price_quantity: nil,
@@ -4868,6 +4936,7 @@ module Orb
           override.returns(
             {
               replaces_price_id: String,
+              allocation_price: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice),
               discounts: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount]),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
@@ -4883,6 +4952,59 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        class AllocationPrice < Orb::BaseModel
+          sig { returns(String) }
+          attr_accessor :amount
+
+          sig { returns(Symbol) }
+          attr_accessor :cadence
+
+          sig { returns(String) }
+          attr_accessor :currency
+
+          sig { returns(T::Boolean) }
+          attr_accessor :expires_at_end_of_cadence
+
+          sig do
+            params(
+              amount: String,
+              cadence: Symbol,
+              currency: String,
+              expires_at_end_of_cadence: T::Boolean
+            ).void
+          end
+          def initialize(amount:, cadence:, currency:, expires_at_end_of_cadence:)
+          end
+
+          sig do
+            override.returns(
+              {
+                amount: String,
+                cadence: Symbol,
+                currency: String,
+                expires_at_end_of_cadence: T::Boolean
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class Cadence < Orb::Enum
+            abstract!
+
+            ONE_TIME = :one_time
+            MONTHLY = :monthly
+            QUARTERLY = :quarterly
+            SEMI_ANNUAL = :semi_annual
+            ANNUAL = :annual
+            CUSTOM = :custom
+
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
+            end
+          end
         end
 
         class Discount < Orb::BaseModel

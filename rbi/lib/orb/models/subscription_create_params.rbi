@@ -526,6 +526,9 @@ module Orb
       end
 
       class AddPrice < Orb::BaseModel
+        sig { returns(T.nilable(Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice)) }
+        attr_accessor :allocation_price
+
         sig { returns(T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Discount])) }
         attr_accessor :discounts
 
@@ -580,6 +583,7 @@ module Orb
 
         sig do
           params(
+            allocation_price: T.nilable(Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice),
             discounts: T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Discount]),
             end_date: T.nilable(Time),
             external_price_id: T.nilable(String),
@@ -596,6 +600,7 @@ module Orb
           ).void
         end
         def initialize(
+          allocation_price: nil,
           discounts: nil,
           end_date: nil,
           external_price_id: nil,
@@ -611,6 +616,7 @@ module Orb
         sig do
           override.returns(
             {
+              allocation_price: T.nilable(Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice),
               discounts: T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Discount]),
               end_date: T.nilable(Time),
               external_price_id: T.nilable(String),
@@ -619,24 +625,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price: T.nilable(
                 T.any(
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice,
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice,
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice,
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice,
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice,
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice,
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice,
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice,
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice,
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice,
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice,
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice,
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice,
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice,
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice,
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice,
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice,
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice
+                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice
                 )
               ),
               price_id: T.nilable(String),
@@ -645,6 +634,59 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        class AllocationPrice < Orb::BaseModel
+          sig { returns(String) }
+          attr_accessor :amount
+
+          sig { returns(Symbol) }
+          attr_accessor :cadence
+
+          sig { returns(String) }
+          attr_accessor :currency
+
+          sig { returns(T::Boolean) }
+          attr_accessor :expires_at_end_of_cadence
+
+          sig do
+            params(
+              amount: String,
+              cadence: Symbol,
+              currency: String,
+              expires_at_end_of_cadence: T::Boolean
+            ).void
+          end
+          def initialize(amount:, cadence:, currency:, expires_at_end_of_cadence:)
+          end
+
+          sig do
+            override.returns(
+              {
+                amount: String,
+                cadence: Symbol,
+                currency: String,
+                expires_at_end_of_cadence: T::Boolean
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class Cadence < Orb::Enum
+            abstract!
+
+            ONE_TIME = :one_time
+            MONTHLY = :monthly
+            QUARTERLY = :quarterly
+            SEMI_ANNUAL = :semi_annual
+            ANNUAL = :annual
+            CUSTOM = :custom
+
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
+            end
+          end
         end
 
         class Discount < Orb::BaseModel
@@ -4831,6 +4873,9 @@ module Orb
         sig { returns(String) }
         attr_accessor :replaces_price_id
 
+        sig { returns(T.nilable(Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice)) }
+        attr_accessor :allocation_price
+
         sig { returns(T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Discount])) }
         attr_accessor :discounts
 
@@ -4863,6 +4908,7 @@ module Orb
         sig do
           params(
             replaces_price_id: String,
+            allocation_price: T.nilable(Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice),
             discounts: T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Discount]),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
@@ -4878,6 +4924,7 @@ module Orb
         end
         def initialize(
           replaces_price_id:,
+          allocation_price: nil,
           discounts: nil,
           external_price_id: nil,
           fixed_price_quantity: nil,
@@ -4892,6 +4939,7 @@ module Orb
           override.returns(
             {
               replaces_price_id: String,
+              allocation_price: T.nilable(Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice),
               discounts: T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Discount]),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
@@ -4924,6 +4972,59 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        class AllocationPrice < Orb::BaseModel
+          sig { returns(String) }
+          attr_accessor :amount
+
+          sig { returns(Symbol) }
+          attr_accessor :cadence
+
+          sig { returns(String) }
+          attr_accessor :currency
+
+          sig { returns(T::Boolean) }
+          attr_accessor :expires_at_end_of_cadence
+
+          sig do
+            params(
+              amount: String,
+              cadence: Symbol,
+              currency: String,
+              expires_at_end_of_cadence: T::Boolean
+            ).void
+          end
+          def initialize(amount:, cadence:, currency:, expires_at_end_of_cadence:)
+          end
+
+          sig do
+            override.returns(
+              {
+                amount: String,
+                cadence: Symbol,
+                currency: String,
+                expires_at_end_of_cadence: T::Boolean
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class Cadence < Orb::Enum
+            abstract!
+
+            ONE_TIME = :one_time
+            MONTHLY = :monthly
+            QUARTERLY = :quarterly
+            SEMI_ANNUAL = :semi_annual
+            ANNUAL = :annual
+            CUSTOM = :custom
+
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
+            end
+          end
         end
 
         class Discount < Orb::BaseModel

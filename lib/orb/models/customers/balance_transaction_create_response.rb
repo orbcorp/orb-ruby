@@ -137,6 +137,7 @@ module Orb
           CREDIT_NOTE_APPLIED = :credit_note_applied
           CREDIT_NOTE_VOIDED = :credit_note_voided
           OVERPAYMENT_REFUND = :overpayment_refund
+          EXTERNAL_PAYMENT = :external_payment
 
           finalize!
 
