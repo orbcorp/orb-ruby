@@ -44,13 +44,13 @@ module Orb
       model = req.fetch(:model)
 
       case unwrapped
-      in {data: data} if data.is_a?(Array) || data.nil?
-        @data = data&.map { |row| model.coerce(row) }
+      in {data: Array | nil => data}
+        @data = data&.map { model.coerce(_1) }
       else
       end
 
       case unwrapped
-      in {pagination_metadata: pagination_metadata} if pagination_metadata.is_a?(Hash) || pagination_metadata.is_nil?
+      in {pagination_metadata: Hash | nil => pagination_metadata}
         @pagination_metadata = Orb::Page::PaginationMetadata.coerce(pagination_metadata)
       else
       end
@@ -82,7 +82,7 @@ module Orb
       end
       page = self
       loop do
-        page.data&.each { |row| blk.call(row) }
+        page.data&.each { blk.call(_1) }
         break unless page.next_page?
         page = page.next_page
       end

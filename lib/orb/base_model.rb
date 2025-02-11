@@ -586,7 +586,7 @@ module Orb
       case other
       in Array
         # rubocop:disable Style/CaseEquality
-        other.all? { |item| type === item }
+        other.all? { type === _1 }
         # rubocop:enable Style/CaseEquality
       else
         false
@@ -609,7 +609,7 @@ module Orb
       type = item_type
       case value
       in Enumerable unless value.is_a?(Hash)
-        value.map { |item| Orb::Converter.coerce(type, item) }
+        value.map { Orb::Converter.coerce(type, _1) }
       else
         value
       end
@@ -625,7 +625,7 @@ module Orb
       type = item_type
       case value
       in Enumerable unless value.is_a?(Hash)
-        value.map { |item| Orb::Converter.dump(type, item) }.to_a
+        value.map { Orb::Converter.dump(type, _1) }.to_a
       else
         value
       end
@@ -906,7 +906,7 @@ module Orb
       setter = "#{name_sym}="
 
       if known_fields.key?(name_sym)
-        [name_sym, setter].each { |name| undef_method(name) }
+        [name_sym, setter].each { undef_method(_1) }
       end
 
       known_fields[name_sym] = {mode: @mode, key: key, required: required, type_fn: type_fn}
@@ -1015,8 +1015,8 @@ module Orb
     # @return [Orb::BaseModel, Object]
     #
     def self.coerce(value)
-      case (coerced = Orb::Util.coerce_hash(value))
-      in Hash
+      case Orb::Util.coerce_hash(value)
+      in Hash => coerced
         new(coerced)
       else
         value
@@ -1166,8 +1166,8 @@ module Orb
     # @param data [Hash{Symbol=>Object}, Orb::BaseModel]
     #
     def initialize(data = {})
-      case (coerced = Orb::Util.coerce_hash(data))
-      in Hash
+      case Orb::Util.coerce_hash(data)
+      in Hash => coerced
         @data = coerced.transform_keys(&:to_sym)
       else
         raise ArgumentError.new("Expected a #{Hash} or #{Orb::BaseModel}, got #{data.inspect}")
