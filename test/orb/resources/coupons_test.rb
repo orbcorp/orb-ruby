@@ -32,6 +32,11 @@ class Orb::Test::Resources::CouponsTest < Minitest::Test
     assert_pattern do
       page => Orb::Page
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Orb::Models::Coupon
+    end
   end
 
   def test_archive
