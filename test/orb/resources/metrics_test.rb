@@ -42,6 +42,11 @@ class Orb::Test::Resources::MetricsTest < Minitest::Test
     assert_pattern do
       page => Orb::Page
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Orb::Models::BillableMetric
+    end
   end
 
   def test_fetch

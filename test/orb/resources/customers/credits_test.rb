@@ -21,6 +21,11 @@ class Orb::Test::Resources::Customers::CreditsTest < Minitest::Test
     assert_pattern do
       page => Orb::Page
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Orb::Models::Customers::CreditListResponse
+    end
   end
 
   def test_list_by_external_id
@@ -33,6 +38,11 @@ class Orb::Test::Resources::Customers::CreditsTest < Minitest::Test
     page = response.next_page
     assert_pattern do
       page => Orb::Page
+    end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Orb::Models::Customers::CreditListByExternalIDResponse
     end
   end
 end

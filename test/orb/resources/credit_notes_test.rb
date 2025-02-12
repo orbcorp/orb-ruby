@@ -36,6 +36,11 @@ class Orb::Test::Resources::CreditNotesTest < Minitest::Test
     assert_pattern do
       page => Orb::Page
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Orb::Models::CreditNote
+    end
   end
 
   def test_fetch
