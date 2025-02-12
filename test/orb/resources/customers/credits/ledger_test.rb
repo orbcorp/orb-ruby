@@ -21,6 +21,11 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Minitest::Test
     assert_pattern do
       page => Orb::Page
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Orb::Models::Customers::Credits::LedgerListResponse
+    end
   end
 
   def test_create_entry_required_params
@@ -59,6 +64,11 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Minitest::Test
     page = response.next_page
     assert_pattern do
       page => Orb::Page
+    end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Orb::Models::Customers::Credits::LedgerListByExternalIDResponse
     end
   end
 end

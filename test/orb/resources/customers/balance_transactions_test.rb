@@ -29,5 +29,10 @@ class Orb::Test::Resources::Customers::BalanceTransactionsTest < Minitest::Test
     assert_pattern do
       page => Orb::Page
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Orb::Models::Customers::BalanceTransactionListResponse
+    end
   end
 end

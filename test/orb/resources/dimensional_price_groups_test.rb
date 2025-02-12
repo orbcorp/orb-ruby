@@ -41,5 +41,10 @@ class Orb::Test::Resources::DimensionalPriceGroupsTest < Minitest::Test
     assert_pattern do
       page => Orb::Page
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Orb::Models::DimensionalPriceGroup
+    end
   end
 end
