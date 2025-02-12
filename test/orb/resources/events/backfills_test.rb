@@ -32,6 +32,11 @@ class Orb::Test::Resources::Events::BackfillsTest < Minitest::Test
     assert_pattern do
       page => Orb::Page
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Orb::Models::Events::BackfillListResponse
+    end
   end
 
   def test_close

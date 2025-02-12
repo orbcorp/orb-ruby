@@ -49,6 +49,11 @@ class Orb::Test::Resources::PlansTest < Minitest::Test
     assert_pattern do
       page => Orb::Page
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Orb::Models::Plan
+    end
   end
 
   def test_fetch

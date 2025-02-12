@@ -36,6 +36,11 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Minitest::Test
     assert_pattern do
       page => Orb::Page
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Orb::Models::Customers::Credits::TopUpListResponse
+    end
   end
 
   def test_delete_required_params
@@ -82,6 +87,11 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Minitest::Test
     page = response.next_page
     assert_pattern do
       page => Orb::Page
+    end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Orb::Models::Customers::Credits::TopUpListByExternalIDResponse
     end
   end
 end
