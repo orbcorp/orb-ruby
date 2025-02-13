@@ -34,7 +34,8 @@ module Orb
             Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice,
             Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice,
             Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice
+            Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice,
+            Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice
           )],
           default_invoice_memo: T.nilable(String),
           external_plan_id: T.nilable(String),
