@@ -92,7 +92,8 @@ module Orb
               Orb::Models::Price::GroupedTieredPackagePrice,
               Orb::Models::Price::MaxGroupTieredPackagePrice,
               Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+              Orb::Models::Price::CumulativeGroupedBulkPrice
             )
           )
         )
@@ -175,7 +176,8 @@ module Orb
               Orb::Models::Price::GroupedTieredPackagePrice,
               Orb::Models::Price::MaxGroupTieredPackagePrice,
               Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+              Orb::Models::Price::CumulativeGroupedBulkPrice
             )
           ),
           quantity: Float,
@@ -265,7 +267,8 @@ module Orb
                 Orb::Models::Price::GroupedTieredPackagePrice,
                 Orb::Models::Price::MaxGroupTieredPackagePrice,
                 Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+                Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                Orb::Models::Price::CumulativeGroupedBulkPrice
               )
             ),
             quantity: Float,

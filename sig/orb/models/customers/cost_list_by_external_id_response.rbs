@@ -58,6 +58,7 @@ module Orb
           type per_price_cost =
             {
               price: Orb::Models::price,
+              price_id: String,
               subtotal: String,
               total: String,
               quantity: Float?
@@ -65,6 +66,8 @@ module Orb
 
           class PerPriceCost < Orb::BaseModel
             attr_accessor price: Orb::Models::price
+
+            attr_accessor price_id: String
 
             attr_accessor subtotal: String
 
@@ -75,6 +78,7 @@ module Orb
             def initialize:
               (
                 price: Orb::Models::price,
+                price_id: String,
                 subtotal: String,
                 total: String,
                 quantity: Float?

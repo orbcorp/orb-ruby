@@ -10098,6 +10098,371 @@ module Orb
         end
       end
 
+      class CumulativeGroupedBulkPrice < Orb::BaseModel
+        sig { returns(String) }
+        attr_accessor :id
+
+        sig { returns(T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::BillableMetric)) }
+        attr_accessor :billable_metric
+
+        sig { returns(Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration) }
+        attr_accessor :billing_cycle_configuration
+
+        sig { returns(Symbol) }
+        attr_accessor :cadence
+
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :conversion_rate
+
+        sig { returns(Time) }
+        attr_accessor :created_at
+
+        sig { returns(T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::CreditAllocation)) }
+        attr_accessor :credit_allocation
+
+        sig { returns(T::Hash[Symbol, T.anything]) }
+        attr_accessor :cumulative_grouped_bulk_config
+
+        sig { returns(String) }
+        attr_accessor :currency
+
+        sig do
+          returns(
+            T.nilable(
+              T.any(
+                Orb::Models::PercentageDiscount,
+                Orb::Models::TrialDiscount,
+                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::AmountDiscount
+              )
+            )
+          )
+        end
+        attr_accessor :discount
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :external_price_id
+
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :fixed_price_quantity
+
+        sig do
+          returns(T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration))
+        end
+        attr_accessor :invoicing_cycle_configuration
+
+        sig { returns(Orb::Models::Price::CumulativeGroupedBulkPrice::Item) }
+        attr_accessor :item
+
+        sig { returns(T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::Maximum)) }
+        attr_accessor :maximum
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :maximum_amount
+
+        sig { returns(T::Hash[Symbol, String]) }
+        attr_accessor :metadata
+
+        sig { returns(T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::Minimum)) }
+        attr_accessor :minimum
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :minimum_amount
+
+        sig { returns(Symbol) }
+        attr_accessor :model_type
+
+        sig { returns(String) }
+        attr_accessor :name
+
+        sig { returns(T.nilable(Integer)) }
+        attr_accessor :plan_phase_order
+
+        sig { returns(Symbol) }
+        attr_accessor :price_type
+
+        sig do
+          returns(T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::DimensionalPriceConfiguration))
+        end
+        attr_accessor :dimensional_price_configuration
+
+        sig do
+          params(
+            id: String,
+            billable_metric: T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::BillableMetric),
+            billing_cycle_configuration: Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration,
+            cadence: Symbol,
+            conversion_rate: T.nilable(Float),
+            created_at: Time,
+            credit_allocation: T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::CreditAllocation),
+            cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
+            currency: String,
+            discount: T.nilable(
+              T.any(
+                Orb::Models::PercentageDiscount,
+                Orb::Models::TrialDiscount,
+                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::AmountDiscount
+              )
+            ),
+            external_price_id: T.nilable(String),
+            fixed_price_quantity: T.nilable(Float),
+            invoicing_cycle_configuration: T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration),
+            item: Orb::Models::Price::CumulativeGroupedBulkPrice::Item,
+            maximum: T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::Maximum),
+            maximum_amount: T.nilable(String),
+            metadata: T::Hash[Symbol, String],
+            minimum: T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::Minimum),
+            minimum_amount: T.nilable(String),
+            name: String,
+            plan_phase_order: T.nilable(Integer),
+            price_type: Symbol,
+            dimensional_price_configuration: T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::DimensionalPriceConfiguration),
+            model_type: Symbol
+          ).void
+        end
+        def initialize(
+          id:,
+          billable_metric:,
+          billing_cycle_configuration:,
+          cadence:,
+          conversion_rate:,
+          created_at:,
+          credit_allocation:,
+          cumulative_grouped_bulk_config:,
+          currency:,
+          discount:,
+          external_price_id:,
+          fixed_price_quantity:,
+          invoicing_cycle_configuration:,
+          item:,
+          maximum:,
+          maximum_amount:,
+          metadata:,
+          minimum:,
+          minimum_amount:,
+          name:,
+          plan_phase_order:,
+          price_type:,
+          dimensional_price_configuration: nil,
+          model_type: :cumulative_grouped_bulk
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              billable_metric: T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::BillableMetric),
+              billing_cycle_configuration: Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration,
+              cadence: Symbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation: T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::CreditAllocation),
+              cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
+              currency: String,
+              discount: T.nilable(
+                T.any(
+                  Orb::Models::PercentageDiscount,
+                  Orb::Models::TrialDiscount,
+                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::AmountDiscount
+                )
+              ),
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration: T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration),
+              item: Orb::Models::Price::CumulativeGroupedBulkPrice::Item,
+              maximum: T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type: Symbol,
+              dimensional_price_configuration: T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::DimensionalPriceConfiguration)
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class BillableMetric < Orb::BaseModel
+          sig { returns(String) }
+          attr_accessor :id
+
+          sig { params(id: String).void }
+          def initialize(id:)
+          end
+
+          sig { override.returns({id: String}) }
+          def to_hash
+          end
+        end
+
+        class BillingCycleConfiguration < Orb::BaseModel
+          sig { returns(Integer) }
+          attr_accessor :duration
+
+          sig { returns(Symbol) }
+          attr_accessor :duration_unit
+
+          sig { params(duration: Integer, duration_unit: Symbol).void }
+          def initialize(duration:, duration_unit:)
+          end
+
+          sig { override.returns({duration: Integer, duration_unit: Symbol}) }
+          def to_hash
+          end
+
+          class DurationUnit < Orb::Enum
+            abstract!
+
+            DAY = :day
+            MONTH = :month
+
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
+            end
+          end
+        end
+
+        class Cadence < Orb::Enum
+          abstract!
+
+          ONE_TIME = :one_time
+          MONTHLY = :monthly
+          QUARTERLY = :quarterly
+          SEMI_ANNUAL = :semi_annual
+          ANNUAL = :annual
+          CUSTOM = :custom
+
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
+          end
+        end
+
+        class CreditAllocation < Orb::BaseModel
+          sig { returns(T::Boolean) }
+          attr_accessor :allows_rollover
+
+          sig { returns(String) }
+          attr_accessor :currency
+
+          sig { params(allows_rollover: T::Boolean, currency: String).void }
+          def initialize(allows_rollover:, currency:)
+          end
+
+          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
+          def to_hash
+          end
+        end
+
+        class InvoicingCycleConfiguration < Orb::BaseModel
+          sig { returns(Integer) }
+          attr_accessor :duration
+
+          sig { returns(Symbol) }
+          attr_accessor :duration_unit
+
+          sig { params(duration: Integer, duration_unit: Symbol).void }
+          def initialize(duration:, duration_unit:)
+          end
+
+          sig { override.returns({duration: Integer, duration_unit: Symbol}) }
+          def to_hash
+          end
+
+          class DurationUnit < Orb::Enum
+            abstract!
+
+            DAY = :day
+            MONTH = :month
+
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
+            end
+          end
+        end
+
+        class Item < Orb::BaseModel
+          sig { returns(String) }
+          attr_accessor :id
+
+          sig { returns(String) }
+          attr_accessor :name
+
+          sig { params(id: String, name: String).void }
+          def initialize(id:, name:)
+          end
+
+          sig { override.returns({id: String, name: String}) }
+          def to_hash
+          end
+        end
+
+        class Maximum < Orb::BaseModel
+          sig { returns(T::Array[String]) }
+          attr_accessor :applies_to_price_ids
+
+          sig { returns(String) }
+          attr_accessor :maximum_amount
+
+          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
+          def initialize(applies_to_price_ids:, maximum_amount:)
+          end
+
+          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
+          def to_hash
+          end
+        end
+
+        class Minimum < Orb::BaseModel
+          sig { returns(T::Array[String]) }
+          attr_accessor :applies_to_price_ids
+
+          sig { returns(String) }
+          attr_accessor :minimum_amount
+
+          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
+          def initialize(applies_to_price_ids:, minimum_amount:)
+          end
+
+          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
+          def to_hash
+          end
+        end
+
+        class PriceType < Orb::Enum
+          abstract!
+
+          USAGE_PRICE = :usage_price
+          FIXED_PRICE = :fixed_price
+
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
+          end
+        end
+
+        class DimensionalPriceConfiguration < Orb::BaseModel
+          sig { returns(T::Array[String]) }
+          attr_accessor :dimension_values
+
+          sig { returns(String) }
+          attr_accessor :dimensional_price_group_id
+
+          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
+          def initialize(dimension_values:, dimensional_price_group_id:)
+          end
+
+          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
+          def to_hash
+          end
+        end
+      end
+
       sig do
         override.returns(
           [
@@ -10127,7 +10492,8 @@ module Orb
             [Symbol, Orb::Models::Price::GroupedTieredPackagePrice],
             [Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice],
             [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice],
-            [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice]
+            [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice],
+            [Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice]
           ]
         )
       end

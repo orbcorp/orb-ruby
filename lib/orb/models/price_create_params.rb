@@ -239,6 +239,11 @@ module Orb
       #   @return [Hash{Symbol=>Object}]
       required :scalable_matrix_with_tiered_pricing_config, Orb::HashOf[Orb::Unknown]
 
+      # @!attribute cumulative_grouped_bulk_config
+      #
+      #   @return [Hash{Symbol=>Object}]
+      required :cumulative_grouped_bulk_config, Orb::HashOf[Orb::Unknown]
+
       # @!parse
       #   # @param cadence [Symbol, Orb::Models::PriceCreateParams::Cadence]
       #   # @param currency [String]
@@ -272,6 +277,7 @@ module Orb
       #   # @param grouped_tiered_package_config [Hash{Symbol=>Object}]
       #   # @param scalable_matrix_with_unit_pricing_config [Hash{Symbol=>Object}]
       #   # @param scalable_matrix_with_tiered_pricing_config [Hash{Symbol=>Object}]
+      #   # @param cumulative_grouped_bulk_config [Hash{Symbol=>Object}]
       #   # @param billable_metric_id [String, nil]
       #   # @param billed_in_advance [Boolean, nil]
       #   # @param billing_cycle_configuration [Orb::Models::PriceCreateParams::BillingCycleConfiguration, nil]
@@ -316,6 +322,7 @@ module Orb
       #     grouped_tiered_package_config:,
       #     scalable_matrix_with_unit_pricing_config:,
       #     scalable_matrix_with_tiered_pricing_config:,
+      #     cumulative_grouped_bulk_config:,
       #     billable_metric_id: nil,
       #     billed_in_advance: nil,
       #     billing_cycle_configuration: nil,
@@ -375,12 +382,12 @@ module Orb
       # @example
       # ```ruby
       # case model_type
-      # in :scalable_matrix_with_tiered_pricing
+      # in :cumulative_grouped_bulk
       #   # ...
       # end
       # ```
       class ModelType < Orb::Enum
-        SCALABLE_MATRIX_WITH_TIERED_PRICING = :scalable_matrix_with_tiered_pricing
+        CUMULATIVE_GROUPED_BULK = :cumulative_grouped_bulk
 
         finalize!
 

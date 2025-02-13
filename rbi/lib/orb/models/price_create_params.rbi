@@ -129,6 +129,9 @@ module Orb
       sig { returns(T::Hash[Symbol, T.anything]) }
       attr_accessor :scalable_matrix_with_tiered_pricing_config
 
+      sig { returns(T::Hash[Symbol, T.anything]) }
+      attr_accessor :cumulative_grouped_bulk_config
+
       sig do
         params(
           cadence: Symbol,
@@ -163,6 +166,7 @@ module Orb
           grouped_tiered_package_config: T::Hash[Symbol, T.anything],
           scalable_matrix_with_unit_pricing_config: T::Hash[Symbol, T.anything],
           scalable_matrix_with_tiered_pricing_config: T::Hash[Symbol, T.anything],
+          cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
           billing_cycle_configuration: T.nilable(Orb::Models::PriceCreateParams::BillingCycleConfiguration),
@@ -208,6 +212,7 @@ module Orb
         grouped_tiered_package_config:,
         scalable_matrix_with_unit_pricing_config:,
         scalable_matrix_with_tiered_pricing_config:,
+        cumulative_grouped_bulk_config:,
         billable_metric_id: nil,
         billed_in_advance: nil,
         billing_cycle_configuration: nil,
@@ -265,6 +270,7 @@ module Orb
             grouped_tiered_package_config: T::Hash[Symbol, T.anything],
             scalable_matrix_with_unit_pricing_config: T::Hash[Symbol, T.anything],
             scalable_matrix_with_tiered_pricing_config: T::Hash[Symbol, T.anything],
+            cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
             request_options: Orb::RequestOptions
           }
         )
@@ -290,7 +296,7 @@ module Orb
       class ModelType < Orb::Enum
         abstract!
 
-        SCALABLE_MATRIX_WITH_TIERED_PRICING = :scalable_matrix_with_tiered_pricing
+        CUMULATIVE_GROUPED_BULK = :cumulative_grouped_bulk
 
         sig { override.returns(T::Array[Symbol]) }
         def self.values

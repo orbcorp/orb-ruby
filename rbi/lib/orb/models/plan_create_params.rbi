@@ -38,7 +38,8 @@ module Orb
             Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice,
             Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice,
             Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice
+            Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice,
+            Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice
           )]
         )
       end
@@ -90,7 +91,8 @@ module Orb
             Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice,
             Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice,
             Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice
+            Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice,
+            Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice
           )],
           default_invoice_memo: T.nilable(String),
           external_plan_id: T.nilable(String),
@@ -142,7 +144,8 @@ module Orb
               Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice,
               Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice,
               Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice,
-              Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice
+              Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice
             )],
             default_invoice_memo: T.nilable(String),
             external_plan_id: T.nilable(String),
@@ -4807,6 +4810,188 @@ module Orb
           end
         end
 
+        class NewPlanCumulativeGroupedBulkPrice < Orb::BaseModel
+          sig { returns(Symbol) }
+          attr_accessor :cadence
+
+          sig { returns(T::Hash[Symbol, T.anything]) }
+          attr_accessor :cumulative_grouped_bulk_config
+
+          sig { returns(String) }
+          attr_accessor :item_id
+
+          sig { returns(Symbol) }
+          attr_accessor :model_type
+
+          sig { returns(String) }
+          attr_accessor :name
+
+          sig { returns(T.nilable(String)) }
+          attr_accessor :billable_metric_id
+
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_accessor :billed_in_advance
+
+          sig do
+            returns(T.nilable(Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration))
+          end
+          attr_accessor :billing_cycle_configuration
+
+          sig { returns(T.nilable(Float)) }
+          attr_accessor :conversion_rate
+
+          sig { returns(T.nilable(String)) }
+          attr_accessor :currency
+
+          sig { returns(T.nilable(String)) }
+          attr_accessor :external_price_id
+
+          sig { returns(T.nilable(Float)) }
+          attr_accessor :fixed_price_quantity
+
+          sig { returns(T.nilable(String)) }
+          attr_accessor :invoice_grouping_key
+
+          sig do
+            returns(T.nilable(Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration))
+          end
+          attr_accessor :invoicing_cycle_configuration
+
+          sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+          attr_accessor :metadata
+
+          sig do
+            params(
+              cadence: Symbol,
+              cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
+              item_id: String,
+              name: String,
+              billable_metric_id: T.nilable(String),
+              billed_in_advance: T.nilable(T::Boolean),
+              billing_cycle_configuration: T.nilable(Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration),
+              conversion_rate: T.nilable(Float),
+              currency: T.nilable(String),
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
+              invoicing_cycle_configuration: T.nilable(Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration),
+              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+              model_type: Symbol
+            ).void
+          end
+          def initialize(
+            cadence:,
+            cumulative_grouped_bulk_config:,
+            item_id:,
+            name:,
+            billable_metric_id: nil,
+            billed_in_advance: nil,
+            billing_cycle_configuration: nil,
+            conversion_rate: nil,
+            currency: nil,
+            external_price_id: nil,
+            fixed_price_quantity: nil,
+            invoice_grouping_key: nil,
+            invoicing_cycle_configuration: nil,
+            metadata: nil,
+            model_type: :cumulative_grouped_bulk
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                cadence: Symbol,
+                cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
+                item_id: String,
+                model_type: Symbol,
+                name: String,
+                billable_metric_id: T.nilable(String),
+                billed_in_advance: T.nilable(T::Boolean),
+                billing_cycle_configuration: T.nilable(Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration),
+                conversion_rate: T.nilable(Float),
+                currency: T.nilable(String),
+                external_price_id: T.nilable(String),
+                fixed_price_quantity: T.nilable(Float),
+                invoice_grouping_key: T.nilable(String),
+                invoicing_cycle_configuration: T.nilable(Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class Cadence < Orb::Enum
+            abstract!
+
+            ANNUAL = :annual
+            SEMI_ANNUAL = :semi_annual
+            MONTHLY = :monthly
+            QUARTERLY = :quarterly
+            ONE_TIME = :one_time
+            CUSTOM = :custom
+
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
+            end
+          end
+
+          class BillingCycleConfiguration < Orb::BaseModel
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig { returns(Symbol) }
+            attr_accessor :duration_unit
+
+            sig { params(duration: Integer, duration_unit: Symbol).void }
+            def initialize(duration:, duration_unit:)
+            end
+
+            sig { override.returns({duration: Integer, duration_unit: Symbol}) }
+            def to_hash
+            end
+
+            class DurationUnit < Orb::Enum
+              abstract!
+
+              DAY = :day
+              MONTH = :month
+
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
+              end
+            end
+          end
+
+          class InvoicingCycleConfiguration < Orb::BaseModel
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig { returns(Symbol) }
+            attr_accessor :duration_unit
+
+            sig { params(duration: Integer, duration_unit: Symbol).void }
+            def initialize(duration:, duration_unit:)
+            end
+
+            sig { override.returns({duration: Integer, duration_unit: Symbol}) }
+            def to_hash
+            end
+
+            class DurationUnit < Orb::Enum
+              abstract!
+
+              DAY = :day
+              MONTH = :month
+
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
+              end
+            end
+          end
+        end
+
         sig do
           override.returns(
             [
@@ -4833,7 +5018,8 @@ module Orb
               [Symbol, Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice],
               [Symbol, Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice],
               [Symbol, Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice],
-              [Symbol, Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice]
+              [Symbol, Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice],
+              [Symbol, Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice]
             ]
           )
         end
