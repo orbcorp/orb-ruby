@@ -139,7 +139,7 @@ module Orb
         # @!attribute price
         #   The definition of a new price to create and add to the subscription.
         #
-        #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice, nil]
+        #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice, nil]
         optional :price, union: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price }, nil?: true
 
         # @!attribute price_id
@@ -157,7 +157,7 @@ module Orb
         #   # @param fixed_fee_quantity_transitions [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition>, nil]
         #   # @param maximum_amount [Float, nil]
         #   # @param minimum_amount [Float, nil]
-        #   # @param price [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice, nil]
+        #   # @param price [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice, nil]
         #   # @param price_id [String, nil]
         #   #
         #   def initialize(
@@ -519,6 +519,8 @@ module Orb
         #   # Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice ...
         # in {model_type: "scalable_matrix_with_tiered_pricing", cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::Cadence, currency: String, item_id: String}
         #   # Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice ...
+        # in {model_type: "cumulative_grouped_bulk", cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::Cadence, cumulative_grouped_bulk_config: -> { Orb::HashOf[Orb::Unknown] === _1 }, currency: String}
+        #   # Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice ...
         # end
         # ```
         #
@@ -578,6 +580,8 @@ module Orb
         # in Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice
         #   # ...
         # in Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice
+        #   # ...
+        # in Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice
         #   # ...
         # end
         # ```
@@ -671,6 +675,9 @@ module Orb
 
           variant :scalable_matrix_with_tiered_pricing,
                   -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice }
+
+          variant :cumulative_grouped_bulk,
+                  -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice }
 
           # @example
           # ```ruby
@@ -9657,6 +9664,322 @@ module Orb
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   #
+              #   def initialize(duration:, duration_unit:, **) = super
+
+              # def initialize: (Hash | Orb::BaseModel) -> void
+
+              # @abstract
+              #
+              # The unit of billing period duration.
+              #
+              # @example
+              # ```ruby
+              # case duration_unit
+              # in :day
+              #   # ...
+              # in :month
+              #   # ...
+              # end
+              # ```
+              class DurationUnit < Orb::Enum
+                DAY = :day
+                MONTH = :month
+
+                finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
+              end
+            end
+          end
+
+          # @example
+          # ```ruby
+          # new_floating_cumulative_grouped_bulk_price => {
+          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::Cadence,
+          #   cumulative_grouped_bulk_config: -> { Orb::HashOf[Orb::Unknown] === _1 },
+          #   currency: String,
+          #   item_id: String,
+          #   model_type: :cumulative_grouped_bulk,
+          #   **_
+          # }
+          # ```
+          class NewFloatingCumulativeGroupedBulkPrice < Orb::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::Cadence]
+            required :cadence,
+                     enum: -> {
+                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::Cadence
+                     }
+
+            # @!attribute cumulative_grouped_bulk_config
+            #
+            #   @return [Hash{Symbol=>Object}]
+            required :cumulative_grouped_bulk_config, Orb::HashOf[Orb::Unknown]
+
+            # @!attribute currency
+            #   An ISO 4217 currency string for which this price is billed in.
+            #
+            #   @return [String]
+            required :currency, String
+
+            # @!attribute item_id
+            #   The id of the item the plan will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute model_type
+            #
+            #   @return [Symbol, :cumulative_grouped_bulk]
+            required :model_type, const: :cumulative_grouped_bulk
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #     usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #     this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #     months.
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration,
+                     -> {
+                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #     applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #     If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration,
+                     -> {
+                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #     by setting the value to `null`, and the entire metadata mapping can be cleared
+            #     by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+
+            # @!parse
+            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::Cadence]
+            #   # @param cumulative_grouped_bulk_config [Hash{Symbol=>Object}]
+            #   # @param currency [String]
+            #   # @param item_id [String]
+            #   # @param name [String]
+            #   # @param billable_metric_id [String, nil]
+            #   # @param billed_in_advance [Boolean, nil]
+            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration, nil]
+            #   # @param conversion_rate [Float, nil]
+            #   # @param external_price_id [String, nil]
+            #   # @param fixed_price_quantity [Float, nil]
+            #   # @param invoice_grouping_key [String, nil]
+            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration, nil]
+            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   # @param model_type [Symbol, :cumulative_grouped_bulk]
+            #   #
+            #   def initialize(
+            #     cadence:,
+            #     cumulative_grouped_bulk_config:,
+            #     currency:,
+            #     item_id:,
+            #     name:,
+            #     billable_metric_id: nil,
+            #     billed_in_advance: nil,
+            #     billing_cycle_configuration: nil,
+            #     conversion_rate: nil,
+            #     external_price_id: nil,
+            #     fixed_price_quantity: nil,
+            #     invoice_grouping_key: nil,
+            #     invoicing_cycle_configuration: nil,
+            #     metadata: nil,
+            #     model_type: :cumulative_grouped_bulk,
+            #     **
+            #   )
+            #     super
+            #   end
+
+            # def initialize: (Hash | Orb::BaseModel) -> void
+
+            # @abstract
+            #
+            # The cadence to bill for this price on.
+            #
+            # @example
+            # ```ruby
+            # case cadence
+            # in :annual
+            #   # ...
+            # in :semi_annual
+            #   # ...
+            # in :monthly
+            #   # ...
+            # in :quarterly
+            #   # ...
+            # in :one_time
+            #   # ...
+            # in ...
+            #   #...
+            # end
+            # ```
+            class Cadence < Orb::Enum
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
+            end
+
+            # @example
+            # ```ruby
+            # billing_cycle_configuration => {
+            #   duration: Integer,
+            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit
+            # }
+            # ```
+            class BillingCycleConfiguration < Orb::BaseModel
+              # @!attribute duration
+              #   The duration of the billing period.
+              #
+              #   @return [Integer]
+              required :duration, Integer
+
+              # @!attribute duration_unit
+              #   The unit of billing period duration.
+              #
+              #   @return [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit]
+              required :duration_unit,
+                       enum: -> {
+                         Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit
+                       }
+
+              # @!parse
+              #   # For custom cadence: specifies the duration of the billing period in days or
+              #   #   months.
+              #   #
+              #   # @param duration [Integer]
+              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit]
+              #   #
+              #   def initialize(duration:, duration_unit:, **) = super
+
+              # def initialize: (Hash | Orb::BaseModel) -> void
+
+              # @abstract
+              #
+              # The unit of billing period duration.
+              #
+              # @example
+              # ```ruby
+              # case duration_unit
+              # in :day
+              #   # ...
+              # in :month
+              #   # ...
+              # end
+              # ```
+              class DurationUnit < Orb::Enum
+                DAY = :day
+                MONTH = :month
+
+                finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
+              end
+            end
+
+            # @example
+            # ```ruby
+            # invoicing_cycle_configuration => {
+            #   duration: Integer,
+            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit
+            # }
+            # ```
+            class InvoicingCycleConfiguration < Orb::BaseModel
+              # @!attribute duration
+              #   The duration of the billing period.
+              #
+              #   @return [Integer]
+              required :duration, Integer
+
+              # @!attribute duration_unit
+              #   The unit of billing period duration.
+              #
+              #   @return [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit]
+              required :duration_unit,
+                       enum: -> {
+                         Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit
+                       }
+
+              # @!parse
+              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   #
+              #   # @param duration [Integer]
+              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit]
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 

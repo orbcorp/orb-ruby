@@ -40,6 +40,7 @@ module Orb
           grouped_tiered_package_config: T::Hash[Symbol, T.anything],
           scalable_matrix_with_unit_pricing_config: T::Hash[Symbol, T.anything],
           scalable_matrix_with_tiered_pricing_config: T::Hash[Symbol, T.anything],
+          cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
           billing_cycle_configuration: T.nilable(Orb::Models::PriceCreateParams::BillingCycleConfiguration),
@@ -77,7 +78,8 @@ module Orb
                     Orb::Models::Price::GroupedTieredPackagePrice,
                     Orb::Models::Price::MaxGroupTieredPackagePrice,
                     Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                    Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+                    Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                    Orb::Models::Price::CumulativeGroupedBulkPrice
                   ))
       end
       def create(
@@ -113,6 +115,7 @@ module Orb
         grouped_tiered_package_config:,
         scalable_matrix_with_unit_pricing_config:,
         scalable_matrix_with_tiered_pricing_config:,
+        cumulative_grouped_bulk_config:,
         billable_metric_id: nil,
         billed_in_advance: nil,
         billing_cycle_configuration: nil,
@@ -158,7 +161,8 @@ module Orb
                     Orb::Models::Price::GroupedTieredPackagePrice,
                     Orb::Models::Price::MaxGroupTieredPackagePrice,
                     Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                    Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+                    Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                    Orb::Models::Price::CumulativeGroupedBulkPrice
                   ))
       end
       def update(price_id, metadata: nil, request_options: {})
@@ -196,7 +200,8 @@ module Orb
           Orb::Models::Price::GroupedTieredPackagePrice,
           Orb::Models::Price::MaxGroupTieredPackagePrice,
           Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-          Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+          Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+          Orb::Models::Price::CumulativeGroupedBulkPrice
         )])
       end
       def list(cursor: nil, limit: nil, request_options: {})
@@ -257,7 +262,8 @@ module Orb
                     Orb::Models::Price::GroupedTieredPackagePrice,
                     Orb::Models::Price::MaxGroupTieredPackagePrice,
                     Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                    Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+                    Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                    Orb::Models::Price::CumulativeGroupedBulkPrice
                   ))
       end
       def fetch(price_id, request_options: {})

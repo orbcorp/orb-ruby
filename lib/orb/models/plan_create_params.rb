@@ -23,7 +23,7 @@ module Orb
       #   Prices for this plan. If the plan has phases, this includes prices across all
       #     phases of the plan.
       #
-      #   @return [Array<Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice, Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice, Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice, Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice, Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice, Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice, Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice, Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice, Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice, Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice, Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice, Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice, Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice, Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice, Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice, Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice, Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice, Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice, Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice, Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice, Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice, Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice, Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice, Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice>]
+      #   @return [Array<Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice, Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice, Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice, Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice, Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice, Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice, Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice, Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice, Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice, Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice, Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice, Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice, Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice, Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice, Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice, Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice, Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice, Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice, Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice, Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice, Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice, Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice, Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice, Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice, Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice>]
       required :prices, -> { Orb::ArrayOf[union: Orb::Models::PlanCreateParams::Price] }
 
       # @!attribute default_invoice_memo
@@ -67,7 +67,7 @@ module Orb
       # @!parse
       #   # @param currency [String]
       #   # @param name [String]
-      #   # @param prices [Array<Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice, Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice, Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice, Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice, Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice, Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice, Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice, Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice, Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice, Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice, Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice, Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice, Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice, Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice, Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice, Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice, Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice, Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice, Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice, Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice, Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice, Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice, Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice, Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice>]
+      #   # @param prices [Array<Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice, Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice, Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice, Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice, Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice, Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice, Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice, Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice, Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice, Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice, Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice, Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice, Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice, Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice, Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice, Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice, Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice, Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice, Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice, Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice, Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice, Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice, Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice, Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice, Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice>]
       #   # @param default_invoice_memo [String, nil]
       #   # @param external_plan_id [String, nil]
       #   # @param metadata [Hash{Symbol=>String, nil}, nil]
@@ -145,6 +145,8 @@ module Orb
       #   # Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice ...
       # in {model_type: "scalable_matrix_with_tiered_pricing", cadence: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::Cadence, item_id: String, name: String}
       #   # Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice ...
+      # in {model_type: "cumulative_grouped_bulk", cadence: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::Cadence, cumulative_grouped_bulk_config: -> { Orb::HashOf[Orb::Unknown] === _1 }, item_id: String}
+      #   # Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice ...
       # end
       # ```
       #
@@ -198,6 +200,8 @@ module Orb
       # in Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice
       #   # ...
       # in Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice
+      #   # ...
+      # in Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice
       #   # ...
       # end
       # ```
@@ -275,6 +279,9 @@ module Orb
 
         variant :scalable_matrix_with_tiered_pricing,
                 -> { Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice }
+
+        variant :cumulative_grouped_bulk,
+                -> { Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice }
 
         # @example
         # ```ruby
@@ -8212,6 +8219,323 @@ module Orb
             #   #
             #   # @param duration [Integer]
             #   # @param duration_unit [Symbol, Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit]
+            #   #
+            #   def initialize(duration:, duration_unit:, **) = super
+
+            # def initialize: (Hash | Orb::BaseModel) -> void
+
+            # @abstract
+            #
+            # The unit of billing period duration.
+            #
+            # @example
+            # ```ruby
+            # case duration_unit
+            # in :day
+            #   # ...
+            # in :month
+            #   # ...
+            # end
+            # ```
+            class DurationUnit < Orb::Enum
+              DAY = :day
+              MONTH = :month
+
+              finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
+            end
+          end
+        end
+
+        # @example
+        # ```ruby
+        # new_plan_cumulative_grouped_bulk_price => {
+        #   cadence: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::Cadence,
+        #   cumulative_grouped_bulk_config: -> { Orb::HashOf[Orb::Unknown] === _1 },
+        #   item_id: String,
+        #   model_type: :cumulative_grouped_bulk,
+        #   name: String,
+        #   **_
+        # }
+        # ```
+        class NewPlanCumulativeGroupedBulkPrice < Orb::BaseModel
+          # @!attribute cadence
+          #   The cadence to bill for this price on.
+          #
+          #   @return [Symbol, Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::Cadence]
+          required :cadence,
+                   enum: -> {
+                     Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::Cadence
+                   }
+
+          # @!attribute cumulative_grouped_bulk_config
+          #
+          #   @return [Hash{Symbol=>Object}]
+          required :cumulative_grouped_bulk_config, Orb::HashOf[Orb::Unknown]
+
+          # @!attribute item_id
+          #   The id of the item the plan will be associated with.
+          #
+          #   @return [String]
+          required :item_id, String
+
+          # @!attribute model_type
+          #
+          #   @return [Symbol, :cumulative_grouped_bulk]
+          required :model_type, const: :cumulative_grouped_bulk
+
+          # @!attribute name
+          #   The name of the price.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!attribute billable_metric_id
+          #   The id of the billable metric for the price. Only needed if the price is
+          #     usage-based.
+          #
+          #   @return [String, nil]
+          optional :billable_metric_id, String, nil?: true
+
+          # @!attribute billed_in_advance
+          #   If the Price represents a fixed cost, the price will be billed in-advance if
+          #     this is true, and in-arrears if this is false.
+          #
+          #   @return [Boolean, nil]
+          optional :billed_in_advance, Orb::BooleanModel, nil?: true
+
+          # @!attribute billing_cycle_configuration
+          #   For custom cadence: specifies the duration of the billing period in days or
+          #     months.
+          #
+          #   @return [Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration, nil]
+          optional :billing_cycle_configuration,
+                   -> {
+                     Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration
+                   },
+                   nil?: true
+
+          # @!attribute conversion_rate
+          #   The per unit conversion rate of the price currency to the invoicing currency.
+          #
+          #   @return [Float, nil]
+          optional :conversion_rate, Float, nil?: true
+
+          # @!attribute currency
+          #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+          #     price is billed.
+          #
+          #   @return [String, nil]
+          optional :currency, String, nil?: true
+
+          # @!attribute external_price_id
+          #   An alias for the price.
+          #
+          #   @return [String, nil]
+          optional :external_price_id, String, nil?: true
+
+          # @!attribute fixed_price_quantity
+          #   If the Price represents a fixed cost, this represents the quantity of units
+          #     applied.
+          #
+          #   @return [Float, nil]
+          optional :fixed_price_quantity, Float, nil?: true
+
+          # @!attribute invoice_grouping_key
+          #   The property used to group this price on an invoice
+          #
+          #   @return [String, nil]
+          optional :invoice_grouping_key, String, nil?: true
+
+          # @!attribute invoicing_cycle_configuration
+          #   Within each billing cycle, specifies the cadence at which invoices are produced.
+          #     If unspecified, a single invoice is produced per billing cycle.
+          #
+          #   @return [Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration, nil]
+          optional :invoicing_cycle_configuration,
+                   -> {
+                     Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration
+                   },
+                   nil?: true
+
+          # @!attribute metadata
+          #   User-specified key/value pairs for the resource. Individual keys can be removed
+          #     by setting the value to `null`, and the entire metadata mapping can be cleared
+          #     by setting `metadata` to `null`.
+          #
+          #   @return [Hash{Symbol=>String, nil}, nil]
+          optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+
+          # @!parse
+          #   # @param cadence [Symbol, Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::Cadence]
+          #   # @param cumulative_grouped_bulk_config [Hash{Symbol=>Object}]
+          #   # @param item_id [String]
+          #   # @param name [String]
+          #   # @param billable_metric_id [String, nil]
+          #   # @param billed_in_advance [Boolean, nil]
+          #   # @param billing_cycle_configuration [Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration, nil]
+          #   # @param conversion_rate [Float, nil]
+          #   # @param currency [String, nil]
+          #   # @param external_price_id [String, nil]
+          #   # @param fixed_price_quantity [Float, nil]
+          #   # @param invoice_grouping_key [String, nil]
+          #   # @param invoicing_cycle_configuration [Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration, nil]
+          #   # @param metadata [Hash{Symbol=>String, nil}, nil]
+          #   # @param model_type [Symbol, :cumulative_grouped_bulk]
+          #   #
+          #   def initialize(
+          #     cadence:,
+          #     cumulative_grouped_bulk_config:,
+          #     item_id:,
+          #     name:,
+          #     billable_metric_id: nil,
+          #     billed_in_advance: nil,
+          #     billing_cycle_configuration: nil,
+          #     conversion_rate: nil,
+          #     currency: nil,
+          #     external_price_id: nil,
+          #     fixed_price_quantity: nil,
+          #     invoice_grouping_key: nil,
+          #     invoicing_cycle_configuration: nil,
+          #     metadata: nil,
+          #     model_type: :cumulative_grouped_bulk,
+          #     **
+          #   )
+          #     super
+          #   end
+
+          # def initialize: (Hash | Orb::BaseModel) -> void
+
+          # @abstract
+          #
+          # The cadence to bill for this price on.
+          #
+          # @example
+          # ```ruby
+          # case cadence
+          # in :annual
+          #   # ...
+          # in :semi_annual
+          #   # ...
+          # in :monthly
+          #   # ...
+          # in :quarterly
+          #   # ...
+          # in :one_time
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
+          class Cadence < Orb::Enum
+            ANNUAL = :annual
+            SEMI_ANNUAL = :semi_annual
+            MONTHLY = :monthly
+            QUARTERLY = :quarterly
+            ONE_TIME = :one_time
+            CUSTOM = :custom
+
+            finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
+          end
+
+          # @example
+          # ```ruby
+          # billing_cycle_configuration => {
+          #   duration: Integer,
+          #   duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit
+          # }
+          # ```
+          class BillingCycleConfiguration < Orb::BaseModel
+            # @!attribute duration
+            #   The duration of the billing period.
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #   The unit of billing period duration.
+            #
+            #   @return [Symbol, Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit
+                     }
+
+            # @!parse
+            #   # For custom cadence: specifies the duration of the billing period in days or
+            #   #   months.
+            #   #
+            #   # @param duration [Integer]
+            #   # @param duration_unit [Symbol, Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit]
+            #   #
+            #   def initialize(duration:, duration_unit:, **) = super
+
+            # def initialize: (Hash | Orb::BaseModel) -> void
+
+            # @abstract
+            #
+            # The unit of billing period duration.
+            #
+            # @example
+            # ```ruby
+            # case duration_unit
+            # in :day
+            #   # ...
+            # in :month
+            #   # ...
+            # end
+            # ```
+            class DurationUnit < Orb::Enum
+              DAY = :day
+              MONTH = :month
+
+              finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
+            end
+          end
+
+          # @example
+          # ```ruby
+          # invoicing_cycle_configuration => {
+          #   duration: Integer,
+          #   duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit
+          # }
+          # ```
+          class InvoicingCycleConfiguration < Orb::BaseModel
+            # @!attribute duration
+            #   The duration of the billing period.
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #   The unit of billing period duration.
+            #
+            #   @return [Symbol, Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit
+                     }
+
+            # @!parse
+            #   # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   #   If unspecified, a single invoice is produced per billing cycle.
+            #   #
+            #   # @param duration [Integer]
+            #   # @param duration_unit [Symbol, Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit]
             #   #
             #   def initialize(duration:, duration_unit:, **) = super
 

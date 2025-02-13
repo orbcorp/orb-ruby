@@ -82,11 +82,15 @@ module Orb
                 Orb::Models::Price::GroupedTieredPackagePrice,
                 Orb::Models::Price::MaxGroupTieredPackagePrice,
                 Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+                Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                Orb::Models::Price::CumulativeGroupedBulkPrice
               )
             )
           end
           attr_accessor :price
+
+          sig { returns(String) }
+          attr_accessor :price_id
 
           sig { returns(String) }
           attr_accessor :subtotal
@@ -126,14 +130,16 @@ module Orb
                 Orb::Models::Price::GroupedTieredPackagePrice,
                 Orb::Models::Price::MaxGroupTieredPackagePrice,
                 Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+                Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                Orb::Models::Price::CumulativeGroupedBulkPrice
               ),
+              price_id: String,
               subtotal: String,
               total: String,
               quantity: T.nilable(Float)
             ).void
           end
-          def initialize(price:, subtotal:, total:, quantity: nil)
+          def initialize(price:, price_id:, subtotal:, total:, quantity: nil)
           end
 
           sig do
@@ -166,8 +172,10 @@ module Orb
                   Orb::Models::Price::GroupedTieredPackagePrice,
                   Orb::Models::Price::MaxGroupTieredPackagePrice,
                   Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                  Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+                  Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                  Orb::Models::Price::CumulativeGroupedBulkPrice
                 ),
+                price_id: String,
                 subtotal: String,
                 total: String,
                 quantity: T.nilable(Float)
