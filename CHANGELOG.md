@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2025-02-13)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Features
+
+* **api:** api update ([#34](https://github.com/orbcorp/orb-ruby/issues/34)) ([9fad0c4](https://github.com/orbcorp/orb-ruby/commit/9fad0c4f6f7ab7db26866956ad724afcc785297e))
+
+
+### Chores
+
+* enable full pagination tests ([#32](https://github.com/orbcorp/orb-ruby/issues/32)) ([df07d96](https://github.com/orbcorp/orb-ruby/commit/df07d9620a969672cb6cf34d633a3e4ae6b5f789))
+* **internal:** codegen related update ([#28](https://github.com/orbcorp/orb-ruby/issues/28)) ([8d0a108](https://github.com/orbcorp/orb-ruby/commit/8d0a10834d2b8f07f30c117f725c2eaed72f3eb8))
+* **internal:** codegen related update ([#30](https://github.com/orbcorp/orb-ruby/issues/30)) ([fc2a760](https://github.com/orbcorp/orb-ruby/commit/fc2a7602ed78b5c13e72e5bfc4484a5d2c2fe56c))
+* **internal:** version bump ([#26](https://github.com/orbcorp/orb-ruby/issues/26)) ([91b6be8](https://github.com/orbcorp/orb-ruby/commit/91b6be8a802fde161cb861607c8a1e7259830c3f))
+* use concise syntax for pattern matching ([#29](https://github.com/orbcorp/orb-ruby/issues/29)) ([f04c8e3](https://github.com/orbcorp/orb-ruby/commit/f04c8e3ad6e0f52e95877c1ed07df0a592b68f5b))
+* whitespace changes ([#31](https://github.com/orbcorp/orb-ruby/issues/31)) ([4d8cd6f](https://github.com/orbcorp/orb-ruby/commit/4d8cd6fa546c909abc40f40167f8c234b9b69057))
+
 ## 0.1.0-alpha.6 (2025-02-11)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
