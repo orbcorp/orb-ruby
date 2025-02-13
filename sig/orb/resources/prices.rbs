@@ -40,6 +40,7 @@ module Orb
           grouped_tiered_package_config: ::Hash[Symbol, top],
           scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
           scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
+          cumulative_grouped_bulk_config: ::Hash[Symbol, top],
           billable_metric_id: String?,
           billed_in_advance: bool?,
           billing_cycle_configuration: Orb::Models::PriceCreateParams::BillingCycleConfiguration?,

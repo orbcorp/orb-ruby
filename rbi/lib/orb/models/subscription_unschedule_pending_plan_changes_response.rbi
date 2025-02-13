@@ -970,7 +970,8 @@ module Orb
               Orb::Models::Price::GroupedTieredPackagePrice,
               Orb::Models::Price::MaxGroupTieredPackagePrice,
               Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+              Orb::Models::Price::CumulativeGroupedBulkPrice
             )
           )
         end
@@ -1014,7 +1015,8 @@ module Orb
               Orb::Models::Price::GroupedTieredPackagePrice,
               Orb::Models::Price::MaxGroupTieredPackagePrice,
               Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+              Orb::Models::Price::CumulativeGroupedBulkPrice
             ),
             start_date: Time
           ).void
@@ -1067,7 +1069,8 @@ module Orb
                 Orb::Models::Price::GroupedTieredPackagePrice,
                 Orb::Models::Price::MaxGroupTieredPackagePrice,
                 Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+                Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                Orb::Models::Price::CumulativeGroupedBulkPrice
               ),
               start_date: Time
             }

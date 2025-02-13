@@ -36,7 +36,8 @@ module Orb
                       Orb::Models::Price::GroupedTieredPackagePrice,
                       Orb::Models::Price::MaxGroupTieredPackagePrice,
                       Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                      Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+                      Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                      Orb::Models::Price::CumulativeGroupedBulkPrice
                     ))
         end
         def update(external_price_id, metadata: nil, request_options: {})
@@ -73,7 +74,8 @@ module Orb
                       Orb::Models::Price::GroupedTieredPackagePrice,
                       Orb::Models::Price::MaxGroupTieredPackagePrice,
                       Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                      Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
+                      Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                      Orb::Models::Price::CumulativeGroupedBulkPrice
                     ))
         end
         def fetch(external_price_id, request_options: {})
