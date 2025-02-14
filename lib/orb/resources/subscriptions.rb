@@ -521,6 +521,10 @@ module Orb
       #
       #   @option params [Symbol, Orb::Models::SubscriptionCancelParams::CancelOption] :cancel_option Determines the timing of subscription cancellation
       #
+      #   @option params [Boolean, nil] :allow_invoice_credit_or_void If false, this request will fail if it would void an issued invoice or create a
+      #     credit note. Consider using this as a safety mechanism if you do not expect
+      #     existing invoices to be changed.
+      #
       #   @option params [Time, nil] :cancellation_date The date that the cancellation should take effect. This parameter can only be
       #     passed if the `cancel_option` is `requested_date`.
       #
@@ -958,6 +962,10 @@ module Orb
       #
       #   @option params [Array<Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment>] :add_adjustments A list of adjustments to add to the subscription.
       #
+      #   @option params [Boolean, nil] :allow_invoice_credit_or_void If false, this request will fail if it would void an issued invoice or create a
+      #     credit note. Consider using this as a safety mechanism if you do not expect
+      #     existing invoices to be changed.
+      #
       #   @option params [Array<Orb::Models::SubscriptionPriceIntervalsParams::Edit>] :edit A list of price intervals to edit on the subscription.
       #
       #   @option params [Array<Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment>] :edit_adjustments A list of adjustments to edit on the subscription.
@@ -1265,6 +1273,10 @@ module Orb
       #
       # @param params [Orb::Models::SubscriptionTriggerPhaseParams, Hash{Symbol=>Object}] .
       #
+      #   @option params [Boolean, nil] :allow_invoice_credit_or_void If false, this request will fail if it would void an issued invoice or create a
+      #     credit note. Consider using this as a safety mechanism if you do not expect
+      #     existing invoices to be changed.
+      #
       #   @option params [Date, nil] :effective_date The date on which the phase change should take effect. If not provided, defaults
       #     to today in the customer's timezone.
       #
@@ -1376,6 +1388,10 @@ module Orb
       #   @option params [String] :price_id Price for which the quantity should be updated. Must be a fixed fee.
       #
       #   @option params [Float] :quantity
+      #
+      #   @option params [Boolean, nil] :allow_invoice_credit_or_void If false, this request will fail if it would void an issued invoice or create a
+      #     credit note. Consider using this as a safety mechanism if you do not expect
+      #     existing invoices to be changed.
       #
       #   @option params [Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption] :change_option Determines when the change takes effect. Note that if `effective_date` is
       #     specified, this defaults to `effective_date`. Otherwise, this defaults to

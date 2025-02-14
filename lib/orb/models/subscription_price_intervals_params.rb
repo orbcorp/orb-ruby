@@ -28,6 +28,14 @@ module Orb
       #   # @return [Array<Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment>]
       #   attr_writer :add_adjustments
 
+      # @!attribute allow_invoice_credit_or_void
+      #   If false, this request will fail if it would void an issued invoice or create a
+      #     credit note. Consider using this as a safety mechanism if you do not expect
+      #     existing invoices to be changed.
+      #
+      #   @return [Boolean, nil]
+      optional :allow_invoice_credit_or_void, Orb::BooleanModel, nil?: true
+
       # @!attribute [r] edit
       #   A list of price intervals to edit on the subscription.
       #
@@ -52,11 +60,22 @@ module Orb
       # @!parse
       #   # @param add [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add>]
       #   # @param add_adjustments [Array<Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment>]
+      #   # @param allow_invoice_credit_or_void [Boolean, nil]
       #   # @param edit [Array<Orb::Models::SubscriptionPriceIntervalsParams::Edit>]
       #   # @param edit_adjustments [Array<Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment>]
       #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(add: nil, add_adjustments: nil, edit: nil, edit_adjustments: nil, request_options: {}, **) = super
+      #   def initialize(
+      #     add: nil,
+      #     add_adjustments: nil,
+      #     allow_invoice_credit_or_void: nil,
+      #     edit: nil,
+      #     edit_adjustments: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 

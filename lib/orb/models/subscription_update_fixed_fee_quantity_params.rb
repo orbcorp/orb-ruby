@@ -18,6 +18,14 @@ module Orb
       #   @return [Float]
       required :quantity, Float
 
+      # @!attribute allow_invoice_credit_or_void
+      #   If false, this request will fail if it would void an issued invoice or create a
+      #     credit note. Consider using this as a safety mechanism if you do not expect
+      #     existing invoices to be changed.
+      #
+      #   @return [Boolean, nil]
+      optional :allow_invoice_credit_or_void, Orb::BooleanModel, nil?: true
+
       # @!attribute [r] change_option
       #   Determines when the change takes effect. Note that if `effective_date` is
       #     specified, this defaults to `effective_date`. Otherwise, this defaults to
@@ -44,11 +52,22 @@ module Orb
       # @!parse
       #   # @param price_id [String]
       #   # @param quantity [Float]
+      #   # @param allow_invoice_credit_or_void [Boolean, nil]
       #   # @param change_option [Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption]
       #   # @param effective_date [Date, nil]
       #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(price_id:, quantity:, change_option: nil, effective_date: nil, request_options: {}, **) = super
+      #   def initialize(
+      #     price_id:,
+      #     quantity:,
+      #     allow_invoice_credit_or_void: nil,
+      #     change_option: nil,
+      #     effective_date: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 

@@ -4,6 +4,7 @@ module Orb
       {
         add: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add],
         add_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment],
+        allow_invoice_credit_or_void: bool?,
         edit: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit],
         edit_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment]
       }
@@ -25,6 +26,8 @@ module Orb
         ::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment]
       ) -> void
 
+      attr_accessor allow_invoice_credit_or_void: bool?
+
       attr_reader edit: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit]?
 
       def edit=: (
@@ -41,6 +44,7 @@ module Orb
         (
           add: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add],
           add_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment],
+          allow_invoice_credit_or_void: bool?,
           edit: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit],
           edit_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment],
           request_options: Orb::request_opts
