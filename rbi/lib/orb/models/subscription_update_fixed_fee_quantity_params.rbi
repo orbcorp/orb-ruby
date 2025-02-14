@@ -12,6 +12,9 @@ module Orb
       sig { returns(Float) }
       attr_accessor :quantity
 
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_accessor :allow_invoice_credit_or_void
+
       sig { returns(T.nilable(Symbol)) }
       attr_reader :change_option
 
@@ -25,12 +28,20 @@ module Orb
         params(
           price_id: String,
           quantity: Float,
+          allow_invoice_credit_or_void: T.nilable(T::Boolean),
           change_option: Symbol,
           effective_date: T.nilable(Date),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(price_id:, quantity:, change_option: nil, effective_date: nil, request_options: {})
+      def initialize(
+        price_id:,
+        quantity:,
+        allow_invoice_credit_or_void: nil,
+        change_option: nil,
+        effective_date: nil,
+        request_options: {}
+      )
       end
 
       sig do
@@ -38,6 +49,7 @@ module Orb
           {
             price_id: String,
             quantity: Float,
+            allow_invoice_credit_or_void: T.nilable(T::Boolean),
             change_option: Symbol,
             effective_date: T.nilable(Date),
             request_options: Orb::RequestOptions

@@ -4,6 +4,7 @@ module Orb
       {
         price_id: String,
         quantity: Float,
+        allow_invoice_credit_or_void: bool?,
         change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option,
         effective_date: Date?
       }
@@ -17,6 +18,8 @@ module Orb
 
       attr_accessor quantity: Float
 
+      attr_accessor allow_invoice_credit_or_void: bool?
+
       attr_reader change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option?
 
       def change_option=: (
@@ -29,6 +32,7 @@ module Orb
         (
           price_id: String,
           quantity: Float,
+          allow_invoice_credit_or_void: bool?,
           change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option,
           effective_date: Date?,
           request_options: Orb::request_opts

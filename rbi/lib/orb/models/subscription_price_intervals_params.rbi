@@ -20,6 +20,9 @@ module Orb
       end
       attr_writer :add_adjustments
 
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_accessor :allow_invoice_credit_or_void
+
       sig { returns(T.nilable(T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit])) }
       attr_reader :edit
 
@@ -38,12 +41,20 @@ module Orb
         params(
           add: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add],
           add_adjustments: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment],
+          allow_invoice_credit_or_void: T.nilable(T::Boolean),
           edit: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit],
           edit_adjustments: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment],
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(add: nil, add_adjustments: nil, edit: nil, edit_adjustments: nil, request_options: {})
+      def initialize(
+        add: nil,
+        add_adjustments: nil,
+        allow_invoice_credit_or_void: nil,
+        edit: nil,
+        edit_adjustments: nil,
+        request_options: {}
+      )
       end
 
       sig do
@@ -51,6 +62,7 @@ module Orb
           {
             add: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add],
             add_adjustments: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment],
+            allow_invoice_credit_or_void: T.nilable(T::Boolean),
             edit: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit],
             edit_adjustments: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment],
             request_options: Orb::RequestOptions
