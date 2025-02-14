@@ -127,11 +127,18 @@ module Orb
         params(
           subscription_id: String,
           cancel_option: Symbol,
+          allow_invoice_credit_or_void: T.nilable(T::Boolean),
           cancellation_date: T.nilable(Time),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::SubscriptionCancelResponse)
       end
-      def cancel(subscription_id, cancel_option:, cancellation_date: nil, request_options: {})
+      def cancel(
+        subscription_id,
+        cancel_option:,
+        allow_invoice_credit_or_void: nil,
+        cancellation_date: nil,
+        request_options: {}
+      )
       end
 
       sig do
@@ -227,6 +234,7 @@ module Orb
           subscription_id: String,
           add: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add],
           add_adjustments: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment],
+          allow_invoice_credit_or_void: T.nilable(T::Boolean),
           edit: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit],
           edit_adjustments: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment],
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
@@ -236,6 +244,7 @@ module Orb
         subscription_id,
         add: nil,
         add_adjustments: nil,
+        allow_invoice_credit_or_void: nil,
         edit: nil,
         edit_adjustments: nil,
         request_options: {}
@@ -307,11 +316,17 @@ module Orb
       sig do
         params(
           subscription_id: String,
+          allow_invoice_credit_or_void: T.nilable(T::Boolean),
           effective_date: T.nilable(Date),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Orb::Models::SubscriptionTriggerPhaseResponse)
       end
-      def trigger_phase(subscription_id, effective_date: nil, request_options: {})
+      def trigger_phase(
+        subscription_id,
+        allow_invoice_credit_or_void: nil,
+        effective_date: nil,
+        request_options: {}
+      )
       end
 
       sig do
@@ -347,6 +362,7 @@ module Orb
           subscription_id: String,
           price_id: String,
           quantity: Float,
+          allow_invoice_credit_or_void: T.nilable(T::Boolean),
           change_option: Symbol,
           effective_date: T.nilable(Date),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
@@ -356,6 +372,7 @@ module Orb
         subscription_id,
         price_id:,
         quantity:,
+        allow_invoice_credit_or_void: nil,
         change_option: nil,
         effective_date: nil,
         request_options: {}

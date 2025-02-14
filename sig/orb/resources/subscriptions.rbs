@@ -79,6 +79,7 @@ module Orb
         | (
           String subscription_id,
           cancel_option: Orb::Models::SubscriptionCancelParams::cancel_option,
+          allow_invoice_credit_or_void: bool?,
           cancellation_date: Time?,
           request_options: Orb::request_opts
         ) -> Orb::Models::SubscriptionCancelResponse
@@ -156,6 +157,7 @@ module Orb
           String subscription_id,
           add: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add],
           add_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment],
+          allow_invoice_credit_or_void: bool?,
           edit: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit],
           edit_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment],
           request_options: Orb::request_opts
@@ -205,6 +207,7 @@ module Orb
         ) -> Orb::Models::SubscriptionTriggerPhaseResponse
         | (
           String subscription_id,
+          allow_invoice_credit_or_void: bool?,
           effective_date: Date?,
           request_options: Orb::request_opts
         ) -> Orb::Models::SubscriptionTriggerPhaseResponse
@@ -253,6 +256,7 @@ module Orb
           String subscription_id,
           price_id: String,
           quantity: Float,
+          allow_invoice_credit_or_void: bool?,
           change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option,
           effective_date: Date?,
           request_options: Orb::request_opts

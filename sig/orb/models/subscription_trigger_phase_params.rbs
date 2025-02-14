@@ -1,16 +1,23 @@
 module Orb
   module Models
     type subscription_trigger_phase_params =
-      { effective_date: Date? } & Orb::request_parameters
+      { allow_invoice_credit_or_void: bool?, effective_date: Date? }
+      & Orb::request_parameters
 
     class SubscriptionTriggerPhaseParams < Orb::BaseModel
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      attr_accessor allow_invoice_credit_or_void: bool?
+
       attr_accessor effective_date: Date?
 
       def initialize:
-        (effective_date: Date?, request_options: Orb::request_opts) -> void
+        (
+          allow_invoice_credit_or_void: bool?,
+          effective_date: Date?,
+          request_options: Orb::request_opts
+        ) -> void
         | (
           ?Orb::Models::subscription_trigger_phase_params | Orb::BaseModel data
         ) -> void

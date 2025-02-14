@@ -9,23 +9,33 @@ module Orb
       sig { returns(Symbol) }
       attr_accessor :cancel_option
 
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_accessor :allow_invoice_credit_or_void
+
       sig { returns(T.nilable(Time)) }
       attr_accessor :cancellation_date
 
       sig do
         params(
           cancel_option: Symbol,
+          allow_invoice_credit_or_void: T.nilable(T::Boolean),
           cancellation_date: T.nilable(Time),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(cancel_option:, cancellation_date: nil, request_options: {})
+      def initialize(
+        cancel_option:,
+        allow_invoice_credit_or_void: nil,
+        cancellation_date: nil,
+        request_options: {}
+      )
       end
 
       sig do
         override.returns(
           {
             cancel_option: Symbol,
+            allow_invoice_credit_or_void: T.nilable(T::Boolean),
             cancellation_date: T.nilable(Time),
             request_options: Orb::RequestOptions
           }
