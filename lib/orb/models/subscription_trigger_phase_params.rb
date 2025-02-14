@@ -7,6 +7,14 @@ module Orb
       #   extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # @!attribute allow_invoice_credit_or_void
+      #   If false, this request will fail if it would void an issued invoice or create a
+      #     credit note. Consider using this as a safety mechanism if you do not expect
+      #     existing invoices to be changed.
+      #
+      #   @return [Boolean, nil]
+      optional :allow_invoice_credit_or_void, Orb::BooleanModel, nil?: true
+
       # @!attribute effective_date
       #   The date on which the phase change should take effect. If not provided, defaults
       #     to today in the customer's timezone.
@@ -15,10 +23,11 @@ module Orb
       optional :effective_date, Date, nil?: true
 
       # @!parse
+      #   # @param allow_invoice_credit_or_void [Boolean, nil]
       #   # @param effective_date [Date, nil]
       #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(effective_date: nil, request_options: {}, **) = super
+      #   def initialize(allow_invoice_credit_or_void: nil, effective_date: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Orb::BaseModel) -> void
     end
