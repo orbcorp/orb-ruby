@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.8 (2025-02-15)
+
+Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
+
+### Features
+
+* **api:** api update ([#37](https://github.com/orbcorp/orb-ruby/issues/37)) ([2b667fc](https://github.com/orbcorp/orb-ruby/commit/2b667fc67c4b4cfa160e33a7c4dbcae69fc210f5))
+
+
+### Chores
+
+* **internal:** version bump ([#35](https://github.com/orbcorp/orb-ruby/issues/35)) ([9b1a8f4](https://github.com/orbcorp/orb-ruby/commit/9b1a8f4e71797f83a536ae7aae4ef4322422328d))
+* switch away from `attr_accessor` annotations to better match tapioca's compilation ([#38](https://github.com/orbcorp/orb-ruby/issues/38)) ([9173dba](https://github.com/orbcorp/orb-ruby/commit/9173dba60188d34ac9f4f71a40bdb61c7f5705fe))
+
 ## 0.1.0-alpha.7 (2025-02-13)
 
 Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
