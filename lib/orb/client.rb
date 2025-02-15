@@ -66,6 +66,8 @@ module Orb
     # @return [Hash{String=>String}]
     #
     private def auth_headers
+      return {} if @api_key.nil?
+
       {"Authorization" => "Bearer #{@api_key}"}
     end
 
