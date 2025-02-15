@@ -70,7 +70,7 @@ module Orb
     def dimensional_price_groups
     end
 
-    sig { returns(T::Hash[String, String]) }
+    sig { override.returns(T::Hash[String, String]) }
     private def auth_headers
     end
 
