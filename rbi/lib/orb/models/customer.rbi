@@ -4,67 +4,182 @@ module Orb
   module Models
     class Customer < Orb::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(T::Array[String]) }
-      attr_accessor :additional_emails
+      def additional_emails
+      end
+
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def additional_emails=(_)
+      end
 
       sig { returns(T::Boolean) }
-      attr_accessor :auto_collection
+      def auto_collection
+      end
+
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def auto_collection=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :balance
+      def balance
+      end
+
+      sig { params(_: String).returns(String) }
+      def balance=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::Customer::BillingAddress)) }
-      attr_accessor :billing_address
+      def billing_address
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::Customer::BillingAddress)).returns(T.nilable(Orb::Models::Customer::BillingAddress))
+      end
+      def billing_address=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def currency=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :email
+      def email
+      end
+
+      sig { params(_: String).returns(String) }
+      def email=(_)
+      end
 
       sig { returns(T::Boolean) }
-      attr_accessor :email_delivery
+      def email_delivery
+      end
+
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def email_delivery=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :exempt_from_automated_tax
+      def exempt_from_automated_tax
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def exempt_from_automated_tax=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :external_customer_id
+      def external_customer_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def external_customer_id=(_)
+      end
 
       sig { returns(T::Hash[Symbol, String]) }
-      attr_accessor :metadata
+      def metadata
+      end
+
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def metadata=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_accessor :payment_provider
+      def payment_provider
+      end
+
+      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      def payment_provider=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :payment_provider_id
+      def payment_provider_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def payment_provider_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :portal_url
+      def portal_url
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def portal_url=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::Customer::ShippingAddress)) }
-      attr_accessor :shipping_address
+      def shipping_address
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::Customer::ShippingAddress)).returns(T.nilable(Orb::Models::Customer::ShippingAddress))
+      end
+      def shipping_address=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::Customer::TaxID)) }
-      attr_accessor :tax_id
+      def tax_id
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::Customer::TaxID)).returns(T.nilable(Orb::Models::Customer::TaxID))
+      end
+      def tax_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :timezone
+      def timezone
+      end
+
+      sig { params(_: String).returns(String) }
+      def timezone=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::Customer::AccountingSyncConfiguration)) }
-      attr_accessor :accounting_sync_configuration
+      def accounting_sync_configuration
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::Customer::AccountingSyncConfiguration)).returns(T.nilable(Orb::Models::Customer::AccountingSyncConfiguration))
+      end
+      def accounting_sync_configuration=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::Customer::ReportingConfiguration)) }
-      attr_accessor :reporting_configuration
+      def reporting_configuration
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::Customer::ReportingConfiguration)).returns(T.nilable(Orb::Models::Customer::ReportingConfiguration))
+      end
+      def reporting_configuration=(_)
+      end
 
       sig do
         params(
@@ -148,22 +263,52 @@ module Orb
 
       class BillingAddress < Orb::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_accessor :city
+        def city
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def city=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :country
+        def country
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def country=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :line1
+        def line1
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def line1=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :line2
+        def line2
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def line2=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :postal_code
+        def postal_code
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def postal_code=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :state
+        def state
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def state=(_)
+        end
 
         sig do
           params(
@@ -210,22 +355,52 @@ module Orb
 
       class ShippingAddress < Orb::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_accessor :city
+        def city
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def city=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :country
+        def country
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def country=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :line1
+        def line1
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def line1=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :line2
+        def line2
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def line2=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :postal_code
+        def postal_code
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def postal_code=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :state
+        def state
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def state=(_)
+        end
 
         sig do
           params(
@@ -258,13 +433,28 @@ module Orb
 
       class TaxID < Orb::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :country
+        def country
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def country=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :value
+        def value
+        end
+
+        sig { params(_: String).returns(String) }
+        def value=(_)
+        end
 
         sig { params(country: Symbol, type: Symbol, value: String).void }
         def initialize(country:, type:, value:)
@@ -444,10 +634,22 @@ module Orb
 
       class AccountingSyncConfiguration < Orb::BaseModel
         sig { returns(T::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider]) }
-        attr_accessor :accounting_providers
+        def accounting_providers
+        end
+
+        sig do
+          params(_: T::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider]).returns(T::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider])
+        end
+        def accounting_providers=(_)
+        end
 
         sig { returns(T::Boolean) }
-        attr_accessor :excluded
+        def excluded
+        end
+
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def excluded=(_)
+        end
 
         sig do
           params(
@@ -470,10 +672,20 @@ module Orb
 
         class AccountingProvider < Orb::BaseModel
           sig { returns(T.nilable(String)) }
-          attr_accessor :external_provider_id
+          def external_provider_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def external_provider_id=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :provider_type
+          def provider_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def provider_type=(_)
+          end
 
           sig { params(external_provider_id: T.nilable(String), provider_type: Symbol).void }
           def initialize(external_provider_id:, provider_type:)
@@ -498,7 +710,12 @@ module Orb
 
       class ReportingConfiguration < Orb::BaseModel
         sig { returns(T::Boolean) }
-        attr_accessor :exempt
+        def exempt
+        end
+
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def exempt=(_)
+        end
 
         sig { params(exempt: T::Boolean).void }
         def initialize(exempt:)

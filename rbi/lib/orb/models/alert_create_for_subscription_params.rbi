@@ -7,13 +7,30 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold]) }
-      attr_accessor :thresholds
+      def thresholds
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold]).returns(T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold])
+      end
+      def thresholds=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :metric_id
+      def metric_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def metric_id=(_)
+      end
 
       sig do
         params(
@@ -41,7 +58,12 @@ module Orb
 
       class Threshold < Orb::BaseModel
         sig { returns(Float) }
-        attr_accessor :value
+        def value
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def value=(_)
+        end
 
         sig { params(value: Float).void }
         def initialize(value:)

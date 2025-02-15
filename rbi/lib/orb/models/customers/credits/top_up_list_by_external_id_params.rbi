@@ -9,13 +9,20 @@ module Orb
           include Orb::RequestParameters
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :cursor
+          def cursor
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def cursor=(_)
+          end
 
           sig { returns(T.nilable(Integer)) }
-          attr_reader :limit
+          def limit
+          end
 
-          sig { params(limit: Integer).void }
-          attr_writer :limit
+          sig { params(_: Integer).returns(Integer) }
+          def limit=(_)
+          end
 
           sig do
             params(

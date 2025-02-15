@@ -8,25 +8,52 @@ module Orb
         include Orb::RequestParameters
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :cursor
+        def cursor
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def cursor=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_reader :limit
+        def limit
+        end
 
-        sig { params(limit: Integer).void }
-        attr_writer :limit
-
-        sig { returns(T.nilable(Time)) }
-        attr_accessor :operation_time_gt
-
-        sig { returns(T.nilable(Time)) }
-        attr_accessor :operation_time_gte
+        sig { params(_: Integer).returns(Integer) }
+        def limit=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :operation_time_lt
+        def operation_time_gt
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def operation_time_gt=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :operation_time_lte
+        def operation_time_gte
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def operation_time_gte=(_)
+        end
+
+        sig { returns(T.nilable(Time)) }
+        def operation_time_lt
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def operation_time_lt=(_)
+        end
+
+        sig { returns(T.nilable(Time)) }
+        def operation_time_lte
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def operation_time_lte=(_)
+        end
 
         sig do
           params(

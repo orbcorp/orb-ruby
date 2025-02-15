@@ -67,7 +67,7 @@ module Orb
 
             attr_reader require_successful_payment: bool?
 
-            def require_successful_payment=: (bool) -> void
+            def require_successful_payment=: (bool) -> bool
 
             def initialize:
               (

@@ -4,10 +4,12 @@ module Orb
   module Resources
     class Events
       sig { returns(Orb::Resources::Events::Backfills) }
-      attr_reader :backfills
+      def backfills
+      end
 
       sig { returns(Orb::Resources::Events::Volume) }
-      attr_reader :volume
+      def volume
+      end
 
       sig do
         params(

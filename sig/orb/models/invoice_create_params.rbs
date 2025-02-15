@@ -39,7 +39,7 @@ module Orb
 
       attr_reader will_auto_issue: bool?
 
-      def will_auto_issue=: (bool) -> void
+      def will_auto_issue=: (bool) -> bool
 
       def initialize:
         (

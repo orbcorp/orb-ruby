@@ -4,25 +4,70 @@ module Orb
   module Models
     class Coupon < Orb::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :archived_at
+      def archived_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def archived_at=(_)
+      end
 
       sig { returns(T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount)) }
-      attr_accessor :discount
+      def discount
+      end
+
+      sig do
+        params(
+          _: T.any(
+            Orb::Models::PercentageDiscount,
+            Orb::Models::AmountDiscount
+          )
+        ).returns(T.any(
+                    Orb::Models::PercentageDiscount,
+                    Orb::Models::AmountDiscount
+                  ))
+      end
+      def discount=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_accessor :duration_in_months
+      def duration_in_months
+      end
+
+      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+      def duration_in_months=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_accessor :max_redemptions
+      def max_redemptions
+      end
+
+      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+      def max_redemptions=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :redemption_code
+      def redemption_code
+      end
+
+      sig { params(_: String).returns(String) }
+      def redemption_code=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :times_redeemed
+      def times_redeemed
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def times_redeemed=(_)
+      end
 
       sig do
         params(

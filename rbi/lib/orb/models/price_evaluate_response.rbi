@@ -4,7 +4,14 @@ module Orb
   module Models
     class PriceEvaluateResponse < Orb::BaseModel
       sig { returns(T::Array[Orb::Models::EvaluatePriceGroup]) }
-      attr_accessor :data
+      def data
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::EvaluatePriceGroup]).returns(T::Array[Orb::Models::EvaluatePriceGroup])
+      end
+      def data=(_)
+      end
 
       sig { params(data: T::Array[Orb::Models::EvaluatePriceGroup]).void }
       def initialize(data:)

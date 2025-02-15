@@ -20,11 +20,11 @@ module Orb
 
         attr_reader include_all_blocks: bool?
 
-        def include_all_blocks=: (bool) -> void
+        def include_all_blocks=: (bool) -> bool
 
         attr_reader limit: Integer?
 
-        def limit=: (Integer) -> void
+        def limit=: (Integer) -> Integer
 
         def initialize:
           (

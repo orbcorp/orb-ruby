@@ -7,13 +7,20 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T.any(Time, Symbol)) }
-      attr_accessor :trial_end_date
+      def trial_end_date
+      end
+
+      sig { params(_: T.any(Time, Symbol)).returns(T.any(Time, Symbol)) }
+      def trial_end_date=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :shift
+      def shift
+      end
 
-      sig { params(shift: T::Boolean).void }
-      attr_writer :shift
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def shift=(_)
+      end
 
       sig do
         params(

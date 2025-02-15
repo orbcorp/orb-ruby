@@ -9,7 +9,12 @@ module Orb
           include Orb::RequestParameters
 
           sig { returns(String) }
-          attr_accessor :external_customer_id
+          def external_customer_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def external_customer_id=(_)
+          end
 
           sig do
             params(

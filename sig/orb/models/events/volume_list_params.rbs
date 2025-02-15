@@ -20,11 +20,11 @@ module Orb
 
         attr_reader limit: Integer?
 
-        def limit=: (Integer) -> void
+        def limit=: (Integer) -> Integer
 
         attr_reader timeframe_end: Time?
 
-        def timeframe_end=: (Time) -> void
+        def timeframe_end=: (Time) -> Time
 
         def initialize:
           (

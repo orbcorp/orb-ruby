@@ -7,13 +7,28 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(Symbol) }
-      attr_accessor :cancel_option
+      def cancel_option
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def cancel_option=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :allow_invoice_credit_or_void
+      def allow_invoice_credit_or_void
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def allow_invoice_credit_or_void=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :cancellation_date
+      def cancellation_date
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def cancellation_date=(_)
+      end
 
       sig do
         params(

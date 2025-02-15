@@ -27,7 +27,7 @@ module Orb
 
       attr_reader grouping_keys: ::Array[String]?
 
-      def grouping_keys=: (::Array[String]) -> void
+      def grouping_keys=: (::Array[String]) -> ::Array[String]
 
       def initialize:
         (

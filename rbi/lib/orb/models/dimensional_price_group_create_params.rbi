@@ -7,19 +7,51 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :billable_metric_id
+      def billable_metric_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def billable_metric_id=(_)
+      end
 
       sig { returns(T::Array[String]) }
-      attr_accessor :dimensions
+      def dimensions
+      end
+
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def dimensions=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :external_dimensional_price_group_id
+      def external_dimensional_price_group_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def external_dimensional_price_group_id=(_)
+      end
 
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-      attr_accessor :metadata
+      def metadata
+      end
+
+      sig do
+        params(
+          _: T.nilable(
+            T::Hash[Symbol,
+                    T.nilable(String)]
+          )
+        ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+      end
+      def metadata=(_)
+      end
 
       sig do
         params(

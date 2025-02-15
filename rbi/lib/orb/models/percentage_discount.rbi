@@ -4,16 +4,36 @@ module Orb
   module Models
     class PercentageDiscount < Orb::BaseModel
       sig { returns(T::Array[String]) }
-      attr_accessor :applies_to_price_ids
+      def applies_to_price_ids
+      end
+
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def applies_to_price_ids=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :discount_type
+      def discount_type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def discount_type=(_)
+      end
 
       sig { returns(Float) }
-      attr_accessor :percentage_discount
+      def percentage_discount
+      end
+
+      sig { params(_: Float).returns(Float) }
+      def percentage_discount=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :reason
+      def reason
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def reason=(_)
+      end
 
       sig do
         params(

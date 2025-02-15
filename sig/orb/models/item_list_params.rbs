@@ -11,7 +11,7 @@ module Orb
 
       attr_reader limit: Integer?
 
-      def limit=: (Integer) -> void
+      def limit=: (Integer) -> Integer
 
       def initialize:
         (

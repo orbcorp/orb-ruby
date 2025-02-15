@@ -28,11 +28,13 @@ module Orb
 
       attr_reader limit: Integer?
 
-      def limit=: (Integer) -> void
+      def limit=: (Integer) -> Integer
 
       attr_reader status: Orb::Models::PlanListParams::status?
 
-      def status=: (Orb::Models::PlanListParams::status) -> void
+      def status=: (
+        Orb::Models::PlanListParams::status
+      ) -> Orb::Models::PlanListParams::status
 
       def initialize:
         (

@@ -4,37 +4,104 @@ module Orb
   module Models
     class InvoiceFetchUpcomingResponse < Orb::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :amount_due
+      def amount_due
+      end
+
+      sig { params(_: String).returns(String) }
+      def amount_due=(_)
+      end
 
       sig { returns(Orb::Models::InvoiceFetchUpcomingResponse::AutoCollection) }
-      attr_accessor :auto_collection
+      def auto_collection
+      end
+
+      sig do
+        params(_: Orb::Models::InvoiceFetchUpcomingResponse::AutoCollection).returns(Orb::Models::InvoiceFetchUpcomingResponse::AutoCollection)
+      end
+      def auto_collection=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress)) }
-      attr_accessor :billing_address
+      def billing_address
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress))
+      end
+      def billing_address=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CreditNote]) }
-      attr_accessor :credit_notes
+      def credit_notes
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CreditNote]).returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CreditNote])
+      end
+      def credit_notes=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: String).returns(String) }
+      def currency=(_)
+      end
 
       sig { returns(Orb::Models::InvoiceFetchUpcomingResponse::Customer) }
-      attr_accessor :customer
+      def customer
+      end
+
+      sig do
+        params(_: Orb::Models::InvoiceFetchUpcomingResponse::Customer).returns(Orb::Models::InvoiceFetchUpcomingResponse::Customer)
+      end
+      def customer=(_)
+      end
 
       sig { returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction]) }
-      attr_accessor :customer_balance_transactions
+      def customer_balance_transactions
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction]).returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction])
+      end
+      def customer_balance_transactions=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID)) }
-      attr_accessor :customer_tax_id
+      def customer_tax_id
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID))
+      end
+      def customer_tax_id=(_)
+      end
 
       sig { returns(T.anything) }
-      attr_accessor :discount
+      def discount
+      end
+
+      sig { params(_: T.anything).returns(T.anything) }
+      def discount=(_)
+      end
 
       sig do
         returns(
@@ -45,94 +112,268 @@ module Orb
           )]
         )
       end
-      attr_accessor :discounts
+      def discounts
+      end
+
+      sig do
+        params(
+          _: T::Array[T.any(
+            Orb::Models::PercentageDiscount,
+            Orb::Models::AmountDiscount,
+            Orb::Models::TrialDiscount
+          )]
+        ).returns(T::Array[T.any(
+          Orb::Models::PercentageDiscount,
+          Orb::Models::AmountDiscount,
+          Orb::Models::TrialDiscount
+        )])
+      end
+      def discounts=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :due_date
+      def due_date
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def due_date=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :eligible_to_issue_at
+      def eligible_to_issue_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def eligible_to_issue_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :hosted_invoice_url
+      def hosted_invoice_url
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def hosted_invoice_url=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :invoice_number
+      def invoice_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def invoice_number=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :invoice_pdf
+      def invoice_pdf
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def invoice_pdf=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :invoice_source
+      def invoice_source
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def invoice_source=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :issue_failed_at
+      def issue_failed_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def issue_failed_at=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :issued_at
+      def issued_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def issued_at=(_)
+      end
 
       sig { returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem]) }
-      attr_accessor :line_items
+      def line_items
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem]).returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem])
+      end
+      def line_items=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Maximum)) }
-      attr_accessor :maximum
+      def maximum
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Maximum)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Maximum))
+      end
+      def maximum=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :maximum_amount
+      def maximum_amount
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def maximum_amount=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :memo
+      def memo
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def memo=(_)
+      end
 
       sig { returns(T::Hash[Symbol, String]) }
-      attr_accessor :metadata
+      def metadata
+      end
+
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def metadata=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Minimum)) }
-      attr_accessor :minimum
+      def minimum
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Minimum)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Minimum))
+      end
+      def minimum=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :minimum_amount
+      def minimum_amount
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def minimum_amount=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :paid_at
+      def paid_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def paid_at=(_)
+      end
 
       sig { returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt]) }
-      attr_accessor :payment_attempts
+      def payment_attempts
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt]).returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt])
+      end
+      def payment_attempts=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :payment_failed_at
+      def payment_failed_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def payment_failed_at=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :payment_started_at
+      def payment_started_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def payment_started_at=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :scheduled_issue_at
+      def scheduled_issue_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def scheduled_issue_at=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress)) }
-      attr_accessor :shipping_address
+      def shipping_address
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress))
+      end
+      def shipping_address=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Subscription)) }
-      attr_accessor :subscription
+      def subscription
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Subscription)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Subscription))
+      end
+      def subscription=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :subtotal
+      def subtotal
+      end
+
+      sig { params(_: String).returns(String) }
+      def subtotal=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :sync_failed_at
+      def sync_failed_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def sync_failed_at=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :target_date
+      def target_date
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def target_date=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :total
+      def total
+      end
+
+      sig { params(_: String).returns(String) }
+      def total=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :voided_at
+      def voided_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def voided_at=(_)
+      end
 
       sig { returns(T::Boolean) }
-      attr_accessor :will_auto_issue
+      def will_auto_issue
+      end
+
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def will_auto_issue=(_)
+      end
 
       sig do
         params(
@@ -284,16 +525,36 @@ module Orb
 
       class AutoCollection < Orb::BaseModel
         sig { returns(T.nilable(T::Boolean)) }
-        attr_accessor :enabled
+        def enabled
+        end
+
+        sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+        def enabled=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :next_attempt_at
+        def next_attempt_at
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def next_attempt_at=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_accessor :num_attempts
+        def num_attempts
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def num_attempts=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :previously_attempted_at
+        def previously_attempted_at
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def previously_attempted_at=(_)
+        end
 
         sig do
           params(
@@ -322,22 +583,52 @@ module Orb
 
       class BillingAddress < Orb::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_accessor :city
+        def city
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def city=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :country
+        def country
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def country=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :line1
+        def line1
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def line1=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :line2
+        def line2
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def line2=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :postal_code
+        def postal_code
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def postal_code=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :state
+        def state
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def state=(_)
+        end
 
         sig do
           params(
@@ -370,25 +661,60 @@ module Orb
 
       class CreditNote < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :credit_note_number
+        def credit_note_number
+        end
+
+        sig { params(_: String).returns(String) }
+        def credit_note_number=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :memo
+        def memo
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def memo=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :reason
+        def reason
+        end
+
+        sig { params(_: String).returns(String) }
+        def reason=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :total
+        def total
+        end
+
+        sig { params(_: String).returns(String) }
+        def total=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: String).returns(String) }
+        def type=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :voided_at
+        def voided_at
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def voided_at=(_)
+        end
 
         sig do
           params(
@@ -423,10 +749,20 @@ module Orb
 
       class Customer < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :external_customer_id
+        def external_customer_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def external_customer_id=(_)
+        end
 
         sig { params(id: String, external_customer_id: T.nilable(String)).void }
         def initialize(id:, external_customer_id:)
@@ -439,38 +775,92 @@ module Orb
 
       class CustomerBalanceTransaction < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :action
+        def action
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def action=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: String).returns(String) }
+        def amount=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :created_at
+        def created_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def created_at=(_)
+        end
 
         sig do
           returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote))
         end
-        attr_accessor :credit_note
+        def credit_note
+        end
+
+        sig do
+          params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote))
+        end
+        def credit_note=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :description
+        def description
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def description=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :ending_balance
+        def ending_balance
+        end
+
+        sig { params(_: String).returns(String) }
+        def ending_balance=(_)
+        end
 
         sig do
           returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice))
         end
-        attr_accessor :invoice
+        def invoice
+        end
+
+        sig do
+          params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice))
+        end
+        def invoice=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :starting_balance
+        def starting_balance
+        end
+
+        sig { params(_: String).returns(String) }
+        def starting_balance=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig do
           params(
@@ -539,7 +929,12 @@ module Orb
 
         class CreditNote < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           sig { params(id: String).void }
           def initialize(id:)
@@ -552,7 +947,12 @@ module Orb
 
         class Invoice < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           sig { params(id: String).void }
           def initialize(id:)
@@ -577,13 +977,28 @@ module Orb
 
       class CustomerTaxID < Orb::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :country
+        def country
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def country=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :value
+        def value
+        end
+
+        sig { params(_: String).returns(String) }
+        def value=(_)
+        end
 
         sig { params(country: Symbol, type: Symbol, value: String).void }
         def initialize(country:, type:, value:)
@@ -775,10 +1190,20 @@ module Orb
 
       class LineItem < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :adjusted_subtotal
+        def adjusted_subtotal
+        end
+
+        sig { params(_: String).returns(String) }
+        def adjusted_subtotal=(_)
+        end
 
         sig do
           returns(
@@ -787,13 +1212,36 @@ module Orb
             )]
           )
         end
-        attr_accessor :adjustments
+        def adjustments
+        end
+
+        sig do
+          params(
+            _: T::Array[T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment
+            )]
+          ).returns(T::Array[T.any(
+            Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment
+          )])
+        end
+        def adjustments=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: String).returns(String) }
+        def amount=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :credits_applied
+        def credits_applied
+        end
+
+        sig { params(_: String).returns(String) }
+        def credits_applied=(_)
+        end
 
         sig do
           returns(
@@ -807,31 +1255,98 @@ module Orb
             )
           )
         end
-        attr_accessor :discount
+        def discount
+        end
+
+        sig do
+          params(
+            _: T.nilable(
+              T.any(
+                Orb::Models::PercentageDiscount,
+                Orb::Models::TrialDiscount,
+                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::AmountDiscount
+              )
+            )
+          ).returns(T.nilable(
+                      T.any(
+                        Orb::Models::PercentageDiscount,
+                        Orb::Models::TrialDiscount,
+                        Orb::Models::Discount::UsageDiscount,
+                        Orb::Models::AmountDiscount
+                      )
+                    ))
+        end
+        def discount=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :end_date
+        def end_date
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def end_date=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :grouping
+        def grouping
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def grouping=(_)
+        end
 
         sig { returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum)) }
-        attr_accessor :maximum
+        def maximum
+        end
+
+        sig do
+          params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum))
+        end
+        def maximum=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :maximum_amount
+        def maximum_amount
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def maximum_amount=(_)
+        end
 
         sig { returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum)) }
-        attr_accessor :minimum
+        def minimum
+        end
+
+        sig do
+          params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum))
+        end
+        def minimum=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :minimum_amount
+        def minimum_amount
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def minimum_amount=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :partially_invoiced_amount
+        def partially_invoiced_amount
+        end
+
+        sig { params(_: String).returns(String) }
+        def partially_invoiced_amount=(_)
+        end
 
         sig do
           returns(
@@ -869,13 +1384,94 @@ module Orb
             )
           )
         end
-        attr_accessor :price
+        def price
+        end
+
+        sig do
+          params(
+            _: T.nilable(
+              T.any(
+                Orb::Models::Price::UnitPrice,
+                Orb::Models::Price::PackagePrice,
+                Orb::Models::Price::MatrixPrice,
+                Orb::Models::Price::TieredPrice,
+                Orb::Models::Price::TieredBpsPrice,
+                Orb::Models::Price::BpsPrice,
+                Orb::Models::Price::BulkBpsPrice,
+                Orb::Models::Price::BulkPrice,
+                Orb::Models::Price::ThresholdTotalAmountPrice,
+                Orb::Models::Price::TieredPackagePrice,
+                Orb::Models::Price::GroupedTieredPrice,
+                Orb::Models::Price::TieredWithMinimumPrice,
+                Orb::Models::Price::TieredPackageWithMinimumPrice,
+                Orb::Models::Price::PackageWithAllocationPrice,
+                Orb::Models::Price::UnitWithPercentPrice,
+                Orb::Models::Price::MatrixWithAllocationPrice,
+                Orb::Models::Price::TieredWithProrationPrice,
+                Orb::Models::Price::UnitWithProrationPrice,
+                Orb::Models::Price::GroupedAllocationPrice,
+                Orb::Models::Price::GroupedWithProratedMinimumPrice,
+                Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+                Orb::Models::Price::MatrixWithDisplayNamePrice,
+                Orb::Models::Price::BulkWithProrationPrice,
+                Orb::Models::Price::GroupedTieredPackagePrice,
+                Orb::Models::Price::MaxGroupTieredPackagePrice,
+                Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+                Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                Orb::Models::Price::CumulativeGroupedBulkPrice
+              )
+            )
+          ).returns(T.nilable(
+                      T.any(
+                        Orb::Models::Price::UnitPrice,
+                        Orb::Models::Price::PackagePrice,
+                        Orb::Models::Price::MatrixPrice,
+                        Orb::Models::Price::TieredPrice,
+                        Orb::Models::Price::TieredBpsPrice,
+                        Orb::Models::Price::BpsPrice,
+                        Orb::Models::Price::BulkBpsPrice,
+                        Orb::Models::Price::BulkPrice,
+                        Orb::Models::Price::ThresholdTotalAmountPrice,
+                        Orb::Models::Price::TieredPackagePrice,
+                        Orb::Models::Price::GroupedTieredPrice,
+                        Orb::Models::Price::TieredWithMinimumPrice,
+                        Orb::Models::Price::TieredPackageWithMinimumPrice,
+                        Orb::Models::Price::PackageWithAllocationPrice,
+                        Orb::Models::Price::UnitWithPercentPrice,
+                        Orb::Models::Price::MatrixWithAllocationPrice,
+                        Orb::Models::Price::TieredWithProrationPrice,
+                        Orb::Models::Price::UnitWithProrationPrice,
+                        Orb::Models::Price::GroupedAllocationPrice,
+                        Orb::Models::Price::GroupedWithProratedMinimumPrice,
+                        Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+                        Orb::Models::Price::MatrixWithDisplayNamePrice,
+                        Orb::Models::Price::BulkWithProrationPrice,
+                        Orb::Models::Price::GroupedTieredPackagePrice,
+                        Orb::Models::Price::MaxGroupTieredPackagePrice,
+                        Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+                        Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                        Orb::Models::Price::CumulativeGroupedBulkPrice
+                      )
+                    ))
+        end
+        def price=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :quantity
+        def quantity
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def quantity=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :start_date
+        def start_date
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def start_date=(_)
+        end
 
         sig do
           returns(
@@ -886,13 +1482,38 @@ module Orb
             )]
           )
         end
-        attr_accessor :sub_line_items
+        def sub_line_items
+        end
+
+        sig do
+          params(
+            _: T::Array[T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem
+            )]
+          ).returns(T::Array[T.any(
+            Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem
+          )])
+        end
+        def sub_line_items=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :subtotal
+        def subtotal
+        end
+
+        sig { params(_: String).returns(String) }
+        def subtotal=(_)
+        end
 
         sig { returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount]) }
-        attr_accessor :tax_amounts
+        def tax_amounts
+        end
+
+        sig do
+          params(_: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount]).returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount])
+        end
+        def tax_amounts=(_)
+        end
 
         sig do
           params(
@@ -1060,25 +1681,60 @@ module Orb
 
           class MonetaryUsageDiscountAdjustment < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def amount=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(T::Boolean) }
-            attr_accessor :is_invoice_level
+            def is_invoice_level
+            end
+
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reason
+            def reason
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reason=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :usage_discount
+            def usage_discount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def usage_discount=(_)
+            end
 
             sig do
               params(
@@ -1121,25 +1777,60 @@ module Orb
 
           class MonetaryAmountDiscountAdjustment < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def amount=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :amount_discount
+            def amount_discount
+            end
+
+            sig { params(_: String).returns(String) }
+            def amount_discount=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(T::Boolean) }
-            attr_accessor :is_invoice_level
+            def is_invoice_level
+            end
+
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reason
+            def reason
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reason=(_)
+            end
 
             sig do
               params(
@@ -1182,25 +1873,60 @@ module Orb
 
           class MonetaryPercentageDiscountAdjustment < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def amount=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(T::Boolean) }
-            attr_accessor :is_invoice_level
+            def is_invoice_level
+            end
+
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :percentage_discount
+            def percentage_discount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def percentage_discount=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reason
+            def reason
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reason=(_)
+            end
 
             sig do
               params(
@@ -1243,28 +1969,68 @@ module Orb
 
           class MonetaryMinimumAdjustment < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def amount=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(T::Boolean) }
-            attr_accessor :is_invoice_level
+            def is_invoice_level
+            end
+
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :minimum_amount
+            def minimum_amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def minimum_amount=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reason
+            def reason
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reason=(_)
+            end
 
             sig do
               params(
@@ -1310,25 +2076,60 @@ module Orb
 
           class MonetaryMaximumAdjustment < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def amount=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(T::Boolean) }
-            attr_accessor :is_invoice_level
+            def is_invoice_level
+            end
+
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :maximum_amount
+            def maximum_amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def maximum_amount=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reason
+            def reason
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reason=(_)
+            end
 
             sig do
               params(
@@ -1401,10 +2202,20 @@ module Orb
 
         class Maximum < Orb::BaseModel
           sig { returns(T::Array[String]) }
-          attr_accessor :applies_to_price_ids
+          def applies_to_price_ids
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def applies_to_price_ids=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :maximum_amount
+          def maximum_amount
+          end
+
+          sig { params(_: String).returns(String) }
+          def maximum_amount=(_)
+          end
 
           sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
           def initialize(applies_to_price_ids:, maximum_amount:)
@@ -1417,10 +2228,20 @@ module Orb
 
         class Minimum < Orb::BaseModel
           sig { returns(T::Array[String]) }
-          attr_accessor :applies_to_price_ids
+          def applies_to_price_ids
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def applies_to_price_ids=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :minimum_amount
+          def minimum_amount
+          end
+
+          sig { params(_: String).returns(String) }
+          def minimum_amount=(_)
+          end
 
           sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
           def initialize(applies_to_price_ids:, minimum_amount:)
@@ -1436,26 +2257,64 @@ module Orb
 
           class MatrixSubLineItem < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def amount=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping))
             end
-            attr_accessor :grouping
+            def grouping
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping)
+              ).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping))
+            end
+            def grouping=(_)
+            end
 
             sig do
               returns(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig)
             end
-            attr_accessor :matrix_config
+            def matrix_config
+            end
+
+            sig do
+              params(
+                _: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig
+              ).returns(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig)
+            end
+            def matrix_config=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :quantity
+            def quantity
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def quantity=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :type
+            def type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def type=(_)
+            end
 
             sig do
               params(
@@ -1487,10 +2346,20 @@ module Orb
 
             class Grouping < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :key
+              def key
+              end
+
+              sig { params(_: String).returns(String) }
+              def key=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :value
+              def value
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def value=(_)
+              end
 
               sig { params(key: String, value: T.nilable(String)).void }
               def initialize(key:, value:)
@@ -1503,7 +2372,12 @@ module Orb
 
             class MatrixConfig < Orb::BaseModel
               sig { returns(T::Array[T.nilable(String)]) }
-              attr_accessor :dimension_values
+              def dimension_values
+              end
+
+              sig { params(_: T::Array[T.nilable(String)]).returns(T::Array[T.nilable(String)]) }
+              def dimension_values=(_)
+              end
 
               sig { params(dimension_values: T::Array[T.nilable(String)]).void }
               def initialize(dimension_values:)
@@ -1517,26 +2391,62 @@ module Orb
 
           class TierSubLineItem < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def amount=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping))
             end
-            attr_accessor :grouping
+            def grouping
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping)
+              ).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping))
+            end
+            def grouping=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :quantity
+            def quantity
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def quantity=(_)
+            end
 
             sig do
               returns(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::TierConfig)
             end
-            attr_accessor :tier_config
+            def tier_config
+            end
+
+            sig do
+              params(_: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::TierConfig).returns(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::TierConfig)
+            end
+            def tier_config=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :type
+            def type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def type=(_)
+            end
 
             sig do
               params(
@@ -1568,10 +2478,20 @@ module Orb
 
             class Grouping < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :key
+              def key
+              end
+
+              sig { params(_: String).returns(String) }
+              def key=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :value
+              def value
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def value=(_)
+              end
 
               sig { params(key: String, value: T.nilable(String)).void }
               def initialize(key:, value:)
@@ -1584,13 +2504,28 @@ module Orb
 
             class TierConfig < Orb::BaseModel
               sig { returns(Float) }
-              attr_accessor :first_unit
+              def first_unit
+              end
+
+              sig { params(_: Float).returns(Float) }
+              def first_unit=(_)
+              end
 
               sig { returns(T.nilable(Float)) }
-              attr_accessor :last_unit
+              def last_unit
+              end
+
+              sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+              def last_unit=(_)
+              end
 
               sig { returns(String) }
-              attr_accessor :unit_amount
+              def unit_amount
+              end
+
+              sig { params(_: String).returns(String) }
+              def unit_amount=(_)
+              end
 
               sig { params(first_unit: Float, last_unit: T.nilable(Float), unit_amount: String).void }
               def initialize(first_unit:, last_unit:, unit_amount:)
@@ -1604,21 +2539,50 @@ module Orb
 
           class OtherSubLineItem < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def amount=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping))
             end
-            attr_accessor :grouping
+            def grouping
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping)
+              ).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping))
+            end
+            def grouping=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :quantity
+            def quantity
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def quantity=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :type
+            def type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def type=(_)
+            end
 
             sig do
               params(
@@ -1648,10 +2612,20 @@ module Orb
 
             class Grouping < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :key
+              def key
+              end
+
+              sig { params(_: String).returns(String) }
+              def key=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :value
+              def value
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def value=(_)
+              end
 
               sig { params(key: String, value: T.nilable(String)).void }
               def initialize(key:, value:)
@@ -1681,13 +2655,28 @@ module Orb
 
         class TaxAmount < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: String).returns(String) }
+          def amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :tax_rate_description
+          def tax_rate_description
+          end
+
+          sig { params(_: String).returns(String) }
+          def tax_rate_description=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :tax_rate_percentage
+          def tax_rate_percentage
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def tax_rate_percentage=(_)
+          end
 
           sig do
             params(amount: String, tax_rate_description: String, tax_rate_percentage: T.nilable(String)).void
@@ -1711,10 +2700,20 @@ module Orb
 
       class Maximum < Orb::BaseModel
         sig { returns(T::Array[String]) }
-        attr_accessor :applies_to_price_ids
+        def applies_to_price_ids
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applies_to_price_ids=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :maximum_amount
+        def maximum_amount
+        end
+
+        sig { params(_: String).returns(String) }
+        def maximum_amount=(_)
+        end
 
         sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
         def initialize(applies_to_price_ids:, maximum_amount:)
@@ -1727,10 +2726,20 @@ module Orb
 
       class Minimum < Orb::BaseModel
         sig { returns(T::Array[String]) }
-        attr_accessor :applies_to_price_ids
+        def applies_to_price_ids
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applies_to_price_ids=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :minimum_amount
+        def minimum_amount
+        end
+
+        sig { params(_: String).returns(String) }
+        def minimum_amount=(_)
+        end
 
         sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
         def initialize(applies_to_price_ids:, minimum_amount:)
@@ -1743,22 +2752,52 @@ module Orb
 
       class PaymentAttempt < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: String).returns(String) }
+        def amount=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :created_at
+        def created_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def created_at=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_accessor :payment_provider
+        def payment_provider
+        end
+
+        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        def payment_provider=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :payment_provider_id
+        def payment_provider_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def payment_provider_id=(_)
+        end
 
         sig { returns(T::Boolean) }
-        attr_accessor :succeeded
+        def succeeded
+        end
+
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def succeeded=(_)
+        end
 
         sig do
           params(
@@ -1801,22 +2840,52 @@ module Orb
 
       class ShippingAddress < Orb::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_accessor :city
+        def city
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def city=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :country
+        def country
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def country=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :line1
+        def line1
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def line1=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :line2
+        def line2
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def line2=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :postal_code
+        def postal_code
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def postal_code=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :state
+        def state
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def state=(_)
+        end
 
         sig do
           params(
@@ -1863,7 +2932,12 @@ module Orb
 
       class Subscription < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { params(id: String).void }
         def initialize(id:)

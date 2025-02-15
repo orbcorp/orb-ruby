@@ -4,16 +4,38 @@ module Orb
   module Models
     class SubscriptionFetchScheduleResponse < Orb::BaseModel
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :end_date
+      def end_date
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def end_date=(_)
+      end
 
       sig { returns(Orb::Models::SubscriptionFetchScheduleResponse::Plan) }
-      attr_accessor :plan
+      def plan
+      end
+
+      sig do
+        params(_: Orb::Models::SubscriptionFetchScheduleResponse::Plan).returns(Orb::Models::SubscriptionFetchScheduleResponse::Plan)
+      end
+      def plan=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :start_date
+      def start_date
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def start_date=(_)
+      end
 
       sig do
         params(
@@ -41,13 +63,28 @@ module Orb
 
       class Plan < Orb::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :external_plan_id
+        def external_plan_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def external_plan_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def name=(_)
+        end
 
         sig do
           params(id: T.nilable(String), external_plan_id: T.nilable(String), name: T.nilable(String)).void

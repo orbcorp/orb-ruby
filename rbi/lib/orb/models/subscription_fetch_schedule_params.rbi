@@ -7,25 +7,52 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :cursor
+      def cursor
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def cursor=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
-
-      sig { returns(T.nilable(Time)) }
-      attr_accessor :start_date_gt
-
-      sig { returns(T.nilable(Time)) }
-      attr_accessor :start_date_gte
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :start_date_lt
+      def start_date_gt
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def start_date_gt=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :start_date_lte
+      def start_date_gte
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def start_date_gte=(_)
+      end
+
+      sig { returns(T.nilable(Time)) }
+      def start_date_lt
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def start_date_lt=(_)
+      end
+
+      sig { returns(T.nilable(Time)) }
+      def start_date_lte
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def start_date_lte=(_)
+      end
 
       sig do
         params(
