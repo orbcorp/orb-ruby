@@ -126,10 +126,16 @@ module Orb
 
       path = Orb::Util.interpolate_path(uninterpolated_path)
 
+      query = Orb::Util.deep_merge(
+        req[:query].to_h,
+        opts[:extra_query].to_h
+      )
+
       headers = Orb::Util.normalized_headers(
         @headers,
         auth_headers,
-        *[req[:headers], opts[:extra_headers]].compact
+        req[:headers].to_h,
+        opts[:extra_headers].to_h
       )
 
       if @idempotency_header &&
@@ -157,7 +163,7 @@ module Orb
           Orb::Util.deep_merge(*[req[:body], opts[:extra_body]].compact)
         end
 
-      url = Orb::Util.join_parsed_uri(@base_url, {**req, path: path})
+      url = Orb::Util.join_parsed_uri(@base_url, {**req, path: path, query: query})
       headers, encoded = Orb::Util.encode_content(headers, body)
       max_retries = opts.fetch(:max_retries, @max_retries)
       {method: method, url: url, headers: headers, body: encoded, max_retries: max_retries, timeout: timeout}
@@ -387,12 +393,10 @@ module Orb
       parsed = Orb::Util.decode_content(response)
       unwrapped = Orb::Util.dig(parsed, req[:unwrap])
 
-      page = req[:page]
-      model = req.fetch(:model, Orb::Unknown)
-      case [page, model]
-      in [Class, Class | Orb::Converter | nil]
+      case [req[:page], req.fetch(:model, Orb::Unknown)]
+      in [Class => page, _]
         page.new(client: self, req: req, headers: response, unwrapped: unwrapped)
-      in [nil, Class | Orb::Converter]
+      in [nil, Class | Orb::Converter => model]
         Orb::Converter.coerce(model, unwrapped)
       in [nil, nil]
         unwrapped
