@@ -4,7 +4,12 @@ module Orb
   module Models
     class Plan < Orb::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig do
         returns(
@@ -17,25 +22,78 @@ module Orb
           )]
         )
       end
-      attr_accessor :adjustments
+      def adjustments
+      end
+
+      sig do
+        params(
+          _: T::Array[T.any(
+            Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment,
+            Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment,
+            Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment,
+            Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment,
+            Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
+          )]
+        ).returns(T::Array[T.any(
+          Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment,
+          Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment,
+          Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment,
+          Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment,
+          Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
+        )])
+      end
+      def adjustments=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::Plan::BasePlan)) }
-      attr_accessor :base_plan
+      def base_plan
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::Plan::BasePlan)).returns(T.nilable(Orb::Models::Plan::BasePlan))
+      end
+      def base_plan=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :base_plan_id
+      def base_plan_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def base_plan_id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: String).returns(String) }
+      def currency=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :default_invoice_memo
+      def default_invoice_memo
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def default_invoice_memo=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig do
         returns(
@@ -49,37 +107,112 @@ module Orb
           )
         )
       end
-      attr_accessor :discount
+      def discount
+      end
+
+      sig do
+        params(
+          _: T.nilable(
+            T.any(
+              Orb::Models::PercentageDiscount,
+              Orb::Models::TrialDiscount,
+              Orb::Models::Discount::UsageDiscount,
+              Orb::Models::AmountDiscount
+            )
+          )
+        ).returns(T.nilable(
+                    T.any(
+                      Orb::Models::PercentageDiscount,
+                      Orb::Models::TrialDiscount,
+                      Orb::Models::Discount::UsageDiscount,
+                      Orb::Models::AmountDiscount
+                    )
+                  ))
+      end
+      def discount=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :external_plan_id
+      def external_plan_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def external_plan_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :invoicing_currency
+      def invoicing_currency
+      end
+
+      sig { params(_: String).returns(String) }
+      def invoicing_currency=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::Plan::Maximum)) }
-      attr_accessor :maximum
+      def maximum
+      end
+
+      sig { params(_: T.nilable(Orb::Models::Plan::Maximum)).returns(T.nilable(Orb::Models::Plan::Maximum)) }
+      def maximum=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :maximum_amount
+      def maximum_amount
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def maximum_amount=(_)
+      end
 
       sig { returns(T::Hash[Symbol, String]) }
-      attr_accessor :metadata
+      def metadata
+      end
+
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def metadata=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::Plan::Minimum)) }
-      attr_accessor :minimum
+      def minimum
+      end
+
+      sig { params(_: T.nilable(Orb::Models::Plan::Minimum)).returns(T.nilable(Orb::Models::Plan::Minimum)) }
+      def minimum=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :minimum_amount
+      def minimum_amount
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def minimum_amount=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_accessor :net_terms
+      def net_terms
+      end
+
+      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+      def net_terms=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Orb::Models::Plan::PlanPhase])) }
-      attr_accessor :plan_phases
+      def plan_phases
+      end
+
+      sig do
+        params(_: T.nilable(T::Array[Orb::Models::Plan::PlanPhase])).returns(T.nilable(T::Array[Orb::Models::Plan::PlanPhase]))
+      end
+      def plan_phases=(_)
+      end
 
       sig do
         returns(
@@ -115,19 +248,106 @@ module Orb
           )]
         )
       end
-      attr_accessor :prices
+      def prices
+      end
+
+      sig do
+        params(
+          _: T::Array[T.any(
+            Orb::Models::Price::UnitPrice,
+            Orb::Models::Price::PackagePrice,
+            Orb::Models::Price::MatrixPrice,
+            Orb::Models::Price::TieredPrice,
+            Orb::Models::Price::TieredBpsPrice,
+            Orb::Models::Price::BpsPrice,
+            Orb::Models::Price::BulkBpsPrice,
+            Orb::Models::Price::BulkPrice,
+            Orb::Models::Price::ThresholdTotalAmountPrice,
+            Orb::Models::Price::TieredPackagePrice,
+            Orb::Models::Price::GroupedTieredPrice,
+            Orb::Models::Price::TieredWithMinimumPrice,
+            Orb::Models::Price::TieredPackageWithMinimumPrice,
+            Orb::Models::Price::PackageWithAllocationPrice,
+            Orb::Models::Price::UnitWithPercentPrice,
+            Orb::Models::Price::MatrixWithAllocationPrice,
+            Orb::Models::Price::TieredWithProrationPrice,
+            Orb::Models::Price::UnitWithProrationPrice,
+            Orb::Models::Price::GroupedAllocationPrice,
+            Orb::Models::Price::GroupedWithProratedMinimumPrice,
+            Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+            Orb::Models::Price::MatrixWithDisplayNamePrice,
+            Orb::Models::Price::BulkWithProrationPrice,
+            Orb::Models::Price::GroupedTieredPackagePrice,
+            Orb::Models::Price::MaxGroupTieredPackagePrice,
+            Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+            Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+            Orb::Models::Price::CumulativeGroupedBulkPrice
+          )]
+        ).returns(T::Array[T.any(
+          Orb::Models::Price::UnitPrice,
+          Orb::Models::Price::PackagePrice,
+          Orb::Models::Price::MatrixPrice,
+          Orb::Models::Price::TieredPrice,
+          Orb::Models::Price::TieredBpsPrice,
+          Orb::Models::Price::BpsPrice,
+          Orb::Models::Price::BulkBpsPrice,
+          Orb::Models::Price::BulkPrice,
+          Orb::Models::Price::ThresholdTotalAmountPrice,
+          Orb::Models::Price::TieredPackagePrice,
+          Orb::Models::Price::GroupedTieredPrice,
+          Orb::Models::Price::TieredWithMinimumPrice,
+          Orb::Models::Price::TieredPackageWithMinimumPrice,
+          Orb::Models::Price::PackageWithAllocationPrice,
+          Orb::Models::Price::UnitWithPercentPrice,
+          Orb::Models::Price::MatrixWithAllocationPrice,
+          Orb::Models::Price::TieredWithProrationPrice,
+          Orb::Models::Price::UnitWithProrationPrice,
+          Orb::Models::Price::GroupedAllocationPrice,
+          Orb::Models::Price::GroupedWithProratedMinimumPrice,
+          Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+          Orb::Models::Price::MatrixWithDisplayNamePrice,
+          Orb::Models::Price::BulkWithProrationPrice,
+          Orb::Models::Price::GroupedTieredPackagePrice,
+          Orb::Models::Price::MaxGroupTieredPackagePrice,
+          Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+          Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+          Orb::Models::Price::CumulativeGroupedBulkPrice
+        )])
+      end
+      def prices=(_)
+      end
 
       sig { returns(Orb::Models::Plan::Product) }
-      attr_accessor :product
+      def product
+      end
+
+      sig { params(_: Orb::Models::Plan::Product).returns(Orb::Models::Plan::Product) }
+      def product=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(Orb::Models::Plan::TrialConfig) }
-      attr_accessor :trial_config
+      def trial_config
+      end
+
+      sig { params(_: Orb::Models::Plan::TrialConfig).returns(Orb::Models::Plan::TrialConfig) }
+      def trial_config=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :version
+      def version
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def version=(_)
+      end
 
       sig do
         params(
@@ -303,25 +523,60 @@ module Orb
 
         class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :adjustment_type
+          def adjustment_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def adjustment_type=(_)
+          end
 
           sig { returns(T::Array[String]) }
-          attr_accessor :applies_to_price_ids
+          def applies_to_price_ids
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def applies_to_price_ids=(_)
+          end
 
           sig { returns(T::Boolean) }
-          attr_accessor :is_invoice_level
+          def is_invoice_level
+          end
+
+          sig { params(_: T::Boolean).returns(T::Boolean) }
+          def is_invoice_level=(_)
+          end
 
           sig { returns(T.nilable(Integer)) }
-          attr_accessor :plan_phase_order
+          def plan_phase_order
+          end
+
+          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+          def plan_phase_order=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :reason
+          def reason
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def reason=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :usage_discount
+          def usage_discount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def usage_discount=(_)
+          end
 
           sig do
             params(
@@ -364,25 +619,60 @@ module Orb
 
         class PlanPhaseAmountDiscountAdjustment < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :adjustment_type
+          def adjustment_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def adjustment_type=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :amount_discount
+          def amount_discount
+          end
+
+          sig { params(_: String).returns(String) }
+          def amount_discount=(_)
+          end
 
           sig { returns(T::Array[String]) }
-          attr_accessor :applies_to_price_ids
+          def applies_to_price_ids
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def applies_to_price_ids=(_)
+          end
 
           sig { returns(T::Boolean) }
-          attr_accessor :is_invoice_level
+          def is_invoice_level
+          end
+
+          sig { params(_: T::Boolean).returns(T::Boolean) }
+          def is_invoice_level=(_)
+          end
 
           sig { returns(T.nilable(Integer)) }
-          attr_accessor :plan_phase_order
+          def plan_phase_order
+          end
+
+          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+          def plan_phase_order=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :reason
+          def reason
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def reason=(_)
+          end
 
           sig do
             params(
@@ -425,25 +715,60 @@ module Orb
 
         class PlanPhasePercentageDiscountAdjustment < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :adjustment_type
+          def adjustment_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def adjustment_type=(_)
+          end
 
           sig { returns(T::Array[String]) }
-          attr_accessor :applies_to_price_ids
+          def applies_to_price_ids
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def applies_to_price_ids=(_)
+          end
 
           sig { returns(T::Boolean) }
-          attr_accessor :is_invoice_level
+          def is_invoice_level
+          end
+
+          sig { params(_: T::Boolean).returns(T::Boolean) }
+          def is_invoice_level=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :percentage_discount
+          def percentage_discount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def percentage_discount=(_)
+          end
 
           sig { returns(T.nilable(Integer)) }
-          attr_accessor :plan_phase_order
+          def plan_phase_order
+          end
+
+          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+          def plan_phase_order=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :reason
+          def reason
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def reason=(_)
+          end
 
           sig do
             params(
@@ -486,28 +811,68 @@ module Orb
 
         class PlanPhaseMinimumAdjustment < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :adjustment_type
+          def adjustment_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def adjustment_type=(_)
+          end
 
           sig { returns(T::Array[String]) }
-          attr_accessor :applies_to_price_ids
+          def applies_to_price_ids
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def applies_to_price_ids=(_)
+          end
 
           sig { returns(T::Boolean) }
-          attr_accessor :is_invoice_level
+          def is_invoice_level
+          end
+
+          sig { params(_: T::Boolean).returns(T::Boolean) }
+          def is_invoice_level=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :item_id
+          def item_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def item_id=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :minimum_amount
+          def minimum_amount
+          end
+
+          sig { params(_: String).returns(String) }
+          def minimum_amount=(_)
+          end
 
           sig { returns(T.nilable(Integer)) }
-          attr_accessor :plan_phase_order
+          def plan_phase_order
+          end
+
+          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+          def plan_phase_order=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :reason
+          def reason
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def reason=(_)
+          end
 
           sig do
             params(
@@ -553,25 +918,60 @@ module Orb
 
         class PlanPhaseMaximumAdjustment < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :adjustment_type
+          def adjustment_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def adjustment_type=(_)
+          end
 
           sig { returns(T::Array[String]) }
-          attr_accessor :applies_to_price_ids
+          def applies_to_price_ids
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def applies_to_price_ids=(_)
+          end
 
           sig { returns(T::Boolean) }
-          attr_accessor :is_invoice_level
+          def is_invoice_level
+          end
+
+          sig { params(_: T::Boolean).returns(T::Boolean) }
+          def is_invoice_level=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :maximum_amount
+          def maximum_amount
+          end
+
+          sig { params(_: String).returns(String) }
+          def maximum_amount=(_)
+          end
 
           sig { returns(T.nilable(Integer)) }
-          attr_accessor :plan_phase_order
+          def plan_phase_order
+          end
+
+          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+          def plan_phase_order=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :reason
+          def reason
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def reason=(_)
+          end
 
           sig do
             params(
@@ -629,13 +1029,28 @@ module Orb
 
       class BasePlan < Orb::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :external_plan_id
+        def external_plan_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def external_plan_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def name=(_)
+        end
 
         sig do
           params(id: T.nilable(String), external_plan_id: T.nilable(String), name: T.nilable(String)).void
@@ -658,10 +1073,20 @@ module Orb
 
       class Maximum < Orb::BaseModel
         sig { returns(T::Array[String]) }
-        attr_accessor :applies_to_price_ids
+        def applies_to_price_ids
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applies_to_price_ids=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :maximum_amount
+        def maximum_amount
+        end
+
+        sig { params(_: String).returns(String) }
+        def maximum_amount=(_)
+        end
 
         sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
         def initialize(applies_to_price_ids:, maximum_amount:)
@@ -674,10 +1099,20 @@ module Orb
 
       class Minimum < Orb::BaseModel
         sig { returns(T::Array[String]) }
-        attr_accessor :applies_to_price_ids
+        def applies_to_price_ids
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applies_to_price_ids=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :minimum_amount
+        def minimum_amount
+        end
+
+        sig { params(_: String).returns(String) }
+        def minimum_amount=(_)
+        end
 
         sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
         def initialize(applies_to_price_ids:, minimum_amount:)
@@ -690,10 +1125,20 @@ module Orb
 
       class PlanPhase < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :description
+        def description
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def description=(_)
+        end
 
         sig do
           returns(
@@ -707,31 +1152,98 @@ module Orb
             )
           )
         end
-        attr_accessor :discount
+        def discount
+        end
+
+        sig do
+          params(
+            _: T.nilable(
+              T.any(
+                Orb::Models::PercentageDiscount,
+                Orb::Models::TrialDiscount,
+                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::AmountDiscount
+              )
+            )
+          ).returns(T.nilable(
+                      T.any(
+                        Orb::Models::PercentageDiscount,
+                        Orb::Models::TrialDiscount,
+                        Orb::Models::Discount::UsageDiscount,
+                        Orb::Models::AmountDiscount
+                      )
+                    ))
+        end
+        def discount=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_accessor :duration
+        def duration
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def duration=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_accessor :duration_unit
+        def duration_unit
+        end
+
+        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        def duration_unit=(_)
+        end
 
         sig { returns(T.nilable(Orb::Models::Plan::PlanPhase::Maximum)) }
-        attr_accessor :maximum
+        def maximum
+        end
+
+        sig do
+          params(_: T.nilable(Orb::Models::Plan::PlanPhase::Maximum)).returns(T.nilable(Orb::Models::Plan::PlanPhase::Maximum))
+        end
+        def maximum=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :maximum_amount
+        def maximum_amount
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def maximum_amount=(_)
+        end
 
         sig { returns(T.nilable(Orb::Models::Plan::PlanPhase::Minimum)) }
-        attr_accessor :minimum
+        def minimum
+        end
+
+        sig do
+          params(_: T.nilable(Orb::Models::Plan::PlanPhase::Minimum)).returns(T.nilable(Orb::Models::Plan::PlanPhase::Minimum))
+        end
+        def minimum=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :minimum_amount
+        def minimum_amount
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def minimum_amount=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :order
+        def order
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def order=(_)
+        end
 
         sig do
           params(
@@ -813,10 +1325,20 @@ module Orb
 
         class Maximum < Orb::BaseModel
           sig { returns(T::Array[String]) }
-          attr_accessor :applies_to_price_ids
+          def applies_to_price_ids
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def applies_to_price_ids=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :maximum_amount
+          def maximum_amount
+          end
+
+          sig { params(_: String).returns(String) }
+          def maximum_amount=(_)
+          end
 
           sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
           def initialize(applies_to_price_ids:, maximum_amount:)
@@ -829,10 +1351,20 @@ module Orb
 
         class Minimum < Orb::BaseModel
           sig { returns(T::Array[String]) }
-          attr_accessor :applies_to_price_ids
+          def applies_to_price_ids
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def applies_to_price_ids=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :minimum_amount
+          def minimum_amount
+          end
+
+          sig { params(_: String).returns(String) }
+          def minimum_amount=(_)
+          end
 
           sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
           def initialize(applies_to_price_ids:, minimum_amount:)
@@ -846,13 +1378,28 @@ module Orb
 
       class Product < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :created_at
+        def created_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def created_at=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { params(id: String, created_at: Time, name: String).void }
         def initialize(id:, created_at:, name:)
@@ -877,10 +1424,20 @@ module Orb
 
       class TrialConfig < Orb::BaseModel
         sig { returns(T.nilable(Integer)) }
-        attr_accessor :trial_period
+        def trial_period
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def trial_period=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :trial_period_unit
+        def trial_period_unit
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def trial_period_unit=(_)
+        end
 
         sig { params(trial_period: T.nilable(Integer), trial_period_unit: Symbol).void }
         def initialize(trial_period:, trial_period_unit:)

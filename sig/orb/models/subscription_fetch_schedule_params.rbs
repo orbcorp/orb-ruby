@@ -19,7 +19,7 @@ module Orb
 
       attr_reader limit: Integer?
 
-      def limit=: (Integer) -> void
+      def limit=: (Integer) -> Integer
 
       attr_accessor start_date_gt: Time?
 

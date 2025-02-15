@@ -7,19 +7,51 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :auto_collection
+      def auto_collection
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def auto_collection=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :default_invoice_memo
+      def default_invoice_memo
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def default_invoice_memo=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :invoicing_threshold
+      def invoicing_threshold
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def invoicing_threshold=(_)
+      end
 
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-      attr_accessor :metadata
+      def metadata
+      end
+
+      sig do
+        params(
+          _: T.nilable(
+            T::Hash[Symbol,
+                    T.nilable(String)]
+          )
+        ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+      end
+      def metadata=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_accessor :net_terms
+      def net_terms
+      end
+
+      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+      def net_terms=(_)
+      end
 
       sig do
         params(

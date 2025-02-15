@@ -7,16 +7,30 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T::Array[Orb::Models::EventIngestParams::Event]) }
-      attr_accessor :events
+      def events
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::EventIngestParams::Event]).returns(T::Array[Orb::Models::EventIngestParams::Event])
+      end
+      def events=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :backfill_id
+      def backfill_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def backfill_id=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :debug
+      def debug
+      end
 
-      sig { params(debug: T::Boolean).void }
-      attr_writer :debug
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def debug=(_)
+      end
 
       sig do
         params(
@@ -44,22 +58,52 @@ module Orb
 
       class Event < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :event_name
+        def event_name
+        end
+
+        sig { params(_: String).returns(String) }
+        def event_name=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :idempotency_key
+        def idempotency_key
+        end
+
+        sig { params(_: String).returns(String) }
+        def idempotency_key=(_)
+        end
 
         sig { returns(T.anything) }
-        attr_accessor :properties
+        def properties
+        end
+
+        sig { params(_: T.anything).returns(T.anything) }
+        def properties=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :timestamp
+        def timestamp
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def timestamp=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def customer_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :external_customer_id
+        def external_customer_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def external_customer_id=(_)
+        end
 
         sig do
           params(

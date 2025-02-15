@@ -7,22 +7,44 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :price_id
+      def price_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def price_id=(_)
+      end
 
       sig { returns(Float) }
-      attr_accessor :quantity
+      def quantity
+      end
+
+      sig { params(_: Float).returns(Float) }
+      def quantity=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :allow_invoice_credit_or_void
+      def allow_invoice_credit_or_void
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def allow_invoice_credit_or_void=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :change_option
+      def change_option
+      end
 
-      sig { params(change_option: Symbol).void }
-      attr_writer :change_option
+      sig { params(_: Symbol).returns(Symbol) }
+      def change_option=(_)
+      end
 
       sig { returns(T.nilable(Date)) }
-      attr_accessor :effective_date
+      def effective_date
+      end
+
+      sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
+      def effective_date=(_)
+      end
 
       sig do
         params(

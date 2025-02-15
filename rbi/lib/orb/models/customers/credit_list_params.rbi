@@ -8,22 +8,36 @@ module Orb
         include Orb::RequestParameters
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :currency
+        def currency
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def currency=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :cursor
+        def cursor
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def cursor=(_)
+        end
 
         sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :include_all_blocks
+        def include_all_blocks
+        end
 
-        sig { params(include_all_blocks: T::Boolean).void }
-        attr_writer :include_all_blocks
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def include_all_blocks=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_reader :limit
+        def limit
+        end
 
-        sig { params(limit: Integer).void }
-        attr_writer :limit
+        sig { params(_: Integer).returns(Integer) }
+        def limit=(_)
+        end
 
         sig do
           params(

@@ -4,7 +4,12 @@ module Orb
   module Models
     class EventDeprecateResponse < Orb::BaseModel
       sig { returns(String) }
-      attr_accessor :deprecated
+      def deprecated
+      end
+
+      sig { params(_: String).returns(String) }
+      def deprecated=(_)
+      end
 
       sig { params(deprecated: String).void }
       def initialize(deprecated:)

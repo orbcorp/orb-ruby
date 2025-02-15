@@ -9,47 +9,118 @@ module Orb
 
           class IncrementLedgerEntry < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :created_at
+            def created_at
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def created_at=(_)
+            end
 
             sig do
               returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::CreditBlock)
             end
-            attr_accessor :credit_block
+            def credit_block
+            end
+
+            sig do
+              params(
+                _: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::CreditBlock
+              ).returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::CreditBlock)
+            end
+            def credit_block=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: String).returns(String) }
+            def currency=(_)
+            end
 
             sig do
               returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::Customer)
             end
-            attr_accessor :customer
+            def customer
+            end
+
+            sig do
+              params(_: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::Customer).returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::Customer)
+            end
+            def customer=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :description
+            def description
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def description=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :ending_balance
+            def ending_balance
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def ending_balance=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :entry_status
+            def entry_status
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def entry_status=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :entry_type
+            def entry_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def entry_type=(_)
+            end
 
             sig { returns(Integer) }
-            attr_accessor :ledger_sequence_number
+            def ledger_sequence_number
+            end
+
+            sig { params(_: Integer).returns(Integer) }
+            def ledger_sequence_number=(_)
+            end
 
             sig { returns(T::Hash[Symbol, String]) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+            def metadata=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :starting_balance
+            def starting_balance
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def starting_balance=(_)
+            end
 
             sig do
               params(
@@ -109,13 +180,28 @@ module Orb
 
             class CreditBlock < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :id
+              def id
+              end
+
+              sig { params(_: String).returns(String) }
+              def id=(_)
+              end
 
               sig { returns(T.nilable(Time)) }
-              attr_accessor :expiry_date
+              def expiry_date
+              end
+
+              sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+              def expiry_date=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :per_unit_cost_basis
+              def per_unit_cost_basis
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def per_unit_cost_basis=(_)
+              end
 
               sig do
                 params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
@@ -138,10 +224,20 @@ module Orb
 
             class Customer < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :id
+              def id
+              end
+
+              sig { params(_: String).returns(String) }
+              def id=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :external_customer_id
+              def external_customer_id
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def external_customer_id=(_)
+              end
 
               sig { params(id: String, external_customer_id: T.nilable(String)).void }
               def initialize(id:, external_customer_id:)
@@ -166,56 +262,142 @@ module Orb
 
           class DecrementLedgerEntry < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :created_at
+            def created_at
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def created_at=(_)
+            end
 
             sig do
               returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::CreditBlock)
             end
-            attr_accessor :credit_block
+            def credit_block
+            end
+
+            sig do
+              params(
+                _: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::CreditBlock
+              ).returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::CreditBlock)
+            end
+            def credit_block=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: String).returns(String) }
+            def currency=(_)
+            end
 
             sig do
               returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::Customer)
             end
-            attr_accessor :customer
+            def customer
+            end
+
+            sig do
+              params(_: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::Customer).returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::Customer)
+            end
+            def customer=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :description
+            def description
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def description=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :ending_balance
+            def ending_balance
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def ending_balance=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :entry_status
+            def entry_status
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def entry_status=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :entry_type
+            def entry_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def entry_type=(_)
+            end
 
             sig { returns(Integer) }
-            attr_accessor :ledger_sequence_number
+            def ledger_sequence_number
+            end
+
+            sig { params(_: Integer).returns(Integer) }
+            def ledger_sequence_number=(_)
+            end
 
             sig { returns(T::Hash[Symbol, String]) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+            def metadata=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :starting_balance
+            def starting_balance
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def starting_balance=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :event_id
+            def event_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def event_id=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_id
+            def invoice_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_id=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :price_id
+            def price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def price_id=(_)
+            end
 
             sig do
               params(
@@ -284,13 +466,28 @@ module Orb
 
             class CreditBlock < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :id
+              def id
+              end
+
+              sig { params(_: String).returns(String) }
+              def id=(_)
+              end
 
               sig { returns(T.nilable(Time)) }
-              attr_accessor :expiry_date
+              def expiry_date
+              end
+
+              sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+              def expiry_date=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :per_unit_cost_basis
+              def per_unit_cost_basis
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def per_unit_cost_basis=(_)
+              end
 
               sig do
                 params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
@@ -313,10 +510,20 @@ module Orb
 
             class Customer < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :id
+              def id
+              end
+
+              sig { params(_: String).returns(String) }
+              def id=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :external_customer_id
+              def external_customer_id
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def external_customer_id=(_)
+              end
 
               sig { params(id: String, external_customer_id: T.nilable(String)).void }
               def initialize(id:, external_customer_id:)
@@ -341,50 +548,128 @@ module Orb
 
           class ExpirationChangeLedgerEntry < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :created_at
+            def created_at
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def created_at=(_)
+            end
 
             sig do
               returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::CreditBlock)
             end
-            attr_accessor :credit_block
+            def credit_block
+            end
+
+            sig do
+              params(
+                _: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::CreditBlock
+              ).returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::CreditBlock)
+            end
+            def credit_block=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: String).returns(String) }
+            def currency=(_)
+            end
 
             sig do
               returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::Customer)
             end
-            attr_accessor :customer
+            def customer
+            end
+
+            sig do
+              params(
+                _: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::Customer
+              ).returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::Customer)
+            end
+            def customer=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :description
+            def description
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def description=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :ending_balance
+            def ending_balance
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def ending_balance=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :entry_status
+            def entry_status
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def entry_status=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :entry_type
+            def entry_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def entry_type=(_)
+            end
 
             sig { returns(Integer) }
-            attr_accessor :ledger_sequence_number
+            def ledger_sequence_number
+            end
+
+            sig { params(_: Integer).returns(Integer) }
+            def ledger_sequence_number=(_)
+            end
 
             sig { returns(T::Hash[Symbol, String]) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(Time)) }
-            attr_accessor :new_block_expiry_date
+            def new_block_expiry_date
+            end
+
+            sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+            def new_block_expiry_date=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :starting_balance
+            def starting_balance
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def starting_balance=(_)
+            end
 
             sig do
               params(
@@ -447,13 +732,28 @@ module Orb
 
             class CreditBlock < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :id
+              def id
+              end
+
+              sig { params(_: String).returns(String) }
+              def id=(_)
+              end
 
               sig { returns(T.nilable(Time)) }
-              attr_accessor :expiry_date
+              def expiry_date
+              end
+
+              sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+              def expiry_date=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :per_unit_cost_basis
+              def per_unit_cost_basis
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def per_unit_cost_basis=(_)
+              end
 
               sig do
                 params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
@@ -476,10 +776,20 @@ module Orb
 
             class Customer < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :id
+              def id
+              end
+
+              sig { params(_: String).returns(String) }
+              def id=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :external_customer_id
+              def external_customer_id
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def external_customer_id=(_)
+              end
 
               sig { params(id: String, external_customer_id: T.nilable(String)).void }
               def initialize(id:, external_customer_id:)
@@ -504,47 +814,120 @@ module Orb
 
           class CreditBlockExpiryLedgerEntry < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :created_at
+            def created_at
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def created_at=(_)
+            end
 
             sig do
               returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::CreditBlock)
             end
-            attr_accessor :credit_block
+            def credit_block
+            end
+
+            sig do
+              params(
+                _: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::CreditBlock
+              ).returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::CreditBlock)
+            end
+            def credit_block=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: String).returns(String) }
+            def currency=(_)
+            end
 
             sig do
               returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::Customer)
             end
-            attr_accessor :customer
+            def customer
+            end
+
+            sig do
+              params(
+                _: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::Customer
+              ).returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::Customer)
+            end
+            def customer=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :description
+            def description
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def description=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :ending_balance
+            def ending_balance
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def ending_balance=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :entry_status
+            def entry_status
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def entry_status=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :entry_type
+            def entry_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def entry_type=(_)
+            end
 
             sig { returns(Integer) }
-            attr_accessor :ledger_sequence_number
+            def ledger_sequence_number
+            end
+
+            sig { params(_: Integer).returns(Integer) }
+            def ledger_sequence_number=(_)
+            end
 
             sig { returns(T::Hash[Symbol, String]) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+            def metadata=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :starting_balance
+            def starting_balance
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def starting_balance=(_)
+            end
 
             sig do
               params(
@@ -604,13 +987,28 @@ module Orb
 
             class CreditBlock < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :id
+              def id
+              end
+
+              sig { params(_: String).returns(String) }
+              def id=(_)
+              end
 
               sig { returns(T.nilable(Time)) }
-              attr_accessor :expiry_date
+              def expiry_date
+              end
+
+              sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+              def expiry_date=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :per_unit_cost_basis
+              def per_unit_cost_basis
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def per_unit_cost_basis=(_)
+              end
 
               sig do
                 params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
@@ -633,10 +1031,20 @@ module Orb
 
             class Customer < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :id
+              def id
+              end
+
+              sig { params(_: String).returns(String) }
+              def id=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :external_customer_id
+              def external_customer_id
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def external_customer_id=(_)
+              end
 
               sig { params(id: String, external_customer_id: T.nilable(String)).void }
               def initialize(id:, external_customer_id:)
@@ -661,53 +1069,132 @@ module Orb
 
           class VoidLedgerEntry < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :created_at
+            def created_at
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def created_at=(_)
+            end
 
             sig do
               returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::CreditBlock)
             end
-            attr_accessor :credit_block
+            def credit_block
+            end
+
+            sig do
+              params(_: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::CreditBlock).returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::CreditBlock)
+            end
+            def credit_block=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: String).returns(String) }
+            def currency=(_)
+            end
 
             sig do
               returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::Customer)
             end
-            attr_accessor :customer
+            def customer
+            end
+
+            sig do
+              params(_: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::Customer).returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::Customer)
+            end
+            def customer=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :description
+            def description
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def description=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :ending_balance
+            def ending_balance
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def ending_balance=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :entry_status
+            def entry_status
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def entry_status=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :entry_type
+            def entry_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def entry_type=(_)
+            end
 
             sig { returns(Integer) }
-            attr_accessor :ledger_sequence_number
+            def ledger_sequence_number
+            end
+
+            sig { params(_: Integer).returns(Integer) }
+            def ledger_sequence_number=(_)
+            end
 
             sig { returns(T::Hash[Symbol, String]) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+            def metadata=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :starting_balance
+            def starting_balance
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def starting_balance=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :void_amount
+            def void_amount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def void_amount=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :void_reason
+            def void_reason
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def void_reason=(_)
+            end
 
             sig do
               params(
@@ -773,13 +1260,28 @@ module Orb
 
             class CreditBlock < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :id
+              def id
+              end
+
+              sig { params(_: String).returns(String) }
+              def id=(_)
+              end
 
               sig { returns(T.nilable(Time)) }
-              attr_accessor :expiry_date
+              def expiry_date
+              end
+
+              sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+              def expiry_date=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :per_unit_cost_basis
+              def per_unit_cost_basis
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def per_unit_cost_basis=(_)
+              end
 
               sig do
                 params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
@@ -802,10 +1304,20 @@ module Orb
 
             class Customer < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :id
+              def id
+              end
+
+              sig { params(_: String).returns(String) }
+              def id=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :external_customer_id
+              def external_customer_id
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def external_customer_id=(_)
+              end
 
               sig { params(id: String, external_customer_id: T.nilable(String)).void }
               def initialize(id:, external_customer_id:)
@@ -830,56 +1342,144 @@ module Orb
 
           class VoidInitiatedLedgerEntry < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :created_at
+            def created_at
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def created_at=(_)
+            end
 
             sig do
               returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::CreditBlock)
             end
-            attr_accessor :credit_block
+            def credit_block
+            end
+
+            sig do
+              params(
+                _: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::CreditBlock
+              ).returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::CreditBlock)
+            end
+            def credit_block=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: String).returns(String) }
+            def currency=(_)
+            end
 
             sig do
               returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::Customer)
             end
-            attr_accessor :customer
+            def customer
+            end
+
+            sig do
+              params(
+                _: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::Customer
+              ).returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::Customer)
+            end
+            def customer=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :description
+            def description
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def description=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :ending_balance
+            def ending_balance
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def ending_balance=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :entry_status
+            def entry_status
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def entry_status=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :entry_type
+            def entry_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def entry_type=(_)
+            end
 
             sig { returns(Integer) }
-            attr_accessor :ledger_sequence_number
+            def ledger_sequence_number
+            end
+
+            sig { params(_: Integer).returns(Integer) }
+            def ledger_sequence_number=(_)
+            end
 
             sig { returns(T::Hash[Symbol, String]) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+            def metadata=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :new_block_expiry_date
+            def new_block_expiry_date
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def new_block_expiry_date=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :starting_balance
+            def starting_balance
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def starting_balance=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :void_amount
+            def void_amount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def void_amount=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :void_reason
+            def void_reason
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def void_reason=(_)
+            end
 
             sig do
               params(
@@ -948,13 +1548,28 @@ module Orb
 
             class CreditBlock < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :id
+              def id
+              end
+
+              sig { params(_: String).returns(String) }
+              def id=(_)
+              end
 
               sig { returns(T.nilable(Time)) }
-              attr_accessor :expiry_date
+              def expiry_date
+              end
+
+              sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+              def expiry_date=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :per_unit_cost_basis
+              def per_unit_cost_basis
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def per_unit_cost_basis=(_)
+              end
 
               sig do
                 params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
@@ -977,10 +1592,20 @@ module Orb
 
             class Customer < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :id
+              def id
+              end
+
+              sig { params(_: String).returns(String) }
+              def id=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :external_customer_id
+              def external_customer_id
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def external_customer_id=(_)
+              end
 
               sig { params(id: String, external_customer_id: T.nilable(String)).void }
               def initialize(id:, external_customer_id:)
@@ -1005,47 +1630,118 @@ module Orb
 
           class AmendmentLedgerEntry < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :created_at
+            def created_at
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def created_at=(_)
+            end
 
             sig do
               returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::CreditBlock)
             end
-            attr_accessor :credit_block
+            def credit_block
+            end
+
+            sig do
+              params(
+                _: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::CreditBlock
+              ).returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::CreditBlock)
+            end
+            def credit_block=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: String).returns(String) }
+            def currency=(_)
+            end
 
             sig do
               returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::Customer)
             end
-            attr_accessor :customer
+            def customer
+            end
+
+            sig do
+              params(_: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::Customer).returns(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::Customer)
+            end
+            def customer=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :description
+            def description
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def description=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :ending_balance
+            def ending_balance
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def ending_balance=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :entry_status
+            def entry_status
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def entry_status=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :entry_type
+            def entry_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def entry_type=(_)
+            end
 
             sig { returns(Integer) }
-            attr_accessor :ledger_sequence_number
+            def ledger_sequence_number
+            end
+
+            sig { params(_: Integer).returns(Integer) }
+            def ledger_sequence_number=(_)
+            end
 
             sig { returns(T::Hash[Symbol, String]) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+            def metadata=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :starting_balance
+            def starting_balance
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def starting_balance=(_)
+            end
 
             sig do
               params(
@@ -1105,13 +1801,28 @@ module Orb
 
             class CreditBlock < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :id
+              def id
+              end
+
+              sig { params(_: String).returns(String) }
+              def id=(_)
+              end
 
               sig { returns(T.nilable(Time)) }
-              attr_accessor :expiry_date
+              def expiry_date
+              end
+
+              sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+              def expiry_date=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :per_unit_cost_basis
+              def per_unit_cost_basis
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def per_unit_cost_basis=(_)
+              end
 
               sig do
                 params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
@@ -1134,10 +1845,20 @@ module Orb
 
             class Customer < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :id
+              def id
+              end
+
+              sig { params(_: String).returns(String) }
+              def id=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :external_customer_id
+              def external_customer_id
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def external_customer_id=(_)
+              end
 
               sig { params(id: String, external_customer_id: T.nilable(String)).void }
               def initialize(id:, external_customer_id:)

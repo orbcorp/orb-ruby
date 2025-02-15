@@ -4,13 +4,36 @@ module Orb
   module Models
     class EvaluatePriceGroup < Orb::BaseModel
       sig { returns(String) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: String).returns(String) }
+      def amount=(_)
+      end
 
       sig { returns(T::Array[T.any(String, Float, T::Boolean)]) }
-      attr_accessor :grouping_values
+      def grouping_values
+      end
+
+      sig do
+        params(
+          _: T::Array[T.any(
+            String,
+            Float,
+            T::Boolean
+          )]
+        ).returns(T::Array[T.any(String, Float, T::Boolean)])
+      end
+      def grouping_values=(_)
+      end
 
       sig { returns(Float) }
-      attr_accessor :quantity
+      def quantity
+      end
+
+      sig { params(_: Float).returns(Float) }
+      def quantity=(_)
+      end
 
       sig do
         params(

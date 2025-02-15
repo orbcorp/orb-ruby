@@ -17,7 +17,7 @@ module Orb
 
       attr_reader limit: Integer?
 
-      def limit=: (Integer) -> void
+      def limit=: (Integer) -> Integer
 
       attr_accessor redemption_code: String?
 

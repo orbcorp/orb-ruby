@@ -4,55 +4,138 @@ module Orb
   module Models
     class CreditNote < Orb::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :credit_note_number
+      def credit_note_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def credit_note_number=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :credit_note_pdf
+      def credit_note_pdf
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def credit_note_pdf=(_)
+      end
 
       sig { returns(Orb::Models::CreditNote::Customer) }
-      attr_accessor :customer
+      def customer
+      end
+
+      sig { params(_: Orb::Models::CreditNote::Customer).returns(Orb::Models::CreditNote::Customer) }
+      def customer=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :invoice_id
+      def invoice_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def invoice_id=(_)
+      end
 
       sig { returns(T::Array[Orb::Models::CreditNote::LineItem]) }
-      attr_accessor :line_items
+      def line_items
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::CreditNote::LineItem]).returns(T::Array[Orb::Models::CreditNote::LineItem])
+      end
+      def line_items=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::CreditNote::MaximumAmountAdjustment)) }
-      attr_accessor :maximum_amount_adjustment
+      def maximum_amount_adjustment
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::CreditNote::MaximumAmountAdjustment)).returns(T.nilable(Orb::Models::CreditNote::MaximumAmountAdjustment))
+      end
+      def maximum_amount_adjustment=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :memo
+      def memo
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def memo=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :minimum_amount_refunded
+      def minimum_amount_refunded
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def minimum_amount_refunded=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_accessor :reason
+      def reason
+      end
+
+      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      def reason=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :subtotal
+      def subtotal
+      end
+
+      sig { params(_: String).returns(String) }
+      def subtotal=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :total
+      def total
+      end
+
+      sig { params(_: String).returns(String) }
+      def total=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :voided_at
+      def voided_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def voided_at=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Orb::Models::CreditNote::Discount])) }
-      attr_reader :discounts
+      def discounts
+      end
 
-      sig { params(discounts: T::Array[Orb::Models::CreditNote::Discount]).void }
-      attr_writer :discounts
+      sig do
+        params(_: T::Array[Orb::Models::CreditNote::Discount]).returns(T::Array[Orb::Models::CreditNote::Discount])
+      end
+      def discounts=(_)
+      end
 
       sig do
         params(
@@ -121,10 +204,20 @@ module Orb
 
       class Customer < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :external_customer_id
+        def external_customer_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def external_customer_id=(_)
+        end
 
         sig { params(id: String, external_customer_id: T.nilable(String)).void }
         def initialize(id:, external_customer_id:)
@@ -137,28 +230,64 @@ module Orb
 
       class LineItem < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: String).returns(String) }
+        def amount=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_accessor :quantity
+        def quantity
+        end
+
+        sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+        def quantity=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :subtotal
+        def subtotal
+        end
+
+        sig { params(_: String).returns(String) }
+        def subtotal=(_)
+        end
 
         sig { returns(T::Array[Orb::Models::CreditNote::LineItem::TaxAmount]) }
-        attr_accessor :tax_amounts
+        def tax_amounts
+        end
+
+        sig do
+          params(_: T::Array[Orb::Models::CreditNote::LineItem::TaxAmount]).returns(T::Array[Orb::Models::CreditNote::LineItem::TaxAmount])
+        end
+        def tax_amounts=(_)
+        end
 
         sig { returns(T.nilable(T::Array[Orb::Models::CreditNote::LineItem::Discount])) }
-        attr_reader :discounts
+        def discounts
+        end
 
-        sig { params(discounts: T::Array[Orb::Models::CreditNote::LineItem::Discount]).void }
-        attr_writer :discounts
+        sig do
+          params(_: T::Array[Orb::Models::CreditNote::LineItem::Discount]).returns(T::Array[Orb::Models::CreditNote::LineItem::Discount])
+        end
+        def discounts=(_)
+        end
 
         sig do
           params(
@@ -192,13 +321,28 @@ module Orb
 
         class TaxAmount < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: String).returns(String) }
+          def amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :tax_rate_description
+          def tax_rate_description
+          end
+
+          sig { params(_: String).returns(String) }
+          def tax_rate_description=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :tax_rate_percentage
+          def tax_rate_percentage
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def tax_rate_percentage=(_)
+          end
 
           sig do
             params(amount: String, tax_rate_description: String, tax_rate_percentage: T.nilable(String)).void
@@ -221,25 +365,60 @@ module Orb
 
         class Discount < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :amount_applied
+          def amount_applied
+          end
+
+          sig { params(_: String).returns(String) }
+          def amount_applied=(_)
+          end
 
           sig { returns(T::Array[String]) }
-          attr_accessor :applies_to_price_ids
+          def applies_to_price_ids
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def applies_to_price_ids=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :discount_type
+          def discount_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def discount_type=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :percentage_discount
+          def percentage_discount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def percentage_discount=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :amount_discount
+          def amount_discount
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def amount_discount=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :reason
+          def reason
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def reason=(_)
+          end
 
           sig do
             params(
@@ -294,19 +473,46 @@ module Orb
 
       class MaximumAmountAdjustment < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :amount_applied
+        def amount_applied
+        end
+
+        sig { params(_: String).returns(String) }
+        def amount_applied=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :discount_type
+        def discount_type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def discount_type=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :percentage_discount
+        def percentage_discount
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def percentage_discount=(_)
+        end
 
         sig { returns(T.nilable(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice])) }
-        attr_accessor :applies_to_prices
+        def applies_to_prices
+        end
+
+        sig do
+          params(_: T.nilable(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice])).returns(T.nilable(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice]))
+        end
+        def applies_to_prices=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :reason
+        def reason
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def reason=(_)
+        end
 
         sig do
           params(
@@ -352,10 +558,20 @@ module Orb
 
         class AppliesToPrice < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig { params(id: String, name: String).void }
           def initialize(id:, name:)
@@ -393,19 +609,46 @@ module Orb
 
       class Discount < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :amount_applied
+        def amount_applied
+        end
+
+        sig { params(_: String).returns(String) }
+        def amount_applied=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :discount_type
+        def discount_type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def discount_type=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :percentage_discount
+        def percentage_discount
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def percentage_discount=(_)
+        end
 
         sig { returns(T.nilable(T::Array[Orb::Models::CreditNote::Discount::AppliesToPrice])) }
-        attr_accessor :applies_to_prices
+        def applies_to_prices
+        end
+
+        sig do
+          params(_: T.nilable(T::Array[Orb::Models::CreditNote::Discount::AppliesToPrice])).returns(T.nilable(T::Array[Orb::Models::CreditNote::Discount::AppliesToPrice]))
+        end
+        def applies_to_prices=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :reason
+        def reason
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def reason=(_)
+        end
 
         sig do
           params(
@@ -451,10 +694,20 @@ module Orb
 
         class AppliesToPrice < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig { params(id: String, name: String).void }
           def initialize(id:, name:)

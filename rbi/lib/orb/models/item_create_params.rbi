@@ -7,7 +7,12 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig do
         params(name: String, request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])).void

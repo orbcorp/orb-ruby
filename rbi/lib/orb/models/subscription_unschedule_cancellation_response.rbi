@@ -4,39 +4,98 @@ module Orb
   module Models
     class SubscriptionUnscheduleCancellationResponse < Orb::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_accessor :active_plan_phase_order
+      def active_plan_phase_order
+      end
+
+      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+      def active_plan_phase_order=(_)
+      end
 
       sig { returns(T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval]) }
-      attr_accessor :adjustment_intervals
+      def adjustment_intervals
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval]).returns(T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval])
+      end
+      def adjustment_intervals=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :auto_collection
+      def auto_collection
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def auto_collection=(_)
+      end
 
       sig do
         returns(Orb::Models::SubscriptionUnscheduleCancellationResponse::BillingCycleAnchorConfiguration)
       end
-      attr_accessor :billing_cycle_anchor_configuration
+      def billing_cycle_anchor_configuration
+      end
+
+      sig do
+        params(_: Orb::Models::SubscriptionUnscheduleCancellationResponse::BillingCycleAnchorConfiguration).returns(Orb::Models::SubscriptionUnscheduleCancellationResponse::BillingCycleAnchorConfiguration)
+      end
+      def billing_cycle_anchor_configuration=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :billing_cycle_day
+      def billing_cycle_day
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def billing_cycle_day=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :current_billing_period_end_date
+      def current_billing_period_end_date
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def current_billing_period_end_date=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :current_billing_period_start_date
+      def current_billing_period_start_date
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def current_billing_period_start_date=(_)
+      end
 
       sig { returns(Orb::Models::Customer) }
-      attr_accessor :customer
+      def customer
+      end
+
+      sig { params(_: Orb::Models::Customer).returns(Orb::Models::Customer) }
+      def customer=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :default_invoice_memo
+      def default_invoice_memo
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def default_invoice_memo=(_)
+      end
 
       sig do
         returns(
@@ -45,48 +104,138 @@ module Orb
           )]
         )
       end
-      attr_accessor :discount_intervals
+      def discount_intervals
+      end
+
+      sig do
+        params(
+          _: T::Array[T.any(
+            Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::UsageDiscountInterval
+          )]
+        ).returns(T::Array[T.any(
+          Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::UsageDiscountInterval
+        )])
+      end
+      def discount_intervals=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :end_date
+      def end_date
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def end_date=(_)
+      end
 
       sig do
         returns(T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::FixedFeeQuantitySchedule])
       end
-      attr_accessor :fixed_fee_quantity_schedule
+      def fixed_fee_quantity_schedule
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::FixedFeeQuantitySchedule]).returns(T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::FixedFeeQuantitySchedule])
+      end
+      def fixed_fee_quantity_schedule=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :invoicing_threshold
+      def invoicing_threshold
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def invoicing_threshold=(_)
+      end
 
       sig { returns(T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::MaximumInterval]) }
-      attr_accessor :maximum_intervals
+      def maximum_intervals
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::MaximumInterval]).returns(T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::MaximumInterval])
+      end
+      def maximum_intervals=(_)
+      end
 
       sig { returns(T::Hash[Symbol, String]) }
-      attr_accessor :metadata
+      def metadata
+      end
+
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def metadata=(_)
+      end
 
       sig { returns(T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::MinimumInterval]) }
-      attr_accessor :minimum_intervals
+      def minimum_intervals
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::MinimumInterval]).returns(T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::MinimumInterval])
+      end
+      def minimum_intervals=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :net_terms
+      def net_terms
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def net_terms=(_)
+      end
 
       sig { returns(Orb::Models::Plan) }
-      attr_accessor :plan
+      def plan
+      end
+
+      sig { params(_: Orb::Models::Plan).returns(Orb::Models::Plan) }
+      def plan=(_)
+      end
 
       sig { returns(T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::PriceInterval]) }
-      attr_accessor :price_intervals
+      def price_intervals
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::PriceInterval]).returns(T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::PriceInterval])
+      end
+      def price_intervals=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::SubscriptionUnscheduleCancellationResponse::RedeemedCoupon)) }
-      attr_accessor :redeemed_coupon
+      def redeemed_coupon
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::SubscriptionUnscheduleCancellationResponse::RedeemedCoupon)).returns(T.nilable(Orb::Models::SubscriptionUnscheduleCancellationResponse::RedeemedCoupon))
+      end
+      def redeemed_coupon=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :start_date
+      def start_date
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def start_date=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(Orb::Models::SubscriptionUnscheduleCancellationResponse::TrialInfo) }
-      attr_accessor :trial_info
+      def trial_info
+      end
+
+      sig do
+        params(_: Orb::Models::SubscriptionUnscheduleCancellationResponse::TrialInfo).returns(Orb::Models::SubscriptionUnscheduleCancellationResponse::TrialInfo)
+      end
+      def trial_info=(_)
+      end
 
       sig do
         params(
@@ -186,7 +335,12 @@ module Orb
 
       class AdjustmentInterval < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig do
           returns(
@@ -195,16 +349,44 @@ module Orb
             )
           )
         end
-        attr_accessor :adjustment
+        def adjustment
+        end
+
+        sig do
+          params(
+            _: T.any(
+              Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
+            )
+          ).returns(T.any(
+                      Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
+                    ))
+        end
+        def adjustment=(_)
+        end
 
         sig { returns(T::Array[String]) }
-        attr_accessor :applies_to_price_interval_ids
+        def applies_to_price_interval_ids
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applies_to_price_interval_ids=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :end_date
+        def end_date
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def end_date=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :start_date
+        def start_date
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def start_date=(_)
+        end
 
         sig do
           params(
@@ -241,25 +423,60 @@ module Orb
 
           class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(T::Boolean) }
-            attr_accessor :is_invoice_level
+            def is_invoice_level
+            end
+
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig { returns(T.nilable(Integer)) }
-            attr_accessor :plan_phase_order
+            def plan_phase_order
+            end
+
+            sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+            def plan_phase_order=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reason
+            def reason
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reason=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :usage_discount
+            def usage_discount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def usage_discount=(_)
+            end
 
             sig do
               params(
@@ -302,25 +519,60 @@ module Orb
 
           class PlanPhaseAmountDiscountAdjustment < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :amount_discount
+            def amount_discount
+            end
+
+            sig { params(_: String).returns(String) }
+            def amount_discount=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(T::Boolean) }
-            attr_accessor :is_invoice_level
+            def is_invoice_level
+            end
+
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig { returns(T.nilable(Integer)) }
-            attr_accessor :plan_phase_order
+            def plan_phase_order
+            end
+
+            sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+            def plan_phase_order=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reason
+            def reason
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reason=(_)
+            end
 
             sig do
               params(
@@ -363,25 +615,60 @@ module Orb
 
           class PlanPhasePercentageDiscountAdjustment < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(T::Boolean) }
-            attr_accessor :is_invoice_level
+            def is_invoice_level
+            end
+
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :percentage_discount
+            def percentage_discount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def percentage_discount=(_)
+            end
 
             sig { returns(T.nilable(Integer)) }
-            attr_accessor :plan_phase_order
+            def plan_phase_order
+            end
+
+            sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+            def plan_phase_order=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reason
+            def reason
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reason=(_)
+            end
 
             sig do
               params(
@@ -424,28 +711,68 @@ module Orb
 
           class PlanPhaseMinimumAdjustment < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(T::Boolean) }
-            attr_accessor :is_invoice_level
+            def is_invoice_level
+            end
+
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :minimum_amount
+            def minimum_amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def minimum_amount=(_)
+            end
 
             sig { returns(T.nilable(Integer)) }
-            attr_accessor :plan_phase_order
+            def plan_phase_order
+            end
+
+            sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+            def plan_phase_order=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reason
+            def reason
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reason=(_)
+            end
 
             sig do
               params(
@@ -491,25 +818,60 @@ module Orb
 
           class PlanPhaseMaximumAdjustment < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(T::Boolean) }
-            attr_accessor :is_invoice_level
+            def is_invoice_level
+            end
+
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :maximum_amount
+            def maximum_amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def maximum_amount=(_)
+            end
 
             sig { returns(T.nilable(Integer)) }
-            attr_accessor :plan_phase_order
+            def plan_phase_order
+            end
+
+            sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+            def plan_phase_order=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reason
+            def reason
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reason=(_)
+            end
 
             sig do
               params(
@@ -583,13 +945,28 @@ module Orb
 
       class BillingCycleAnchorConfiguration < Orb::BaseModel
         sig { returns(Integer) }
-        attr_accessor :day
+        def day
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def day=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_accessor :month
+        def month
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def month=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_accessor :year
+        def year
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def year=(_)
+        end
 
         sig { params(day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)).void }
         def initialize(day:, month: nil, year: nil)
@@ -605,22 +982,52 @@ module Orb
 
         class AmountDiscountInterval < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :amount_discount
+          def amount_discount
+          end
+
+          sig { params(_: String).returns(String) }
+          def amount_discount=(_)
+          end
 
           sig { returns(T::Array[String]) }
-          attr_accessor :applies_to_price_ids
+          def applies_to_price_ids
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def applies_to_price_ids=(_)
+          end
 
           sig { returns(T::Array[String]) }
-          attr_accessor :applies_to_price_interval_ids
+          def applies_to_price_interval_ids
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def applies_to_price_interval_ids=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :discount_type
+          def discount_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def discount_type=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_accessor :end_date
+          def end_date
+          end
+
+          sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+          def end_date=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :start_date
+          def start_date
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def start_date=(_)
+          end
 
           sig do
             params(
@@ -660,22 +1067,52 @@ module Orb
 
         class PercentageDiscountInterval < Orb::BaseModel
           sig { returns(T::Array[String]) }
-          attr_accessor :applies_to_price_ids
+          def applies_to_price_ids
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def applies_to_price_ids=(_)
+          end
 
           sig { returns(T::Array[String]) }
-          attr_accessor :applies_to_price_interval_ids
+          def applies_to_price_interval_ids
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def applies_to_price_interval_ids=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :discount_type
+          def discount_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def discount_type=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_accessor :end_date
+          def end_date
+          end
+
+          sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+          def end_date=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :percentage_discount
+          def percentage_discount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def percentage_discount=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :start_date
+          def start_date
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def start_date=(_)
+          end
 
           sig do
             params(
@@ -715,22 +1152,52 @@ module Orb
 
         class UsageDiscountInterval < Orb::BaseModel
           sig { returns(T::Array[String]) }
-          attr_accessor :applies_to_price_ids
+          def applies_to_price_ids
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def applies_to_price_ids=(_)
+          end
 
           sig { returns(T::Array[String]) }
-          attr_accessor :applies_to_price_interval_ids
+          def applies_to_price_interval_ids
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def applies_to_price_interval_ids=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :discount_type
+          def discount_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def discount_type=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_accessor :end_date
+          def end_date
+          end
+
+          sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+          def end_date=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :start_date
+          def start_date
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def start_date=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :usage_discount
+          def usage_discount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def usage_discount=(_)
+          end
 
           sig do
             params(
@@ -792,16 +1259,36 @@ module Orb
 
       class FixedFeeQuantitySchedule < Orb::BaseModel
         sig { returns(T.nilable(Time)) }
-        attr_accessor :end_date
+        def end_date
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def end_date=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :price_id
+        def price_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def price_id=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :quantity
+        def quantity
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def quantity=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :start_date
+        def start_date
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def start_date=(_)
+        end
 
         sig { params(end_date: T.nilable(Time), price_id: String, quantity: Float, start_date: Time).void }
         def initialize(end_date:, price_id:, quantity:, start_date:)
@@ -816,19 +1303,44 @@ module Orb
 
       class MaximumInterval < Orb::BaseModel
         sig { returns(T::Array[String]) }
-        attr_accessor :applies_to_price_ids
+        def applies_to_price_ids
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applies_to_price_ids=(_)
+        end
 
         sig { returns(T::Array[String]) }
-        attr_accessor :applies_to_price_interval_ids
+        def applies_to_price_interval_ids
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applies_to_price_interval_ids=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :end_date
+        def end_date
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def end_date=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :maximum_amount
+        def maximum_amount
+        end
+
+        sig { params(_: String).returns(String) }
+        def maximum_amount=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :start_date
+        def start_date
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def start_date=(_)
+        end
 
         sig do
           params(
@@ -865,19 +1377,44 @@ module Orb
 
       class MinimumInterval < Orb::BaseModel
         sig { returns(T::Array[String]) }
-        attr_accessor :applies_to_price_ids
+        def applies_to_price_ids
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applies_to_price_ids=(_)
+        end
 
         sig { returns(T::Array[String]) }
-        attr_accessor :applies_to_price_interval_ids
+        def applies_to_price_interval_ids
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applies_to_price_interval_ids=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :end_date
+        def end_date
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def end_date=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :minimum_amount
+        def minimum_amount
+        end
+
+        sig { params(_: String).returns(String) }
+        def minimum_amount=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :start_date
+        def start_date
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def start_date=(_)
+        end
 
         sig do
           params(
@@ -914,24 +1451,58 @@ module Orb
 
       class PriceInterval < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :billing_cycle_day
+        def billing_cycle_day
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def billing_cycle_day=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :current_billing_period_end_date
+        def current_billing_period_end_date
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def current_billing_period_end_date=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :current_billing_period_start_date
+        def current_billing_period_start_date
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def current_billing_period_start_date=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :end_date
+        def end_date
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def end_date=(_)
+        end
 
         sig do
           returns(T.nilable(T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::PriceInterval::FixedFeeQuantityTransition]))
         end
-        attr_accessor :fixed_fee_quantity_transitions
+        def fixed_fee_quantity_transitions
+        end
+
+        sig do
+          params(
+            _: T.nilable(T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::PriceInterval::FixedFeeQuantityTransition])
+          ).returns(T.nilable(T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::PriceInterval::FixedFeeQuantityTransition]))
+        end
+        def fixed_fee_quantity_transitions=(_)
+        end
 
         sig do
           returns(
@@ -967,10 +1538,82 @@ module Orb
             )
           )
         end
-        attr_accessor :price
+        def price
+        end
+
+        sig do
+          params(
+            _: T.any(
+              Orb::Models::Price::UnitPrice,
+              Orb::Models::Price::PackagePrice,
+              Orb::Models::Price::MatrixPrice,
+              Orb::Models::Price::TieredPrice,
+              Orb::Models::Price::TieredBpsPrice,
+              Orb::Models::Price::BpsPrice,
+              Orb::Models::Price::BulkBpsPrice,
+              Orb::Models::Price::BulkPrice,
+              Orb::Models::Price::ThresholdTotalAmountPrice,
+              Orb::Models::Price::TieredPackagePrice,
+              Orb::Models::Price::GroupedTieredPrice,
+              Orb::Models::Price::TieredWithMinimumPrice,
+              Orb::Models::Price::TieredPackageWithMinimumPrice,
+              Orb::Models::Price::PackageWithAllocationPrice,
+              Orb::Models::Price::UnitWithPercentPrice,
+              Orb::Models::Price::MatrixWithAllocationPrice,
+              Orb::Models::Price::TieredWithProrationPrice,
+              Orb::Models::Price::UnitWithProrationPrice,
+              Orb::Models::Price::GroupedAllocationPrice,
+              Orb::Models::Price::GroupedWithProratedMinimumPrice,
+              Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+              Orb::Models::Price::MatrixWithDisplayNamePrice,
+              Orb::Models::Price::BulkWithProrationPrice,
+              Orb::Models::Price::GroupedTieredPackagePrice,
+              Orb::Models::Price::MaxGroupTieredPackagePrice,
+              Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+              Orb::Models::Price::CumulativeGroupedBulkPrice
+            )
+          ).returns(T.any(
+                      Orb::Models::Price::UnitPrice,
+                      Orb::Models::Price::PackagePrice,
+                      Orb::Models::Price::MatrixPrice,
+                      Orb::Models::Price::TieredPrice,
+                      Orb::Models::Price::TieredBpsPrice,
+                      Orb::Models::Price::BpsPrice,
+                      Orb::Models::Price::BulkBpsPrice,
+                      Orb::Models::Price::BulkPrice,
+                      Orb::Models::Price::ThresholdTotalAmountPrice,
+                      Orb::Models::Price::TieredPackagePrice,
+                      Orb::Models::Price::GroupedTieredPrice,
+                      Orb::Models::Price::TieredWithMinimumPrice,
+                      Orb::Models::Price::TieredPackageWithMinimumPrice,
+                      Orb::Models::Price::PackageWithAllocationPrice,
+                      Orb::Models::Price::UnitWithPercentPrice,
+                      Orb::Models::Price::MatrixWithAllocationPrice,
+                      Orb::Models::Price::TieredWithProrationPrice,
+                      Orb::Models::Price::UnitWithProrationPrice,
+                      Orb::Models::Price::GroupedAllocationPrice,
+                      Orb::Models::Price::GroupedWithProratedMinimumPrice,
+                      Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+                      Orb::Models::Price::MatrixWithDisplayNamePrice,
+                      Orb::Models::Price::BulkWithProrationPrice,
+                      Orb::Models::Price::GroupedTieredPackagePrice,
+                      Orb::Models::Price::MaxGroupTieredPackagePrice,
+                      Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+                      Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                      Orb::Models::Price::CumulativeGroupedBulkPrice
+                    ))
+        end
+        def price=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :start_date
+        def start_date
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def start_date=(_)
+        end
 
         sig do
           params(
@@ -1073,13 +1716,28 @@ module Orb
 
         class FixedFeeQuantityTransition < Orb::BaseModel
           sig { returns(Time) }
-          attr_accessor :effective_date
+          def effective_date
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def effective_date=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :price_id
+          def price_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def price_id=(_)
+          end
 
           sig { returns(Integer) }
-          attr_accessor :quantity
+          def quantity
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def quantity=(_)
+          end
 
           sig { params(effective_date: Time, price_id: String, quantity: Integer).void }
           def initialize(effective_date:, price_id:, quantity:)
@@ -1093,13 +1751,28 @@ module Orb
 
       class RedeemedCoupon < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :coupon_id
+        def coupon_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def coupon_id=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :end_date
+        def end_date
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def end_date=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :start_date
+        def start_date
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def start_date=(_)
+        end
 
         sig { params(coupon_id: String, end_date: T.nilable(Time), start_date: Time).void }
         def initialize(coupon_id:, end_date:, start_date:)
@@ -1124,7 +1797,12 @@ module Orb
 
       class TrialInfo < Orb::BaseModel
         sig { returns(T.nilable(Time)) }
-        attr_accessor :end_date
+        def end_date
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def end_date=(_)
+        end
 
         sig { params(end_date: T.nilable(Time)).void }
         def initialize(end_date:)

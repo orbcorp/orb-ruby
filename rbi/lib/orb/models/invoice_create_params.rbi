@@ -7,19 +7,46 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: String).returns(String) }
+      def currency=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :invoice_date
+      def invoice_date
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def invoice_date=(_)
+      end
 
       sig { returns(T::Array[Orb::Models::InvoiceCreateParams::LineItem]) }
-      attr_accessor :line_items
+      def line_items
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::InvoiceCreateParams::LineItem]).returns(T::Array[Orb::Models::InvoiceCreateParams::LineItem])
+      end
+      def line_items=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :net_terms
+      def net_terms
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def net_terms=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :customer_id
+      def customer_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def customer_id=(_)
+      end
 
       sig do
         returns(
@@ -33,22 +60,69 @@ module Orb
           )
         )
       end
-      attr_accessor :discount
+      def discount
+      end
+
+      sig do
+        params(
+          _: T.nilable(
+            T.any(
+              Orb::Models::PercentageDiscount,
+              Orb::Models::TrialDiscount,
+              Orb::Models::Discount::UsageDiscount,
+              Orb::Models::AmountDiscount
+            )
+          )
+        ).returns(T.nilable(
+                    T.any(
+                      Orb::Models::PercentageDiscount,
+                      Orb::Models::TrialDiscount,
+                      Orb::Models::Discount::UsageDiscount,
+                      Orb::Models::AmountDiscount
+                    )
+                  ))
+      end
+      def discount=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :external_customer_id
+      def external_customer_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def external_customer_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :memo
+      def memo
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def memo=(_)
+      end
 
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-      attr_accessor :metadata
+      def metadata
+      end
+
+      sig do
+        params(
+          _: T.nilable(
+            T::Hash[Symbol,
+                    T.nilable(String)]
+          )
+        ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+      end
+      def metadata=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :will_auto_issue
+      def will_auto_issue
+      end
 
-      sig { params(will_auto_issue: T::Boolean).void }
-      attr_writer :will_auto_issue
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def will_auto_issue=(_)
+      end
 
       sig do
         params(
@@ -116,25 +190,62 @@ module Orb
 
       class LineItem < Orb::BaseModel
         sig { returns(Date) }
-        attr_accessor :end_date
+        def end_date
+        end
+
+        sig { params(_: Date).returns(Date) }
+        def end_date=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :item_id
+        def item_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def item_id=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :model_type
+        def model_type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def model_type=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :quantity
+        def quantity
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def quantity=(_)
+        end
 
         sig { returns(Date) }
-        attr_accessor :start_date
+        def start_date
+        end
+
+        sig { params(_: Date).returns(Date) }
+        def start_date=(_)
+        end
 
         sig { returns(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig) }
-        attr_accessor :unit_config
+        def unit_config
+        end
+
+        sig do
+          params(_: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig).returns(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig)
+        end
+        def unit_config=(_)
+        end
 
         sig do
           params(
@@ -178,7 +289,12 @@ module Orb
 
         class UnitConfig < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :unit_amount
+          def unit_amount
+          end
+
+          sig { params(_: String).returns(String) }
+          def unit_amount=(_)
+          end
 
           sig { params(unit_amount: String).void }
           def initialize(unit_amount:)

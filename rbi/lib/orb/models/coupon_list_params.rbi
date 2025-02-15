@@ -7,19 +7,36 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :cursor
+      def cursor
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def cursor=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :redemption_code
+      def redemption_code
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def redemption_code=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :show_archived
+      def show_archived
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def show_archived=(_)
+      end
 
       sig do
         params(

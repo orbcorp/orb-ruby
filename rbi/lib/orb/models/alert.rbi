@@ -4,34 +4,90 @@ module Orb
   module Models
     class Alert < Orb::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def currency=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::Alert::Customer)) }
-      attr_accessor :customer
+      def customer
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::Alert::Customer)).returns(T.nilable(Orb::Models::Alert::Customer))
+      end
+      def customer=(_)
+      end
 
       sig { returns(T::Boolean) }
-      attr_accessor :enabled
+      def enabled
+      end
+
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def enabled=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::Alert::Metric)) }
-      attr_accessor :metric
+      def metric
+      end
+
+      sig { params(_: T.nilable(Orb::Models::Alert::Metric)).returns(T.nilable(Orb::Models::Alert::Metric)) }
+      def metric=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::Alert::Plan)) }
-      attr_accessor :plan
+      def plan
+      end
+
+      sig { params(_: T.nilable(Orb::Models::Alert::Plan)).returns(T.nilable(Orb::Models::Alert::Plan)) }
+      def plan=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::Alert::Subscription)) }
-      attr_accessor :subscription
+      def subscription
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::Alert::Subscription)).returns(T.nilable(Orb::Models::Alert::Subscription))
+      end
+      def subscription=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Orb::Models::Alert::Threshold])) }
-      attr_accessor :thresholds
+      def thresholds
+      end
+
+      sig do
+        params(_: T.nilable(T::Array[Orb::Models::Alert::Threshold])).returns(T.nilable(T::Array[Orb::Models::Alert::Threshold]))
+      end
+      def thresholds=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -82,10 +138,20 @@ module Orb
 
       class Customer < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :external_customer_id
+        def external_customer_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def external_customer_id=(_)
+        end
 
         sig { params(id: String, external_customer_id: T.nilable(String)).void }
         def initialize(id:, external_customer_id:)
@@ -98,7 +164,12 @@ module Orb
 
       class Metric < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { params(id: String).void }
         def initialize(id:)
@@ -111,16 +182,36 @@ module Orb
 
       class Plan < Orb::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :external_plan_id
+        def external_plan_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def external_plan_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def name=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :plan_version
+        def plan_version
+        end
+
+        sig { params(_: String).returns(String) }
+        def plan_version=(_)
+        end
 
         sig do
           params(
@@ -149,7 +240,12 @@ module Orb
 
       class Subscription < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { params(id: String).void }
         def initialize(id:)
@@ -162,7 +258,12 @@ module Orb
 
       class Threshold < Orb::BaseModel
         sig { returns(Float) }
-        attr_accessor :value
+        def value
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def value=(_)
+        end
 
         sig { params(value: Float).void }
         def initialize(value:)

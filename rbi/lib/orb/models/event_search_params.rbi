@@ -7,13 +7,28 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T::Array[String]) }
-      attr_accessor :event_ids
+      def event_ids
+      end
+
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def event_ids=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :timeframe_end
+      def timeframe_end
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def timeframe_end=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :timeframe_start
+      def timeframe_start
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def timeframe_start=(_)
+      end
 
       sig do
         params(

@@ -7,7 +7,14 @@ module Orb
 
       class UngroupedSubscriptionUsage < Orb::BaseModel
         sig { returns(T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]) }
-        attr_accessor :data
+        def data
+        end
+
+        sig do
+          params(_: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]).returns(T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data])
+        end
+        def data=(_)
+        end
 
         sig { params(data: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]).void }
         def initialize(data:)
@@ -21,13 +28,32 @@ module Orb
 
         class Data < Orb::BaseModel
           sig { returns(Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric) }
-          attr_accessor :billable_metric
+          def billable_metric
+          end
+
+          sig do
+            params(_: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric).returns(Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric)
+          end
+          def billable_metric=(_)
+          end
 
           sig { returns(T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage]) }
-          attr_accessor :usage
+          def usage
+          end
+
+          sig do
+            params(_: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage]).returns(T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage])
+          end
+          def usage=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :view_mode
+          def view_mode
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def view_mode=(_)
+          end
 
           sig do
             params(
@@ -51,10 +77,20 @@ module Orb
 
           class BillableMetric < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { params(id: String, name: String).void }
             def initialize(id:, name:)
@@ -67,13 +103,28 @@ module Orb
 
           class Usage < Orb::BaseModel
             sig { returns(Float) }
-            attr_accessor :quantity
+            def quantity
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def quantity=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :timeframe_end
+            def timeframe_end
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def timeframe_end=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :timeframe_start
+            def timeframe_start
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def timeframe_start=(_)
+            end
 
             sig { params(quantity: Float, timeframe_end: Time, timeframe_start: Time).void }
             def initialize(quantity:, timeframe_end:, timeframe_start:)
@@ -99,10 +150,24 @@ module Orb
 
       class GroupedSubscriptionUsage < Orb::BaseModel
         sig { returns(T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data]) }
-        attr_accessor :data
+        def data
+        end
+
+        sig do
+          params(_: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data]).returns(T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data])
+        end
+        def data=(_)
+        end
 
         sig { returns(T.nilable(Orb::Models::PaginationMetadata)) }
-        attr_accessor :pagination_metadata
+        def pagination_metadata
+        end
+
+        sig do
+          params(_: T.nilable(Orb::Models::PaginationMetadata)).returns(T.nilable(Orb::Models::PaginationMetadata))
+        end
+        def pagination_metadata=(_)
+        end
 
         sig do
           params(
@@ -126,16 +191,42 @@ module Orb
 
         class Data < Orb::BaseModel
           sig { returns(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric) }
-          attr_accessor :billable_metric
+          def billable_metric
+          end
+
+          sig do
+            params(_: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric).returns(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric)
+          end
+          def billable_metric=(_)
+          end
 
           sig { returns(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup) }
-          attr_accessor :metric_group
+          def metric_group
+          end
+
+          sig do
+            params(_: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup).returns(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup)
+          end
+          def metric_group=(_)
+          end
 
           sig { returns(T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage]) }
-          attr_accessor :usage
+          def usage
+          end
+
+          sig do
+            params(_: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage]).returns(T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage])
+          end
+          def usage=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :view_mode
+          def view_mode
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def view_mode=(_)
+          end
 
           sig do
             params(
@@ -160,10 +251,20 @@ module Orb
 
           class BillableMetric < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :id
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { params(id: String, name: String).void }
             def initialize(id:, name:)
@@ -176,10 +277,20 @@ module Orb
 
           class MetricGroup < Orb::BaseModel
             sig { returns(String) }
-            attr_accessor :property_key
+            def property_key
+            end
+
+            sig { params(_: String).returns(String) }
+            def property_key=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :property_value
+            def property_value
+            end
+
+            sig { params(_: String).returns(String) }
+            def property_value=(_)
+            end
 
             sig { params(property_key: String, property_value: String).void }
             def initialize(property_key:, property_value:)
@@ -192,13 +303,28 @@ module Orb
 
           class Usage < Orb::BaseModel
             sig { returns(Float) }
-            attr_accessor :quantity
+            def quantity
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def quantity=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :timeframe_end
+            def timeframe_end
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def timeframe_end=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :timeframe_start
+            def timeframe_start
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def timeframe_start=(_)
+            end
 
             sig { params(quantity: Float, timeframe_end: Time, timeframe_start: Time).void }
             def initialize(quantity:, timeframe_end:, timeframe_start:)

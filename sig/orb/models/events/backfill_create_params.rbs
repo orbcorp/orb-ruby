@@ -31,7 +31,7 @@ module Orb
 
         attr_reader replace_existing_events: bool?
 
-        def replace_existing_events=: (bool) -> void
+        def replace_existing_events=: (bool) -> bool
 
         def initialize:
           (

@@ -4,7 +4,8 @@ module Orb
   module Resources
     class Plans
       sig { returns(Orb::Resources::Plans::ExternalPlanID) }
-      attr_reader :external_plan_id
+      def external_plan_id
+      end
 
       sig do
         params(

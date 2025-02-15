@@ -11,49 +11,64 @@ module Orb
     DEFAULT_MAX_RETRY_DELAY = T.let(8.0, Float)
 
     sig { returns(String) }
-    attr_reader :api_key
+    def api_key
+    end
 
     sig { returns(Orb::Resources::TopLevel) }
-    attr_reader :top_level
+    def top_level
+    end
 
     sig { returns(Orb::Resources::Coupons) }
-    attr_reader :coupons
+    def coupons
+    end
 
     sig { returns(Orb::Resources::CreditNotes) }
-    attr_reader :credit_notes
+    def credit_notes
+    end
 
     sig { returns(Orb::Resources::Customers) }
-    attr_reader :customers
+    def customers
+    end
 
     sig { returns(Orb::Resources::Events) }
-    attr_reader :events
+    def events
+    end
 
     sig { returns(Orb::Resources::InvoiceLineItems) }
-    attr_reader :invoice_line_items
+    def invoice_line_items
+    end
 
     sig { returns(Orb::Resources::Invoices) }
-    attr_reader :invoices
+    def invoices
+    end
 
     sig { returns(Orb::Resources::Items) }
-    attr_reader :items
+    def items
+    end
 
     sig { returns(Orb::Resources::Metrics) }
-    attr_reader :metrics
+    def metrics
+    end
 
     sig { returns(Orb::Resources::Plans) }
-    attr_reader :plans
+    def plans
+    end
 
     sig { returns(Orb::Resources::Prices) }
-    attr_reader :prices
+    def prices
+    end
 
     sig { returns(Orb::Resources::Subscriptions) }
-    attr_reader :subscriptions
+    def subscriptions
+    end
 
     sig { returns(Orb::Resources::Alerts) }
-    attr_reader :alerts
+    def alerts
+    end
 
     sig { returns(Orb::Resources::DimensionalPriceGroups) }
-    attr_reader :dimensional_price_groups
+    def dimensional_price_groups
+    end
 
     sig { returns(T::Hash[String, String]) }
     private def auth_headers

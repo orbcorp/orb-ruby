@@ -18,13 +18,13 @@ module Orb
 
       def add=: (
         ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add]
-      ) -> void
+      ) -> ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add]
 
       attr_reader add_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment]?
 
       def add_adjustments=: (
         ::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment]
-      ) -> void
+      ) -> ::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment]
 
       attr_accessor allow_invoice_credit_or_void: bool?
 
@@ -32,13 +32,13 @@ module Orb
 
       def edit=: (
         ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit]
-      ) -> void
+      ) -> ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit]
 
       attr_reader edit_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment]?
 
       def edit_adjustments=: (
         ::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment]
-      ) -> void
+      ) -> ::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment]
 
       def initialize:
         (
@@ -5178,7 +5178,7 @@ module Orb
 
             attr_reader is_invoice_level: bool?
 
-            def is_invoice_level=: (bool) -> void
+            def is_invoice_level=: (bool) -> bool
 
             def initialize:
               (
@@ -5212,7 +5212,7 @@ module Orb
 
             attr_reader is_invoice_level: bool?
 
-            def is_invoice_level=: (bool) -> void
+            def is_invoice_level=: (bool) -> bool
 
             def initialize:
               (
@@ -5246,7 +5246,7 @@ module Orb
 
             attr_reader is_invoice_level: bool?
 
-            def is_invoice_level=: (bool) -> void
+            def is_invoice_level=: (bool) -> bool
 
             def initialize:
               (
@@ -5283,7 +5283,7 @@ module Orb
 
             attr_reader is_invoice_level: bool?
 
-            def is_invoice_level=: (bool) -> void
+            def is_invoice_level=: (bool) -> bool
 
             def initialize:
               (
@@ -5318,7 +5318,7 @@ module Orb
 
             attr_reader is_invoice_level: bool?
 
-            def is_invoice_level=: (bool) -> void
+            def is_invoice_level=: (bool) -> bool
 
             def initialize:
               (
@@ -5373,7 +5373,7 @@ module Orb
 
         def start_date=: (
           Orb::Models::SubscriptionPriceIntervalsParams::Edit::start_date
-        ) -> void
+        ) -> Orb::Models::SubscriptionPriceIntervalsParams::Edit::start_date
 
         def initialize:
           (
@@ -5437,7 +5437,7 @@ module Orb
 
         def start_date=: (
           Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment::start_date
-        ) -> void
+        ) -> Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment::start_date
 
         def initialize:
           (
