@@ -7,13 +7,28 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(Date) }
-      attr_accessor :payment_received_date
+      def payment_received_date
+      end
+
+      sig { params(_: Date).returns(Date) }
+      def payment_received_date=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :external_id
+      def external_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def external_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :notes
+      def notes
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def notes=(_)
+      end
 
       sig do
         params(

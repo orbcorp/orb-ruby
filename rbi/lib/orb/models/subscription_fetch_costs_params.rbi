@@ -7,16 +7,36 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def currency=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :timeframe_end
+      def timeframe_end
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def timeframe_end=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :timeframe_start
+      def timeframe_start
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def timeframe_start=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_accessor :view_mode
+      def view_mode
+      end
+
+      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      def view_mode=(_)
+      end
 
       sig do
         params(

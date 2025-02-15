@@ -4,7 +4,8 @@ module Orb
   module Resources
     class Prices
       sig { returns(Orb::Resources::Prices::ExternalPriceID) }
-      attr_reader :external_price_id
+      def external_price_id
+      end
 
       sig do
         params(

@@ -14,16 +14,46 @@ module Orb
           )
         )
       end
-      attr_accessor :discount
+      def discount
+      end
+
+      sig do
+        params(
+          _: T.any(
+            Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
+            Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
+          )
+        ).returns(T.any(
+                    Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
+                    Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
+                  ))
+      end
+      def discount=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :redemption_code
+      def redemption_code
+      end
+
+      sig { params(_: String).returns(String) }
+      def redemption_code=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_accessor :duration_in_months
+      def duration_in_months
+      end
+
+      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+      def duration_in_months=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_accessor :max_redemptions
+      def max_redemptions
+      end
+
+      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+      def max_redemptions=(_)
+      end
 
       sig do
         params(
@@ -68,10 +98,20 @@ module Orb
 
         class NewCouponPercentageDiscount < Orb::BaseModel
           sig { returns(Symbol) }
-          attr_accessor :discount_type
+          def discount_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def discount_type=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :percentage_discount
+          def percentage_discount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def percentage_discount=(_)
+          end
 
           sig { params(percentage_discount: Float, discount_type: Symbol).void }
           def initialize(percentage_discount:, discount_type: :percentage)
@@ -84,10 +124,20 @@ module Orb
 
         class NewCouponAmountDiscount < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :amount_discount
+          def amount_discount
+          end
+
+          sig { params(_: String).returns(String) }
+          def amount_discount=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :discount_type
+          def discount_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def discount_type=(_)
+          end
 
           sig { params(amount_discount: String, discount_type: Symbol).void }
           def initialize(amount_discount:, discount_type: :amount)

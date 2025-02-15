@@ -4,10 +4,22 @@ module Orb
   module Models
     class DimensionalPriceGroupsAPI < Orb::BaseModel
       sig { returns(T::Array[Orb::Models::DimensionalPriceGroup]) }
-      attr_accessor :data
+      def data
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::DimensionalPriceGroup]).returns(T::Array[Orb::Models::DimensionalPriceGroup])
+      end
+      def data=(_)
+      end
 
       sig { returns(Orb::Models::PaginationMetadata) }
-      attr_accessor :pagination_metadata
+      def pagination_metadata
+      end
+
+      sig { params(_: Orb::Models::PaginationMetadata).returns(Orb::Models::PaginationMetadata) }
+      def pagination_metadata=(_)
+      end
 
       sig do
         params(

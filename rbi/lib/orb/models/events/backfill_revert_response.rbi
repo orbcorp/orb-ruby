@@ -5,37 +5,92 @@ module Orb
     module Events
       class BackfillRevertResponse < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :close_time
+        def close_time
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def close_time=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :created_at
+        def created_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def created_at=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def customer_id=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :events_ingested
+        def events_ingested
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def events_ingested=(_)
+        end
 
         sig { returns(T::Boolean) }
-        attr_accessor :replace_existing_events
+        def replace_existing_events
+        end
+
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def replace_existing_events=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :reverted_at
+        def reverted_at
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def reverted_at=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :status
+        def status
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def status=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :timeframe_end
+        def timeframe_end
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def timeframe_end=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :timeframe_start
+        def timeframe_start
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def timeframe_start=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :deprecation_filter
+        def deprecation_filter
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def deprecation_filter=(_)
+        end
 
         sig do
           params(

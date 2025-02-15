@@ -7,10 +7,20 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :allow_invoice_credit_or_void
+      def allow_invoice_credit_or_void
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def allow_invoice_credit_or_void=(_)
+      end
 
       sig { returns(T.nilable(Date)) }
-      attr_accessor :effective_date
+      def effective_date
+      end
+
+      sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
+      def effective_date=(_)
+      end
 
       sig do
         params(

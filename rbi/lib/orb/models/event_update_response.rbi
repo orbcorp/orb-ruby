@@ -4,7 +4,12 @@ module Orb
   module Models
     class EventUpdateResponse < Orb::BaseModel
       sig { returns(String) }
-      attr_accessor :amended
+      def amended
+      end
+
+      sig { params(_: String).returns(String) }
+      def amended=(_)
+      end
 
       sig { params(amended: String).void }
       def initialize(amended:)

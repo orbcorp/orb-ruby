@@ -4,7 +4,8 @@ module Orb
   module Resources
     class Coupons
       sig { returns(Orb::Resources::Coupons::Subscriptions) }
-      attr_reader :subscriptions
+      def subscriptions
+      end
 
       sig do
         params(

@@ -7,13 +7,30 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: String).returns(String) }
+      def currency=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Orb::Models::AlertCreateForCustomerParams::Threshold])) }
-      attr_accessor :thresholds
+      def thresholds
+      end
+
+      sig do
+        params(_: T.nilable(T::Array[Orb::Models::AlertCreateForCustomerParams::Threshold])).returns(T.nilable(T::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]))
+      end
+      def thresholds=(_)
+      end
 
       sig do
         params(
@@ -55,7 +72,12 @@ module Orb
 
       class Threshold < Orb::BaseModel
         sig { returns(Float) }
-        attr_accessor :value
+        def value
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def value=(_)
+        end
 
         sig { params(value: Float).void }
         def initialize(value:)

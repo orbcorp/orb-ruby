@@ -5,25 +5,60 @@ module Orb
     module Customers
       class CreditListResponse < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :balance
+        def balance
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def balance=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :effective_date
+        def effective_date
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def effective_date=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :expiry_date
+        def expiry_date
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def expiry_date=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_accessor :maximum_initial_balance
+        def maximum_initial_balance
+        end
+
+        sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+        def maximum_initial_balance=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :per_unit_cost_basis
+        def per_unit_cost_basis
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def per_unit_cost_basis=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :status
+        def status
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def status=(_)
+        end
 
         sig do
           params(

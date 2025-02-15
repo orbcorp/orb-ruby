@@ -24,7 +24,7 @@ module Orb
 
       def change_option=: (
         Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option
-      ) -> void
+      ) -> Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option
 
       attr_accessor effective_date: Date?
 

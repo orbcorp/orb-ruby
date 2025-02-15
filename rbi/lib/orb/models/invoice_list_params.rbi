@@ -7,64 +7,156 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def amount=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :amount_gt
+      def amount_gt
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def amount_gt=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :amount_lt
+      def amount_lt
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def amount_lt=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :cursor
+      def cursor
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def cursor=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :customer_id
+      def customer_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def customer_id=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_accessor :date_type
+      def date_type
+      end
+
+      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      def date_type=(_)
+      end
 
       sig { returns(T.nilable(Date)) }
-      attr_accessor :due_date
+      def due_date
+      end
+
+      sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
+      def due_date=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :due_date_window
+      def due_date_window
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def due_date_window=(_)
+      end
 
       sig { returns(T.nilable(Date)) }
-      attr_accessor :due_date_gt
+      def due_date_gt
+      end
+
+      sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
+      def due_date_gt=(_)
+      end
 
       sig { returns(T.nilable(Date)) }
-      attr_accessor :due_date_lt
+      def due_date_lt
+      end
+
+      sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
+      def due_date_lt=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :external_customer_id
+      def external_customer_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def external_customer_id=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :invoice_date_gt
+      def invoice_date_gt
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def invoice_date_gt=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :invoice_date_gte
+      def invoice_date_gte
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def invoice_date_gte=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :invoice_date_lt
+      def invoice_date_lt
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def invoice_date_lt=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :invoice_date_lte
+      def invoice_date_lte
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def invoice_date_lte=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :is_recurring
+      def is_recurring
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def is_recurring=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Symbol])) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: T.nilable(T::Array[Symbol])).returns(T.nilable(T::Array[Symbol])) }
+      def status=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :subscription_id
+      def subscription_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def subscription_id=(_)
+      end
 
       sig do
         params(

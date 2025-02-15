@@ -4,16 +4,38 @@ module Orb
   module Models
     class Item < Orb::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T::Array[Orb::Models::Item::ExternalConnection]) }
-      attr_accessor :external_connections
+      def external_connections
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::Item::ExternalConnection]).returns(T::Array[Orb::Models::Item::ExternalConnection])
+      end
+      def external_connections=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig do
         params(
@@ -41,10 +63,20 @@ module Orb
 
       class ExternalConnection < Orb::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :external_connection_name
+        def external_connection_name
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def external_connection_name=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :external_entity_id
+        def external_entity_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def external_entity_id=(_)
+        end
 
         sig { params(external_connection_name: Symbol, external_entity_id: String).void }
         def initialize(external_connection_name:, external_entity_id:)

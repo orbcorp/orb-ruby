@@ -7,13 +7,30 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T::Array[Orb::Models::CreditNoteCreateParams::LineItem]) }
-      attr_accessor :line_items
+      def line_items
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::CreditNoteCreateParams::LineItem]).returns(T::Array[Orb::Models::CreditNoteCreateParams::LineItem])
+      end
+      def line_items=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :memo
+      def memo
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def memo=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_accessor :reason
+      def reason
+      end
+
+      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      def reason=(_)
+      end
 
       sig do
         params(
@@ -41,10 +58,20 @@ module Orb
 
       class LineItem < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: String).returns(String) }
+        def amount=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :invoice_line_item_id
+        def invoice_line_item_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def invoice_line_item_id=(_)
+        end
 
         sig { params(amount: String, invoice_line_item_id: String).void }
         def initialize(amount:, invoice_line_item_id:)

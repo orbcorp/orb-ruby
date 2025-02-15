@@ -7,7 +7,12 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :subscription_id
+      def subscription_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def subscription_id=(_)
+      end
 
       sig do
         params(

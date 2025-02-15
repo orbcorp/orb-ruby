@@ -7,19 +7,51 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def description=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :item_id
+      def item_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def item_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :sql
+      def sql
+      end
+
+      sig { params(_: String).returns(String) }
+      def sql=(_)
+      end
 
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-      attr_accessor :metadata
+      def metadata
+      end
+
+      sig do
+        params(
+          _: T.nilable(
+            T::Hash[Symbol,
+                    T.nilable(String)]
+          )
+        ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+      end
+      def metadata=(_)
+      end
 
       sig do
         params(

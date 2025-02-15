@@ -4,7 +4,8 @@ module Orb
   module Resources
     class DimensionalPriceGroups
       sig { returns(Orb::Resources::DimensionalPriceGroups::ExternalDimensionalPriceGroupID) }
-      attr_reader :external_dimensional_price_group_id
+      def external_dimensional_price_group_id
+      end
 
       sig do
         params(

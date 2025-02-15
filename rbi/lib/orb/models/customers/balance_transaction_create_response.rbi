@@ -5,34 +5,88 @@ module Orb
     module Customers
       class BalanceTransactionCreateResponse < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :action
+        def action
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def action=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: String).returns(String) }
+        def amount=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :created_at
+        def created_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def created_at=(_)
+        end
 
         sig { returns(T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote)) }
-        attr_accessor :credit_note
+        def credit_note
+        end
+
+        sig do
+          params(_: T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote)).returns(T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote))
+        end
+        def credit_note=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :description
+        def description
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def description=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :ending_balance
+        def ending_balance
+        end
+
+        sig { params(_: String).returns(String) }
+        def ending_balance=(_)
+        end
 
         sig { returns(T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice)) }
-        attr_accessor :invoice
+        def invoice
+        end
+
+        sig do
+          params(_: T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice)).returns(T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice))
+        end
+        def invoice=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :starting_balance
+        def starting_balance
+        end
+
+        sig { params(_: String).returns(String) }
+        def starting_balance=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig do
           params(
@@ -101,7 +155,12 @@ module Orb
 
         class CreditNote < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           sig { params(id: String).void }
           def initialize(id:)
@@ -114,7 +173,12 @@ module Orb
 
         class Invoice < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           sig { params(id: String).void }
           def initialize(id:)

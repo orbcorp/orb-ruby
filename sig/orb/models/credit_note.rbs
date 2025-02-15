@@ -53,7 +53,9 @@ module Orb
 
       attr_reader discounts: ::Array[Orb::Models::CreditNote::Discount]?
 
-      def discounts=: (::Array[Orb::Models::CreditNote::Discount]) -> void
+      def discounts=: (
+        ::Array[Orb::Models::CreditNote::Discount]
+      ) -> ::Array[Orb::Models::CreditNote::Discount]
 
       def initialize:
         (
@@ -120,7 +122,7 @@ module Orb
 
         def discounts=: (
           ::Array[Orb::Models::CreditNote::LineItem::Discount]
-        ) -> void
+        ) -> ::Array[Orb::Models::CreditNote::LineItem::Discount]
 
         def initialize:
           (

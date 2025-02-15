@@ -4,10 +4,24 @@ module Orb
   module Models
     class EventIngestResponse < Orb::BaseModel
       sig { returns(T::Array[Orb::Models::EventIngestResponse::ValidationFailed]) }
-      attr_accessor :validation_failed
+      def validation_failed
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::EventIngestResponse::ValidationFailed]).returns(T::Array[Orb::Models::EventIngestResponse::ValidationFailed])
+      end
+      def validation_failed=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::EventIngestResponse::Debug)) }
-      attr_accessor :debug
+      def debug
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::EventIngestResponse::Debug)).returns(T.nilable(Orb::Models::EventIngestResponse::Debug))
+      end
+      def debug=(_)
+      end
 
       sig do
         params(
@@ -31,10 +45,20 @@ module Orb
 
       class ValidationFailed < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :idempotency_key
+        def idempotency_key
+        end
+
+        sig { params(_: String).returns(String) }
+        def idempotency_key=(_)
+        end
 
         sig { returns(T::Array[String]) }
-        attr_accessor :validation_errors
+        def validation_errors
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def validation_errors=(_)
+        end
 
         sig { params(idempotency_key: String, validation_errors: T::Array[String]).void }
         def initialize(idempotency_key:, validation_errors:)
@@ -47,10 +71,20 @@ module Orb
 
       class Debug < Orb::BaseModel
         sig { returns(T::Array[String]) }
-        attr_accessor :duplicate
+        def duplicate
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def duplicate=(_)
+        end
 
         sig { returns(T::Array[String]) }
-        attr_accessor :ingested
+        def ingested
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def ingested=(_)
+        end
 
         sig { params(duplicate: T::Array[String], ingested: T::Array[String]).void }
         def initialize(duplicate:, ingested:)

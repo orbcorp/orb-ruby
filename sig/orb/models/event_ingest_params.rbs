@@ -18,7 +18,7 @@ module Orb
 
       attr_reader debug: bool?
 
-      def debug=: (bool) -> void
+      def debug=: (bool) -> bool
 
       def initialize:
         (

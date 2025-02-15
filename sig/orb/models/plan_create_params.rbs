@@ -33,7 +33,9 @@ module Orb
 
       attr_reader status: Orb::Models::PlanCreateParams::status?
 
-      def status=: (Orb::Models::PlanCreateParams::status) -> void
+      def status=: (
+        Orb::Models::PlanCreateParams::status
+      ) -> Orb::Models::PlanCreateParams::status
 
       def initialize:
         (

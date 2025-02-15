@@ -7,85 +7,224 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(Symbol) }
-      attr_accessor :change_option
+      def change_option
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def change_option=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment])) }
-      attr_accessor :add_adjustments
+      def add_adjustments
+      end
+
+      sig do
+        params(_: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment])).returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment]))
+      end
+      def add_adjustments=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice])) }
-      attr_accessor :add_prices
+      def add_prices
+      end
+
+      sig do
+        params(_: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice])).returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice]))
+      end
+      def add_prices=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :align_billing_with_plan_change_date
+      def align_billing_with_plan_change_date
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def align_billing_with_plan_change_date=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :auto_collection
+      def auto_collection
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def auto_collection=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_accessor :billing_cycle_alignment
+      def billing_cycle_alignment
+      end
+
+      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      def billing_cycle_alignment=(_)
+      end
 
       sig do
         returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration))
       end
-      attr_accessor :billing_cycle_anchor_configuration
+      def billing_cycle_anchor_configuration
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration)).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration))
+      end
+      def billing_cycle_anchor_configuration=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :change_date
+      def change_date
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def change_date=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :coupon_redemption_code
+      def coupon_redemption_code
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def coupon_redemption_code=(_)
+      end
 
       sig { returns(T.nilable(Float)) }
-      attr_accessor :credits_overage_rate
+      def credits_overage_rate
+      end
+
+      sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+      def credits_overage_rate=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :default_invoice_memo
+      def default_invoice_memo
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def default_invoice_memo=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :external_plan_id
+      def external_plan_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def external_plan_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :filter
+      def filter
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def filter=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_accessor :initial_phase_order
+      def initial_phase_order
+      end
+
+      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+      def initial_phase_order=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :invoicing_threshold
+      def invoicing_threshold
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def invoicing_threshold=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_accessor :net_terms
+      def net_terms
+      end
+
+      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+      def net_terms=(_)
+      end
 
       sig { returns(T.nilable(Float)) }
-      attr_accessor :per_credit_overage_amount
+      def per_credit_overage_amount
+      end
+
+      sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+      def per_credit_overage_amount=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :plan_id
+      def plan_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def plan_id=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_accessor :plan_version_number
+      def plan_version_number
+      end
+
+      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+      def plan_version_number=(_)
+      end
 
       sig { returns(T.nilable(T::Array[T.anything])) }
-      attr_accessor :price_overrides
+      def price_overrides
+      end
+
+      sig { params(_: T.nilable(T::Array[T.anything])).returns(T.nilable(T::Array[T.anything])) }
+      def price_overrides=(_)
+      end
 
       sig do
         returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::RemoveAdjustment]))
       end
-      attr_accessor :remove_adjustments
+      def remove_adjustments
+      end
+
+      sig do
+        params(_: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::RemoveAdjustment])).returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::RemoveAdjustment]))
+      end
+      def remove_adjustments=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::RemovePrice])) }
-      attr_accessor :remove_prices
+      def remove_prices
+      end
+
+      sig do
+        params(_: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::RemovePrice])).returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::RemovePrice]))
+      end
+      def remove_prices=(_)
+      end
 
       sig do
         returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment]))
       end
-      attr_accessor :replace_adjustments
+      def replace_adjustments
+      end
+
+      sig do
+        params(_: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment])).returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment]))
+      end
+      def replace_adjustments=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice])) }
-      attr_accessor :replace_prices
+      def replace_prices
+      end
+
+      sig do
+        params(_: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice])).returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice]))
+      end
+      def replace_prices=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_accessor :trial_duration_days
+      def trial_duration_days
+      end
+
+      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+      def trial_duration_days=(_)
+      end
 
       sig do
         params(
@@ -202,16 +341,44 @@ module Orb
             )
           )
         end
-        attr_accessor :adjustment
+        def adjustment
+        end
+
+        sig do
+          params(
+            _: T.any(
+              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMaximum
+            )
+          ).returns(T.any(
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMaximum
+                    ))
+        end
+        def adjustment=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :end_date
+        def end_date
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def end_date=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_accessor :plan_phase_order
+        def plan_phase_order
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def plan_phase_order=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :start_date
+        def start_date
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def start_date=(_)
+        end
 
         sig do
           params(
@@ -246,19 +413,36 @@ module Orb
 
           class NewPercentageDiscount < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :percentage_discount
+            def percentage_discount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def percentage_discount=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :is_invoice_level
+            def is_invoice_level
+            end
 
-            sig { params(is_invoice_level: T::Boolean).void }
-            attr_writer :is_invoice_level
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig do
               params(
@@ -292,19 +476,36 @@ module Orb
 
           class NewUsageDiscount < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :usage_discount
+            def usage_discount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def usage_discount=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :is_invoice_level
+            def is_invoice_level
+            end
 
-            sig { params(is_invoice_level: T::Boolean).void }
-            attr_writer :is_invoice_level
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig do
               params(
@@ -338,19 +539,36 @@ module Orb
 
           class NewAmountDiscount < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :amount_discount
+            def amount_discount
+            end
+
+            sig { params(_: String).returns(String) }
+            def amount_discount=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :is_invoice_level
+            def is_invoice_level
+            end
 
-            sig { params(is_invoice_level: T::Boolean).void }
-            attr_writer :is_invoice_level
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig do
               params(
@@ -384,22 +602,44 @@ module Orb
 
           class NewMinimum < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :minimum_amount
+            def minimum_amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def minimum_amount=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :is_invoice_level
+            def is_invoice_level
+            end
 
-            sig { params(is_invoice_level: T::Boolean).void }
-            attr_writer :is_invoice_level
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig do
               params(
@@ -436,19 +676,36 @@ module Orb
 
           class NewMaximum < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :maximum_amount
+            def maximum_amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def maximum_amount=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :is_invoice_level
+            def is_invoice_level
+            end
 
-            sig { params(is_invoice_level: T::Boolean).void }
-            attr_writer :is_invoice_level
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig do
               params(
@@ -515,27 +772,66 @@ module Orb
         sig do
           returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice))
         end
-        attr_accessor :allocation_price
+        def allocation_price
+        end
+
+        sig do
+          params(_: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice)).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice))
+        end
+        def allocation_price=(_)
+        end
 
         sig do
           returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount]))
         end
-        attr_accessor :discounts
+        def discounts
+        end
+
+        sig do
+          params(_: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount])).returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount]))
+        end
+        def discounts=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :end_date
+        def end_date
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def end_date=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :external_price_id
+        def external_price_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def external_price_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :maximum_amount
+        def maximum_amount
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def maximum_amount=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :minimum_amount
+        def minimum_amount
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def minimum_amount=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_accessor :plan_phase_order
+        def plan_phase_order
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def plan_phase_order=(_)
+        end
 
         sig do
           returns(
@@ -546,13 +842,40 @@ module Orb
             )
           )
         end
-        attr_accessor :price
+        def price
+        end
+
+        sig do
+          params(
+            _: T.nilable(
+              T.any(
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice
+              )
+            )
+          ).returns(T.nilable(
+                      T.any(
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice
+                      )
+                    ))
+        end
+        def price=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :price_id
+        def price_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def price_id=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :start_date
+        def start_date
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def start_date=(_)
+        end
 
         sig do
           params(
@@ -611,16 +934,36 @@ module Orb
 
         class AllocationPrice < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: String).returns(String) }
+          def amount=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :cadence
+          def cadence
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def cadence=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :currency
+          def currency
+          end
+
+          sig { params(_: String).returns(String) }
+          def currency=(_)
+          end
 
           sig { returns(T::Boolean) }
-          attr_accessor :expires_at_end_of_cadence
+          def expires_at_end_of_cadence
+          end
+
+          sig { params(_: T::Boolean).returns(T::Boolean) }
+          def expires_at_end_of_cadence=(_)
+          end
 
           sig do
             params(
@@ -664,16 +1007,36 @@ module Orb
 
         class Discount < Orb::BaseModel
           sig { returns(Symbol) }
-          attr_accessor :discount_type
+          def discount_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def discount_type=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :amount_discount
+          def amount_discount
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def amount_discount=(_)
+          end
 
           sig { returns(T.nilable(Float)) }
-          attr_accessor :percentage_discount
+          def percentage_discount
+          end
+
+          sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+          def percentage_discount=(_)
+          end
 
           sig { returns(T.nilable(Float)) }
-          attr_accessor :usage_discount
+          def usage_discount
+          end
+
+          sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+          def usage_discount=(_)
+          end
 
           sig do
             params(
@@ -717,58 +1080,157 @@ module Orb
 
           class NewSubscriptionUnitPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig do
               returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::UnitConfig)
             end
-            attr_accessor :unit_config
+            def unit_config
+            end
+
+            sig do
+              params(
+                _: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::UnitConfig
+              ).returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::UnitConfig)
+            end
+            def unit_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -852,7 +1314,12 @@ module Orb
 
             class UnitConfig < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :unit_amount
+              def unit_amount
+              end
+
+              sig { params(_: String).returns(String) }
+              def unit_amount=(_)
+              end
 
               sig { params(unit_amount: String).void }
               def initialize(unit_amount:)
@@ -865,10 +1332,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -892,10 +1369,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -920,58 +1407,157 @@ module Orb
 
           class NewSubscriptionPackagePrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig do
               returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::PackageConfig)
             end
-            attr_accessor :package_config
+            def package_config
+            end
+
+            sig do
+              params(
+                _: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::PackageConfig
+              ).returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::PackageConfig)
+            end
+            def package_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -1055,10 +1641,20 @@ module Orb
 
             class PackageConfig < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :package_amount
+              def package_amount
+              end
+
+              sig { params(_: String).returns(String) }
+              def package_amount=(_)
+              end
 
               sig { returns(Integer) }
-              attr_accessor :package_size
+              def package_size
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def package_size=(_)
+              end
 
               sig { params(package_amount: String, package_size: Integer).void }
               def initialize(package_amount:, package_size:)
@@ -1071,10 +1667,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -1098,10 +1704,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -1126,58 +1742,157 @@ module Orb
 
           class NewSubscriptionMatrixPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig do
               returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig)
             end
-            attr_accessor :matrix_config
+            def matrix_config
+            end
+
+            sig do
+              params(
+                _: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig
+              ).returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig)
+            end
+            def matrix_config=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -1261,15 +1976,34 @@ module Orb
 
             class MatrixConfig < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :default_unit_amount
+              def default_unit_amount
+              end
+
+              sig { params(_: String).returns(String) }
+              def default_unit_amount=(_)
+              end
 
               sig { returns(T::Array[T.nilable(String)]) }
-              attr_accessor :dimensions
+              def dimensions
+              end
+
+              sig { params(_: T::Array[T.nilable(String)]).returns(T::Array[T.nilable(String)]) }
+              def dimensions=(_)
+              end
 
               sig do
                 returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue])
               end
-              attr_accessor :matrix_values
+              def matrix_values
+              end
+
+              sig do
+                params(
+                  _: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue]
+                ).returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue])
+              end
+              def matrix_values=(_)
+              end
 
               sig do
                 params(
@@ -1295,10 +2029,20 @@ module Orb
 
               class MatrixValue < Orb::BaseModel
                 sig { returns(T::Array[T.nilable(String)]) }
-                attr_accessor :dimension_values
+                def dimension_values
+                end
+
+                sig { params(_: T::Array[T.nilable(String)]).returns(T::Array[T.nilable(String)]) }
+                def dimension_values=(_)
+                end
 
                 sig { returns(String) }
-                attr_accessor :unit_amount
+                def unit_amount
+                end
+
+                sig { params(_: String).returns(String) }
+                def unit_amount=(_)
+                end
 
                 sig { params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).void }
                 def initialize(dimension_values:, unit_amount:)
@@ -1312,10 +2056,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -1339,10 +2093,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -1367,58 +2131,157 @@ module Orb
 
           class NewSubscriptionTieredPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig do
               returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig)
             end
-            attr_accessor :tiered_config
+            def tiered_config
+            end
+
+            sig do
+              params(
+                _: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig
+              ).returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig)
+            end
+            def tiered_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -1504,7 +2367,16 @@ module Orb
               sig do
                 returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier])
               end
-              attr_accessor :tiers
+              def tiers
+              end
+
+              sig do
+                params(
+                  _: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier]
+                ).returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier])
+              end
+              def tiers=(_)
+              end
 
               sig do
                 params(
@@ -1522,13 +2394,28 @@ module Orb
 
               class Tier < Orb::BaseModel
                 sig { returns(Float) }
-                attr_accessor :first_unit
+                def first_unit
+                end
+
+                sig { params(_: Float).returns(Float) }
+                def first_unit=(_)
+                end
 
                 sig { returns(String) }
-                attr_accessor :unit_amount
+                def unit_amount
+                end
+
+                sig { params(_: String).returns(String) }
+                def unit_amount=(_)
+                end
 
                 sig { returns(T.nilable(Float)) }
-                attr_accessor :last_unit
+                def last_unit
+                end
+
+                sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+                def last_unit=(_)
+                end
 
                 sig { params(first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)).void }
                 def initialize(first_unit:, unit_amount:, last_unit: nil)
@@ -1544,10 +2431,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -1571,10 +2468,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -1599,58 +2506,157 @@ module Orb
 
           class NewSubscriptionTieredBpsPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig do
               returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig)
             end
-            attr_accessor :tiered_bps_config
+            def tiered_bps_config
+            end
+
+            sig do
+              params(
+                _: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig
+              ).returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig)
+            end
+            def tiered_bps_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -1736,7 +2742,16 @@ module Orb
               sig do
                 returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier])
               end
-              attr_accessor :tiers
+              def tiers
+              end
+
+              sig do
+                params(
+                  _: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier]
+                ).returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier])
+              end
+              def tiers=(_)
+              end
 
               sig do
                 params(
@@ -1754,16 +2769,36 @@ module Orb
 
               class Tier < Orb::BaseModel
                 sig { returns(Float) }
-                attr_accessor :bps
+                def bps
+                end
+
+                sig { params(_: Float).returns(Float) }
+                def bps=(_)
+                end
 
                 sig { returns(String) }
-                attr_accessor :minimum_amount
+                def minimum_amount
+                end
+
+                sig { params(_: String).returns(String) }
+                def minimum_amount=(_)
+                end
 
                 sig { returns(T.nilable(String)) }
-                attr_accessor :maximum_amount
+                def maximum_amount
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def maximum_amount=(_)
+                end
 
                 sig { returns(T.nilable(String)) }
-                attr_accessor :per_unit_maximum
+                def per_unit_maximum
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def per_unit_maximum=(_)
+                end
 
                 sig do
                   params(
@@ -1793,10 +2828,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -1820,10 +2865,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -1850,56 +2905,155 @@ module Orb
             sig do
               returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BpsConfig)
             end
-            attr_accessor :bps_config
+            def bps_config
+            end
+
+            sig do
+              params(
+                _: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BpsConfig
+              ).returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BpsConfig)
+            end
+            def bps_config=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -1971,10 +3125,20 @@ module Orb
 
             class BpsConfig < Orb::BaseModel
               sig { returns(Float) }
-              attr_accessor :bps
+              def bps
+              end
+
+              sig { params(_: Float).returns(Float) }
+              def bps=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :per_unit_maximum
+              def per_unit_maximum
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def per_unit_maximum=(_)
+              end
 
               sig { params(bps: Float, per_unit_maximum: T.nilable(String)).void }
               def initialize(bps:, per_unit_maximum: nil)
@@ -2002,10 +3166,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -2029,10 +3203,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -2059,56 +3243,155 @@ module Orb
             sig do
               returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig)
             end
-            attr_accessor :bulk_bps_config
+            def bulk_bps_config
+            end
+
+            sig do
+              params(
+                _: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig
+              ).returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig)
+            end
+            def bulk_bps_config=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -2182,7 +3465,16 @@ module Orb
               sig do
                 returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier])
               end
-              attr_accessor :tiers
+              def tiers
+              end
+
+              sig do
+                params(
+                  _: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier]
+                ).returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier])
+              end
+              def tiers=(_)
+              end
 
               sig do
                 params(
@@ -2200,13 +3492,28 @@ module Orb
 
               class Tier < Orb::BaseModel
                 sig { returns(Float) }
-                attr_accessor :bps
+                def bps
+                end
+
+                sig { params(_: Float).returns(Float) }
+                def bps=(_)
+                end
 
                 sig { returns(T.nilable(String)) }
-                attr_accessor :maximum_amount
+                def maximum_amount
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def maximum_amount=(_)
+                end
 
                 sig { returns(T.nilable(String)) }
-                attr_accessor :per_unit_maximum
+                def per_unit_maximum
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def per_unit_maximum=(_)
+                end
 
                 sig do
                   params(
@@ -2249,10 +3556,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -2276,10 +3593,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -2306,56 +3633,155 @@ module Orb
             sig do
               returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig)
             end
-            attr_accessor :bulk_config
+            def bulk_config
+            end
+
+            sig do
+              params(
+                _: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig
+              ).returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig)
+            end
+            def bulk_config=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -2429,7 +3855,16 @@ module Orb
               sig do
                 returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier])
               end
-              attr_accessor :tiers
+              def tiers
+              end
+
+              sig do
+                params(
+                  _: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier]
+                ).returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier])
+              end
+              def tiers=(_)
+              end
 
               sig do
                 params(
@@ -2447,10 +3882,20 @@ module Orb
 
               class Tier < Orb::BaseModel
                 sig { returns(String) }
-                attr_accessor :unit_amount
+                def unit_amount
+                end
+
+                sig { params(_: String).returns(String) }
+                def unit_amount=(_)
+                end
 
                 sig { returns(T.nilable(Float)) }
-                attr_accessor :maximum_units
+                def maximum_units
+                end
+
+                sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+                def maximum_units=(_)
+                end
 
                 sig { params(unit_amount: String, maximum_units: T.nilable(Float)).void }
                 def initialize(unit_amount:, maximum_units: nil)
@@ -2479,10 +3924,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -2506,10 +3961,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -2534,56 +3999,151 @@ module Orb
 
           class NewSubscriptionThresholdTotalAmountPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :threshold_total_amount_config
+            def threshold_total_amount_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def threshold_total_amount_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -2667,10 +4227,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -2694,10 +4264,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -2722,56 +4302,151 @@ module Orb
 
           class NewSubscriptionTieredPackagePrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :tiered_package_config
+            def tiered_package_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def tiered_package_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -2855,10 +4530,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -2882,10 +4567,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -2910,56 +4605,151 @@ module Orb
 
           class NewSubscriptionTieredWithMinimumPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :tiered_with_minimum_config
+            def tiered_with_minimum_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def tiered_with_minimum_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -3043,10 +4833,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -3070,10 +4870,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -3098,56 +4908,151 @@ module Orb
 
           class NewSubscriptionUnitWithPercentPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :unit_with_percent_config
+            def unit_with_percent_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def unit_with_percent_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -3231,10 +5136,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -3258,10 +5173,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -3286,56 +5211,151 @@ module Orb
 
           class NewSubscriptionPackageWithAllocationPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :package_with_allocation_config
+            def package_with_allocation_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def package_with_allocation_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -3419,10 +5439,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -3446,10 +5476,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -3474,56 +5514,151 @@ module Orb
 
           class NewSubscriptionTierWithProrationPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :tiered_with_proration_config
+            def tiered_with_proration_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def tiered_with_proration_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -3607,10 +5742,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -3634,10 +5779,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -3662,56 +5817,151 @@ module Orb
 
           class NewSubscriptionUnitWithProrationPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :unit_with_proration_config
+            def unit_with_proration_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def unit_with_proration_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -3795,10 +6045,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -3822,10 +6082,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -3850,56 +6120,151 @@ module Orb
 
           class NewSubscriptionGroupedAllocationPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :grouped_allocation_config
+            def grouped_allocation_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def grouped_allocation_config=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -3983,10 +6348,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -4010,10 +6385,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -4038,56 +6423,151 @@ module Orb
 
           class NewSubscriptionGroupedWithProratedMinimumPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :grouped_with_prorated_minimum_config
+            def grouped_with_prorated_minimum_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def grouped_with_prorated_minimum_config=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -4171,10 +6651,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -4198,10 +6688,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -4226,56 +6726,151 @@ module Orb
 
           class NewSubscriptionBulkWithProrationPrice < Orb::BaseModel
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :bulk_with_proration_config
+            def bulk_with_proration_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def bulk_with_proration_config=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -4359,10 +6954,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -4386,10 +6991,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -4509,13 +7124,28 @@ module Orb
 
       class BillingCycleAnchorConfiguration < Orb::BaseModel
         sig { returns(Integer) }
-        attr_accessor :day
+        def day
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def day=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_accessor :month
+        def month
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def month=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_accessor :year
+        def year
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def year=(_)
+        end
 
         sig { params(day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)).void }
         def initialize(day:, month: nil, year: nil)
@@ -4528,7 +7158,12 @@ module Orb
 
       class RemoveAdjustment < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :adjustment_id
+        def adjustment_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def adjustment_id=(_)
+        end
 
         sig { params(adjustment_id: String).void }
         def initialize(adjustment_id:)
@@ -4541,10 +7176,20 @@ module Orb
 
       class RemovePrice < Orb::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_accessor :external_price_id
+        def external_price_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def external_price_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :price_id
+        def price_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def price_id=(_)
+        end
 
         sig { params(external_price_id: T.nilable(String), price_id: T.nilable(String)).void }
         def initialize(external_price_id: nil, price_id: nil)
@@ -4563,10 +7208,28 @@ module Orb
             )
           )
         end
-        attr_accessor :adjustment
+        def adjustment
+        end
+
+        sig do
+          params(
+            _: T.any(
+              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMaximum
+            )
+          ).returns(T.any(
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMaximum
+                    ))
+        end
+        def adjustment=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :replaces_adjustment_id
+        def replaces_adjustment_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def replaces_adjustment_id=(_)
+        end
 
         sig do
           params(
@@ -4597,19 +7260,36 @@ module Orb
 
           class NewPercentageDiscount < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :percentage_discount
+            def percentage_discount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def percentage_discount=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :is_invoice_level
+            def is_invoice_level
+            end
 
-            sig { params(is_invoice_level: T::Boolean).void }
-            attr_writer :is_invoice_level
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig do
               params(
@@ -4643,19 +7323,36 @@ module Orb
 
           class NewUsageDiscount < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :usage_discount
+            def usage_discount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def usage_discount=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :is_invoice_level
+            def is_invoice_level
+            end
 
-            sig { params(is_invoice_level: T::Boolean).void }
-            attr_writer :is_invoice_level
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig do
               params(
@@ -4689,19 +7386,36 @@ module Orb
 
           class NewAmountDiscount < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :amount_discount
+            def amount_discount
+            end
+
+            sig { params(_: String).returns(String) }
+            def amount_discount=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :is_invoice_level
+            def is_invoice_level
+            end
 
-            sig { params(is_invoice_level: T::Boolean).void }
-            attr_writer :is_invoice_level
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig do
               params(
@@ -4735,22 +7449,44 @@ module Orb
 
           class NewMinimum < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :minimum_amount
+            def minimum_amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def minimum_amount=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :is_invoice_level
+            def is_invoice_level
+            end
 
-            sig { params(is_invoice_level: T::Boolean).void }
-            attr_writer :is_invoice_level
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig do
               params(
@@ -4787,19 +7523,36 @@ module Orb
 
           class NewMaximum < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :adjustment_type
+            def adjustment_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def adjustment_type=(_)
+            end
 
             sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
+            def applies_to_price_ids
+            end
+
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def applies_to_price_ids=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :maximum_amount
+            def maximum_amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def maximum_amount=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :is_invoice_level
+            def is_invoice_level
+            end
 
-            sig { params(is_invoice_level: T::Boolean).void }
-            attr_writer :is_invoice_level
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_invoice_level=(_)
+            end
 
             sig do
               params(
@@ -4864,29 +7617,68 @@ module Orb
 
       class ReplacePrice < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :replaces_price_id
+        def replaces_price_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def replaces_price_id=(_)
+        end
 
         sig do
           returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice))
         end
-        attr_accessor :allocation_price
+        def allocation_price
+        end
+
+        sig do
+          params(_: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice)).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice))
+        end
+        def allocation_price=(_)
+        end
 
         sig do
           returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount]))
         end
-        attr_accessor :discounts
+        def discounts
+        end
+
+        sig do
+          params(_: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount])).returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount]))
+        end
+        def discounts=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :external_price_id
+        def external_price_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def external_price_id=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_accessor :fixed_price_quantity
+        def fixed_price_quantity
+        end
+
+        sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+        def fixed_price_quantity=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :maximum_amount
+        def maximum_amount
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def maximum_amount=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :minimum_amount
+        def minimum_amount
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def minimum_amount=(_)
+        end
 
         sig do
           returns(
@@ -4897,10 +7689,32 @@ module Orb
             )
           )
         end
-        attr_accessor :price
+        def price
+        end
+
+        sig do
+          params(
+            _: T.nilable(
+              T.any(
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice
+              )
+            )
+          ).returns(T.nilable(
+                      T.any(
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice
+                      )
+                    ))
+        end
+        def price=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :price_id
+        def price_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def price_id=(_)
+        end
 
         sig do
           params(
@@ -4956,16 +7770,36 @@ module Orb
 
         class AllocationPrice < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: String).returns(String) }
+          def amount=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :cadence
+          def cadence
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def cadence=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :currency
+          def currency
+          end
+
+          sig { params(_: String).returns(String) }
+          def currency=(_)
+          end
 
           sig { returns(T::Boolean) }
-          attr_accessor :expires_at_end_of_cadence
+          def expires_at_end_of_cadence
+          end
+
+          sig { params(_: T::Boolean).returns(T::Boolean) }
+          def expires_at_end_of_cadence=(_)
+          end
 
           sig do
             params(
@@ -5009,16 +7843,36 @@ module Orb
 
         class Discount < Orb::BaseModel
           sig { returns(Symbol) }
-          attr_accessor :discount_type
+          def discount_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def discount_type=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :amount_discount
+          def amount_discount
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def amount_discount=(_)
+          end
 
           sig { returns(T.nilable(Float)) }
-          attr_accessor :percentage_discount
+          def percentage_discount
+          end
+
+          sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+          def percentage_discount=(_)
+          end
 
           sig { returns(T.nilable(Float)) }
-          attr_accessor :usage_discount
+          def usage_discount
+          end
+
+          sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+          def usage_discount=(_)
+          end
 
           sig do
             params(
@@ -5062,58 +7916,157 @@ module Orb
 
           class NewSubscriptionUnitPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig do
               returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::UnitConfig)
             end
-            attr_accessor :unit_config
+            def unit_config
+            end
+
+            sig do
+              params(
+                _: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::UnitConfig
+              ).returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::UnitConfig)
+            end
+            def unit_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -5197,7 +8150,12 @@ module Orb
 
             class UnitConfig < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :unit_amount
+              def unit_amount
+              end
+
+              sig { params(_: String).returns(String) }
+              def unit_amount=(_)
+              end
 
               sig { params(unit_amount: String).void }
               def initialize(unit_amount:)
@@ -5210,10 +8168,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -5237,10 +8205,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -5265,58 +8243,157 @@ module Orb
 
           class NewSubscriptionPackagePrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig do
               returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::PackageConfig)
             end
-            attr_accessor :package_config
+            def package_config
+            end
+
+            sig do
+              params(
+                _: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::PackageConfig
+              ).returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::PackageConfig)
+            end
+            def package_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -5400,10 +8477,20 @@ module Orb
 
             class PackageConfig < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :package_amount
+              def package_amount
+              end
+
+              sig { params(_: String).returns(String) }
+              def package_amount=(_)
+              end
 
               sig { returns(Integer) }
-              attr_accessor :package_size
+              def package_size
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def package_size=(_)
+              end
 
               sig { params(package_amount: String, package_size: Integer).void }
               def initialize(package_amount:, package_size:)
@@ -5416,10 +8503,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -5443,10 +8540,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -5471,58 +8578,157 @@ module Orb
 
           class NewSubscriptionMatrixPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig do
               returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig)
             end
-            attr_accessor :matrix_config
+            def matrix_config
+            end
+
+            sig do
+              params(
+                _: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig
+              ).returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig)
+            end
+            def matrix_config=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -5606,15 +8812,34 @@ module Orb
 
             class MatrixConfig < Orb::BaseModel
               sig { returns(String) }
-              attr_accessor :default_unit_amount
+              def default_unit_amount
+              end
+
+              sig { params(_: String).returns(String) }
+              def default_unit_amount=(_)
+              end
 
               sig { returns(T::Array[T.nilable(String)]) }
-              attr_accessor :dimensions
+              def dimensions
+              end
+
+              sig { params(_: T::Array[T.nilable(String)]).returns(T::Array[T.nilable(String)]) }
+              def dimensions=(_)
+              end
 
               sig do
                 returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue])
               end
-              attr_accessor :matrix_values
+              def matrix_values
+              end
+
+              sig do
+                params(
+                  _: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue]
+                ).returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue])
+              end
+              def matrix_values=(_)
+              end
 
               sig do
                 params(
@@ -5640,10 +8865,20 @@ module Orb
 
               class MatrixValue < Orb::BaseModel
                 sig { returns(T::Array[T.nilable(String)]) }
-                attr_accessor :dimension_values
+                def dimension_values
+                end
+
+                sig { params(_: T::Array[T.nilable(String)]).returns(T::Array[T.nilable(String)]) }
+                def dimension_values=(_)
+                end
 
                 sig { returns(String) }
-                attr_accessor :unit_amount
+                def unit_amount
+                end
+
+                sig { params(_: String).returns(String) }
+                def unit_amount=(_)
+                end
 
                 sig { params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).void }
                 def initialize(dimension_values:, unit_amount:)
@@ -5657,10 +8892,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -5684,10 +8929,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -5712,58 +8967,157 @@ module Orb
 
           class NewSubscriptionTieredPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig do
               returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig)
             end
-            attr_accessor :tiered_config
+            def tiered_config
+            end
+
+            sig do
+              params(
+                _: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig
+              ).returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig)
+            end
+            def tiered_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -5849,7 +9203,16 @@ module Orb
               sig do
                 returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier])
               end
-              attr_accessor :tiers
+              def tiers
+              end
+
+              sig do
+                params(
+                  _: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier]
+                ).returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier])
+              end
+              def tiers=(_)
+              end
 
               sig do
                 params(
@@ -5867,13 +9230,28 @@ module Orb
 
               class Tier < Orb::BaseModel
                 sig { returns(Float) }
-                attr_accessor :first_unit
+                def first_unit
+                end
+
+                sig { params(_: Float).returns(Float) }
+                def first_unit=(_)
+                end
 
                 sig { returns(String) }
-                attr_accessor :unit_amount
+                def unit_amount
+                end
+
+                sig { params(_: String).returns(String) }
+                def unit_amount=(_)
+                end
 
                 sig { returns(T.nilable(Float)) }
-                attr_accessor :last_unit
+                def last_unit
+                end
+
+                sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+                def last_unit=(_)
+                end
 
                 sig { params(first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)).void }
                 def initialize(first_unit:, unit_amount:, last_unit: nil)
@@ -5889,10 +9267,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -5916,10 +9304,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -5944,58 +9342,157 @@ module Orb
 
           class NewSubscriptionTieredBpsPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig do
               returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig)
             end
-            attr_accessor :tiered_bps_config
+            def tiered_bps_config
+            end
+
+            sig do
+              params(
+                _: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig
+              ).returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig)
+            end
+            def tiered_bps_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -6081,7 +9578,16 @@ module Orb
               sig do
                 returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier])
               end
-              attr_accessor :tiers
+              def tiers
+              end
+
+              sig do
+                params(
+                  _: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier]
+                ).returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier])
+              end
+              def tiers=(_)
+              end
 
               sig do
                 params(
@@ -6099,16 +9605,36 @@ module Orb
 
               class Tier < Orb::BaseModel
                 sig { returns(Float) }
-                attr_accessor :bps
+                def bps
+                end
+
+                sig { params(_: Float).returns(Float) }
+                def bps=(_)
+                end
 
                 sig { returns(String) }
-                attr_accessor :minimum_amount
+                def minimum_amount
+                end
+
+                sig { params(_: String).returns(String) }
+                def minimum_amount=(_)
+                end
 
                 sig { returns(T.nilable(String)) }
-                attr_accessor :maximum_amount
+                def maximum_amount
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def maximum_amount=(_)
+                end
 
                 sig { returns(T.nilable(String)) }
-                attr_accessor :per_unit_maximum
+                def per_unit_maximum
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def per_unit_maximum=(_)
+                end
 
                 sig do
                   params(
@@ -6138,10 +9664,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -6165,10 +9701,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -6195,56 +9741,155 @@ module Orb
             sig do
               returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BpsConfig)
             end
-            attr_accessor :bps_config
+            def bps_config
+            end
+
+            sig do
+              params(
+                _: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BpsConfig
+              ).returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BpsConfig)
+            end
+            def bps_config=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -6316,10 +9961,20 @@ module Orb
 
             class BpsConfig < Orb::BaseModel
               sig { returns(Float) }
-              attr_accessor :bps
+              def bps
+              end
+
+              sig { params(_: Float).returns(Float) }
+              def bps=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :per_unit_maximum
+              def per_unit_maximum
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def per_unit_maximum=(_)
+              end
 
               sig { params(bps: Float, per_unit_maximum: T.nilable(String)).void }
               def initialize(bps:, per_unit_maximum: nil)
@@ -6347,10 +10002,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -6374,10 +10039,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -6404,56 +10079,155 @@ module Orb
             sig do
               returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig)
             end
-            attr_accessor :bulk_bps_config
+            def bulk_bps_config
+            end
+
+            sig do
+              params(
+                _: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig
+              ).returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig)
+            end
+            def bulk_bps_config=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -6527,7 +10301,16 @@ module Orb
               sig do
                 returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier])
               end
-              attr_accessor :tiers
+              def tiers
+              end
+
+              sig do
+                params(
+                  _: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier]
+                ).returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier])
+              end
+              def tiers=(_)
+              end
 
               sig do
                 params(
@@ -6545,13 +10328,28 @@ module Orb
 
               class Tier < Orb::BaseModel
                 sig { returns(Float) }
-                attr_accessor :bps
+                def bps
+                end
+
+                sig { params(_: Float).returns(Float) }
+                def bps=(_)
+                end
 
                 sig { returns(T.nilable(String)) }
-                attr_accessor :maximum_amount
+                def maximum_amount
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def maximum_amount=(_)
+                end
 
                 sig { returns(T.nilable(String)) }
-                attr_accessor :per_unit_maximum
+                def per_unit_maximum
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def per_unit_maximum=(_)
+                end
 
                 sig do
                   params(
@@ -6594,10 +10392,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -6621,10 +10429,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -6651,56 +10469,155 @@ module Orb
             sig do
               returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig)
             end
-            attr_accessor :bulk_config
+            def bulk_config
+            end
+
+            sig do
+              params(
+                _: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig
+              ).returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig)
+            end
+            def bulk_config=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -6774,7 +10691,16 @@ module Orb
               sig do
                 returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier])
               end
-              attr_accessor :tiers
+              def tiers
+              end
+
+              sig do
+                params(
+                  _: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier]
+                ).returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier])
+              end
+              def tiers=(_)
+              end
 
               sig do
                 params(
@@ -6792,10 +10718,20 @@ module Orb
 
               class Tier < Orb::BaseModel
                 sig { returns(String) }
-                attr_accessor :unit_amount
+                def unit_amount
+                end
+
+                sig { params(_: String).returns(String) }
+                def unit_amount=(_)
+                end
 
                 sig { returns(T.nilable(Float)) }
-                attr_accessor :maximum_units
+                def maximum_units
+                end
+
+                sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+                def maximum_units=(_)
+                end
 
                 sig { params(unit_amount: String, maximum_units: T.nilable(Float)).void }
                 def initialize(unit_amount:, maximum_units: nil)
@@ -6824,10 +10760,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -6851,10 +10797,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -6879,56 +10835,151 @@ module Orb
 
           class NewSubscriptionThresholdTotalAmountPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :threshold_total_amount_config
+            def threshold_total_amount_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def threshold_total_amount_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -7012,10 +11063,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -7039,10 +11100,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -7067,56 +11138,151 @@ module Orb
 
           class NewSubscriptionTieredPackagePrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :tiered_package_config
+            def tiered_package_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def tiered_package_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -7200,10 +11366,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -7227,10 +11403,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -7255,56 +11441,151 @@ module Orb
 
           class NewSubscriptionTieredWithMinimumPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :tiered_with_minimum_config
+            def tiered_with_minimum_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def tiered_with_minimum_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -7388,10 +11669,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -7415,10 +11706,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -7443,56 +11744,151 @@ module Orb
 
           class NewSubscriptionUnitWithPercentPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :unit_with_percent_config
+            def unit_with_percent_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def unit_with_percent_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -7576,10 +11972,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -7603,10 +12009,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -7631,56 +12047,151 @@ module Orb
 
           class NewSubscriptionPackageWithAllocationPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :package_with_allocation_config
+            def package_with_allocation_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def package_with_allocation_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -7764,10 +12275,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -7791,10 +12312,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -7819,56 +12350,151 @@ module Orb
 
           class NewSubscriptionTierWithProrationPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :tiered_with_proration_config
+            def tiered_with_proration_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def tiered_with_proration_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -7952,10 +12578,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -7979,10 +12615,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -8007,56 +12653,151 @@ module Orb
 
           class NewSubscriptionUnitWithProrationPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :unit_with_proration_config
+            def unit_with_proration_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def unit_with_proration_config=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -8140,10 +12881,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -8167,10 +12918,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -8195,56 +12956,151 @@ module Orb
 
           class NewSubscriptionGroupedAllocationPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :grouped_allocation_config
+            def grouped_allocation_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def grouped_allocation_config=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -8328,10 +13184,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -8355,10 +13221,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -8383,56 +13259,151 @@ module Orb
 
           class NewSubscriptionGroupedWithProratedMinimumPrice < Orb::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :grouped_with_prorated_minimum_config
+            def grouped_with_prorated_minimum_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def grouped_with_prorated_minimum_config=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -8516,10 +13487,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -8543,10 +13524,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -8571,56 +13562,151 @@ module Orb
 
           class NewSubscriptionBulkWithProrationPrice < Orb::BaseModel
             sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :bulk_with_proration_config
+            def bulk_with_proration_config
+            end
+
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def bulk_with_proration_config=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :cadence
+            def cadence
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def cadence=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :item_id
+            def item_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def item_id=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :model_type
+            def model_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def model_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :billable_metric_id
+            def billable_metric_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def billable_metric_id=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_accessor :billed_in_advance
+            def billed_in_advance
+            end
+
+            sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+            def billed_in_advance=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration))
             end
-            attr_accessor :billing_cycle_configuration
+            def billing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration))
+            end
+            def billing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :conversion_rate
+            def conversion_rate
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def conversion_rate=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :currency
+            def currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def currency=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :external_price_id
+            def external_price_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def external_price_id=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_accessor :fixed_price_quantity
+            def fixed_price_quantity
+            end
+
+            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+            def fixed_price_quantity=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :invoice_grouping_key
+            def invoice_grouping_key
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def invoice_grouping_key=(_)
+            end
 
             sig do
               returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration))
             end
-            attr_accessor :invoicing_cycle_configuration
+            def invoicing_cycle_configuration
+            end
+
+            sig do
+              params(
+                _: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration)
+              ).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration))
+            end
+            def invoicing_cycle_configuration=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-            attr_accessor :metadata
+            def metadata
+            end
+
+            sig do
+              params(
+                _: T.nilable(
+                  T::Hash[Symbol,
+                          T.nilable(String)]
+                )
+              ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            end
+            def metadata=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :reference_id
+            def reference_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def reference_id=(_)
+            end
 
             sig do
               params(
@@ -8704,10 +13790,20 @@ module Orb
 
             class BillingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)
@@ -8731,10 +13827,20 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::BaseModel
               sig { returns(Integer) }
-              attr_accessor :duration
+              def duration
+              end
+
+              sig { params(_: Integer).returns(Integer) }
+              def duration=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :duration_unit
+              def duration_unit
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def duration_unit=(_)
+              end
 
               sig { params(duration: Integer, duration_unit: Symbol).void }
               def initialize(duration:, duration_unit:)

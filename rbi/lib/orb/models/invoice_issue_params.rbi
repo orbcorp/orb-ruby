@@ -7,10 +7,12 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :synchronous
+      def synchronous
+      end
 
-      sig { params(synchronous: T::Boolean).void }
-      attr_writer :synchronous
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def synchronous=(_)
+      end
 
       sig do
         params(

@@ -4,7 +4,12 @@ module Orb
   module Models
     class TopLevelPingResponse < Orb::BaseModel
       sig { returns(String) }
-      attr_accessor :response
+      def response
+      end
+
+      sig { params(_: String).returns(String) }
+      def response=(_)
+      end
 
       sig { params(response: String).void }
       def initialize(response:)
