@@ -15,7 +15,7 @@ module Orb
 
       attr_reader shift: bool?
 
-      def shift=: (bool) -> void
+      def shift=: (bool) -> bool
 
       def initialize:
         (

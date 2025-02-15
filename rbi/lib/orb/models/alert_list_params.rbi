@@ -7,34 +7,76 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :created_at_gt
+      def created_at_gt
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def created_at_gt=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :created_at_gte
+      def created_at_gte
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def created_at_gte=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :created_at_lt
+      def created_at_lt
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def created_at_lt=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :created_at_lte
+      def created_at_lte
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def created_at_lte=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :cursor
+      def cursor
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def cursor=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :customer_id
+      def customer_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def customer_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :external_customer_id
+      def external_customer_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def external_customer_id=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :subscription_id
+      def subscription_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def subscription_id=(_)
+      end
 
       sig do
         params(

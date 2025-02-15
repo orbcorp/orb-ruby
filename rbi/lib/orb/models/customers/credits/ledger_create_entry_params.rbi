@@ -9,42 +9,111 @@ module Orb
           include Orb::RequestParameters
 
           sig { returns(Float) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def amount=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :entry_type
+          def entry_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def entry_type=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :currency
+          def currency
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def currency=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :description
+          def description
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def description=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_accessor :effective_date
+          def effective_date
+          end
+
+          sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+          def effective_date=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_accessor :expiry_date
+          def expiry_date
+          end
+
+          sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+          def expiry_date=(_)
+          end
 
           sig do
             returns(T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings))
           end
-          attr_accessor :invoice_settings
+          def invoice_settings
+          end
+
+          sig do
+            params(_: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings)).returns(T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings))
+          end
+          def invoice_settings=(_)
+          end
 
           sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-          attr_accessor :metadata
+          def metadata
+          end
+
+          sig do
+            params(
+              _: T.nilable(
+                T::Hash[Symbol,
+                        T.nilable(String)]
+              )
+            ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+          end
+          def metadata=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :per_unit_cost_basis
+          def per_unit_cost_basis
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def per_unit_cost_basis=(_)
+          end
 
           sig { returns(Date) }
-          attr_accessor :target_expiry_date
+          def target_expiry_date
+          end
+
+          sig { params(_: Date).returns(Date) }
+          def target_expiry_date=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :block_id
+          def block_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def block_id=(_)
+          end
 
           sig { returns(T.nilable(Symbol)) }
-          attr_accessor :void_reason
+          def void_reason
+          end
+
+          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          def void_reason=(_)
+          end
 
           sig do
             params(
@@ -114,19 +183,36 @@ module Orb
 
           class InvoiceSettings < Orb::BaseModel
             sig { returns(T::Boolean) }
-            attr_accessor :auto_collection
+            def auto_collection
+            end
+
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def auto_collection=(_)
+            end
 
             sig { returns(Integer) }
-            attr_accessor :net_terms
+            def net_terms
+            end
+
+            sig { params(_: Integer).returns(Integer) }
+            def net_terms=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :memo
+            def memo
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def memo=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :require_successful_payment
+            def require_successful_payment
+            end
 
-            sig { params(require_successful_payment: T::Boolean).void }
-            attr_writer :require_successful_payment
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def require_successful_payment=(_)
+            end
 
             sig do
               params(

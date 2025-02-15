@@ -187,7 +187,7 @@ module Orb
 
             attr_reader is_invoice_level: bool?
 
-            def is_invoice_level=: (bool) -> void
+            def is_invoice_level=: (bool) -> bool
 
             def initialize:
               (
@@ -221,7 +221,7 @@ module Orb
 
             attr_reader is_invoice_level: bool?
 
-            def is_invoice_level=: (bool) -> void
+            def is_invoice_level=: (bool) -> bool
 
             def initialize:
               (
@@ -255,7 +255,7 @@ module Orb
 
             attr_reader is_invoice_level: bool?
 
-            def is_invoice_level=: (bool) -> void
+            def is_invoice_level=: (bool) -> bool
 
             def initialize:
               (
@@ -292,7 +292,7 @@ module Orb
 
             attr_reader is_invoice_level: bool?
 
-            def is_invoice_level=: (bool) -> void
+            def is_invoice_level=: (bool) -> bool
 
             def initialize:
               (
@@ -327,7 +327,7 @@ module Orb
 
             attr_reader is_invoice_level: bool?
 
-            def is_invoice_level=: (bool) -> void
+            def is_invoice_level=: (bool) -> bool
 
             def initialize:
               (
@@ -3877,7 +3877,7 @@ module Orb
 
             attr_reader is_invoice_level: bool?
 
-            def is_invoice_level=: (bool) -> void
+            def is_invoice_level=: (bool) -> bool
 
             def initialize:
               (
@@ -3911,7 +3911,7 @@ module Orb
 
             attr_reader is_invoice_level: bool?
 
-            def is_invoice_level=: (bool) -> void
+            def is_invoice_level=: (bool) -> bool
 
             def initialize:
               (
@@ -3945,7 +3945,7 @@ module Orb
 
             attr_reader is_invoice_level: bool?
 
-            def is_invoice_level=: (bool) -> void
+            def is_invoice_level=: (bool) -> bool
 
             def initialize:
               (
@@ -3982,7 +3982,7 @@ module Orb
 
             attr_reader is_invoice_level: bool?
 
-            def is_invoice_level=: (bool) -> void
+            def is_invoice_level=: (bool) -> bool
 
             def initialize:
               (
@@ -4017,7 +4017,7 @@ module Orb
 
             attr_reader is_invoice_level: bool?
 
-            def is_invoice_level=: (bool) -> void
+            def is_invoice_level=: (bool) -> bool
 
             def initialize:
               (

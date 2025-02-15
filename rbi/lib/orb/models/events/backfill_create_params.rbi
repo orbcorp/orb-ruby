@@ -8,28 +8,60 @@ module Orb
         include Orb::RequestParameters
 
         sig { returns(Time) }
-        attr_accessor :timeframe_end
+        def timeframe_end
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def timeframe_end=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :timeframe_start
+        def timeframe_start
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def timeframe_start=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :close_time
+        def close_time
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def close_time=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def customer_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :deprecation_filter
+        def deprecation_filter
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def deprecation_filter=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :external_customer_id
+        def external_customer_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def external_customer_id=(_)
+        end
 
         sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :replace_existing_events
+        def replace_existing_events
+        end
 
-        sig { params(replace_existing_events: T::Boolean).void }
-        attr_writer :replace_existing_events
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def replace_existing_events=(_)
+        end
 
         sig do
           params(

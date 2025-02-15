@@ -7,130 +7,369 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(Symbol) }
-      attr_accessor :cadence
+      def cadence
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def cadence=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: String).returns(String) }
+      def currency=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :item_id
+      def item_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def item_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :model_type
+      def model_type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def model_type=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(Orb::Models::PriceCreateParams::UnitConfig) }
-      attr_accessor :unit_config
+      def unit_config
+      end
+
+      sig do
+        params(_: Orb::Models::PriceCreateParams::UnitConfig).returns(Orb::Models::PriceCreateParams::UnitConfig)
+      end
+      def unit_config=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :billable_metric_id
+      def billable_metric_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def billable_metric_id=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :billed_in_advance
+      def billed_in_advance
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def billed_in_advance=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::PriceCreateParams::BillingCycleConfiguration)) }
-      attr_accessor :billing_cycle_configuration
+      def billing_cycle_configuration
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::PriceCreateParams::BillingCycleConfiguration)).returns(T.nilable(Orb::Models::PriceCreateParams::BillingCycleConfiguration))
+      end
+      def billing_cycle_configuration=(_)
+      end
 
       sig { returns(T.nilable(Float)) }
-      attr_accessor :conversion_rate
+      def conversion_rate
+      end
+
+      sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+      def conversion_rate=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :external_price_id
+      def external_price_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def external_price_id=(_)
+      end
 
       sig { returns(T.nilable(Float)) }
-      attr_accessor :fixed_price_quantity
+      def fixed_price_quantity
+      end
+
+      sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+      def fixed_price_quantity=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :invoice_grouping_key
+      def invoice_grouping_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def invoice_grouping_key=(_)
+      end
 
       sig { returns(T.nilable(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration)) }
-      attr_accessor :invoicing_cycle_configuration
+      def invoicing_cycle_configuration
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration)).returns(T.nilable(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration))
+      end
+      def invoicing_cycle_configuration=(_)
+      end
 
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-      attr_accessor :metadata
+      def metadata
+      end
+
+      sig do
+        params(
+          _: T.nilable(
+            T::Hash[Symbol,
+                    T.nilable(String)]
+          )
+        ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+      end
+      def metadata=(_)
+      end
 
       sig { returns(Orb::Models::PriceCreateParams::PackageConfig) }
-      attr_accessor :package_config
+      def package_config
+      end
+
+      sig do
+        params(_: Orb::Models::PriceCreateParams::PackageConfig).returns(Orb::Models::PriceCreateParams::PackageConfig)
+      end
+      def package_config=(_)
+      end
 
       sig { returns(Orb::Models::PriceCreateParams::MatrixConfig) }
-      attr_accessor :matrix_config
+      def matrix_config
+      end
+
+      sig do
+        params(_: Orb::Models::PriceCreateParams::MatrixConfig).returns(Orb::Models::PriceCreateParams::MatrixConfig)
+      end
+      def matrix_config=(_)
+      end
 
       sig { returns(Orb::Models::PriceCreateParams::MatrixWithAllocationConfig) }
-      attr_accessor :matrix_with_allocation_config
+      def matrix_with_allocation_config
+      end
+
+      sig do
+        params(_: Orb::Models::PriceCreateParams::MatrixWithAllocationConfig).returns(Orb::Models::PriceCreateParams::MatrixWithAllocationConfig)
+      end
+      def matrix_with_allocation_config=(_)
+      end
 
       sig { returns(Orb::Models::PriceCreateParams::TieredConfig) }
-      attr_accessor :tiered_config
+      def tiered_config
+      end
+
+      sig do
+        params(_: Orb::Models::PriceCreateParams::TieredConfig).returns(Orb::Models::PriceCreateParams::TieredConfig)
+      end
+      def tiered_config=(_)
+      end
 
       sig { returns(Orb::Models::PriceCreateParams::TieredBpsConfig) }
-      attr_accessor :tiered_bps_config
+      def tiered_bps_config
+      end
+
+      sig do
+        params(_: Orb::Models::PriceCreateParams::TieredBpsConfig).returns(Orb::Models::PriceCreateParams::TieredBpsConfig)
+      end
+      def tiered_bps_config=(_)
+      end
 
       sig { returns(Orb::Models::PriceCreateParams::BpsConfig) }
-      attr_accessor :bps_config
+      def bps_config
+      end
+
+      sig do
+        params(_: Orb::Models::PriceCreateParams::BpsConfig).returns(Orb::Models::PriceCreateParams::BpsConfig)
+      end
+      def bps_config=(_)
+      end
 
       sig { returns(Orb::Models::PriceCreateParams::BulkBpsConfig) }
-      attr_accessor :bulk_bps_config
+      def bulk_bps_config
+      end
+
+      sig do
+        params(_: Orb::Models::PriceCreateParams::BulkBpsConfig).returns(Orb::Models::PriceCreateParams::BulkBpsConfig)
+      end
+      def bulk_bps_config=(_)
+      end
 
       sig { returns(Orb::Models::PriceCreateParams::BulkConfig) }
-      attr_accessor :bulk_config
+      def bulk_config
+      end
+
+      sig do
+        params(_: Orb::Models::PriceCreateParams::BulkConfig).returns(Orb::Models::PriceCreateParams::BulkConfig)
+      end
+      def bulk_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :threshold_total_amount_config
+      def threshold_total_amount_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def threshold_total_amount_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :tiered_package_config
+      def tiered_package_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def tiered_package_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :grouped_tiered_config
+      def grouped_tiered_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def grouped_tiered_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :max_group_tiered_package_config
+      def max_group_tiered_package_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def max_group_tiered_package_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :tiered_with_minimum_config
+      def tiered_with_minimum_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def tiered_with_minimum_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :package_with_allocation_config
+      def package_with_allocation_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def package_with_allocation_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :tiered_package_with_minimum_config
+      def tiered_package_with_minimum_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def tiered_package_with_minimum_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :unit_with_percent_config
+      def unit_with_percent_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def unit_with_percent_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :tiered_with_proration_config
+      def tiered_with_proration_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def tiered_with_proration_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :unit_with_proration_config
+      def unit_with_proration_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def unit_with_proration_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :grouped_allocation_config
+      def grouped_allocation_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def grouped_allocation_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :grouped_with_prorated_minimum_config
+      def grouped_with_prorated_minimum_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def grouped_with_prorated_minimum_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :grouped_with_metered_minimum_config
+      def grouped_with_metered_minimum_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def grouped_with_metered_minimum_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :matrix_with_display_name_config
+      def matrix_with_display_name_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def matrix_with_display_name_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :bulk_with_proration_config
+      def bulk_with_proration_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def bulk_with_proration_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :grouped_tiered_package_config
+      def grouped_tiered_package_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def grouped_tiered_package_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :scalable_matrix_with_unit_pricing_config
+      def scalable_matrix_with_unit_pricing_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def scalable_matrix_with_unit_pricing_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :scalable_matrix_with_tiered_pricing_config
+      def scalable_matrix_with_tiered_pricing_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def scalable_matrix_with_tiered_pricing_config=(_)
+      end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :cumulative_grouped_bulk_config
+      def cumulative_grouped_bulk_config
+      end
+
+      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+      def cumulative_grouped_bulk_config=(_)
+      end
 
       sig do
         params(
@@ -305,7 +544,12 @@ module Orb
 
       class UnitConfig < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :unit_amount
+        def unit_amount
+        end
+
+        sig { params(_: String).returns(String) }
+        def unit_amount=(_)
+        end
 
         sig { params(unit_amount: String).void }
         def initialize(unit_amount:)
@@ -318,10 +562,20 @@ module Orb
 
       class BillingCycleConfiguration < Orb::BaseModel
         sig { returns(Integer) }
-        attr_accessor :duration
+        def duration
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def duration=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :duration_unit
+        def duration_unit
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def duration_unit=(_)
+        end
 
         sig { params(duration: Integer, duration_unit: Symbol).void }
         def initialize(duration:, duration_unit:)
@@ -345,10 +599,20 @@ module Orb
 
       class InvoicingCycleConfiguration < Orb::BaseModel
         sig { returns(Integer) }
-        attr_accessor :duration
+        def duration
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def duration=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :duration_unit
+        def duration_unit
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def duration_unit=(_)
+        end
 
         sig { params(duration: Integer, duration_unit: Symbol).void }
         def initialize(duration:, duration_unit:)
@@ -372,10 +636,20 @@ module Orb
 
       class PackageConfig < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :package_amount
+        def package_amount
+        end
+
+        sig { params(_: String).returns(String) }
+        def package_amount=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :package_size
+        def package_size
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def package_size=(_)
+        end
 
         sig { params(package_amount: String, package_size: Integer).void }
         def initialize(package_amount:, package_size:)
@@ -388,13 +662,30 @@ module Orb
 
       class MatrixConfig < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :default_unit_amount
+        def default_unit_amount
+        end
+
+        sig { params(_: String).returns(String) }
+        def default_unit_amount=(_)
+        end
 
         sig { returns(T::Array[T.nilable(String)]) }
-        attr_accessor :dimensions
+        def dimensions
+        end
+
+        sig { params(_: T::Array[T.nilable(String)]).returns(T::Array[T.nilable(String)]) }
+        def dimensions=(_)
+        end
 
         sig { returns(T::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue]) }
-        attr_accessor :matrix_values
+        def matrix_values
+        end
+
+        sig do
+          params(_: T::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue]).returns(T::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue])
+        end
+        def matrix_values=(_)
+        end
 
         sig do
           params(
@@ -420,10 +711,20 @@ module Orb
 
         class MatrixValue < Orb::BaseModel
           sig { returns(T::Array[T.nilable(String)]) }
-          attr_accessor :dimension_values
+          def dimension_values
+          end
+
+          sig { params(_: T::Array[T.nilable(String)]).returns(T::Array[T.nilable(String)]) }
+          def dimension_values=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :unit_amount
+          def unit_amount
+          end
+
+          sig { params(_: String).returns(String) }
+          def unit_amount=(_)
+          end
 
           sig { params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).void }
           def initialize(dimension_values:, unit_amount:)
@@ -437,16 +738,38 @@ module Orb
 
       class MatrixWithAllocationConfig < Orb::BaseModel
         sig { returns(Float) }
-        attr_accessor :allocation
+        def allocation
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def allocation=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :default_unit_amount
+        def default_unit_amount
+        end
+
+        sig { params(_: String).returns(String) }
+        def default_unit_amount=(_)
+        end
 
         sig { returns(T::Array[T.nilable(String)]) }
-        attr_accessor :dimensions
+        def dimensions
+        end
+
+        sig { params(_: T::Array[T.nilable(String)]).returns(T::Array[T.nilable(String)]) }
+        def dimensions=(_)
+        end
 
         sig { returns(T::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]) }
-        attr_accessor :matrix_values
+        def matrix_values
+        end
+
+        sig do
+          params(_: T::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]).returns(T::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue])
+        end
+        def matrix_values=(_)
+        end
 
         sig do
           params(
@@ -474,10 +797,20 @@ module Orb
 
         class MatrixValue < Orb::BaseModel
           sig { returns(T::Array[T.nilable(String)]) }
-          attr_accessor :dimension_values
+          def dimension_values
+          end
+
+          sig { params(_: T::Array[T.nilable(String)]).returns(T::Array[T.nilable(String)]) }
+          def dimension_values=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :unit_amount
+          def unit_amount
+          end
+
+          sig { params(_: String).returns(String) }
+          def unit_amount=(_)
+          end
 
           sig { params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).void }
           def initialize(dimension_values:, unit_amount:)
@@ -491,7 +824,14 @@ module Orb
 
       class TieredConfig < Orb::BaseModel
         sig { returns(T::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]) }
-        attr_accessor :tiers
+        def tiers
+        end
+
+        sig do
+          params(_: T::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]).returns(T::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier])
+        end
+        def tiers=(_)
+        end
 
         sig { params(tiers: T::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]).void }
         def initialize(tiers:)
@@ -503,13 +843,28 @@ module Orb
 
         class Tier < Orb::BaseModel
           sig { returns(Float) }
-          attr_accessor :first_unit
+          def first_unit
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def first_unit=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :unit_amount
+          def unit_amount
+          end
+
+          sig { params(_: String).returns(String) }
+          def unit_amount=(_)
+          end
 
           sig { returns(T.nilable(Float)) }
-          attr_accessor :last_unit
+          def last_unit
+          end
+
+          sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+          def last_unit=(_)
+          end
 
           sig { params(first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)).void }
           def initialize(first_unit:, unit_amount:, last_unit: nil)
@@ -523,7 +878,14 @@ module Orb
 
       class TieredBpsConfig < Orb::BaseModel
         sig { returns(T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]) }
-        attr_accessor :tiers
+        def tiers
+        end
+
+        sig do
+          params(_: T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]).returns(T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier])
+        end
+        def tiers=(_)
+        end
 
         sig { params(tiers: T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]).void }
         def initialize(tiers:)
@@ -535,16 +897,36 @@ module Orb
 
         class Tier < Orb::BaseModel
           sig { returns(Float) }
-          attr_accessor :bps
+          def bps
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def bps=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :minimum_amount
+          def minimum_amount
+          end
+
+          sig { params(_: String).returns(String) }
+          def minimum_amount=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :maximum_amount
+          def maximum_amount
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def maximum_amount=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :per_unit_maximum
+          def per_unit_maximum
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def per_unit_maximum=(_)
+          end
 
           sig do
             params(
@@ -574,10 +956,20 @@ module Orb
 
       class BpsConfig < Orb::BaseModel
         sig { returns(Float) }
-        attr_accessor :bps
+        def bps
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def bps=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :per_unit_maximum
+        def per_unit_maximum
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def per_unit_maximum=(_)
+        end
 
         sig { params(bps: Float, per_unit_maximum: T.nilable(String)).void }
         def initialize(bps:, per_unit_maximum: nil)
@@ -590,7 +982,14 @@ module Orb
 
       class BulkBpsConfig < Orb::BaseModel
         sig { returns(T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]) }
-        attr_accessor :tiers
+        def tiers
+        end
+
+        sig do
+          params(_: T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]).returns(T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier])
+        end
+        def tiers=(_)
+        end
 
         sig { params(tiers: T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]).void }
         def initialize(tiers:)
@@ -602,13 +1001,28 @@ module Orb
 
         class Tier < Orb::BaseModel
           sig { returns(Float) }
-          attr_accessor :bps
+          def bps
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def bps=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :maximum_amount
+          def maximum_amount
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def maximum_amount=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :per_unit_maximum
+          def per_unit_maximum
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def per_unit_maximum=(_)
+          end
 
           sig do
             params(bps: Float, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String)).void
@@ -632,7 +1046,14 @@ module Orb
 
       class BulkConfig < Orb::BaseModel
         sig { returns(T::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]) }
-        attr_accessor :tiers
+        def tiers
+        end
+
+        sig do
+          params(_: T::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]).returns(T::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier])
+        end
+        def tiers=(_)
+        end
 
         sig { params(tiers: T::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]).void }
         def initialize(tiers:)
@@ -644,10 +1065,20 @@ module Orb
 
         class Tier < Orb::BaseModel
           sig { returns(String) }
-          attr_accessor :unit_amount
+          def unit_amount
+          end
+
+          sig { params(_: String).returns(String) }
+          def unit_amount=(_)
+          end
 
           sig { returns(T.nilable(Float)) }
-          attr_accessor :maximum_units
+          def maximum_units
+          end
+
+          sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+          def maximum_units=(_)
+          end
 
           sig { params(unit_amount: String, maximum_units: T.nilable(Float)).void }
           def initialize(unit_amount:, maximum_units: nil)

@@ -7,7 +7,14 @@ module Orb
     module Events
       class EventVolumes < Orb::BaseModel
         sig { returns(T::Array[Orb::Models::Events::EventVolumes::Data]) }
-        attr_accessor :data
+        def data
+        end
+
+        sig do
+          params(_: T::Array[Orb::Models::Events::EventVolumes::Data]).returns(T::Array[Orb::Models::Events::EventVolumes::Data])
+        end
+        def data=(_)
+        end
 
         sig { params(data: T::Array[Orb::Models::Events::EventVolumes::Data]).void }
         def initialize(data:)
@@ -19,13 +26,28 @@ module Orb
 
         class Data < Orb::BaseModel
           sig { returns(Integer) }
-          attr_accessor :count
+          def count
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def count=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :timeframe_end
+          def timeframe_end
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def timeframe_end=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :timeframe_start
+          def timeframe_start
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def timeframe_start=(_)
+          end
 
           sig { params(count: Integer, timeframe_end: Time, timeframe_start: Time).void }
           def initialize(count:, timeframe_end:, timeframe_start:)

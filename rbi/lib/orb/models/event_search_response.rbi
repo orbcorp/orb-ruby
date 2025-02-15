@@ -4,7 +4,14 @@ module Orb
   module Models
     class EventSearchResponse < Orb::BaseModel
       sig { returns(T::Array[Orb::Models::EventSearchResponse::Data]) }
-      attr_accessor :data
+      def data
+      end
+
+      sig do
+        params(_: T::Array[Orb::Models::EventSearchResponse::Data]).returns(T::Array[Orb::Models::EventSearchResponse::Data])
+      end
+      def data=(_)
+      end
 
       sig { params(data: T::Array[Orb::Models::EventSearchResponse::Data]).void }
       def initialize(data:)
@@ -16,25 +23,60 @@ module Orb
 
       class Data < Orb::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def customer_id=(_)
+        end
 
         sig { returns(T::Boolean) }
-        attr_accessor :deprecated
+        def deprecated
+        end
+
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def deprecated=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :event_name
+        def event_name
+        end
+
+        sig { params(_: String).returns(String) }
+        def event_name=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :external_customer_id
+        def external_customer_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def external_customer_id=(_)
+        end
 
         sig { returns(T.anything) }
-        attr_accessor :properties
+        def properties
+        end
+
+        sig { params(_: T.anything).returns(T.anything) }
+        def properties=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :timestamp
+        def timestamp
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def timestamp=(_)
+        end
 
         sig do
           params(

@@ -8,22 +8,36 @@ module Orb
         include Orb::RequestParameters
 
         sig { returns(Time) }
-        attr_accessor :timeframe_start
+        def timeframe_start
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def timeframe_start=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :cursor
+        def cursor
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def cursor=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_reader :limit
+        def limit
+        end
 
-        sig { params(limit: Integer).void }
-        attr_writer :limit
+        sig { params(_: Integer).returns(Integer) }
+        def limit=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :timeframe_end
+        def timeframe_end
+        end
 
-        sig { params(timeframe_end: Time).void }
-        attr_writer :timeframe_end
+        sig { params(_: Time).returns(Time) }
+        def timeframe_end=(_)
+        end
 
         sig do
           params(

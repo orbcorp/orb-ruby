@@ -5,10 +5,12 @@ module Orb
     class Customers
       class Credits
         sig { returns(Orb::Resources::Customers::Credits::Ledger) }
-        attr_reader :ledger
+        def ledger
+        end
 
         sig { returns(Orb::Resources::Customers::Credits::TopUps) }
-        attr_reader :top_ups
+        def top_ups
+        end
 
         sig do
           params(

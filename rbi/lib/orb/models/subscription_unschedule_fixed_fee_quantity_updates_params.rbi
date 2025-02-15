@@ -7,7 +7,12 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :price_id
+      def price_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def price_id=(_)
+      end
 
       sig do
         params(

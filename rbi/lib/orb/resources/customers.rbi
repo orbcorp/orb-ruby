@@ -4,13 +4,16 @@ module Orb
   module Resources
     class Customers
       sig { returns(Orb::Resources::Customers::Costs) }
-      attr_reader :costs
+      def costs
+      end
 
       sig { returns(Orb::Resources::Customers::Credits) }
-      attr_reader :credits
+      def credits
+      end
 
       sig { returns(Orb::Resources::Customers::BalanceTransactions) }
-      attr_reader :balance_transactions
+      def balance_transactions
+      end
 
       sig do
         params(

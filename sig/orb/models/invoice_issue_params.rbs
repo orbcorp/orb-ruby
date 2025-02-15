@@ -8,7 +8,7 @@ module Orb
 
       attr_reader synchronous: bool?
 
-      def synchronous=: (bool) -> void
+      def synchronous=: (bool) -> bool
 
       def initialize:
         (synchronous: bool, request_options: Orb::request_opts) -> void

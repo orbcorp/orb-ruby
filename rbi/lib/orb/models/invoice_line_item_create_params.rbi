@@ -7,22 +7,52 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: String).returns(String) }
+      def amount=(_)
+      end
 
       sig { returns(Date) }
-      attr_accessor :end_date
+      def end_date
+      end
+
+      sig { params(_: Date).returns(Date) }
+      def end_date=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :invoice_id
+      def invoice_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def invoice_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(Float) }
-      attr_accessor :quantity
+      def quantity
+      end
+
+      sig { params(_: Float).returns(Float) }
+      def quantity=(_)
+      end
 
       sig { returns(Date) }
-      attr_accessor :start_date
+      def start_date
+      end
+
+      sig { params(_: Date).returns(Date) }
+      def start_date=(_)
+      end
 
       sig do
         params(
