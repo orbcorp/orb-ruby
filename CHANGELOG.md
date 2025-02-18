@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.0-alpha.9 (2025-02-18)
+
+Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
+
+### Features
+
+* support overlapping HTTP requests in same Fiber ([#43](https://github.com/orbcorp/orb-ruby/issues/43)) ([35549e0](https://github.com/orbcorp/orb-ruby/commit/35549e0240188802f66cab3d0c45573631f8baa7))
+
+
+### Bug Fixes
+
+* ssl timeout not required when TCP socket open timeout specified ([#44](https://github.com/orbcorp/orb-ruby/issues/44)) ([2734175](https://github.com/orbcorp/orb-ruby/commit/2734175c6c31340d8f6d2d32b41be08dd30249a4))
+
+
+### Chores
+
+* enable full pagination tests ([#41](https://github.com/orbcorp/orb-ruby/issues/41)) ([e70e98b](https://github.com/orbcorp/orb-ruby/commit/e70e98b41b346edcee0076741f11f8b8a186c33e))
+* **internal:** codegen related update ([#42](https://github.com/orbcorp/orb-ruby/issues/42)) ([f34e03e](https://github.com/orbcorp/orb-ruby/commit/f34e03eb511117f21282716401ba8c129d0b15e4))
+* **internal:** version bump ([#39](https://github.com/orbcorp/orb-ruby/issues/39)) ([21d40f8](https://github.com/orbcorp/orb-ruby/commit/21d40f8d2177b1ab3e5df755911e39576e4ef11d))
+
 ## 0.1.0-alpha.8 (2025-02-15)
 
 Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
