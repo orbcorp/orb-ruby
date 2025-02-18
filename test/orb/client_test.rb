@@ -187,7 +187,7 @@ class OrbTest < Minitest::Test
       orb.customers.create(email: "dev@stainlessapi.com", name: "x")
     end
 
-    retry_count_headers = requester.attempts.map { |a| a[:headers]["x-stainless-retry-count"] }
+    retry_count_headers = requester.attempts.map { _1[:headers]["x-stainless-retry-count"] }
     assert_equal(%w[0 1 2], retry_count_headers)
   end
 
@@ -204,7 +204,7 @@ class OrbTest < Minitest::Test
       )
     end
 
-    retry_count_headers = requester.attempts.map { |a| a[:headers]["x-stainless-retry-count"] }
+    retry_count_headers = requester.attempts.map { _1[:headers]["x-stainless-retry-count"] }
     assert_equal([nil, nil, nil], retry_count_headers)
   end
 
@@ -221,7 +221,7 @@ class OrbTest < Minitest::Test
       )
     end
 
-    retry_count_headers = requester.attempts.map { |a| a[:headers]["x-stainless-retry-count"] }
+    retry_count_headers = requester.attempts.map { _1[:headers]["x-stainless-retry-count"] }
     assert_equal(%w[42 42 42], retry_count_headers)
   end
 
@@ -302,7 +302,7 @@ class OrbTest < Minitest::Test
       orb.customers.create(email: "dev@stainlessapi.com", name: "x", request_options: {max_retries: 1})
     end
 
-    idempotency_headers = requester.attempts.map { |a| a[:headers]["Idempotency-Key".downcase] }
+    idempotency_headers = requester.attempts.map { _1[:headers]["Idempotency-Key".downcase] }
 
     assert_kind_of(String, idempotency_headers.first)
     refute_empty(idempotency_headers.first)
@@ -322,7 +322,7 @@ class OrbTest < Minitest::Test
       )
     end
 
-    requester.attempts.each { |a| assert_equal("user-supplied-key", a[:headers]["Idempotency-Key".downcase]) }
+    requester.attempts.each { assert_equal("user-supplied-key", _1[:headers]["Idempotency-Key".downcase]) }
   end
 
   def test_default_headers
