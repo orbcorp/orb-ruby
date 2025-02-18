@@ -129,7 +129,7 @@ module Orb
         Orb::ResourceTooLarge.new(**kwargs)
       in [429, Orb::TooManyRequests::TYPE]
         Orb::TooManyRequests.new(**kwargs)
-      in [500, Orb::OrbInternalServerError::TYPE]
+      in [(500..), Orb::OrbInternalServerError::TYPE]
         Orb::OrbInternalServerError.new(**kwargs)
       in [400, _]
         Orb::BadRequestError.new(**kwargs)
@@ -210,50 +210,50 @@ module Orb
     HTTP_STATUS = (500..)
   end
 
-  class ConstraintViolation < Orb::APIStatusError
-    HTTP_STATUS = 400
+  class ConstraintViolation < Orb::BadRequestError
+    HTTP_STATUS = Orb::BadRequestError::HTTP_STATUS
 
     TYPE = "https://docs.withorb.com/reference/error-responses#400-constraint-violation"
   end
 
-  class DuplicateResourceCreation < Orb::APIStatusError
-    HTTP_STATUS = 400
+  class DuplicateResourceCreation < Orb::BadRequestError
+    HTTP_STATUS = Orb::BadRequestError::HTTP_STATUS
 
     TYPE = "https://docs.withorb.com/reference/error-responses#400-duplicate-resource-creation"
   end
 
-  class FeatureNotAvailable < Orb::APIStatusError
-    HTTP_STATUS = 400
+  class FeatureNotAvailable < Orb::BadRequestError
+    HTTP_STATUS = Orb::BadRequestError::HTTP_STATUS
 
     TYPE = "https://docs.withorb.com/reference/error-responses#404-feature-not-available"
   end
 
-  class RequestValidationError < Orb::APIStatusError
-    HTTP_STATUS = 400
+  class RequestValidationError < Orb::BadRequestError
+    HTTP_STATUS = Orb::BadRequestError::HTTP_STATUS
 
     TYPE = "https://docs.withorb.com/reference/error-responses#400-request-validation-errors"
   end
 
-  class OrbAuthenticationError < Orb::APIStatusError
-    HTTP_STATUS = 401
+  class OrbAuthenticationError < Orb::AuthenticationError
+    HTTP_STATUS = Orb::AuthenticationError::HTTP_STATUS
 
     TYPE = "https://docs.withorb.com/reference/error-responses#401-authentication-error"
   end
 
-  class ResourceNotFound < Orb::APIStatusError
-    HTTP_STATUS = 404
+  class ResourceNotFound < Orb::NotFoundError
+    HTTP_STATUS = Orb::NotFoundError::HTTP_STATUS
 
     TYPE = "https://docs.withorb.com/reference/error-responses#404-resource-not-found"
   end
 
-  class URLNotFound < Orb::APIStatusError
-    HTTP_STATUS = 404
+  class URLNotFound < Orb::NotFoundError
+    HTTP_STATUS = Orb::NotFoundError::HTTP_STATUS
 
     TYPE = "https://docs.withorb.com/reference/error-responses#404-url-not-found"
   end
 
-  class ResourceConflict < Orb::APIStatusError
-    HTTP_STATUS = 409
+  class ResourceConflict < Orb::ConflictError
+    HTTP_STATUS = Orb::ConflictError::HTTP_STATUS
 
     TYPE = "https://docs.withorb.com/reference/error-responses#409-resource-conflict"
   end
@@ -270,14 +270,14 @@ module Orb
     TYPE = "https://docs.withorb.com/reference/error-responses#413-resource-too-large"
   end
 
-  class TooManyRequests < Orb::APIStatusError
-    HTTP_STATUS = 429
+  class TooManyRequests < Orb::RateLimitError
+    HTTP_STATUS = Orb::RateLimitError::HTTP_STATUS
 
     TYPE = "https://docs.withorb.com/reference/error-responses#429-too-many-requests"
   end
 
-  class OrbInternalServerError < Orb::APIStatusError
-    HTTP_STATUS = 500
+  class OrbInternalServerError < Orb::InternalServerError
+    HTTP_STATUS = Orb::InternalServerError::HTTP_STATUS
 
     TYPE = "https://docs.withorb.com/reference/error-responses#500-internal-server-error"
   end
