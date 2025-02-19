@@ -4,7 +4,7 @@ module Orb
   class BaseClient
     abstract!
 
-    RequestShape = T.type_alias do
+    RequestComponentsShape = T.type_alias do
       {
         method: Symbol,
         path: T.any(String, T::Array[String]),
@@ -18,7 +18,7 @@ module Orb
       }
     end
 
-    NormalizedRequestShape = T.type_alias do
+    RequestInputShape = T.type_alias do
       {
         method: Symbol,
         url: URI::Generic,
@@ -31,7 +31,7 @@ module Orb
 
     MAX_REDIRECTS = 20
 
-    sig { params(req: Orb::BaseClient::RequestShape).void }
+    sig { params(req: Orb::BaseClient::RequestComponentsShape).void }
     def self.validate!(req)
     end
 
@@ -75,8 +75,8 @@ module Orb
     end
 
     sig do
-      params(req: Orb::BaseClient::RequestShape, opts: T::Hash[Symbol, T.anything])
-        .returns(Orb::BaseClient::NormalizedRequestShape)
+      params(req: Orb::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
+        .returns(Orb::BaseClient::RequestInputShape)
     end
     private def build_request(req, opts)
     end
@@ -90,15 +90,15 @@ module Orb
     end
 
     sig do
-      params(request: Orb::BaseClient::NormalizedRequestShape, status: Integer, location_header: String)
-        .returns(Orb::BaseClient::NormalizedRequestShape)
+      params(request: Orb::BaseClient::RequestInputShape, status: Integer, location_header: String)
+        .returns(Orb::BaseClient::RequestInputShape)
     end
     private def follow_redirect(request, status:, location_header:)
     end
 
     sig do
       params(
-        request: Orb::BaseClient::NormalizedRequestShape,
+        request: Orb::BaseClient::RequestInputShape,
         redirect_count: Integer,
         retry_count: Integer,
         send_retry_header: T::Boolean
@@ -108,7 +108,7 @@ module Orb
     private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
     end
 
-    sig { params(req: Orb::BaseClient::RequestShape, response: NilClass).returns(T.anything) }
+    sig { params(req: Orb::BaseClient::RequestComponentsShape, response: NilClass).returns(T.anything) }
     private def parse_response(req, response)
     end
 

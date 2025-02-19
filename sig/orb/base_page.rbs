@@ -12,7 +12,7 @@ module Orb
 
     def initialize: (
       client: Orb::BaseClient,
-      req: Orb::BaseClient::request,
+      req: Orb::BaseClient::request_components,
       headers: ::Hash[String, String],
       unwrapped: top
     ) -> void

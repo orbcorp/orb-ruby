@@ -27,7 +27,7 @@ module Orb
     sig do
       params(
         client: Orb::BaseClient,
-        req: Orb::BaseClient::RequestShape,
+        req: Orb::BaseClient::RequestComponentsShape,
         headers: T::Hash[String, String],
         unwrapped: T.anything
       )
