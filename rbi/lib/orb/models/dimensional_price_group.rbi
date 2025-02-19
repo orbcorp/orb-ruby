@@ -59,7 +59,8 @@ module Orb
           external_dimensional_price_group_id: T.nilable(String),
           metadata: T::Hash[Symbol, String],
           name: String
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -72,16 +73,17 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            billable_metric_id: String,
-            dimensions: T::Array[String],
-            external_dimensional_price_group_id: T.nilable(String),
-            metadata: T::Hash[Symbol, String],
-            name: String
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              billable_metric_id: String,
+              dimensions: T::Array[String],
+              external_dimensional_price_group_id: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              name: String
+            }
+          )
       end
       def to_hash
       end

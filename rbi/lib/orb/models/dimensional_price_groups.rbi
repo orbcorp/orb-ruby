@@ -8,7 +8,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::DimensionalPriceGroup]).returns(T::Array[Orb::Models::DimensionalPriceGroup])
+        params(_: T::Array[Orb::Models::DimensionalPriceGroup])
+          .returns(T::Array[Orb::Models::DimensionalPriceGroup])
       end
       def data=(_)
       end
@@ -25,18 +26,17 @@ module Orb
         params(
           data: T::Array[Orb::Models::DimensionalPriceGroup],
           pagination_metadata: Orb::Models::PaginationMetadata
-        ).void
+        )
+          .void
       end
       def initialize(data:, pagination_metadata:)
       end
 
       sig do
-        override.returns(
-          {
-            data: T::Array[Orb::Models::DimensionalPriceGroup],
-            pagination_metadata: Orb::Models::PaginationMetadata
-          }
-        )
+        override
+          .returns(
+            {data: T::Array[Orb::Models::DimensionalPriceGroup], pagination_metadata: Orb::Models::PaginationMetadata}
+          )
       end
       def to_hash
       end

@@ -36,7 +36,8 @@ module Orb
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
           cancellation_date: T.nilable(Time),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         cancel_option:,
@@ -47,14 +48,15 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            cancel_option: Symbol,
-            allow_invoice_credit_or_void: T.nilable(T::Boolean),
-            cancellation_date: T.nilable(Time),
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              cancel_option: Symbol,
+              allow_invoice_credit_or_void: T.nilable(T::Boolean),
+              cancellation_date: T.nilable(Time),
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end

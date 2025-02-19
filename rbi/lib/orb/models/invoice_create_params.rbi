@@ -27,7 +27,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::InvoiceCreateParams::LineItem]).returns(T::Array[Orb::Models::InvoiceCreateParams::LineItem])
+        params(_: T::Array[Orb::Models::InvoiceCreateParams::LineItem])
+          .returns(T::Array[Orb::Models::InvoiceCreateParams::LineItem])
       end
       def line_items=(_)
       end
@@ -73,14 +74,17 @@ module Orb
               Orb::Models::AmountDiscount
             )
           )
-        ).returns(T.nilable(
-                    T.any(
-                      Orb::Models::PercentageDiscount,
-                      Orb::Models::TrialDiscount,
-                      Orb::Models::Discount::UsageDiscount,
-                      Orb::Models::AmountDiscount
-                    )
-                  ))
+        )
+          .returns(
+            T.nilable(
+              T.any(
+                Orb::Models::PercentageDiscount,
+                Orb::Models::TrialDiscount,
+                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::AmountDiscount
+              )
+            )
+          )
       end
       def discount=(_)
       end
@@ -106,12 +110,8 @@ module Orb
       end
 
       sig do
-        params(
-          _: T.nilable(
-            T::Hash[Symbol,
-                    T.nilable(String)]
-          )
-        ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+        params(_: T.nilable(T::Hash[Symbol, T.nilable(String)]))
+          .returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
       end
       def metadata=(_)
       end
@@ -144,7 +144,8 @@ module Orb
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           will_auto_issue: T::Boolean,
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         currency:,
@@ -162,28 +163,29 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            currency: String,
-            invoice_date: Time,
-            line_items: T::Array[Orb::Models::InvoiceCreateParams::LineItem],
-            net_terms: Integer,
-            customer_id: T.nilable(String),
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
-            external_customer_id: T.nilable(String),
-            memo: T.nilable(String),
-            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-            will_auto_issue: T::Boolean,
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              currency: String,
+              invoice_date: Time,
+              line_items: T::Array[Orb::Models::InvoiceCreateParams::LineItem],
+              net_terms: Integer,
+              customer_id: T.nilable(String),
+              discount: T.nilable(
+                T.any(
+                  Orb::Models::PercentageDiscount,
+                  Orb::Models::TrialDiscount,
+                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::AmountDiscount
+                )
+              ),
+              external_customer_id: T.nilable(String),
+              memo: T.nilable(String),
+              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+              will_auto_issue: T::Boolean,
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -242,7 +244,8 @@ module Orb
         end
 
         sig do
-          params(_: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig).returns(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig)
+          params(_: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig)
+            .returns(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig)
         end
         def unit_config=(_)
         end
@@ -256,23 +259,25 @@ module Orb
             quantity: Float,
             start_date: Date,
             unit_config: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig
-          ).void
+          )
+            .void
         end
         def initialize(end_date:, item_id:, model_type:, name:, quantity:, start_date:, unit_config:)
         end
 
         sig do
-          override.returns(
-            {
-              end_date: Date,
-              item_id: String,
-              model_type: Symbol,
-              name: String,
-              quantity: Float,
-              start_date: Date,
-              unit_config: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig
-            }
-          )
+          override
+            .returns(
+              {
+                end_date: Date,
+                item_id: String,
+                model_type: Symbol,
+                name: String,
+                quantity: Float,
+                start_date: Date,
+                unit_config: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig
+              }
+            )
         end
         def to_hash
         end

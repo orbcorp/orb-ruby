@@ -24,7 +24,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::Item::ExternalConnection]).returns(T::Array[Orb::Models::Item::ExternalConnection])
+        params(_: T::Array[Orb::Models::Item::ExternalConnection])
+          .returns(T::Array[Orb::Models::Item::ExternalConnection])
       end
       def external_connections=(_)
       end
@@ -43,20 +44,22 @@ module Orb
           created_at: Time,
           external_connections: T::Array[Orb::Models::Item::ExternalConnection],
           name: String
-        ).void
+        )
+          .void
       end
       def initialize(id:, created_at:, external_connections:, name:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            created_at: Time,
-            external_connections: T::Array[Orb::Models::Item::ExternalConnection],
-            name: String
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              created_at: Time,
+              external_connections: T::Array[Orb::Models::Item::ExternalConnection],
+              name: String
+            }
+          )
       end
       def to_hash
       end

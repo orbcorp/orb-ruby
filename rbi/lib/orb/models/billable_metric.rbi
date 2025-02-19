@@ -59,22 +59,24 @@ module Orb
           metadata: T::Hash[Symbol, String],
           name: String,
           status: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(id:, description:, item:, metadata:, name:, status:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            description: T.nilable(String),
-            item: Orb::Models::Item,
-            metadata: T::Hash[Symbol, String],
-            name: String,
-            status: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              description: T.nilable(String),
+              item: Orb::Models::Item,
+              metadata: T::Hash[Symbol, String],
+              name: String,
+              status: Symbol
+            }
+          )
       end
       def to_hash
       end

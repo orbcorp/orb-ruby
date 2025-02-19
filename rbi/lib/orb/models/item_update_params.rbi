@@ -11,7 +11,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection])).returns(T.nilable(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection]))
+        params(_: T.nilable(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection]))
+          .returns(T.nilable(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection]))
       end
       def external_connections=(_)
       end
@@ -29,17 +30,21 @@ module Orb
           external_connections: T.nilable(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection]),
           name: T.nilable(String),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(external_connections: nil, name: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            external_connections: T.nilable(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection]), name: T.nilable(String), request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              external_connections: T.nilable(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection]),
+              name: T.nilable(String),
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end

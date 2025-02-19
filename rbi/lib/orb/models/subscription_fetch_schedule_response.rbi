@@ -24,7 +24,8 @@ module Orb
       end
 
       sig do
-        params(_: Orb::Models::SubscriptionFetchScheduleResponse::Plan).returns(Orb::Models::SubscriptionFetchScheduleResponse::Plan)
+        params(_: Orb::Models::SubscriptionFetchScheduleResponse::Plan)
+          .returns(Orb::Models::SubscriptionFetchScheduleResponse::Plan)
       end
       def plan=(_)
       end
@@ -43,20 +44,22 @@ module Orb
           end_date: T.nilable(Time),
           plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
           start_date: Time
-        ).void
+        )
+          .void
       end
       def initialize(created_at:, end_date:, plan:, start_date:)
       end
 
       sig do
-        override.returns(
-          {
-            created_at: Time,
-            end_date: T.nilable(Time),
-            plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
-            start_date: Time
-          }
-        )
+        override
+          .returns(
+            {
+              created_at: Time,
+              end_date: T.nilable(Time),
+              plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
+              start_date: Time
+            }
+          )
       end
       def to_hash
       end

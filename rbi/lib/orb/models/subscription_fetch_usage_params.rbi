@@ -99,7 +99,8 @@ module Orb
           timeframe_start: T.nilable(Time),
           view_mode: T.nilable(Symbol),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         billable_metric_id: nil,
@@ -117,21 +118,22 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            billable_metric_id: T.nilable(String),
-            first_dimension_key: T.nilable(String),
-            first_dimension_value: T.nilable(String),
-            granularity: T.nilable(Symbol),
-            group_by: T.nilable(String),
-            second_dimension_key: T.nilable(String),
-            second_dimension_value: T.nilable(String),
-            timeframe_end: T.nilable(Time),
-            timeframe_start: T.nilable(Time),
-            view_mode: T.nilable(Symbol),
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              billable_metric_id: T.nilable(String),
+              first_dimension_key: T.nilable(String),
+              first_dimension_value: T.nilable(String),
+              granularity: T.nilable(Symbol),
+              group_by: T.nilable(String),
+              second_dimension_key: T.nilable(String),
+              second_dimension_value: T.nilable(String),
+              timeframe_end: T.nilable(Time),
+              timeframe_start: T.nilable(Time),
+              view_mode: T.nilable(Symbol),
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end

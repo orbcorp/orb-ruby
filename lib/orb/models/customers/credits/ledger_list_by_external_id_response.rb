@@ -63,10 +63,7 @@ module Orb
           variant :credit_block_expiry,
                   -> { Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry }
 
-          variant :void,
-                  -> {
-                    Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry
-                  }
+          variant :void, -> { Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry }
 
           variant :void_initiated,
                   -> { Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry }
@@ -132,9 +129,7 @@ module Orb
             #
             #   @return [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::EntryStatus]
             required :entry_status,
-                     enum: -> {
-                       Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::EntryStatus
-                     }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -339,9 +334,7 @@ module Orb
             #
             #   @return [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::EntryStatus]
             required :entry_status,
-                     enum: -> {
-                       Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::EntryStatus
-                     }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -567,9 +560,7 @@ module Orb
             #
             #   @return [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::EntryStatus]
             required :entry_status,
-                     enum: -> {
-                       Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::EntryStatus
-                     }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -781,9 +772,7 @@ module Orb
             #
             #   @return [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::EntryStatus]
             required :entry_status,
-                     enum: -> {
-                       Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::EntryStatus
-                     }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -988,9 +977,7 @@ module Orb
             #
             #   @return [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::EntryStatus]
             required :entry_status,
-                     enum: -> {
-                       Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::EntryStatus
-                     }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -1209,9 +1196,7 @@ module Orb
             #
             #   @return [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::EntryStatus]
             required :entry_status,
-                     enum: -> {
-                       Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::EntryStatus
-                     }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -1437,9 +1422,7 @@ module Orb
             #
             #   @return [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::EntryStatus]
             required :entry_status,
-                     enum: -> {
-                       Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::EntryStatus
-                     }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::EntryStatus }
 
             # @!attribute entry_type
             #

@@ -8,7 +8,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data]).returns(T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data])
+        params(_: T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data])
+          .returns(T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data])
       end
       def data=(_)
       end
@@ -27,7 +28,8 @@ module Orb
         end
 
         sig do
-          params(_: T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost]).returns(T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost])
+          params(_: T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost])
+            .returns(T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost])
         end
         def per_price_costs=(_)
         end
@@ -71,17 +73,23 @@ module Orb
             timeframe_end: Time,
             timeframe_start: Time,
             total: String
-          ).void
+          )
+            .void
         end
         def initialize(per_price_costs:, subtotal:, timeframe_end:, timeframe_start:, total:)
         end
 
         sig do
-          override.returns(
-            {
-              per_price_costs: T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost], subtotal: String, timeframe_end: Time, timeframe_start: Time, total: String
-            }
-          )
+          override
+            .returns(
+              {
+                per_price_costs: T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost],
+                subtotal: String,
+                timeframe_end: Time,
+                timeframe_start: Time,
+                total: String
+              }
+            )
         end
         def to_hash
         end
@@ -156,36 +164,39 @@ module Orb
                 Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
                 Orb::Models::Price::CumulativeGroupedBulkPrice
               )
-            ).returns(T.any(
-                        Orb::Models::Price::UnitPrice,
-                        Orb::Models::Price::PackagePrice,
-                        Orb::Models::Price::MatrixPrice,
-                        Orb::Models::Price::TieredPrice,
-                        Orb::Models::Price::TieredBpsPrice,
-                        Orb::Models::Price::BpsPrice,
-                        Orb::Models::Price::BulkBpsPrice,
-                        Orb::Models::Price::BulkPrice,
-                        Orb::Models::Price::ThresholdTotalAmountPrice,
-                        Orb::Models::Price::TieredPackagePrice,
-                        Orb::Models::Price::GroupedTieredPrice,
-                        Orb::Models::Price::TieredWithMinimumPrice,
-                        Orb::Models::Price::TieredPackageWithMinimumPrice,
-                        Orb::Models::Price::PackageWithAllocationPrice,
-                        Orb::Models::Price::UnitWithPercentPrice,
-                        Orb::Models::Price::MatrixWithAllocationPrice,
-                        Orb::Models::Price::TieredWithProrationPrice,
-                        Orb::Models::Price::UnitWithProrationPrice,
-                        Orb::Models::Price::GroupedAllocationPrice,
-                        Orb::Models::Price::GroupedWithProratedMinimumPrice,
-                        Orb::Models::Price::GroupedWithMeteredMinimumPrice,
-                        Orb::Models::Price::MatrixWithDisplayNamePrice,
-                        Orb::Models::Price::BulkWithProrationPrice,
-                        Orb::Models::Price::GroupedTieredPackagePrice,
-                        Orb::Models::Price::MaxGroupTieredPackagePrice,
-                        Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                        Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
-                        Orb::Models::Price::CumulativeGroupedBulkPrice
-                      ))
+            )
+              .returns(
+                T.any(
+                  Orb::Models::Price::UnitPrice,
+                  Orb::Models::Price::PackagePrice,
+                  Orb::Models::Price::MatrixPrice,
+                  Orb::Models::Price::TieredPrice,
+                  Orb::Models::Price::TieredBpsPrice,
+                  Orb::Models::Price::BpsPrice,
+                  Orb::Models::Price::BulkBpsPrice,
+                  Orb::Models::Price::BulkPrice,
+                  Orb::Models::Price::ThresholdTotalAmountPrice,
+                  Orb::Models::Price::TieredPackagePrice,
+                  Orb::Models::Price::GroupedTieredPrice,
+                  Orb::Models::Price::TieredWithMinimumPrice,
+                  Orb::Models::Price::TieredPackageWithMinimumPrice,
+                  Orb::Models::Price::PackageWithAllocationPrice,
+                  Orb::Models::Price::UnitWithPercentPrice,
+                  Orb::Models::Price::MatrixWithAllocationPrice,
+                  Orb::Models::Price::TieredWithProrationPrice,
+                  Orb::Models::Price::UnitWithProrationPrice,
+                  Orb::Models::Price::GroupedAllocationPrice,
+                  Orb::Models::Price::GroupedWithProratedMinimumPrice,
+                  Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+                  Orb::Models::Price::MatrixWithDisplayNamePrice,
+                  Orb::Models::Price::BulkWithProrationPrice,
+                  Orb::Models::Price::GroupedTieredPackagePrice,
+                  Orb::Models::Price::MaxGroupTieredPackagePrice,
+                  Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+                  Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                  Orb::Models::Price::CumulativeGroupedBulkPrice
+                )
+              )
           end
           def price=(_)
           end
@@ -258,50 +269,52 @@ module Orb
               subtotal: String,
               total: String,
               quantity: T.nilable(Float)
-            ).void
+            )
+              .void
           end
           def initialize(price:, price_id:, subtotal:, total:, quantity: nil)
           end
 
           sig do
-            override.returns(
-              {
-                price: T.any(
-                  Orb::Models::Price::UnitPrice,
-                  Orb::Models::Price::PackagePrice,
-                  Orb::Models::Price::MatrixPrice,
-                  Orb::Models::Price::TieredPrice,
-                  Orb::Models::Price::TieredBpsPrice,
-                  Orb::Models::Price::BpsPrice,
-                  Orb::Models::Price::BulkBpsPrice,
-                  Orb::Models::Price::BulkPrice,
-                  Orb::Models::Price::ThresholdTotalAmountPrice,
-                  Orb::Models::Price::TieredPackagePrice,
-                  Orb::Models::Price::GroupedTieredPrice,
-                  Orb::Models::Price::TieredWithMinimumPrice,
-                  Orb::Models::Price::TieredPackageWithMinimumPrice,
-                  Orb::Models::Price::PackageWithAllocationPrice,
-                  Orb::Models::Price::UnitWithPercentPrice,
-                  Orb::Models::Price::MatrixWithAllocationPrice,
-                  Orb::Models::Price::TieredWithProrationPrice,
-                  Orb::Models::Price::UnitWithProrationPrice,
-                  Orb::Models::Price::GroupedAllocationPrice,
-                  Orb::Models::Price::GroupedWithProratedMinimumPrice,
-                  Orb::Models::Price::GroupedWithMeteredMinimumPrice,
-                  Orb::Models::Price::MatrixWithDisplayNamePrice,
-                  Orb::Models::Price::BulkWithProrationPrice,
-                  Orb::Models::Price::GroupedTieredPackagePrice,
-                  Orb::Models::Price::MaxGroupTieredPackagePrice,
-                  Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                  Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
-                  Orb::Models::Price::CumulativeGroupedBulkPrice
-                ),
-                price_id: String,
-                subtotal: String,
-                total: String,
-                quantity: T.nilable(Float)
-              }
-            )
+            override
+              .returns(
+                {
+                  price: T.any(
+                    Orb::Models::Price::UnitPrice,
+                    Orb::Models::Price::PackagePrice,
+                    Orb::Models::Price::MatrixPrice,
+                    Orb::Models::Price::TieredPrice,
+                    Orb::Models::Price::TieredBpsPrice,
+                    Orb::Models::Price::BpsPrice,
+                    Orb::Models::Price::BulkBpsPrice,
+                    Orb::Models::Price::BulkPrice,
+                    Orb::Models::Price::ThresholdTotalAmountPrice,
+                    Orb::Models::Price::TieredPackagePrice,
+                    Orb::Models::Price::GroupedTieredPrice,
+                    Orb::Models::Price::TieredWithMinimumPrice,
+                    Orb::Models::Price::TieredPackageWithMinimumPrice,
+                    Orb::Models::Price::PackageWithAllocationPrice,
+                    Orb::Models::Price::UnitWithPercentPrice,
+                    Orb::Models::Price::MatrixWithAllocationPrice,
+                    Orb::Models::Price::TieredWithProrationPrice,
+                    Orb::Models::Price::UnitWithProrationPrice,
+                    Orb::Models::Price::GroupedAllocationPrice,
+                    Orb::Models::Price::GroupedWithProratedMinimumPrice,
+                    Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+                    Orb::Models::Price::MatrixWithDisplayNamePrice,
+                    Orb::Models::Price::BulkWithProrationPrice,
+                    Orb::Models::Price::GroupedTieredPackagePrice,
+                    Orb::Models::Price::MaxGroupTieredPackagePrice,
+                    Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+                    Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                    Orb::Models::Price::CumulativeGroupedBulkPrice
+                  ),
+                  price_id: String,
+                  subtotal: String,
+                  total: String,
+                  quantity: T.nilable(Float)
+                }
+              )
           end
           def to_hash
           end

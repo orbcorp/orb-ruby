@@ -1447,11 +1447,21 @@ module Orb
         # @example
         # ```ruby
         # case adjustment
-        # in {adjustment_type: "usage_discount", id: String, amount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
+        # in {
+        #   adjustment_type: "usage_discount",
+        #   id: String,
+        #   amount: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }
+        # }
         #   # Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment ...
         # in {adjustment_type: "amount_discount", id: String, amount: String, amount_discount: String}
         #   # Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment ...
-        # in {adjustment_type: "percentage_discount", id: String, amount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
+        # in {
+        #   adjustment_type: "percentage_discount",
+        #   id: String,
+        #   amount: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }
+        # }
         #   # Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment ...
         # in {adjustment_type: "minimum", id: String, amount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
         #   # Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment ...
@@ -1964,11 +1974,26 @@ module Orb
         # @example
         # ```ruby
         # case sub_line_item
-        # in {type: "matrix", amount: String, grouping: Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::Grouping, matrix_config: Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig}
+        # in {
+        #   type: "matrix",
+        #   amount: String,
+        #   grouping: Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::Grouping,
+        #   matrix_config: Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig
+        # }
         #   # Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem ...
-        # in {type: "tier", amount: String, grouping: Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::Grouping, name: String}
+        # in {
+        #   type: "tier",
+        #   amount: String,
+        #   grouping: Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::Grouping,
+        #   name: String
+        # }
         #   # Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem ...
-        # in {type: "'null'", amount: String, grouping: Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem::Grouping, name: String}
+        # in {
+        #   type: "'null'",
+        #   amount: String,
+        #   grouping: Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem::Grouping,
+        #   name: String
+        # }
         #   # Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem ...
         # end
         # ```
@@ -2137,10 +2162,7 @@ module Orb
             # @!attribute tier_config
             #
             #   @return [Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::TierConfig]
-            required :tier_config,
-                     -> {
-                       Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::TierConfig
-                     }
+            required :tier_config, -> { Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::TierConfig }
 
             # @!attribute type
             #
@@ -2433,11 +2455,7 @@ module Orb
         #   The payment provider that attempted to collect the payment.
         #
         #   @return [Symbol, Orb::Models::Invoice::PaymentAttempt::PaymentProvider, nil]
-        required :payment_provider,
-                 enum: -> {
-                   Orb::Models::Invoice::PaymentAttempt::PaymentProvider
-                 },
-                 nil?: true
+        required :payment_provider, enum: -> { Orb::Models::Invoice::PaymentAttempt::PaymentProvider }, nil?: true
 
         # @!attribute payment_provider_id
         #   The ID of the payment attempt in the payment provider.

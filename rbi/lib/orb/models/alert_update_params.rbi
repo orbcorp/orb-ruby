@@ -11,7 +11,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::AlertUpdateParams::Threshold]).returns(T::Array[Orb::Models::AlertUpdateParams::Threshold])
+        params(_: T::Array[Orb::Models::AlertUpdateParams::Threshold])
+          .returns(T::Array[Orb::Models::AlertUpdateParams::Threshold])
       end
       def thresholds=(_)
       end
@@ -20,18 +21,17 @@ module Orb
         params(
           thresholds: T::Array[Orb::Models::AlertUpdateParams::Threshold],
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(thresholds:, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            thresholds: T::Array[Orb::Models::AlertUpdateParams::Threshold],
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {thresholds: T::Array[Orb::Models::AlertUpdateParams::Threshold], request_options: Orb::RequestOptions}
+          )
       end
       def to_hash
       end

@@ -116,13 +116,7 @@ module Orb
       #
       def create(params)
         parsed, options = Orb::Models::PriceCreateParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: "prices",
-          body: parsed,
-          model: Orb::Models::Price,
-          options: options
-        )
+        @client.request(method: :post, path: "prices", body: parsed, model: Orb::Models::Price, options: options)
       end
 
       # This endpoint allows you to update the `metadata` property on a price. If you

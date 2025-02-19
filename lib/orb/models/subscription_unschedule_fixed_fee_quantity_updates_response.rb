@@ -31,9 +31,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval>]
       required :adjustment_intervals,
-               -> {
-                 Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval]
-               }
+               -> { Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval] }
 
       # @!attribute auto_collection
       #   Determines whether issued invoices for this subscription will automatically be
@@ -114,9 +112,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::DiscountInterval::UsageDiscountInterval>]
       required :discount_intervals,
-               -> {
-                 Orb::ArrayOf[union: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::DiscountInterval]
-               }
+               -> { Orb::ArrayOf[union: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::DiscountInterval] }
 
       # @!attribute end_date
       #   The date Orb stops billing for this subscription.
@@ -128,9 +124,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::FixedFeeQuantitySchedule>]
       required :fixed_fee_quantity_schedule,
-               -> {
-                 Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::FixedFeeQuantitySchedule]
-               }
+               -> { Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::FixedFeeQuantitySchedule] }
 
       # @!attribute invoicing_threshold
       #
@@ -142,9 +136,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::MaximumInterval>]
       required :maximum_intervals,
-               -> {
-                 Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::MaximumInterval]
-               }
+               -> { Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::MaximumInterval] }
 
       # @!attribute metadata
       #   User specified key-value pairs for the resource. If not present, this defaults
@@ -160,9 +152,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::MinimumInterval>]
       required :minimum_intervals,
-               -> {
-                 Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::MinimumInterval]
-               }
+               -> { Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::MinimumInterval] }
 
       # @!attribute net_terms
       #   Determines the difference between the invoice issue date for subscription
@@ -187,9 +177,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::PriceInterval>]
       required :price_intervals,
-               -> {
-                 Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::PriceInterval]
-               }
+               -> { Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::PriceInterval] }
 
       # @!attribute redeemed_coupon
       #
@@ -207,18 +195,12 @@ module Orb
       # @!attribute status
       #
       #   @return [Symbol, Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::Status]
-      required :status,
-               enum: -> {
-                 Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::Status
-               }
+      required :status, enum: -> { Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::Status }
 
       # @!attribute trial_info
       #
       #   @return [Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::TrialInfo]
-      required :trial_info,
-               -> {
-                 Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::TrialInfo
-               }
+      required :trial_info, -> { Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::TrialInfo }
 
       # @!parse
       #   # @param id [String]
@@ -300,9 +282,7 @@ module Orb
         #
         #   @return [Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
         required :adjustment,
-                 union: -> {
-                   Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval::Adjustment
-                 }
+                 union: -> { Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval::Adjustment }
 
         # @!attribute applies_to_price_interval_ids
         #   The price interval IDs that this adjustment applies to.
@@ -338,15 +318,40 @@ module Orb
         # @example
         # ```ruby
         # case adjustment
-        # in {adjustment_type: "usage_discount", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+        # in {
+        #   adjustment_type: "usage_discount",
+        #   id: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   is_invoice_level: Orb::BooleanModel
+        # }
         #   # Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment ...
-        # in {adjustment_type: "amount_discount", id: String, amount_discount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
+        # in {
+        #   adjustment_type: "amount_discount",
+        #   id: String,
+        #   amount_discount: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }
+        # }
         #   # Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment ...
-        # in {adjustment_type: "percentage_discount", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+        # in {
+        #   adjustment_type: "percentage_discount",
+        #   id: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   is_invoice_level: Orb::BooleanModel
+        # }
         #   # Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment ...
-        # in {adjustment_type: "minimum", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+        # in {
+        #   adjustment_type: "minimum",
+        #   id: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   is_invoice_level: Orb::BooleanModel
+        # }
         #   # Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment ...
-        # in {adjustment_type: "maximum", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+        # in {
+        #   adjustment_type: "maximum",
+        #   id: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   is_invoice_level: Orb::BooleanModel
+        # }
         #   # Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment ...
         # end
         # ```
@@ -837,11 +842,26 @@ module Orb
       # @example
       # ```ruby
       # case discount_interval
-      # in {discount_type: "amount", amount_discount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 }}
+      # in {
+      #   discount_type: "amount",
+      #   amount_discount: String,
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 }
+      # }
       #   # Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::DiscountInterval::AmountDiscountInterval ...
-      # in {discount_type: "percentage", applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 }, end_date: Time}
+      # in {
+      #   discount_type: "percentage",
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   end_date: Time
+      # }
       #   # Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::DiscountInterval::PercentageDiscountInterval ...
-      # in {discount_type: "usage", applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 }, end_date: Time}
+      # in {
+      #   discount_type: "usage",
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   end_date: Time
+      # }
       #   # Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::DiscountInterval::UsageDiscountInterval ...
       # end
       # ```
@@ -1280,9 +1300,11 @@ module Orb
         #
         #   @return [Array<Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::PriceInterval::FixedFeeQuantityTransition>, nil]
         required :fixed_fee_quantity_transitions,
-                 -> {
-                   Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::PriceInterval::FixedFeeQuantityTransition]
-                 },
+                 -> do
+                   Orb::ArrayOf[
+                   Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::PriceInterval::FixedFeeQuantityTransition
+                   ]
+                 end,
                  nil?: true
 
         # @!attribute price

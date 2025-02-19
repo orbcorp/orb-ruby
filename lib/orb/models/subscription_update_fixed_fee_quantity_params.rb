@@ -32,10 +32,7 @@ module Orb
       #     `immediate` unless it's explicitly set to `upcoming_invoice.
       #
       #   @return [Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption, nil]
-      optional :change_option,
-               enum: -> {
-                 Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption
-               }
+      optional :change_option, enum: -> { Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption }
 
       # @!parse
       #   # @return [Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption]

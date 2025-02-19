@@ -20,12 +20,8 @@ module Orb
         end
 
         sig do
-          params(
-            _: T.nilable(
-              T::Hash[Symbol,
-                      T.nilable(String)]
-            )
-          ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+          params(_: T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            .returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
         end
         def metadata=(_)
         end
@@ -35,19 +31,21 @@ module Orb
             external_plan_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(external_plan_id: nil, metadata: nil, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              external_plan_id: T.nilable(String),
-              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-              request_options: Orb::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                external_plan_id: T.nilable(String),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                request_options: Orb::RequestOptions
+              }
+            )
         end
         def to_hash
         end

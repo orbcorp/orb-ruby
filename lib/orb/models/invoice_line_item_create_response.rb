@@ -31,10 +31,7 @@ module Orb
       #   All adjustments (ie. maximums, minimums, discounts) applied to the line item.
       #
       #   @return [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment>]
-      required :adjustments,
-               -> {
-                 Orb::ArrayOf[union: Orb::Models::InvoiceLineItemCreateResponse::Adjustment]
-               }
+      required :adjustments, -> { Orb::ArrayOf[union: Orb::Models::InvoiceLineItemCreateResponse::Adjustment] }
 
       # @!attribute amount
       #   The final amount for a line item after all adjustments and pre paid credits have
@@ -207,11 +204,21 @@ module Orb
       # @example
       # ```ruby
       # case adjustment
-      # in {adjustment_type: "usage_discount", id: String, amount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
+      # in {
+      #   adjustment_type: "usage_discount",
+      #   id: String,
+      #   amount: String,
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }
+      # }
       #   # Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment ...
       # in {adjustment_type: "amount_discount", id: String, amount: String, amount_discount: String}
       #   # Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment ...
-      # in {adjustment_type: "percentage_discount", id: String, amount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
+      # in {
+      #   adjustment_type: "percentage_discount",
+      #   id: String,
+      #   amount: String,
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }
+      # }
       #   # Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment ...
       # in {adjustment_type: "minimum", id: String, amount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
       #   # Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment ...
@@ -247,15 +254,9 @@ module Orb
         variant :percentage_discount,
                 -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment }
 
-        variant :minimum,
-                -> {
-                  Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment
-                }
+        variant :minimum, -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment }
 
-        variant :maximum,
-                -> {
-                  Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment
-                }
+        variant :maximum, -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment }
 
         # @example
         # ```ruby
@@ -730,11 +731,26 @@ module Orb
       # @example
       # ```ruby
       # case sub_line_item
-      # in {type: "matrix", amount: String, grouping: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::Grouping, matrix_config: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::MatrixConfig}
+      # in {
+      #   type: "matrix",
+      #   amount: String,
+      #   grouping: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::Grouping,
+      #   matrix_config: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::MatrixConfig
+      # }
       #   # Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem ...
-      # in {type: "tier", amount: String, grouping: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::Grouping, name: String}
+      # in {
+      #   type: "tier",
+      #   amount: String,
+      #   grouping: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::Grouping,
+      #   name: String
+      # }
       #   # Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem ...
-      # in {type: "'null'", amount: String, grouping: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem::Grouping, name: String}
+      # in {
+      #   type: "'null'",
+      #   amount: String,
+      #   grouping: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem::Grouping,
+      #   name: String
+      # }
       #   # Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem ...
       # end
       # ```
@@ -780,9 +796,7 @@ module Orb
           #
           #   @return [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::Grouping, nil]
           required :grouping,
-                   -> {
-                     Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::Grouping
-                   },
+                   -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::Grouping },
                    nil?: true
 
           # @!attribute matrix_config
