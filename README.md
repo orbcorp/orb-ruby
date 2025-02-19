@@ -1,6 +1,6 @@
 # Orb Ruby API library
 
-The Orb Ruby library provides convenient access to the Orb REST API from any Ruby 3.0+
+The Orb Ruby library provides convenient access to the Orb REST API from any Ruby 3.0.0+
 application.
 
 ## Documentation
