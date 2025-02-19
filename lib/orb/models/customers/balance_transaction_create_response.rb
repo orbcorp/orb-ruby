@@ -61,11 +61,7 @@ module Orb
         # @!attribute invoice
         #
         #   @return [Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice, nil]
-        required :invoice,
-                 -> {
-                   Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice
-                 },
-                 nil?: true
+        required :invoice, -> { Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice }, nil?: true
 
         # @!attribute starting_balance
         #   The original value of the customer's balance prior to the transaction, in the

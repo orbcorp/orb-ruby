@@ -40,7 +40,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::Customer::BillingAddress)).returns(T.nilable(Orb::Models::Customer::BillingAddress))
+        params(_: T.nilable(Orb::Models::Customer::BillingAddress))
+          .returns(T.nilable(Orb::Models::Customer::BillingAddress))
       end
       def billing_address=(_)
       end
@@ -138,7 +139,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::Customer::ShippingAddress)).returns(T.nilable(Orb::Models::Customer::ShippingAddress))
+        params(_: T.nilable(Orb::Models::Customer::ShippingAddress))
+          .returns(T.nilable(Orb::Models::Customer::ShippingAddress))
       end
       def shipping_address=(_)
       end
@@ -147,9 +149,7 @@ module Orb
       def tax_id
       end
 
-      sig do
-        params(_: T.nilable(Orb::Models::Customer::TaxID)).returns(T.nilable(Orb::Models::Customer::TaxID))
-      end
+      sig { params(_: T.nilable(Orb::Models::Customer::TaxID)).returns(T.nilable(Orb::Models::Customer::TaxID)) }
       def tax_id=(_)
       end
 
@@ -166,7 +166,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::Customer::AccountingSyncConfiguration)).returns(T.nilable(Orb::Models::Customer::AccountingSyncConfiguration))
+        params(_: T.nilable(Orb::Models::Customer::AccountingSyncConfiguration))
+          .returns(T.nilable(Orb::Models::Customer::AccountingSyncConfiguration))
       end
       def accounting_sync_configuration=(_)
       end
@@ -176,7 +177,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::Customer::ReportingConfiguration)).returns(T.nilable(Orb::Models::Customer::ReportingConfiguration))
+        params(_: T.nilable(Orb::Models::Customer::ReportingConfiguration))
+          .returns(T.nilable(Orb::Models::Customer::ReportingConfiguration))
       end
       def reporting_configuration=(_)
       end
@@ -204,7 +206,8 @@ module Orb
           timezone: String,
           accounting_sync_configuration: T.nilable(Orb::Models::Customer::AccountingSyncConfiguration),
           reporting_configuration: T.nilable(Orb::Models::Customer::ReportingConfiguration)
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -232,31 +235,32 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            additional_emails: T::Array[String],
-            auto_collection: T::Boolean,
-            balance: String,
-            billing_address: T.nilable(Orb::Models::Customer::BillingAddress),
-            created_at: Time,
-            currency: T.nilable(String),
-            email: String,
-            email_delivery: T::Boolean,
-            exempt_from_automated_tax: T.nilable(T::Boolean),
-            external_customer_id: T.nilable(String),
-            metadata: T::Hash[Symbol, String],
-            name: String,
-            payment_provider: T.nilable(Symbol),
-            payment_provider_id: T.nilable(String),
-            portal_url: T.nilable(String),
-            shipping_address: T.nilable(Orb::Models::Customer::ShippingAddress),
-            tax_id: T.nilable(Orb::Models::Customer::TaxID),
-            timezone: String,
-            accounting_sync_configuration: T.nilable(Orb::Models::Customer::AccountingSyncConfiguration),
-            reporting_configuration: T.nilable(Orb::Models::Customer::ReportingConfiguration)
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              additional_emails: T::Array[String],
+              auto_collection: T::Boolean,
+              balance: String,
+              billing_address: T.nilable(Orb::Models::Customer::BillingAddress),
+              created_at: Time,
+              currency: T.nilable(String),
+              email: String,
+              email_delivery: T::Boolean,
+              exempt_from_automated_tax: T.nilable(T::Boolean),
+              external_customer_id: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              name: String,
+              payment_provider: T.nilable(Symbol),
+              payment_provider_id: T.nilable(String),
+              portal_url: T.nilable(String),
+              shipping_address: T.nilable(Orb::Models::Customer::ShippingAddress),
+              tax_id: T.nilable(Orb::Models::Customer::TaxID),
+              timezone: String,
+              accounting_sync_configuration: T.nilable(Orb::Models::Customer::AccountingSyncConfiguration),
+              reporting_configuration: T.nilable(Orb::Models::Customer::ReportingConfiguration)
+            }
+          )
       end
       def to_hash
       end
@@ -318,22 +322,24 @@ module Orb
             line2: T.nilable(String),
             postal_code: T.nilable(String),
             state: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(city:, country:, line1:, line2:, postal_code:, state:)
         end
 
         sig do
-          override.returns(
-            {
-              city: T.nilable(String),
-              country: T.nilable(String),
-              line1: T.nilable(String),
-              line2: T.nilable(String),
-              postal_code: T.nilable(String),
-              state: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                city: T.nilable(String),
+                country: T.nilable(String),
+                line1: T.nilable(String),
+                line2: T.nilable(String),
+                postal_code: T.nilable(String),
+                state: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end
@@ -410,22 +416,24 @@ module Orb
             line2: T.nilable(String),
             postal_code: T.nilable(String),
             state: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(city:, country:, line1:, line2:, postal_code:, state:)
         end
 
         sig do
-          override.returns(
-            {
-              city: T.nilable(String),
-              country: T.nilable(String),
-              line1: T.nilable(String),
-              line2: T.nilable(String),
-              postal_code: T.nilable(String),
-              state: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                city: T.nilable(String),
+                country: T.nilable(String),
+                line1: T.nilable(String),
+                line2: T.nilable(String),
+                postal_code: T.nilable(String),
+                state: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end
@@ -638,7 +646,8 @@ module Orb
         end
 
         sig do
-          params(_: T::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider]).returns(T::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider])
+          params(_: T::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider])
+            .returns(T::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider])
         end
         def accounting_providers=(_)
         end
@@ -655,17 +664,20 @@ module Orb
           params(
             accounting_providers: T::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider],
             excluded: T::Boolean
-          ).void
+          )
+            .void
         end
         def initialize(accounting_providers:, excluded:)
         end
 
         sig do
-          override.returns(
-            {
-              accounting_providers: T::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider], excluded: T::Boolean
-            }
-          )
+          override
+            .returns(
+              {
+                accounting_providers: T::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider],
+                excluded: T::Boolean
+              }
+            )
         end
         def to_hash
         end

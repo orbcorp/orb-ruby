@@ -46,21 +46,23 @@ module Orb
             include_all_blocks: T::Boolean,
             limit: Integer,
             request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(currency: nil, cursor: nil, include_all_blocks: nil, limit: nil, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              currency: T.nilable(String),
-              cursor: T.nilable(String),
-              include_all_blocks: T::Boolean,
-              limit: Integer,
-              request_options: Orb::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                currency: T.nilable(String),
+                cursor: T.nilable(String),
+                include_all_blocks: T::Boolean,
+                limit: Integer,
+                request_options: Orb::RequestOptions
+              }
+            )
         end
         def to_hash
         end

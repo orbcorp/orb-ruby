@@ -20,7 +20,8 @@ module Orb
             include_all_blocks: T::Boolean,
             limit: Integer,
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Orb::Page[Orb::Models::Customers::CreditListResponse])
+          )
+            .returns(Orb::Page[Orb::Models::Customers::CreditListResponse])
         end
         def list(
           customer_id,
@@ -40,7 +41,8 @@ module Orb
             include_all_blocks: T::Boolean,
             limit: Integer,
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Orb::Page[Orb::Models::Customers::CreditListByExternalIDResponse])
+          )
+            .returns(Orb::Page[Orb::Models::Customers::CreditListByExternalIDResponse])
         end
         def list_by_external_id(
           external_customer_id,

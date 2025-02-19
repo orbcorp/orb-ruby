@@ -330,15 +330,40 @@ module Orb
         # @example
         # ```ruby
         # case adjustment
-        # in {adjustment_type: "usage_discount", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+        # in {
+        #   adjustment_type: "usage_discount",
+        #   id: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   is_invoice_level: Orb::BooleanModel
+        # }
         #   # Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment ...
-        # in {adjustment_type: "amount_discount", id: String, amount_discount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
+        # in {
+        #   adjustment_type: "amount_discount",
+        #   id: String,
+        #   amount_discount: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }
+        # }
         #   # Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment ...
-        # in {adjustment_type: "percentage_discount", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+        # in {
+        #   adjustment_type: "percentage_discount",
+        #   id: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   is_invoice_level: Orb::BooleanModel
+        # }
         #   # Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment ...
-        # in {adjustment_type: "minimum", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+        # in {
+        #   adjustment_type: "minimum",
+        #   id: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   is_invoice_level: Orb::BooleanModel
+        # }
         #   # Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment ...
-        # in {adjustment_type: "maximum", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+        # in {
+        #   adjustment_type: "maximum",
+        #   id: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   is_invoice_level: Orb::BooleanModel
+        # }
         #   # Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment ...
         # end
         # ```
@@ -829,11 +854,26 @@ module Orb
       # @example
       # ```ruby
       # case discount_interval
-      # in {discount_type: "amount", amount_discount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 }}
+      # in {
+      #   discount_type: "amount",
+      #   amount_discount: String,
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 }
+      # }
       #   # Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval ...
-      # in {discount_type: "percentage", applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 }, end_date: Time}
+      # in {
+      #   discount_type: "percentage",
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   end_date: Time
+      # }
       #   # Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval ...
-      # in {discount_type: "usage", applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 }, end_date: Time}
+      # in {
+      #   discount_type: "usage",
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   end_date: Time
+      # }
       #   # Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval ...
       # end
       # ```

@@ -18,7 +18,8 @@ module Orb
         params(
           subscription_id: String,
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(subscription_id:, request_options: {})
       end

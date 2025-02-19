@@ -15,13 +15,7 @@ module Orb
       #
       def create(params)
         parsed, options = Orb::Models::ItemCreateParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: "items",
-          body: parsed,
-          model: Orb::Models::Item,
-          options: options
-        )
+        @client.request(method: :post, path: "items", body: parsed, model: Orb::Models::Item, options: options)
       end
 
       # This endpoint can be used to update properties on the Item.

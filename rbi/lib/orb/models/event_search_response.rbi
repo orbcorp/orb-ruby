@@ -8,7 +8,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::EventSearchResponse::Data]).returns(T::Array[Orb::Models::EventSearchResponse::Data])
+        params(_: T::Array[Orb::Models::EventSearchResponse::Data])
+          .returns(T::Array[Orb::Models::EventSearchResponse::Data])
       end
       def data=(_)
       end
@@ -87,7 +88,8 @@ module Orb
             external_customer_id: T.nilable(String),
             properties: T.anything,
             timestamp: Time
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -101,17 +103,18 @@ module Orb
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              customer_id: T.nilable(String),
-              deprecated: T::Boolean,
-              event_name: String,
-              external_customer_id: T.nilable(String),
-              properties: T.anything,
-              timestamp: Time
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                customer_id: T.nilable(String),
+                deprecated: T::Boolean,
+                event_name: String,
+                external_customer_id: T.nilable(String),
+                properties: T.anything,
+                timestamp: Time
+              }
+            )
         end
         def to_hash
         end

@@ -11,7 +11,8 @@ module Orb
         end
 
         sig do
-          params(_: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]).returns(T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data])
+          params(_: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data])
+            .returns(T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data])
         end
         def data=(_)
         end
@@ -20,9 +21,7 @@ module Orb
         def initialize(data:)
         end
 
-        sig do
-          override.returns({data: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]})
-        end
+        sig { override.returns({data: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]}) }
         def to_hash
         end
 
@@ -32,7 +31,8 @@ module Orb
           end
 
           sig do
-            params(_: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric).returns(Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric)
+            params(_: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric)
+              .returns(Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric)
           end
           def billable_metric=(_)
           end
@@ -42,7 +42,8 @@ module Orb
           end
 
           sig do
-            params(_: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage]).returns(T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage])
+            params(_: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage])
+              .returns(T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage])
           end
           def usage=(_)
           end
@@ -60,17 +61,21 @@ module Orb
               billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric,
               usage: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage],
               view_mode: Symbol
-            ).void
+            )
+              .void
           end
           def initialize(billable_metric:, usage:, view_mode:)
           end
 
           sig do
-            override.returns(
-              {
-                billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric, usage: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage], view_mode: Symbol
-              }
-            )
+            override
+              .returns(
+                {
+                  billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric,
+                  usage: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage],
+                  view_mode: Symbol
+                }
+              )
           end
           def to_hash
           end
@@ -154,7 +159,8 @@ module Orb
         end
 
         sig do
-          params(_: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data]).returns(T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data])
+          params(_: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data])
+            .returns(T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data])
         end
         def data=(_)
         end
@@ -163,9 +169,7 @@ module Orb
         def pagination_metadata
         end
 
-        sig do
-          params(_: T.nilable(Orb::Models::PaginationMetadata)).returns(T.nilable(Orb::Models::PaginationMetadata))
-        end
+        sig { params(_: T.nilable(Orb::Models::PaginationMetadata)).returns(T.nilable(Orb::Models::PaginationMetadata)) }
         def pagination_metadata=(_)
         end
 
@@ -173,18 +177,20 @@ module Orb
           params(
             data: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data],
             pagination_metadata: T.nilable(Orb::Models::PaginationMetadata)
-          ).void
+          )
+            .void
         end
         def initialize(data:, pagination_metadata: nil)
         end
 
         sig do
-          override.returns(
-            {
-              data: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data],
-              pagination_metadata: T.nilable(Orb::Models::PaginationMetadata)
-            }
-          )
+          override
+            .returns(
+              {
+                data: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data],
+                pagination_metadata: T.nilable(Orb::Models::PaginationMetadata)
+              }
+            )
         end
         def to_hash
         end
@@ -195,7 +201,8 @@ module Orb
           end
 
           sig do
-            params(_: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric).returns(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric)
+            params(_: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric)
+              .returns(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric)
           end
           def billable_metric=(_)
           end
@@ -205,7 +212,8 @@ module Orb
           end
 
           sig do
-            params(_: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup).returns(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup)
+            params(_: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup)
+              .returns(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup)
           end
           def metric_group=(_)
           end
@@ -215,7 +223,8 @@ module Orb
           end
 
           sig do
-            params(_: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage]).returns(T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage])
+            params(_: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage])
+              .returns(T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage])
           end
           def usage=(_)
           end
@@ -234,17 +243,22 @@ module Orb
               metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup,
               usage: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage],
               view_mode: Symbol
-            ).void
+            )
+              .void
           end
           def initialize(billable_metric:, metric_group:, usage:, view_mode:)
           end
 
           sig do
-            override.returns(
-              {
-                billable_metric: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric, metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup, usage: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage], view_mode: Symbol
-              }
-            )
+            override
+              .returns(
+                {
+                  billable_metric: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric,
+                  metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup,
+                  usage: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage],
+                  view_mode: Symbol
+                }
+              )
           end
           def to_hash
           end
@@ -349,12 +363,10 @@ module Orb
       end
 
       sig do
-        override.returns(
-          [
-            [NilClass, Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage],
-            [NilClass, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]
-          ]
-        )
+        override
+          .returns(
+            [[NilClass, Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage], [NilClass, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]]
+          )
       end
       private_class_method def self.variants
       end

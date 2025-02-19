@@ -17,7 +17,8 @@ module Orb
           duration_in_months: T.nilable(Integer),
           max_redemptions: T.nilable(Integer),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Orb::Models::Coupon)
+        )
+          .returns(Orb::Models::Coupon)
       end
       def create(
         discount:,
@@ -35,7 +36,8 @@ module Orb
           redemption_code: T.nilable(String),
           show_archived: T.nilable(T::Boolean),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Orb::Page[Orb::Models::Coupon])
+        )
+          .returns(Orb::Page[Orb::Models::Coupon])
       end
       def list(cursor: nil, limit: nil, redemption_code: nil, show_archived: nil, request_options: {})
       end
@@ -44,7 +46,8 @@ module Orb
         params(
           coupon_id: String,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Orb::Models::Coupon)
+        )
+          .returns(Orb::Models::Coupon)
       end
       def archive(coupon_id, request_options: {})
       end
@@ -53,7 +56,8 @@ module Orb
         params(
           coupon_id: String,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Orb::Models::Coupon)
+        )
+          .returns(Orb::Models::Coupon)
       end
       def fetch(coupon_id, request_options: {})
       end

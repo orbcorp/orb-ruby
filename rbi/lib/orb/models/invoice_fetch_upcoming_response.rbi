@@ -24,7 +24,8 @@ module Orb
       end
 
       sig do
-        params(_: Orb::Models::InvoiceFetchUpcomingResponse::AutoCollection).returns(Orb::Models::InvoiceFetchUpcomingResponse::AutoCollection)
+        params(_: Orb::Models::InvoiceFetchUpcomingResponse::AutoCollection)
+          .returns(Orb::Models::InvoiceFetchUpcomingResponse::AutoCollection)
       end
       def auto_collection=(_)
       end
@@ -34,7 +35,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress))
+        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress))
+          .returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress))
       end
       def billing_address=(_)
       end
@@ -52,7 +54,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CreditNote]).returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CreditNote])
+        params(_: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CreditNote])
+          .returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CreditNote])
       end
       def credit_notes=(_)
       end
@@ -70,7 +73,8 @@ module Orb
       end
 
       sig do
-        params(_: Orb::Models::InvoiceFetchUpcomingResponse::Customer).returns(Orb::Models::InvoiceFetchUpcomingResponse::Customer)
+        params(_: Orb::Models::InvoiceFetchUpcomingResponse::Customer)
+          .returns(Orb::Models::InvoiceFetchUpcomingResponse::Customer)
       end
       def customer=(_)
       end
@@ -80,7 +84,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction]).returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction])
+        params(_: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction])
+          .returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction])
       end
       def customer_balance_transactions=(_)
       end
@@ -90,7 +95,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID))
+        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID))
+          .returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID))
       end
       def customer_tax_id=(_)
       end
@@ -105,11 +111,7 @@ module Orb
 
       sig do
         returns(
-          T::Array[T.any(
-            Orb::Models::PercentageDiscount,
-            Orb::Models::AmountDiscount,
-            Orb::Models::TrialDiscount
-          )]
+          T::Array[T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount)]
         )
       end
       def discounts
@@ -117,16 +119,11 @@ module Orb
 
       sig do
         params(
-          _: T::Array[T.any(
-            Orb::Models::PercentageDiscount,
-            Orb::Models::AmountDiscount,
-            Orb::Models::TrialDiscount
-          )]
-        ).returns(T::Array[T.any(
-          Orb::Models::PercentageDiscount,
-          Orb::Models::AmountDiscount,
-          Orb::Models::TrialDiscount
-        )])
+          _: T::Array[T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount)]
+        )
+          .returns(
+            T::Array[T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount)]
+          )
       end
       def discounts=(_)
       end
@@ -200,7 +197,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem]).returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem])
+        params(_: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem])
+          .returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem])
       end
       def line_items=(_)
       end
@@ -210,7 +208,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Maximum)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Maximum))
+        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Maximum))
+          .returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Maximum))
       end
       def maximum=(_)
       end
@@ -244,7 +243,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Minimum)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Minimum))
+        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Minimum))
+          .returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Minimum))
       end
       def minimum=(_)
       end
@@ -270,7 +270,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt]).returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt])
+        params(_: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt])
+          .returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt])
       end
       def payment_attempts=(_)
       end
@@ -304,7 +305,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress))
+        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress))
+          .returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress))
       end
       def shipping_address=(_)
       end
@@ -322,7 +324,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Subscription)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Subscription))
+        params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Subscription))
+          .returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Subscription))
       end
       def subscription=(_)
       end
@@ -388,11 +391,7 @@ module Orb
           customer_balance_transactions: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction],
           customer_tax_id: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID),
           discount: T.anything,
-          discounts: T::Array[T.any(
-            Orb::Models::PercentageDiscount,
-            Orb::Models::AmountDiscount,
-            Orb::Models::TrialDiscount
-          )],
+          discounts: T::Array[T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount)],
           due_date: T.nilable(Time),
           eligible_to_issue_at: T.nilable(Time),
           hosted_invoice_url: T.nilable(String),
@@ -422,7 +421,8 @@ module Orb
           total: String,
           voided_at: T.nilable(Time),
           will_auto_issue: T::Boolean
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -470,55 +470,52 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            amount_due: String,
-            auto_collection: Orb::Models::InvoiceFetchUpcomingResponse::AutoCollection,
-            billing_address: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress),
-            created_at: Time,
-            credit_notes: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CreditNote],
-            currency: String,
-            customer: Orb::Models::InvoiceFetchUpcomingResponse::Customer,
-            customer_balance_transactions: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction],
-            customer_tax_id: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID),
-            discount: T.anything,
-            discounts: T::Array[T.any(
-              Orb::Models::PercentageDiscount,
-              Orb::Models::AmountDiscount,
-              Orb::Models::TrialDiscount
-            )],
-            due_date: T.nilable(Time),
-            eligible_to_issue_at: T.nilable(Time),
-            hosted_invoice_url: T.nilable(String),
-            invoice_number: String,
-            invoice_pdf: T.nilable(String),
-            invoice_source: Symbol,
-            issue_failed_at: T.nilable(Time),
-            issued_at: T.nilable(Time),
-            line_items: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem],
-            maximum: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Maximum),
-            maximum_amount: T.nilable(String),
-            memo: T.nilable(String),
-            metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Minimum),
-            minimum_amount: T.nilable(String),
-            paid_at: T.nilable(Time),
-            payment_attempts: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt],
-            payment_failed_at: T.nilable(Time),
-            payment_started_at: T.nilable(Time),
-            scheduled_issue_at: T.nilable(Time),
-            shipping_address: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress),
-            status: Symbol,
-            subscription: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Subscription),
-            subtotal: String,
-            sync_failed_at: T.nilable(Time),
-            target_date: Time,
-            total: String,
-            voided_at: T.nilable(Time),
-            will_auto_issue: T::Boolean
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              amount_due: String,
+              auto_collection: Orb::Models::InvoiceFetchUpcomingResponse::AutoCollection,
+              billing_address: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress),
+              created_at: Time,
+              credit_notes: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CreditNote],
+              currency: String,
+              customer: Orb::Models::InvoiceFetchUpcomingResponse::Customer,
+              customer_balance_transactions: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction],
+              customer_tax_id: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID),
+              discount: T.anything,
+              discounts: T::Array[T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount)],
+              due_date: T.nilable(Time),
+              eligible_to_issue_at: T.nilable(Time),
+              hosted_invoice_url: T.nilable(String),
+              invoice_number: String,
+              invoice_pdf: T.nilable(String),
+              invoice_source: Symbol,
+              issue_failed_at: T.nilable(Time),
+              issued_at: T.nilable(Time),
+              line_items: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem],
+              maximum: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Maximum),
+              maximum_amount: T.nilable(String),
+              memo: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Minimum),
+              minimum_amount: T.nilable(String),
+              paid_at: T.nilable(Time),
+              payment_attempts: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt],
+              payment_failed_at: T.nilable(Time),
+              payment_started_at: T.nilable(Time),
+              scheduled_issue_at: T.nilable(Time),
+              shipping_address: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress),
+              status: Symbol,
+              subscription: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::Subscription),
+              subtotal: String,
+              sync_failed_at: T.nilable(Time),
+              target_date: Time,
+              total: String,
+              voided_at: T.nilable(Time),
+              will_auto_issue: T::Boolean
+            }
+          )
       end
       def to_hash
       end
@@ -562,20 +559,22 @@ module Orb
             next_attempt_at: T.nilable(Time),
             num_attempts: T.nilable(Integer),
             previously_attempted_at: T.nilable(Time)
-          ).void
+          )
+            .void
         end
         def initialize(enabled:, next_attempt_at:, num_attempts:, previously_attempted_at:)
         end
 
         sig do
-          override.returns(
-            {
-              enabled: T.nilable(T::Boolean),
-              next_attempt_at: T.nilable(Time),
-              num_attempts: T.nilable(Integer),
-              previously_attempted_at: T.nilable(Time)
-            }
-          )
+          override
+            .returns(
+              {
+                enabled: T.nilable(T::Boolean),
+                next_attempt_at: T.nilable(Time),
+                num_attempts: T.nilable(Integer),
+                previously_attempted_at: T.nilable(Time)
+              }
+            )
         end
         def to_hash
         end
@@ -638,22 +637,24 @@ module Orb
             line2: T.nilable(String),
             postal_code: T.nilable(String),
             state: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(city:, country:, line1:, line2:, postal_code:, state:)
         end
 
         sig do
-          override.returns(
-            {
-              city: T.nilable(String),
-              country: T.nilable(String),
-              line1: T.nilable(String),
-              line2: T.nilable(String),
-              postal_code: T.nilable(String),
-              state: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                city: T.nilable(String),
+                country: T.nilable(String),
+                line1: T.nilable(String),
+                line2: T.nilable(String),
+                postal_code: T.nilable(String),
+                state: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end
@@ -725,23 +726,25 @@ module Orb
             total: String,
             type: String,
             voided_at: T.nilable(Time)
-          ).void
+          )
+            .void
         end
         def initialize(id:, credit_note_number:, memo:, reason:, total:, type:, voided_at:)
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              credit_note_number: String,
-              memo: T.nilable(String),
-              reason: String,
-              total: String,
-              type: String,
-              voided_at: T.nilable(Time)
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                credit_note_number: String,
+                memo: T.nilable(String),
+                reason: String,
+                total: String,
+                type: String,
+                voided_at: T.nilable(Time)
+              }
+            )
         end
         def to_hash
         end
@@ -806,14 +809,13 @@ module Orb
         def created_at=(_)
         end
 
-        sig do
-          returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote))
-        end
+        sig { returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote)) }
         def credit_note
         end
 
         sig do
-          params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote))
+          params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote))
+            .returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote))
         end
         def credit_note=(_)
         end
@@ -834,14 +836,13 @@ module Orb
         def ending_balance=(_)
         end
 
-        sig do
-          returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice))
-        end
+        sig { returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice)) }
         def invoice
         end
 
         sig do
-          params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice))
+          params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice))
+            .returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice))
         end
         def invoice=(_)
         end
@@ -874,7 +875,8 @@ module Orb
             invoice: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice),
             starting_balance: String,
             type: Symbol
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -891,20 +893,21 @@ module Orb
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              action: Symbol,
-              amount: String,
-              created_at: Time,
-              credit_note: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote),
-              description: T.nilable(String),
-              ending_balance: String,
-              invoice: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice),
-              starting_balance: String,
-              type: Symbol
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                action: Symbol,
+                amount: String,
+                created_at: Time,
+                credit_note: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote),
+                description: T.nilable(String),
+                ending_balance: String,
+                invoice: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice),
+                starting_balance: String,
+                type: Symbol
+              }
+            )
         end
         def to_hash
         end
@@ -1207,9 +1210,15 @@ module Orb
 
         sig do
           returns(
-            T::Array[T.any(
-              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment
-            )]
+            T::Array[
+            T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment,
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment,
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment,
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment,
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment
+            )
+            ]
           )
         end
         def adjustments
@@ -1217,12 +1226,27 @@ module Orb
 
         sig do
           params(
-            _: T::Array[T.any(
-              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment
-            )]
-          ).returns(T::Array[T.any(
-            Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment
-          )])
+            _: T::Array[
+            T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment,
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment,
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment,
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment,
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment
+            )
+            ]
+          )
+            .returns(
+              T::Array[
+              T.any(
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment,
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment,
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment,
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment,
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment
+              )
+              ]
+            )
         end
         def adjustments=(_)
         end
@@ -1268,14 +1292,17 @@ module Orb
                 Orb::Models::AmountDiscount
               )
             )
-          ).returns(T.nilable(
-                      T.any(
-                        Orb::Models::PercentageDiscount,
-                        Orb::Models::TrialDiscount,
-                        Orb::Models::Discount::UsageDiscount,
-                        Orb::Models::AmountDiscount
-                      )
-                    ))
+          )
+            .returns(
+              T.nilable(
+                T.any(
+                  Orb::Models::PercentageDiscount,
+                  Orb::Models::TrialDiscount,
+                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::AmountDiscount
+                )
+              )
+            )
         end
         def discount=(_)
         end
@@ -1301,7 +1328,8 @@ module Orb
         end
 
         sig do
-          params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum))
+          params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum))
+            .returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum))
         end
         def maximum=(_)
         end
@@ -1319,7 +1347,8 @@ module Orb
         end
 
         sig do
-          params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum)).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum))
+          params(_: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum))
+            .returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum))
         end
         def minimum=(_)
         end
@@ -1421,38 +1450,41 @@ module Orb
                 Orb::Models::Price::CumulativeGroupedBulkPrice
               )
             )
-          ).returns(T.nilable(
-                      T.any(
-                        Orb::Models::Price::UnitPrice,
-                        Orb::Models::Price::PackagePrice,
-                        Orb::Models::Price::MatrixPrice,
-                        Orb::Models::Price::TieredPrice,
-                        Orb::Models::Price::TieredBpsPrice,
-                        Orb::Models::Price::BpsPrice,
-                        Orb::Models::Price::BulkBpsPrice,
-                        Orb::Models::Price::BulkPrice,
-                        Orb::Models::Price::ThresholdTotalAmountPrice,
-                        Orb::Models::Price::TieredPackagePrice,
-                        Orb::Models::Price::GroupedTieredPrice,
-                        Orb::Models::Price::TieredWithMinimumPrice,
-                        Orb::Models::Price::TieredPackageWithMinimumPrice,
-                        Orb::Models::Price::PackageWithAllocationPrice,
-                        Orb::Models::Price::UnitWithPercentPrice,
-                        Orb::Models::Price::MatrixWithAllocationPrice,
-                        Orb::Models::Price::TieredWithProrationPrice,
-                        Orb::Models::Price::UnitWithProrationPrice,
-                        Orb::Models::Price::GroupedAllocationPrice,
-                        Orb::Models::Price::GroupedWithProratedMinimumPrice,
-                        Orb::Models::Price::GroupedWithMeteredMinimumPrice,
-                        Orb::Models::Price::MatrixWithDisplayNamePrice,
-                        Orb::Models::Price::BulkWithProrationPrice,
-                        Orb::Models::Price::GroupedTieredPackagePrice,
-                        Orb::Models::Price::MaxGroupTieredPackagePrice,
-                        Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                        Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
-                        Orb::Models::Price::CumulativeGroupedBulkPrice
-                      )
-                    ))
+          )
+            .returns(
+              T.nilable(
+                T.any(
+                  Orb::Models::Price::UnitPrice,
+                  Orb::Models::Price::PackagePrice,
+                  Orb::Models::Price::MatrixPrice,
+                  Orb::Models::Price::TieredPrice,
+                  Orb::Models::Price::TieredBpsPrice,
+                  Orb::Models::Price::BpsPrice,
+                  Orb::Models::Price::BulkBpsPrice,
+                  Orb::Models::Price::BulkPrice,
+                  Orb::Models::Price::ThresholdTotalAmountPrice,
+                  Orb::Models::Price::TieredPackagePrice,
+                  Orb::Models::Price::GroupedTieredPrice,
+                  Orb::Models::Price::TieredWithMinimumPrice,
+                  Orb::Models::Price::TieredPackageWithMinimumPrice,
+                  Orb::Models::Price::PackageWithAllocationPrice,
+                  Orb::Models::Price::UnitWithPercentPrice,
+                  Orb::Models::Price::MatrixWithAllocationPrice,
+                  Orb::Models::Price::TieredWithProrationPrice,
+                  Orb::Models::Price::UnitWithProrationPrice,
+                  Orb::Models::Price::GroupedAllocationPrice,
+                  Orb::Models::Price::GroupedWithProratedMinimumPrice,
+                  Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+                  Orb::Models::Price::MatrixWithDisplayNamePrice,
+                  Orb::Models::Price::BulkWithProrationPrice,
+                  Orb::Models::Price::GroupedTieredPackagePrice,
+                  Orb::Models::Price::MaxGroupTieredPackagePrice,
+                  Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+                  Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                  Orb::Models::Price::CumulativeGroupedBulkPrice
+                )
+              )
+            )
         end
         def price=(_)
         end
@@ -1475,11 +1507,13 @@ module Orb
 
         sig do
           returns(
-            T::Array[T.any(
+            T::Array[
+            T.any(
               Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem,
               Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem,
               Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem
-            )]
+            )
+            ]
           )
         end
         def sub_line_items
@@ -1487,12 +1521,23 @@ module Orb
 
         sig do
           params(
-            _: T::Array[T.any(
-              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem
-            )]
-          ).returns(T::Array[T.any(
-            Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem
-          )])
+            _: T::Array[
+            T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem,
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem,
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem
+            )
+            ]
+          )
+            .returns(
+              T::Array[
+              T.any(
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem,
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem,
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem
+              )
+              ]
+            )
         end
         def sub_line_items=(_)
         end
@@ -1510,7 +1555,8 @@ module Orb
         end
 
         sig do
-          params(_: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount]).returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount])
+          params(_: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount])
+            .returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount])
         end
         def tax_amounts=(_)
         end
@@ -1519,9 +1565,15 @@ module Orb
           params(
             id: String,
             adjusted_subtotal: String,
-            adjustments: T::Array[T.any(
-              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment
-            )],
+            adjustments: T::Array[
+            T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment,
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment,
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment,
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment,
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment
+            )
+            ],
             amount: String,
             credits_applied: String,
             discount: T.nilable(
@@ -1574,12 +1626,17 @@ module Orb
             ),
             quantity: Float,
             start_date: Time,
-            sub_line_items: T::Array[T.any(
-              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem
-            )],
+            sub_line_items: T::Array[
+            T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem,
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem,
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem
+            )
+            ],
             subtotal: String,
             tax_amounts: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount]
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -1606,72 +1663,83 @@ module Orb
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              adjusted_subtotal: String,
-              adjustments: T::Array[T.any(
-                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment
-              )],
-              amount: String,
-              credits_applied: String,
-              discount: T.nilable(
+          override
+            .returns(
+              {
+                id: String,
+                adjusted_subtotal: String,
+                adjustments: T::Array[
                 T.any(
-                  Orb::Models::PercentageDiscount,
-                  Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
-                  Orb::Models::AmountDiscount
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment
                 )
-              ),
-              end_date: Time,
-              grouping: T.nilable(String),
-              maximum: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum),
-              maximum_amount: T.nilable(String),
-              minimum: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum),
-              minimum_amount: T.nilable(String),
-              name: String,
-              partially_invoiced_amount: String,
-              price: T.nilable(
+                ],
+                amount: String,
+                credits_applied: String,
+                discount: T.nilable(
+                  T.any(
+                    Orb::Models::PercentageDiscount,
+                    Orb::Models::TrialDiscount,
+                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::AmountDiscount
+                  )
+                ),
+                end_date: Time,
+                grouping: T.nilable(String),
+                maximum: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum),
+                maximum_amount: T.nilable(String),
+                minimum: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum),
+                minimum_amount: T.nilable(String),
+                name: String,
+                partially_invoiced_amount: String,
+                price: T.nilable(
+                  T.any(
+                    Orb::Models::Price::UnitPrice,
+                    Orb::Models::Price::PackagePrice,
+                    Orb::Models::Price::MatrixPrice,
+                    Orb::Models::Price::TieredPrice,
+                    Orb::Models::Price::TieredBpsPrice,
+                    Orb::Models::Price::BpsPrice,
+                    Orb::Models::Price::BulkBpsPrice,
+                    Orb::Models::Price::BulkPrice,
+                    Orb::Models::Price::ThresholdTotalAmountPrice,
+                    Orb::Models::Price::TieredPackagePrice,
+                    Orb::Models::Price::GroupedTieredPrice,
+                    Orb::Models::Price::TieredWithMinimumPrice,
+                    Orb::Models::Price::TieredPackageWithMinimumPrice,
+                    Orb::Models::Price::PackageWithAllocationPrice,
+                    Orb::Models::Price::UnitWithPercentPrice,
+                    Orb::Models::Price::MatrixWithAllocationPrice,
+                    Orb::Models::Price::TieredWithProrationPrice,
+                    Orb::Models::Price::UnitWithProrationPrice,
+                    Orb::Models::Price::GroupedAllocationPrice,
+                    Orb::Models::Price::GroupedWithProratedMinimumPrice,
+                    Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+                    Orb::Models::Price::MatrixWithDisplayNamePrice,
+                    Orb::Models::Price::BulkWithProrationPrice,
+                    Orb::Models::Price::GroupedTieredPackagePrice,
+                    Orb::Models::Price::MaxGroupTieredPackagePrice,
+                    Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+                    Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                    Orb::Models::Price::CumulativeGroupedBulkPrice
+                  )
+                ),
+                quantity: Float,
+                start_date: Time,
+                sub_line_items: T::Array[
                 T.any(
-                  Orb::Models::Price::UnitPrice,
-                  Orb::Models::Price::PackagePrice,
-                  Orb::Models::Price::MatrixPrice,
-                  Orb::Models::Price::TieredPrice,
-                  Orb::Models::Price::TieredBpsPrice,
-                  Orb::Models::Price::BpsPrice,
-                  Orb::Models::Price::BulkBpsPrice,
-                  Orb::Models::Price::BulkPrice,
-                  Orb::Models::Price::ThresholdTotalAmountPrice,
-                  Orb::Models::Price::TieredPackagePrice,
-                  Orb::Models::Price::GroupedTieredPrice,
-                  Orb::Models::Price::TieredWithMinimumPrice,
-                  Orb::Models::Price::TieredPackageWithMinimumPrice,
-                  Orb::Models::Price::PackageWithAllocationPrice,
-                  Orb::Models::Price::UnitWithPercentPrice,
-                  Orb::Models::Price::MatrixWithAllocationPrice,
-                  Orb::Models::Price::TieredWithProrationPrice,
-                  Orb::Models::Price::UnitWithProrationPrice,
-                  Orb::Models::Price::GroupedAllocationPrice,
-                  Orb::Models::Price::GroupedWithProratedMinimumPrice,
-                  Orb::Models::Price::GroupedWithMeteredMinimumPrice,
-                  Orb::Models::Price::MatrixWithDisplayNamePrice,
-                  Orb::Models::Price::BulkWithProrationPrice,
-                  Orb::Models::Price::GroupedTieredPackagePrice,
-                  Orb::Models::Price::MaxGroupTieredPackagePrice,
-                  Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                  Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
-                  Orb::Models::Price::CumulativeGroupedBulkPrice
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem
                 )
-              ),
-              quantity: Float,
-              start_date: Time,
-              sub_line_items: T::Array[T.any(
-                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem
-              )],
-              subtotal: String,
-              tax_amounts: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount]
-            }
-          )
+                ],
+                subtotal: String,
+                tax_amounts: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount]
+              }
+            )
         end
         def to_hash
         end
@@ -1745,7 +1813,8 @@ module Orb
                 reason: T.nilable(String),
                 usage_discount: Float,
                 adjustment_type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(
               id:,
@@ -1759,17 +1828,18 @@ module Orb
             end
 
             sig do
-              override.returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  amount: String,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  reason: T.nilable(String),
-                  usage_discount: Float
-                }
-              )
+              override
+                .returns(
+                  {
+                    id: String,
+                    adjustment_type: Symbol,
+                    amount: String,
+                    applies_to_price_ids: T::Array[String],
+                    is_invoice_level: T::Boolean,
+                    reason: T.nilable(String),
+                    usage_discount: Float
+                  }
+                )
             end
             def to_hash
             end
@@ -1841,7 +1911,8 @@ module Orb
                 is_invoice_level: T::Boolean,
                 reason: T.nilable(String),
                 adjustment_type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(
               id:,
@@ -1855,17 +1926,18 @@ module Orb
             end
 
             sig do
-              override.returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  amount: String,
-                  amount_discount: String,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  reason: T.nilable(String)
-                }
-              )
+              override
+                .returns(
+                  {
+                    id: String,
+                    adjustment_type: Symbol,
+                    amount: String,
+                    amount_discount: String,
+                    applies_to_price_ids: T::Array[String],
+                    is_invoice_level: T::Boolean,
+                    reason: T.nilable(String)
+                  }
+                )
             end
             def to_hash
             end
@@ -1937,7 +2009,8 @@ module Orb
                 percentage_discount: Float,
                 reason: T.nilable(String),
                 adjustment_type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(
               id:,
@@ -1951,17 +2024,18 @@ module Orb
             end
 
             sig do
-              override.returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  amount: String,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  percentage_discount: Float,
-                  reason: T.nilable(String)
-                }
-              )
+              override
+                .returns(
+                  {
+                    id: String,
+                    adjustment_type: Symbol,
+                    amount: String,
+                    applies_to_price_ids: T::Array[String],
+                    is_invoice_level: T::Boolean,
+                    percentage_discount: Float,
+                    reason: T.nilable(String)
+                  }
+                )
             end
             def to_hash
             end
@@ -2042,7 +2116,8 @@ module Orb
                 minimum_amount: String,
                 reason: T.nilable(String),
                 adjustment_type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(
               id:,
@@ -2057,18 +2132,19 @@ module Orb
             end
 
             sig do
-              override.returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  amount: String,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  item_id: String,
-                  minimum_amount: String,
-                  reason: T.nilable(String)
-                }
-              )
+              override
+                .returns(
+                  {
+                    id: String,
+                    adjustment_type: Symbol,
+                    amount: String,
+                    applies_to_price_ids: T::Array[String],
+                    is_invoice_level: T::Boolean,
+                    item_id: String,
+                    minimum_amount: String,
+                    reason: T.nilable(String)
+                  }
+                )
             end
             def to_hash
             end
@@ -2140,7 +2216,8 @@ module Orb
                 maximum_amount: String,
                 reason: T.nilable(String),
                 adjustment_type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(
               id:,
@@ -2154,47 +2231,28 @@ module Orb
             end
 
             sig do
-              override.returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  amount: String,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  maximum_amount: String,
-                  reason: T.nilable(String)
-                }
-              )
+              override
+                .returns(
+                  {
+                    id: String,
+                    adjustment_type: Symbol,
+                    amount: String,
+                    applies_to_price_ids: T::Array[String],
+                    is_invoice_level: T::Boolean,
+                    maximum_amount: String,
+                    reason: T.nilable(String)
+                  }
+                )
             end
             def to_hash
             end
           end
 
           sig do
-            override.returns(
-              [
-                [
-                  Symbol,
-                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment
-                ],
-                [
-                  Symbol,
-                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment
-                ],
-                [
-                  Symbol,
-                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment
-                ],
-                [
-                  Symbol,
-                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment
-                ],
-                [
-                  Symbol,
-                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment
-                ]
-              ]
-            )
+            override
+              .returns(
+                [[Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment], [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment], [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment], [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment], [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment]]
+              )
           end
           private_class_method def self.variants
           end
@@ -2265,7 +2323,9 @@ module Orb
             end
 
             sig do
-              returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping))
+              returns(
+                T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping)
+              )
             end
             def grouping
             end
@@ -2273,21 +2333,23 @@ module Orb
             sig do
               params(
                 _: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping)
-              ).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping))
+              )
+                .returns(
+                  T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping)
+                )
             end
             def grouping=(_)
             end
 
-            sig do
-              returns(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig)
-            end
+            sig { returns(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig) }
             def matrix_config
             end
 
             sig do
               params(
                 _: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig
-              ).returns(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig)
+              )
+                .returns(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig)
             end
             def matrix_config=(_)
             end
@@ -2324,22 +2386,24 @@ module Orb
                 name: String,
                 quantity: Float,
                 type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(amount:, grouping:, matrix_config:, name:, quantity:, type: :matrix)
             end
 
             sig do
-              override.returns(
-                {
-                  amount: String,
-                  grouping: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping),
-                  matrix_config: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig,
-                  name: String,
-                  quantity: Float,
-                  type: Symbol
-                }
-              )
+              override
+                .returns(
+                  {
+                    amount: String,
+                    grouping: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping),
+                    matrix_config: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig,
+                    name: String,
+                    quantity: Float,
+                    type: Symbol
+                  }
+                )
             end
             def to_hash
             end
@@ -2399,7 +2463,9 @@ module Orb
             end
 
             sig do
-              returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping))
+              returns(
+                T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping)
+              )
             end
             def grouping
             end
@@ -2407,7 +2473,10 @@ module Orb
             sig do
               params(
                 _: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping)
-              ).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping))
+              )
+                .returns(
+                  T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping)
+                )
             end
             def grouping=(_)
             end
@@ -2428,14 +2497,13 @@ module Orb
             def quantity=(_)
             end
 
-            sig do
-              returns(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::TierConfig)
-            end
+            sig { returns(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::TierConfig) }
             def tier_config
             end
 
             sig do
-              params(_: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::TierConfig).returns(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::TierConfig)
+              params(_: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::TierConfig)
+                .returns(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::TierConfig)
             end
             def tier_config=(_)
             end
@@ -2456,22 +2524,24 @@ module Orb
                 quantity: Float,
                 tier_config: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::TierConfig,
                 type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(amount:, grouping:, name:, quantity:, tier_config:, type: :tier)
             end
 
             sig do
-              override.returns(
-                {
-                  amount: String,
-                  grouping: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping),
-                  name: String,
-                  quantity: Float,
-                  tier_config: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::TierConfig,
-                  type: Symbol
-                }
-              )
+              override
+                .returns(
+                  {
+                    amount: String,
+                    grouping: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping),
+                    name: String,
+                    quantity: Float,
+                    tier_config: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::TierConfig,
+                    type: Symbol
+                  }
+                )
             end
             def to_hash
             end
@@ -2547,7 +2617,9 @@ module Orb
             end
 
             sig do
-              returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping))
+              returns(
+                T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping)
+              )
             end
             def grouping
             end
@@ -2555,7 +2627,10 @@ module Orb
             sig do
               params(
                 _: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping)
-              ).returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping))
+              )
+                .returns(
+                  T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping)
+                )
             end
             def grouping=(_)
             end
@@ -2591,21 +2666,23 @@ module Orb
                 name: String,
                 quantity: Float,
                 type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(amount:, grouping:, name:, quantity:, type: :"'null'")
             end
 
             sig do
-              override.returns(
-                {
-                  amount: String,
-                  grouping: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping),
-                  name: String,
-                  quantity: Float,
-                  type: Symbol
-                }
-              )
+              override
+                .returns(
+                  {
+                    amount: String,
+                    grouping: T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping),
+                    name: String,
+                    quantity: Float,
+                    type: Symbol
+                  }
+                )
             end
             def to_hash
             end
@@ -2638,16 +2715,10 @@ module Orb
           end
 
           sig do
-            override.returns(
-              [
-                [
-                  Symbol,
-                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem
-                ],
-                [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem],
-                [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem]
-              ]
-            )
+            override
+              .returns(
+                [[Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem], [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem], [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem]]
+              )
           end
           private_class_method def self.variants
           end
@@ -2807,22 +2878,24 @@ module Orb
             payment_provider: T.nilable(Symbol),
             payment_provider_id: T.nilable(String),
             succeeded: T::Boolean
-          ).void
+          )
+            .void
         end
         def initialize(id:, amount:, created_at:, payment_provider:, payment_provider_id:, succeeded:)
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              amount: String,
-              created_at: Time,
-              payment_provider: T.nilable(Symbol),
-              payment_provider_id: T.nilable(String),
-              succeeded: T::Boolean
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                amount: String,
+                created_at: Time,
+                payment_provider: T.nilable(Symbol),
+                payment_provider_id: T.nilable(String),
+                succeeded: T::Boolean
+              }
+            )
         end
         def to_hash
         end
@@ -2895,22 +2968,24 @@ module Orb
             line2: T.nilable(String),
             postal_code: T.nilable(String),
             state: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(city:, country:, line1:, line2:, postal_code:, state:)
         end
 
         sig do
-          override.returns(
-            {
-              city: T.nilable(String),
-              country: T.nilable(String),
-              line1: T.nilable(String),
-              line2: T.nilable(String),
-              postal_code: T.nilable(String),
-              state: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                city: T.nilable(String),
+                country: T.nilable(String),
+                line1: T.nilable(String),
+                line2: T.nilable(String),
+                postal_code: T.nilable(String),
+                state: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end

@@ -63,23 +63,25 @@ module Orb
           quantity: Float,
           start_date: Date,
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(amount:, end_date:, invoice_id:, name:, quantity:, start_date:, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            amount: String,
-            end_date: Date,
-            invoice_id: String,
-            name: String,
-            quantity: Float,
-            start_date: Date,
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              amount: String,
+              end_date: Date,
+              invoice_id: String,
+              name: String,
+              quantity: Float,
+              start_date: Date,
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end

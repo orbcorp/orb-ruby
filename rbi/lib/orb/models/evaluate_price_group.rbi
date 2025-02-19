@@ -46,13 +46,12 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            amount: String,
-            grouping_values: T::Array[T.any(String, Float, T::Boolean)],
-            quantity: Float
-          }
-        )
+        override
+          .returns({
+                     amount: String,
+                     grouping_values: T::Array[T.any(String, Float, T::Boolean)],
+                     quantity: Float
+                   })
       end
       def to_hash
       end

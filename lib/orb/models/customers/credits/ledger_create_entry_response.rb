@@ -129,9 +129,7 @@ module Orb
             #
             #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::EntryStatus]
             required :entry_status,
-                     enum: -> {
-                       Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::EntryStatus
-                     }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -336,9 +334,7 @@ module Orb
             #
             #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::EntryStatus]
             required :entry_status,
-                     enum: -> {
-                       Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::EntryStatus
-                     }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -564,9 +560,7 @@ module Orb
             #
             #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::EntryStatus]
             required :entry_status,
-                     enum: -> {
-                       Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::EntryStatus
-                     }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -778,9 +772,7 @@ module Orb
             #
             #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::EntryStatus]
             required :entry_status,
-                     enum: -> {
-                       Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::EntryStatus
-                     }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -985,9 +977,7 @@ module Orb
             #
             #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::EntryStatus]
             required :entry_status,
-                     enum: -> {
-                       Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::EntryStatus
-                     }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -1206,9 +1196,7 @@ module Orb
             #
             #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::EntryStatus]
             required :entry_status,
-                     enum: -> {
-                       Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::EntryStatus
-                     }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -1434,9 +1422,7 @@ module Orb
             #
             #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::EntryStatus]
             required :entry_status,
-                     enum: -> {
-                       Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::EntryStatus
-                     }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::EntryStatus }
 
             # @!attribute entry_type
             #

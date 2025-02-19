@@ -66,7 +66,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::CreditNote::MaximumAmountAdjustment)).returns(T.nilable(Orb::Models::CreditNote::MaximumAmountAdjustment))
+        params(_: T.nilable(Orb::Models::CreditNote::MaximumAmountAdjustment))
+          .returns(T.nilable(Orb::Models::CreditNote::MaximumAmountAdjustment))
       end
       def maximum_amount_adjustment=(_)
       end
@@ -155,7 +156,8 @@ module Orb
           type: Symbol,
           voided_at: T.nilable(Time),
           discounts: T::Array[Orb::Models::CreditNote::Discount]
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -178,26 +180,27 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            created_at: Time,
-            credit_note_number: String,
-            credit_note_pdf: T.nilable(String),
-            customer: Orb::Models::CreditNote::Customer,
-            invoice_id: String,
-            line_items: T::Array[Orb::Models::CreditNote::LineItem],
-            maximum_amount_adjustment: T.nilable(Orb::Models::CreditNote::MaximumAmountAdjustment),
-            memo: T.nilable(String),
-            minimum_amount_refunded: T.nilable(String),
-            reason: T.nilable(Symbol),
-            subtotal: String,
-            total: String,
-            type: Symbol,
-            voided_at: T.nilable(Time),
-            discounts: T::Array[Orb::Models::CreditNote::Discount]
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              created_at: Time,
+              credit_note_number: String,
+              credit_note_pdf: T.nilable(String),
+              customer: Orb::Models::CreditNote::Customer,
+              invoice_id: String,
+              line_items: T::Array[Orb::Models::CreditNote::LineItem],
+              maximum_amount_adjustment: T.nilable(Orb::Models::CreditNote::MaximumAmountAdjustment),
+              memo: T.nilable(String),
+              minimum_amount_refunded: T.nilable(String),
+              reason: T.nilable(Symbol),
+              subtotal: String,
+              total: String,
+              type: Symbol,
+              voided_at: T.nilable(Time),
+              discounts: T::Array[Orb::Models::CreditNote::Discount]
+            }
+          )
       end
       def to_hash
       end
@@ -274,7 +277,8 @@ module Orb
         end
 
         sig do
-          params(_: T::Array[Orb::Models::CreditNote::LineItem::TaxAmount]).returns(T::Array[Orb::Models::CreditNote::LineItem::TaxAmount])
+          params(_: T::Array[Orb::Models::CreditNote::LineItem::TaxAmount])
+            .returns(T::Array[Orb::Models::CreditNote::LineItem::TaxAmount])
         end
         def tax_amounts=(_)
         end
@@ -284,7 +288,8 @@ module Orb
         end
 
         sig do
-          params(_: T::Array[Orb::Models::CreditNote::LineItem::Discount]).returns(T::Array[Orb::Models::CreditNote::LineItem::Discount])
+          params(_: T::Array[Orb::Models::CreditNote::LineItem::Discount])
+            .returns(T::Array[Orb::Models::CreditNote::LineItem::Discount])
         end
         def discounts=(_)
         end
@@ -298,23 +303,25 @@ module Orb
             subtotal: String,
             tax_amounts: T::Array[Orb::Models::CreditNote::LineItem::TaxAmount],
             discounts: T::Array[Orb::Models::CreditNote::LineItem::Discount]
-          ).void
+          )
+            .void
         end
         def initialize(id:, amount:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil)
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              amount: String,
-              name: String,
-              quantity: T.nilable(Float),
-              subtotal: String,
-              tax_amounts: T::Array[Orb::Models::CreditNote::LineItem::TaxAmount],
-              discounts: T::Array[Orb::Models::CreditNote::LineItem::Discount]
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                amount: String,
+                name: String,
+                quantity: T.nilable(Float),
+                subtotal: String,
+                tax_amounts: T::Array[Orb::Models::CreditNote::LineItem::TaxAmount],
+                discounts: T::Array[Orb::Models::CreditNote::LineItem::Discount]
+              }
+            )
         end
         def to_hash
         end
@@ -429,7 +436,8 @@ module Orb
               percentage_discount: Float,
               amount_discount: T.nilable(String),
               reason: T.nilable(String)
-            ).void
+            )
+              .void
           end
           def initialize(
             id:,
@@ -443,17 +451,18 @@ module Orb
           end
 
           sig do
-            override.returns(
-              {
-                id: String,
-                amount_applied: String,
-                applies_to_price_ids: T::Array[String],
-                discount_type: Symbol,
-                percentage_discount: Float,
-                amount_discount: T.nilable(String),
-                reason: T.nilable(String)
-              }
-            )
+            override
+              .returns(
+                {
+                  id: String,
+                  amount_applied: String,
+                  applies_to_price_ids: T::Array[String],
+                  discount_type: Symbol,
+                  percentage_discount: Float,
+                  amount_discount: T.nilable(String),
+                  reason: T.nilable(String)
+                }
+              )
           end
           def to_hash
           end
@@ -501,7 +510,8 @@ module Orb
         end
 
         sig do
-          params(_: T.nilable(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice])).returns(T.nilable(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice]))
+          params(_: T.nilable(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice]))
+            .returns(T.nilable(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice]))
         end
         def applies_to_prices=(_)
         end
@@ -521,7 +531,8 @@ module Orb
             percentage_discount: Float,
             applies_to_prices: T.nilable(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice]),
             reason: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(
           amount_applied:,
@@ -533,15 +544,16 @@ module Orb
         end
 
         sig do
-          override.returns(
-            {
-              amount_applied: String,
-              discount_type: Symbol,
-              percentage_discount: Float,
-              applies_to_prices: T.nilable(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice]),
-              reason: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                amount_applied: String,
+                discount_type: Symbol,
+                percentage_discount: Float,
+                applies_to_prices: T.nilable(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice]),
+                reason: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end
@@ -637,7 +649,8 @@ module Orb
         end
 
         sig do
-          params(_: T.nilable(T::Array[Orb::Models::CreditNote::Discount::AppliesToPrice])).returns(T.nilable(T::Array[Orb::Models::CreditNote::Discount::AppliesToPrice]))
+          params(_: T.nilable(T::Array[Orb::Models::CreditNote::Discount::AppliesToPrice]))
+            .returns(T.nilable(T::Array[Orb::Models::CreditNote::Discount::AppliesToPrice]))
         end
         def applies_to_prices=(_)
         end
@@ -657,7 +670,8 @@ module Orb
             percentage_discount: Float,
             applies_to_prices: T.nilable(T::Array[Orb::Models::CreditNote::Discount::AppliesToPrice]),
             reason: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(
           amount_applied:,
@@ -669,15 +683,16 @@ module Orb
         end
 
         sig do
-          override.returns(
-            {
-              amount_applied: String,
-              discount_type: Symbol,
-              percentage_discount: Float,
-              applies_to_prices: T.nilable(T::Array[Orb::Models::CreditNote::Discount::AppliesToPrice]),
-              reason: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                amount_applied: String,
+                discount_type: Symbol,
+                percentage_discount: Float,
+                applies_to_prices: T.nilable(T::Array[Orb::Models::CreditNote::Discount::AppliesToPrice]),
+                reason: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end

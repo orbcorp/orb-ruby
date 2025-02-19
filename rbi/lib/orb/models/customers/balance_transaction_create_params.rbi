@@ -37,20 +37,22 @@ module Orb
             type: Symbol,
             description: T.nilable(String),
             request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(amount:, type:, description: nil, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              amount: String,
-              type: Symbol,
-              description: T.nilable(String),
-              request_options: Orb::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                amount: String,
+                type: Symbol,
+                description: T.nilable(String),
+                request_options: Orb::RequestOptions
+              }
+            )
         end
         def to_hash
         end

@@ -14,7 +14,8 @@ module Orb
             external_customer_id: T.nilable(String),
             replace_existing_events: T::Boolean,
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Orb::Models::Events::BackfillCreateResponse)
+          )
+            .returns(Orb::Models::Events::BackfillCreateResponse)
         end
         def create(
           timeframe_end:,
@@ -33,7 +34,8 @@ module Orb
             cursor: T.nilable(String),
             limit: Integer,
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Orb::Page[Orb::Models::Events::BackfillListResponse])
+          )
+            .returns(Orb::Page[Orb::Models::Events::BackfillListResponse])
         end
         def list(cursor: nil, limit: nil, request_options: {})
         end
@@ -42,7 +44,8 @@ module Orb
           params(
             backfill_id: String,
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Orb::Models::Events::BackfillCloseResponse)
+          )
+            .returns(Orb::Models::Events::BackfillCloseResponse)
         end
         def close(backfill_id, request_options: {})
         end
@@ -51,7 +54,8 @@ module Orb
           params(
             backfill_id: String,
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Orb::Models::Events::BackfillFetchResponse)
+          )
+            .returns(Orb::Models::Events::BackfillFetchResponse)
         end
         def fetch(backfill_id, request_options: {})
         end
@@ -60,7 +64,8 @@ module Orb
           params(
             backfill_id: String,
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Orb::Models::Events::BackfillRevertResponse)
+          )
+            .returns(Orb::Models::Events::BackfillRevertResponse)
         end
         def revert(backfill_id, request_options: {})
         end
