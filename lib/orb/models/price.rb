@@ -18,61 +18,201 @@ module Orb
     # @example
     # ```ruby
     # case price
-    # in {model_type: "unit", id: String, billable_metric: Orb::Models::Price::UnitPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::UnitPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "unit",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::UnitPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::UnitPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::UnitPrice ...
-    # in {model_type: "package", id: String, billable_metric: Orb::Models::Price::PackagePrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::PackagePrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "package",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::PackagePrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::PackagePrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::PackagePrice ...
-    # in {model_type: "matrix", id: String, billable_metric: Orb::Models::Price::MatrixPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::MatrixPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "matrix",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::MatrixPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::MatrixPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::MatrixPrice ...
-    # in {model_type: "tiered", id: String, billable_metric: Orb::Models::Price::TieredPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::TieredPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "tiered",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::TieredPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::TieredPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::TieredPrice ...
-    # in {model_type: "tiered_bps", id: String, billable_metric: Orb::Models::Price::TieredBpsPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "tiered_bps",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::TieredBpsPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::TieredBpsPrice ...
-    # in {model_type: "bps", id: String, billable_metric: Orb::Models::Price::BpsPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::BpsPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "bps",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::BpsPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::BpsPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::BpsPrice ...
-    # in {model_type: "bulk_bps", id: String, billable_metric: Orb::Models::Price::BulkBpsPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "bulk_bps",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::BulkBpsPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::BulkBpsPrice ...
-    # in {model_type: "bulk", id: String, billable_metric: Orb::Models::Price::BulkPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::BulkPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "bulk",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::BulkPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::BulkPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::BulkPrice ...
-    # in {model_type: "threshold_total_amount", id: String, billable_metric: Orb::Models::Price::ThresholdTotalAmountPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "threshold_total_amount",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::ThresholdTotalAmountPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::ThresholdTotalAmountPrice ...
-    # in {model_type: "tiered_package", id: String, billable_metric: Orb::Models::Price::TieredPackagePrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "tiered_package",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::TieredPackagePrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::TieredPackagePrice ...
-    # in {model_type: "grouped_tiered", id: String, billable_metric: Orb::Models::Price::GroupedTieredPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "grouped_tiered",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::GroupedTieredPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::GroupedTieredPrice ...
-    # in {model_type: "tiered_with_minimum", id: String, billable_metric: Orb::Models::Price::TieredWithMinimumPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "tiered_with_minimum",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::TieredWithMinimumPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::TieredWithMinimumPrice ...
-    # in {model_type: "tiered_package_with_minimum", id: String, billable_metric: Orb::Models::Price::TieredPackageWithMinimumPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "tiered_package_with_minimum",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::TieredPackageWithMinimumPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::TieredPackageWithMinimumPrice ...
-    # in {model_type: "package_with_allocation", id: String, billable_metric: Orb::Models::Price::PackageWithAllocationPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "package_with_allocation",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::PackageWithAllocationPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::PackageWithAllocationPrice ...
-    # in {model_type: "unit_with_percent", id: String, billable_metric: Orb::Models::Price::UnitWithPercentPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "unit_with_percent",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::UnitWithPercentPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::UnitWithPercentPrice ...
-    # in {model_type: "matrix_with_allocation", id: String, billable_metric: Orb::Models::Price::MatrixWithAllocationPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "matrix_with_allocation",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::MatrixWithAllocationPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::MatrixWithAllocationPrice ...
-    # in {model_type: "tiered_with_proration", id: String, billable_metric: Orb::Models::Price::TieredWithProrationPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "tiered_with_proration",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::TieredWithProrationPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::TieredWithProrationPrice ...
-    # in {model_type: "unit_with_proration", id: String, billable_metric: Orb::Models::Price::UnitWithProrationPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "unit_with_proration",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::UnitWithProrationPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::UnitWithProrationPrice ...
-    # in {model_type: "grouped_allocation", id: String, billable_metric: Orb::Models::Price::GroupedAllocationPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "grouped_allocation",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::GroupedAllocationPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::GroupedAllocationPrice ...
-    # in {model_type: "grouped_with_prorated_minimum", id: String, billable_metric: Orb::Models::Price::GroupedWithProratedMinimumPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "grouped_with_prorated_minimum",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::GroupedWithProratedMinimumPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::GroupedWithProratedMinimumPrice ...
-    # in {model_type: "grouped_with_metered_minimum", id: String, billable_metric: Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "grouped_with_metered_minimum",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::GroupedWithMeteredMinimumPrice ...
-    # in {model_type: "matrix_with_display_name", id: String, billable_metric: Orb::Models::Price::MatrixWithDisplayNamePrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "matrix_with_display_name",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::MatrixWithDisplayNamePrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::MatrixWithDisplayNamePrice ...
-    # in {model_type: "bulk_with_proration", id: String, billable_metric: Orb::Models::Price::BulkWithProrationPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "bulk_with_proration",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::BulkWithProrationPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::BulkWithProrationPrice ...
-    # in {model_type: "grouped_tiered_package", id: String, billable_metric: Orb::Models::Price::GroupedTieredPackagePrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "grouped_tiered_package",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::GroupedTieredPackagePrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::GroupedTieredPackagePrice ...
-    # in {model_type: "max_group_tiered_package", id: String, billable_metric: Orb::Models::Price::MaxGroupTieredPackagePrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "max_group_tiered_package",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::MaxGroupTieredPackagePrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::MaxGroupTieredPackagePrice ...
-    # in {model_type: "scalable_matrix_with_unit_pricing", id: String, billable_metric: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "scalable_matrix_with_unit_pricing",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::ScalableMatrixWithUnitPricingPrice ...
-    # in {model_type: "scalable_matrix_with_tiered_pricing", id: String, billable_metric: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "scalable_matrix_with_tiered_pricing",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::ScalableMatrixWithTieredPricingPrice ...
-    # in {model_type: "cumulative_grouped_bulk", id: String, billable_metric: Orb::Models::Price::CumulativeGroupedBulkPrice::BillableMetric, billing_cycle_configuration: Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration}
+    # in {
+    #   model_type: "cumulative_grouped_bulk",
+    #   id: String,
+    #   billable_metric: Orb::Models::Price::CumulativeGroupedBulkPrice::BillableMetric,
+    #   billing_cycle_configuration: Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration
+    # }
     #   # Orb::Models::Price::CumulativeGroupedBulkPrice ...
     # end
     # ```
@@ -191,10 +331,7 @@ module Orb
 
       variant :max_group_tiered_package, -> { Orb::Models::Price::MaxGroupTieredPackagePrice }
 
-      variant :scalable_matrix_with_unit_pricing,
-              -> {
-                Orb::Models::Price::ScalableMatrixWithUnitPricingPrice
-              }
+      variant :scalable_matrix_with_unit_pricing, -> { Orb::Models::Price::ScalableMatrixWithUnitPricingPrice }
 
       variant :scalable_matrix_with_tiered_pricing,
               -> { Orb::Models::Price::ScalableMatrixWithTieredPricingPrice }
@@ -767,10 +904,7 @@ module Orb
         # @!attribute billing_cycle_configuration
         #
         #   @return [Orb::Models::Price::PackagePrice::BillingCycleConfiguration]
-        required :billing_cycle_configuration,
-                 -> {
-                   Orb::Models::Price::PackagePrice::BillingCycleConfiguration
-                 }
+        required :billing_cycle_configuration, -> { Orb::Models::Price::PackagePrice::BillingCycleConfiguration }
 
         # @!attribute cadence
         #
@@ -1320,10 +1454,7 @@ module Orb
         # @!attribute billing_cycle_configuration
         #
         #   @return [Orb::Models::Price::MatrixPrice::BillingCycleConfiguration]
-        required :billing_cycle_configuration,
-                 -> {
-                   Orb::Models::Price::MatrixPrice::BillingCycleConfiguration
-                 }
+        required :billing_cycle_configuration, -> { Orb::Models::Price::MatrixPrice::BillingCycleConfiguration }
 
         # @!attribute cadence
         #
@@ -1732,10 +1863,7 @@ module Orb
           #   Matrix values for specified matrix grouping keys
           #
           #   @return [Array<Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue>]
-          required :matrix_values,
-                   -> {
-                     Orb::ArrayOf[Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue]
-                   }
+          required :matrix_values, -> { Orb::ArrayOf[Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue] }
 
           # @!parse
           #   # @param default_unit_amount [String]
@@ -1914,10 +2042,7 @@ module Orb
         # @!attribute billing_cycle_configuration
         #
         #   @return [Orb::Models::Price::TieredPrice::BillingCycleConfiguration]
-        required :billing_cycle_configuration,
-                 -> {
-                   Orb::Models::Price::TieredPrice::BillingCycleConfiguration
-                 }
+        required :billing_cycle_configuration, -> { Orb::Models::Price::TieredPrice::BillingCycleConfiguration }
 
         # @!attribute cadence
         #
@@ -3632,10 +3757,7 @@ module Orb
         # @!attribute billing_cycle_configuration
         #
         #   @return [Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration]
-        required :billing_cycle_configuration,
-                 -> {
-                   Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration
-                 }
+        required :billing_cycle_configuration, -> { Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration }
 
         # @!attribute bulk_bps_config
         #
@@ -4999,9 +5121,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -5114,9 +5234,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -5334,11 +5452,7 @@ module Orb
         # @!attribute credit_allocation
         #
         #   @return [Orb::Models::Price::TieredPackagePrice::CreditAllocation, nil]
-        required :credit_allocation,
-                 -> {
-                   Orb::Models::Price::TieredPackagePrice::CreditAllocation
-                 },
-                 nil?: true
+        required :credit_allocation, -> { Orb::Models::Price::TieredPackagePrice::CreditAllocation }, nil?: true
 
         # @!attribute currency
         #
@@ -5528,9 +5642,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -5643,9 +5755,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -5863,11 +5973,7 @@ module Orb
         # @!attribute credit_allocation
         #
         #   @return [Orb::Models::Price::GroupedTieredPrice::CreditAllocation, nil]
-        required :credit_allocation,
-                 -> {
-                   Orb::Models::Price::GroupedTieredPrice::CreditAllocation
-                 },
-                 nil?: true
+        required :credit_allocation, -> { Orb::Models::Price::GroupedTieredPrice::CreditAllocation }, nil?: true
 
         # @!attribute currency
         #
@@ -6057,9 +6163,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -6172,9 +6276,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -6366,11 +6468,7 @@ module Orb
         # @!attribute billable_metric
         #
         #   @return [Orb::Models::Price::TieredWithMinimumPrice::BillableMetric, nil]
-        required :billable_metric,
-                 -> {
-                   Orb::Models::Price::TieredWithMinimumPrice::BillableMetric
-                 },
-                 nil?: true
+        required :billable_metric, -> { Orb::Models::Price::TieredWithMinimumPrice::BillableMetric }, nil?: true
 
         # @!attribute billing_cycle_configuration
         #
@@ -6588,9 +6686,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -6703,9 +6799,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -7117,9 +7211,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -7232,9 +7324,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -7646,9 +7736,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -7761,9 +7849,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -7981,11 +8067,7 @@ module Orb
         # @!attribute credit_allocation
         #
         #   @return [Orb::Models::Price::UnitWithPercentPrice::CreditAllocation, nil]
-        required :credit_allocation,
-                 -> {
-                   Orb::Models::Price::UnitWithPercentPrice::CreditAllocation
-                 },
-                 nil?: true
+        required :credit_allocation, -> { Orb::Models::Price::UnitWithPercentPrice::CreditAllocation }, nil?: true
 
         # @!attribute currency
         #
@@ -8175,9 +8257,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -8290,9 +8370,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -8705,9 +8783,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -8820,9 +8896,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -8916,9 +8990,7 @@ module Orb
           #
           #   @return [Array<Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue>]
           required :matrix_values,
-                   -> {
-                     Orb::ArrayOf[Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue]
-                   }
+                   -> { Orb::ArrayOf[Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue] }
 
           # @!parse
           #   # @param allocation [Float]
@@ -9093,11 +9165,7 @@ module Orb
         # @!attribute billable_metric
         #
         #   @return [Orb::Models::Price::TieredWithProrationPrice::BillableMetric, nil]
-        required :billable_metric,
-                 -> {
-                   Orb::Models::Price::TieredWithProrationPrice::BillableMetric
-                 },
-                 nil?: true
+        required :billable_metric, -> { Orb::Models::Price::TieredWithProrationPrice::BillableMetric }, nil?: true
 
         # @!attribute billing_cycle_configuration
         #
@@ -9315,9 +9383,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -9430,9 +9496,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -9624,11 +9688,7 @@ module Orb
         # @!attribute billable_metric
         #
         #   @return [Orb::Models::Price::UnitWithProrationPrice::BillableMetric, nil]
-        required :billable_metric,
-                 -> {
-                   Orb::Models::Price::UnitWithProrationPrice::BillableMetric
-                 },
-                 nil?: true
+        required :billable_metric, -> { Orb::Models::Price::UnitWithProrationPrice::BillableMetric }, nil?: true
 
         # @!attribute billing_cycle_configuration
         #
@@ -9846,9 +9906,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -9961,9 +10019,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -10155,11 +10211,7 @@ module Orb
         # @!attribute billable_metric
         #
         #   @return [Orb::Models::Price::GroupedAllocationPrice::BillableMetric, nil]
-        required :billable_metric,
-                 -> {
-                   Orb::Models::Price::GroupedAllocationPrice::BillableMetric
-                 },
-                 nil?: true
+        required :billable_metric, -> { Orb::Models::Price::GroupedAllocationPrice::BillableMetric }, nil?: true
 
         # @!attribute billing_cycle_configuration
         #
@@ -10377,9 +10429,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -10492,9 +10542,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -10906,9 +10954,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -11021,9 +11067,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -11435,9 +11479,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -11550,9 +11592,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -11964,9 +12004,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -12079,9 +12117,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -12273,11 +12309,7 @@ module Orb
         # @!attribute billable_metric
         #
         #   @return [Orb::Models::Price::BulkWithProrationPrice::BillableMetric, nil]
-        required :billable_metric,
-                 -> {
-                   Orb::Models::Price::BulkWithProrationPrice::BillableMetric
-                 },
-                 nil?: true
+        required :billable_metric, -> { Orb::Models::Price::BulkWithProrationPrice::BillableMetric }, nil?: true
 
         # @!attribute billing_cycle_configuration
         #
@@ -12495,9 +12527,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -12610,9 +12640,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -13024,9 +13052,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -13139,9 +13165,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -13553,9 +13577,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -13668,9 +13690,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -14082,9 +14102,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -14197,9 +14215,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -14458,11 +14474,7 @@ module Orb
         # @!attribute maximum
         #
         #   @return [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Maximum, nil]
-        required :maximum,
-                 -> {
-                   Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Maximum
-                 },
-                 nil?: true
+        required :maximum, -> { Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Maximum }, nil?: true
 
         # @!attribute maximum_amount
         #
@@ -14481,11 +14493,7 @@ module Orb
         # @!attribute minimum
         #
         #   @return [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Minimum, nil]
-        required :minimum,
-                 -> {
-                   Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Minimum
-                 },
-                 nil?: true
+        required :minimum, -> { Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Minimum }, nil?: true
 
         # @!attribute minimum_amount
         #
@@ -14521,9 +14529,7 @@ module Orb
         #
         #   @return [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration,
-                 -> {
-                   Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::DimensionalPriceConfiguration
-                 },
+                 -> { Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::DimensionalPriceConfiguration },
                  nil?: true
 
         # @!parse
@@ -14621,9 +14627,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -14736,9 +14740,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -15150,9 +15152,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]
@@ -15265,9 +15265,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit]
           required :duration_unit,
-                   enum: -> {
-                     Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit
-                   }
+                   enum: -> { Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit }
 
           # @!parse
           #   # @param duration [Integer]

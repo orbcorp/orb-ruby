@@ -11,7 +11,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::CreditNoteCreateParams::LineItem]).returns(T::Array[Orb::Models::CreditNoteCreateParams::LineItem])
+        params(_: T::Array[Orb::Models::CreditNoteCreateParams::LineItem])
+          .returns(T::Array[Orb::Models::CreditNoteCreateParams::LineItem])
       end
       def line_items=(_)
       end
@@ -38,20 +39,22 @@ module Orb
           memo: T.nilable(String),
           reason: T.nilable(Symbol),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(line_items:, memo: nil, reason: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            line_items: T::Array[Orb::Models::CreditNoteCreateParams::LineItem],
-            memo: T.nilable(String),
-            reason: T.nilable(Symbol),
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              line_items: T::Array[Orb::Models::CreditNoteCreateParams::LineItem],
+              memo: T.nilable(String),
+              reason: T.nilable(Symbol),
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end

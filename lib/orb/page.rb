@@ -30,6 +30,7 @@ module Orb
     # @return [PaginationMetadata]
     attr_accessor :pagination_metadata
 
+    # rubocop:disable Lint/UnusedMethodArgument
     # @private
     #
     # @param client [Orb::BaseClient]
@@ -54,6 +55,7 @@ module Orb
       else
       end
     end
+    # rubocop:enable Lint/UnusedMethodArgument
 
     # @return [Boolean]
     #
@@ -66,7 +68,7 @@ module Orb
     #
     def next_page
       unless next_page?
-        raise "No more pages available; please check #next_page? before calling #next_page"
+        raise RuntimeError.new("No more pages available; please check #next_page? before calling #next_page")
       end
 
       req = Orb::Util.deep_merge(@req, {query: {cursor: pagination_metadata&.next_cursor}})

@@ -6,13 +6,10 @@ module Orb
       abstract!
 
       sig do
-        override.returns(
-          [
-            [Symbol, Orb::Models::PercentageDiscount],
-            [Symbol, Orb::Models::AmountDiscount],
-            [Symbol, Orb::Models::TrialDiscount]
-          ]
-        )
+        override
+          .returns(
+            [[Symbol, Orb::Models::PercentageDiscount], [Symbol, Orb::Models::AmountDiscount], [Symbol, Orb::Models::TrialDiscount]]
+          )
       end
       private_class_method def self.variants
       end

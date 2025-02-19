@@ -13,13 +13,15 @@ module Orb
 
       sig do
         returns(
-          T::Array[T.any(
+          T::Array[
+          T.any(
             Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment,
             Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment,
             Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment,
             Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment,
             Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
-          )]
+          )
+          ]
         )
       end
       def adjustments
@@ -27,20 +29,27 @@ module Orb
 
       sig do
         params(
-          _: T::Array[T.any(
+          _: T::Array[
+          T.any(
             Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment,
             Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment,
             Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment,
             Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment,
             Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
-          )]
-        ).returns(T::Array[T.any(
-          Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment,
-          Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment,
-          Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment,
-          Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment,
-          Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
-        )])
+          )
+          ]
+        )
+          .returns(
+            T::Array[
+            T.any(
+              Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment,
+              Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment,
+              Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment,
+              Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment,
+              Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
+            )
+            ]
+          )
       end
       def adjustments=(_)
       end
@@ -49,9 +58,7 @@ module Orb
       def base_plan
       end
 
-      sig do
-        params(_: T.nilable(Orb::Models::Plan::BasePlan)).returns(T.nilable(Orb::Models::Plan::BasePlan))
-      end
+      sig { params(_: T.nilable(Orb::Models::Plan::BasePlan)).returns(T.nilable(Orb::Models::Plan::BasePlan)) }
       def base_plan=(_)
       end
 
@@ -120,14 +127,17 @@ module Orb
               Orb::Models::AmountDiscount
             )
           )
-        ).returns(T.nilable(
-                    T.any(
-                      Orb::Models::PercentageDiscount,
-                      Orb::Models::TrialDiscount,
-                      Orb::Models::Discount::UsageDiscount,
-                      Orb::Models::AmountDiscount
-                    )
-                  ))
+        )
+          .returns(
+            T.nilable(
+              T.any(
+                Orb::Models::PercentageDiscount,
+                Orb::Models::TrialDiscount,
+                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::AmountDiscount
+              )
+            )
+          )
       end
       def discount=(_)
       end
@@ -209,14 +219,16 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(T::Array[Orb::Models::Plan::PlanPhase])).returns(T.nilable(T::Array[Orb::Models::Plan::PlanPhase]))
+        params(_: T.nilable(T::Array[Orb::Models::Plan::PlanPhase]))
+          .returns(T.nilable(T::Array[Orb::Models::Plan::PlanPhase]))
       end
       def plan_phases=(_)
       end
 
       sig do
         returns(
-          T::Array[T.any(
+          T::Array[
+          T.any(
             Orb::Models::Price::UnitPrice,
             Orb::Models::Price::PackagePrice,
             Orb::Models::Price::MatrixPrice,
@@ -245,7 +257,8 @@ module Orb
             Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
             Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
             Orb::Models::Price::CumulativeGroupedBulkPrice
-          )]
+          )
+          ]
         )
       end
       def prices
@@ -253,7 +266,8 @@ module Orb
 
       sig do
         params(
-          _: T::Array[T.any(
+          _: T::Array[
+          T.any(
             Orb::Models::Price::UnitPrice,
             Orb::Models::Price::PackagePrice,
             Orb::Models::Price::MatrixPrice,
@@ -282,37 +296,43 @@ module Orb
             Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
             Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
             Orb::Models::Price::CumulativeGroupedBulkPrice
-          )]
-        ).returns(T::Array[T.any(
-          Orb::Models::Price::UnitPrice,
-          Orb::Models::Price::PackagePrice,
-          Orb::Models::Price::MatrixPrice,
-          Orb::Models::Price::TieredPrice,
-          Orb::Models::Price::TieredBpsPrice,
-          Orb::Models::Price::BpsPrice,
-          Orb::Models::Price::BulkBpsPrice,
-          Orb::Models::Price::BulkPrice,
-          Orb::Models::Price::ThresholdTotalAmountPrice,
-          Orb::Models::Price::TieredPackagePrice,
-          Orb::Models::Price::GroupedTieredPrice,
-          Orb::Models::Price::TieredWithMinimumPrice,
-          Orb::Models::Price::TieredPackageWithMinimumPrice,
-          Orb::Models::Price::PackageWithAllocationPrice,
-          Orb::Models::Price::UnitWithPercentPrice,
-          Orb::Models::Price::MatrixWithAllocationPrice,
-          Orb::Models::Price::TieredWithProrationPrice,
-          Orb::Models::Price::UnitWithProrationPrice,
-          Orb::Models::Price::GroupedAllocationPrice,
-          Orb::Models::Price::GroupedWithProratedMinimumPrice,
-          Orb::Models::Price::GroupedWithMeteredMinimumPrice,
-          Orb::Models::Price::MatrixWithDisplayNamePrice,
-          Orb::Models::Price::BulkWithProrationPrice,
-          Orb::Models::Price::GroupedTieredPackagePrice,
-          Orb::Models::Price::MaxGroupTieredPackagePrice,
-          Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-          Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
-          Orb::Models::Price::CumulativeGroupedBulkPrice
-        )])
+          )
+          ]
+        )
+          .returns(
+            T::Array[
+            T.any(
+              Orb::Models::Price::UnitPrice,
+              Orb::Models::Price::PackagePrice,
+              Orb::Models::Price::MatrixPrice,
+              Orb::Models::Price::TieredPrice,
+              Orb::Models::Price::TieredBpsPrice,
+              Orb::Models::Price::BpsPrice,
+              Orb::Models::Price::BulkBpsPrice,
+              Orb::Models::Price::BulkPrice,
+              Orb::Models::Price::ThresholdTotalAmountPrice,
+              Orb::Models::Price::TieredPackagePrice,
+              Orb::Models::Price::GroupedTieredPrice,
+              Orb::Models::Price::TieredWithMinimumPrice,
+              Orb::Models::Price::TieredPackageWithMinimumPrice,
+              Orb::Models::Price::PackageWithAllocationPrice,
+              Orb::Models::Price::UnitWithPercentPrice,
+              Orb::Models::Price::MatrixWithAllocationPrice,
+              Orb::Models::Price::TieredWithProrationPrice,
+              Orb::Models::Price::UnitWithProrationPrice,
+              Orb::Models::Price::GroupedAllocationPrice,
+              Orb::Models::Price::GroupedWithProratedMinimumPrice,
+              Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+              Orb::Models::Price::MatrixWithDisplayNamePrice,
+              Orb::Models::Price::BulkWithProrationPrice,
+              Orb::Models::Price::GroupedTieredPackagePrice,
+              Orb::Models::Price::MaxGroupTieredPackagePrice,
+              Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+              Orb::Models::Price::CumulativeGroupedBulkPrice
+            )
+            ]
+          )
       end
       def prices=(_)
       end
@@ -352,13 +372,15 @@ module Orb
       sig do
         params(
           id: String,
-          adjustments: T::Array[T.any(
+          adjustments: T::Array[
+          T.any(
             Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment,
             Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment,
             Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment,
             Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment,
             Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
-          )],
+          )
+          ],
           base_plan: T.nilable(Orb::Models::Plan::BasePlan),
           base_plan_id: T.nilable(String),
           created_at: Time,
@@ -383,7 +405,8 @@ module Orb
           name: String,
           net_terms: T.nilable(Integer),
           plan_phases: T.nilable(T::Array[Orb::Models::Plan::PlanPhase]),
-          prices: T::Array[T.any(
+          prices: T::Array[
+          T.any(
             Orb::Models::Price::UnitPrice,
             Orb::Models::Price::PackagePrice,
             Orb::Models::Price::MatrixPrice,
@@ -412,12 +435,14 @@ module Orb
             Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
             Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
             Orb::Models::Price::CumulativeGroupedBulkPrice
-          )],
+          )
+          ],
           product: Orb::Models::Plan::Product,
           status: Symbol,
           trial_config: Orb::Models::Plan::TrialConfig,
           version: Integer
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -448,72 +473,81 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            adjustments: T::Array[T.any(
-              Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
-            )],
-            base_plan: T.nilable(Orb::Models::Plan::BasePlan),
-            base_plan_id: T.nilable(String),
-            created_at: Time,
-            currency: String,
-            default_invoice_memo: T.nilable(String),
-            description: String,
-            discount: T.nilable(
+        override
+          .returns(
+            {
+              id: String,
+              adjustments: T::Array[
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment,
+                Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment,
+                Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment,
+                Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment,
+                Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
               )
-            ),
-            external_plan_id: T.nilable(String),
-            invoicing_currency: String,
-            maximum: T.nilable(Orb::Models::Plan::Maximum),
-            maximum_amount: T.nilable(String),
-            metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(Orb::Models::Plan::Minimum),
-            minimum_amount: T.nilable(String),
-            name: String,
-            net_terms: T.nilable(Integer),
-            plan_phases: T.nilable(T::Array[Orb::Models::Plan::PlanPhase]),
-            prices: T::Array[T.any(
-              Orb::Models::Price::UnitPrice,
-              Orb::Models::Price::PackagePrice,
-              Orb::Models::Price::MatrixPrice,
-              Orb::Models::Price::TieredPrice,
-              Orb::Models::Price::TieredBpsPrice,
-              Orb::Models::Price::BpsPrice,
-              Orb::Models::Price::BulkBpsPrice,
-              Orb::Models::Price::BulkPrice,
-              Orb::Models::Price::ThresholdTotalAmountPrice,
-              Orb::Models::Price::TieredPackagePrice,
-              Orb::Models::Price::GroupedTieredPrice,
-              Orb::Models::Price::TieredWithMinimumPrice,
-              Orb::Models::Price::TieredPackageWithMinimumPrice,
-              Orb::Models::Price::PackageWithAllocationPrice,
-              Orb::Models::Price::UnitWithPercentPrice,
-              Orb::Models::Price::MatrixWithAllocationPrice,
-              Orb::Models::Price::TieredWithProrationPrice,
-              Orb::Models::Price::UnitWithProrationPrice,
-              Orb::Models::Price::GroupedAllocationPrice,
-              Orb::Models::Price::GroupedWithProratedMinimumPrice,
-              Orb::Models::Price::GroupedWithMeteredMinimumPrice,
-              Orb::Models::Price::MatrixWithDisplayNamePrice,
-              Orb::Models::Price::BulkWithProrationPrice,
-              Orb::Models::Price::GroupedTieredPackagePrice,
-              Orb::Models::Price::MaxGroupTieredPackagePrice,
-              Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
-              Orb::Models::Price::CumulativeGroupedBulkPrice
-            )],
-            product: Orb::Models::Plan::Product,
-            status: Symbol,
-            trial_config: Orb::Models::Plan::TrialConfig,
-            version: Integer
-          }
-        )
+              ],
+              base_plan: T.nilable(Orb::Models::Plan::BasePlan),
+              base_plan_id: T.nilable(String),
+              created_at: Time,
+              currency: String,
+              default_invoice_memo: T.nilable(String),
+              description: String,
+              discount: T.nilable(
+                T.any(
+                  Orb::Models::PercentageDiscount,
+                  Orb::Models::TrialDiscount,
+                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::AmountDiscount
+                )
+              ),
+              external_plan_id: T.nilable(String),
+              invoicing_currency: String,
+              maximum: T.nilable(Orb::Models::Plan::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Models::Plan::Minimum),
+              minimum_amount: T.nilable(String),
+              name: String,
+              net_terms: T.nilable(Integer),
+              plan_phases: T.nilable(T::Array[Orb::Models::Plan::PlanPhase]),
+              prices: T::Array[
+              T.any(
+                Orb::Models::Price::UnitPrice,
+                Orb::Models::Price::PackagePrice,
+                Orb::Models::Price::MatrixPrice,
+                Orb::Models::Price::TieredPrice,
+                Orb::Models::Price::TieredBpsPrice,
+                Orb::Models::Price::BpsPrice,
+                Orb::Models::Price::BulkBpsPrice,
+                Orb::Models::Price::BulkPrice,
+                Orb::Models::Price::ThresholdTotalAmountPrice,
+                Orb::Models::Price::TieredPackagePrice,
+                Orb::Models::Price::GroupedTieredPrice,
+                Orb::Models::Price::TieredWithMinimumPrice,
+                Orb::Models::Price::TieredPackageWithMinimumPrice,
+                Orb::Models::Price::PackageWithAllocationPrice,
+                Orb::Models::Price::UnitWithPercentPrice,
+                Orb::Models::Price::MatrixWithAllocationPrice,
+                Orb::Models::Price::TieredWithProrationPrice,
+                Orb::Models::Price::UnitWithProrationPrice,
+                Orb::Models::Price::GroupedAllocationPrice,
+                Orb::Models::Price::GroupedWithProratedMinimumPrice,
+                Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+                Orb::Models::Price::MatrixWithDisplayNamePrice,
+                Orb::Models::Price::BulkWithProrationPrice,
+                Orb::Models::Price::GroupedTieredPackagePrice,
+                Orb::Models::Price::MaxGroupTieredPackagePrice,
+                Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+                Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                Orb::Models::Price::CumulativeGroupedBulkPrice
+              )
+              ],
+              product: Orb::Models::Plan::Product,
+              status: Symbol,
+              trial_config: Orb::Models::Plan::TrialConfig,
+              version: Integer
+            }
+          )
       end
       def to_hash
       end
@@ -587,7 +621,8 @@ module Orb
               reason: T.nilable(String),
               usage_discount: Float,
               adjustment_type: Symbol
-            ).void
+            )
+              .void
           end
           def initialize(
             id:,
@@ -601,17 +636,18 @@ module Orb
           end
 
           sig do
-            override.returns(
-              {
-                id: String,
-                adjustment_type: Symbol,
-                applies_to_price_ids: T::Array[String],
-                is_invoice_level: T::Boolean,
-                plan_phase_order: T.nilable(Integer),
-                reason: T.nilable(String),
-                usage_discount: Float
-              }
-            )
+            override
+              .returns(
+                {
+                  id: String,
+                  adjustment_type: Symbol,
+                  applies_to_price_ids: T::Array[String],
+                  is_invoice_level: T::Boolean,
+                  plan_phase_order: T.nilable(Integer),
+                  reason: T.nilable(String),
+                  usage_discount: Float
+                }
+              )
           end
           def to_hash
           end
@@ -683,7 +719,8 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               reason: T.nilable(String),
               adjustment_type: Symbol
-            ).void
+            )
+              .void
           end
           def initialize(
             id:,
@@ -697,17 +734,18 @@ module Orb
           end
 
           sig do
-            override.returns(
-              {
-                id: String,
-                adjustment_type: Symbol,
-                amount_discount: String,
-                applies_to_price_ids: T::Array[String],
-                is_invoice_level: T::Boolean,
-                plan_phase_order: T.nilable(Integer),
-                reason: T.nilable(String)
-              }
-            )
+            override
+              .returns(
+                {
+                  id: String,
+                  adjustment_type: Symbol,
+                  amount_discount: String,
+                  applies_to_price_ids: T::Array[String],
+                  is_invoice_level: T::Boolean,
+                  plan_phase_order: T.nilable(Integer),
+                  reason: T.nilable(String)
+                }
+              )
           end
           def to_hash
           end
@@ -779,7 +817,8 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               reason: T.nilable(String),
               adjustment_type: Symbol
-            ).void
+            )
+              .void
           end
           def initialize(
             id:,
@@ -793,17 +832,18 @@ module Orb
           end
 
           sig do
-            override.returns(
-              {
-                id: String,
-                adjustment_type: Symbol,
-                applies_to_price_ids: T::Array[String],
-                is_invoice_level: T::Boolean,
-                percentage_discount: Float,
-                plan_phase_order: T.nilable(Integer),
-                reason: T.nilable(String)
-              }
-            )
+            override
+              .returns(
+                {
+                  id: String,
+                  adjustment_type: Symbol,
+                  applies_to_price_ids: T::Array[String],
+                  is_invoice_level: T::Boolean,
+                  percentage_discount: Float,
+                  plan_phase_order: T.nilable(Integer),
+                  reason: T.nilable(String)
+                }
+              )
           end
           def to_hash
           end
@@ -884,7 +924,8 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               reason: T.nilable(String),
               adjustment_type: Symbol
-            ).void
+            )
+              .void
           end
           def initialize(
             id:,
@@ -899,18 +940,19 @@ module Orb
           end
 
           sig do
-            override.returns(
-              {
-                id: String,
-                adjustment_type: Symbol,
-                applies_to_price_ids: T::Array[String],
-                is_invoice_level: T::Boolean,
-                item_id: String,
-                minimum_amount: String,
-                plan_phase_order: T.nilable(Integer),
-                reason: T.nilable(String)
-              }
-            )
+            override
+              .returns(
+                {
+                  id: String,
+                  adjustment_type: Symbol,
+                  applies_to_price_ids: T::Array[String],
+                  is_invoice_level: T::Boolean,
+                  item_id: String,
+                  minimum_amount: String,
+                  plan_phase_order: T.nilable(Integer),
+                  reason: T.nilable(String)
+                }
+              )
           end
           def to_hash
           end
@@ -982,7 +1024,8 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               reason: T.nilable(String),
               adjustment_type: Symbol
-            ).void
+            )
+              .void
           end
           def initialize(
             id:,
@@ -996,32 +1039,28 @@ module Orb
           end
 
           sig do
-            override.returns(
-              {
-                id: String,
-                adjustment_type: Symbol,
-                applies_to_price_ids: T::Array[String],
-                is_invoice_level: T::Boolean,
-                maximum_amount: String,
-                plan_phase_order: T.nilable(Integer),
-                reason: T.nilable(String)
-              }
-            )
+            override
+              .returns(
+                {
+                  id: String,
+                  adjustment_type: Symbol,
+                  applies_to_price_ids: T::Array[String],
+                  is_invoice_level: T::Boolean,
+                  maximum_amount: String,
+                  plan_phase_order: T.nilable(Integer),
+                  reason: T.nilable(String)
+                }
+              )
           end
           def to_hash
           end
         end
 
         sig do
-          override.returns(
-            [
-              [Symbol, Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment],
-              [Symbol, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment],
-              [Symbol, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment],
-              [Symbol, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment],
-              [Symbol, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment]
-            ]
-          )
+          override
+            .returns(
+              [[Symbol, Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment], [Symbol, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment], [Symbol, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment], [Symbol, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment], [Symbol, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment]]
+            )
         end
         private_class_method def self.variants
         end
@@ -1165,14 +1204,17 @@ module Orb
                 Orb::Models::AmountDiscount
               )
             )
-          ).returns(T.nilable(
-                      T.any(
-                        Orb::Models::PercentageDiscount,
-                        Orb::Models::TrialDiscount,
-                        Orb::Models::Discount::UsageDiscount,
-                        Orb::Models::AmountDiscount
-                      )
-                    ))
+          )
+            .returns(
+              T.nilable(
+                T.any(
+                  Orb::Models::PercentageDiscount,
+                  Orb::Models::TrialDiscount,
+                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::AmountDiscount
+                )
+              )
+            )
         end
         def discount=(_)
         end
@@ -1198,7 +1240,8 @@ module Orb
         end
 
         sig do
-          params(_: T.nilable(Orb::Models::Plan::PlanPhase::Maximum)).returns(T.nilable(Orb::Models::Plan::PlanPhase::Maximum))
+          params(_: T.nilable(Orb::Models::Plan::PlanPhase::Maximum))
+            .returns(T.nilable(Orb::Models::Plan::PlanPhase::Maximum))
         end
         def maximum=(_)
         end
@@ -1216,7 +1259,8 @@ module Orb
         end
 
         sig do
-          params(_: T.nilable(Orb::Models::Plan::PlanPhase::Minimum)).returns(T.nilable(Orb::Models::Plan::PlanPhase::Minimum))
+          params(_: T.nilable(Orb::Models::Plan::PlanPhase::Minimum))
+            .returns(T.nilable(Orb::Models::Plan::PlanPhase::Minimum))
         end
         def minimum=(_)
         end
@@ -1265,7 +1309,8 @@ module Orb
             minimum_amount: T.nilable(String),
             name: String,
             order: Integer
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -1283,28 +1328,29 @@ module Orb
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              description: T.nilable(String),
-              discount: T.nilable(
-                T.any(
-                  Orb::Models::PercentageDiscount,
-                  Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
-                  Orb::Models::AmountDiscount
-                )
-              ),
-              duration: T.nilable(Integer),
-              duration_unit: T.nilable(Symbol),
-              maximum: T.nilable(Orb::Models::Plan::PlanPhase::Maximum),
-              maximum_amount: T.nilable(String),
-              minimum: T.nilable(Orb::Models::Plan::PlanPhase::Minimum),
-              minimum_amount: T.nilable(String),
-              name: String,
-              order: Integer
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                description: T.nilable(String),
+                discount: T.nilable(
+                  T.any(
+                    Orb::Models::PercentageDiscount,
+                    Orb::Models::TrialDiscount,
+                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::AmountDiscount
+                  )
+                ),
+                duration: T.nilable(Integer),
+                duration_unit: T.nilable(Symbol),
+                maximum: T.nilable(Orb::Models::Plan::PlanPhase::Maximum),
+                maximum_amount: T.nilable(String),
+                minimum: T.nilable(Orb::Models::Plan::PlanPhase::Minimum),
+                minimum_amount: T.nilable(String),
+                name: String,
+                order: Integer
+              }
+            )
         end
         def to_hash
         end

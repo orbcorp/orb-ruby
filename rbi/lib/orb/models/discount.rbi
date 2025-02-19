@@ -44,34 +44,32 @@ module Orb
             usage_discount: Float,
             reason: T.nilable(String),
             discount_type: Symbol
-          ).void
+          )
+            .void
         end
         def initialize(applies_to_price_ids:, usage_discount:, reason: nil, discount_type: :usage)
         end
 
         sig do
-          override.returns(
-            {
-              applies_to_price_ids: T::Array[String],
-              discount_type: Symbol,
-              usage_discount: Float,
-              reason: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                applies_to_price_ids: T::Array[String],
+                discount_type: Symbol,
+                usage_discount: Float,
+                reason: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end
       end
 
       sig do
-        override.returns(
-          [
-            [Symbol, Orb::Models::PercentageDiscount],
-            [Symbol, Orb::Models::TrialDiscount],
-            [Symbol, Orb::Models::Discount::UsageDiscount],
-            [Symbol, Orb::Models::AmountDiscount]
-          ]
-        )
+        override
+          .returns(
+            [[Symbol, Orb::Models::PercentageDiscount], [Symbol, Orb::Models::TrialDiscount], [Symbol, Orb::Models::Discount::UsageDiscount], [Symbol, Orb::Models::AmountDiscount]]
+          )
       end
       private_class_method def self.variants
       end

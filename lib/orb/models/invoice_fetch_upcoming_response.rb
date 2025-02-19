@@ -295,10 +295,7 @@ module Orb
       #   A list of payment attempts associated with the invoice
       #
       #   @return [Array<Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt>]
-      required :payment_attempts,
-               -> {
-                 Orb::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt]
-               }
+      required :payment_attempts, -> { Orb::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt] }
 
       # @!attribute payment_failed_at
       #   If payment was attempted on this invoice but failed, this will be the time of
@@ -325,11 +322,7 @@ module Orb
       # @!attribute shipping_address
       #
       #   @return [Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress, nil]
-      required :shipping_address,
-               -> {
-                 Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress
-               },
-               nil?: true
+      required :shipping_address, -> { Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress }, nil?: true
 
       # @!attribute status
       #
@@ -743,10 +736,7 @@ module Orb
         # @!attribute type
         #
         #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Type]
-        required :type,
-                 enum: -> {
-                   Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Type
-                 }
+        required :type, enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Type }
 
         # @!parse
         #   # @param id [String]
@@ -1401,10 +1391,7 @@ module Orb
         #     integration is configured.
         #
         #   @return [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount>]
-        required :tax_amounts,
-                 -> {
-                   Orb::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount]
-                 }
+        required :tax_amounts, -> { Orb::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount] }
 
         # @!parse
         #   # @param id [String]
@@ -1461,11 +1448,21 @@ module Orb
         # @example
         # ```ruby
         # case adjustment
-        # in {adjustment_type: "usage_discount", id: String, amount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
+        # in {
+        #   adjustment_type: "usage_discount",
+        #   id: String,
+        #   amount: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }
+        # }
         #   # Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment ...
         # in {adjustment_type: "amount_discount", id: String, amount: String, amount_discount: String}
         #   # Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment ...
-        # in {adjustment_type: "percentage_discount", id: String, amount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
+        # in {
+        #   adjustment_type: "percentage_discount",
+        #   id: String,
+        #   amount: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }
+        # }
         #   # Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment ...
         # in {adjustment_type: "minimum", id: String, amount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
         #   # Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment ...
@@ -1980,11 +1977,26 @@ module Orb
         # @example
         # ```ruby
         # case sub_line_item
-        # in {type: "matrix", amount: String, grouping: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping, matrix_config: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig}
+        # in {
+        #   type: "matrix",
+        #   amount: String,
+        #   grouping: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping,
+        #   matrix_config: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig
+        # }
         #   # Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem ...
-        # in {type: "tier", amount: String, grouping: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping, name: String}
+        # in {
+        #   type: "tier",
+        #   amount: String,
+        #   grouping: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping,
+        #   name: String
+        # }
         #   # Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem ...
-        # in {type: "'null'", amount: String, grouping: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping, name: String}
+        # in {
+        #   type: "'null'",
+        #   amount: String,
+        #   grouping: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping,
+        #   name: String
+        # }
         #   # Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem ...
         # end
         # ```
@@ -2006,10 +2018,7 @@ module Orb
           variant :matrix,
                   -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem }
 
-          variant :tier,
-                  -> {
-                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem
-                  }
+          variant :tier, -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem }
 
           variant :"'null'",
                   -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem }
@@ -2035,9 +2044,7 @@ module Orb
             #
             #   @return [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping, nil]
             required :grouping,
-                     -> {
-                       Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping
-                     },
+                     -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping },
                      nil?: true
 
             # @!attribute matrix_config
@@ -2144,9 +2151,7 @@ module Orb
             #
             #   @return [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping, nil]
             required :grouping,
-                     -> {
-                       Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping
-                     },
+                     -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping },
                      nil?: true
 
             # @!attribute name
@@ -2266,9 +2271,7 @@ module Orb
             #
             #   @return [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping, nil]
             required :grouping,
-                     -> {
-                       Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping
-                     },
+                     -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping },
                      nil?: true
 
             # @!attribute name

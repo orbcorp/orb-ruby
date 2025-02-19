@@ -63,7 +63,8 @@ module Orb
           filter: T.nilable(String),
           grouping_keys: T::Array[String],
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         timeframe_end:,
@@ -77,17 +78,18 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            timeframe_end: Time,
-            timeframe_start: Time,
-            customer_id: T.nilable(String),
-            external_customer_id: T.nilable(String),
-            filter: T.nilable(String),
-            grouping_keys: T::Array[String],
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              timeframe_end: Time,
+              timeframe_start: Time,
+              customer_id: T.nilable(String),
+              external_customer_id: T.nilable(String),
+              filter: T.nilable(String),
+              grouping_keys: T::Array[String],
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end

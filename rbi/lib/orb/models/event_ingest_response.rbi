@@ -8,7 +8,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::EventIngestResponse::ValidationFailed]).returns(T::Array[Orb::Models::EventIngestResponse::ValidationFailed])
+        params(_: T::Array[Orb::Models::EventIngestResponse::ValidationFailed])
+          .returns(T::Array[Orb::Models::EventIngestResponse::ValidationFailed])
       end
       def validation_failed=(_)
       end
@@ -18,7 +19,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::EventIngestResponse::Debug)).returns(T.nilable(Orb::Models::EventIngestResponse::Debug))
+        params(_: T.nilable(Orb::Models::EventIngestResponse::Debug))
+          .returns(T.nilable(Orb::Models::EventIngestResponse::Debug))
       end
       def debug=(_)
       end
@@ -27,18 +29,20 @@ module Orb
         params(
           validation_failed: T::Array[Orb::Models::EventIngestResponse::ValidationFailed],
           debug: T.nilable(Orb::Models::EventIngestResponse::Debug)
-        ).void
+        )
+          .void
       end
       def initialize(validation_failed:, debug: nil)
       end
 
       sig do
-        override.returns(
-          {
-            validation_failed: T::Array[Orb::Models::EventIngestResponse::ValidationFailed],
-            debug: T.nilable(Orb::Models::EventIngestResponse::Debug)
-          }
-        )
+        override
+          .returns(
+            {
+              validation_failed: T::Array[Orb::Models::EventIngestResponse::ValidationFailed],
+              debug: T.nilable(Orb::Models::EventIngestResponse::Debug)
+            }
+          )
       end
       def to_hash
       end

@@ -33,11 +33,7 @@ module Orb
         #     behavior.
         #
         #   @return [Symbol, Orb::Models::Customers::CostListByExternalIDParams::ViewMode, nil]
-        optional :view_mode,
-                 enum: -> {
-                   Orb::Models::Customers::CostListByExternalIDParams::ViewMode
-                 },
-                 nil?: true
+        optional :view_mode, enum: -> { Orb::Models::Customers::CostListByExternalIDParams::ViewMode }, nil?: true
 
         # @!parse
         #   # @param currency [String, nil]

@@ -7,9 +7,7 @@ module Orb
       def data
       end
 
-      sig do
-        params(_: T::Array[Orb::Models::EvaluatePriceGroup]).returns(T::Array[Orb::Models::EvaluatePriceGroup])
-      end
+      sig { params(_: T::Array[Orb::Models::EvaluatePriceGroup]).returns(T::Array[Orb::Models::EvaluatePriceGroup]) }
       def data=(_)
       end
 

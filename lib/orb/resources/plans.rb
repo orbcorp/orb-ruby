@@ -39,13 +39,7 @@ module Orb
       #
       def create(params)
         parsed, options = Orb::Models::PlanCreateParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: "plans",
-          body: parsed,
-          model: Orb::Models::Plan,
-          options: options
-        )
+        @client.request(method: :post, path: "plans", body: parsed, model: Orb::Models::Plan, options: options)
       end
 
       # This endpoint can be used to update the `external_plan_id`, and `metadata` of an

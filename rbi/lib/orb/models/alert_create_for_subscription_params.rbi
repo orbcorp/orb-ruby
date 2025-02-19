@@ -11,7 +11,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold]).returns(T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold])
+        params(_: T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold])
+          .returns(T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold])
       end
       def thresholds=(_)
       end
@@ -38,20 +39,22 @@ module Orb
           type: Symbol,
           metric_id: T.nilable(String),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(thresholds:, type:, metric_id: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            thresholds: T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold],
-            type: Symbol,
-            metric_id: T.nilable(String),
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              thresholds: T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold],
+              type: Symbol,
+              metric_id: T.nilable(String),
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end

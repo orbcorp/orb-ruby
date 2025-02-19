@@ -36,20 +36,22 @@ module Orb
           timeframe_end: T.nilable(Time),
           timeframe_start: T.nilable(Time),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(event_ids:, timeframe_end: nil, timeframe_start: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            event_ids: T::Array[String],
-            timeframe_end: T.nilable(Time),
-            timeframe_start: T.nilable(Time),
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              event_ids: T::Array[String],
+              timeframe_end: T.nilable(Time),
+              timeframe_start: T.nilable(Time),
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end

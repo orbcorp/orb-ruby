@@ -18,7 +18,8 @@ module Orb
         params(
           synchronous: T::Boolean,
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(synchronous: nil, request_options: {})
       end

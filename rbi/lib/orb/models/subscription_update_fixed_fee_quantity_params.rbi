@@ -54,7 +54,8 @@ module Orb
           change_option: Symbol,
           effective_date: T.nilable(Date),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         price_id:,
@@ -67,16 +68,17 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            price_id: String,
-            quantity: Float,
-            allow_invoice_credit_or_void: T.nilable(T::Boolean),
-            change_option: Symbol,
-            effective_date: T.nilable(Date),
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              price_id: String,
+              quantity: Float,
+              allow_invoice_credit_or_void: T.nilable(T::Boolean),
+              change_option: Symbol,
+              effective_date: T.nilable(Date),
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end

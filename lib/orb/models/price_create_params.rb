@@ -119,10 +119,7 @@ module Orb
       # @!attribute matrix_with_allocation_config
       #
       #   @return [Orb::Models::PriceCreateParams::MatrixWithAllocationConfig]
-      required :matrix_with_allocation_config,
-               -> {
-                 Orb::Models::PriceCreateParams::MatrixWithAllocationConfig
-               }
+      required :matrix_with_allocation_config, -> { Orb::Models::PriceCreateParams::MatrixWithAllocationConfig }
 
       # @!attribute tiered_config
       #
@@ -589,10 +586,7 @@ module Orb
         #   Matrix values for specified matrix grouping keys
         #
         #   @return [Array<Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue>]
-        required :matrix_values,
-                 -> {
-                   Orb::ArrayOf[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue]
-                 }
+        required :matrix_values, -> { Orb::ArrayOf[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue] }
 
         # @!parse
         #   # @param default_unit_amount [String]

@@ -283,9 +283,7 @@ module Orb
         #
         #   @return [Array<Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider>, nil]
         optional :accounting_providers,
-                 -> {
-                   Orb::ArrayOf[Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]
-                 },
+                 -> { Orb::ArrayOf[Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider] },
                  nil?: true
 
         # @!attribute excluded

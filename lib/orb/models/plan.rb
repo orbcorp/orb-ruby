@@ -226,15 +226,40 @@ module Orb
       # @example
       # ```ruby
       # case adjustment
-      # in {adjustment_type: "usage_discount", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+      # in {
+      #   adjustment_type: "usage_discount",
+      #   id: String,
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   is_invoice_level: Orb::BooleanModel
+      # }
       #   # Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment ...
-      # in {adjustment_type: "amount_discount", id: String, amount_discount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
+      # in {
+      #   adjustment_type: "amount_discount",
+      #   id: String,
+      #   amount_discount: String,
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }
+      # }
       #   # Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment ...
-      # in {adjustment_type: "percentage_discount", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+      # in {
+      #   adjustment_type: "percentage_discount",
+      #   id: String,
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   is_invoice_level: Orb::BooleanModel
+      # }
       #   # Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment ...
-      # in {adjustment_type: "minimum", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+      # in {
+      #   adjustment_type: "minimum",
+      #   id: String,
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   is_invoice_level: Orb::BooleanModel
+      # }
       #   # Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment ...
-      # in {adjustment_type: "maximum", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+      # in {
+      #   adjustment_type: "maximum",
+      #   id: String,
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   is_invoice_level: Orb::BooleanModel
+      # }
       #   # Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment ...
       # end
       # ```
@@ -261,10 +286,7 @@ module Orb
 
         variant :amount_discount, -> { Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment }
 
-        variant :percentage_discount,
-                -> {
-                  Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment
-                }
+        variant :percentage_discount, -> { Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment }
 
         variant :minimum, -> { Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment }
 

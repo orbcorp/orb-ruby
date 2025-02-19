@@ -50,9 +50,7 @@ module Orb
       def unit_config
       end
 
-      sig do
-        params(_: Orb::Models::PriceCreateParams::UnitConfig).returns(Orb::Models::PriceCreateParams::UnitConfig)
-      end
+      sig { params(_: Orb::Models::PriceCreateParams::UnitConfig).returns(Orb::Models::PriceCreateParams::UnitConfig) }
       def unit_config=(_)
       end
 
@@ -77,7 +75,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::PriceCreateParams::BillingCycleConfiguration)).returns(T.nilable(Orb::Models::PriceCreateParams::BillingCycleConfiguration))
+        params(_: T.nilable(Orb::Models::PriceCreateParams::BillingCycleConfiguration))
+          .returns(T.nilable(Orb::Models::PriceCreateParams::BillingCycleConfiguration))
       end
       def billing_cycle_configuration=(_)
       end
@@ -119,7 +118,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration)).returns(T.nilable(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration))
+        params(_: T.nilable(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration))
+          .returns(T.nilable(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration))
       end
       def invoicing_cycle_configuration=(_)
       end
@@ -129,12 +129,8 @@ module Orb
       end
 
       sig do
-        params(
-          _: T.nilable(
-            T::Hash[Symbol,
-                    T.nilable(String)]
-          )
-        ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+        params(_: T.nilable(T::Hash[Symbol, T.nilable(String)]))
+          .returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
       end
       def metadata=(_)
       end
@@ -144,7 +140,8 @@ module Orb
       end
 
       sig do
-        params(_: Orb::Models::PriceCreateParams::PackageConfig).returns(Orb::Models::PriceCreateParams::PackageConfig)
+        params(_: Orb::Models::PriceCreateParams::PackageConfig)
+          .returns(Orb::Models::PriceCreateParams::PackageConfig)
       end
       def package_config=(_)
       end
@@ -154,7 +151,8 @@ module Orb
       end
 
       sig do
-        params(_: Orb::Models::PriceCreateParams::MatrixConfig).returns(Orb::Models::PriceCreateParams::MatrixConfig)
+        params(_: Orb::Models::PriceCreateParams::MatrixConfig)
+          .returns(Orb::Models::PriceCreateParams::MatrixConfig)
       end
       def matrix_config=(_)
       end
@@ -164,7 +162,8 @@ module Orb
       end
 
       sig do
-        params(_: Orb::Models::PriceCreateParams::MatrixWithAllocationConfig).returns(Orb::Models::PriceCreateParams::MatrixWithAllocationConfig)
+        params(_: Orb::Models::PriceCreateParams::MatrixWithAllocationConfig)
+          .returns(Orb::Models::PriceCreateParams::MatrixWithAllocationConfig)
       end
       def matrix_with_allocation_config=(_)
       end
@@ -174,7 +173,8 @@ module Orb
       end
 
       sig do
-        params(_: Orb::Models::PriceCreateParams::TieredConfig).returns(Orb::Models::PriceCreateParams::TieredConfig)
+        params(_: Orb::Models::PriceCreateParams::TieredConfig)
+          .returns(Orb::Models::PriceCreateParams::TieredConfig)
       end
       def tiered_config=(_)
       end
@@ -184,7 +184,8 @@ module Orb
       end
 
       sig do
-        params(_: Orb::Models::PriceCreateParams::TieredBpsConfig).returns(Orb::Models::PriceCreateParams::TieredBpsConfig)
+        params(_: Orb::Models::PriceCreateParams::TieredBpsConfig)
+          .returns(Orb::Models::PriceCreateParams::TieredBpsConfig)
       end
       def tiered_bps_config=(_)
       end
@@ -193,9 +194,7 @@ module Orb
       def bps_config
       end
 
-      sig do
-        params(_: Orb::Models::PriceCreateParams::BpsConfig).returns(Orb::Models::PriceCreateParams::BpsConfig)
-      end
+      sig { params(_: Orb::Models::PriceCreateParams::BpsConfig).returns(Orb::Models::PriceCreateParams::BpsConfig) }
       def bps_config=(_)
       end
 
@@ -204,7 +203,8 @@ module Orb
       end
 
       sig do
-        params(_: Orb::Models::PriceCreateParams::BulkBpsConfig).returns(Orb::Models::PriceCreateParams::BulkBpsConfig)
+        params(_: Orb::Models::PriceCreateParams::BulkBpsConfig)
+          .returns(Orb::Models::PriceCreateParams::BulkBpsConfig)
       end
       def bulk_bps_config=(_)
       end
@@ -213,9 +213,7 @@ module Orb
       def bulk_config
       end
 
-      sig do
-        params(_: Orb::Models::PriceCreateParams::BulkConfig).returns(Orb::Models::PriceCreateParams::BulkConfig)
-      end
+      sig { params(_: Orb::Models::PriceCreateParams::BulkConfig).returns(Orb::Models::PriceCreateParams::BulkConfig) }
       def bulk_config=(_)
       end
 
@@ -416,7 +414,8 @@ module Orb
           invoicing_cycle_configuration: T.nilable(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         cadence:,
@@ -466,53 +465,54 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            cadence: Symbol,
-            currency: String,
-            item_id: String,
-            model_type: Symbol,
-            name: String,
-            unit_config: Orb::Models::PriceCreateParams::UnitConfig,
-            billable_metric_id: T.nilable(String),
-            billed_in_advance: T.nilable(T::Boolean),
-            billing_cycle_configuration: T.nilable(Orb::Models::PriceCreateParams::BillingCycleConfiguration),
-            conversion_rate: T.nilable(Float),
-            external_price_id: T.nilable(String),
-            fixed_price_quantity: T.nilable(Float),
-            invoice_grouping_key: T.nilable(String),
-            invoicing_cycle_configuration: T.nilable(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration),
-            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-            package_config: Orb::Models::PriceCreateParams::PackageConfig,
-            matrix_config: Orb::Models::PriceCreateParams::MatrixConfig,
-            matrix_with_allocation_config: Orb::Models::PriceCreateParams::MatrixWithAllocationConfig,
-            tiered_config: Orb::Models::PriceCreateParams::TieredConfig,
-            tiered_bps_config: Orb::Models::PriceCreateParams::TieredBpsConfig,
-            bps_config: Orb::Models::PriceCreateParams::BpsConfig,
-            bulk_bps_config: Orb::Models::PriceCreateParams::BulkBpsConfig,
-            bulk_config: Orb::Models::PriceCreateParams::BulkConfig,
-            threshold_total_amount_config: T::Hash[Symbol, T.anything],
-            tiered_package_config: T::Hash[Symbol, T.anything],
-            grouped_tiered_config: T::Hash[Symbol, T.anything],
-            max_group_tiered_package_config: T::Hash[Symbol, T.anything],
-            tiered_with_minimum_config: T::Hash[Symbol, T.anything],
-            package_with_allocation_config: T::Hash[Symbol, T.anything],
-            tiered_package_with_minimum_config: T::Hash[Symbol, T.anything],
-            unit_with_percent_config: T::Hash[Symbol, T.anything],
-            tiered_with_proration_config: T::Hash[Symbol, T.anything],
-            unit_with_proration_config: T::Hash[Symbol, T.anything],
-            grouped_allocation_config: T::Hash[Symbol, T.anything],
-            grouped_with_prorated_minimum_config: T::Hash[Symbol, T.anything],
-            grouped_with_metered_minimum_config: T::Hash[Symbol, T.anything],
-            matrix_with_display_name_config: T::Hash[Symbol, T.anything],
-            bulk_with_proration_config: T::Hash[Symbol, T.anything],
-            grouped_tiered_package_config: T::Hash[Symbol, T.anything],
-            scalable_matrix_with_unit_pricing_config: T::Hash[Symbol, T.anything],
-            scalable_matrix_with_tiered_pricing_config: T::Hash[Symbol, T.anything],
-            cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              cadence: Symbol,
+              currency: String,
+              item_id: String,
+              model_type: Symbol,
+              name: String,
+              unit_config: Orb::Models::PriceCreateParams::UnitConfig,
+              billable_metric_id: T.nilable(String),
+              billed_in_advance: T.nilable(T::Boolean),
+              billing_cycle_configuration: T.nilable(Orb::Models::PriceCreateParams::BillingCycleConfiguration),
+              conversion_rate: T.nilable(Float),
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
+              invoicing_cycle_configuration: T.nilable(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration),
+              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+              package_config: Orb::Models::PriceCreateParams::PackageConfig,
+              matrix_config: Orb::Models::PriceCreateParams::MatrixConfig,
+              matrix_with_allocation_config: Orb::Models::PriceCreateParams::MatrixWithAllocationConfig,
+              tiered_config: Orb::Models::PriceCreateParams::TieredConfig,
+              tiered_bps_config: Orb::Models::PriceCreateParams::TieredBpsConfig,
+              bps_config: Orb::Models::PriceCreateParams::BpsConfig,
+              bulk_bps_config: Orb::Models::PriceCreateParams::BulkBpsConfig,
+              bulk_config: Orb::Models::PriceCreateParams::BulkConfig,
+              threshold_total_amount_config: T::Hash[Symbol, T.anything],
+              tiered_package_config: T::Hash[Symbol, T.anything],
+              grouped_tiered_config: T::Hash[Symbol, T.anything],
+              max_group_tiered_package_config: T::Hash[Symbol, T.anything],
+              tiered_with_minimum_config: T::Hash[Symbol, T.anything],
+              package_with_allocation_config: T::Hash[Symbol, T.anything],
+              tiered_package_with_minimum_config: T::Hash[Symbol, T.anything],
+              unit_with_percent_config: T::Hash[Symbol, T.anything],
+              tiered_with_proration_config: T::Hash[Symbol, T.anything],
+              unit_with_proration_config: T::Hash[Symbol, T.anything],
+              grouped_allocation_config: T::Hash[Symbol, T.anything],
+              grouped_with_prorated_minimum_config: T::Hash[Symbol, T.anything],
+              grouped_with_metered_minimum_config: T::Hash[Symbol, T.anything],
+              matrix_with_display_name_config: T::Hash[Symbol, T.anything],
+              bulk_with_proration_config: T::Hash[Symbol, T.anything],
+              grouped_tiered_package_config: T::Hash[Symbol, T.anything],
+              scalable_matrix_with_unit_pricing_config: T::Hash[Symbol, T.anything],
+              scalable_matrix_with_tiered_pricing_config: T::Hash[Symbol, T.anything],
+              cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -682,7 +682,8 @@ module Orb
         end
 
         sig do
-          params(_: T::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue]).returns(T::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue])
+          params(_: T::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue])
+            .returns(T::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue])
         end
         def matrix_values=(_)
         end
@@ -692,19 +693,21 @@ module Orb
             default_unit_amount: String,
             dimensions: T::Array[T.nilable(String)],
             matrix_values: T::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue]
-          ).void
+          )
+            .void
         end
         def initialize(default_unit_amount:, dimensions:, matrix_values:)
         end
 
         sig do
-          override.returns(
-            {
-              default_unit_amount: String,
-              dimensions: T::Array[T.nilable(String)],
-              matrix_values: T::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue]
-            }
-          )
+          override
+            .returns(
+              {
+                default_unit_amount: String,
+                dimensions: T::Array[T.nilable(String)],
+                matrix_values: T::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue]
+              }
+            )
         end
         def to_hash
         end
@@ -766,7 +769,8 @@ module Orb
         end
 
         sig do
-          params(_: T::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]).returns(T::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue])
+          params(_: T::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue])
+            .returns(T::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue])
         end
         def matrix_values=(_)
         end
@@ -777,20 +781,22 @@ module Orb
             default_unit_amount: String,
             dimensions: T::Array[T.nilable(String)],
             matrix_values: T::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
-          ).void
+          )
+            .void
         end
         def initialize(allocation:, default_unit_amount:, dimensions:, matrix_values:)
         end
 
         sig do
-          override.returns(
-            {
-              allocation: Float,
-              default_unit_amount: String,
-              dimensions: T::Array[T.nilable(String)],
-              matrix_values: T::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
-            }
-          )
+          override
+            .returns(
+              {
+                allocation: Float,
+                default_unit_amount: String,
+                dimensions: T::Array[T.nilable(String)],
+                matrix_values: T::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
+              }
+            )
         end
         def to_hash
         end
@@ -828,7 +834,8 @@ module Orb
         end
 
         sig do
-          params(_: T::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]).returns(T::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier])
+          params(_: T::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier])
+            .returns(T::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier])
         end
         def tiers=(_)
         end
@@ -882,7 +889,8 @@ module Orb
         end
 
         sig do
-          params(_: T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]).returns(T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier])
+          params(_: T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier])
+            .returns(T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier])
         end
         def tiers=(_)
         end
@@ -934,20 +942,22 @@ module Orb
               minimum_amount: String,
               maximum_amount: T.nilable(String),
               per_unit_maximum: T.nilable(String)
-            ).void
+            )
+              .void
           end
           def initialize(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil)
           end
 
           sig do
-            override.returns(
-              {
-                bps: Float,
-                minimum_amount: String,
-                maximum_amount: T.nilable(String),
-                per_unit_maximum: T.nilable(String)
-              }
-            )
+            override
+              .returns(
+                {
+                  bps: Float,
+                  minimum_amount: String,
+                  maximum_amount: T.nilable(String),
+                  per_unit_maximum: T.nilable(String)
+                }
+              )
           end
           def to_hash
           end
@@ -986,7 +996,8 @@ module Orb
         end
 
         sig do
-          params(_: T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]).returns(T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier])
+          params(_: T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier])
+            .returns(T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier])
         end
         def tiers=(_)
         end
@@ -1050,7 +1061,8 @@ module Orb
         end
 
         sig do
-          params(_: T::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]).returns(T::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier])
+          params(_: T::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier])
+            .returns(T::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier])
         end
         def tiers=(_)
         end

@@ -32,14 +32,13 @@ module Orb
             def created_at=(_)
             end
 
-            sig do
-              returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::CreditBlock)
-            end
+            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::CreditBlock) }
             def credit_block
             end
 
             sig do
-              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::CreditBlock).returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::CreditBlock)
+              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::CreditBlock)
+                .returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::CreditBlock)
             end
             def credit_block=(_)
             end
@@ -52,14 +51,13 @@ module Orb
             def currency=(_)
             end
 
-            sig do
-              returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::Customer)
-            end
+            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::Customer) }
             def customer
             end
 
             sig do
-              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::Customer).returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::Customer)
+              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::Customer)
+                .returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::Customer)
             end
             def customer=(_)
             end
@@ -135,7 +133,8 @@ module Orb
                 metadata: T::Hash[Symbol, String],
                 starting_balance: Float,
                 entry_type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(
               id:,
@@ -155,23 +154,24 @@ module Orb
             end
 
             sig do
-              override.returns(
-                {
-                  id: String,
-                  amount: Float,
-                  created_at: Time,
-                  credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::CreditBlock,
-                  currency: String,
-                  customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::Customer,
-                  description: T.nilable(String),
-                  ending_balance: Float,
-                  entry_status: Symbol,
-                  entry_type: Symbol,
-                  ledger_sequence_number: Integer,
-                  metadata: T::Hash[Symbol, String],
-                  starting_balance: Float
-                }
-              )
+              override
+                .returns(
+                  {
+                    id: String,
+                    amount: Float,
+                    created_at: Time,
+                    credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::CreditBlock,
+                    currency: String,
+                    customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::Customer,
+                    description: T.nilable(String),
+                    ending_balance: Float,
+                    entry_status: Symbol,
+                    entry_type: Symbol,
+                    ledger_sequence_number: Integer,
+                    metadata: T::Hash[Symbol, String],
+                    starting_balance: Float
+                  }
+                )
             end
             def to_hash
             end
@@ -283,14 +283,13 @@ module Orb
             def created_at=(_)
             end
 
-            sig do
-              returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::CreditBlock)
-            end
+            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::CreditBlock) }
             def credit_block
             end
 
             sig do
-              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::CreditBlock).returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::CreditBlock)
+              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::CreditBlock)
+                .returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::CreditBlock)
             end
             def credit_block=(_)
             end
@@ -303,14 +302,13 @@ module Orb
             def currency=(_)
             end
 
-            sig do
-              returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::Customer)
-            end
+            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::Customer) }
             def customer
             end
 
             sig do
-              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::Customer).returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::Customer)
+              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::Customer)
+                .returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::Customer)
             end
             def customer=(_)
             end
@@ -413,7 +411,8 @@ module Orb
                 invoice_id: T.nilable(String),
                 price_id: T.nilable(String),
                 entry_type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(
               id:,
@@ -436,26 +435,27 @@ module Orb
             end
 
             sig do
-              override.returns(
-                {
-                  id: String,
-                  amount: Float,
-                  created_at: Time,
-                  credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::CreditBlock,
-                  currency: String,
-                  customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::Customer,
-                  description: T.nilable(String),
-                  ending_balance: Float,
-                  entry_status: Symbol,
-                  entry_type: Symbol,
-                  ledger_sequence_number: Integer,
-                  metadata: T::Hash[Symbol, String],
-                  starting_balance: Float,
-                  event_id: T.nilable(String),
-                  invoice_id: T.nilable(String),
-                  price_id: T.nilable(String)
-                }
-              )
+              override
+                .returns(
+                  {
+                    id: String,
+                    amount: Float,
+                    created_at: Time,
+                    credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::CreditBlock,
+                    currency: String,
+                    customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::Customer,
+                    description: T.nilable(String),
+                    ending_balance: Float,
+                    entry_status: Symbol,
+                    entry_type: Symbol,
+                    ledger_sequence_number: Integer,
+                    metadata: T::Hash[Symbol, String],
+                    starting_balance: Float,
+                    event_id: T.nilable(String),
+                    invoice_id: T.nilable(String),
+                    price_id: T.nilable(String)
+                  }
+                )
             end
             def to_hash
             end
@@ -568,7 +568,9 @@ module Orb
             end
 
             sig do
-              returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::CreditBlock)
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::CreditBlock
+              )
             end
             def credit_block
             end
@@ -576,7 +578,10 @@ module Orb
             sig do
               params(
                 _: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::CreditBlock
-              ).returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::CreditBlock)
+              )
+                .returns(
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::CreditBlock
+                )
             end
             def credit_block=(_)
             end
@@ -589,16 +594,15 @@ module Orb
             def currency=(_)
             end
 
-            sig do
-              returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::Customer)
-            end
+            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::Customer) }
             def customer
             end
 
             sig do
               params(
                 _: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::Customer
-              ).returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::Customer)
+              )
+                .returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::Customer)
             end
             def customer=(_)
             end
@@ -683,7 +687,8 @@ module Orb
                 new_block_expiry_date: T.nilable(Time),
                 starting_balance: Float,
                 entry_type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(
               id:,
@@ -704,24 +709,25 @@ module Orb
             end
 
             sig do
-              override.returns(
-                {
-                  id: String,
-                  amount: Float,
-                  created_at: Time,
-                  credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::CreditBlock,
-                  currency: String,
-                  customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::Customer,
-                  description: T.nilable(String),
-                  ending_balance: Float,
-                  entry_status: Symbol,
-                  entry_type: Symbol,
-                  ledger_sequence_number: Integer,
-                  metadata: T::Hash[Symbol, String],
-                  new_block_expiry_date: T.nilable(Time),
-                  starting_balance: Float
-                }
-              )
+              override
+                .returns(
+                  {
+                    id: String,
+                    amount: Float,
+                    created_at: Time,
+                    credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::CreditBlock,
+                    currency: String,
+                    customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::Customer,
+                    description: T.nilable(String),
+                    ending_balance: Float,
+                    entry_status: Symbol,
+                    entry_type: Symbol,
+                    ledger_sequence_number: Integer,
+                    metadata: T::Hash[Symbol, String],
+                    new_block_expiry_date: T.nilable(Time),
+                    starting_balance: Float
+                  }
+                )
             end
             def to_hash
             end
@@ -834,7 +840,9 @@ module Orb
             end
 
             sig do
-              returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::CreditBlock)
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::CreditBlock
+              )
             end
             def credit_block
             end
@@ -842,7 +850,10 @@ module Orb
             sig do
               params(
                 _: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::CreditBlock
-              ).returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::CreditBlock)
+              )
+                .returns(
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::CreditBlock
+                )
             end
             def credit_block=(_)
             end
@@ -856,7 +867,9 @@ module Orb
             end
 
             sig do
-              returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::Customer)
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::Customer
+              )
             end
             def customer
             end
@@ -864,7 +877,10 @@ module Orb
             sig do
               params(
                 _: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::Customer
-              ).returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::Customer)
+              )
+                .returns(
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::Customer
+                )
             end
             def customer=(_)
             end
@@ -940,7 +956,8 @@ module Orb
                 metadata: T::Hash[Symbol, String],
                 starting_balance: Float,
                 entry_type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(
               id:,
@@ -960,23 +977,24 @@ module Orb
             end
 
             sig do
-              override.returns(
-                {
-                  id: String,
-                  amount: Float,
-                  created_at: Time,
-                  credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::CreditBlock,
-                  currency: String,
-                  customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::Customer,
-                  description: T.nilable(String),
-                  ending_balance: Float,
-                  entry_status: Symbol,
-                  entry_type: Symbol,
-                  ledger_sequence_number: Integer,
-                  metadata: T::Hash[Symbol, String],
-                  starting_balance: Float
-                }
-              )
+              override
+                .returns(
+                  {
+                    id: String,
+                    amount: Float,
+                    created_at: Time,
+                    credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::CreditBlock,
+                    currency: String,
+                    customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::Customer,
+                    description: T.nilable(String),
+                    ending_balance: Float,
+                    entry_status: Symbol,
+                    entry_type: Symbol,
+                    ledger_sequence_number: Integer,
+                    metadata: T::Hash[Symbol, String],
+                    starting_balance: Float
+                  }
+                )
             end
             def to_hash
             end
@@ -1088,14 +1106,13 @@ module Orb
             def created_at=(_)
             end
 
-            sig do
-              returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::CreditBlock)
-            end
+            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::CreditBlock) }
             def credit_block
             end
 
             sig do
-              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::CreditBlock).returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::CreditBlock)
+              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::CreditBlock)
+                .returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::CreditBlock)
             end
             def credit_block=(_)
             end
@@ -1108,14 +1125,13 @@ module Orb
             def currency=(_)
             end
 
-            sig do
-              returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::Customer)
-            end
+            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::Customer) }
             def customer
             end
 
             sig do
-              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::Customer).returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::Customer)
+              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::Customer)
+                .returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::Customer)
             end
             def customer=(_)
             end
@@ -1209,7 +1225,8 @@ module Orb
                 void_amount: Float,
                 void_reason: T.nilable(String),
                 entry_type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(
               id:,
@@ -1231,25 +1248,26 @@ module Orb
             end
 
             sig do
-              override.returns(
-                {
-                  id: String,
-                  amount: Float,
-                  created_at: Time,
-                  credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::CreditBlock,
-                  currency: String,
-                  customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::Customer,
-                  description: T.nilable(String),
-                  ending_balance: Float,
-                  entry_status: Symbol,
-                  entry_type: Symbol,
-                  ledger_sequence_number: Integer,
-                  metadata: T::Hash[Symbol, String],
-                  starting_balance: Float,
-                  void_amount: Float,
-                  void_reason: T.nilable(String)
-                }
-              )
+              override
+                .returns(
+                  {
+                    id: String,
+                    amount: Float,
+                    created_at: Time,
+                    credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::CreditBlock,
+                    currency: String,
+                    customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::Customer,
+                    description: T.nilable(String),
+                    ending_balance: Float,
+                    entry_status: Symbol,
+                    entry_type: Symbol,
+                    ledger_sequence_number: Integer,
+                    metadata: T::Hash[Symbol, String],
+                    starting_balance: Float,
+                    void_amount: Float,
+                    void_reason: T.nilable(String)
+                  }
+                )
             end
             def to_hash
             end
@@ -1361,16 +1379,15 @@ module Orb
             def created_at=(_)
             end
 
-            sig do
-              returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::CreditBlock)
-            end
+            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::CreditBlock) }
             def credit_block
             end
 
             sig do
               params(
                 _: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::CreditBlock
-              ).returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::CreditBlock)
+              )
+                .returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::CreditBlock)
             end
             def credit_block=(_)
             end
@@ -1383,14 +1400,13 @@ module Orb
             def currency=(_)
             end
 
-            sig do
-              returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::Customer)
-            end
+            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::Customer) }
             def customer
             end
 
             sig do
-              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::Customer).returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::Customer)
+              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::Customer)
+                .returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::Customer)
             end
             def customer=(_)
             end
@@ -1493,7 +1509,8 @@ module Orb
                 void_amount: Float,
                 void_reason: T.nilable(String),
                 entry_type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(
               id:,
@@ -1516,26 +1533,27 @@ module Orb
             end
 
             sig do
-              override.returns(
-                {
-                  id: String,
-                  amount: Float,
-                  created_at: Time,
-                  credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::CreditBlock,
-                  currency: String,
-                  customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::Customer,
-                  description: T.nilable(String),
-                  ending_balance: Float,
-                  entry_status: Symbol,
-                  entry_type: Symbol,
-                  ledger_sequence_number: Integer,
-                  metadata: T::Hash[Symbol, String],
-                  new_block_expiry_date: Time,
-                  starting_balance: Float,
-                  void_amount: Float,
-                  void_reason: T.nilable(String)
-                }
-              )
+              override
+                .returns(
+                  {
+                    id: String,
+                    amount: Float,
+                    created_at: Time,
+                    credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::CreditBlock,
+                    currency: String,
+                    customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::Customer,
+                    description: T.nilable(String),
+                    ending_balance: Float,
+                    entry_status: Symbol,
+                    entry_type: Symbol,
+                    ledger_sequence_number: Integer,
+                    metadata: T::Hash[Symbol, String],
+                    new_block_expiry_date: Time,
+                    starting_balance: Float,
+                    void_amount: Float,
+                    void_reason: T.nilable(String)
+                  }
+                )
             end
             def to_hash
             end
@@ -1647,14 +1665,13 @@ module Orb
             def created_at=(_)
             end
 
-            sig do
-              returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::CreditBlock)
-            end
+            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::CreditBlock) }
             def credit_block
             end
 
             sig do
-              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::CreditBlock).returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::CreditBlock)
+              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::CreditBlock)
+                .returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::CreditBlock)
             end
             def credit_block=(_)
             end
@@ -1667,14 +1684,13 @@ module Orb
             def currency=(_)
             end
 
-            sig do
-              returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::Customer)
-            end
+            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::Customer) }
             def customer
             end
 
             sig do
-              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::Customer).returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::Customer)
+              params(_: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::Customer)
+                .returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::Customer)
             end
             def customer=(_)
             end
@@ -1750,7 +1766,8 @@ module Orb
                 metadata: T::Hash[Symbol, String],
                 starting_balance: Float,
                 entry_type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(
               id:,
@@ -1770,23 +1787,24 @@ module Orb
             end
 
             sig do
-              override.returns(
-                {
-                  id: String,
-                  amount: Float,
-                  created_at: Time,
-                  credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::CreditBlock,
-                  currency: String,
-                  customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::Customer,
-                  description: T.nilable(String),
-                  ending_balance: Float,
-                  entry_status: Symbol,
-                  entry_type: Symbol,
-                  ledger_sequence_number: Integer,
-                  metadata: T::Hash[Symbol, String],
-                  starting_balance: Float
-                }
-              )
+              override
+                .returns(
+                  {
+                    id: String,
+                    amount: Float,
+                    created_at: Time,
+                    credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::CreditBlock,
+                    currency: String,
+                    customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::Customer,
+                    description: T.nilable(String),
+                    ending_balance: Float,
+                    entry_status: Symbol,
+                    entry_type: Symbol,
+                    ledger_sequence_number: Integer,
+                    metadata: T::Hash[Symbol, String],
+                    starting_balance: Float
+                  }
+                )
             end
             def to_hash
             end
@@ -1874,29 +1892,10 @@ module Orb
           end
 
           sig do
-            override.returns(
-              [
-                [
-                  Symbol,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry
-                ],
-                [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry],
-                [
-                  Symbol,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry
-                ],
-                [
-                  Symbol,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry
-                ],
-                [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry],
-                [
-                  Symbol,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry
-                ],
-                [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry]
-              ]
-            )
+            override
+              .returns(
+                [[Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry]]
+              )
           end
           private_class_method def self.variants
           end

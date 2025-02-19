@@ -101,7 +101,8 @@ module Orb
               limit: Integer,
               minimum_amount: T.nilable(String),
               request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-            ).void
+            )
+              .void
           end
           def initialize(
             created_at_gt: nil,
@@ -119,21 +120,22 @@ module Orb
           end
 
           sig do
-            override.returns(
-              {
-                created_at_gt: T.nilable(Time),
-                created_at_gte: T.nilable(Time),
-                created_at_lt: T.nilable(Time),
-                created_at_lte: T.nilable(Time),
-                currency: T.nilable(String),
-                cursor: T.nilable(String),
-                entry_status: T.nilable(Symbol),
-                entry_type: T.nilable(Symbol),
-                limit: Integer,
-                minimum_amount: T.nilable(String),
-                request_options: Orb::RequestOptions
-              }
-            )
+            override
+              .returns(
+                {
+                  created_at_gt: T.nilable(Time),
+                  created_at_gte: T.nilable(Time),
+                  created_at_lt: T.nilable(Time),
+                  created_at_lte: T.nilable(Time),
+                  currency: T.nilable(String),
+                  cursor: T.nilable(String),
+                  entry_status: T.nilable(Symbol),
+                  entry_type: T.nilable(Symbol),
+                  limit: Integer,
+                  minimum_amount: T.nilable(String),
+                  request_options: Orb::RequestOptions
+                }
+              )
           end
           def to_hash
           end

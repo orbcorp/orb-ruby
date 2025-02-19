@@ -90,7 +90,8 @@ module Orb
           limit: Integer,
           subscription_id: T.nilable(String),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         created_at_gt: nil,
@@ -107,20 +108,21 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            created_at_gt: T.nilable(Time),
-            created_at_gte: T.nilable(Time),
-            created_at_lt: T.nilable(Time),
-            created_at_lte: T.nilable(Time),
-            cursor: T.nilable(String),
-            customer_id: T.nilable(String),
-            external_customer_id: T.nilable(String),
-            limit: Integer,
-            subscription_id: T.nilable(String),
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              created_at_gt: T.nilable(Time),
+              created_at_gte: T.nilable(Time),
+              created_at_lt: T.nilable(Time),
+              created_at_lte: T.nilable(Time),
+              cursor: T.nilable(String),
+              customer_id: T.nilable(String),
+              external_customer_id: T.nilable(String),
+              limit: Integer,
+              subscription_id: T.nilable(String),
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end
