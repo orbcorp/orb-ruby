@@ -105,7 +105,8 @@ module Orb
             timeframe_end: Time,
             timeframe_start: Time,
             deprecation_filter: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -123,21 +124,22 @@ module Orb
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              close_time: T.nilable(Time),
-              created_at: Time,
-              customer_id: T.nilable(String),
-              events_ingested: Integer,
-              replace_existing_events: T::Boolean,
-              reverted_at: T.nilable(Time),
-              status: Symbol,
-              timeframe_end: Time,
-              timeframe_start: Time,
-              deprecation_filter: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                close_time: T.nilable(Time),
+                created_at: Time,
+                customer_id: T.nilable(String),
+                events_ingested: Integer,
+                replace_existing_events: T::Boolean,
+                reverted_at: T.nilable(Time),
+                status: Symbol,
+                timeframe_end: Time,
+                timeframe_start: Time,
+                deprecation_filter: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end

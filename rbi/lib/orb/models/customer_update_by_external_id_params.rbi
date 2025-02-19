@@ -11,7 +11,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration)).returns(T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration))
+        params(_: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration))
+          .returns(T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration))
       end
       def accounting_sync_configuration=(_)
       end
@@ -37,7 +38,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress)).returns(T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress))
+        params(_: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress))
+          .returns(T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress))
       end
       def billing_address=(_)
       end
@@ -79,12 +81,8 @@ module Orb
       end
 
       sig do
-        params(
-          _: T.nilable(
-            T::Hash[Symbol,
-                    T.nilable(String)]
-          )
-        ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+        params(_: T.nilable(T::Hash[Symbol, T.nilable(String)]))
+          .returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
       end
       def metadata=(_)
       end
@@ -118,7 +116,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration)).returns(T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration))
+        params(_: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration))
+          .returns(T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration))
       end
       def reporting_configuration=(_)
       end
@@ -128,7 +127,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress)).returns(T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress))
+        params(_: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress))
+          .returns(T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress))
       end
       def shipping_address=(_)
       end
@@ -137,7 +137,8 @@ module Orb
         returns(
           T.nilable(
             T.any(
-              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration
+              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration,
+              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration
             )
           )
         )
@@ -149,14 +150,19 @@ module Orb
         params(
           _: T.nilable(
             T.any(
-              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration
+              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration,
+              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration
             )
           )
-        ).returns(T.nilable(
-                    T.any(
-                      Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration
-                    )
-                  ))
+        )
+          .returns(
+            T.nilable(
+              T.any(
+                Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration,
+                Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration
+              )
+            )
+          )
       end
       def tax_configuration=(_)
       end
@@ -166,7 +172,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::TaxID)).returns(T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::TaxID))
+        params(_: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::TaxID))
+          .returns(T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::TaxID))
       end
       def tax_id=(_)
       end
@@ -189,12 +196,14 @@ module Orb
           shipping_address: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress),
           tax_configuration: T.nilable(
             T.any(
-              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration
+              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration,
+              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration
             )
           ),
           tax_id: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::TaxID),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         accounting_sync_configuration: nil,
@@ -218,49 +227,59 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            accounting_sync_configuration: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration),
-            additional_emails: T.nilable(T::Array[String]),
-            auto_collection: T.nilable(T::Boolean),
-            billing_address: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress),
-            currency: T.nilable(String),
-            email: T.nilable(String),
-            email_delivery: T.nilable(T::Boolean),
-            external_customer_id: T.nilable(String),
-            metadata: T.nilable(
-              T::Hash[Symbol,
-                      T.nilable(String)]
-            ),
-            name: T.nilable(String),
-            payment_provider: T.nilable(Symbol),
-            payment_provider_id: T.nilable(String),
-            reporting_configuration: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration),
-            shipping_address: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress),
-            tax_configuration: T.nilable(
-              T.any(
-                Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration
-              )
-            ),
-            tax_id: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::TaxID),
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              accounting_sync_configuration: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration),
+              additional_emails: T.nilable(T::Array[String]),
+              auto_collection: T.nilable(T::Boolean),
+              billing_address: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress),
+              currency: T.nilable(String),
+              email: T.nilable(String),
+              email_delivery: T.nilable(T::Boolean),
+              external_customer_id: T.nilable(String),
+              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+              name: T.nilable(String),
+              payment_provider: T.nilable(Symbol),
+              payment_provider_id: T.nilable(String),
+              reporting_configuration: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration),
+              shipping_address: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress),
+              tax_configuration: T.nilable(
+                T.any(
+                  Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration,
+                  Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration
+                )
+              ),
+              tax_id: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::TaxID),
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end
 
       class AccountingSyncConfiguration < Orb::BaseModel
         sig do
-          returns(T.nilable(T::Array[Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]))
+          returns(
+            T.nilable(
+              T::Array[Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]
+            )
+          )
         end
         def accounting_providers
         end
 
         sig do
           params(
-            _: T.nilable(T::Array[Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider])
-          ).returns(T.nilable(T::Array[Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]))
+            _: T.nilable(
+              T::Array[Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]
+            )
+          )
+            .returns(
+              T.nilable(
+                T::Array[Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]
+              )
+            )
         end
         def accounting_providers=(_)
         end
@@ -275,19 +294,26 @@ module Orb
 
         sig do
           params(
-            accounting_providers: T.nilable(T::Array[Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]),
+            accounting_providers: T.nilable(
+              T::Array[Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]
+            ),
             excluded: T.nilable(T::Boolean)
-          ).void
+          )
+            .void
         end
         def initialize(accounting_providers: nil, excluded: nil)
         end
 
         sig do
-          override.returns(
-            {
-              accounting_providers: T.nilable(T::Array[Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]), excluded: T.nilable(T::Boolean)
-            }
-          )
+          override
+            .returns(
+              {
+                accounting_providers: T.nilable(
+                  T::Array[Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]
+                ),
+                excluded: T.nilable(T::Boolean)
+              }
+            )
         end
         def to_hash
         end
@@ -376,22 +402,24 @@ module Orb
             line2: T.nilable(String),
             postal_code: T.nilable(String),
             state: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil)
         end
 
         sig do
-          override.returns(
-            {
-              city: T.nilable(String),
-              country: T.nilable(String),
-              line1: T.nilable(String),
-              line2: T.nilable(String),
-              postal_code: T.nilable(String),
-              state: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                city: T.nilable(String),
+                country: T.nilable(String),
+                line1: T.nilable(String),
+                line2: T.nilable(String),
+                postal_code: T.nilable(String),
+                state: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end
@@ -486,22 +514,24 @@ module Orb
             line2: T.nilable(String),
             postal_code: T.nilable(String),
             state: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil)
         end
 
         sig do
-          override.returns(
-            {
-              city: T.nilable(String),
-              country: T.nilable(String),
-              line1: T.nilable(String),
-              line2: T.nilable(String),
-              postal_code: T.nilable(String),
-              state: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                city: T.nilable(String),
+                country: T.nilable(String),
+                line1: T.nilable(String),
+                line2: T.nilable(String),
+                postal_code: T.nilable(String),
+                state: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end
@@ -581,18 +611,10 @@ module Orb
         end
 
         sig do
-          override.returns(
-            [
-              [
-                Symbol,
-                Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration
-              ],
-              [
-                Symbol,
-                Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration
-              ]
-            ]
-          )
+          override
+            .returns(
+              [[Symbol, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration], [Symbol, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration]]
+            )
         end
         private_class_method def self.variants
         end

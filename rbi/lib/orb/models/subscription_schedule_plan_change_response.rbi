@@ -24,7 +24,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval]).returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval])
+        params(_: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval])
+          .returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval])
       end
       def adjustment_intervals=(_)
       end
@@ -42,7 +43,8 @@ module Orb
       end
 
       sig do
-        params(_: Orb::Models::SubscriptionSchedulePlanChangeResponse::BillingCycleAnchorConfiguration).returns(Orb::Models::SubscriptionSchedulePlanChangeResponse::BillingCycleAnchorConfiguration)
+        params(_: Orb::Models::SubscriptionSchedulePlanChangeResponse::BillingCycleAnchorConfiguration)
+          .returns(Orb::Models::SubscriptionSchedulePlanChangeResponse::BillingCycleAnchorConfiguration)
       end
       def billing_cycle_anchor_configuration=(_)
       end
@@ -97,9 +99,13 @@ module Orb
 
       sig do
         returns(
-          T::Array[T.any(
-            Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::UsageDiscountInterval
-          )]
+          T::Array[
+          T.any(
+            Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::AmountDiscountInterval,
+            Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::PercentageDiscountInterval,
+            Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::UsageDiscountInterval
+          )
+          ]
         )
       end
       def discount_intervals
@@ -107,12 +113,23 @@ module Orb
 
       sig do
         params(
-          _: T::Array[T.any(
-            Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::UsageDiscountInterval
-          )]
-        ).returns(T::Array[T.any(
-          Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::UsageDiscountInterval
-        )])
+          _: T::Array[
+          T.any(
+            Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::AmountDiscountInterval,
+            Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::PercentageDiscountInterval,
+            Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::UsageDiscountInterval
+          )
+          ]
+        )
+          .returns(
+            T::Array[
+            T.any(
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::AmountDiscountInterval,
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::PercentageDiscountInterval,
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::UsageDiscountInterval
+            )
+            ]
+          )
       end
       def discount_intervals=(_)
       end
@@ -130,7 +147,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::FixedFeeQuantitySchedule]).returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::FixedFeeQuantitySchedule])
+        params(_: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::FixedFeeQuantitySchedule])
+          .returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::FixedFeeQuantitySchedule])
       end
       def fixed_fee_quantity_schedule=(_)
       end
@@ -148,7 +166,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::MaximumInterval]).returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::MaximumInterval])
+        params(_: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::MaximumInterval])
+          .returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::MaximumInterval])
       end
       def maximum_intervals=(_)
       end
@@ -166,7 +185,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::MinimumInterval]).returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::MinimumInterval])
+        params(_: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::MinimumInterval])
+          .returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::MinimumInterval])
       end
       def minimum_intervals=(_)
       end
@@ -192,7 +212,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval]).returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval])
+        params(_: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval])
+          .returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval])
       end
       def price_intervals=(_)
       end
@@ -202,7 +223,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeResponse::RedeemedCoupon)).returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeResponse::RedeemedCoupon))
+        params(_: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeResponse::RedeemedCoupon))
+          .returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeResponse::RedeemedCoupon))
       end
       def redeemed_coupon=(_)
       end
@@ -228,7 +250,8 @@ module Orb
       end
 
       sig do
-        params(_: Orb::Models::SubscriptionSchedulePlanChangeResponse::TrialInfo).returns(Orb::Models::SubscriptionSchedulePlanChangeResponse::TrialInfo)
+        params(_: Orb::Models::SubscriptionSchedulePlanChangeResponse::TrialInfo)
+          .returns(Orb::Models::SubscriptionSchedulePlanChangeResponse::TrialInfo)
       end
       def trial_info=(_)
       end
@@ -246,9 +269,13 @@ module Orb
           current_billing_period_start_date: T.nilable(Time),
           customer: Orb::Models::Customer,
           default_invoice_memo: T.nilable(String),
-          discount_intervals: T::Array[T.any(
-            Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::UsageDiscountInterval
-          )],
+          discount_intervals: T::Array[
+          T.any(
+            Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::AmountDiscountInterval,
+            Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::PercentageDiscountInterval,
+            Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::UsageDiscountInterval
+          )
+          ],
           end_date: T.nilable(Time),
           fixed_fee_quantity_schedule: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::FixedFeeQuantitySchedule],
           invoicing_threshold: T.nilable(String),
@@ -262,7 +289,8 @@ module Orb
           start_date: Time,
           status: Symbol,
           trial_info: Orb::Models::SubscriptionSchedulePlanChangeResponse::TrialInfo
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -294,37 +322,42 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            active_plan_phase_order: T.nilable(Integer),
-            adjustment_intervals: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval],
-            auto_collection: T.nilable(T::Boolean),
-            billing_cycle_anchor_configuration: Orb::Models::SubscriptionSchedulePlanChangeResponse::BillingCycleAnchorConfiguration,
-            billing_cycle_day: Integer,
-            created_at: Time,
-            current_billing_period_end_date: T.nilable(Time),
-            current_billing_period_start_date: T.nilable(Time),
-            customer: Orb::Models::Customer,
-            default_invoice_memo: T.nilable(String),
-            discount_intervals: T::Array[T.any(
-              Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::UsageDiscountInterval
-            )],
-            end_date: T.nilable(Time),
-            fixed_fee_quantity_schedule: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::FixedFeeQuantitySchedule],
-            invoicing_threshold: T.nilable(String),
-            maximum_intervals: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::MaximumInterval],
-            metadata: T::Hash[Symbol, String],
-            minimum_intervals: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::MinimumInterval],
-            net_terms: Integer,
-            plan: Orb::Models::Plan,
-            price_intervals: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval],
-            redeemed_coupon: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeResponse::RedeemedCoupon),
-            start_date: Time,
-            status: Symbol,
-            trial_info: Orb::Models::SubscriptionSchedulePlanChangeResponse::TrialInfo
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              active_plan_phase_order: T.nilable(Integer),
+              adjustment_intervals: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval],
+              auto_collection: T.nilable(T::Boolean),
+              billing_cycle_anchor_configuration: Orb::Models::SubscriptionSchedulePlanChangeResponse::BillingCycleAnchorConfiguration,
+              billing_cycle_day: Integer,
+              created_at: Time,
+              current_billing_period_end_date: T.nilable(Time),
+              current_billing_period_start_date: T.nilable(Time),
+              customer: Orb::Models::Customer,
+              default_invoice_memo: T.nilable(String),
+              discount_intervals: T::Array[
+              T.any(
+                Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::AmountDiscountInterval,
+                Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::PercentageDiscountInterval,
+                Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::UsageDiscountInterval
+              )
+              ],
+              end_date: T.nilable(Time),
+              fixed_fee_quantity_schedule: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::FixedFeeQuantitySchedule],
+              invoicing_threshold: T.nilable(String),
+              maximum_intervals: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::MaximumInterval],
+              metadata: T::Hash[Symbol, String],
+              minimum_intervals: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::MinimumInterval],
+              net_terms: Integer,
+              plan: Orb::Models::Plan,
+              price_intervals: T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval],
+              redeemed_coupon: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeResponse::RedeemedCoupon),
+              start_date: Time,
+              status: Symbol,
+              trial_info: Orb::Models::SubscriptionSchedulePlanChangeResponse::TrialInfo
+            }
+          )
       end
       def to_hash
       end
@@ -341,7 +374,11 @@ module Orb
         sig do
           returns(
             T.any(
-              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment,
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment,
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment,
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment,
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
             )
           )
         end
@@ -351,11 +388,22 @@ module Orb
         sig do
           params(
             _: T.any(
-              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment,
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment,
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment,
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment,
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
             )
-          ).returns(T.any(
-                      Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
-                    ))
+          )
+            .returns(
+              T.any(
+                Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment,
+                Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment,
+                Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment,
+                Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment,
+                Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
+              )
+            )
         end
         def adjustment=(_)
         end
@@ -388,28 +436,38 @@ module Orb
           params(
             id: String,
             adjustment: T.any(
-              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment,
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment,
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment,
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment,
+              Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
             ),
             applies_to_price_interval_ids: T::Array[String],
             end_date: T.nilable(Time),
             start_date: Time
-          ).void
+          )
+            .void
         end
         def initialize(id:, adjustment:, applies_to_price_interval_ids:, end_date:, start_date:)
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              adjustment: T.any(
-                Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
-              ),
-              applies_to_price_interval_ids: T::Array[String],
-              end_date: T.nilable(Time),
-              start_date: Time
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                adjustment: T.any(
+                  Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment,
+                  Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment,
+                  Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment,
+                  Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment,
+                  Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
+                ),
+                applies_to_price_interval_ids: T::Array[String],
+                end_date: T.nilable(Time),
+                start_date: Time
+              }
+            )
         end
         def to_hash
         end
@@ -483,7 +541,8 @@ module Orb
                 reason: T.nilable(String),
                 usage_discount: Float,
                 adjustment_type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(
               id:,
@@ -497,17 +556,18 @@ module Orb
             end
 
             sig do
-              override.returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  plan_phase_order: T.nilable(Integer),
-                  reason: T.nilable(String),
-                  usage_discount: Float
-                }
-              )
+              override
+                .returns(
+                  {
+                    id: String,
+                    adjustment_type: Symbol,
+                    applies_to_price_ids: T::Array[String],
+                    is_invoice_level: T::Boolean,
+                    plan_phase_order: T.nilable(Integer),
+                    reason: T.nilable(String),
+                    usage_discount: Float
+                  }
+                )
             end
             def to_hash
             end
@@ -579,7 +639,8 @@ module Orb
                 plan_phase_order: T.nilable(Integer),
                 reason: T.nilable(String),
                 adjustment_type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(
               id:,
@@ -593,17 +654,18 @@ module Orb
             end
 
             sig do
-              override.returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  amount_discount: String,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  plan_phase_order: T.nilable(Integer),
-                  reason: T.nilable(String)
-                }
-              )
+              override
+                .returns(
+                  {
+                    id: String,
+                    adjustment_type: Symbol,
+                    amount_discount: String,
+                    applies_to_price_ids: T::Array[String],
+                    is_invoice_level: T::Boolean,
+                    plan_phase_order: T.nilable(Integer),
+                    reason: T.nilable(String)
+                  }
+                )
             end
             def to_hash
             end
@@ -675,7 +737,8 @@ module Orb
                 plan_phase_order: T.nilable(Integer),
                 reason: T.nilable(String),
                 adjustment_type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(
               id:,
@@ -689,17 +752,18 @@ module Orb
             end
 
             sig do
-              override.returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  percentage_discount: Float,
-                  plan_phase_order: T.nilable(Integer),
-                  reason: T.nilable(String)
-                }
-              )
+              override
+                .returns(
+                  {
+                    id: String,
+                    adjustment_type: Symbol,
+                    applies_to_price_ids: T::Array[String],
+                    is_invoice_level: T::Boolean,
+                    percentage_discount: Float,
+                    plan_phase_order: T.nilable(Integer),
+                    reason: T.nilable(String)
+                  }
+                )
             end
             def to_hash
             end
@@ -780,7 +844,8 @@ module Orb
                 plan_phase_order: T.nilable(Integer),
                 reason: T.nilable(String),
                 adjustment_type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(
               id:,
@@ -795,18 +860,19 @@ module Orb
             end
 
             sig do
-              override.returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  item_id: String,
-                  minimum_amount: String,
-                  plan_phase_order: T.nilable(Integer),
-                  reason: T.nilable(String)
-                }
-              )
+              override
+                .returns(
+                  {
+                    id: String,
+                    adjustment_type: Symbol,
+                    applies_to_price_ids: T::Array[String],
+                    is_invoice_level: T::Boolean,
+                    item_id: String,
+                    minimum_amount: String,
+                    plan_phase_order: T.nilable(Integer),
+                    reason: T.nilable(String)
+                  }
+                )
             end
             def to_hash
             end
@@ -878,7 +944,8 @@ module Orb
                 plan_phase_order: T.nilable(Integer),
                 reason: T.nilable(String),
                 adjustment_type: Symbol
-              ).void
+              )
+                .void
             end
             def initialize(
               id:,
@@ -892,47 +959,28 @@ module Orb
             end
 
             sig do
-              override.returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  maximum_amount: String,
-                  plan_phase_order: T.nilable(Integer),
-                  reason: T.nilable(String)
-                }
-              )
+              override
+                .returns(
+                  {
+                    id: String,
+                    adjustment_type: Symbol,
+                    applies_to_price_ids: T::Array[String],
+                    is_invoice_level: T::Boolean,
+                    maximum_amount: String,
+                    plan_phase_order: T.nilable(Integer),
+                    reason: T.nilable(String)
+                  }
+                )
             end
             def to_hash
             end
           end
 
           sig do
-            override.returns(
-              [
-                [
-                  Symbol,
-                  Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment
-                ],
-                [
-                  Symbol,
-                  Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment
-                ],
-                [
-                  Symbol,
-                  Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment
-                ],
-                [
-                  Symbol,
-                  Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment
-                ],
-                [
-                  Symbol,
-                  Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
-                ]
-              ]
-            )
+            override
+              .returns(
+                [[Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]]
+              )
           end
           private_class_method def self.variants
           end
@@ -1033,7 +1081,8 @@ module Orb
               end_date: T.nilable(Time),
               start_date: Time,
               discount_type: Symbol
-            ).void
+            )
+              .void
           end
           def initialize(
             amount_discount:,
@@ -1046,16 +1095,17 @@ module Orb
           end
 
           sig do
-            override.returns(
-              {
-                amount_discount: String,
-                applies_to_price_ids: T::Array[String],
-                applies_to_price_interval_ids: T::Array[String],
-                discount_type: Symbol,
-                end_date: T.nilable(Time),
-                start_date: Time
-              }
-            )
+            override
+              .returns(
+                {
+                  amount_discount: String,
+                  applies_to_price_ids: T::Array[String],
+                  applies_to_price_interval_ids: T::Array[String],
+                  discount_type: Symbol,
+                  end_date: T.nilable(Time),
+                  start_date: Time
+                }
+              )
           end
           def to_hash
           end
@@ -1118,7 +1168,8 @@ module Orb
               percentage_discount: Float,
               start_date: Time,
               discount_type: Symbol
-            ).void
+            )
+              .void
           end
           def initialize(
             applies_to_price_ids:,
@@ -1131,16 +1182,17 @@ module Orb
           end
 
           sig do
-            override.returns(
-              {
-                applies_to_price_ids: T::Array[String],
-                applies_to_price_interval_ids: T::Array[String],
-                discount_type: Symbol,
-                end_date: T.nilable(Time),
-                percentage_discount: Float,
-                start_date: Time
-              }
-            )
+            override
+              .returns(
+                {
+                  applies_to_price_ids: T::Array[String],
+                  applies_to_price_interval_ids: T::Array[String],
+                  discount_type: Symbol,
+                  end_date: T.nilable(Time),
+                  percentage_discount: Float,
+                  start_date: Time
+                }
+              )
           end
           def to_hash
           end
@@ -1203,7 +1255,8 @@ module Orb
               start_date: Time,
               usage_discount: Float,
               discount_type: Symbol
-            ).void
+            )
+              .void
           end
           def initialize(
             applies_to_price_ids:,
@@ -1216,38 +1269,27 @@ module Orb
           end
 
           sig do
-            override.returns(
-              {
-                applies_to_price_ids: T::Array[String],
-                applies_to_price_interval_ids: T::Array[String],
-                discount_type: Symbol,
-                end_date: T.nilable(Time),
-                start_date: Time,
-                usage_discount: Float
-              }
-            )
+            override
+              .returns(
+                {
+                  applies_to_price_ids: T::Array[String],
+                  applies_to_price_interval_ids: T::Array[String],
+                  discount_type: Symbol,
+                  end_date: T.nilable(Time),
+                  start_date: Time,
+                  usage_discount: Float
+                }
+              )
           end
           def to_hash
           end
         end
 
         sig do
-          override.returns(
-            [
-              [
-                Symbol,
-                Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::AmountDiscountInterval
-              ],
-              [
-                Symbol,
-                Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::PercentageDiscountInterval
-              ],
-              [
-                Symbol,
-                Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::UsageDiscountInterval
-              ]
-            ]
-          )
+          override
+            .returns(
+              [[Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::AmountDiscountInterval], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::PercentageDiscountInterval], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::UsageDiscountInterval]]
+            )
         end
         private_class_method def self.variants
         end
@@ -1345,7 +1387,8 @@ module Orb
             end_date: T.nilable(Time),
             maximum_amount: String,
             start_date: Time
-          ).void
+          )
+            .void
         end
         def initialize(
           applies_to_price_ids:,
@@ -1357,15 +1400,16 @@ module Orb
         end
 
         sig do
-          override.returns(
-            {
-              applies_to_price_ids: T::Array[String],
-              applies_to_price_interval_ids: T::Array[String],
-              end_date: T.nilable(Time),
-              maximum_amount: String,
-              start_date: Time
-            }
-          )
+          override
+            .returns(
+              {
+                applies_to_price_ids: T::Array[String],
+                applies_to_price_interval_ids: T::Array[String],
+                end_date: T.nilable(Time),
+                maximum_amount: String,
+                start_date: Time
+              }
+            )
         end
         def to_hash
         end
@@ -1419,7 +1463,8 @@ module Orb
             end_date: T.nilable(Time),
             minimum_amount: String,
             start_date: Time
-          ).void
+          )
+            .void
         end
         def initialize(
           applies_to_price_ids:,
@@ -1431,15 +1476,16 @@ module Orb
         end
 
         sig do
-          override.returns(
-            {
-              applies_to_price_ids: T::Array[String],
-              applies_to_price_interval_ids: T::Array[String],
-              end_date: T.nilable(Time),
-              minimum_amount: String,
-              start_date: Time
-            }
-          )
+          override
+            .returns(
+              {
+                applies_to_price_ids: T::Array[String],
+                applies_to_price_interval_ids: T::Array[String],
+                end_date: T.nilable(Time),
+                minimum_amount: String,
+                start_date: Time
+              }
+            )
         end
         def to_hash
         end
@@ -1487,15 +1533,26 @@ module Orb
         end
 
         sig do
-          returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval::FixedFeeQuantityTransition]))
+          returns(
+            T.nilable(
+              T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval::FixedFeeQuantityTransition]
+            )
+          )
         end
         def fixed_fee_quantity_transitions
         end
 
         sig do
           params(
-            _: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval::FixedFeeQuantityTransition])
-          ).returns(T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval::FixedFeeQuantityTransition]))
+            _: T.nilable(
+              T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval::FixedFeeQuantityTransition]
+            )
+          )
+            .returns(
+              T.nilable(
+                T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval::FixedFeeQuantityTransition]
+              )
+            )
         end
         def fixed_fee_quantity_transitions=(_)
         end
@@ -1569,36 +1626,39 @@ module Orb
               Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
               Orb::Models::Price::CumulativeGroupedBulkPrice
             )
-          ).returns(T.any(
-                      Orb::Models::Price::UnitPrice,
-                      Orb::Models::Price::PackagePrice,
-                      Orb::Models::Price::MatrixPrice,
-                      Orb::Models::Price::TieredPrice,
-                      Orb::Models::Price::TieredBpsPrice,
-                      Orb::Models::Price::BpsPrice,
-                      Orb::Models::Price::BulkBpsPrice,
-                      Orb::Models::Price::BulkPrice,
-                      Orb::Models::Price::ThresholdTotalAmountPrice,
-                      Orb::Models::Price::TieredPackagePrice,
-                      Orb::Models::Price::GroupedTieredPrice,
-                      Orb::Models::Price::TieredWithMinimumPrice,
-                      Orb::Models::Price::TieredPackageWithMinimumPrice,
-                      Orb::Models::Price::PackageWithAllocationPrice,
-                      Orb::Models::Price::UnitWithPercentPrice,
-                      Orb::Models::Price::MatrixWithAllocationPrice,
-                      Orb::Models::Price::TieredWithProrationPrice,
-                      Orb::Models::Price::UnitWithProrationPrice,
-                      Orb::Models::Price::GroupedAllocationPrice,
-                      Orb::Models::Price::GroupedWithProratedMinimumPrice,
-                      Orb::Models::Price::GroupedWithMeteredMinimumPrice,
-                      Orb::Models::Price::MatrixWithDisplayNamePrice,
-                      Orb::Models::Price::BulkWithProrationPrice,
-                      Orb::Models::Price::GroupedTieredPackagePrice,
-                      Orb::Models::Price::MaxGroupTieredPackagePrice,
-                      Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                      Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
-                      Orb::Models::Price::CumulativeGroupedBulkPrice
-                    ))
+          )
+            .returns(
+              T.any(
+                Orb::Models::Price::UnitPrice,
+                Orb::Models::Price::PackagePrice,
+                Orb::Models::Price::MatrixPrice,
+                Orb::Models::Price::TieredPrice,
+                Orb::Models::Price::TieredBpsPrice,
+                Orb::Models::Price::BpsPrice,
+                Orb::Models::Price::BulkBpsPrice,
+                Orb::Models::Price::BulkPrice,
+                Orb::Models::Price::ThresholdTotalAmountPrice,
+                Orb::Models::Price::TieredPackagePrice,
+                Orb::Models::Price::GroupedTieredPrice,
+                Orb::Models::Price::TieredWithMinimumPrice,
+                Orb::Models::Price::TieredPackageWithMinimumPrice,
+                Orb::Models::Price::PackageWithAllocationPrice,
+                Orb::Models::Price::UnitWithPercentPrice,
+                Orb::Models::Price::MatrixWithAllocationPrice,
+                Orb::Models::Price::TieredWithProrationPrice,
+                Orb::Models::Price::UnitWithProrationPrice,
+                Orb::Models::Price::GroupedAllocationPrice,
+                Orb::Models::Price::GroupedWithProratedMinimumPrice,
+                Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+                Orb::Models::Price::MatrixWithDisplayNamePrice,
+                Orb::Models::Price::BulkWithProrationPrice,
+                Orb::Models::Price::GroupedTieredPackagePrice,
+                Orb::Models::Price::MaxGroupTieredPackagePrice,
+                Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+                Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                Orb::Models::Price::CumulativeGroupedBulkPrice
+              )
+            )
         end
         def price=(_)
         end
@@ -1618,7 +1678,9 @@ module Orb
             current_billing_period_end_date: T.nilable(Time),
             current_billing_period_start_date: T.nilable(Time),
             end_date: T.nilable(Time),
-            fixed_fee_quantity_transitions: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval::FixedFeeQuantityTransition]),
+            fixed_fee_quantity_transitions: T.nilable(
+              T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval::FixedFeeQuantityTransition]
+            ),
             price: T.any(
               Orb::Models::Price::UnitPrice,
               Orb::Models::Price::PackagePrice,
@@ -1650,7 +1712,8 @@ module Orb
               Orb::Models::Price::CumulativeGroupedBulkPrice
             ),
             start_date: Time
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -1665,47 +1728,50 @@ module Orb
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              billing_cycle_day: Integer,
-              current_billing_period_end_date: T.nilable(Time),
-              current_billing_period_start_date: T.nilable(Time),
-              end_date: T.nilable(Time),
-              fixed_fee_quantity_transitions: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval::FixedFeeQuantityTransition]),
-              price: T.any(
-                Orb::Models::Price::UnitPrice,
-                Orb::Models::Price::PackagePrice,
-                Orb::Models::Price::MatrixPrice,
-                Orb::Models::Price::TieredPrice,
-                Orb::Models::Price::TieredBpsPrice,
-                Orb::Models::Price::BpsPrice,
-                Orb::Models::Price::BulkBpsPrice,
-                Orb::Models::Price::BulkPrice,
-                Orb::Models::Price::ThresholdTotalAmountPrice,
-                Orb::Models::Price::TieredPackagePrice,
-                Orb::Models::Price::GroupedTieredPrice,
-                Orb::Models::Price::TieredWithMinimumPrice,
-                Orb::Models::Price::TieredPackageWithMinimumPrice,
-                Orb::Models::Price::PackageWithAllocationPrice,
-                Orb::Models::Price::UnitWithPercentPrice,
-                Orb::Models::Price::MatrixWithAllocationPrice,
-                Orb::Models::Price::TieredWithProrationPrice,
-                Orb::Models::Price::UnitWithProrationPrice,
-                Orb::Models::Price::GroupedAllocationPrice,
-                Orb::Models::Price::GroupedWithProratedMinimumPrice,
-                Orb::Models::Price::GroupedWithMeteredMinimumPrice,
-                Orb::Models::Price::MatrixWithDisplayNamePrice,
-                Orb::Models::Price::BulkWithProrationPrice,
-                Orb::Models::Price::GroupedTieredPackagePrice,
-                Orb::Models::Price::MaxGroupTieredPackagePrice,
-                Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
-                Orb::Models::Price::CumulativeGroupedBulkPrice
-              ),
-              start_date: Time
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                billing_cycle_day: Integer,
+                current_billing_period_end_date: T.nilable(Time),
+                current_billing_period_start_date: T.nilable(Time),
+                end_date: T.nilable(Time),
+                fixed_fee_quantity_transitions: T.nilable(
+                  T::Array[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval::FixedFeeQuantityTransition]
+                ),
+                price: T.any(
+                  Orb::Models::Price::UnitPrice,
+                  Orb::Models::Price::PackagePrice,
+                  Orb::Models::Price::MatrixPrice,
+                  Orb::Models::Price::TieredPrice,
+                  Orb::Models::Price::TieredBpsPrice,
+                  Orb::Models::Price::BpsPrice,
+                  Orb::Models::Price::BulkBpsPrice,
+                  Orb::Models::Price::BulkPrice,
+                  Orb::Models::Price::ThresholdTotalAmountPrice,
+                  Orb::Models::Price::TieredPackagePrice,
+                  Orb::Models::Price::GroupedTieredPrice,
+                  Orb::Models::Price::TieredWithMinimumPrice,
+                  Orb::Models::Price::TieredPackageWithMinimumPrice,
+                  Orb::Models::Price::PackageWithAllocationPrice,
+                  Orb::Models::Price::UnitWithPercentPrice,
+                  Orb::Models::Price::MatrixWithAllocationPrice,
+                  Orb::Models::Price::TieredWithProrationPrice,
+                  Orb::Models::Price::UnitWithProrationPrice,
+                  Orb::Models::Price::GroupedAllocationPrice,
+                  Orb::Models::Price::GroupedWithProratedMinimumPrice,
+                  Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+                  Orb::Models::Price::MatrixWithDisplayNamePrice,
+                  Orb::Models::Price::BulkWithProrationPrice,
+                  Orb::Models::Price::GroupedTieredPackagePrice,
+                  Orb::Models::Price::MaxGroupTieredPackagePrice,
+                  Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+                  Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+                  Orb::Models::Price::CumulativeGroupedBulkPrice
+                ),
+                start_date: Time
+              }
+            )
         end
         def to_hash
         end

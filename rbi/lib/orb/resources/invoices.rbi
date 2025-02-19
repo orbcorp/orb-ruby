@@ -23,7 +23,8 @@ module Orb
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           will_auto_issue: T::Boolean,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Orb::Models::Invoice)
+        )
+          .returns(Orb::Models::Invoice)
       end
       def create(
         currency:,
@@ -45,7 +46,8 @@ module Orb
           invoice_id: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Orb::Models::Invoice)
+        )
+          .returns(Orb::Models::Invoice)
       end
       def update(invoice_id, metadata: nil, request_options: {})
       end
@@ -72,7 +74,8 @@ module Orb
           status: T.nilable(T::Array[Symbol]),
           subscription_id: T.nilable(String),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Orb::Page[Orb::Models::Invoice])
+        )
+          .returns(Orb::Page[Orb::Models::Invoice])
       end
       def list(
         amount: nil,
@@ -102,7 +105,8 @@ module Orb
         params(
           invoice_id: String,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Orb::Models::Invoice)
+        )
+          .returns(Orb::Models::Invoice)
       end
       def fetch(invoice_id, request_options: {})
       end
@@ -111,7 +115,8 @@ module Orb
         params(
           subscription_id: String,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Orb::Models::InvoiceFetchUpcomingResponse)
+        )
+          .returns(Orb::Models::InvoiceFetchUpcomingResponse)
       end
       def fetch_upcoming(subscription_id:, request_options: {})
       end
@@ -121,7 +126,8 @@ module Orb
           invoice_id: String,
           synchronous: T::Boolean,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Orb::Models::Invoice)
+        )
+          .returns(Orb::Models::Invoice)
       end
       def issue(invoice_id, synchronous: nil, request_options: {})
       end
@@ -133,7 +139,8 @@ module Orb
           external_id: T.nilable(String),
           notes: T.nilable(String),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Orb::Models::Invoice)
+        )
+          .returns(Orb::Models::Invoice)
       end
       def mark_paid(invoice_id, payment_received_date:, external_id: nil, notes: nil, request_options: {})
       end
@@ -142,7 +149,8 @@ module Orb
         params(
           invoice_id: String,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Orb::Models::Invoice)
+        )
+          .returns(Orb::Models::Invoice)
       end
       def pay(invoice_id, request_options: {})
       end
@@ -151,7 +159,8 @@ module Orb
         params(
           invoice_id: String,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Orb::Models::Invoice)
+        )
+          .returns(Orb::Models::Invoice)
       end
       def void(invoice_id, request_options: {})
       end

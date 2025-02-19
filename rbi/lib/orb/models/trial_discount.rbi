@@ -50,7 +50,8 @@ module Orb
           reason: T.nilable(String),
           trial_amount_discount: T.nilable(String),
           trial_percentage_discount: T.nilable(Float)
-        ).void
+        )
+          .void
       end
       def initialize(
         applies_to_price_ids:,
@@ -62,15 +63,16 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            applies_to_price_ids: T::Array[String],
-            discount_type: Symbol,
-            reason: T.nilable(String),
-            trial_amount_discount: T.nilable(String),
-            trial_percentage_discount: T.nilable(Float)
-          }
-        )
+        override
+          .returns(
+            {
+              applies_to_price_ids: T::Array[String],
+              discount_type: Symbol,
+              reason: T.nilable(String),
+              trial_amount_discount: T.nilable(String),
+              trial_percentage_discount: T.nilable(Float)
+            }
+          )
       end
       def to_hash
       end

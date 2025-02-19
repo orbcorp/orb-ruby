@@ -11,7 +11,8 @@ module Orb
         end
 
         sig do
-          params(_: T::Array[Orb::Models::Events::EventVolumes::Data]).returns(T::Array[Orb::Models::Events::EventVolumes::Data])
+          params(_: T::Array[Orb::Models::Events::EventVolumes::Data])
+            .returns(T::Array[Orb::Models::Events::EventVolumes::Data])
         end
         def data=(_)
         end

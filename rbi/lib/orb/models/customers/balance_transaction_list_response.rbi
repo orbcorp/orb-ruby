@@ -41,7 +41,8 @@ module Orb
         end
 
         sig do
-          params(_: T.nilable(Orb::Models::Customers::BalanceTransactionListResponse::CreditNote)).returns(T.nilable(Orb::Models::Customers::BalanceTransactionListResponse::CreditNote))
+          params(_: T.nilable(Orb::Models::Customers::BalanceTransactionListResponse::CreditNote))
+            .returns(T.nilable(Orb::Models::Customers::BalanceTransactionListResponse::CreditNote))
         end
         def credit_note=(_)
         end
@@ -67,7 +68,8 @@ module Orb
         end
 
         sig do
-          params(_: T.nilable(Orb::Models::Customers::BalanceTransactionListResponse::Invoice)).returns(T.nilable(Orb::Models::Customers::BalanceTransactionListResponse::Invoice))
+          params(_: T.nilable(Orb::Models::Customers::BalanceTransactionListResponse::Invoice))
+            .returns(T.nilable(Orb::Models::Customers::BalanceTransactionListResponse::Invoice))
         end
         def invoice=(_)
         end
@@ -100,7 +102,8 @@ module Orb
             invoice: T.nilable(Orb::Models::Customers::BalanceTransactionListResponse::Invoice),
             starting_balance: String,
             type: Symbol
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -117,20 +120,21 @@ module Orb
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              action: Symbol,
-              amount: String,
-              created_at: Time,
-              credit_note: T.nilable(Orb::Models::Customers::BalanceTransactionListResponse::CreditNote),
-              description: T.nilable(String),
-              ending_balance: String,
-              invoice: T.nilable(Orb::Models::Customers::BalanceTransactionListResponse::Invoice),
-              starting_balance: String,
-              type: Symbol
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                action: Symbol,
+                amount: String,
+                created_at: Time,
+                credit_note: T.nilable(Orb::Models::Customers::BalanceTransactionListResponse::CreditNote),
+                description: T.nilable(String),
+                ending_balance: String,
+                invoice: T.nilable(Orb::Models::Customers::BalanceTransactionListResponse::Invoice),
+                starting_balance: String,
+                type: Symbol
+              }
+            )
         end
         def to_hash
         end

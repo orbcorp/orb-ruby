@@ -56,16 +56,15 @@ module Orb
           def expiry_date=(_)
           end
 
-          sig do
-            returns(T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings))
-          end
+          sig { returns(T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings)) }
           def invoice_settings
           end
 
           sig do
             params(
               _: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings)
-            ).returns(T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings))
+            )
+              .returns(T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings))
           end
           def invoice_settings=(_)
           end
@@ -75,12 +74,8 @@ module Orb
           end
 
           sig do
-            params(
-              _: T.nilable(
-                T::Hash[Symbol,
-                        T.nilable(String)]
-              )
-            ).returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
+            params(_: T.nilable(T::Hash[Symbol, T.nilable(String)]))
+              .returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
           end
           def metadata=(_)
           end
@@ -132,7 +127,8 @@ module Orb
               per_unit_cost_basis: T.nilable(String),
               void_reason: T.nilable(Symbol),
               request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-            ).void
+            )
+              .void
           end
           def initialize(
             amount:,
@@ -152,23 +148,24 @@ module Orb
           end
 
           sig do
-            override.returns(
-              {
-                amount: Float,
-                entry_type: Symbol,
-                currency: T.nilable(String),
-                description: T.nilable(String),
-                effective_date: T.nilable(Time),
-                expiry_date: T.nilable(Time),
-                invoice_settings: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                per_unit_cost_basis: T.nilable(String),
-                target_expiry_date: Date,
-                block_id: String,
-                void_reason: T.nilable(Symbol),
-                request_options: Orb::RequestOptions
-              }
-            )
+            override
+              .returns(
+                {
+                  amount: Float,
+                  entry_type: Symbol,
+                  currency: T.nilable(String),
+                  description: T.nilable(String),
+                  effective_date: T.nilable(Time),
+                  expiry_date: T.nilable(Time),
+                  invoice_settings: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  per_unit_cost_basis: T.nilable(String),
+                  target_expiry_date: Date,
+                  block_id: String,
+                  void_reason: T.nilable(Symbol),
+                  request_options: Orb::RequestOptions
+                }
+              )
           end
           def to_hash
           end
@@ -222,20 +219,22 @@ module Orb
                 net_terms: Integer,
                 memo: T.nilable(String),
                 require_successful_payment: T::Boolean
-              ).void
+              )
+                .void
             end
             def initialize(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil)
             end
 
             sig do
-              override.returns(
-                {
-                  auto_collection: T::Boolean,
-                  net_terms: Integer,
-                  memo: T.nilable(String),
-                  require_successful_payment: T::Boolean
-                }
-              )
+              override
+                .returns(
+                  {
+                    auto_collection: T::Boolean,
+                    net_terms: Integer,
+                    memo: T.nilable(String),
+                    require_successful_payment: T::Boolean
+                  }
+                )
             end
             def to_hash
             end

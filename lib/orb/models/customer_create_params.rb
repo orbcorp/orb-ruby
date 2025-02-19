@@ -106,11 +106,7 @@ module Orb
       # @!attribute tax_configuration
       #
       #   @return [Orb::Models::CustomerCreateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerCreateParams::TaxConfiguration::NewTaxJarConfiguration, nil]
-      optional :tax_configuration,
-               union: -> {
-                 Orb::Models::CustomerCreateParams::TaxConfiguration
-               },
-               nil?: true
+      optional :tax_configuration, union: -> { Orb::Models::CustomerCreateParams::TaxConfiguration }, nil?: true
 
       # @!attribute tax_id
       #   Tax IDs are commonly required to be displayed on customer invoices, which are
@@ -288,9 +284,7 @@ module Orb
         #
         #   @return [Array<Orb::Models::CustomerCreateParams::AccountingSyncConfiguration::AccountingProvider>, nil]
         optional :accounting_providers,
-                 -> {
-                   Orb::ArrayOf[Orb::Models::CustomerCreateParams::AccountingSyncConfiguration::AccountingProvider]
-                 },
+                 -> { Orb::ArrayOf[Orb::Models::CustomerCreateParams::AccountingSyncConfiguration::AccountingProvider] },
                  nil?: true
 
         # @!attribute excluded
@@ -522,10 +516,7 @@ module Orb
       class TaxConfiguration < Orb::Union
         discriminator :tax_provider
 
-        variant :avalara,
-                -> {
-                  Orb::Models::CustomerCreateParams::TaxConfiguration::NewAvalaraTaxConfiguration
-                }
+        variant :avalara, -> { Orb::Models::CustomerCreateParams::TaxConfiguration::NewAvalaraTaxConfiguration }
 
         variant :taxjar, -> { Orb::Models::CustomerCreateParams::TaxConfiguration::NewTaxJarConfiguration }
 

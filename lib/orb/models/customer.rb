@@ -852,9 +852,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType]
           required :provider_type,
-                   enum: -> {
-                     Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType
-                   }
+                   enum: -> { Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType }
 
           # @!parse
           #   # @param external_provider_id [String, nil]

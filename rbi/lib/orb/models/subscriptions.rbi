@@ -20,21 +20,15 @@ module Orb
       end
 
       sig do
-        params(
-          data: T::Array[Orb::Models::Subscription],
-          pagination_metadata: Orb::Models::PaginationMetadata
-        ).void
+        params(data: T::Array[Orb::Models::Subscription], pagination_metadata: Orb::Models::PaginationMetadata)
+          .void
       end
       def initialize(data:, pagination_metadata:)
       end
 
       sig do
-        override.returns(
-          {
-            data: T::Array[Orb::Models::Subscription],
-            pagination_metadata: Orb::Models::PaginationMetadata
-          }
-        )
+        override
+          .returns({data: T::Array[Orb::Models::Subscription], pagination_metadata: Orb::Models::PaginationMetadata})
       end
       def to_hash
       end

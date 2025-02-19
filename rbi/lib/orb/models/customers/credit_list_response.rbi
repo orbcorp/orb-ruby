@@ -69,7 +69,8 @@ module Orb
             maximum_initial_balance: T.nilable(Float),
             per_unit_cost_basis: T.nilable(String),
             status: Symbol
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -83,17 +84,18 @@ module Orb
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              balance: Float,
-              effective_date: T.nilable(Time),
-              expiry_date: T.nilable(Time),
-              maximum_initial_balance: T.nilable(Float),
-              per_unit_cost_basis: T.nilable(String),
-              status: Symbol
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                balance: Float,
+                effective_date: T.nilable(Time),
+                expiry_date: T.nilable(Time),
+                maximum_initial_balance: T.nilable(Float),
+                per_unit_cost_basis: T.nilable(String),
+                status: Symbol
+              }
+            )
         end
         def to_hash
         end

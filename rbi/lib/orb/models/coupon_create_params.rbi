@@ -23,10 +23,13 @@ module Orb
             Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
             Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
           )
-        ).returns(T.any(
-                    Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
-                    Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
-                  ))
+        )
+          .returns(
+            T.any(
+              Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
+              Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
+            )
+          )
       end
       def discount=(_)
       end
@@ -65,7 +68,8 @@ module Orb
           duration_in_months: T.nilable(Integer),
           max_redemptions: T.nilable(Integer),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         discount:,
@@ -77,18 +81,19 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            discount: T.any(
-              Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
-              Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
-            ),
-            redemption_code: String,
-            duration_in_months: T.nilable(Integer),
-            max_redemptions: T.nilable(Integer),
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              discount: T.any(
+                Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
+                Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
+              ),
+              redemption_code: String,
+              duration_in_months: T.nilable(Integer),
+              max_redemptions: T.nilable(Integer),
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -149,12 +154,10 @@ module Orb
         end
 
         sig do
-          override.returns(
-            [
-              [Symbol, Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount],
-              [Symbol, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]
-            ]
-          )
+          override
+            .returns(
+              [[Symbol, Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount], [Symbol, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]]
+            )
         end
         private_class_method def self.variants
         end

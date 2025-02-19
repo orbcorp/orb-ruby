@@ -56,9 +56,7 @@ module Orb
           #
           #   @return [Array<Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage>]
           required :usage,
-                   -> {
-                     Orb::ArrayOf[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage]
-                   }
+                   -> { Orb::ArrayOf[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage] }
 
           # @!attribute view_mode
           #
@@ -206,10 +204,7 @@ module Orb
           # @!attribute metric_group
           #
           #   @return [Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup]
-          required :metric_group,
-                   -> {
-                     Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup
-                   }
+          required :metric_group, -> { Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup }
 
           # @!attribute usage
           #
@@ -220,10 +215,7 @@ module Orb
           # @!attribute view_mode
           #
           #   @return [Symbol, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode]
-          required :view_mode,
-                   enum: -> {
-                     Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode
-                   }
+          required :view_mode, enum: -> { Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode }
 
           # @!parse
           #   # @param billable_metric [Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric]

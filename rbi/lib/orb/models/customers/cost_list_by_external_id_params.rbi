@@ -46,7 +46,8 @@ module Orb
             timeframe_start: T.nilable(Time),
             view_mode: T.nilable(Symbol),
             request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(
           currency: nil,
@@ -58,15 +59,16 @@ module Orb
         end
 
         sig do
-          override.returns(
-            {
-              currency: T.nilable(String),
-              timeframe_end: T.nilable(Time),
-              timeframe_start: T.nilable(Time),
-              view_mode: T.nilable(Symbol),
-              request_options: Orb::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                currency: T.nilable(String),
+                timeframe_end: T.nilable(Time),
+                timeframe_start: T.nilable(Time),
+                view_mode: T.nilable(Symbol),
+                request_options: Orb::RequestOptions
+              }
+            )
         end
         def to_hash
         end

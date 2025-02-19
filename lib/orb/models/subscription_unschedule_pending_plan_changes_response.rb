@@ -31,9 +31,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval>]
       required :adjustment_intervals,
-               -> {
-                 Orb::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval]
-               }
+               -> { Orb::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval] }
 
       # @!attribute auto_collection
       #   Determines whether issued invoices for this subscription will automatically be
@@ -114,9 +112,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::UsageDiscountInterval>]
       required :discount_intervals,
-               -> {
-                 Orb::ArrayOf[union: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval]
-               }
+               -> { Orb::ArrayOf[union: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval] }
 
       # @!attribute end_date
       #   The date Orb stops billing for this subscription.
@@ -128,9 +124,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::FixedFeeQuantitySchedule>]
       required :fixed_fee_quantity_schedule,
-               -> {
-                 Orb::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::FixedFeeQuantitySchedule]
-               }
+               -> { Orb::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::FixedFeeQuantitySchedule] }
 
       # @!attribute invoicing_threshold
       #
@@ -142,9 +136,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval>]
       required :maximum_intervals,
-               -> {
-                 Orb::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval]
-               }
+               -> { Orb::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval] }
 
       # @!attribute metadata
       #   User specified key-value pairs for the resource. If not present, this defaults
@@ -160,9 +152,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval>]
       required :minimum_intervals,
-               -> {
-                 Orb::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval]
-               }
+               -> { Orb::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval] }
 
       # @!attribute net_terms
       #   Determines the difference between the invoice issue date for subscription
@@ -187,9 +177,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval>]
       required :price_intervals,
-               -> {
-                 Orb::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval]
-               }
+               -> { Orb::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval] }
 
       # @!attribute redeemed_coupon
       #
@@ -294,9 +282,7 @@ module Orb
         #
         #   @return [Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
         required :adjustment,
-                 union: -> {
-                   Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment
-                 }
+                 union: -> { Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment }
 
         # @!attribute applies_to_price_interval_ids
         #   The price interval IDs that this adjustment applies to.
@@ -332,15 +318,40 @@ module Orb
         # @example
         # ```ruby
         # case adjustment
-        # in {adjustment_type: "usage_discount", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+        # in {
+        #   adjustment_type: "usage_discount",
+        #   id: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   is_invoice_level: Orb::BooleanModel
+        # }
         #   # Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment ...
-        # in {adjustment_type: "amount_discount", id: String, amount_discount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
+        # in {
+        #   adjustment_type: "amount_discount",
+        #   id: String,
+        #   amount_discount: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }
+        # }
         #   # Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment ...
-        # in {adjustment_type: "percentage_discount", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+        # in {
+        #   adjustment_type: "percentage_discount",
+        #   id: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   is_invoice_level: Orb::BooleanModel
+        # }
         #   # Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment ...
-        # in {adjustment_type: "minimum", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+        # in {
+        #   adjustment_type: "minimum",
+        #   id: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   is_invoice_level: Orb::BooleanModel
+        # }
         #   # Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment ...
-        # in {adjustment_type: "maximum", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+        # in {
+        #   adjustment_type: "maximum",
+        #   id: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   is_invoice_level: Orb::BooleanModel
+        # }
         #   # Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment ...
         # end
         # ```
@@ -831,11 +842,26 @@ module Orb
       # @example
       # ```ruby
       # case discount_interval
-      # in {discount_type: "amount", amount_discount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 }}
+      # in {
+      #   discount_type: "amount",
+      #   amount_discount: String,
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 }
+      # }
       #   # Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::AmountDiscountInterval ...
-      # in {discount_type: "percentage", applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 }, end_date: Time}
+      # in {
+      #   discount_type: "percentage",
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   end_date: Time
+      # }
       #   # Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::PercentageDiscountInterval ...
-      # in {discount_type: "usage", applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 }, end_date: Time}
+      # in {
+      #   discount_type: "usage",
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   end_date: Time
+      # }
       #   # Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::UsageDiscountInterval ...
       # end
       # ```
@@ -1274,9 +1300,7 @@ module Orb
         #
         #   @return [Array<Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval::FixedFeeQuantityTransition>, nil]
         required :fixed_fee_quantity_transitions,
-                 -> {
-                   Orb::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval::FixedFeeQuantityTransition]
-                 },
+                 -> { Orb::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval::FixedFeeQuantityTransition] },
                  nil?: true
 
         # @!attribute price

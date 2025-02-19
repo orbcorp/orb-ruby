@@ -27,19 +27,19 @@ module Orb
           trial_end_date: T.any(Time, Symbol),
           shift: T::Boolean,
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(trial_end_date:, shift: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            trial_end_date: T.any(Time, Symbol),
-            shift: T::Boolean,
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns({
+                     trial_end_date: T.any(Time, Symbol),
+                     shift: T::Boolean,
+                     request_options: Orb::RequestOptions
+                   })
       end
       def to_hash
       end

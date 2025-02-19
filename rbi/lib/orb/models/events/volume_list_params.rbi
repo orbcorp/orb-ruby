@@ -46,21 +46,23 @@ module Orb
             limit: Integer,
             timeframe_end: Time,
             request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(timeframe_start:, cursor: nil, limit: nil, timeframe_end: nil, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              timeframe_start: Time,
-              cursor: T.nilable(String),
-              limit: Integer,
-              timeframe_end: Time,
-              request_options: Orb::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                timeframe_start: Time,
+                cursor: T.nilable(String),
+                limit: Integer,
+                timeframe_end: Time,
+                request_options: Orb::RequestOptions
+              }
+            )
         end
         def to_hash
         end

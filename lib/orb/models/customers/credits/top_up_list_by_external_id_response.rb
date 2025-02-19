@@ -66,9 +66,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::ExpiresAfterUnit, nil]
           optional :expires_after_unit,
-                   enum: -> {
-                     Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::ExpiresAfterUnit
-                   },
+                   enum: -> { Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::ExpiresAfterUnit },
                    nil?: true
 
           # @!parse

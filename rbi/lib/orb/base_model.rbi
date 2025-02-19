@@ -15,12 +15,9 @@ module Orb
     end
 
     sig do
-      overridable.params(value: T.anything).returns(
-        T.any(
-          [T::Boolean, T.anything, NilClass],
-          [T::Boolean, T::Boolean, Integer]
-        )
-      )
+      overridable
+        .params(value: T.anything)
+        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
     end
     def try_strict_coerce(value)
     end
@@ -36,7 +33,8 @@ module Orb
           T.proc.returns(Orb::Converter::Input),
           Orb::Converter::Input
         )
-      ).returns(T.proc.returns(T.anything).void)
+      )
+        .returns(T.proc.returns(T.anything).void)
     end
     def self.type_info(spec)
     end
@@ -76,12 +74,9 @@ module Orb
     end
 
     sig do
-      override.params(value: T.anything).returns(
-        T.any(
-          [T::Boolean, T.anything, NilClass],
-          [T::Boolean, T::Boolean, Integer]
-        )
-      )
+      override
+        .params(value: T.anything)
+        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
     end
     def self.try_strict_coerce(value)
     end
@@ -109,12 +104,9 @@ module Orb
     end
 
     sig do
-      override.params(value: T.anything).returns(
-        T.any(
-          [T::Boolean, T.anything, NilClass],
-          [T::Boolean, T::Boolean, Integer]
-        )
-      )
+      override
+        .params(value: T.anything)
+        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
     end
     def self.try_strict_coerce(value)
     end
@@ -150,12 +142,9 @@ module Orb
     end
 
     sig do
-      override.params(value: T.anything).returns(
-        T.any(
-          [T::Boolean, T.anything, NilClass],
-          [T::Boolean, T::Boolean, Integer]
-        )
-      )
+      override
+        .params(value: T.anything)
+        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
     end
     def self.try_strict_coerce(value)
     end
@@ -187,8 +176,13 @@ module Orb
           T.proc.returns(Orb::Converter::Input),
           Orb::Converter::Input
         ),
-        spec: T.any(T::Hash[Symbol, T.anything], T.proc.returns(Orb::Converter::Input), Orb::Converter::Input)
-      ).void
+        spec: T.any(
+          T::Hash[Symbol, T.anything],
+          T.proc.returns(Orb::Converter::Input),
+          Orb::Converter::Input
+        )
+      )
+        .void
     end
     private_class_method def self.variant(key, spec = nil)
     end
@@ -214,12 +208,9 @@ module Orb
     end
 
     sig do
-      override.params(value: T.anything).returns(
-        T.any(
-          [T::Boolean, T.anything, NilClass],
-          [T::Boolean, T::Boolean, Integer]
-        )
-      )
+      override
+        .params(value: T.anything)
+        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
     end
     def self.try_strict_coerce(value)
     end
@@ -239,34 +230,25 @@ module Orb
     end
 
     sig do
-      override.params(
-        value: T.any(
-          T::Enumerable[T.anything],
-          T.anything
-        )
-      ).returns(T.any(T::Array[T.anything], T.anything))
+      override
+        .params(value: T.any(T::Enumerable[T.anything], T.anything))
+        .returns(T.any(T::Array[T.anything], T.anything))
     end
     def coerce(value)
     end
 
     sig do
-      override.params(
-        value: T.any(
-          T::Enumerable[T.anything],
-          T.anything
-        )
-      ).returns(T.any(T::Array[T.anything], T.anything))
+      override
+        .params(value: T.any(T::Enumerable[T.anything], T.anything))
+        .returns(T.any(T::Array[T.anything], T.anything))
     end
     def dump(value)
     end
 
     sig do
-      override.params(value: T.anything).returns(
-        T.any(
-          [T::Boolean, T.anything, NilClass],
-          [T::Boolean, T::Boolean, Integer]
-        )
-      )
+      override
+        .params(value: T.anything)
+        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
     end
     def try_strict_coerce(value)
     end
@@ -283,7 +265,8 @@ module Orb
           Orb::Converter::Input
         ),
         spec: T::Hash[Symbol, T.anything]
-      ).void
+      )
+        .void
     end
     def initialize(type_info, spec = {})
     end
@@ -303,34 +286,25 @@ module Orb
     end
 
     sig do
-      override.params(
-        value: T.any(
-          T::Hash[T.anything, T.anything],
-          T.anything
-        )
-      ).returns(T.any(T::Hash[Symbol, T.anything], T.anything))
+      override
+        .params(value: T.any(T::Hash[T.anything, T.anything], T.anything))
+        .returns(T.any(T::Hash[Symbol, T.anything], T.anything))
     end
     def coerce(value)
     end
 
     sig do
-      override.params(
-        value: T.any(
-          T::Hash[T.anything, T.anything],
-          T.anything
-        )
-      ).returns(T.any(T::Hash[Symbol, T.anything], T.anything))
+      override
+        .params(value: T.any(T::Hash[T.anything, T.anything], T.anything))
+        .returns(T.any(T::Hash[Symbol, T.anything], T.anything))
     end
     def dump(value)
     end
 
     sig do
-      override.params(value: T.anything).returns(
-        T.any(
-          [T::Boolean, T.anything, NilClass],
-          [T::Boolean, T::Boolean, Integer]
-        )
-      )
+      override
+        .params(value: T.anything)
+        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
     end
     def try_strict_coerce(value)
     end
@@ -347,7 +321,8 @@ module Orb
           Orb::Converter::Input
         ),
         spec: T::Hash[Symbol, T.anything]
-      ).void
+      )
+        .void
     end
     def initialize(type_info, spec = {})
     end
@@ -394,7 +369,8 @@ module Orb
           Orb::Converter::Input
         ),
         spec: T::Hash[Symbol, T.anything]
-      ).void
+      )
+        .void
     end
     private_class_method def self.add_field(name_sym, required:, type_info:, spec:)
     end
@@ -408,7 +384,8 @@ module Orb
           Orb::Converter::Input
         ),
         spec: T::Hash[Symbol, T.anything]
-      ).void
+      )
+        .void
     end
     def self.required(name_sym, type_info, spec = {})
     end
@@ -422,7 +399,8 @@ module Orb
           Orb::Converter::Input
         ),
         spec: T::Hash[Symbol, T.anything]
-      ).void
+      )
+        .void
     end
     def self.optional(name_sym, type_info, spec = {})
     end
@@ -440,35 +418,25 @@ module Orb
     end
 
     sig do
-      override.params(
-        value: T.any(
-          Orb::BaseModel,
-          T::Hash[T.anything, T.anything],
-          T.anything
-        )
-      ).returns(T.any(T.attached_class, T.anything))
+      override
+        .params(value: T.any(Orb::BaseModel, T::Hash[T.anything, T.anything], T.anything))
+        .returns(T.any(T.attached_class, T.anything))
     end
     def self.coerce(value)
     end
 
     sig do
-      override.params(
-        value: T.any(
-          T.attached_class,
-          T.anything
-        )
-      ).returns(T.any(T::Hash[T.anything, T.anything], T.anything))
+      override
+        .params(value: T.any(T.attached_class, T.anything))
+        .returns(T.any(T::Hash[T.anything, T.anything], T.anything))
     end
     def self.dump(value)
     end
 
     sig do
-      override.params(value: T.anything).returns(
-        T.any(
-          [T::Boolean, T.anything, NilClass],
-          [T::Boolean, T::Boolean, Integer]
-        )
-      )
+      override
+        .params(value: T.anything)
+        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
     end
     def self.try_strict_coerce(value)
     end

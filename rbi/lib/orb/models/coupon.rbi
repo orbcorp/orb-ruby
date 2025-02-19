@@ -24,15 +24,8 @@ module Orb
       end
 
       sig do
-        params(
-          _: T.any(
-            Orb::Models::PercentageDiscount,
-            Orb::Models::AmountDiscount
-          )
-        ).returns(T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::AmountDiscount
-                  ))
+        params(_: T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount))
+          .returns(T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount))
       end
       def discount=(_)
       end
@@ -78,7 +71,8 @@ module Orb
           max_redemptions: T.nilable(Integer),
           redemption_code: String,
           times_redeemed: Integer
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -92,17 +86,18 @@ module Orb
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            archived_at: T.nilable(Time),
-            discount: T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount),
-            duration_in_months: T.nilable(Integer),
-            max_redemptions: T.nilable(Integer),
-            redemption_code: String,
-            times_redeemed: Integer
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              archived_at: T.nilable(Time),
+              discount: T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount),
+              duration_in_months: T.nilable(Integer),
+              max_redemptions: T.nilable(Integer),
+              redemption_code: String,
+              times_redeemed: Integer
+            }
+          )
       end
       def to_hash
       end
@@ -110,9 +105,7 @@ module Orb
       class Discount < Orb::Union
         abstract!
 
-        sig do
-          override.returns([[Symbol, Orb::Models::PercentageDiscount], [Symbol, Orb::Models::AmountDiscount]])
-        end
+        sig { override.returns([[Symbol, Orb::Models::PercentageDiscount], [Symbol, Orb::Models::AmountDiscount]]) }
         private_class_method def self.variants
         end
       end

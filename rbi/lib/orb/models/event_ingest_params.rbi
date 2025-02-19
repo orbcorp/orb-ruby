@@ -11,7 +11,8 @@ module Orb
       end
 
       sig do
-        params(_: T::Array[Orb::Models::EventIngestParams::Event]).returns(T::Array[Orb::Models::EventIngestParams::Event])
+        params(_: T::Array[Orb::Models::EventIngestParams::Event])
+          .returns(T::Array[Orb::Models::EventIngestParams::Event])
       end
       def events=(_)
       end
@@ -38,20 +39,22 @@ module Orb
           backfill_id: T.nilable(String),
           debug: T::Boolean,
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(events:, backfill_id: nil, debug: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            events: T::Array[Orb::Models::EventIngestParams::Event],
-            backfill_id: T.nilable(String),
-            debug: T::Boolean,
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              events: T::Array[Orb::Models::EventIngestParams::Event],
+              backfill_id: T.nilable(String),
+              debug: T::Boolean,
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -113,7 +116,8 @@ module Orb
             timestamp: Time,
             customer_id: T.nilable(String),
             external_customer_id: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(
           event_name:,
@@ -126,16 +130,17 @@ module Orb
         end
 
         sig do
-          override.returns(
-            {
-              event_name: String,
-              idempotency_key: String,
-              properties: T.anything,
-              timestamp: Time,
-              customer_id: T.nilable(String),
-              external_customer_id: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                event_name: String,
+                idempotency_key: String,
+                properties: T.anything,
+                timestamp: Time,
+                customer_id: T.nilable(String),
+                external_customer_id: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end

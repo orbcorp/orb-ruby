@@ -19,9 +19,20 @@ module Orb
               limit: Integer,
               minimum_amount: T.nilable(String),
               request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-            ).returns(Orb::Page[T.any(
-              Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry
-            )])
+            )
+              .returns(
+                Orb::Page[
+                T.any(
+                  Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry
+                )
+                ]
+              )
           end
           def list(
             customer_id,
@@ -55,15 +66,18 @@ module Orb
               per_unit_cost_basis: T.nilable(String),
               void_reason: T.nilable(Symbol),
               request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-            ).returns(T.any(
-                        Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry,
-                        Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry,
-                        Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry,
-                        Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry,
-                        Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry,
-                        Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry,
-                        Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry
-                      ))
+            )
+              .returns(
+                T.any(
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry
+                )
+              )
           end
           def create_entry(
             customer_id,
@@ -99,9 +113,18 @@ module Orb
               per_unit_cost_basis: T.nilable(String),
               void_reason: T.nilable(Symbol),
               request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-            ).returns(T.any(
-                        Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry
-                      ))
+            )
+              .returns(
+                T.any(
+                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry
+                )
+              )
           end
           def create_entry_by_external_id(
             external_customer_id,
@@ -135,9 +158,20 @@ module Orb
               limit: Integer,
               minimum_amount: T.nilable(String),
               request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-            ).returns(Orb::Page[T.any(
-              Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry
-            )])
+            )
+              .returns(
+                Orb::Page[
+                T.any(
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry
+                )
+                ]
+              )
           end
           def list_by_external_id(
             external_customer_id,

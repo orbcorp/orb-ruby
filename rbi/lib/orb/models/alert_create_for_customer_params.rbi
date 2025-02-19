@@ -27,7 +27,8 @@ module Orb
       end
 
       sig do
-        params(_: T.nilable(T::Array[Orb::Models::AlertCreateForCustomerParams::Threshold])).returns(T.nilable(T::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]))
+        params(_: T.nilable(T::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]))
+          .returns(T.nilable(T::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]))
       end
       def thresholds=(_)
       end
@@ -38,20 +39,22 @@ module Orb
           type: Symbol,
           thresholds: T.nilable(T::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(currency:, type:, thresholds: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            currency: String,
-            type: Symbol,
-            thresholds: T.nilable(T::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]),
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              currency: String,
+              type: Symbol,
+              thresholds: T.nilable(T::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]),
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end

@@ -20,9 +20,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType]
           required :entry_type,
-                   enum: -> {
-                     Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType
-                   }
+                   enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType }
 
           # @!attribute currency
           #   The currency or custom pricing unit to use for this ledger entry. If this is a
@@ -60,9 +58,7 @@ module Orb
           #
           #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings, nil]
           optional :invoice_settings,
-                   -> {
-                     Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings
-                   },
+                   -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings },
                    nil?: true
 
           # @!attribute metadata
@@ -99,9 +95,7 @@ module Orb
           #
           #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason, nil]
           optional :void_reason,
-                   enum: -> {
-                     Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason
-                   },
+                   enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason },
                    nil?: true
 
           # @!parse

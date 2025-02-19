@@ -37,9 +37,7 @@ module Orb
           #
           #   @return [Array<Orb::Models::Customers::CostListByExternalIDResponse::Data::PerPriceCost>]
           required :per_price_costs,
-                   -> {
-                     Orb::ArrayOf[Orb::Models::Customers::CostListByExternalIDResponse::Data::PerPriceCost]
-                   }
+                   -> { Orb::ArrayOf[Orb::Models::Customers::CostListByExternalIDResponse::Data::PerPriceCost] }
 
           # @!attribute subtotal
           #   Total costs for the timeframe, excluding any minimums and discounts.

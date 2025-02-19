@@ -45,21 +45,23 @@ module Orb
           redemption_code: T.nilable(String),
           show_archived: T.nilable(T::Boolean),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(cursor: nil, limit: nil, redemption_code: nil, show_archived: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            cursor: T.nilable(String),
-            limit: Integer,
-            redemption_code: T.nilable(String),
-            show_archived: T.nilable(T::Boolean),
-            request_options: Orb::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              cursor: T.nilable(String),
+              limit: Integer,
+              redemption_code: T.nilable(String),
+              show_archived: T.nilable(T::Boolean),
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end

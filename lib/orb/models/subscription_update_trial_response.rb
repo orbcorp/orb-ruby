@@ -182,11 +182,7 @@ module Orb
       # @!attribute redeemed_coupon
       #
       #   @return [Orb::Models::SubscriptionUpdateTrialResponse::RedeemedCoupon, nil]
-      required :redeemed_coupon,
-               -> {
-                 Orb::Models::SubscriptionUpdateTrialResponse::RedeemedCoupon
-               },
-               nil?: true
+      required :redeemed_coupon, -> { Orb::Models::SubscriptionUpdateTrialResponse::RedeemedCoupon }, nil?: true
 
       # @!attribute start_date
       #   The date Orb starts billing for this subscription.
@@ -320,15 +316,40 @@ module Orb
         # @example
         # ```ruby
         # case adjustment
-        # in {adjustment_type: "usage_discount", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+        # in {
+        #   adjustment_type: "usage_discount",
+        #   id: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   is_invoice_level: Orb::BooleanModel
+        # }
         #   # Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment ...
-        # in {adjustment_type: "amount_discount", id: String, amount_discount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
+        # in {
+        #   adjustment_type: "amount_discount",
+        #   id: String,
+        #   amount_discount: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }
+        # }
         #   # Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment ...
-        # in {adjustment_type: "percentage_discount", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+        # in {
+        #   adjustment_type: "percentage_discount",
+        #   id: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   is_invoice_level: Orb::BooleanModel
+        # }
         #   # Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment ...
-        # in {adjustment_type: "minimum", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+        # in {
+        #   adjustment_type: "minimum",
+        #   id: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   is_invoice_level: Orb::BooleanModel
+        # }
         #   # Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment ...
-        # in {adjustment_type: "maximum", id: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, is_invoice_level: Orb::BooleanModel}
+        # in {
+        #   adjustment_type: "maximum",
+        #   id: String,
+        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   is_invoice_level: Orb::BooleanModel
+        # }
         #   # Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment ...
         # end
         # ```
@@ -819,11 +840,26 @@ module Orb
       # @example
       # ```ruby
       # case discount_interval
-      # in {discount_type: "amount", amount_discount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 }}
+      # in {
+      #   discount_type: "amount",
+      #   amount_discount: String,
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 }
+      # }
       #   # Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::AmountDiscountInterval ...
-      # in {discount_type: "percentage", applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 }, end_date: Time}
+      # in {
+      #   discount_type: "percentage",
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   end_date: Time
+      # }
       #   # Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::PercentageDiscountInterval ...
-      # in {discount_type: "usage", applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }, applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 }, end_date: Time}
+      # in {
+      #   discount_type: "usage",
+      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   end_date: Time
+      # }
       #   # Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::UsageDiscountInterval ...
       # end
       # ```
@@ -1262,9 +1298,7 @@ module Orb
         #
         #   @return [Array<Orb::Models::SubscriptionUpdateTrialResponse::PriceInterval::FixedFeeQuantityTransition>, nil]
         required :fixed_fee_quantity_transitions,
-                 -> {
-                   Orb::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::PriceInterval::FixedFeeQuantityTransition]
-                 },
+                 -> { Orb::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::PriceInterval::FixedFeeQuantityTransition] },
                  nil?: true
 
         # @!attribute price
