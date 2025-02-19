@@ -1,6 +1,6 @@
 module Orb
   class BaseClient
-    type request =
+    type request_components =
       {
         method: Symbol,
         path: String | ::Array[String],
@@ -10,12 +10,10 @@ module Orb
         unwrap: Symbol?,
         page: Class?,
         model: Orb::Converter::input?,
-        options: (Orb::RequestOptions
-        | Orb::request_options
-        | ::Hash[Symbol, top])?
+        options: Orb::request_opts?
       }
 
-    type normalized_request =
+    type request_input =
       {
         method: Symbol,
         url: URI::Generic,
@@ -27,7 +25,7 @@ module Orb
 
     MAX_REDIRECTS: 20
 
-    def self.validate!: (Orb::BaseClient::request req) -> void
+    def self.validate!: (Orb::BaseClient::request_components req) -> void
 
     # @private
     attr_accessor requester: top
@@ -47,9 +45,9 @@ module Orb
     private def generate_idempotency_key: -> String
 
     private def build_request: (
-      Orb::BaseClient::request req,
+      Orb::BaseClient::request_components req,
       Orb::request_options opts
-    ) -> Orb::BaseClient::normalized_request
+    ) -> Orb::BaseClient::request_input
 
     private def should_retry?: (
       Integer status,
@@ -62,20 +60,20 @@ module Orb
     ) -> Float
 
     private def follow_redirect: (
-      Orb::BaseClient::normalized_request request,
+      Orb::BaseClient::request_input request,
       status: Integer,
       location_header: String
-    ) -> Orb::BaseClient::normalized_request
+    ) -> Orb::BaseClient::request_input
 
     private def send_request: (
-      Orb::BaseClient::normalized_request request,
+      Orb::BaseClient::request_input request,
       redirect_count: Integer,
       retry_count: Integer,
       send_retry_header: bool
     ) -> top
 
     private def parse_response: (
-      Orb::BaseClient::request req,
+      Orb::BaseClient::request_components req,
       nil response
     ) -> top
 
@@ -89,11 +87,9 @@ module Orb
         unwrap: Symbol?,
         page: Class?,
         model: Orb::Converter::input?,
-        options: (Orb::RequestOptions
-        | Orb::request_options
-        | ::Hash[Symbol, top])?
+        options: Orb::request_opts?
       ) -> top
-      | (Orb::BaseClient::request req) -> top
+      | (Orb::BaseClient::request_components req) -> top
 
     def inspect: -> String
   end
