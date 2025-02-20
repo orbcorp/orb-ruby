@@ -787,7 +787,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -1084,7 +1084,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -1389,7 +1389,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -1729,7 +1729,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -2076,7 +2076,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -2403,7 +2403,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -2748,7 +2748,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -3052,7 +3052,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -3380,7 +3380,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -3694,7 +3694,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -3975,7 +3975,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -4261,7 +4261,7 @@ module Orb
             required :grouped_tiered_config, Orb::HashOf[Orb::Unknown]
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -4537,7 +4537,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -4818,7 +4818,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -5099,7 +5099,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -5380,7 +5380,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -5661,7 +5661,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -5942,7 +5942,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -6223,7 +6223,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -6509,7 +6509,7 @@ module Orb
             required :grouped_allocation_config, Orb::HashOf[Orb::Unknown]
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -6790,7 +6790,7 @@ module Orb
             required :grouped_with_prorated_minimum_config, Orb::HashOf[Orb::Unknown]
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -7071,7 +7071,7 @@ module Orb
             required :grouped_with_metered_minimum_config, Orb::HashOf[Orb::Unknown]
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -7347,7 +7347,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -7633,7 +7633,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -7914,7 +7914,7 @@ module Orb
             required :grouped_tiered_package_config, Orb::HashOf[Orb::Unknown]
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -8190,7 +8190,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -8471,7 +8471,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -8757,7 +8757,7 @@ module Orb
             required :currency, String
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
