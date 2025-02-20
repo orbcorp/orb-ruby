@@ -15,5 +15,5 @@ Gem::Specification.new do |s|
   s.homepage = "https://gemdocs.org/gems/orb/latest"
   s.metadata["homepage_uri"] = s.homepage
   s.metadata["source_code_uri"] = "https://github.com/orbcorp/orb-ruby"
-  s.metadata["rubygems_mfa_required"] = "false"
+  s.metadata["rubygems_mfa_required"] = "true"
 end
