@@ -401,7 +401,7 @@ module Orb
           required :cadence, enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -697,7 +697,7 @@ module Orb
           required :cadence, enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -1001,7 +1001,7 @@ module Orb
           required :cadence, enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -1336,7 +1336,7 @@ module Orb
           required :cadence, enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -1662,7 +1662,7 @@ module Orb
           required :cadence, enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -2002,7 +2002,7 @@ module Orb
           required :cadence, enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -2305,7 +2305,7 @@ module Orb
           required :cadence, enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -2632,7 +2632,7 @@ module Orb
           required :cadence, enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -2947,7 +2947,7 @@ module Orb
                    enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -3228,7 +3228,7 @@ module Orb
           required :cadence, enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -3510,7 +3510,7 @@ module Orb
                    enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -3791,7 +3791,7 @@ module Orb
           required :cadence, enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -4073,7 +4073,7 @@ module Orb
                    enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -4355,7 +4355,7 @@ module Orb
                    enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -4637,7 +4637,7 @@ module Orb
                    enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -4924,7 +4924,7 @@ module Orb
           required :grouped_allocation_config, Orb::HashOf[Orb::Unknown]
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -5206,7 +5206,7 @@ module Orb
           required :grouped_with_prorated_minimum_config, Orb::HashOf[Orb::Unknown]
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -5488,7 +5488,7 @@ module Orb
           required :grouped_with_metered_minimum_config, Orb::HashOf[Orb::Unknown]
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -5765,7 +5765,7 @@ module Orb
                    enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -6052,7 +6052,7 @@ module Orb
                    enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -6334,7 +6334,7 @@ module Orb
           required :grouped_tiered_package_config, Orb::HashOf[Orb::Unknown]
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -6611,7 +6611,7 @@ module Orb
                    enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -6893,7 +6893,7 @@ module Orb
                    enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -7175,7 +7175,7 @@ module Orb
                    enum: -> { Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::Cadence }
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
@@ -7462,7 +7462,7 @@ module Orb
           required :cumulative_grouped_bulk_config, Orb::HashOf[Orb::Unknown]
 
           # @!attribute item_id
-          #   The id of the item the plan will be associated with.
+          #   The id of the item the price will be associated with.
           #
           #   @return [String]
           required :item_id, String
