@@ -394,12 +394,6 @@ module Orb
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # unit_config => {
-      #   unit_amount: String
-      # }
-      # ```
       class UnitConfig < Orb::BaseModel
         # @!attribute unit_amount
         #   Rate per unit of usage
@@ -415,13 +409,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # billing_cycle_configuration => {
-      #   duration: Integer,
-      #   duration_unit: Orb::Models::PriceCreateParams::BillingCycleConfiguration::DurationUnit
-      # }
-      # ```
       class BillingCycleConfiguration < Orb::BaseModel
         # @!attribute duration
         #   The duration of the billing period.
@@ -473,13 +460,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # invoicing_cycle_configuration => {
-      #   duration: Integer,
-      #   duration_unit: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::DurationUnit
-      # }
-      # ```
       class InvoicingCycleConfiguration < Orb::BaseModel
         # @!attribute duration
         #   The duration of the billing period.
@@ -531,13 +511,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # package_config => {
-      #   package_amount: String,
-      #   package_size: Integer
-      # }
-      # ```
       class PackageConfig < Orb::BaseModel
         # @!attribute package_amount
         #   A currency amount to rate usage by
@@ -561,14 +534,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # matrix_config => {
-      #   default_unit_amount: String,
-      #   dimensions: -> { Orb::ArrayOf[String, nil?: true] === _1 },
-      #   matrix_values: -> { Orb::ArrayOf[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue] === _1 }
-      # }
-      # ```
       class MatrixConfig < Orb::BaseModel
         # @!attribute default_unit_amount
         #   Default per unit rate for any usage not bucketed into a specified matrix_value
@@ -597,13 +562,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # matrix_value => {
-        #   dimension_values: -> { Orb::ArrayOf[String, nil?: true] === _1 },
-        #   unit_amount: String
-        # }
-        # ```
         class MatrixValue < Orb::BaseModel
           # @!attribute dimension_values
           #   One or two matrix keys to filter usage to this Matrix value by. For example,
@@ -629,15 +587,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # matrix_with_allocation_config => {
-      #   allocation: Float,
-      #   default_unit_amount: String,
-      #   dimensions: -> { Orb::ArrayOf[String, nil?: true] === _1 },
-      #   matrix_values: -> { Orb::ArrayOf[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue] === _1 }
-      # }
-      # ```
       class MatrixWithAllocationConfig < Orb::BaseModel
         # @!attribute allocation
         #   Allocation to be used to calculate the price
@@ -674,13 +623,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # matrix_value => {
-        #   dimension_values: -> { Orb::ArrayOf[String, nil?: true] === _1 },
-        #   unit_amount: String
-        # }
-        # ```
         class MatrixValue < Orb::BaseModel
           # @!attribute dimension_values
           #   One or two matrix keys to filter usage to this Matrix value by. For example,
@@ -706,12 +648,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # tiered_config => {
-      #   tiers: -> { Orb::ArrayOf[Orb::Models::PriceCreateParams::TieredConfig::Tier] === _1 }
-      # }
-      # ```
       class TieredConfig < Orb::BaseModel
         # @!attribute tiers
         #   Tiers for rating based on total usage quantities into the specified tier
@@ -726,14 +662,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # tier => {
-        #   first_unit: Float,
-        #   unit_amount: String,
-        #   last_unit: Float
-        # }
-        # ```
         class Tier < Orb::BaseModel
           # @!attribute first_unit
           #   Inclusive tier starting value
@@ -764,12 +692,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # tiered_bps_config => {
-      #   tiers: -> { Orb::ArrayOf[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier] === _1 }
-      # }
-      # ```
       class TieredBpsConfig < Orb::BaseModel
         # @!attribute tiers
         #   Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
@@ -785,15 +707,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # tier => {
-        #   bps: Float,
-        #   minimum_amount: String,
-        #   maximum_amount: String,
-        #   per_unit_maximum: String
-        # }
-        # ```
         class Tier < Orb::BaseModel
           # @!attribute bps
           #   Per-event basis point rate
@@ -831,13 +744,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # bps_config => {
-      #   bps: Float,
-      #   per_unit_maximum: String
-      # }
-      # ```
       class BpsConfig < Orb::BaseModel
         # @!attribute bps
         #   Basis point take rate per event
@@ -860,12 +766,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # bulk_bps_config => {
-      #   tiers: -> { Orb::ArrayOf[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier] === _1 }
-      # }
-      # ```
       class BulkBpsConfig < Orb::BaseModel
         # @!attribute tiers
         #   Tiers for a bulk BPS pricing model where all usage is aggregated to a single
@@ -881,14 +781,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # tier => {
-        #   bps: Float,
-        #   maximum_amount: String,
-        #   per_unit_maximum: String
-        # }
-        # ```
         class Tier < Orb::BaseModel
           # @!attribute bps
           #   Basis points to rate on
@@ -919,12 +811,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # bulk_config => {
-      #   tiers: -> { Orb::ArrayOf[Orb::Models::PriceCreateParams::BulkConfig::Tier] === _1 }
-      # }
-      # ```
       class BulkConfig < Orb::BaseModel
         # @!attribute tiers
         #   Bulk tiers for rating based on total usage volume
@@ -939,13 +825,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # tier => {
-        #   unit_amount: String,
-        #   maximum_units: Float
-        # }
-        # ```
         class Tier < Orb::BaseModel
           # @!attribute unit_amount
           #   Amount per unit

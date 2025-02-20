@@ -2,13 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # pagination_metadata => {
-    #   has_more: Orb::BooleanModel,
-    #   next_cursor: String
-    # }
-    # ```
     class PaginationMetadata < Orb::BaseModel
       # @!attribute has_more
       #

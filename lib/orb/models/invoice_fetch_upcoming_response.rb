@@ -2,17 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # invoice_fetch_upcoming_response => {
-    #   id: String,
-    #   amount_due: String,
-    #   auto_collection: Orb::Models::InvoiceFetchUpcomingResponse::AutoCollection,
-    #   billing_address: Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress,
-    #   created_at: Time,
-    #   **_
-    # }
-    # ```
     class InvoiceFetchUpcomingResponse < Orb::BaseModel
       # @!attribute id
       #
@@ -466,15 +455,6 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # auto_collection => {
-      #   enabled: Orb::BooleanModel,
-      #   next_attempt_at: Time,
-      #   num_attempts: Integer,
-      #   previously_attempted_at: Time
-      # }
-      # ```
       class AutoCollection < Orb::BaseModel
         # @!attribute enabled
         #   True only if auto-collection is enabled for this invoice.
@@ -518,16 +498,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # billing_address => {
-      #   city: String,
-      #   country: String,
-      #   line1: String,
-      #   line2: String,
-      #   postal_code: String
-      # }
-      # ```
       class BillingAddress < Orb::BaseModel
         # @!attribute city
         #
@@ -572,17 +542,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # credit_note => {
-      #   id: String,
-      #   credit_note_number: String,
-      #   memo: String,
-      #   reason: String,
-      #   total: String,
-      #   **_
-      # }
-      # ```
       class CreditNote < Orb::BaseModel
         # @!attribute id
         #
@@ -636,13 +595,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # customer => {
-      #   id: String,
-      #   external_customer_id: String
-      # }
-      # ```
       class Customer < Orb::BaseModel
         # @!attribute id
         #
@@ -663,17 +615,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # customer_balance_transaction => {
-      #   id: String,
-      #   action: Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Action,
-      #   amount: String,
-      #   created_at: Time,
-      #   credit_note: Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote,
-      #   **_
-      # }
-      # ```
       class CustomerBalanceTransaction < Orb::BaseModel
         # @!attribute id
         #   A unique id for this transaction.
@@ -806,12 +747,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_note => {
-        #   id: String
-        # }
-        # ```
         class CreditNote < Orb::BaseModel
           # @!attribute id
           #   The id of the Credit note
@@ -827,12 +762,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoice => {
-        #   id: String
-        # }
-        # ```
         class Invoice < Orb::BaseModel
           # @!attribute id
           #   The Invoice id
@@ -872,14 +801,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # customer_tax_id => {
-      #   country: Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Country,
-      #   type: Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Type,
-      #   value: String
-      # }
-      # ```
       class CustomerTaxID < Orb::BaseModel
         # @!attribute country
         #
@@ -1245,17 +1166,6 @@ module Orb
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # line_item => {
-      #   id: String,
-      #   adjusted_subtotal: String,
-      #   adjustments: -> { Orb::ArrayOf[union: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment] === _1 },
-      #   amount: String,
-      #   credits_applied: String,
-      #   **_
-      # }
-      # ```
       class LineItem < Orb::BaseModel
         # @!attribute id
         #   A unique ID for this line item.
@@ -1448,12 +1358,7 @@ module Orb
         # @example
         # ```ruby
         # case adjustment
-        # in {
-        #   adjustment_type: "usage_discount",
-        #   id: String,
-        #   amount: String,
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }
-        # }
+        # in {adjustment_type: "usage_discount", id: String, amount: String, applies_to_price_ids: ^(Orb::ArrayOf[String])}
         #   # Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment ...
         # in {adjustment_type: "amount_discount", id: String, amount: String, amount_discount: String}
         #   # Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment ...
@@ -1461,12 +1366,12 @@ module Orb
         #   adjustment_type: "percentage_discount",
         #   id: String,
         #   amount: String,
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }
+        #   applies_to_price_ids: ^(Orb::ArrayOf[String])
         # }
         #   # Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment ...
-        # in {adjustment_type: "minimum", id: String, amount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
+        # in {adjustment_type: "minimum", id: String, amount: String, applies_to_price_ids: ^(Orb::ArrayOf[String])}
         #   # Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment ...
-        # in {adjustment_type: "maximum", id: String, amount: String, applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }}
+        # in {adjustment_type: "maximum", id: String, amount: String, applies_to_price_ids: ^(Orb::ArrayOf[String])}
         #   # Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment ...
         # end
         # ```
@@ -1504,17 +1409,6 @@ module Orb
           variant :maximum,
                   -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment }
 
-          # @example
-          # ```ruby
-          # monetary_usage_discount_adjustment => {
-          #   id: String,
-          #   adjustment_type: :usage_discount,
-          #   amount: String,
-          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-          #   is_invoice_level: Orb::BooleanModel,
-          #   **_
-          # }
-          # ```
           class MonetaryUsageDiscountAdjustment < Orb::BaseModel
             # @!attribute id
             #
@@ -1583,17 +1477,6 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # monetary_amount_discount_adjustment => {
-          #   id: String,
-          #   adjustment_type: :amount_discount,
-          #   amount: String,
-          #   amount_discount: String,
-          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-          #   **_
-          # }
-          # ```
           class MonetaryAmountDiscountAdjustment < Orb::BaseModel
             # @!attribute id
             #
@@ -1662,17 +1545,6 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # monetary_percentage_discount_adjustment => {
-          #   id: String,
-          #   adjustment_type: :percentage_discount,
-          #   amount: String,
-          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-          #   is_invoice_level: Orb::BooleanModel,
-          #   **_
-          # }
-          # ```
           class MonetaryPercentageDiscountAdjustment < Orb::BaseModel
             # @!attribute id
             #
@@ -1741,17 +1613,6 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # monetary_minimum_adjustment => {
-          #   id: String,
-          #   adjustment_type: :minimum,
-          #   amount: String,
-          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-          #   is_invoice_level: Orb::BooleanModel,
-          #   **_
-          # }
-          # ```
           class MonetaryMinimumAdjustment < Orb::BaseModel
             # @!attribute id
             #
@@ -1828,17 +1689,6 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # monetary_maximum_adjustment => {
-          #   id: String,
-          #   adjustment_type: :maximum,
-          #   amount: String,
-          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-          #   is_invoice_level: Orb::BooleanModel,
-          #   **_
-          # }
-          # ```
           class MonetaryMaximumAdjustment < Orb::BaseModel
             # @!attribute id
             #
@@ -1908,13 +1758,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -1940,13 +1783,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -2023,16 +1859,6 @@ module Orb
           variant :"'null'",
                   -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem }
 
-          # @example
-          # ```ruby
-          # matrix_sub_line_item => {
-          #   amount: String,
-          #   grouping: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping,
-          #   matrix_config: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig,
-          #   name: String,
-          #   quantity: Float
-          # }
-          # ```
           class MatrixSubLineItem < Orb::BaseModel
             # @!attribute amount
             #   The total amount for this sub line item.
@@ -2080,13 +1906,6 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
-            # @example
-            # ```ruby
-            # grouping => {
-            #   key: String,
-            #   value: String
-            # }
-            # ```
             class Grouping < Orb::BaseModel
               # @!attribute key
               #
@@ -2108,12 +1927,6 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @example
-            # ```ruby
-            # matrix_config => {
-            #   dimension_values: -> { Orb::ArrayOf[String, nil?: true] === _1 }
-            # }
-            # ```
             class MatrixConfig < Orb::BaseModel
               # @!attribute dimension_values
               #   The ordered dimension values for this line item.
@@ -2130,16 +1943,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # tier_sub_line_item => {
-          #   amount: String,
-          #   grouping: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping,
-          #   name: String,
-          #   quantity: Float,
-          #   tier_config: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::TierConfig
-          # }
-          # ```
           class TierSubLineItem < Orb::BaseModel
             # @!attribute amount
             #   The total amount for this sub line item.
@@ -2187,13 +1990,6 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
-            # @example
-            # ```ruby
-            # grouping => {
-            #   key: String,
-            #   value: String
-            # }
-            # ```
             class Grouping < Orb::BaseModel
               # @!attribute key
               #
@@ -2215,14 +2011,6 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @example
-            # ```ruby
-            # tier_config => {
-            #   first_unit: Float,
-            #   last_unit: Float,
-            #   unit_amount: String
-            # }
-            # ```
             class TierConfig < Orb::BaseModel
               # @!attribute first_unit
               #
@@ -2250,16 +2038,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # other_sub_line_item => {
-          #   amount: String,
-          #   grouping: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping,
-          #   name: String,
-          #   quantity: Float,
-          #   type: :"'null'"
-          # }
-          # ```
           class OtherSubLineItem < Orb::BaseModel
             # @!attribute amount
             #   The total amount for this sub line item.
@@ -2300,13 +2078,6 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
-            # @example
-            # ```ruby
-            # grouping => {
-            #   key: String,
-            #   value: String
-            # }
-            # ```
             class Grouping < Orb::BaseModel
               # @!attribute key
               #
@@ -2330,14 +2101,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # tax_amount => {
-        #   amount: String,
-        #   tax_rate_description: String,
-        #   tax_rate_percentage: String
-        # }
-        # ```
         class TaxAmount < Orb::BaseModel
           # @!attribute amount
           #   The amount of additional tax incurred by this tax rate.
@@ -2368,13 +2131,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # maximum => {
-      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-      #   maximum_amount: String
-      # }
-      # ```
       class Maximum < Orb::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -2398,13 +2154,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # minimum => {
-      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-      #   minimum_amount: String
-      # }
-      # ```
       class Minimum < Orb::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -2428,16 +2177,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # payment_attempt => {
-      #   id: String,
-      #   amount: String,
-      #   created_at: Time,
-      #   payment_provider: Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt::PaymentProvider,
-      #   payment_provider_id: String
-      # }
-      # ```
       class PaymentAttempt < Orb::BaseModel
         # @!attribute id
         #   The ID of the payment attempt.
@@ -2512,16 +2251,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # shipping_address => {
-      #   city: String,
-      #   country: String,
-      #   line1: String,
-      #   line2: String,
-      #   postal_code: String
-      # }
-      # ```
       class ShippingAddress < Orb::BaseModel
         # @!attribute city
         #
@@ -2598,12 +2327,6 @@ module Orb
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # subscription => {
-      #   id: String
-      # }
-      # ```
       class Subscription < Orb::BaseModel
         # @!attribute id
         #

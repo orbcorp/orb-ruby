@@ -2,17 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # coupon => {
-    #   id: String,
-    #   archived_at: Time,
-    #   discount: Orb::Models::Coupon::Discount,
-    #   duration_in_months: Integer,
-    #   max_redemptions: Integer,
-    #   **_
-    # }
-    # ```
     class Coupon < Orb::BaseModel
       # @!attribute id
       #   Also referred to as coupon_id in this documentation.
@@ -84,17 +73,12 @@ module Orb
       # case discount
       # in {
       #   discount_type: "percentage",
-      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
       #   percentage_discount: Float,
       #   reason: String
       # }
       #   # Orb::Models::PercentageDiscount ...
-      # in {
-      #   discount_type: "amount",
-      #   amount_discount: String,
-      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-      #   reason: String
-      # }
+      # in {discount_type: "amount", amount_discount: String, applies_to_price_ids: ^(Orb::ArrayOf[String]), reason: String}
       #   # Orb::Models::AmountDiscount ...
       # end
       # ```

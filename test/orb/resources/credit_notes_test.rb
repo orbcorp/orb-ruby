@@ -23,6 +23,27 @@ class Orb::Test::Resources::CreditNotesTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::CreditNote
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        credit_note_number: String,
+        credit_note_pdf: String | nil,
+        customer: Orb::Models::CreditNote::Customer,
+        invoice_id: String,
+        line_items: ^(Orb::ArrayOf[Orb::Models::CreditNote::LineItem]),
+        maximum_amount_adjustment: Orb::Models::CreditNote::MaximumAmountAdjustment | nil,
+        memo: String | nil,
+        minimum_amount_refunded: String | nil,
+        reason: Orb::Models::CreditNote::Reason | nil,
+        subtotal: String,
+        total: String,
+        type: Orb::Models::CreditNote::Type,
+        voided_at: Time | nil,
+        discounts: ^(Orb::ArrayOf[Orb::Models::CreditNote::Discount]) | nil
+      }
+    end
   end
 
   def test_list
@@ -41,6 +62,27 @@ class Orb::Test::Resources::CreditNotesTest < Minitest::Test
     assert_pattern do
       row => Orb::Models::CreditNote
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        created_at: Time,
+        credit_note_number: String,
+        credit_note_pdf: String | nil,
+        customer: Orb::Models::CreditNote::Customer,
+        invoice_id: String,
+        line_items: ^(Orb::ArrayOf[Orb::Models::CreditNote::LineItem]),
+        maximum_amount_adjustment: Orb::Models::CreditNote::MaximumAmountAdjustment | nil,
+        memo: String | nil,
+        minimum_amount_refunded: String | nil,
+        reason: Orb::Models::CreditNote::Reason | nil,
+        subtotal: String,
+        total: String,
+        type: Orb::Models::CreditNote::Type,
+        voided_at: Time | nil,
+        discounts: ^(Orb::ArrayOf[Orb::Models::CreditNote::Discount]) | nil
+      }
+    end
   end
 
   def test_fetch
@@ -48,6 +90,27 @@ class Orb::Test::Resources::CreditNotesTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::CreditNote
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        credit_note_number: String,
+        credit_note_pdf: String | nil,
+        customer: Orb::Models::CreditNote::Customer,
+        invoice_id: String,
+        line_items: ^(Orb::ArrayOf[Orb::Models::CreditNote::LineItem]),
+        maximum_amount_adjustment: Orb::Models::CreditNote::MaximumAmountAdjustment | nil,
+        memo: String | nil,
+        minimum_amount_refunded: String | nil,
+        reason: Orb::Models::CreditNote::Reason | nil,
+        subtotal: String,
+        total: String,
+        type: Orb::Models::CreditNote::Type,
+        voided_at: Time | nil,
+        discounts: ^(Orb::ArrayOf[Orb::Models::CreditNote::Discount]) | nil
+      }
     end
   end
 end

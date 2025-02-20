@@ -4,17 +4,6 @@ module Orb
   module Models
     module Customers
       module Credits
-        # @example
-        # ```ruby
-        # top_up_list_response => {
-        #   id: String,
-        #   amount: String,
-        #   currency: String,
-        #   invoice_settings: Orb::Models::Customers::Credits::TopUpListResponse::InvoiceSettings,
-        #   per_unit_cost_basis: String,
-        #   **_
-        # }
-        # ```
         class TopUpListResponse < Orb::BaseModel
           # @!attribute id
           #
@@ -94,15 +83,6 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # invoice_settings => {
-          #   auto_collection: Orb::BooleanModel,
-          #   net_terms: Integer,
-          #   memo: String,
-          #   require_successful_payment: Orb::BooleanModel
-          # }
-          # ```
           class InvoiceSettings < Orb::BaseModel
             # @!attribute auto_collection
             #   Whether the credits purchase invoice should auto collect with the customer's

@@ -28,13 +28,6 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # external_connection => {
-      #   external_connection_name: Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName,
-      #   external_entity_id: String
-      # }
-      # ```
       class ExternalConnection < Orb::BaseModel
         # @!attribute external_connection_name
         #

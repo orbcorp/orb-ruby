@@ -16,5 +16,11 @@ class Orb::Test::Resources::Events::VolumeTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::Events::EventVolumes
     end
+
+    assert_pattern do
+      response => {
+        data: ^(Orb::ArrayOf[Orb::Models::Events::EventVolumes::Data])
+      }
+    end
   end
 end

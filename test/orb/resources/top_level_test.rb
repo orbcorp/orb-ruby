@@ -16,5 +16,11 @@ class Orb::Test::Resources::TopLevelTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::TopLevelPingResponse
     end
+
+    assert_pattern do
+      response => {
+        response: String
+      }
+    end
   end
 end

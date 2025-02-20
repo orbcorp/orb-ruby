@@ -39,16 +39,6 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # event => {
-      #   event_name: String,
-      #   idempotency_key: String,
-      #   properties: Orb::Unknown,
-      #   timestamp: Time,
-      #   customer_id: String
-      # }
-      # ```
       class Event < Orb::BaseModel
         # @!attribute event_name
         #   A name to meaningfully identify the action or event type.

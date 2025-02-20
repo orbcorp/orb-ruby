@@ -2,16 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # dimensional_price_group => {
-    #   id: String,
-    #   billable_metric_id: String,
-    #   dimensions: -> { Orb::ArrayOf[String] === _1 },
-    #   external_dimensional_price_group_id: String,
-    #   metadata: -> { Orb::HashOf[String] === _1 }
-    # }
-    # ```
     class DimensionalPriceGroup < Orb::BaseModel
       # @!attribute id
       #

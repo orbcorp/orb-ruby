@@ -18,12 +18,6 @@ module Orb
 
       variant -> { Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage }
 
-      # @example
-      # ```ruby
-      # ungrouped_subscription_usage => {
-      #   data: -> { Orb::ArrayOf[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data] === _1 }
-      # }
-      # ```
       class UngroupedSubscriptionUsage < Orb::BaseModel
         # @!attribute data
         #
@@ -37,14 +31,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # data => {
-        #   billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric,
-        #   usage: -> { Orb::ArrayOf[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage] === _1 },
-        #   view_mode: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode
-        # }
-        # ```
         class Data < Orb::BaseModel
           # @!attribute billable_metric
           #
@@ -73,13 +59,6 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # billable_metric => {
-          #   id: String,
-          #   name: String
-          # }
-          # ```
           class BillableMetric < Orb::BaseModel
             # @!attribute id
             #
@@ -100,14 +79,6 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # usage => {
-          #   quantity: Float,
-          #   timeframe_end: Time,
-          #   timeframe_start: Time
-          # }
-          # ```
           class Usage < Orb::BaseModel
             # @!attribute quantity
             #
@@ -159,13 +130,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # grouped_subscription_usage => {
-      #   data: -> { Orb::ArrayOf[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data] === _1 },
-      #   pagination_metadata: Orb::Models::PaginationMetadata
-      # }
-      # ```
       class GroupedSubscriptionUsage < Orb::BaseModel
         # @!attribute data
         #
@@ -185,15 +149,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # data => {
-        #   billable_metric: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric,
-        #   metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup,
-        #   usage: -> { Orb::ArrayOf[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage] === _1 },
-        #   view_mode: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode
-        # }
-        # ```
         class Data < Orb::BaseModel
           # @!attribute billable_metric
           #
@@ -227,13 +182,6 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # billable_metric => {
-          #   id: String,
-          #   name: String
-          # }
-          # ```
           class BillableMetric < Orb::BaseModel
             # @!attribute id
             #
@@ -254,13 +202,6 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # metric_group => {
-          #   property_key: String,
-          #   property_value: String
-          # }
-          # ```
           class MetricGroup < Orb::BaseModel
             # @!attribute property_key
             #
@@ -281,14 +222,6 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # usage => {
-          #   quantity: Float,
-          #   timeframe_end: Time,
-          #   timeframe_start: Time
-          # }
-          # ```
           class Usage < Orb::BaseModel
             # @!attribute quantity
             #

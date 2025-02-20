@@ -35,12 +35,6 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # threshold => {
-      #   value: Float
-      # }
-      # ```
       class Threshold < Orb::BaseModel
         # @!attribute value
         #   The value at which an alert will fire. For credit balance alerts, the alert will

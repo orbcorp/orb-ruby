@@ -34,13 +34,6 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # line_item => {
-      #   amount: String,
-      #   invoice_line_item_id: String
-      # }
-      # ```
       class LineItem < Orb::BaseModel
         # @!attribute amount
         #   The total amount in the invoice's currency to credit this line item.

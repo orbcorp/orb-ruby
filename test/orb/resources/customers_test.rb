@@ -16,6 +16,32 @@ class Orb::Test::Resources::CustomersTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::Customer
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        additional_emails: ^(Orb::ArrayOf[String]),
+        auto_collection: Orb::BooleanModel,
+        balance: String,
+        billing_address: Orb::Models::Customer::BillingAddress | nil,
+        created_at: Time,
+        currency: String | nil,
+        email: String,
+        email_delivery: Orb::BooleanModel,
+        exempt_from_automated_tax: Orb::BooleanModel | nil,
+        external_customer_id: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        name: String,
+        payment_provider: Orb::Models::Customer::PaymentProvider | nil,
+        payment_provider_id: String | nil,
+        portal_url: String | nil,
+        shipping_address: Orb::Models::Customer::ShippingAddress | nil,
+        tax_id: Orb::Models::Customer::TaxID | nil,
+        timezone: String,
+        accounting_sync_configuration: Orb::Models::Customer::AccountingSyncConfiguration | nil,
+        reporting_configuration: Orb::Models::Customer::ReportingConfiguration | nil
+      }
+    end
   end
 
   def test_update
@@ -23,6 +49,32 @@ class Orb::Test::Resources::CustomersTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::Customer
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        additional_emails: ^(Orb::ArrayOf[String]),
+        auto_collection: Orb::BooleanModel,
+        balance: String,
+        billing_address: Orb::Models::Customer::BillingAddress | nil,
+        created_at: Time,
+        currency: String | nil,
+        email: String,
+        email_delivery: Orb::BooleanModel,
+        exempt_from_automated_tax: Orb::BooleanModel | nil,
+        external_customer_id: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        name: String,
+        payment_provider: Orb::Models::Customer::PaymentProvider | nil,
+        payment_provider_id: String | nil,
+        portal_url: String | nil,
+        shipping_address: Orb::Models::Customer::ShippingAddress | nil,
+        tax_id: Orb::Models::Customer::TaxID | nil,
+        timezone: String,
+        accounting_sync_configuration: Orb::Models::Customer::AccountingSyncConfiguration | nil,
+        reporting_configuration: Orb::Models::Customer::ReportingConfiguration | nil
+      }
     end
   end
 
@@ -42,6 +94,32 @@ class Orb::Test::Resources::CustomersTest < Minitest::Test
     assert_pattern do
       row => Orb::Models::Customer
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        additional_emails: ^(Orb::ArrayOf[String]),
+        auto_collection: Orb::BooleanModel,
+        balance: String,
+        billing_address: Orb::Models::Customer::BillingAddress | nil,
+        created_at: Time,
+        currency: String | nil,
+        email: String,
+        email_delivery: Orb::BooleanModel,
+        exempt_from_automated_tax: Orb::BooleanModel | nil,
+        external_customer_id: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        name: String,
+        payment_provider: Orb::Models::Customer::PaymentProvider | nil,
+        payment_provider_id: String | nil,
+        portal_url: String | nil,
+        shipping_address: Orb::Models::Customer::ShippingAddress | nil,
+        tax_id: Orb::Models::Customer::TaxID | nil,
+        timezone: String,
+        accounting_sync_configuration: Orb::Models::Customer::AccountingSyncConfiguration | nil,
+        reporting_configuration: Orb::Models::Customer::ReportingConfiguration | nil
+      }
+    end
   end
 
   def test_delete
@@ -58,6 +136,32 @@ class Orb::Test::Resources::CustomersTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::Customer
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        additional_emails: ^(Orb::ArrayOf[String]),
+        auto_collection: Orb::BooleanModel,
+        balance: String,
+        billing_address: Orb::Models::Customer::BillingAddress | nil,
+        created_at: Time,
+        currency: String | nil,
+        email: String,
+        email_delivery: Orb::BooleanModel,
+        exempt_from_automated_tax: Orb::BooleanModel | nil,
+        external_customer_id: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        name: String,
+        payment_provider: Orb::Models::Customer::PaymentProvider | nil,
+        payment_provider_id: String | nil,
+        portal_url: String | nil,
+        shipping_address: Orb::Models::Customer::ShippingAddress | nil,
+        tax_id: Orb::Models::Customer::TaxID | nil,
+        timezone: String,
+        accounting_sync_configuration: Orb::Models::Customer::AccountingSyncConfiguration | nil,
+        reporting_configuration: Orb::Models::Customer::ReportingConfiguration | nil
+      }
+    end
   end
 
   def test_fetch_by_external_id
@@ -65,6 +169,32 @@ class Orb::Test::Resources::CustomersTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::Customer
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        additional_emails: ^(Orb::ArrayOf[String]),
+        auto_collection: Orb::BooleanModel,
+        balance: String,
+        billing_address: Orb::Models::Customer::BillingAddress | nil,
+        created_at: Time,
+        currency: String | nil,
+        email: String,
+        email_delivery: Orb::BooleanModel,
+        exempt_from_automated_tax: Orb::BooleanModel | nil,
+        external_customer_id: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        name: String,
+        payment_provider: Orb::Models::Customer::PaymentProvider | nil,
+        payment_provider_id: String | nil,
+        portal_url: String | nil,
+        shipping_address: Orb::Models::Customer::ShippingAddress | nil,
+        tax_id: Orb::Models::Customer::TaxID | nil,
+        timezone: String,
+        accounting_sync_configuration: Orb::Models::Customer::AccountingSyncConfiguration | nil,
+        reporting_configuration: Orb::Models::Customer::ReportingConfiguration | nil
+      }
     end
   end
 
@@ -89,6 +219,32 @@ class Orb::Test::Resources::CustomersTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::Customer
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        additional_emails: ^(Orb::ArrayOf[String]),
+        auto_collection: Orb::BooleanModel,
+        balance: String,
+        billing_address: Orb::Models::Customer::BillingAddress | nil,
+        created_at: Time,
+        currency: String | nil,
+        email: String,
+        email_delivery: Orb::BooleanModel,
+        exempt_from_automated_tax: Orb::BooleanModel | nil,
+        external_customer_id: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        name: String,
+        payment_provider: Orb::Models::Customer::PaymentProvider | nil,
+        payment_provider_id: String | nil,
+        portal_url: String | nil,
+        shipping_address: Orb::Models::Customer::ShippingAddress | nil,
+        tax_id: Orb::Models::Customer::TaxID | nil,
+        timezone: String,
+        accounting_sync_configuration: Orb::Models::Customer::AccountingSyncConfiguration | nil,
+        reporting_configuration: Orb::Models::Customer::ReportingConfiguration | nil
+      }
     end
   end
 end

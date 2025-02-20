@@ -9,31 +9,21 @@ module Orb
     # case discount
     # in {
     #   discount_type: "percentage",
-    #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+    #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
     #   percentage_discount: Float,
     #   reason: String
     # }
     #   # Orb::Models::PercentageDiscount ...
     # in {
     #   discount_type: "trial",
-    #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+    #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
     #   reason: String,
     #   trial_amount_discount: String
     # }
     #   # Orb::Models::TrialDiscount ...
-    # in {
-    #   discount_type: "usage",
-    #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-    #   usage_discount: Float,
-    #   reason: String
-    # }
+    # in {discount_type: "usage", applies_to_price_ids: ^(Orb::ArrayOf[String]), usage_discount: Float, reason: String}
     #   # Orb::Models::Discount::UsageDiscount ...
-    # in {
-    #   discount_type: "amount",
-    #   amount_discount: String,
-    #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-    #   reason: String
-    # }
+    # in {discount_type: "amount", amount_discount: String, applies_to_price_ids: ^(Orb::ArrayOf[String]), reason: String}
     #   # Orb::Models::AmountDiscount ...
     # end
     # ```
@@ -62,15 +52,6 @@ module Orb
 
       variant :amount, -> { Orb::Models::AmountDiscount }
 
-      # @example
-      # ```ruby
-      # usage_discount => {
-      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-      #   discount_type: :usage,
-      #   usage_discount: Float,
-      #   reason: String
-      # }
-      # ```
       class UsageDiscount < Orb::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this discount applies to. For plan/plan phase discounts,

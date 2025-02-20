@@ -3,12 +3,6 @@
 module Orb
   module Models
     module Events
-      # @example
-      # ```ruby
-      # event_volumes => {
-      #   data: -> { Orb::ArrayOf[Orb::Models::Events::EventVolumes::Data] === _1 }
-      # }
-      # ```
       class EventVolumes < Orb::BaseModel
         # @!attribute data
         #
@@ -22,14 +16,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # data => {
-        #   count: Integer,
-        #   timeframe_end: Time,
-        #   timeframe_start: Time
-        # }
-        # ```
         class Data < Orb::BaseModel
           # @!attribute count
           #   The number of events ingested with a timestamp between the timeframe

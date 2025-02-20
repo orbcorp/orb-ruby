@@ -19,6 +19,22 @@ class Orb::Test::Resources::Events::BackfillsTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::Events::BackfillCreateResponse
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        close_time: Time | nil,
+        created_at: Time,
+        customer_id: String | nil,
+        events_ingested: Integer,
+        replace_existing_events: Orb::BooleanModel,
+        reverted_at: Time | nil,
+        status: Orb::Models::Events::BackfillCreateResponse::Status,
+        timeframe_end: Time,
+        timeframe_start: Time,
+        deprecation_filter: String | nil
+      }
+    end
   end
 
   def test_list
@@ -37,6 +53,22 @@ class Orb::Test::Resources::Events::BackfillsTest < Minitest::Test
     assert_pattern do
       row => Orb::Models::Events::BackfillListResponse
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        close_time: Time | nil,
+        created_at: Time,
+        customer_id: String | nil,
+        events_ingested: Integer,
+        replace_existing_events: Orb::BooleanModel,
+        reverted_at: Time | nil,
+        status: Orb::Models::Events::BackfillListResponse::Status,
+        timeframe_end: Time,
+        timeframe_start: Time,
+        deprecation_filter: String | nil
+      }
+    end
   end
 
   def test_close
@@ -44,6 +76,22 @@ class Orb::Test::Resources::Events::BackfillsTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::Events::BackfillCloseResponse
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        close_time: Time | nil,
+        created_at: Time,
+        customer_id: String | nil,
+        events_ingested: Integer,
+        replace_existing_events: Orb::BooleanModel,
+        reverted_at: Time | nil,
+        status: Orb::Models::Events::BackfillCloseResponse::Status,
+        timeframe_end: Time,
+        timeframe_start: Time,
+        deprecation_filter: String | nil
+      }
     end
   end
 
@@ -53,6 +101,22 @@ class Orb::Test::Resources::Events::BackfillsTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::Events::BackfillFetchResponse
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        close_time: Time | nil,
+        created_at: Time,
+        customer_id: String | nil,
+        events_ingested: Integer,
+        replace_existing_events: Orb::BooleanModel,
+        reverted_at: Time | nil,
+        status: Orb::Models::Events::BackfillFetchResponse::Status,
+        timeframe_end: Time,
+        timeframe_start: Time,
+        deprecation_filter: String | nil
+      }
+    end
   end
 
   def test_revert
@@ -60,6 +124,22 @@ class Orb::Test::Resources::Events::BackfillsTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::Events::BackfillRevertResponse
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        close_time: Time | nil,
+        created_at: Time,
+        customer_id: String | nil,
+        events_ingested: Integer,
+        replace_existing_events: Orb::BooleanModel,
+        reverted_at: Time | nil,
+        status: Orb::Models::Events::BackfillRevertResponse::Status,
+        timeframe_end: Time,
+        timeframe_start: Time,
+        deprecation_filter: String | nil
+      }
     end
   end
 end
