@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0-alpha.10 (2025-02-20)
+
+Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
+
+### Features
+
+* **api:** api update ([#51](https://github.com/orbcorp/orb-ruby/issues/51)) ([19b3ac2](https://github.com/orbcorp/orb-ruby/commit/19b3ac2be442d35c0ce83f284f1b8783b237eb32))
+
+
+### Chores
+
+* bump lockfile ([#49](https://github.com/orbcorp/orb-ruby/issues/49)) ([3a0849b](https://github.com/orbcorp/orb-ruby/commit/3a0849b4d7b9dfa147a020cba70d19199dcd3fab))
+* clean up client tests ([#47](https://github.com/orbcorp/orb-ruby/issues/47)) ([809ff79](https://github.com/orbcorp/orb-ruby/commit/809ff79703568188c692a227f3dfff77b9529b94))
+* **internal:** formatting ([#48](https://github.com/orbcorp/orb-ruby/issues/48)) ([ad2f4de](https://github.com/orbcorp/orb-ruby/commit/ad2f4de8fd380b7aa46fa9d2d516ab32b3b3b1dc))
+* **internal:** version bump ([#45](https://github.com/orbcorp/orb-ruby/issues/45)) ([4206454](https://github.com/orbcorp/orb-ruby/commit/4206454c3173411199eb6167fe53fedc44e58ce5))
+* rename internal type aliases ([#50](https://github.com/orbcorp/orb-ruby/issues/50)) ([ffe0640](https://github.com/orbcorp/orb-ruby/commit/ffe0640993d3b9784ec3e97250ec6c02e7899522))
+
 ## 0.1.0-alpha.9 (2025-02-18)
 
 Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
