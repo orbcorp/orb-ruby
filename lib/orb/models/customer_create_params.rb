@@ -272,13 +272,6 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # accounting_sync_configuration => {
-      #   accounting_providers: -> { Orb::ArrayOf[Orb::Models::CustomerCreateParams::AccountingSyncConfiguration::AccountingProvider] === _1 },
-      #   excluded: Orb::BooleanModel
-      # }
-      # ```
       class AccountingSyncConfiguration < Orb::BaseModel
         # @!attribute accounting_providers
         #
@@ -300,13 +293,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # accounting_provider => {
-        #   external_provider_id: String,
-        #   provider_type: String
-        # }
-        # ```
         class AccountingProvider < Orb::BaseModel
           # @!attribute external_provider_id
           #
@@ -328,16 +314,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # billing_address => {
-      #   city: String,
-      #   country: String,
-      #   line1: String,
-      #   line2: String,
-      #   postal_code: String
-      # }
-      # ```
       class BillingAddress < Orb::BaseModel
         # @!attribute city
         #
@@ -418,12 +394,6 @@ module Orb
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # reporting_configuration => {
-      #   exempt: Orb::BooleanModel
-      # }
-      # ```
       class ReportingConfiguration < Orb::BaseModel
         # @!attribute exempt
         #
@@ -438,16 +408,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # shipping_address => {
-      #   city: String,
-      #   country: String,
-      #   line1: String,
-      #   line2: String,
-      #   postal_code: String
-      # }
-      # ```
       class ShippingAddress < Orb::BaseModel
         # @!attribute city
         #
@@ -520,14 +480,6 @@ module Orb
 
         variant :taxjar, -> { Orb::Models::CustomerCreateParams::TaxConfiguration::NewTaxJarConfiguration }
 
-        # @example
-        # ```ruby
-        # new_avalara_tax_configuration => {
-        #   tax_exempt: Orb::BooleanModel,
-        #   tax_provider: :avalara,
-        #   tax_exemption_code: String
-        # }
-        # ```
         class NewAvalaraTaxConfiguration < Orb::BaseModel
           # @!attribute tax_exempt
           #
@@ -554,13 +506,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # new_tax_jar_configuration => {
-        #   tax_exempt: Orb::BooleanModel,
-        #   tax_provider: :taxjar
-        # }
-        # ```
         class NewTaxJarConfiguration < Orb::BaseModel
           # @!attribute tax_exempt
           #
@@ -582,14 +527,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # tax_id => {
-      #   country: Orb::Models::CustomerCreateParams::TaxID::Country,
-      #   type: Orb::Models::CustomerCreateParams::TaxID::Type,
-      #   value: String
-      # }
-      # ```
       class TaxID < Orb::BaseModel
         # @!attribute country
         #

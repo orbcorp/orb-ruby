@@ -2,17 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # subscription => {
-    #   id: String,
-    #   active_plan_phase_order: Integer,
-    #   adjustment_intervals: -> { Orb::ArrayOf[Orb::Models::Subscription::AdjustmentInterval] === _1 },
-    #   auto_collection: Orb::BooleanModel,
-    #   billing_cycle_anchor_configuration: Orb::Models::Subscription::BillingCycleAnchorConfiguration,
-    #   **_
-    # }
-    # ```
     class Subscription < Orb::BaseModel
       # @!attribute id
       #
@@ -275,16 +264,6 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # adjustment_interval => {
-      #   id: String,
-      #   adjustment: Orb::Models::Subscription::AdjustmentInterval::Adjustment,
-      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 },
-      #   end_date: Time,
-      #   start_date: Time
-      # }
-      # ```
       class AdjustmentInterval < Orb::BaseModel
         # @!attribute id
         #
@@ -333,7 +312,7 @@ module Orb
         # in {
         #   adjustment_type: "usage_discount",
         #   id: String,
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
         #   is_invoice_level: Orb::BooleanModel
         # }
         #   # Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment ...
@@ -341,27 +320,27 @@ module Orb
         #   adjustment_type: "amount_discount",
         #   id: String,
         #   amount_discount: String,
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 }
+        #   applies_to_price_ids: ^(Orb::ArrayOf[String])
         # }
         #   # Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment ...
         # in {
         #   adjustment_type: "percentage_discount",
         #   id: String,
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
         #   is_invoice_level: Orb::BooleanModel
         # }
         #   # Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment ...
         # in {
         #   adjustment_type: "minimum",
         #   id: String,
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
         #   is_invoice_level: Orb::BooleanModel
         # }
         #   # Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment ...
         # in {
         #   adjustment_type: "maximum",
         #   id: String,
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
         #   is_invoice_level: Orb::BooleanModel
         # }
         #   # Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment ...
@@ -401,17 +380,6 @@ module Orb
           variant :maximum,
                   -> { Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment }
 
-          # @example
-          # ```ruby
-          # plan_phase_usage_discount_adjustment => {
-          #   id: String,
-          #   adjustment_type: :usage_discount,
-          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-          #   is_invoice_level: Orb::BooleanModel,
-          #   plan_phase_order: Integer,
-          #   **_
-          # }
-          # ```
           class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
             # @!attribute id
             #
@@ -480,17 +448,6 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # plan_phase_amount_discount_adjustment => {
-          #   id: String,
-          #   adjustment_type: :amount_discount,
-          #   amount_discount: String,
-          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-          #   is_invoice_level: Orb::BooleanModel,
-          #   **_
-          # }
-          # ```
           class PlanPhaseAmountDiscountAdjustment < Orb::BaseModel
             # @!attribute id
             #
@@ -559,17 +516,6 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # plan_phase_percentage_discount_adjustment => {
-          #   id: String,
-          #   adjustment_type: :percentage_discount,
-          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-          #   is_invoice_level: Orb::BooleanModel,
-          #   percentage_discount: Float,
-          #   **_
-          # }
-          # ```
           class PlanPhasePercentageDiscountAdjustment < Orb::BaseModel
             # @!attribute id
             #
@@ -638,17 +584,6 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # plan_phase_minimum_adjustment => {
-          #   id: String,
-          #   adjustment_type: :minimum,
-          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-          #   is_invoice_level: Orb::BooleanModel,
-          #   item_id: String,
-          #   **_
-          # }
-          # ```
           class PlanPhaseMinimumAdjustment < Orb::BaseModel
             # @!attribute id
             #
@@ -725,17 +660,6 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # plan_phase_maximum_adjustment => {
-          #   id: String,
-          #   adjustment_type: :maximum,
-          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-          #   is_invoice_level: Orb::BooleanModel,
-          #   maximum_amount: String,
-          #   **_
-          # }
-          # ```
           class PlanPhaseMaximumAdjustment < Orb::BaseModel
             # @!attribute id
             #
@@ -806,14 +730,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # billing_cycle_anchor_configuration => {
-      #   day: Integer,
-      #   month: Integer,
-      #   year: Integer
-      # }
-      # ```
       class BillingCycleAnchorConfiguration < Orb::BaseModel
         # @!attribute day
         #   The day of the month on which the billing cycle is anchored. If the maximum
@@ -857,21 +773,21 @@ module Orb
       # in {
       #   discount_type: "amount",
       #   amount_discount: String,
-      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 }
+      #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
+      #   applies_to_price_interval_ids: ^(Orb::ArrayOf[String])
       # }
       #   # Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval ...
       # in {
       #   discount_type: "percentage",
-      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
+      #   applies_to_price_interval_ids: ^(Orb::ArrayOf[String]),
       #   end_date: Time
       # }
       #   # Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval ...
       # in {
       #   discount_type: "usage",
-      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 },
+      #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
+      #   applies_to_price_interval_ids: ^(Orb::ArrayOf[String]),
       #   end_date: Time
       # }
       #   # Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval ...
@@ -898,16 +814,6 @@ module Orb
 
         variant :usage, -> { Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval }
 
-        # @example
-        # ```ruby
-        # amount_discount_interval => {
-        #   amount_discount: String,
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   discount_type: :amount,
-        #   end_date: Time
-        # }
-        # ```
         class AmountDiscountInterval < Orb::BaseModel
           # @!attribute amount_discount
           #   Only available if discount_type is `amount`.
@@ -967,16 +873,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # percentage_discount_interval => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   discount_type: :percentage,
-        #   end_date: Time,
-        #   percentage_discount: Float
-        # }
-        # ```
         class PercentageDiscountInterval < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   The price ids that this discount interval applies to.
@@ -1037,16 +933,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # usage_discount_interval => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   discount_type: :usage,
-        #   end_date: Time,
-        #   start_date: Time
-        # }
-        # ```
         class UsageDiscountInterval < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   The price ids that this discount interval applies to.
@@ -1108,15 +994,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # fixed_fee_quantity_schedule => {
-      #   end_date: Time,
-      #   price_id: String,
-      #   quantity: Float,
-      #   start_date: Time
-      # }
-      # ```
       class FixedFeeQuantitySchedule < Orb::BaseModel
         # @!attribute end_date
         #
@@ -1149,16 +1026,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # maximum_interval => {
-      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 },
-      #   end_date: Time,
-      #   maximum_amount: String,
-      #   start_date: Time
-      # }
-      # ```
       class MaximumInterval < Orb::BaseModel
         # @!attribute applies_to_price_ids
         #   The price ids that this maximum interval applies to.
@@ -1203,16 +1070,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # minimum_interval => {
-      #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-      #   applies_to_price_interval_ids: -> { Orb::ArrayOf[String] === _1 },
-      #   end_date: Time,
-      #   minimum_amount: String,
-      #   start_date: Time
-      # }
-      # ```
       class MinimumInterval < Orb::BaseModel
         # @!attribute applies_to_price_ids
         #   The price ids that this minimum interval applies to.
@@ -1257,17 +1114,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # price_interval => {
-      #   id: String,
-      #   billing_cycle_day: Integer,
-      #   current_billing_period_end_date: Time,
-      #   current_billing_period_start_date: Time,
-      #   end_date: Time,
-      #   **_
-      # }
-      # ```
       class PriceInterval < Orb::BaseModel
         # @!attribute id
         #
@@ -1364,14 +1210,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # fixed_fee_quantity_transition => {
-        #   effective_date: Time,
-        #   price_id: String,
-        #   quantity: Integer
-        # }
-        # ```
         class FixedFeeQuantityTransition < Orb::BaseModel
           # @!attribute effective_date
           #
@@ -1399,14 +1237,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # redeemed_coupon => {
-      #   coupon_id: String,
-      #   end_date: Time,
-      #   start_date: Time
-      # }
-      # ```
       class RedeemedCoupon < Orb::BaseModel
         # @!attribute coupon_id
         #
@@ -1459,12 +1289,6 @@ module Orb
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # trial_info => {
-      #   end_date: Time
-      # }
-      # ```
       class TrialInfo < Orb::BaseModel
         # @!attribute end_date
         #

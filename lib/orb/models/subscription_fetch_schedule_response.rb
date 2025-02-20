@@ -2,15 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # subscription_fetch_schedule_response => {
-    #   created_at: Time,
-    #   end_date: Time,
-    #   plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
-    #   start_date: Time
-    # }
-    # ```
     class SubscriptionFetchScheduleResponse < Orb::BaseModel
       # @!attribute created_at
       #
@@ -42,14 +33,6 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # plan => {
-      #   id: String,
-      #   external_plan_id: String,
-      #   name: String
-      # }
-      # ```
       class Plan < Orb::BaseModel
         # @!attribute id
         #

@@ -71,13 +71,6 @@ module Orb
 
         variant :amount, -> { Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount }
 
-        # @example
-        # ```ruby
-        # new_coupon_percentage_discount => {
-        #   discount_type: :percentage,
-        #   percentage_discount: Float
-        # }
-        # ```
         class NewCouponPercentageDiscount < Orb::BaseModel
           # @!attribute discount_type
           #
@@ -98,13 +91,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # new_coupon_amount_discount => {
-        #   amount_discount: String,
-        #   discount_type: :amount
-        # }
-        # ```
         class NewCouponAmountDiscount < Orb::BaseModel
           # @!attribute amount_discount
           #

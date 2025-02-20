@@ -9,21 +9,16 @@ module Orb
     # case invoice_level_discount
     # in {
     #   discount_type: "percentage",
-    #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+    #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
     #   percentage_discount: Float,
     #   reason: String
     # }
     #   # Orb::Models::PercentageDiscount ...
-    # in {
-    #   discount_type: "amount",
-    #   amount_discount: String,
-    #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-    #   reason: String
-    # }
+    # in {discount_type: "amount", amount_discount: String, applies_to_price_ids: ^(Orb::ArrayOf[String]), reason: String}
     #   # Orb::Models::AmountDiscount ...
     # in {
     #   discount_type: "trial",
-    #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+    #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
     #   reason: String,
     #   trial_amount_discount: String
     # }

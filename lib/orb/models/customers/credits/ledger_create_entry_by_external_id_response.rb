@@ -72,17 +72,6 @@ module Orb
           variant :amendment,
                   -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry }
 
-          # @example
-          # ```ruby
-          # increment_ledger_entry => {
-          #   id: String,
-          #   amount: Float,
-          #   created_at: Time,
-          #   credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry::CreditBlock,
-          #   currency: String,
-          #   **_
-          # }
-          # ```
           class IncrementLedgerEntry < Orb::BaseModel
             # @!attribute id
             #
@@ -192,14 +181,6 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
-            # @example
-            # ```ruby
-            # credit_block => {
-            #   id: String,
-            #   expiry_date: Time,
-            #   per_unit_cost_basis: String
-            # }
-            # ```
             class CreditBlock < Orb::BaseModel
               # @!attribute id
               #
@@ -226,13 +207,6 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @example
-            # ```ruby
-            # customer => {
-            #   id: String,
-            #   external_customer_id: String
-            # }
-            # ```
             class Customer < Orb::BaseModel
               # @!attribute id
               #
@@ -277,17 +251,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # decrement_ledger_entry => {
-          #   id: String,
-          #   amount: Float,
-          #   created_at: Time,
-          #   credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry::CreditBlock,
-          #   currency: String,
-          #   **_
-          # }
-          # ```
           class DecrementLedgerEntry < Orb::BaseModel
             # @!attribute id
             #
@@ -418,14 +381,6 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
-            # @example
-            # ```ruby
-            # credit_block => {
-            #   id: String,
-            #   expiry_date: Time,
-            #   per_unit_cost_basis: String
-            # }
-            # ```
             class CreditBlock < Orb::BaseModel
               # @!attribute id
               #
@@ -452,13 +407,6 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @example
-            # ```ruby
-            # customer => {
-            #   id: String,
-            #   external_customer_id: String
-            # }
-            # ```
             class Customer < Orb::BaseModel
               # @!attribute id
               #
@@ -503,17 +451,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # expiration_change_ledger_entry => {
-          #   id: String,
-          #   amount: Float,
-          #   created_at: Time,
-          #   credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry::CreditBlock,
-          #   currency: String,
-          #   **_
-          # }
-          # ```
           class ExpirationChangeLedgerEntry < Orb::BaseModel
             # @!attribute id
             #
@@ -630,14 +567,6 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
-            # @example
-            # ```ruby
-            # credit_block => {
-            #   id: String,
-            #   expiry_date: Time,
-            #   per_unit_cost_basis: String
-            # }
-            # ```
             class CreditBlock < Orb::BaseModel
               # @!attribute id
               #
@@ -664,13 +593,6 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @example
-            # ```ruby
-            # customer => {
-            #   id: String,
-            #   external_customer_id: String
-            # }
-            # ```
             class Customer < Orb::BaseModel
               # @!attribute id
               #
@@ -715,17 +637,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # credit_block_expiry_ledger_entry => {
-          #   id: String,
-          #   amount: Float,
-          #   created_at: Time,
-          #   credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry::CreditBlock,
-          #   currency: String,
-          #   **_
-          # }
-          # ```
           class CreditBlockExpiryLedgerEntry < Orb::BaseModel
             # @!attribute id
             #
@@ -835,14 +746,6 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
-            # @example
-            # ```ruby
-            # credit_block => {
-            #   id: String,
-            #   expiry_date: Time,
-            #   per_unit_cost_basis: String
-            # }
-            # ```
             class CreditBlock < Orb::BaseModel
               # @!attribute id
               #
@@ -869,13 +772,6 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @example
-            # ```ruby
-            # customer => {
-            #   id: String,
-            #   external_customer_id: String
-            # }
-            # ```
             class Customer < Orb::BaseModel
               # @!attribute id
               #
@@ -920,17 +816,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # void_ledger_entry => {
-          #   id: String,
-          #   amount: Float,
-          #   created_at: Time,
-          #   credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry::CreditBlock,
-          #   currency: String,
-          #   **_
-          # }
-          # ```
           class VoidLedgerEntry < Orb::BaseModel
             # @!attribute id
             #
@@ -1054,14 +939,6 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
-            # @example
-            # ```ruby
-            # credit_block => {
-            #   id: String,
-            #   expiry_date: Time,
-            #   per_unit_cost_basis: String
-            # }
-            # ```
             class CreditBlock < Orb::BaseModel
               # @!attribute id
               #
@@ -1088,13 +965,6 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @example
-            # ```ruby
-            # customer => {
-            #   id: String,
-            #   external_customer_id: String
-            # }
-            # ```
             class Customer < Orb::BaseModel
               # @!attribute id
               #
@@ -1139,17 +1009,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # void_initiated_ledger_entry => {
-          #   id: String,
-          #   amount: Float,
-          #   created_at: Time,
-          #   credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry::CreditBlock,
-          #   currency: String,
-          #   **_
-          # }
-          # ```
           class VoidInitiatedLedgerEntry < Orb::BaseModel
             # @!attribute id
             #
@@ -1280,14 +1139,6 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
-            # @example
-            # ```ruby
-            # credit_block => {
-            #   id: String,
-            #   expiry_date: Time,
-            #   per_unit_cost_basis: String
-            # }
-            # ```
             class CreditBlock < Orb::BaseModel
               # @!attribute id
               #
@@ -1314,13 +1165,6 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @example
-            # ```ruby
-            # customer => {
-            #   id: String,
-            #   external_customer_id: String
-            # }
-            # ```
             class Customer < Orb::BaseModel
               # @!attribute id
               #
@@ -1365,17 +1209,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # amendment_ledger_entry => {
-          #   id: String,
-          #   amount: Float,
-          #   created_at: Time,
-          #   credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry::CreditBlock,
-          #   currency: String,
-          #   **_
-          # }
-          # ```
           class AmendmentLedgerEntry < Orb::BaseModel
             # @!attribute id
             #
@@ -1485,14 +1318,6 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
-            # @example
-            # ```ruby
-            # credit_block => {
-            #   id: String,
-            #   expiry_date: Time,
-            #   per_unit_cost_basis: String
-            # }
-            # ```
             class CreditBlock < Orb::BaseModel
               # @!attribute id
               #
@@ -1519,13 +1344,6 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @example
-            # ```ruby
-            # customer => {
-            #   id: String,
-            #   external_customer_id: String
-            # }
-            # ```
             class Customer < Orb::BaseModel
               # @!attribute id
               #

@@ -2,12 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # subscription_fetch_costs_response => {
-    #   data: -> { Orb::ArrayOf[Orb::Models::SubscriptionFetchCostsResponse::Data] === _1 }
-    # }
-    # ```
     class SubscriptionFetchCostsResponse < Orb::BaseModel
       # @!attribute data
       #
@@ -21,16 +15,6 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # data => {
-      #   per_price_costs: -> { Orb::ArrayOf[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost] === _1 },
-      #   subtotal: String,
-      #   timeframe_end: Time,
-      #   timeframe_start: Time,
-      #   total: String
-      # }
-      # ```
       class Data < Orb::BaseModel
         # @!attribute per_price_costs
         #
@@ -71,16 +55,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # per_price_cost => {
-        #   price: Orb::Models::Price,
-        #   price_id: String,
-        #   subtotal: String,
-        #   total: String,
-        #   quantity: Float
-        # }
-        # ```
         class PerPriceCost < Orb::BaseModel
           # @!attribute price
           #   The price object

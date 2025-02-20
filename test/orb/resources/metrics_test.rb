@@ -21,6 +21,17 @@ class Orb::Test::Resources::MetricsTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::BillableMetric
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        description: String | nil,
+        item: Orb::Models::Item,
+        metadata: ^(Orb::HashOf[String]),
+        name: String,
+        status: Orb::Models::BillableMetric::Status
+      }
+    end
   end
 
   def test_update
@@ -28,6 +39,17 @@ class Orb::Test::Resources::MetricsTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::BillableMetric
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        description: String | nil,
+        item: Orb::Models::Item,
+        metadata: ^(Orb::HashOf[String]),
+        name: String,
+        status: Orb::Models::BillableMetric::Status
+      }
     end
   end
 
@@ -47,6 +69,17 @@ class Orb::Test::Resources::MetricsTest < Minitest::Test
     assert_pattern do
       row => Orb::Models::BillableMetric
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        description: String | nil,
+        item: Orb::Models::Item,
+        metadata: ^(Orb::HashOf[String]),
+        name: String,
+        status: Orb::Models::BillableMetric::Status
+      }
+    end
   end
 
   def test_fetch
@@ -54,6 +87,17 @@ class Orb::Test::Resources::MetricsTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::BillableMetric
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        description: String | nil,
+        item: Orb::Models::Item,
+        metadata: ^(Orb::HashOf[String]),
+        name: String,
+        status: Orb::Models::BillableMetric::Status
+      }
     end
   end
 end

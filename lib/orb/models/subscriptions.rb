@@ -2,13 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # subscriptions_api => {
-    #   data: -> { Orb::ArrayOf[Orb::Models::Subscription] === _1 },
-    #   pagination_metadata: Orb::Models::PaginationMetadata
-    # }
-    # ```
     class SubscriptionsAPI < Orb::BaseModel
       # @!attribute data
       #

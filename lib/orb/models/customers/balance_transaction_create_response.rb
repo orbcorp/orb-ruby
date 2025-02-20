@@ -3,17 +3,6 @@
 module Orb
   module Models
     module Customers
-      # @example
-      # ```ruby
-      # balance_transaction_create_response => {
-      #   id: String,
-      #   action: Orb::Models::Customers::BalanceTransactionCreateResponse::Action,
-      #   amount: String,
-      #   created_at: Time,
-      #   credit_note: Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote,
-      #   **_
-      # }
-      # ```
       class BalanceTransactionCreateResponse < Orb::BaseModel
         # @!attribute id
         #   A unique id for this transaction.
@@ -143,12 +132,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_note => {
-        #   id: String
-        # }
-        # ```
         class CreditNote < Orb::BaseModel
           # @!attribute id
           #   The id of the Credit note
@@ -164,12 +147,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoice => {
-        #   id: String
-        # }
-        # ```
         class Invoice < Orb::BaseModel
           # @!attribute id
           #   The Invoice id

@@ -31,6 +31,52 @@ class Orb::Test::Resources::InvoicesTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::Invoice
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        amount_due: String,
+        auto_collection: Orb::Models::Invoice::AutoCollection,
+        billing_address: Orb::Models::Invoice::BillingAddress | nil,
+        created_at: Time,
+        credit_notes: ^(Orb::ArrayOf[Orb::Models::Invoice::CreditNote]),
+        currency: String,
+        customer: Orb::Models::Invoice::Customer,
+        customer_balance_transactions: ^(Orb::ArrayOf[Orb::Models::Invoice::CustomerBalanceTransaction]),
+        customer_tax_id: Orb::Models::Invoice::CustomerTaxID | nil,
+        discount: Orb::Unknown,
+        discounts: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLevelDiscount]),
+        due_date: Time | nil,
+        eligible_to_issue_at: Time | nil,
+        hosted_invoice_url: String | nil,
+        invoice_date: Time,
+        invoice_number: String,
+        invoice_pdf: String | nil,
+        invoice_source: Orb::Models::Invoice::InvoiceSource,
+        issue_failed_at: Time | nil,
+        issued_at: Time | nil,
+        line_items: ^(Orb::ArrayOf[Orb::Models::Invoice::LineItem]),
+        maximum: Orb::Models::Invoice::Maximum | nil,
+        maximum_amount: String | nil,
+        memo: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        minimum: Orb::Models::Invoice::Minimum | nil,
+        minimum_amount: String | nil,
+        paid_at: Time | nil,
+        payment_attempts: ^(Orb::ArrayOf[Orb::Models::Invoice::PaymentAttempt]),
+        payment_failed_at: Time | nil,
+        payment_started_at: Time | nil,
+        scheduled_issue_at: Time | nil,
+        shipping_address: Orb::Models::Invoice::ShippingAddress | nil,
+        status: Orb::Models::Invoice::Status,
+        subscription: Orb::Models::Invoice::Subscription | nil,
+        subtotal: String,
+        sync_failed_at: Time | nil,
+        total: String,
+        voided_at: Time | nil,
+        will_auto_issue: Orb::BooleanModel
+      }
+    end
   end
 
   def test_update
@@ -38,6 +84,52 @@ class Orb::Test::Resources::InvoicesTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::Invoice
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        amount_due: String,
+        auto_collection: Orb::Models::Invoice::AutoCollection,
+        billing_address: Orb::Models::Invoice::BillingAddress | nil,
+        created_at: Time,
+        credit_notes: ^(Orb::ArrayOf[Orb::Models::Invoice::CreditNote]),
+        currency: String,
+        customer: Orb::Models::Invoice::Customer,
+        customer_balance_transactions: ^(Orb::ArrayOf[Orb::Models::Invoice::CustomerBalanceTransaction]),
+        customer_tax_id: Orb::Models::Invoice::CustomerTaxID | nil,
+        discount: Orb::Unknown,
+        discounts: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLevelDiscount]),
+        due_date: Time | nil,
+        eligible_to_issue_at: Time | nil,
+        hosted_invoice_url: String | nil,
+        invoice_date: Time,
+        invoice_number: String,
+        invoice_pdf: String | nil,
+        invoice_source: Orb::Models::Invoice::InvoiceSource,
+        issue_failed_at: Time | nil,
+        issued_at: Time | nil,
+        line_items: ^(Orb::ArrayOf[Orb::Models::Invoice::LineItem]),
+        maximum: Orb::Models::Invoice::Maximum | nil,
+        maximum_amount: String | nil,
+        memo: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        minimum: Orb::Models::Invoice::Minimum | nil,
+        minimum_amount: String | nil,
+        paid_at: Time | nil,
+        payment_attempts: ^(Orb::ArrayOf[Orb::Models::Invoice::PaymentAttempt]),
+        payment_failed_at: Time | nil,
+        payment_started_at: Time | nil,
+        scheduled_issue_at: Time | nil,
+        shipping_address: Orb::Models::Invoice::ShippingAddress | nil,
+        status: Orb::Models::Invoice::Status,
+        subscription: Orb::Models::Invoice::Subscription | nil,
+        subtotal: String,
+        sync_failed_at: Time | nil,
+        total: String,
+        voided_at: Time | nil,
+        will_auto_issue: Orb::BooleanModel
+      }
     end
   end
 
@@ -57,6 +149,52 @@ class Orb::Test::Resources::InvoicesTest < Minitest::Test
     assert_pattern do
       row => Orb::Models::Invoice
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        amount_due: String,
+        auto_collection: Orb::Models::Invoice::AutoCollection,
+        billing_address: Orb::Models::Invoice::BillingAddress | nil,
+        created_at: Time,
+        credit_notes: ^(Orb::ArrayOf[Orb::Models::Invoice::CreditNote]),
+        currency: String,
+        customer: Orb::Models::Invoice::Customer,
+        customer_balance_transactions: ^(Orb::ArrayOf[Orb::Models::Invoice::CustomerBalanceTransaction]),
+        customer_tax_id: Orb::Models::Invoice::CustomerTaxID | nil,
+        discount: Orb::Unknown,
+        discounts: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLevelDiscount]),
+        due_date: Time | nil,
+        eligible_to_issue_at: Time | nil,
+        hosted_invoice_url: String | nil,
+        invoice_date: Time,
+        invoice_number: String,
+        invoice_pdf: String | nil,
+        invoice_source: Orb::Models::Invoice::InvoiceSource,
+        issue_failed_at: Time | nil,
+        issued_at: Time | nil,
+        line_items: ^(Orb::ArrayOf[Orb::Models::Invoice::LineItem]),
+        maximum: Orb::Models::Invoice::Maximum | nil,
+        maximum_amount: String | nil,
+        memo: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        minimum: Orb::Models::Invoice::Minimum | nil,
+        minimum_amount: String | nil,
+        paid_at: Time | nil,
+        payment_attempts: ^(Orb::ArrayOf[Orb::Models::Invoice::PaymentAttempt]),
+        payment_failed_at: Time | nil,
+        payment_started_at: Time | nil,
+        scheduled_issue_at: Time | nil,
+        shipping_address: Orb::Models::Invoice::ShippingAddress | nil,
+        status: Orb::Models::Invoice::Status,
+        subscription: Orb::Models::Invoice::Subscription | nil,
+        subtotal: String,
+        sync_failed_at: Time | nil,
+        total: String,
+        voided_at: Time | nil,
+        will_auto_issue: Orb::BooleanModel
+      }
+    end
   end
 
   def test_fetch
@@ -64,6 +202,52 @@ class Orb::Test::Resources::InvoicesTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::Invoice
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        amount_due: String,
+        auto_collection: Orb::Models::Invoice::AutoCollection,
+        billing_address: Orb::Models::Invoice::BillingAddress | nil,
+        created_at: Time,
+        credit_notes: ^(Orb::ArrayOf[Orb::Models::Invoice::CreditNote]),
+        currency: String,
+        customer: Orb::Models::Invoice::Customer,
+        customer_balance_transactions: ^(Orb::ArrayOf[Orb::Models::Invoice::CustomerBalanceTransaction]),
+        customer_tax_id: Orb::Models::Invoice::CustomerTaxID | nil,
+        discount: Orb::Unknown,
+        discounts: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLevelDiscount]),
+        due_date: Time | nil,
+        eligible_to_issue_at: Time | nil,
+        hosted_invoice_url: String | nil,
+        invoice_date: Time,
+        invoice_number: String,
+        invoice_pdf: String | nil,
+        invoice_source: Orb::Models::Invoice::InvoiceSource,
+        issue_failed_at: Time | nil,
+        issued_at: Time | nil,
+        line_items: ^(Orb::ArrayOf[Orb::Models::Invoice::LineItem]),
+        maximum: Orb::Models::Invoice::Maximum | nil,
+        maximum_amount: String | nil,
+        memo: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        minimum: Orb::Models::Invoice::Minimum | nil,
+        minimum_amount: String | nil,
+        paid_at: Time | nil,
+        payment_attempts: ^(Orb::ArrayOf[Orb::Models::Invoice::PaymentAttempt]),
+        payment_failed_at: Time | nil,
+        payment_started_at: Time | nil,
+        scheduled_issue_at: Time | nil,
+        shipping_address: Orb::Models::Invoice::ShippingAddress | nil,
+        status: Orb::Models::Invoice::Status,
+        subscription: Orb::Models::Invoice::Subscription | nil,
+        subtotal: String,
+        sync_failed_at: Time | nil,
+        total: String,
+        voided_at: Time | nil,
+        will_auto_issue: Orb::BooleanModel
+      }
     end
   end
 
@@ -73,6 +257,52 @@ class Orb::Test::Resources::InvoicesTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::InvoiceFetchUpcomingResponse
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        amount_due: String,
+        auto_collection: Orb::Models::InvoiceFetchUpcomingResponse::AutoCollection,
+        billing_address: Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress | nil,
+        created_at: Time,
+        credit_notes: ^(Orb::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::CreditNote]),
+        currency: String,
+        customer: Orb::Models::InvoiceFetchUpcomingResponse::Customer,
+        customer_balance_transactions: ^(Orb::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction]),
+        customer_tax_id: Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID | nil,
+        discount: Orb::Unknown,
+        discounts: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLevelDiscount]),
+        due_date: Time | nil,
+        eligible_to_issue_at: Time | nil,
+        hosted_invoice_url: String | nil,
+        invoice_number: String,
+        invoice_pdf: String | nil,
+        invoice_source: Orb::Models::InvoiceFetchUpcomingResponse::InvoiceSource,
+        issue_failed_at: Time | nil,
+        issued_at: Time | nil,
+        line_items: ^(Orb::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::LineItem]),
+        maximum: Orb::Models::InvoiceFetchUpcomingResponse::Maximum | nil,
+        maximum_amount: String | nil,
+        memo: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        minimum: Orb::Models::InvoiceFetchUpcomingResponse::Minimum | nil,
+        minimum_amount: String | nil,
+        paid_at: Time | nil,
+        payment_attempts: ^(Orb::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt]),
+        payment_failed_at: Time | nil,
+        payment_started_at: Time | nil,
+        scheduled_issue_at: Time | nil,
+        shipping_address: Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress | nil,
+        status: Orb::Models::InvoiceFetchUpcomingResponse::Status,
+        subscription: Orb::Models::InvoiceFetchUpcomingResponse::Subscription | nil,
+        subtotal: String,
+        sync_failed_at: Time | nil,
+        target_date: Time,
+        total: String,
+        voided_at: Time | nil,
+        will_auto_issue: Orb::BooleanModel
+      }
+    end
   end
 
   def test_issue
@@ -80,6 +310,52 @@ class Orb::Test::Resources::InvoicesTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::Invoice
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        amount_due: String,
+        auto_collection: Orb::Models::Invoice::AutoCollection,
+        billing_address: Orb::Models::Invoice::BillingAddress | nil,
+        created_at: Time,
+        credit_notes: ^(Orb::ArrayOf[Orb::Models::Invoice::CreditNote]),
+        currency: String,
+        customer: Orb::Models::Invoice::Customer,
+        customer_balance_transactions: ^(Orb::ArrayOf[Orb::Models::Invoice::CustomerBalanceTransaction]),
+        customer_tax_id: Orb::Models::Invoice::CustomerTaxID | nil,
+        discount: Orb::Unknown,
+        discounts: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLevelDiscount]),
+        due_date: Time | nil,
+        eligible_to_issue_at: Time | nil,
+        hosted_invoice_url: String | nil,
+        invoice_date: Time,
+        invoice_number: String,
+        invoice_pdf: String | nil,
+        invoice_source: Orb::Models::Invoice::InvoiceSource,
+        issue_failed_at: Time | nil,
+        issued_at: Time | nil,
+        line_items: ^(Orb::ArrayOf[Orb::Models::Invoice::LineItem]),
+        maximum: Orb::Models::Invoice::Maximum | nil,
+        maximum_amount: String | nil,
+        memo: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        minimum: Orb::Models::Invoice::Minimum | nil,
+        minimum_amount: String | nil,
+        paid_at: Time | nil,
+        payment_attempts: ^(Orb::ArrayOf[Orb::Models::Invoice::PaymentAttempt]),
+        payment_failed_at: Time | nil,
+        payment_started_at: Time | nil,
+        scheduled_issue_at: Time | nil,
+        shipping_address: Orb::Models::Invoice::ShippingAddress | nil,
+        status: Orb::Models::Invoice::Status,
+        subscription: Orb::Models::Invoice::Subscription | nil,
+        subtotal: String,
+        sync_failed_at: Time | nil,
+        total: String,
+        voided_at: Time | nil,
+        will_auto_issue: Orb::BooleanModel
+      }
     end
   end
 
@@ -89,6 +365,52 @@ class Orb::Test::Resources::InvoicesTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::Invoice
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        amount_due: String,
+        auto_collection: Orb::Models::Invoice::AutoCollection,
+        billing_address: Orb::Models::Invoice::BillingAddress | nil,
+        created_at: Time,
+        credit_notes: ^(Orb::ArrayOf[Orb::Models::Invoice::CreditNote]),
+        currency: String,
+        customer: Orb::Models::Invoice::Customer,
+        customer_balance_transactions: ^(Orb::ArrayOf[Orb::Models::Invoice::CustomerBalanceTransaction]),
+        customer_tax_id: Orb::Models::Invoice::CustomerTaxID | nil,
+        discount: Orb::Unknown,
+        discounts: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLevelDiscount]),
+        due_date: Time | nil,
+        eligible_to_issue_at: Time | nil,
+        hosted_invoice_url: String | nil,
+        invoice_date: Time,
+        invoice_number: String,
+        invoice_pdf: String | nil,
+        invoice_source: Orb::Models::Invoice::InvoiceSource,
+        issue_failed_at: Time | nil,
+        issued_at: Time | nil,
+        line_items: ^(Orb::ArrayOf[Orb::Models::Invoice::LineItem]),
+        maximum: Orb::Models::Invoice::Maximum | nil,
+        maximum_amount: String | nil,
+        memo: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        minimum: Orb::Models::Invoice::Minimum | nil,
+        minimum_amount: String | nil,
+        paid_at: Time | nil,
+        payment_attempts: ^(Orb::ArrayOf[Orb::Models::Invoice::PaymentAttempt]),
+        payment_failed_at: Time | nil,
+        payment_started_at: Time | nil,
+        scheduled_issue_at: Time | nil,
+        shipping_address: Orb::Models::Invoice::ShippingAddress | nil,
+        status: Orb::Models::Invoice::Status,
+        subscription: Orb::Models::Invoice::Subscription | nil,
+        subtotal: String,
+        sync_failed_at: Time | nil,
+        total: String,
+        voided_at: Time | nil,
+        will_auto_issue: Orb::BooleanModel
+      }
+    end
   end
 
   def test_pay
@@ -97,6 +419,52 @@ class Orb::Test::Resources::InvoicesTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::Invoice
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        amount_due: String,
+        auto_collection: Orb::Models::Invoice::AutoCollection,
+        billing_address: Orb::Models::Invoice::BillingAddress | nil,
+        created_at: Time,
+        credit_notes: ^(Orb::ArrayOf[Orb::Models::Invoice::CreditNote]),
+        currency: String,
+        customer: Orb::Models::Invoice::Customer,
+        customer_balance_transactions: ^(Orb::ArrayOf[Orb::Models::Invoice::CustomerBalanceTransaction]),
+        customer_tax_id: Orb::Models::Invoice::CustomerTaxID | nil,
+        discount: Orb::Unknown,
+        discounts: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLevelDiscount]),
+        due_date: Time | nil,
+        eligible_to_issue_at: Time | nil,
+        hosted_invoice_url: String | nil,
+        invoice_date: Time,
+        invoice_number: String,
+        invoice_pdf: String | nil,
+        invoice_source: Orb::Models::Invoice::InvoiceSource,
+        issue_failed_at: Time | nil,
+        issued_at: Time | nil,
+        line_items: ^(Orb::ArrayOf[Orb::Models::Invoice::LineItem]),
+        maximum: Orb::Models::Invoice::Maximum | nil,
+        maximum_amount: String | nil,
+        memo: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        minimum: Orb::Models::Invoice::Minimum | nil,
+        minimum_amount: String | nil,
+        paid_at: Time | nil,
+        payment_attempts: ^(Orb::ArrayOf[Orb::Models::Invoice::PaymentAttempt]),
+        payment_failed_at: Time | nil,
+        payment_started_at: Time | nil,
+        scheduled_issue_at: Time | nil,
+        shipping_address: Orb::Models::Invoice::ShippingAddress | nil,
+        status: Orb::Models::Invoice::Status,
+        subscription: Orb::Models::Invoice::Subscription | nil,
+        subtotal: String,
+        sync_failed_at: Time | nil,
+        total: String,
+        voided_at: Time | nil,
+        will_auto_issue: Orb::BooleanModel
+      }
+    end
   end
 
   def test_void
@@ -104,6 +472,52 @@ class Orb::Test::Resources::InvoicesTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::Invoice
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        amount_due: String,
+        auto_collection: Orb::Models::Invoice::AutoCollection,
+        billing_address: Orb::Models::Invoice::BillingAddress | nil,
+        created_at: Time,
+        credit_notes: ^(Orb::ArrayOf[Orb::Models::Invoice::CreditNote]),
+        currency: String,
+        customer: Orb::Models::Invoice::Customer,
+        customer_balance_transactions: ^(Orb::ArrayOf[Orb::Models::Invoice::CustomerBalanceTransaction]),
+        customer_tax_id: Orb::Models::Invoice::CustomerTaxID | nil,
+        discount: Orb::Unknown,
+        discounts: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLevelDiscount]),
+        due_date: Time | nil,
+        eligible_to_issue_at: Time | nil,
+        hosted_invoice_url: String | nil,
+        invoice_date: Time,
+        invoice_number: String,
+        invoice_pdf: String | nil,
+        invoice_source: Orb::Models::Invoice::InvoiceSource,
+        issue_failed_at: Time | nil,
+        issued_at: Time | nil,
+        line_items: ^(Orb::ArrayOf[Orb::Models::Invoice::LineItem]),
+        maximum: Orb::Models::Invoice::Maximum | nil,
+        maximum_amount: String | nil,
+        memo: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        minimum: Orb::Models::Invoice::Minimum | nil,
+        minimum_amount: String | nil,
+        paid_at: Time | nil,
+        payment_attempts: ^(Orb::ArrayOf[Orb::Models::Invoice::PaymentAttempt]),
+        payment_failed_at: Time | nil,
+        payment_started_at: Time | nil,
+        scheduled_issue_at: Time | nil,
+        shipping_address: Orb::Models::Invoice::ShippingAddress | nil,
+        status: Orb::Models::Invoice::Status,
+        subscription: Orb::Models::Invoice::Subscription | nil,
+        subtotal: String,
+        sync_failed_at: Time | nil,
+        total: String,
+        voided_at: Time | nil,
+        will_auto_issue: Orb::BooleanModel
+      }
     end
   end
 end

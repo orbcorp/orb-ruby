@@ -2,13 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # event_ingest_response => {
-    #   validation_failed: -> { Orb::ArrayOf[Orb::Models::EventIngestResponse::ValidationFailed] === _1 },
-    #   debug: Orb::Models::EventIngestResponse::Debug
-    # }
-    # ```
     class EventIngestResponse < Orb::BaseModel
       # @!attribute validation_failed
       #   Contains all failing validation events. In the case of a 200, this array will
@@ -32,13 +25,6 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # validation_failed => {
-      #   idempotency_key: String,
-      #   validation_errors: -> { Orb::ArrayOf[String] === _1 }
-      # }
-      # ```
       class ValidationFailed < Orb::BaseModel
         # @!attribute idempotency_key
         #   The passed idempotency_key corresponding to the validation_errors
@@ -62,13 +48,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # debug => {
-      #   duplicate: -> { Orb::ArrayOf[String] === _1 },
-      #   ingested: -> { Orb::ArrayOf[String] === _1 }
-      # }
-      # ```
       class Debug < Orb::BaseModel
         # @!attribute duplicate
         #

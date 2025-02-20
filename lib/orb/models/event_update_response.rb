@@ -2,12 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # event_update_response => {
-    #   amended: String
-    # }
-    # ```
     class EventUpdateResponse < Orb::BaseModel
       # @!attribute amended
       #   event_id of the amended event, if successfully ingested

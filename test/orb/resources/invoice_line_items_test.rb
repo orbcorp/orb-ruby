@@ -23,5 +23,30 @@ class Orb::Test::Resources::InvoiceLineItemsTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::InvoiceLineItemCreateResponse
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        adjusted_subtotal: String,
+        adjustments: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLineItemCreateResponse::Adjustment]),
+        amount: String,
+        credits_applied: String,
+        discount: Orb::Models::Discount | nil,
+        end_date: Time,
+        grouping: String | nil,
+        maximum: Orb::Models::InvoiceLineItemCreateResponse::Maximum | nil,
+        maximum_amount: String | nil,
+        minimum: Orb::Models::InvoiceLineItemCreateResponse::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        partially_invoiced_amount: String,
+        price: Orb::Models::Price | nil,
+        quantity: Float,
+        start_date: Time,
+        sub_line_items: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem]),
+        subtotal: String,
+        tax_amounts: ^(Orb::ArrayOf[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount])
+      }
+    end
   end
 end

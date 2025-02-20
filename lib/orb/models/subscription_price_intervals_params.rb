@@ -79,17 +79,6 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # add => {
-      #   start_date: Orb::Models::SubscriptionPriceIntervalsParams::Add::StartDate,
-      #   allocation_price: Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice,
-      #   discounts: -> { Orb::ArrayOf[union: Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount] === _1 },
-      #   end_date: Orb::Models::SubscriptionPriceIntervalsParams::Add::EndDate,
-      #   external_price_id: String,
-      #   **_
-      # }
-      # ```
       class Add < Orb::BaseModel
         # @!attribute start_date
         #   The start date of the price interval. This is the date that the price will start
@@ -211,15 +200,6 @@ module Orb
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
         end
 
-        # @example
-        # ```ruby
-        # allocation_price => {
-        #   amount: String,
-        #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice::Cadence,
-        #   currency: String,
-        #   expires_at_end_of_cadence: Orb::BooleanModel
-        # }
-        # ```
         class AllocationPrice < Orb::BaseModel
           # @!attribute amount
           #   An amount of the currency to allocate to the customer at the specified cadence.
@@ -335,13 +315,6 @@ module Orb
           variant :usage,
                   -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams }
 
-          # @example
-          # ```ruby
-          # amount_discount_creation_params => {
-          #   amount_discount: Float,
-          #   discount_type: :amount
-          # }
-          # ```
           class AmountDiscountCreationParams < Orb::BaseModel
             # @!attribute amount_discount
             #   Only available if discount_type is `amount`.
@@ -363,13 +336,6 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # percentage_discount_creation_params => {
-          #   discount_type: :percentage,
-          #   percentage_discount: Float
-          # }
-          # ```
           class PercentageDiscountCreationParams < Orb::BaseModel
             # @!attribute discount_type
             #
@@ -392,13 +358,6 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # usage_discount_creation_params => {
-          #   discount_type: :usage,
-          #   usage_discount: Float
-          # }
-          # ```
           class UsageDiscountCreationParams < Orb::BaseModel
             # @!attribute discount_type
             #
@@ -442,13 +401,6 @@ module Orb
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
         end
 
-        # @example
-        # ```ruby
-        # fixed_fee_quantity_transition => {
-        #   effective_date: Time,
-        #   quantity: Integer
-        # }
-        # ```
         class FixedFeeQuantityTransition < Orb::BaseModel
           # @!attribute effective_date
           #   The date that the fixed fee quantity transition should take effect.
@@ -559,7 +511,7 @@ module Orb
         #   model_type: "grouped_tiered",
         #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::Cadence,
         #   currency: String,
-        #   grouped_tiered_config: -> { Orb::HashOf[Orb::Unknown] === _1 }
+        #   grouped_tiered_config: ^(Orb::HashOf[Orb::Unknown])
         # }
         #   # Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice ...
         # in {
@@ -615,21 +567,21 @@ module Orb
         #   model_type: "grouped_allocation",
         #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::Cadence,
         #   currency: String,
-        #   grouped_allocation_config: -> { Orb::HashOf[Orb::Unknown] === _1 }
+        #   grouped_allocation_config: ^(Orb::HashOf[Orb::Unknown])
         # }
         #   # Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice ...
         # in {
         #   model_type: "grouped_with_prorated_minimum",
         #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::Cadence,
         #   currency: String,
-        #   grouped_with_prorated_minimum_config: -> { Orb::HashOf[Orb::Unknown] === _1 }
+        #   grouped_with_prorated_minimum_config: ^(Orb::HashOf[Orb::Unknown])
         # }
         #   # Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice ...
         # in {
         #   model_type: "grouped_with_metered_minimum",
         #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::Cadence,
         #   currency: String,
-        #   grouped_with_metered_minimum_config: -> { Orb::HashOf[Orb::Unknown] === _1 }
+        #   grouped_with_metered_minimum_config: ^(Orb::HashOf[Orb::Unknown])
         # }
         #   # Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice ...
         # in {
@@ -641,7 +593,7 @@ module Orb
         #   # Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice ...
         # in {
         #   model_type: "bulk_with_proration",
-        #   bulk_with_proration_config: -> { Orb::HashOf[Orb::Unknown] === _1 },
+        #   bulk_with_proration_config: ^(Orb::HashOf[Orb::Unknown]),
         #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::Cadence,
         #   currency: String
         # }
@@ -650,7 +602,7 @@ module Orb
         #   model_type: "grouped_tiered_package",
         #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::Cadence,
         #   currency: String,
-        #   grouped_tiered_package_config: -> { Orb::HashOf[Orb::Unknown] === _1 }
+        #   grouped_tiered_package_config: ^(Orb::HashOf[Orb::Unknown])
         # }
         #   # Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice ...
         # in {
@@ -670,7 +622,7 @@ module Orb
         # in {
         #   model_type: "cumulative_grouped_bulk",
         #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::Cadence,
-        #   cumulative_grouped_bulk_config: -> { Orb::HashOf[Orb::Unknown] === _1 },
+        #   cumulative_grouped_bulk_config: ^(Orb::HashOf[Orb::Unknown]),
         #   currency: String
         # }
         #   # Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice ...
@@ -820,17 +772,6 @@ module Orb
           variant :cumulative_grouped_bulk,
                   -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice }
 
-          # @example
-          # ```ruby
-          # new_floating_unit_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :unit,
-          #   name: String,
-          #   **_
-          # }
-          # ```
           class NewFloatingUnitPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -1010,12 +951,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # unit_config => {
-            #   unit_amount: String
-            # }
-            # ```
             class UnitConfig < Orb::BaseModel
               # @!attribute unit_amount
               #   Rate per unit of usage
@@ -1031,13 +966,6 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -1089,13 +1017,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -1148,17 +1069,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_package_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :package,
-          #   name: String,
-          #   **_
-          # }
-          # ```
           class NewFloatingPackagePrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -1338,13 +1248,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # package_config => {
-            #   package_amount: String,
-            #   package_size: Integer
-            # }
-            # ```
             class PackageConfig < Orb::BaseModel
               # @!attribute package_amount
               #   A currency amount to rate usage by
@@ -1368,13 +1271,6 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -1426,13 +1322,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -1485,17 +1374,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_matrix_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   matrix_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig,
-          #   model_type: :matrix,
-          #   **_
-          # }
-          # ```
           class NewFloatingMatrixPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -1675,18 +1553,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # matrix_config => {
-            #   default_unit_amount: String,
-            #   dimensions: -> { Orb::ArrayOf[String, nil?: true] === _1 },
-            #   matrix_values: -> do
-            #     Orb::ArrayOf[
-            #     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue
-            #     ] === _1
-            #   end
-            # }
-            # ```
             class MatrixConfig < Orb::BaseModel
               # @!attribute default_unit_amount
               #   Default per unit rate for any usage not bucketed into a specified matrix_value
@@ -1720,13 +1586,6 @@ module Orb
 
               # def initialize: (Hash | Orb::BaseModel) -> void
 
-              # @example
-              # ```ruby
-              # matrix_value => {
-              #   dimension_values: -> { Orb::ArrayOf[String, nil?: true] === _1 },
-              #   unit_amount: String
-              # }
-              # ```
               class MatrixValue < Orb::BaseModel
                 # @!attribute dimension_values
                 #   One or two matrix keys to filter usage to this Matrix value by. For example,
@@ -1752,13 +1611,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -1810,13 +1662,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -1869,17 +1714,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_matrix_with_allocation_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   matrix_with_allocation_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig,
-          #   model_type: :matrix_with_allocation,
-          #   **_
-          # }
-          # ```
           class NewFloatingMatrixWithAllocationPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -2059,19 +1893,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # matrix_with_allocation_config => {
-            #   allocation: Float,
-            #   default_unit_amount: String,
-            #   dimensions: -> { Orb::ArrayOf[String, nil?: true] === _1 },
-            #   matrix_values: -> do
-            #     Orb::ArrayOf[
-            #     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue
-            #     ] === _1
-            #   end
-            # }
-            # ```
             class MatrixWithAllocationConfig < Orb::BaseModel
               # @!attribute allocation
               #   Allocation to be used to calculate the price
@@ -2112,13 +1933,6 @@ module Orb
 
               # def initialize: (Hash | Orb::BaseModel) -> void
 
-              # @example
-              # ```ruby
-              # matrix_value => {
-              #   dimension_values: -> { Orb::ArrayOf[String, nil?: true] === _1 },
-              #   unit_amount: String
-              # }
-              # ```
               class MatrixValue < Orb::BaseModel
                 # @!attribute dimension_values
                 #   One or two matrix keys to filter usage to this Matrix value by. For example,
@@ -2144,13 +1958,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -2202,13 +2009,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -2261,17 +2061,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_tiered_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :tiered,
-          #   name: String,
-          #   **_
-          # }
-          # ```
           class NewFloatingTieredPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -2451,12 +2240,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # tiered_config => {
-            #   tiers: -> { Orb::ArrayOf[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier] === _1 }
-            # }
-            # ```
             class TieredConfig < Orb::BaseModel
               # @!attribute tiers
               #   Tiers for rating based on total usage quantities into the specified tier
@@ -2472,14 +2255,6 @@ module Orb
 
               # def initialize: (Hash | Orb::BaseModel) -> void
 
-              # @example
-              # ```ruby
-              # tier => {
-              #   first_unit: Float,
-              #   unit_amount: String,
-              #   last_unit: Float
-              # }
-              # ```
               class Tier < Orb::BaseModel
                 # @!attribute first_unit
                 #   Inclusive tier starting value
@@ -2510,13 +2285,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -2568,13 +2336,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -2627,17 +2388,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_tiered_bps_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :tiered_bps,
-          #   name: String,
-          #   **_
-          # }
-          # ```
           class NewFloatingTieredBpsPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -2817,16 +2567,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # tiered_bps_config => {
-            #   tiers: -> do
-            #     Orb::ArrayOf[
-            #     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier
-            #     ] === _1
-            #   end
-            # }
-            # ```
             class TieredBpsConfig < Orb::BaseModel
               # @!attribute tiers
               #   Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
@@ -2847,15 +2587,6 @@ module Orb
 
               # def initialize: (Hash | Orb::BaseModel) -> void
 
-              # @example
-              # ```ruby
-              # tier => {
-              #   bps: Float,
-              #   minimum_amount: String,
-              #   maximum_amount: String,
-              #   per_unit_maximum: String
-              # }
-              # ```
               class Tier < Orb::BaseModel
                 # @!attribute bps
                 #   Per-event basis point rate
@@ -2893,13 +2624,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -2951,13 +2675,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -3010,17 +2727,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_bps_price => {
-          #   bps_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BpsConfig,
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :bps,
-          #   **_
-          # }
-          # ```
           class NewFloatingBpsPrice < Orb::BaseModel
             # @!attribute bps_config
             #
@@ -3163,13 +2869,6 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
-            # @example
-            # ```ruby
-            # bps_config => {
-            #   bps: Float,
-            #   per_unit_maximum: String
-            # }
-            # ```
             class BpsConfig < Orb::BaseModel
               # @!attribute bps
               #   Basis point take rate per event
@@ -3229,13 +2928,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -3287,13 +2979,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -3346,17 +3031,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_bulk_bps_price => {
-          #   bulk_bps_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig,
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :bulk_bps,
-          #   **_
-          # }
-          # ```
           class NewFloatingBulkBpsPrice < Orb::BaseModel
             # @!attribute bulk_bps_config
             #
@@ -3499,12 +3173,6 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
-            # @example
-            # ```ruby
-            # bulk_bps_config => {
-            #   tiers: -> { Orb::ArrayOf[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier] === _1 }
-            # }
-            # ```
             class BulkBpsConfig < Orb::BaseModel
               # @!attribute tiers
               #   Tiers for a bulk BPS pricing model where all usage is aggregated to a single
@@ -3521,14 +3189,6 @@ module Orb
 
               # def initialize: (Hash | Orb::BaseModel) -> void
 
-              # @example
-              # ```ruby
-              # tier => {
-              #   bps: Float,
-              #   maximum_amount: String,
-              #   per_unit_maximum: String
-              # }
-              # ```
               class Tier < Orb::BaseModel
                 # @!attribute bps
                 #   Basis points to rate on
@@ -3596,13 +3256,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -3654,13 +3307,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -3713,17 +3359,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_bulk_price => {
-          #   bulk_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig,
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :bulk,
-          #   **_
-          # }
-          # ```
           class NewFloatingBulkPrice < Orb::BaseModel
             # @!attribute bulk_config
             #
@@ -3866,12 +3501,6 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
-            # @example
-            # ```ruby
-            # bulk_config => {
-            #   tiers: -> { Orb::ArrayOf[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier] === _1 }
-            # }
-            # ```
             class BulkConfig < Orb::BaseModel
               # @!attribute tiers
               #   Bulk tiers for rating based on total usage volume
@@ -3887,13 +3516,6 @@ module Orb
 
               # def initialize: (Hash | Orb::BaseModel) -> void
 
-              # @example
-              # ```ruby
-              # tier => {
-              #   unit_amount: String,
-              #   maximum_units: Float
-              # }
-              # ```
               class Tier < Orb::BaseModel
                 # @!attribute unit_amount
                 #   Amount per unit
@@ -3954,13 +3576,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -4012,13 +3627,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -4071,17 +3679,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_threshold_total_amount_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :threshold_total_amount,
-          #   name: String,
-          #   **_
-          # }
-          # ```
           class NewFloatingThresholdTotalAmountPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -4260,13 +3857,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -4318,13 +3908,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -4377,17 +3960,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_tiered_package_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :tiered_package,
-          #   name: String,
-          #   **_
-          # }
-          # ```
           class NewFloatingTieredPackagePrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -4566,13 +4138,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -4624,13 +4189,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -4683,17 +4241,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_grouped_tiered_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::Cadence,
-          #   currency: String,
-          #   grouped_tiered_config: -> { Orb::HashOf[Orb::Unknown] === _1 },
-          #   item_id: String,
-          #   model_type: :grouped_tiered,
-          #   **_
-          # }
-          # ```
           class NewFloatingGroupedTieredPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -4872,13 +4419,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -4930,13 +4470,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -4989,17 +4522,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_max_group_tiered_package_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   max_group_tiered_package_config: -> { Orb::HashOf[Orb::Unknown] === _1 },
-          #   model_type: :max_group_tiered_package,
-          #   **_
-          # }
-          # ```
           class NewFloatingMaxGroupTieredPackagePrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -5178,13 +4700,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -5236,13 +4751,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -5295,17 +4803,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_tiered_with_minimum_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :tiered_with_minimum,
-          #   name: String,
-          #   **_
-          # }
-          # ```
           class NewFloatingTieredWithMinimumPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -5484,13 +4981,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -5542,13 +5032,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -5601,17 +5084,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_package_with_allocation_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :package_with_allocation,
-          #   name: String,
-          #   **_
-          # }
-          # ```
           class NewFloatingPackageWithAllocationPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -5790,13 +5262,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -5848,13 +5313,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -5907,17 +5365,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_tiered_package_with_minimum_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :tiered_package_with_minimum,
-          #   name: String,
-          #   **_
-          # }
-          # ```
           class NewFloatingTieredPackageWithMinimumPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -6096,13 +5543,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -6154,13 +5594,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -6213,17 +5646,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_unit_with_percent_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :unit_with_percent,
-          #   name: String,
-          #   **_
-          # }
-          # ```
           class NewFloatingUnitWithPercentPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -6402,13 +5824,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -6460,13 +5875,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -6519,17 +5927,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_tiered_with_proration_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :tiered_with_proration,
-          #   name: String,
-          #   **_
-          # }
-          # ```
           class NewFloatingTieredWithProrationPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -6708,13 +6105,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -6766,13 +6156,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -6825,17 +6208,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_unit_with_proration_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :unit_with_proration,
-          #   name: String,
-          #   **_
-          # }
-          # ```
           class NewFloatingUnitWithProrationPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -7014,13 +6386,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -7072,13 +6437,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -7131,17 +6489,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_grouped_allocation_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::Cadence,
-          #   currency: String,
-          #   grouped_allocation_config: -> { Orb::HashOf[Orb::Unknown] === _1 },
-          #   item_id: String,
-          #   model_type: :grouped_allocation,
-          #   **_
-          # }
-          # ```
           class NewFloatingGroupedAllocationPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -7320,13 +6667,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -7378,13 +6718,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -7437,17 +6770,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_grouped_with_prorated_minimum_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::Cadence,
-          #   currency: String,
-          #   grouped_with_prorated_minimum_config: -> { Orb::HashOf[Orb::Unknown] === _1 },
-          #   item_id: String,
-          #   model_type: :grouped_with_prorated_minimum,
-          #   **_
-          # }
-          # ```
           class NewFloatingGroupedWithProratedMinimumPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -7626,13 +6948,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -7684,13 +6999,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -7743,17 +7051,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_grouped_with_metered_minimum_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::Cadence,
-          #   currency: String,
-          #   grouped_with_metered_minimum_config: -> { Orb::HashOf[Orb::Unknown] === _1 },
-          #   item_id: String,
-          #   model_type: :grouped_with_metered_minimum,
-          #   **_
-          # }
-          # ```
           class NewFloatingGroupedWithMeteredMinimumPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -7932,13 +7229,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -7990,13 +7280,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -8049,17 +7332,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_matrix_with_display_name_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   matrix_with_display_name_config: -> { Orb::HashOf[Orb::Unknown] === _1 },
-          #   model_type: :matrix_with_display_name,
-          #   **_
-          # }
-          # ```
           class NewFloatingMatrixWithDisplayNamePrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -8238,13 +7510,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -8296,13 +7561,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -8355,17 +7613,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_bulk_with_proration_price => {
-          #   bulk_with_proration_config: -> { Orb::HashOf[Orb::Unknown] === _1 },
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :bulk_with_proration,
-          #   **_
-          # }
-          # ```
           class NewFloatingBulkWithProrationPrice < Orb::BaseModel
             # @!attribute bulk_with_proration_config
             #
@@ -8544,13 +7791,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -8602,13 +7842,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -8661,17 +7894,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_grouped_tiered_package_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::Cadence,
-          #   currency: String,
-          #   grouped_tiered_package_config: -> { Orb::HashOf[Orb::Unknown] === _1 },
-          #   item_id: String,
-          #   model_type: :grouped_tiered_package,
-          #   **_
-          # }
-          # ```
           class NewFloatingGroupedTieredPackagePrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -8850,13 +8072,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -8908,13 +8123,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -8967,17 +8175,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_scalable_matrix_with_unit_pricing_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :scalable_matrix_with_unit_pricing,
-          #   name: String,
-          #   **_
-          # }
-          # ```
           class NewFloatingScalableMatrixWithUnitPricingPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -9156,13 +8353,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -9214,13 +8404,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -9273,17 +8456,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_scalable_matrix_with_tiered_pricing_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::Cadence,
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :scalable_matrix_with_tiered_pricing,
-          #   name: String,
-          #   **_
-          # }
-          # ```
           class NewFloatingScalableMatrixWithTieredPricingPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -9462,13 +8634,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -9520,13 +8685,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -9579,17 +8737,6 @@ module Orb
             end
           end
 
-          # @example
-          # ```ruby
-          # new_floating_cumulative_grouped_bulk_price => {
-          #   cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::Cadence,
-          #   cumulative_grouped_bulk_config: -> { Orb::HashOf[Orb::Unknown] === _1 },
-          #   currency: String,
-          #   item_id: String,
-          #   model_type: :cumulative_grouped_bulk,
-          #   **_
-          # }
-          # ```
           class NewFloatingCumulativeGroupedBulkPrice < Orb::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -9768,13 +8915,6 @@ module Orb
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # billing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -9826,13 +8966,6 @@ module Orb
               end
             end
 
-            # @example
-            # ```ruby
-            # invoicing_cycle_configuration => {
-            #   duration: Integer,
-            #   duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit
-            # }
-            # ```
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -9887,14 +9020,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # add_adjustment => {
-      #   adjustment: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment,
-      #   start_date: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::StartDate,
-      #   end_date: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::EndDate
-      # }
-      # ```
       class AddAdjustment < Orb::BaseModel
         # @!attribute adjustment
         #   The definition of a new adjustment to create and add to the subscription.
@@ -9938,14 +9063,14 @@ module Orb
         # case adjustment
         # in {
         #   adjustment_type: "percentage_discount",
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
         #   percentage_discount: Float,
         #   is_invoice_level: Orb::BooleanModel
         # }
         #   # Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount ...
         # in {
         #   adjustment_type: "usage_discount",
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
         #   usage_discount: Float,
         #   is_invoice_level: Orb::BooleanModel
         # }
@@ -9953,20 +9078,20 @@ module Orb
         # in {
         #   adjustment_type: "amount_discount",
         #   amount_discount: String,
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
         #   is_invoice_level: Orb::BooleanModel
         # }
         #   # Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewAmountDiscount ...
         # in {
         #   adjustment_type: "minimum",
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
         #   item_id: String,
         #   minimum_amount: String
         # }
         #   # Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMinimum ...
         # in {
         #   adjustment_type: "maximum",
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
+        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
         #   maximum_amount: String,
         #   is_invoice_level: Orb::BooleanModel
         # }
@@ -10007,15 +9132,6 @@ module Orb
           variant :maximum,
                   -> { Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMaximum }
 
-          # @example
-          # ```ruby
-          # new_percentage_discount => {
-          #   adjustment_type: :percentage_discount,
-          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-          #   percentage_discount: Float,
-          #   is_invoice_level: Orb::BooleanModel
-          # }
-          # ```
           class NewPercentageDiscount < Orb::BaseModel
             # @!attribute adjustment_type
             #
@@ -10063,15 +9179,6 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # new_usage_discount => {
-          #   adjustment_type: :usage_discount,
-          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-          #   usage_discount: Float,
-          #   is_invoice_level: Orb::BooleanModel
-          # }
-          # ```
           class NewUsageDiscount < Orb::BaseModel
             # @!attribute adjustment_type
             #
@@ -10111,15 +9218,6 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # new_amount_discount => {
-          #   adjustment_type: :amount_discount,
-          #   amount_discount: String,
-          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-          #   is_invoice_level: Orb::BooleanModel
-          # }
-          # ```
           class NewAmountDiscount < Orb::BaseModel
             # @!attribute adjustment_type
             #
@@ -10159,16 +9257,6 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # new_minimum => {
-          #   adjustment_type: :minimum,
-          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-          #   item_id: String,
-          #   minimum_amount: String,
-          #   is_invoice_level: Orb::BooleanModel
-          # }
-          # ```
           class NewMinimum < Orb::BaseModel
             # @!attribute adjustment_type
             #
@@ -10215,15 +9303,6 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # new_maximum => {
-          #   adjustment_type: :maximum,
-          #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-          #   maximum_amount: String,
-          #   is_invoice_level: Orb::BooleanModel
-          # }
-          # ```
           class NewMaximum < Orb::BaseModel
             # @!attribute adjustment_type
             #
@@ -10305,16 +9384,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # edit => {
-      #   price_interval_id: String,
-      #   billing_cycle_day: Integer,
-      #   end_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::EndDate,
-      #   fixed_fee_quantity_transitions: -> { Orb::ArrayOf[Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition] === _1 },
-      #   start_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::StartDate
-      # }
-      # ```
       class Edit < Orb::BaseModel
         # @!attribute price_interval_id
         #   The id of the price interval to edit.
@@ -10398,13 +9467,6 @@ module Orb
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
         end
 
-        # @example
-        # ```ruby
-        # fixed_fee_quantity_transition => {
-        #   effective_date: Time,
-        #   quantity: Integer
-        # }
-        # ```
         class FixedFeeQuantityTransition < Orb::BaseModel
           # @!attribute effective_date
           #   The date that the fixed fee quantity transition should take effect.
@@ -10448,14 +9510,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # edit_adjustment => {
-      #   adjustment_interval_id: String,
-      #   end_date: Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment::EndDate,
-      #   start_date: Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment::StartDate
-      # }
-      # ```
       class EditAdjustment < Orb::BaseModel
         # @!attribute adjustment_interval_id
         #   The id of the adjustment interval to edit.

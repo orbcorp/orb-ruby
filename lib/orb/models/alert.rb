@@ -2,17 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # alert => {
-    #   id: String,
-    #   created_at: Time,
-    #   currency: String,
-    #   customer: Orb::Models::Alert::Customer,
-    #   enabled: Orb::BooleanModel,
-    #   **_
-    # }
-    # ```
     class Alert < Orb::BaseModel
       # @!attribute id
       #   Also referred to as alert_id in this documentation.
@@ -97,13 +86,6 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # customer => {
-      #   id: String,
-      #   external_customer_id: String
-      # }
-      # ```
       class Customer < Orb::BaseModel
         # @!attribute id
         #
@@ -126,12 +108,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # metric => {
-      #   id: String
-      # }
-      # ```
       class Metric < Orb::BaseModel
         # @!attribute id
         #
@@ -148,15 +124,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # plan => {
-      #   id: String,
-      #   external_plan_id: String,
-      #   name: String,
-      #   plan_version: String
-      # }
-      # ```
       class Plan < Orb::BaseModel
         # @!attribute id
         #
@@ -194,12 +161,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # subscription => {
-      #   id: String
-      # }
-      # ```
       class Subscription < Orb::BaseModel
         # @!attribute id
         #
@@ -216,12 +177,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # threshold => {
-      #   value: Float
-      # }
-      # ```
       class Threshold < Orb::BaseModel
         # @!attribute value
         #   The value at which an alert will fire. For credit balance alerts, the alert will

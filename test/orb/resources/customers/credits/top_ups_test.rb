@@ -23,6 +23,19 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::Customers::Credits::TopUpCreateResponse
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        amount: String,
+        currency: String,
+        invoice_settings: Orb::Models::Customers::Credits::TopUpCreateResponse::InvoiceSettings,
+        per_unit_cost_basis: String,
+        threshold: String,
+        expires_after: Integer | nil,
+        expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateResponse::ExpiresAfterUnit | nil
+      }
+    end
   end
 
   def test_list
@@ -40,6 +53,19 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Orb::Models::Customers::Credits::TopUpListResponse
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        amount: String,
+        currency: String,
+        invoice_settings: Orb::Models::Customers::Credits::TopUpListResponse::InvoiceSettings,
+        per_unit_cost_basis: String,
+        threshold: String,
+        expires_after: Integer | nil,
+        expires_after_unit: Orb::Models::Customers::Credits::TopUpListResponse::ExpiresAfterUnit | nil
+      }
     end
   end
 
@@ -63,6 +89,19 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        amount: String,
+        currency: String,
+        invoice_settings: Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse::InvoiceSettings,
+        per_unit_cost_basis: String,
+        threshold: String,
+        expires_after: Integer | nil,
+        expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse::ExpiresAfterUnit | nil
+      }
     end
   end
 
@@ -92,6 +131,19 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Orb::Models::Customers::Credits::TopUpListByExternalIDResponse
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        amount: String,
+        currency: String,
+        invoice_settings: Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::InvoiceSettings,
+        per_unit_cost_basis: String,
+        threshold: String,
+        expires_after: Integer | nil,
+        expires_after_unit: Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::ExpiresAfterUnit | nil
+      }
     end
   end
 end
