@@ -28,7 +28,7 @@ module Orb
       params(
         client: Orb::BaseClient,
         req: Orb::BaseClient::RequestComponentsShape,
-        headers: T::Hash[String, String],
+        headers: T.any(T::Hash[String, String], Net::HTTPHeader),
         unwrapped: T.anything
       )
         .void
