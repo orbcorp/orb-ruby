@@ -16,6 +16,21 @@ class Orb::Test::Resources::Customers::BalanceTransactionsTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::Customers::BalanceTransactionCreateResponse
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        action: Orb::Models::Customers::BalanceTransactionCreateResponse::Action,
+        amount: String,
+        created_at: Time,
+        credit_note: Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote | nil,
+        description: String | nil,
+        ending_balance: String,
+        invoice: Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice | nil,
+        starting_balance: String,
+        type: Orb::Models::Customers::BalanceTransactionCreateResponse::Type
+      }
+    end
   end
 
   def test_list
@@ -33,6 +48,21 @@ class Orb::Test::Resources::Customers::BalanceTransactionsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Orb::Models::Customers::BalanceTransactionListResponse
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        action: Orb::Models::Customers::BalanceTransactionListResponse::Action,
+        amount: String,
+        created_at: Time,
+        credit_note: Orb::Models::Customers::BalanceTransactionListResponse::CreditNote | nil,
+        description: String | nil,
+        ending_balance: String,
+        invoice: Orb::Models::Customers::BalanceTransactionListResponse::Invoice | nil,
+        starting_balance: String,
+        type: Orb::Models::Customers::BalanceTransactionListResponse::Type
+      }
     end
   end
 end

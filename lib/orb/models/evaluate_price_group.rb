@@ -2,14 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # evaluate_price_group => {
-    #   amount: String,
-    #   grouping_values: -> { Orb::ArrayOf[union: Orb::Models::EvaluatePriceGroup::GroupingValue] === _1 },
-    #   quantity: Float
-    # }
-    # ```
     class EvaluatePriceGroup < Orb::BaseModel
       # @!attribute amount
       #   The price's output for the group

@@ -2,12 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # event_deprecate_response => {
-    #   deprecated: String
-    # }
-    # ```
     class EventDeprecateResponse < Orb::BaseModel
       # @!attribute deprecated
       #   event_id of the deprecated event, if successfully updated

@@ -338,17 +338,6 @@ module Orb
 
       variant :cumulative_grouped_bulk, -> { Orb::Models::Price::CumulativeGroupedBulkPrice }
 
-      # @example
-      # ```ruby
-      # unit_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::UnitPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::UnitPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::UnitPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class UnitPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -536,12 +525,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -556,13 +539,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::UnitPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -642,13 +618,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -669,13 +638,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -720,13 +682,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -747,13 +702,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -777,13 +725,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -830,12 +771,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # unit_config => {
-        #   unit_amount: String
-        # }
-        # ```
         class UnitConfig < Orb::BaseModel
           # @!attribute unit_amount
           #   Rate per unit of usage
@@ -851,13 +786,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -879,17 +807,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # package_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::PackagePrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::PackagePrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::PackagePrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class PackagePrice < Orb::BaseModel
         # @!attribute id
         #
@@ -1077,12 +994,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -1097,13 +1008,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::PackagePrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -1183,13 +1087,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -1210,13 +1107,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -1261,13 +1151,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -1288,13 +1171,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -1318,13 +1194,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -1348,13 +1217,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # package_config => {
-        #   package_amount: String,
-        #   package_size: Integer
-        # }
-        # ```
         class PackageConfig < Orb::BaseModel
           # @!attribute package_amount
           #   A currency amount to rate usage by
@@ -1401,13 +1263,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -1429,17 +1284,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # matrix_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::MatrixPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::MatrixPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::MatrixPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class MatrixPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -1627,12 +1471,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -1647,13 +1485,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::MatrixPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -1733,13 +1564,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -1760,13 +1584,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -1811,13 +1628,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -1838,14 +1648,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # matrix_config => {
-        #   default_unit_amount: String,
-        #   dimensions: -> { Orb::ArrayOf[String, nil?: true] === _1 },
-        #   matrix_values: -> { Orb::ArrayOf[Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue] === _1 }
-        # }
-        # ```
         class MatrixConfig < Orb::BaseModel
           # @!attribute default_unit_amount
           #   Default per unit rate for any usage not bucketed into a specified matrix_value
@@ -1874,13 +1676,6 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # matrix_value => {
-          #   dimension_values: -> { Orb::ArrayOf[String, nil?: true] === _1 },
-          #   unit_amount: String
-          # }
-          # ```
           class MatrixValue < Orb::BaseModel
             # @!attribute dimension_values
             #   One or two matrix keys to filter usage to this Matrix value by. For example,
@@ -1906,13 +1701,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -1936,13 +1724,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -1989,13 +1770,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -2017,17 +1791,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # tiered_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::TieredPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::TieredPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::TieredPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class TieredPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -2215,12 +1978,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -2235,13 +1992,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::TieredPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -2321,13 +2071,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -2348,13 +2091,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -2399,13 +2135,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -2426,13 +2155,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -2456,13 +2178,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -2509,12 +2224,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # tiered_config => {
-        #   tiers: -> { Orb::ArrayOf[Orb::Models::Price::TieredPrice::TieredConfig::Tier] === _1 }
-        # }
-        # ```
         class TieredConfig < Orb::BaseModel
           # @!attribute tiers
           #   Tiers for rating based on total usage quantities into the specified tier
@@ -2529,14 +2238,6 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # tier => {
-          #   first_unit: Float,
-          #   unit_amount: String,
-          #   last_unit: Float
-          # }
-          # ```
           class Tier < Orb::BaseModel
             # @!attribute first_unit
             #   Inclusive tier starting value
@@ -2567,13 +2268,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -2595,17 +2289,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # tiered_bps_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::TieredBpsPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::TieredBpsPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class TieredBpsPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -2794,12 +2477,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -2814,13 +2491,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -2900,13 +2570,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -2927,13 +2590,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -2978,13 +2634,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -3005,13 +2654,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -3035,13 +2677,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -3088,12 +2723,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # tiered_bps_config => {
-        #   tiers: -> { Orb::ArrayOf[Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier] === _1 }
-        # }
-        # ```
         class TieredBpsConfig < Orb::BaseModel
           # @!attribute tiers
           #   Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
@@ -3109,15 +2738,6 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # tier => {
-          #   bps: Float,
-          #   minimum_amount: String,
-          #   maximum_amount: String,
-          #   per_unit_maximum: String
-          # }
-          # ```
           class Tier < Orb::BaseModel
             # @!attribute bps
             #   Per-event basis point rate
@@ -3155,13 +2775,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -3183,17 +2796,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # bps_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::BpsPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::BpsPrice::BillingCycleConfiguration,
-      #   bps_config: Orb::Models::Price::BpsPrice::BpsConfig,
-      #   cadence: Orb::Models::Price::BpsPrice::Cadence,
-      #   **_
-      # }
-      # ```
       class BpsPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -3381,12 +2983,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -3401,13 +2997,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::BpsPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -3452,13 +3041,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # bps_config => {
-        #   bps: Float,
-        #   per_unit_maximum: String
-        # }
-        # ```
         class BpsConfig < Orb::BaseModel
           # @!attribute bps
           #   Basis point take rate per event
@@ -3516,13 +3098,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -3543,13 +3118,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -3594,13 +3162,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -3621,13 +3182,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -3651,13 +3205,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -3704,13 +3251,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -3732,17 +3272,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # bulk_bps_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::BulkBpsPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration,
-      #   bulk_bps_config: Orb::Models::Price::BulkBpsPrice::BulkBpsConfig,
-      #   cadence: Orb::Models::Price::BulkBpsPrice::Cadence,
-      #   **_
-      # }
-      # ```
       class BulkBpsPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -3930,12 +3459,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -3950,13 +3473,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -4001,12 +3517,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # bulk_bps_config => {
-        #   tiers: -> { Orb::ArrayOf[Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier] === _1 }
-        # }
-        # ```
         class BulkBpsConfig < Orb::BaseModel
           # @!attribute tiers
           #   Tiers for a bulk BPS pricing model where all usage is aggregated to a single
@@ -4022,14 +3532,6 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # tier => {
-          #   bps: Float,
-          #   maximum_amount: String,
-          #   per_unit_maximum: String
-          # }
-          # ```
           class Tier < Orb::BaseModel
             # @!attribute bps
             #   Basis points to rate on
@@ -4095,13 +3597,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -4122,13 +3617,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -4173,13 +3661,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -4200,13 +3681,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -4230,13 +3704,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -4283,13 +3750,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -4311,17 +3771,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # bulk_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::BulkPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::BulkPrice::BillingCycleConfiguration,
-      #   bulk_config: Orb::Models::Price::BulkPrice::BulkConfig,
-      #   cadence: Orb::Models::Price::BulkPrice::Cadence,
-      #   **_
-      # }
-      # ```
       class BulkPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -4509,12 +3958,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -4529,13 +3972,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::BulkPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -4580,12 +4016,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # bulk_config => {
-        #   tiers: -> { Orb::ArrayOf[Orb::Models::Price::BulkPrice::BulkConfig::Tier] === _1 }
-        # }
-        # ```
         class BulkConfig < Orb::BaseModel
           # @!attribute tiers
           #   Bulk tiers for rating based on total usage volume
@@ -4600,13 +4030,6 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # tier => {
-          #   unit_amount: String,
-          #   maximum_units: Float
-          # }
-          # ```
           class Tier < Orb::BaseModel
             # @!attribute unit_amount
             #   Amount per unit
@@ -4665,13 +4088,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -4692,13 +4108,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -4743,13 +4152,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -4770,13 +4172,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -4800,13 +4195,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -4853,13 +4241,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -4881,17 +4262,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # threshold_total_amount_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::ThresholdTotalAmountPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::ThresholdTotalAmountPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class ThresholdTotalAmountPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -5084,12 +4454,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -5104,13 +4468,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -5190,13 +4547,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -5217,13 +4567,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -5268,13 +4611,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -5295,13 +4631,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -5325,13 +4654,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -5378,13 +4700,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -5406,17 +4721,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # tiered_package_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::TieredPackagePrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::TieredPackagePrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class TieredPackagePrice < Orb::BaseModel
         # @!attribute id
         #
@@ -5605,12 +4909,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -5625,13 +4923,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -5711,13 +5002,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -5738,13 +5022,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -5789,13 +5066,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -5816,13 +5086,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -5846,13 +5109,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -5899,13 +5155,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -5927,17 +5176,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # grouped_tiered_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::GroupedTieredPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::GroupedTieredPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class GroupedTieredPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -6126,12 +5364,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -6146,13 +5378,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -6232,13 +5457,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -6259,13 +5477,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -6310,13 +5521,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -6337,13 +5541,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -6367,13 +5564,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -6420,13 +5610,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -6448,17 +5631,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # tiered_with_minimum_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::TieredWithMinimumPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::TieredWithMinimumPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class TieredWithMinimumPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -6649,12 +5821,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -6669,13 +5835,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -6755,13 +5914,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -6782,13 +5934,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -6833,13 +5978,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -6860,13 +5998,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -6890,13 +6021,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -6943,13 +6067,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -6971,17 +6088,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # tiered_package_with_minimum_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::TieredPackageWithMinimumPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::TieredPackageWithMinimumPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class TieredPackageWithMinimumPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -7174,12 +6280,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -7194,13 +6294,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -7280,13 +6373,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -7307,13 +6393,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -7358,13 +6437,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -7385,13 +6457,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -7415,13 +6480,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -7468,13 +6526,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -7496,17 +6547,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # package_with_allocation_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::PackageWithAllocationPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::PackageWithAllocationPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class PackageWithAllocationPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -7699,12 +6739,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -7719,13 +6753,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -7805,13 +6832,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -7832,13 +6852,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -7883,13 +6896,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -7910,13 +6916,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -7940,13 +6939,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -7993,13 +6985,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -8021,17 +7006,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # unit_with_percent_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::UnitWithPercentPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::UnitWithPercentPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class UnitWithPercentPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -8220,12 +7194,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -8240,13 +7208,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -8326,13 +7287,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -8353,13 +7307,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -8404,13 +7351,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -8431,13 +7371,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -8461,13 +7394,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -8514,13 +7440,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -8542,17 +7461,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # matrix_with_allocation_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::MatrixWithAllocationPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::MatrixWithAllocationPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class MatrixWithAllocationPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -8746,12 +7654,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -8766,13 +7668,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -8852,13 +7747,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -8879,13 +7767,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -8930,13 +7811,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -8957,15 +7831,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # matrix_with_allocation_config => {
-        #   allocation: Float,
-        #   default_unit_amount: String,
-        #   dimensions: -> { Orb::ArrayOf[String, nil?: true] === _1 },
-        #   matrix_values: -> { Orb::ArrayOf[Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue] === _1 }
-        # }
-        # ```
         class MatrixWithAllocationConfig < Orb::BaseModel
           # @!attribute allocation
           #   Allocation to be used to calculate the price
@@ -9002,13 +7867,6 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # matrix_value => {
-          #   dimension_values: -> { Orb::ArrayOf[String, nil?: true] === _1 },
-          #   unit_amount: String
-          # }
-          # ```
           class MatrixValue < Orb::BaseModel
             # @!attribute dimension_values
             #   One or two matrix keys to filter usage to this Matrix value by. For example,
@@ -9034,13 +7892,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -9064,13 +7915,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -9117,13 +7961,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -9145,17 +7982,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # tiered_with_proration_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::TieredWithProrationPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::TieredWithProrationPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class TieredWithProrationPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -9346,12 +8172,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -9366,13 +8186,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -9452,13 +8265,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -9479,13 +8285,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -9530,13 +8329,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -9557,13 +8349,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -9587,13 +8372,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -9640,13 +8418,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -9668,17 +8439,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # unit_with_proration_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::UnitWithProrationPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::UnitWithProrationPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class UnitWithProrationPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -9869,12 +8629,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -9889,13 +8643,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -9975,13 +8722,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -10002,13 +8742,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -10053,13 +8786,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -10080,13 +8806,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -10110,13 +8829,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -10163,13 +8875,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -10191,17 +8896,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # grouped_allocation_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::GroupedAllocationPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::GroupedAllocationPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class GroupedAllocationPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -10392,12 +9086,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -10412,13 +9100,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -10498,13 +9179,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -10525,13 +9199,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -10576,13 +9243,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -10603,13 +9263,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -10633,13 +9286,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -10686,13 +9332,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -10714,17 +9353,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # grouped_with_prorated_minimum_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::GroupedWithProratedMinimumPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::GroupedWithProratedMinimumPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class GroupedWithProratedMinimumPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -10917,12 +9545,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -10937,13 +9559,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -11023,13 +9638,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -11050,13 +9658,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -11101,13 +9702,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -11128,13 +9722,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -11158,13 +9745,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -11211,13 +9791,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -11239,17 +9812,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # grouped_with_metered_minimum_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::GroupedWithMeteredMinimumPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class GroupedWithMeteredMinimumPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -11442,12 +10004,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -11462,13 +10018,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -11548,13 +10097,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -11575,13 +10117,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -11626,13 +10161,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -11653,13 +10181,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -11683,13 +10204,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -11736,13 +10250,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -11764,17 +10271,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # matrix_with_display_name_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::MatrixWithDisplayNamePrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::MatrixWithDisplayNamePrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class MatrixWithDisplayNamePrice < Orb::BaseModel
         # @!attribute id
         #
@@ -11967,12 +10463,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -11987,13 +10477,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -12073,13 +10556,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -12100,13 +10576,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -12151,13 +10620,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -12178,13 +10640,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -12208,13 +10663,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -12261,13 +10709,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -12289,17 +10730,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # bulk_with_proration_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::BulkWithProrationPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration,
-      #   bulk_with_proration_config: -> { Orb::HashOf[Orb::Unknown] === _1 },
-      #   cadence: Orb::Models::Price::BulkWithProrationPrice::Cadence,
-      #   **_
-      # }
-      # ```
       class BulkWithProrationPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -12490,12 +10920,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -12510,13 +10934,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -12596,13 +11013,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -12623,13 +11033,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -12674,13 +11077,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -12701,13 +11097,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -12731,13 +11120,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -12784,13 +11166,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -12812,17 +11187,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # grouped_tiered_package_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::GroupedTieredPackagePrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::GroupedTieredPackagePrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class GroupedTieredPackagePrice < Orb::BaseModel
         # @!attribute id
         #
@@ -13015,12 +11379,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -13035,13 +11393,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -13121,13 +11472,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -13148,13 +11492,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -13199,13 +11536,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -13226,13 +11556,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -13256,13 +11579,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -13309,13 +11625,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -13337,17 +11646,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # max_group_tiered_package_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::MaxGroupTieredPackagePrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::MaxGroupTieredPackagePrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class MaxGroupTieredPackagePrice < Orb::BaseModel
         # @!attribute id
         #
@@ -13540,12 +11838,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -13560,13 +11852,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -13646,13 +11931,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -13673,13 +11951,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -13724,13 +11995,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -13751,13 +12015,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -13781,13 +12038,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -13834,13 +12084,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -13862,17 +12105,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # scalable_matrix_with_unit_pricing_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class ScalableMatrixWithUnitPricingPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -14065,12 +12297,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -14085,13 +12311,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -14171,13 +12390,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -14198,13 +12410,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -14249,13 +12454,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -14276,13 +12474,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -14306,13 +12497,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -14359,13 +12543,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -14387,17 +12564,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # scalable_matrix_with_tiered_pricing_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class ScalableMatrixWithTieredPricingPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -14590,12 +12756,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -14610,13 +12770,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -14696,13 +12849,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -14723,13 +12869,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -14774,13 +12913,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -14801,13 +12933,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -14831,13 +12956,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -14884,13 +13002,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -14912,17 +13023,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # cumulative_grouped_bulk_price => {
-      #   id: String,
-      #   billable_metric: Orb::Models::Price::CumulativeGroupedBulkPrice::BillableMetric,
-      #   billing_cycle_configuration: Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration,
-      #   cadence: Orb::Models::Price::CumulativeGroupedBulkPrice::Cadence,
-      #   conversion_rate: Float,
-      #   **_
-      # }
-      # ```
       class CumulativeGroupedBulkPrice < Orb::BaseModel
         # @!attribute id
         #
@@ -15115,12 +13215,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # billable_metric => {
-        #   id: String
-        # }
-        # ```
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -15135,13 +13229,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # billing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -15221,13 +13308,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # credit_allocation => {
-        #   allows_rollover: Orb::BooleanModel,
-        #   currency: String
-        # }
-        # ```
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -15248,13 +13328,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoicing_cycle_configuration => {
-        #   duration: Integer,
-        #   duration_unit: Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit
-        # }
-        # ```
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -15299,13 +13372,6 @@ module Orb
           end
         end
 
-        # @example
-        # ```ruby
-        # item => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -15326,13 +13392,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # maximum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   maximum_amount: String
-        # }
-        # ```
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -15356,13 +13415,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # minimum => {
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   minimum_amount: String
-        # }
-        # ```
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -15409,13 +13461,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # dimensional_price_configuration => {
-        #   dimension_values: -> { Orb::ArrayOf[String] === _1 },
-        #   dimensional_price_group_id: String
-        # }
-        # ```
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #

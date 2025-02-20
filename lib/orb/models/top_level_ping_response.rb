@@ -2,12 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # top_level_ping_response => {
-    #   response: String
-    # }
-    # ```
     class TopLevelPingResponse < Orb::BaseModel
       # @!attribute response
       #

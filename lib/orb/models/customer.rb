@@ -2,17 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # customer => {
-    #   id: String,
-    #   additional_emails: -> { Orb::ArrayOf[String] === _1 },
-    #   auto_collection: Orb::BooleanModel,
-    #   balance: String,
-    #   billing_address: Orb::Models::Customer::BillingAddress,
-    #   **_
-    # }
-    # ```
     class Customer < Orb::BaseModel
       # @!attribute id
       #
@@ -317,16 +306,6 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # billing_address => {
-      #   city: String,
-      #   country: String,
-      #   line1: String,
-      #   line2: String,
-      #   postal_code: String
-      # }
-      # ```
       class BillingAddress < Orb::BaseModel
         # @!attribute city
         #
@@ -407,16 +386,6 @@ module Orb
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # shipping_address => {
-      #   city: String,
-      #   country: String,
-      #   line1: String,
-      #   line2: String,
-      #   postal_code: String
-      # }
-      # ```
       class ShippingAddress < Orb::BaseModel
         # @!attribute city
         #
@@ -461,14 +430,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # tax_id => {
-      #   country: Orb::Models::Customer::TaxID::Country,
-      #   type: Orb::Models::Customer::TaxID::Type,
-      #   value: String
-      # }
-      # ```
       class TaxID < Orb::BaseModel
         # @!attribute country
         #
@@ -808,13 +769,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # accounting_sync_configuration => {
-      #   accounting_providers: -> { Orb::ArrayOf[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider] === _1 },
-      #   excluded: Orb::BooleanModel
-      # }
-      # ```
       class AccountingSyncConfiguration < Orb::BaseModel
         # @!attribute accounting_providers
         #
@@ -835,13 +789,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # accounting_provider => {
-        #   external_provider_id: String,
-        #   provider_type: Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType
-        # }
-        # ```
         class AccountingProvider < Orb::BaseModel
           # @!attribute external_provider_id
           #
@@ -887,12 +834,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # reporting_configuration => {
-      #   exempt: Orb::BooleanModel
-      # }
-      # ```
       class ReportingConfiguration < Orb::BaseModel
         # @!attribute exempt
         #

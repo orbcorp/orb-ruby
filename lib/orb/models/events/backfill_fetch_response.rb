@@ -3,17 +3,6 @@
 module Orb
   module Models
     module Events
-      # @example
-      # ```ruby
-      # backfill_fetch_response => {
-      #   id: String,
-      #   close_time: Time,
-      #   created_at: Time,
-      #   customer_id: String,
-      #   events_ingested: Integer,
-      #   **_
-      # }
-      # ```
       class BackfillFetchResponse < Orb::BaseModel
         # @!attribute id
         #

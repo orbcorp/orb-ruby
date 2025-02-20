@@ -2,15 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # item => {
-    #   id: String,
-    #   created_at: Time,
-    #   external_connections: -> { Orb::ArrayOf[Orb::Models::Item::ExternalConnection] === _1 },
-    #   name: String
-    # }
-    # ```
     class Item < Orb::BaseModel
       # @!attribute id
       #
@@ -46,13 +37,6 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # external_connection => {
-      #   external_connection_name: Orb::Models::Item::ExternalConnection::ExternalConnectionName,
-      #   external_entity_id: String
-      # }
-      # ```
       class ExternalConnection < Orb::BaseModel
         # @!attribute external_connection_name
         #

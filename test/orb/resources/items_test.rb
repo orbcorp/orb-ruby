@@ -16,6 +16,15 @@ class Orb::Test::Resources::ItemsTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::Item
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        external_connections: ^(Orb::ArrayOf[Orb::Models::Item::ExternalConnection]),
+        name: String
+      }
+    end
   end
 
   def test_update
@@ -23,6 +32,15 @@ class Orb::Test::Resources::ItemsTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::Item
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        external_connections: ^(Orb::ArrayOf[Orb::Models::Item::ExternalConnection]),
+        name: String
+      }
     end
   end
 
@@ -42,6 +60,15 @@ class Orb::Test::Resources::ItemsTest < Minitest::Test
     assert_pattern do
       row => Orb::Models::Item
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        created_at: Time,
+        external_connections: ^(Orb::ArrayOf[Orb::Models::Item::ExternalConnection]),
+        name: String
+      }
+    end
   end
 
   def test_fetch
@@ -49,6 +76,15 @@ class Orb::Test::Resources::ItemsTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::Item
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        external_connections: ^(Orb::ArrayOf[Orb::Models::Item::ExternalConnection]),
+        name: String
+      }
     end
   end
 end

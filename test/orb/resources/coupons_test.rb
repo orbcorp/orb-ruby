@@ -19,6 +19,18 @@ class Orb::Test::Resources::CouponsTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::Coupon
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        archived_at: Time | nil,
+        discount: Orb::Models::Coupon::Discount,
+        duration_in_months: Integer | nil,
+        max_redemptions: Integer | nil,
+        redemption_code: String,
+        times_redeemed: Integer
+      }
+    end
   end
 
   def test_list
@@ -37,6 +49,18 @@ class Orb::Test::Resources::CouponsTest < Minitest::Test
     assert_pattern do
       row => Orb::Models::Coupon
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        archived_at: Time | nil,
+        discount: Orb::Models::Coupon::Discount,
+        duration_in_months: Integer | nil,
+        max_redemptions: Integer | nil,
+        redemption_code: String,
+        times_redeemed: Integer
+      }
+    end
   end
 
   def test_archive
@@ -45,6 +69,18 @@ class Orb::Test::Resources::CouponsTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::Coupon
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        archived_at: Time | nil,
+        discount: Orb::Models::Coupon::Discount,
+        duration_in_months: Integer | nil,
+        max_redemptions: Integer | nil,
+        redemption_code: String,
+        times_redeemed: Integer
+      }
+    end
   end
 
   def test_fetch
@@ -52,6 +88,18 @@ class Orb::Test::Resources::CouponsTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::Coupon
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        archived_at: Time | nil,
+        discount: Orb::Models::Coupon::Discount,
+        duration_in_months: Integer | nil,
+        max_redemptions: Integer | nil,
+        redemption_code: String,
+        times_redeemed: Integer
+      }
     end
   end
 end

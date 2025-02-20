@@ -20,6 +20,17 @@ class Orb::Test::Resources::DimensionalPriceGroupsTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::DimensionalPriceGroup
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        billable_metric_id: String,
+        dimensions: ^(Orb::ArrayOf[String]),
+        external_dimensional_price_group_id: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        name: String
+      }
+    end
   end
 
   def test_retrieve
@@ -27,6 +38,17 @@ class Orb::Test::Resources::DimensionalPriceGroupsTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::DimensionalPriceGroup
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        billable_metric_id: String,
+        dimensions: ^(Orb::ArrayOf[String]),
+        external_dimensional_price_group_id: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        name: String
+      }
     end
   end
 
@@ -45,6 +67,17 @@ class Orb::Test::Resources::DimensionalPriceGroupsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Orb::Models::DimensionalPriceGroup
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        billable_metric_id: String,
+        dimensions: ^(Orb::ArrayOf[String]),
+        external_dimensional_price_group_id: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        name: String
+      }
     end
   end
 end
