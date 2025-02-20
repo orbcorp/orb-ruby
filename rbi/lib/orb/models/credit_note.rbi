@@ -249,6 +249,14 @@ module Orb
         end
 
         sig { returns(String) }
+        def item_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def item_id=(_)
+        end
+
+        sig { returns(String) }
         def name
         end
 
@@ -298,6 +306,7 @@ module Orb
           params(
             id: String,
             amount: String,
+            item_id: String,
             name: String,
             quantity: T.nilable(Float),
             subtotal: String,
@@ -306,7 +315,7 @@ module Orb
           )
             .void
         end
-        def initialize(id:, amount:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil)
+        def initialize(id:, amount:, item_id:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil)
         end
 
         sig do
@@ -315,6 +324,7 @@ module Orb
               {
                 id: String,
                 amount: String,
+                item_id: String,
                 name: String,
                 quantity: T.nilable(Float),
                 subtotal: String,

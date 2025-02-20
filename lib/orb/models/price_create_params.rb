@@ -20,7 +20,7 @@ module Orb
       required :currency, String
 
       # @!attribute item_id
-      #   The id of the item the plan will be associated with.
+      #   The id of the item the price will be associated with.
       #
       #   @return [String]
       required :item_id, String

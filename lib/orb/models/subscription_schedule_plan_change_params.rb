@@ -1104,7 +1104,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -1411,7 +1411,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -1726,7 +1726,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -2076,7 +2076,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -2417,7 +2417,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -2772,7 +2772,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -3086,7 +3086,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -3428,7 +3428,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -3756,7 +3756,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -4047,7 +4047,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -4338,7 +4338,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -4629,7 +4629,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -4920,7 +4920,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -5211,7 +5211,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -5502,7 +5502,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -5798,7 +5798,7 @@ module Orb
             required :grouped_allocation_config, Orb::HashOf[Orb::Unknown]
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -6089,7 +6089,7 @@ module Orb
             required :grouped_with_prorated_minimum_config, Orb::HashOf[Orb::Unknown]
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -6380,7 +6380,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -7550,7 +7550,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -7857,7 +7857,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -8172,7 +8172,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -8522,7 +8522,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -8863,7 +8863,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -9218,7 +9218,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -9532,7 +9532,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -9874,7 +9874,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -10202,7 +10202,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -10493,7 +10493,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -10784,7 +10784,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -11075,7 +11075,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -11366,7 +11366,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -11657,7 +11657,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -11948,7 +11948,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -12244,7 +12244,7 @@ module Orb
             required :grouped_allocation_config, Orb::HashOf[Orb::Unknown]
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -12535,7 +12535,7 @@ module Orb
             required :grouped_with_prorated_minimum_config, Orb::HashOf[Orb::Unknown]
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String
@@ -12826,7 +12826,7 @@ module Orb
                      enum: -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence }
 
             # @!attribute item_id
-            #   The id of the item the plan will be associated with.
+            #   The id of the item the price will be associated with.
             #
             #   @return [String]
             required :item_id, String

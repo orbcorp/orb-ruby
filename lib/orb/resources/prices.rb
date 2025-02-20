@@ -23,7 +23,7 @@ module Orb
       #
       #   @option params [String] :currency An ISO 4217 currency string for which this price is billed in.
       #
-      #   @option params [String] :item_id The id of the item the plan will be associated with.
+      #   @option params [String] :item_id The id of the item the price will be associated with.
       #
       #   @option params [Symbol, Orb::Models::PriceCreateParams::ModelType] :model_type
       #

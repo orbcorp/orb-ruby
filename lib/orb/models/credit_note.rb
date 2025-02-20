@@ -178,6 +178,12 @@ module Orb
         #   @return [String]
         required :amount, String
 
+        # @!attribute item_id
+        #   The id of the item associated with this line item.
+        #
+        #   @return [String]
+        required :item_id, String
+
         # @!attribute name
         #   The name of the corresponding invoice line item.
         #
@@ -215,13 +221,14 @@ module Orb
         # @!parse
         #   # @param id [String]
         #   # @param amount [String]
+        #   # @param item_id [String]
         #   # @param name [String]
         #   # @param quantity [Float, nil]
         #   # @param subtotal [String]
         #   # @param tax_amounts [Array<Orb::Models::CreditNote::LineItem::TaxAmount>]
         #   # @param discounts [Array<Orb::Models::CreditNote::LineItem::Discount>]
         #   #
-        #   def initialize(id:, amount:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil, **) = super
+        #   def initialize(id:, amount:, item_id:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil, **) = super
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
