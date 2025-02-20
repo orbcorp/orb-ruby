@@ -98,6 +98,7 @@ module Orb
         {
           id: String,
           amount: String,
+          item_id: String,
           name: String,
           quantity: Float?,
           subtotal: String,
@@ -109,6 +110,8 @@ module Orb
         attr_accessor id: String
 
         attr_accessor amount: String
+
+        attr_accessor item_id: String
 
         attr_accessor name: String
 
@@ -128,6 +131,7 @@ module Orb
           (
             id: String,
             amount: String,
+            item_id: String,
             name: String,
             quantity: Float?,
             subtotal: String,
