@@ -2,17 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # credit_note => {
-    #   id: String,
-    #   created_at: Time,
-    #   credit_note_number: String,
-    #   credit_note_pdf: String,
-    #   customer: Orb::Models::CreditNote::Customer,
-    #   **_
-    # }
-    # ```
     class CreditNote < Orb::BaseModel
       # @!attribute id
       #   The Orb id of this credit note.
@@ -156,13 +145,6 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # customer => {
-      #   id: String,
-      #   external_customer_id: String
-      # }
-      # ```
       class Customer < Orb::BaseModel
         # @!attribute id
         #
@@ -183,17 +165,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # line_item => {
-      #   id: String,
-      #   amount: String,
-      #   name: String,
-      #   quantity: Float,
-      #   subtotal: String,
-      #   **_
-      # }
-      # ```
       class LineItem < Orb::BaseModel
         # @!attribute id
         #   The Orb id of this resource.
@@ -254,14 +225,6 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # tax_amount => {
-        #   amount: String,
-        #   tax_rate_description: String,
-        #   tax_rate_percentage: String
-        # }
-        # ```
         class TaxAmount < Orb::BaseModel
           # @!attribute amount
           #   The amount of additional tax incurred by this tax rate.
@@ -291,17 +254,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # discount => {
-        #   id: String,
-        #   amount_applied: String,
-        #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-        #   discount_type: Orb::Models::CreditNote::LineItem::Discount::DiscountType,
-        #   percentage_discount: Float,
-        #   **_
-        # }
-        # ```
         class Discount < Orb::BaseModel
           # @!attribute id
           #
@@ -387,16 +339,6 @@ module Orb
         end
       end
 
-      # @example
-      # ```ruby
-      # maximum_amount_adjustment => {
-      #   amount_applied: String,
-      #   discount_type: Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType,
-      #   percentage_discount: Float,
-      #   applies_to_prices: -> { Orb::ArrayOf[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice] === _1 },
-      #   reason: String
-      # }
-      # ```
       class MaximumAmountAdjustment < Orb::BaseModel
         # @!attribute amount_applied
         #
@@ -458,13 +400,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # applies_to_price => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class AppliesToPrice < Orb::BaseModel
           # @!attribute id
           #
@@ -538,16 +473,6 @@ module Orb
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # discount => {
-      #   amount_applied: String,
-      #   discount_type: Orb::Models::CreditNote::Discount::DiscountType,
-      #   percentage_discount: Float,
-      #   applies_to_prices: -> { Orb::ArrayOf[Orb::Models::CreditNote::Discount::AppliesToPrice] === _1 },
-      #   reason: String
-      # }
-      # ```
       class Discount < Orb::BaseModel
         # @!attribute amount_applied
         #
@@ -607,13 +532,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # applies_to_price => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class AppliesToPrice < Orb::BaseModel
           # @!attribute id
           #

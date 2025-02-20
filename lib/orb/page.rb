@@ -95,13 +95,6 @@ module Orb
       "#<#{self.class}:0x#{object_id.to_s(16)} data=#{data.inspect} pagination_metadata=#{pagination_metadata.inspect}>"
     end
 
-    # @example
-    # ```ruby
-    # pagination_metadata => {
-    #   has_more: Orb::BooleanModel,
-    #   next_cursor: String
-    # }
-    # ```
     class PaginationMetadata < Orb::BaseModel
       # @!attribute has_more
       #

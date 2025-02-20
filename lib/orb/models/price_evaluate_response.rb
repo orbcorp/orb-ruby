@@ -2,12 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # price_evaluate_response => {
-    #   data: -> { Orb::ArrayOf[Orb::Models::EvaluatePriceGroup] === _1 }
-    # }
-    # ```
     class PriceEvaluateResponse < Orb::BaseModel
       # @!attribute data
       #

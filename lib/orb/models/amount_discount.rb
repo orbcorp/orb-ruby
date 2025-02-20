@@ -2,15 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # amount_discount => {
-    #   amount_discount: String,
-    #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-    #   discount_type: Orb::Models::AmountDiscount::DiscountType,
-    #   reason: String
-    # }
-    # ```
     class AmountDiscount < Orb::BaseModel
       # @!attribute amount_discount
       #   Only available if discount_type is `amount`.

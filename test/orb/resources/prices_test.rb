@@ -61,6 +61,12 @@ class Orb::Test::Resources::PricesTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::PriceEvaluateResponse
     end
+
+    assert_pattern do
+      response => {
+        data: ^(Orb::ArrayOf[Orb::Models::EvaluatePriceGroup])
+      }
+    end
   end
 
   def test_fetch

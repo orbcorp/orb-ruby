@@ -2,15 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # percentage_discount => {
-    #   applies_to_price_ids: -> { Orb::ArrayOf[String] === _1 },
-    #   discount_type: Orb::Models::PercentageDiscount::DiscountType,
-    #   percentage_discount: Float,
-    #   reason: String
-    # }
-    # ```
     class PercentageDiscount < Orb::BaseModel
       # @!attribute applies_to_price_ids
       #   List of price_ids that this discount applies to. For plan/plan phase discounts,

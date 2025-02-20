@@ -26,6 +26,18 @@ class Orb::Test::Resources::Customers::CreditsTest < Minitest::Test
     assert_pattern do
       row => Orb::Models::Customers::CreditListResponse
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        balance: Float,
+        effective_date: Time | nil,
+        expiry_date: Time | nil,
+        maximum_initial_balance: Float | nil,
+        per_unit_cost_basis: String | nil,
+        status: Orb::Models::Customers::CreditListResponse::Status
+      }
+    end
   end
 
   def test_list_by_external_id
@@ -43,6 +55,18 @@ class Orb::Test::Resources::Customers::CreditsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Orb::Models::Customers::CreditListByExternalIDResponse
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        balance: Float,
+        effective_date: Time | nil,
+        expiry_date: Time | nil,
+        maximum_initial_balance: Float | nil,
+        per_unit_cost_basis: String | nil,
+        status: Orb::Models::Customers::CreditListByExternalIDResponse::Status
+      }
     end
   end
 end

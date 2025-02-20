@@ -112,17 +112,6 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # line_item => {
-      #   end_date: Date,
-      #   item_id: String,
-      #   model_type: Orb::Models::InvoiceCreateParams::LineItem::ModelType,
-      #   name: String,
-      #   quantity: Float,
-      #   **_
-      # }
-      # ```
       class LineItem < Orb::BaseModel
         # @!attribute end_date
         #   A date string to specify the line item's end date in the customer's timezone.
@@ -196,12 +185,6 @@ module Orb
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # unit_config => {
-        #   unit_amount: String
-        # }
-        # ```
         class UnitConfig < Orb::BaseModel
           # @!attribute unit_amount
           #   Rate per unit of usage

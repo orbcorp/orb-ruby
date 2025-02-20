@@ -18,5 +18,16 @@ class Orb::Test::Resources::DimensionalPriceGroups::ExternalDimensionalPriceGrou
     assert_pattern do
       response => Orb::Models::DimensionalPriceGroup
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        billable_metric_id: String,
+        dimensions: ^(Orb::ArrayOf[String]),
+        external_dimensional_price_group_id: String | nil,
+        metadata: ^(Orb::HashOf[String]),
+        name: String
+      }
+    end
   end
 end

@@ -82,15 +82,6 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # invoice_settings => {
-          #   auto_collection: Orb::BooleanModel,
-          #   net_terms: Integer,
-          #   memo: String,
-          #   require_successful_payment: Orb::BooleanModel
-          # }
-          # ```
           class InvoiceSettings < Orb::BaseModel
             # @!attribute auto_collection
             #   Whether the credits purchase invoice should auto collect with the customer's

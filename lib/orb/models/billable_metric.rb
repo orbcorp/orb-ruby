@@ -2,16 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # billable_metric => {
-    #   id: String,
-    #   description: String,
-    #   item: Orb::Models::Item,
-    #   metadata: -> { Orb::HashOf[String] === _1 },
-    #   name: String
-    # }
-    # ```
     class BillableMetric < Orb::BaseModel
       # @!attribute id
       #

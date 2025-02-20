@@ -2,13 +2,6 @@
 
 module Orb
   module Models
-    # @example
-    # ```ruby
-    # dimensional_price_groups_api => {
-    #   data: -> { Orb::ArrayOf[Orb::Models::DimensionalPriceGroup] === _1 },
-    #   pagination_metadata: Orb::Models::PaginationMetadata
-    # }
-    # ```
     class DimensionalPriceGroupsAPI < Orb::BaseModel
       # @!attribute data
       #

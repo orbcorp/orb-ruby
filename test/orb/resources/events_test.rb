@@ -21,6 +21,12 @@ class Orb::Test::Resources::EventsTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::EventUpdateResponse
     end
+
+    assert_pattern do
+      response => {
+        amended: String
+      }
+    end
   end
 
   def test_deprecate
@@ -28,6 +34,12 @@ class Orb::Test::Resources::EventsTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::EventDeprecateResponse
+    end
+
+    assert_pattern do
+      response => {
+        deprecated: String
+      }
     end
   end
 
@@ -46,6 +58,13 @@ class Orb::Test::Resources::EventsTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::EventIngestResponse
     end
+
+    assert_pattern do
+      response => {
+        validation_failed: ^(Orb::ArrayOf[Orb::Models::EventIngestResponse::ValidationFailed]),
+        debug: Orb::Models::EventIngestResponse::Debug | nil
+      }
+    end
   end
 
   def test_search_required_params
@@ -53,6 +72,12 @@ class Orb::Test::Resources::EventsTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::EventSearchResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Orb::ArrayOf[Orb::Models::EventSearchResponse::Data])
+      }
     end
   end
 end

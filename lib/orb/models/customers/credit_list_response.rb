@@ -3,17 +3,6 @@
 module Orb
   module Models
     module Customers
-      # @example
-      # ```ruby
-      # credit_list_response => {
-      #   id: String,
-      #   balance: Float,
-      #   effective_date: Time,
-      #   expiry_date: Time,
-      #   maximum_initial_balance: Float,
-      #   **_
-      # }
-      # ```
       class CreditListResponse < Orb::BaseModel
         # @!attribute id
         #

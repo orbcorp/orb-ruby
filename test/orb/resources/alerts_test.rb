@@ -16,6 +16,21 @@ class Orb::Test::Resources::AlertsTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::Alert
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        currency: String | nil,
+        customer: Orb::Models::Alert::Customer | nil,
+        enabled: Orb::BooleanModel,
+        metric: Orb::Models::Alert::Metric | nil,
+        plan: Orb::Models::Alert::Plan | nil,
+        subscription: Orb::Models::Alert::Subscription | nil,
+        thresholds: ^(Orb::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
+        type: Orb::Models::Alert::Type
+      }
+    end
   end
 
   def test_update_required_params
@@ -23,6 +38,21 @@ class Orb::Test::Resources::AlertsTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::Alert
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        currency: String | nil,
+        customer: Orb::Models::Alert::Customer | nil,
+        enabled: Orb::BooleanModel,
+        metric: Orb::Models::Alert::Metric | nil,
+        plan: Orb::Models::Alert::Plan | nil,
+        subscription: Orb::Models::Alert::Subscription | nil,
+        thresholds: ^(Orb::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
+        type: Orb::Models::Alert::Type
+      }
     end
   end
 
@@ -44,6 +74,21 @@ class Orb::Test::Resources::AlertsTest < Minitest::Test
     assert_pattern do
       row => Orb::Models::Alert
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        created_at: Time,
+        currency: String | nil,
+        customer: Orb::Models::Alert::Customer | nil,
+        enabled: Orb::BooleanModel,
+        metric: Orb::Models::Alert::Metric | nil,
+        plan: Orb::Models::Alert::Plan | nil,
+        subscription: Orb::Models::Alert::Subscription | nil,
+        thresholds: ^(Orb::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
+        type: Orb::Models::Alert::Type
+      }
+    end
   end
 
   def test_create_for_customer_required_params
@@ -51,6 +96,21 @@ class Orb::Test::Resources::AlertsTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::Alert
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        currency: String | nil,
+        customer: Orb::Models::Alert::Customer | nil,
+        enabled: Orb::BooleanModel,
+        metric: Orb::Models::Alert::Metric | nil,
+        plan: Orb::Models::Alert::Plan | nil,
+        subscription: Orb::Models::Alert::Subscription | nil,
+        thresholds: ^(Orb::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
+        type: Orb::Models::Alert::Type
+      }
     end
   end
 
@@ -64,6 +124,21 @@ class Orb::Test::Resources::AlertsTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::Alert
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        currency: String | nil,
+        customer: Orb::Models::Alert::Customer | nil,
+        enabled: Orb::BooleanModel,
+        metric: Orb::Models::Alert::Metric | nil,
+        plan: Orb::Models::Alert::Plan | nil,
+        subscription: Orb::Models::Alert::Subscription | nil,
+        thresholds: ^(Orb::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
+        type: Orb::Models::Alert::Type
+      }
+    end
   end
 
   def test_create_for_subscription_required_params
@@ -76,6 +151,21 @@ class Orb::Test::Resources::AlertsTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::Alert
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        currency: String | nil,
+        customer: Orb::Models::Alert::Customer | nil,
+        enabled: Orb::BooleanModel,
+        metric: Orb::Models::Alert::Metric | nil,
+        plan: Orb::Models::Alert::Plan | nil,
+        subscription: Orb::Models::Alert::Subscription | nil,
+        thresholds: ^(Orb::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
+        type: Orb::Models::Alert::Type
+      }
+    end
   end
 
   def test_disable
@@ -84,6 +174,21 @@ class Orb::Test::Resources::AlertsTest < Minitest::Test
     assert_pattern do
       response => Orb::Models::Alert
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        currency: String | nil,
+        customer: Orb::Models::Alert::Customer | nil,
+        enabled: Orb::BooleanModel,
+        metric: Orb::Models::Alert::Metric | nil,
+        plan: Orb::Models::Alert::Plan | nil,
+        subscription: Orb::Models::Alert::Subscription | nil,
+        thresholds: ^(Orb::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
+        type: Orb::Models::Alert::Type
+      }
+    end
   end
 
   def test_enable
@@ -91,6 +196,21 @@ class Orb::Test::Resources::AlertsTest < Minitest::Test
 
     assert_pattern do
       response => Orb::Models::Alert
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        currency: String | nil,
+        customer: Orb::Models::Alert::Customer | nil,
+        enabled: Orb::BooleanModel,
+        metric: Orb::Models::Alert::Metric | nil,
+        plan: Orb::Models::Alert::Plan | nil,
+        subscription: Orb::Models::Alert::Subscription | nil,
+        thresholds: ^(Orb::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
+        type: Orb::Models::Alert::Type
+      }
     end
   end
 end
