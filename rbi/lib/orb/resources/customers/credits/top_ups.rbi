@@ -13,6 +13,7 @@ module Orb
               invoice_settings: Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings,
               per_unit_cost_basis: String,
               threshold: String,
+              active_from: T.nilable(Time),
               expires_after: T.nilable(Integer),
               expires_after_unit: T.nilable(Symbol),
               request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
@@ -26,6 +27,7 @@ module Orb
             invoice_settings:,
             per_unit_cost_basis:,
             threshold:,
+            active_from: nil,
             expires_after: nil,
             expires_after_unit: nil,
             request_options: {}
@@ -63,6 +65,7 @@ module Orb
               invoice_settings: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::InvoiceSettings,
               per_unit_cost_basis: String,
               threshold: String,
+              active_from: T.nilable(Time),
               expires_after: T.nilable(Integer),
               expires_after_unit: T.nilable(Symbol),
               request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
@@ -76,6 +79,7 @@ module Orb
             invoice_settings:,
             per_unit_cost_basis:,
             threshold:,
+            active_from: nil,
             expires_after: nil,
             expires_after_unit: nil,
             request_options: {}

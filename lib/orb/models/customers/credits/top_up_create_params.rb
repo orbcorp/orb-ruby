@@ -41,6 +41,13 @@ module Orb
           #   @return [String]
           required :threshold, String
 
+          # @!attribute active_from
+          #   The date from which the top-up is active. If unspecified, the top-up is active
+          #     immediately.
+          #
+          #   @return [Time, nil]
+          optional :active_from, Time, nil?: true
+
           # @!attribute expires_after
           #   The number of days or months after which the top-up expires. If unspecified, it
           #     does not expire.
@@ -62,6 +69,7 @@ module Orb
           #   # @param invoice_settings [Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings]
           #   # @param per_unit_cost_basis [String]
           #   # @param threshold [String]
+          #   # @param active_from [Time, nil]
           #   # @param expires_after [Integer, nil]
           #   # @param expires_after_unit [Symbol, Orb::Models::Customers::Credits::TopUpCreateParams::ExpiresAfterUnit, nil]
           #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
@@ -72,6 +80,7 @@ module Orb
           #     invoice_settings:,
           #     per_unit_cost_basis:,
           #     threshold:,
+          #     active_from: nil,
           #     expires_after: nil,
           #     expires_after_unit: nil,
           #     request_options: {},
