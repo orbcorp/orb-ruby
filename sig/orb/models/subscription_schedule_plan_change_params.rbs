@@ -26,7 +26,8 @@ module Orb
         remove_prices: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::RemovePrice]?,
         replace_adjustments: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment]?,
         replace_prices: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice]?,
-        trial_duration_days: Integer?
+        trial_duration_days: Integer?,
+        usage_customer_ids: ::Array[String]?
       }
       & Orb::request_parameters
 
@@ -84,6 +85,8 @@ module Orb
 
       attr_accessor trial_duration_days: Integer?
 
+      attr_accessor usage_customer_ids: ::Array[String]?
+
       def initialize:
         (
           change_option: Orb::Models::SubscriptionSchedulePlanChangeParams::change_option,
@@ -111,6 +114,7 @@ module Orb
           replace_adjustments: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment]?,
           replace_prices: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice]?,
           trial_duration_days: Integer?,
+          usage_customer_ids: ::Array[String]?,
           request_options: Orb::request_opts
         ) -> void
         | (

@@ -11,6 +11,7 @@ module Orb
         currency: String?,
         email_delivery: bool?,
         external_customer_id: String?,
+        hierarchy: Orb::Models::CustomerCreateParams::Hierarchy?,
         metadata: ::Hash[Symbol, String?]?,
         payment_provider: Orb::Models::CustomerCreateParams::payment_provider?,
         payment_provider_id: String?,
@@ -44,6 +45,8 @@ module Orb
 
       attr_accessor external_customer_id: String?
 
+      attr_accessor hierarchy: Orb::Models::CustomerCreateParams::Hierarchy?
+
       attr_accessor metadata: ::Hash[Symbol, String?]?
 
       attr_accessor payment_provider: Orb::Models::CustomerCreateParams::payment_provider?
@@ -71,6 +74,7 @@ module Orb
           currency: String?,
           email_delivery: bool?,
           external_customer_id: String?,
+          hierarchy: Orb::Models::CustomerCreateParams::Hierarchy?,
           metadata: ::Hash[Symbol, String?]?,
           payment_provider: Orb::Models::CustomerCreateParams::payment_provider?,
           payment_provider_id: String?,
@@ -165,6 +169,28 @@ module Orb
           ) -> void
 
         def to_hash: -> Orb::Models::CustomerCreateParams::billing_address
+      end
+
+      type hierarchy =
+        { child_customer_ids: ::Array[String], parent_customer_id: String? }
+
+      class Hierarchy < Orb::BaseModel
+        attr_reader child_customer_ids: ::Array[String]?
+
+        def child_customer_ids=: (::Array[String]) -> ::Array[String]
+
+        attr_accessor parent_customer_id: String?
+
+        def initialize:
+          (
+            child_customer_ids: ::Array[String],
+            parent_customer_id: String?
+          ) -> void
+          | (
+            ?Orb::Models::CustomerCreateParams::hierarchy | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::CustomerCreateParams::hierarchy
       end
 
       type payment_provider =

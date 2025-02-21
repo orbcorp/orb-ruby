@@ -13,6 +13,7 @@ module Orb
         email_delivery: bool,
         exempt_from_automated_tax: bool?,
         external_customer_id: String?,
+        hierarchy: Orb::Models::Customer::Hierarchy,
         metadata: ::Hash[Symbol, String],
         name: String,
         payment_provider: Orb::Models::Customer::payment_provider?,
@@ -48,6 +49,8 @@ module Orb
 
       attr_accessor external_customer_id: String?
 
+      attr_accessor hierarchy: Orb::Models::Customer::Hierarchy
+
       attr_accessor metadata: ::Hash[Symbol, String]
 
       attr_accessor name: String
@@ -81,6 +84,7 @@ module Orb
           email_delivery: bool,
           exempt_from_automated_tax: bool?,
           external_customer_id: String?,
+          hierarchy: Orb::Models::Customer::Hierarchy,
           metadata: ::Hash[Symbol, String],
           name: String,
           payment_provider: Orb::Models::Customer::payment_provider?,
@@ -133,6 +137,59 @@ module Orb
           ) -> void
 
         def to_hash: -> Orb::Models::Customer::billing_address
+      end
+
+      type hierarchy =
+        {
+          children: ::Array[Orb::Models::Customer::Hierarchy::Child],
+          parent: Orb::Models::Customer::Hierarchy::Parent?
+        }
+
+      class Hierarchy < Orb::BaseModel
+        attr_accessor children: ::Array[Orb::Models::Customer::Hierarchy::Child]
+
+        attr_accessor parent: Orb::Models::Customer::Hierarchy::Parent?
+
+        def initialize:
+          (
+            children: ::Array[Orb::Models::Customer::Hierarchy::Child],
+            parent: Orb::Models::Customer::Hierarchy::Parent?
+          ) -> void
+          | (?Orb::Models::Customer::hierarchy | Orb::BaseModel data) -> void
+
+        def to_hash: -> Orb::Models::Customer::hierarchy
+
+        type child = { id: String, external_customer_id: String? }
+
+        class Child < Orb::BaseModel
+          attr_accessor id: String
+
+          attr_accessor external_customer_id: String?
+
+          def initialize:
+            (id: String, external_customer_id: String?) -> void
+            | (
+              ?Orb::Models::Customer::Hierarchy::child | Orb::BaseModel data
+            ) -> void
+
+          def to_hash: -> Orb::Models::Customer::Hierarchy::child
+        end
+
+        type parent = { id: String, external_customer_id: String? }
+
+        class Parent < Orb::BaseModel
+          attr_accessor id: String
+
+          attr_accessor external_customer_id: String?
+
+          def initialize:
+            (id: String, external_customer_id: String?) -> void
+            | (
+              ?Orb::Models::Customer::Hierarchy::parent | Orb::BaseModel data
+            ) -> void
+
+          def to_hash: -> Orb::Models::Customer::Hierarchy::parent
+        end
       end
 
       type payment_provider =

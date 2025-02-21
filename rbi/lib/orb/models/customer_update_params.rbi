@@ -76,6 +76,17 @@ module Orb
       def external_customer_id=(_)
       end
 
+      sig { returns(T.nilable(Orb::Models::CustomerUpdateParams::Hierarchy)) }
+      def hierarchy
+      end
+
+      sig do
+        params(_: T.nilable(Orb::Models::CustomerUpdateParams::Hierarchy))
+          .returns(T.nilable(Orb::Models::CustomerUpdateParams::Hierarchy))
+      end
+      def hierarchy=(_)
+      end
+
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
       def metadata
       end
@@ -188,6 +199,7 @@ module Orb
           email: T.nilable(String),
           email_delivery: T.nilable(T::Boolean),
           external_customer_id: T.nilable(String),
+          hierarchy: T.nilable(Orb::Models::CustomerUpdateParams::Hierarchy),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           name: T.nilable(String),
           payment_provider: T.nilable(Symbol),
@@ -214,6 +226,7 @@ module Orb
         email: nil,
         email_delivery: nil,
         external_customer_id: nil,
+        hierarchy: nil,
         metadata: nil,
         name: nil,
         payment_provider: nil,
@@ -238,6 +251,7 @@ module Orb
               email: T.nilable(String),
               email_delivery: T.nilable(T::Boolean),
               external_customer_id: T.nilable(String),
+              hierarchy: T.nilable(Orb::Models::CustomerUpdateParams::Hierarchy),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               name: T.nilable(String),
               payment_provider: T.nilable(Symbol),
@@ -410,6 +424,34 @@ module Orb
                 state: T.nilable(String)
               }
             )
+        end
+        def to_hash
+        end
+      end
+
+      class Hierarchy < Orb::BaseModel
+        sig { returns(T.nilable(T::Array[String])) }
+        def child_customer_ids
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def child_customer_ids=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def parent_customer_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def parent_customer_id=(_)
+        end
+
+        sig { params(child_customer_ids: T::Array[String], parent_customer_id: T.nilable(String)).void }
+        def initialize(child_customer_ids: nil, parent_customer_id: nil)
+        end
+
+        sig do
+          override.returns({child_customer_ids: T::Array[String], parent_customer_id: T.nilable(String)})
         end
         def to_hash
         end
