@@ -220,6 +220,17 @@ module Orb
       #   @return [Integer, nil]
       optional :trial_duration_days, Integer, nil?: true
 
+      # @!attribute usage_customer_ids
+      #   A list of customer IDs whose usage events will be aggregated and billed under
+      #     this subscription. By default, a subscription only considers usage events
+      #     associated with its attached customer's customer_id. When usage_customer_ids is
+      #     provided, the subscription includes usage events from the specified customers
+      #     only. Provided usage_customer_ids must be either the customer for this
+      #     subscription itself, or any of that customer's children.
+      #
+      #   @return [Array<String>, nil]
+      optional :usage_customer_ids, Orb::ArrayOf[String], nil?: true
+
       # @!parse
       #   # @param add_adjustments [Array<Orb::Models::SubscriptionCreateParams::AddAdjustment>, nil]
       #   # @param add_prices [Array<Orb::Models::SubscriptionCreateParams::AddPrice>, nil]
@@ -251,6 +262,7 @@ module Orb
       #   # @param replace_prices [Array<Orb::Models::SubscriptionCreateParams::ReplacePrice>, nil]
       #   # @param start_date [Time, nil]
       #   # @param trial_duration_days [Integer, nil]
+      #   # @param usage_customer_ids [Array<String>, nil]
       #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
@@ -284,6 +296,7 @@ module Orb
       #     replace_prices: nil,
       #     start_date: nil,
       #     trial_duration_days: nil,
+      #     usage_customer_ids: nil,
       #     request_options: {},
       #     **
       #   )

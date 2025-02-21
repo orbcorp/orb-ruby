@@ -94,6 +94,14 @@ module Orb
       def external_customer_id=(_)
       end
 
+      sig { returns(Orb::Models::Customer::Hierarchy) }
+      def hierarchy
+      end
+
+      sig { params(_: Orb::Models::Customer::Hierarchy).returns(Orb::Models::Customer::Hierarchy) }
+      def hierarchy=(_)
+      end
+
       sig { returns(T::Hash[Symbol, String]) }
       def metadata
       end
@@ -196,6 +204,7 @@ module Orb
           email_delivery: T::Boolean,
           exempt_from_automated_tax: T.nilable(T::Boolean),
           external_customer_id: T.nilable(String),
+          hierarchy: Orb::Models::Customer::Hierarchy,
           metadata: T::Hash[Symbol, String],
           name: String,
           payment_provider: T.nilable(Symbol),
@@ -221,6 +230,7 @@ module Orb
         email_delivery:,
         exempt_from_automated_tax:,
         external_customer_id:,
+        hierarchy:,
         metadata:,
         name:,
         payment_provider:,
@@ -249,6 +259,7 @@ module Orb
               email_delivery: T::Boolean,
               exempt_from_automated_tax: T.nilable(T::Boolean),
               external_customer_id: T.nilable(String),
+              hierarchy: Orb::Models::Customer::Hierarchy,
               metadata: T::Hash[Symbol, String],
               name: String,
               payment_provider: T.nilable(Symbol),
@@ -342,6 +353,104 @@ module Orb
             )
         end
         def to_hash
+        end
+      end
+
+      class Hierarchy < Orb::BaseModel
+        sig { returns(T::Array[Orb::Models::Customer::Hierarchy::Child]) }
+        def children
+        end
+
+        sig do
+          params(_: T::Array[Orb::Models::Customer::Hierarchy::Child])
+            .returns(T::Array[Orb::Models::Customer::Hierarchy::Child])
+        end
+        def children=(_)
+        end
+
+        sig { returns(T.nilable(Orb::Models::Customer::Hierarchy::Parent)) }
+        def parent
+        end
+
+        sig do
+          params(_: T.nilable(Orb::Models::Customer::Hierarchy::Parent))
+            .returns(T.nilable(Orb::Models::Customer::Hierarchy::Parent))
+        end
+        def parent=(_)
+        end
+
+        sig do
+          params(
+            children: T::Array[Orb::Models::Customer::Hierarchy::Child],
+            parent: T.nilable(Orb::Models::Customer::Hierarchy::Parent)
+          )
+            .void
+        end
+        def initialize(children:, parent:)
+        end
+
+        sig do
+          override
+            .returns(
+              {
+                children: T::Array[Orb::Models::Customer::Hierarchy::Child],
+                parent: T.nilable(Orb::Models::Customer::Hierarchy::Parent)
+              }
+            )
+        end
+        def to_hash
+        end
+
+        class Child < Orb::BaseModel
+          sig { returns(String) }
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
+
+          sig { returns(T.nilable(String)) }
+          def external_customer_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def external_customer_id=(_)
+          end
+
+          sig { params(id: String, external_customer_id: T.nilable(String)).void }
+          def initialize(id:, external_customer_id:)
+          end
+
+          sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
+          def to_hash
+          end
+        end
+
+        class Parent < Orb::BaseModel
+          sig { returns(String) }
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
+
+          sig { returns(T.nilable(String)) }
+          def external_customer_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def external_customer_id=(_)
+          end
+
+          sig { params(id: String, external_customer_id: T.nilable(String)).void }
+          def initialize(id:, external_customer_id:)
+          end
+
+          sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
+          def to_hash
+          end
         end
       end
 

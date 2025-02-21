@@ -36,6 +36,7 @@ module Orb
           replace_prices: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice]?,
           start_date: Time?,
           trial_duration_days: Integer?,
+          usage_customer_ids: ::Array[String]?,
           request_options: Orb::request_opts
         ) -> Orb::Models::SubscriptionCreateResponse
 
@@ -196,6 +197,7 @@ module Orb
           replace_adjustments: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment]?,
           replace_prices: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice]?,
           trial_duration_days: Integer?,
+          usage_customer_ids: ::Array[String]?,
           request_options: Orb::request_opts
         ) -> Orb::Models::SubscriptionSchedulePlanChangeResponse
 

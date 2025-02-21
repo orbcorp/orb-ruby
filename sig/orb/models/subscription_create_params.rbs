@@ -31,7 +31,8 @@ module Orb
         replace_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::ReplaceAdjustment]?,
         replace_prices: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice]?,
         start_date: Time?,
-        trial_duration_days: Integer?
+        trial_duration_days: Integer?,
+        usage_customer_ids: ::Array[String]?
       }
       & Orb::request_parameters
 
@@ -101,6 +102,8 @@ module Orb
 
       attr_accessor trial_duration_days: Integer?
 
+      attr_accessor usage_customer_ids: ::Array[String]?
+
       def initialize:
         (
           add_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::AddAdjustment]?,
@@ -133,6 +136,7 @@ module Orb
           replace_prices: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice]?,
           start_date: Time?,
           trial_duration_days: Integer?,
+          usage_customer_ids: ::Array[String]?,
           request_options: Orb::request_opts
         ) -> void
         | (

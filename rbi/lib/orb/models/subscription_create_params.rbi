@@ -270,6 +270,14 @@ module Orb
       def trial_duration_days=(_)
       end
 
+      sig { returns(T.nilable(T::Array[String])) }
+      def usage_customer_ids
+      end
+
+      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
+      def usage_customer_ids=(_)
+      end
+
       sig do
         params(
           add_adjustments: T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::AddAdjustment]),
@@ -302,6 +310,7 @@ module Orb
           replace_prices: T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice]),
           start_date: T.nilable(Time),
           trial_duration_days: T.nilable(Integer),
+          usage_customer_ids: T.nilable(T::Array[String]),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .void
@@ -337,6 +346,7 @@ module Orb
         replace_prices: nil,
         start_date: nil,
         trial_duration_days: nil,
+        usage_customer_ids: nil,
         request_options: {}
       )
       end
@@ -375,6 +385,7 @@ module Orb
               replace_prices: T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice]),
               start_date: T.nilable(Time),
               trial_duration_days: T.nilable(Integer),
+              usage_customer_ids: T.nilable(T::Array[String]),
               request_options: Orb::RequestOptions
             }
           )

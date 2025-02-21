@@ -53,6 +53,8 @@ module Orb
       #     system as an alias for this Customer. Use this field to identify a customer by
       #     an existing identifier in your system.
       #
+      #   @option params [Orb::Models::CustomerCreateParams::Hierarchy, nil] :hierarchy The hierarchical relationships for this customer.
+      #
       #   @option params [Hash{Symbol=>String, nil}, nil] :metadata User-specified key/value pairs for the resource. Individual keys can be removed
       #     by setting the value to `null`, and the entire metadata mapping can be cleared
       #     by setting `metadata` to `null`.
@@ -225,6 +227,8 @@ module Orb
       #
       #   @option params [String, nil] :external_customer_id The external customer ID. This can only be set if empty and the customer has no
       #     past or current subscriptions.
+      #
+      #   @option params [Orb::Models::CustomerUpdateParams::Hierarchy, nil] :hierarchy The hierarchical relationships for this customer.
       #
       #   @option params [Hash{Symbol=>String, nil}, nil] :metadata User-specified key/value pairs for the resource. Individual keys can be removed
       #     by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -568,6 +572,8 @@ module Orb
       #
       #   @option params [String, nil] :external_customer_id The external customer ID. This can only be set if empty and the customer has no
       #     past or current subscriptions.
+      #
+      #   @option params [Orb::Models::CustomerUpdateByExternalIDParams::Hierarchy, nil] :hierarchy The hierarchical relationships for this customer.
       #
       #   @option params [Hash{Symbol=>String, nil}, nil] :metadata User-specified key/value pairs for the resource. Individual keys can be removed
       #     by setting the value to `null`, and the entire metadata mapping can be cleared
