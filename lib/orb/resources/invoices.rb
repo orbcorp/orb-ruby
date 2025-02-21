@@ -286,6 +286,10 @@ module Orb
       #   invoice used $10 of customer balance, that amount will be added back to the
       #   customer balance upon voiding.
       #
+      #   If the invoice was used to purchase a credit block, but the invoice is not yet
+      #   paid, the credit block will be voided. If the invoice was created due to a
+      #   top-up, the top-up will be disabled.
+      #
       # @param invoice_id [String]
       #
       # @param params [Orb::Models::InvoiceVoidParams, Hash{Symbol=>Object}] .

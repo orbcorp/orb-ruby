@@ -51,6 +51,14 @@ module Orb
           def threshold=(_)
           end
 
+          sig { returns(T.nilable(Time)) }
+          def active_from
+          end
+
+          sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+          def active_from=(_)
+          end
+
           sig { returns(T.nilable(Integer)) }
           def expires_after
           end
@@ -74,6 +82,7 @@ module Orb
               invoice_settings: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::InvoiceSettings,
               per_unit_cost_basis: String,
               threshold: String,
+              active_from: T.nilable(Time),
               expires_after: T.nilable(Integer),
               expires_after_unit: T.nilable(Symbol),
               request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
@@ -86,6 +95,7 @@ module Orb
             invoice_settings:,
             per_unit_cost_basis:,
             threshold:,
+            active_from: nil,
             expires_after: nil,
             expires_after_unit: nil,
             request_options: {}
@@ -101,6 +111,7 @@ module Orb
                   invoice_settings: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::InvoiceSettings,
                   per_unit_cost_basis: String,
                   threshold: String,
+                  active_from: T.nilable(Time),
                   expires_after: T.nilable(Integer),
                   expires_after_unit: T.nilable(Symbol),
                   request_options: Orb::RequestOptions
