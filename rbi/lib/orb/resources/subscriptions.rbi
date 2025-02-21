@@ -35,6 +35,7 @@ module Orb
           replace_prices: T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice]),
           start_date: T.nilable(Time),
           trial_duration_days: T.nilable(Integer),
+          usage_customer_ids: T.nilable(T::Array[String]),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Orb::Models::SubscriptionCreateResponse)
@@ -70,6 +71,7 @@ module Orb
         replace_prices: nil,
         start_date: nil,
         trial_duration_days: nil,
+        usage_customer_ids: nil,
         request_options: {}
       )
       end
@@ -290,6 +292,7 @@ module Orb
           replace_adjustments: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment]),
           replace_prices: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice]),
           trial_duration_days: T.nilable(Integer),
+          usage_customer_ids: T.nilable(T::Array[String]),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Orb::Models::SubscriptionSchedulePlanChangeResponse)
@@ -321,6 +324,7 @@ module Orb
         replace_adjustments: nil,
         replace_prices: nil,
         trial_duration_days: nil,
+        usage_customer_ids: nil,
         request_options: {}
       )
       end

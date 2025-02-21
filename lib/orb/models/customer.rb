@@ -65,6 +65,12 @@ module Orb
       #   @return [String, nil]
       required :external_customer_id, String, nil?: true
 
+      # @!attribute hierarchy
+      #   The hierarchical relationships for this customer.
+      #
+      #   @return [Orb::Models::Customer::Hierarchy]
+      required :hierarchy, -> { Orb::Models::Customer::Hierarchy }
+
       # @!attribute metadata
       #   User specified key-value pairs for the resource. If not present, this defaults
       #     to an empty dictionary. Individual keys can be removed by setting the value to
@@ -266,6 +272,7 @@ module Orb
       #   # @param email_delivery [Boolean]
       #   # @param exempt_from_automated_tax [Boolean, nil]
       #   # @param external_customer_id [String, nil]
+      #   # @param hierarchy [Orb::Models::Customer::Hierarchy]
       #   # @param metadata [Hash{Symbol=>String}]
       #   # @param name [String]
       #   # @param payment_provider [Symbol, Orb::Models::Customer::PaymentProvider, nil]
@@ -289,6 +296,7 @@ module Orb
       #     email_delivery:,
       #     exempt_from_automated_tax:,
       #     external_customer_id:,
+      #     hierarchy:,
       #     metadata:,
       #     name:,
       #     payment_provider:,
@@ -348,6 +356,68 @@ module Orb
         #   def initialize(city:, country:, line1:, line2:, postal_code:, state:, **) = super
 
         # def initialize: (Hash | Orb::BaseModel) -> void
+      end
+
+      class Hierarchy < Orb::BaseModel
+        # @!attribute children
+        #
+        #   @return [Array<Orb::Models::Customer::Hierarchy::Child>]
+        required :children, -> { Orb::ArrayOf[Orb::Models::Customer::Hierarchy::Child] }
+
+        # @!attribute parent
+        #
+        #   @return [Orb::Models::Customer::Hierarchy::Parent, nil]
+        required :parent, -> { Orb::Models::Customer::Hierarchy::Parent }, nil?: true
+
+        # @!parse
+        #   # The hierarchical relationships for this customer.
+        #   #
+        #   # @param children [Array<Orb::Models::Customer::Hierarchy::Child>]
+        #   # @param parent [Orb::Models::Customer::Hierarchy::Parent, nil]
+        #   #
+        #   def initialize(children:, parent:, **) = super
+
+        # def initialize: (Hash | Orb::BaseModel) -> void
+
+        class Child < Orb::BaseModel
+          # @!attribute id
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute external_customer_id
+          #
+          #   @return [String, nil]
+          required :external_customer_id, String, nil?: true
+
+          # @!parse
+          #   # @param id [String]
+          #   # @param external_customer_id [String, nil]
+          #   #
+          #   def initialize(id:, external_customer_id:, **) = super
+
+          # def initialize: (Hash | Orb::BaseModel) -> void
+        end
+
+        class Parent < Orb::BaseModel
+          # @!attribute id
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute external_customer_id
+          #
+          #   @return [String, nil]
+          required :external_customer_id, String, nil?: true
+
+          # @!parse
+          #   # @param id [String]
+          #   # @param external_customer_id [String, nil]
+          #   #
+          #   def initialize(id:, external_customer_id:, **) = super
+
+          # def initialize: (Hash | Orb::BaseModel) -> void
+        end
       end
 
       # @abstract
