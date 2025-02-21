@@ -29,6 +29,9 @@ module Orb
           #   @option params [String] :threshold The threshold at which to trigger the top-up. If the balance is at or below this
           #     threshold, the top-up will be triggered.
           #
+          #   @option params [Time, nil] :active_from The date from which the top-up is active. If unspecified, the top-up is active
+          #     immediately.
+          #
           #   @option params [Integer, nil] :expires_after The number of days or months after which the top-up expires. If unspecified, it
           #     does not expire.
           #
@@ -124,6 +127,9 @@ module Orb
           #
           #   @option params [String] :threshold The threshold at which to trigger the top-up. If the balance is at or below this
           #     threshold, the top-up will be triggered.
+          #
+          #   @option params [Time, nil] :active_from The date from which the top-up is active. If unspecified, the top-up is active
+          #     immediately.
           #
           #   @option params [Integer, nil] :expires_after The number of days or months after which the top-up expires. If unspecified, it
           #     does not expire.

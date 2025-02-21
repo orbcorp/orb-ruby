@@ -9,6 +9,7 @@ module Orb
             invoice_settings: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::InvoiceSettings,
             per_unit_cost_basis: String,
             threshold: String,
+            active_from: Time?,
             expires_after: Integer?,
             expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::expires_after_unit?
           }
@@ -28,6 +29,8 @@ module Orb
 
           attr_accessor threshold: String
 
+          attr_accessor active_from: Time?
+
           attr_accessor expires_after: Integer?
 
           attr_accessor expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::expires_after_unit?
@@ -39,6 +42,7 @@ module Orb
               invoice_settings: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::InvoiceSettings,
               per_unit_cost_basis: String,
               threshold: String,
+              active_from: Time?,
               expires_after: Integer?,
               expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::expires_after_unit?,
               request_options: Orb::request_opts
