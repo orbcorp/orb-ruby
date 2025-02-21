@@ -348,6 +348,13 @@ module Orb
       #     value specified in the plan. If `0` is provided, the trial on the plan will be
       #     skipped.
       #
+      #   @option params [Array<String>, nil] :usage_customer_ids A list of customer IDs whose usage events will be aggregated and billed under
+      #     this subscription. By default, a subscription only considers usage events
+      #     associated with its attached customer's customer_id. When usage_customer_ids is
+      #     provided, the subscription includes usage events from the specified customers
+      #     only. Provided usage_customer_ids must be either the customer for this
+      #     subscription itself, or any of that customer's children.
+      #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionCreateResponse]
@@ -1251,6 +1258,13 @@ module Orb
       #   @option params [Integer, nil] :trial_duration_days The duration of the trial period in days. If not provided, this defaults to the
       #     value specified in the plan. If `0` is provided, the trial on the plan will be
       #     skipped.
+      #
+      #   @option params [Array<String>, nil] :usage_customer_ids A list of customer IDs whose usage events will be aggregated and billed under
+      #     this subscription. By default, a subscription only considers usage events
+      #     associated with its attached customer's customer_id. When usage_customer_ids is
+      #     provided, the subscription includes usage events from the specified customers
+      #     only. Provided usage_customer_ids must be either the customer for this
+      #     subscription itself, or any of that customer's children.
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #

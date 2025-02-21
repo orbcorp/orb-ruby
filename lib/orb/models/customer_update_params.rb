@@ -59,6 +59,12 @@ module Orb
       #   @return [String, nil]
       optional :external_customer_id, String, nil?: true
 
+      # @!attribute hierarchy
+      #   The hierarchical relationships for this customer.
+      #
+      #   @return [Orb::Models::CustomerUpdateParams::Hierarchy, nil]
+      optional :hierarchy, -> { Orb::Models::CustomerUpdateParams::Hierarchy }, nil?: true
+
       # @!attribute metadata
       #   User-specified key/value pairs for the resource. Individual keys can be removed
       #     by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -228,6 +234,7 @@ module Orb
       #   # @param email [String, nil]
       #   # @param email_delivery [Boolean, nil]
       #   # @param external_customer_id [String, nil]
+      #   # @param hierarchy [Orb::Models::CustomerUpdateParams::Hierarchy, nil]
       #   # @param metadata [Hash{Symbol=>String, nil}, nil]
       #   # @param name [String, nil]
       #   # @param payment_provider [Symbol, Orb::Models::CustomerUpdateParams::PaymentProvider, nil]
@@ -247,6 +254,7 @@ module Orb
       #     email: nil,
       #     email_delivery: nil,
       #     external_customer_id: nil,
+      #     hierarchy: nil,
       #     metadata: nil,
       #     name: nil,
       #     payment_provider: nil,
@@ -345,6 +353,36 @@ module Orb
         #   # @param state [String, nil]
         #   #
         #   def initialize(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil, **) = super
+
+        # def initialize: (Hash | Orb::BaseModel) -> void
+      end
+
+      class Hierarchy < Orb::BaseModel
+        # @!attribute [r] child_customer_ids
+        #   A list of child customer IDs to add to the hierarchy. The desired child
+        #     customers must not already be part of another hierarchy.
+        #
+        #   @return [Array<String>, nil]
+        optional :child_customer_ids, Orb::ArrayOf[String]
+
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :child_customer_ids
+
+        # @!attribute parent_customer_id
+        #   The ID of the parent customer in the hierarchy. The desired parent customer must
+        #     not be a child of another customer.
+        #
+        #   @return [String, nil]
+        optional :parent_customer_id, String, nil?: true
+
+        # @!parse
+        #   # The hierarchical relationships for this customer.
+        #   #
+        #   # @param child_customer_ids [Array<String>]
+        #   # @param parent_customer_id [String, nil]
+        #   #
+        #   def initialize(child_customer_ids: nil, parent_customer_id: nil, **) = super
 
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
