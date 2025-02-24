@@ -369,7 +369,6 @@ module Orb
   # @abstract
   #
   class Union
-    extend Orb::Extern
     extend Orb::Converter
 
     # @private
@@ -842,7 +841,6 @@ module Orb
   # @abstract
   #
   class BaseModel
-    extend Orb::Extern
     extend Orb::Converter
 
     # @private
