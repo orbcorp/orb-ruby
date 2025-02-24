@@ -80,7 +80,6 @@ module Orb
   end
 
   class Union
-    extend Orb::Extern
     extend Orb::Converter
 
     private def self.known_variants: -> ::Array[[Symbol?, Proc]]
@@ -165,7 +164,6 @@ module Orb
   end
 
   class BaseModel
-    extend Orb::Extern
     extend Orb::Converter
 
     type known_field = { mode: (:coerce | :dump)?, required: bool }

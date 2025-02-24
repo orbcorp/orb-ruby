@@ -153,7 +153,6 @@ module Orb
   class Union
     abstract!
 
-    extend Orb::Extern
     extend Orb::Converter
 
     sig { returns(T::Array[[T.nilable(Symbol), Proc]]) }
@@ -331,7 +330,6 @@ module Orb
   class BaseModel
     abstract!
 
-    extend Orb::Extern
     extend Orb::Converter
 
     KnownFieldShape = T.type_alias { {mode: T.nilable(Symbol), required: T::Boolean} }
