@@ -1410,7 +1410,7 @@ module Orb
       #
       #   @option params [Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption] :change_option Determines when the change takes effect. Note that if `effective_date` is
       #     specified, this defaults to `effective_date`. Otherwise, this defaults to
-      #     `immediate` unless it's explicitly set to `upcoming_invoice.
+      #     `immediate` unless it's explicitly set to `upcoming_invoice`.
       #
       #   @option params [Date, nil] :effective_date The date that the quantity change should take effect, localized to the
       #     customer's timezone. Ifthis parameter is not passed in, the quantity change is

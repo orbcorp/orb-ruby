@@ -29,7 +29,7 @@ module Orb
       # @!attribute [r] change_option
       #   Determines when the change takes effect. Note that if `effective_date` is
       #     specified, this defaults to `effective_date`. Otherwise, this defaults to
-      #     `immediate` unless it's explicitly set to `upcoming_invoice.
+      #     `immediate` unless it's explicitly set to `upcoming_invoice`.
       #
       #   @return [Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption, nil]
       optional :change_option, enum: -> { Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption }
@@ -72,7 +72,7 @@ module Orb
       #
       # Determines when the change takes effect. Note that if `effective_date` is
       #   specified, this defaults to `effective_date`. Otherwise, this defaults to
-      #   `immediate` unless it's explicitly set to `upcoming_invoice.
+      #   `immediate` unless it's explicitly set to `upcoming_invoice`.
       #
       # @example
       # ```ruby
