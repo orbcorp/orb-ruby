@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.14 (2025-02-25)
+
+Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.13...v0.1.0-alpha.14)
+
+### Features
+
+* **api:** api update ([#71](https://github.com/orbcorp/orb-ruby/issues/71)) ([764f299](https://github.com/orbcorp/orb-ruby/commit/764f2994cf9b747cd2aff3c1e5a64de106736534))
+
+
+### Chores
+
+* **internal:** prune unused `extern` references ([#70](https://github.com/orbcorp/orb-ruby/issues/70)) ([4106e51](https://github.com/orbcorp/orb-ruby/commit/4106e51d8e188ca27ebce51e851c2a501a58d3aa))
+* **internal:** version bump ([#68](https://github.com/orbcorp/orb-ruby/issues/68)) ([f3ee7c1](https://github.com/orbcorp/orb-ruby/commit/f3ee7c1b71a56d535b20d85e4d092f4c0c5b348b))
+
 ## 0.1.0-alpha.13 (2025-02-21)
 
 Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
