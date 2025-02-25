@@ -32,6 +32,8 @@ module Orb
 
     MAX_REDIRECTS = 20
 
+    PLATFORM_HEADERS = T::Hash[String, String]
+
     sig { params(req: Orb::BaseClient::RequestComponentsShape).void }
     def self.validate!(req)
     end
