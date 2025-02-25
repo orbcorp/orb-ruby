@@ -1755,6 +1755,8 @@ module Orb
           end
         end
 
+        # @deprecated
+        #
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -1780,6 +1782,8 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @deprecated
+        #
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
