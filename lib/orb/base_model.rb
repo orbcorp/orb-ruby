@@ -503,9 +503,7 @@ module Orb
         end
       end
 
-      # rubocop:disable Style/NumberedParametersLimit
       _, variant = matches.sort! { _2.first <=> _1.first }.find { |score,| !score.zero? }
-      # rubocop:enable Style/NumberedParametersLimit
       variant.nil? ? value : Orb::Converter.coerce(variant, value)
     end
 
