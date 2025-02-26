@@ -1,5 +1,7 @@
 module Orb
   module Util
+    def self?.monotonic_secs: -> Float
+
     def self?.arch: -> String
 
     def self?.os: -> String
@@ -16,16 +18,9 @@ module Orb
 
     def self?.coerce_hash: (top input) -> (::Hash[top, top] | top)
 
-    def self?.monotonic_secs: -> Float
-
-    def self?.suppress: (
-      *::Array[Exception] exceptions,
-      sentinel: top?
-    ) {
-      -> top?
-    } -> top?
-
     OMIT: top
+
+    def self?.deep_merge_lr: (top lhs, top rhs, concat: bool) -> top
 
     def self?.deep_merge: (
       *::Array[top] values,
@@ -45,6 +40,12 @@ module Orb
 
     def self?.interpolate_path: (String | ::Array[String] path) -> String
 
+    def self?.decode_query: (String? query) -> ::Hash[String, ::Array[String]]
+
+    def self?.encode_query: (
+      ::Hash[String, (::Array[String] | String)?]? query
+    ) -> String?
+
     type parsed_uri =
       {
         scheme: String?,
@@ -63,15 +64,16 @@ module Orb
       Orb::Util::parsed_uri rhs
     ) -> URI::Generic
 
-    def self?.decode_query: (String? query) -> ::Hash[String, ::Array[String]]
-
-    def self?.encode_query: (
-      ::Hash[String, (::Array[String] | String)?]? query
-    ) -> String?
-
     def self?.normalized_headers: (
       *::Array[::Hash[String, (String | Integer)?]] headers
     ) -> ::Hash[String, String]
+
+    def self?.encode_multipart_formdata: (
+      StringIO io,
+      boundary: String,
+      key: Symbol | String,
+      val: top
+    ) -> void
 
     def self?.encode_content: (::Hash[String, String] headers, top body) -> top
 
@@ -80,12 +82,5 @@ module Orb
       stream: Enumerable[String],
       suppress_error: bool
     ) -> top
-
-    def self?.encode_multipart_formdata: (
-      StringIO io,
-      boundary: String,
-      key: Symbol | String,
-      val: top
-    ) -> void
   end
 end
