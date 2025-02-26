@@ -15,11 +15,7 @@ module Orb
 
     def self.build_request: (Orb::PooledNetRequester::request request) -> top
 
-    private def with_pool: (
-      URI::Generic url
-    ) {
-      (top arg0, Enumerator::Yielder arg1) -> void
-    } -> void
+    private def with_pool: (URI::Generic url) { (top arg0) -> void } -> void
 
     def execute: (
       Orb::PooledNetRequester::request request

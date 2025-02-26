@@ -90,14 +90,12 @@ module Orb
       def follow_redirect(request, status:, response_headers:)
         method, url, headers = request.fetch_values(:method, :url, :headers)
         location =
-          Orb::Util.suppress(ArgumentError) do
+          Kernel.then do
             URI.join(url, response_headers["location"])
+          rescue ArgumentError
+            message = "Server responded with status #{status} but no valid location header."
+            raise Orb::APIConnectionError.new(url: url, message: message)
           end
-
-        unless location
-          message = "Server responded with status #{status} but no valid location header."
-          raise Orb::APIConnectionError.new(url: url, message: message)
-        end
 
         request = {**request, url: location}
 
@@ -286,8 +284,10 @@ module Orb
       retry_header = headers["retry-after"]
       return span if (span = Float(retry_header, exception: false))
 
-      span = retry_header && Orb::Util.suppress(ArgumentError) do
-        Time.httpdate(retry_header) - Time.now
+      span = retry_header&.then do
+        Time.httpdate(_1) - Time.now
+      rescue ArgumentError
+        nil
       end
       return span if span
 
