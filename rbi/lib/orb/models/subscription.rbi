@@ -1529,6 +1529,14 @@ module Orb
         def end_date=(_)
         end
 
+        sig { returns(T.nilable(String)) }
+        def filter
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def filter=(_)
+        end
+
         sig { returns(T.nilable(T::Array[Orb::Models::Subscription::PriceInterval::FixedFeeQuantityTransition])) }
         def fixed_fee_quantity_transitions
         end
@@ -1654,6 +1662,14 @@ module Orb
         def start_date=(_)
         end
 
+        sig { returns(T.nilable(T::Array[String])) }
+        def usage_customer_ids
+        end
+
+        sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
+        def usage_customer_ids=(_)
+        end
+
         sig do
           params(
             id: String,
@@ -1661,6 +1677,7 @@ module Orb
             current_billing_period_end_date: T.nilable(Time),
             current_billing_period_start_date: T.nilable(Time),
             end_date: T.nilable(Time),
+            filter: T.nilable(String),
             fixed_fee_quantity_transitions: T.nilable(T::Array[Orb::Models::Subscription::PriceInterval::FixedFeeQuantityTransition]),
             price: T.any(
               Orb::Models::Price::UnitPrice,
@@ -1692,7 +1709,8 @@ module Orb
               Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
               Orb::Models::Price::CumulativeGroupedBulkPrice
             ),
-            start_date: Time
+            start_date: Time,
+            usage_customer_ids: T.nilable(T::Array[String])
           )
             .void
         end
@@ -1702,9 +1720,11 @@ module Orb
           current_billing_period_end_date:,
           current_billing_period_start_date:,
           end_date:,
+          filter:,
           fixed_fee_quantity_transitions:,
           price:,
-          start_date:
+          start_date:,
+          usage_customer_ids:
         )
         end
 
@@ -1717,6 +1737,7 @@ module Orb
                 current_billing_period_end_date: T.nilable(Time),
                 current_billing_period_start_date: T.nilable(Time),
                 end_date: T.nilable(Time),
+                filter: T.nilable(String),
                 fixed_fee_quantity_transitions: T.nilable(T::Array[Orb::Models::Subscription::PriceInterval::FixedFeeQuantityTransition]),
                 price: T.any(
                   Orb::Models::Price::UnitPrice,
@@ -1748,7 +1769,8 @@ module Orb
                   Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
                   Orb::Models::Price::CumulativeGroupedBulkPrice
                 ),
-                start_date: Time
+                start_date: Time,
+                usage_customer_ids: T.nilable(T::Array[String])
               }
             )
         end
