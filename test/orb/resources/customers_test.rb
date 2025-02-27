@@ -11,7 +11,7 @@ class Orb::Test::Resources::CustomersTest < Minitest::Test
   end
 
   def test_create_required_params
-    response = @orb.customers.create(email: "dev@stainlessapi.com", name: "x")
+    response = @orb.customers.create(email: "dev@stainless.com", name: "x")
 
     assert_pattern do
       response => Orb::Models::Customer
