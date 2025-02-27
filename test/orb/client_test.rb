@@ -86,7 +86,7 @@ class OrbTest < Minitest::Test
     orb.requester = requester
 
     assert_raises(Orb::InternalServerError) do
-      orb.customers.create(email: "dev@stainlessapi.com", name: "x")
+      orb.customers.create(email: "dev@stainless.com", name: "x")
     end
 
     assert_equal(3, requester.attempts.length)
@@ -98,7 +98,7 @@ class OrbTest < Minitest::Test
     orb.requester = requester
 
     assert_raises(Orb::InternalServerError) do
-      orb.customers.create(email: "dev@stainlessapi.com", name: "x")
+      orb.customers.create(email: "dev@stainless.com", name: "x")
     end
 
     assert_equal(4, requester.attempts.length)
@@ -110,7 +110,7 @@ class OrbTest < Minitest::Test
     orb.requester = requester
 
     assert_raises(Orb::InternalServerError) do
-      orb.customers.create(email: "dev@stainlessapi.com", name: "x", request_options: {max_retries: 3})
+      orb.customers.create(email: "dev@stainless.com", name: "x", request_options: {max_retries: 3})
     end
 
     assert_equal(4, requester.attempts.length)
@@ -122,7 +122,7 @@ class OrbTest < Minitest::Test
     orb.requester = requester
 
     assert_raises(Orb::InternalServerError) do
-      orb.customers.create(email: "dev@stainlessapi.com", name: "x", request_options: {max_retries: 4})
+      orb.customers.create(email: "dev@stainless.com", name: "x", request_options: {max_retries: 4})
     end
 
     assert_equal(5, requester.attempts.length)
@@ -134,7 +134,7 @@ class OrbTest < Minitest::Test
     orb.requester = requester
 
     assert_raises(Orb::InternalServerError) do
-      orb.customers.create(email: "dev@stainlessapi.com", name: "x")
+      orb.customers.create(email: "dev@stainless.com", name: "x")
     end
 
     assert_equal(2, requester.attempts.length)
@@ -148,7 +148,7 @@ class OrbTest < Minitest::Test
 
     assert_raises(Orb::InternalServerError) do
       Thread.current.thread_variable_set(:time_now, Time.now)
-      orb.customers.create(email: "dev@stainlessapi.com", name: "x")
+      orb.customers.create(email: "dev@stainless.com", name: "x")
       Thread.current.thread_variable_set(:time_now, nil)
     end
 
@@ -162,7 +162,7 @@ class OrbTest < Minitest::Test
     orb.requester = requester
 
     assert_raises(Orb::InternalServerError) do
-      orb.customers.create(email: "dev@stainlessapi.com", name: "x")
+      orb.customers.create(email: "dev@stainless.com", name: "x")
     end
 
     assert_equal(2, requester.attempts.length)
@@ -175,7 +175,7 @@ class OrbTest < Minitest::Test
     orb.requester = requester
 
     assert_raises(Orb::InternalServerError) do
-      orb.customers.create(email: "dev@stainlessapi.com", name: "x")
+      orb.customers.create(email: "dev@stainless.com", name: "x")
     end
 
     retry_count_headers = requester.attempts.map { _1[:headers]["x-stainless-retry-count"] }
@@ -189,7 +189,7 @@ class OrbTest < Minitest::Test
 
     assert_raises(Orb::InternalServerError) do
       orb.customers.create(
-        email: "dev@stainlessapi.com",
+        email: "dev@stainless.com",
         name: "x",
         request_options: {extra_headers: {"x-stainless-retry-count" => nil}}
       )
@@ -206,7 +206,7 @@ class OrbTest < Minitest::Test
 
     assert_raises(Orb::InternalServerError) do
       orb.customers.create(
-        email: "dev@stainlessapi.com",
+        email: "dev@stainless.com",
         name: "x",
         request_options: {extra_headers: {"x-stainless-retry-count" => "42"}}
       )
@@ -222,7 +222,7 @@ class OrbTest < Minitest::Test
     orb.requester = requester
 
     assert_raises(Orb::APIConnectionError) do
-      orb.customers.create(email: "dev@stainlessapi.com", name: "x", request_options: {extra_headers: {}})
+      orb.customers.create(email: "dev@stainless.com", name: "x", request_options: {extra_headers: {}})
     end
 
     assert_equal("/redirected", requester.attempts.last[:url].path)
@@ -240,7 +240,7 @@ class OrbTest < Minitest::Test
     orb.requester = requester
 
     assert_raises(Orb::APIConnectionError) do
-      orb.customers.create(email: "dev@stainlessapi.com", name: "x", request_options: {extra_headers: {}})
+      orb.customers.create(email: "dev@stainless.com", name: "x", request_options: {extra_headers: {}})
     end
 
     assert_equal("/redirected", requester.attempts.last[:url].path)
@@ -256,7 +256,7 @@ class OrbTest < Minitest::Test
 
     assert_raises(Orb::APIConnectionError) do
       orb.customers.create(
-        email: "dev@stainlessapi.com",
+        email: "dev@stainless.com",
         name: "x",
         request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
       )
@@ -275,7 +275,7 @@ class OrbTest < Minitest::Test
 
     assert_raises(Orb::APIConnectionError) do
       orb.customers.create(
-        email: "dev@stainlessapi.com",
+        email: "dev@stainless.com",
         name: "x",
         request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
       )
@@ -290,7 +290,7 @@ class OrbTest < Minitest::Test
     orb.requester = requester
 
     assert_raises(Orb::InternalServerError) do
-      orb.customers.create(email: "dev@stainlessapi.com", name: "x", request_options: {max_retries: 1})
+      orb.customers.create(email: "dev@stainless.com", name: "x", request_options: {max_retries: 1})
     end
 
     idempotency_headers = requester.attempts.map { _1[:headers]["Idempotency-Key".downcase] }
@@ -307,7 +307,7 @@ class OrbTest < Minitest::Test
 
     assert_raises(Orb::InternalServerError) do
       orb.customers.create(
-        email: "dev@stainlessapi.com",
+        email: "dev@stainless.com",
         name: "x",
         request_options: {max_retries: 1, idempotency_key: "user-supplied-key"}
       )
@@ -320,7 +320,7 @@ class OrbTest < Minitest::Test
     orb = Orb::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
     requester = MockRequester.new(200, {}, {})
     orb.requester = requester
-    orb.customers.create(email: "dev@stainlessapi.com", name: "x")
+    orb.customers.create(email: "dev@stainless.com", name: "x")
     headers = requester.attempts.first[:headers]
 
     refute_empty(headers["accept"])
