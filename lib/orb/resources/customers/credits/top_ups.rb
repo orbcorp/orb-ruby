@@ -79,7 +79,8 @@ module Orb
             )
           end
 
-          # Delete top-up
+          # This deactivates the top-up and voids any invoices associated with pending
+          #   credit blocks purchased through the top-up.
           #
           # @param top_up_id [String]
           #
@@ -151,7 +152,8 @@ module Orb
             )
           end
 
-          # Delete top-up by external ID
+          # This deactivates the top-up and voids any invoices associated with pending
+          #   credit blocks purchased through the top-up.
           #
           # @param top_up_id [String]
           #
