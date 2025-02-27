@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0-alpha.15 (2025-02-27)
+
+Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.14...v0.1.0-alpha.15)
+
+### Features
+
+* add deprecation notice to enum members and resources ([#74](https://github.com/orbcorp/orb-ruby/issues/74)) ([0cecdf1](https://github.com/orbcorp/orb-ruby/commit/0cecdf1e6cf6db440f2054a4eee82de2b90c5f4f))
+* **api:** api update ([#78](https://github.com/orbcorp/orb-ruby/issues/78)) ([e26110d](https://github.com/orbcorp/orb-ruby/commit/e26110dc8f300916944fd4dfe1cdeb16eaa4a434))
+* isolate platform headers ([#75](https://github.com/orbcorp/orb-ruby/issues/75)) ([eda97ab](https://github.com/orbcorp/orb-ruby/commit/eda97abd0731fef8fdc57ef87b1561994e523cce))
+
+
+### Chores
+
+* **internal:** group related utils together ([#77](https://github.com/orbcorp/orb-ruby/issues/77)) ([e23b128](https://github.com/orbcorp/orb-ruby/commit/e23b12879de3ef390cc88ab5ef3a623d579a1281))
+* **internal:** version bump ([#72](https://github.com/orbcorp/orb-ruby/issues/72)) ([3176998](https://github.com/orbcorp/orb-ruby/commit/3176998d707c6a87564818d1c6d3de33fbc80738))
+* **refactor:** improve requester internals ([#76](https://github.com/orbcorp/orb-ruby/issues/76)) ([4a1ea7b](https://github.com/orbcorp/orb-ruby/commit/4a1ea7b11a546d74f1e20d229c43ec30ac58b4c5))
+
 ## 0.1.0-alpha.14 (2025-02-25)
 
 Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.13...v0.1.0-alpha.14)
