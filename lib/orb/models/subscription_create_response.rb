@@ -1133,6 +1133,12 @@ module Orb
         #   @return [Time, nil]
         required :end_date, Time, nil?: true
 
+        # @!attribute filter
+        #   An additional filter to apply to usage queries.
+        #
+        #   @return [String, nil]
+        required :filter, String, nil?: true
+
         # @!attribute fixed_fee_quantity_transitions
         #   The fixed fee quantity transitions for this price interval. This is only
         #     relevant for fixed fees.
@@ -1164,6 +1170,13 @@ module Orb
         #   @return [Time]
         required :start_date, Time
 
+        # @!attribute usage_customer_ids
+        #   A list of customer IDs whose usage events will be aggregated and billed under
+        #     this price interval.
+        #
+        #   @return [Array<String>, nil]
+        required :usage_customer_ids, Orb::ArrayOf[String], nil?: true
+
         # @!parse
         #   # The Price Interval resource represents a period of time for which a price will
         #   #   bill on a subscription. A subscription’s price intervals define its billing
@@ -1174,9 +1187,11 @@ module Orb
         #   # @param current_billing_period_end_date [Time, nil]
         #   # @param current_billing_period_start_date [Time, nil]
         #   # @param end_date [Time, nil]
+        #   # @param filter [String, nil]
         #   # @param fixed_fee_quantity_transitions [Array<Orb::Models::SubscriptionCreateResponse::PriceInterval::FixedFeeQuantityTransition>, nil]
         #   # @param price [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice]
         #   # @param start_date [Time]
+        #   # @param usage_customer_ids [Array<String>, nil]
         #   #
         #   def initialize(
         #     id:,
@@ -1184,9 +1199,11 @@ module Orb
         #     current_billing_period_end_date:,
         #     current_billing_period_start_date:,
         #     end_date:,
+        #     filter:,
         #     fixed_fee_quantity_transitions:,
         #     price:,
         #     start_date:,
+        #     usage_customer_ids:,
         #     **
         #   )
         #     super

@@ -641,9 +641,11 @@ module Orb
           current_billing_period_end_date: Time?,
           current_billing_period_start_date: Time?,
           end_date: Time?,
+          filter: String?,
           fixed_fee_quantity_transitions: ::Array[Orb::Models::SubscriptionTriggerPhaseResponse::PriceInterval::FixedFeeQuantityTransition]?,
           price: Orb::Models::price,
-          start_date: Time
+          start_date: Time,
+          usage_customer_ids: ::Array[String]?
         }
 
       class PriceInterval < Orb::BaseModel
@@ -657,11 +659,15 @@ module Orb
 
         attr_accessor end_date: Time?
 
+        attr_accessor filter: String?
+
         attr_accessor fixed_fee_quantity_transitions: ::Array[Orb::Models::SubscriptionTriggerPhaseResponse::PriceInterval::FixedFeeQuantityTransition]?
 
         attr_accessor price: Orb::Models::price
 
         attr_accessor start_date: Time
+
+        attr_accessor usage_customer_ids: ::Array[String]?
 
         def initialize:
           (
@@ -670,9 +676,11 @@ module Orb
             current_billing_period_end_date: Time?,
             current_billing_period_start_date: Time?,
             end_date: Time?,
+            filter: String?,
             fixed_fee_quantity_transitions: ::Array[Orb::Models::SubscriptionTriggerPhaseResponse::PriceInterval::FixedFeeQuantityTransition]?,
             price: Orb::Models::price,
-            start_date: Time
+            start_date: Time,
+            usage_customer_ids: ::Array[String]?
           ) -> void
           | (
             ?Orb::Models::SubscriptionTriggerPhaseResponse::price_interval

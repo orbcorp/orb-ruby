@@ -63,11 +63,13 @@ module Orb
           discounts: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::discount]?,
           end_date: Orb::Models::SubscriptionPriceIntervalsParams::Add::end_date?,
           external_price_id: String?,
+          filter: String?,
           fixed_fee_quantity_transitions: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition]?,
           maximum_amount: Float?,
           minimum_amount: Float?,
           price: Orb::Models::SubscriptionPriceIntervalsParams::Add::price?,
-          price_id: String?
+          price_id: String?,
+          usage_customer_ids: ::Array[String]?
         }
 
       class Add < Orb::BaseModel
@@ -81,6 +83,8 @@ module Orb
 
         attr_accessor external_price_id: String?
 
+        attr_accessor filter: String?
+
         attr_accessor fixed_fee_quantity_transitions: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition]?
 
         attr_accessor maximum_amount: Float?
@@ -91,6 +95,8 @@ module Orb
 
         attr_accessor price_id: String?
 
+        attr_accessor usage_customer_ids: ::Array[String]?
+
         def initialize:
           (
             start_date: Orb::Models::SubscriptionPriceIntervalsParams::Add::start_date,
@@ -98,11 +104,13 @@ module Orb
             discounts: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::discount]?,
             end_date: Orb::Models::SubscriptionPriceIntervalsParams::Add::end_date?,
             external_price_id: String?,
+            filter: String?,
             fixed_fee_quantity_transitions: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition]?,
             maximum_amount: Float?,
             minimum_amount: Float?,
             price: Orb::Models::SubscriptionPriceIntervalsParams::Add::price?,
-            price_id: String?
+            price_id: String?,
+            usage_customer_ids: ::Array[String]?
           ) -> void
           | (
             ?Orb::Models::SubscriptionPriceIntervalsParams::add
@@ -5356,8 +5364,10 @@ module Orb
           price_interval_id: String,
           billing_cycle_day: Integer?,
           end_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::end_date?,
+          filter: String?,
           fixed_fee_quantity_transitions: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition]?,
-          start_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::start_date
+          start_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::start_date,
+          usage_customer_ids: ::Array[String]?
         }
 
       class Edit < Orb::BaseModel
@@ -5367,6 +5377,8 @@ module Orb
 
         attr_accessor end_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::end_date?
 
+        attr_accessor filter: String?
+
         attr_accessor fixed_fee_quantity_transitions: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition]?
 
         attr_reader start_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::start_date?
@@ -5375,13 +5387,17 @@ module Orb
           Orb::Models::SubscriptionPriceIntervalsParams::Edit::start_date
         ) -> Orb::Models::SubscriptionPriceIntervalsParams::Edit::start_date
 
+        attr_accessor usage_customer_ids: ::Array[String]?
+
         def initialize:
           (
             price_interval_id: String,
             billing_cycle_day: Integer?,
             end_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::end_date?,
+            filter: String?,
             fixed_fee_quantity_transitions: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition]?,
-            start_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::start_date
+            start_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::start_date,
+            usage_customer_ids: ::Array[String]?
           ) -> void
           | (
             ?Orb::Models::SubscriptionPriceIntervalsParams::edit

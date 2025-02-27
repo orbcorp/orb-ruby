@@ -116,6 +116,15 @@ module Orb
         #   @return [String, nil]
         optional :external_price_id, String, nil?: true
 
+        # @!attribute filter
+        #   An additional filter to apply to usage queries. This filter must be expressed as
+        #     a boolean
+        #     [computed property](/extensibility/advanced-metrics#computed-properties). If
+        #     null, usage queries will not include any additional filter.
+        #
+        #   @return [String, nil]
+        optional :filter, String, nil?: true
+
         # @!attribute fixed_fee_quantity_transitions
         #   A list of fixed fee quantity transitions to initialize on the price interval.
         #
@@ -150,17 +159,30 @@ module Orb
         #   @return [String, nil]
         optional :price_id, String, nil?: true
 
+        # @!attribute usage_customer_ids
+        #   A list of customer IDs whose usage events will be aggregated and billed under
+        #     this subscription. By default, a subscription only considers usage events
+        #     associated with its attached customer's customer_id. When usage_customer_ids is
+        #     provided, the subscription includes usage events from the specified customers
+        #     only. Provided usage_customer_ids must be either the customer for this
+        #     subscription itself, or any of that customer's children.
+        #
+        #   @return [Array<String>, nil]
+        optional :usage_customer_ids, Orb::ArrayOf[String], nil?: true
+
         # @!parse
         #   # @param start_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate]
         #   # @param allocation_price [Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice, nil]
         #   # @param discounts [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::AmountDiscountCreationParams, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::PercentageDiscountCreationParams, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams>, nil]
         #   # @param end_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
         #   # @param external_price_id [String, nil]
+        #   # @param filter [String, nil]
         #   # @param fixed_fee_quantity_transitions [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition>, nil]
         #   # @param maximum_amount [Float, nil]
         #   # @param minimum_amount [Float, nil]
         #   # @param price [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice, nil]
         #   # @param price_id [String, nil]
+        #   # @param usage_customer_ids [Array<String>, nil]
         #   #
         #   def initialize(
         #     start_date:,
@@ -168,11 +190,13 @@ module Orb
         #     discounts: nil,
         #     end_date: nil,
         #     external_price_id: nil,
+        #     filter: nil,
         #     fixed_fee_quantity_transitions: nil,
         #     maximum_amount: nil,
         #     minimum_amount: nil,
         #     price: nil,
         #     price_id: nil,
+        #     usage_customer_ids: nil,
         #     **
         #   )
         #     super
@@ -9406,6 +9430,15 @@ module Orb
         #   @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
         optional :end_date, union: -> { Orb::Models::SubscriptionPriceIntervalsParams::Edit::EndDate }, nil?: true
 
+        # @!attribute filter
+        #   An additional filter to apply to usage queries. This filter must be expressed as
+        #     a boolean
+        #     [computed property](/extensibility/advanced-metrics#computed-properties). If
+        #     null, usage queries will not include any additional filter.
+        #
+        #   @return [String, nil]
+        optional :filter, String, nil?: true
+
         # @!attribute fixed_fee_quantity_transitions
         #   A list of fixed fee quantity transitions to use for this price interval. Note
         #     that this list will overwrite all existing fixed fee quantity transitions on the
@@ -9427,19 +9460,34 @@ module Orb
         #   # @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate]
         #   attr_writer :start_date
 
+        # @!attribute usage_customer_ids
+        #   A list of customer IDs whose usage events will be aggregated and billed under
+        #     this subscription. By default, a subscription only considers usage events
+        #     associated with its attached customer's customer_id. When usage_customer_ids is
+        #     provided, the subscription includes usage events from the specified customers
+        #     only. Provided usage_customer_ids must be either the customer for this
+        #     subscription itself, or any of that customer's children.
+        #
+        #   @return [Array<String>, nil]
+        optional :usage_customer_ids, Orb::ArrayOf[String], nil?: true
+
         # @!parse
         #   # @param price_interval_id [String]
         #   # @param billing_cycle_day [Integer, nil]
         #   # @param end_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
+        #   # @param filter [String, nil]
         #   # @param fixed_fee_quantity_transitions [Array<Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition>, nil]
         #   # @param start_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate]
+        #   # @param usage_customer_ids [Array<String>, nil]
         #   #
         #   def initialize(
         #     price_interval_id:,
         #     billing_cycle_day: nil,
         #     end_date: nil,
+        #     filter: nil,
         #     fixed_fee_quantity_transitions: nil,
         #     start_date: nil,
+        #     usage_customer_ids: nil,
         #     **
         #   )
         #     super
