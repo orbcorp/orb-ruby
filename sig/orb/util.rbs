@@ -65,7 +65,9 @@ module Orb
     ) -> URI::Generic
 
     def self?.normalized_headers: (
-      *::Array[::Hash[String, (String | Integer)?]] headers
+      *::Hash[String, (String
+      | Integer
+      | ::Array[(String | Integer)?])?] headers
     ) -> ::Hash[String, String]
 
     def self?.encode_multipart_formdata: (
