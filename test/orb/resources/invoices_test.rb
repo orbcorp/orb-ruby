@@ -2,14 +2,7 @@
 
 require_relative "../test_helper"
 
-class Orb::Test::Resources::InvoicesTest < Minitest::Test
-  def before_all
-    @orb = Orb::Client.new(
-      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
-      api_key: "My API Key"
-    )
-  end
-
+class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
   def test_create_required_params
     response = @orb.invoices.create(
       currency: "USD",

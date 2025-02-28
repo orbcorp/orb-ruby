@@ -2,14 +2,7 @@
 
 require_relative "../../test_helper"
 
-class Orb::Test::Resources::Plans::ExternalPlanIDTest < Minitest::Test
-  def before_all
-    @orb = Orb::Client.new(
-      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
-      api_key: "My API Key"
-    )
-  end
-
+class Orb::Test::Resources::Plans::ExternalPlanIDTest < Orb::Test::ResourceTest
   def test_update
     response = @orb.plans.external_plan_id.update("external_plan_id")
 
