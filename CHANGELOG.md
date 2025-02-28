@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.1.0-alpha.16 (2025-02-28)
+
+Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)
+
+### Features
+
+* **internal:** modified tests for thread and fiber safety ([#82](https://github.com/orbcorp/orb-ruby/issues/82)) ([a133366](https://github.com/orbcorp/orb-ruby/commit/a13336658840813e03b78c935b37691794213a58))
+
+
+### Bug Fixes
+
+* better support header parameters ([#83](https://github.com/orbcorp/orb-ruby/issues/83)) ([4ad1f41](https://github.com/orbcorp/orb-ruby/commit/4ad1f41c3238a3d9e089dcfce72079a76868eb1e))
+
+
+### Chores
+
+* **internal:** version bump ([#79](https://github.com/orbcorp/orb-ruby/issues/79)) ([01fd69a](https://github.com/orbcorp/orb-ruby/commit/01fd69a0b7be1b6b394b9b3c39410d4782382ce3))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#81](https://github.com/orbcorp/orb-ruby/issues/81)) ([333e153](https://github.com/orbcorp/orb-ruby/commit/333e1539913d5b7e5298e5de7a6574456b5d8975))
+
 ## 0.1.0-alpha.15 (2025-02-27)
 
 Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.14...v0.1.0-alpha.15)
