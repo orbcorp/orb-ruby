@@ -790,6 +790,7 @@ module Orb
           credits_applied: String,
           discount: Orb::Models::discount?,
           end_date: Time,
+          filter: String?,
           grouping: String?,
           maximum: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum?,
           maximum_amount: String?,
@@ -802,7 +803,8 @@ module Orb
           start_date: Time,
           sub_line_items: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::sub_line_item],
           subtotal: String,
-          tax_amounts: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount]
+          tax_amounts: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount],
+          usage_customer_ids: ::Array[String]?
         }
 
       class LineItem < Orb::BaseModel
@@ -819,6 +821,8 @@ module Orb
         attr_accessor discount: Orb::Models::discount?
 
         attr_accessor end_date: Time
+
+        attr_accessor filter: String?
 
         attr_accessor grouping: String?
 
@@ -846,6 +850,8 @@ module Orb
 
         attr_accessor tax_amounts: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount]
 
+        attr_accessor usage_customer_ids: ::Array[String]?
+
         def initialize:
           (
             id: String,
@@ -855,6 +861,7 @@ module Orb
             credits_applied: String,
             discount: Orb::Models::discount?,
             end_date: Time,
+            filter: String?,
             grouping: String?,
             maximum: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum?,
             maximum_amount: String?,
@@ -867,7 +874,8 @@ module Orb
             start_date: Time,
             sub_line_items: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::sub_line_item],
             subtotal: String,
-            tax_amounts: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount]
+            tax_amounts: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount],
+            usage_customer_ids: ::Array[String]?
           ) -> void
           | (
             ?Orb::Models::InvoiceFetchUpcomingResponse::line_item

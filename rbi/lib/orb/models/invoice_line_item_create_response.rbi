@@ -127,6 +127,14 @@ module Orb
       end
 
       sig { returns(T.nilable(String)) }
+      def filter
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def filter=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
       def grouping
       end
 
@@ -372,6 +380,14 @@ module Orb
       def tax_amounts=(_)
       end
 
+      sig { returns(T.nilable(T::Array[String])) }
+      def usage_customer_ids
+      end
+
+      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
+      def usage_customer_ids=(_)
+      end
+
       sig do
         params(
           id: String,
@@ -396,6 +412,7 @@ module Orb
             )
           ),
           end_date: Time,
+          filter: T.nilable(String),
           grouping: T.nilable(String),
           maximum: T.nilable(Orb::Models::InvoiceLineItemCreateResponse::Maximum),
           maximum_amount: T.nilable(String),
@@ -445,7 +462,8 @@ module Orb
           )
           ],
           subtotal: String,
-          tax_amounts: T::Array[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount]
+          tax_amounts: T::Array[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount],
+          usage_customer_ids: T.nilable(T::Array[String])
         )
           .void
       end
@@ -457,6 +475,7 @@ module Orb
         credits_applied:,
         discount:,
         end_date:,
+        filter:,
         grouping:,
         maximum:,
         maximum_amount:,
@@ -469,7 +488,8 @@ module Orb
         start_date:,
         sub_line_items:,
         subtotal:,
-        tax_amounts:
+        tax_amounts:,
+        usage_customer_ids:
       )
       end
 
@@ -499,6 +519,7 @@ module Orb
                 )
               ),
               end_date: Time,
+              filter: T.nilable(String),
               grouping: T.nilable(String),
               maximum: T.nilable(Orb::Models::InvoiceLineItemCreateResponse::Maximum),
               maximum_amount: T.nilable(String),
@@ -548,7 +569,8 @@ module Orb
               )
               ],
               subtotal: String,
-              tax_amounts: T::Array[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount]
+              tax_amounts: T::Array[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount],
+              usage_customer_ids: T.nilable(T::Array[String])
             }
           )
       end
