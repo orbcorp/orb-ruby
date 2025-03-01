@@ -1211,6 +1211,12 @@ module Orb
         #   @return [Time]
         required :end_date, Time
 
+        # @!attribute filter
+        #   An additional filter that was used to calculate the usage for this line item.
+        #
+        #   @return [String, nil]
+        required :filter, String, nil?: true
+
         # @!attribute grouping
         #   [DEPRECATED] For configured prices that are split by a grouping key, this will
         #     be populated with the key and a value. The `amount` and `subtotal` will be the
@@ -1302,6 +1308,12 @@ module Orb
         #   @return [Array<Orb::Models::Invoice::LineItem::TaxAmount>]
         required :tax_amounts, -> { Orb::ArrayOf[Orb::Models::Invoice::LineItem::TaxAmount] }
 
+        # @!attribute usage_customer_ids
+        #   A list of customer ids that were used to calculate the usage for this line item.
+        #
+        #   @return [Array<String>, nil]
+        required :usage_customer_ids, Orb::ArrayOf[String], nil?: true
+
         # @!parse
         #   # @param id [String]
         #   # @param adjusted_subtotal [String]
@@ -1310,6 +1322,7 @@ module Orb
         #   # @param credits_applied [String]
         #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param end_date [Time]
+        #   # @param filter [String, nil]
         #   # @param grouping [String, nil]
         #   # @param maximum [Orb::Models::Invoice::LineItem::Maximum, nil]
         #   # @param maximum_amount [String, nil]
@@ -1323,6 +1336,7 @@ module Orb
         #   # @param sub_line_items [Array<Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem>]
         #   # @param subtotal [String]
         #   # @param tax_amounts [Array<Orb::Models::Invoice::LineItem::TaxAmount>]
+        #   # @param usage_customer_ids [Array<String>, nil]
         #   #
         #   def initialize(
         #     id:,
@@ -1332,6 +1346,7 @@ module Orb
         #     credits_applied:,
         #     discount:,
         #     end_date:,
+        #     filter:,
         #     grouping:,
         #     maximum:,
         #     maximum_amount:,
@@ -1345,6 +1360,7 @@ module Orb
         #     sub_line_items:,
         #     subtotal:,
         #     tax_amounts:,
+        #     usage_customer_ids:,
         #     **
         #   )
         #     super

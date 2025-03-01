@@ -26,6 +26,7 @@ class Orb::Test::Resources::InvoiceLineItemsTest < Orb::Test::ResourceTest
         credits_applied: String,
         discount: Orb::Models::Discount | nil,
         end_date: Time,
+        filter: String | nil,
         grouping: String | nil,
         maximum: Orb::Models::InvoiceLineItemCreateResponse::Maximum | nil,
         maximum_amount: String | nil,
@@ -38,7 +39,8 @@ class Orb::Test::Resources::InvoiceLineItemsTest < Orb::Test::ResourceTest
         start_date: Time,
         sub_line_items: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem]),
         subtotal: String,
-        tax_amounts: ^(Orb::ArrayOf[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount])
+        tax_amounts: ^(Orb::ArrayOf[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount]),
+        usage_customer_ids: ^(Orb::ArrayOf[String]) | nil
       }
     end
   end
