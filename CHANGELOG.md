@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.17 (2025-03-01)
+
+Full Changelog: [v0.1.0-alpha.16...v0.1.0-alpha.17](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.16...v0.1.0-alpha.17)
+
+### Features
+
+* **api:** api update ([#87](https://github.com/orbcorp/orb-ruby/issues/87)) ([6ff5a68](https://github.com/orbcorp/orb-ruby/commit/6ff5a682d25a1cbb2f6a304170470d9d3dd70d75))
+
+
+### Chores
+
+* be consistent and use lower case headers everywhere ([#86](https://github.com/orbcorp/orb-ruby/issues/86)) ([5685579](https://github.com/orbcorp/orb-ruby/commit/568557971e59178c9fbc1ff5c652bc877339f99a))
+* **internal:** version bump ([#84](https://github.com/orbcorp/orb-ruby/issues/84)) ([dde5ec6](https://github.com/orbcorp/orb-ruby/commit/dde5ec65592643398e1947680317208ebeb3bb8c))
+
 ## 0.1.0-alpha.16 (2025-02-28)
 
 Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)
