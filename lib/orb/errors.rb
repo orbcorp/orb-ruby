@@ -99,12 +99,13 @@ module Orb
     # @param body [Object, nil]
     # @param request [nil]
     # @param response [nil]
+    # @param message [String, nil]
     #
     # @return [Orb::APIStatusError]
     #
-    def self.for(url:, status:, body:, request:, response:)
+    def self.for(url:, status:, body:, request:, response:, message: nil)
       key = Orb::Util.dig(body, :type)
-      kwargs = {url: url, status: status, body: body, request: request, response: response}
+      kwargs = {url: url, status: status, body: body, request: request, response: response, message: message}
 
       case [status, key]
       in [400, Orb::ConstraintViolation::TYPE]
