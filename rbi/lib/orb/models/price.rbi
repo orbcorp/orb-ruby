@@ -85,7 +85,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -100,7 +100,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -110,7 +110,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -265,7 +265,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -331,7 +331,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -703,7 +703,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -718,7 +718,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -728,7 +728,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -886,7 +886,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -952,7 +952,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -1332,7 +1332,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -1347,7 +1347,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -1357,7 +1357,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -1515,7 +1515,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -1581,7 +1581,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -2014,7 +2014,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -2029,7 +2029,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -2039,7 +2039,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -2197,7 +2197,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -2263,7 +2263,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -2672,7 +2672,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -2687,7 +2687,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -2697,7 +2697,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -2855,7 +2855,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -2921,7 +2921,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -3364,7 +3364,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -3379,7 +3379,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -3389,7 +3389,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -3537,7 +3537,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -3603,7 +3603,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -3993,7 +3993,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -4008,7 +4008,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -4018,7 +4018,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -4166,7 +4166,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -4232,7 +4232,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -4658,7 +4658,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -4673,7 +4673,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -4683,7 +4683,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -4831,7 +4831,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -4897,7 +4897,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -5297,7 +5297,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -5312,7 +5312,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -5322,7 +5322,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -5480,7 +5480,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -5546,7 +5546,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -5900,7 +5900,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -5915,7 +5915,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -5925,7 +5925,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -6083,7 +6083,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -6149,7 +6149,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -6503,7 +6503,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -6518,7 +6518,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -6528,7 +6528,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -6686,7 +6686,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -6752,7 +6752,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -7106,7 +7106,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -7121,7 +7121,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -7131,7 +7131,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -7289,7 +7289,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -7355,7 +7355,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -7709,7 +7709,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -7724,7 +7724,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -7734,7 +7734,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -7892,7 +7892,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -7958,7 +7958,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -8312,7 +8312,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -8327,7 +8327,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -8337,7 +8337,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -8495,7 +8495,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -8561,7 +8561,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -8915,7 +8915,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -8930,7 +8930,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -8940,7 +8940,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -9098,7 +9098,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -9164,7 +9164,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -9518,7 +9518,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -9533,7 +9533,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -9543,7 +9543,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -9704,7 +9704,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -9770,7 +9770,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -10215,7 +10215,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -10230,7 +10230,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -10240,7 +10240,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -10398,7 +10398,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -10464,7 +10464,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -10818,7 +10818,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -10833,7 +10833,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -10843,7 +10843,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -11001,7 +11001,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -11067,7 +11067,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -11421,7 +11421,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -11436,7 +11436,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -11446,7 +11446,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -11604,7 +11604,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -11670,7 +11670,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -12024,7 +12024,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -12039,7 +12039,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -12049,7 +12049,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -12207,7 +12207,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -12273,7 +12273,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -12627,7 +12627,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -12642,7 +12642,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -12652,7 +12652,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -12810,7 +12810,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -12876,7 +12876,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -13230,7 +13230,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -13245,7 +13245,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -13255,7 +13255,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -13413,7 +13413,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -13479,7 +13479,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -13841,7 +13841,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -13856,7 +13856,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -13866,7 +13866,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -14017,7 +14017,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -14083,7 +14083,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -14436,7 +14436,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -14451,7 +14451,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -14461,7 +14461,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -14619,7 +14619,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -14685,7 +14685,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -15039,7 +15039,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -15054,7 +15054,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -15064,7 +15064,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -15222,7 +15222,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -15288,7 +15288,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -15642,7 +15642,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -15657,7 +15657,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -15667,7 +15667,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -15827,7 +15827,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -15893,7 +15893,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -16247,7 +16247,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -16262,7 +16262,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -16272,7 +16272,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -16440,7 +16440,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -16506,7 +16506,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),
@@ -16868,7 +16868,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -16883,7 +16883,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             )
@@ -16893,7 +16893,7 @@ module Orb
                 T.any(
                   Orb::Models::PercentageDiscount,
                   Orb::Models::TrialDiscount,
-                  Orb::Models::Discount::UsageDiscount,
+                  Orb::Models::UsageDiscount,
                   Orb::Models::AmountDiscount
                 )
               )
@@ -17044,7 +17044,7 @@ module Orb
               T.any(
                 Orb::Models::PercentageDiscount,
                 Orb::Models::TrialDiscount,
-                Orb::Models::Discount::UsageDiscount,
+                Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
               )
             ),
@@ -17110,7 +17110,7 @@ module Orb
                   T.any(
                     Orb::Models::PercentageDiscount,
                     Orb::Models::TrialDiscount,
-                    Orb::Models::Discount::UsageDiscount,
+                    Orb::Models::UsageDiscount,
                     Orb::Models::AmountDiscount
                   )
                 ),

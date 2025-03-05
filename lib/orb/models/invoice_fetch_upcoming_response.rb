@@ -1202,7 +1202,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute end_date
@@ -1321,7 +1321,7 @@ module Orb
         #   # @param adjustments [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment>]
         #   # @param amount [String]
         #   # @param credits_applied [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param end_date [Time]
         #   # @param filter [String, nil]
         #   # @param grouping [String, nil]

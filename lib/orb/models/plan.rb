@@ -53,7 +53,7 @@ module Orb
 
       # @!attribute discount
       #
-      #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+      #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
       required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
       # @!attribute external_plan_id
@@ -161,7 +161,7 @@ module Orb
       #   # @param currency [String]
       #   # @param default_invoice_memo [String, nil]
       #   # @param description [String]
-      #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+      #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
       #   # @param external_plan_id [String, nil]
       #   # @param invoicing_currency [String]
       #   # @param maximum [Orb::Models::Plan::Maximum, nil]
@@ -718,7 +718,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute duration
@@ -767,7 +767,7 @@ module Orb
         # @!parse
         #   # @param id [String]
         #   # @param description [String, nil]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param duration [Integer, nil]
         #   # @param duration_unit [Symbol, Orb::Models::Plan::PlanPhase::DurationUnit, nil]
         #   # @param maximum [Orb::Models::Plan::PlanPhase::Maximum, nil]

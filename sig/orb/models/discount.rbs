@@ -3,42 +3,11 @@ module Orb
     type discount =
       Orb::Models::PercentageDiscount
       | Orb::Models::TrialDiscount
-      | Orb::Models::Discount::UsageDiscount
+      | Orb::Models::UsageDiscount
       | Orb::Models::AmountDiscount
 
     class Discount < Orb::Union
-      type usage_discount =
-        {
-          applies_to_price_ids: ::Array[String],
-          discount_type: :usage,
-          usage_discount: Float,
-          reason: String?
-        }
-
-      class UsageDiscount < Orb::BaseModel
-        attr_accessor applies_to_price_ids: ::Array[String]
-
-        attr_accessor discount_type: :usage
-
-        attr_accessor usage_discount: Float
-
-        attr_accessor reason: String?
-
-        def initialize:
-          (
-            applies_to_price_ids: ::Array[String],
-            usage_discount: Float,
-            reason: String?,
-            discount_type: :usage
-          ) -> void
-          | (
-            ?Orb::Models::Discount::usage_discount | Orb::BaseModel data
-          ) -> void
-
-        def to_hash: -> Orb::Models::Discount::usage_discount
-      end
-
-      private def self.variants: -> [[:percentage, Orb::Models::PercentageDiscount], [:trial, Orb::Models::TrialDiscount], [:usage, Orb::Models::Discount::UsageDiscount], [:amount, Orb::Models::AmountDiscount]]
+      private def self.variants: -> [[:percentage, Orb::Models::PercentageDiscount], [:trial, Orb::Models::TrialDiscount], [:usage, Orb::Models::UsageDiscount], [:amount, Orb::Models::AmountDiscount]]
     end
   end
 end
