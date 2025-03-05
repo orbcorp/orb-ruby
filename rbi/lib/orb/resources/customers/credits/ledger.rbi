@@ -53,7 +53,18 @@ module Orb
           sig do
             params(
               customer_id: String,
-              add_credit_ledger_entry_request: Orb::Models::AddCreditLedgerEntryRequest,
+              amount: Float,
+              entry_type: Symbol,
+              expiry_date: T.nilable(Time),
+              target_expiry_date: Date,
+              block_id: String,
+              currency: T.nilable(String),
+              description: T.nilable(String),
+              effective_date: T.nilable(Time),
+              invoice_settings: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings),
+              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+              per_unit_cost_basis: T.nilable(String),
+              void_reason: T.nilable(Symbol),
               request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
             )
               .returns(
@@ -68,13 +79,39 @@ module Orb
                 )
               )
           end
-          def create_entry(customer_id, add_credit_ledger_entry_request:, request_options: {})
+          def create_entry(
+            customer_id,
+            amount:,
+            entry_type:,
+            expiry_date:,
+            target_expiry_date:,
+            block_id:,
+            currency: nil,
+            description: nil,
+            effective_date: nil,
+            invoice_settings: nil,
+            metadata: nil,
+            per_unit_cost_basis: nil,
+            void_reason: nil,
+            request_options: {}
+          )
           end
 
           sig do
             params(
               external_customer_id: String,
-              add_credit_ledger_entry_request: Orb::Models::AddCreditLedgerEntryRequest,
+              amount: Float,
+              entry_type: Symbol,
+              expiry_date: T.nilable(Time),
+              target_expiry_date: Date,
+              block_id: String,
+              currency: T.nilable(String),
+              description: T.nilable(String),
+              effective_date: T.nilable(Time),
+              invoice_settings: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings),
+              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+              per_unit_cost_basis: T.nilable(String),
+              void_reason: T.nilable(Symbol),
               request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
             )
               .returns(
@@ -91,7 +128,18 @@ module Orb
           end
           def create_entry_by_external_id(
             external_customer_id,
-            add_credit_ledger_entry_request:,
+            amount:,
+            entry_type:,
+            expiry_date:,
+            target_expiry_date:,
+            block_id:,
+            currency: nil,
+            description: nil,
+            effective_date: nil,
+            invoice_settings: nil,
+            metadata: nil,
+            per_unit_cost_basis: nil,
+            void_reason: nil,
             request_options: {}
           )
           end

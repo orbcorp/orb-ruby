@@ -262,10 +262,10 @@ module Orb
       #
       # @param params [Orb::Models::SubscriptionCreateParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Array<Orb::Models::AddSubscriptionAdjustmentParams>, nil] :add_adjustments Additional adjustments to be added to the subscription. (Only available for
+      #   @option params [Array<Orb::Models::SubscriptionCreateParams::AddAdjustment>, nil] :add_adjustments Additional adjustments to be added to the subscription. (Only available for
       #     accounts that have migrated off of legacy subscription overrides)
       #
-      #   @option params [Array<Orb::Models::AddSubscriptionPriceParams>, nil] :add_prices Additional prices to be added to the subscription. (Only available for accounts
+      #   @option params [Array<Orb::Models::SubscriptionCreateParams::AddPrice>, nil] :add_prices Additional prices to be added to the subscription. (Only available for accounts
       #     that have migrated off of legacy subscription overrides)
       #
       #   @option params [Boolean] :align_billing_with_subscription_start_date
@@ -329,17 +329,17 @@ module Orb
       #
       #   @option params [Array<Object>, nil] :price_overrides Optionally provide a list of overrides for prices on the plan
       #
-      #   @option params [Array<Orb::Models::RemoveSubscriptionAdjustmentParams>, nil] :remove_adjustments Plan adjustments to be removed from the subscription. (Only available for
+      #   @option params [Array<Orb::Models::SubscriptionCreateParams::RemoveAdjustment>, nil] :remove_adjustments Plan adjustments to be removed from the subscription. (Only available for
       #     accounts that have migrated off of legacy subscription overrides)
       #
-      #   @option params [Array<Orb::Models::RemoveSubscriptionPriceParams>, nil] :remove_prices Plan prices to be removed from the subscription. (Only available for accounts
+      #   @option params [Array<Orb::Models::SubscriptionCreateParams::RemovePrice>, nil] :remove_prices Plan prices to be removed from the subscription. (Only available for accounts
       #     that have migrated off of legacy subscription overrides)
       #
-      #   @option params [Array<Orb::Models::ReplaceSubscriptionAdjustmentParams>, nil] :replace_adjustments Plan adjustments to be replaced with additional adjustments on the subscription.
+      #   @option params [Array<Orb::Models::SubscriptionCreateParams::ReplaceAdjustment>, nil] :replace_adjustments Plan adjustments to be replaced with additional adjustments on the subscription.
       #     (Only available for accounts that have migrated off of legacy subscription
       #     overrides)
       #
-      #   @option params [Array<Orb::Models::ReplaceSubscriptionPriceParams>, nil] :replace_prices Plan prices to be replaced with additional prices on the subscription. (Only
+      #   @option params [Array<Orb::Models::SubscriptionCreateParams::ReplacePrice>, nil] :replace_prices Plan prices to be replaced with additional prices on the subscription. (Only
       #     available for accounts that have migrated off of legacy subscription overrides)
       #
       #   @option params [Time, nil] :start_date
@@ -1182,10 +1182,10 @@ module Orb
       #
       #   @option params [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ChangeOption] :change_option
       #
-      #   @option params [Array<Orb::Models::AddSubscriptionAdjustmentParams>, nil] :add_adjustments Additional adjustments to be added to the subscription. (Only available for
+      #   @option params [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment>, nil] :add_adjustments Additional adjustments to be added to the subscription. (Only available for
       #     accounts that have migrated off of legacy subscription overrides)
       #
-      #   @option params [Array<Orb::Models::AddSubscriptionPriceParams>, nil] :add_prices Additional prices to be added to the subscription. (Only available for accounts
+      #   @option params [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice>, nil] :add_prices Additional prices to be added to the subscription. (Only available for accounts
       #     that have migrated off of legacy subscription overrides)
       #
       #   @option params [Boolean, nil] :align_billing_with_plan_change_date [DEPRECATED] Use billing_cycle_alignment instead. Reset billing periods to be
@@ -1242,17 +1242,17 @@ module Orb
       #
       #   @option params [Array<Object>, nil] :price_overrides Optionally provide a list of overrides for prices on the plan
       #
-      #   @option params [Array<Orb::Models::RemoveSubscriptionAdjustmentParams>, nil] :remove_adjustments Plan adjustments to be removed from the subscription. (Only available for
+      #   @option params [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::RemoveAdjustment>, nil] :remove_adjustments Plan adjustments to be removed from the subscription. (Only available for
       #     accounts that have migrated off of legacy subscription overrides)
       #
-      #   @option params [Array<Orb::Models::RemoveSubscriptionPriceParams>, nil] :remove_prices Plan prices to be removed from the subscription. (Only available for accounts
+      #   @option params [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::RemovePrice>, nil] :remove_prices Plan prices to be removed from the subscription. (Only available for accounts
       #     that have migrated off of legacy subscription overrides)
       #
-      #   @option params [Array<Orb::Models::ReplaceSubscriptionAdjustmentParams>, nil] :replace_adjustments Plan adjustments to be replaced with additional adjustments on the subscription.
+      #   @option params [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment>, nil] :replace_adjustments Plan adjustments to be replaced with additional adjustments on the subscription.
       #     (Only available for accounts that have migrated off of legacy subscription
       #     overrides)
       #
-      #   @option params [Array<Orb::Models::ReplaceSubscriptionPriceParams>, nil] :replace_prices Plan prices to be replaced with additional prices on the subscription. (Only
+      #   @option params [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice>, nil] :replace_prices Plan prices to be replaced with additional prices on the subscription. (Only
       #     available for accounts that have migrated off of legacy subscription overrides)
       #
       #   @option params [Integer, nil] :trial_duration_days The duration of the trial period in days. If not provided, this defaults to the

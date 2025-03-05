@@ -1,20 +1,68 @@
 module Orb
   module Models
     type alert_create_for_external_customer_params =
-      {  } & Orb::request_parameters
+      {
+        currency: String,
+        type: Orb::Models::AlertCreateForExternalCustomerParams::type_,
+        thresholds: ::Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold]?
+      }
+      & Orb::request_parameters
 
-    class AlertCreateForExternalCustomerParams < Orb::Models::CreateCustomerAlertRequest
+    class AlertCreateForExternalCustomerParams < Orb::BaseModel
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      attr_accessor currency: String
+
+      attr_accessor type: Orb::Models::AlertCreateForExternalCustomerParams::type_
+
+      attr_accessor thresholds: ::Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold]?
+
       def initialize:
-        (request_options: Orb::request_opts) -> void
+        (
+          currency: String,
+          type: Orb::Models::AlertCreateForExternalCustomerParams::type_,
+          thresholds: ::Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold]?,
+          request_options: Orb::request_opts
+        ) -> void
         | (
           ?Orb::Models::alert_create_for_external_customer_params
           | Orb::BaseModel data
         ) -> void
 
       def to_hash: -> Orb::Models::alert_create_for_external_customer_params
+
+      type type_ =
+        :usage_exceeded
+        | :cost_exceeded
+        | :credit_balance_depleted
+        | :credit_balance_dropped
+        | :credit_balance_recovered
+
+      class Type < Orb::Enum
+        USAGE_EXCEEDED: :usage_exceeded
+        COST_EXCEEDED: :cost_exceeded
+        CREDIT_BALANCE_DEPLETED: :credit_balance_depleted
+        CREDIT_BALANCE_DROPPED: :credit_balance_dropped
+        CREDIT_BALANCE_RECOVERED: :credit_balance_recovered
+
+        def self.values: -> ::Array[Orb::Models::AlertCreateForExternalCustomerParams::type_]
+      end
+
+      type threshold = { value: Float }
+
+      class Threshold < Orb::BaseModel
+        attr_accessor value: Float
+
+        def initialize:
+          (value: Float) -> void
+          | (
+            ?Orb::Models::AlertCreateForExternalCustomerParams::threshold
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::AlertCreateForExternalCustomerParams::threshold
+      end
     end
   end
 end
