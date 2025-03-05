@@ -14,32 +14,32 @@ class Orb::Test::Resources::InvoiceLineItemsTest < Orb::Test::ResourceTest
     )
 
     assert_pattern do
-      response => Orb::Models::InvoiceLineItemModel
+      response => Orb::Models::InvoiceLineItemCreateResponse
     end
 
     assert_pattern do
       response => {
         id: String,
         adjusted_subtotal: String,
-        adjustments: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLineItemModel::Adjustment]),
+        adjustments: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLineItemCreateResponse::Adjustment]),
         amount: String,
         credits_applied: String,
         discount: Orb::Models::Discount | nil,
         end_date: Time,
         filter: String | nil,
         grouping: String | nil,
-        maximum: Orb::Models::MaximumModel | nil,
+        maximum: Orb::Models::InvoiceLineItemCreateResponse::Maximum | nil,
         maximum_amount: String | nil,
-        minimum: Orb::Models::MinimumModel | nil,
+        minimum: Orb::Models::InvoiceLineItemCreateResponse::Minimum | nil,
         minimum_amount: String | nil,
         name: String,
         partially_invoiced_amount: String,
-        price: Orb::Models::PriceModel | nil,
+        price: Orb::Models::Price | nil,
         quantity: Float,
         start_date: Time,
-        sub_line_items: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLineItemModel::SubLineItem]),
+        sub_line_items: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem]),
         subtotal: String,
-        tax_amounts: ^(Orb::ArrayOf[Orb::Models::TaxAmountModel]),
+        tax_amounts: ^(Orb::ArrayOf[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount]),
         usage_customer_ids: ^(Orb::ArrayOf[String]) | nil
       }
     end

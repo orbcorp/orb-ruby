@@ -8,7 +8,7 @@ module Orb
           alert_id: String,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::AlertModel)
+          .returns(Orb::Models::Alert)
       end
       def retrieve(alert_id, request_options: {})
       end
@@ -16,10 +16,10 @@ module Orb
       sig do
         params(
           alert_configuration_id: String,
-          thresholds: T::Array[Orb::Models::ThresholdModel],
+          thresholds: T::Array[Orb::Models::AlertUpdateParams::Threshold],
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::AlertModel)
+          .returns(Orb::Models::Alert)
       end
       def update(alert_configuration_id, thresholds:, request_options: {})
       end
@@ -37,7 +37,7 @@ module Orb
           subscription_id: T.nilable(String),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Page[Orb::Models::AlertModel])
+          .returns(Orb::Page[Orb::Models::Alert])
       end
       def list(
         created_at_gt: nil,
@@ -58,10 +58,10 @@ module Orb
           customer_id: String,
           currency: String,
           type: Symbol,
-          thresholds: T.nilable(T::Array[Orb::Models::ThresholdModel]),
+          thresholds: T.nilable(T::Array[Orb::Models::CreateCustomerAlertRequest::Threshold]),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::AlertModel)
+          .returns(Orb::Models::Alert)
       end
       def create_for_customer(customer_id, currency:, type:, thresholds: nil, request_options: {})
       end
@@ -71,10 +71,10 @@ module Orb
           external_customer_id: String,
           currency: String,
           type: Symbol,
-          thresholds: T.nilable(T::Array[Orb::Models::ThresholdModel]),
+          thresholds: T.nilable(T::Array[Orb::Models::CreateCustomerAlertRequest::Threshold]),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::AlertModel)
+          .returns(Orb::Models::Alert)
       end
       def create_for_external_customer(
         external_customer_id,
@@ -88,12 +88,12 @@ module Orb
       sig do
         params(
           subscription_id: String,
-          thresholds: T::Array[Orb::Models::ThresholdModel],
+          thresholds: T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold],
           type: Symbol,
           metric_id: T.nilable(String),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::AlertModel)
+          .returns(Orb::Models::Alert)
       end
       def create_for_subscription(subscription_id, thresholds:, type:, metric_id: nil, request_options: {})
       end
@@ -104,7 +104,7 @@ module Orb
           subscription_id: T.nilable(String),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::AlertModel)
+          .returns(Orb::Models::Alert)
       end
       def disable(alert_configuration_id, subscription_id: nil, request_options: {})
       end
@@ -115,7 +115,7 @@ module Orb
           subscription_id: T.nilable(String),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::AlertModel)
+          .returns(Orb::Models::Alert)
       end
       def enable(alert_configuration_id, subscription_id: nil, request_options: {})
       end

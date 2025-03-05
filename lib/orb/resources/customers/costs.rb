@@ -139,7 +139,7 @@ module Orb
         #
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
-        # @return [Orb::Models::CustomerCostsModel]
+        # @return [Orb::Models::Customers::CostListResponse]
         #
         def list(customer_id, params = {})
           parsed, options = Orb::Models::Customers::CostListParams.dump_request(params)
@@ -147,7 +147,7 @@ module Orb
             method: :get,
             path: ["customers/%0s/costs", customer_id],
             query: parsed,
-            model: Orb::Models::CustomerCostsModel,
+            model: Orb::Models::Customers::CostListResponse,
             options: options
           )
         end
@@ -287,7 +287,7 @@ module Orb
         #
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
-        # @return [Orb::Models::CustomerCostsModel]
+        # @return [Orb::Models::Customers::CostListByExternalIDResponse]
         #
         def list_by_external_id(external_customer_id, params = {})
           parsed, options = Orb::Models::Customers::CostListByExternalIDParams.dump_request(params)
@@ -295,7 +295,7 @@ module Orb
             method: :get,
             path: ["customers/external_customer_id/%0s/costs", external_customer_id],
             query: parsed,
-            model: Orb::Models::CustomerCostsModel,
+            model: Orb::Models::Customers::CostListByExternalIDResponse,
             options: options
           )
         end

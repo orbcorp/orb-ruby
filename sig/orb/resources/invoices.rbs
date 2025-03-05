@@ -4,7 +4,7 @@ module Orb
       def create:
         (
           Orb::Models::InvoiceCreateParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::InvoiceModel
+        ) -> Orb::Models::Invoice
         | (
           currency: String,
           invoice_date: Time,
@@ -17,23 +17,23 @@ module Orb
           metadata: ::Hash[Symbol, String?]?,
           will_auto_issue: bool,
           request_options: Orb::request_opts
-        ) -> Orb::Models::InvoiceModel
+        ) -> Orb::Models::Invoice
 
       def update:
         (
           String invoice_id,
           ?Orb::Models::InvoiceUpdateParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::InvoiceModel
+        ) -> Orb::Models::Invoice
         | (
           String invoice_id,
           metadata: ::Hash[Symbol, String?]?,
           request_options: Orb::request_opts
-        ) -> Orb::Models::InvoiceModel
+        ) -> Orb::Models::Invoice
 
       def list:
         (
           ?Orb::Models::InvoiceListParams | ::Hash[Symbol, top] params
-        ) -> Orb::Page[Orb::Models::InvoiceModel]
+        ) -> Orb::Page[Orb::Models::Invoice]
         | (
           amount: String?,
           amount_gt: String?,
@@ -55,17 +55,17 @@ module Orb
           status: ::Array[Orb::Models::InvoiceListParams::status]?,
           subscription_id: String?,
           request_options: Orb::request_opts
-        ) -> Orb::Page[Orb::Models::InvoiceModel]
+        ) -> Orb::Page[Orb::Models::Invoice]
 
       def fetch:
         (
           String invoice_id,
           ?Orb::Models::InvoiceFetchParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::InvoiceModel
+        ) -> Orb::Models::Invoice
         | (
           String invoice_id,
           request_options: Orb::request_opts
-        ) -> Orb::Models::InvoiceModel
+        ) -> Orb::Models::Invoice
 
       def fetch_upcoming:
         (
@@ -80,45 +80,45 @@ module Orb
         (
           String invoice_id,
           ?Orb::Models::InvoiceIssueParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::InvoiceModel
+        ) -> Orb::Models::Invoice
         | (
           String invoice_id,
           synchronous: bool,
           request_options: Orb::request_opts
-        ) -> Orb::Models::InvoiceModel
+        ) -> Orb::Models::Invoice
 
       def mark_paid:
         (
           String invoice_id,
           Orb::Models::InvoiceMarkPaidParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::InvoiceModel
+        ) -> Orb::Models::Invoice
         | (
           String invoice_id,
           payment_received_date: Date,
           external_id: String?,
           notes: String?,
           request_options: Orb::request_opts
-        ) -> Orb::Models::InvoiceModel
+        ) -> Orb::Models::Invoice
 
       def pay:
         (
           String invoice_id,
           ?Orb::Models::InvoicePayParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::InvoiceModel
+        ) -> Orb::Models::Invoice
         | (
           String invoice_id,
           request_options: Orb::request_opts
-        ) -> Orb::Models::InvoiceModel
+        ) -> Orb::Models::Invoice
 
       def `void`:
         (
           String invoice_id,
           ?Orb::Models::InvoiceVoidParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::InvoiceModel
+        ) -> Orb::Models::Invoice
         | (
           String invoice_id,
           request_options: Orb::request_opts
-        ) -> Orb::Models::InvoiceModel
+        ) -> Orb::Models::Invoice
 
       def initialize: (client: Orb::Client) -> void
     end

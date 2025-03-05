@@ -14,7 +14,7 @@ class Orb::Test::Resources::CreditNotesTest < Orb::Test::ResourceTest
     )
 
     assert_pattern do
-      response => Orb::Models::CreditNoteModel
+      response => Orb::Models::CreditNote
     end
 
     assert_pattern do
@@ -23,18 +23,18 @@ class Orb::Test::Resources::CreditNotesTest < Orb::Test::ResourceTest
         created_at: Time,
         credit_note_number: String,
         credit_note_pdf: String | nil,
-        customer: Orb::Models::CustomerMinifiedModel,
+        customer: Orb::Models::CreditNote::Customer,
         invoice_id: String,
-        line_items: ^(Orb::ArrayOf[Orb::Models::CreditNoteModel::LineItem]),
-        maximum_amount_adjustment: Orb::Models::CreditNoteDiscountModel | nil,
+        line_items: ^(Orb::ArrayOf[Orb::Models::CreditNote::LineItem]),
+        maximum_amount_adjustment: Orb::Models::CreditNote::MaximumAmountAdjustment | nil,
         memo: String | nil,
         minimum_amount_refunded: String | nil,
-        reason: Orb::Models::CreditNoteModel::Reason | nil,
+        reason: Orb::Models::CreditNote::Reason | nil,
         subtotal: String,
         total: String,
-        type: Orb::Models::CreditNoteModel::Type,
+        type: Orb::Models::CreditNote::Type,
         voided_at: Time | nil,
-        discounts: ^(Orb::ArrayOf[Orb::Models::CreditNoteDiscountModel]) | nil
+        discounts: ^(Orb::ArrayOf[Orb::Models::CreditNote::Discount]) | nil
       }
     end
   end
@@ -53,7 +53,7 @@ class Orb::Test::Resources::CreditNotesTest < Orb::Test::ResourceTest
 
     row = response.to_enum.first
     assert_pattern do
-      row => Orb::Models::CreditNoteModel
+      row => Orb::Models::CreditNote
     end
 
     assert_pattern do
@@ -62,18 +62,18 @@ class Orb::Test::Resources::CreditNotesTest < Orb::Test::ResourceTest
         created_at: Time,
         credit_note_number: String,
         credit_note_pdf: String | nil,
-        customer: Orb::Models::CustomerMinifiedModel,
+        customer: Orb::Models::CreditNote::Customer,
         invoice_id: String,
-        line_items: ^(Orb::ArrayOf[Orb::Models::CreditNoteModel::LineItem]),
-        maximum_amount_adjustment: Orb::Models::CreditNoteDiscountModel | nil,
+        line_items: ^(Orb::ArrayOf[Orb::Models::CreditNote::LineItem]),
+        maximum_amount_adjustment: Orb::Models::CreditNote::MaximumAmountAdjustment | nil,
         memo: String | nil,
         minimum_amount_refunded: String | nil,
-        reason: Orb::Models::CreditNoteModel::Reason | nil,
+        reason: Orb::Models::CreditNote::Reason | nil,
         subtotal: String,
         total: String,
-        type: Orb::Models::CreditNoteModel::Type,
+        type: Orb::Models::CreditNote::Type,
         voided_at: Time | nil,
-        discounts: ^(Orb::ArrayOf[Orb::Models::CreditNoteDiscountModel]) | nil
+        discounts: ^(Orb::ArrayOf[Orb::Models::CreditNote::Discount]) | nil
       }
     end
   end
@@ -82,7 +82,7 @@ class Orb::Test::Resources::CreditNotesTest < Orb::Test::ResourceTest
     response = @orb.credit_notes.fetch("credit_note_id")
 
     assert_pattern do
-      response => Orb::Models::CreditNoteModel
+      response => Orb::Models::CreditNote
     end
 
     assert_pattern do
@@ -91,18 +91,18 @@ class Orb::Test::Resources::CreditNotesTest < Orb::Test::ResourceTest
         created_at: Time,
         credit_note_number: String,
         credit_note_pdf: String | nil,
-        customer: Orb::Models::CustomerMinifiedModel,
+        customer: Orb::Models::CreditNote::Customer,
         invoice_id: String,
-        line_items: ^(Orb::ArrayOf[Orb::Models::CreditNoteModel::LineItem]),
-        maximum_amount_adjustment: Orb::Models::CreditNoteDiscountModel | nil,
+        line_items: ^(Orb::ArrayOf[Orb::Models::CreditNote::LineItem]),
+        maximum_amount_adjustment: Orb::Models::CreditNote::MaximumAmountAdjustment | nil,
         memo: String | nil,
         minimum_amount_refunded: String | nil,
-        reason: Orb::Models::CreditNoteModel::Reason | nil,
+        reason: Orb::Models::CreditNote::Reason | nil,
         subtotal: String,
         total: String,
-        type: Orb::Models::CreditNoteModel::Type,
+        type: Orb::Models::CreditNote::Type,
         voided_at: Time | nil,
-        discounts: ^(Orb::ArrayOf[Orb::Models::CreditNoteDiscountModel]) | nil
+        discounts: ^(Orb::ArrayOf[Orb::Models::CreditNote::Discount]) | nil
       }
     end
   end

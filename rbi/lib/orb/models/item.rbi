@@ -19,13 +19,13 @@ module Orb
       def created_at=(_)
       end
 
-      sig { returns(T::Array[Orb::Models::ItemExternalConnectionModel]) }
+      sig { returns(T::Array[Orb::Models::Item::ExternalConnection]) }
       def external_connections
       end
 
       sig do
-        params(_: T::Array[Orb::Models::ItemExternalConnectionModel])
-          .returns(T::Array[Orb::Models::ItemExternalConnectionModel])
+        params(_: T::Array[Orb::Models::Item::ExternalConnection])
+          .returns(T::Array[Orb::Models::Item::ExternalConnection])
       end
       def external_connections=(_)
       end
@@ -42,7 +42,7 @@ module Orb
         params(
           id: String,
           created_at: Time,
-          external_connections: T::Array[Orb::Models::ItemExternalConnectionModel],
+          external_connections: T::Array[Orb::Models::Item::ExternalConnection],
           name: String
         )
           .void
@@ -56,12 +56,54 @@ module Orb
             {
               id: String,
               created_at: Time,
-              external_connections: T::Array[Orb::Models::ItemExternalConnectionModel],
+              external_connections: T::Array[Orb::Models::Item::ExternalConnection],
               name: String
             }
           )
       end
       def to_hash
+      end
+
+      class ExternalConnection < Orb::BaseModel
+        sig { returns(Symbol) }
+        def external_connection_name
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def external_connection_name=(_)
+        end
+
+        sig { returns(String) }
+        def external_entity_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def external_entity_id=(_)
+        end
+
+        sig { params(external_connection_name: Symbol, external_entity_id: String).void }
+        def initialize(external_connection_name:, external_entity_id:)
+        end
+
+        sig { override.returns({external_connection_name: Symbol, external_entity_id: String}) }
+        def to_hash
+        end
+
+        class ExternalConnectionName < Orb::Enum
+          abstract!
+
+          STRIPE = :stripe
+          QUICKBOOKS = :quickbooks
+          BILL_COM = :"bill.com"
+          NETSUITE = :netsuite
+          TAXJAR = :taxjar
+          AVALARA = :avalara
+          ANROK = :anrok
+
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
+          end
+        end
       end
     end
   end

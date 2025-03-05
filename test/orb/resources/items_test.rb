@@ -7,14 +7,14 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
     response = @orb.items.create(name: "API requests")
 
     assert_pattern do
-      response => Orb::Models::ItemModel
+      response => Orb::Models::Item
     end
 
     assert_pattern do
       response => {
         id: String,
         created_at: Time,
-        external_connections: ^(Orb::ArrayOf[Orb::Models::ItemExternalConnectionModel]),
+        external_connections: ^(Orb::ArrayOf[Orb::Models::Item::ExternalConnection]),
         name: String
       }
     end
@@ -24,14 +24,14 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
     response = @orb.items.update("item_id")
 
     assert_pattern do
-      response => Orb::Models::ItemModel
+      response => Orb::Models::Item
     end
 
     assert_pattern do
       response => {
         id: String,
         created_at: Time,
-        external_connections: ^(Orb::ArrayOf[Orb::Models::ItemExternalConnectionModel]),
+        external_connections: ^(Orb::ArrayOf[Orb::Models::Item::ExternalConnection]),
         name: String
       }
     end
@@ -51,14 +51,14 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
 
     row = response.to_enum.first
     assert_pattern do
-      row => Orb::Models::ItemModel
+      row => Orb::Models::Item
     end
 
     assert_pattern do
       row => {
         id: String,
         created_at: Time,
-        external_connections: ^(Orb::ArrayOf[Orb::Models::ItemExternalConnectionModel]),
+        external_connections: ^(Orb::ArrayOf[Orb::Models::Item::ExternalConnection]),
         name: String
       }
     end
@@ -68,14 +68,14 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
     response = @orb.items.fetch("item_id")
 
     assert_pattern do
-      response => Orb::Models::ItemModel
+      response => Orb::Models::Item
     end
 
     assert_pattern do
       response => {
         id: String,
         created_at: Time,
-        external_connections: ^(Orb::ArrayOf[Orb::Models::ItemExternalConnectionModel]),
+        external_connections: ^(Orb::ArrayOf[Orb::Models::Item::ExternalConnection]),
         name: String
       }
     end

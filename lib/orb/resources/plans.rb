@@ -35,17 +35,11 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Models::PlanModel]
+      # @return [Orb::Models::Plan]
       #
       def create(params)
         parsed, options = Orb::Models::PlanCreateParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: "plans",
-          body: parsed,
-          model: Orb::Models::PlanModel,
-          options: options
-        )
+        @client.request(method: :post, path: "plans", body: parsed, model: Orb::Models::Plan, options: options)
       end
 
       # This endpoint can be used to update the `external_plan_id`, and `metadata` of an
@@ -67,7 +61,7 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Models::PlanModel]
+      # @return [Orb::Models::Plan]
       #
       def update(plan_id, params = {})
         parsed, options = Orb::Models::PlanUpdateParams.dump_request(params)
@@ -75,7 +69,7 @@ module Orb
           method: :put,
           path: ["plans/%0s", plan_id],
           body: parsed,
-          model: Orb::Models::PlanModel,
+          model: Orb::Models::Plan,
           options: options
         )
       end
@@ -105,7 +99,7 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Page<Orb::Models::PlanModel>]
+      # @return [Orb::Page<Orb::Models::Plan>]
       #
       def list(params = {})
         parsed, options = Orb::Models::PlanListParams.dump_request(params)
@@ -114,7 +108,7 @@ module Orb
           path: "plans",
           query: parsed,
           page: Orb::Page,
-          model: Orb::Models::PlanModel,
+          model: Orb::Models::Plan,
           options: options
         )
       end
@@ -143,13 +137,13 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Models::PlanModel]
+      # @return [Orb::Models::Plan]
       #
       def fetch(plan_id, params = {})
         @client.request(
           method: :get,
           path: ["plans/%0s", plan_id],
-          model: Orb::Models::PlanModel,
+          model: Orb::Models::Plan,
           options: params[:request_options]
         )
       end

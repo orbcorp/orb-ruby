@@ -4,7 +4,7 @@ module Orb
       def create:
         (
           Orb::Models::InvoiceLineItemCreateParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::InvoiceLineItemModel
+        ) -> Orb::Models::InvoiceLineItemCreateResponse
         | (
           amount: String,
           end_date: Date,
@@ -13,7 +13,7 @@ module Orb
           quantity: Float,
           start_date: Date,
           request_options: Orb::request_opts
-        ) -> Orb::Models::InvoiceLineItemModel
+        ) -> Orb::Models::InvoiceLineItemCreateResponse
 
       def initialize: (client: Orb::Client) -> void
     end

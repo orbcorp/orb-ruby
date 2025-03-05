@@ -7,13 +7,13 @@ module Orb
             String coupon_id,
             ?Orb::Models::Coupons::SubscriptionListParams
             | ::Hash[Symbol, top] params
-          ) -> Orb::Page[Orb::Models::SubscriptionModel]
+          ) -> Orb::Page[Orb::Models::Subscription]
           | (
             String coupon_id,
             cursor: String?,
             limit: Integer,
             request_options: Orb::request_opts
-          ) -> Orb::Page[Orb::Models::SubscriptionModel]
+          ) -> Orb::Page[Orb::Models::Subscription]
 
         def initialize: (client: Orb::Client) -> void
       end

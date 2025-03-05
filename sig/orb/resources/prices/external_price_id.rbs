@@ -7,23 +7,23 @@ module Orb
             String external_price_id,
             ?Orb::Models::Prices::ExternalPriceIDUpdateParams
             | ::Hash[Symbol, top] params
-          ) -> Orb::Models::price_model
+          ) -> Orb::Models::price
           | (
             String external_price_id,
             metadata: ::Hash[Symbol, String?]?,
             request_options: Orb::request_opts
-          ) -> Orb::Models::price_model
+          ) -> Orb::Models::price
 
         def fetch:
           (
             String external_price_id,
             ?Orb::Models::Prices::ExternalPriceIDFetchParams
             | ::Hash[Symbol, top] params
-          ) -> Orb::Models::price_model
+          ) -> Orb::Models::price
           | (
             String external_price_id,
             request_options: Orb::request_opts
-          ) -> Orb::Models::price_model
+          ) -> Orb::Models::price
 
         def initialize: (client: Orb::Client) -> void
       end

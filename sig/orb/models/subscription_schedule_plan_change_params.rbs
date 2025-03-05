@@ -8,7 +8,7 @@ module Orb
         align_billing_with_plan_change_date: bool?,
         auto_collection: bool?,
         billing_cycle_alignment: Orb::Models::SubscriptionSchedulePlanChangeParams::billing_cycle_alignment?,
-        billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel?,
+        billing_cycle_anchor_configuration: Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration?,
         change_date: Time?,
         coupon_redemption_code: String?,
         credits_overage_rate: Float?,
@@ -47,7 +47,7 @@ module Orb
 
       attr_accessor billing_cycle_alignment: Orb::Models::SubscriptionSchedulePlanChangeParams::billing_cycle_alignment?
 
-      attr_accessor billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel?
+      attr_accessor billing_cycle_anchor_configuration: Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration?
 
       attr_accessor change_date: Time?
 
@@ -95,7 +95,7 @@ module Orb
           align_billing_with_plan_change_date: bool?,
           auto_collection: bool?,
           billing_cycle_alignment: Orb::Models::SubscriptionSchedulePlanChangeParams::billing_cycle_alignment?,
-          billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel?,
+          billing_cycle_anchor_configuration: Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration?,
           change_date: Time?,
           coupon_redemption_code: String?,
           credits_overage_rate: Float?,
@@ -144,6 +144,26 @@ module Orb
         START_OF_MONTH: :start_of_month
 
         def self.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::billing_cycle_alignment]
+      end
+
+      type billing_cycle_anchor_configuration =
+        { day: Integer, month: Integer?, year: Integer? }
+
+      class BillingCycleAnchorConfiguration < Orb::BaseModel
+        attr_accessor day: Integer
+
+        attr_accessor month: Integer?
+
+        attr_accessor year: Integer?
+
+        def initialize:
+          (day: Integer, month: Integer?, year: Integer?) -> void
+          | (
+            ?Orb::Models::SubscriptionSchedulePlanChangeParams::billing_cycle_anchor_configuration
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::SubscriptionSchedulePlanChangeParams::billing_cycle_anchor_configuration
       end
     end
   end

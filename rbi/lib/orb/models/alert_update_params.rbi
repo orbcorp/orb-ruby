@@ -6,17 +6,20 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      sig { returns(T::Array[Orb::Models::ThresholdModel]) }
+      sig { returns(T::Array[Orb::Models::AlertUpdateParams::Threshold]) }
       def thresholds
       end
 
-      sig { params(_: T::Array[Orb::Models::ThresholdModel]).returns(T::Array[Orb::Models::ThresholdModel]) }
+      sig do
+        params(_: T::Array[Orb::Models::AlertUpdateParams::Threshold])
+          .returns(T::Array[Orb::Models::AlertUpdateParams::Threshold])
+      end
       def thresholds=(_)
       end
 
       sig do
         params(
-          thresholds: T::Array[Orb::Models::ThresholdModel],
+          thresholds: T::Array[Orb::Models::AlertUpdateParams::Threshold],
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .void
@@ -25,9 +28,30 @@ module Orb
       end
 
       sig do
-        override.returns({thresholds: T::Array[Orb::Models::ThresholdModel], request_options: Orb::RequestOptions})
+        override
+          .returns(
+            {thresholds: T::Array[Orb::Models::AlertUpdateParams::Threshold], request_options: Orb::RequestOptions}
+          )
       end
       def to_hash
+      end
+
+      class Threshold < Orb::BaseModel
+        sig { returns(Float) }
+        def value
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def value=(_)
+        end
+
+        sig { params(value: Float).void }
+        def initialize(value:)
+        end
+
+        sig { override.returns({value: Float}) }
+        def to_hash
+        end
       end
     end
   end

@@ -41,9 +41,9 @@ orb = Orb::Client.new(
   api_key: "My API Key" # defaults to ENV["ORB_API_KEY"]
 )
 
-customer_model = orb.customers.create(email: "example-customer@withorb.com", name: "My Customer")
+customer = orb.customers.create(email: "example-customer@withorb.com", name: "My Customer")
 
-puts(customer_model.id)
+puts(customer.id)
 ```
 
 ### Errors
