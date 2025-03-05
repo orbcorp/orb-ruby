@@ -1,0 +1,18 @@
+module Orb
+  module Models
+    type minimum_model =
+      { applies_to_price_ids: ::Array[String], minimum_amount: String }
+
+    class MinimumModel < Orb::BaseModel
+      attr_accessor applies_to_price_ids: ::Array[String]
+
+      attr_accessor minimum_amount: String
+
+      def initialize:
+        (applies_to_price_ids: ::Array[String], minimum_amount: String) -> void
+        | (?Orb::Models::minimum_model | Orb::BaseModel data) -> void
+
+      def to_hash: -> Orb::Models::minimum_model
+    end
+  end
+end

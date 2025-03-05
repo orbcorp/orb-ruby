@@ -7,7 +7,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
     response = @orb.customers.create(email: "dev@stainless.com", name: "x")
 
     assert_pattern do
-      response => Orb::Models::Customer
+      response => Orb::Models::CustomerModel
     end
 
     assert_pattern do
@@ -16,24 +16,24 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         additional_emails: ^(Orb::ArrayOf[String]),
         auto_collection: Orb::BooleanModel,
         balance: String,
-        billing_address: Orb::Models::Customer::BillingAddress | nil,
+        billing_address: Orb::Models::AddressModel | nil,
         created_at: Time,
         currency: String | nil,
         email: String,
         email_delivery: Orb::BooleanModel,
         exempt_from_automated_tax: Orb::BooleanModel | nil,
         external_customer_id: String | nil,
-        hierarchy: Orb::Models::Customer::Hierarchy,
+        hierarchy: Orb::Models::CustomerModel::Hierarchy,
         metadata: ^(Orb::HashOf[String]),
         name: String,
-        payment_provider: Orb::Models::Customer::PaymentProvider | nil,
+        payment_provider: Orb::Models::CustomerModel::PaymentProvider | nil,
         payment_provider_id: String | nil,
         portal_url: String | nil,
-        shipping_address: Orb::Models::Customer::ShippingAddress | nil,
-        tax_id: Orb::Models::Customer::TaxID | nil,
+        shipping_address: Orb::Models::AddressModel | nil,
+        tax_id: Orb::Models::CustomerTaxIDModel | nil,
         timezone: String,
-        accounting_sync_configuration: Orb::Models::Customer::AccountingSyncConfiguration | nil,
-        reporting_configuration: Orb::Models::Customer::ReportingConfiguration | nil
+        accounting_sync_configuration: Orb::Models::CustomerModel::AccountingSyncConfiguration | nil,
+        reporting_configuration: Orb::Models::CustomerModel::ReportingConfiguration | nil
       }
     end
   end
@@ -42,7 +42,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
     response = @orb.customers.update("customer_id")
 
     assert_pattern do
-      response => Orb::Models::Customer
+      response => Orb::Models::CustomerModel
     end
 
     assert_pattern do
@@ -51,24 +51,24 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         additional_emails: ^(Orb::ArrayOf[String]),
         auto_collection: Orb::BooleanModel,
         balance: String,
-        billing_address: Orb::Models::Customer::BillingAddress | nil,
+        billing_address: Orb::Models::AddressModel | nil,
         created_at: Time,
         currency: String | nil,
         email: String,
         email_delivery: Orb::BooleanModel,
         exempt_from_automated_tax: Orb::BooleanModel | nil,
         external_customer_id: String | nil,
-        hierarchy: Orb::Models::Customer::Hierarchy,
+        hierarchy: Orb::Models::CustomerModel::Hierarchy,
         metadata: ^(Orb::HashOf[String]),
         name: String,
-        payment_provider: Orb::Models::Customer::PaymentProvider | nil,
+        payment_provider: Orb::Models::CustomerModel::PaymentProvider | nil,
         payment_provider_id: String | nil,
         portal_url: String | nil,
-        shipping_address: Orb::Models::Customer::ShippingAddress | nil,
-        tax_id: Orb::Models::Customer::TaxID | nil,
+        shipping_address: Orb::Models::AddressModel | nil,
+        tax_id: Orb::Models::CustomerTaxIDModel | nil,
         timezone: String,
-        accounting_sync_configuration: Orb::Models::Customer::AccountingSyncConfiguration | nil,
-        reporting_configuration: Orb::Models::Customer::ReportingConfiguration | nil
+        accounting_sync_configuration: Orb::Models::CustomerModel::AccountingSyncConfiguration | nil,
+        reporting_configuration: Orb::Models::CustomerModel::ReportingConfiguration | nil
       }
     end
   end
@@ -87,7 +87,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
 
     row = response.to_enum.first
     assert_pattern do
-      row => Orb::Models::Customer
+      row => Orb::Models::CustomerModel
     end
 
     assert_pattern do
@@ -96,24 +96,24 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         additional_emails: ^(Orb::ArrayOf[String]),
         auto_collection: Orb::BooleanModel,
         balance: String,
-        billing_address: Orb::Models::Customer::BillingAddress | nil,
+        billing_address: Orb::Models::AddressModel | nil,
         created_at: Time,
         currency: String | nil,
         email: String,
         email_delivery: Orb::BooleanModel,
         exempt_from_automated_tax: Orb::BooleanModel | nil,
         external_customer_id: String | nil,
-        hierarchy: Orb::Models::Customer::Hierarchy,
+        hierarchy: Orb::Models::CustomerModel::Hierarchy,
         metadata: ^(Orb::HashOf[String]),
         name: String,
-        payment_provider: Orb::Models::Customer::PaymentProvider | nil,
+        payment_provider: Orb::Models::CustomerModel::PaymentProvider | nil,
         payment_provider_id: String | nil,
         portal_url: String | nil,
-        shipping_address: Orb::Models::Customer::ShippingAddress | nil,
-        tax_id: Orb::Models::Customer::TaxID | nil,
+        shipping_address: Orb::Models::AddressModel | nil,
+        tax_id: Orb::Models::CustomerTaxIDModel | nil,
         timezone: String,
-        accounting_sync_configuration: Orb::Models::Customer::AccountingSyncConfiguration | nil,
-        reporting_configuration: Orb::Models::Customer::ReportingConfiguration | nil
+        accounting_sync_configuration: Orb::Models::CustomerModel::AccountingSyncConfiguration | nil,
+        reporting_configuration: Orb::Models::CustomerModel::ReportingConfiguration | nil
       }
     end
   end
@@ -130,7 +130,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
     response = @orb.customers.fetch("customer_id")
 
     assert_pattern do
-      response => Orb::Models::Customer
+      response => Orb::Models::CustomerModel
     end
 
     assert_pattern do
@@ -139,24 +139,24 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         additional_emails: ^(Orb::ArrayOf[String]),
         auto_collection: Orb::BooleanModel,
         balance: String,
-        billing_address: Orb::Models::Customer::BillingAddress | nil,
+        billing_address: Orb::Models::AddressModel | nil,
         created_at: Time,
         currency: String | nil,
         email: String,
         email_delivery: Orb::BooleanModel,
         exempt_from_automated_tax: Orb::BooleanModel | nil,
         external_customer_id: String | nil,
-        hierarchy: Orb::Models::Customer::Hierarchy,
+        hierarchy: Orb::Models::CustomerModel::Hierarchy,
         metadata: ^(Orb::HashOf[String]),
         name: String,
-        payment_provider: Orb::Models::Customer::PaymentProvider | nil,
+        payment_provider: Orb::Models::CustomerModel::PaymentProvider | nil,
         payment_provider_id: String | nil,
         portal_url: String | nil,
-        shipping_address: Orb::Models::Customer::ShippingAddress | nil,
-        tax_id: Orb::Models::Customer::TaxID | nil,
+        shipping_address: Orb::Models::AddressModel | nil,
+        tax_id: Orb::Models::CustomerTaxIDModel | nil,
         timezone: String,
-        accounting_sync_configuration: Orb::Models::Customer::AccountingSyncConfiguration | nil,
-        reporting_configuration: Orb::Models::Customer::ReportingConfiguration | nil
+        accounting_sync_configuration: Orb::Models::CustomerModel::AccountingSyncConfiguration | nil,
+        reporting_configuration: Orb::Models::CustomerModel::ReportingConfiguration | nil
       }
     end
   end
@@ -165,7 +165,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
     response = @orb.customers.fetch_by_external_id("external_customer_id")
 
     assert_pattern do
-      response => Orb::Models::Customer
+      response => Orb::Models::CustomerModel
     end
 
     assert_pattern do
@@ -174,24 +174,24 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         additional_emails: ^(Orb::ArrayOf[String]),
         auto_collection: Orb::BooleanModel,
         balance: String,
-        billing_address: Orb::Models::Customer::BillingAddress | nil,
+        billing_address: Orb::Models::AddressModel | nil,
         created_at: Time,
         currency: String | nil,
         email: String,
         email_delivery: Orb::BooleanModel,
         exempt_from_automated_tax: Orb::BooleanModel | nil,
         external_customer_id: String | nil,
-        hierarchy: Orb::Models::Customer::Hierarchy,
+        hierarchy: Orb::Models::CustomerModel::Hierarchy,
         metadata: ^(Orb::HashOf[String]),
         name: String,
-        payment_provider: Orb::Models::Customer::PaymentProvider | nil,
+        payment_provider: Orb::Models::CustomerModel::PaymentProvider | nil,
         payment_provider_id: String | nil,
         portal_url: String | nil,
-        shipping_address: Orb::Models::Customer::ShippingAddress | nil,
-        tax_id: Orb::Models::Customer::TaxID | nil,
+        shipping_address: Orb::Models::AddressModel | nil,
+        tax_id: Orb::Models::CustomerTaxIDModel | nil,
         timezone: String,
-        accounting_sync_configuration: Orb::Models::Customer::AccountingSyncConfiguration | nil,
-        reporting_configuration: Orb::Models::Customer::ReportingConfiguration | nil
+        accounting_sync_configuration: Orb::Models::CustomerModel::AccountingSyncConfiguration | nil,
+        reporting_configuration: Orb::Models::CustomerModel::ReportingConfiguration | nil
       }
     end
   end
@@ -216,7 +216,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
     response = @orb.customers.update_by_external_id("external_customer_id")
 
     assert_pattern do
-      response => Orb::Models::Customer
+      response => Orb::Models::CustomerModel
     end
 
     assert_pattern do
@@ -225,24 +225,24 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         additional_emails: ^(Orb::ArrayOf[String]),
         auto_collection: Orb::BooleanModel,
         balance: String,
-        billing_address: Orb::Models::Customer::BillingAddress | nil,
+        billing_address: Orb::Models::AddressModel | nil,
         created_at: Time,
         currency: String | nil,
         email: String,
         email_delivery: Orb::BooleanModel,
         exempt_from_automated_tax: Orb::BooleanModel | nil,
         external_customer_id: String | nil,
-        hierarchy: Orb::Models::Customer::Hierarchy,
+        hierarchy: Orb::Models::CustomerModel::Hierarchy,
         metadata: ^(Orb::HashOf[String]),
         name: String,
-        payment_provider: Orb::Models::Customer::PaymentProvider | nil,
+        payment_provider: Orb::Models::CustomerModel::PaymentProvider | nil,
         payment_provider_id: String | nil,
         portal_url: String | nil,
-        shipping_address: Orb::Models::Customer::ShippingAddress | nil,
-        tax_id: Orb::Models::Customer::TaxID | nil,
+        shipping_address: Orb::Models::AddressModel | nil,
+        tax_id: Orb::Models::CustomerTaxIDModel | nil,
         timezone: String,
-        accounting_sync_configuration: Orb::Models::Customer::AccountingSyncConfiguration | nil,
-        reporting_configuration: Orb::Models::Customer::ReportingConfiguration | nil
+        accounting_sync_configuration: Orb::Models::CustomerModel::AccountingSyncConfiguration | nil,
+        reporting_configuration: Orb::Models::CustomerModel::ReportingConfiguration | nil
       }
     end
   end

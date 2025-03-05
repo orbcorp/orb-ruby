@@ -1,0 +1,17 @@
+module Orb
+  module Models
+    type allocation_model = { allows_rollover: bool, currency: String }
+
+    class AllocationModel < Orb::BaseModel
+      attr_accessor allows_rollover: bool
+
+      attr_accessor currency: String
+
+      def initialize:
+        (allows_rollover: bool, currency: String) -> void
+        | (?Orb::Models::allocation_model | Orb::BaseModel data) -> void
+
+      def to_hash: -> Orb::Models::allocation_model
+    end
+  end
+end

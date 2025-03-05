@@ -1,0 +1,15 @@
+module Orb
+  module Models
+    type threshold_model = { value: Float }
+
+    class ThresholdModel < Orb::BaseModel
+      attr_accessor value: Float
+
+      def initialize:
+        (value: Float) -> void
+        | (?Orb::Models::threshold_model | Orb::BaseModel data) -> void
+
+      def to_hash: -> Orb::Models::threshold_model
+    end
+  end
+end

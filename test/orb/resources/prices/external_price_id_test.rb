@@ -7,7 +7,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
     response = @orb.prices.external_price_id.update("external_price_id")
 
     assert_pattern do
-      response => Orb::Models::Price
+      response => Orb::Models::PriceModel
     end
   end
 
@@ -15,7 +15,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
     response = @orb.prices.external_price_id.fetch("external_price_id")
 
     assert_pattern do
-      response => Orb::Models::Price
+      response => Orb::Models::PriceModel
     end
   end
 end

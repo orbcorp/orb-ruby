@@ -23,7 +23,7 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Models::Coupon]
+      # @return [Orb::Models::CouponModel]
       #
       def create(params)
         parsed, options = Orb::Models::CouponCreateParams.dump_request(params)
@@ -31,7 +31,7 @@ module Orb
           method: :post,
           path: "coupons",
           body: parsed,
-          model: Orb::Models::Coupon,
+          model: Orb::Models::CouponModel,
           options: options
         )
       end
@@ -57,7 +57,7 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Page<Orb::Models::Coupon>]
+      # @return [Orb::Page<Orb::Models::CouponModel>]
       #
       def list(params = {})
         parsed, options = Orb::Models::CouponListParams.dump_request(params)
@@ -66,7 +66,7 @@ module Orb
           path: "coupons",
           query: parsed,
           page: Orb::Page,
-          model: Orb::Models::Coupon,
+          model: Orb::Models::CouponModel,
           options: options
         )
       end
@@ -81,13 +81,13 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Models::Coupon]
+      # @return [Orb::Models::CouponModel]
       #
       def archive(coupon_id, params = {})
         @client.request(
           method: :post,
           path: ["coupons/%0s/archive", coupon_id],
-          model: Orb::Models::Coupon,
+          model: Orb::Models::CouponModel,
           options: params[:request_options]
         )
       end
@@ -102,13 +102,13 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Models::Coupon]
+      # @return [Orb::Models::CouponModel]
       #
       def fetch(coupon_id, params = {})
         @client.request(
           method: :get,
           path: ["coupons/%0s", coupon_id],
-          model: Orb::Models::Coupon,
+          model: Orb::Models::CouponModel,
           options: params[:request_options]
         )
       end

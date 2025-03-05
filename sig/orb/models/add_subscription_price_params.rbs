@@ -1,0 +1,58 @@
+module Orb
+  module Models
+    type add_subscription_price_params =
+      {
+        allocation_price: Orb::Models::NewAllocationPriceModel?,
+        discounts: ::Array[Orb::Models::DiscountOverrideModel]?,
+        end_date: Time?,
+        external_price_id: String?,
+        maximum_amount: String?,
+        minimum_amount: String?,
+        plan_phase_order: Integer?,
+        price: Orb::Models::new_subscription_price_model?,
+        price_id: String?,
+        start_date: Time?
+      }
+
+    class AddSubscriptionPriceParams < Orb::BaseModel
+      attr_accessor allocation_price: Orb::Models::NewAllocationPriceModel?
+
+      attr_accessor discounts: ::Array[Orb::Models::DiscountOverrideModel]?
+
+      attr_accessor end_date: Time?
+
+      attr_accessor external_price_id: String?
+
+      attr_accessor maximum_amount: String?
+
+      attr_accessor minimum_amount: String?
+
+      attr_accessor plan_phase_order: Integer?
+
+      attr_accessor price: Orb::Models::new_subscription_price_model?
+
+      attr_accessor price_id: String?
+
+      attr_accessor start_date: Time?
+
+      def initialize:
+        (
+          allocation_price: Orb::Models::NewAllocationPriceModel?,
+          discounts: ::Array[Orb::Models::DiscountOverrideModel]?,
+          end_date: Time?,
+          external_price_id: String?,
+          maximum_amount: String?,
+          minimum_amount: String?,
+          plan_phase_order: Integer?,
+          price: Orb::Models::new_subscription_price_model?,
+          price_id: String?,
+          start_date: Time?
+        ) -> void
+        | (
+          ?Orb::Models::add_subscription_price_params | Orb::BaseModel data
+        ) -> void
+
+      def to_hash: -> Orb::Models::add_subscription_price_params
+    end
+  end
+end

@@ -1,0 +1,2384 @@
+module Orb
+  module Models
+    type new_subscription_price_model =
+      Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionPackagePrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMatrixPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredBpsPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBpsPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkBpsPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionThresholdTotalAmountPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredPackagePrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredWithMinimumPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitWithPercentPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionPackageWithAllocationPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTierWithProrationPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitWithProrationPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedAllocationPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedWithProratedMinimumPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkWithProrationPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionScalableMatrixWithUnitPricingPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionScalableMatrixWithTieredPricingPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionCumulativeGroupedBulkPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMaxGroupTieredPackagePrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedWithMeteredMinimumPrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMatrixWithDisplayNamePrice
+      | Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedTieredPackagePrice
+
+    class NewSubscriptionPriceModel < Orb::Union
+      type new_subscription_unit_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitPrice::cadence,
+          item_id: String,
+          model_type: :unit,
+          name: String,
+          unit_config: Orb::Models::UnitConfigModel,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionUnitPrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitPrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :unit
+
+        attr_accessor name: String
+
+        attr_accessor unit_config: Orb::Models::UnitConfigModel
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitPrice::cadence,
+            item_id: String,
+            name: String,
+            unit_config: Orb::Models::UnitConfigModel,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :unit
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_unit_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_unit_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitPrice::cadence]
+        end
+      end
+
+      type new_subscription_package_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionPackagePrice::cadence,
+          item_id: String,
+          model_type: :package,
+          name: String,
+          package_config: Orb::Models::PackageConfigModel,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionPackagePrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionPackagePrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :package
+
+        attr_accessor name: String
+
+        attr_accessor package_config: Orb::Models::PackageConfigModel
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionPackagePrice::cadence,
+            item_id: String,
+            name: String,
+            package_config: Orb::Models::PackageConfigModel,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :package
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_package_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_package_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionPackagePrice::cadence]
+        end
+      end
+
+      type new_subscription_matrix_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMatrixPrice::cadence,
+          item_id: String,
+          matrix_config: Orb::Models::MatrixConfigModel,
+          model_type: :matrix,
+          name: String,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionMatrixPrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMatrixPrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor matrix_config: Orb::Models::MatrixConfigModel
+
+        attr_accessor model_type: :matrix
+
+        attr_accessor name: String
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMatrixPrice::cadence,
+            item_id: String,
+            matrix_config: Orb::Models::MatrixConfigModel,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :matrix
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_matrix_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_matrix_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMatrixPrice::cadence]
+        end
+      end
+
+      type new_subscription_tiered_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredPrice::cadence,
+          item_id: String,
+          model_type: :tiered,
+          name: String,
+          tiered_config: Orb::Models::TieredConfigModel,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionTieredPrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredPrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :tiered
+
+        attr_accessor name: String
+
+        attr_accessor tiered_config: Orb::Models::TieredConfigModel
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredPrice::cadence,
+            item_id: String,
+            name: String,
+            tiered_config: Orb::Models::TieredConfigModel,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :tiered
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_tiered_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_tiered_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredPrice::cadence]
+        end
+      end
+
+      type new_subscription_tiered_bps_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredBpsPrice::cadence,
+          item_id: String,
+          model_type: :tiered_bps,
+          name: String,
+          tiered_bps_config: Orb::Models::TieredBpsConfigModel,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionTieredBpsPrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredBpsPrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :tiered_bps
+
+        attr_accessor name: String
+
+        attr_accessor tiered_bps_config: Orb::Models::TieredBpsConfigModel
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredBpsPrice::cadence,
+            item_id: String,
+            name: String,
+            tiered_bps_config: Orb::Models::TieredBpsConfigModel,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :tiered_bps
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_tiered_bps_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_tiered_bps_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredBpsPrice::cadence]
+        end
+      end
+
+      type new_subscription_bps_price =
+        {
+          bps_config: Orb::Models::BpsConfigModel,
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBpsPrice::cadence,
+          item_id: String,
+          model_type: :bps,
+          name: String,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionBpsPrice < Orb::BaseModel
+        attr_accessor bps_config: Orb::Models::BpsConfigModel
+
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBpsPrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :bps
+
+        attr_accessor name: String
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            bps_config: Orb::Models::BpsConfigModel,
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBpsPrice::cadence,
+            item_id: String,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :bps
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_bps_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_bps_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBpsPrice::cadence]
+        end
+      end
+
+      type new_subscription_bulk_bps_price =
+        {
+          bulk_bps_config: Orb::Models::BulkBpsConfigModel,
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkBpsPrice::cadence,
+          item_id: String,
+          model_type: :bulk_bps,
+          name: String,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionBulkBpsPrice < Orb::BaseModel
+        attr_accessor bulk_bps_config: Orb::Models::BulkBpsConfigModel
+
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkBpsPrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :bulk_bps
+
+        attr_accessor name: String
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            bulk_bps_config: Orb::Models::BulkBpsConfigModel,
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkBpsPrice::cadence,
+            item_id: String,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :bulk_bps
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_bulk_bps_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_bulk_bps_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkBpsPrice::cadence]
+        end
+      end
+
+      type new_subscription_bulk_price =
+        {
+          bulk_config: Orb::Models::BulkConfigModel,
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkPrice::cadence,
+          item_id: String,
+          model_type: :bulk,
+          name: String,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionBulkPrice < Orb::BaseModel
+        attr_accessor bulk_config: Orb::Models::BulkConfigModel
+
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkPrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :bulk
+
+        attr_accessor name: String
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            bulk_config: Orb::Models::BulkConfigModel,
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkPrice::cadence,
+            item_id: String,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :bulk
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_bulk_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_bulk_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkPrice::cadence]
+        end
+      end
+
+      type new_subscription_threshold_total_amount_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionThresholdTotalAmountPrice::cadence,
+          item_id: String,
+          model_type: :threshold_total_amount,
+          name: String,
+          threshold_total_amount_config: Orb::Models::custom_rating_function_config_model,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionThresholdTotalAmountPrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionThresholdTotalAmountPrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :threshold_total_amount
+
+        attr_accessor name: String
+
+        attr_accessor threshold_total_amount_config: Orb::Models::custom_rating_function_config_model
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionThresholdTotalAmountPrice::cadence,
+            item_id: String,
+            name: String,
+            threshold_total_amount_config: Orb::Models::custom_rating_function_config_model,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :threshold_total_amount
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_threshold_total_amount_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_threshold_total_amount_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionThresholdTotalAmountPrice::cadence]
+        end
+      end
+
+      type new_subscription_tiered_package_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredPackagePrice::cadence,
+          item_id: String,
+          model_type: :tiered_package,
+          name: String,
+          tiered_package_config: Orb::Models::custom_rating_function_config_model,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionTieredPackagePrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredPackagePrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :tiered_package
+
+        attr_accessor name: String
+
+        attr_accessor tiered_package_config: Orb::Models::custom_rating_function_config_model
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredPackagePrice::cadence,
+            item_id: String,
+            name: String,
+            tiered_package_config: Orb::Models::custom_rating_function_config_model,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :tiered_package
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_tiered_package_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_tiered_package_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredPackagePrice::cadence]
+        end
+      end
+
+      type new_subscription_tiered_with_minimum_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredWithMinimumPrice::cadence,
+          item_id: String,
+          model_type: :tiered_with_minimum,
+          name: String,
+          tiered_with_minimum_config: Orb::Models::custom_rating_function_config_model,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionTieredWithMinimumPrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredWithMinimumPrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :tiered_with_minimum
+
+        attr_accessor name: String
+
+        attr_accessor tiered_with_minimum_config: Orb::Models::custom_rating_function_config_model
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredWithMinimumPrice::cadence,
+            item_id: String,
+            name: String,
+            tiered_with_minimum_config: Orb::Models::custom_rating_function_config_model,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :tiered_with_minimum
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_tiered_with_minimum_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_tiered_with_minimum_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredWithMinimumPrice::cadence]
+        end
+      end
+
+      type new_subscription_unit_with_percent_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitWithPercentPrice::cadence,
+          item_id: String,
+          model_type: :unit_with_percent,
+          name: String,
+          unit_with_percent_config: Orb::Models::custom_rating_function_config_model,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionUnitWithPercentPrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitWithPercentPrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :unit_with_percent
+
+        attr_accessor name: String
+
+        attr_accessor unit_with_percent_config: Orb::Models::custom_rating_function_config_model
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitWithPercentPrice::cadence,
+            item_id: String,
+            name: String,
+            unit_with_percent_config: Orb::Models::custom_rating_function_config_model,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :unit_with_percent
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_unit_with_percent_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_unit_with_percent_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitWithPercentPrice::cadence]
+        end
+      end
+
+      type new_subscription_package_with_allocation_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionPackageWithAllocationPrice::cadence,
+          item_id: String,
+          model_type: :package_with_allocation,
+          name: String,
+          package_with_allocation_config: Orb::Models::custom_rating_function_config_model,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionPackageWithAllocationPrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionPackageWithAllocationPrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :package_with_allocation
+
+        attr_accessor name: String
+
+        attr_accessor package_with_allocation_config: Orb::Models::custom_rating_function_config_model
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionPackageWithAllocationPrice::cadence,
+            item_id: String,
+            name: String,
+            package_with_allocation_config: Orb::Models::custom_rating_function_config_model,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :package_with_allocation
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_package_with_allocation_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_package_with_allocation_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionPackageWithAllocationPrice::cadence]
+        end
+      end
+
+      type new_subscription_tier_with_proration_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTierWithProrationPrice::cadence,
+          item_id: String,
+          model_type: :tiered_with_proration,
+          name: String,
+          tiered_with_proration_config: Orb::Models::custom_rating_function_config_model,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionTierWithProrationPrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTierWithProrationPrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :tiered_with_proration
+
+        attr_accessor name: String
+
+        attr_accessor tiered_with_proration_config: Orb::Models::custom_rating_function_config_model
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTierWithProrationPrice::cadence,
+            item_id: String,
+            name: String,
+            tiered_with_proration_config: Orb::Models::custom_rating_function_config_model,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :tiered_with_proration
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_tier_with_proration_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_tier_with_proration_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTierWithProrationPrice::cadence]
+        end
+      end
+
+      type new_subscription_unit_with_proration_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitWithProrationPrice::cadence,
+          item_id: String,
+          model_type: :unit_with_proration,
+          name: String,
+          unit_with_proration_config: Orb::Models::custom_rating_function_config_model,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionUnitWithProrationPrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitWithProrationPrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :unit_with_proration
+
+        attr_accessor name: String
+
+        attr_accessor unit_with_proration_config: Orb::Models::custom_rating_function_config_model
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitWithProrationPrice::cadence,
+            item_id: String,
+            name: String,
+            unit_with_proration_config: Orb::Models::custom_rating_function_config_model,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :unit_with_proration
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_unit_with_proration_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_unit_with_proration_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitWithProrationPrice::cadence]
+        end
+      end
+
+      type new_subscription_grouped_allocation_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedAllocationPrice::cadence,
+          grouped_allocation_config: Orb::Models::custom_rating_function_config_model,
+          item_id: String,
+          model_type: :grouped_allocation,
+          name: String,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionGroupedAllocationPrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedAllocationPrice::cadence
+
+        attr_accessor grouped_allocation_config: Orb::Models::custom_rating_function_config_model
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :grouped_allocation
+
+        attr_accessor name: String
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedAllocationPrice::cadence,
+            grouped_allocation_config: Orb::Models::custom_rating_function_config_model,
+            item_id: String,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :grouped_allocation
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_grouped_allocation_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_grouped_allocation_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedAllocationPrice::cadence]
+        end
+      end
+
+      type new_subscription_grouped_with_prorated_minimum_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedWithProratedMinimumPrice::cadence,
+          grouped_with_prorated_minimum_config: Orb::Models::custom_rating_function_config_model,
+          item_id: String,
+          model_type: :grouped_with_prorated_minimum,
+          name: String,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionGroupedWithProratedMinimumPrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedWithProratedMinimumPrice::cadence
+
+        attr_accessor grouped_with_prorated_minimum_config: Orb::Models::custom_rating_function_config_model
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :grouped_with_prorated_minimum
+
+        attr_accessor name: String
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedWithProratedMinimumPrice::cadence,
+            grouped_with_prorated_minimum_config: Orb::Models::custom_rating_function_config_model,
+            item_id: String,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :grouped_with_prorated_minimum
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_grouped_with_prorated_minimum_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_grouped_with_prorated_minimum_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedWithProratedMinimumPrice::cadence]
+        end
+      end
+
+      type new_subscription_bulk_with_proration_price =
+        {
+          bulk_with_proration_config: Orb::Models::custom_rating_function_config_model,
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkWithProrationPrice::cadence,
+          item_id: String,
+          model_type: :bulk_with_proration,
+          name: String,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionBulkWithProrationPrice < Orb::BaseModel
+        attr_accessor bulk_with_proration_config: Orb::Models::custom_rating_function_config_model
+
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkWithProrationPrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :bulk_with_proration
+
+        attr_accessor name: String
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            bulk_with_proration_config: Orb::Models::custom_rating_function_config_model,
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkWithProrationPrice::cadence,
+            item_id: String,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :bulk_with_proration
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_bulk_with_proration_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_bulk_with_proration_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkWithProrationPrice::cadence]
+        end
+      end
+
+      type new_subscription_scalable_matrix_with_unit_pricing_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionScalableMatrixWithUnitPricingPrice::cadence,
+          item_id: String,
+          model_type: :scalable_matrix_with_unit_pricing,
+          name: String,
+          scalable_matrix_with_unit_pricing_config: Orb::Models::custom_rating_function_config_model,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionScalableMatrixWithUnitPricingPrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionScalableMatrixWithUnitPricingPrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :scalable_matrix_with_unit_pricing
+
+        attr_accessor name: String
+
+        attr_accessor scalable_matrix_with_unit_pricing_config: Orb::Models::custom_rating_function_config_model
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionScalableMatrixWithUnitPricingPrice::cadence,
+            item_id: String,
+            name: String,
+            scalable_matrix_with_unit_pricing_config: Orb::Models::custom_rating_function_config_model,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :scalable_matrix_with_unit_pricing
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_scalable_matrix_with_unit_pricing_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_scalable_matrix_with_unit_pricing_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionScalableMatrixWithUnitPricingPrice::cadence]
+        end
+      end
+
+      type new_subscription_scalable_matrix_with_tiered_pricing_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionScalableMatrixWithTieredPricingPrice::cadence,
+          item_id: String,
+          model_type: :scalable_matrix_with_tiered_pricing,
+          name: String,
+          scalable_matrix_with_tiered_pricing_config: Orb::Models::custom_rating_function_config_model,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionScalableMatrixWithTieredPricingPrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionScalableMatrixWithTieredPricingPrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :scalable_matrix_with_tiered_pricing
+
+        attr_accessor name: String
+
+        attr_accessor scalable_matrix_with_tiered_pricing_config: Orb::Models::custom_rating_function_config_model
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionScalableMatrixWithTieredPricingPrice::cadence,
+            item_id: String,
+            name: String,
+            scalable_matrix_with_tiered_pricing_config: Orb::Models::custom_rating_function_config_model,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :scalable_matrix_with_tiered_pricing
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_scalable_matrix_with_tiered_pricing_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_scalable_matrix_with_tiered_pricing_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionScalableMatrixWithTieredPricingPrice::cadence]
+        end
+      end
+
+      type new_subscription_cumulative_grouped_bulk_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionCumulativeGroupedBulkPrice::cadence,
+          cumulative_grouped_bulk_config: Orb::Models::custom_rating_function_config_model,
+          item_id: String,
+          model_type: :cumulative_grouped_bulk,
+          name: String,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionCumulativeGroupedBulkPrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionCumulativeGroupedBulkPrice::cadence
+
+        attr_accessor cumulative_grouped_bulk_config: Orb::Models::custom_rating_function_config_model
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :cumulative_grouped_bulk
+
+        attr_accessor name: String
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionCumulativeGroupedBulkPrice::cadence,
+            cumulative_grouped_bulk_config: Orb::Models::custom_rating_function_config_model,
+            item_id: String,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :cumulative_grouped_bulk
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_cumulative_grouped_bulk_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_cumulative_grouped_bulk_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionCumulativeGroupedBulkPrice::cadence]
+        end
+      end
+
+      type new_subscription_max_group_tiered_package_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMaxGroupTieredPackagePrice::cadence,
+          item_id: String,
+          max_group_tiered_package_config: Orb::Models::custom_rating_function_config_model,
+          model_type: :max_group_tiered_package,
+          name: String,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionMaxGroupTieredPackagePrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMaxGroupTieredPackagePrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor max_group_tiered_package_config: Orb::Models::custom_rating_function_config_model
+
+        attr_accessor model_type: :max_group_tiered_package
+
+        attr_accessor name: String
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMaxGroupTieredPackagePrice::cadence,
+            item_id: String,
+            max_group_tiered_package_config: Orb::Models::custom_rating_function_config_model,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :max_group_tiered_package
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_max_group_tiered_package_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_max_group_tiered_package_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMaxGroupTieredPackagePrice::cadence]
+        end
+      end
+
+      type new_subscription_grouped_with_metered_minimum_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedWithMeteredMinimumPrice::cadence,
+          grouped_with_metered_minimum_config: Orb::Models::custom_rating_function_config_model,
+          item_id: String,
+          model_type: :grouped_with_metered_minimum,
+          name: String,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionGroupedWithMeteredMinimumPrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedWithMeteredMinimumPrice::cadence
+
+        attr_accessor grouped_with_metered_minimum_config: Orb::Models::custom_rating_function_config_model
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :grouped_with_metered_minimum
+
+        attr_accessor name: String
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedWithMeteredMinimumPrice::cadence,
+            grouped_with_metered_minimum_config: Orb::Models::custom_rating_function_config_model,
+            item_id: String,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :grouped_with_metered_minimum
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_grouped_with_metered_minimum_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_grouped_with_metered_minimum_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedWithMeteredMinimumPrice::cadence]
+        end
+      end
+
+      type new_subscription_matrix_with_display_name_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMatrixWithDisplayNamePrice::cadence,
+          item_id: String,
+          matrix_with_display_name_config: Orb::Models::custom_rating_function_config_model,
+          model_type: :matrix_with_display_name,
+          name: String,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionMatrixWithDisplayNamePrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMatrixWithDisplayNamePrice::cadence
+
+        attr_accessor item_id: String
+
+        attr_accessor matrix_with_display_name_config: Orb::Models::custom_rating_function_config_model
+
+        attr_accessor model_type: :matrix_with_display_name
+
+        attr_accessor name: String
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMatrixWithDisplayNamePrice::cadence,
+            item_id: String,
+            matrix_with_display_name_config: Orb::Models::custom_rating_function_config_model,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :matrix_with_display_name
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_matrix_with_display_name_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_matrix_with_display_name_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMatrixWithDisplayNamePrice::cadence]
+        end
+      end
+
+      type new_subscription_grouped_tiered_package_price =
+        {
+          cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedTieredPackagePrice::cadence,
+          grouped_tiered_package_config: Orb::Models::custom_rating_function_config_model,
+          item_id: String,
+          model_type: :grouped_tiered_package,
+          name: String,
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          conversion_rate: Float?,
+          currency: String?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          reference_id: String?
+        }
+
+      class NewSubscriptionGroupedTieredPackagePrice < Orb::BaseModel
+        attr_accessor cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedTieredPackagePrice::cadence
+
+        attr_accessor grouped_tiered_package_config: Orb::Models::custom_rating_function_config_model
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: :grouped_tiered_package
+
+        attr_accessor name: String
+
+        attr_accessor billable_metric_id: String?
+
+        attr_accessor billed_in_advance: bool?
+
+        attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor currency: String?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoice_grouping_key: String?
+
+        attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor reference_id: String?
+
+        def initialize:
+          (
+            cadence: Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedTieredPackagePrice::cadence,
+            grouped_tiered_package_config: Orb::Models::custom_rating_function_config_model,
+            item_id: String,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            conversion_rate: Float?,
+            currency: String?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
+            metadata: ::Hash[Symbol, String?]?,
+            reference_id: String?,
+            model_type: :grouped_tiered_package
+          ) -> void
+          | (
+            ?Orb::Models::NewSubscriptionPriceModel::new_subscription_grouped_tiered_package_price
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewSubscriptionPriceModel::new_subscription_grouped_tiered_package_price
+
+        type cadence =
+          :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+        class Cadence < Orb::Enum
+          ANNUAL: :annual
+          SEMI_ANNUAL: :semi_annual
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          ONE_TIME: :one_time
+          CUSTOM: :custom
+
+          def self.values: -> ::Array[Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedTieredPackagePrice::cadence]
+        end
+      end
+
+      private def self.variants: -> [[:unit, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitPrice], [:package, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionPackagePrice], [:matrix, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMatrixPrice], [:tiered, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredPrice], [:tiered_bps, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredBpsPrice], [:bps, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBpsPrice], [:bulk_bps, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkBpsPrice], [:bulk, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkPrice], [:threshold_total_amount, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionThresholdTotalAmountPrice], [:tiered_package, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredPackagePrice], [:tiered_with_minimum, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTieredWithMinimumPrice], [:unit_with_percent, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitWithPercentPrice], [:package_with_allocation, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionPackageWithAllocationPrice], [:tiered_with_proration, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionTierWithProrationPrice], [:unit_with_proration, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionUnitWithProrationPrice], [:grouped_allocation, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedAllocationPrice], [:grouped_with_prorated_minimum, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedWithProratedMinimumPrice], [:bulk_with_proration, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionBulkWithProrationPrice], [:scalable_matrix_with_unit_pricing, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionScalableMatrixWithUnitPricingPrice], [:scalable_matrix_with_tiered_pricing, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionScalableMatrixWithTieredPricingPrice], [:cumulative_grouped_bulk, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionCumulativeGroupedBulkPrice], [:max_group_tiered_package, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMaxGroupTieredPackagePrice], [:grouped_with_metered_minimum, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedWithMeteredMinimumPrice], [:matrix_with_display_name, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionMatrixWithDisplayNamePrice], [:grouped_tiered_package, Orb::Models::NewSubscriptionPriceModel::NewSubscriptionGroupedTieredPackagePrice]]
+    end
+  end
+end

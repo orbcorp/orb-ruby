@@ -1,0 +1,21 @@
+module Orb
+  module Models
+    type price_interval_fixed_fee_quantity_transition_model =
+      { effective_date: Time, quantity: Integer }
+
+    class PriceIntervalFixedFeeQuantityTransitionModel < Orb::BaseModel
+      attr_accessor effective_date: Time
+
+      attr_accessor quantity: Integer
+
+      def initialize:
+        (effective_date: Time, quantity: Integer) -> void
+        | (
+          ?Orb::Models::price_interval_fixed_fee_quantity_transition_model
+          | Orb::BaseModel data
+        ) -> void
+
+      def to_hash: -> Orb::Models::price_interval_fixed_fee_quantity_transition_model
+    end
+  end
+end

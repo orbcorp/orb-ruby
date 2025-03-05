@@ -1,0 +1,19 @@
+module Orb
+  module Models
+    type billable_metric_simple_model = { id: String, name: String }
+
+    class BillableMetricSimpleModel < Orb::BaseModel
+      attr_accessor id: String
+
+      attr_accessor name: String
+
+      def initialize:
+        (id: String, name: String) -> void
+        | (
+          ?Orb::Models::billable_metric_simple_model | Orb::BaseModel data
+        ) -> void
+
+      def to_hash: -> Orb::Models::billable_metric_simple_model
+    end
+  end
+end

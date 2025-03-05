@@ -1,0 +1,30 @@
+module Orb
+  module Models
+    type fixed_fee_quantity_schedule_entry_model =
+      { end_date: Time?, price_id: String, quantity: Float, start_date: Time }
+
+    class FixedFeeQuantityScheduleEntryModel < Orb::BaseModel
+      attr_accessor end_date: Time?
+
+      attr_accessor price_id: String
+
+      attr_accessor quantity: Float
+
+      attr_accessor start_date: Time
+
+      def initialize:
+        (
+          end_date: Time?,
+          price_id: String,
+          quantity: Float,
+          start_date: Time
+        ) -> void
+        | (
+          ?Orb::Models::fixed_fee_quantity_schedule_entry_model
+          | Orb::BaseModel data
+        ) -> void
+
+      def to_hash: -> Orb::Models::fixed_fee_quantity_schedule_entry_model
+    end
+  end
+end

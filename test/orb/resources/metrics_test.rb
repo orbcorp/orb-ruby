@@ -12,17 +12,17 @@ class Orb::Test::Resources::MetricsTest < Orb::Test::ResourceTest
     )
 
     assert_pattern do
-      response => Orb::Models::BillableMetric
+      response => Orb::Models::BillableMetricModel
     end
 
     assert_pattern do
       response => {
         id: String,
         description: String | nil,
-        item: Orb::Models::Item,
+        item: Orb::Models::ItemModel,
         metadata: ^(Orb::HashOf[String]),
         name: String,
-        status: Orb::Models::BillableMetric::Status
+        status: Orb::Models::BillableMetricModel::Status
       }
     end
   end
@@ -31,17 +31,17 @@ class Orb::Test::Resources::MetricsTest < Orb::Test::ResourceTest
     response = @orb.metrics.update("metric_id")
 
     assert_pattern do
-      response => Orb::Models::BillableMetric
+      response => Orb::Models::BillableMetricModel
     end
 
     assert_pattern do
       response => {
         id: String,
         description: String | nil,
-        item: Orb::Models::Item,
+        item: Orb::Models::ItemModel,
         metadata: ^(Orb::HashOf[String]),
         name: String,
-        status: Orb::Models::BillableMetric::Status
+        status: Orb::Models::BillableMetricModel::Status
       }
     end
   end
@@ -60,17 +60,17 @@ class Orb::Test::Resources::MetricsTest < Orb::Test::ResourceTest
 
     row = response.to_enum.first
     assert_pattern do
-      row => Orb::Models::BillableMetric
+      row => Orb::Models::BillableMetricModel
     end
 
     assert_pattern do
       row => {
         id: String,
         description: String | nil,
-        item: Orb::Models::Item,
+        item: Orb::Models::ItemModel,
         metadata: ^(Orb::HashOf[String]),
         name: String,
-        status: Orb::Models::BillableMetric::Status
+        status: Orb::Models::BillableMetricModel::Status
       }
     end
   end
@@ -79,17 +79,17 @@ class Orb::Test::Resources::MetricsTest < Orb::Test::ResourceTest
     response = @orb.metrics.fetch("metric_id")
 
     assert_pattern do
-      response => Orb::Models::BillableMetric
+      response => Orb::Models::BillableMetricModel
     end
 
     assert_pattern do
       response => {
         id: String,
         description: String | nil,
-        item: Orb::Models::Item,
+        item: Orb::Models::ItemModel,
         metadata: ^(Orb::HashOf[String]),
         name: String,
-        status: Orb::Models::BillableMetric::Status
+        status: Orb::Models::BillableMetricModel::Status
       }
     end
   end

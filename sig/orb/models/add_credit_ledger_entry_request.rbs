@@ -1,0 +1,276 @@
+module Orb
+  module Models
+    type add_credit_ledger_entry_request =
+      Orb::Models::AddCreditLedgerEntryRequest::AddIncrementCreditLedgerEntryRequestParams
+      | Orb::Models::AddCreditLedgerEntryRequest::AddDecrementCreditLedgerEntryRequestParams
+      | Orb::Models::AddCreditLedgerEntryRequest::AddExpirationChangeCreditLedgerEntryRequestParams
+      | Orb::Models::AddCreditLedgerEntryRequest::AddVoidCreditLedgerEntryRequestParams
+      | Orb::Models::AddCreditLedgerEntryRequest::AddAmendmentCreditLedgerEntryRequestParams
+
+    class AddCreditLedgerEntryRequest < Orb::Union
+      type add_increment_credit_ledger_entry_request_params =
+        {
+          amount: Float,
+          entry_type: :increment,
+          currency: String?,
+          description: String?,
+          effective_date: Time?,
+          expiry_date: Time?,
+          invoice_settings: Orb::Models::AddCreditLedgerEntryRequest::AddIncrementCreditLedgerEntryRequestParams::InvoiceSettings?,
+          metadata: ::Hash[Symbol, String?]?,
+          per_unit_cost_basis: String?
+        }
+
+      class AddIncrementCreditLedgerEntryRequestParams < Orb::BaseModel
+        attr_accessor amount: Float
+
+        attr_accessor entry_type: :increment
+
+        attr_accessor currency: String?
+
+        attr_accessor description: String?
+
+        attr_accessor effective_date: Time?
+
+        attr_accessor expiry_date: Time?
+
+        attr_accessor invoice_settings: Orb::Models::AddCreditLedgerEntryRequest::AddIncrementCreditLedgerEntryRequestParams::InvoiceSettings?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor per_unit_cost_basis: String?
+
+        def initialize:
+          (
+            amount: Float,
+            currency: String?,
+            description: String?,
+            effective_date: Time?,
+            expiry_date: Time?,
+            invoice_settings: Orb::Models::AddCreditLedgerEntryRequest::AddIncrementCreditLedgerEntryRequestParams::InvoiceSettings?,
+            metadata: ::Hash[Symbol, String?]?,
+            per_unit_cost_basis: String?,
+            entry_type: :increment
+          ) -> void
+          | (
+            ?Orb::Models::AddCreditLedgerEntryRequest::add_increment_credit_ledger_entry_request_params
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::AddCreditLedgerEntryRequest::add_increment_credit_ledger_entry_request_params
+
+        type invoice_settings =
+          {
+            auto_collection: bool,
+            net_terms: Integer,
+            memo: String?,
+            require_successful_payment: bool
+          }
+
+        class InvoiceSettings < Orb::BaseModel
+          attr_accessor auto_collection: bool
+
+          attr_accessor net_terms: Integer
+
+          attr_accessor memo: String?
+
+          attr_reader require_successful_payment: bool?
+
+          def require_successful_payment=: (bool) -> bool
+
+          def initialize:
+            (
+              auto_collection: bool,
+              net_terms: Integer,
+              memo: String?,
+              require_successful_payment: bool
+            ) -> void
+            | (
+              ?Orb::Models::AddCreditLedgerEntryRequest::AddIncrementCreditLedgerEntryRequestParams::invoice_settings
+              | Orb::BaseModel data
+            ) -> void
+
+          def to_hash: -> Orb::Models::AddCreditLedgerEntryRequest::AddIncrementCreditLedgerEntryRequestParams::invoice_settings
+        end
+      end
+
+      type add_decrement_credit_ledger_entry_request_params =
+        {
+          amount: Float,
+          entry_type: :decrement,
+          currency: String?,
+          description: String?,
+          metadata: ::Hash[Symbol, String?]?
+        }
+
+      class AddDecrementCreditLedgerEntryRequestParams < Orb::BaseModel
+        attr_accessor amount: Float
+
+        attr_accessor entry_type: :decrement
+
+        attr_accessor currency: String?
+
+        attr_accessor description: String?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        def initialize:
+          (
+            amount: Float,
+            currency: String?,
+            description: String?,
+            metadata: ::Hash[Symbol, String?]?,
+            entry_type: :decrement
+          ) -> void
+          | (
+            ?Orb::Models::AddCreditLedgerEntryRequest::add_decrement_credit_ledger_entry_request_params
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::AddCreditLedgerEntryRequest::add_decrement_credit_ledger_entry_request_params
+      end
+
+      type add_expiration_change_credit_ledger_entry_request_params =
+        {
+          entry_type: :expiration_change,
+          expiry_date: Time?,
+          target_expiry_date: Date,
+          amount: Float?,
+          block_id: String?,
+          currency: String?,
+          description: String?,
+          metadata: ::Hash[Symbol, String?]?
+        }
+
+      class AddExpirationChangeCreditLedgerEntryRequestParams < Orb::BaseModel
+        attr_accessor entry_type: :expiration_change
+
+        attr_accessor expiry_date: Time?
+
+        attr_accessor target_expiry_date: Date
+
+        attr_accessor amount: Float?
+
+        attr_accessor block_id: String?
+
+        attr_accessor currency: String?
+
+        attr_accessor description: String?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        def initialize:
+          (
+            expiry_date: Time?,
+            target_expiry_date: Date,
+            amount: Float?,
+            block_id: String?,
+            currency: String?,
+            description: String?,
+            metadata: ::Hash[Symbol, String?]?,
+            entry_type: :expiration_change
+          ) -> void
+          | (
+            ?Orb::Models::AddCreditLedgerEntryRequest::add_expiration_change_credit_ledger_entry_request_params
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::AddCreditLedgerEntryRequest::add_expiration_change_credit_ledger_entry_request_params
+      end
+
+      type add_void_credit_ledger_entry_request_params =
+        {
+          amount: Float,
+          block_id: String,
+          entry_type: :void,
+          currency: String?,
+          description: String?,
+          metadata: ::Hash[Symbol, String?]?,
+          void_reason: Orb::Models::AddCreditLedgerEntryRequest::AddVoidCreditLedgerEntryRequestParams::void_reason?
+        }
+
+      class AddVoidCreditLedgerEntryRequestParams < Orb::BaseModel
+        attr_accessor amount: Float
+
+        attr_accessor block_id: String
+
+        attr_accessor entry_type: :void
+
+        attr_accessor currency: String?
+
+        attr_accessor description: String?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_accessor void_reason: Orb::Models::AddCreditLedgerEntryRequest::AddVoidCreditLedgerEntryRequestParams::void_reason?
+
+        def initialize:
+          (
+            amount: Float,
+            block_id: String,
+            currency: String?,
+            description: String?,
+            metadata: ::Hash[Symbol, String?]?,
+            void_reason: Orb::Models::AddCreditLedgerEntryRequest::AddVoidCreditLedgerEntryRequestParams::void_reason?,
+            entry_type: :void
+          ) -> void
+          | (
+            ?Orb::Models::AddCreditLedgerEntryRequest::add_void_credit_ledger_entry_request_params
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::AddCreditLedgerEntryRequest::add_void_credit_ledger_entry_request_params
+
+        type void_reason = :refund
+
+        class VoidReason < Orb::Enum
+          REFUND: :refund
+
+          def self.values: -> ::Array[Orb::Models::AddCreditLedgerEntryRequest::AddVoidCreditLedgerEntryRequestParams::void_reason]
+        end
+      end
+
+      type add_amendment_credit_ledger_entry_request_params =
+        {
+          amount: Float,
+          block_id: String,
+          entry_type: :amendment,
+          currency: String?,
+          description: String?,
+          metadata: ::Hash[Symbol, String?]?
+        }
+
+      class AddAmendmentCreditLedgerEntryRequestParams < Orb::BaseModel
+        attr_accessor amount: Float
+
+        attr_accessor block_id: String
+
+        attr_accessor entry_type: :amendment
+
+        attr_accessor currency: String?
+
+        attr_accessor description: String?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        def initialize:
+          (
+            amount: Float,
+            block_id: String,
+            currency: String?,
+            description: String?,
+            metadata: ::Hash[Symbol, String?]?,
+            entry_type: :amendment
+          ) -> void
+          | (
+            ?Orb::Models::AddCreditLedgerEntryRequest::add_amendment_credit_ledger_entry_request_params
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::AddCreditLedgerEntryRequest::add_amendment_credit_ledger_entry_request_params
+      end
+
+      private def self.variants: -> [[:increment, Orb::Models::AddCreditLedgerEntryRequest::AddIncrementCreditLedgerEntryRequestParams], [:decrement, Orb::Models::AddCreditLedgerEntryRequest::AddDecrementCreditLedgerEntryRequestParams], [:expiration_change, Orb::Models::AddCreditLedgerEntryRequest::AddExpirationChangeCreditLedgerEntryRequestParams], [:void, Orb::Models::AddCreditLedgerEntryRequest::AddVoidCreditLedgerEntryRequestParams], [:amendment, Orb::Models::AddCreditLedgerEntryRequest::AddAmendmentCreditLedgerEntryRequestParams]]
+    end
+  end
+end

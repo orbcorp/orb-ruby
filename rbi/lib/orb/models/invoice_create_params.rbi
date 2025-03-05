@@ -239,14 +239,11 @@ module Orb
         def start_date=(_)
         end
 
-        sig { returns(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig) }
+        sig { returns(Orb::Models::UnitConfigModel) }
         def unit_config
         end
 
-        sig do
-          params(_: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig)
-            .returns(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig)
-        end
+        sig { params(_: Orb::Models::UnitConfigModel).returns(Orb::Models::UnitConfigModel) }
         def unit_config=(_)
         end
 
@@ -258,7 +255,7 @@ module Orb
             name: String,
             quantity: Float,
             start_date: Date,
-            unit_config: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig
+            unit_config: Orb::Models::UnitConfigModel
           )
             .void
         end
@@ -275,7 +272,7 @@ module Orb
                 name: String,
                 quantity: Float,
                 start_date: Date,
-                unit_config: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig
+                unit_config: Orb::Models::UnitConfigModel
               }
             )
         end
@@ -289,24 +286,6 @@ module Orb
 
           sig { override.returns(T::Array[Symbol]) }
           def self.values
-          end
-        end
-
-        class UnitConfig < Orb::BaseModel
-          sig { returns(String) }
-          def unit_amount
-          end
-
-          sig { params(_: String).returns(String) }
-          def unit_amount=(_)
-          end
-
-          sig { params(unit_amount: String).void }
-          def initialize(unit_amount:)
-          end
-
-          sig { override.returns({unit_amount: String}) }
-          def to_hash
           end
         end
       end

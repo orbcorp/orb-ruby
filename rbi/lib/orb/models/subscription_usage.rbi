@@ -26,25 +26,19 @@ module Orb
         end
 
         class Data < Orb::BaseModel
-          sig { returns(Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric) }
+          sig { returns(Orb::Models::BillableMetricSimpleModel) }
           def billable_metric
           end
 
-          sig do
-            params(_: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric)
-              .returns(Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric)
-          end
+          sig { params(_: Orb::Models::BillableMetricSimpleModel).returns(Orb::Models::BillableMetricSimpleModel) }
           def billable_metric=(_)
           end
 
-          sig { returns(T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage]) }
+          sig { returns(T::Array[Orb::Models::UsageModel]) }
           def usage
           end
 
-          sig do
-            params(_: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage])
-              .returns(T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage])
-          end
+          sig { params(_: T::Array[Orb::Models::UsageModel]).returns(T::Array[Orb::Models::UsageModel]) }
           def usage=(_)
           end
 
@@ -58,8 +52,8 @@ module Orb
 
           sig do
             params(
-              billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric,
-              usage: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage],
+              billable_metric: Orb::Models::BillableMetricSimpleModel,
+              usage: T::Array[Orb::Models::UsageModel],
               view_mode: Symbol
             )
               .void
@@ -71,73 +65,13 @@ module Orb
             override
               .returns(
                 {
-                  billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric,
-                  usage: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage],
+                  billable_metric: Orb::Models::BillableMetricSimpleModel,
+                  usage: T::Array[Orb::Models::UsageModel],
                   view_mode: Symbol
                 }
               )
           end
           def to_hash
-          end
-
-          class BillableMetric < Orb::BaseModel
-            sig { returns(String) }
-            def id
-            end
-
-            sig { params(_: String).returns(String) }
-            def id=(_)
-            end
-
-            sig { returns(String) }
-            def name
-            end
-
-            sig { params(_: String).returns(String) }
-            def name=(_)
-            end
-
-            sig { params(id: String, name: String).void }
-            def initialize(id:, name:)
-            end
-
-            sig { override.returns({id: String, name: String}) }
-            def to_hash
-            end
-          end
-
-          class Usage < Orb::BaseModel
-            sig { returns(Float) }
-            def quantity
-            end
-
-            sig { params(_: Float).returns(Float) }
-            def quantity=(_)
-            end
-
-            sig { returns(Time) }
-            def timeframe_end
-            end
-
-            sig { params(_: Time).returns(Time) }
-            def timeframe_end=(_)
-            end
-
-            sig { returns(Time) }
-            def timeframe_start
-            end
-
-            sig { params(_: Time).returns(Time) }
-            def timeframe_start=(_)
-            end
-
-            sig { params(quantity: Float, timeframe_end: Time, timeframe_start: Time).void }
-            def initialize(quantity:, timeframe_end:, timeframe_start:)
-            end
-
-            sig { override.returns({quantity: Float, timeframe_end: Time, timeframe_start: Time}) }
-            def to_hash
-            end
           end
 
           class ViewMode < Orb::Enum
@@ -196,14 +130,11 @@ module Orb
         end
 
         class Data < Orb::BaseModel
-          sig { returns(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric) }
+          sig { returns(Orb::Models::BillableMetricSimpleModel) }
           def billable_metric
           end
 
-          sig do
-            params(_: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric)
-              .returns(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric)
-          end
+          sig { params(_: Orb::Models::BillableMetricSimpleModel).returns(Orb::Models::BillableMetricSimpleModel) }
           def billable_metric=(_)
           end
 
@@ -218,14 +149,11 @@ module Orb
           def metric_group=(_)
           end
 
-          sig { returns(T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage]) }
+          sig { returns(T::Array[Orb::Models::UsageModel]) }
           def usage
           end
 
-          sig do
-            params(_: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage])
-              .returns(T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage])
-          end
+          sig { params(_: T::Array[Orb::Models::UsageModel]).returns(T::Array[Orb::Models::UsageModel]) }
           def usage=(_)
           end
 
@@ -239,9 +167,9 @@ module Orb
 
           sig do
             params(
-              billable_metric: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric,
+              billable_metric: Orb::Models::BillableMetricSimpleModel,
               metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup,
-              usage: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage],
+              usage: T::Array[Orb::Models::UsageModel],
               view_mode: Symbol
             )
               .void
@@ -253,40 +181,14 @@ module Orb
             override
               .returns(
                 {
-                  billable_metric: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric,
+                  billable_metric: Orb::Models::BillableMetricSimpleModel,
                   metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup,
-                  usage: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage],
+                  usage: T::Array[Orb::Models::UsageModel],
                   view_mode: Symbol
                 }
               )
           end
           def to_hash
-          end
-
-          class BillableMetric < Orb::BaseModel
-            sig { returns(String) }
-            def id
-            end
-
-            sig { params(_: String).returns(String) }
-            def id=(_)
-            end
-
-            sig { returns(String) }
-            def name
-            end
-
-            sig { params(_: String).returns(String) }
-            def name=(_)
-            end
-
-            sig { params(id: String, name: String).void }
-            def initialize(id:, name:)
-            end
-
-            sig { override.returns({id: String, name: String}) }
-            def to_hash
-            end
           end
 
           class MetricGroup < Orb::BaseModel
@@ -311,40 +213,6 @@ module Orb
             end
 
             sig { override.returns({property_key: String, property_value: String}) }
-            def to_hash
-            end
-          end
-
-          class Usage < Orb::BaseModel
-            sig { returns(Float) }
-            def quantity
-            end
-
-            sig { params(_: Float).returns(Float) }
-            def quantity=(_)
-            end
-
-            sig { returns(Time) }
-            def timeframe_end
-            end
-
-            sig { params(_: Time).returns(Time) }
-            def timeframe_end=(_)
-            end
-
-            sig { returns(Time) }
-            def timeframe_start
-            end
-
-            sig { params(_: Time).returns(Time) }
-            def timeframe_start=(_)
-            end
-
-            sig { params(quantity: Float, timeframe_end: Time, timeframe_start: Time).void }
-            def initialize(quantity:, timeframe_end:, timeframe_start:)
-            end
-
-            sig { override.returns({quantity: Float, timeframe_end: Time, timeframe_start: Time}) }
             def to_hash
             end
           end

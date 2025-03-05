@@ -1,0 +1,591 @@
+module Orb
+  module Models
+    type credit_ledger_entry_model =
+      Orb::Models::CreditLedgerEntryModel::IncrementLedgerEntry
+      | Orb::Models::CreditLedgerEntryModel::DecrementLedgerEntry
+      | Orb::Models::CreditLedgerEntryModel::ExpirationChangeLedgerEntry
+      | Orb::Models::CreditLedgerEntryModel::CreditBlockExpiryLedgerEntry
+      | Orb::Models::CreditLedgerEntryModel::VoidLedgerEntry
+      | Orb::Models::CreditLedgerEntryModel::VoidInitiatedLedgerEntry
+      | Orb::Models::CreditLedgerEntryModel::AmendmentLedgerEntry
+
+    class CreditLedgerEntryModel < Orb::Union
+      type increment_ledger_entry =
+        {
+          id: String,
+          amount: Float,
+          created_at: Time,
+          credit_block: Orb::Models::AffectedBlockModel,
+          currency: String,
+          customer: Orb::Models::CustomerMinifiedModel,
+          description: String?,
+          ending_balance: Float,
+          entry_status: Orb::Models::CreditLedgerEntryModel::IncrementLedgerEntry::entry_status,
+          entry_type: :increment,
+          ledger_sequence_number: Integer,
+          metadata: ::Hash[Symbol, String],
+          starting_balance: Float
+        }
+
+      class IncrementLedgerEntry < Orb::BaseModel
+        attr_accessor id: String
+
+        attr_accessor amount: Float
+
+        attr_accessor created_at: Time
+
+        attr_accessor credit_block: Orb::Models::AffectedBlockModel
+
+        attr_accessor currency: String
+
+        attr_accessor customer: Orb::Models::CustomerMinifiedModel
+
+        attr_accessor description: String?
+
+        attr_accessor ending_balance: Float
+
+        attr_accessor entry_status: Orb::Models::CreditLedgerEntryModel::IncrementLedgerEntry::entry_status
+
+        attr_accessor entry_type: :increment
+
+        attr_accessor ledger_sequence_number: Integer
+
+        attr_accessor metadata: ::Hash[Symbol, String]
+
+        attr_accessor starting_balance: Float
+
+        def initialize:
+          (
+            id: String,
+            amount: Float,
+            created_at: Time,
+            credit_block: Orb::Models::AffectedBlockModel,
+            currency: String,
+            customer: Orb::Models::CustomerMinifiedModel,
+            description: String?,
+            ending_balance: Float,
+            entry_status: Orb::Models::CreditLedgerEntryModel::IncrementLedgerEntry::entry_status,
+            ledger_sequence_number: Integer,
+            metadata: ::Hash[Symbol, String],
+            starting_balance: Float,
+            entry_type: :increment
+          ) -> void
+          | (
+            ?Orb::Models::CreditLedgerEntryModel::increment_ledger_entry
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::CreditLedgerEntryModel::increment_ledger_entry
+
+        type entry_status = :committed | :pending
+
+        class EntryStatus < Orb::Enum
+          COMMITTED: :committed
+          PENDING: :pending
+
+          def self.values: -> ::Array[Orb::Models::CreditLedgerEntryModel::IncrementLedgerEntry::entry_status]
+        end
+      end
+
+      type decrement_ledger_entry =
+        {
+          id: String,
+          amount: Float,
+          created_at: Time,
+          credit_block: Orb::Models::AffectedBlockModel,
+          currency: String,
+          customer: Orb::Models::CustomerMinifiedModel,
+          description: String?,
+          ending_balance: Float,
+          entry_status: Orb::Models::CreditLedgerEntryModel::DecrementLedgerEntry::entry_status,
+          entry_type: :decrement,
+          ledger_sequence_number: Integer,
+          metadata: ::Hash[Symbol, String],
+          starting_balance: Float,
+          event_id: String?,
+          invoice_id: String?,
+          price_id: String?
+        }
+
+      class DecrementLedgerEntry < Orb::BaseModel
+        attr_accessor id: String
+
+        attr_accessor amount: Float
+
+        attr_accessor created_at: Time
+
+        attr_accessor credit_block: Orb::Models::AffectedBlockModel
+
+        attr_accessor currency: String
+
+        attr_accessor customer: Orb::Models::CustomerMinifiedModel
+
+        attr_accessor description: String?
+
+        attr_accessor ending_balance: Float
+
+        attr_accessor entry_status: Orb::Models::CreditLedgerEntryModel::DecrementLedgerEntry::entry_status
+
+        attr_accessor entry_type: :decrement
+
+        attr_accessor ledger_sequence_number: Integer
+
+        attr_accessor metadata: ::Hash[Symbol, String]
+
+        attr_accessor starting_balance: Float
+
+        attr_accessor event_id: String?
+
+        attr_accessor invoice_id: String?
+
+        attr_accessor price_id: String?
+
+        def initialize:
+          (
+            id: String,
+            amount: Float,
+            created_at: Time,
+            credit_block: Orb::Models::AffectedBlockModel,
+            currency: String,
+            customer: Orb::Models::CustomerMinifiedModel,
+            description: String?,
+            ending_balance: Float,
+            entry_status: Orb::Models::CreditLedgerEntryModel::DecrementLedgerEntry::entry_status,
+            ledger_sequence_number: Integer,
+            metadata: ::Hash[Symbol, String],
+            starting_balance: Float,
+            event_id: String?,
+            invoice_id: String?,
+            price_id: String?,
+            entry_type: :decrement
+          ) -> void
+          | (
+            ?Orb::Models::CreditLedgerEntryModel::decrement_ledger_entry
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::CreditLedgerEntryModel::decrement_ledger_entry
+
+        type entry_status = :committed | :pending
+
+        class EntryStatus < Orb::Enum
+          COMMITTED: :committed
+          PENDING: :pending
+
+          def self.values: -> ::Array[Orb::Models::CreditLedgerEntryModel::DecrementLedgerEntry::entry_status]
+        end
+      end
+
+      type expiration_change_ledger_entry =
+        {
+          id: String,
+          amount: Float,
+          created_at: Time,
+          credit_block: Orb::Models::AffectedBlockModel,
+          currency: String,
+          customer: Orb::Models::CustomerMinifiedModel,
+          description: String?,
+          ending_balance: Float,
+          entry_status: Orb::Models::CreditLedgerEntryModel::ExpirationChangeLedgerEntry::entry_status,
+          entry_type: :expiration_change,
+          ledger_sequence_number: Integer,
+          metadata: ::Hash[Symbol, String],
+          new_block_expiry_date: Time?,
+          starting_balance: Float
+        }
+
+      class ExpirationChangeLedgerEntry < Orb::BaseModel
+        attr_accessor id: String
+
+        attr_accessor amount: Float
+
+        attr_accessor created_at: Time
+
+        attr_accessor credit_block: Orb::Models::AffectedBlockModel
+
+        attr_accessor currency: String
+
+        attr_accessor customer: Orb::Models::CustomerMinifiedModel
+
+        attr_accessor description: String?
+
+        attr_accessor ending_balance: Float
+
+        attr_accessor entry_status: Orb::Models::CreditLedgerEntryModel::ExpirationChangeLedgerEntry::entry_status
+
+        attr_accessor entry_type: :expiration_change
+
+        attr_accessor ledger_sequence_number: Integer
+
+        attr_accessor metadata: ::Hash[Symbol, String]
+
+        attr_accessor new_block_expiry_date: Time?
+
+        attr_accessor starting_balance: Float
+
+        def initialize:
+          (
+            id: String,
+            amount: Float,
+            created_at: Time,
+            credit_block: Orb::Models::AffectedBlockModel,
+            currency: String,
+            customer: Orb::Models::CustomerMinifiedModel,
+            description: String?,
+            ending_balance: Float,
+            entry_status: Orb::Models::CreditLedgerEntryModel::ExpirationChangeLedgerEntry::entry_status,
+            ledger_sequence_number: Integer,
+            metadata: ::Hash[Symbol, String],
+            new_block_expiry_date: Time?,
+            starting_balance: Float,
+            entry_type: :expiration_change
+          ) -> void
+          | (
+            ?Orb::Models::CreditLedgerEntryModel::expiration_change_ledger_entry
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::CreditLedgerEntryModel::expiration_change_ledger_entry
+
+        type entry_status = :committed | :pending
+
+        class EntryStatus < Orb::Enum
+          COMMITTED: :committed
+          PENDING: :pending
+
+          def self.values: -> ::Array[Orb::Models::CreditLedgerEntryModel::ExpirationChangeLedgerEntry::entry_status]
+        end
+      end
+
+      type credit_block_expiry_ledger_entry =
+        {
+          id: String,
+          amount: Float,
+          created_at: Time,
+          credit_block: Orb::Models::AffectedBlockModel,
+          currency: String,
+          customer: Orb::Models::CustomerMinifiedModel,
+          description: String?,
+          ending_balance: Float,
+          entry_status: Orb::Models::CreditLedgerEntryModel::CreditBlockExpiryLedgerEntry::entry_status,
+          entry_type: :credit_block_expiry,
+          ledger_sequence_number: Integer,
+          metadata: ::Hash[Symbol, String],
+          starting_balance: Float
+        }
+
+      class CreditBlockExpiryLedgerEntry < Orb::BaseModel
+        attr_accessor id: String
+
+        attr_accessor amount: Float
+
+        attr_accessor created_at: Time
+
+        attr_accessor credit_block: Orb::Models::AffectedBlockModel
+
+        attr_accessor currency: String
+
+        attr_accessor customer: Orb::Models::CustomerMinifiedModel
+
+        attr_accessor description: String?
+
+        attr_accessor ending_balance: Float
+
+        attr_accessor entry_status: Orb::Models::CreditLedgerEntryModel::CreditBlockExpiryLedgerEntry::entry_status
+
+        attr_accessor entry_type: :credit_block_expiry
+
+        attr_accessor ledger_sequence_number: Integer
+
+        attr_accessor metadata: ::Hash[Symbol, String]
+
+        attr_accessor starting_balance: Float
+
+        def initialize:
+          (
+            id: String,
+            amount: Float,
+            created_at: Time,
+            credit_block: Orb::Models::AffectedBlockModel,
+            currency: String,
+            customer: Orb::Models::CustomerMinifiedModel,
+            description: String?,
+            ending_balance: Float,
+            entry_status: Orb::Models::CreditLedgerEntryModel::CreditBlockExpiryLedgerEntry::entry_status,
+            ledger_sequence_number: Integer,
+            metadata: ::Hash[Symbol, String],
+            starting_balance: Float,
+            entry_type: :credit_block_expiry
+          ) -> void
+          | (
+            ?Orb::Models::CreditLedgerEntryModel::credit_block_expiry_ledger_entry
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::CreditLedgerEntryModel::credit_block_expiry_ledger_entry
+
+        type entry_status = :committed | :pending
+
+        class EntryStatus < Orb::Enum
+          COMMITTED: :committed
+          PENDING: :pending
+
+          def self.values: -> ::Array[Orb::Models::CreditLedgerEntryModel::CreditBlockExpiryLedgerEntry::entry_status]
+        end
+      end
+
+      type void_ledger_entry =
+        {
+          id: String,
+          amount: Float,
+          created_at: Time,
+          credit_block: Orb::Models::AffectedBlockModel,
+          currency: String,
+          customer: Orb::Models::CustomerMinifiedModel,
+          description: String?,
+          ending_balance: Float,
+          entry_status: Orb::Models::CreditLedgerEntryModel::VoidLedgerEntry::entry_status,
+          entry_type: :void,
+          ledger_sequence_number: Integer,
+          metadata: ::Hash[Symbol, String],
+          starting_balance: Float,
+          void_amount: Float,
+          void_reason: String?
+        }
+
+      class VoidLedgerEntry < Orb::BaseModel
+        attr_accessor id: String
+
+        attr_accessor amount: Float
+
+        attr_accessor created_at: Time
+
+        attr_accessor credit_block: Orb::Models::AffectedBlockModel
+
+        attr_accessor currency: String
+
+        attr_accessor customer: Orb::Models::CustomerMinifiedModel
+
+        attr_accessor description: String?
+
+        attr_accessor ending_balance: Float
+
+        attr_accessor entry_status: Orb::Models::CreditLedgerEntryModel::VoidLedgerEntry::entry_status
+
+        attr_accessor entry_type: :void
+
+        attr_accessor ledger_sequence_number: Integer
+
+        attr_accessor metadata: ::Hash[Symbol, String]
+
+        attr_accessor starting_balance: Float
+
+        attr_accessor void_amount: Float
+
+        attr_accessor void_reason: String?
+
+        def initialize:
+          (
+            id: String,
+            amount: Float,
+            created_at: Time,
+            credit_block: Orb::Models::AffectedBlockModel,
+            currency: String,
+            customer: Orb::Models::CustomerMinifiedModel,
+            description: String?,
+            ending_balance: Float,
+            entry_status: Orb::Models::CreditLedgerEntryModel::VoidLedgerEntry::entry_status,
+            ledger_sequence_number: Integer,
+            metadata: ::Hash[Symbol, String],
+            starting_balance: Float,
+            void_amount: Float,
+            void_reason: String?,
+            entry_type: :void
+          ) -> void
+          | (
+            ?Orb::Models::CreditLedgerEntryModel::void_ledger_entry
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::CreditLedgerEntryModel::void_ledger_entry
+
+        type entry_status = :committed | :pending
+
+        class EntryStatus < Orb::Enum
+          COMMITTED: :committed
+          PENDING: :pending
+
+          def self.values: -> ::Array[Orb::Models::CreditLedgerEntryModel::VoidLedgerEntry::entry_status]
+        end
+      end
+
+      type void_initiated_ledger_entry =
+        {
+          id: String,
+          amount: Float,
+          created_at: Time,
+          credit_block: Orb::Models::AffectedBlockModel,
+          currency: String,
+          customer: Orb::Models::CustomerMinifiedModel,
+          description: String?,
+          ending_balance: Float,
+          entry_status: Orb::Models::CreditLedgerEntryModel::VoidInitiatedLedgerEntry::entry_status,
+          entry_type: :void_initiated,
+          ledger_sequence_number: Integer,
+          metadata: ::Hash[Symbol, String],
+          new_block_expiry_date: Time,
+          starting_balance: Float,
+          void_amount: Float,
+          void_reason: String?
+        }
+
+      class VoidInitiatedLedgerEntry < Orb::BaseModel
+        attr_accessor id: String
+
+        attr_accessor amount: Float
+
+        attr_accessor created_at: Time
+
+        attr_accessor credit_block: Orb::Models::AffectedBlockModel
+
+        attr_accessor currency: String
+
+        attr_accessor customer: Orb::Models::CustomerMinifiedModel
+
+        attr_accessor description: String?
+
+        attr_accessor ending_balance: Float
+
+        attr_accessor entry_status: Orb::Models::CreditLedgerEntryModel::VoidInitiatedLedgerEntry::entry_status
+
+        attr_accessor entry_type: :void_initiated
+
+        attr_accessor ledger_sequence_number: Integer
+
+        attr_accessor metadata: ::Hash[Symbol, String]
+
+        attr_accessor new_block_expiry_date: Time
+
+        attr_accessor starting_balance: Float
+
+        attr_accessor void_amount: Float
+
+        attr_accessor void_reason: String?
+
+        def initialize:
+          (
+            id: String,
+            amount: Float,
+            created_at: Time,
+            credit_block: Orb::Models::AffectedBlockModel,
+            currency: String,
+            customer: Orb::Models::CustomerMinifiedModel,
+            description: String?,
+            ending_balance: Float,
+            entry_status: Orb::Models::CreditLedgerEntryModel::VoidInitiatedLedgerEntry::entry_status,
+            ledger_sequence_number: Integer,
+            metadata: ::Hash[Symbol, String],
+            new_block_expiry_date: Time,
+            starting_balance: Float,
+            void_amount: Float,
+            void_reason: String?,
+            entry_type: :void_initiated
+          ) -> void
+          | (
+            ?Orb::Models::CreditLedgerEntryModel::void_initiated_ledger_entry
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::CreditLedgerEntryModel::void_initiated_ledger_entry
+
+        type entry_status = :committed | :pending
+
+        class EntryStatus < Orb::Enum
+          COMMITTED: :committed
+          PENDING: :pending
+
+          def self.values: -> ::Array[Orb::Models::CreditLedgerEntryModel::VoidInitiatedLedgerEntry::entry_status]
+        end
+      end
+
+      type amendment_ledger_entry =
+        {
+          id: String,
+          amount: Float,
+          created_at: Time,
+          credit_block: Orb::Models::AffectedBlockModel,
+          currency: String,
+          customer: Orb::Models::CustomerMinifiedModel,
+          description: String?,
+          ending_balance: Float,
+          entry_status: Orb::Models::CreditLedgerEntryModel::AmendmentLedgerEntry::entry_status,
+          entry_type: :amendment,
+          ledger_sequence_number: Integer,
+          metadata: ::Hash[Symbol, String],
+          starting_balance: Float
+        }
+
+      class AmendmentLedgerEntry < Orb::BaseModel
+        attr_accessor id: String
+
+        attr_accessor amount: Float
+
+        attr_accessor created_at: Time
+
+        attr_accessor credit_block: Orb::Models::AffectedBlockModel
+
+        attr_accessor currency: String
+
+        attr_accessor customer: Orb::Models::CustomerMinifiedModel
+
+        attr_accessor description: String?
+
+        attr_accessor ending_balance: Float
+
+        attr_accessor entry_status: Orb::Models::CreditLedgerEntryModel::AmendmentLedgerEntry::entry_status
+
+        attr_accessor entry_type: :amendment
+
+        attr_accessor ledger_sequence_number: Integer
+
+        attr_accessor metadata: ::Hash[Symbol, String]
+
+        attr_accessor starting_balance: Float
+
+        def initialize:
+          (
+            id: String,
+            amount: Float,
+            created_at: Time,
+            credit_block: Orb::Models::AffectedBlockModel,
+            currency: String,
+            customer: Orb::Models::CustomerMinifiedModel,
+            description: String?,
+            ending_balance: Float,
+            entry_status: Orb::Models::CreditLedgerEntryModel::AmendmentLedgerEntry::entry_status,
+            ledger_sequence_number: Integer,
+            metadata: ::Hash[Symbol, String],
+            starting_balance: Float,
+            entry_type: :amendment
+          ) -> void
+          | (
+            ?Orb::Models::CreditLedgerEntryModel::amendment_ledger_entry
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::CreditLedgerEntryModel::amendment_ledger_entry
+
+        type entry_status = :committed | :pending
+
+        class EntryStatus < Orb::Enum
+          COMMITTED: :committed
+          PENDING: :pending
+
+          def self.values: -> ::Array[Orb::Models::CreditLedgerEntryModel::AmendmentLedgerEntry::entry_status]
+        end
+      end
+
+      private def self.variants: -> [[:increment, Orb::Models::CreditLedgerEntryModel::IncrementLedgerEntry], [:decrement, Orb::Models::CreditLedgerEntryModel::DecrementLedgerEntry], [:expiration_change, Orb::Models::CreditLedgerEntryModel::ExpirationChangeLedgerEntry], [:credit_block_expiry, Orb::Models::CreditLedgerEntryModel::CreditBlockExpiryLedgerEntry], [:void, Orb::Models::CreditLedgerEntryModel::VoidLedgerEntry], [:void_initiated, Orb::Models::CreditLedgerEntryModel::VoidInitiatedLedgerEntry], [:amendment, Orb::Models::CreditLedgerEntryModel::AmendmentLedgerEntry]]
+    end
+  end
+end
