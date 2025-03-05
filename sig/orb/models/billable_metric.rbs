@@ -4,7 +4,7 @@ module Orb
       {
         id: String,
         description: String?,
-        item: Orb::Models::ItemModel,
+        item: Orb::Models::Item,
         metadata: ::Hash[Symbol, String],
         name: String,
         status: Orb::Models::BillableMetric::status
@@ -15,7 +15,7 @@ module Orb
 
       attr_accessor description: String?
 
-      attr_accessor item: Orb::Models::ItemModel
+      attr_accessor item: Orb::Models::Item
 
       attr_accessor metadata: ::Hash[Symbol, String]
 
@@ -27,7 +27,7 @@ module Orb
         (
           id: String,
           description: String?,
-          item: Orb::Models::ItemModel,
+          item: Orb::Models::Item,
           metadata: ::Hash[Symbol, String],
           name: String,
           status: Orb::Models::BillableMetric::status

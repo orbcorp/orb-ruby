@@ -23,13 +23,13 @@ module Orb
               .returns(
                 Orb::Page[
                 T.any(
-                  Orb::Models::CreditLedgerEntryModel::IncrementLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::DecrementLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::ExpirationChangeLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::CreditBlockExpiryLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::VoidLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::VoidInitiatedLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::AmendmentLedgerEntry
+                  Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry
                 )
                 ]
               )
@@ -58,13 +58,13 @@ module Orb
             )
               .returns(
                 T.any(
-                  Orb::Models::CreditLedgerEntryModel::IncrementLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::DecrementLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::ExpirationChangeLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::CreditBlockExpiryLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::VoidLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::VoidInitiatedLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::AmendmentLedgerEntry
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry
                 )
               )
           end
@@ -79,13 +79,13 @@ module Orb
             )
               .returns(
                 T.any(
-                  Orb::Models::CreditLedgerEntryModel::IncrementLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::DecrementLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::ExpirationChangeLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::CreditBlockExpiryLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::VoidLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::VoidInitiatedLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::AmendmentLedgerEntry
+                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry
                 )
               )
           end
@@ -114,13 +114,13 @@ module Orb
               .returns(
                 Orb::Page[
                 T.any(
-                  Orb::Models::CreditLedgerEntryModel::IncrementLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::DecrementLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::ExpirationChangeLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::CreditBlockExpiryLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::VoidLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::VoidInitiatedLedgerEntry,
-                  Orb::Models::CreditLedgerEntryModel::AmendmentLedgerEntry
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry
                 )
                 ]
               )

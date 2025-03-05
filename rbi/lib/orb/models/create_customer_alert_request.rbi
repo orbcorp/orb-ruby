@@ -19,24 +19,37 @@ module Orb
       def type=(_)
       end
 
-      sig { returns(T.nilable(T::Array[Orb::Models::ThresholdModel])) }
+      sig { returns(T.nilable(T::Array[Orb::Models::CreateCustomerAlertRequest::Threshold])) }
       def thresholds
       end
 
       sig do
-        params(_: T.nilable(T::Array[Orb::Models::ThresholdModel]))
-          .returns(T.nilable(T::Array[Orb::Models::ThresholdModel]))
+        params(_: T.nilable(T::Array[Orb::Models::CreateCustomerAlertRequest::Threshold]))
+          .returns(T.nilable(T::Array[Orb::Models::CreateCustomerAlertRequest::Threshold]))
       end
       def thresholds=(_)
       end
 
-      sig { params(currency: String, type: Symbol, thresholds: T.nilable(T::Array[Orb::Models::ThresholdModel])).void }
+      sig do
+        params(
+          currency: String,
+          type: Symbol,
+          thresholds: T.nilable(T::Array[Orb::Models::CreateCustomerAlertRequest::Threshold])
+        )
+          .void
+      end
       def initialize(currency:, type:, thresholds: nil)
       end
 
       sig do
         override
-          .returns({currency: String, type: Symbol, thresholds: T.nilable(T::Array[Orb::Models::ThresholdModel])})
+          .returns(
+            {
+              currency: String,
+              type: Symbol,
+              thresholds: T.nilable(T::Array[Orb::Models::CreateCustomerAlertRequest::Threshold])
+            }
+          )
       end
       def to_hash
       end
@@ -52,6 +65,24 @@ module Orb
 
         sig { override.returns(T::Array[Symbol]) }
         def self.values
+        end
+      end
+
+      class Threshold < Orb::BaseModel
+        sig { returns(Float) }
+        def value
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def value=(_)
+        end
+
+        sig { params(value: Float).void }
+        def initialize(value:)
+        end
+
+        sig { override.returns({value: Float}) }
+        def to_hash
         end
       end
     end

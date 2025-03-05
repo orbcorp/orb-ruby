@@ -8,7 +8,7 @@ module Orb
               String customer_id,
               Orb::Models::Customers::Credits::TopUpCreateParams
               | ::Hash[Symbol, top] params
-            ) -> Orb::Models::TopUpModel
+            ) -> Orb::Models::Customers::Credits::TopUpCreateResponse
             | (
               String customer_id,
               amount: String,
@@ -20,20 +20,20 @@ module Orb
               expires_after: Integer?,
               expires_after_unit: Orb::Models::Customers::Credits::AddCreditTopUpRequest::expires_after_unit?,
               request_options: Orb::request_opts
-            ) -> Orb::Models::TopUpModel
+            ) -> Orb::Models::Customers::Credits::TopUpCreateResponse
 
           def list:
             (
               String customer_id,
               ?Orb::Models::Customers::Credits::TopUpListParams
               | ::Hash[Symbol, top] params
-            ) -> Orb::Page[Orb::Models::TopUpModel]
+            ) -> Orb::Page[Orb::Models::Customers::Credits::TopUpListResponse]
             | (
               String customer_id,
               cursor: String?,
               limit: Integer,
               request_options: Orb::request_opts
-            ) -> Orb::Page[Orb::Models::TopUpModel]
+            ) -> Orb::Page[Orb::Models::Customers::Credits::TopUpListResponse]
 
           def delete:
             (
@@ -52,7 +52,7 @@ module Orb
               String external_customer_id,
               Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams
               | ::Hash[Symbol, top] params
-            ) -> Orb::Models::TopUpModel
+            ) -> Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse
             | (
               String external_customer_id,
               amount: String,
@@ -64,7 +64,7 @@ module Orb
               expires_after: Integer?,
               expires_after_unit: Orb::Models::Customers::Credits::AddCreditTopUpRequest::expires_after_unit?,
               request_options: Orb::request_opts
-            ) -> Orb::Models::TopUpModel
+            ) -> Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse
 
           def delete_by_external_id:
             (
@@ -83,13 +83,13 @@ module Orb
               String external_customer_id,
               ?Orb::Models::Customers::Credits::TopUpListByExternalIDParams
               | ::Hash[Symbol, top] params
-            ) -> Orb::Page[Orb::Models::TopUpModel]
+            ) -> Orb::Page[Orb::Models::Customers::Credits::TopUpListByExternalIDResponse]
             | (
               String external_customer_id,
               cursor: String?,
               limit: Integer,
               request_options: Orb::request_opts
-            ) -> Orb::Page[Orb::Models::TopUpModel]
+            ) -> Orb::Page[Orb::Models::Customers::Credits::TopUpListByExternalIDResponse]
 
           def initialize: (client: Orb::Client) -> void
         end

@@ -19,11 +19,14 @@ module Orb
       def end_date=(_)
       end
 
-      sig { returns(Orb::Models::PlanMinifiedModel) }
+      sig { returns(Orb::Models::SubscriptionFetchScheduleResponse::Plan) }
       def plan
       end
 
-      sig { params(_: Orb::Models::PlanMinifiedModel).returns(Orb::Models::PlanMinifiedModel) }
+      sig do
+        params(_: Orb::Models::SubscriptionFetchScheduleResponse::Plan)
+          .returns(Orb::Models::SubscriptionFetchScheduleResponse::Plan)
+      end
       def plan=(_)
       end
 
@@ -39,7 +42,7 @@ module Orb
         params(
           created_at: Time,
           end_date: T.nilable(Time),
-          plan: Orb::Models::PlanMinifiedModel,
+          plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
           start_date: Time
         )
           .void
@@ -50,10 +53,59 @@ module Orb
       sig do
         override
           .returns(
-            {created_at: Time, end_date: T.nilable(Time), plan: Orb::Models::PlanMinifiedModel, start_date: Time}
+            {
+              created_at: Time,
+              end_date: T.nilable(Time),
+              plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
+              start_date: Time
+            }
           )
       end
       def to_hash
+      end
+
+      class Plan < Orb::BaseModel
+        sig { returns(T.nilable(String)) }
+        def id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def id=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def external_plan_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def external_plan_id=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def name
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def name=(_)
+        end
+
+        sig do
+          params(id: T.nilable(String), external_plan_id: T.nilable(String), name: T.nilable(String)).void
+        end
+        def initialize(id:, external_plan_id:, name:)
+        end
+
+        sig do
+          override.returns(
+            {
+              id: T.nilable(String),
+              external_plan_id: T.nilable(String),
+              name: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

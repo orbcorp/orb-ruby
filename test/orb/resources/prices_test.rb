@@ -14,7 +14,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
     )
 
     assert_pattern do
-      response => Orb::Models::PriceModel
+      response => Orb::Models::Price
     end
   end
 
@@ -22,7 +22,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
     response = @orb.prices.update("price_id")
 
     assert_pattern do
-      response => Orb::Models::PriceModel
+      response => Orb::Models::Price
     end
   end
 
@@ -40,7 +40,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
 
     row = response.to_enum.first
     assert_pattern do
-      row => Orb::Models::PriceModel
+      row => Orb::Models::Price
     end
   end
 
@@ -66,7 +66,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
     response = @orb.prices.fetch("price_id")
 
     assert_pattern do
-      response => Orb::Models::PriceModel
+      response => Orb::Models::Price
     end
   end
 end

@@ -11,7 +11,7 @@ module Orb
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
           )
-            .returns(Orb::Models::PlanModel)
+            .returns(Orb::Models::Plan)
         end
         def update(other_external_plan_id, external_plan_id: nil, metadata: nil, request_options: {})
         end
@@ -21,7 +21,7 @@ module Orb
             external_plan_id: String,
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
           )
-            .returns(Orb::Models::PlanModel)
+            .returns(Orb::Models::Plan)
         end
         def fetch(external_plan_id, request_options: {})
         end
