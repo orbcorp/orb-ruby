@@ -1,7 +1,0 @@
-module Orb
-  module Models
-    type custom_rating_function_config_model = ::Hash[Symbol, top]
-
-    CustomRatingFunctionConfigModel: custom_rating_function_config_model
-  end
-end

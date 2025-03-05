@@ -1,0 +1,98 @@
+module Orb
+  module Models
+    module Customers
+      module Credits
+        type top_up_list_response =
+          {
+            id: String,
+            amount: String,
+            currency: String,
+            invoice_settings: Orb::Models::Customers::Credits::TopUpListResponse::InvoiceSettings,
+            per_unit_cost_basis: String,
+            threshold: String,
+            expires_after: Integer?,
+            expires_after_unit: Orb::Models::Customers::Credits::TopUpListResponse::expires_after_unit?
+          }
+
+        class TopUpListResponse < Orb::BaseModel
+          attr_accessor id: String
+
+          attr_accessor amount: String
+
+          attr_accessor currency: String
+
+          attr_accessor invoice_settings: Orb::Models::Customers::Credits::TopUpListResponse::InvoiceSettings
+
+          attr_accessor per_unit_cost_basis: String
+
+          attr_accessor threshold: String
+
+          attr_accessor expires_after: Integer?
+
+          attr_accessor expires_after_unit: Orb::Models::Customers::Credits::TopUpListResponse::expires_after_unit?
+
+          def initialize:
+            (
+              id: String,
+              amount: String,
+              currency: String,
+              invoice_settings: Orb::Models::Customers::Credits::TopUpListResponse::InvoiceSettings,
+              per_unit_cost_basis: String,
+              threshold: String,
+              expires_after: Integer?,
+              expires_after_unit: Orb::Models::Customers::Credits::TopUpListResponse::expires_after_unit?
+            ) -> void
+            | (
+              ?Orb::Models::Customers::Credits::top_up_list_response
+              | Orb::BaseModel data
+            ) -> void
+
+          def to_hash: -> Orb::Models::Customers::Credits::top_up_list_response
+
+          type invoice_settings =
+            {
+              auto_collection: bool,
+              net_terms: Integer,
+              memo: String?,
+              require_successful_payment: bool
+            }
+
+          class InvoiceSettings < Orb::BaseModel
+            attr_accessor auto_collection: bool
+
+            attr_accessor net_terms: Integer
+
+            attr_accessor memo: String?
+
+            attr_reader require_successful_payment: bool?
+
+            def require_successful_payment=: (bool) -> bool
+
+            def initialize:
+              (
+                auto_collection: bool,
+                net_terms: Integer,
+                memo: String?,
+                require_successful_payment: bool
+              ) -> void
+              | (
+                ?Orb::Models::Customers::Credits::TopUpListResponse::invoice_settings
+                | Orb::BaseModel data
+              ) -> void
+
+            def to_hash: -> Orb::Models::Customers::Credits::TopUpListResponse::invoice_settings
+          end
+
+          type expires_after_unit = :day | :month
+
+          class ExpiresAfterUnit < Orb::Enum
+            DAY: :day
+            MONTH: :month
+
+            def self.values: -> ::Array[Orb::Models::Customers::Credits::TopUpListResponse::expires_after_unit]
+          end
+        end
+      end
+    end
+  end
+end

@@ -7,7 +7,7 @@ module Orb
         align_billing_with_subscription_start_date: bool,
         auto_collection: bool?,
         aws_region: String?,
-        billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel?,
+        billing_cycle_anchor_configuration: Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration?,
         coupon_redemption_code: String?,
         credits_overage_rate: Float?,
         customer_id: String?,
@@ -52,7 +52,7 @@ module Orb
 
       attr_accessor aws_region: String?
 
-      attr_accessor billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel?
+      attr_accessor billing_cycle_anchor_configuration: Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration?
 
       attr_accessor coupon_redemption_code: String?
 
@@ -111,7 +111,7 @@ module Orb
           align_billing_with_subscription_start_date: bool,
           auto_collection: bool?,
           aws_region: String?,
-          billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel?,
+          billing_cycle_anchor_configuration: Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration?,
           coupon_redemption_code: String?,
           credits_overage_rate: Float?,
           customer_id: String?,
@@ -144,6 +144,26 @@ module Orb
         ) -> void
 
       def to_hash: -> Orb::Models::subscription_create_params
+
+      type billing_cycle_anchor_configuration =
+        { day: Integer, month: Integer?, year: Integer? }
+
+      class BillingCycleAnchorConfiguration < Orb::BaseModel
+        attr_accessor day: Integer
+
+        attr_accessor month: Integer?
+
+        attr_accessor year: Integer?
+
+        def initialize:
+          (day: Integer, month: Integer?, year: Integer?) -> void
+          | (
+            ?Orb::Models::SubscriptionCreateParams::billing_cycle_anchor_configuration
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::SubscriptionCreateParams::billing_cycle_anchor_configuration
+      end
 
       type external_marketplace = :google | :aws | :azure
 

@@ -17,7 +17,7 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
 
     row = response.to_enum.first
     assert_pattern do
-      row => Orb::Models::CreditLedgerEntryModel
+      row => Orb::Models::Customers::Credits::LedgerListResponse
     end
   end
 
@@ -30,7 +30,7 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
     )
 
     assert_pattern do
-      response => Orb::Models::CreditLedgerEntryModel
+      response => Orb::Models::Customers::Credits::LedgerCreateEntryResponse
     end
   end
 
@@ -43,7 +43,7 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
     )
 
     assert_pattern do
-      response => Orb::Models::CreditLedgerEntryModel
+      response => Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse
     end
   end
 
@@ -61,7 +61,7 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
 
     row = response.to_enum.first
     assert_pattern do
-      row => Orb::Models::CreditLedgerEntryModel
+      row => Orb::Models::Customers::Credits::LedgerListByExternalIDResponse
     end
   end
 end

@@ -29,8 +29,8 @@ module Orb
 
       # @!attribute customer
       #
-      #   @return [Orb::Models::CustomerMinifiedModel]
-      required :customer, -> { Orb::Models::CustomerMinifiedModel }
+      #   @return [Orb::Models::CreditNote::Customer]
+      required :customer, -> { Orb::Models::CreditNote::Customer }
 
       # @!attribute invoice_id
       #   The id of the invoice resource that this credit note is applied to.
@@ -47,8 +47,8 @@ module Orb
       # @!attribute maximum_amount_adjustment
       #   The maximum amount applied on the original invoice
       #
-      #   @return [Orb::Models::CreditNoteDiscountModel, nil]
-      required :maximum_amount_adjustment, -> { Orb::Models::CreditNoteDiscountModel }, nil?: true
+      #   @return [Orb::Models::CreditNote::MaximumAmountAdjustment, nil]
+      required :maximum_amount_adjustment, -> { Orb::Models::CreditNote::MaximumAmountAdjustment }, nil?: true
 
       # @!attribute memo
       #   An optional memo supplied on the credit note.
@@ -93,11 +93,11 @@ module Orb
       # @!attribute [r] discounts
       #   Any discounts applied on the original invoice.
       #
-      #   @return [Array<Orb::Models::CreditNoteDiscountModel>, nil]
-      optional :discounts, -> { Orb::ArrayOf[Orb::Models::CreditNoteDiscountModel] }
+      #   @return [Array<Orb::Models::CreditNote::Discount>, nil]
+      optional :discounts, -> { Orb::ArrayOf[Orb::Models::CreditNote::Discount] }
 
       # @!parse
-      #   # @return [Array<Orb::Models::CreditNoteDiscountModel>]
+      #   # @return [Array<Orb::Models::CreditNote::Discount>]
       #   attr_writer :discounts
 
       # @!parse
@@ -108,10 +108,10 @@ module Orb
       #   # @param created_at [Time]
       #   # @param credit_note_number [String]
       #   # @param credit_note_pdf [String, nil]
-      #   # @param customer [Orb::Models::CustomerMinifiedModel]
+      #   # @param customer [Orb::Models::CreditNote::Customer]
       #   # @param invoice_id [String]
       #   # @param line_items [Array<Orb::Models::CreditNote::LineItem>]
-      #   # @param maximum_amount_adjustment [Orb::Models::CreditNoteDiscountModel, nil]
+      #   # @param maximum_amount_adjustment [Orb::Models::CreditNote::MaximumAmountAdjustment, nil]
       #   # @param memo [String, nil]
       #   # @param minimum_amount_refunded [String, nil]
       #   # @param reason [Symbol, Orb::Models::CreditNote::Reason, nil]
@@ -119,7 +119,7 @@ module Orb
       #   # @param total [String]
       #   # @param type [Symbol, Orb::Models::CreditNote::Type]
       #   # @param voided_at [Time, nil]
-      #   # @param discounts [Array<Orb::Models::CreditNoteDiscountModel>]
+      #   # @param discounts [Array<Orb::Models::CreditNote::Discount>]
       #   #
       #   def initialize(
       #     id:,
@@ -144,6 +144,26 @@ module Orb
       #   end
 
       # def initialize: (Hash | Orb::BaseModel) -> void
+
+      class Customer < Orb::BaseModel
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
+        # @!attribute external_customer_id
+        #
+        #   @return [String, nil]
+        required :external_customer_id, String, nil?: true
+
+        # @!parse
+        #   # @param id [String]
+        #   # @param external_customer_id [String, nil]
+        #   #
+        #   def initialize(id:, external_customer_id:, **) = super
+
+        # def initialize: (Hash | Orb::BaseModel) -> void
+      end
 
       class LineItem < Orb::BaseModel
         # @!attribute id
@@ -185,8 +205,8 @@ module Orb
         # @!attribute tax_amounts
         #   Any tax amounts applied onto the line item.
         #
-        #   @return [Array<Orb::Models::TaxAmountModel>]
-        required :tax_amounts, -> { Orb::ArrayOf[Orb::Models::TaxAmountModel] }
+        #   @return [Array<Orb::Models::CreditNote::LineItem::TaxAmount>]
+        required :tax_amounts, -> { Orb::ArrayOf[Orb::Models::CreditNote::LineItem::TaxAmount] }
 
         # @!attribute [r] discounts
         #   Any line item discounts from the invoice's line item.
@@ -205,12 +225,41 @@ module Orb
         #   # @param name [String]
         #   # @param quantity [Float, nil]
         #   # @param subtotal [String]
-        #   # @param tax_amounts [Array<Orb::Models::TaxAmountModel>]
+        #   # @param tax_amounts [Array<Orb::Models::CreditNote::LineItem::TaxAmount>]
         #   # @param discounts [Array<Orb::Models::CreditNote::LineItem::Discount>]
         #   #
         #   def initialize(id:, amount:, item_id:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil, **) = super
 
         # def initialize: (Hash | Orb::BaseModel) -> void
+
+        class TaxAmount < Orb::BaseModel
+          # @!attribute amount
+          #   The amount of additional tax incurred by this tax rate.
+          #
+          #   @return [String]
+          required :amount, String
+
+          # @!attribute tax_rate_description
+          #   The human-readable description of the applied tax rate.
+          #
+          #   @return [String]
+          required :tax_rate_description, String
+
+          # @!attribute tax_rate_percentage
+          #   The tax rate percentage, out of 100.
+          #
+          #   @return [String, nil]
+          required :tax_rate_percentage, String, nil?: true
+
+          # @!parse
+          #   # @param amount [String]
+          #   # @param tax_rate_description [String]
+          #   # @param tax_rate_percentage [String, nil]
+          #   #
+          #   def initialize(amount:, tax_rate_description:, tax_rate_percentage:, **) = super
+
+          # def initialize: (Hash | Orb::BaseModel) -> void
+        end
 
         class Discount < Orb::BaseModel
           # @!attribute id
@@ -297,6 +346,88 @@ module Orb
         end
       end
 
+      class MaximumAmountAdjustment < Orb::BaseModel
+        # @!attribute amount_applied
+        #
+        #   @return [String]
+        required :amount_applied, String
+
+        # @!attribute discount_type
+        #
+        #   @return [Symbol, Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType]
+        required :discount_type, enum: -> { Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType }
+
+        # @!attribute percentage_discount
+        #
+        #   @return [Float]
+        required :percentage_discount, Float
+
+        # @!attribute applies_to_prices
+        #
+        #   @return [Array<Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice>, nil]
+        optional :applies_to_prices,
+                 -> { Orb::ArrayOf[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice] },
+                 nil?: true
+
+        # @!attribute reason
+        #
+        #   @return [String, nil]
+        optional :reason, String, nil?: true
+
+        # @!parse
+        #   # The maximum amount applied on the original invoice
+        #   #
+        #   # @param amount_applied [String]
+        #   # @param discount_type [Symbol, Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType]
+        #   # @param percentage_discount [Float]
+        #   # @param applies_to_prices [Array<Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice>, nil]
+        #   # @param reason [String, nil]
+        #   #
+        #   def initialize(amount_applied:, discount_type:, percentage_discount:, applies_to_prices: nil, reason: nil, **) = super
+
+        # def initialize: (Hash | Orb::BaseModel) -> void
+
+        # @abstract
+        #
+        # @example
+        # ```ruby
+        # case discount_type
+        # in :percentage
+        #   # ...
+        # end
+        # ```
+        class DiscountType < Orb::Enum
+          PERCENTAGE = :percentage
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
+        end
+
+        class AppliesToPrice < Orb::BaseModel
+          # @!attribute id
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute name
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!parse
+          #   # @param id [String]
+          #   # @param name [String]
+          #   #
+          #   def initialize(id:, name:, **) = super
+
+          # def initialize: (Hash | Orb::BaseModel) -> void
+        end
+      end
+
       # @abstract
       #
       # @example
@@ -347,6 +478,86 @@ module Orb
         #   # @return [Array<Symbol>]
         #   #
         #   def self.values; end
+      end
+
+      class Discount < Orb::BaseModel
+        # @!attribute amount_applied
+        #
+        #   @return [String]
+        required :amount_applied, String
+
+        # @!attribute discount_type
+        #
+        #   @return [Symbol, Orb::Models::CreditNote::Discount::DiscountType]
+        required :discount_type, enum: -> { Orb::Models::CreditNote::Discount::DiscountType }
+
+        # @!attribute percentage_discount
+        #
+        #   @return [Float]
+        required :percentage_discount, Float
+
+        # @!attribute applies_to_prices
+        #
+        #   @return [Array<Orb::Models::CreditNote::Discount::AppliesToPrice>, nil]
+        optional :applies_to_prices,
+                 -> { Orb::ArrayOf[Orb::Models::CreditNote::Discount::AppliesToPrice] },
+                 nil?: true
+
+        # @!attribute reason
+        #
+        #   @return [String, nil]
+        optional :reason, String, nil?: true
+
+        # @!parse
+        #   # @param amount_applied [String]
+        #   # @param discount_type [Symbol, Orb::Models::CreditNote::Discount::DiscountType]
+        #   # @param percentage_discount [Float]
+        #   # @param applies_to_prices [Array<Orb::Models::CreditNote::Discount::AppliesToPrice>, nil]
+        #   # @param reason [String, nil]
+        #   #
+        #   def initialize(amount_applied:, discount_type:, percentage_discount:, applies_to_prices: nil, reason: nil, **) = super
+
+        # def initialize: (Hash | Orb::BaseModel) -> void
+
+        # @abstract
+        #
+        # @example
+        # ```ruby
+        # case discount_type
+        # in :percentage
+        #   # ...
+        # end
+        # ```
+        class DiscountType < Orb::Enum
+          PERCENTAGE = :percentage
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
+        end
+
+        class AppliesToPrice < Orb::BaseModel
+          # @!attribute id
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute name
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!parse
+          #   # @param id [String]
+          #   # @param name [String]
+          #   #
+          #   def initialize(id:, name:, **) = super
+
+          # def initialize: (Hash | Orb::BaseModel) -> void
+        end
       end
     end
   end

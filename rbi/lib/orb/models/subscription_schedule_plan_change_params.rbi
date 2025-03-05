@@ -60,13 +60,13 @@ module Orb
       def billing_cycle_alignment=(_)
       end
 
-      sig { returns(T.nilable(Orb::Models::BillingCycleAnchorConfigurationModel)) }
+      sig { returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration)) }
       def billing_cycle_anchor_configuration
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::BillingCycleAnchorConfigurationModel))
-          .returns(T.nilable(Orb::Models::BillingCycleAnchorConfigurationModel))
+        params(_: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration))
+          .returns(T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration))
       end
       def billing_cycle_anchor_configuration=(_)
       end
@@ -243,7 +243,7 @@ module Orb
           align_billing_with_plan_change_date: T.nilable(T::Boolean),
           auto_collection: T.nilable(T::Boolean),
           billing_cycle_alignment: T.nilable(Symbol),
-          billing_cycle_anchor_configuration: T.nilable(Orb::Models::BillingCycleAnchorConfigurationModel),
+          billing_cycle_anchor_configuration: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration),
           change_date: T.nilable(Time),
           coupon_redemption_code: T.nilable(String),
           credits_overage_rate: T.nilable(Float),
@@ -308,7 +308,7 @@ module Orb
               align_billing_with_plan_change_date: T.nilable(T::Boolean),
               auto_collection: T.nilable(T::Boolean),
               billing_cycle_alignment: T.nilable(Symbol),
-              billing_cycle_anchor_configuration: T.nilable(Orb::Models::BillingCycleAnchorConfigurationModel),
+              billing_cycle_anchor_configuration: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration),
               change_date: T.nilable(Time),
               coupon_redemption_code: T.nilable(String),
               credits_overage_rate: T.nilable(Float),
@@ -356,6 +356,40 @@ module Orb
 
         sig { override.returns(T::Array[Symbol]) }
         def self.values
+        end
+      end
+
+      class BillingCycleAnchorConfiguration < Orb::BaseModel
+        sig { returns(Integer) }
+        def day
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def day=(_)
+        end
+
+        sig { returns(T.nilable(Integer)) }
+        def month
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def month=(_)
+        end
+
+        sig { returns(T.nilable(Integer)) }
+        def year
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def year=(_)
+        end
+
+        sig { params(day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)).void }
+        def initialize(day:, month: nil, year: nil)
+        end
+
+        sig { override.returns({day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)}) }
+        def to_hash
         end
       end
     end

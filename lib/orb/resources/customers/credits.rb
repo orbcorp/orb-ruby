@@ -34,7 +34,7 @@ module Orb
         #
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
-        # @return [Orb::Page<Orb::Models::CustomerCreditBalancesModel::Data>]
+        # @return [Orb::Page<Orb::Models::Customers::CreditListResponse>]
         #
         def list(customer_id, params = {})
           parsed, options = Orb::Models::Customers::CreditListParams.dump_request(params)
@@ -43,7 +43,7 @@ module Orb
             path: ["customers/%0s/credits", customer_id],
             query: parsed,
             page: Orb::Page,
-            model: Orb::Models::CustomerCreditBalancesModel::Data,
+            model: Orb::Models::Customers::CreditListResponse,
             options: options
           )
         end
@@ -72,7 +72,7 @@ module Orb
         #
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
-        # @return [Orb::Page<Orb::Models::CustomerCreditBalancesModel::Data>]
+        # @return [Orb::Page<Orb::Models::Customers::CreditListByExternalIDResponse>]
         #
         def list_by_external_id(external_customer_id, params = {})
           parsed, options = Orb::Models::Customers::CreditListByExternalIDParams.dump_request(params)
@@ -81,7 +81,7 @@ module Orb
             path: ["customers/external_customer_id/%0s/credits", external_customer_id],
             query: parsed,
             page: Orb::Page,
-            model: Orb::Models::CustomerCreditBalancesModel::Data,
+            model: Orb::Models::Customers::CreditListByExternalIDResponse,
             options: options
           )
         end

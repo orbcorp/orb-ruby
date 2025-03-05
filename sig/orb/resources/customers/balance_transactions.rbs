@@ -7,21 +7,21 @@ module Orb
             String customer_id,
             Orb::Models::Customers::BalanceTransactionCreateParams
             | ::Hash[Symbol, top] params
-          ) -> Orb::Models::CustomerBalanceTransactionModel
+          ) -> Orb::Models::Customers::BalanceTransactionCreateResponse
           | (
             String customer_id,
             amount: String,
             type: Orb::Models::Customers::BalanceTransactionCreateParams::type_,
             description: String?,
             request_options: Orb::request_opts
-          ) -> Orb::Models::CustomerBalanceTransactionModel
+          ) -> Orb::Models::Customers::BalanceTransactionCreateResponse
 
         def list:
           (
             String customer_id,
             ?Orb::Models::Customers::BalanceTransactionListParams
             | ::Hash[Symbol, top] params
-          ) -> Orb::Page[Orb::Models::CustomerBalanceTransactionModel]
+          ) -> Orb::Page[Orb::Models::Customers::BalanceTransactionListResponse]
           | (
             String customer_id,
             cursor: String?,
@@ -31,7 +31,7 @@ module Orb
             operation_time_lt: Time?,
             operation_time_lte: Time?,
             request_options: Orb::request_opts
-          ) -> Orb::Page[Orb::Models::CustomerBalanceTransactionModel]
+          ) -> Orb::Page[Orb::Models::Customers::BalanceTransactionListResponse]
 
         def initialize: (client: Orb::Client) -> void
       end

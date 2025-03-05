@@ -7,21 +7,21 @@ class Orb::Test::Resources::Customers::BalanceTransactionsTest < Orb::Test::Reso
     response = @orb.customers.balance_transactions.create("customer_id", amount: "amount", type: :increment)
 
     assert_pattern do
-      response => Orb::Models::CustomerBalanceTransactionModel
+      response => Orb::Models::Customers::BalanceTransactionCreateResponse
     end
 
     assert_pattern do
       response => {
         id: String,
-        action: Orb::Models::CustomerBalanceTransactionModel::Action,
+        action: Orb::Models::Customers::BalanceTransactionCreateResponse::Action,
         amount: String,
         created_at: Time,
-        credit_note: Orb::Models::CustomerBalanceTransactionModel::CreditNote | nil,
+        credit_note: Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote | nil,
         description: String | nil,
         ending_balance: String,
-        invoice: Orb::Models::CustomerBalanceTransactionModel::Invoice | nil,
+        invoice: Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice | nil,
         starting_balance: String,
-        type: Orb::Models::CustomerBalanceTransactionModel::Type
+        type: Orb::Models::Customers::BalanceTransactionCreateResponse::Type
       }
     end
   end
@@ -40,21 +40,21 @@ class Orb::Test::Resources::Customers::BalanceTransactionsTest < Orb::Test::Reso
 
     row = response.to_enum.first
     assert_pattern do
-      row => Orb::Models::CustomerBalanceTransactionModel
+      row => Orb::Models::Customers::BalanceTransactionListResponse
     end
 
     assert_pattern do
       row => {
         id: String,
-        action: Orb::Models::CustomerBalanceTransactionModel::Action,
+        action: Orb::Models::Customers::BalanceTransactionListResponse::Action,
         amount: String,
         created_at: Time,
-        credit_note: Orb::Models::CustomerBalanceTransactionModel::CreditNote | nil,
+        credit_note: Orb::Models::Customers::BalanceTransactionListResponse::CreditNote | nil,
         description: String | nil,
         ending_balance: String,
-        invoice: Orb::Models::CustomerBalanceTransactionModel::Invoice | nil,
+        invoice: Orb::Models::Customers::BalanceTransactionListResponse::Invoice | nil,
         starting_balance: String,
-        type: Orb::Models::CustomerBalanceTransactionModel::Type
+        type: Orb::Models::Customers::BalanceTransactionListResponse::Type
       }
     end
   end

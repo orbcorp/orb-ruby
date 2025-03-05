@@ -16,7 +16,7 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Models::CreditNoteModel]
+      # @return [Orb::Models::CreditNote]
       #
       def create(params)
         parsed, options = Orb::Models::CreditNoteCreateParams.dump_request(params)
@@ -24,7 +24,7 @@ module Orb
           method: :post,
           path: "credit_notes",
           body: parsed,
-          model: Orb::Models::CreditNoteModel,
+          model: Orb::Models::CreditNote,
           options: options
         )
       end
@@ -42,7 +42,7 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Page<Orb::Models::CreditNoteModel>]
+      # @return [Orb::Page<Orb::Models::CreditNote>]
       #
       def list(params = {})
         parsed, options = Orb::Models::CreditNoteListParams.dump_request(params)
@@ -51,7 +51,7 @@ module Orb
           path: "credit_notes",
           query: parsed,
           page: Orb::Page,
-          model: Orb::Models::CreditNoteModel,
+          model: Orb::Models::CreditNote,
           options: options
         )
       end
@@ -65,13 +65,13 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Models::CreditNoteModel]
+      # @return [Orb::Models::CreditNote]
       #
       def fetch(credit_note_id, params = {})
         @client.request(
           method: :get,
           path: ["credit_notes/%0s", credit_note_id],
-          model: Orb::Models::CreditNoteModel,
+          model: Orb::Models::CreditNote,
           options: params[:request_options]
         )
       end

@@ -1,18 +1,92 @@
 module Orb
   module Models
     type subscription_fetch_costs_response =
-      { data: ::Array[Orb::Models::AggregatedCostModel] }
+      { data: ::Array[Orb::Models::SubscriptionFetchCostsResponse::Data] }
 
     class SubscriptionFetchCostsResponse < Orb::BaseModel
-      attr_accessor data: ::Array[Orb::Models::AggregatedCostModel]
+      attr_accessor data: ::Array[Orb::Models::SubscriptionFetchCostsResponse::Data]
 
       def initialize:
-        (data: ::Array[Orb::Models::AggregatedCostModel]) -> void
+        (
+          data: ::Array[Orb::Models::SubscriptionFetchCostsResponse::Data]
+        ) -> void
         | (
           ?Orb::Models::subscription_fetch_costs_response | Orb::BaseModel data
         ) -> void
 
       def to_hash: -> Orb::Models::subscription_fetch_costs_response
+
+      type data =
+        {
+          per_price_costs: ::Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost],
+          subtotal: String,
+          timeframe_end: Time,
+          timeframe_start: Time,
+          total: String
+        }
+
+      class Data < Orb::BaseModel
+        attr_accessor per_price_costs: ::Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost]
+
+        attr_accessor subtotal: String
+
+        attr_accessor timeframe_end: Time
+
+        attr_accessor timeframe_start: Time
+
+        attr_accessor total: String
+
+        def initialize:
+          (
+            per_price_costs: ::Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost],
+            subtotal: String,
+            timeframe_end: Time,
+            timeframe_start: Time,
+            total: String
+          ) -> void
+          | (
+            ?Orb::Models::SubscriptionFetchCostsResponse::data
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::SubscriptionFetchCostsResponse::data
+
+        type per_price_cost =
+          {
+            price: Orb::Models::price,
+            price_id: String,
+            subtotal: String,
+            total: String,
+            quantity: Float?
+          }
+
+        class PerPriceCost < Orb::BaseModel
+          attr_accessor price: Orb::Models::price
+
+          attr_accessor price_id: String
+
+          attr_accessor subtotal: String
+
+          attr_accessor total: String
+
+          attr_accessor quantity: Float?
+
+          def initialize:
+            (
+              price: Orb::Models::price,
+              price_id: String,
+              subtotal: String,
+              total: String,
+              quantity: Float?
+            ) -> void
+            | (
+              ?Orb::Models::SubscriptionFetchCostsResponse::Data::per_price_cost
+              | Orb::BaseModel data
+            ) -> void
+
+          def to_hash: -> Orb::Models::SubscriptionFetchCostsResponse::Data::per_price_cost
+        end
+      end
     end
   end
 end

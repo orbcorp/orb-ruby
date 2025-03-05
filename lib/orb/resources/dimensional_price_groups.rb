@@ -31,7 +31,7 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Models::DimensionalPriceGroupModel]
+      # @return [Orb::Models::DimensionalPriceGroup]
       #
       def create(params)
         parsed, options = Orb::Models::DimensionalPriceGroupCreateParams.dump_request(params)
@@ -39,7 +39,7 @@ module Orb
           method: :post,
           path: "dimensional_price_groups",
           body: parsed,
-          model: Orb::Models::DimensionalPriceGroupModel,
+          model: Orb::Models::DimensionalPriceGroup,
           options: options
         )
       end
@@ -52,13 +52,13 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Models::DimensionalPriceGroupModel]
+      # @return [Orb::Models::DimensionalPriceGroup]
       #
       def retrieve(dimensional_price_group_id, params = {})
         @client.request(
           method: :get,
           path: ["dimensional_price_groups/%0s", dimensional_price_group_id],
-          model: Orb::Models::DimensionalPriceGroupModel,
+          model: Orb::Models::DimensionalPriceGroup,
           options: params[:request_options]
         )
       end
@@ -74,7 +74,7 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Page<Orb::Models::DimensionalPriceGroupModel>]
+      # @return [Orb::Page<Orb::Models::DimensionalPriceGroup>]
       #
       def list(params = {})
         parsed, options = Orb::Models::DimensionalPriceGroupListParams.dump_request(params)
@@ -83,7 +83,7 @@ module Orb
           path: "dimensional_price_groups",
           query: parsed,
           page: Orb::Page,
-          model: Orb::Models::DimensionalPriceGroupModel,
+          model: Orb::Models::DimensionalPriceGroup,
           options: options
         )
       end

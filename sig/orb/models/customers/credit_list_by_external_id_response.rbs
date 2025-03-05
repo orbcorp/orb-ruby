@@ -1,0 +1,58 @@
+module Orb
+  module Models
+    module Customers
+      type credit_list_by_external_id_response =
+        {
+          id: String,
+          balance: Float,
+          effective_date: Time?,
+          expiry_date: Time?,
+          maximum_initial_balance: Float?,
+          per_unit_cost_basis: String?,
+          status: Orb::Models::Customers::CreditListByExternalIDResponse::status
+        }
+
+      class CreditListByExternalIDResponse < Orb::BaseModel
+        attr_accessor id: String
+
+        attr_accessor balance: Float
+
+        attr_accessor effective_date: Time?
+
+        attr_accessor expiry_date: Time?
+
+        attr_accessor maximum_initial_balance: Float?
+
+        attr_accessor per_unit_cost_basis: String?
+
+        attr_accessor status: Orb::Models::Customers::CreditListByExternalIDResponse::status
+
+        def initialize:
+          (
+            id: String,
+            balance: Float,
+            effective_date: Time?,
+            expiry_date: Time?,
+            maximum_initial_balance: Float?,
+            per_unit_cost_basis: String?,
+            status: Orb::Models::Customers::CreditListByExternalIDResponse::status
+          ) -> void
+          | (
+            ?Orb::Models::Customers::credit_list_by_external_id_response
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::Customers::credit_list_by_external_id_response
+
+        type status = :active | :pending_payment
+
+        class Status < Orb::Enum
+          ACTIVE: :active
+          PENDING_PAYMENT: :pending_payment
+
+          def self.values: -> ::Array[Orb::Models::Customers::CreditListByExternalIDResponse::status]
+        end
+      end
+    end
+  end
+end

@@ -39,7 +39,7 @@ module Orb
           #
           #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
-          # @return [Orb::Models::TopUpModel]
+          # @return [Orb::Models::Customers::Credits::TopUpCreateResponse]
           #
           def create(customer_id, params)
             parsed, options = Orb::Models::Customers::Credits::TopUpCreateParams.dump_request(params)
@@ -47,7 +47,7 @@ module Orb
               method: :post,
               path: ["customers/%0s/credits/top_ups", customer_id],
               body: parsed,
-              model: Orb::Models::TopUpModel,
+              model: Orb::Models::Customers::Credits::TopUpCreateResponse,
               options: options
             )
           end
@@ -65,7 +65,7 @@ module Orb
           #
           #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
-          # @return [Orb::Page<Orb::Models::TopUpModel>]
+          # @return [Orb::Page<Orb::Models::Customers::Credits::TopUpListResponse>]
           #
           def list(customer_id, params = {})
             parsed, options = Orb::Models::Customers::Credits::TopUpListParams.dump_request(params)
@@ -74,7 +74,7 @@ module Orb
               path: ["customers/%0s/credits/top_ups", customer_id],
               query: parsed,
               page: Orb::Page,
-              model: Orb::Models::TopUpModel,
+              model: Orb::Models::Customers::Credits::TopUpListResponse,
               options: options
             )
           end
@@ -139,7 +139,7 @@ module Orb
           #
           #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
-          # @return [Orb::Models::TopUpModel]
+          # @return [Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse]
           #
           def create_by_external_id(external_customer_id, params)
             parsed, options = Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams.dump_request(params)
@@ -147,7 +147,7 @@ module Orb
               method: :post,
               path: ["customers/external_customer_id/%0s/credits/top_ups", external_customer_id],
               body: parsed,
-              model: Orb::Models::TopUpModel,
+              model: Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse,
               options: options
             )
           end
@@ -195,7 +195,7 @@ module Orb
           #
           #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
-          # @return [Orb::Page<Orb::Models::TopUpModel>]
+          # @return [Orb::Page<Orb::Models::Customers::Credits::TopUpListByExternalIDResponse>]
           #
           def list_by_external_id(external_customer_id, params = {})
             parsed, options = Orb::Models::Customers::Credits::TopUpListByExternalIDParams.dump_request(params)
@@ -204,7 +204,7 @@ module Orb
               path: ["customers/external_customer_id/%0s/credits/top_ups", external_customer_id],
               query: parsed,
               page: Orb::Page,
-              model: Orb::Models::TopUpModel,
+              model: Orb::Models::Customers::Credits::TopUpListByExternalIDResponse,
               options: options
             )
           end

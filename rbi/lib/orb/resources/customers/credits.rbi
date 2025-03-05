@@ -21,7 +21,7 @@ module Orb
             limit: Integer,
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
           )
-            .returns(Orb::Page[Orb::Models::CustomerCreditBalancesModel::Data])
+            .returns(Orb::Page[Orb::Models::Customers::CreditListResponse])
         end
         def list(
           customer_id,
@@ -42,7 +42,7 @@ module Orb
             limit: Integer,
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
           )
-            .returns(Orb::Page[Orb::Models::CustomerCreditBalancesModel::Data])
+            .returns(Orb::Page[Orb::Models::Customers::CreditListByExternalIDResponse])
         end
         def list_by_external_id(
           external_customer_id,

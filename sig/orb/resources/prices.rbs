@@ -6,32 +6,73 @@ module Orb
       def create:
         (
           Orb::Models::PriceCreateParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::price_model
+        ) -> Orb::Models::price
         | (
-          new_floating_price_model: Orb::Models::NewFloatingPriceModel,
+          cadence: Orb::Models::PriceCreateParams::cadence,
+          currency: String,
+          item_id: String,
+          model_type: Orb::Models::PriceCreateParams::model_type,
+          name: String,
+          unit_config: Orb::Models::PriceCreateParams::UnitConfig,
+          package_config: Orb::Models::PriceCreateParams::PackageConfig,
+          matrix_config: Orb::Models::PriceCreateParams::MatrixConfig,
+          matrix_with_allocation_config: Orb::Models::PriceCreateParams::MatrixWithAllocationConfig,
+          tiered_config: Orb::Models::PriceCreateParams::TieredConfig,
+          tiered_bps_config: Orb::Models::PriceCreateParams::TieredBpsConfig,
+          bps_config: Orb::Models::PriceCreateParams::BpsConfig,
+          bulk_bps_config: Orb::Models::PriceCreateParams::BulkBpsConfig,
+          bulk_config: Orb::Models::PriceCreateParams::BulkConfig,
+          threshold_total_amount_config: ::Hash[Symbol, top],
+          tiered_package_config: ::Hash[Symbol, top],
+          grouped_tiered_config: ::Hash[Symbol, top],
+          max_group_tiered_package_config: ::Hash[Symbol, top],
+          tiered_with_minimum_config: ::Hash[Symbol, top],
+          package_with_allocation_config: ::Hash[Symbol, top],
+          tiered_package_with_minimum_config: ::Hash[Symbol, top],
+          unit_with_percent_config: ::Hash[Symbol, top],
+          tiered_with_proration_config: ::Hash[Symbol, top],
+          unit_with_proration_config: ::Hash[Symbol, top],
+          grouped_allocation_config: ::Hash[Symbol, top],
+          grouped_with_prorated_minimum_config: ::Hash[Symbol, top],
+          grouped_with_metered_minimum_config: ::Hash[Symbol, top],
+          matrix_with_display_name_config: ::Hash[Symbol, top],
+          bulk_with_proration_config: ::Hash[Symbol, top],
+          grouped_tiered_package_config: ::Hash[Symbol, top],
+          scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
+          scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
+          cumulative_grouped_bulk_config: ::Hash[Symbol, top],
+          billable_metric_id: String?,
+          billed_in_advance: bool?,
+          billing_cycle_configuration: Orb::Models::PriceCreateParams::BillingCycleConfiguration?,
+          conversion_rate: Float?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
+          invoicing_cycle_configuration: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration?,
+          metadata: ::Hash[Symbol, String?]?,
           request_options: Orb::request_opts
-        ) -> Orb::Models::price_model
+        ) -> Orb::Models::price
 
       def update:
         (
           String price_id,
           ?Orb::Models::PriceUpdateParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::price_model
+        ) -> Orb::Models::price
         | (
           String price_id,
           metadata: ::Hash[Symbol, String?]?,
           request_options: Orb::request_opts
-        ) -> Orb::Models::price_model
+        ) -> Orb::Models::price
 
       def list:
         (
           ?Orb::Models::PriceListParams | ::Hash[Symbol, top] params
-        ) -> Orb::Page[Orb::Models::price_model]
+        ) -> Orb::Page[Orb::Models::price]
         | (
           cursor: String?,
           limit: Integer,
           request_options: Orb::request_opts
-        ) -> Orb::Page[Orb::Models::price_model]
+        ) -> Orb::Page[Orb::Models::price]
 
       def evaluate:
         (
@@ -53,11 +94,11 @@ module Orb
         (
           String price_id,
           ?Orb::Models::PriceFetchParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::price_model
+        ) -> Orb::Models::price
         | (
           String price_id,
           request_options: Orb::request_opts
-        ) -> Orb::Models::price_model
+        ) -> Orb::Models::price
 
       def initialize: (client: Orb::Client) -> void
     end

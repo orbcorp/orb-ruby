@@ -9,7 +9,7 @@ class Orb::Test::Resources::DimensionalPriceGroups::ExternalDimensionalPriceGrou
     )
 
     assert_pattern do
-      response => Orb::Models::DimensionalPriceGroupModel
+      response => Orb::Models::DimensionalPriceGroup
     end
 
     assert_pattern do

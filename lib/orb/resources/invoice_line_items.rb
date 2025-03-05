@@ -23,7 +23,7 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Models::InvoiceLineItemModel]
+      # @return [Orb::Models::InvoiceLineItemCreateResponse]
       #
       def create(params)
         parsed, options = Orb::Models::InvoiceLineItemCreateParams.dump_request(params)
@@ -31,7 +31,7 @@ module Orb
           method: :post,
           path: "invoice_line_items",
           body: parsed,
-          model: Orb::Models::InvoiceLineItemModel,
+          model: Orb::Models::InvoiceLineItemCreateResponse,
           options: options
         )
       end

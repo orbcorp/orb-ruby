@@ -3,13 +3,13 @@
 module Orb
   module Models
     class DimensionalPriceGroupsAPI < Orb::BaseModel
-      sig { returns(T::Array[Orb::Models::DimensionalPriceGroupModel]) }
+      sig { returns(T::Array[Orb::Models::DimensionalPriceGroup]) }
       def data
       end
 
       sig do
-        params(_: T::Array[Orb::Models::DimensionalPriceGroupModel])
-          .returns(T::Array[Orb::Models::DimensionalPriceGroupModel])
+        params(_: T::Array[Orb::Models::DimensionalPriceGroup])
+          .returns(T::Array[Orb::Models::DimensionalPriceGroup])
       end
       def data=(_)
       end
@@ -24,7 +24,7 @@ module Orb
 
       sig do
         params(
-          data: T::Array[Orb::Models::DimensionalPriceGroupModel],
+          data: T::Array[Orb::Models::DimensionalPriceGroup],
           pagination_metadata: Orb::Models::PaginationMetadata
         )
           .void
@@ -35,10 +35,7 @@ module Orb
       sig do
         override
           .returns(
-            {
-              data: T::Array[Orb::Models::DimensionalPriceGroupModel],
-              pagination_metadata: Orb::Models::PaginationMetadata
-            }
+            {data: T::Array[Orb::Models::DimensionalPriceGroup], pagination_metadata: Orb::Models::PaginationMetadata}
           )
       end
       def to_hash

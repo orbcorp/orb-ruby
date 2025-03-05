@@ -149,8 +149,8 @@ module Orb
 
         # @!attribute unit_config
         #
-        #   @return [Orb::Models::UnitConfigModel]
-        required :unit_config, -> { Orb::Models::UnitConfigModel }
+        #   @return [Orb::Models::InvoiceCreateParams::LineItem::UnitConfig]
+        required :unit_config, -> { Orb::Models::InvoiceCreateParams::LineItem::UnitConfig }
 
         # @!parse
         #   # @param end_date [Date]
@@ -159,7 +159,7 @@ module Orb
         #   # @param name [String]
         #   # @param quantity [Float]
         #   # @param start_date [Date]
-        #   # @param unit_config [Orb::Models::UnitConfigModel]
+        #   # @param unit_config [Orb::Models::InvoiceCreateParams::LineItem::UnitConfig]
         #   #
         #   def initialize(end_date:, item_id:, model_type:, name:, quantity:, start_date:, unit_config:, **) = super
 
@@ -183,6 +183,21 @@ module Orb
           #   # @return [Array<Symbol>]
           #   #
           #   def self.values; end
+        end
+
+        class UnitConfig < Orb::BaseModel
+          # @!attribute unit_amount
+          #   Rate per unit of usage
+          #
+          #   @return [String]
+          required :unit_amount, String
+
+          # @!parse
+          #   # @param unit_amount [String]
+          #   #
+          #   def initialize(unit_amount:, **) = super
+
+          # def initialize: (Hash | Orb::BaseModel) -> void
         end
       end
     end

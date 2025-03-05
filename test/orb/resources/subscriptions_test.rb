@@ -7,36 +7,36 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
     response = @orb.subscriptions.create
 
     assert_pattern do
-      response => Orb::Models::MutatedSubscriptionModel
+      response => Orb::Models::SubscriptionCreateResponse
     end
 
     assert_pattern do
       response => {
         id: String,
         active_plan_phase_order: Integer | nil,
-        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::AdjustmentIntervalModel]),
+        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionCreateResponse::AdjustmentInterval]),
         auto_collection: Orb::BooleanModel | nil,
-        billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel,
+        billing_cycle_anchor_configuration: Orb::Models::SubscriptionCreateResponse::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,
         current_billing_period_end_date: Time | nil,
         current_billing_period_start_date: Time | nil,
-        customer: Orb::Models::CustomerModel,
+        customer: Orb::Models::Customer,
         default_invoice_memo: String | nil,
-        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::MutatedSubscriptionModel::DiscountInterval]),
+        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::SubscriptionCreateResponse::DiscountInterval]),
         end_date: Time | nil,
-        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::FixedFeeQuantityScheduleEntryModel]),
+        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::SubscriptionCreateResponse::FixedFeeQuantitySchedule]),
         invoicing_threshold: String | nil,
-        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::MaximumIntervalModel]),
+        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionCreateResponse::MaximumInterval]),
         metadata: ^(Orb::HashOf[String]),
-        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::MinimumIntervalModel]),
+        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionCreateResponse::MinimumInterval]),
         net_terms: Integer,
-        plan: Orb::Models::PlanModel,
-        price_intervals: ^(Orb::ArrayOf[Orb::Models::PriceIntervalModel]),
-        redeemed_coupon: Orb::Models::CouponRedemptionModel | nil,
+        plan: Orb::Models::Plan,
+        price_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionCreateResponse::PriceInterval]),
+        redeemed_coupon: Orb::Models::SubscriptionCreateResponse::RedeemedCoupon | nil,
         start_date: Time,
-        status: Orb::Models::MutatedSubscriptionModel::Status,
-        trial_info: Orb::Models::SubscriptionTrialInfoModel
+        status: Orb::Models::SubscriptionCreateResponse::Status,
+        trial_info: Orb::Models::SubscriptionCreateResponse::TrialInfo
       }
     end
   end
@@ -45,36 +45,36 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
     response = @orb.subscriptions.update("subscription_id")
 
     assert_pattern do
-      response => Orb::Models::SubscriptionModel
+      response => Orb::Models::Subscription
     end
 
     assert_pattern do
       response => {
         id: String,
         active_plan_phase_order: Integer | nil,
-        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::AdjustmentIntervalModel]),
+        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::Subscription::AdjustmentInterval]),
         auto_collection: Orb::BooleanModel | nil,
-        billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel,
+        billing_cycle_anchor_configuration: Orb::Models::Subscription::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,
         current_billing_period_end_date: Time | nil,
         current_billing_period_start_date: Time | nil,
-        customer: Orb::Models::CustomerModel,
+        customer: Orb::Models::Customer,
         default_invoice_memo: String | nil,
-        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::SubscriptionModel::DiscountInterval]),
+        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::Subscription::DiscountInterval]),
         end_date: Time | nil,
-        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::FixedFeeQuantityScheduleEntryModel]),
+        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::Subscription::FixedFeeQuantitySchedule]),
         invoicing_threshold: String | nil,
-        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::MaximumIntervalModel]),
+        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::Subscription::MaximumInterval]),
         metadata: ^(Orb::HashOf[String]),
-        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::MinimumIntervalModel]),
+        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::Subscription::MinimumInterval]),
         net_terms: Integer,
-        plan: Orb::Models::PlanModel,
-        price_intervals: ^(Orb::ArrayOf[Orb::Models::PriceIntervalModel]),
-        redeemed_coupon: Orb::Models::CouponRedemptionModel | nil,
+        plan: Orb::Models::Plan,
+        price_intervals: ^(Orb::ArrayOf[Orb::Models::Subscription::PriceInterval]),
+        redeemed_coupon: Orb::Models::Subscription::RedeemedCoupon | nil,
         start_date: Time,
-        status: Orb::Models::SubscriptionModel::Status,
-        trial_info: Orb::Models::SubscriptionTrialInfoModel
+        status: Orb::Models::Subscription::Status,
+        trial_info: Orb::Models::Subscription::TrialInfo
       }
     end
   end
@@ -93,36 +93,36 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
 
     row = response.to_enum.first
     assert_pattern do
-      row => Orb::Models::SubscriptionModel
+      row => Orb::Models::Subscription
     end
 
     assert_pattern do
       row => {
         id: String,
         active_plan_phase_order: Integer | nil,
-        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::AdjustmentIntervalModel]),
+        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::Subscription::AdjustmentInterval]),
         auto_collection: Orb::BooleanModel | nil,
-        billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel,
+        billing_cycle_anchor_configuration: Orb::Models::Subscription::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,
         current_billing_period_end_date: Time | nil,
         current_billing_period_start_date: Time | nil,
-        customer: Orb::Models::CustomerModel,
+        customer: Orb::Models::Customer,
         default_invoice_memo: String | nil,
-        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::SubscriptionModel::DiscountInterval]),
+        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::Subscription::DiscountInterval]),
         end_date: Time | nil,
-        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::FixedFeeQuantityScheduleEntryModel]),
+        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::Subscription::FixedFeeQuantitySchedule]),
         invoicing_threshold: String | nil,
-        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::MaximumIntervalModel]),
+        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::Subscription::MaximumInterval]),
         metadata: ^(Orb::HashOf[String]),
-        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::MinimumIntervalModel]),
+        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::Subscription::MinimumInterval]),
         net_terms: Integer,
-        plan: Orb::Models::PlanModel,
-        price_intervals: ^(Orb::ArrayOf[Orb::Models::PriceIntervalModel]),
-        redeemed_coupon: Orb::Models::CouponRedemptionModel | nil,
+        plan: Orb::Models::Plan,
+        price_intervals: ^(Orb::ArrayOf[Orb::Models::Subscription::PriceInterval]),
+        redeemed_coupon: Orb::Models::Subscription::RedeemedCoupon | nil,
         start_date: Time,
-        status: Orb::Models::SubscriptionModel::Status,
-        trial_info: Orb::Models::SubscriptionTrialInfoModel
+        status: Orb::Models::Subscription::Status,
+        trial_info: Orb::Models::Subscription::TrialInfo
       }
     end
   end
@@ -131,36 +131,36 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
     response = @orb.subscriptions.cancel("subscription_id", cancel_option: :end_of_subscription_term)
 
     assert_pattern do
-      response => Orb::Models::MutatedSubscriptionModel
+      response => Orb::Models::SubscriptionCancelResponse
     end
 
     assert_pattern do
       response => {
         id: String,
         active_plan_phase_order: Integer | nil,
-        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::AdjustmentIntervalModel]),
+        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionCancelResponse::AdjustmentInterval]),
         auto_collection: Orb::BooleanModel | nil,
-        billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel,
+        billing_cycle_anchor_configuration: Orb::Models::SubscriptionCancelResponse::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,
         current_billing_period_end_date: Time | nil,
         current_billing_period_start_date: Time | nil,
-        customer: Orb::Models::CustomerModel,
+        customer: Orb::Models::Customer,
         default_invoice_memo: String | nil,
-        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::MutatedSubscriptionModel::DiscountInterval]),
+        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::SubscriptionCancelResponse::DiscountInterval]),
         end_date: Time | nil,
-        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::FixedFeeQuantityScheduleEntryModel]),
+        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::SubscriptionCancelResponse::FixedFeeQuantitySchedule]),
         invoicing_threshold: String | nil,
-        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::MaximumIntervalModel]),
+        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionCancelResponse::MaximumInterval]),
         metadata: ^(Orb::HashOf[String]),
-        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::MinimumIntervalModel]),
+        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionCancelResponse::MinimumInterval]),
         net_terms: Integer,
-        plan: Orb::Models::PlanModel,
-        price_intervals: ^(Orb::ArrayOf[Orb::Models::PriceIntervalModel]),
-        redeemed_coupon: Orb::Models::CouponRedemptionModel | nil,
+        plan: Orb::Models::Plan,
+        price_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionCancelResponse::PriceInterval]),
+        redeemed_coupon: Orb::Models::SubscriptionCancelResponse::RedeemedCoupon | nil,
         start_date: Time,
-        status: Orb::Models::MutatedSubscriptionModel::Status,
-        trial_info: Orb::Models::SubscriptionTrialInfoModel
+        status: Orb::Models::SubscriptionCancelResponse::Status,
+        trial_info: Orb::Models::SubscriptionCancelResponse::TrialInfo
       }
     end
   end
@@ -169,36 +169,36 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
     response = @orb.subscriptions.fetch("subscription_id")
 
     assert_pattern do
-      response => Orb::Models::SubscriptionModel
+      response => Orb::Models::Subscription
     end
 
     assert_pattern do
       response => {
         id: String,
         active_plan_phase_order: Integer | nil,
-        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::AdjustmentIntervalModel]),
+        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::Subscription::AdjustmentInterval]),
         auto_collection: Orb::BooleanModel | nil,
-        billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel,
+        billing_cycle_anchor_configuration: Orb::Models::Subscription::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,
         current_billing_period_end_date: Time | nil,
         current_billing_period_start_date: Time | nil,
-        customer: Orb::Models::CustomerModel,
+        customer: Orb::Models::Customer,
         default_invoice_memo: String | nil,
-        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::SubscriptionModel::DiscountInterval]),
+        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::Subscription::DiscountInterval]),
         end_date: Time | nil,
-        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::FixedFeeQuantityScheduleEntryModel]),
+        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::Subscription::FixedFeeQuantitySchedule]),
         invoicing_threshold: String | nil,
-        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::MaximumIntervalModel]),
+        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::Subscription::MaximumInterval]),
         metadata: ^(Orb::HashOf[String]),
-        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::MinimumIntervalModel]),
+        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::Subscription::MinimumInterval]),
         net_terms: Integer,
-        plan: Orb::Models::PlanModel,
-        price_intervals: ^(Orb::ArrayOf[Orb::Models::PriceIntervalModel]),
-        redeemed_coupon: Orb::Models::CouponRedemptionModel | nil,
+        plan: Orb::Models::Plan,
+        price_intervals: ^(Orb::ArrayOf[Orb::Models::Subscription::PriceInterval]),
+        redeemed_coupon: Orb::Models::Subscription::RedeemedCoupon | nil,
         start_date: Time,
-        status: Orb::Models::SubscriptionModel::Status,
-        trial_info: Orb::Models::SubscriptionTrialInfoModel
+        status: Orb::Models::Subscription::Status,
+        trial_info: Orb::Models::Subscription::TrialInfo
       }
     end
   end
@@ -212,7 +212,7 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Orb::ArrayOf[Orb::Models::AggregatedCostModel])
+        data: ^(Orb::ArrayOf[Orb::Models::SubscriptionFetchCostsResponse::Data])
       }
     end
   end
@@ -238,7 +238,7 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
       row => {
         created_at: Time,
         end_date: Time | nil,
-        plan: Orb::Models::PlanMinifiedModel,
+        plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
         start_date: Time
       }
     end
@@ -260,36 +260,36 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
     response = @orb.subscriptions.price_intervals("subscription_id")
 
     assert_pattern do
-      response => Orb::Models::MutatedSubscriptionModel
+      response => Orb::Models::SubscriptionPriceIntervalsResponse
     end
 
     assert_pattern do
       response => {
         id: String,
         active_plan_phase_order: Integer | nil,
-        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::AdjustmentIntervalModel]),
+        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval]),
         auto_collection: Orb::BooleanModel | nil,
-        billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel,
+        billing_cycle_anchor_configuration: Orb::Models::SubscriptionPriceIntervalsResponse::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,
         current_billing_period_end_date: Time | nil,
         current_billing_period_start_date: Time | nil,
-        customer: Orb::Models::CustomerModel,
+        customer: Orb::Models::Customer,
         default_invoice_memo: String | nil,
-        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::MutatedSubscriptionModel::DiscountInterval]),
+        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval]),
         end_date: Time | nil,
-        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::FixedFeeQuantityScheduleEntryModel]),
+        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::SubscriptionPriceIntervalsResponse::FixedFeeQuantitySchedule]),
         invoicing_threshold: String | nil,
-        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::MaximumIntervalModel]),
+        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionPriceIntervalsResponse::MaximumInterval]),
         metadata: ^(Orb::HashOf[String]),
-        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::MinimumIntervalModel]),
+        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionPriceIntervalsResponse::MinimumInterval]),
         net_terms: Integer,
-        plan: Orb::Models::PlanModel,
-        price_intervals: ^(Orb::ArrayOf[Orb::Models::PriceIntervalModel]),
-        redeemed_coupon: Orb::Models::CouponRedemptionModel | nil,
+        plan: Orb::Models::Plan,
+        price_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionPriceIntervalsResponse::PriceInterval]),
+        redeemed_coupon: Orb::Models::SubscriptionPriceIntervalsResponse::RedeemedCoupon | nil,
         start_date: Time,
-        status: Orb::Models::MutatedSubscriptionModel::Status,
-        trial_info: Orb::Models::SubscriptionTrialInfoModel
+        status: Orb::Models::SubscriptionPriceIntervalsResponse::Status,
+        trial_info: Orb::Models::SubscriptionPriceIntervalsResponse::TrialInfo
       }
     end
   end
@@ -298,36 +298,36 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
     response = @orb.subscriptions.schedule_plan_change("subscription_id", change_option: :requested_date)
 
     assert_pattern do
-      response => Orb::Models::MutatedSubscriptionModel
+      response => Orb::Models::SubscriptionSchedulePlanChangeResponse
     end
 
     assert_pattern do
       response => {
         id: String,
         active_plan_phase_order: Integer | nil,
-        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::AdjustmentIntervalModel]),
+        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval]),
         auto_collection: Orb::BooleanModel | nil,
-        billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel,
+        billing_cycle_anchor_configuration: Orb::Models::SubscriptionSchedulePlanChangeResponse::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,
         current_billing_period_end_date: Time | nil,
         current_billing_period_start_date: Time | nil,
-        customer: Orb::Models::CustomerModel,
+        customer: Orb::Models::Customer,
         default_invoice_memo: String | nil,
-        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::MutatedSubscriptionModel::DiscountInterval]),
+        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval]),
         end_date: Time | nil,
-        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::FixedFeeQuantityScheduleEntryModel]),
+        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeResponse::FixedFeeQuantitySchedule]),
         invoicing_threshold: String | nil,
-        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::MaximumIntervalModel]),
+        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeResponse::MaximumInterval]),
         metadata: ^(Orb::HashOf[String]),
-        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::MinimumIntervalModel]),
+        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeResponse::MinimumInterval]),
         net_terms: Integer,
-        plan: Orb::Models::PlanModel,
-        price_intervals: ^(Orb::ArrayOf[Orb::Models::PriceIntervalModel]),
-        redeemed_coupon: Orb::Models::CouponRedemptionModel | nil,
+        plan: Orb::Models::Plan,
+        price_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval]),
+        redeemed_coupon: Orb::Models::SubscriptionSchedulePlanChangeResponse::RedeemedCoupon | nil,
         start_date: Time,
-        status: Orb::Models::MutatedSubscriptionModel::Status,
-        trial_info: Orb::Models::SubscriptionTrialInfoModel
+        status: Orb::Models::SubscriptionSchedulePlanChangeResponse::Status,
+        trial_info: Orb::Models::SubscriptionSchedulePlanChangeResponse::TrialInfo
       }
     end
   end
@@ -336,36 +336,36 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
     response = @orb.subscriptions.trigger_phase("subscription_id")
 
     assert_pattern do
-      response => Orb::Models::MutatedSubscriptionModel
+      response => Orb::Models::SubscriptionTriggerPhaseResponse
     end
 
     assert_pattern do
       response => {
         id: String,
         active_plan_phase_order: Integer | nil,
-        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::AdjustmentIntervalModel]),
+        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval]),
         auto_collection: Orb::BooleanModel | nil,
-        billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel,
+        billing_cycle_anchor_configuration: Orb::Models::SubscriptionTriggerPhaseResponse::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,
         current_billing_period_end_date: Time | nil,
         current_billing_period_start_date: Time | nil,
-        customer: Orb::Models::CustomerModel,
+        customer: Orb::Models::Customer,
         default_invoice_memo: String | nil,
-        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::MutatedSubscriptionModel::DiscountInterval]),
+        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval]),
         end_date: Time | nil,
-        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::FixedFeeQuantityScheduleEntryModel]),
+        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::SubscriptionTriggerPhaseResponse::FixedFeeQuantitySchedule]),
         invoicing_threshold: String | nil,
-        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::MaximumIntervalModel]),
+        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionTriggerPhaseResponse::MaximumInterval]),
         metadata: ^(Orb::HashOf[String]),
-        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::MinimumIntervalModel]),
+        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionTriggerPhaseResponse::MinimumInterval]),
         net_terms: Integer,
-        plan: Orb::Models::PlanModel,
-        price_intervals: ^(Orb::ArrayOf[Orb::Models::PriceIntervalModel]),
-        redeemed_coupon: Orb::Models::CouponRedemptionModel | nil,
+        plan: Orb::Models::Plan,
+        price_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionTriggerPhaseResponse::PriceInterval]),
+        redeemed_coupon: Orb::Models::SubscriptionTriggerPhaseResponse::RedeemedCoupon | nil,
         start_date: Time,
-        status: Orb::Models::MutatedSubscriptionModel::Status,
-        trial_info: Orb::Models::SubscriptionTrialInfoModel
+        status: Orb::Models::SubscriptionTriggerPhaseResponse::Status,
+        trial_info: Orb::Models::SubscriptionTriggerPhaseResponse::TrialInfo
       }
     end
   end
@@ -374,36 +374,36 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
     response = @orb.subscriptions.unschedule_cancellation("subscription_id")
 
     assert_pattern do
-      response => Orb::Models::MutatedSubscriptionModel
+      response => Orb::Models::SubscriptionUnscheduleCancellationResponse
     end
 
     assert_pattern do
       response => {
         id: String,
         active_plan_phase_order: Integer | nil,
-        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::AdjustmentIntervalModel]),
+        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval]),
         auto_collection: Orb::BooleanModel | nil,
-        billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel,
+        billing_cycle_anchor_configuration: Orb::Models::SubscriptionUnscheduleCancellationResponse::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,
         current_billing_period_end_date: Time | nil,
         current_billing_period_start_date: Time | nil,
-        customer: Orb::Models::CustomerModel,
+        customer: Orb::Models::Customer,
         default_invoice_memo: String | nil,
-        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::MutatedSubscriptionModel::DiscountInterval]),
+        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval]),
         end_date: Time | nil,
-        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::FixedFeeQuantityScheduleEntryModel]),
+        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleCancellationResponse::FixedFeeQuantitySchedule]),
         invoicing_threshold: String | nil,
-        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::MaximumIntervalModel]),
+        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleCancellationResponse::MaximumInterval]),
         metadata: ^(Orb::HashOf[String]),
-        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::MinimumIntervalModel]),
+        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleCancellationResponse::MinimumInterval]),
         net_terms: Integer,
-        plan: Orb::Models::PlanModel,
-        price_intervals: ^(Orb::ArrayOf[Orb::Models::PriceIntervalModel]),
-        redeemed_coupon: Orb::Models::CouponRedemptionModel | nil,
+        plan: Orb::Models::Plan,
+        price_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleCancellationResponse::PriceInterval]),
+        redeemed_coupon: Orb::Models::SubscriptionUnscheduleCancellationResponse::RedeemedCoupon | nil,
         start_date: Time,
-        status: Orb::Models::MutatedSubscriptionModel::Status,
-        trial_info: Orb::Models::SubscriptionTrialInfoModel
+        status: Orb::Models::SubscriptionUnscheduleCancellationResponse::Status,
+        trial_info: Orb::Models::SubscriptionUnscheduleCancellationResponse::TrialInfo
       }
     end
   end
@@ -415,36 +415,36 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
     )
 
     assert_pattern do
-      response => Orb::Models::MutatedSubscriptionModel
+      response => Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse
     end
 
     assert_pattern do
       response => {
         id: String,
         active_plan_phase_order: Integer | nil,
-        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::AdjustmentIntervalModel]),
+        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval]),
         auto_collection: Orb::BooleanModel | nil,
-        billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel,
+        billing_cycle_anchor_configuration: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,
         current_billing_period_end_date: Time | nil,
         current_billing_period_start_date: Time | nil,
-        customer: Orb::Models::CustomerModel,
+        customer: Orb::Models::Customer,
         default_invoice_memo: String | nil,
-        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::MutatedSubscriptionModel::DiscountInterval]),
+        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::DiscountInterval]),
         end_date: Time | nil,
-        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::FixedFeeQuantityScheduleEntryModel]),
+        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::FixedFeeQuantitySchedule]),
         invoicing_threshold: String | nil,
-        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::MaximumIntervalModel]),
+        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::MaximumInterval]),
         metadata: ^(Orb::HashOf[String]),
-        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::MinimumIntervalModel]),
+        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::MinimumInterval]),
         net_terms: Integer,
-        plan: Orb::Models::PlanModel,
-        price_intervals: ^(Orb::ArrayOf[Orb::Models::PriceIntervalModel]),
-        redeemed_coupon: Orb::Models::CouponRedemptionModel | nil,
+        plan: Orb::Models::Plan,
+        price_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::PriceInterval]),
+        redeemed_coupon: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::RedeemedCoupon | nil,
         start_date: Time,
-        status: Orb::Models::MutatedSubscriptionModel::Status,
-        trial_info: Orb::Models::SubscriptionTrialInfoModel
+        status: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::Status,
+        trial_info: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::TrialInfo
       }
     end
   end
@@ -453,36 +453,36 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
     response = @orb.subscriptions.unschedule_pending_plan_changes("subscription_id")
 
     assert_pattern do
-      response => Orb::Models::MutatedSubscriptionModel
+      response => Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse
     end
 
     assert_pattern do
       response => {
         id: String,
         active_plan_phase_order: Integer | nil,
-        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::AdjustmentIntervalModel]),
+        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval]),
         auto_collection: Orb::BooleanModel | nil,
-        billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel,
+        billing_cycle_anchor_configuration: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,
         current_billing_period_end_date: Time | nil,
         current_billing_period_start_date: Time | nil,
-        customer: Orb::Models::CustomerModel,
+        customer: Orb::Models::Customer,
         default_invoice_memo: String | nil,
-        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::MutatedSubscriptionModel::DiscountInterval]),
+        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval]),
         end_date: Time | nil,
-        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::FixedFeeQuantityScheduleEntryModel]),
+        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::FixedFeeQuantitySchedule]),
         invoicing_threshold: String | nil,
-        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::MaximumIntervalModel]),
+        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval]),
         metadata: ^(Orb::HashOf[String]),
-        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::MinimumIntervalModel]),
+        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval]),
         net_terms: Integer,
-        plan: Orb::Models::PlanModel,
-        price_intervals: ^(Orb::ArrayOf[Orb::Models::PriceIntervalModel]),
-        redeemed_coupon: Orb::Models::CouponRedemptionModel | nil,
+        plan: Orb::Models::Plan,
+        price_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval]),
+        redeemed_coupon: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::RedeemedCoupon | nil,
         start_date: Time,
-        status: Orb::Models::MutatedSubscriptionModel::Status,
-        trial_info: Orb::Models::SubscriptionTrialInfoModel
+        status: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::Status,
+        trial_info: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::TrialInfo
       }
     end
   end
@@ -495,36 +495,36 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
     )
 
     assert_pattern do
-      response => Orb::Models::MutatedSubscriptionModel
+      response => Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse
     end
 
     assert_pattern do
       response => {
         id: String,
         active_plan_phase_order: Integer | nil,
-        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::AdjustmentIntervalModel]),
+        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::AdjustmentInterval]),
         auto_collection: Orb::BooleanModel | nil,
-        billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel,
+        billing_cycle_anchor_configuration: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,
         current_billing_period_end_date: Time | nil,
         current_billing_period_start_date: Time | nil,
-        customer: Orb::Models::CustomerModel,
+        customer: Orb::Models::Customer,
         default_invoice_memo: String | nil,
-        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::MutatedSubscriptionModel::DiscountInterval]),
+        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval]),
         end_date: Time | nil,
-        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::FixedFeeQuantityScheduleEntryModel]),
+        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::FixedFeeQuantitySchedule]),
         invoicing_threshold: String | nil,
-        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::MaximumIntervalModel]),
+        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::MaximumInterval]),
         metadata: ^(Orb::HashOf[String]),
-        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::MinimumIntervalModel]),
+        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::MinimumInterval]),
         net_terms: Integer,
-        plan: Orb::Models::PlanModel,
-        price_intervals: ^(Orb::ArrayOf[Orb::Models::PriceIntervalModel]),
-        redeemed_coupon: Orb::Models::CouponRedemptionModel | nil,
+        plan: Orb::Models::Plan,
+        price_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::PriceInterval]),
+        redeemed_coupon: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::RedeemedCoupon | nil,
         start_date: Time,
-        status: Orb::Models::MutatedSubscriptionModel::Status,
-        trial_info: Orb::Models::SubscriptionTrialInfoModel
+        status: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::Status,
+        trial_info: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::TrialInfo
       }
     end
   end
@@ -533,36 +533,36 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
     response = @orb.subscriptions.update_trial("subscription_id", trial_end_date: "2017-07-21T17:32:28Z")
 
     assert_pattern do
-      response => Orb::Models::MutatedSubscriptionModel
+      response => Orb::Models::SubscriptionUpdateTrialResponse
     end
 
     assert_pattern do
       response => {
         id: String,
         active_plan_phase_order: Integer | nil,
-        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::AdjustmentIntervalModel]),
+        adjustment_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval]),
         auto_collection: Orb::BooleanModel | nil,
-        billing_cycle_anchor_configuration: Orb::Models::BillingCycleAnchorConfigurationModel,
+        billing_cycle_anchor_configuration: Orb::Models::SubscriptionUpdateTrialResponse::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,
         current_billing_period_end_date: Time | nil,
         current_billing_period_start_date: Time | nil,
-        customer: Orb::Models::CustomerModel,
+        customer: Orb::Models::Customer,
         default_invoice_memo: String | nil,
-        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::MutatedSubscriptionModel::DiscountInterval]),
+        discount_intervals: ^(Orb::ArrayOf[union: Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval]),
         end_date: Time | nil,
-        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::FixedFeeQuantityScheduleEntryModel]),
+        fixed_fee_quantity_schedule: ^(Orb::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::FixedFeeQuantitySchedule]),
         invoicing_threshold: String | nil,
-        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::MaximumIntervalModel]),
+        maximum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::MaximumInterval]),
         metadata: ^(Orb::HashOf[String]),
-        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::MinimumIntervalModel]),
+        minimum_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::MinimumInterval]),
         net_terms: Integer,
-        plan: Orb::Models::PlanModel,
-        price_intervals: ^(Orb::ArrayOf[Orb::Models::PriceIntervalModel]),
-        redeemed_coupon: Orb::Models::CouponRedemptionModel | nil,
+        plan: Orb::Models::Plan,
+        price_intervals: ^(Orb::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::PriceInterval]),
+        redeemed_coupon: Orb::Models::SubscriptionUpdateTrialResponse::RedeemedCoupon | nil,
         start_date: Time,
-        status: Orb::Models::MutatedSubscriptionModel::Status,
-        trial_info: Orb::Models::SubscriptionTrialInfoModel
+        status: Orb::Models::SubscriptionUpdateTrialResponse::Status,
+        trial_info: Orb::Models::SubscriptionUpdateTrialResponse::TrialInfo
       }
     end
   end

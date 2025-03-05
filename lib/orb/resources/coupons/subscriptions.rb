@@ -20,7 +20,7 @@ module Orb
         #
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
-        # @return [Orb::Page<Orb::Models::SubscriptionModel>]
+        # @return [Orb::Page<Orb::Models::Subscription>]
         #
         def list(coupon_id, params = {})
           parsed, options = Orb::Models::Coupons::SubscriptionListParams.dump_request(params)
@@ -29,7 +29,7 @@ module Orb
             path: ["coupons/%0s/subscriptions", coupon_id],
             query: parsed,
             page: Orb::Page,
-            model: Orb::Models::SubscriptionModel,
+            model: Orb::Models::Subscription,
             options: options
           )
         end

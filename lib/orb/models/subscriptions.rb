@@ -5,8 +5,8 @@ module Orb
     class SubscriptionsAPI < Orb::BaseModel
       # @!attribute data
       #
-      #   @return [Array<Orb::Models::SubscriptionModel>]
-      required :data, -> { Orb::ArrayOf[Orb::Models::SubscriptionModel] }
+      #   @return [Array<Orb::Models::Subscription>]
+      required :data, -> { Orb::ArrayOf[Orb::Models::Subscription] }
 
       # @!attribute pagination_metadata
       #
@@ -14,7 +14,7 @@ module Orb
       required :pagination_metadata, -> { Orb::Models::PaginationMetadata }
 
       # @!parse
-      #   # @param data [Array<Orb::Models::SubscriptionModel>]
+      #   # @param data [Array<Orb::Models::Subscription>]
       #   # @param pagination_metadata [Orb::Models::PaginationMetadata]
       #   #
       #   def initialize(data:, pagination_metadata:, **) = super
