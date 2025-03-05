@@ -45,7 +45,7 @@ module Orb
       # @!attribute discount
       #   An optional discount to attach to the invoice.
       #
-      #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+      #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
       optional :discount, union: -> { Orb::Models::Discount }, nil?: true
 
       # @!attribute external_customer_id
@@ -86,7 +86,7 @@ module Orb
       #   # @param line_items [Array<Orb::Models::InvoiceCreateParams::LineItem>]
       #   # @param net_terms [Integer]
       #   # @param customer_id [String, nil]
-      #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+      #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
       #   # @param external_customer_id [String, nil]
       #   # @param memo [String, nil]
       #   # @param metadata [Hash{Symbol=>String, nil}, nil]

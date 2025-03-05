@@ -23,7 +23,7 @@ module Orb
       #   @option params [String, nil] :customer_id The id of the `Customer` to create this invoice for. One of `customer_id` and
       #     `external_customer_id` are required.
       #
-      #   @option params [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil] :discount An optional discount to attach to the invoice.
+      #   @option params [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil] :discount An optional discount to attach to the invoice.
       #
       #   @option params [String, nil] :external_customer_id The `external_customer_id` of the `Customer` to create this invoice for. One of
       #     `customer_id` and `external_customer_id` are required.
