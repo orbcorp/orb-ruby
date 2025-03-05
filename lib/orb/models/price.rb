@@ -381,7 +381,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -476,7 +476,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::UnitPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration, nil]
@@ -850,7 +850,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -945,7 +945,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::PackagePrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration, nil]
@@ -1327,7 +1327,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -1422,7 +1422,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::MatrixPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration, nil]
@@ -1834,7 +1834,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -1929,7 +1929,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::TieredPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration, nil]
@@ -2333,7 +2333,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -2428,7 +2428,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::TieredBpsPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration, nil]
@@ -2844,7 +2844,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -2935,7 +2935,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::BpsPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration, nil]
@@ -3320,7 +3320,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -3411,7 +3411,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::BulkBpsPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration, nil]
@@ -3819,7 +3819,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -3910,7 +3910,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::BulkPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration, nil]
@@ -4310,7 +4310,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -4405,7 +4405,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::ThresholdTotalAmountPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration, nil]
@@ -4765,7 +4765,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -4860,7 +4860,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::TieredPackagePrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration, nil]
@@ -5220,7 +5220,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -5315,7 +5315,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::GroupedTieredPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param grouped_tiered_config [Hash{Symbol=>Object}]
@@ -5677,7 +5677,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -5772,7 +5772,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::TieredWithMinimumPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration, nil]
@@ -6136,7 +6136,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -6231,7 +6231,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::TieredPackageWithMinimumPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration, nil]
@@ -6595,7 +6595,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -6690,7 +6690,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::PackageWithAllocationPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration, nil]
@@ -7050,7 +7050,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -7145,7 +7145,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::UnitWithPercentPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration, nil]
@@ -7509,7 +7509,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -7605,7 +7605,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::MatrixWithAllocationPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration, nil]
@@ -8028,7 +8028,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -8123,7 +8123,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::TieredWithProrationPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration, nil]
@@ -8485,7 +8485,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -8580,7 +8580,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::UnitWithProrationPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration, nil]
@@ -8942,7 +8942,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -9037,7 +9037,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::GroupedAllocationPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param grouped_allocation_config [Hash{Symbol=>Object}]
@@ -9401,7 +9401,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -9496,7 +9496,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::GroupedWithProratedMinimumPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param grouped_with_prorated_minimum_config [Hash{Symbol=>Object}]
@@ -9860,7 +9860,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -9955,7 +9955,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::GroupedWithMeteredMinimumPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param grouped_with_metered_minimum_config [Hash{Symbol=>Object}]
@@ -10319,7 +10319,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -10414,7 +10414,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::MatrixWithDisplayNamePrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration, nil]
@@ -10781,7 +10781,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -10872,7 +10872,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::BulkWithProrationPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration, nil]
@@ -11235,7 +11235,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -11330,7 +11330,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::GroupedTieredPackagePrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param grouped_tiered_package_config [Hash{Symbol=>Object}]
@@ -11694,7 +11694,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -11789,7 +11789,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::MaxGroupTieredPackagePrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration, nil]
@@ -12153,7 +12153,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -12248,7 +12248,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration, nil]
@@ -12612,7 +12612,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -12707,7 +12707,7 @@ module Orb
         #   # @param created_at [Time]
         #   # @param credit_allocation [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::CreditAllocation, nil]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration, nil]
@@ -13076,7 +13076,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Models::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -13167,7 +13167,7 @@ module Orb
         #   # @param credit_allocation [Orb::Models::Price::CumulativeGroupedBulkPrice::CreditAllocation, nil]
         #   # @param cumulative_grouped_bulk_config [Hash{Symbol=>Object}]
         #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::Discount::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #   # @param external_price_id [String, nil]
         #   # @param fixed_price_quantity [Float, nil]
         #   # @param invoicing_cycle_configuration [Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration, nil]
