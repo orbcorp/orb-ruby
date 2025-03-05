@@ -1,0 +1,20 @@
+module Orb
+  module Models
+    type coupon_redemption_model =
+      { coupon_id: String, end_date: Time?, start_date: Time }
+
+    class CouponRedemptionModel < Orb::BaseModel
+      attr_accessor coupon_id: String
+
+      attr_accessor end_date: Time?
+
+      attr_accessor start_date: Time
+
+      def initialize:
+        (coupon_id: String, end_date: Time?, start_date: Time) -> void
+        | (?Orb::Models::coupon_redemption_model | Orb::BaseModel data) -> void
+
+      def to_hash: -> Orb::Models::coupon_redemption_model
+    end
+  end
+end

@@ -26,22 +26,22 @@ module Orb
 
         type data =
           {
-            billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric,
-            usage: ::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage],
+            billable_metric: Orb::Models::BillableMetricSimpleModel,
+            usage: ::Array[Orb::Models::UsageModel],
             view_mode: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::view_mode
           }
 
         class Data < Orb::BaseModel
-          attr_accessor billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric
+          attr_accessor billable_metric: Orb::Models::BillableMetricSimpleModel
 
-          attr_accessor usage: ::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage]
+          attr_accessor usage: ::Array[Orb::Models::UsageModel]
 
           attr_accessor view_mode: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::view_mode
 
           def initialize:
             (
-              billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric,
-              usage: ::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage],
+              billable_metric: Orb::Models::BillableMetricSimpleModel,
+              usage: ::Array[Orb::Models::UsageModel],
               view_mode: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::view_mode
             ) -> void
             | (
@@ -50,47 +50,6 @@ module Orb
             ) -> void
 
           def to_hash: -> Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::data
-
-          type billable_metric = { id: String, name: String }
-
-          class BillableMetric < Orb::BaseModel
-            attr_accessor id: String
-
-            attr_accessor name: String
-
-            def initialize:
-              (id: String, name: String) -> void
-              | (
-                ?Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::billable_metric
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::billable_metric
-          end
-
-          type usage =
-            { quantity: Float, timeframe_end: Time, timeframe_start: Time }
-
-          class Usage < Orb::BaseModel
-            attr_accessor quantity: Float
-
-            attr_accessor timeframe_end: Time
-
-            attr_accessor timeframe_start: Time
-
-            def initialize:
-              (
-                quantity: Float,
-                timeframe_end: Time,
-                timeframe_start: Time
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::usage
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::usage
-          end
 
           type view_mode = :periodic | :cumulative
 
@@ -128,26 +87,26 @@ module Orb
 
         type data =
           {
-            billable_metric: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric,
+            billable_metric: Orb::Models::BillableMetricSimpleModel,
             metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup,
-            usage: ::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage],
+            usage: ::Array[Orb::Models::UsageModel],
             view_mode: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::view_mode
           }
 
         class Data < Orb::BaseModel
-          attr_accessor billable_metric: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric
+          attr_accessor billable_metric: Orb::Models::BillableMetricSimpleModel
 
           attr_accessor metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup
 
-          attr_accessor usage: ::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage]
+          attr_accessor usage: ::Array[Orb::Models::UsageModel]
 
           attr_accessor view_mode: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::view_mode
 
           def initialize:
             (
-              billable_metric: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric,
+              billable_metric: Orb::Models::BillableMetricSimpleModel,
               metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup,
-              usage: ::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage],
+              usage: ::Array[Orb::Models::UsageModel],
               view_mode: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::view_mode
             ) -> void
             | (
@@ -156,23 +115,6 @@ module Orb
             ) -> void
 
           def to_hash: -> Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::data
-
-          type billable_metric = { id: String, name: String }
-
-          class BillableMetric < Orb::BaseModel
-            attr_accessor id: String
-
-            attr_accessor name: String
-
-            def initialize:
-              (id: String, name: String) -> void
-              | (
-                ?Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::billable_metric
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::billable_metric
-          end
 
           type metric_group = { property_key: String, property_value: String }
 
@@ -189,30 +131,6 @@ module Orb
               ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::metric_group
-          end
-
-          type usage =
-            { quantity: Float, timeframe_end: Time, timeframe_start: Time }
-
-          class Usage < Orb::BaseModel
-            attr_accessor quantity: Float
-
-            attr_accessor timeframe_end: Time
-
-            attr_accessor timeframe_start: Time
-
-            def initialize:
-              (
-                quantity: Float,
-                timeframe_end: Time,
-                timeframe_start: Time
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::usage
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::usage
           end
 
           type view_mode = :periodic | :cumulative

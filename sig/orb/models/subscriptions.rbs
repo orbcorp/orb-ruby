@@ -2,18 +2,18 @@ module Orb
   module Models
     type subscriptions_api =
       {
-        data: ::Array[Orb::Models::Subscription],
+        data: ::Array[Orb::Models::SubscriptionModel],
         pagination_metadata: Orb::Models::PaginationMetadata
       }
 
     class SubscriptionsAPI < Orb::BaseModel
-      attr_accessor data: ::Array[Orb::Models::Subscription]
+      attr_accessor data: ::Array[Orb::Models::SubscriptionModel]
 
       attr_accessor pagination_metadata: Orb::Models::PaginationMetadata
 
       def initialize:
         (
-          data: ::Array[Orb::Models::Subscription],
+          data: ::Array[Orb::Models::SubscriptionModel],
           pagination_metadata: Orb::Models::PaginationMetadata
         ) -> void
         | (?Orb::Models::subscriptions_api | Orb::BaseModel data) -> void

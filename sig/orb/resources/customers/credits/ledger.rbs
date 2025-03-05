@@ -8,7 +8,7 @@ module Orb
               String customer_id,
               ?Orb::Models::Customers::Credits::LedgerListParams
               | ::Hash[Symbol, top] params
-            ) -> Orb::Page[Orb::Models::Customers::Credits::ledger_list_response]
+            ) -> Orb::Page[Orb::Models::credit_ledger_entry_model]
             | (
               String customer_id,
               created_at_gt: Time?,
@@ -22,60 +22,38 @@ module Orb
               limit: Integer,
               minimum_amount: String?,
               request_options: Orb::request_opts
-            ) -> Orb::Page[Orb::Models::Customers::Credits::ledger_list_response]
+            ) -> Orb::Page[Orb::Models::credit_ledger_entry_model]
 
           def create_entry:
             (
               String customer_id,
               Orb::Models::Customers::Credits::LedgerCreateEntryParams
               | ::Hash[Symbol, top] params
-            ) -> Orb::Models::Customers::Credits::ledger_create_entry_response
+            ) -> Orb::Models::credit_ledger_entry_model
             | (
               String customer_id,
-              amount: Float,
-              entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryParams::entry_type,
-              expiry_date: Time?,
-              target_expiry_date: Date,
-              block_id: String,
-              currency: String?,
-              description: String?,
-              effective_date: Time?,
-              invoice_settings: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?,
-              metadata: ::Hash[Symbol, String?]?,
-              per_unit_cost_basis: String?,
-              void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryParams::void_reason?,
+              add_credit_ledger_entry_request: Orb::Models::AddCreditLedgerEntryRequest,
               request_options: Orb::request_opts
-            ) -> Orb::Models::Customers::Credits::ledger_create_entry_response
+            ) -> Orb::Models::credit_ledger_entry_model
 
           def create_entry_by_external_id:
             (
               String external_customer_id,
               Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams
               | ::Hash[Symbol, top] params
-            ) -> Orb::Models::Customers::Credits::ledger_create_entry_by_external_id_response
+            ) -> Orb::Models::credit_ledger_entry_model
             | (
               String external_customer_id,
-              amount: Float,
-              entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::entry_type,
-              expiry_date: Time?,
-              target_expiry_date: Date,
-              block_id: String,
-              currency: String?,
-              description: String?,
-              effective_date: Time?,
-              invoice_settings: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings?,
-              metadata: ::Hash[Symbol, String?]?,
-              per_unit_cost_basis: String?,
-              void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::void_reason?,
+              add_credit_ledger_entry_request: Orb::Models::AddCreditLedgerEntryRequest,
               request_options: Orb::request_opts
-            ) -> Orb::Models::Customers::Credits::ledger_create_entry_by_external_id_response
+            ) -> Orb::Models::credit_ledger_entry_model
 
           def list_by_external_id:
             (
               String external_customer_id,
               ?Orb::Models::Customers::Credits::LedgerListByExternalIDParams
               | ::Hash[Symbol, top] params
-            ) -> Orb::Page[Orb::Models::Customers::Credits::ledger_list_by_external_id_response]
+            ) -> Orb::Page[Orb::Models::credit_ledger_entry_model]
             | (
               String external_customer_id,
               created_at_gt: Time?,
@@ -89,7 +67,7 @@ module Orb
               limit: Integer,
               minimum_amount: String?,
               request_options: Orb::request_opts
-            ) -> Orb::Page[Orb::Models::Customers::Credits::ledger_list_by_external_id_response]
+            ) -> Orb::Page[Orb::Models::credit_ledger_entry_model]
 
           def initialize: (client: Orb::Client) -> void
         end

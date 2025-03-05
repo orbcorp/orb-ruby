@@ -18,8 +18,8 @@ module Orb
       #     with all line items, billable metrics, and prices and are used for defining
       #     external sync behavior for invoices and tax calculation purposes.
       #
-      #   @return [Orb::Models::Item]
-      required :item, -> { Orb::Models::Item }
+      #   @return [Orb::Models::ItemModel]
+      required :item, -> { Orb::Models::ItemModel }
 
       # @!attribute metadata
       #   User specified key-value pairs for the resource. If not present, this defaults
@@ -47,7 +47,7 @@ module Orb
       #   #
       #   # @param id [String]
       #   # @param description [String, nil]
-      #   # @param item [Orb::Models::Item]
+      #   # @param item [Orb::Models::ItemModel]
       #   # @param metadata [Hash{Symbol=>String}]
       #   # @param name [String]
       #   # @param status [Symbol, Orb::Models::BillableMetric::Status]

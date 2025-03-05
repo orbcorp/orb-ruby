@@ -10,7 +10,7 @@ module Orb
               customer_id: String,
               amount: String,
               currency: String,
-              invoice_settings: Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings,
+              invoice_settings: Orb::Models::Customers::Credits::AddCreditTopUpRequest::InvoiceSettings,
               per_unit_cost_basis: String,
               threshold: String,
               active_from: T.nilable(Time),
@@ -18,7 +18,7 @@ module Orb
               expires_after_unit: T.nilable(Symbol),
               request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
             )
-              .returns(Orb::Models::Customers::Credits::TopUpCreateResponse)
+              .returns(Orb::Models::TopUpModel)
           end
           def create(
             customer_id,
@@ -41,7 +41,7 @@ module Orb
               limit: Integer,
               request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
             )
-              .returns(Orb::Page[Orb::Models::Customers::Credits::TopUpListResponse])
+              .returns(Orb::Page[Orb::Models::TopUpModel])
           end
           def list(customer_id, cursor: nil, limit: nil, request_options: {})
           end
@@ -62,7 +62,7 @@ module Orb
               external_customer_id: String,
               amount: String,
               currency: String,
-              invoice_settings: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::InvoiceSettings,
+              invoice_settings: Orb::Models::Customers::Credits::AddCreditTopUpRequest::InvoiceSettings,
               per_unit_cost_basis: String,
               threshold: String,
               active_from: T.nilable(Time),
@@ -70,7 +70,7 @@ module Orb
               expires_after_unit: T.nilable(Symbol),
               request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
             )
-              .returns(Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse)
+              .returns(Orb::Models::TopUpModel)
           end
           def create_by_external_id(
             external_customer_id,
@@ -104,7 +104,7 @@ module Orb
               limit: Integer,
               request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
             )
-              .returns(Orb::Page[Orb::Models::Customers::Credits::TopUpListByExternalIDResponse])
+              .returns(Orb::Page[Orb::Models::TopUpModel])
           end
           def list_by_external_id(external_customer_id, cursor: nil, limit: nil, request_options: {})
           end

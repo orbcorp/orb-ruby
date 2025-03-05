@@ -1,0 +1,36 @@
+module Orb
+  module Models
+    type maximum_interval_model =
+      {
+        applies_to_price_ids: ::Array[String],
+        applies_to_price_interval_ids: ::Array[String],
+        end_date: Time?,
+        maximum_amount: String,
+        start_date: Time
+      }
+
+    class MaximumIntervalModel < Orb::BaseModel
+      attr_accessor applies_to_price_ids: ::Array[String]
+
+      attr_accessor applies_to_price_interval_ids: ::Array[String]
+
+      attr_accessor end_date: Time?
+
+      attr_accessor maximum_amount: String
+
+      attr_accessor start_date: Time
+
+      def initialize:
+        (
+          applies_to_price_ids: ::Array[String],
+          applies_to_price_interval_ids: ::Array[String],
+          end_date: Time?,
+          maximum_amount: String,
+          start_date: Time
+        ) -> void
+        | (?Orb::Models::maximum_interval_model | Orb::BaseModel data) -> void
+
+      def to_hash: -> Orb::Models::maximum_interval_model
+    end
+  end
+end

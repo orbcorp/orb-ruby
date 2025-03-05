@@ -2,7 +2,7 @@ module Orb
   module Models
     type alert_create_for_subscription_params =
       {
-        thresholds: ::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold],
+        thresholds: ::Array[Orb::Models::ThresholdModel],
         type: Orb::Models::AlertCreateForSubscriptionParams::type_,
         metric_id: String?
       }
@@ -12,7 +12,7 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      attr_accessor thresholds: ::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold]
+      attr_accessor thresholds: ::Array[Orb::Models::ThresholdModel]
 
       attr_accessor type: Orb::Models::AlertCreateForSubscriptionParams::type_
 
@@ -20,7 +20,7 @@ module Orb
 
       def initialize:
         (
-          thresholds: ::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold],
+          thresholds: ::Array[Orb::Models::ThresholdModel],
           type: Orb::Models::AlertCreateForSubscriptionParams::type_,
           metric_id: String?,
           request_options: Orb::request_opts
@@ -31,21 +31,6 @@ module Orb
         ) -> void
 
       def to_hash: -> Orb::Models::alert_create_for_subscription_params
-
-      type threshold = { value: Float }
-
-      class Threshold < Orb::BaseModel
-        attr_accessor value: Float
-
-        def initialize:
-          (value: Float) -> void
-          | (
-            ?Orb::Models::AlertCreateForSubscriptionParams::threshold
-            | Orb::BaseModel data
-          ) -> void
-
-        def to_hash: -> Orb::Models::AlertCreateForSubscriptionParams::threshold
-      end
 
       type type_ =
         :usage_exceeded

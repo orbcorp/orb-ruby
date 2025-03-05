@@ -1,0 +1,34 @@
+module Orb
+  module Models
+    type add_subscription_adjustment_params =
+      {
+        adjustment: Orb::Models::new_adjustment_model,
+        end_date: Time?,
+        plan_phase_order: Integer?,
+        start_date: Time?
+      }
+
+    class AddSubscriptionAdjustmentParams < Orb::BaseModel
+      attr_accessor adjustment: Orb::Models::new_adjustment_model
+
+      attr_accessor end_date: Time?
+
+      attr_accessor plan_phase_order: Integer?
+
+      attr_accessor start_date: Time?
+
+      def initialize:
+        (
+          adjustment: Orb::Models::new_adjustment_model,
+          end_date: Time?,
+          plan_phase_order: Integer?,
+          start_date: Time?
+        ) -> void
+        | (
+          ?Orb::Models::add_subscription_adjustment_params | Orb::BaseModel data
+        ) -> void
+
+      def to_hash: -> Orb::Models::add_subscription_adjustment_params
+    end
+  end
+end

@@ -1,0 +1,30 @@
+module Orb
+  module Models
+    type bulk_config_model =
+      { tiers: ::Array[Orb::Models::BulkConfigModel::Tier] }
+
+    class BulkConfigModel < Orb::BaseModel
+      attr_accessor tiers: ::Array[Orb::Models::BulkConfigModel::Tier]
+
+      def initialize:
+        (tiers: ::Array[Orb::Models::BulkConfigModel::Tier]) -> void
+        | (?Orb::Models::bulk_config_model | Orb::BaseModel data) -> void
+
+      def to_hash: -> Orb::Models::bulk_config_model
+
+      type tier = { unit_amount: String, maximum_units: Float? }
+
+      class Tier < Orb::BaseModel
+        attr_accessor unit_amount: String
+
+        attr_accessor maximum_units: Float?
+
+        def initialize:
+          (unit_amount: String, maximum_units: Float?) -> void
+          | (?Orb::Models::BulkConfigModel::tier | Orb::BaseModel data) -> void
+
+        def to_hash: -> Orb::Models::BulkConfigModel::tier
+      end
+    end
+  end
+end

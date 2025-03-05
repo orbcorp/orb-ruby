@@ -1,0 +1,97 @@
+module Orb
+  module Models
+    type edit_customer_model =
+      {
+        accounting_sync_configuration: Orb::Models::NewAccountingSyncConfigurationModel?,
+        additional_emails: ::Array[String]?,
+        auto_collection: bool?,
+        billing_address: Orb::Models::AddressInputModel?,
+        currency: String?,
+        email: String?,
+        email_delivery: bool?,
+        external_customer_id: String?,
+        hierarchy: Orb::Models::CustomerHierarchyConfigModel?,
+        metadata: ::Hash[Symbol, String?]?,
+        name: String?,
+        payment_provider: Orb::Models::EditCustomerModel::payment_provider?,
+        payment_provider_id: String?,
+        reporting_configuration: Orb::Models::NewReportingConfigurationModel?,
+        shipping_address: Orb::Models::AddressInputModel?,
+        tax_configuration: Orb::Models::new_tax_configuration_model?,
+        tax_id: Orb::Models::CustomerTaxIDModel?
+      }
+
+    class EditCustomerModel < Orb::BaseModel
+      attr_accessor accounting_sync_configuration: Orb::Models::NewAccountingSyncConfigurationModel?
+
+      attr_accessor additional_emails: ::Array[String]?
+
+      attr_accessor auto_collection: bool?
+
+      attr_accessor billing_address: Orb::Models::AddressInputModel?
+
+      attr_accessor currency: String?
+
+      attr_accessor email: String?
+
+      attr_accessor email_delivery: bool?
+
+      attr_accessor external_customer_id: String?
+
+      attr_accessor hierarchy: Orb::Models::CustomerHierarchyConfigModel?
+
+      attr_accessor metadata: ::Hash[Symbol, String?]?
+
+      attr_accessor name: String?
+
+      attr_accessor payment_provider: Orb::Models::EditCustomerModel::payment_provider?
+
+      attr_accessor payment_provider_id: String?
+
+      attr_accessor reporting_configuration: Orb::Models::NewReportingConfigurationModel?
+
+      attr_accessor shipping_address: Orb::Models::AddressInputModel?
+
+      attr_accessor tax_configuration: Orb::Models::new_tax_configuration_model?
+
+      attr_accessor tax_id: Orb::Models::CustomerTaxIDModel?
+
+      def initialize:
+        (
+          accounting_sync_configuration: Orb::Models::NewAccountingSyncConfigurationModel?,
+          additional_emails: ::Array[String]?,
+          auto_collection: bool?,
+          billing_address: Orb::Models::AddressInputModel?,
+          currency: String?,
+          email: String?,
+          email_delivery: bool?,
+          external_customer_id: String?,
+          hierarchy: Orb::Models::CustomerHierarchyConfigModel?,
+          metadata: ::Hash[Symbol, String?]?,
+          name: String?,
+          payment_provider: Orb::Models::EditCustomerModel::payment_provider?,
+          payment_provider_id: String?,
+          reporting_configuration: Orb::Models::NewReportingConfigurationModel?,
+          shipping_address: Orb::Models::AddressInputModel?,
+          tax_configuration: Orb::Models::new_tax_configuration_model?,
+          tax_id: Orb::Models::CustomerTaxIDModel?
+        ) -> void
+        | (?Orb::Models::edit_customer_model | Orb::BaseModel data) -> void
+
+      def to_hash: -> Orb::Models::edit_customer_model
+
+      type payment_provider =
+        :quickbooks | :"bill.com" | :stripe_charge | :stripe_invoice | :netsuite
+
+      class PaymentProvider < Orb::Enum
+        QUICKBOOKS: :quickbooks
+        BILL_COM: :"bill.com"
+        STRIPE_CHARGE: :stripe_charge
+        STRIPE_INVOICE: :stripe_invoice
+        NETSUITE: :netsuite
+
+        def self.values: -> ::Array[Orb::Models::EditCustomerModel::payment_provider]
+      end
+    end
+  end
+end

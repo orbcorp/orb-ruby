@@ -1,0 +1,209 @@
+module Orb
+  module Models
+    type credit_note_model =
+      {
+        id: String,
+        created_at: Time,
+        credit_note_number: String,
+        credit_note_pdf: String?,
+        customer: Orb::Models::CustomerMinifiedModel,
+        invoice_id: String,
+        line_items: ::Array[Orb::Models::CreditNoteModel::LineItem],
+        maximum_amount_adjustment: Orb::Models::CreditNoteDiscountModel?,
+        memo: String?,
+        minimum_amount_refunded: String?,
+        reason: Orb::Models::CreditNoteModel::reason?,
+        subtotal: String,
+        total: String,
+        type: Orb::Models::CreditNoteModel::type_,
+        voided_at: Time?,
+        discounts: ::Array[Orb::Models::CreditNoteDiscountModel]
+      }
+
+    class CreditNoteModel < Orb::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor credit_note_number: String
+
+      attr_accessor credit_note_pdf: String?
+
+      attr_accessor customer: Orb::Models::CustomerMinifiedModel
+
+      attr_accessor invoice_id: String
+
+      attr_accessor line_items: ::Array[Orb::Models::CreditNoteModel::LineItem]
+
+      attr_accessor maximum_amount_adjustment: Orb::Models::CreditNoteDiscountModel?
+
+      attr_accessor memo: String?
+
+      attr_accessor minimum_amount_refunded: String?
+
+      attr_accessor reason: Orb::Models::CreditNoteModel::reason?
+
+      attr_accessor subtotal: String
+
+      attr_accessor total: String
+
+      attr_accessor type: Orb::Models::CreditNoteModel::type_
+
+      attr_accessor voided_at: Time?
+
+      attr_reader discounts: ::Array[Orb::Models::CreditNoteDiscountModel]?
+
+      def discounts=: (
+        ::Array[Orb::Models::CreditNoteDiscountModel]
+      ) -> ::Array[Orb::Models::CreditNoteDiscountModel]
+
+      def initialize:
+        (
+          id: String,
+          created_at: Time,
+          credit_note_number: String,
+          credit_note_pdf: String?,
+          customer: Orb::Models::CustomerMinifiedModel,
+          invoice_id: String,
+          line_items: ::Array[Orb::Models::CreditNoteModel::LineItem],
+          maximum_amount_adjustment: Orb::Models::CreditNoteDiscountModel?,
+          memo: String?,
+          minimum_amount_refunded: String?,
+          reason: Orb::Models::CreditNoteModel::reason?,
+          subtotal: String,
+          total: String,
+          type: Orb::Models::CreditNoteModel::type_,
+          voided_at: Time?,
+          discounts: ::Array[Orb::Models::CreditNoteDiscountModel]
+        ) -> void
+        | (?Orb::Models::credit_note_model | Orb::BaseModel data) -> void
+
+      def to_hash: -> Orb::Models::credit_note_model
+
+      type line_item =
+        {
+          id: String,
+          amount: String,
+          item_id: String,
+          name: String,
+          quantity: Float?,
+          subtotal: String,
+          tax_amounts: ::Array[Orb::Models::TaxAmountModel],
+          discounts: ::Array[Orb::Models::CreditNoteModel::LineItem::Discount]
+        }
+
+      class LineItem < Orb::BaseModel
+        attr_accessor id: String
+
+        attr_accessor amount: String
+
+        attr_accessor item_id: String
+
+        attr_accessor name: String
+
+        attr_accessor quantity: Float?
+
+        attr_accessor subtotal: String
+
+        attr_accessor tax_amounts: ::Array[Orb::Models::TaxAmountModel]
+
+        attr_reader discounts: ::Array[Orb::Models::CreditNoteModel::LineItem::Discount]?
+
+        def discounts=: (
+          ::Array[Orb::Models::CreditNoteModel::LineItem::Discount]
+        ) -> ::Array[Orb::Models::CreditNoteModel::LineItem::Discount]
+
+        def initialize:
+          (
+            id: String,
+            amount: String,
+            item_id: String,
+            name: String,
+            quantity: Float?,
+            subtotal: String,
+            tax_amounts: ::Array[Orb::Models::TaxAmountModel],
+            discounts: ::Array[Orb::Models::CreditNoteModel::LineItem::Discount]
+          ) -> void
+          | (
+            ?Orb::Models::CreditNoteModel::line_item | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::CreditNoteModel::line_item
+
+        type discount =
+          {
+            id: String,
+            amount_applied: String,
+            applies_to_price_ids: ::Array[String],
+            discount_type: Orb::Models::CreditNoteModel::LineItem::Discount::discount_type,
+            percentage_discount: Float,
+            amount_discount: String?,
+            reason: String?
+          }
+
+        class Discount < Orb::BaseModel
+          attr_accessor id: String
+
+          attr_accessor amount_applied: String
+
+          attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor discount_type: Orb::Models::CreditNoteModel::LineItem::Discount::discount_type
+
+          attr_accessor percentage_discount: Float
+
+          attr_accessor amount_discount: String?
+
+          attr_accessor reason: String?
+
+          def initialize:
+            (
+              id: String,
+              amount_applied: String,
+              applies_to_price_ids: ::Array[String],
+              discount_type: Orb::Models::CreditNoteModel::LineItem::Discount::discount_type,
+              percentage_discount: Float,
+              amount_discount: String?,
+              reason: String?
+            ) -> void
+            | (
+              ?Orb::Models::CreditNoteModel::LineItem::discount
+              | Orb::BaseModel data
+            ) -> void
+
+          def to_hash: -> Orb::Models::CreditNoteModel::LineItem::discount
+
+          type discount_type = :percentage | :amount
+
+          class DiscountType < Orb::Enum
+            PERCENTAGE: :percentage
+            AMOUNT: :amount
+
+            def self.values: -> ::Array[Orb::Models::CreditNoteModel::LineItem::Discount::discount_type]
+          end
+        end
+      end
+
+      type reason =
+        :Duplicate | :Fraudulent | :"Order change" | :"Product unsatisfactory"
+
+      class Reason < Orb::Enum
+        DUPLICATE: :Duplicate
+        FRAUDULENT: :Fraudulent
+        ORDER_CHANGE: :"Order change"
+        PRODUCT_UNSATISFACTORY: :"Product unsatisfactory"
+
+        def self.values: -> ::Array[Orb::Models::CreditNoteModel::reason]
+      end
+
+      type type_ = :refund | :adjustment
+
+      class Type < Orb::Enum
+        REFUND: :refund
+        ADJUSTMENT: :adjustment
+
+        def self.values: -> ::Array[Orb::Models::CreditNoteModel::type_]
+      end
+    end
+  end
+end

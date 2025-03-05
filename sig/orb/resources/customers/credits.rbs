@@ -11,7 +11,7 @@ module Orb
             String customer_id,
             ?Orb::Models::Customers::CreditListParams
             | ::Hash[Symbol, top] params
-          ) -> Orb::Page[Orb::Models::Customers::CreditListResponse]
+          ) -> Orb::Page[Orb::Models::CustomerCreditBalancesModel::Data]
           | (
             String customer_id,
             currency: String?,
@@ -19,14 +19,14 @@ module Orb
             include_all_blocks: bool,
             limit: Integer,
             request_options: Orb::request_opts
-          ) -> Orb::Page[Orb::Models::Customers::CreditListResponse]
+          ) -> Orb::Page[Orb::Models::CustomerCreditBalancesModel::Data]
 
         def list_by_external_id:
           (
             String external_customer_id,
             ?Orb::Models::Customers::CreditListByExternalIDParams
             | ::Hash[Symbol, top] params
-          ) -> Orb::Page[Orb::Models::Customers::CreditListByExternalIDResponse]
+          ) -> Orb::Page[Orb::Models::CustomerCreditBalancesModel::Data]
           | (
             String external_customer_id,
             currency: String?,
@@ -34,7 +34,7 @@ module Orb
             include_all_blocks: bool,
             limit: Integer,
             request_options: Orb::request_opts
-          ) -> Orb::Page[Orb::Models::Customers::CreditListByExternalIDResponse]
+          ) -> Orb::Page[Orb::Models::CustomerCreditBalancesModel::Data]
 
         def initialize: (client: Orb::Client) -> void
       end

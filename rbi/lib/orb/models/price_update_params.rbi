@@ -2,38 +2,15 @@
 
 module Orb
   module Models
-    class PriceUpdateParams < Orb::BaseModel
+    class PriceUpdateParams < Orb::Models::UpdatePriceRequestParams
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-      def metadata
+      sig { params(request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])).void }
+      def initialize(request_options: {})
       end
 
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, T.nilable(String)]))
-          .returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
-      end
-      def metadata=(_)
-      end
-
-      sig do
-        params(
-          metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        )
-          .void
-      end
-      def initialize(metadata: nil, request_options: {})
-      end
-
-      sig do
-        override
-          .returns({
-                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                     request_options: Orb::RequestOptions
-                   })
-      end
+      sig { override.returns({request_options: Orb::RequestOptions}) }
       def to_hash
       end
     end

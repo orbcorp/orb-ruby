@@ -6,46 +6,46 @@ module Orb
       def create:
         (
           Orb::Models::CouponCreateParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Coupon
+        ) -> Orb::Models::CouponModel
         | (
           discount: Orb::Models::CouponCreateParams::discount,
           redemption_code: String,
           duration_in_months: Integer?,
           max_redemptions: Integer?,
           request_options: Orb::request_opts
-        ) -> Orb::Models::Coupon
+        ) -> Orb::Models::CouponModel
 
       def list:
         (
           ?Orb::Models::CouponListParams | ::Hash[Symbol, top] params
-        ) -> Orb::Page[Orb::Models::Coupon]
+        ) -> Orb::Page[Orb::Models::CouponModel]
         | (
           cursor: String?,
           limit: Integer,
           redemption_code: String?,
           show_archived: bool?,
           request_options: Orb::request_opts
-        ) -> Orb::Page[Orb::Models::Coupon]
+        ) -> Orb::Page[Orb::Models::CouponModel]
 
       def archive:
         (
           String coupon_id,
           ?Orb::Models::CouponArchiveParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Coupon
+        ) -> Orb::Models::CouponModel
         | (
           String coupon_id,
           request_options: Orb::request_opts
-        ) -> Orb::Models::Coupon
+        ) -> Orb::Models::CouponModel
 
       def fetch:
         (
           String coupon_id,
           ?Orb::Models::CouponFetchParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Coupon
+        ) -> Orb::Models::CouponModel
         | (
           String coupon_id,
           request_options: Orb::request_opts
-        ) -> Orb::Models::Coupon
+        ) -> Orb::Models::CouponModel
 
       def initialize: (client: Orb::Client) -> void
     end

@@ -19,30 +19,30 @@ module Orb
         params(
           email: String,
           name: String,
-          accounting_sync_configuration: T.nilable(Orb::Models::CustomerCreateParams::AccountingSyncConfiguration),
+          accounting_sync_configuration: T.nilable(Orb::Models::NewAccountingSyncConfigurationModel),
           additional_emails: T.nilable(T::Array[String]),
           auto_collection: T.nilable(T::Boolean),
-          billing_address: T.nilable(Orb::Models::CustomerCreateParams::BillingAddress),
+          billing_address: T.nilable(Orb::Models::AddressInputModel),
           currency: T.nilable(String),
           email_delivery: T.nilable(T::Boolean),
           external_customer_id: T.nilable(String),
-          hierarchy: T.nilable(Orb::Models::CustomerCreateParams::Hierarchy),
+          hierarchy: T.nilable(Orb::Models::CustomerHierarchyConfigModel),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           payment_provider: T.nilable(Symbol),
           payment_provider_id: T.nilable(String),
-          reporting_configuration: T.nilable(Orb::Models::CustomerCreateParams::ReportingConfiguration),
-          shipping_address: T.nilable(Orb::Models::CustomerCreateParams::ShippingAddress),
+          reporting_configuration: T.nilable(Orb::Models::NewReportingConfigurationModel),
+          shipping_address: T.nilable(Orb::Models::AddressInputModel),
           tax_configuration: T.nilable(
             T.any(
-              Orb::Models::CustomerCreateParams::TaxConfiguration::NewAvalaraTaxConfiguration,
-              Orb::Models::CustomerCreateParams::TaxConfiguration::NewTaxJarConfiguration
+              Orb::Models::NewTaxConfigurationModel::NewAvalaraTaxConfiguration,
+              Orb::Models::NewTaxConfigurationModel::NewTaxJarConfiguration
             )
           ),
-          tax_id: T.nilable(Orb::Models::CustomerCreateParams::TaxID),
+          tax_id: T.nilable(Orb::Models::CustomerTaxIDModel),
           timezone: T.nilable(String),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::Customer)
+          .returns(Orb::Models::CustomerModel)
       end
       def create(
         email:,
@@ -70,31 +70,31 @@ module Orb
       sig do
         params(
           customer_id: String,
-          accounting_sync_configuration: T.nilable(Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration),
+          accounting_sync_configuration: T.nilable(Orb::Models::NewAccountingSyncConfigurationModel),
           additional_emails: T.nilable(T::Array[String]),
           auto_collection: T.nilable(T::Boolean),
-          billing_address: T.nilable(Orb::Models::CustomerUpdateParams::BillingAddress),
+          billing_address: T.nilable(Orb::Models::AddressInputModel),
           currency: T.nilable(String),
           email: T.nilable(String),
           email_delivery: T.nilable(T::Boolean),
           external_customer_id: T.nilable(String),
-          hierarchy: T.nilable(Orb::Models::CustomerUpdateParams::Hierarchy),
+          hierarchy: T.nilable(Orb::Models::CustomerHierarchyConfigModel),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           name: T.nilable(String),
           payment_provider: T.nilable(Symbol),
           payment_provider_id: T.nilable(String),
-          reporting_configuration: T.nilable(Orb::Models::CustomerUpdateParams::ReportingConfiguration),
-          shipping_address: T.nilable(Orb::Models::CustomerUpdateParams::ShippingAddress),
+          reporting_configuration: T.nilable(Orb::Models::NewReportingConfigurationModel),
+          shipping_address: T.nilable(Orb::Models::AddressInputModel),
           tax_configuration: T.nilable(
             T.any(
-              Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration,
-              Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration
+              Orb::Models::NewTaxConfigurationModel::NewAvalaraTaxConfiguration,
+              Orb::Models::NewTaxConfigurationModel::NewTaxJarConfiguration
             )
           ),
-          tax_id: T.nilable(Orb::Models::CustomerUpdateParams::TaxID),
+          tax_id: T.nilable(Orb::Models::CustomerTaxIDModel),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::Customer)
+          .returns(Orb::Models::CustomerModel)
       end
       def update(
         customer_id,
@@ -129,7 +129,7 @@ module Orb
           limit: Integer,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Page[Orb::Models::Customer])
+          .returns(Orb::Page[Orb::Models::CustomerModel])
       end
       def list(
         created_at_gt: nil,
@@ -157,7 +157,7 @@ module Orb
           customer_id: String,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::Customer)
+          .returns(Orb::Models::CustomerModel)
       end
       def fetch(customer_id, request_options: {})
       end
@@ -167,7 +167,7 @@ module Orb
           external_customer_id: String,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::Customer)
+          .returns(Orb::Models::CustomerModel)
       end
       def fetch_by_external_id(external_customer_id, request_options: {})
       end
@@ -195,31 +195,31 @@ module Orb
       sig do
         params(
           id: String,
-          accounting_sync_configuration: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration),
+          accounting_sync_configuration: T.nilable(Orb::Models::NewAccountingSyncConfigurationModel),
           additional_emails: T.nilable(T::Array[String]),
           auto_collection: T.nilable(T::Boolean),
-          billing_address: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress),
+          billing_address: T.nilable(Orb::Models::AddressInputModel),
           currency: T.nilable(String),
           email: T.nilable(String),
           email_delivery: T.nilable(T::Boolean),
           external_customer_id: T.nilable(String),
-          hierarchy: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::Hierarchy),
+          hierarchy: T.nilable(Orb::Models::CustomerHierarchyConfigModel),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           name: T.nilable(String),
           payment_provider: T.nilable(Symbol),
           payment_provider_id: T.nilable(String),
-          reporting_configuration: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration),
-          shipping_address: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress),
+          reporting_configuration: T.nilable(Orb::Models::NewReportingConfigurationModel),
+          shipping_address: T.nilable(Orb::Models::AddressInputModel),
           tax_configuration: T.nilable(
             T.any(
-              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration,
-              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration
+              Orb::Models::NewTaxConfigurationModel::NewAvalaraTaxConfiguration,
+              Orb::Models::NewTaxConfigurationModel::NewTaxJarConfiguration
             )
           ),
-          tax_id: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::TaxID),
+          tax_id: T.nilable(Orb::Models::CustomerTaxIDModel),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::Customer)
+          .returns(Orb::Models::CustomerModel)
       end
       def update_by_external_id(
         id,
