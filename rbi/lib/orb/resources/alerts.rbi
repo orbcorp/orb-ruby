@@ -58,7 +58,7 @@ module Orb
           customer_id: String,
           currency: String,
           type: Symbol,
-          thresholds: T.nilable(T::Array[Orb::Models::CreateCustomerAlertRequest::Threshold]),
+          thresholds: T.nilable(T::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Orb::Models::Alert)
@@ -71,7 +71,7 @@ module Orb
           external_customer_id: String,
           currency: String,
           type: Symbol,
-          thresholds: T.nilable(T::Array[Orb::Models::CreateCustomerAlertRequest::Threshold]),
+          thresholds: T.nilable(T::Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold]),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Orb::Models::Alert)

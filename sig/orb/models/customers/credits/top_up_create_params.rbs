@@ -2,20 +2,100 @@ module Orb
   module Models
     module Customers
       module Credits
-        type top_up_create_params = {  } & Orb::request_parameters
+        type top_up_create_params =
+          {
+            amount: String,
+            currency: String,
+            invoice_settings: Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings,
+            per_unit_cost_basis: String,
+            threshold: String,
+            active_from: Time?,
+            expires_after: Integer?,
+            expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateParams::expires_after_unit?
+          }
+          & Orb::request_parameters
 
-        class TopUpCreateParams < Orb::Models::AddCreditTopUpRequest
+        class TopUpCreateParams < Orb::BaseModel
           extend Orb::RequestParameters::Converter
           include Orb::RequestParameters
 
+          attr_accessor amount: String
+
+          attr_accessor currency: String
+
+          attr_accessor invoice_settings: Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings
+
+          attr_accessor per_unit_cost_basis: String
+
+          attr_accessor threshold: String
+
+          attr_accessor active_from: Time?
+
+          attr_accessor expires_after: Integer?
+
+          attr_accessor expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateParams::expires_after_unit?
+
           def initialize:
-            (request_options: Orb::request_opts) -> void
+            (
+              amount: String,
+              currency: String,
+              invoice_settings: Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings,
+              per_unit_cost_basis: String,
+              threshold: String,
+              active_from: Time?,
+              expires_after: Integer?,
+              expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateParams::expires_after_unit?,
+              request_options: Orb::request_opts
+            ) -> void
             | (
               ?Orb::Models::Customers::Credits::top_up_create_params
               | Orb::BaseModel data
             ) -> void
 
           def to_hash: -> Orb::Models::Customers::Credits::top_up_create_params
+
+          type invoice_settings =
+            {
+              auto_collection: bool,
+              net_terms: Integer,
+              memo: String?,
+              require_successful_payment: bool
+            }
+
+          class InvoiceSettings < Orb::BaseModel
+            attr_accessor auto_collection: bool
+
+            attr_accessor net_terms: Integer
+
+            attr_accessor memo: String?
+
+            attr_reader require_successful_payment: bool?
+
+            def require_successful_payment=: (bool) -> bool
+
+            def initialize:
+              (
+                auto_collection: bool,
+                net_terms: Integer,
+                memo: String?,
+                require_successful_payment: bool
+              ) -> void
+              | (
+                ?Orb::Models::Customers::Credits::TopUpCreateParams::invoice_settings
+                | Orb::BaseModel data
+              ) -> void
+
+            def to_hash: -> Orb::Models::Customers::Credits::TopUpCreateParams::invoice_settings
+          end
+
+          type expires_after_unit = :day | :month
+
+          class ExpiresAfterUnit < Orb::Enum
+            DAY: :day
+            MONTH: :month
+
+            def self.values: -> ::Array[Orb::Models::Customers::Credits::TopUpCreateParams::expires_after_unit]
+          end
         end
       end
     end

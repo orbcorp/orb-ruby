@@ -109,9 +109,9 @@ module Orb
       #
       #   @option params [String] :currency The case sensitive currency or custom pricing unit to use for this alert.
       #
-      #   @option params [Symbol, Orb::Models::CreateCustomerAlertRequest::Type] :type The type of alert to create. This must be a valid alert type.
+      #   @option params [Symbol, Orb::Models::AlertCreateForCustomerParams::Type] :type The type of alert to create. This must be a valid alert type.
       #
-      #   @option params [Array<Orb::Models::CreateCustomerAlertRequest::Threshold>, nil] :thresholds The thresholds that define the values at which the alert will be triggered.
+      #   @option params [Array<Orb::Models::AlertCreateForCustomerParams::Threshold>, nil] :thresholds The thresholds that define the values at which the alert will be triggered.
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
@@ -143,9 +143,9 @@ module Orb
       #
       #   @option params [String] :currency The case sensitive currency or custom pricing unit to use for this alert.
       #
-      #   @option params [Symbol, Orb::Models::CreateCustomerAlertRequest::Type] :type The type of alert to create. This must be a valid alert type.
+      #   @option params [Symbol, Orb::Models::AlertCreateForExternalCustomerParams::Type] :type The type of alert to create. This must be a valid alert type.
       #
-      #   @option params [Array<Orb::Models::CreateCustomerAlertRequest::Threshold>, nil] :thresholds The thresholds that define the values at which the alert will be triggered.
+      #   @option params [Array<Orb::Models::AlertCreateForExternalCustomerParams::Threshold>, nil] :thresholds The thresholds that define the values at which the alert will be triggered.
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
