@@ -1,14 +1,20 @@
 module Orb
   module Models
     module Prices
-      type external_price_id_update_params = {  } & Orb::request_parameters
+      type external_price_id_update_params =
+        { metadata: ::Hash[Symbol, String?]? } & Orb::request_parameters
 
-      class ExternalPriceIDUpdateParams < Orb::Models::UpdatePriceRequestParams
+      class ExternalPriceIDUpdateParams < Orb::BaseModel
         extend Orb::RequestParameters::Converter
         include Orb::RequestParameters
 
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
         def initialize:
-          (request_options: Orb::request_opts) -> void
+          (
+            metadata: ::Hash[Symbol, String?]?,
+            request_options: Orb::request_opts
+          ) -> void
           | (
             ?Orb::Models::Prices::external_price_id_update_params
             | Orb::BaseModel data

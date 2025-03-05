@@ -13,12 +13,12 @@ module Orb
               String customer_id,
               amount: String,
               currency: String,
-              invoice_settings: Orb::Models::Customers::Credits::AddCreditTopUpRequest::InvoiceSettings,
+              invoice_settings: Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings,
               per_unit_cost_basis: String,
               threshold: String,
               active_from: Time?,
               expires_after: Integer?,
-              expires_after_unit: Orb::Models::Customers::Credits::AddCreditTopUpRequest::expires_after_unit?,
+              expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateParams::expires_after_unit?,
               request_options: Orb::request_opts
             ) -> Orb::Models::Customers::Credits::TopUpCreateResponse
 
@@ -57,12 +57,12 @@ module Orb
               String external_customer_id,
               amount: String,
               currency: String,
-              invoice_settings: Orb::Models::Customers::Credits::AddCreditTopUpRequest::InvoiceSettings,
+              invoice_settings: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::InvoiceSettings,
               per_unit_cost_basis: String,
               threshold: String,
               active_from: Time?,
               expires_after: Integer?,
-              expires_after_unit: Orb::Models::Customers::Credits::AddCreditTopUpRequest::expires_after_unit?,
+              expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::expires_after_unit?,
               request_options: Orb::request_opts
             ) -> Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse
 
