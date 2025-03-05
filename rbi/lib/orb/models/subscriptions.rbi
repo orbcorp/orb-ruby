@@ -3,11 +3,11 @@
 module Orb
   module Models
     class SubscriptionsAPI < Orb::BaseModel
-      sig { returns(T::Array[Orb::Models::SubscriptionModel]) }
+      sig { returns(T::Array[Orb::Models::Subscription]) }
       def data
       end
 
-      sig { params(_: T::Array[Orb::Models::SubscriptionModel]).returns(T::Array[Orb::Models::SubscriptionModel]) }
+      sig { params(_: T::Array[Orb::Models::Subscription]).returns(T::Array[Orb::Models::Subscription]) }
       def data=(_)
       end
 
@@ -20,10 +20,7 @@ module Orb
       end
 
       sig do
-        params(
-          data: T::Array[Orb::Models::SubscriptionModel],
-          pagination_metadata: Orb::Models::PaginationMetadata
-        )
+        params(data: T::Array[Orb::Models::Subscription], pagination_metadata: Orb::Models::PaginationMetadata)
           .void
       end
       def initialize(data:, pagination_metadata:)
@@ -31,9 +28,7 @@ module Orb
 
       sig do
         override
-          .returns(
-            {data: T::Array[Orb::Models::SubscriptionModel], pagination_metadata: Orb::Models::PaginationMetadata}
-          )
+          .returns({data: T::Array[Orb::Models::Subscription], pagination_metadata: Orb::Models::PaginationMetadata})
       end
       def to_hash
       end

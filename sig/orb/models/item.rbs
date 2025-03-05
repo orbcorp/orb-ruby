@@ -4,7 +4,7 @@ module Orb
       {
         id: String,
         created_at: Time,
-        external_connections: ::Array[Orb::Models::ItemExternalConnectionModel],
+        external_connections: ::Array[Orb::Models::Item::ExternalConnection],
         name: String
       }
 
@@ -13,7 +13,7 @@ module Orb
 
       attr_accessor created_at: Time
 
-      attr_accessor external_connections: ::Array[Orb::Models::ItemExternalConnectionModel]
+      attr_accessor external_connections: ::Array[Orb::Models::Item::ExternalConnection]
 
       attr_accessor name: String
 
@@ -21,12 +21,56 @@ module Orb
         (
           id: String,
           created_at: Time,
-          external_connections: ::Array[Orb::Models::ItemExternalConnectionModel],
+          external_connections: ::Array[Orb::Models::Item::ExternalConnection],
           name: String
         ) -> void
         | (?Orb::Models::item | Orb::BaseModel data) -> void
 
       def to_hash: -> Orb::Models::item
+
+      type external_connection =
+        {
+          external_connection_name: Orb::Models::Item::ExternalConnection::external_connection_name,
+          external_entity_id: String
+        }
+
+      class ExternalConnection < Orb::BaseModel
+        attr_accessor external_connection_name: Orb::Models::Item::ExternalConnection::external_connection_name
+
+        attr_accessor external_entity_id: String
+
+        def initialize:
+          (
+            external_connection_name: Orb::Models::Item::ExternalConnection::external_connection_name,
+            external_entity_id: String
+          ) -> void
+          | (
+            ?Orb::Models::Item::external_connection | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::Item::external_connection
+
+        type external_connection_name =
+          :stripe
+          | :quickbooks
+          | :"bill.com"
+          | :netsuite
+          | :taxjar
+          | :avalara
+          | :anrok
+
+        class ExternalConnectionName < Orb::Enum
+          STRIPE: :stripe
+          QUICKBOOKS: :quickbooks
+          BILL_COM: :"bill.com"
+          NETSUITE: :netsuite
+          TAXJAR: :taxjar
+          AVALARA: :avalara
+          ANROK: :anrok
+
+          def self.values: -> ::Array[Orb::Models::Item::ExternalConnection::external_connection_name]
+        end
+      end
     end
   end
 end

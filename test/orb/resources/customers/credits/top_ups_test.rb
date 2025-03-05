@@ -14,7 +14,7 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Orb::Test::Resource
     )
 
     assert_pattern do
-      response => Orb::Models::TopUpModel
+      response => Orb::Models::Customers::Credits::TopUpCreateResponse
     end
 
     assert_pattern do
@@ -22,11 +22,11 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Orb::Test::Resource
         id: String,
         amount: String,
         currency: String,
-        invoice_settings: Orb::Models::TopUpModel::InvoiceSettings,
+        invoice_settings: Orb::Models::Customers::Credits::TopUpCreateResponse::InvoiceSettings,
         per_unit_cost_basis: String,
         threshold: String,
         expires_after: Integer | nil,
-        expires_after_unit: Orb::Models::TopUpModel::ExpiresAfterUnit | nil
+        expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateResponse::ExpiresAfterUnit | nil
       }
     end
   end
@@ -45,7 +45,7 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Orb::Test::Resource
 
     row = response.to_enum.first
     assert_pattern do
-      row => Orb::Models::TopUpModel
+      row => Orb::Models::Customers::Credits::TopUpListResponse
     end
 
     assert_pattern do
@@ -53,11 +53,11 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Orb::Test::Resource
         id: String,
         amount: String,
         currency: String,
-        invoice_settings: Orb::Models::TopUpModel::InvoiceSettings,
+        invoice_settings: Orb::Models::Customers::Credits::TopUpListResponse::InvoiceSettings,
         per_unit_cost_basis: String,
         threshold: String,
         expires_after: Integer | nil,
-        expires_after_unit: Orb::Models::TopUpModel::ExpiresAfterUnit | nil
+        expires_after_unit: Orb::Models::Customers::Credits::TopUpListResponse::ExpiresAfterUnit | nil
       }
     end
   end
@@ -81,7 +81,7 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Orb::Test::Resource
     )
 
     assert_pattern do
-      response => Orb::Models::TopUpModel
+      response => Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse
     end
 
     assert_pattern do
@@ -89,11 +89,11 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Orb::Test::Resource
         id: String,
         amount: String,
         currency: String,
-        invoice_settings: Orb::Models::TopUpModel::InvoiceSettings,
+        invoice_settings: Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse::InvoiceSettings,
         per_unit_cost_basis: String,
         threshold: String,
         expires_after: Integer | nil,
-        expires_after_unit: Orb::Models::TopUpModel::ExpiresAfterUnit | nil
+        expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse::ExpiresAfterUnit | nil
       }
     end
   end
@@ -123,7 +123,7 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Orb::Test::Resource
 
     row = response.to_enum.first
     assert_pattern do
-      row => Orb::Models::TopUpModel
+      row => Orb::Models::Customers::Credits::TopUpListByExternalIDResponse
     end
 
     assert_pattern do
@@ -131,11 +131,11 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Orb::Test::Resource
         id: String,
         amount: String,
         currency: String,
-        invoice_settings: Orb::Models::TopUpModel::InvoiceSettings,
+        invoice_settings: Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::InvoiceSettings,
         per_unit_cost_basis: String,
         threshold: String,
         expires_after: Integer | nil,
-        expires_after_unit: Orb::Models::TopUpModel::ExpiresAfterUnit | nil
+        expires_after_unit: Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::ExpiresAfterUnit | nil
       }
     end
   end

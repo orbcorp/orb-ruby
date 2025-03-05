@@ -12,7 +12,7 @@ module Orb
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::BillableMetricModel)
+          .returns(Orb::Models::BillableMetric)
       end
       def create(description:, item_id:, name:, sql:, metadata: nil, request_options: {})
       end
@@ -23,7 +23,7 @@ module Orb
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::BillableMetricModel)
+          .returns(Orb::Models::BillableMetric)
       end
       def update(metric_id, metadata: nil, request_options: {})
       end
@@ -38,7 +38,7 @@ module Orb
           limit: Integer,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Page[Orb::Models::BillableMetricModel])
+          .returns(Orb::Page[Orb::Models::BillableMetric])
       end
       def list(
         created_at_gt: nil,
@@ -56,7 +56,7 @@ module Orb
           metric_id: String,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::BillableMetricModel)
+          .returns(Orb::Models::BillableMetric)
       end
       def fetch(metric_id, request_options: {})
       end

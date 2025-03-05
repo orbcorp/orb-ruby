@@ -24,8 +24,8 @@ module Orb
       # @!attribute customer
       #   The customer the alert applies to.
       #
-      #   @return [Orb::Models::CustomerMinifiedModel, nil]
-      required :customer, -> { Orb::Models::CustomerMinifiedModel }, nil?: true
+      #   @return [Orb::Models::Alert::Customer, nil]
+      required :customer, -> { Orb::Models::Alert::Customer }, nil?: true
 
       # @!attribute enabled
       #   Whether the alert is enabled or disabled.
@@ -48,15 +48,15 @@ module Orb
       # @!attribute subscription
       #   The subscription the alert applies to.
       #
-      #   @return [Orb::Models::SubscriptionMinifiedModel, nil]
-      required :subscription, -> { Orb::Models::SubscriptionMinifiedModel }, nil?: true
+      #   @return [Orb::Models::Alert::Subscription, nil]
+      required :subscription, -> { Orb::Models::Alert::Subscription }, nil?: true
 
       # @!attribute thresholds
       #   The thresholds that define the conditions under which the alert will be
       #     triggered.
       #
-      #   @return [Array<Orb::Models::ThresholdModel>, nil]
-      required :thresholds, -> { Orb::ArrayOf[Orb::Models::ThresholdModel] }, nil?: true
+      #   @return [Array<Orb::Models::Alert::Threshold>, nil]
+      required :thresholds, -> { Orb::ArrayOf[Orb::Models::Alert::Threshold] }, nil?: true
 
       # @!attribute type
       #   The type of alert. This must be a valid alert type.
@@ -74,17 +74,39 @@ module Orb
       #   # @param id [String]
       #   # @param created_at [Time]
       #   # @param currency [String, nil]
-      #   # @param customer [Orb::Models::CustomerMinifiedModel, nil]
+      #   # @param customer [Orb::Models::Alert::Customer, nil]
       #   # @param enabled [Boolean]
       #   # @param metric [Orb::Models::Alert::Metric, nil]
       #   # @param plan [Orb::Models::Alert::Plan, nil]
-      #   # @param subscription [Orb::Models::SubscriptionMinifiedModel, nil]
-      #   # @param thresholds [Array<Orb::Models::ThresholdModel>, nil]
+      #   # @param subscription [Orb::Models::Alert::Subscription, nil]
+      #   # @param thresholds [Array<Orb::Models::Alert::Threshold>, nil]
       #   # @param type [Symbol, Orb::Models::Alert::Type]
       #   #
       #   def initialize(id:, created_at:, currency:, customer:, enabled:, metric:, plan:, subscription:, thresholds:, type:, **) = super
 
       # def initialize: (Hash | Orb::BaseModel) -> void
+
+      class Customer < Orb::BaseModel
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
+        # @!attribute external_customer_id
+        #
+        #   @return [String, nil]
+        required :external_customer_id, String, nil?: true
+
+        # @!parse
+        #   # The customer the alert applies to.
+        #   #
+        #   # @param id [String]
+        #   # @param external_customer_id [String, nil]
+        #   #
+        #   def initialize(id:, external_customer_id:, **) = super
+
+        # def initialize: (Hash | Orb::BaseModel) -> void
+      end
 
       class Metric < Orb::BaseModel
         # @!attribute id
@@ -135,6 +157,42 @@ module Orb
         #   # @param plan_version [String]
         #   #
         #   def initialize(id:, external_plan_id:, name:, plan_version:, **) = super
+
+        # def initialize: (Hash | Orb::BaseModel) -> void
+      end
+
+      class Subscription < Orb::BaseModel
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
+        # @!parse
+        #   # The subscription the alert applies to.
+        #   #
+        #   # @param id [String]
+        #   #
+        #   def initialize(id:, **) = super
+
+        # def initialize: (Hash | Orb::BaseModel) -> void
+      end
+
+      class Threshold < Orb::BaseModel
+        # @!attribute value
+        #   The value at which an alert will fire. For credit balance alerts, the alert will
+        #     fire at or below this value. For usage and cost alerts, the alert will fire at
+        #     or above this value.
+        #
+        #   @return [Float]
+        required :value, Float
+
+        # @!parse
+        #   # Thresholds are used to define the conditions under which an alert will be
+        #   #   triggered.
+        #   #
+        #   # @param value [Float]
+        #   #
+        #   def initialize(value:, **) = super
 
         # def initialize: (Hash | Orb::BaseModel) -> void
       end

@@ -7,14 +7,14 @@ class Orb::Test::Resources::Plans::ExternalPlanIDTest < Orb::Test::ResourceTest
     response = @orb.plans.external_plan_id.update("external_plan_id")
 
     assert_pattern do
-      response => Orb::Models::PlanModel
+      response => Orb::Models::Plan
     end
 
     assert_pattern do
       response => {
         id: String,
-        adjustments: ^(Orb::ArrayOf[union: Orb::Models::AdjustmentModel]),
-        base_plan: Orb::Models::PlanMinifiedModel | nil,
+        adjustments: ^(Orb::ArrayOf[union: Orb::Models::Plan::Adjustment]),
+        base_plan: Orb::Models::Plan::BasePlan | nil,
         base_plan_id: String | nil,
         created_at: Time,
         currency: String,
@@ -23,18 +23,18 @@ class Orb::Test::Resources::Plans::ExternalPlanIDTest < Orb::Test::ResourceTest
         discount: Orb::Models::Discount | nil,
         external_plan_id: String | nil,
         invoicing_currency: String,
-        maximum: Orb::Models::MaximumModel | nil,
+        maximum: Orb::Models::Plan::Maximum | nil,
         maximum_amount: String | nil,
         metadata: ^(Orb::HashOf[String]),
-        minimum: Orb::Models::MinimumModel | nil,
+        minimum: Orb::Models::Plan::Minimum | nil,
         minimum_amount: String | nil,
         name: String,
         net_terms: Integer | nil,
-        plan_phases: ^(Orb::ArrayOf[Orb::Models::PlanModel::PlanPhase]) | nil,
-        prices: ^(Orb::ArrayOf[union: Orb::Models::PriceModel]),
-        product: Orb::Models::PlanModel::Product,
-        status: Orb::Models::PlanModel::Status,
-        trial_config: Orb::Models::PlanModel::TrialConfig,
+        plan_phases: ^(Orb::ArrayOf[Orb::Models::Plan::PlanPhase]) | nil,
+        prices: ^(Orb::ArrayOf[union: Orb::Models::Price]),
+        product: Orb::Models::Plan::Product,
+        status: Orb::Models::Plan::Status,
+        trial_config: Orb::Models::Plan::TrialConfig,
         version: Integer
       }
     end
@@ -44,14 +44,14 @@ class Orb::Test::Resources::Plans::ExternalPlanIDTest < Orb::Test::ResourceTest
     response = @orb.plans.external_plan_id.fetch("external_plan_id")
 
     assert_pattern do
-      response => Orb::Models::PlanModel
+      response => Orb::Models::Plan
     end
 
     assert_pattern do
       response => {
         id: String,
-        adjustments: ^(Orb::ArrayOf[union: Orb::Models::AdjustmentModel]),
-        base_plan: Orb::Models::PlanMinifiedModel | nil,
+        adjustments: ^(Orb::ArrayOf[union: Orb::Models::Plan::Adjustment]),
+        base_plan: Orb::Models::Plan::BasePlan | nil,
         base_plan_id: String | nil,
         created_at: Time,
         currency: String,
@@ -60,18 +60,18 @@ class Orb::Test::Resources::Plans::ExternalPlanIDTest < Orb::Test::ResourceTest
         discount: Orb::Models::Discount | nil,
         external_plan_id: String | nil,
         invoicing_currency: String,
-        maximum: Orb::Models::MaximumModel | nil,
+        maximum: Orb::Models::Plan::Maximum | nil,
         maximum_amount: String | nil,
         metadata: ^(Orb::HashOf[String]),
-        minimum: Orb::Models::MinimumModel | nil,
+        minimum: Orb::Models::Plan::Minimum | nil,
         minimum_amount: String | nil,
         name: String,
         net_terms: Integer | nil,
-        plan_phases: ^(Orb::ArrayOf[Orb::Models::PlanModel::PlanPhase]) | nil,
-        prices: ^(Orb::ArrayOf[union: Orb::Models::PriceModel]),
-        product: Orb::Models::PlanModel::Product,
-        status: Orb::Models::PlanModel::Status,
-        trial_config: Orb::Models::PlanModel::TrialConfig,
+        plan_phases: ^(Orb::ArrayOf[Orb::Models::Plan::PlanPhase]) | nil,
+        prices: ^(Orb::ArrayOf[union: Orb::Models::Price]),
+        product: Orb::Models::Plan::Product,
+        status: Orb::Models::Plan::Status,
+        trial_config: Orb::Models::Plan::TrialConfig,
         version: Integer
       }
     end

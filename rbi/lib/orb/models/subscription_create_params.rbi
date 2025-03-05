@@ -52,13 +52,13 @@ module Orb
       def aws_region=(_)
       end
 
-      sig { returns(T.nilable(Orb::Models::BillingCycleAnchorConfigurationModel)) }
+      sig { returns(T.nilable(Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration)) }
       def billing_cycle_anchor_configuration
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::BillingCycleAnchorConfigurationModel))
-          .returns(T.nilable(Orb::Models::BillingCycleAnchorConfigurationModel))
+        params(_: T.nilable(Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration))
+          .returns(T.nilable(Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration))
       end
       def billing_cycle_anchor_configuration=(_)
       end
@@ -285,7 +285,7 @@ module Orb
           align_billing_with_subscription_start_date: T::Boolean,
           auto_collection: T.nilable(T::Boolean),
           aws_region: T.nilable(String),
-          billing_cycle_anchor_configuration: T.nilable(Orb::Models::BillingCycleAnchorConfigurationModel),
+          billing_cycle_anchor_configuration: T.nilable(Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration),
           coupon_redemption_code: T.nilable(String),
           credits_overage_rate: T.nilable(Float),
           customer_id: T.nilable(String),
@@ -360,7 +360,7 @@ module Orb
               align_billing_with_subscription_start_date: T::Boolean,
               auto_collection: T.nilable(T::Boolean),
               aws_region: T.nilable(String),
-              billing_cycle_anchor_configuration: T.nilable(Orb::Models::BillingCycleAnchorConfigurationModel),
+              billing_cycle_anchor_configuration: T.nilable(Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration),
               coupon_redemption_code: T.nilable(String),
               credits_overage_rate: T.nilable(Float),
               customer_id: T.nilable(String),
@@ -391,6 +391,40 @@ module Orb
           )
       end
       def to_hash
+      end
+
+      class BillingCycleAnchorConfiguration < Orb::BaseModel
+        sig { returns(Integer) }
+        def day
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def day=(_)
+        end
+
+        sig { returns(T.nilable(Integer)) }
+        def month
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def month=(_)
+        end
+
+        sig { returns(T.nilable(Integer)) }
+        def year
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def year=(_)
+        end
+
+        sig { params(day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)).void }
+        def initialize(day:, month: nil, year: nil)
+        end
+
+        sig { override.returns({day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)}) }
+        def to_hash
+        end
       end
 
       class ExternalMarketplace < Orb::Enum

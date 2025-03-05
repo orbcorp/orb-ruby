@@ -18,13 +18,13 @@ module Orb
       # @!attribute thresholds
       #   The thresholds that define the values at which the alert will be triggered.
       #
-      #   @return [Array<Orb::Models::ThresholdModel>, nil]
-      optional :thresholds, -> { Orb::ArrayOf[Orb::Models::ThresholdModel] }, nil?: true
+      #   @return [Array<Orb::Models::CreateCustomerAlertRequest::Threshold>, nil]
+      optional :thresholds, -> { Orb::ArrayOf[Orb::Models::CreateCustomerAlertRequest::Threshold] }, nil?: true
 
       # @!parse
       #   # @param currency [String]
       #   # @param type [Symbol, Orb::Models::CreateCustomerAlertRequest::Type]
-      #   # @param thresholds [Array<Orb::Models::ThresholdModel>, nil]
+      #   # @param thresholds [Array<Orb::Models::CreateCustomerAlertRequest::Threshold>, nil]
       #   #
       #   def initialize(currency:, type:, thresholds: nil, **) = super
 
@@ -62,6 +62,26 @@ module Orb
         #   # @return [Array<Symbol>]
         #   #
         #   def self.values; end
+      end
+
+      class Threshold < Orb::BaseModel
+        # @!attribute value
+        #   The value at which an alert will fire. For credit balance alerts, the alert will
+        #     fire at or below this value. For usage and cost alerts, the alert will fire at
+        #     or above this value.
+        #
+        #   @return [Float]
+        required :value, Float
+
+        # @!parse
+        #   # Thresholds are used to define the conditions under which an alert will be
+        #   #   triggered.
+        #   #
+        #   # @param value [Float]
+        #   #
+        #   def initialize(value:, **) = super
+
+        # def initialize: (Hash | Orb::BaseModel) -> void
       end
     end
   end
