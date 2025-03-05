@@ -1,0 +1,42 @@
+module Orb
+  module Models
+    type discount_override_model =
+      {
+        discount_type: Orb::Models::DiscountOverrideModel::discount_type,
+        amount_discount: String?,
+        percentage_discount: Float?,
+        usage_discount: Float?
+      }
+
+    class DiscountOverrideModel < Orb::BaseModel
+      attr_accessor discount_type: Orb::Models::DiscountOverrideModel::discount_type
+
+      attr_accessor amount_discount: String?
+
+      attr_accessor percentage_discount: Float?
+
+      attr_accessor usage_discount: Float?
+
+      def initialize:
+        (
+          discount_type: Orb::Models::DiscountOverrideModel::discount_type,
+          amount_discount: String?,
+          percentage_discount: Float?,
+          usage_discount: Float?
+        ) -> void
+        | (?Orb::Models::discount_override_model | Orb::BaseModel data) -> void
+
+      def to_hash: -> Orb::Models::discount_override_model
+
+      type discount_type = :percentage | :usage | :amount
+
+      class DiscountType < Orb::Enum
+        PERCENTAGE: :percentage
+        USAGE: :usage
+        AMOUNT: :amount
+
+        def self.values: -> ::Array[Orb::Models::DiscountOverrideModel::discount_type]
+      end
+    end
+  end
+end

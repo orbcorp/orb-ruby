@@ -1,0 +1,19 @@
+module Orb
+  module Models
+    type sub_line_item_grouping_model = { key: String, value: String? }
+
+    class SubLineItemGroupingModel < Orb::BaseModel
+      attr_accessor key: String
+
+      attr_accessor value: String?
+
+      def initialize:
+        (key: String, value: String?) -> void
+        | (
+          ?Orb::Models::sub_line_item_grouping_model | Orb::BaseModel data
+        ) -> void
+
+      def to_hash: -> Orb::Models::sub_line_item_grouping_model
+    end
+  end
+end

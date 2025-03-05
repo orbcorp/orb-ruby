@@ -1,0 +1,50 @@
+module Orb
+  module Models
+    type amount_discount_interval_model =
+      {
+        amount_discount: String,
+        applies_to_price_ids: ::Array[String],
+        applies_to_price_interval_ids: ::Array[String],
+        discount_type: Orb::Models::AmountDiscountIntervalModel::discount_type,
+        end_date: Time?,
+        start_date: Time
+      }
+
+    class AmountDiscountIntervalModel < Orb::BaseModel
+      attr_accessor amount_discount: String
+
+      attr_accessor applies_to_price_ids: ::Array[String]
+
+      attr_accessor applies_to_price_interval_ids: ::Array[String]
+
+      attr_accessor discount_type: Orb::Models::AmountDiscountIntervalModel::discount_type
+
+      attr_accessor end_date: Time?
+
+      attr_accessor start_date: Time
+
+      def initialize:
+        (
+          amount_discount: String,
+          applies_to_price_ids: ::Array[String],
+          applies_to_price_interval_ids: ::Array[String],
+          discount_type: Orb::Models::AmountDiscountIntervalModel::discount_type,
+          end_date: Time?,
+          start_date: Time
+        ) -> void
+        | (
+          ?Orb::Models::amount_discount_interval_model | Orb::BaseModel data
+        ) -> void
+
+      def to_hash: -> Orb::Models::amount_discount_interval_model
+
+      type discount_type = :amount
+
+      class DiscountType < Orb::Enum
+        AMOUNT: :amount
+
+        def self.values: -> ::Array[Orb::Models::AmountDiscountIntervalModel::discount_type]
+      end
+    end
+  end
+end

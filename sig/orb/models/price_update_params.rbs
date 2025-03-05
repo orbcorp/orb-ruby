@@ -1,19 +1,13 @@
 module Orb
   module Models
-    type price_update_params =
-      { metadata: ::Hash[Symbol, String?]? } & Orb::request_parameters
+    type price_update_params = {  } & Orb::request_parameters
 
-    class PriceUpdateParams < Orb::BaseModel
+    class PriceUpdateParams < Orb::Models::UpdatePriceRequestParams
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      attr_accessor metadata: ::Hash[Symbol, String?]?
-
       def initialize:
-        (
-          metadata: ::Hash[Symbol, String?]?,
-          request_options: Orb::request_opts
-        ) -> void
+        (request_options: Orb::request_opts) -> void
         | (?Orb::Models::price_update_params | Orb::BaseModel data) -> void
 
       def to_hash: -> Orb::Models::price_update_params

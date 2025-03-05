@@ -1,0 +1,57 @@
+module Orb
+  module Models
+    type new_tax_configuration_model =
+      Orb::Models::NewTaxConfigurationModel::NewAvalaraTaxConfiguration
+      | Orb::Models::NewTaxConfigurationModel::NewTaxJarConfiguration
+
+    class NewTaxConfigurationModel < Orb::Union
+      type new_avalara_tax_configuration =
+        {
+          tax_exempt: bool,
+          tax_provider: :avalara,
+          tax_exemption_code: String?
+        }
+
+      class NewAvalaraTaxConfiguration < Orb::BaseModel
+        attr_accessor tax_exempt: bool
+
+        attr_accessor tax_provider: :avalara
+
+        attr_accessor tax_exemption_code: String?
+
+        def initialize:
+          (
+            tax_exempt: bool,
+            tax_exemption_code: String?,
+            tax_provider: :avalara
+          ) -> void
+          | (
+            ?Orb::Models::NewTaxConfigurationModel::new_avalara_tax_configuration
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewTaxConfigurationModel::new_avalara_tax_configuration
+      end
+
+      type new_tax_jar_configuration =
+        { tax_exempt: bool, tax_provider: :taxjar }
+
+      class NewTaxJarConfiguration < Orb::BaseModel
+        attr_accessor tax_exempt: bool
+
+        attr_accessor tax_provider: :taxjar
+
+        def initialize:
+          (tax_exempt: bool, tax_provider: :taxjar) -> void
+          | (
+            ?Orb::Models::NewTaxConfigurationModel::new_tax_jar_configuration
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewTaxConfigurationModel::new_tax_jar_configuration
+      end
+
+      private def self.variants: -> [[:avalara, Orb::Models::NewTaxConfigurationModel::NewAvalaraTaxConfiguration], [:taxjar, Orb::Models::NewTaxConfigurationModel::NewTaxJarConfiguration]]
+    end
+  end
+end

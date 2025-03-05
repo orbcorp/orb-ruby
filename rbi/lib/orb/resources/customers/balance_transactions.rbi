@@ -12,7 +12,7 @@ module Orb
             description: T.nilable(String),
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
           )
-            .returns(Orb::Models::Customers::BalanceTransactionCreateResponse)
+            .returns(Orb::Models::CustomerBalanceTransactionModel)
         end
         def create(customer_id, amount:, type:, description: nil, request_options: {})
         end
@@ -28,7 +28,7 @@ module Orb
             operation_time_lte: T.nilable(Time),
             request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
           )
-            .returns(Orb::Page[Orb::Models::Customers::BalanceTransactionListResponse])
+            .returns(Orb::Page[Orb::Models::CustomerBalanceTransactionModel])
         end
         def list(
           customer_id,

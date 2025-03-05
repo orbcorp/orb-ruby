@@ -4,43 +4,43 @@ module Orb
       def create:
         (
           Orb::Models::ItemCreateParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Item
+        ) -> Orb::Models::ItemModel
         | (
           name: String,
           request_options: Orb::request_opts
-        ) -> Orb::Models::Item
+        ) -> Orb::Models::ItemModel
 
       def update:
         (
           String item_id,
           ?Orb::Models::ItemUpdateParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Item
+        ) -> Orb::Models::ItemModel
         | (
           String item_id,
-          external_connections: ::Array[Orb::Models::ItemUpdateParams::ExternalConnection]?,
+          external_connections: ::Array[Orb::Models::ItemExternalConnectionModel]?,
           name: String?,
           request_options: Orb::request_opts
-        ) -> Orb::Models::Item
+        ) -> Orb::Models::ItemModel
 
       def list:
         (
           ?Orb::Models::ItemListParams | ::Hash[Symbol, top] params
-        ) -> Orb::Page[Orb::Models::Item]
+        ) -> Orb::Page[Orb::Models::ItemModel]
         | (
           cursor: String?,
           limit: Integer,
           request_options: Orb::request_opts
-        ) -> Orb::Page[Orb::Models::Item]
+        ) -> Orb::Page[Orb::Models::ItemModel]
 
       def fetch:
         (
           String item_id,
           ?Orb::Models::ItemFetchParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Item
+        ) -> Orb::Models::ItemModel
         | (
           String item_id,
           request_options: Orb::request_opts
-        ) -> Orb::Models::Item
+        ) -> Orb::Models::ItemModel
 
       def initialize: (client: Orb::Client) -> void
     end

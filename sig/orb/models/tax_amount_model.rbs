@@ -1,0 +1,28 @@
+module Orb
+  module Models
+    type tax_amount_model =
+      {
+        amount: String,
+        tax_rate_description: String,
+        tax_rate_percentage: String?
+      }
+
+    class TaxAmountModel < Orb::BaseModel
+      attr_accessor amount: String
+
+      attr_accessor tax_rate_description: String
+
+      attr_accessor tax_rate_percentage: String?
+
+      def initialize:
+        (
+          amount: String,
+          tax_rate_description: String,
+          tax_rate_percentage: String?
+        ) -> void
+        | (?Orb::Models::tax_amount_model | Orb::BaseModel data) -> void
+
+      def to_hash: -> Orb::Models::tax_amount_model
+    end
+  end
+end

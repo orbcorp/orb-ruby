@@ -6,14 +6,11 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      sig { returns(T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold]) }
+      sig { returns(T::Array[Orb::Models::ThresholdModel]) }
       def thresholds
       end
 
-      sig do
-        params(_: T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold])
-          .returns(T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold])
-      end
+      sig { params(_: T::Array[Orb::Models::ThresholdModel]).returns(T::Array[Orb::Models::ThresholdModel]) }
       def thresholds=(_)
       end
 
@@ -35,7 +32,7 @@ module Orb
 
       sig do
         params(
-          thresholds: T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold],
+          thresholds: T::Array[Orb::Models::ThresholdModel],
           type: Symbol,
           metric_id: T.nilable(String),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
@@ -49,7 +46,7 @@ module Orb
         override
           .returns(
             {
-              thresholds: T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold],
+              thresholds: T::Array[Orb::Models::ThresholdModel],
               type: Symbol,
               metric_id: T.nilable(String),
               request_options: Orb::RequestOptions
@@ -57,24 +54,6 @@ module Orb
           )
       end
       def to_hash
-      end
-
-      class Threshold < Orb::BaseModel
-        sig { returns(Float) }
-        def value
-        end
-
-        sig { params(_: Float).returns(Float) }
-        def value=(_)
-        end
-
-        sig { params(value: Float).void }
-        def initialize(value:)
-        end
-
-        sig { override.returns({value: Float}) }
-        def to_hash
-        end
       end
 
       class Type < Orb::Enum

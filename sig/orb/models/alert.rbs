@@ -5,12 +5,12 @@ module Orb
         id: String,
         created_at: Time,
         currency: String?,
-        customer: Orb::Models::Alert::Customer?,
+        customer: Orb::Models::CustomerMinifiedModel?,
         enabled: bool,
         metric: Orb::Models::Alert::Metric?,
         plan: Orb::Models::Alert::Plan?,
-        subscription: Orb::Models::Alert::Subscription?,
-        thresholds: ::Array[Orb::Models::Alert::Threshold]?,
+        subscription: Orb::Models::SubscriptionMinifiedModel?,
+        thresholds: ::Array[Orb::Models::ThresholdModel]?,
         type: Orb::Models::Alert::type_
       }
 
@@ -21,7 +21,7 @@ module Orb
 
       attr_accessor currency: String?
 
-      attr_accessor customer: Orb::Models::Alert::Customer?
+      attr_accessor customer: Orb::Models::CustomerMinifiedModel?
 
       attr_accessor enabled: bool
 
@@ -29,9 +29,9 @@ module Orb
 
       attr_accessor plan: Orb::Models::Alert::Plan?
 
-      attr_accessor subscription: Orb::Models::Alert::Subscription?
+      attr_accessor subscription: Orb::Models::SubscriptionMinifiedModel?
 
-      attr_accessor thresholds: ::Array[Orb::Models::Alert::Threshold]?
+      attr_accessor thresholds: ::Array[Orb::Models::ThresholdModel]?
 
       attr_accessor type: Orb::Models::Alert::type_
 
@@ -40,31 +40,17 @@ module Orb
           id: String,
           created_at: Time,
           currency: String?,
-          customer: Orb::Models::Alert::Customer?,
+          customer: Orb::Models::CustomerMinifiedModel?,
           enabled: bool,
           metric: Orb::Models::Alert::Metric?,
           plan: Orb::Models::Alert::Plan?,
-          subscription: Orb::Models::Alert::Subscription?,
-          thresholds: ::Array[Orb::Models::Alert::Threshold]?,
+          subscription: Orb::Models::SubscriptionMinifiedModel?,
+          thresholds: ::Array[Orb::Models::ThresholdModel]?,
           type: Orb::Models::Alert::type_
         ) -> void
         | (?Orb::Models::alert | Orb::BaseModel data) -> void
 
       def to_hash: -> Orb::Models::alert
-
-      type customer = { id: String, external_customer_id: String? }
-
-      class Customer < Orb::BaseModel
-        attr_accessor id: String
-
-        attr_accessor external_customer_id: String?
-
-        def initialize:
-          (id: String, external_customer_id: String?) -> void
-          | (?Orb::Models::Alert::customer | Orb::BaseModel data) -> void
-
-        def to_hash: -> Orb::Models::Alert::customer
-      end
 
       type metric = { id: String }
 
@@ -105,30 +91,6 @@ module Orb
           | (?Orb::Models::Alert::plan | Orb::BaseModel data) -> void
 
         def to_hash: -> Orb::Models::Alert::plan
-      end
-
-      type subscription = { id: String }
-
-      class Subscription < Orb::BaseModel
-        attr_accessor id: String
-
-        def initialize:
-          (id: String) -> void
-          | (?Orb::Models::Alert::subscription | Orb::BaseModel data) -> void
-
-        def to_hash: -> Orb::Models::Alert::subscription
-      end
-
-      type threshold = { value: Float }
-
-      class Threshold < Orb::BaseModel
-        attr_accessor value: Float
-
-        def initialize:
-          (value: Float) -> void
-          | (?Orb::Models::Alert::threshold | Orb::BaseModel data) -> void
-
-        def to_hash: -> Orb::Models::Alert::threshold
       end
 
       type type_ =

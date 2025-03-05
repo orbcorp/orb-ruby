@@ -1,67 +1,18 @@
 module Orb
   module Models
-    type alert_create_for_customer_params =
-      {
-        currency: String,
-        type: Orb::Models::AlertCreateForCustomerParams::type_,
-        thresholds: ::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]?
-      }
-      & Orb::request_parameters
+    type alert_create_for_customer_params = {  } & Orb::request_parameters
 
-    class AlertCreateForCustomerParams < Orb::BaseModel
+    class AlertCreateForCustomerParams < Orb::Models::CreateCustomerAlertRequest
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      attr_accessor currency: String
-
-      attr_accessor type: Orb::Models::AlertCreateForCustomerParams::type_
-
-      attr_accessor thresholds: ::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]?
-
       def initialize:
-        (
-          currency: String,
-          type: Orb::Models::AlertCreateForCustomerParams::type_,
-          thresholds: ::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]?,
-          request_options: Orb::request_opts
-        ) -> void
+        (request_options: Orb::request_opts) -> void
         | (
           ?Orb::Models::alert_create_for_customer_params | Orb::BaseModel data
         ) -> void
 
       def to_hash: -> Orb::Models::alert_create_for_customer_params
-
-      type type_ =
-        :usage_exceeded
-        | :cost_exceeded
-        | :credit_balance_depleted
-        | :credit_balance_dropped
-        | :credit_balance_recovered
-
-      class Type < Orb::Enum
-        USAGE_EXCEEDED: :usage_exceeded
-        COST_EXCEEDED: :cost_exceeded
-        CREDIT_BALANCE_DEPLETED: :credit_balance_depleted
-        CREDIT_BALANCE_DROPPED: :credit_balance_dropped
-        CREDIT_BALANCE_RECOVERED: :credit_balance_recovered
-
-        def self.values: -> ::Array[Orb::Models::AlertCreateForCustomerParams::type_]
-      end
-
-      type threshold = { value: Float }
-
-      class Threshold < Orb::BaseModel
-        attr_accessor value: Float
-
-        def initialize:
-          (value: Float) -> void
-          | (
-            ?Orb::Models::AlertCreateForCustomerParams::threshold
-            | Orb::BaseModel data
-          ) -> void
-
-        def to_hash: -> Orb::Models::AlertCreateForCustomerParams::threshold
-      end
     end
   end
 end

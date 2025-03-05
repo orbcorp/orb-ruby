@@ -1,0 +1,19 @@
+module Orb
+  module Models
+    type pagination_metadata_model = { has_more: bool, next_cursor: String? }
+
+    class PaginationMetadataModel < Orb::BaseModel
+      attr_accessor has_more: bool
+
+      attr_accessor next_cursor: String?
+
+      def initialize:
+        (has_more: bool, next_cursor: String?) -> void
+        | (
+          ?Orb::Models::pagination_metadata_model | Orb::BaseModel data
+        ) -> void
+
+      def to_hash: -> Orb::Models::pagination_metadata_model
+    end
+  end
+end

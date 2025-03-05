@@ -1,0 +1,28 @@
+module Orb
+  module Models
+    type matrix_config_model =
+      {
+        default_unit_amount: String,
+        dimensions: ::Array[String?],
+        matrix_values: ::Array[Orb::Models::MatrixValueModel]
+      }
+
+    class MatrixConfigModel < Orb::BaseModel
+      attr_accessor default_unit_amount: String
+
+      attr_accessor dimensions: ::Array[String?]
+
+      attr_accessor matrix_values: ::Array[Orb::Models::MatrixValueModel]
+
+      def initialize:
+        (
+          default_unit_amount: String,
+          dimensions: ::Array[String?],
+          matrix_values: ::Array[Orb::Models::MatrixValueModel]
+        ) -> void
+        | (?Orb::Models::matrix_config_model | Orb::BaseModel data) -> void
+
+      def to_hash: -> Orb::Models::matrix_config_model
+    end
+  end
+end

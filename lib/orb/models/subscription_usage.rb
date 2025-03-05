@@ -34,15 +34,13 @@ module Orb
         class Data < Orb::BaseModel
           # @!attribute billable_metric
           #
-          #   @return [Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric]
-          required :billable_metric,
-                   -> { Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric }
+          #   @return [Orb::Models::BillableMetricSimpleModel]
+          required :billable_metric, -> { Orb::Models::BillableMetricSimpleModel }
 
           # @!attribute usage
           #
-          #   @return [Array<Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage>]
-          required :usage,
-                   -> { Orb::ArrayOf[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage] }
+          #   @return [Array<Orb::Models::UsageModel>]
+          required :usage, -> { Orb::ArrayOf[Orb::Models::UsageModel] }
 
           # @!attribute view_mode
           #
@@ -51,59 +49,13 @@ module Orb
                    enum: -> { Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode }
 
           # @!parse
-          #   # @param billable_metric [Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric]
-          #   # @param usage [Array<Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage>]
+          #   # @param billable_metric [Orb::Models::BillableMetricSimpleModel]
+          #   # @param usage [Array<Orb::Models::UsageModel>]
           #   # @param view_mode [Symbol, Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode]
           #   #
           #   def initialize(billable_metric:, usage:, view_mode:, **) = super
 
           # def initialize: (Hash | Orb::BaseModel) -> void
-
-          class BillableMetric < Orb::BaseModel
-            # @!attribute id
-            #
-            #   @return [String]
-            required :id, String
-
-            # @!attribute name
-            #
-            #   @return [String]
-            required :name, String
-
-            # @!parse
-            #   # @param id [String]
-            #   # @param name [String]
-            #   #
-            #   def initialize(id:, name:, **) = super
-
-            # def initialize: (Hash | Orb::BaseModel) -> void
-          end
-
-          class Usage < Orb::BaseModel
-            # @!attribute quantity
-            #
-            #   @return [Float]
-            required :quantity, Float
-
-            # @!attribute timeframe_end
-            #
-            #   @return [Time]
-            required :timeframe_end, Time
-
-            # @!attribute timeframe_start
-            #
-            #   @return [Time]
-            required :timeframe_start, Time
-
-            # @!parse
-            #   # @param quantity [Float]
-            #   # @param timeframe_end [Time]
-            #   # @param timeframe_start [Time]
-            #   #
-            #   def initialize(quantity:, timeframe_end:, timeframe_start:, **) = super
-
-            # def initialize: (Hash | Orb::BaseModel) -> void
-          end
 
           # @abstract
           #
@@ -152,9 +104,8 @@ module Orb
         class Data < Orb::BaseModel
           # @!attribute billable_metric
           #
-          #   @return [Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric]
-          required :billable_metric,
-                   -> { Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric }
+          #   @return [Orb::Models::BillableMetricSimpleModel]
+          required :billable_metric, -> { Orb::Models::BillableMetricSimpleModel }
 
           # @!attribute metric_group
           #
@@ -163,9 +114,8 @@ module Orb
 
           # @!attribute usage
           #
-          #   @return [Array<Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage>]
-          required :usage,
-                   -> { Orb::ArrayOf[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage] }
+          #   @return [Array<Orb::Models::UsageModel>]
+          required :usage, -> { Orb::ArrayOf[Orb::Models::UsageModel] }
 
           # @!attribute view_mode
           #
@@ -173,34 +123,14 @@ module Orb
           required :view_mode, enum: -> { Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode }
 
           # @!parse
-          #   # @param billable_metric [Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric]
+          #   # @param billable_metric [Orb::Models::BillableMetricSimpleModel]
           #   # @param metric_group [Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup]
-          #   # @param usage [Array<Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage>]
+          #   # @param usage [Array<Orb::Models::UsageModel>]
           #   # @param view_mode [Symbol, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode]
           #   #
           #   def initialize(billable_metric:, metric_group:, usage:, view_mode:, **) = super
 
           # def initialize: (Hash | Orb::BaseModel) -> void
-
-          class BillableMetric < Orb::BaseModel
-            # @!attribute id
-            #
-            #   @return [String]
-            required :id, String
-
-            # @!attribute name
-            #
-            #   @return [String]
-            required :name, String
-
-            # @!parse
-            #   # @param id [String]
-            #   # @param name [String]
-            #   #
-            #   def initialize(id:, name:, **) = super
-
-            # def initialize: (Hash | Orb::BaseModel) -> void
-          end
 
           class MetricGroup < Orb::BaseModel
             # @!attribute property_key
@@ -218,32 +148,6 @@ module Orb
             #   # @param property_value [String]
             #   #
             #   def initialize(property_key:, property_value:, **) = super
-
-            # def initialize: (Hash | Orb::BaseModel) -> void
-          end
-
-          class Usage < Orb::BaseModel
-            # @!attribute quantity
-            #
-            #   @return [Float]
-            required :quantity, Float
-
-            # @!attribute timeframe_end
-            #
-            #   @return [Time]
-            required :timeframe_end, Time
-
-            # @!attribute timeframe_start
-            #
-            #   @return [Time]
-            required :timeframe_start, Time
-
-            # @!parse
-            #   # @param quantity [Float]
-            #   # @param timeframe_end [Time]
-            #   # @param timeframe_start [Time]
-            #   #
-            #   def initialize(quantity:, timeframe_end:, timeframe_start:, **) = super
 
             # def initialize: (Hash | Orb::BaseModel) -> void
           end

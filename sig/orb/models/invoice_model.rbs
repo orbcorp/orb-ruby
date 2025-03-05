@@ -1,0 +1,202 @@
+module Orb
+  module Models
+    type invoice_model =
+      {
+        id: String,
+        amount_due: String,
+        auto_collection: Orb::Models::AutoCollectionModel,
+        billing_address: Orb::Models::AddressModel?,
+        created_at: Time,
+        credit_notes: ::Array[Orb::Models::CreditNoteSummaryModel],
+        currency: String,
+        customer: Orb::Models::CustomerMinifiedModel,
+        customer_balance_transactions: ::Array[Orb::Models::CustomerBalanceTransactionModel],
+        customer_tax_id: Orb::Models::CustomerTaxIDModel?,
+        discount: top,
+        discounts: ::Array[Orb::Models::invoice_level_discount],
+        due_date: Time?,
+        eligible_to_issue_at: Time?,
+        hosted_invoice_url: String?,
+        invoice_date: Time,
+        invoice_number: String,
+        invoice_pdf: String?,
+        invoice_source: Orb::Models::InvoiceModel::invoice_source,
+        issue_failed_at: Time?,
+        issued_at: Time?,
+        line_items: ::Array[Orb::Models::InvoiceLineItemModel],
+        maximum: Orb::Models::MaximumModel?,
+        maximum_amount: String?,
+        memo: String?,
+        metadata: ::Hash[Symbol, String],
+        minimum: Orb::Models::MinimumModel?,
+        minimum_amount: String?,
+        paid_at: Time?,
+        payment_attempts: ::Array[Orb::Models::PaymentAttemptModel],
+        payment_failed_at: Time?,
+        payment_started_at: Time?,
+        scheduled_issue_at: Time?,
+        shipping_address: Orb::Models::AddressModel?,
+        status: Orb::Models::InvoiceModel::status,
+        subscription: Orb::Models::SubscriptionMinifiedModel?,
+        subtotal: String,
+        sync_failed_at: Time?,
+        total: String,
+        voided_at: Time?,
+        will_auto_issue: bool
+      }
+
+    class InvoiceModel < Orb::BaseModel
+      attr_accessor id: String
+
+      attr_accessor amount_due: String
+
+      attr_accessor auto_collection: Orb::Models::AutoCollectionModel
+
+      attr_accessor billing_address: Orb::Models::AddressModel?
+
+      attr_accessor created_at: Time
+
+      attr_accessor credit_notes: ::Array[Orb::Models::CreditNoteSummaryModel]
+
+      attr_accessor currency: String
+
+      attr_accessor customer: Orb::Models::CustomerMinifiedModel
+
+      attr_accessor customer_balance_transactions: ::Array[Orb::Models::CustomerBalanceTransactionModel]
+
+      attr_accessor customer_tax_id: Orb::Models::CustomerTaxIDModel?
+
+      attr_accessor discount: top
+
+      attr_accessor discounts: ::Array[Orb::Models::invoice_level_discount]
+
+      attr_accessor due_date: Time?
+
+      attr_accessor eligible_to_issue_at: Time?
+
+      attr_accessor hosted_invoice_url: String?
+
+      attr_accessor invoice_date: Time
+
+      attr_accessor invoice_number: String
+
+      attr_accessor invoice_pdf: String?
+
+      attr_accessor invoice_source: Orb::Models::InvoiceModel::invoice_source
+
+      attr_accessor issue_failed_at: Time?
+
+      attr_accessor issued_at: Time?
+
+      attr_accessor line_items: ::Array[Orb::Models::InvoiceLineItemModel]
+
+      attr_accessor maximum: Orb::Models::MaximumModel?
+
+      attr_accessor maximum_amount: String?
+
+      attr_accessor memo: String?
+
+      attr_accessor metadata: ::Hash[Symbol, String]
+
+      attr_accessor minimum: Orb::Models::MinimumModel?
+
+      attr_accessor minimum_amount: String?
+
+      attr_accessor paid_at: Time?
+
+      attr_accessor payment_attempts: ::Array[Orb::Models::PaymentAttemptModel]
+
+      attr_accessor payment_failed_at: Time?
+
+      attr_accessor payment_started_at: Time?
+
+      attr_accessor scheduled_issue_at: Time?
+
+      attr_accessor shipping_address: Orb::Models::AddressModel?
+
+      attr_accessor status: Orb::Models::InvoiceModel::status
+
+      attr_accessor subscription: Orb::Models::SubscriptionMinifiedModel?
+
+      attr_accessor subtotal: String
+
+      attr_accessor sync_failed_at: Time?
+
+      attr_accessor total: String
+
+      attr_accessor voided_at: Time?
+
+      attr_accessor will_auto_issue: bool
+
+      def initialize:
+        (
+          id: String,
+          amount_due: String,
+          auto_collection: Orb::Models::AutoCollectionModel,
+          billing_address: Orb::Models::AddressModel?,
+          created_at: Time,
+          credit_notes: ::Array[Orb::Models::CreditNoteSummaryModel],
+          currency: String,
+          customer: Orb::Models::CustomerMinifiedModel,
+          customer_balance_transactions: ::Array[Orb::Models::CustomerBalanceTransactionModel],
+          customer_tax_id: Orb::Models::CustomerTaxIDModel?,
+          discount: top,
+          discounts: ::Array[Orb::Models::invoice_level_discount],
+          due_date: Time?,
+          eligible_to_issue_at: Time?,
+          hosted_invoice_url: String?,
+          invoice_date: Time,
+          invoice_number: String,
+          invoice_pdf: String?,
+          invoice_source: Orb::Models::InvoiceModel::invoice_source,
+          issue_failed_at: Time?,
+          issued_at: Time?,
+          line_items: ::Array[Orb::Models::InvoiceLineItemModel],
+          maximum: Orb::Models::MaximumModel?,
+          maximum_amount: String?,
+          memo: String?,
+          metadata: ::Hash[Symbol, String],
+          minimum: Orb::Models::MinimumModel?,
+          minimum_amount: String?,
+          paid_at: Time?,
+          payment_attempts: ::Array[Orb::Models::PaymentAttemptModel],
+          payment_failed_at: Time?,
+          payment_started_at: Time?,
+          scheduled_issue_at: Time?,
+          shipping_address: Orb::Models::AddressModel?,
+          status: Orb::Models::InvoiceModel::status,
+          subscription: Orb::Models::SubscriptionMinifiedModel?,
+          subtotal: String,
+          sync_failed_at: Time?,
+          total: String,
+          voided_at: Time?,
+          will_auto_issue: bool
+        ) -> void
+        | (?Orb::Models::invoice_model | Orb::BaseModel data) -> void
+
+      def to_hash: -> Orb::Models::invoice_model
+
+      type invoice_source = :subscription | :partial | :one_off
+
+      class InvoiceSource < Orb::Enum
+        SUBSCRIPTION: :subscription
+        PARTIAL: :partial
+        ONE_OFF: :one_off
+
+        def self.values: -> ::Array[Orb::Models::InvoiceModel::invoice_source]
+      end
+
+      type status = :issued | :paid | :synced | :void | :draft
+
+      class Status < Orb::Enum
+        ISSUED: :issued
+        PAID: :paid
+        SYNCED: :synced
+        VOID: :void
+        DRAFT: :draft
+
+        def self.values: -> ::Array[Orb::Models::InvoiceModel::status]
+      end
+    end
+  end
+end

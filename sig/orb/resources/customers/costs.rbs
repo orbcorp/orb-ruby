@@ -6,7 +6,7 @@ module Orb
           (
             String customer_id,
             ?Orb::Models::Customers::CostListParams | ::Hash[Symbol, top] params
-          ) -> Orb::Models::Customers::CostListResponse
+          ) -> Orb::Models::CustomerCostsModel
           | (
             String customer_id,
             currency: String?,
@@ -14,14 +14,14 @@ module Orb
             timeframe_start: Time?,
             view_mode: Orb::Models::Customers::CostListParams::view_mode?,
             request_options: Orb::request_opts
-          ) -> Orb::Models::Customers::CostListResponse
+          ) -> Orb::Models::CustomerCostsModel
 
         def list_by_external_id:
           (
             String external_customer_id,
             ?Orb::Models::Customers::CostListByExternalIDParams
             | ::Hash[Symbol, top] params
-          ) -> Orb::Models::Customers::CostListByExternalIDResponse
+          ) -> Orb::Models::CustomerCostsModel
           | (
             String external_customer_id,
             currency: String?,
@@ -29,7 +29,7 @@ module Orb
             timeframe_start: Time?,
             view_mode: Orb::Models::Customers::CostListByExternalIDParams::view_mode?,
             request_options: Orb::request_opts
-          ) -> Orb::Models::Customers::CostListByExternalIDResponse
+          ) -> Orb::Models::CustomerCostsModel
 
         def initialize: (client: Orb::Client) -> void
       end

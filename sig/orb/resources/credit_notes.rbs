@@ -4,33 +4,33 @@ module Orb
       def create:
         (
           Orb::Models::CreditNoteCreateParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::CreditNote
+        ) -> Orb::Models::CreditNoteModel
         | (
           line_items: ::Array[Orb::Models::CreditNoteCreateParams::LineItem],
           memo: String?,
           reason: Orb::Models::CreditNoteCreateParams::reason?,
           request_options: Orb::request_opts
-        ) -> Orb::Models::CreditNote
+        ) -> Orb::Models::CreditNoteModel
 
       def list:
         (
           ?Orb::Models::CreditNoteListParams | ::Hash[Symbol, top] params
-        ) -> Orb::Page[Orb::Models::CreditNote]
+        ) -> Orb::Page[Orb::Models::CreditNoteModel]
         | (
           cursor: String?,
           limit: Integer,
           request_options: Orb::request_opts
-        ) -> Orb::Page[Orb::Models::CreditNote]
+        ) -> Orb::Page[Orb::Models::CreditNoteModel]
 
       def fetch:
         (
           String credit_note_id,
           ?Orb::Models::CreditNoteFetchParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::CreditNote
+        ) -> Orb::Models::CreditNoteModel
         | (
           String credit_note_id,
           request_options: Orb::request_opts
-        ) -> Orb::Models::CreditNote
+        ) -> Orb::Models::CreditNoteModel
 
       def initialize: (client: Orb::Client) -> void
     end

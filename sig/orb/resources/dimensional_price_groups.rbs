@@ -7,7 +7,7 @@ module Orb
         (
           Orb::Models::DimensionalPriceGroupCreateParams
           | ::Hash[Symbol, top] params
-        ) -> Orb::Models::DimensionalPriceGroup
+        ) -> Orb::Models::DimensionalPriceGroupModel
         | (
           billable_metric_id: String,
           dimensions: ::Array[String],
@@ -15,29 +15,29 @@ module Orb
           external_dimensional_price_group_id: String?,
           metadata: ::Hash[Symbol, String?]?,
           request_options: Orb::request_opts
-        ) -> Orb::Models::DimensionalPriceGroup
+        ) -> Orb::Models::DimensionalPriceGroupModel
 
       def retrieve:
         (
           String dimensional_price_group_id,
           ?Orb::Models::DimensionalPriceGroupRetrieveParams
           | ::Hash[Symbol, top] params
-        ) -> Orb::Models::DimensionalPriceGroup
+        ) -> Orb::Models::DimensionalPriceGroupModel
         | (
           String dimensional_price_group_id,
           request_options: Orb::request_opts
-        ) -> Orb::Models::DimensionalPriceGroup
+        ) -> Orb::Models::DimensionalPriceGroupModel
 
       def list:
         (
           ?Orb::Models::DimensionalPriceGroupListParams
           | ::Hash[Symbol, top] params
-        ) -> Orb::Page[Orb::Models::DimensionalPriceGroup]
+        ) -> Orb::Page[Orb::Models::DimensionalPriceGroupModel]
         | (
           cursor: String?,
           limit: Integer,
           request_options: Orb::request_opts
-        ) -> Orb::Page[Orb::Models::DimensionalPriceGroup]
+        ) -> Orb::Page[Orb::Models::DimensionalPriceGroupModel]
 
       def initialize: (client: Orb::Client) -> void
     end

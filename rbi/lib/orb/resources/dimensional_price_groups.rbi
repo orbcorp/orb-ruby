@@ -16,7 +16,7 @@ module Orb
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::DimensionalPriceGroup)
+          .returns(Orb::Models::DimensionalPriceGroupModel)
       end
       def create(
         billable_metric_id:,
@@ -33,7 +33,7 @@ module Orb
           dimensional_price_group_id: String,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::DimensionalPriceGroup)
+          .returns(Orb::Models::DimensionalPriceGroupModel)
       end
       def retrieve(dimensional_price_group_id, request_options: {})
       end
@@ -44,7 +44,7 @@ module Orb
           limit: Integer,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Page[Orb::Models::DimensionalPriceGroup])
+          .returns(Orb::Page[Orb::Models::DimensionalPriceGroupModel])
       end
       def list(cursor: nil, limit: nil, request_options: {})
       end

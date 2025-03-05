@@ -1,37 +1,23 @@
 module Orb
   module Models
     type alert_update_params =
-      { thresholds: ::Array[Orb::Models::AlertUpdateParams::Threshold] }
+      { thresholds: ::Array[Orb::Models::ThresholdModel] }
       & Orb::request_parameters
 
     class AlertUpdateParams < Orb::BaseModel
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      attr_accessor thresholds: ::Array[Orb::Models::AlertUpdateParams::Threshold]
+      attr_accessor thresholds: ::Array[Orb::Models::ThresholdModel]
 
       def initialize:
         (
-          thresholds: ::Array[Orb::Models::AlertUpdateParams::Threshold],
+          thresholds: ::Array[Orb::Models::ThresholdModel],
           request_options: Orb::request_opts
         ) -> void
         | (?Orb::Models::alert_update_params | Orb::BaseModel data) -> void
 
       def to_hash: -> Orb::Models::alert_update_params
-
-      type threshold = { value: Float }
-
-      class Threshold < Orb::BaseModel
-        attr_accessor value: Float
-
-        def initialize:
-          (value: Float) -> void
-          | (
-            ?Orb::Models::AlertUpdateParams::threshold | Orb::BaseModel data
-          ) -> void
-
-        def to_hash: -> Orb::Models::AlertUpdateParams::threshold
-      end
     end
   end
 end

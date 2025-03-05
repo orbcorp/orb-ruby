@@ -23,7 +23,7 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Models::BillableMetric]
+      # @return [Orb::Models::BillableMetricModel]
       #
       def create(params)
         parsed, options = Orb::Models::MetricCreateParams.dump_request(params)
@@ -31,7 +31,7 @@ module Orb
           method: :post,
           path: "metrics",
           body: parsed,
-          model: Orb::Models::BillableMetric,
+          model: Orb::Models::BillableMetricModel,
           options: options
         )
       end
@@ -50,7 +50,7 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Models::BillableMetric]
+      # @return [Orb::Models::BillableMetricModel]
       #
       def update(metric_id, params = {})
         parsed, options = Orb::Models::MetricUpdateParams.dump_request(params)
@@ -58,7 +58,7 @@ module Orb
           method: :put,
           path: ["metrics/%0s", metric_id],
           body: parsed,
-          model: Orb::Models::BillableMetric,
+          model: Orb::Models::BillableMetricModel,
           options: options
         )
       end
@@ -84,7 +84,7 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Page<Orb::Models::BillableMetric>]
+      # @return [Orb::Page<Orb::Models::BillableMetricModel>]
       #
       def list(params = {})
         parsed, options = Orb::Models::MetricListParams.dump_request(params)
@@ -93,7 +93,7 @@ module Orb
           path: "metrics",
           query: parsed,
           page: Orb::Page,
-          model: Orb::Models::BillableMetric,
+          model: Orb::Models::BillableMetricModel,
           options: options
         )
       end
@@ -107,13 +107,13 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Models::BillableMetric]
+      # @return [Orb::Models::BillableMetricModel]
       #
       def fetch(metric_id, params = {})
         @client.request(
           method: :get,
           path: ["metrics/%0s", metric_id],
-          model: Orb::Models::BillableMetric,
+          model: Orb::Models::BillableMetricModel,
           options: params[:request_options]
         )
       end

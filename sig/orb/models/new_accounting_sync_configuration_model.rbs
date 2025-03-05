@@ -1,0 +1,45 @@
+module Orb
+  module Models
+    type new_accounting_sync_configuration_model =
+      {
+        accounting_providers: ::Array[Orb::Models::NewAccountingSyncConfigurationModel::AccountingProvider]?,
+        excluded: bool?
+      }
+
+    class NewAccountingSyncConfigurationModel < Orb::BaseModel
+      attr_accessor accounting_providers: ::Array[Orb::Models::NewAccountingSyncConfigurationModel::AccountingProvider]?
+
+      attr_accessor excluded: bool?
+
+      def initialize:
+        (
+          accounting_providers: ::Array[Orb::Models::NewAccountingSyncConfigurationModel::AccountingProvider]?,
+          excluded: bool?
+        ) -> void
+        | (
+          ?Orb::Models::new_accounting_sync_configuration_model
+          | Orb::BaseModel data
+        ) -> void
+
+      def to_hash: -> Orb::Models::new_accounting_sync_configuration_model
+
+      type accounting_provider =
+        { external_provider_id: String, provider_type: String }
+
+      class AccountingProvider < Orb::BaseModel
+        attr_accessor external_provider_id: String
+
+        attr_accessor provider_type: String
+
+        def initialize:
+          (external_provider_id: String, provider_type: String) -> void
+          | (
+            ?Orb::Models::NewAccountingSyncConfigurationModel::accounting_provider
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewAccountingSyncConfigurationModel::accounting_provider
+      end
+    end
+  end
+end

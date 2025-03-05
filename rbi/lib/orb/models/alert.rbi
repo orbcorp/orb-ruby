@@ -27,11 +27,14 @@ module Orb
       def currency=(_)
       end
 
-      sig { returns(T.nilable(Orb::Models::Alert::Customer)) }
+      sig { returns(T.nilable(Orb::Models::CustomerMinifiedModel)) }
       def customer
       end
 
-      sig { params(_: T.nilable(Orb::Models::Alert::Customer)).returns(T.nilable(Orb::Models::Alert::Customer)) }
+      sig do
+        params(_: T.nilable(Orb::Models::CustomerMinifiedModel))
+          .returns(T.nilable(Orb::Models::CustomerMinifiedModel))
+      end
       def customer=(_)
       end
 
@@ -59,23 +62,24 @@ module Orb
       def plan=(_)
       end
 
-      sig { returns(T.nilable(Orb::Models::Alert::Subscription)) }
+      sig { returns(T.nilable(Orb::Models::SubscriptionMinifiedModel)) }
       def subscription
       end
 
       sig do
-        params(_: T.nilable(Orb::Models::Alert::Subscription)).returns(T.nilable(Orb::Models::Alert::Subscription))
+        params(_: T.nilable(Orb::Models::SubscriptionMinifiedModel))
+          .returns(T.nilable(Orb::Models::SubscriptionMinifiedModel))
       end
       def subscription=(_)
       end
 
-      sig { returns(T.nilable(T::Array[Orb::Models::Alert::Threshold])) }
+      sig { returns(T.nilable(T::Array[Orb::Models::ThresholdModel])) }
       def thresholds
       end
 
       sig do
-        params(_: T.nilable(T::Array[Orb::Models::Alert::Threshold]))
-          .returns(T.nilable(T::Array[Orb::Models::Alert::Threshold]))
+        params(_: T.nilable(T::Array[Orb::Models::ThresholdModel]))
+          .returns(T.nilable(T::Array[Orb::Models::ThresholdModel]))
       end
       def thresholds=(_)
       end
@@ -93,12 +97,12 @@ module Orb
           id: String,
           created_at: Time,
           currency: T.nilable(String),
-          customer: T.nilable(Orb::Models::Alert::Customer),
+          customer: T.nilable(Orb::Models::CustomerMinifiedModel),
           enabled: T::Boolean,
           metric: T.nilable(Orb::Models::Alert::Metric),
           plan: T.nilable(Orb::Models::Alert::Plan),
-          subscription: T.nilable(Orb::Models::Alert::Subscription),
-          thresholds: T.nilable(T::Array[Orb::Models::Alert::Threshold]),
+          subscription: T.nilable(Orb::Models::SubscriptionMinifiedModel),
+          thresholds: T.nilable(T::Array[Orb::Models::ThresholdModel]),
           type: Symbol
         )
           .void
@@ -124,43 +128,17 @@ module Orb
               id: String,
               created_at: Time,
               currency: T.nilable(String),
-              customer: T.nilable(Orb::Models::Alert::Customer),
+              customer: T.nilable(Orb::Models::CustomerMinifiedModel),
               enabled: T::Boolean,
               metric: T.nilable(Orb::Models::Alert::Metric),
               plan: T.nilable(Orb::Models::Alert::Plan),
-              subscription: T.nilable(Orb::Models::Alert::Subscription),
-              thresholds: T.nilable(T::Array[Orb::Models::Alert::Threshold]),
+              subscription: T.nilable(Orb::Models::SubscriptionMinifiedModel),
+              thresholds: T.nilable(T::Array[Orb::Models::ThresholdModel]),
               type: Symbol
             }
           )
       end
       def to_hash
-      end
-
-      class Customer < Orb::BaseModel
-        sig { returns(String) }
-        def id
-        end
-
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
-
-        sig { returns(T.nilable(String)) }
-        def external_customer_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def external_customer_id=(_)
-        end
-
-        sig { params(id: String, external_customer_id: T.nilable(String)).void }
-        def initialize(id:, external_customer_id:)
-        end
-
-        sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-        def to_hash
-        end
       end
 
       class Metric < Orb::BaseModel
@@ -237,42 +215,6 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
-      end
-
-      class Subscription < Orb::BaseModel
-        sig { returns(String) }
-        def id
-        end
-
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
-
-        sig { params(id: String).void }
-        def initialize(id:)
-        end
-
-        sig { override.returns({id: String}) }
-        def to_hash
-        end
-      end
-
-      class Threshold < Orb::BaseModel
-        sig { returns(Float) }
-        def value
-        end
-
-        sig { params(_: Float).returns(Float) }
-        def value=(_)
-        end
-
-        sig { params(value: Float).void }
-        def initialize(value:)
-        end
-
-        sig { override.returns({value: Float}) }
         def to_hash
         end
       end

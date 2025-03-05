@@ -10,7 +10,7 @@ class Orb::Test::Resources::Events::BackfillsTest < Orb::Test::ResourceTest
     )
 
     assert_pattern do
-      response => Orb::Models::Events::BackfillCreateResponse
+      response => Orb::Models::BackfillModel
     end
 
     assert_pattern do
@@ -22,7 +22,7 @@ class Orb::Test::Resources::Events::BackfillsTest < Orb::Test::ResourceTest
         events_ingested: Integer,
         replace_existing_events: Orb::BooleanModel,
         reverted_at: Time | nil,
-        status: Orb::Models::Events::BackfillCreateResponse::Status,
+        status: Orb::Models::BackfillModel::Status,
         timeframe_end: Time,
         timeframe_start: Time,
         deprecation_filter: String | nil
@@ -44,7 +44,7 @@ class Orb::Test::Resources::Events::BackfillsTest < Orb::Test::ResourceTest
 
     row = response.to_enum.first
     assert_pattern do
-      row => Orb::Models::Events::BackfillListResponse
+      row => Orb::Models::BackfillModel
     end
 
     assert_pattern do
@@ -56,7 +56,7 @@ class Orb::Test::Resources::Events::BackfillsTest < Orb::Test::ResourceTest
         events_ingested: Integer,
         replace_existing_events: Orb::BooleanModel,
         reverted_at: Time | nil,
-        status: Orb::Models::Events::BackfillListResponse::Status,
+        status: Orb::Models::BackfillModel::Status,
         timeframe_end: Time,
         timeframe_start: Time,
         deprecation_filter: String | nil
@@ -68,7 +68,7 @@ class Orb::Test::Resources::Events::BackfillsTest < Orb::Test::ResourceTest
     response = @orb.events.backfills.close("backfill_id")
 
     assert_pattern do
-      response => Orb::Models::Events::BackfillCloseResponse
+      response => Orb::Models::BackfillModel
     end
 
     assert_pattern do
@@ -80,7 +80,7 @@ class Orb::Test::Resources::Events::BackfillsTest < Orb::Test::ResourceTest
         events_ingested: Integer,
         replace_existing_events: Orb::BooleanModel,
         reverted_at: Time | nil,
-        status: Orb::Models::Events::BackfillCloseResponse::Status,
+        status: Orb::Models::BackfillModel::Status,
         timeframe_end: Time,
         timeframe_start: Time,
         deprecation_filter: String | nil
@@ -92,7 +92,7 @@ class Orb::Test::Resources::Events::BackfillsTest < Orb::Test::ResourceTest
     response = @orb.events.backfills.fetch("backfill_id")
 
     assert_pattern do
-      response => Orb::Models::Events::BackfillFetchResponse
+      response => Orb::Models::BackfillModel
     end
 
     assert_pattern do
@@ -104,7 +104,7 @@ class Orb::Test::Resources::Events::BackfillsTest < Orb::Test::ResourceTest
         events_ingested: Integer,
         replace_existing_events: Orb::BooleanModel,
         reverted_at: Time | nil,
-        status: Orb::Models::Events::BackfillFetchResponse::Status,
+        status: Orb::Models::BackfillModel::Status,
         timeframe_end: Time,
         timeframe_start: Time,
         deprecation_filter: String | nil
@@ -116,7 +116,7 @@ class Orb::Test::Resources::Events::BackfillsTest < Orb::Test::ResourceTest
     response = @orb.events.backfills.revert("backfill_id")
 
     assert_pattern do
-      response => Orb::Models::Events::BackfillRevertResponse
+      response => Orb::Models::BackfillModel
     end
 
     assert_pattern do
@@ -128,7 +128,7 @@ class Orb::Test::Resources::Events::BackfillsTest < Orb::Test::ResourceTest
         events_ingested: Integer,
         replace_existing_events: Orb::BooleanModel,
         reverted_at: Time | nil,
-        status: Orb::Models::Events::BackfillRevertResponse::Status,
+        status: Orb::Models::BackfillModel::Status,
         timeframe_end: Time,
         timeframe_start: Time,
         deprecation_filter: String | nil
