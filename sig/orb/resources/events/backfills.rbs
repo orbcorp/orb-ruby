@@ -6,7 +6,7 @@ module Orb
           (
             Orb::Models::Events::BackfillCreateParams
             | ::Hash[Symbol, top] params
-          ) -> Orb::Models::Events::BackfillCreateResponse
+          ) -> Orb::Models::BackfillModel
           | (
             timeframe_end: Time,
             timeframe_start: Time,
@@ -16,51 +16,51 @@ module Orb
             external_customer_id: String?,
             replace_existing_events: bool,
             request_options: Orb::request_opts
-          ) -> Orb::Models::Events::BackfillCreateResponse
+          ) -> Orb::Models::BackfillModel
 
         def list:
           (
             ?Orb::Models::Events::BackfillListParams
             | ::Hash[Symbol, top] params
-          ) -> Orb::Page[Orb::Models::Events::BackfillListResponse]
+          ) -> Orb::Page[Orb::Models::BackfillModel]
           | (
             cursor: String?,
             limit: Integer,
             request_options: Orb::request_opts
-          ) -> Orb::Page[Orb::Models::Events::BackfillListResponse]
+          ) -> Orb::Page[Orb::Models::BackfillModel]
 
         def close:
           (
             String backfill_id,
             ?Orb::Models::Events::BackfillCloseParams
             | ::Hash[Symbol, top] params
-          ) -> Orb::Models::Events::BackfillCloseResponse
+          ) -> Orb::Models::BackfillModel
           | (
             String backfill_id,
             request_options: Orb::request_opts
-          ) -> Orb::Models::Events::BackfillCloseResponse
+          ) -> Orb::Models::BackfillModel
 
         def fetch:
           (
             String backfill_id,
             ?Orb::Models::Events::BackfillFetchParams
             | ::Hash[Symbol, top] params
-          ) -> Orb::Models::Events::BackfillFetchResponse
+          ) -> Orb::Models::BackfillModel
           | (
             String backfill_id,
             request_options: Orb::request_opts
-          ) -> Orb::Models::Events::BackfillFetchResponse
+          ) -> Orb::Models::BackfillModel
 
         def revert:
           (
             String backfill_id,
             ?Orb::Models::Events::BackfillRevertParams
             | ::Hash[Symbol, top] params
-          ) -> Orb::Models::Events::BackfillRevertResponse
+          ) -> Orb::Models::BackfillModel
           | (
             String backfill_id,
             request_options: Orb::request_opts
-          ) -> Orb::Models::Events::BackfillRevertResponse
+          ) -> Orb::Models::BackfillModel
 
         def initialize: (client: Orb::Client) -> void
       end

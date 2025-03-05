@@ -1,0 +1,186 @@
+module Orb
+  module Models
+    type new_adjustment_model =
+      Orb::Models::NewAdjustmentModel::NewPercentageDiscount
+      | Orb::Models::NewAdjustmentModel::NewUsageDiscount
+      | Orb::Models::NewAdjustmentModel::NewAmountDiscount
+      | Orb::Models::NewAdjustmentModel::NewMinimum
+      | Orb::Models::NewAdjustmentModel::NewMaximum
+
+    class NewAdjustmentModel < Orb::Union
+      type new_percentage_discount =
+        {
+          adjustment_type: :percentage_discount,
+          applies_to_price_ids: ::Array[String],
+          percentage_discount: Float,
+          is_invoice_level: bool
+        }
+
+      class NewPercentageDiscount < Orb::BaseModel
+        attr_accessor adjustment_type: :percentage_discount
+
+        attr_accessor applies_to_price_ids: ::Array[String]
+
+        attr_accessor percentage_discount: Float
+
+        attr_reader is_invoice_level: bool?
+
+        def is_invoice_level=: (bool) -> bool
+
+        def initialize:
+          (
+            applies_to_price_ids: ::Array[String],
+            percentage_discount: Float,
+            is_invoice_level: bool,
+            adjustment_type: :percentage_discount
+          ) -> void
+          | (
+            ?Orb::Models::NewAdjustmentModel::new_percentage_discount
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewAdjustmentModel::new_percentage_discount
+      end
+
+      type new_usage_discount =
+        {
+          adjustment_type: :usage_discount,
+          applies_to_price_ids: ::Array[String],
+          usage_discount: Float,
+          is_invoice_level: bool
+        }
+
+      class NewUsageDiscount < Orb::BaseModel
+        attr_accessor adjustment_type: :usage_discount
+
+        attr_accessor applies_to_price_ids: ::Array[String]
+
+        attr_accessor usage_discount: Float
+
+        attr_reader is_invoice_level: bool?
+
+        def is_invoice_level=: (bool) -> bool
+
+        def initialize:
+          (
+            applies_to_price_ids: ::Array[String],
+            usage_discount: Float,
+            is_invoice_level: bool,
+            adjustment_type: :usage_discount
+          ) -> void
+          | (
+            ?Orb::Models::NewAdjustmentModel::new_usage_discount
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewAdjustmentModel::new_usage_discount
+      end
+
+      type new_amount_discount =
+        {
+          adjustment_type: :amount_discount,
+          amount_discount: String,
+          applies_to_price_ids: ::Array[String],
+          is_invoice_level: bool
+        }
+
+      class NewAmountDiscount < Orb::BaseModel
+        attr_accessor adjustment_type: :amount_discount
+
+        attr_accessor amount_discount: String
+
+        attr_accessor applies_to_price_ids: ::Array[String]
+
+        attr_reader is_invoice_level: bool?
+
+        def is_invoice_level=: (bool) -> bool
+
+        def initialize:
+          (
+            amount_discount: String,
+            applies_to_price_ids: ::Array[String],
+            is_invoice_level: bool,
+            adjustment_type: :amount_discount
+          ) -> void
+          | (
+            ?Orb::Models::NewAdjustmentModel::new_amount_discount
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewAdjustmentModel::new_amount_discount
+      end
+
+      type new_minimum =
+        {
+          adjustment_type: :minimum,
+          applies_to_price_ids: ::Array[String],
+          item_id: String,
+          minimum_amount: String,
+          is_invoice_level: bool
+        }
+
+      class NewMinimum < Orb::BaseModel
+        attr_accessor adjustment_type: :minimum
+
+        attr_accessor applies_to_price_ids: ::Array[String]
+
+        attr_accessor item_id: String
+
+        attr_accessor minimum_amount: String
+
+        attr_reader is_invoice_level: bool?
+
+        def is_invoice_level=: (bool) -> bool
+
+        def initialize:
+          (
+            applies_to_price_ids: ::Array[String],
+            item_id: String,
+            minimum_amount: String,
+            is_invoice_level: bool,
+            adjustment_type: :minimum
+          ) -> void
+          | (
+            ?Orb::Models::NewAdjustmentModel::new_minimum | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewAdjustmentModel::new_minimum
+      end
+
+      type new_maximum =
+        {
+          adjustment_type: :maximum,
+          applies_to_price_ids: ::Array[String],
+          maximum_amount: String,
+          is_invoice_level: bool
+        }
+
+      class NewMaximum < Orb::BaseModel
+        attr_accessor adjustment_type: :maximum
+
+        attr_accessor applies_to_price_ids: ::Array[String]
+
+        attr_accessor maximum_amount: String
+
+        attr_reader is_invoice_level: bool?
+
+        def is_invoice_level=: (bool) -> bool
+
+        def initialize:
+          (
+            applies_to_price_ids: ::Array[String],
+            maximum_amount: String,
+            is_invoice_level: bool,
+            adjustment_type: :maximum
+          ) -> void
+          | (
+            ?Orb::Models::NewAdjustmentModel::new_maximum | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::NewAdjustmentModel::new_maximum
+      end
+
+      private def self.variants: -> [[:percentage_discount, Orb::Models::NewAdjustmentModel::NewPercentageDiscount], [:usage_discount, Orb::Models::NewAdjustmentModel::NewUsageDiscount], [:amount_discount, Orb::Models::NewAdjustmentModel::NewAmountDiscount], [:minimum, Orb::Models::NewAdjustmentModel::NewMinimum], [:maximum, Orb::Models::NewAdjustmentModel::NewMaximum]]
+    end
+  end
+end

@@ -47,7 +47,7 @@ module Orb
           status: Symbol,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::Plan)
+          .returns(Orb::Models::PlanModel)
       end
       def create(
         currency:,
@@ -69,7 +69,7 @@ module Orb
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::Plan)
+          .returns(Orb::Models::PlanModel)
       end
       def update(plan_id, external_plan_id: nil, metadata: nil, request_options: {})
       end
@@ -85,7 +85,7 @@ module Orb
           status: Symbol,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Page[Orb::Models::Plan])
+          .returns(Orb::Page[Orb::Models::PlanModel])
       end
       def list(
         created_at_gt: nil,
@@ -104,7 +104,7 @@ module Orb
           plan_id: String,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::Plan)
+          .returns(Orb::Models::PlanModel)
       end
       def fetch(plan_id, request_options: {})
       end

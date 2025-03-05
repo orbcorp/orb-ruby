@@ -1,0 +1,39 @@
+module Orb
+  module Models
+    type bulk_bps_config_model =
+      { tiers: ::Array[Orb::Models::BulkBpsConfigModel::Tier] }
+
+    class BulkBpsConfigModel < Orb::BaseModel
+      attr_accessor tiers: ::Array[Orb::Models::BulkBpsConfigModel::Tier]
+
+      def initialize:
+        (tiers: ::Array[Orb::Models::BulkBpsConfigModel::Tier]) -> void
+        | (?Orb::Models::bulk_bps_config_model | Orb::BaseModel data) -> void
+
+      def to_hash: -> Orb::Models::bulk_bps_config_model
+
+      type tier =
+        { bps: Float, maximum_amount: String?, per_unit_maximum: String? }
+
+      class Tier < Orb::BaseModel
+        attr_accessor bps: Float
+
+        attr_accessor maximum_amount: String?
+
+        attr_accessor per_unit_maximum: String?
+
+        def initialize:
+          (
+            bps: Float,
+            maximum_amount: String?,
+            per_unit_maximum: String?
+          ) -> void
+          | (
+            ?Orb::Models::BulkBpsConfigModel::tier | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::BulkBpsConfigModel::tier
+      end
+    end
+  end
+end

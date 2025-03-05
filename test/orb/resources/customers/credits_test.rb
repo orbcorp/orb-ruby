@@ -17,7 +17,7 @@ class Orb::Test::Resources::Customers::CreditsTest < Orb::Test::ResourceTest
 
     row = response.to_enum.first
     assert_pattern do
-      row => Orb::Models::Customers::CreditListResponse
+      row => Orb::Models::CustomerCreditBalancesModel::Data
     end
 
     assert_pattern do
@@ -28,7 +28,7 @@ class Orb::Test::Resources::Customers::CreditsTest < Orb::Test::ResourceTest
         expiry_date: Time | nil,
         maximum_initial_balance: Float | nil,
         per_unit_cost_basis: String | nil,
-        status: Orb::Models::Customers::CreditListResponse::Status
+        status: Orb::Models::CustomerCreditBalancesModel::Data::Status
       }
     end
   end
@@ -47,7 +47,7 @@ class Orb::Test::Resources::Customers::CreditsTest < Orb::Test::ResourceTest
 
     row = response.to_enum.first
     assert_pattern do
-      row => Orb::Models::Customers::CreditListByExternalIDResponse
+      row => Orb::Models::CustomerCreditBalancesModel::Data
     end
 
     assert_pattern do
@@ -58,7 +58,7 @@ class Orb::Test::Resources::Customers::CreditsTest < Orb::Test::ResourceTest
         expiry_date: Time | nil,
         maximum_initial_balance: Float | nil,
         per_unit_cost_basis: String | nil,
-        status: Orb::Models::Customers::CreditListByExternalIDResponse::Status
+        status: Orb::Models::CustomerCreditBalancesModel::Data::Status
       }
     end
   end

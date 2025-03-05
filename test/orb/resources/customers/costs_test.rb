@@ -7,12 +7,12 @@ class Orb::Test::Resources::Customers::CostsTest < Orb::Test::ResourceTest
     response = @orb.customers.costs.list("customer_id")
 
     assert_pattern do
-      response => Orb::Models::Customers::CostListResponse
+      response => Orb::Models::CustomerCostsModel
     end
 
     assert_pattern do
       response => {
-        data: ^(Orb::ArrayOf[Orb::Models::Customers::CostListResponse::Data])
+        data: ^(Orb::ArrayOf[Orb::Models::AggregatedCostModel])
       }
     end
   end
@@ -21,12 +21,12 @@ class Orb::Test::Resources::Customers::CostsTest < Orb::Test::ResourceTest
     response = @orb.customers.costs.list_by_external_id("external_customer_id")
 
     assert_pattern do
-      response => Orb::Models::Customers::CostListByExternalIDResponse
+      response => Orb::Models::CustomerCostsModel
     end
 
     assert_pattern do
       response => {
-        data: ^(Orb::ArrayOf[Orb::Models::Customers::CostListByExternalIDResponse::Data])
+        data: ^(Orb::ArrayOf[Orb::Models::AggregatedCostModel])
       }
     end
   end

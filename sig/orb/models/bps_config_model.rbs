@@ -1,0 +1,17 @@
+module Orb
+  module Models
+    type bps_config_model = { bps: Float, per_unit_maximum: String? }
+
+    class BpsConfigModel < Orb::BaseModel
+      attr_accessor bps: Float
+
+      attr_accessor per_unit_maximum: String?
+
+      def initialize:
+        (bps: Float, per_unit_maximum: String?) -> void
+        | (?Orb::Models::bps_config_model | Orb::BaseModel data) -> void
+
+      def to_hash: -> Orb::Models::bps_config_model
+    end
+  end
+end

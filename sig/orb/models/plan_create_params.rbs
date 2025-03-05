@@ -87,16 +87,16 @@ module Orb
             item_id: String,
             model_type: :unit,
             name: String,
-            unit_config: Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::UnitConfig,
+            unit_config: Orb::Models::UnitConfigModel,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
@@ -109,13 +109,13 @@ module Orb
 
           attr_accessor name: String
 
-          attr_accessor unit_config: Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::UnitConfig
+          attr_accessor unit_config: Orb::Models::UnitConfigModel
 
           attr_accessor billable_metric_id: String?
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -127,7 +127,7 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -136,16 +136,16 @@ module Orb
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::cadence,
               item_id: String,
               name: String,
-              unit_config: Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::UnitConfig,
+              unit_config: Orb::Models::UnitConfigModel,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :unit
             ) -> void
@@ -169,87 +169,6 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::cadence]
           end
-
-          type unit_config = { unit_amount: String }
-
-          class UnitConfig < Orb::BaseModel
-            attr_accessor unit_amount: String
-
-            def initialize:
-              (unit_amount: String) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::unit_config
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::unit_config
-          end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_package_price =
@@ -258,16 +177,16 @@ module Orb
             item_id: String,
             model_type: :package,
             name: String,
-            package_config: Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::PackageConfig,
+            package_config: Orb::Models::PackageConfigModel,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
@@ -280,13 +199,13 @@ module Orb
 
           attr_accessor name: String
 
-          attr_accessor package_config: Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::PackageConfig
+          attr_accessor package_config: Orb::Models::PackageConfigModel
 
           attr_accessor billable_metric_id: String?
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -298,7 +217,7 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -307,16 +226,16 @@ module Orb
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::cadence,
               item_id: String,
               name: String,
-              package_config: Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::PackageConfig,
+              package_config: Orb::Models::PackageConfigModel,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :package
             ) -> void
@@ -340,108 +259,24 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::cadence]
           end
-
-          type package_config =
-            { package_amount: String, package_size: Integer }
-
-          class PackageConfig < Orb::BaseModel
-            attr_accessor package_amount: String
-
-            attr_accessor package_size: Integer
-
-            def initialize:
-              (package_amount: String, package_size: Integer) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::package_config
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::package_config
-          end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_matrix_price =
           {
             cadence: Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::cadence,
             item_id: String,
-            matrix_config: Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::MatrixConfig,
+            matrix_config: Orb::Models::MatrixConfigModel,
             model_type: :matrix,
             name: String,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
@@ -450,7 +285,7 @@ module Orb
 
           attr_accessor item_id: String
 
-          attr_accessor matrix_config: Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::MatrixConfig
+          attr_accessor matrix_config: Orb::Models::MatrixConfigModel
 
           attr_accessor model_type: :matrix
 
@@ -460,7 +295,7 @@ module Orb
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -472,7 +307,7 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -480,17 +315,17 @@ module Orb
             (
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::cadence,
               item_id: String,
-              matrix_config: Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::MatrixConfig,
+              matrix_config: Orb::Models::MatrixConfigModel,
               name: String,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :matrix
             ) -> void
@@ -514,121 +349,6 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::cadence]
           end
-
-          type matrix_config =
-            {
-              default_unit_amount: String,
-              dimensions: ::Array[String?],
-              matrix_values: ::Array[Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::MatrixConfig::MatrixValue]
-            }
-
-          class MatrixConfig < Orb::BaseModel
-            attr_accessor default_unit_amount: String
-
-            attr_accessor dimensions: ::Array[String?]
-
-            attr_accessor matrix_values: ::Array[Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::MatrixConfig::MatrixValue]
-
-            def initialize:
-              (
-                default_unit_amount: String,
-                dimensions: ::Array[String?],
-                matrix_values: ::Array[Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::MatrixConfig::MatrixValue]
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::matrix_config
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::matrix_config
-
-            type matrix_value =
-              { dimension_values: ::Array[String?], unit_amount: String }
-
-            class MatrixValue < Orb::BaseModel
-              attr_accessor dimension_values: ::Array[String?]
-
-              attr_accessor unit_amount: String
-
-              def initialize:
-                (
-                  dimension_values: ::Array[String?],
-                  unit_amount: String
-                ) -> void
-                | (
-                  ?Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::MatrixConfig::matrix_value
-                  | Orb::BaseModel data
-                ) -> void
-
-              def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::MatrixConfig::matrix_value
-            end
-          end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_tiered_price =
@@ -637,16 +357,16 @@ module Orb
             item_id: String,
             model_type: :tiered,
             name: String,
-            tiered_config: Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::TieredConfig,
+            tiered_config: Orb::Models::TieredConfigModel,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
@@ -659,13 +379,13 @@ module Orb
 
           attr_accessor name: String
 
-          attr_accessor tiered_config: Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::TieredConfig
+          attr_accessor tiered_config: Orb::Models::TieredConfigModel
 
           attr_accessor billable_metric_id: String?
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -677,7 +397,7 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -686,16 +406,16 @@ module Orb
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::cadence,
               item_id: String,
               name: String,
-              tiered_config: Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::TieredConfig,
+              tiered_config: Orb::Models::TieredConfigModel,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :tiered
             ) -> void
@@ -719,116 +439,6 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::cadence]
           end
-
-          type tiered_config =
-            {
-              tiers: ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::TieredConfig::Tier]
-            }
-
-          class TieredConfig < Orb::BaseModel
-            attr_accessor tiers: ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::TieredConfig::Tier]
-
-            def initialize:
-              (
-                tiers: ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::TieredConfig::Tier]
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::tiered_config
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::tiered_config
-
-            type tier =
-              { first_unit: Float, unit_amount: String, last_unit: Float? }
-
-            class Tier < Orb::BaseModel
-              attr_accessor first_unit: Float
-
-              attr_accessor unit_amount: String
-
-              attr_accessor last_unit: Float?
-
-              def initialize:
-                (
-                  first_unit: Float,
-                  unit_amount: String,
-                  last_unit: Float?
-                ) -> void
-                | (
-                  ?Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::TieredConfig::tier
-                  | Orb::BaseModel data
-                ) -> void
-
-              def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::TieredConfig::tier
-            end
-          end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_tiered_bps_price =
@@ -837,16 +447,16 @@ module Orb
             item_id: String,
             model_type: :tiered_bps,
             name: String,
-            tiered_bps_config: Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::TieredBpsConfig,
+            tiered_bps_config: Orb::Models::TieredBpsConfigModel,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
@@ -859,13 +469,13 @@ module Orb
 
           attr_accessor name: String
 
-          attr_accessor tiered_bps_config: Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::TieredBpsConfig
+          attr_accessor tiered_bps_config: Orb::Models::TieredBpsConfigModel
 
           attr_accessor billable_metric_id: String?
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -877,7 +487,7 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -886,16 +496,16 @@ module Orb
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::cadence,
               item_id: String,
               name: String,
-              tiered_bps_config: Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::TieredBpsConfig,
+              tiered_bps_config: Orb::Models::TieredBpsConfigModel,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :tiered_bps
             ) -> void
@@ -919,147 +529,29 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::cadence]
           end
-
-          type tiered_bps_config =
-            {
-              tiers: ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::TieredBpsConfig::Tier]
-            }
-
-          class TieredBpsConfig < Orb::BaseModel
-            attr_accessor tiers: ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::TieredBpsConfig::Tier]
-
-            def initialize:
-              (
-                tiers: ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::TieredBpsConfig::Tier]
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::tiered_bps_config
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::tiered_bps_config
-
-            type tier =
-              {
-                bps: Float,
-                minimum_amount: String,
-                maximum_amount: String?,
-                per_unit_maximum: String?
-              }
-
-            class Tier < Orb::BaseModel
-              attr_accessor bps: Float
-
-              attr_accessor minimum_amount: String
-
-              attr_accessor maximum_amount: String?
-
-              attr_accessor per_unit_maximum: String?
-
-              def initialize:
-                (
-                  bps: Float,
-                  minimum_amount: String,
-                  maximum_amount: String?,
-                  per_unit_maximum: String?
-                ) -> void
-                | (
-                  ?Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::TieredBpsConfig::tier
-                  | Orb::BaseModel data
-                ) -> void
-
-              def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::TieredBpsConfig::tier
-            end
-          end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_bps_price =
           {
-            bps_config: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::BpsConfig,
+            bps_config: Orb::Models::BpsConfigModel,
             cadence: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::cadence,
             item_id: String,
             model_type: :bps,
             name: String,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
         class NewPlanBpsPrice < Orb::BaseModel
-          attr_accessor bps_config: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::BpsConfig
+          attr_accessor bps_config: Orb::Models::BpsConfigModel
 
           attr_accessor cadence: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::cadence
 
@@ -1073,7 +565,7 @@ module Orb
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -1085,25 +577,25 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
           def initialize:
             (
-              bps_config: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::BpsConfig,
+              bps_config: Orb::Models::BpsConfigModel,
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::cadence,
               item_id: String,
               name: String,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :bps
             ) -> void
@@ -1113,23 +605,6 @@ module Orb
             ) -> void
 
           def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_bps_price
-
-          type bps_config = { bps: Float, per_unit_maximum: String? }
-
-          class BpsConfig < Orb::BaseModel
-            attr_accessor bps: Float
-
-            attr_accessor per_unit_maximum: String?
-
-            def initialize:
-              (bps: Float, per_unit_maximum: String?) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::bps_config
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::bps_config
-          end
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -1144,95 +619,29 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_bulk_bps_price =
           {
-            bulk_bps_config: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BulkBpsConfig,
+            bulk_bps_config: Orb::Models::BulkBpsConfigModel,
             cadence: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::cadence,
             item_id: String,
             model_type: :bulk_bps,
             name: String,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
         class NewPlanBulkBpsPrice < Orb::BaseModel
-          attr_accessor bulk_bps_config: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BulkBpsConfig
+          attr_accessor bulk_bps_config: Orb::Models::BulkBpsConfigModel
 
           attr_accessor cadence: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::cadence
 
@@ -1246,7 +655,7 @@ module Orb
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -1258,25 +667,25 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
           def initialize:
             (
-              bulk_bps_config: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BulkBpsConfig,
+              bulk_bps_config: Orb::Models::BulkBpsConfigModel,
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::cadence,
               item_id: String,
               name: String,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :bulk_bps
             ) -> void
@@ -1286,50 +695,6 @@ module Orb
             ) -> void
 
           def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_bulk_bps_price
-
-          type bulk_bps_config =
-            {
-              tiers: ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BulkBpsConfig::Tier]
-            }
-
-          class BulkBpsConfig < Orb::BaseModel
-            attr_accessor tiers: ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BulkBpsConfig::Tier]
-
-            def initialize:
-              (
-                tiers: ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BulkBpsConfig::Tier]
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::bulk_bps_config
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::bulk_bps_config
-
-            type tier =
-              { bps: Float, maximum_amount: String?, per_unit_maximum: String? }
-
-            class Tier < Orb::BaseModel
-              attr_accessor bps: Float
-
-              attr_accessor maximum_amount: String?
-
-              attr_accessor per_unit_maximum: String?
-
-              def initialize:
-                (
-                  bps: Float,
-                  maximum_amount: String?,
-                  per_unit_maximum: String?
-                ) -> void
-                | (
-                  ?Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BulkBpsConfig::tier
-                  | Orb::BaseModel data
-                ) -> void
-
-              def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BulkBpsConfig::tier
-            end
-          end
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -1344,95 +709,29 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_bulk_price =
           {
-            bulk_config: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BulkConfig,
+            bulk_config: Orb::Models::BulkConfigModel,
             cadence: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::cadence,
             item_id: String,
             model_type: :bulk,
             name: String,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
         class NewPlanBulkPrice < Orb::BaseModel
-          attr_accessor bulk_config: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BulkConfig
+          attr_accessor bulk_config: Orb::Models::BulkConfigModel
 
           attr_accessor cadence: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::cadence
 
@@ -1446,7 +745,7 @@ module Orb
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -1458,25 +757,25 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
           def initialize:
             (
-              bulk_config: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BulkConfig,
+              bulk_config: Orb::Models::BulkConfigModel,
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::cadence,
               item_id: String,
               name: String,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :bulk
             ) -> void
@@ -1486,43 +785,6 @@ module Orb
             ) -> void
 
           def to_hash: -> Orb::Models::PlanCreateParams::Price::new_plan_bulk_price
-
-          type bulk_config =
-            {
-              tiers: ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BulkConfig::Tier]
-            }
-
-          class BulkConfig < Orb::BaseModel
-            attr_accessor tiers: ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BulkConfig::Tier]
-
-            def initialize:
-              (
-                tiers: ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BulkConfig::Tier]
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::bulk_config
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::bulk_config
-
-            type tier = { unit_amount: String, maximum_units: Float? }
-
-            class Tier < Orb::BaseModel
-              attr_accessor unit_amount: String
-
-              attr_accessor maximum_units: Float?
-
-              def initialize:
-                (unit_amount: String, maximum_units: Float?) -> void
-                | (
-                  ?Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BulkConfig::tier
-                  | Orb::BaseModel data
-                ) -> void
-
-              def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BulkConfig::tier
-            end
-          end
 
           type cadence =
             :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -1537,72 +799,6 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_threshold_total_amount_price =
@@ -1611,16 +807,16 @@ module Orb
             item_id: String,
             model_type: :threshold_total_amount,
             name: String,
-            threshold_total_amount_config: ::Hash[Symbol, top],
+            threshold_total_amount_config: Orb::Models::custom_rating_function_config_model,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
@@ -1633,13 +829,13 @@ module Orb
 
           attr_accessor name: String
 
-          attr_accessor threshold_total_amount_config: ::Hash[Symbol, top]
+          attr_accessor threshold_total_amount_config: Orb::Models::custom_rating_function_config_model
 
           attr_accessor billable_metric_id: String?
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -1651,7 +847,7 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -1660,16 +856,16 @@ module Orb
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::cadence,
               item_id: String,
               name: String,
-              threshold_total_amount_config: ::Hash[Symbol, top],
+              threshold_total_amount_config: Orb::Models::custom_rating_function_config_model,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :threshold_total_amount
             ) -> void
@@ -1693,72 +889,6 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_tiered_package_price =
@@ -1767,16 +897,16 @@ module Orb
             item_id: String,
             model_type: :tiered_package,
             name: String,
-            tiered_package_config: ::Hash[Symbol, top],
+            tiered_package_config: Orb::Models::custom_rating_function_config_model,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
@@ -1789,13 +919,13 @@ module Orb
 
           attr_accessor name: String
 
-          attr_accessor tiered_package_config: ::Hash[Symbol, top]
+          attr_accessor tiered_package_config: Orb::Models::custom_rating_function_config_model
 
           attr_accessor billable_metric_id: String?
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -1807,7 +937,7 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -1816,16 +946,16 @@ module Orb
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::cadence,
               item_id: String,
               name: String,
-              tiered_package_config: ::Hash[Symbol, top],
+              tiered_package_config: Orb::Models::custom_rating_function_config_model,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :tiered_package
             ) -> void
@@ -1849,72 +979,6 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_tiered_with_minimum_price =
@@ -1923,16 +987,16 @@ module Orb
             item_id: String,
             model_type: :tiered_with_minimum,
             name: String,
-            tiered_with_minimum_config: ::Hash[Symbol, top],
+            tiered_with_minimum_config: Orb::Models::custom_rating_function_config_model,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
@@ -1945,13 +1009,13 @@ module Orb
 
           attr_accessor name: String
 
-          attr_accessor tiered_with_minimum_config: ::Hash[Symbol, top]
+          attr_accessor tiered_with_minimum_config: Orb::Models::custom_rating_function_config_model
 
           attr_accessor billable_metric_id: String?
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -1963,7 +1027,7 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -1972,16 +1036,16 @@ module Orb
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::cadence,
               item_id: String,
               name: String,
-              tiered_with_minimum_config: ::Hash[Symbol, top],
+              tiered_with_minimum_config: Orb::Models::custom_rating_function_config_model,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :tiered_with_minimum
             ) -> void
@@ -2005,72 +1069,6 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_unit_with_percent_price =
@@ -2079,16 +1077,16 @@ module Orb
             item_id: String,
             model_type: :unit_with_percent,
             name: String,
-            unit_with_percent_config: ::Hash[Symbol, top],
+            unit_with_percent_config: Orb::Models::custom_rating_function_config_model,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
@@ -2101,13 +1099,13 @@ module Orb
 
           attr_accessor name: String
 
-          attr_accessor unit_with_percent_config: ::Hash[Symbol, top]
+          attr_accessor unit_with_percent_config: Orb::Models::custom_rating_function_config_model
 
           attr_accessor billable_metric_id: String?
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -2119,7 +1117,7 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -2128,16 +1126,16 @@ module Orb
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::cadence,
               item_id: String,
               name: String,
-              unit_with_percent_config: ::Hash[Symbol, top],
+              unit_with_percent_config: Orb::Models::custom_rating_function_config_model,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :unit_with_percent
             ) -> void
@@ -2161,72 +1159,6 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_package_with_allocation_price =
@@ -2235,16 +1167,16 @@ module Orb
             item_id: String,
             model_type: :package_with_allocation,
             name: String,
-            package_with_allocation_config: ::Hash[Symbol, top],
+            package_with_allocation_config: Orb::Models::custom_rating_function_config_model,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
@@ -2257,13 +1189,13 @@ module Orb
 
           attr_accessor name: String
 
-          attr_accessor package_with_allocation_config: ::Hash[Symbol, top]
+          attr_accessor package_with_allocation_config: Orb::Models::custom_rating_function_config_model
 
           attr_accessor billable_metric_id: String?
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -2275,7 +1207,7 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -2284,16 +1216,16 @@ module Orb
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::cadence,
               item_id: String,
               name: String,
-              package_with_allocation_config: ::Hash[Symbol, top],
+              package_with_allocation_config: Orb::Models::custom_rating_function_config_model,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :package_with_allocation
             ) -> void
@@ -2317,72 +1249,6 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_tier_with_proration_price =
@@ -2391,16 +1257,16 @@ module Orb
             item_id: String,
             model_type: :tiered_with_proration,
             name: String,
-            tiered_with_proration_config: ::Hash[Symbol, top],
+            tiered_with_proration_config: Orb::Models::custom_rating_function_config_model,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
@@ -2413,13 +1279,13 @@ module Orb
 
           attr_accessor name: String
 
-          attr_accessor tiered_with_proration_config: ::Hash[Symbol, top]
+          attr_accessor tiered_with_proration_config: Orb::Models::custom_rating_function_config_model
 
           attr_accessor billable_metric_id: String?
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -2431,7 +1297,7 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -2440,16 +1306,16 @@ module Orb
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::cadence,
               item_id: String,
               name: String,
-              tiered_with_proration_config: ::Hash[Symbol, top],
+              tiered_with_proration_config: Orb::Models::custom_rating_function_config_model,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :tiered_with_proration
             ) -> void
@@ -2473,72 +1339,6 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_unit_with_proration_price =
@@ -2547,16 +1347,16 @@ module Orb
             item_id: String,
             model_type: :unit_with_proration,
             name: String,
-            unit_with_proration_config: ::Hash[Symbol, top],
+            unit_with_proration_config: Orb::Models::custom_rating_function_config_model,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
@@ -2569,13 +1369,13 @@ module Orb
 
           attr_accessor name: String
 
-          attr_accessor unit_with_proration_config: ::Hash[Symbol, top]
+          attr_accessor unit_with_proration_config: Orb::Models::custom_rating_function_config_model
 
           attr_accessor billable_metric_id: String?
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -2587,7 +1387,7 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -2596,16 +1396,16 @@ module Orb
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::cadence,
               item_id: String,
               name: String,
-              unit_with_proration_config: ::Hash[Symbol, top],
+              unit_with_proration_config: Orb::Models::custom_rating_function_config_model,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :unit_with_proration
             ) -> void
@@ -2629,97 +1429,31 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_grouped_allocation_price =
           {
             cadence: Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::cadence,
-            grouped_allocation_config: ::Hash[Symbol, top],
+            grouped_allocation_config: Orb::Models::custom_rating_function_config_model,
             item_id: String,
             model_type: :grouped_allocation,
             name: String,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
         class NewPlanGroupedAllocationPrice < Orb::BaseModel
           attr_accessor cadence: Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::cadence
 
-          attr_accessor grouped_allocation_config: ::Hash[Symbol, top]
+          attr_accessor grouped_allocation_config: Orb::Models::custom_rating_function_config_model
 
           attr_accessor item_id: String
 
@@ -2731,7 +1465,7 @@ module Orb
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -2743,25 +1477,25 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
           def initialize:
             (
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::cadence,
-              grouped_allocation_config: ::Hash[Symbol, top],
+              grouped_allocation_config: Orb::Models::custom_rating_function_config_model,
               item_id: String,
               name: String,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :grouped_allocation
             ) -> void
@@ -2785,97 +1519,31 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_grouped_with_prorated_minimum_price =
           {
             cadence: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::cadence,
-            grouped_with_prorated_minimum_config: ::Hash[Symbol, top],
+            grouped_with_prorated_minimum_config: Orb::Models::custom_rating_function_config_model,
             item_id: String,
             model_type: :grouped_with_prorated_minimum,
             name: String,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
         class NewPlanGroupedWithProratedMinimumPrice < Orb::BaseModel
           attr_accessor cadence: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::cadence
 
-          attr_accessor grouped_with_prorated_minimum_config: ::Hash[Symbol, top]
+          attr_accessor grouped_with_prorated_minimum_config: Orb::Models::custom_rating_function_config_model
 
           attr_accessor item_id: String
 
@@ -2887,7 +1555,7 @@ module Orb
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -2899,25 +1567,25 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
           def initialize:
             (
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::cadence,
-              grouped_with_prorated_minimum_config: ::Hash[Symbol, top],
+              grouped_with_prorated_minimum_config: Orb::Models::custom_rating_function_config_model,
               item_id: String,
               name: String,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :grouped_with_prorated_minimum
             ) -> void
@@ -2941,97 +1609,31 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_grouped_with_metered_minimum_price =
           {
             cadence: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::cadence,
-            grouped_with_metered_minimum_config: ::Hash[Symbol, top],
+            grouped_with_metered_minimum_config: Orb::Models::custom_rating_function_config_model,
             item_id: String,
             model_type: :grouped_with_metered_minimum,
             name: String,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
         class NewPlanGroupedWithMeteredMinimumPrice < Orb::BaseModel
           attr_accessor cadence: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::cadence
 
-          attr_accessor grouped_with_metered_minimum_config: ::Hash[Symbol, top]
+          attr_accessor grouped_with_metered_minimum_config: Orb::Models::custom_rating_function_config_model
 
           attr_accessor item_id: String
 
@@ -3043,7 +1645,7 @@ module Orb
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -3055,25 +1657,25 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
           def initialize:
             (
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::cadence,
-              grouped_with_metered_minimum_config: ::Hash[Symbol, top],
+              grouped_with_metered_minimum_config: Orb::Models::custom_rating_function_config_model,
               item_id: String,
               name: String,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :grouped_with_metered_minimum
             ) -> void
@@ -3097,90 +1699,24 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_matrix_with_display_name_price =
           {
             cadence: Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::cadence,
             item_id: String,
-            matrix_with_display_name_config: ::Hash[Symbol, top],
+            matrix_with_display_name_config: Orb::Models::custom_rating_function_config_model,
             model_type: :matrix_with_display_name,
             name: String,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
@@ -3189,7 +1725,7 @@ module Orb
 
           attr_accessor item_id: String
 
-          attr_accessor matrix_with_display_name_config: ::Hash[Symbol, top]
+          attr_accessor matrix_with_display_name_config: Orb::Models::custom_rating_function_config_model
 
           attr_accessor model_type: :matrix_with_display_name
 
@@ -3199,7 +1735,7 @@ module Orb
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -3211,7 +1747,7 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -3219,17 +1755,17 @@ module Orb
             (
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::cadence,
               item_id: String,
-              matrix_with_display_name_config: ::Hash[Symbol, top],
+              matrix_with_display_name_config: Orb::Models::custom_rating_function_config_model,
               name: String,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :matrix_with_display_name
             ) -> void
@@ -3253,95 +1789,29 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_bulk_with_proration_price =
           {
-            bulk_with_proration_config: ::Hash[Symbol, top],
+            bulk_with_proration_config: Orb::Models::custom_rating_function_config_model,
             cadence: Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::cadence,
             item_id: String,
             model_type: :bulk_with_proration,
             name: String,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
         class NewPlanBulkWithProrationPrice < Orb::BaseModel
-          attr_accessor bulk_with_proration_config: ::Hash[Symbol, top]
+          attr_accessor bulk_with_proration_config: Orb::Models::custom_rating_function_config_model
 
           attr_accessor cadence: Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::cadence
 
@@ -3355,7 +1825,7 @@ module Orb
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -3367,25 +1837,25 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
           def initialize:
             (
-              bulk_with_proration_config: ::Hash[Symbol, top],
+              bulk_with_proration_config: Orb::Models::custom_rating_function_config_model,
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::cadence,
               item_id: String,
               name: String,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :bulk_with_proration
             ) -> void
@@ -3409,97 +1879,31 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_grouped_tiered_package_price =
           {
             cadence: Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::cadence,
-            grouped_tiered_package_config: ::Hash[Symbol, top],
+            grouped_tiered_package_config: Orb::Models::custom_rating_function_config_model,
             item_id: String,
             model_type: :grouped_tiered_package,
             name: String,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
         class NewPlanGroupedTieredPackagePrice < Orb::BaseModel
           attr_accessor cadence: Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::cadence
 
-          attr_accessor grouped_tiered_package_config: ::Hash[Symbol, top]
+          attr_accessor grouped_tiered_package_config: Orb::Models::custom_rating_function_config_model
 
           attr_accessor item_id: String
 
@@ -3511,7 +1915,7 @@ module Orb
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -3523,25 +1927,25 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
           def initialize:
             (
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::cadence,
-              grouped_tiered_package_config: ::Hash[Symbol, top],
+              grouped_tiered_package_config: Orb::Models::custom_rating_function_config_model,
               item_id: String,
               name: String,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :grouped_tiered_package
             ) -> void
@@ -3565,90 +1969,24 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_max_group_tiered_package_price =
           {
             cadence: Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::cadence,
             item_id: String,
-            max_group_tiered_package_config: ::Hash[Symbol, top],
+            max_group_tiered_package_config: Orb::Models::custom_rating_function_config_model,
             model_type: :max_group_tiered_package,
             name: String,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
@@ -3657,7 +1995,7 @@ module Orb
 
           attr_accessor item_id: String
 
-          attr_accessor max_group_tiered_package_config: ::Hash[Symbol, top]
+          attr_accessor max_group_tiered_package_config: Orb::Models::custom_rating_function_config_model
 
           attr_accessor model_type: :max_group_tiered_package
 
@@ -3667,7 +2005,7 @@ module Orb
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -3679,7 +2017,7 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -3687,17 +2025,17 @@ module Orb
             (
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::cadence,
               item_id: String,
-              max_group_tiered_package_config: ::Hash[Symbol, top],
+              max_group_tiered_package_config: Orb::Models::custom_rating_function_config_model,
               name: String,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :max_group_tiered_package
             ) -> void
@@ -3721,72 +2059,6 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_scalable_matrix_with_unit_pricing_price =
@@ -3795,16 +2067,16 @@ module Orb
             item_id: String,
             model_type: :scalable_matrix_with_unit_pricing,
             name: String,
-            scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
+            scalable_matrix_with_unit_pricing_config: Orb::Models::custom_rating_function_config_model,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
@@ -3817,13 +2089,13 @@ module Orb
 
           attr_accessor name: String
 
-          attr_accessor scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top]
+          attr_accessor scalable_matrix_with_unit_pricing_config: Orb::Models::custom_rating_function_config_model
 
           attr_accessor billable_metric_id: String?
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -3835,7 +2107,7 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -3844,16 +2116,16 @@ module Orb
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::cadence,
               item_id: String,
               name: String,
-              scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
+              scalable_matrix_with_unit_pricing_config: Orb::Models::custom_rating_function_config_model,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :scalable_matrix_with_unit_pricing
             ) -> void
@@ -3877,72 +2149,6 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_scalable_matrix_with_tiered_pricing_price =
@@ -3951,16 +2157,16 @@ module Orb
             item_id: String,
             model_type: :scalable_matrix_with_tiered_pricing,
             name: String,
-            scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
+            scalable_matrix_with_tiered_pricing_config: Orb::Models::custom_rating_function_config_model,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
@@ -3973,13 +2179,13 @@ module Orb
 
           attr_accessor name: String
 
-          attr_accessor scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top]
+          attr_accessor scalable_matrix_with_tiered_pricing_config: Orb::Models::custom_rating_function_config_model
 
           attr_accessor billable_metric_id: String?
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -3991,7 +2197,7 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -4000,16 +2206,16 @@ module Orb
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::cadence,
               item_id: String,
               name: String,
-              scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
+              scalable_matrix_with_tiered_pricing_config: Orb::Models::custom_rating_function_config_model,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :scalable_matrix_with_tiered_pricing
             ) -> void
@@ -4033,97 +2239,31 @@ module Orb
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::cadence]
           end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::duration_unit]
-            end
-          end
         end
 
         type new_plan_cumulative_grouped_bulk_price =
           {
             cadence: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::cadence,
-            cumulative_grouped_bulk_config: ::Hash[Symbol, top],
+            cumulative_grouped_bulk_config: Orb::Models::custom_rating_function_config_model,
             item_id: String,
             model_type: :cumulative_grouped_bulk,
             name: String,
             billable_metric_id: String?,
             billed_in_advance: bool?,
-            billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration?,
+            billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             conversion_rate: Float?,
             currency: String?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
-            invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration?,
+            invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
             metadata: ::Hash[Symbol, String?]?
           }
 
         class NewPlanCumulativeGroupedBulkPrice < Orb::BaseModel
           attr_accessor cadence: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::cadence
 
-          attr_accessor cumulative_grouped_bulk_config: ::Hash[Symbol, top]
+          attr_accessor cumulative_grouped_bulk_config: Orb::Models::custom_rating_function_config_model
 
           attr_accessor item_id: String
 
@@ -4135,7 +2275,7 @@ module Orb
 
           attr_accessor billed_in_advance: bool?
 
-          attr_accessor billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration?
+          attr_accessor billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor conversion_rate: Float?
 
@@ -4147,25 +2287,25 @@ module Orb
 
           attr_accessor invoice_grouping_key: String?
 
-          attr_accessor invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration?
+          attr_accessor invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
           def initialize:
             (
               cadence: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::cadence,
-              cumulative_grouped_bulk_config: ::Hash[Symbol, top],
+              cumulative_grouped_bulk_config: Orb::Models::custom_rating_function_config_model,
               item_id: String,
               name: String,
               billable_metric_id: String?,
               billed_in_advance: bool?,
-              billing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration?,
+              billing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               conversion_rate: Float?,
               currency: String?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
-              invoicing_cycle_configuration: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration?,
+              invoicing_cycle_configuration: Orb::Models::NewBillingCycleConfigurationModel?,
               metadata: ::Hash[Symbol, String?]?,
               model_type: :cumulative_grouped_bulk
             ) -> void
@@ -4188,72 +2328,6 @@ module Orb
             CUSTOM: :custom
 
             def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::cadence]
-          end
-
-          type billing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration::duration_unit
-            }
-
-          class BillingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::billing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::billing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration::duration_unit]
-            end
-          end
-
-          type invoicing_cycle_configuration =
-            {
-              duration: Integer,
-              duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::duration_unit
-            }
-
-          class InvoicingCycleConfiguration < Orb::BaseModel
-            attr_accessor duration: Integer
-
-            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::duration_unit
-
-            def initialize:
-              (
-                duration: Integer,
-                duration_unit: Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::duration_unit
-              ) -> void
-              | (
-                ?Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::invoicing_cycle_configuration
-                | Orb::BaseModel data
-              ) -> void
-
-            def to_hash: -> Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::invoicing_cycle_configuration
-
-            type duration_unit = :day | :month
-
-            class DurationUnit < Orb::Enum
-              DAY: :day
-              MONTH: :month
-
-              def self.values: -> ::Array[Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::duration_unit]
-            end
           end
         end
 

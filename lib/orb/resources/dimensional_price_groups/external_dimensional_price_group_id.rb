@@ -12,7 +12,7 @@ module Orb
         #
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
-        # @return [Orb::Models::DimensionalPriceGroup]
+        # @return [Orb::Models::DimensionalPriceGroupModel]
         #
         def retrieve(external_dimensional_price_group_id, params = {})
           @client.request(
@@ -21,7 +21,7 @@ module Orb
               "dimensional_price_groups/external_dimensional_price_group_id/%0s",
               external_dimensional_price_group_id
             ],
-            model: Orb::Models::DimensionalPriceGroup,
+            model: Orb::Models::DimensionalPriceGroupModel,
             options: params[:request_options]
           )
         end

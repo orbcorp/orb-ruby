@@ -11,7 +11,7 @@ class Orb::Test::Resources::DimensionalPriceGroupsTest < Orb::Test::ResourceTest
     )
 
     assert_pattern do
-      response => Orb::Models::DimensionalPriceGroup
+      response => Orb::Models::DimensionalPriceGroupModel
     end
 
     assert_pattern do
@@ -30,7 +30,7 @@ class Orb::Test::Resources::DimensionalPriceGroupsTest < Orb::Test::ResourceTest
     response = @orb.dimensional_price_groups.retrieve("dimensional_price_group_id")
 
     assert_pattern do
-      response => Orb::Models::DimensionalPriceGroup
+      response => Orb::Models::DimensionalPriceGroupModel
     end
 
     assert_pattern do
@@ -59,7 +59,7 @@ class Orb::Test::Resources::DimensionalPriceGroupsTest < Orb::Test::ResourceTest
 
     row = response.to_enum.first
     assert_pattern do
-      row => Orb::Models::DimensionalPriceGroup
+      row => Orb::Models::DimensionalPriceGroupModel
     end
 
     assert_pattern do

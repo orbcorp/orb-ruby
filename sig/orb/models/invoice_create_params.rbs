@@ -67,7 +67,7 @@ module Orb
           name: String,
           quantity: Float,
           start_date: Date,
-          unit_config: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig
+          unit_config: Orb::Models::UnitConfigModel
         }
 
       class LineItem < Orb::BaseModel
@@ -83,7 +83,7 @@ module Orb
 
         attr_accessor start_date: Date
 
-        attr_accessor unit_config: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig
+        attr_accessor unit_config: Orb::Models::UnitConfigModel
 
         def initialize:
           (
@@ -93,7 +93,7 @@ module Orb
             name: String,
             quantity: Float,
             start_date: Date,
-            unit_config: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig
+            unit_config: Orb::Models::UnitConfigModel
           ) -> void
           | (
             ?Orb::Models::InvoiceCreateParams::line_item | Orb::BaseModel data
@@ -107,21 +107,6 @@ module Orb
           UNIT: :unit
 
           def self.values: -> ::Array[Orb::Models::InvoiceCreateParams::LineItem::model_type]
-        end
-
-        type unit_config = { unit_amount: String }
-
-        class UnitConfig < Orb::BaseModel
-          attr_accessor unit_amount: String
-
-          def initialize:
-            (unit_amount: String) -> void
-            | (
-              ?Orb::Models::InvoiceCreateParams::LineItem::unit_config
-              | Orb::BaseModel data
-            ) -> void
-
-          def to_hash: -> Orb::Models::InvoiceCreateParams::LineItem::unit_config
         end
       end
     end

@@ -11,11 +11,17 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Models::Item]
+      # @return [Orb::Models::ItemModel]
       #
       def create(params)
         parsed, options = Orb::Models::ItemCreateParams.dump_request(params)
-        @client.request(method: :post, path: "items", body: parsed, model: Orb::Models::Item, options: options)
+        @client.request(
+          method: :post,
+          path: "items",
+          body: parsed,
+          model: Orb::Models::ItemModel,
+          options: options
+        )
       end
 
       # This endpoint can be used to update properties on the Item.
@@ -24,13 +30,13 @@ module Orb
       #
       # @param params [Orb::Models::ItemUpdateParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Array<Orb::Models::ItemUpdateParams::ExternalConnection>, nil] :external_connections
+      #   @option params [Array<Orb::Models::ItemExternalConnectionModel>, nil] :external_connections
       #
       #   @option params [String, nil] :name
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Models::Item]
+      # @return [Orb::Models::ItemModel]
       #
       def update(item_id, params = {})
         parsed, options = Orb::Models::ItemUpdateParams.dump_request(params)
@@ -38,7 +44,7 @@ module Orb
           method: :put,
           path: ["items/%0s", item_id],
           body: parsed,
-          model: Orb::Models::Item,
+          model: Orb::Models::ItemModel,
           options: options
         )
       end
@@ -55,7 +61,7 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Page<Orb::Models::Item>]
+      # @return [Orb::Page<Orb::Models::ItemModel>]
       #
       def list(params = {})
         parsed, options = Orb::Models::ItemListParams.dump_request(params)
@@ -64,7 +70,7 @@ module Orb
           path: "items",
           query: parsed,
           page: Orb::Page,
-          model: Orb::Models::Item,
+          model: Orb::Models::ItemModel,
           options: options
         )
       end
@@ -77,13 +83,13 @@ module Orb
       #
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Orb::Models::Item]
+      # @return [Orb::Models::ItemModel]
       #
       def fetch(item_id, params = {})
         @client.request(
           method: :get,
           path: ["items/%0s", item_id],
-          model: Orb::Models::Item,
+          model: Orb::Models::ItemModel,
           options: params[:request_options]
         )
       end

@@ -1,0 +1,24 @@
+module Orb
+  module Models
+    type top_ups_model =
+      {
+        data: ::Array[Orb::Models::TopUpModel],
+        pagination_metadata: Orb::Models::PaginationMetadata
+      }
+
+    class TopUpsModel < Orb::BaseModel
+      attr_accessor data: ::Array[Orb::Models::TopUpModel]
+
+      attr_accessor pagination_metadata: Orb::Models::PaginationMetadata
+
+      def initialize:
+        (
+          data: ::Array[Orb::Models::TopUpModel],
+          pagination_metadata: Orb::Models::PaginationMetadata
+        ) -> void
+        | (?Orb::Models::top_ups_model | Orb::BaseModel data) -> void
+
+      def to_hash: -> Orb::Models::top_ups_model
+    end
+  end
+end

@@ -19,11 +19,11 @@ module Orb
       def description=(_)
       end
 
-      sig { returns(Orb::Models::Item) }
+      sig { returns(Orb::Models::ItemModel) }
       def item
       end
 
-      sig { params(_: Orb::Models::Item).returns(Orb::Models::Item) }
+      sig { params(_: Orb::Models::ItemModel).returns(Orb::Models::ItemModel) }
       def item=(_)
       end
 
@@ -55,7 +55,7 @@ module Orb
         params(
           id: String,
           description: T.nilable(String),
-          item: Orb::Models::Item,
+          item: Orb::Models::ItemModel,
           metadata: T::Hash[Symbol, String],
           name: String,
           status: Symbol
@@ -71,7 +71,7 @@ module Orb
             {
               id: String,
               description: T.nilable(String),
-              item: Orb::Models::Item,
+              item: Orb::Models::ItemModel,
               metadata: T::Hash[Symbol, String],
               name: String,
               status: Symbol

@@ -13,7 +13,7 @@ module Orb
             )
           )
         )
-          .returns(Orb::Models::Item)
+          .returns(Orb::Models::ItemModel)
       end
       def create(name:, request_options: {})
       end
@@ -21,11 +21,11 @@ module Orb
       sig do
         params(
           item_id: String,
-          external_connections: T.nilable(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection]),
+          external_connections: T.nilable(T::Array[Orb::Models::ItemExternalConnectionModel]),
           name: T.nilable(String),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::Item)
+          .returns(Orb::Models::ItemModel)
       end
       def update(item_id, external_connections: nil, name: nil, request_options: {})
       end
@@ -36,7 +36,7 @@ module Orb
           limit: Integer,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Page[Orb::Models::Item])
+          .returns(Orb::Page[Orb::Models::ItemModel])
       end
       def list(cursor: nil, limit: nil, request_options: {})
       end
@@ -46,7 +46,7 @@ module Orb
           item_id: String,
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
         )
-          .returns(Orb::Models::Item)
+          .returns(Orb::Models::ItemModel)
       end
       def fetch(item_id, request_options: {})
       end

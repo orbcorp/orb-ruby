@@ -15,8 +15,8 @@ module Orb
 
       # @!attribute plan
       #
-      #   @return [Orb::Models::SubscriptionFetchScheduleResponse::Plan]
-      required :plan, -> { Orb::Models::SubscriptionFetchScheduleResponse::Plan }
+      #   @return [Orb::Models::PlanMinifiedModel]
+      required :plan, -> { Orb::Models::PlanMinifiedModel }
 
       # @!attribute start_date
       #
@@ -26,41 +26,12 @@ module Orb
       # @!parse
       #   # @param created_at [Time]
       #   # @param end_date [Time, nil]
-      #   # @param plan [Orb::Models::SubscriptionFetchScheduleResponse::Plan]
+      #   # @param plan [Orb::Models::PlanMinifiedModel]
       #   # @param start_date [Time]
       #   #
       #   def initialize(created_at:, end_date:, plan:, start_date:, **) = super
 
       # def initialize: (Hash | Orb::BaseModel) -> void
-
-      class Plan < Orb::BaseModel
-        # @!attribute id
-        #
-        #   @return [String, nil]
-        required :id, String, nil?: true
-
-        # @!attribute external_plan_id
-        #   An optional user-defined ID for this plan resource, used throughout the system
-        #     as an alias for this Plan. Use this field to identify a plan by an existing
-        #     identifier in your system.
-        #
-        #   @return [String, nil]
-        required :external_plan_id, String, nil?: true
-
-        # @!attribute name
-        #
-        #   @return [String, nil]
-        required :name, String, nil?: true
-
-        # @!parse
-        #   # @param id [String, nil]
-        #   # @param external_plan_id [String, nil]
-        #   # @param name [String, nil]
-        #   #
-        #   def initialize(id:, external_plan_id:, name:, **) = super
-
-        # def initialize: (Hash | Orb::BaseModel) -> void
-      end
     end
   end
 end

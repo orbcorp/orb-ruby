@@ -1,0 +1,122 @@
+module Orb
+  module Models
+    type customer_balance_transaction_model =
+      {
+        id: String,
+        action: Orb::Models::CustomerBalanceTransactionModel::action,
+        amount: String,
+        created_at: Time,
+        credit_note: Orb::Models::CustomerBalanceTransactionModel::CreditNote?,
+        description: String?,
+        ending_balance: String,
+        invoice: Orb::Models::CustomerBalanceTransactionModel::Invoice?,
+        starting_balance: String,
+        type: Orb::Models::CustomerBalanceTransactionModel::type_
+      }
+
+    class CustomerBalanceTransactionModel < Orb::BaseModel
+      attr_accessor id: String
+
+      attr_accessor action: Orb::Models::CustomerBalanceTransactionModel::action
+
+      attr_accessor amount: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor credit_note: Orb::Models::CustomerBalanceTransactionModel::CreditNote?
+
+      attr_accessor description: String?
+
+      attr_accessor ending_balance: String
+
+      attr_accessor invoice: Orb::Models::CustomerBalanceTransactionModel::Invoice?
+
+      attr_accessor starting_balance: String
+
+      attr_accessor type: Orb::Models::CustomerBalanceTransactionModel::type_
+
+      def initialize:
+        (
+          id: String,
+          action: Orb::Models::CustomerBalanceTransactionModel::action,
+          amount: String,
+          created_at: Time,
+          credit_note: Orb::Models::CustomerBalanceTransactionModel::CreditNote?,
+          description: String?,
+          ending_balance: String,
+          invoice: Orb::Models::CustomerBalanceTransactionModel::Invoice?,
+          starting_balance: String,
+          type: Orb::Models::CustomerBalanceTransactionModel::type_
+        ) -> void
+        | (
+          ?Orb::Models::customer_balance_transaction_model | Orb::BaseModel data
+        ) -> void
+
+      def to_hash: -> Orb::Models::customer_balance_transaction_model
+
+      type action =
+        :applied_to_invoice
+        | :manual_adjustment
+        | :prorated_refund
+        | :revert_prorated_refund
+        | :return_from_voiding
+        | :credit_note_applied
+        | :credit_note_voided
+        | :overpayment_refund
+        | :external_payment
+
+      class Action < Orb::Enum
+        APPLIED_TO_INVOICE: :applied_to_invoice
+        MANUAL_ADJUSTMENT: :manual_adjustment
+        PRORATED_REFUND: :prorated_refund
+        REVERT_PRORATED_REFUND: :revert_prorated_refund
+        RETURN_FROM_VOIDING: :return_from_voiding
+        CREDIT_NOTE_APPLIED: :credit_note_applied
+        CREDIT_NOTE_VOIDED: :credit_note_voided
+        OVERPAYMENT_REFUND: :overpayment_refund
+        EXTERNAL_PAYMENT: :external_payment
+
+        def self.values: -> ::Array[Orb::Models::CustomerBalanceTransactionModel::action]
+      end
+
+      type credit_note = { id: String }
+
+      class CreditNote < Orb::BaseModel
+        attr_accessor id: String
+
+        def initialize:
+          (id: String) -> void
+          | (
+            ?Orb::Models::CustomerBalanceTransactionModel::credit_note
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::CustomerBalanceTransactionModel::credit_note
+      end
+
+      type invoice = { id: String }
+
+      class Invoice < Orb::BaseModel
+        attr_accessor id: String
+
+        def initialize:
+          (id: String) -> void
+          | (
+            ?Orb::Models::CustomerBalanceTransactionModel::invoice
+            | Orb::BaseModel data
+          ) -> void
+
+        def to_hash: -> Orb::Models::CustomerBalanceTransactionModel::invoice
+      end
+
+      type type_ = :increment | :decrement
+
+      class Type < Orb::Enum
+        INCREMENT: :increment
+        DECREMENT: :decrement
+
+        def self.values: -> ::Array[Orb::Models::CustomerBalanceTransactionModel::type_]
+      end
+    end
+  end
+end

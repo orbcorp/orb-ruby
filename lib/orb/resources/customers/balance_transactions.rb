@@ -19,7 +19,7 @@ module Orb
         #
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
-        # @return [Orb::Models::Customers::BalanceTransactionCreateResponse]
+        # @return [Orb::Models::CustomerBalanceTransactionModel]
         #
         def create(customer_id, params)
           parsed, options = Orb::Models::Customers::BalanceTransactionCreateParams.dump_request(params)
@@ -27,7 +27,7 @@ module Orb
             method: :post,
             path: ["customers/%0s/balance_transactions", customer_id],
             body: parsed,
-            model: Orb::Models::Customers::BalanceTransactionCreateResponse,
+            model: Orb::Models::CustomerBalanceTransactionModel,
             options: options
           )
         end
@@ -80,7 +80,7 @@ module Orb
         #
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
-        # @return [Orb::Page<Orb::Models::Customers::BalanceTransactionListResponse>]
+        # @return [Orb::Page<Orb::Models::CustomerBalanceTransactionModel>]
         #
         def list(customer_id, params = {})
           parsed, options = Orb::Models::Customers::BalanceTransactionListParams.dump_request(params)
@@ -89,7 +89,7 @@ module Orb
             path: ["customers/%0s/balance_transactions", customer_id],
             query: parsed,
             page: Orb::Page,
-            model: Orb::Models::Customers::BalanceTransactionListResponse,
+            model: Orb::Models::CustomerBalanceTransactionModel,
             options: options
           )
         end

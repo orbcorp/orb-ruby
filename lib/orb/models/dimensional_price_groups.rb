@@ -5,8 +5,8 @@ module Orb
     class DimensionalPriceGroupsAPI < Orb::BaseModel
       # @!attribute data
       #
-      #   @return [Array<Orb::Models::DimensionalPriceGroup>]
-      required :data, -> { Orb::ArrayOf[Orb::Models::DimensionalPriceGroup] }
+      #   @return [Array<Orb::Models::DimensionalPriceGroupModel>]
+      required :data, -> { Orb::ArrayOf[Orb::Models::DimensionalPriceGroupModel] }
 
       # @!attribute pagination_metadata
       #
@@ -14,7 +14,7 @@ module Orb
       required :pagination_metadata, -> { Orb::Models::PaginationMetadata }
 
       # @!parse
-      #   # @param data [Array<Orb::Models::DimensionalPriceGroup>]
+      #   # @param data [Array<Orb::Models::DimensionalPriceGroupModel>]
       #   # @param pagination_metadata [Orb::Models::PaginationMetadata]
       #   #
       #   def initialize(data:, pagination_metadata:, **) = super

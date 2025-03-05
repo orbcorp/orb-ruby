@@ -10,14 +10,14 @@ class Orb::Test::Resources::CouponsTest < Orb::Test::ResourceTest
     )
 
     assert_pattern do
-      response => Orb::Models::Coupon
+      response => Orb::Models::CouponModel
     end
 
     assert_pattern do
       response => {
         id: String,
         archived_at: Time | nil,
-        discount: Orb::Models::Coupon::Discount,
+        discount: Orb::Models::CouponModel::Discount,
         duration_in_months: Integer | nil,
         max_redemptions: Integer | nil,
         redemption_code: String,
@@ -40,14 +40,14 @@ class Orb::Test::Resources::CouponsTest < Orb::Test::ResourceTest
 
     row = response.to_enum.first
     assert_pattern do
-      row => Orb::Models::Coupon
+      row => Orb::Models::CouponModel
     end
 
     assert_pattern do
       row => {
         id: String,
         archived_at: Time | nil,
-        discount: Orb::Models::Coupon::Discount,
+        discount: Orb::Models::CouponModel::Discount,
         duration_in_months: Integer | nil,
         max_redemptions: Integer | nil,
         redemption_code: String,
@@ -60,14 +60,14 @@ class Orb::Test::Resources::CouponsTest < Orb::Test::ResourceTest
     response = @orb.coupons.archive("coupon_id")
 
     assert_pattern do
-      response => Orb::Models::Coupon
+      response => Orb::Models::CouponModel
     end
 
     assert_pattern do
       response => {
         id: String,
         archived_at: Time | nil,
-        discount: Orb::Models::Coupon::Discount,
+        discount: Orb::Models::CouponModel::Discount,
         duration_in_months: Integer | nil,
         max_redemptions: Integer | nil,
         redemption_code: String,
@@ -80,14 +80,14 @@ class Orb::Test::Resources::CouponsTest < Orb::Test::ResourceTest
     response = @orb.coupons.fetch("coupon_id")
 
     assert_pattern do
-      response => Orb::Models::Coupon
+      response => Orb::Models::CouponModel
     end
 
     assert_pattern do
       response => {
         id: String,
         archived_at: Time | nil,
-        discount: Orb::Models::Coupon::Discount,
+        discount: Orb::Models::CouponModel::Discount,
         duration_in_months: Integer | nil,
         max_redemptions: Integer | nil,
         redemption_code: String,

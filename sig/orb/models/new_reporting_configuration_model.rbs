@@ -1,0 +1,17 @@
+module Orb
+  module Models
+    type new_reporting_configuration_model = { exempt: bool }
+
+    class NewReportingConfigurationModel < Orb::BaseModel
+      attr_accessor exempt: bool
+
+      def initialize:
+        (exempt: bool) -> void
+        | (
+          ?Orb::Models::new_reporting_configuration_model | Orb::BaseModel data
+        ) -> void
+
+      def to_hash: -> Orb::Models::new_reporting_configuration_model
+    end
+  end
+end

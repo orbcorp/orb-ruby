@@ -6,7 +6,7 @@ module Orb
       def create:
         (
           Orb::Models::PlanCreateParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Plan
+        ) -> Orb::Models::PlanModel
         | (
           currency: String,
           name: String,
@@ -17,24 +17,24 @@ module Orb
           net_terms: Integer?,
           status: Orb::Models::PlanCreateParams::status,
           request_options: Orb::request_opts
-        ) -> Orb::Models::Plan
+        ) -> Orb::Models::PlanModel
 
       def update:
         (
           String plan_id,
           ?Orb::Models::PlanUpdateParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Plan
+        ) -> Orb::Models::PlanModel
         | (
           String plan_id,
           external_plan_id: String?,
           metadata: ::Hash[Symbol, String?]?,
           request_options: Orb::request_opts
-        ) -> Orb::Models::Plan
+        ) -> Orb::Models::PlanModel
 
       def list:
         (
           ?Orb::Models::PlanListParams | ::Hash[Symbol, top] params
-        ) -> Orb::Page[Orb::Models::Plan]
+        ) -> Orb::Page[Orb::Models::PlanModel]
         | (
           created_at_gt: Time?,
           created_at_gte: Time?,
@@ -44,17 +44,17 @@ module Orb
           limit: Integer,
           status: Orb::Models::PlanListParams::status,
           request_options: Orb::request_opts
-        ) -> Orb::Page[Orb::Models::Plan]
+        ) -> Orb::Page[Orb::Models::PlanModel]
 
       def fetch:
         (
           String plan_id,
           ?Orb::Models::PlanFetchParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Plan
+        ) -> Orb::Models::PlanModel
         | (
           String plan_id,
           request_options: Orb::request_opts
-        ) -> Orb::Models::Plan
+        ) -> Orb::Models::PlanModel
 
       def initialize: (client: Orb::Client) -> void
     end

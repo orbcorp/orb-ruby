@@ -1,0 +1,27 @@
+module Orb
+  module Models
+    type replace_subscription_adjustment_params =
+      {
+        adjustment: Orb::Models::new_adjustment_model,
+        replaces_adjustment_id: String
+      }
+
+    class ReplaceSubscriptionAdjustmentParams < Orb::BaseModel
+      attr_accessor adjustment: Orb::Models::new_adjustment_model
+
+      attr_accessor replaces_adjustment_id: String
+
+      def initialize:
+        (
+          adjustment: Orb::Models::new_adjustment_model,
+          replaces_adjustment_id: String
+        ) -> void
+        | (
+          ?Orb::Models::replace_subscription_adjustment_params
+          | Orb::BaseModel data
+        ) -> void
+
+      def to_hash: -> Orb::Models::replace_subscription_adjustment_params
+    end
+  end
+end
