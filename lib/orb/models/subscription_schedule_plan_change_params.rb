@@ -275,17 +275,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case change_option
-      # in :requested_date
-      #   # ...
-      # in :end_of_subscription_term
-      #   # ...
-      # in :immediate
-      #   # ...
-      # end
-      # ```
       class ChangeOption < Orb::Enum
         REQUESTED_DATE = :requested_date
         END_OF_SUBSCRIPTION_TERM = :end_of_subscription_term
@@ -341,63 +330,6 @@ module Orb
         # @abstract
         #
         # The definition of a new adjustment to create and add to the subscription.
-        #
-        # @example
-        # ```ruby
-        # case adjustment
-        # in {
-        #   adjustment_type: "percentage_discount",
-        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-        #   percentage_discount: Float,
-        #   is_invoice_level: Orb::BooleanModel
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewPercentageDiscount ...
-        # in {
-        #   adjustment_type: "usage_discount",
-        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-        #   usage_discount: Float,
-        #   is_invoice_level: Orb::BooleanModel
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewUsageDiscount ...
-        # in {
-        #   adjustment_type: "amount_discount",
-        #   amount_discount: String,
-        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-        #   is_invoice_level: Orb::BooleanModel
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewAmountDiscount ...
-        # in {
-        #   adjustment_type: "minimum",
-        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-        #   item_id: String,
-        #   minimum_amount: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMinimum ...
-        # in {
-        #   adjustment_type: "maximum",
-        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-        #   maximum_amount: String,
-        #   is_invoice_level: Orb::BooleanModel
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMaximum ...
-        # end
-        # ```
-        #
-        # @example
-        # ```ruby
-        # case adjustment
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewPercentageDiscount
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewUsageDiscount
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewAmountDiscount
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMinimum
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMaximum
-        #   # ...
-        # end
-        # ```
         class Adjustment < Orb::Union
           discriminator :adjustment_type
 
@@ -775,24 +707,6 @@ module Orb
           # @abstract
           #
           # The cadence at which to allocate the amount to the customer.
-          #
-          # @example
-          # ```ruby
-          # case cadence
-          # in :one_time
-          #   # ...
-          # in :monthly
-          #   # ...
-          # in :quarterly
-          #   # ...
-          # in :semi_annual
-          #   # ...
-          # in :annual
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class Cadence < Orb::Enum
             ONE_TIME = :one_time
             MONTHLY = :monthly
@@ -849,17 +763,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case discount_type
-          # in :percentage
-          #   # ...
-          # in :usage
-          #   # ...
-          # in :amount
-          #   # ...
-          # end
-          # ```
           class DiscountType < Orb::Enum
             PERCENTAGE = :percentage
             USAGE = :usage
@@ -877,243 +780,6 @@ module Orb
         # @abstract
         #
         # The definition of a new price to create and add to the subscription.
-        #
-        # @example
-        # ```ruby
-        # case price
-        # in {
-        #   model_type: "unit",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice ...
-        # in {
-        #   model_type: "package",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice ...
-        # in {
-        #   model_type: "matrix",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence,
-        #   item_id: String,
-        #   matrix_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice ...
-        # in {
-        #   model_type: "tiered",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice ...
-        # in {
-        #   model_type: "tiered_bps",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice ...
-        # in {
-        #   model_type: "bps",
-        #   bps_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BpsConfig,
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence,
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice ...
-        # in {
-        #   model_type: "bulk_bps",
-        #   bulk_bps_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig,
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence,
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice ...
-        # in {
-        #   model_type: "bulk",
-        #   bulk_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig,
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence,
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice ...
-        # in {
-        #   model_type: "threshold_total_amount",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice ...
-        # in {
-        #   model_type: "tiered_package",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice ...
-        # in {
-        #   model_type: "tiered_with_minimum",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice ...
-        # in {
-        #   model_type: "unit_with_percent",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice ...
-        # in {
-        #   model_type: "package_with_allocation",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice ...
-        # in {
-        #   model_type: "tiered_with_proration",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice ...
-        # in {
-        #   model_type: "unit_with_proration",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice ...
-        # in {
-        #   model_type: "grouped_allocation",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence,
-        #   grouped_allocation_config: ^(Orb::HashOf[Orb::Unknown]),
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice ...
-        # in {
-        #   model_type: "grouped_with_prorated_minimum",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence,
-        #   grouped_with_prorated_minimum_config: ^(Orb::HashOf[Orb::Unknown]),
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice ...
-        # in {
-        #   model_type: "bulk_with_proration",
-        #   bulk_with_proration_config: ^(Orb::HashOf[Orb::Unknown]),
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence,
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice ...
-        # in {
-        #   model_type: "scalable_matrix_with_unit_pricing",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice ...
-        # in {
-        #   model_type: "scalable_matrix_with_tiered_pricing",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice ...
-        # in {
-        #   model_type: "cumulative_grouped_bulk",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence,
-        #   cumulative_grouped_bulk_config: ^(Orb::HashOf[Orb::Unknown]),
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice ...
-        # in {
-        #   model_type: "max_group_tiered_package",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence,
-        #   item_id: String,
-        #   max_group_tiered_package_config: ^(Orb::HashOf[Orb::Unknown])
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice ...
-        # in {
-        #   model_type: "grouped_with_metered_minimum",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence,
-        #   grouped_with_metered_minimum_config: ^(Orb::HashOf[Orb::Unknown]),
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice ...
-        # in {
-        #   model_type: "matrix_with_display_name",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence,
-        #   item_id: String,
-        #   matrix_with_display_name_config: ^(Orb::HashOf[Orb::Unknown])
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice ...
-        # in {
-        #   model_type: "grouped_tiered_package",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence,
-        #   grouped_tiered_package_config: ^(Orb::HashOf[Orb::Unknown]),
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice ...
-        # end
-        # ```
-        #
-        # @example
-        # ```ruby
-        # case price
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice
-        #   # ...
-        # end
-        # ```
         class Price < Orb::Union
           discriminator :model_type
 
@@ -1347,24 +1013,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -1424,16 +1072,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -1475,16 +1113,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -1654,24 +1282,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -1739,16 +1349,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -1790,16 +1390,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -1969,24 +1559,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -2089,16 +1661,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -2140,16 +1702,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -2319,24 +1871,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -2430,16 +1964,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -2481,16 +2005,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -2660,24 +2174,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -2779,16 +2275,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -2830,16 +2316,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -3031,24 +2507,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -3093,16 +2551,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -3144,16 +2592,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -3373,24 +2811,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -3435,16 +2855,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -3486,16 +2896,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -3707,24 +3107,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -3769,16 +3151,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -3820,16 +3192,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -3998,24 +3360,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -4060,16 +3404,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -4111,16 +3445,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -4289,24 +3613,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -4351,16 +3657,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -4402,16 +3698,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -4580,24 +3866,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -4642,16 +3910,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -4693,16 +3951,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -4871,24 +4119,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -4933,16 +4163,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -4984,16 +4204,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -5162,24 +4372,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -5224,16 +4416,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -5275,16 +4457,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -5453,24 +4625,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -5515,16 +4669,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -5566,16 +4710,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -5744,24 +4878,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -5806,16 +4922,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -5857,16 +4963,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -6035,24 +5131,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -6097,16 +5175,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -6148,16 +5216,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -6326,24 +5384,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -6388,16 +5428,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -6439,16 +5469,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -6617,24 +5637,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -6679,16 +5681,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -6730,16 +5722,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -6908,24 +5890,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -6970,16 +5934,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -7021,16 +5975,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -7199,24 +6143,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -7261,16 +6187,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -7312,16 +6228,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -7490,24 +6396,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -7552,16 +6440,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -7603,16 +6481,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -7781,24 +6649,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -7843,16 +6693,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -7894,16 +6734,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -8072,24 +6902,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -8134,16 +6946,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -8185,16 +6987,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -8363,24 +7155,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -8425,16 +7199,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -8476,16 +7240,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -8654,24 +7408,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -8716,16 +7452,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -8767,16 +7493,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -8798,18 +7514,6 @@ module Orb
       # Reset billing periods to be aligned with the plan change's effective date or
       #   start of the month. Defaults to `unchanged` which keeps subscription's existing
       #   billing cycle alignment.
-      #
-      # @example
-      # ```ruby
-      # case billing_cycle_alignment
-      # in :unchanged
-      #   # ...
-      # in :plan_change_date
-      #   # ...
-      # in :start_of_month
-      #   # ...
-      # end
-      # ```
       class BillingCycleAlignment < Orb::Enum
         UNCHANGED = :unchanged
         PLAN_CHANGE_DATE = :plan_change_date
@@ -8920,63 +7624,6 @@ module Orb
         # @abstract
         #
         # The definition of a new adjustment to create and add to the subscription.
-        #
-        # @example
-        # ```ruby
-        # case adjustment
-        # in {
-        #   adjustment_type: "percentage_discount",
-        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-        #   percentage_discount: Float,
-        #   is_invoice_level: Orb::BooleanModel
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount ...
-        # in {
-        #   adjustment_type: "usage_discount",
-        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-        #   usage_discount: Float,
-        #   is_invoice_level: Orb::BooleanModel
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewUsageDiscount ...
-        # in {
-        #   adjustment_type: "amount_discount",
-        #   amount_discount: String,
-        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-        #   is_invoice_level: Orb::BooleanModel
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewAmountDiscount ...
-        # in {
-        #   adjustment_type: "minimum",
-        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-        #   item_id: String,
-        #   minimum_amount: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMinimum ...
-        # in {
-        #   adjustment_type: "maximum",
-        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-        #   maximum_amount: String,
-        #   is_invoice_level: Orb::BooleanModel
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMaximum ...
-        # end
-        # ```
-        #
-        # @example
-        # ```ruby
-        # case adjustment
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewUsageDiscount
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewAmountDiscount
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMinimum
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMaximum
-        #   # ...
-        # end
-        # ```
         class Adjustment < Orb::Union
           discriminator :adjustment_type
 
@@ -9342,24 +7989,6 @@ module Orb
           # @abstract
           #
           # The cadence at which to allocate the amount to the customer.
-          #
-          # @example
-          # ```ruby
-          # case cadence
-          # in :one_time
-          #   # ...
-          # in :monthly
-          #   # ...
-          # in :quarterly
-          #   # ...
-          # in :semi_annual
-          #   # ...
-          # in :annual
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class Cadence < Orb::Enum
             ONE_TIME = :one_time
             MONTHLY = :monthly
@@ -9416,17 +8045,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case discount_type
-          # in :percentage
-          #   # ...
-          # in :usage
-          #   # ...
-          # in :amount
-          #   # ...
-          # end
-          # ```
           class DiscountType < Orb::Enum
             PERCENTAGE = :percentage
             USAGE = :usage
@@ -9444,243 +8062,6 @@ module Orb
         # @abstract
         #
         # The definition of a new price to create and add to the subscription.
-        #
-        # @example
-        # ```ruby
-        # case price
-        # in {
-        #   model_type: "unit",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice ...
-        # in {
-        #   model_type: "package",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice ...
-        # in {
-        #   model_type: "matrix",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence,
-        #   item_id: String,
-        #   matrix_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice ...
-        # in {
-        #   model_type: "tiered",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice ...
-        # in {
-        #   model_type: "tiered_bps",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice ...
-        # in {
-        #   model_type: "bps",
-        #   bps_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BpsConfig,
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence,
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice ...
-        # in {
-        #   model_type: "bulk_bps",
-        #   bulk_bps_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig,
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence,
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice ...
-        # in {
-        #   model_type: "bulk",
-        #   bulk_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig,
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence,
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice ...
-        # in {
-        #   model_type: "threshold_total_amount",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice ...
-        # in {
-        #   model_type: "tiered_package",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice ...
-        # in {
-        #   model_type: "tiered_with_minimum",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice ...
-        # in {
-        #   model_type: "unit_with_percent",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice ...
-        # in {
-        #   model_type: "package_with_allocation",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice ...
-        # in {
-        #   model_type: "tiered_with_proration",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice ...
-        # in {
-        #   model_type: "unit_with_proration",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice ...
-        # in {
-        #   model_type: "grouped_allocation",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence,
-        #   grouped_allocation_config: ^(Orb::HashOf[Orb::Unknown]),
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice ...
-        # in {
-        #   model_type: "grouped_with_prorated_minimum",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence,
-        #   grouped_with_prorated_minimum_config: ^(Orb::HashOf[Orb::Unknown]),
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice ...
-        # in {
-        #   model_type: "bulk_with_proration",
-        #   bulk_with_proration_config: ^(Orb::HashOf[Orb::Unknown]),
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence,
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice ...
-        # in {
-        #   model_type: "scalable_matrix_with_unit_pricing",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice ...
-        # in {
-        #   model_type: "scalable_matrix_with_tiered_pricing",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence,
-        #   item_id: String,
-        #   name: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice ...
-        # in {
-        #   model_type: "cumulative_grouped_bulk",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence,
-        #   cumulative_grouped_bulk_config: ^(Orb::HashOf[Orb::Unknown]),
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice ...
-        # in {
-        #   model_type: "max_group_tiered_package",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence,
-        #   item_id: String,
-        #   max_group_tiered_package_config: ^(Orb::HashOf[Orb::Unknown])
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice ...
-        # in {
-        #   model_type: "grouped_with_metered_minimum",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence,
-        #   grouped_with_metered_minimum_config: ^(Orb::HashOf[Orb::Unknown]),
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice ...
-        # in {
-        #   model_type: "matrix_with_display_name",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence,
-        #   item_id: String,
-        #   matrix_with_display_name_config: ^(Orb::HashOf[Orb::Unknown])
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice ...
-        # in {
-        #   model_type: "grouped_tiered_package",
-        #   cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence,
-        #   grouped_tiered_package_config: ^(Orb::HashOf[Orb::Unknown]),
-        #   item_id: String
-        # }
-        #   # Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice ...
-        # end
-        # ```
-        #
-        # @example
-        # ```ruby
-        # case price
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice
-        #   # ...
-        # in Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice
-        #   # ...
-        # end
-        # ```
         class Price < Orb::Union
           discriminator :model_type
 
@@ -9914,24 +8295,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -9991,16 +8354,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -10042,16 +8395,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -10221,24 +8564,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -10306,16 +8631,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -10357,16 +8672,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -10536,24 +8841,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -10656,16 +8943,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -10707,16 +8984,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -10886,24 +9153,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -10997,16 +9246,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -11048,16 +9287,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -11227,24 +9456,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -11346,16 +9557,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -11397,16 +9598,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -11598,24 +9789,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -11660,16 +9833,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -11711,16 +9874,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -11940,24 +10093,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -12002,16 +10137,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -12053,16 +10178,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -12274,24 +10389,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -12336,16 +10433,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -12387,16 +10474,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -12565,24 +10642,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -12627,16 +10686,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -12678,16 +10727,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -12856,24 +10895,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -12918,16 +10939,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -12969,16 +10980,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -13147,24 +11148,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -13209,16 +11192,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -13260,16 +11233,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -13438,24 +11401,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -13500,16 +11445,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -13551,16 +11486,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -13729,24 +11654,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -13791,16 +11698,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -13842,16 +11739,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -14020,24 +11907,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -14082,16 +11951,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -14133,16 +11992,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -14311,24 +12160,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -14373,16 +12204,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -14424,16 +12245,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -14602,24 +12413,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -14664,16 +12457,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -14715,16 +12498,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -14893,24 +12666,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -14955,16 +12710,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -15006,16 +12751,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -15184,24 +12919,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -15246,16 +12963,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -15297,16 +13004,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -15475,24 +13172,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -15537,16 +13216,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -15588,16 +13257,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -15766,24 +13425,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -15828,16 +13469,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -15879,16 +13510,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -16057,24 +13678,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -16119,16 +13722,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -16170,16 +13763,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -16348,24 +13931,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -16410,16 +13975,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -16461,16 +14016,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -16639,24 +14184,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -16701,16 +14228,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -16752,16 +14269,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -16930,24 +14437,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -16992,16 +14481,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -17043,16 +14522,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -17221,24 +14690,6 @@ module Orb
             # @abstract
             #
             # The cadence to bill for this price on.
-            #
-            # @example
-            # ```ruby
-            # case cadence
-            # in :annual
-            #   # ...
-            # in :semi_annual
-            #   # ...
-            # in :monthly
-            #   # ...
-            # in :quarterly
-            #   # ...
-            # in :one_time
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Cadence < Orb::Enum
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -17283,16 +14734,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month
@@ -17334,16 +14775,6 @@ module Orb
               # @abstract
               #
               # The unit of billing period duration.
-              #
-              # @example
-              # ```ruby
-              # case duration_unit
-              # in :day
-              #   # ...
-              # in :month
-              #   # ...
-              # end
-              # ```
               class DurationUnit < Orb::Enum
                 DAY = :day
                 MONTH = :month

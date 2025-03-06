@@ -41,18 +41,6 @@ module Orb
       # @abstract
       #
       # Determines the timing of subscription cancellation
-      #
-      # @example
-      # ```ruby
-      # case cancel_option
-      # in :end_of_subscription_term
-      #   # ...
-      # in :immediate
-      #   # ...
-      # in :requested_date
-      #   # ...
-      # end
-      # ```
       class CancelOption < Orb::Enum
         END_OF_SUBSCRIPTION_TERM = :end_of_subscription_term
         IMMEDIATE = :immediate

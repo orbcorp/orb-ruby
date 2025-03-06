@@ -103,14 +103,6 @@ module Orb
       # @abstract
       #
       # This determines the windowing of usage reporting.
-      #
-      # @example
-      # ```ruby
-      # case granularity
-      # in :day
-      #   # ...
-      # end
-      # ```
       class Granularity < Orb::Enum
         DAY = :day
 
@@ -128,16 +120,6 @@ module Orb
       #   period, or incremental day-by-day usage. If your customer has minimums or
       #   discounts, it's strongly recommended that you use the default cumulative
       #   behavior.
-      #
-      # @example
-      # ```ruby
-      # case view_mode
-      # in :periodic
-      #   # ...
-      # in :cumulative
-      #   # ...
-      # end
-      # ```
       class ViewMode < Orb::Enum
         PERIODIC = :periodic
         CUMULATIVE = :cumulative

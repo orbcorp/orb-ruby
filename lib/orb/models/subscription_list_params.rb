@@ -91,17 +91,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case status
-      # in :active
-      #   # ...
-      # in :ended
-      #   # ...
-      # in :upcoming
-      #   # ...
-      # end
-      # ```
       class Status < Orb::Enum
         ACTIVE = :active
         ENDED = :ended
