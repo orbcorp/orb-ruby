@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.21 (2025-03-06)
+
+Full Changelog: [v0.1.0-alpha.20...v0.1.0-alpha.21](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.20...v0.1.0-alpha.21)
+
+### Features
+
+* **api:** api update ([#105](https://github.com/orbcorp/orb-ruby/issues/105)) ([7968ec9](https://github.com/orbcorp/orb-ruby/commit/7968ec90b70b5d3651cb27c8f2ea70b5cf09fd65))
+
+
+### Chores
+
+* bump lockfile ([#103](https://github.com/orbcorp/orb-ruby/issues/103)) ([1244c07](https://github.com/orbcorp/orb-ruby/commit/1244c07b21d5c1c6753e1f5f1f96ed997ed8b1cc))
+* **internal:** version bump ([#100](https://github.com/orbcorp/orb-ruby/issues/100)) ([f7cc952](https://github.com/orbcorp/orb-ruby/commit/f7cc95244aab1e0e7f8f7ccc6f651b7544e54dfb))
+* rename misleading variable ([#104](https://github.com/orbcorp/orb-ruby/issues/104)) ([1ce27e9](https://github.com/orbcorp/orb-ruby/commit/1ce27e9467cd10ebeb1ac5b6d8079faeb65867b2))
+* update custom timeout header name ([#102](https://github.com/orbcorp/orb-ruby/issues/102)) ([8b2b509](https://github.com/orbcorp/orb-ruby/commit/8b2b509a07bd74385e63fb8a016e5b916e884946))
+
 ## 0.1.0-alpha.20 (2025-03-05)
 
 Full Changelog: [v0.1.0-alpha.19...v0.1.0-alpha.20](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.19...v0.1.0-alpha.20)
