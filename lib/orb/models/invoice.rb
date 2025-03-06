@@ -712,23 +712,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case action
-        # in :applied_to_invoice
-        #   # ...
-        # in :manual_adjustment
-        #   # ...
-        # in :prorated_refund
-        #   # ...
-        # in :revert_prorated_refund
-        #   # ...
-        # in :return_from_voiding
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Action < Orb::Enum
           APPLIED_TO_INVOICE = :applied_to_invoice
           MANUAL_ADJUSTMENT = :manual_adjustment
@@ -780,15 +763,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case type
-        # in :increment
-        #   # ...
-        # in :decrement
-        #   # ...
-        # end
-        # ```
         class Type < Orb::Enum
           INCREMENT = :increment
           DECREMENT = :decrement
@@ -935,23 +909,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case country
-        # in :AD
-        #   # ...
-        # in :AE
-        #   # ...
-        # in :AR
-        #   # ...
-        # in :AT
-        #   # ...
-        # in :AU
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Country < Orb::Enum
           AD = :AD
           AE = :AE
@@ -1042,23 +999,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case type
-        # in :ad_nrt
-        #   # ...
-        # in :ae_trn
-        #   # ...
-        # in :ar_cuit
-        #   # ...
-        # in :eu_vat
-        #   # ...
-        # in :au_abn
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Type < Orb::Enum
           AD_NRT = :ad_nrt
           AE_TRN = :ae_trn
@@ -1143,17 +1083,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case invoice_source
-      # in :subscription
-      #   # ...
-      # in :partial
-      #   # ...
-      # in :one_off
-      #   # ...
-      # end
-      # ```
       class InvoiceSource < Orb::Enum
         SUBSCRIPTION = :subscription
         PARTIAL = :partial
@@ -1372,42 +1301,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case adjustment
-        # in {adjustment_type: "usage_discount", id: String, amount: String, applies_to_price_ids: ^(Orb::ArrayOf[String])}
-        #   # Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment ...
-        # in {adjustment_type: "amount_discount", id: String, amount: String, amount_discount: String}
-        #   # Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment ...
-        # in {
-        #   adjustment_type: "percentage_discount",
-        #   id: String,
-        #   amount: String,
-        #   applies_to_price_ids: ^(Orb::ArrayOf[String])
-        # }
-        #   # Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment ...
-        # in {adjustment_type: "minimum", id: String, amount: String, applies_to_price_ids: ^(Orb::ArrayOf[String])}
-        #   # Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment ...
-        # in {adjustment_type: "maximum", id: String, amount: String, applies_to_price_ids: ^(Orb::ArrayOf[String])}
-        #   # Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment ...
-        # end
-        # ```
-        #
-        # @example
-        # ```ruby
-        # case adjustment
-        # in Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment
-        #   # ...
-        # in Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment
-        #   # ...
-        # in Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment
-        #   # ...
-        # in Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment
-        #   # ...
-        # in Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment
-        #   # ...
-        # end
-        # ```
         class Adjustment < Orb::Union
           discriminator :adjustment_type
 
@@ -1829,44 +1722,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case sub_line_item
-        # in {
-        #   type: "matrix",
-        #   amount: String,
-        #   grouping: Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::Grouping,
-        #   matrix_config: Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig
-        # }
-        #   # Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem ...
-        # in {
-        #   type: "tier",
-        #   amount: String,
-        #   grouping: Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::Grouping,
-        #   name: String
-        # }
-        #   # Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem ...
-        # in {
-        #   type: "'null'",
-        #   amount: String,
-        #   grouping: Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem::Grouping,
-        #   name: String
-        # }
-        #   # Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem ...
-        # end
-        # ```
-        #
-        # @example
-        # ```ruby
-        # case sub_line_item
-        # in Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem
-        #   # ...
-        # in Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem
-        #   # ...
-        # in Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem
-        #   # ...
-        # end
-        # ```
         class SubLineItem < Orb::Union
           discriminator :type
 
@@ -2245,14 +2100,6 @@ module Orb
         # @abstract
         #
         # The payment provider that attempted to collect the payment.
-        #
-        # @example
-        # ```ruby
-        # case payment_provider
-        # in :stripe
-        #   # ...
-        # end
-        # ```
         class PaymentProvider < Orb::Enum
           STRIPE = :stripe
 
@@ -2311,21 +2158,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case status
-      # in :issued
-      #   # ...
-      # in :paid
-      #   # ...
-      # in :synced
-      #   # ...
-      # in :void
-      #   # ...
-      # in :draft
-      #   # ...
-      # end
-      # ```
       class Status < Orb::Enum
         ISSUED = :issued
         PAID = :paid

@@ -59,23 +59,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case external_connection_name
-        # in :stripe
-        #   # ...
-        # in :quickbooks
-        #   # ...
-        # in :"bill.com"
-        #   # ...
-        # in :netsuite
-        #   # ...
-        # in :taxjar
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class ExternalConnectionName < Orb::Enum
           STRIPE = :stripe
           QUICKBOOKS = :quickbooks

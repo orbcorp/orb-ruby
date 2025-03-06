@@ -38,13 +38,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case discount_type
-      # in :amount
-      #   # ...
-      # end
-      # ```
       class DiscountType < Orb::Enum
         AMOUNT = :amount
 

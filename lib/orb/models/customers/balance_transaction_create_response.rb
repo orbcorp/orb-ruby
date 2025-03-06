@@ -96,23 +96,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case action
-        # in :applied_to_invoice
-        #   # ...
-        # in :manual_adjustment
-        #   # ...
-        # in :prorated_refund
-        #   # ...
-        # in :revert_prorated_refund
-        #   # ...
-        # in :return_from_voiding
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Action < Orb::Enum
           APPLIED_TO_INVOICE = :applied_to_invoice
           MANUAL_ADJUSTMENT = :manual_adjustment
@@ -164,15 +147,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case type
-        # in :increment
-        #   # ...
-        # in :decrement
-        #   # ...
-        # end
-        # ```
         class Type < Orb::Enum
           INCREMENT = :increment
           DECREMENT = :decrement

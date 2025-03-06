@@ -295,62 +295,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case adjustment
-        # in {
-        #   adjustment_type: "usage_discount",
-        #   id: String,
-        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-        #   is_invoice_level: Orb::BooleanModel
-        # }
-        #   # Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment ...
-        # in {
-        #   adjustment_type: "amount_discount",
-        #   id: String,
-        #   amount_discount: String,
-        #   applies_to_price_ids: ^(Orb::ArrayOf[String])
-        # }
-        #   # Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment ...
-        # in {
-        #   adjustment_type: "percentage_discount",
-        #   id: String,
-        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-        #   is_invoice_level: Orb::BooleanModel
-        # }
-        #   # Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment ...
-        # in {
-        #   adjustment_type: "minimum",
-        #   id: String,
-        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-        #   is_invoice_level: Orb::BooleanModel
-        # }
-        #   # Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment ...
-        # in {
-        #   adjustment_type: "maximum",
-        #   id: String,
-        #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-        #   is_invoice_level: Orb::BooleanModel
-        # }
-        #   # Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment ...
-        # end
-        # ```
-        #
-        # @example
-        # ```ruby
-        # case adjustment
-        # in Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment
-        #   # ...
-        # in Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment
-        #   # ...
-        # in Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment
-        #   # ...
-        # in Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment
-        #   # ...
-        # in Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
-        #   # ...
-        # end
-        # ```
         class Adjustment < Orb::Union
           discriminator :adjustment_type
 
@@ -756,44 +700,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case discount_interval
-      # in {
-      #   discount_type: "amount",
-      #   amount_discount: String,
-      #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-      #   applies_to_price_interval_ids: ^(Orb::ArrayOf[String])
-      # }
-      #   # Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::AmountDiscountInterval ...
-      # in {
-      #   discount_type: "percentage",
-      #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-      #   applies_to_price_interval_ids: ^(Orb::ArrayOf[String]),
-      #   end_date: Time
-      # }
-      #   # Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::PercentageDiscountInterval ...
-      # in {
-      #   discount_type: "usage",
-      #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-      #   applies_to_price_interval_ids: ^(Orb::ArrayOf[String]),
-      #   end_date: Time
-      # }
-      #   # Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::UsageDiscountInterval ...
-      # end
-      # ```
-      #
-      # @example
-      # ```ruby
-      # case discount_interval
-      # in Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::AmountDiscountInterval
-      #   # ...
-      # in Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::PercentageDiscountInterval
-      #   # ...
-      # in Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::UsageDiscountInterval
-      #   # ...
-      # end
-      # ```
       class DiscountInterval < Orb::Union
         discriminator :discount_type
 
@@ -1274,17 +1180,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case status
-      # in :active
-      #   # ...
-      # in :ended
-      #   # ...
-      # in :upcoming
-      #   # ...
-      # end
-      # ```
       class Status < Orb::Enum
         ACTIVE = :active
         ENDED = :ended

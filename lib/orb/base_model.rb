@@ -294,6 +294,31 @@ module Orb
   #
   #   We can therefore convert string values to Symbols, but can't convert other
   #   values safely.
+  #
+  # @example
+  # ```ruby
+  # # `billing_cycle_relative_date` is a `Orb::Models::BillingCycleRelativeDate`
+  # case billing_cycle_relative_date
+  # when Orb::Models::BillingCycleRelativeDate::START_OF_TERM
+  #   # ...
+  # when Orb::Models::BillingCycleRelativeDate::END_OF_TERM
+  #   # ...
+  # else
+  #   # ...
+  # end
+  # ```
+  #
+  # @example
+  # ```ruby
+  # case billing_cycle_relative_date
+  # in :start_of_term
+  #   # ...
+  # in :end_of_term
+  #   # ...
+  # else
+  #   # ...
+  # end
+  # ```
   class Enum
     extend Orb::Converter
 
@@ -369,6 +394,56 @@ module Orb
   #
   # @abstract
   #
+  # @example
+  # ```ruby
+  # # `discount` is a `Orb::Models::Discount`
+  # case discount
+  # when Orb::Models::PercentageDiscount
+  #   # ...
+  # when Orb::Models::TrialDiscount
+  #   # ...
+  # when Orb::Models::UsageDiscount
+  #   # ...
+  # else
+  #   # ...
+  # end
+  # ```
+  #
+  # @example
+  # ```ruby
+  # case discount
+  # in {
+  #   discount_type: :percentage,
+  #   applies_to_price_ids: applies_to_price_ids,
+  #   percentage_discount: percentage_discount,
+  #   reason: reason
+  # }
+  #   # ...
+  # in {
+  #   discount_type: :trial,
+  #   applies_to_price_ids: applies_to_price_ids,
+  #   reason: reason,
+  #   trial_amount_discount: trial_amount_discount
+  # }
+  #   # ...
+  # in {
+  #   discount_type: :usage,
+  #   applies_to_price_ids: applies_to_price_ids,
+  #   usage_discount: usage_discount,
+  #   reason: reason
+  # }
+  #   # ...
+  # in {
+  #   discount_type: :amount,
+  #   amount_discount: amount_discount,
+  #   applies_to_price_ids: applies_to_price_ids,
+  #   reason: reason
+  # }
+  #   # ...
+  # else
+  #   # ...
+  # end
+  # ```
   class Union
     extend Orb::Converter
 
@@ -839,6 +914,15 @@ module Orb
   #
   # @abstract
   #
+  # @example
+  # ```ruby
+  # # `amount_discount` is a `Orb::Models::AmountDiscount`
+  # amount_discount => {
+  #   amount_discount: amount_discount,
+  #   applies_to_price_ids: applies_to_price_ids,
+  #   discount_type: discount_type
+  # }
+  # ```
   class BaseModel
     extend Orb::Converter
 

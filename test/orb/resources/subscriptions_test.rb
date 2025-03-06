@@ -252,6 +252,13 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
     assert_pattern do
       response => Orb::Models::SubscriptionUsage
     end
+
+    assert_pattern do
+      case response
+      in Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage
+      in Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage
+      end
+    end
   end
 
   def test_price_intervals

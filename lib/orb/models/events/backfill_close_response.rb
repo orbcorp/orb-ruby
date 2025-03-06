@@ -110,20 +110,6 @@ module Orb
         # @abstract
         #
         # The status of the backfill.
-        #
-        # @example
-        # ```ruby
-        # case status
-        # in :pending
-        #   # ...
-        # in :reflected
-        #   # ...
-        # in :pending_revert
-        #   # ...
-        # in :reverted
-        #   # ...
-        # end
-        # ```
         class Status < Orb::Enum
           PENDING = :pending
           REFLECTED = :reflected

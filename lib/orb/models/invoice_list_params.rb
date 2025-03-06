@@ -165,15 +165,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case date_type
-      # in :due_date
-      #   # ...
-      # in :invoice_date
-      #   # ...
-      # end
-      # ```
       class DateType < Orb::Enum
         DUE_DATE = :due_date
         INVOICE_DATE = :invoice_date
@@ -188,21 +179,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case status
-      # in :draft
-      #   # ...
-      # in :issued
-      #   # ...
-      # in :paid
-      #   # ...
-      # in :synced
-      #   # ...
-      # in :void
-      #   # ...
-      # end
-      # ```
       class Status < Orb::Enum
         DRAFT = :draft
         ISSUED = :issued

@@ -4,15 +4,6 @@ module Orb
   module Models
     # @abstract
     #
-    # @example
-    # ```ruby
-    # case subscription_usage
-    # in Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage
-    #   # ...
-    # in Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage
-    #   # ...
-    # end
-    # ```
     class SubscriptionUsage < Orb::Union
       variant -> { Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage }
 
@@ -107,15 +98,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case view_mode
-          # in :periodic
-          #   # ...
-          # in :cumulative
-          #   # ...
-          # end
-          # ```
           class ViewMode < Orb::Enum
             PERIODIC = :periodic
             CUMULATIVE = :cumulative
@@ -250,15 +232,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case view_mode
-          # in :periodic
-          #   # ...
-          # in :cumulative
-          #   # ...
-          # end
-          # ```
           class ViewMode < Orb::Enum
             PERIODIC = :periodic
             CUMULATIVE = :cumulative

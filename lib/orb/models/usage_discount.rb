@@ -39,13 +39,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case discount_type
-      # in :usage
-      #   # ...
-      # end
-      # ```
       class DiscountType < Orb::Enum
         USAGE = :usage
 

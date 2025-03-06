@@ -73,18 +73,6 @@ module Orb
       # Determines when the change takes effect. Note that if `effective_date` is
       #   specified, this defaults to `effective_date`. Otherwise, this defaults to
       #   `immediate` unless it's explicitly set to `upcoming_invoice`.
-      #
-      # @example
-      # ```ruby
-      # case change_option
-      # in :immediate
-      #   # ...
-      # in :upcoming_invoice
-      #   # ...
-      # in :effective_date
-      #   # ...
-      # end
-      # ```
       class ChangeOption < Orb::Enum
         IMMEDIATE = :immediate
         UPCOMING_INVOICE = :upcoming_invoice

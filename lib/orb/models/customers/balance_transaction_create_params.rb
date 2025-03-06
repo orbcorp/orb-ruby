@@ -36,15 +36,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case type
-        # in :increment
-        #   # ...
-        # in :decrement
-        #   # ...
-        # end
-        # ```
         class Type < Orb::Enum
           INCREMENT = :increment
           DECREMENT = :decrement

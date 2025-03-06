@@ -208,42 +208,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case adjustment
-      # in {adjustment_type: "usage_discount", id: String, amount: String, applies_to_price_ids: ^(Orb::ArrayOf[String])}
-      #   # Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment ...
-      # in {adjustment_type: "amount_discount", id: String, amount: String, amount_discount: String}
-      #   # Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment ...
-      # in {
-      #   adjustment_type: "percentage_discount",
-      #   id: String,
-      #   amount: String,
-      #   applies_to_price_ids: ^(Orb::ArrayOf[String])
-      # }
-      #   # Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment ...
-      # in {adjustment_type: "minimum", id: String, amount: String, applies_to_price_ids: ^(Orb::ArrayOf[String])}
-      #   # Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment ...
-      # in {adjustment_type: "maximum", id: String, amount: String, applies_to_price_ids: ^(Orb::ArrayOf[String])}
-      #   # Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment ...
-      # end
-      # ```
-      #
-      # @example
-      # ```ruby
-      # case adjustment
-      # in Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment
-      #   # ...
-      # in Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment
-      #   # ...
-      # in Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment
-      #   # ...
-      # in Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment
-      #   # ...
-      # in Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment
-      #   # ...
-      # end
-      # ```
       class Adjustment < Orb::Union
         discriminator :adjustment_type
 
@@ -665,44 +629,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case sub_line_item
-      # in {
-      #   type: "matrix",
-      #   amount: String,
-      #   grouping: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::Grouping,
-      #   matrix_config: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::MatrixConfig
-      # }
-      #   # Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem ...
-      # in {
-      #   type: "tier",
-      #   amount: String,
-      #   grouping: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::Grouping,
-      #   name: String
-      # }
-      #   # Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem ...
-      # in {
-      #   type: "'null'",
-      #   amount: String,
-      #   grouping: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem::Grouping,
-      #   name: String
-      # }
-      #   # Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem ...
-      # end
-      # ```
-      #
-      # @example
-      # ```ruby
-      # case sub_line_item
-      # in Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem
-      #   # ...
-      # in Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem
-      #   # ...
-      # in Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem
-      #   # ...
-      # end
-      # ```
       class SubLineItem < Orb::Union
         discriminator :type
 

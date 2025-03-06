@@ -39,13 +39,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case discount_type
-      # in :percentage
-      #   # ...
-      # end
-      # ```
       class DiscountType < Orb::Enum
         PERCENTAGE = :percentage
 

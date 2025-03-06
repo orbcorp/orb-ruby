@@ -54,15 +54,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case status
-        # in :active
-        #   # ...
-        # in :pending_payment
-        #   # ...
-        # end
-        # ```
         class Status < Orb::Enum
           ACTIVE = :active
           PENDING_PAYMENT = :pending_payment
