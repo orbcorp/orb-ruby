@@ -396,22 +396,6 @@ module Orb
       #   - if the provider is an invoicing provider (`stripe_invoice`, `quickbooks`,
       #     `bill.com`, `netsuite`), any product mappings must first be configured with
       #     the Orb team.
-      #
-      # @example
-      # ```ruby
-      # case payment_provider
-      # in :quickbooks
-      #   # ...
-      # in :"bill.com"
-      #   # ...
-      # in :stripe_charge
-      #   # ...
-      # in :stripe_invoice
-      #   # ...
-      # in :netsuite
-      #   # ...
-      # end
-      # ```
       class PaymentProvider < Orb::Enum
         QUICKBOOKS = :quickbooks
         BILL_COM = :"bill.com"
@@ -487,25 +471,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case tax_configuration
-      # in {tax_provider: "avalara", tax_exempt: Orb::BooleanModel, tax_exemption_code: String}
-      #   # Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration ...
-      # in {tax_provider: "taxjar", tax_exempt: Orb::BooleanModel}
-      #   # Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration ...
-      # end
-      # ```
-      #
-      # @example
-      # ```ruby
-      # case tax_configuration
-      # in Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration
-      #   # ...
-      # in Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration
-      #   # ...
-      # end
-      # ```
       class TaxConfiguration < Orb::Union
         discriminator :tax_provider
 
@@ -693,23 +658,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case country
-        # in :AD
-        #   # ...
-        # in :AE
-        #   # ...
-        # in :AR
-        #   # ...
-        # in :AT
-        #   # ...
-        # in :AU
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Country < Orb::Enum
           AD = :AD
           AE = :AE
@@ -800,23 +748,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case type
-        # in :ad_nrt
-        #   # ...
-        # in :ae_trn
-        #   # ...
-        # in :ar_cuit
-        #   # ...
-        # in :eu_vat
-        #   # ...
-        # in :au_abn
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Type < Orb::Enum
           AD_NRT = :ad_nrt
           AE_TRN = :ae_trn

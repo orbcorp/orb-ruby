@@ -212,62 +212,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case adjustment
-      # in {
-      #   adjustment_type: "usage_discount",
-      #   id: String,
-      #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-      #   is_invoice_level: Orb::BooleanModel
-      # }
-      #   # Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment ...
-      # in {
-      #   adjustment_type: "amount_discount",
-      #   id: String,
-      #   amount_discount: String,
-      #   applies_to_price_ids: ^(Orb::ArrayOf[String])
-      # }
-      #   # Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment ...
-      # in {
-      #   adjustment_type: "percentage_discount",
-      #   id: String,
-      #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-      #   is_invoice_level: Orb::BooleanModel
-      # }
-      #   # Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment ...
-      # in {
-      #   adjustment_type: "minimum",
-      #   id: String,
-      #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-      #   is_invoice_level: Orb::BooleanModel
-      # }
-      #   # Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment ...
-      # in {
-      #   adjustment_type: "maximum",
-      #   id: String,
-      #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-      #   is_invoice_level: Orb::BooleanModel
-      # }
-      #   # Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment ...
-      # end
-      # ```
-      #
-      # @example
-      # ```ruby
-      # case adjustment
-      # in Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment
-      #   # ...
-      # in Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment
-      #   # ...
-      # in Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment
-      #   # ...
-      # in Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment
-      #   # ...
-      # in Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
-      #   # ...
-      # end
-      # ```
       class Adjustment < Orb::Union
         discriminator :adjustment_type
 
@@ -798,21 +742,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case duration_unit
-        # in :daily
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # end
-        # ```
         class DurationUnit < Orb::Enum
           DAILY = :daily
           MONTHLY = :monthly
@@ -903,17 +832,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case status
-      # in :active
-      #   # ...
-      # in :archived
-      #   # ...
-      # in :draft
-      #   # ...
-      # end
-      # ```
       class Status < Orb::Enum
         ACTIVE = :active
         ARCHIVED = :archived
@@ -948,13 +866,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case trial_period_unit
-        # in :days
-        #   # ...
-        # end
-        # ```
         class TrialPeriodUnit < Orb::Enum
           DAYS = :days
 

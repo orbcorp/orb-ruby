@@ -32,17 +32,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case grouping_value
-      # in String
-      #   # ...
-      # in Float
-      #   # ...
-      # in Orb::BooleanModel
-      #   # ...
-      # end
-      # ```
       class GroupingValue < Orb::Union
         variant String
 

@@ -59,20 +59,6 @@ module Orb
       # @abstract
       #
       # An optional reason for the credit note.
-      #
-      # @example
-      # ```ruby
-      # case reason
-      # in :duplicate
-      #   # ...
-      # in :fraudulent
-      #   # ...
-      # in :order_change
-      #   # ...
-      # in :product_unsatisfactory
-      #   # ...
-      # end
-      # ```
       class Reason < Orb::Enum
         DUPLICATE = :duplicate
         FRAUDULENT = :fraudulent

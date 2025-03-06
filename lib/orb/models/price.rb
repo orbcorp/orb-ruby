@@ -14,270 +14,6 @@ module Orb
     #
     #   For more on the types of prices, see
     #   [the core concepts documentation](/core-concepts#plan-and-price)
-    #
-    # @example
-    # ```ruby
-    # case price
-    # in {
-    #   model_type: "unit",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::UnitPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::UnitPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::UnitPrice ...
-    # in {
-    #   model_type: "package",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::PackagePrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::PackagePrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::PackagePrice ...
-    # in {
-    #   model_type: "matrix",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::MatrixPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::MatrixPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::MatrixPrice ...
-    # in {
-    #   model_type: "tiered",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::TieredPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::TieredPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::TieredPrice ...
-    # in {
-    #   model_type: "tiered_bps",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::TieredBpsPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::TieredBpsPrice ...
-    # in {
-    #   model_type: "bps",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::BpsPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::BpsPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::BpsPrice ...
-    # in {
-    #   model_type: "bulk_bps",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::BulkBpsPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::BulkBpsPrice ...
-    # in {
-    #   model_type: "bulk",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::BulkPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::BulkPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::BulkPrice ...
-    # in {
-    #   model_type: "threshold_total_amount",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::ThresholdTotalAmountPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::ThresholdTotalAmountPrice ...
-    # in {
-    #   model_type: "tiered_package",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::TieredPackagePrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::TieredPackagePrice ...
-    # in {
-    #   model_type: "grouped_tiered",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::GroupedTieredPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::GroupedTieredPrice ...
-    # in {
-    #   model_type: "tiered_with_minimum",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::TieredWithMinimumPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::TieredWithMinimumPrice ...
-    # in {
-    #   model_type: "tiered_package_with_minimum",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::TieredPackageWithMinimumPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::TieredPackageWithMinimumPrice ...
-    # in {
-    #   model_type: "package_with_allocation",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::PackageWithAllocationPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::PackageWithAllocationPrice ...
-    # in {
-    #   model_type: "unit_with_percent",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::UnitWithPercentPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::UnitWithPercentPrice ...
-    # in {
-    #   model_type: "matrix_with_allocation",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::MatrixWithAllocationPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::MatrixWithAllocationPrice ...
-    # in {
-    #   model_type: "tiered_with_proration",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::TieredWithProrationPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::TieredWithProrationPrice ...
-    # in {
-    #   model_type: "unit_with_proration",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::UnitWithProrationPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::UnitWithProrationPrice ...
-    # in {
-    #   model_type: "grouped_allocation",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::GroupedAllocationPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::GroupedAllocationPrice ...
-    # in {
-    #   model_type: "grouped_with_prorated_minimum",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::GroupedWithProratedMinimumPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::GroupedWithProratedMinimumPrice ...
-    # in {
-    #   model_type: "grouped_with_metered_minimum",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::GroupedWithMeteredMinimumPrice ...
-    # in {
-    #   model_type: "matrix_with_display_name",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::MatrixWithDisplayNamePrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::MatrixWithDisplayNamePrice ...
-    # in {
-    #   model_type: "bulk_with_proration",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::BulkWithProrationPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::BulkWithProrationPrice ...
-    # in {
-    #   model_type: "grouped_tiered_package",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::GroupedTieredPackagePrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::GroupedTieredPackagePrice ...
-    # in {
-    #   model_type: "max_group_tiered_package",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::MaxGroupTieredPackagePrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::MaxGroupTieredPackagePrice ...
-    # in {
-    #   model_type: "scalable_matrix_with_unit_pricing",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::ScalableMatrixWithUnitPricingPrice ...
-    # in {
-    #   model_type: "scalable_matrix_with_tiered_pricing",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::ScalableMatrixWithTieredPricingPrice ...
-    # in {
-    #   model_type: "cumulative_grouped_bulk",
-    #   id: String,
-    #   billable_metric: Orb::Models::Price::CumulativeGroupedBulkPrice::BillableMetric,
-    #   billing_cycle_configuration: Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration
-    # }
-    #   # Orb::Models::Price::CumulativeGroupedBulkPrice ...
-    # end
-    # ```
-    #
-    # @example
-    # ```ruby
-    # case price
-    # in Orb::Models::Price::UnitPrice
-    #   # ...
-    # in Orb::Models::Price::PackagePrice
-    #   # ...
-    # in Orb::Models::Price::MatrixPrice
-    #   # ...
-    # in Orb::Models::Price::TieredPrice
-    #   # ...
-    # in Orb::Models::Price::TieredBpsPrice
-    #   # ...
-    # in Orb::Models::Price::BpsPrice
-    #   # ...
-    # in Orb::Models::Price::BulkBpsPrice
-    #   # ...
-    # in Orb::Models::Price::BulkPrice
-    #   # ...
-    # in Orb::Models::Price::ThresholdTotalAmountPrice
-    #   # ...
-    # in Orb::Models::Price::TieredPackagePrice
-    #   # ...
-    # in Orb::Models::Price::GroupedTieredPrice
-    #   # ...
-    # in Orb::Models::Price::TieredWithMinimumPrice
-    #   # ...
-    # in Orb::Models::Price::TieredPackageWithMinimumPrice
-    #   # ...
-    # in Orb::Models::Price::PackageWithAllocationPrice
-    #   # ...
-    # in Orb::Models::Price::UnitWithPercentPrice
-    #   # ...
-    # in Orb::Models::Price::MatrixWithAllocationPrice
-    #   # ...
-    # in Orb::Models::Price::TieredWithProrationPrice
-    #   # ...
-    # in Orb::Models::Price::UnitWithProrationPrice
-    #   # ...
-    # in Orb::Models::Price::GroupedAllocationPrice
-    #   # ...
-    # in Orb::Models::Price::GroupedWithProratedMinimumPrice
-    #   # ...
-    # in Orb::Models::Price::GroupedWithMeteredMinimumPrice
-    #   # ...
-    # in Orb::Models::Price::MatrixWithDisplayNamePrice
-    #   # ...
-    # in Orb::Models::Price::BulkWithProrationPrice
-    #   # ...
-    # in Orb::Models::Price::GroupedTieredPackagePrice
-    #   # ...
-    # in Orb::Models::Price::MaxGroupTieredPackagePrice
-    #   # ...
-    # in Orb::Models::Price::ScalableMatrixWithUnitPricingPrice
-    #   # ...
-    # in Orb::Models::Price::ScalableMatrixWithTieredPricingPrice
-    #   # ...
-    # in Orb::Models::Price::CumulativeGroupedBulkPrice
-    #   # ...
-    # end
-    # ```
     class Price < Orb::Union
       discriminator :model_type
 
@@ -561,15 +297,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -585,23 +312,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -660,15 +370,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -750,15 +451,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -1030,15 +722,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -1054,23 +737,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -1129,15 +795,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -1242,15 +899,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -1507,15 +1155,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -1531,23 +1170,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -1606,15 +1228,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -1749,15 +1362,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -2014,15 +1618,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -2038,23 +1633,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -2113,15 +1691,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -2203,15 +1772,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -2513,15 +2073,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -2537,23 +2088,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -2612,15 +2146,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -2702,15 +2227,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -3019,15 +2535,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -3065,23 +2572,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -3140,15 +2630,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -3230,15 +2711,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -3495,15 +2967,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -3564,23 +3027,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -3639,15 +3085,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -3729,15 +3166,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -3994,15 +3422,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -4055,23 +3474,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -4130,15 +3532,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -4220,15 +3613,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -4490,15 +3874,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -4514,23 +3889,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -4589,15 +3947,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -4679,15 +4028,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -4945,15 +4285,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -4969,23 +4300,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -5044,15 +4358,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -5134,15 +4439,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -5400,15 +4696,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -5424,23 +4711,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -5499,15 +4769,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -5589,15 +4850,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -5857,15 +5109,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -5881,23 +5124,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -5956,15 +5182,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -6046,15 +5263,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -6316,15 +5524,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -6340,23 +5539,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -6415,15 +5597,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -6505,15 +5678,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -6775,15 +5939,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -6799,23 +5954,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -6874,15 +6012,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -6964,15 +6093,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -7230,15 +6350,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -7254,23 +6365,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -7329,15 +6423,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -7419,15 +6504,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -7690,15 +6766,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -7714,23 +6781,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -7789,15 +6839,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -7940,15 +6981,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -8208,15 +7240,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -8232,23 +7255,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -8307,15 +7313,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -8397,15 +7394,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -8665,15 +7653,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -8689,23 +7668,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -8764,15 +7726,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -8854,15 +7807,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -9122,15 +8066,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -9146,23 +8081,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -9221,15 +8139,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -9311,15 +8220,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -9581,15 +8481,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -9605,23 +8496,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -9680,15 +8554,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -9770,15 +8635,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -10040,15 +8896,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -10064,23 +8911,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -10139,15 +8969,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -10229,15 +9050,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -10499,15 +9311,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -10523,23 +9326,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -10598,15 +9384,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -10688,15 +9465,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -10956,15 +9724,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -10980,23 +9739,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -11055,15 +9797,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -11145,15 +9878,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -11415,15 +10139,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -11439,23 +10154,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -11514,15 +10212,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -11604,15 +10293,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -11874,15 +10554,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -11898,23 +10569,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -11973,15 +10627,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -12063,15 +10708,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -12333,15 +10969,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -12357,23 +10984,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -12432,15 +11042,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -12522,15 +11123,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -12792,15 +11384,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -12816,23 +11399,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -12891,15 +11457,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -12981,15 +11538,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -13251,15 +11799,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -13275,23 +11814,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case cadence
-        # in :one_time
-        #   # ...
-        # in :monthly
-        #   # ...
-        # in :quarterly
-        #   # ...
-        # in :semi_annual
-        #   # ...
-        # in :annual
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -13350,15 +11872,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case duration_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -13440,15 +11953,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case price_type
-        # in :usage_price
-        #   # ...
-        # in :fixed_price
-        #   # ...
-        # end
-        # ```
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price

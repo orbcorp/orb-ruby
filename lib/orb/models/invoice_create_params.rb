@@ -167,13 +167,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case model_type
-        # in :unit
-        #   # ...
-        # end
-        # ```
         class ModelType < Orb::Enum
           UNIT = :unit
 

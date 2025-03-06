@@ -105,15 +105,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case entry_status
-          # in :committed
-          #   # ...
-          # in :pending
-          #   # ...
-          # end
-          # ```
           class EntryStatus < Orb::Enum
             COMMITTED = :committed
             PENDING = :pending
@@ -128,23 +119,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case entry_type
-          # in :increment
-          #   # ...
-          # in :decrement
-          #   # ...
-          # in :expiration_change
-          #   # ...
-          # in :credit_block_expiry
-          #   # ...
-          # in :void
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class EntryType < Orb::Enum
             INCREMENT = :increment
             DECREMENT = :decrement

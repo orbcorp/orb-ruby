@@ -323,15 +323,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case discount_type
-          # in :percentage
-          #   # ...
-          # in :amount
-          #   # ...
-          # end
-          # ```
           class DiscountType < Orb::Enum
             PERCENTAGE = :percentage
             AMOUNT = :amount
@@ -389,13 +380,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case discount_type
-        # in :percentage
-        #   # ...
-        # end
-        # ```
         class DiscountType < Orb::Enum
           PERCENTAGE = :percentage
 
@@ -430,19 +414,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case reason
-      # in :Duplicate
-      #   # ...
-      # in :Fraudulent
-      #   # ...
-      # in :"Order change"
-      #   # ...
-      # in :"Product unsatisfactory"
-      #   # ...
-      # end
-      # ```
       class Reason < Orb::Enum
         DUPLICATE = :Duplicate
         FRAUDULENT = :Fraudulent
@@ -459,15 +430,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case type
-      # in :refund
-      #   # ...
-      # in :adjustment
-      #   # ...
-      # end
-      # ```
       class Type < Orb::Enum
         REFUND = :refund
         ADJUSTMENT = :adjustment
@@ -521,13 +483,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case discount_type
-        # in :percentage
-        #   # ...
-        # end
-        # ```
         class DiscountType < Orb::Enum
           PERCENTAGE = :percentage
 

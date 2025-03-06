@@ -83,18 +83,6 @@ module Orb
       # @abstract
       #
       # The plan status to filter to ('active', 'archived', or 'draft').
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :active
-      #   # ...
-      # in :archived
-      #   # ...
-      # in :draft
-      #   # ...
-      # end
-      # ```
       class Status < Orb::Enum
         ACTIVE = :active
         ARCHIVED = :archived

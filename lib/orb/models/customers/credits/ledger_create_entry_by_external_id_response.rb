@@ -8,46 +8,6 @@ module Orb
         #
         # The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid
         #   credits within Orb.
-        #
-        # @example
-        # ```ruby
-        # case ledger_create_entry_by_external_id_response
-        # in {entry_type: "increment", id: String, amount: Float, created_at: Time}
-        #   # Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry ...
-        # in {entry_type: "decrement", id: String, amount: Float, created_at: Time}
-        #   # Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry ...
-        # in {entry_type: "expiration_change", id: String, amount: Float, created_at: Time}
-        #   # Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry ...
-        # in {entry_type: "credit_block_expiry", id: String, amount: Float, created_at: Time}
-        #   # Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry ...
-        # in {entry_type: "void", id: String, amount: Float, created_at: Time}
-        #   # Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry ...
-        # in {entry_type: "void_initiated", id: String, amount: Float, created_at: Time}
-        #   # Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry ...
-        # in {entry_type: "amendment", id: String, amount: Float, created_at: Time}
-        #   # Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry ...
-        # end
-        # ```
-        #
-        # @example
-        # ```ruby
-        # case ledger_create_entry_by_external_id_response
-        # in Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry
-        #   # ...
-        # in Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry
-        #   # ...
-        # in Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry
-        #   # ...
-        # in Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry
-        #   # ...
-        # in Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry
-        #   # ...
-        # in Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry
-        #   # ...
-        # in Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry
-        #   # ...
-        # end
-        # ```
         class LedgerCreateEntryByExternalIDResponse < Orb::Union
           discriminator :entry_type
 
@@ -229,15 +189,6 @@ module Orb
 
             # @abstract
             #
-            # @example
-            # ```ruby
-            # case entry_status
-            # in :committed
-            #   # ...
-            # in :pending
-            #   # ...
-            # end
-            # ```
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -429,15 +380,6 @@ module Orb
 
             # @abstract
             #
-            # @example
-            # ```ruby
-            # case entry_status
-            # in :committed
-            #   # ...
-            # in :pending
-            #   # ...
-            # end
-            # ```
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -615,15 +557,6 @@ module Orb
 
             # @abstract
             #
-            # @example
-            # ```ruby
-            # case entry_status
-            # in :committed
-            #   # ...
-            # in :pending
-            #   # ...
-            # end
-            # ```
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -794,15 +727,6 @@ module Orb
 
             # @abstract
             #
-            # @example
-            # ```ruby
-            # case entry_status
-            # in :committed
-            #   # ...
-            # in :pending
-            #   # ...
-            # end
-            # ```
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -987,15 +911,6 @@ module Orb
 
             # @abstract
             #
-            # @example
-            # ```ruby
-            # case entry_status
-            # in :committed
-            #   # ...
-            # in :pending
-            #   # ...
-            # end
-            # ```
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -1187,15 +1102,6 @@ module Orb
 
             # @abstract
             #
-            # @example
-            # ```ruby
-            # case entry_status
-            # in :committed
-            #   # ...
-            # in :pending
-            #   # ...
-            # end
-            # ```
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -1366,15 +1272,6 @@ module Orb
 
             # @abstract
             #
-            # @example
-            # ```ruby
-            # case entry_status
-            # in :committed
-            #   # ...
-            # in :pending
-            #   # ...
-            # end
-            # ```
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending

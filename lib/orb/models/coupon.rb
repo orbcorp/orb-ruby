@@ -68,30 +68,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case discount
-      # in {
-      #   discount_type: "percentage",
-      #   applies_to_price_ids: ^(Orb::ArrayOf[String]),
-      #   percentage_discount: Float,
-      #   reason: String
-      # }
-      #   # Orb::Models::PercentageDiscount ...
-      # in {discount_type: "amount", amount_discount: String, applies_to_price_ids: ^(Orb::ArrayOf[String]), reason: String}
-      #   # Orb::Models::AmountDiscount ...
-      # end
-      # ```
-      #
-      # @example
-      # ```ruby
-      # case discount
-      # in Orb::Models::PercentageDiscount
-      #   # ...
-      # in Orb::Models::AmountDiscount
-      #   # ...
-      # end
-      # ```
       class Discount < Orb::Union
         discriminator :discount_type
 
