@@ -16,7 +16,8 @@ module Orb
       required :active_plan_phase_order, Integer, nil?: true
 
       # @!attribute adjustment_intervals
-      #   The adjustment intervals for this subscription.
+      #   The adjustment intervals for this subscription sorted by the start_date of the
+      #     adjustment interval.
       #
       #   @return [Array<Orb::Models::Subscription::AdjustmentInterval>]
       required :adjustment_intervals, -> { Orb::ArrayOf[Orb::Models::Subscription::AdjustmentInterval] }
@@ -96,7 +97,7 @@ module Orb
       required :default_invoice_memo, String, nil?: true
 
       # @!attribute discount_intervals
-      #   The discount intervals for this subscription.
+      #   The discount intervals for this subscription sorted by the start_date.
       #
       #   @return [Array<Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval, Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval, Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval>]
       required :discount_intervals, -> { Orb::ArrayOf[union: Orb::Models::Subscription::DiscountInterval] }
@@ -119,7 +120,7 @@ module Orb
       required :invoicing_threshold, String, nil?: true
 
       # @!attribute maximum_intervals
-      #   The maximum intervals for this subscription.
+      #   The maximum intervals for this subscription sorted by the start_date.
       #
       #   @return [Array<Orb::Models::Subscription::MaximumInterval>]
       required :maximum_intervals, -> { Orb::ArrayOf[Orb::Models::Subscription::MaximumInterval] }
@@ -134,7 +135,7 @@ module Orb
       required :metadata, Orb::HashOf[String]
 
       # @!attribute minimum_intervals
-      #   The minimum intervals for this subscription.
+      #   The minimum intervals for this subscription sorted by the start_date.
       #
       #   @return [Array<Orb::Models::Subscription::MinimumInterval>]
       required :minimum_intervals, -> { Orb::ArrayOf[Orb::Models::Subscription::MinimumInterval] }
