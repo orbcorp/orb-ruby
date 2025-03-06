@@ -200,22 +200,6 @@ module Orb
       # @abstract
       #
       # The type of alert. This must be a valid alert type.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :usage_exceeded
-      #   # ...
-      # in :cost_exceeded
-      #   # ...
-      # in :credit_balance_depleted
-      #   # ...
-      # in :credit_balance_dropped
-      #   # ...
-      # in :credit_balance_recovered
-      #   # ...
-      # end
-      # ```
       class Type < Orb::Enum
         USAGE_EXCEEDED = :usage_exceeded
         COST_EXCEEDED = :cost_exceeded

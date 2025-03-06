@@ -45,25 +45,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case discount
-      # in {discount_type: "percentage", percentage_discount: Float}
-      #   # Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount ...
-      # in {discount_type: "amount", amount_discount: String}
-      #   # Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount ...
-      # end
-      # ```
-      #
-      # @example
-      # ```ruby
-      # case discount
-      # in Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount
-      #   # ...
-      # in Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
-      #   # ...
-      # end
-      # ```
       class Discount < Orb::Union
         discriminator :discount_type
 

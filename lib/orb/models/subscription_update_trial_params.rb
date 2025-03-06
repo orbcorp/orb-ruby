@@ -38,16 +38,6 @@ module Orb
       #
       # The new date that the trial should end, or the literal string `immediate` to end
       #   the trial immediately.
-      #
-      # @example
-      # ```ruby
-      # case trial_end_date
-      # in Time
-      #   # ...
-      # in Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::UnionMember1
-      #   # ...
-      # end
-      # ```
       class TrialEndDate < Orb::Union
         variant Time
 
@@ -55,13 +45,6 @@ module Orb
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case union_member1
-        # in :immediate
-        #   # ...
-        # end
-        # ```
         class UnionMember1 < Orb::Enum
           IMMEDIATE = :immediate
 

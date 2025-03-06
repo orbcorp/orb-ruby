@@ -132,16 +132,6 @@ module Orb
           # @abstract
           #
           # The unit of expires_after.
-          #
-          # @example
-          # ```ruby
-          # case expires_after_unit
-          # in :day
-          #   # ...
-          # in :month
-          #   # ...
-          # end
-          # ```
           class ExpiresAfterUnit < Orb::Enum
             DAY = :day
             MONTH = :month

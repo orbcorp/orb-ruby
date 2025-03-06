@@ -54,13 +54,6 @@ module Orb
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case discount_type
-      # in :trial
-      #   # ...
-      # end
-      # ```
       class DiscountType < Orb::Enum
         TRIAL = :trial
 

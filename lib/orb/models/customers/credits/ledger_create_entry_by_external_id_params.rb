@@ -136,13 +136,6 @@ module Orb
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case entry_type
-          # in :amendment
-          #   # ...
-          # end
-          # ```
           class EntryType < Orb::Enum
             AMENDMENT = :amendment
 
@@ -206,14 +199,6 @@ module Orb
           # @abstract
           #
           # Can only be specified when `entry_type=void`. The reason for the void.
-          #
-          # @example
-          # ```ruby
-          # case void_reason
-          # in :refund
-          #   # ...
-          # end
-          # ```
           class VoidReason < Orb::Enum
             REFUND = :refund
 
