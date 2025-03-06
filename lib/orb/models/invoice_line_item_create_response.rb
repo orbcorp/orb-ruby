@@ -17,7 +17,9 @@ module Orb
       required :adjusted_subtotal, String
 
       # @!attribute adjustments
-      #   All adjustments (ie. maximums, minimums, discounts) applied to the line item.
+      #   All adjustments applied to the line item in the order they were applied based on
+      #     invoice calculations (ie. usage discounts -> amount discounts -> percentage
+      #     discounts -> minimums -> maximums).
       #
       #   @return [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment>]
       required :adjustments, -> { Orb::ArrayOf[union: Orb::Models::InvoiceLineItemCreateResponse::Adjustment] }
