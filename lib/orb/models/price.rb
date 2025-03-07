@@ -302,11 +302,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -321,11 +316,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -375,11 +365,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -456,11 +441,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class UnitConfig < Orb::BaseModel
@@ -727,11 +707,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -746,11 +721,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -800,11 +770,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -904,11 +869,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -1160,11 +1120,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -1179,11 +1134,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -1233,11 +1183,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -1367,11 +1312,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -1623,11 +1563,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -1642,11 +1577,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -1696,11 +1626,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -1777,11 +1702,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class TieredConfig < Orb::BaseModel
@@ -2078,11 +1998,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -2097,11 +2012,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -2151,11 +2061,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -2232,11 +2137,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class TieredBpsConfig < Orb::BaseModel
@@ -2540,11 +2440,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -2581,11 +2476,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -2635,11 +2525,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -2716,11 +2601,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -2972,11 +2852,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -3036,11 +2911,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -3090,11 +2960,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -3171,11 +3036,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -3427,11 +3287,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -3483,11 +3338,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -3537,11 +3387,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -3618,11 +3463,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -3879,11 +3719,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -3898,11 +3733,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -3952,11 +3782,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -4033,11 +3858,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -4290,11 +4110,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -4309,11 +4124,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -4363,11 +4173,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -4444,11 +4249,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -4701,11 +4501,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -4720,11 +4515,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -4774,11 +4564,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -4855,11 +4640,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -5114,11 +4894,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -5133,11 +4908,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -5187,11 +4957,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -5268,11 +5033,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -5529,11 +5289,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -5548,11 +5303,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -5602,11 +5352,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -5683,11 +5428,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -5944,11 +5684,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -5963,11 +5698,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -6017,11 +5747,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -6098,11 +5823,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -6355,11 +6075,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -6374,11 +6089,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -6428,11 +6138,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -6509,11 +6214,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -6771,11 +6471,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -6790,11 +6485,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -6844,11 +6534,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -6986,11 +6671,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -7245,11 +6925,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -7264,11 +6939,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -7318,11 +6988,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -7399,11 +7064,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -7658,11 +7318,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -7677,11 +7332,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -7731,11 +7381,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -7812,11 +7457,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -8071,11 +7711,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -8090,11 +7725,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -8144,11 +7774,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -8225,11 +7850,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -8486,11 +8106,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -8505,11 +8120,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -8559,11 +8169,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -8640,11 +8245,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -8901,11 +8501,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -8920,11 +8515,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -8974,11 +8564,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -9055,11 +8640,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -9316,11 +8896,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -9335,11 +8910,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -9389,11 +8959,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -9470,11 +9035,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -9729,11 +9289,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -9748,11 +9303,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -9802,11 +9352,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -9883,11 +9428,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -10144,11 +9684,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -10163,11 +9698,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -10217,11 +9747,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -10298,11 +9823,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -10559,11 +10079,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -10578,11 +10093,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -10632,11 +10142,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -10713,11 +10218,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -10974,11 +10474,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -10993,11 +10488,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -11047,11 +10537,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -11128,11 +10613,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -11389,11 +10869,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -11408,11 +10883,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -11462,11 +10932,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -11543,11 +11008,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -11804,11 +11264,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -11823,11 +11278,6 @@ module Orb
           CUSTOM = :custom
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -11877,11 +11327,6 @@ module Orb
             MONTH = :month
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -11958,11 +11403,6 @@ module Orb
           FIXED_PRICE = :fixed_price
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel

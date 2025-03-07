@@ -105,8 +105,10 @@ module Orb
       class Discount < Orb::Union
         abstract!
 
-        sig { override.returns([[Symbol, Orb::Models::PercentageDiscount], [Symbol, Orb::Models::AmountDiscount]]) }
-        private_class_method def self.variants
+        class << self
+          sig { override.returns([[Symbol, Orb::Models::PercentageDiscount], [Symbol, Orb::Models::AmountDiscount]]) }
+          private def variants
+          end
         end
       end
     end

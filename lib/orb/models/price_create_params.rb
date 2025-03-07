@@ -349,11 +349,6 @@ module Orb
         CUSTOM = :custom
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -362,11 +357,6 @@ module Orb
         CUMULATIVE_GROUPED_BULK = :cumulative_grouped_bulk
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class UnitConfig < Orb::BaseModel
@@ -417,11 +407,6 @@ module Orb
           MONTH = :month
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -458,11 +443,6 @@ module Orb
           MONTH = :month
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 

@@ -9,11 +9,6 @@ module Orb
       END_OF_TERM = :end_of_term
 
       finalize!
-
-      # @!parse
-      #   # @return [Array<Symbol>]
-      #   #
-      #   def self.values; end
     end
   end
 end

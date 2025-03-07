@@ -152,8 +152,10 @@ module Orb
           OVERPAYMENT_REFUND = :overpayment_refund
           EXTERNAL_PAYMENT = :external_payment
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -199,8 +201,10 @@ module Orb
           INCREMENT = :increment
           DECREMENT = :decrement
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

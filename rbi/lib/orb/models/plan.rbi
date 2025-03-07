@@ -1056,13 +1056,15 @@ module Orb
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[Symbol, Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment], [Symbol, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment], [Symbol, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment], [Symbol, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment], [Symbol, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[Symbol, Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment], [Symbol, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment], [Symbol, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment], [Symbol, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment], [Symbol, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment]]
+              )
+          end
+          private def variants
+          end
         end
       end
 
@@ -1364,8 +1366,10 @@ module Orb
           SEMI_ANNUAL = T.let(:semi_annual, T.nilable(Symbol))
           ANNUAL = T.let(:annual, T.nilable(Symbol))
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -1463,8 +1467,10 @@ module Orb
         ARCHIVED = :archived
         DRAFT = :draft
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -1498,8 +1504,10 @@ module Orb
 
           DAYS = :days
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

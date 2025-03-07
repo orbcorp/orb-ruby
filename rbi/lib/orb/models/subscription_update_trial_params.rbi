@@ -52,13 +52,17 @@ module Orb
 
           IMMEDIATE = :immediate
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
-        sig { override.returns([[NilClass, Time], [NilClass, Symbol]]) }
-        private_class_method def self.variants
+        class << self
+          sig { override.returns([[NilClass, Time], [NilClass, Symbol]]) }
+          private def variants
+          end
         end
       end
     end

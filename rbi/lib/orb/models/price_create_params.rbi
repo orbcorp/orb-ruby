@@ -527,8 +527,10 @@ module Orb
         ONE_TIME = :one_time
         CUSTOM = :custom
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -537,8 +539,10 @@ module Orb
 
         CUMULATIVE_GROUPED_BULK = :cumulative_grouped_bulk
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -591,8 +595,10 @@ module Orb
           DAY = :day
           MONTH = :month
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -628,8 +634,10 @@ module Orb
           DAY = :day
           MONTH = :month
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

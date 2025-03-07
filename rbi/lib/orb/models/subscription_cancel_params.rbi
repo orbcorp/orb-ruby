@@ -68,8 +68,10 @@ module Orb
         IMMEDIATE = :immediate
         REQUESTED_DATE = :requested_date
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

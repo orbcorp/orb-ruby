@@ -107,11 +107,6 @@ module Orb
         DAY = :day
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -125,11 +120,6 @@ module Orb
         CUMULATIVE = :cumulative
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end
