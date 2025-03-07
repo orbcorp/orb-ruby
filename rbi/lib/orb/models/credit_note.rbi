@@ -483,8 +483,10 @@ module Orb
             PERCENTAGE = :percentage
             AMOUNT = :amount
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -573,8 +575,10 @@ module Orb
 
           PERCENTAGE = :percentage
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -613,8 +617,10 @@ module Orb
         ORDER_CHANGE = T.let(:"Order change", T.nilable(Symbol))
         PRODUCT_UNSATISFACTORY = T.let(:"Product unsatisfactory", T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -624,8 +630,10 @@ module Orb
         REFUND = :refund
         ADJUSTMENT = :adjustment
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -712,8 +720,10 @@ module Orb
 
           PERCENTAGE = :percentage
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 

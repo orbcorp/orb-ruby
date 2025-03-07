@@ -175,8 +175,10 @@ module Orb
 
             AMENDMENT = :amendment
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -245,8 +247,10 @@ module Orb
 
             REFUND = T.let(:refund, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end

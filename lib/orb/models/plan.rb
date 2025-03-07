@@ -750,11 +750,6 @@ module Orb
           ANNUAL = :annual
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class Maximum < Orb::BaseModel
@@ -838,11 +833,6 @@ module Orb
         DRAFT = :draft
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class TrialConfig < Orb::BaseModel
@@ -870,11 +860,6 @@ module Orb
           DAYS = :days
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
     end

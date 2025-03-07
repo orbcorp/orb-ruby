@@ -976,13 +976,15 @@ module Orb
             end
           end
 
-          sig do
-            override
-              .returns(
-                [[Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]]
-              )
-          end
-          private_class_method def self.variants
+          class << self
+            sig do
+              override
+                .returns(
+                  [[Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]]
+                )
+            end
+            private def variants
+            end
           end
         end
       end
@@ -1285,13 +1287,15 @@ module Orb
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::AmountDiscountInterval], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::PercentageDiscountInterval], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::UsageDiscountInterval]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::AmountDiscountInterval], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::PercentageDiscountInterval], [Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::UsageDiscountInterval]]
+              )
+          end
+          private def variants
+          end
         end
       end
 
@@ -1874,8 +1878,10 @@ module Orb
         ENDED = :ended
         UPCOMING = :upcoming
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 

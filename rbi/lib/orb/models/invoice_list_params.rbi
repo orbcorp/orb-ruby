@@ -243,8 +243,10 @@ module Orb
         DUE_DATE = T.let(:due_date, T.nilable(Symbol))
         INVOICE_DATE = T.let(:invoice_date, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -257,8 +259,10 @@ module Orb
         SYNCED = :synced
         VOID = :void
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

@@ -433,11 +433,6 @@ module Orb
         NETSUITE = :netsuite
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class ShippingAddress < Orb::BaseModel
@@ -698,11 +693,6 @@ module Orb
           ZA = :ZA
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         # @abstract
@@ -781,11 +771,6 @@ module Orb
           ZA_VAT = :za_vat
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -836,11 +821,6 @@ module Orb
             NETSUITE = :netsuite
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
       end
