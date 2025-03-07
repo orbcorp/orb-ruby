@@ -61,9 +61,6 @@ module Orb
       class Type < Orb::Enum
         USAGE_EXCEEDED = :usage_exceeded
         COST_EXCEEDED = :cost_exceeded
-        CREDIT_BALANCE_DEPLETED = :credit_balance_depleted
-        CREDIT_BALANCE_DROPPED = :credit_balance_dropped
-        CREDIT_BALANCE_RECOVERED = :credit_balance_recovered
 
         finalize!
 

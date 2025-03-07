@@ -85,7 +85,11 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
   end
 
   def test_create_for_customer_required_params
-    response = @orb.alerts.create_for_customer("customer_id", currency: "currency", type: :usage_exceeded)
+    response = @orb.alerts.create_for_customer(
+      "customer_id",
+      currency: "currency",
+      type: :credit_balance_depleted
+    )
 
     assert_pattern do
       response => Orb::Models::Alert
@@ -111,7 +115,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
     response = @orb.alerts.create_for_external_customer(
       "external_customer_id",
       currency: "currency",
-      type: :usage_exceeded
+      type: :credit_balance_depleted
     )
 
     assert_pattern do
