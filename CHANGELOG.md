@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.22 (2025-03-07)
+
+Full Changelog: [v0.1.0-alpha.21...v0.1.0-alpha.22](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.21...v0.1.0-alpha.22)
+
+### Features
+
+* add jsonl support ([#109](https://github.com/orbcorp/orb-ruby/issues/109)) ([4ea2359](https://github.com/orbcorp/orb-ruby/commit/4ea235901520cd3474067b7269ba91dbac18a847))
+* **api:** api update ([#111](https://github.com/orbcorp/orb-ruby/issues/111)) ([172e598](https://github.com/orbcorp/orb-ruby/commit/172e5983879cd507a2a31c9c903a1ab244e871dc))
+
+
+### Chores
+
+* **internal:** version bump ([#106](https://github.com/orbcorp/orb-ruby/issues/106)) ([c5992c6](https://github.com/orbcorp/orb-ruby/commit/c5992c62af1f5438f6845ce242209c69fae268b8))
+* move examples into tests ([#108](https://github.com/orbcorp/orb-ruby/issues/108)) ([e6134d2](https://github.com/orbcorp/orb-ruby/commit/e6134d271d4e2949c0c314b79d195ae213dd7aef))
+* support different EOLs in streaming ([#110](https://github.com/orbcorp/orb-ruby/issues/110)) ([f87af8c](https://github.com/orbcorp/orb-ruby/commit/f87af8cab1e87b87bb5adfe1cbfb51204f6ee23c))
+
 ## 0.1.0-alpha.21 (2025-03-06)
 
 Full Changelog: [v0.1.0-alpha.20...v0.1.0-alpha.21](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.20...v0.1.0-alpha.21)
