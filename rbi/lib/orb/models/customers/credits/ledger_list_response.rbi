@@ -252,8 +252,10 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -536,8 +538,10 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -798,8 +802,10 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -1049,8 +1055,10 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -1322,8 +1330,10 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -1606,8 +1616,10 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -1857,19 +1869,23 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
 
-          sig do
-            override
-              .returns(
-                [[Symbol, Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry]]
-              )
-          end
-          private_class_method def self.variants
+          class << self
+            sig do
+              override
+                .returns(
+                  [[Symbol, Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry]]
+                )
+            end
+            private def variants
+            end
           end
         end
       end

@@ -976,13 +976,15 @@ module Orb
             end
           end
 
-          sig do
-            override
-              .returns(
-                [[Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment], [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment], [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment], [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment], [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]]
-              )
-          end
-          private_class_method def self.variants
+          class << self
+            sig do
+              override
+                .returns(
+                  [[Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment], [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment], [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment], [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment], [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]]
+                )
+            end
+            private def variants
+            end
           end
         end
       end
@@ -1285,13 +1287,15 @@ module Orb
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::AmountDiscountInterval], [Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::PercentageDiscountInterval], [Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::UsageDiscountInterval]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::AmountDiscountInterval], [Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::PercentageDiscountInterval], [Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::UsageDiscountInterval]]
+              )
+          end
+          private def variants
+          end
         end
       end
 
@@ -1864,8 +1868,10 @@ module Orb
         ENDED = :ended
         UPCOMING = :upcoming
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 

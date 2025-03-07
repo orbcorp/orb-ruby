@@ -59,8 +59,10 @@ module Orb
       class GroupingValue < Orb::Union
         abstract!
 
-        sig { override.returns([[NilClass, String], [NilClass, Float], [NilClass, T::Boolean]]) }
-        private_class_method def self.variants
+        class << self
+          sig { override.returns([[NilClass, String], [NilClass, Float], [NilClass, T::Boolean]]) }
+          private def variants
+          end
         end
       end
     end

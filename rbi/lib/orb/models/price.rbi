@@ -405,8 +405,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -421,8 +423,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -483,8 +487,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -573,8 +579,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -1026,8 +1034,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -1042,8 +1052,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -1104,8 +1116,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -1220,8 +1234,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -1655,8 +1671,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -1671,8 +1689,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -1733,8 +1753,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -1902,8 +1924,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -2337,8 +2361,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -2353,8 +2379,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -2415,8 +2443,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -2505,8 +2535,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -2995,8 +3027,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -3011,8 +3045,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -3073,8 +3109,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -3163,8 +3201,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -3676,8 +3716,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -3718,8 +3760,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -3780,8 +3824,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -3870,8 +3916,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -4305,8 +4353,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -4386,8 +4436,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -4448,8 +4500,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -4538,8 +4592,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -4970,8 +5026,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -5033,8 +5091,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -5095,8 +5155,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -5185,8 +5247,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -5620,8 +5684,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -5636,8 +5702,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -5698,8 +5766,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -5788,8 +5858,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -6223,8 +6295,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -6239,8 +6313,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -6301,8 +6377,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -6391,8 +6469,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -6826,8 +6906,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -6842,8 +6924,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -6904,8 +6988,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -6994,8 +7080,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -7429,8 +7517,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -7445,8 +7535,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -7507,8 +7599,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -7597,8 +7691,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -8032,8 +8128,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -8048,8 +8146,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -8110,8 +8210,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -8200,8 +8302,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -8635,8 +8739,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -8651,8 +8757,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -8713,8 +8821,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -8803,8 +8913,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -9238,8 +9350,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -9254,8 +9368,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -9316,8 +9432,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -9406,8 +9524,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -9844,8 +9964,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -9860,8 +9982,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -9922,8 +10046,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -10103,8 +10229,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -10538,8 +10666,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -10554,8 +10684,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -10616,8 +10748,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -10706,8 +10840,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -11141,8 +11277,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -11157,8 +11295,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -11219,8 +11359,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -11309,8 +11451,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -11744,8 +11888,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -11760,8 +11906,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -11822,8 +11970,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -11912,8 +12062,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -12347,8 +12499,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -12363,8 +12517,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -12425,8 +12581,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -12515,8 +12673,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -12950,8 +13110,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -12966,8 +13128,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -13028,8 +13192,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -13118,8 +13284,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -13553,8 +13721,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -13569,8 +13739,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -13631,8 +13803,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -13721,8 +13895,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -14156,8 +14332,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -14172,8 +14350,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -14234,8 +14414,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -14324,8 +14506,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -14759,8 +14943,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -14775,8 +14961,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -14837,8 +15025,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -14927,8 +15117,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -15362,8 +15554,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -15378,8 +15572,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -15440,8 +15636,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -15530,8 +15728,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -15967,8 +16167,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -15983,8 +16185,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -16045,8 +16249,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -16135,8 +16341,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -16580,8 +16788,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -16596,8 +16806,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -16658,8 +16870,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -16748,8 +16962,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -17183,8 +17399,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -17199,8 +17417,10 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -17261,8 +17481,10 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -17351,8 +17573,10 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -17383,13 +17607,15 @@ module Orb
         end
       end
 
-      sig do
-        override
-          .returns(
-            [[Symbol, Orb::Models::Price::UnitPrice], [Symbol, Orb::Models::Price::PackagePrice], [Symbol, Orb::Models::Price::MatrixPrice], [Symbol, Orb::Models::Price::TieredPrice], [Symbol, Orb::Models::Price::TieredBpsPrice], [Symbol, Orb::Models::Price::BpsPrice], [Symbol, Orb::Models::Price::BulkBpsPrice], [Symbol, Orb::Models::Price::BulkPrice], [Symbol, Orb::Models::Price::ThresholdTotalAmountPrice], [Symbol, Orb::Models::Price::TieredPackagePrice], [Symbol, Orb::Models::Price::GroupedTieredPrice], [Symbol, Orb::Models::Price::TieredWithMinimumPrice], [Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice], [Symbol, Orb::Models::Price::PackageWithAllocationPrice], [Symbol, Orb::Models::Price::UnitWithPercentPrice], [Symbol, Orb::Models::Price::MatrixWithAllocationPrice], [Symbol, Orb::Models::Price::TieredWithProrationPrice], [Symbol, Orb::Models::Price::UnitWithProrationPrice], [Symbol, Orb::Models::Price::GroupedAllocationPrice], [Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice], [Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice], [Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice], [Symbol, Orb::Models::Price::BulkWithProrationPrice], [Symbol, Orb::Models::Price::GroupedTieredPackagePrice], [Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice], [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice], [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice], [Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice]]
-          )
-      end
-      private_class_method def self.variants
+      class << self
+        sig do
+          override
+            .returns(
+              [[Symbol, Orb::Models::Price::UnitPrice], [Symbol, Orb::Models::Price::PackagePrice], [Symbol, Orb::Models::Price::MatrixPrice], [Symbol, Orb::Models::Price::TieredPrice], [Symbol, Orb::Models::Price::TieredBpsPrice], [Symbol, Orb::Models::Price::BpsPrice], [Symbol, Orb::Models::Price::BulkBpsPrice], [Symbol, Orb::Models::Price::BulkPrice], [Symbol, Orb::Models::Price::ThresholdTotalAmountPrice], [Symbol, Orb::Models::Price::TieredPackagePrice], [Symbol, Orb::Models::Price::GroupedTieredPrice], [Symbol, Orb::Models::Price::TieredWithMinimumPrice], [Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice], [Symbol, Orb::Models::Price::PackageWithAllocationPrice], [Symbol, Orb::Models::Price::UnitWithPercentPrice], [Symbol, Orb::Models::Price::MatrixWithAllocationPrice], [Symbol, Orb::Models::Price::TieredWithProrationPrice], [Symbol, Orb::Models::Price::UnitWithProrationPrice], [Symbol, Orb::Models::Price::GroupedAllocationPrice], [Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice], [Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice], [Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice], [Symbol, Orb::Models::Price::BulkWithProrationPrice], [Symbol, Orb::Models::Price::GroupedTieredPackagePrice], [Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice], [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice], [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice], [Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice]]
+            )
+        end
+        private def variants
+        end
       end
     end
   end

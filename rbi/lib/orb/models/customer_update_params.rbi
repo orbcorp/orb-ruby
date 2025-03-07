@@ -466,8 +466,10 @@ module Orb
         STRIPE_INVOICE = T.let(:stripe_invoice, T.nilable(Symbol))
         NETSUITE = T.let(:netsuite, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -642,13 +644,15 @@ module Orb
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[Symbol, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration], [Symbol, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[Symbol, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration], [Symbol, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration]]
+              )
+          end
+          private def variants
+          end
         end
       end
 
@@ -767,8 +771,10 @@ module Orb
           VN = :VN
           ZA = :ZA
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -847,8 +853,10 @@ module Orb
           VN_TIN = :vn_tin
           ZA_VAT = :za_vat
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

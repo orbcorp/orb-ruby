@@ -328,11 +328,6 @@ module Orb
             AMOUNT = :amount
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
       end
@@ -384,11 +379,6 @@ module Orb
           PERCENTAGE = :percentage
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class AppliesToPrice < Orb::BaseModel
@@ -421,11 +411,6 @@ module Orb
         PRODUCT_UNSATISFACTORY = :"Product unsatisfactory"
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -435,11 +420,6 @@ module Orb
         ADJUSTMENT = :adjustment
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class Discount < Orb::BaseModel
@@ -487,11 +467,6 @@ module Orb
           PERCENTAGE = :percentage
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class AppliesToPrice < Orb::BaseModel

@@ -181,8 +181,10 @@ module Orb
             DAY = T.let(:day, T.nilable(Symbol))
             MONTH = T.let(:month, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end

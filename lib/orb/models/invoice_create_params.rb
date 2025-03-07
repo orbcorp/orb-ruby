@@ -171,11 +171,6 @@ module Orb
           UNIT = :unit
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class UnitConfig < Orb::BaseModel

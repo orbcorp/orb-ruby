@@ -66,8 +66,10 @@ module Orb
         CREDIT_BALANCE_DROPPED = :credit_balance_dropped
         CREDIT_BALANCE_RECOVERED = :credit_balance_recovered
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 

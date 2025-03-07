@@ -1081,13 +1081,15 @@ module Orb
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment]]
+              )
+          end
+          private def variants
+          end
         end
       end
 
@@ -1521,13 +1523,15 @@ module Orb
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[Symbol, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[Symbol, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem]]
+              )
+          end
+          private def variants
+          end
         end
       end
 

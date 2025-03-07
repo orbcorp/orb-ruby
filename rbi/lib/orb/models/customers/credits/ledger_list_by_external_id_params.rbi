@@ -146,8 +146,10 @@ module Orb
             COMMITTED = T.let(:committed, T.nilable(Symbol))
             PENDING = T.let(:pending, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -162,8 +164,10 @@ module Orb
             VOID_INITIATED = T.let(:void_initiated, T.nilable(Symbol))
             AMENDMENT = T.let(:amendment, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
