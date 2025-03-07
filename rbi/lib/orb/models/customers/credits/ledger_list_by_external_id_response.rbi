@@ -142,9 +142,9 @@ module Orb
                 starting_balance: Float,
                 entry_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               created_at:,
@@ -210,9 +210,10 @@ module Orb
               end
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
+                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
+                  .returns(T.attached_class)
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
               end
 
               sig do
@@ -245,8 +246,8 @@ module Orb
               def external_customer_id=(_)
               end
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:)
+              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+              def self.new(id:, external_customer_id:)
               end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -430,9 +431,9 @@ module Orb
                 price_id: T.nilable(String),
                 entry_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               created_at:,
@@ -504,9 +505,10 @@ module Orb
               end
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
+                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
+                  .returns(T.attached_class)
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
               end
 
               sig do
@@ -539,8 +541,8 @@ module Orb
               def external_customer_id=(_)
               end
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:)
+              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+              def self.new(id:, external_customer_id:)
               end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -714,9 +716,9 @@ module Orb
                 starting_balance: Float,
                 entry_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               created_at:,
@@ -784,9 +786,10 @@ module Orb
               end
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
+                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
+                  .returns(T.attached_class)
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
               end
 
               sig do
@@ -819,8 +822,8 @@ module Orb
               def external_customer_id=(_)
               end
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:)
+              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+              def self.new(id:, external_customer_id:)
               end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -985,9 +988,9 @@ module Orb
                 starting_balance: Float,
                 entry_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               created_at:,
@@ -1053,9 +1056,10 @@ module Orb
               end
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
+                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
+                  .returns(T.attached_class)
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
               end
 
               sig do
@@ -1088,8 +1092,8 @@ module Orb
               def external_customer_id=(_)
               end
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:)
+              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+              def self.new(id:, external_customer_id:)
               end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -1256,9 +1260,9 @@ module Orb
                 void_reason: T.nilable(String),
                 entry_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               created_at:,
@@ -1328,9 +1332,10 @@ module Orb
               end
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
+                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
+                  .returns(T.attached_class)
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
               end
 
               sig do
@@ -1363,8 +1368,8 @@ module Orb
               def external_customer_id=(_)
               end
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:)
+              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+              def self.new(id:, external_customer_id:)
               end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -1556,9 +1561,9 @@ module Orb
                 void_reason: T.nilable(String),
                 entry_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               created_at:,
@@ -1630,9 +1635,10 @@ module Orb
               end
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
+                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
+                  .returns(T.attached_class)
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
               end
 
               sig do
@@ -1665,8 +1671,8 @@ module Orb
               def external_customer_id=(_)
               end
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:)
+              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+              def self.new(id:, external_customer_id:)
               end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -1823,9 +1829,9 @@ module Orb
                 starting_balance: Float,
                 entry_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               created_at:,
@@ -1891,9 +1897,10 @@ module Orb
               end
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
+                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
+                  .returns(T.attached_class)
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
               end
 
               sig do
@@ -1926,8 +1933,8 @@ module Orb
               def external_customer_id=(_)
               end
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:)
+              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+              def self.new(id:, external_customer_id:)
               end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }

@@ -15,8 +15,11 @@ module Orb
         def data=(_)
         end
 
-        sig { params(data: T::Array[Orb::Models::Customers::CostListByExternalIDResponse::Data]).void }
-        def initialize(data:)
+        sig do
+          params(data: T::Array[Orb::Models::Customers::CostListByExternalIDResponse::Data])
+            .returns(T.attached_class)
+        end
+        def self.new(data:)
         end
 
         sig { override.returns({data: T::Array[Orb::Models::Customers::CostListByExternalIDResponse::Data]}) }
@@ -75,9 +78,9 @@ module Orb
               timeframe_start: Time,
               total: String
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(per_price_costs:, subtotal:, timeframe_end:, timeframe_start:, total:)
+          def self.new(per_price_costs:, subtotal:, timeframe_end:, timeframe_start:, total:)
           end
 
           sig do
@@ -271,9 +274,9 @@ module Orb
                 total: String,
                 quantity: T.nilable(Float)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(price:, price_id:, subtotal:, total:, quantity: nil)
+            def self.new(price:, price_id:, subtotal:, total:, quantity: nil)
             end
 
             sig do

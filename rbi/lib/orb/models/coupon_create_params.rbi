@@ -69,15 +69,9 @@ module Orb
           max_redemptions: T.nilable(Integer),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        discount:,
-        redemption_code:,
-        duration_in_months: nil,
-        max_redemptions: nil,
-        request_options: {}
-      )
+      def self.new(discount:, redemption_code:, duration_in_months: nil, max_redemptions: nil, request_options: {})
       end
 
       sig do
@@ -118,8 +112,8 @@ module Orb
           def percentage_discount=(_)
           end
 
-          sig { params(percentage_discount: Float, discount_type: Symbol).void }
-          def initialize(percentage_discount:, discount_type: :percentage)
+          sig { params(percentage_discount: Float, discount_type: Symbol).returns(T.attached_class) }
+          def self.new(percentage_discount:, discount_type: :percentage)
           end
 
           sig { override.returns({discount_type: Symbol, percentage_discount: Float}) }
@@ -144,8 +138,8 @@ module Orb
           def discount_type=(_)
           end
 
-          sig { params(amount_discount: String, discount_type: Symbol).void }
-          def initialize(amount_discount:, discount_type: :amount)
+          sig { params(amount_discount: String, discount_type: Symbol).returns(T.attached_class) }
+          def self.new(amount_discount:, discount_type: :amount)
           end
 
           sig { override.returns({amount_discount: String, discount_type: Symbol}) }

@@ -285,9 +285,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::UnitPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -365,8 +365,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -391,8 +391,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -447,8 +447,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -473,8 +473,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -512,8 +512,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -538,8 +538,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -564,8 +566,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -595,8 +599,8 @@ module Orb
           def unit_amount=(_)
           end
 
-          sig { params(unit_amount: String).void }
-          def initialize(unit_amount:)
+          sig { params(unit_amount: String).returns(T.attached_class) }
+          def self.new(unit_amount:)
           end
 
           sig { override.returns({unit_amount: String}) }
@@ -621,8 +625,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -914,9 +923,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::PackagePrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -994,8 +1003,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -1020,8 +1029,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -1076,8 +1085,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -1102,8 +1111,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -1141,8 +1150,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -1167,8 +1176,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -1193,8 +1204,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -1219,8 +1232,8 @@ module Orb
           def package_size=(_)
           end
 
-          sig { params(package_amount: String, package_size: Integer).void }
-          def initialize(package_amount:, package_size:)
+          sig { params(package_amount: String, package_size: Integer).returns(T.attached_class) }
+          def self.new(package_amount:, package_size:)
           end
 
           sig { override.returns({package_amount: String, package_size: Integer}) }
@@ -1258,8 +1271,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -1551,9 +1569,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::MatrixPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -1631,8 +1649,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -1657,8 +1675,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -1713,8 +1731,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -1739,8 +1757,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -1778,8 +1796,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -1821,9 +1839,9 @@ module Orb
               dimensions: T::Array[T.nilable(String)],
               matrix_values: T::Array[Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue]
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(default_unit_amount:, dimensions:, matrix_values:)
+          def self.new(default_unit_amount:, dimensions:, matrix_values:)
           end
 
           sig do
@@ -1856,8 +1874,13 @@ module Orb
             def unit_amount=(_)
             end
 
-            sig { params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).void }
-            def initialize(dimension_values:, unit_amount:)
+            sig do
+              params(
+                dimension_values: T::Array[T.nilable(String)],
+                unit_amount: String
+              ).returns(T.attached_class)
+            end
+            def self.new(dimension_values:, unit_amount:)
             end
 
             sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
@@ -1883,8 +1906,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -1909,8 +1934,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -1948,8 +1975,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -2241,9 +2273,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::TieredPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -2321,8 +2353,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -2347,8 +2379,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -2403,8 +2435,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -2429,8 +2461,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -2468,8 +2500,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -2494,8 +2526,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -2520,8 +2554,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -2554,8 +2590,8 @@ module Orb
           def tiers=(_)
           end
 
-          sig { params(tiers: T::Array[Orb::Models::Price::TieredPrice::TieredConfig::Tier]).void }
-          def initialize(tiers:)
+          sig { params(tiers: T::Array[Orb::Models::Price::TieredPrice::TieredConfig::Tier]).returns(T.attached_class) }
+          def self.new(tiers:)
           end
 
           sig { override.returns({tiers: T::Array[Orb::Models::Price::TieredPrice::TieredConfig::Tier]}) }
@@ -2587,8 +2623,14 @@ module Orb
             def last_unit=(_)
             end
 
-            sig { params(first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)).void }
-            def initialize(first_unit:, unit_amount:, last_unit: nil)
+            sig do
+              params(
+                first_unit: Float,
+                unit_amount: String,
+                last_unit: T.nilable(Float)
+              ).returns(T.attached_class)
+            end
+            def self.new(first_unit:, unit_amount:, last_unit: nil)
             end
 
             sig { override.returns({first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)}) }
@@ -2614,8 +2656,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -2907,9 +2954,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::TieredBpsPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -2987,8 +3034,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -3013,8 +3060,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -3069,8 +3116,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -3095,8 +3142,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -3134,8 +3181,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -3160,8 +3207,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -3186,8 +3235,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -3220,8 +3271,11 @@ module Orb
           def tiers=(_)
           end
 
-          sig { params(tiers: T::Array[Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier]).void }
-          def initialize(tiers:)
+          sig do
+            params(tiers: T::Array[Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier])
+              .returns(T.attached_class)
+          end
+          def self.new(tiers:)
           end
 
           sig { override.returns({tiers: T::Array[Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier]}) }
@@ -3268,9 +3322,9 @@ module Orb
                 maximum_amount: T.nilable(String),
                 per_unit_maximum: T.nilable(String)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil)
+            def self.new(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil)
             end
 
             sig do
@@ -3306,8 +3360,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -3596,9 +3655,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::BpsPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -3676,8 +3735,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -3702,8 +3761,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -3741,8 +3800,8 @@ module Orb
           def per_unit_maximum=(_)
           end
 
-          sig { params(bps: Float, per_unit_maximum: T.nilable(String)).void }
-          def initialize(bps:, per_unit_maximum: nil)
+          sig { params(bps: Float, per_unit_maximum: T.nilable(String)).returns(T.attached_class) }
+          def self.new(bps:, per_unit_maximum: nil)
           end
 
           sig { override.returns({bps: Float, per_unit_maximum: T.nilable(String)}) }
@@ -3784,8 +3843,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -3810,8 +3869,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -3849,8 +3908,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -3875,8 +3934,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -3901,8 +3962,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -3940,8 +4003,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -4233,9 +4301,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::BulkBpsPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -4313,8 +4381,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -4339,8 +4407,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -4373,8 +4441,8 @@ module Orb
           def tiers=(_)
           end
 
-          sig { params(tiers: T::Array[Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier]).void }
-          def initialize(tiers:)
+          sig { params(tiers: T::Array[Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier]).returns(T.attached_class) }
+          def self.new(tiers:)
           end
 
           sig { override.returns({tiers: T::Array[Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier]}) }
@@ -4407,9 +4475,10 @@ module Orb
             end
 
             sig do
-              params(bps: Float, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String)).void
+              params(bps: Float, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String))
+                .returns(T.attached_class)
             end
-            def initialize(bps:, maximum_amount: nil, per_unit_maximum: nil)
+            def self.new(bps:, maximum_amount: nil, per_unit_maximum: nil)
             end
 
             sig do
@@ -4460,8 +4529,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -4486,8 +4555,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -4525,8 +4594,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -4551,8 +4620,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -4577,8 +4648,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -4616,8 +4689,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -4906,9 +4984,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::BulkPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -4986,8 +5064,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -5012,8 +5090,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -5046,8 +5124,8 @@ module Orb
           def tiers=(_)
           end
 
-          sig { params(tiers: T::Array[Orb::Models::Price::BulkPrice::BulkConfig::Tier]).void }
-          def initialize(tiers:)
+          sig { params(tiers: T::Array[Orb::Models::Price::BulkPrice::BulkConfig::Tier]).returns(T.attached_class) }
+          def self.new(tiers:)
           end
 
           sig { override.returns({tiers: T::Array[Orb::Models::Price::BulkPrice::BulkConfig::Tier]}) }
@@ -5071,8 +5149,8 @@ module Orb
             def maximum_units=(_)
             end
 
-            sig { params(unit_amount: String, maximum_units: T.nilable(Float)).void }
-            def initialize(unit_amount:, maximum_units: nil)
+            sig { params(unit_amount: String, maximum_units: T.nilable(Float)).returns(T.attached_class) }
+            def self.new(unit_amount:, maximum_units: nil)
             end
 
             sig { override.returns({unit_amount: String, maximum_units: T.nilable(Float)}) }
@@ -5115,8 +5193,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -5141,8 +5219,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -5180,8 +5258,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -5206,8 +5284,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -5232,8 +5312,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -5271,8 +5353,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -5564,9 +5651,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::ThresholdTotalAmountPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -5644,8 +5731,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -5670,8 +5757,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -5726,8 +5813,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -5752,8 +5839,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -5791,8 +5878,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -5817,8 +5904,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -5843,8 +5932,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -5882,8 +5973,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -6175,9 +6271,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::TieredPackagePrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -6255,8 +6351,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -6281,8 +6377,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -6337,8 +6433,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -6363,8 +6459,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -6402,8 +6498,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -6428,8 +6524,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -6454,8 +6552,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -6493,8 +6593,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -6786,9 +6891,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::GroupedTieredPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -6866,8 +6971,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -6892,8 +6997,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -6948,8 +7053,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -6974,8 +7079,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -7013,8 +7118,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -7039,8 +7144,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -7065,8 +7172,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -7104,8 +7213,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -7397,9 +7511,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::TieredWithMinimumPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -7477,8 +7591,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -7503,8 +7617,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -7559,8 +7673,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -7585,8 +7699,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -7624,8 +7738,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -7650,8 +7764,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -7676,8 +7792,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -7715,8 +7833,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -8008,9 +8131,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::TieredPackageWithMinimumPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -8088,8 +8211,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -8114,8 +8237,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -8170,8 +8293,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -8196,8 +8319,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -8235,8 +8358,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -8261,8 +8384,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -8287,8 +8412,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -8326,8 +8453,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -8619,9 +8751,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::PackageWithAllocationPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -8699,8 +8831,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -8725,8 +8857,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -8781,8 +8913,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -8807,8 +8939,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -8846,8 +8978,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -8872,8 +9004,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -8898,8 +9032,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -8937,8 +9073,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -9230,9 +9371,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::UnitWithPercentPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -9310,8 +9451,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -9336,8 +9477,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -9392,8 +9533,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -9418,8 +9559,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -9457,8 +9598,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -9483,8 +9624,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -9509,8 +9652,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -9548,8 +9693,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -9844,9 +9994,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::MatrixWithAllocationPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -9924,8 +10074,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -9950,8 +10100,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -10006,8 +10156,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -10032,8 +10182,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -10071,8 +10221,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -10125,9 +10275,9 @@ module Orb
               dimensions: T::Array[T.nilable(String)],
               matrix_values: T::Array[Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue]
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(allocation:, default_unit_amount:, dimensions:, matrix_values:)
+          def self.new(allocation:, default_unit_amount:, dimensions:, matrix_values:)
           end
 
           sig do
@@ -10161,8 +10311,13 @@ module Orb
             def unit_amount=(_)
             end
 
-            sig { params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).void }
-            def initialize(dimension_values:, unit_amount:)
+            sig do
+              params(
+                dimension_values: T::Array[T.nilable(String)],
+                unit_amount: String
+              ).returns(T.attached_class)
+            end
+            def self.new(dimension_values:, unit_amount:)
             end
 
             sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
@@ -10188,8 +10343,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -10214,8 +10371,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -10253,8 +10412,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -10546,9 +10710,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::TieredWithProrationPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -10626,8 +10790,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -10652,8 +10816,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -10708,8 +10872,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -10734,8 +10898,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -10773,8 +10937,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -10799,8 +10963,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -10825,8 +10991,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -10864,8 +11032,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -11157,9 +11330,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::UnitWithProrationPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -11237,8 +11410,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -11263,8 +11436,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -11319,8 +11492,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -11345,8 +11518,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -11384,8 +11557,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -11410,8 +11583,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -11436,8 +11611,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -11475,8 +11652,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -11768,9 +11950,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::GroupedAllocationPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -11848,8 +12030,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -11874,8 +12056,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -11930,8 +12112,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -11956,8 +12138,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -11995,8 +12177,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -12021,8 +12203,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -12047,8 +12231,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -12086,8 +12272,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -12379,9 +12570,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::GroupedWithProratedMinimumPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -12459,8 +12650,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -12485,8 +12676,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -12541,8 +12732,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -12567,8 +12758,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -12606,8 +12797,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -12632,8 +12823,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -12658,8 +12851,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -12697,8 +12892,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -12990,9 +13190,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::GroupedWithMeteredMinimumPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -13070,8 +13270,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -13096,8 +13296,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -13152,8 +13352,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -13178,8 +13378,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -13217,8 +13417,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -13243,8 +13443,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -13269,8 +13471,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -13308,8 +13512,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -13601,9 +13810,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::MatrixWithDisplayNamePrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -13681,8 +13890,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -13707,8 +13916,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -13763,8 +13972,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -13789,8 +13998,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -13828,8 +14037,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -13854,8 +14063,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -13880,8 +14091,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -13919,8 +14132,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -14212,9 +14430,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::BulkWithProrationPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -14292,8 +14510,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -14318,8 +14536,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -14374,8 +14592,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -14400,8 +14618,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -14439,8 +14657,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -14465,8 +14683,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -14491,8 +14711,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -14530,8 +14752,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -14823,9 +15050,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::GroupedTieredPackagePrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -14903,8 +15130,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -14929,8 +15156,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -14985,8 +15212,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -15011,8 +15238,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -15050,8 +15277,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -15076,8 +15303,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -15102,8 +15331,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -15141,8 +15372,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -15434,9 +15670,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::MaxGroupTieredPackagePrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -15514,8 +15750,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -15540,8 +15776,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -15596,8 +15832,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -15622,8 +15858,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -15661,8 +15897,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -15687,8 +15923,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -15713,8 +15951,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -15752,8 +15992,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -16047,9 +16292,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -16127,8 +16372,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -16153,8 +16398,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -16209,8 +16454,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -16235,8 +16480,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -16274,8 +16519,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -16300,8 +16545,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -16326,8 +16573,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -16365,8 +16614,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -16668,9 +16922,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -16748,8 +17002,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -16774,8 +17028,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -16830,8 +17084,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -16856,8 +17110,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -16895,8 +17149,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -16921,8 +17175,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -16947,8 +17203,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -16986,8 +17244,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
@@ -17279,9 +17542,9 @@ module Orb
             dimensional_price_configuration: T.nilable(Orb::Models::Price::CumulativeGroupedBulkPrice::DimensionalPriceConfiguration),
             model_type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billable_metric:,
           billing_cycle_configuration:,
@@ -17359,8 +17622,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -17385,8 +17648,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -17441,8 +17704,8 @@ module Orb
           def currency=(_)
           end
 
-          sig { params(allows_rollover: T::Boolean, currency: String).void }
-          def initialize(allows_rollover:, currency:)
+          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
+          def self.new(allows_rollover:, currency:)
           end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
@@ -17467,8 +17730,8 @@ module Orb
           def duration_unit=(_)
           end
 
-          sig { params(duration: Integer, duration_unit: Symbol).void }
-          def initialize(duration:, duration_unit:)
+          sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+          def self.new(duration:, duration_unit:)
           end
 
           sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -17506,8 +17769,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -17532,8 +17795,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -17558,8 +17823,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -17597,8 +17864,13 @@ module Orb
           def dimensional_price_group_id=(_)
           end
 
-          sig { params(dimension_values: T::Array[String], dimensional_price_group_id: String).void }
-          def initialize(dimension_values:, dimensional_price_group_id:)
+          sig do
+            params(
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, dimensional_price_group_id:)
           end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }

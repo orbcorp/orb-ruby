@@ -28,9 +28,9 @@ module Orb
           shift: T::Boolean,
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(trial_end_date:, shift: nil, request_options: {})
+      def self.new(trial_end_date:, shift: nil, request_options: {})
       end
 
       sig do

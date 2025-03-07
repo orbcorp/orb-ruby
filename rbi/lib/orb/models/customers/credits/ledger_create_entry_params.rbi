@@ -126,9 +126,9 @@ module Orb
               void_reason: T.nilable(Symbol),
               request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             amount:,
             entry_type:,
             expiry_date:,
@@ -220,9 +220,9 @@ module Orb
                 memo: T.nilable(String),
                 require_successful_payment: T::Boolean
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil)
+            def self.new(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil)
             end
 
             sig do

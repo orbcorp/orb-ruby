@@ -101,20 +101,9 @@ module Orb
           thresholds: T.nilable(T::Array[Orb::Models::Alert::Threshold]),
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        id:,
-        created_at:,
-        currency:,
-        customer:,
-        enabled:,
-        metric:,
-        plan:,
-        subscription:,
-        thresholds:,
-        type:
-      )
+      def self.new(id:, created_at:, currency:, customer:, enabled:, metric:, plan:, subscription:, thresholds:, type:)
       end
 
       sig do
@@ -154,8 +143,8 @@ module Orb
         def external_customer_id=(_)
         end
 
-        sig { params(id: String, external_customer_id: T.nilable(String)).void }
-        def initialize(id:, external_customer_id:)
+        sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+        def self.new(id:, external_customer_id:)
         end
 
         sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -172,8 +161,8 @@ module Orb
         def id=(_)
         end
 
-        sig { params(id: String).void }
-        def initialize(id:)
+        sig { params(id: String).returns(T.attached_class) }
+        def self.new(id:)
         end
 
         sig { override.returns({id: String}) }
@@ -221,9 +210,9 @@ module Orb
             name: T.nilable(String),
             plan_version: String
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(id:, external_plan_id:, name:, plan_version:)
+        def self.new(id:, external_plan_id:, name:, plan_version:)
         end
 
         sig do
@@ -250,8 +239,8 @@ module Orb
         def id=(_)
         end
 
-        sig { params(id: String).void }
-        def initialize(id:)
+        sig { params(id: String).returns(T.attached_class) }
+        def self.new(id:)
         end
 
         sig { override.returns({id: String}) }
@@ -268,8 +257,8 @@ module Orb
         def value=(_)
         end
 
-        sig { params(value: Float).void }
-        def initialize(value:)
+        sig { params(value: Float).returns(T.attached_class) }
+        def self.new(value:)
         end
 
         sig { override.returns({value: Float}) }

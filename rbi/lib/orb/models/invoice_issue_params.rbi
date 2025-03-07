@@ -19,9 +19,9 @@ module Orb
           synchronous: T::Boolean,
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(synchronous: nil, request_options: {})
+      def self.new(synchronous: nil, request_options: {})
       end
 
       sig { override.returns({synchronous: T::Boolean, request_options: Orb::RequestOptions}) }

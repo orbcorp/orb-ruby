@@ -17,8 +17,8 @@ module Orb
         def data=(_)
         end
 
-        sig { params(data: T::Array[Orb::Models::Events::EventVolumes::Data]).void }
-        def initialize(data:)
+        sig { params(data: T::Array[Orb::Models::Events::EventVolumes::Data]).returns(T.attached_class) }
+        def self.new(data:)
         end
 
         sig { override.returns({data: T::Array[Orb::Models::Events::EventVolumes::Data]}) }
@@ -50,8 +50,8 @@ module Orb
           def timeframe_start=(_)
           end
 
-          sig { params(count: Integer, timeframe_end: Time, timeframe_start: Time).void }
-          def initialize(count:, timeframe_end:, timeframe_start:)
+          sig { params(count: Integer, timeframe_end: Time, timeframe_start: Time).returns(T.attached_class) }
+          def self.new(count:, timeframe_end:, timeframe_start:)
           end
 
           sig { override.returns({count: Integer, timeframe_end: Time, timeframe_start: Time}) }

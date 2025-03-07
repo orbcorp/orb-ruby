@@ -415,9 +415,9 @@ module Orb
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         cadence:,
         currency:,
         item_id:,
@@ -555,8 +555,8 @@ module Orb
         def unit_amount=(_)
         end
 
-        sig { params(unit_amount: String).void }
-        def initialize(unit_amount:)
+        sig { params(unit_amount: String).returns(T.attached_class) }
+        def self.new(unit_amount:)
         end
 
         sig { override.returns({unit_amount: String}) }
@@ -581,8 +581,8 @@ module Orb
         def duration_unit=(_)
         end
 
-        sig { params(duration: Integer, duration_unit: Symbol).void }
-        def initialize(duration:, duration_unit:)
+        sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+        def self.new(duration:, duration_unit:)
         end
 
         sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -620,8 +620,8 @@ module Orb
         def duration_unit=(_)
         end
 
-        sig { params(duration: Integer, duration_unit: Symbol).void }
-        def initialize(duration:, duration_unit:)
+        sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
+        def self.new(duration:, duration_unit:)
         end
 
         sig { override.returns({duration: Integer, duration_unit: Symbol}) }
@@ -659,8 +659,8 @@ module Orb
         def package_size=(_)
         end
 
-        sig { params(package_amount: String, package_size: Integer).void }
-        def initialize(package_amount:, package_size:)
+        sig { params(package_amount: String, package_size: Integer).returns(T.attached_class) }
+        def self.new(package_amount:, package_size:)
         end
 
         sig { override.returns({package_amount: String, package_size: Integer}) }
@@ -702,9 +702,9 @@ module Orb
             dimensions: T::Array[T.nilable(String)],
             matrix_values: T::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue]
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(default_unit_amount:, dimensions:, matrix_values:)
+        def self.new(default_unit_amount:, dimensions:, matrix_values:)
         end
 
         sig do
@@ -737,8 +737,13 @@ module Orb
           def unit_amount=(_)
           end
 
-          sig { params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).void }
-          def initialize(dimension_values:, unit_amount:)
+          sig do
+            params(
+              dimension_values: T::Array[T.nilable(String)],
+              unit_amount: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, unit_amount:)
           end
 
           sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
@@ -790,9 +795,9 @@ module Orb
             dimensions: T::Array[T.nilable(String)],
             matrix_values: T::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(allocation:, default_unit_amount:, dimensions:, matrix_values:)
+        def self.new(allocation:, default_unit_amount:, dimensions:, matrix_values:)
         end
 
         sig do
@@ -826,8 +831,13 @@ module Orb
           def unit_amount=(_)
           end
 
-          sig { params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).void }
-          def initialize(dimension_values:, unit_amount:)
+          sig do
+            params(
+              dimension_values: T::Array[T.nilable(String)],
+              unit_amount: String
+            ).returns(T.attached_class)
+          end
+          def self.new(dimension_values:, unit_amount:)
           end
 
           sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
@@ -848,8 +858,8 @@ module Orb
         def tiers=(_)
         end
 
-        sig { params(tiers: T::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]).void }
-        def initialize(tiers:)
+        sig { params(tiers: T::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]).returns(T.attached_class) }
+        def self.new(tiers:)
         end
 
         sig { override.returns({tiers: T::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]}) }
@@ -881,8 +891,14 @@ module Orb
           def last_unit=(_)
           end
 
-          sig { params(first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)).void }
-          def initialize(first_unit:, unit_amount:, last_unit: nil)
+          sig do
+            params(
+              first_unit: Float,
+              unit_amount: String,
+              last_unit: T.nilable(Float)
+            ).returns(T.attached_class)
+          end
+          def self.new(first_unit:, unit_amount:, last_unit: nil)
           end
 
           sig { override.returns({first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)}) }
@@ -903,8 +919,8 @@ module Orb
         def tiers=(_)
         end
 
-        sig { params(tiers: T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]).void }
-        def initialize(tiers:)
+        sig { params(tiers: T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]).returns(T.attached_class) }
+        def self.new(tiers:)
         end
 
         sig { override.returns({tiers: T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]}) }
@@ -951,9 +967,9 @@ module Orb
               maximum_amount: T.nilable(String),
               per_unit_maximum: T.nilable(String)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil)
+          def self.new(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil)
           end
 
           sig do
@@ -989,8 +1005,8 @@ module Orb
         def per_unit_maximum=(_)
         end
 
-        sig { params(bps: Float, per_unit_maximum: T.nilable(String)).void }
-        def initialize(bps:, per_unit_maximum: nil)
+        sig { params(bps: Float, per_unit_maximum: T.nilable(String)).returns(T.attached_class) }
+        def self.new(bps:, per_unit_maximum: nil)
         end
 
         sig { override.returns({bps: Float, per_unit_maximum: T.nilable(String)}) }
@@ -1010,8 +1026,8 @@ module Orb
         def tiers=(_)
         end
 
-        sig { params(tiers: T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]).void }
-        def initialize(tiers:)
+        sig { params(tiers: T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]).returns(T.attached_class) }
+        def self.new(tiers:)
         end
 
         sig { override.returns({tiers: T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]}) }
@@ -1044,9 +1060,10 @@ module Orb
           end
 
           sig do
-            params(bps: Float, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String)).void
+            params(bps: Float, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String))
+              .returns(T.attached_class)
           end
-          def initialize(bps:, maximum_amount: nil, per_unit_maximum: nil)
+          def self.new(bps:, maximum_amount: nil, per_unit_maximum: nil)
           end
 
           sig do
@@ -1075,8 +1092,8 @@ module Orb
         def tiers=(_)
         end
 
-        sig { params(tiers: T::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]).void }
-        def initialize(tiers:)
+        sig { params(tiers: T::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]).returns(T.attached_class) }
+        def self.new(tiers:)
         end
 
         sig { override.returns({tiers: T::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]}) }
@@ -1100,8 +1117,8 @@ module Orb
           def maximum_units=(_)
           end
 
-          sig { params(unit_amount: String, maximum_units: T.nilable(Float)).void }
-          def initialize(unit_amount:, maximum_units: nil)
+          sig { params(unit_amount: String, maximum_units: T.nilable(Float)).returns(T.attached_class) }
+          def self.new(unit_amount:, maximum_units: nil)
           end
 
           sig { override.returns({unit_amount: String, maximum_units: T.nilable(Float)}) }

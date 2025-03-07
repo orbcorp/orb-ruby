@@ -21,9 +21,9 @@ module Orb
 
       sig do
         params(data: T::Array[Orb::Models::Subscription], pagination_metadata: Orb::Models::PaginationMetadata)
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(data:, pagination_metadata:)
+      def self.new(data:, pagination_metadata:)
       end
 
       sig do
