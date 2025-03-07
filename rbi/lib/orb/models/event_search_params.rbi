@@ -37,9 +37,9 @@ module Orb
           timeframe_start: T.nilable(Time),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(event_ids:, timeframe_end: nil, timeframe_start: nil, request_options: {})
+      def self.new(event_ids:, timeframe_end: nil, timeframe_start: nil, request_options: {})
       end
 
       sig do

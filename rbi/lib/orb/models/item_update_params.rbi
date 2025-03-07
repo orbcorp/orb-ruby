@@ -31,9 +31,9 @@ module Orb
           name: T.nilable(String),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(external_connections: nil, name: nil, request_options: {})
+      def self.new(external_connections: nil, name: nil, request_options: {})
       end
 
       sig do
@@ -66,8 +66,8 @@ module Orb
         def external_entity_id=(_)
         end
 
-        sig { params(external_connection_name: Symbol, external_entity_id: String).void }
-        def initialize(external_connection_name:, external_entity_id:)
+        sig { params(external_connection_name: Symbol, external_entity_id: String).returns(T.attached_class) }
+        def self.new(external_connection_name:, external_entity_id:)
         end
 
         sig { override.returns({external_connection_name: Symbol, external_entity_id: String}) }

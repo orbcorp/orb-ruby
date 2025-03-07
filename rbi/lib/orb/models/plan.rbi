@@ -442,9 +442,9 @@ module Orb
           trial_config: Orb::Models::Plan::TrialConfig,
           version: Integer
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         adjustments:,
         base_plan:,
@@ -622,9 +622,9 @@ module Orb
               usage_discount: Float,
               adjustment_type: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             applies_to_price_ids:,
             is_invoice_level:,
@@ -720,9 +720,9 @@ module Orb
               reason: T.nilable(String),
               adjustment_type: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             amount_discount:,
             applies_to_price_ids:,
@@ -818,9 +818,9 @@ module Orb
               reason: T.nilable(String),
               adjustment_type: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             applies_to_price_ids:,
             is_invoice_level:,
@@ -925,9 +925,9 @@ module Orb
               reason: T.nilable(String),
               adjustment_type: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             applies_to_price_ids:,
             is_invoice_level:,
@@ -1025,9 +1025,9 @@ module Orb
               reason: T.nilable(String),
               adjustment_type: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             applies_to_price_ids:,
             is_invoice_level:,
@@ -1094,9 +1094,10 @@ module Orb
         end
 
         sig do
-          params(id: T.nilable(String), external_plan_id: T.nilable(String), name: T.nilable(String)).void
+          params(id: T.nilable(String), external_plan_id: T.nilable(String), name: T.nilable(String))
+            .returns(T.attached_class)
         end
-        def initialize(id:, external_plan_id:, name:)
+        def self.new(id:, external_plan_id:, name:)
         end
 
         sig do
@@ -1129,8 +1130,10 @@ module Orb
         def maximum_amount=(_)
         end
 
-        sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-        def initialize(applies_to_price_ids:, maximum_amount:)
+        sig do
+          params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+        end
+        def self.new(applies_to_price_ids:, maximum_amount:)
         end
 
         sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -1155,8 +1158,10 @@ module Orb
         def minimum_amount=(_)
         end
 
-        sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-        def initialize(applies_to_price_ids:, minimum_amount:)
+        sig do
+          params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+        end
+        def self.new(applies_to_price_ids:, minimum_amount:)
         end
 
         sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -1312,9 +1317,9 @@ module Orb
             name: String,
             order: Integer
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           description:,
           discount:,
@@ -1390,8 +1395,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -1416,8 +1423,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -1451,8 +1460,8 @@ module Orb
         def name=(_)
         end
 
-        sig { params(id: String, created_at: Time, name: String).void }
-        def initialize(id:, created_at:, name:)
+        sig { params(id: String, created_at: Time, name: String).returns(T.attached_class) }
+        def self.new(id:, created_at:, name:)
         end
 
         sig { override.returns({id: String, created_at: Time, name: String}) }
@@ -1491,8 +1500,8 @@ module Orb
         def trial_period_unit=(_)
         end
 
-        sig { params(trial_period: T.nilable(Integer), trial_period_unit: Symbol).void }
-        def initialize(trial_period:, trial_period_unit:)
+        sig { params(trial_period: T.nilable(Integer), trial_period_unit: Symbol).returns(T.attached_class) }
+        def self.new(trial_period:, trial_period_unit:)
         end
 
         sig { override.returns({trial_period: T.nilable(Integer), trial_period_unit: Symbol}) }

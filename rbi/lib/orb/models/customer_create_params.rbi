@@ -224,9 +224,9 @@ module Orb
           timezone: T.nilable(String),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         email:,
         name:,
         accounting_sync_configuration: nil,
@@ -316,9 +316,9 @@ module Orb
             accounting_providers: T.nilable(T::Array[Orb::Models::CustomerCreateParams::AccountingSyncConfiguration::AccountingProvider]),
             excluded: T.nilable(T::Boolean)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(accounting_providers: nil, excluded: nil)
+        def self.new(accounting_providers: nil, excluded: nil)
         end
 
         sig do
@@ -350,8 +350,8 @@ module Orb
           def provider_type=(_)
           end
 
-          sig { params(external_provider_id: String, provider_type: String).void }
-          def initialize(external_provider_id:, provider_type:)
+          sig { params(external_provider_id: String, provider_type: String).returns(T.attached_class) }
+          def self.new(external_provider_id:, provider_type:)
           end
 
           sig { override.returns({external_provider_id: String, provider_type: String}) }
@@ -418,9 +418,9 @@ module Orb
             postal_code: T.nilable(String),
             state: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil)
+        def self.new(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil)
         end
 
         sig do
@@ -457,8 +457,11 @@ module Orb
         def parent_customer_id=(_)
         end
 
-        sig { params(child_customer_ids: T::Array[String], parent_customer_id: T.nilable(String)).void }
-        def initialize(child_customer_ids: nil, parent_customer_id: nil)
+        sig do
+          params(child_customer_ids: T::Array[String], parent_customer_id: T.nilable(String))
+            .returns(T.attached_class)
+        end
+        def self.new(child_customer_ids: nil, parent_customer_id: nil)
         end
 
         sig do
@@ -493,8 +496,8 @@ module Orb
         def exempt=(_)
         end
 
-        sig { params(exempt: T::Boolean).void }
-        def initialize(exempt:)
+        sig { params(exempt: T::Boolean).returns(T.attached_class) }
+        def self.new(exempt:)
         end
 
         sig { override.returns({exempt: T::Boolean}) }
@@ -560,9 +563,9 @@ module Orb
             postal_code: T.nilable(String),
             state: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil)
+        def self.new(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil)
         end
 
         sig do
@@ -611,9 +614,10 @@ module Orb
           end
 
           sig do
-            params(tax_exempt: T::Boolean, tax_exemption_code: T.nilable(String), tax_provider: Symbol).void
+            params(tax_exempt: T::Boolean, tax_exemption_code: T.nilable(String), tax_provider: Symbol)
+              .returns(T.attached_class)
           end
-          def initialize(tax_exempt:, tax_exemption_code: nil, tax_provider: :avalara)
+          def self.new(tax_exempt:, tax_exemption_code: nil, tax_provider: :avalara)
           end
 
           sig do
@@ -646,8 +650,8 @@ module Orb
           def tax_provider=(_)
           end
 
-          sig { params(tax_exempt: T::Boolean, tax_provider: Symbol).void }
-          def initialize(tax_exempt:, tax_provider: :taxjar)
+          sig { params(tax_exempt: T::Boolean, tax_provider: Symbol).returns(T.attached_class) }
+          def self.new(tax_exempt:, tax_provider: :taxjar)
           end
 
           sig { override.returns({tax_exempt: T::Boolean, tax_provider: Symbol}) }
@@ -692,8 +696,8 @@ module Orb
         def value=(_)
         end
 
-        sig { params(country: Symbol, type: Symbol, value: String).void }
-        def initialize(country:, type:, value:)
+        sig { params(country: Symbol, type: Symbol, value: String).returns(T.attached_class) }
+        def self.new(country:, type:, value:)
         end
 
         sig { override.returns({country: Symbol, type: Symbol, value: String}) }

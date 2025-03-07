@@ -11,8 +11,8 @@ module Orb
       def deprecated=(_)
       end
 
-      sig { params(deprecated: String).void }
-      def initialize(deprecated:)
+      sig { params(deprecated: String).returns(T.attached_class) }
+      def self.new(deprecated:)
       end
 
       sig { override.returns({deprecated: String}) }

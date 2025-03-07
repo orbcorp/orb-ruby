@@ -145,9 +145,9 @@ module Orb
           will_auto_issue: T::Boolean,
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         currency:,
         invoice_date:,
         line_items:,
@@ -260,9 +260,9 @@ module Orb
             start_date: Date,
             unit_config: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(end_date:, item_id:, model_type:, name:, quantity:, start_date:, unit_config:)
+        def self.new(end_date:, item_id:, model_type:, name:, quantity:, start_date:, unit_config:)
         end
 
         sig do
@@ -303,8 +303,8 @@ module Orb
           def unit_amount=(_)
           end
 
-          sig { params(unit_amount: String).void }
-          def initialize(unit_amount:)
+          sig { params(unit_amount: String).returns(T.attached_class) }
+          def self.new(unit_amount:)
           end
 
           sig { override.returns({unit_amount: String}) }

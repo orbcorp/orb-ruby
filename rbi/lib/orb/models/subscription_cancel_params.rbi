@@ -37,14 +37,9 @@ module Orb
           cancellation_date: T.nilable(Time),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        cancel_option:,
-        allow_invoice_credit_or_void: nil,
-        cancellation_date: nil,
-        request_options: {}
-      )
+      def self.new(cancel_option:, allow_invoice_credit_or_void: nil, cancellation_date: nil, request_options: {})
       end
 
       sig do

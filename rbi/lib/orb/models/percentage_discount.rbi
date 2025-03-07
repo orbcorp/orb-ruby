@@ -42,9 +42,9 @@ module Orb
           percentage_discount: Float,
           reason: T.nilable(String)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(applies_to_price_ids:, discount_type:, percentage_discount:, reason: nil)
+      def self.new(applies_to_price_ids:, discount_type:, percentage_discount:, reason: nil)
       end
 
       sig do

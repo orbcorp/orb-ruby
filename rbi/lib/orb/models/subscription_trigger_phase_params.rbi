@@ -28,9 +28,9 @@ module Orb
           effective_date: T.nilable(Date),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(allow_invoice_credit_or_void: nil, effective_date: nil, request_options: {})
+      def self.new(allow_invoice_credit_or_void: nil, effective_date: nil, request_options: {})
       end
 
       sig do

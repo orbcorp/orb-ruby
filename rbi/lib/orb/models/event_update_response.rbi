@@ -11,8 +11,8 @@ module Orb
       def amended=(_)
       end
 
-      sig { params(amended: String).void }
-      def initialize(amended:)
+      sig { params(amended: String).returns(T.attached_class) }
+      def self.new(amended:)
       end
 
       sig { override.returns({amended: String}) }
