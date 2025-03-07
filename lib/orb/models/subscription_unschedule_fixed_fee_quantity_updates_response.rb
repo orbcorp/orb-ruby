@@ -1190,11 +1190,6 @@ module Orb
         UPCOMING = :upcoming
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class TrialInfo < Orb::BaseModel

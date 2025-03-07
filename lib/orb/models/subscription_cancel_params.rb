@@ -47,11 +47,6 @@ module Orb
         REQUESTED_DATE = :requested_date
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

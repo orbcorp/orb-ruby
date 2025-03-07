@@ -79,8 +79,10 @@ module Orb
           PERIODIC = T.let(:periodic, T.nilable(Symbol))
           CUMULATIVE = T.let(:cumulative, T.nilable(Symbol))
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

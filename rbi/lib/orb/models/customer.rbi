@@ -463,8 +463,10 @@ module Orb
         STRIPE_INVOICE = T.let(:stripe_invoice, T.nilable(Symbol))
         NETSUITE = T.let(:netsuite, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -663,8 +665,10 @@ module Orb
           VN = :VN
           ZA = :ZA
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -743,8 +747,10 @@ module Orb
           VN_TIN = :vn_tin
           ZA_VAT = :za_vat
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -822,8 +828,10 @@ module Orb
             QUICKBOOKS = :quickbooks
             NETSUITE = :netsuite
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end

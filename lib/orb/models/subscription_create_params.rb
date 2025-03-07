@@ -727,11 +727,6 @@ module Orb
             CUSTOM = :custom
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -780,11 +775,6 @@ module Orb
             AMOUNT = :amount
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -1028,11 +1018,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class UnitConfig < Orb::BaseModel
@@ -1083,11 +1068,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -1124,11 +1104,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -1297,11 +1272,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class PackageConfig < Orb::BaseModel
@@ -1360,11 +1330,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -1401,11 +1366,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -1574,11 +1534,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class MatrixConfig < Orb::BaseModel
@@ -1672,11 +1627,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -1713,11 +1663,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -1886,11 +1831,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class TieredConfig < Orb::BaseModel
@@ -1971,11 +1911,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -2012,11 +1947,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -2185,11 +2115,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class TieredBpsConfig < Orb::BaseModel
@@ -2282,11 +2207,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -2323,11 +2243,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -2518,11 +2433,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -2558,11 +2468,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -2599,11 +2504,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -2818,11 +2718,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -2858,11 +2753,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -2899,11 +2789,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -3110,11 +2995,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -3150,11 +3030,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -3191,11 +3066,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -3363,11 +3233,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -3403,11 +3268,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -3444,11 +3304,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -3616,11 +3471,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -3656,11 +3506,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -3697,11 +3542,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -3869,11 +3709,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -3909,11 +3744,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -3950,11 +3780,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -4122,11 +3947,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -4162,11 +3982,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -4203,11 +4018,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -4375,11 +4185,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -4415,11 +4220,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -4456,11 +4256,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -4628,11 +4423,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -4668,11 +4458,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -4709,11 +4494,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -4881,11 +4661,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -4921,11 +4696,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -4962,11 +4732,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -5134,11 +4899,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -5174,11 +4934,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -5215,11 +4970,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -5387,11 +5137,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -5427,11 +5172,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -5468,11 +5208,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -5640,11 +5375,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -5680,11 +5410,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -5721,11 +5446,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -5893,11 +5613,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -5933,11 +5648,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -5974,11 +5684,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -6146,11 +5851,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -6186,11 +5886,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -6227,11 +5922,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -6399,11 +6089,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -6439,11 +6124,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -6480,11 +6160,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -6652,11 +6327,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -6692,11 +6362,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -6733,11 +6398,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -6905,11 +6565,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -6945,11 +6600,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -6986,11 +6636,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -7158,11 +6803,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -7198,11 +6838,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -7239,11 +6874,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -7411,11 +7041,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -7451,11 +7076,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -7492,11 +7112,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -7548,11 +7163,6 @@ module Orb
         AZURE = :azure
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class RemoveAdjustment < Orb::BaseModel
@@ -7986,11 +7596,6 @@ module Orb
             CUSTOM = :custom
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -8039,11 +7644,6 @@ module Orb
             AMOUNT = :amount
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -8289,11 +7889,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class UnitConfig < Orb::BaseModel
@@ -8344,11 +7939,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -8385,11 +7975,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -8558,11 +8143,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class PackageConfig < Orb::BaseModel
@@ -8621,11 +8201,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -8662,11 +8237,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -8835,11 +8405,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class MatrixConfig < Orb::BaseModel
@@ -8933,11 +8498,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -8974,11 +8534,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -9147,11 +8702,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class TieredConfig < Orb::BaseModel
@@ -9232,11 +8782,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -9273,11 +8818,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -9446,11 +8986,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class TieredBpsConfig < Orb::BaseModel
@@ -9543,11 +9078,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -9584,11 +9114,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -9779,11 +9304,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -9819,11 +9339,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -9860,11 +9375,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -10083,11 +9593,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -10123,11 +9628,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -10164,11 +9664,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -10375,11 +9870,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -10415,11 +9905,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -10456,11 +9941,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -10628,11 +10108,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -10668,11 +10143,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -10709,11 +10179,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -10881,11 +10346,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -10921,11 +10381,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -10962,11 +10417,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -11134,11 +10584,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -11174,11 +10619,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -11215,11 +10655,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -11387,11 +10822,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -11427,11 +10857,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -11468,11 +10893,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -11640,11 +11060,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -11680,11 +11095,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -11721,11 +11131,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -11893,11 +11298,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -11933,11 +11333,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -11974,11 +11369,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -12146,11 +11536,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -12186,11 +11571,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -12227,11 +11607,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -12399,11 +11774,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -12439,11 +11809,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -12480,11 +11845,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -12652,11 +12012,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -12692,11 +12047,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -12733,11 +12083,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -12905,11 +12250,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -12945,11 +12285,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -12986,11 +12321,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -13158,11 +12488,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -13198,11 +12523,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -13239,11 +12559,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -13411,11 +12726,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -13451,11 +12761,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -13492,11 +12797,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -13664,11 +12964,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -13704,11 +12999,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -13745,11 +13035,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -13917,11 +13202,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -13957,11 +13237,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -13998,11 +13273,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -14170,11 +13440,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -14210,11 +13475,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -14251,11 +13511,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -14423,11 +13678,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -14463,11 +13713,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -14504,11 +13749,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -14676,11 +13916,6 @@ module Orb
               CUSTOM = :custom
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
@@ -14716,11 +13951,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -14757,11 +13987,6 @@ module Orb
                 MONTH = :month
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end

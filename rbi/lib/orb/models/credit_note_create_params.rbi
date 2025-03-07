@@ -93,8 +93,10 @@ module Orb
         ORDER_CHANGE = T.let(:order_change, T.nilable(Symbol))
         PRODUCT_UNSATISFACTORY = T.let(:product_unsatisfactory, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

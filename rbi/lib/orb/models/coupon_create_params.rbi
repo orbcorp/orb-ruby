@@ -153,13 +153,15 @@ module Orb
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[Symbol, Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount], [Symbol, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[Symbol, Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount], [Symbol, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]]
+              )
+          end
+          private def variants
+          end
         end
       end
     end
