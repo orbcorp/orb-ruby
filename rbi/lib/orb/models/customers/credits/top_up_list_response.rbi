@@ -83,9 +83,9 @@ module Orb
               expires_after: T.nilable(Integer),
               expires_after_unit: T.nilable(Symbol)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             amount:,
             currency:,
@@ -155,9 +155,9 @@ module Orb
                 memo: T.nilable(String),
                 require_successful_payment: T::Boolean
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil)
+            def self.new(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil)
             end
 
             sig do

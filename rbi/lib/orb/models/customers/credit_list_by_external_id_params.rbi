@@ -47,9 +47,9 @@ module Orb
             limit: Integer,
             request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(currency: nil, cursor: nil, include_all_blocks: nil, limit: nil, request_options: {})
+        def self.new(currency: nil, cursor: nil, include_all_blocks: nil, limit: nil, request_options: {})
         end
 
         sig do

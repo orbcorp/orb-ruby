@@ -70,17 +70,9 @@ module Orb
             per_unit_cost_basis: T.nilable(String),
             status: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          id:,
-          balance:,
-          effective_date:,
-          expiry_date:,
-          maximum_initial_balance:,
-          per_unit_cost_basis:,
-          status:
-        )
+        def self.new(id:, balance:, effective_date:, expiry_date:, maximum_initial_balance:, per_unit_cost_basis:, status:)
         end
 
         sig do

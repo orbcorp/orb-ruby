@@ -30,9 +30,9 @@ module Orb
           validation_failed: T::Array[Orb::Models::EventIngestResponse::ValidationFailed],
           debug: T.nilable(Orb::Models::EventIngestResponse::Debug)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(validation_failed:, debug: nil)
+      def self.new(validation_failed:, debug: nil)
       end
 
       sig do
@@ -64,8 +64,8 @@ module Orb
         def validation_errors=(_)
         end
 
-        sig { params(idempotency_key: String, validation_errors: T::Array[String]).void }
-        def initialize(idempotency_key:, validation_errors:)
+        sig { params(idempotency_key: String, validation_errors: T::Array[String]).returns(T.attached_class) }
+        def self.new(idempotency_key:, validation_errors:)
         end
 
         sig { override.returns({idempotency_key: String, validation_errors: T::Array[String]}) }
@@ -90,8 +90,8 @@ module Orb
         def ingested=(_)
         end
 
-        sig { params(duplicate: T::Array[String], ingested: T::Array[String]).void }
-        def initialize(duplicate:, ingested:)
+        sig { params(duplicate: T::Array[String], ingested: T::Array[String]).returns(T.attached_class) }
+        def self.new(duplicate:, ingested:)
         end
 
         sig { override.returns({duplicate: T::Array[String], ingested: T::Array[String]}) }

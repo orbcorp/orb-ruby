@@ -74,9 +74,9 @@ module Orb
             replace_existing_events: T::Boolean,
             request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           timeframe_end:,
           timeframe_start:,
           close_time: nil,

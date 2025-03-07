@@ -55,16 +55,9 @@ module Orb
           external_customer_id: T.nilable(String),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        event_name:,
-        properties:,
-        timestamp:,
-        customer_id: nil,
-        external_customer_id: nil,
-        request_options: {}
-      )
+      def self.new(event_name:, properties:, timestamp:, customer_id: nil, external_customer_id: nil, request_options: {})
       end
 
       sig do

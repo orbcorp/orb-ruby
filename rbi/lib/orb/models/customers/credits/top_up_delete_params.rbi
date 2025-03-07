@@ -23,9 +23,10 @@ module Orb
                 Orb::RequestOptions,
                 T::Hash[Symbol, T.anything]
               )
-            ).void
+            )
+              .returns(T.attached_class)
           end
-          def initialize(customer_id:, request_options: {})
+          def self.new(customer_id:, request_options: {})
           end
 
           sig { override.returns({customer_id: String, request_options: Orb::RequestOptions}) }

@@ -422,9 +422,9 @@ module Orb
           voided_at: T.nilable(Time),
           will_auto_issue: T::Boolean
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         amount_due:,
         auto_collection:,
@@ -560,9 +560,9 @@ module Orb
             num_attempts: T.nilable(Integer),
             previously_attempted_at: T.nilable(Time)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(enabled:, next_attempt_at:, num_attempts:, previously_attempted_at:)
+        def self.new(enabled:, next_attempt_at:, num_attempts:, previously_attempted_at:)
         end
 
         sig do
@@ -638,9 +638,9 @@ module Orb
             postal_code: T.nilable(String),
             state: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(city:, country:, line1:, line2:, postal_code:, state:)
+        def self.new(city:, country:, line1:, line2:, postal_code:, state:)
         end
 
         sig do
@@ -727,9 +727,9 @@ module Orb
             type: String,
             voided_at: T.nilable(Time)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(id:, credit_note_number:, memo:, reason:, total:, type:, voided_at:)
+        def self.new(id:, credit_note_number:, memo:, reason:, total:, type:, voided_at:)
         end
 
         sig do
@@ -767,8 +767,8 @@ module Orb
         def external_customer_id=(_)
         end
 
-        sig { params(id: String, external_customer_id: T.nilable(String)).void }
-        def initialize(id:, external_customer_id:)
+        sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+        def self.new(id:, external_customer_id:)
         end
 
         sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -876,9 +876,9 @@ module Orb
             starting_balance: String,
             type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           action:,
           amount:,
@@ -941,8 +941,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -959,8 +959,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -1007,8 +1007,8 @@ module Orb
         def value=(_)
         end
 
-        sig { params(country: Symbol, type: Symbol, value: String).void }
-        def initialize(country:, type:, value:)
+        sig { params(country: Symbol, type: Symbol, value: String).returns(T.attached_class) }
+        def self.new(country:, type:, value:)
         end
 
         sig { override.returns({country: Symbol, type: Symbol, value: String}) }
@@ -1664,9 +1664,9 @@ module Orb
             tax_amounts: T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount],
             usage_customer_ids: T.nilable(T::Array[String])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           adjusted_subtotal:,
           adjustments:,
@@ -1846,9 +1846,9 @@ module Orb
                 usage_discount: Float,
                 adjustment_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               applies_to_price_ids:,
@@ -1944,9 +1944,9 @@ module Orb
                 reason: T.nilable(String),
                 adjustment_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               amount_discount:,
@@ -2042,9 +2042,9 @@ module Orb
                 reason: T.nilable(String),
                 adjustment_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               applies_to_price_ids:,
@@ -2149,9 +2149,9 @@ module Orb
                 reason: T.nilable(String),
                 adjustment_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               applies_to_price_ids:,
@@ -2249,9 +2249,9 @@ module Orb
                 reason: T.nilable(String),
                 adjustment_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               applies_to_price_ids:,
@@ -2309,8 +2309,10 @@ module Orb
           def maximum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-          def initialize(applies_to_price_ids:, maximum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, maximum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -2335,8 +2337,10 @@ module Orb
           def minimum_amount=(_)
           end
 
-          sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-          def initialize(applies_to_price_ids:, minimum_amount:)
+          sig do
+            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          end
+          def self.new(applies_to_price_ids:, minimum_amount:)
           end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -2421,9 +2425,9 @@ module Orb
                 quantity: Float,
                 type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(amount:, grouping:, matrix_config:, name:, quantity:, type: :matrix)
+            def self.new(amount:, grouping:, matrix_config:, name:, quantity:, type: :matrix)
             end
 
             sig do
@@ -2459,8 +2463,8 @@ module Orb
               def value=(_)
               end
 
-              sig { params(key: String, value: T.nilable(String)).void }
-              def initialize(key:, value:)
+              sig { params(key: String, value: T.nilable(String)).returns(T.attached_class) }
+              def self.new(key:, value:)
               end
 
               sig { override.returns({key: String, value: T.nilable(String)}) }
@@ -2477,8 +2481,8 @@ module Orb
               def dimension_values=(_)
               end
 
-              sig { params(dimension_values: T::Array[T.nilable(String)]).void }
-              def initialize(dimension_values:)
+              sig { params(dimension_values: T::Array[T.nilable(String)]).returns(T.attached_class) }
+              def self.new(dimension_values:)
               end
 
               sig { override.returns({dimension_values: T::Array[T.nilable(String)]}) }
@@ -2559,9 +2563,9 @@ module Orb
                 tier_config: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::TierConfig,
                 type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(amount:, grouping:, name:, quantity:, tier_config:, type: :tier)
+            def self.new(amount:, grouping:, name:, quantity:, tier_config:, type: :tier)
             end
 
             sig do
@@ -2597,8 +2601,8 @@ module Orb
               def value=(_)
               end
 
-              sig { params(key: String, value: T.nilable(String)).void }
-              def initialize(key:, value:)
+              sig { params(key: String, value: T.nilable(String)).returns(T.attached_class) }
+              def self.new(key:, value:)
               end
 
               sig { override.returns({key: String, value: T.nilable(String)}) }
@@ -2631,8 +2635,14 @@ module Orb
               def unit_amount=(_)
               end
 
-              sig { params(first_unit: Float, last_unit: T.nilable(Float), unit_amount: String).void }
-              def initialize(first_unit:, last_unit:, unit_amount:)
+              sig do
+                params(
+                  first_unit: Float,
+                  last_unit: T.nilable(Float),
+                  unit_amount: String
+                ).returns(T.attached_class)
+              end
+              def self.new(first_unit:, last_unit:, unit_amount:)
               end
 
               sig { override.returns({first_unit: Float, last_unit: T.nilable(Float), unit_amount: String}) }
@@ -2701,9 +2711,9 @@ module Orb
                 quantity: Float,
                 type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(amount:, grouping:, name:, quantity:, type: :"'null'")
+            def self.new(amount:, grouping:, name:, quantity:, type: :"'null'")
             end
 
             sig do
@@ -2738,8 +2748,8 @@ module Orb
               def value=(_)
               end
 
-              sig { params(key: String, value: T.nilable(String)).void }
-              def initialize(key:, value:)
+              sig { params(key: String, value: T.nilable(String)).returns(T.attached_class) }
+              def self.new(key:, value:)
               end
 
               sig { override.returns({key: String, value: T.nilable(String)}) }
@@ -2786,9 +2796,10 @@ module Orb
           end
 
           sig do
-            params(amount: String, tax_rate_description: String, tax_rate_percentage: T.nilable(String)).void
+            params(amount: String, tax_rate_description: String, tax_rate_percentage: T.nilable(String))
+              .returns(T.attached_class)
           end
-          def initialize(amount:, tax_rate_description:, tax_rate_percentage:)
+          def self.new(amount:, tax_rate_description:, tax_rate_percentage:)
           end
 
           sig do
@@ -2822,8 +2833,10 @@ module Orb
         def maximum_amount=(_)
         end
 
-        sig { params(applies_to_price_ids: T::Array[String], maximum_amount: String).void }
-        def initialize(applies_to_price_ids:, maximum_amount:)
+        sig do
+          params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+        end
+        def self.new(applies_to_price_ids:, maximum_amount:)
         end
 
         sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
@@ -2848,8 +2861,10 @@ module Orb
         def minimum_amount=(_)
         end
 
-        sig { params(applies_to_price_ids: T::Array[String], minimum_amount: String).void }
-        def initialize(applies_to_price_ids:, minimum_amount:)
+        sig do
+          params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+        end
+        def self.new(applies_to_price_ids:, minimum_amount:)
         end
 
         sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
@@ -2915,9 +2930,9 @@ module Orb
             payment_provider_id: T.nilable(String),
             succeeded: T::Boolean
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(id:, amount:, created_at:, payment_provider:, payment_provider_id:, succeeded:)
+        def self.new(id:, amount:, created_at:, payment_provider:, payment_provider_id:, succeeded:)
         end
 
         sig do
@@ -3007,9 +3022,9 @@ module Orb
             postal_code: T.nilable(String),
             state: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(city:, country:, line1:, line2:, postal_code:, state:)
+        def self.new(city:, country:, line1:, line2:, postal_code:, state:)
         end
 
         sig do
@@ -3054,8 +3069,8 @@ module Orb
         def id=(_)
         end
 
-        sig { params(id: String).void }
-        def initialize(id:)
+        sig { params(id: String).returns(T.attached_class) }
+        def self.new(id:)
         end
 
         sig { override.returns({id: String}) }

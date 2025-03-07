@@ -42,9 +42,9 @@ module Orb
           discount_type: Symbol,
           reason: T.nilable(String)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(amount_discount:, applies_to_price_ids:, discount_type:, reason: nil)
+      def self.new(amount_discount:, applies_to_price_ids:, discount_type:, reason: nil)
       end
 
       sig do
