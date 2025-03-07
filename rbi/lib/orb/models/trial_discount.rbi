@@ -51,9 +51,9 @@ module Orb
           trial_amount_discount: T.nilable(String),
           trial_percentage_discount: T.nilable(Float)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         applies_to_price_ids:,
         discount_type:,
         reason: nil,

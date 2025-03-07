@@ -40,9 +40,9 @@ module Orb
           debug: T::Boolean,
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(events:, backfill_id: nil, debug: nil, request_options: {})
+      def self.new(events:, backfill_id: nil, debug: nil, request_options: {})
       end
 
       sig do
@@ -117,16 +117,9 @@ module Orb
             customer_id: T.nilable(String),
             external_customer_id: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          event_name:,
-          idempotency_key:,
-          properties:,
-          timestamp:,
-          customer_id: nil,
-          external_customer_id: nil
-        )
+        def self.new(event_name:, idempotency_key:, properties:, timestamp:, customer_id: nil, external_customer_id: nil)
         end
 
         sig do

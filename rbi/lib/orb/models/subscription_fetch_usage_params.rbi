@@ -100,9 +100,9 @@ module Orb
           view_mode: T.nilable(Symbol),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         billable_metric_id: nil,
         first_dimension_key: nil,
         first_dimension_value: nil,

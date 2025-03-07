@@ -157,9 +157,9 @@ module Orb
           voided_at: T.nilable(Time),
           discounts: T::Array[Orb::Models::CreditNote::Discount]
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         created_at:,
         credit_note_number:,
@@ -222,8 +222,8 @@ module Orb
         def external_customer_id=(_)
         end
 
-        sig { params(id: String, external_customer_id: T.nilable(String)).void }
-        def initialize(id:, external_customer_id:)
+        sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+        def self.new(id:, external_customer_id:)
         end
 
         sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -313,9 +313,9 @@ module Orb
             tax_amounts: T::Array[Orb::Models::CreditNote::LineItem::TaxAmount],
             discounts: T::Array[Orb::Models::CreditNote::LineItem::Discount]
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(id:, amount:, item_id:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil)
+        def self.new(id:, amount:, item_id:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil)
         end
 
         sig do
@@ -362,9 +362,10 @@ module Orb
           end
 
           sig do
-            params(amount: String, tax_rate_description: String, tax_rate_percentage: T.nilable(String)).void
+            params(amount: String, tax_rate_description: String, tax_rate_percentage: T.nilable(String))
+              .returns(T.attached_class)
           end
-          def initialize(amount:, tax_rate_description:, tax_rate_percentage:)
+          def self.new(amount:, tax_rate_description:, tax_rate_percentage:)
           end
 
           sig do
@@ -447,9 +448,9 @@ module Orb
               amount_discount: T.nilable(String),
               reason: T.nilable(String)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             amount_applied:,
             applies_to_price_ids:,
@@ -544,15 +545,9 @@ module Orb
             applies_to_prices: T.nilable(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice]),
             reason: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          amount_applied:,
-          discount_type:,
-          percentage_discount:,
-          applies_to_prices: nil,
-          reason: nil
-        )
+        def self.new(amount_applied:, discount_type:, percentage_discount:, applies_to_prices: nil, reason: nil)
         end
 
         sig do
@@ -599,8 +594,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }
@@ -689,15 +684,9 @@ module Orb
             applies_to_prices: T.nilable(T::Array[Orb::Models::CreditNote::Discount::AppliesToPrice]),
             reason: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          amount_applied:,
-          discount_type:,
-          percentage_discount:,
-          applies_to_prices: nil,
-          reason: nil
-        )
+        def self.new(amount_applied:, discount_type:, percentage_discount:, applies_to_prices: nil, reason: nil)
         end
 
         sig do
@@ -744,8 +733,8 @@ module Orb
           def name=(_)
           end
 
-          sig { params(id: String, name: String).void }
-          def initialize(id:, name:)
+          sig { params(id: String, name: String).returns(T.attached_class) }
+          def self.new(id:, name:)
           end
 
           sig { override.returns({id: String, name: String}) }

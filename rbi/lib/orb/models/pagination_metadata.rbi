@@ -19,8 +19,8 @@ module Orb
       def next_cursor=(_)
       end
 
-      sig { params(has_more: T::Boolean, next_cursor: T.nilable(String)).void }
-      def initialize(has_more:, next_cursor:)
+      sig { params(has_more: T::Boolean, next_cursor: T.nilable(String)).returns(T.attached_class) }
+      def self.new(has_more:, next_cursor:)
       end
 
       sig { override.returns({has_more: T::Boolean, next_cursor: T.nilable(String)}) }

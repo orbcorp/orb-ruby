@@ -106,9 +106,9 @@ module Orb
             timeframe_start: Time,
             deprecation_filter: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           close_time:,
           created_at:,

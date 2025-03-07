@@ -103,9 +103,9 @@ module Orb
             starting_balance: String,
             type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           action:,
           amount:,
@@ -168,8 +168,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -186,8 +186,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }

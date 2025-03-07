@@ -40,9 +40,9 @@ module Orb
           thresholds: T.nilable(T::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(currency:, type:, thresholds: nil, request_options: {})
+      def self.new(currency:, type:, thresholds: nil, request_options: {})
       end
 
       sig do
@@ -82,8 +82,8 @@ module Orb
         def value=(_)
         end
 
-        sig { params(value: Float).void }
-        def initialize(value:)
+        sig { params(value: Float).returns(T.attached_class) }
+        def self.new(value:)
         end
 
         sig { override.returns({value: Float}) }

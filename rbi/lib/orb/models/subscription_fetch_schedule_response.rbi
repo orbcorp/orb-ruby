@@ -45,9 +45,9 @@ module Orb
           plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
           start_date: Time
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(created_at:, end_date:, plan:, start_date:)
+      def self.new(created_at:, end_date:, plan:, start_date:)
       end
 
       sig do
@@ -90,9 +90,10 @@ module Orb
         end
 
         sig do
-          params(id: T.nilable(String), external_plan_id: T.nilable(String), name: T.nilable(String)).void
+          params(id: T.nilable(String), external_plan_id: T.nilable(String), name: T.nilable(String))
+            .returns(T.attached_class)
         end
-        def initialize(id:, external_plan_id:, name:)
+        def self.new(id:, external_plan_id:, name:)
         end
 
         sig do

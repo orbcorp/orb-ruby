@@ -64,9 +64,9 @@ module Orb
           grouping_keys: T::Array[String],
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         timeframe_end:,
         timeframe_start:,
         customer_id: nil,
