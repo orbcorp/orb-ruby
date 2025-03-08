@@ -100,9 +100,9 @@ module Orb
           view_mode: T.nilable(Symbol),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         billable_metric_id: nil,
         first_dimension_key: nil,
         first_dimension_value: nil,
@@ -143,8 +143,10 @@ module Orb
 
         DAY = T.let(:day, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -154,8 +156,10 @@ module Orb
         PERIODIC = T.let(:periodic, T.nilable(Symbol))
         CUMULATIVE = T.let(:cumulative, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

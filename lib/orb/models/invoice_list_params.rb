@@ -170,11 +170,6 @@ module Orb
         INVOICE_DATE = :invoice_date
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -187,11 +182,6 @@ module Orb
         VOID = :void
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

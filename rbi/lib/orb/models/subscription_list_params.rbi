@@ -91,9 +91,9 @@ module Orb
           status: T.nilable(Symbol),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         created_at_gt: nil,
         created_at_gte: nil,
         created_at_lt: nil,
@@ -134,8 +134,10 @@ module Orb
         ENDED = T.let(:ended, T.nilable(Symbol))
         UPCOMING = T.let(:upcoming, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

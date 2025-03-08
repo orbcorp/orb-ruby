@@ -724,11 +724,6 @@ module Orb
           EXTERNAL_PAYMENT = :external_payment
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditNote < Orb::BaseModel
@@ -768,11 +763,6 @@ module Orb
           DECREMENT = :decrement
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -990,11 +980,6 @@ module Orb
           ZA = :ZA
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         # @abstract
@@ -1073,11 +1058,6 @@ module Orb
           ZA_VAT = :za_vat
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -1089,11 +1069,6 @@ module Orb
         ONE_OFF = :one_off
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class LineItem < Orb::BaseModel
@@ -2104,11 +2079,6 @@ module Orb
           STRIPE = :stripe
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -2166,11 +2136,6 @@ module Orb
         DRAFT = :draft
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class Subscription < Orb::BaseModel

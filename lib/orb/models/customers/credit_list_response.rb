@@ -59,11 +59,6 @@ module Orb
           PENDING_PAYMENT = :pending_payment
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
     end

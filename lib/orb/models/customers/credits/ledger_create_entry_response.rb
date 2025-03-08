@@ -193,11 +193,6 @@ module Orb
               PENDING = :pending
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
           end
 
@@ -384,11 +379,6 @@ module Orb
               PENDING = :pending
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
           end
 
@@ -561,11 +551,6 @@ module Orb
               PENDING = :pending
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
           end
 
@@ -731,11 +716,6 @@ module Orb
               PENDING = :pending
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
           end
 
@@ -915,11 +895,6 @@ module Orb
               PENDING = :pending
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
           end
 
@@ -1106,11 +1081,6 @@ module Orb
               PENDING = :pending
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
           end
 
@@ -1276,11 +1246,6 @@ module Orb
               PENDING = :pending
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
           end
         end

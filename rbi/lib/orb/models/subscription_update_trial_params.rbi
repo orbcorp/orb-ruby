@@ -28,9 +28,9 @@ module Orb
           shift: T::Boolean,
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(trial_end_date:, shift: nil, request_options: {})
+      def self.new(trial_end_date:, shift: nil, request_options: {})
       end
 
       sig do
@@ -52,13 +52,17 @@ module Orb
 
           IMMEDIATE = :immediate
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
-        sig { override.returns([[NilClass, Time], [NilClass, Symbol]]) }
-        private_class_method def self.variants
+        class << self
+          sig { override.returns([[NilClass, Time], [NilClass, Symbol]]) }
+          private def variants
+          end
         end
       end
     end

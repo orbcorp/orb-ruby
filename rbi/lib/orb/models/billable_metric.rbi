@@ -60,9 +60,9 @@ module Orb
           name: String,
           status: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id:, description:, item:, metadata:, name:, status:)
+      def self.new(id:, description:, item:, metadata:, name:, status:)
       end
 
       sig do
@@ -88,8 +88,10 @@ module Orb
         DRAFT = :draft
         ARCHIVED = :archived
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

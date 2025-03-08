@@ -11,8 +11,8 @@ module Orb
       def response=(_)
       end
 
-      sig { params(response: String).void }
-      def initialize(response:)
+      sig { params(response: String).returns(T.attached_class) }
+      def self.new(response:)
       end
 
       sig { override.returns({response: String}) }

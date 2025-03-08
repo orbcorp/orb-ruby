@@ -17,8 +17,8 @@ module Orb
         def list(timeframe_start:, cursor: nil, limit: nil, timeframe_end: nil, request_options: {})
         end
 
-        sig { params(client: Orb::Client).void }
-        def initialize(client:)
+        sig { params(client: Orb::Client).returns(T.attached_class) }
+        def self.new(client:)
         end
       end
     end

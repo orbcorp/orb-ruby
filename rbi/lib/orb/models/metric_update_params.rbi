@@ -22,9 +22,9 @@ module Orb
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(metadata: nil, request_options: {})
+      def self.new(metadata: nil, request_options: {})
       end
 
       sig do

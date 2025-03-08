@@ -46,9 +46,9 @@ module Orb
           show_archived: T.nilable(T::Boolean),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(cursor: nil, limit: nil, redemption_code: nil, show_archived: nil, request_options: {})
+      def self.new(cursor: nil, limit: nil, redemption_code: nil, show_archived: nil, request_options: {})
       end
 
       sig do

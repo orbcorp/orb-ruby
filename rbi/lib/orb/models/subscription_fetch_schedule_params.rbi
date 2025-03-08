@@ -64,9 +64,9 @@ module Orb
           start_date_lte: T.nilable(Time),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         cursor: nil,
         limit: nil,
         start_date_gt: nil,

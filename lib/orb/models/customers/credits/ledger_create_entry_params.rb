@@ -139,11 +139,6 @@ module Orb
             AMENDMENT = :amendment
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           class InvoiceSettings < Orb::BaseModel
@@ -202,11 +197,6 @@ module Orb
             REFUND = :refund
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
       end

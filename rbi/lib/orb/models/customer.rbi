@@ -216,9 +216,9 @@ module Orb
           accounting_sync_configuration: T.nilable(Orb::Models::Customer::AccountingSyncConfiguration),
           reporting_configuration: T.nilable(Orb::Models::Customer::ReportingConfiguration)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         additional_emails:,
         auto_collection:,
@@ -334,9 +334,9 @@ module Orb
             postal_code: T.nilable(String),
             state: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(city:, country:, line1:, line2:, postal_code:, state:)
+        def self.new(city:, country:, line1:, line2:, postal_code:, state:)
         end
 
         sig do
@@ -384,9 +384,9 @@ module Orb
             children: T::Array[Orb::Models::Customer::Hierarchy::Child],
             parent: T.nilable(Orb::Models::Customer::Hierarchy::Parent)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(children:, parent:)
+        def self.new(children:, parent:)
         end
 
         sig do
@@ -418,8 +418,8 @@ module Orb
           def external_customer_id=(_)
           end
 
-          sig { params(id: String, external_customer_id: T.nilable(String)).void }
-          def initialize(id:, external_customer_id:)
+          sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+          def self.new(id:, external_customer_id:)
           end
 
           sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -444,8 +444,8 @@ module Orb
           def external_customer_id=(_)
           end
 
-          sig { params(id: String, external_customer_id: T.nilable(String)).void }
-          def initialize(id:, external_customer_id:)
+          sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+          def self.new(id:, external_customer_id:)
           end
 
           sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -463,8 +463,10 @@ module Orb
         STRIPE_INVOICE = T.let(:stripe_invoice, T.nilable(Symbol))
         NETSUITE = T.let(:netsuite, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -526,9 +528,9 @@ module Orb
             postal_code: T.nilable(String),
             state: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(city:, country:, line1:, line2:, postal_code:, state:)
+        def self.new(city:, country:, line1:, line2:, postal_code:, state:)
         end
 
         sig do
@@ -573,8 +575,8 @@ module Orb
         def value=(_)
         end
 
-        sig { params(country: Symbol, type: Symbol, value: String).void }
-        def initialize(country:, type:, value:)
+        sig { params(country: Symbol, type: Symbol, value: String).returns(T.attached_class) }
+        def self.new(country:, type:, value:)
         end
 
         sig { override.returns({country: Symbol, type: Symbol, value: String}) }
@@ -663,8 +665,10 @@ module Orb
           VN = :VN
           ZA = :ZA
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -743,8 +747,10 @@ module Orb
           VN_TIN = :vn_tin
           ZA_VAT = :za_vat
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -774,9 +780,9 @@ module Orb
             accounting_providers: T::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider],
             excluded: T::Boolean
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(accounting_providers:, excluded:)
+        def self.new(accounting_providers:, excluded:)
         end
 
         sig do
@@ -808,8 +814,10 @@ module Orb
           def provider_type=(_)
           end
 
-          sig { params(external_provider_id: T.nilable(String), provider_type: Symbol).void }
-          def initialize(external_provider_id:, provider_type:)
+          sig do
+            params(external_provider_id: T.nilable(String), provider_type: Symbol).returns(T.attached_class)
+          end
+          def self.new(external_provider_id:, provider_type:)
           end
 
           sig { override.returns({external_provider_id: T.nilable(String), provider_type: Symbol}) }
@@ -822,8 +830,10 @@ module Orb
             QUICKBOOKS = :quickbooks
             NETSUITE = :netsuite
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -838,8 +848,8 @@ module Orb
         def exempt=(_)
         end
 
-        sig { params(exempt: T::Boolean).void }
-        def initialize(exempt:)
+        sig { params(exempt: T::Boolean).returns(T.attached_class) }
+        def self.new(exempt:)
         end
 
         sig { override.returns({exempt: T::Boolean}) }

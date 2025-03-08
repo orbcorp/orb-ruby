@@ -15,12 +15,10 @@ module Orb
       end
 
       sig do
-        params(
-          price_id: String,
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        params(price_id: String, request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          .returns(T.attached_class)
       end
-      def initialize(price_id:, request_options: {})
+      def self.new(price_id:, request_options: {})
       end
 
       sig { override.returns({price_id: String, request_options: Orb::RequestOptions}) }

@@ -40,9 +40,9 @@ module Orb
           reason: T.nilable(Symbol),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(line_items:, memo: nil, reason: nil, request_options: {})
+      def self.new(line_items:, memo: nil, reason: nil, request_options: {})
       end
 
       sig do
@@ -76,8 +76,8 @@ module Orb
         def invoice_line_item_id=(_)
         end
 
-        sig { params(amount: String, invoice_line_item_id: String).void }
-        def initialize(amount:, invoice_line_item_id:)
+        sig { params(amount: String, invoice_line_item_id: String).returns(T.attached_class) }
+        def self.new(amount:, invoice_line_item_id:)
         end
 
         sig { override.returns({amount: String, invoice_line_item_id: String}) }
@@ -93,8 +93,10 @@ module Orb
         ORDER_CHANGE = T.let(:order_change, T.nilable(Symbol))
         PRODUCT_UNSATISFACTORY = T.let(:product_unsatisfactory, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

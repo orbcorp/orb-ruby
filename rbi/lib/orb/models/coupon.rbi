@@ -72,17 +72,9 @@ module Orb
           redemption_code: String,
           times_redeemed: Integer
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        id:,
-        archived_at:,
-        discount:,
-        duration_in_months:,
-        max_redemptions:,
-        redemption_code:,
-        times_redeemed:
-      )
+      def self.new(id:, archived_at:, discount:, duration_in_months:, max_redemptions:, redemption_code:, times_redeemed:)
       end
 
       sig do
@@ -105,8 +97,10 @@ module Orb
       class Discount < Orb::Union
         abstract!
 
-        sig { override.returns([[Symbol, Orb::Models::PercentageDiscount], [Symbol, Orb::Models::AmountDiscount]]) }
-        private_class_method def self.variants
+        class << self
+          sig { override.returns([[Symbol, Orb::Models::PercentageDiscount], [Symbol, Orb::Models::AmountDiscount]]) }
+          private def variants
+          end
         end
       end
     end
