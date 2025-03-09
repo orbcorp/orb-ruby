@@ -38,9 +38,9 @@ module Orb
             description: T.nilable(String),
             request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(amount:, type:, description: nil, request_options: {})
+        def self.new(amount:, type:, description: nil, request_options: {})
         end
 
         sig do
@@ -63,8 +63,10 @@ module Orb
           INCREMENT = :increment
           DECREMENT = :decrement
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

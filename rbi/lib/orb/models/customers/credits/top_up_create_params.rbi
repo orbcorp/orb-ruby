@@ -87,9 +87,9 @@ module Orb
               expires_after_unit: T.nilable(Symbol),
               request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             amount:,
             currency:,
             invoice_settings:,
@@ -161,9 +161,9 @@ module Orb
                 memo: T.nilable(String),
                 require_successful_payment: T::Boolean
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil)
+            def self.new(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil)
             end
 
             sig do
@@ -187,8 +187,10 @@ module Orb
             DAY = T.let(:day, T.nilable(Symbol))
             MONTH = T.let(:month, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end

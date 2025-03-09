@@ -106,9 +106,9 @@ module Orb
             timeframe_start: Time,
             deprecation_filter: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           close_time:,
           created_at:,
@@ -152,8 +152,10 @@ module Orb
           PENDING_REVERT = :pending_revert
           REVERTED = :reverted
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

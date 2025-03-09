@@ -46,11 +46,6 @@ module Orb
         CREDIT_BALANCE_RECOVERED = :credit_balance_recovered
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class Threshold < Orb::BaseModel

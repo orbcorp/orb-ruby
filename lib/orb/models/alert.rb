@@ -208,11 +208,6 @@ module Orb
         COST_EXCEEDED = :cost_exceeded
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

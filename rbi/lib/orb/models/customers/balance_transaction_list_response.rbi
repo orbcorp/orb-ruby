@@ -103,9 +103,9 @@ module Orb
             starting_balance: String,
             type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           action:,
           amount:,
@@ -152,8 +152,10 @@ module Orb
           OVERPAYMENT_REFUND = :overpayment_refund
           EXTERNAL_PAYMENT = :external_payment
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -166,8 +168,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -184,8 +186,8 @@ module Orb
           def id=(_)
           end
 
-          sig { params(id: String).void }
-          def initialize(id:)
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
           end
 
           sig { override.returns({id: String}) }
@@ -199,8 +201,10 @@ module Orb
           INCREMENT = :increment
           DECREMENT = :decrement
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

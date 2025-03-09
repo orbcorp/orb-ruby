@@ -8,8 +8,10 @@ module Orb
       START_OF_TERM = :start_of_term
       END_OF_TERM = :end_of_term
 
-      sig { override.returns(T::Array[Symbol]) }
-      def self.values
+      class << self
+        sig { override.returns(T::Array[Symbol]) }
+        def values
+        end
       end
     end
   end

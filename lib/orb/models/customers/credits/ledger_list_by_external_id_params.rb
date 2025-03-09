@@ -110,11 +110,6 @@ module Orb
             PENDING = :pending
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -129,11 +124,6 @@ module Orb
             AMENDMENT = :amendment
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
       end

@@ -11,8 +11,8 @@ module Orb
       def data=(_)
       end
 
-      sig { params(data: T::Array[Orb::Models::EvaluatePriceGroup]).void }
-      def initialize(data:)
+      sig { params(data: T::Array[Orb::Models::EvaluatePriceGroup]).returns(T.attached_class) }
+      def self.new(data:)
       end
 
       sig { override.returns({data: T::Array[Orb::Models::EvaluatePriceGroup]}) }

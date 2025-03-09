@@ -47,15 +47,9 @@ module Orb
             view_mode: T.nilable(Symbol),
             request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          currency: nil,
-          timeframe_end: nil,
-          timeframe_start: nil,
-          view_mode: nil,
-          request_options: {}
-        )
+        def self.new(currency: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
         end
 
         sig do
@@ -79,8 +73,10 @@ module Orb
           PERIODIC = T.let(:periodic, T.nilable(Symbol))
           CUMULATIVE = T.let(:cumulative, T.nilable(Symbol))
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

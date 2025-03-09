@@ -64,9 +64,9 @@ module Orb
           start_date: Date,
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(amount:, end_date:, invoice_id:, name:, quantity:, start_date:, request_options: {})
+      def self.new(amount:, end_date:, invoice_id:, name:, quantity:, start_date:, request_options: {})
       end
 
       sig do

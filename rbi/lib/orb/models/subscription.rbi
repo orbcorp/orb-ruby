@@ -287,9 +287,9 @@ module Orb
           status: Symbol,
           trial_info: Orb::Models::Subscription::TrialInfo
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         active_plan_phase_order:,
         adjustment_intervals:,
@@ -443,9 +443,9 @@ module Orb
             end_date: T.nilable(Time),
             start_date: Time
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(id:, adjustment:, applies_to_price_interval_ids:, end_date:, start_date:)
+        def self.new(id:, adjustment:, applies_to_price_interval_ids:, end_date:, start_date:)
         end
 
         sig do
@@ -539,9 +539,9 @@ module Orb
                 usage_discount: Float,
                 adjustment_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               applies_to_price_ids:,
               is_invoice_level:,
@@ -637,9 +637,9 @@ module Orb
                 reason: T.nilable(String),
                 adjustment_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount_discount:,
               applies_to_price_ids:,
@@ -735,9 +735,9 @@ module Orb
                 reason: T.nilable(String),
                 adjustment_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               applies_to_price_ids:,
               is_invoice_level:,
@@ -842,9 +842,9 @@ module Orb
                 reason: T.nilable(String),
                 adjustment_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               applies_to_price_ids:,
               is_invoice_level:,
@@ -942,9 +942,9 @@ module Orb
                 reason: T.nilable(String),
                 adjustment_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               applies_to_price_ids:,
               is_invoice_level:,
@@ -973,13 +973,15 @@ module Orb
             end
           end
 
-          sig do
-            override
-              .returns(
-                [[Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment], [Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment], [Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment], [Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment], [Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]]
-              )
-          end
-          private_class_method def self.variants
+          class << self
+            sig do
+              override
+                .returns(
+                  [[Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment], [Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment], [Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment], [Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment], [Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]]
+                )
+            end
+            private def variants
+            end
           end
         end
       end
@@ -1009,8 +1011,10 @@ module Orb
         def year=(_)
         end
 
-        sig { params(day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)).void }
-        def initialize(day:, month: nil, year: nil)
+        sig do
+          params(day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)).returns(T.attached_class)
+        end
+        def self.new(day:, month: nil, year: nil)
         end
 
         sig { override.returns({day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)}) }
@@ -1079,9 +1083,9 @@ module Orb
               start_date: Time,
               discount_type: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             amount_discount:,
             applies_to_price_ids:,
             applies_to_price_interval_ids:,
@@ -1166,9 +1170,9 @@ module Orb
               start_date: Time,
               discount_type: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             applies_to_price_ids:,
             applies_to_price_interval_ids:,
             end_date:,
@@ -1253,9 +1257,9 @@ module Orb
               usage_discount: Float,
               discount_type: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             applies_to_price_ids:,
             applies_to_price_interval_ids:,
             end_date:,
@@ -1282,13 +1286,15 @@ module Orb
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[Symbol, Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval], [Symbol, Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval], [Symbol, Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[Symbol, Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval], [Symbol, Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval], [Symbol, Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval]]
+              )
+          end
+          private def variants
+          end
         end
       end
 
@@ -1325,8 +1331,11 @@ module Orb
         def start_date=(_)
         end
 
-        sig { params(end_date: T.nilable(Time), price_id: String, quantity: Float, start_date: Time).void }
-        def initialize(end_date:, price_id:, quantity:, start_date:)
+        sig do
+          params(end_date: T.nilable(Time), price_id: String, quantity: Float, start_date: Time)
+            .returns(T.attached_class)
+        end
+        def self.new(end_date:, price_id:, quantity:, start_date:)
         end
 
         sig do
@@ -1385,15 +1394,9 @@ module Orb
             maximum_amount: String,
             start_date: Time
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          applies_to_price_ids:,
-          applies_to_price_interval_ids:,
-          end_date:,
-          maximum_amount:,
-          start_date:
-        )
+        def self.new(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, maximum_amount:, start_date:)
         end
 
         sig do
@@ -1461,15 +1464,9 @@ module Orb
             minimum_amount: String,
             start_date: Time
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          applies_to_price_ids:,
-          applies_to_price_interval_ids:,
-          end_date:,
-          minimum_amount:,
-          start_date:
-        )
+        def self.new(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, minimum_amount:, start_date:)
         end
 
         sig do
@@ -1712,9 +1709,9 @@ module Orb
             start_date: Time,
             usage_customer_ids: T.nilable(T::Array[String])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           billing_cycle_day:,
           current_billing_period_end_date:,
@@ -1802,8 +1799,8 @@ module Orb
           def quantity=(_)
           end
 
-          sig { params(effective_date: Time, price_id: String, quantity: Integer).void }
-          def initialize(effective_date:, price_id:, quantity:)
+          sig { params(effective_date: Time, price_id: String, quantity: Integer).returns(T.attached_class) }
+          def self.new(effective_date:, price_id:, quantity:)
           end
 
           sig { override.returns({effective_date: Time, price_id: String, quantity: Integer}) }
@@ -1837,8 +1834,10 @@ module Orb
         def start_date=(_)
         end
 
-        sig { params(coupon_id: String, end_date: T.nilable(Time), start_date: Time).void }
-        def initialize(coupon_id:, end_date:, start_date:)
+        sig do
+          params(coupon_id: String, end_date: T.nilable(Time), start_date: Time).returns(T.attached_class)
+        end
+        def self.new(coupon_id:, end_date:, start_date:)
         end
 
         sig { override.returns({coupon_id: String, end_date: T.nilable(Time), start_date: Time}) }
@@ -1853,8 +1852,10 @@ module Orb
         ENDED = :ended
         UPCOMING = :upcoming
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -1867,8 +1868,8 @@ module Orb
         def end_date=(_)
         end
 
-        sig { params(end_date: T.nilable(Time)).void }
-        def initialize(end_date:)
+        sig { params(end_date: T.nilable(Time)).returns(T.attached_class) }
+        def self.new(end_date:)
         end
 
         sig { override.returns({end_date: T.nilable(Time)}) }

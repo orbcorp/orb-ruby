@@ -55,9 +55,9 @@ module Orb
           effective_date: T.nilable(Date),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         price_id:,
         quantity:,
         allow_invoice_credit_or_void: nil,
@@ -90,8 +90,10 @@ module Orb
         UPCOMING_INVOICE = :upcoming_invoice
         EFFECTIVE_DATE = :effective_date
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

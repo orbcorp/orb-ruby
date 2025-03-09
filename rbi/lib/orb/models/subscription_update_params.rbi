@@ -58,9 +58,9 @@ module Orb
           net_terms: T.nilable(Integer),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         auto_collection: nil,
         default_invoice_memo: nil,
         invoicing_threshold: nil,

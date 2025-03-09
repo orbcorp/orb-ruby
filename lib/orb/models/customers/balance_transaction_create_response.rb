@@ -108,11 +108,6 @@ module Orb
           EXTERNAL_PAYMENT = :external_payment
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class CreditNote < Orb::BaseModel
@@ -152,11 +147,6 @@ module Orb
           DECREMENT = :decrement
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
     end

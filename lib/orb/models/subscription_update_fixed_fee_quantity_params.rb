@@ -79,11 +79,6 @@ module Orb
         EFFECTIVE_DATE = :effective_date
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

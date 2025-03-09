@@ -14,8 +14,8 @@ module Orb
       def data=(_)
       end
 
-      sig { params(data: T::Array[Orb::Models::EventSearchResponse::Data]).void }
-      def initialize(data:)
+      sig { params(data: T::Array[Orb::Models::EventSearchResponse::Data]).returns(T.attached_class) }
+      def self.new(data:)
       end
 
       sig { override.returns({data: T::Array[Orb::Models::EventSearchResponse::Data]}) }
@@ -89,17 +89,9 @@ module Orb
             properties: T.anything,
             timestamp: Time
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          id:,
-          customer_id:,
-          deprecated:,
-          event_name:,
-          external_customer_id:,
-          properties:,
-          timestamp:
-        )
+        def self.new(id:, customer_id:, deprecated:, event_name:, external_customer_id:, properties:, timestamp:)
         end
 
         sig do

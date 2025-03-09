@@ -142,9 +142,9 @@ module Orb
                 starting_balance: Float,
                 entry_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               created_at:,
@@ -210,9 +210,10 @@ module Orb
               end
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
+                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
+                  .returns(T.attached_class)
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
               end
 
               sig do
@@ -245,8 +246,8 @@ module Orb
               def external_customer_id=(_)
               end
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:)
+              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+              def self.new(id:, external_customer_id:)
               end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -260,8 +261,10 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -428,9 +431,9 @@ module Orb
                 price_id: T.nilable(String),
                 entry_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               created_at:,
@@ -502,9 +505,10 @@ module Orb
               end
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
+                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
+                  .returns(T.attached_class)
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
               end
 
               sig do
@@ -537,8 +541,8 @@ module Orb
               def external_customer_id=(_)
               end
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:)
+              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+              def self.new(id:, external_customer_id:)
               end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -552,8 +556,10 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -710,9 +716,9 @@ module Orb
                 starting_balance: Float,
                 entry_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               created_at:,
@@ -780,9 +786,10 @@ module Orb
               end
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
+                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
+                  .returns(T.attached_class)
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
               end
 
               sig do
@@ -815,8 +822,8 @@ module Orb
               def external_customer_id=(_)
               end
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:)
+              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+              def self.new(id:, external_customer_id:)
               end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -830,8 +837,10 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -979,9 +988,9 @@ module Orb
                 starting_balance: Float,
                 entry_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               created_at:,
@@ -1047,9 +1056,10 @@ module Orb
               end
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
+                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
+                  .returns(T.attached_class)
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
               end
 
               sig do
@@ -1082,8 +1092,8 @@ module Orb
               def external_customer_id=(_)
               end
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:)
+              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+              def self.new(id:, external_customer_id:)
               end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -1097,8 +1107,10 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -1248,9 +1260,9 @@ module Orb
                 void_reason: T.nilable(String),
                 entry_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               created_at:,
@@ -1320,9 +1332,10 @@ module Orb
               end
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
+                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
+                  .returns(T.attached_class)
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
               end
 
               sig do
@@ -1355,8 +1368,8 @@ module Orb
               def external_customer_id=(_)
               end
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:)
+              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+              def self.new(id:, external_customer_id:)
               end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -1370,8 +1383,10 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -1546,9 +1561,9 @@ module Orb
                 void_reason: T.nilable(String),
                 entry_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               created_at:,
@@ -1620,9 +1635,10 @@ module Orb
               end
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
+                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
+                  .returns(T.attached_class)
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
               end
 
               sig do
@@ -1655,8 +1671,8 @@ module Orb
               def external_customer_id=(_)
               end
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:)
+              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+              def self.new(id:, external_customer_id:)
               end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -1670,8 +1686,10 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -1811,9 +1829,9 @@ module Orb
                 starting_balance: Float,
                 entry_type: Symbol
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               id:,
               amount:,
               created_at:,
@@ -1879,9 +1897,10 @@ module Orb
               end
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String)).void
+                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
+                  .returns(T.attached_class)
               end
-              def initialize(id:, expiry_date:, per_unit_cost_basis:)
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
               end
 
               sig do
@@ -1914,8 +1933,8 @@ module Orb
               def external_customer_id=(_)
               end
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).void }
-              def initialize(id:, external_customer_id:)
+              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
+              def self.new(id:, external_customer_id:)
               end
 
               sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
@@ -1929,19 +1948,23 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
 
-          sig do
-            override
-              .returns(
-                [[Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry]]
-              )
-          end
-          private_class_method def self.variants
+          class << self
+            sig do
+              override
+                .returns(
+                  [[Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry]]
+                )
+            end
+            private def variants
+            end
           end
         end
       end

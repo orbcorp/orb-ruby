@@ -215,9 +215,9 @@ module Orb
           tax_id: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::TaxID),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         accounting_sync_configuration: nil,
         additional_emails: nil,
         auto_collection: nil,
@@ -313,9 +313,9 @@ module Orb
             ),
             excluded: T.nilable(T::Boolean)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(accounting_providers: nil, excluded: nil)
+        def self.new(accounting_providers: nil, excluded: nil)
         end
 
         sig do
@@ -349,8 +349,8 @@ module Orb
           def provider_type=(_)
           end
 
-          sig { params(external_provider_id: String, provider_type: String).void }
-          def initialize(external_provider_id:, provider_type:)
+          sig { params(external_provider_id: String, provider_type: String).returns(T.attached_class) }
+          def self.new(external_provider_id:, provider_type:)
           end
 
           sig { override.returns({external_provider_id: String, provider_type: String}) }
@@ -417,9 +417,9 @@ module Orb
             postal_code: T.nilable(String),
             state: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil)
+        def self.new(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil)
         end
 
         sig do
@@ -456,8 +456,11 @@ module Orb
         def parent_customer_id=(_)
         end
 
-        sig { params(child_customer_ids: T::Array[String], parent_customer_id: T.nilable(String)).void }
-        def initialize(child_customer_ids: nil, parent_customer_id: nil)
+        sig do
+          params(child_customer_ids: T::Array[String], parent_customer_id: T.nilable(String))
+            .returns(T.attached_class)
+        end
+        def self.new(child_customer_ids: nil, parent_customer_id: nil)
         end
 
         sig do
@@ -476,8 +479,10 @@ module Orb
         STRIPE_INVOICE = T.let(:stripe_invoice, T.nilable(Symbol))
         NETSUITE = T.let(:netsuite, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -490,8 +495,8 @@ module Orb
         def exempt=(_)
         end
 
-        sig { params(exempt: T::Boolean).void }
-        def initialize(exempt:)
+        sig { params(exempt: T::Boolean).returns(T.attached_class) }
+        def self.new(exempt:)
         end
 
         sig { override.returns({exempt: T::Boolean}) }
@@ -557,9 +562,9 @@ module Orb
             postal_code: T.nilable(String),
             state: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil)
+        def self.new(city: nil, country: nil, line1: nil, line2: nil, postal_code: nil, state: nil)
         end
 
         sig do
@@ -608,9 +613,10 @@ module Orb
           end
 
           sig do
-            params(tax_exempt: T::Boolean, tax_exemption_code: T.nilable(String), tax_provider: Symbol).void
+            params(tax_exempt: T::Boolean, tax_exemption_code: T.nilable(String), tax_provider: Symbol)
+              .returns(T.attached_class)
           end
-          def initialize(tax_exempt:, tax_exemption_code: nil, tax_provider: :avalara)
+          def self.new(tax_exempt:, tax_exemption_code: nil, tax_provider: :avalara)
           end
 
           sig do
@@ -643,8 +649,8 @@ module Orb
           def tax_provider=(_)
           end
 
-          sig { params(tax_exempt: T::Boolean, tax_provider: Symbol).void }
-          def initialize(tax_exempt:, tax_provider: :taxjar)
+          sig { params(tax_exempt: T::Boolean, tax_provider: Symbol).returns(T.attached_class) }
+          def self.new(tax_exempt:, tax_provider: :taxjar)
           end
 
           sig { override.returns({tax_exempt: T::Boolean, tax_provider: Symbol}) }
@@ -652,13 +658,15 @@ module Orb
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[Symbol, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration], [Symbol, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[Symbol, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration], [Symbol, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration]]
+              )
+          end
+          private def variants
+          end
         end
       end
 
@@ -687,8 +695,8 @@ module Orb
         def value=(_)
         end
 
-        sig { params(country: Symbol, type: Symbol, value: String).void }
-        def initialize(country:, type:, value:)
+        sig { params(country: Symbol, type: Symbol, value: String).returns(T.attached_class) }
+        def self.new(country:, type:, value:)
         end
 
         sig { override.returns({country: Symbol, type: Symbol, value: String}) }
@@ -777,8 +785,10 @@ module Orb
           VN = :VN
           ZA = :ZA
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -857,8 +867,10 @@ module Orb
           VN_TIN = :vn_tin
           ZA_VAT = :za_vat
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

@@ -412,8 +412,8 @@ module Orb
       def update_trial(subscription_id, trial_end_date:, shift: nil, request_options: {})
       end
 
-      sig { params(client: Orb::Client).void }
-      def initialize(client:)
+      sig { params(client: Orb::Client).returns(T.attached_class) }
+      def self.new(client:)
       end
     end
   end

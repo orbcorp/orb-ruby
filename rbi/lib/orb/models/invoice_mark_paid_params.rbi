@@ -37,9 +37,9 @@ module Orb
           notes: T.nilable(String),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(payment_received_date:, external_id: nil, notes: nil, request_options: {})
+      def self.new(payment_received_date:, external_id: nil, notes: nil, request_options: {})
       end
 
       sig do

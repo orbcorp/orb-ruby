@@ -17,8 +17,11 @@ module Orb
         def data=(_)
         end
 
-        sig { params(data: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]).void }
-        def initialize(data:)
+        sig do
+          params(data: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data])
+            .returns(T.attached_class)
+        end
+        def self.new(data:)
         end
 
         sig { override.returns({data: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]}) }
@@ -62,9 +65,9 @@ module Orb
               usage: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage],
               view_mode: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(billable_metric:, usage:, view_mode:)
+          def self.new(billable_metric:, usage:, view_mode:)
           end
 
           sig do
@@ -97,8 +100,8 @@ module Orb
             def name=(_)
             end
 
-            sig { params(id: String, name: String).void }
-            def initialize(id:, name:)
+            sig { params(id: String, name: String).returns(T.attached_class) }
+            def self.new(id:, name:)
             end
 
             sig { override.returns({id: String, name: String}) }
@@ -131,8 +134,10 @@ module Orb
             def timeframe_start=(_)
             end
 
-            sig { params(quantity: Float, timeframe_end: Time, timeframe_start: Time).void }
-            def initialize(quantity:, timeframe_end:, timeframe_start:)
+            sig do
+              params(quantity: Float, timeframe_end: Time, timeframe_start: Time).returns(T.attached_class)
+            end
+            def self.new(quantity:, timeframe_end:, timeframe_start:)
             end
 
             sig { override.returns({quantity: Float, timeframe_end: Time, timeframe_start: Time}) }
@@ -146,8 +151,10 @@ module Orb
             PERIODIC = :periodic
             CUMULATIVE = :cumulative
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -178,9 +185,9 @@ module Orb
             data: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data],
             pagination_metadata: T.nilable(Orb::Models::PaginationMetadata)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(data:, pagination_metadata: nil)
+        def self.new(data:, pagination_metadata: nil)
         end
 
         sig do
@@ -244,9 +251,9 @@ module Orb
               usage: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage],
               view_mode: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(billable_metric:, metric_group:, usage:, view_mode:)
+          def self.new(billable_metric:, metric_group:, usage:, view_mode:)
           end
 
           sig do
@@ -280,8 +287,8 @@ module Orb
             def name=(_)
             end
 
-            sig { params(id: String, name: String).void }
-            def initialize(id:, name:)
+            sig { params(id: String, name: String).returns(T.attached_class) }
+            def self.new(id:, name:)
             end
 
             sig { override.returns({id: String, name: String}) }
@@ -306,8 +313,8 @@ module Orb
             def property_value=(_)
             end
 
-            sig { params(property_key: String, property_value: String).void }
-            def initialize(property_key:, property_value:)
+            sig { params(property_key: String, property_value: String).returns(T.attached_class) }
+            def self.new(property_key:, property_value:)
             end
 
             sig { override.returns({property_key: String, property_value: String}) }
@@ -340,8 +347,10 @@ module Orb
             def timeframe_start=(_)
             end
 
-            sig { params(quantity: Float, timeframe_end: Time, timeframe_start: Time).void }
-            def initialize(quantity:, timeframe_end:, timeframe_start:)
+            sig do
+              params(quantity: Float, timeframe_end: Time, timeframe_start: Time).returns(T.attached_class)
+            end
+            def self.new(quantity:, timeframe_end:, timeframe_start:)
             end
 
             sig { override.returns({quantity: Float, timeframe_end: Time, timeframe_start: Time}) }
@@ -355,20 +364,24 @@ module Orb
             PERIODIC = :periodic
             CUMULATIVE = :cumulative
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
       end
 
-      sig do
-        override
-          .returns(
-            [[NilClass, Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage], [NilClass, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]]
-          )
-      end
-      private_class_method def self.variants
+      class << self
+        sig do
+          override
+            .returns(
+              [[NilClass, Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage], [NilClass, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]]
+            )
+        end
+        private def variants
+        end
       end
     end
   end
