@@ -43,6 +43,25 @@ customer = orb.customers.create(email: "example-customer@withorb.com", name: "My
 puts(customer.id)
 ```
 
+## Pagination
+
+List methods in the Orb API are paginated.
+
+This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
+
+```ruby
+page = orb.coupons.list
+
+# Fetch single item from page.
+coupon = page.data[0]
+puts(coupon.id)
+
+# Automatically fetches more pages as needed.
+page.auto_paging_each do |coupon|
+  puts(coupon.id)
+end
+```
+
 ### Errors
 
 When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `Orb::Error` will be thrown:
@@ -117,9 +136,9 @@ orb.customers.create(
 
 ## Sorbet Support
 
-This library is written with [Sorbet type definitions](https://sorbet.org/docs/rbi). However, there is no runtime dependency on the Sorbet runtime.
+This library is written with [Sorbet type definitions](https://sorbet.org/docs/rbi). However, there is no runtime dependency on the `sorbet-runtime`.
 
-What this means is that while you can use Sorbet to type check your code statically, and benefit from the [Sorbet Language Server](https://sorbet.org/docs/lsp) in your editor, there is no runtime type checking and execution overhead from Sorbet.
+What this means is that while you can use Sorbet to type check your code statically, and benefit from the [Sorbet Language Server](https://sorbet.org/docs/lsp) in your editor, there is no runtime type checking and execution overhead from Sorbet itself.
 
 Due to limitations with the Sorbet type system, where a method otherwise can take an instance of `Orb::BaseModel` class, you will need to use the `**` splat operator to pass the arguments:
 
