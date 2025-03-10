@@ -7240,7 +7240,9 @@ module Orb
 
         # @!attribute start_date
         #   The start date of the adjustment interval. This is the date that the adjustment
-        #     will start affecting prices on the subscription.
+        #     will start affecting prices on the subscription. The adjustment will apply to
+        #     invoice dates that overlap with this `start_date`. This `start_date` is treated
+        #     as inclusive for in-advance prices, and exclusive for in-arrears prices.
         #
         #   @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate]
         required :start_date,
@@ -7248,7 +7250,9 @@ module Orb
 
         # @!attribute end_date
         #   The end date of the adjustment interval. This is the date that the adjustment
-        #     will stop affecting prices on the subscription.
+        #     will stop affecting prices on the subscription. The adjustment will apply to
+        #     invoice dates that overlap with this `end_date`.This `end_date` is treated as
+        #     exclusive for in-advance prices, and inclusive for in-arrears prices.
         #
         #   @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
         optional :end_date,
@@ -7499,7 +7503,9 @@ module Orb
         # @abstract
         #
         # The start date of the adjustment interval. This is the date that the adjustment
-        #   will start affecting prices on the subscription.
+        #   will start affecting prices on the subscription. The adjustment will apply to
+        #   invoice dates that overlap with this `start_date`. This `start_date` is treated
+        #   as inclusive for in-advance prices, and exclusive for in-arrears prices.
         class StartDate < Orb::Union
           variant Time
 
@@ -7509,7 +7515,9 @@ module Orb
         # @abstract
         #
         # The end date of the adjustment interval. This is the date that the adjustment
-        #   will stop affecting prices on the subscription.
+        #   will stop affecting prices on the subscription. The adjustment will apply to
+        #   invoice dates that overlap with this `end_date`.This `end_date` is treated as
+        #   exclusive for in-advance prices, and inclusive for in-arrears prices.
         class EndDate < Orb::Union
           variant Time
 
