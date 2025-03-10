@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.24 (2025-03-10)
+
+Full Changelog: [v0.1.0-alpha.23...v0.1.0-alpha.24](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.23...v0.1.0-alpha.24)
+
+### Features
+
+* support client level methods ([#122](https://github.com/orbcorp/orb-ruby/issues/122)) ([6b55a65](https://github.com/orbcorp/orb-ruby/commit/6b55a652c0b5e6456c4462d0fe4adcee4dc6445e))
+
+
+### Chores
+
+* **internal:** codegen related update ([#123](https://github.com/orbcorp/orb-ruby/issues/123)) ([b4835ec](https://github.com/orbcorp/orb-ruby/commit/b4835ecf97fa5c665b0a6bf5b31d4892557e1475))
+* **internal:** version bump ([#120](https://github.com/orbcorp/orb-ruby/issues/120)) ([95888ac](https://github.com/orbcorp/orb-ruby/commit/95888acba23ab3068b2830fe5abfc046c9ea7dc4))
+
 ## 0.1.0-alpha.23 (2025-03-10)
 
 Full Changelog: [v0.1.0-alpha.22...v0.1.0-alpha.23](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.22...v0.1.0-alpha.23)
