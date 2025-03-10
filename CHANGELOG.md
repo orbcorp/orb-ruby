@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-alpha.23 (2025-03-10)
+
+Full Changelog: [v0.1.0-alpha.22...v0.1.0-alpha.23](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.22...v0.1.0-alpha.23)
+
+### Features
+
+* add SKIP_BREW env var to ./scripts/bootstrap ([#116](https://github.com/orbcorp/orb-ruby/issues/116)) ([13e5aee](https://github.com/orbcorp/orb-ruby/commit/13e5aeefd3b81ab28d68c5b20cfeea50f95615a7))
+* **api:** api update ([#119](https://github.com/orbcorp/orb-ruby/issues/119)) ([7e4a750](https://github.com/orbcorp/orb-ruby/commit/7e4a750bfa69726c4fd112f3dce9d4ee8adc1df8))
+
+
+### Chores
+
+* add `sorbet` section to README ([#117](https://github.com/orbcorp/orb-ruby/issues/117)) ([9b1ea1d](https://github.com/orbcorp/orb-ruby/commit/9b1ea1d610be3cf87332ec4bdab36f1c57f30db9))
+* add more examples to README.md ([#118](https://github.com/orbcorp/orb-ruby/issues/118)) ([0420f35](https://github.com/orbcorp/orb-ruby/commit/0420f3533b7548de13162ff194fe1cc78d9fa2de))
+* generate better supported rbi signatures ([#114](https://github.com/orbcorp/orb-ruby/issues/114)) ([0c64668](https://github.com/orbcorp/orb-ruby/commit/0c6466871d43ec9bfe380f050f2d7a2267373465))
+* **internal:** version bump ([#112](https://github.com/orbcorp/orb-ruby/issues/112)) ([90a1f37](https://github.com/orbcorp/orb-ruby/commit/90a1f37d3fbe4c92126e3a7d6de4aba91dbaf193))
+* modify sorbet initializers to better support auto-completion ([#115](https://github.com/orbcorp/orb-ruby/issues/115)) ([cbc6906](https://github.com/orbcorp/orb-ruby/commit/cbc69067aa90231c564ecc3f6cb6076aa1dfd343))
+
 ## 0.1.0-alpha.22 (2025-03-07)
 
 Full Changelog: [v0.1.0-alpha.21...v0.1.0-alpha.22](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.21...v0.1.0-alpha.22)
