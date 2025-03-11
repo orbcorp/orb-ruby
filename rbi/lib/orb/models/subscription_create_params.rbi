@@ -2336,7 +2336,10 @@ module Orb
                 end
 
                 sig do
-                  params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).returns(T.attached_class)
+                  params(
+                    dimension_values: T::Array[T.nilable(String)],
+                    unit_amount: String
+).returns(T.attached_class)
                 end
                 def self.new(dimension_values:, unit_amount:)
                 end
@@ -2755,7 +2758,11 @@ module Orb
                 end
 
                 sig do
-                  params(first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)).returns(T.attached_class)
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+).returns(T.attached_class)
                 end
                 def self.new(first_unit:, unit_amount:, last_unit: nil)
                 end
@@ -3997,7 +4004,13 @@ module Orb
                 end
 
                 sig do
-                  override.returns({bps: Float, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String)})
+                  override.returns(
+                    {
+                      bps: Float,
+                    maximum_amount: T.nilable(String),
+                    per_unit_maximum: T.nilable(String)
+}
+)
                 end
                 def to_hash
                 end
@@ -12265,7 +12278,10 @@ module Orb
                 end
 
                 sig do
-                  params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).returns(T.attached_class)
+                  params(
+                    dimension_values: T::Array[T.nilable(String)],
+                    unit_amount: String
+).returns(T.attached_class)
                 end
                 def self.new(dimension_values:, unit_amount:)
                 end
@@ -12690,7 +12706,11 @@ module Orb
                 end
 
                 sig do
-                  params(first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)).returns(T.attached_class)
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+).returns(T.attached_class)
                 end
                 def self.new(first_unit:, unit_amount:, last_unit: nil)
                 end
@@ -13942,7 +13962,13 @@ module Orb
                 end
 
                 sig do
-                  override.returns({bps: Float, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String)})
+                  override.returns(
+                    {
+                      bps: Float,
+                    maximum_amount: T.nilable(String),
+                    per_unit_maximum: T.nilable(String)
+}
+)
                 end
                 def to_hash
                 end
