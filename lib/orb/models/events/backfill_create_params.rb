@@ -9,13 +9,17 @@ module Orb
         include Orb::RequestParameters
 
         # @!attribute timeframe_end
-        #   The (exclusive) end of the usage timeframe affected by this backfill.
+        #   The (exclusive) end of the usage timeframe affected by this backfill. By
+        #     default, Orb allows backfills up to 10 days in duration at a time. Reach out to
+        #     discuss extending this limit and your use case.
         #
         #   @return [Time]
         required :timeframe_end, Time
 
         # @!attribute timeframe_start
-        #   The (inclusive) start of the usage timeframe affected by this backfill.
+        #   The (inclusive) start of the usage timeframe affected by this backfill. By
+        #     default, Orb allows backfills up to 10 days in duration at a time. Reach out to
+        #     discuss extending this limit and your use case.
         #
         #   @return [Time]
         required :timeframe_start, Time

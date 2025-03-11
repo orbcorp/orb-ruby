@@ -80,17 +80,17 @@ module Orb
 
       sig do
         params(
-          created_at_gt: T.nilable(Time),
-          created_at_gte: T.nilable(Time),
-          created_at_lt: T.nilable(Time),
-          created_at_lte: T.nilable(Time),
-          cursor: T.nilable(String),
-          customer_id: T.nilable(T::Array[String]),
-          external_customer_id: T.nilable(String),
-          limit: Integer,
-          status: T.nilable(Symbol),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            created_at_gt: T.nilable(Time),
+            created_at_gte: T.nilable(Time),
+            created_at_lt: T.nilable(Time),
+            created_at_lte: T.nilable(Time),
+            cursor: T.nilable(String),
+            customer_id: T.nilable(T::Array[String]),
+            external_customer_id: T.nilable(String),
+            limit: Integer,
+            status: T.nilable(Symbol),
+            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(
