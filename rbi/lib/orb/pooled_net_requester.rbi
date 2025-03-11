@@ -2,9 +2,7 @@
 
 module Orb
   class PooledNetRequester
-    RequestShape = T.type_alias do
-      {method: Symbol, url: URI::Generic, headers: T::Hash[String, String], body: T.anything, deadline: Float}
-    end
+    RequestShape = T.type_alias { {method: Symbol, url: URI::Generic, headers: T::Hash[String, String], body: T.anything, deadline: Float} }
 
     class << self
       sig { params(url: URI::Generic).returns(Net::HTTP) }
@@ -24,14 +22,7 @@ module Orb
     private def with_pool(url, &blk)
     end
 
-    sig do
-      params(request: Orb::PooledNetRequester::RequestShape).returns(
-        [
-          Net::HTTPResponse,
-          T::Enumerable[String]
-        ]
-      )
-    end
+    sig { params(request: Orb::PooledNetRequester::RequestShape).returns([Net::HTTPResponse, T::Enumerable[String]]) }
     def execute(request)
     end
 

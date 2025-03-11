@@ -24,11 +24,11 @@ module Orb
 
     sig do
       params(
-        client: Orb::BaseClient,
-        req: Orb::BaseClient::RequestComponentsShape,
-        headers: T.any(T::Hash[String, String], Net::HTTPHeader),
-        page_data: T::Hash[Symbol, T.anything]
-      )
+          client: Orb::BaseClient,
+          req: Orb::BaseClient::RequestComponentsShape,
+          headers: T.any(T::Hash[String, String], Net::HTTPHeader),
+          page_data: T::Hash[Symbol, T.anything]
+        )
         .void
     end
     def initialize(client:, req:, headers:, page_data:)
