@@ -6,14 +6,7 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      sig do
-        params(
-          request_options: T.any(
-            Orb::RequestOptions,
-            T::Hash[Symbol, T.anything]
-          )
-        ).returns(T.attached_class)
-      end
+      sig { params(request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])).returns(T.attached_class) }
       def self.new(request_options: {})
       end
 
