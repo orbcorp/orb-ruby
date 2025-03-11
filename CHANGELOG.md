@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.1.0-alpha.24 (2025-03-11)
+
+Full Changelog: [v0.1.0-alpha.23...v0.1.0-alpha.24](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.23...v0.1.0-alpha.24)
+
+### Features
+
+* support client level methods ([#122](https://github.com/orbcorp/orb-ruby/issues/122)) ([6b55a65](https://github.com/orbcorp/orb-ruby/commit/6b55a652c0b5e6456c4462d0fe4adcee4dc6445e))
+
+
+### Bug Fixes
+
+* fix casing in tests ([#129](https://github.com/orbcorp/orb-ruby/issues/129)) ([229b22c](https://github.com/orbcorp/orb-ruby/commit/229b22cd7c2464423c24df52bb3e613a4860d6ce))
+
+
+### Chores
+
+* better phone number examples ([#127](https://github.com/orbcorp/orb-ruby/issues/127)) ([ba7c288](https://github.com/orbcorp/orb-ruby/commit/ba7c288a8f7fdaf87ad78616086d3528632b07ef))
+* **internal:** codegen related update ([#123](https://github.com/orbcorp/orb-ruby/issues/123)) ([b4835ec](https://github.com/orbcorp/orb-ruby/commit/b4835ecf97fa5c665b0a6bf5b31d4892557e1475))
+* **internal:** codegen related update ([#124](https://github.com/orbcorp/orb-ruby/issues/124)) ([278685d](https://github.com/orbcorp/orb-ruby/commit/278685d61c77bb43bb17ffa8c2430cf66e13bcf7))
+* **internal:** codegen related update ([#125](https://github.com/orbcorp/orb-ruby/issues/125)) ([4c6c880](https://github.com/orbcorp/orb-ruby/commit/4c6c8809f4801174629ee0794162e8d8111eb250))
+* **internal:** codegen related update ([#126](https://github.com/orbcorp/orb-ruby/issues/126)) ([354931c](https://github.com/orbcorp/orb-ruby/commit/354931ceb58243c25b6dfb71ef480d093128ce4f))
+* **internal:** codegen related update ([#128](https://github.com/orbcorp/orb-ruby/issues/128)) ([7e38127](https://github.com/orbcorp/orb-ruby/commit/7e381278a3814fc508d73a4cf0126e59776fd1f1))
+* **internal:** version bump ([#120](https://github.com/orbcorp/orb-ruby/issues/120)) ([95888ac](https://github.com/orbcorp/orb-ruby/commit/95888acba23ab3068b2830fe5abfc046c9ea7dc4))
+
 ## 0.1.0-alpha.23 (2025-03-10)
 
 Full Changelog: [v0.1.0-alpha.22...v0.1.0-alpha.23](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.22...v0.1.0-alpha.23)
