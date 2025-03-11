@@ -6,15 +6,15 @@ module Orb
       class Backfills
         sig do
           params(
-            timeframe_end: Time,
-            timeframe_start: Time,
-            close_time: T.nilable(Time),
-            customer_id: T.nilable(String),
-            deprecation_filter: T.nilable(String),
-            external_customer_id: T.nilable(String),
-            replace_existing_events: T::Boolean,
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-          )
+              timeframe_end: Time,
+              timeframe_start: Time,
+              close_time: T.nilable(Time),
+              customer_id: T.nilable(String),
+              deprecation_filter: T.nilable(String),
+              external_customer_id: T.nilable(String),
+              replace_existing_events: T::Boolean,
+              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            )
             .returns(Orb::Models::Events::BackfillCreateResponse)
         end
         def create(
@@ -31,10 +31,10 @@ module Orb
 
         sig do
           params(
-            cursor: T.nilable(String),
-            limit: Integer,
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-          )
+              cursor: T.nilable(String),
+              limit: Integer,
+              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            )
             .returns(Orb::Page[Orb::Models::Events::BackfillListResponse])
         end
         def list(cursor: nil, limit: nil, request_options: {})
@@ -42,9 +42,9 @@ module Orb
 
         sig do
           params(
-            backfill_id: String,
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-          )
+              backfill_id: String,
+              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            )
             .returns(Orb::Models::Events::BackfillCloseResponse)
         end
         def close(backfill_id, request_options: {})
@@ -52,9 +52,9 @@ module Orb
 
         sig do
           params(
-            backfill_id: String,
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-          )
+              backfill_id: String,
+              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            )
             .returns(Orb::Models::Events::BackfillFetchResponse)
         end
         def fetch(backfill_id, request_options: {})
@@ -62,9 +62,9 @@ module Orb
 
         sig do
           params(
-            backfill_id: String,
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-          )
+              backfill_id: String,
+              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            )
             .returns(Orb::Models::Events::BackfillRevertResponse)
         end
         def revert(backfill_id, request_options: {})

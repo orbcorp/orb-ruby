@@ -51,13 +51,13 @@ module Orb
 
       sig do
         params(
-          auto_collection: T.nilable(T::Boolean),
-          default_invoice_memo: T.nilable(String),
-          invoicing_threshold: T.nilable(String),
-          metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          net_terms: T.nilable(Integer),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            auto_collection: T.nilable(T::Boolean),
+            default_invoice_memo: T.nilable(String),
+            invoicing_threshold: T.nilable(String),
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            net_terms: T.nilable(Integer),
+            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(
