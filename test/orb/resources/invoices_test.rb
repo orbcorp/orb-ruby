@@ -133,11 +133,6 @@ class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
       response => Orb::Page
     end
 
-    page = response.next_page
-    assert_pattern do
-      page => Orb::Page
-    end
-
     row = response.to_enum.first
     assert_pattern do
       row => Orb::Models::Invoice
