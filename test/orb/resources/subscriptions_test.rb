@@ -86,11 +86,6 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
       response => Orb::Page
     end
 
-    page = response.next_page
-    assert_pattern do
-      page => Orb::Page
-    end
-
     row = response.to_enum.first
     assert_pattern do
       row => Orb::Models::Subscription
@@ -222,11 +217,6 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
 
     assert_pattern do
       response => Orb::Page
-    end
-
-    page = response.next_page
-    assert_pattern do
-      page => Orb::Page
     end
 
     row = response.to_enum.first

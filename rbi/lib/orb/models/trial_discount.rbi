@@ -45,12 +45,12 @@ module Orb
 
       sig do
         params(
-          applies_to_price_ids: T::Array[String],
-          discount_type: Symbol,
-          reason: T.nilable(String),
-          trial_amount_discount: T.nilable(String),
-          trial_percentage_discount: T.nilable(Float)
-        )
+            applies_to_price_ids: T::Array[String],
+            discount_type: Symbol,
+            reason: T.nilable(String),
+            trial_amount_discount: T.nilable(String),
+            trial_percentage_discount: T.nilable(Float)
+          )
           .returns(T.attached_class)
       end
       def self.new(
