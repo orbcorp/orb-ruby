@@ -40,12 +40,12 @@ module Orb
 
       sig do
         params(
-          currency: T.nilable(String),
-          timeframe_end: T.nilable(Time),
-          timeframe_start: T.nilable(Time),
-          view_mode: T.nilable(Symbol),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            currency: T.nilable(String),
+            timeframe_end: T.nilable(Time),
+            timeframe_start: T.nilable(Time),
+            view_mode: T.nilable(Symbol),
+            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(currency: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
