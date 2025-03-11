@@ -88,18 +88,18 @@ module Orb
 
       sig do
         params(
-          billable_metric_id: T.nilable(String),
-          first_dimension_key: T.nilable(String),
-          first_dimension_value: T.nilable(String),
-          granularity: T.nilable(Symbol),
-          group_by: T.nilable(String),
-          second_dimension_key: T.nilable(String),
-          second_dimension_value: T.nilable(String),
-          timeframe_end: T.nilable(Time),
-          timeframe_start: T.nilable(Time),
-          view_mode: T.nilable(Symbol),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            billable_metric_id: T.nilable(String),
+            first_dimension_key: T.nilable(String),
+            first_dimension_value: T.nilable(String),
+            granularity: T.nilable(Symbol),
+            group_by: T.nilable(String),
+            second_dimension_key: T.nilable(String),
+            second_dimension_value: T.nilable(String),
+            timeframe_end: T.nilable(Time),
+            timeframe_start: T.nilable(Time),
+            view_mode: T.nilable(Symbol),
+            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(

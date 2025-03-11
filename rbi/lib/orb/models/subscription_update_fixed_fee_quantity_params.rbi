@@ -48,13 +48,13 @@ module Orb
 
       sig do
         params(
-            price_id: String,
-            quantity: Float,
-            allow_invoice_credit_or_void: T.nilable(T::Boolean),
-            change_option: Symbol,
-            effective_date: T.nilable(Date),
-            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-          )
+          price_id: String,
+          quantity: Float,
+          allow_invoice_credit_or_void: T.nilable(T::Boolean),
+          change_option: Symbol,
+          effective_date: T.nilable(Date),
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+        )
           .returns(T.attached_class)
       end
       def self.new(

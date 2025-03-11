@@ -37,11 +37,11 @@ module Orb
 
       sig do
         params(
-            applies_to_price_ids: T::Array[String],
-            discount_type: Symbol,
-            usage_discount: Float,
-            reason: T.nilable(String)
-          )
+          applies_to_price_ids: T::Array[String],
+          discount_type: Symbol,
+          usage_discount: Float,
+          reason: T.nilable(String)
+        )
           .returns(T.attached_class)
       end
       def self.new(applies_to_price_ids:, discount_type:, usage_discount:, reason: nil)
@@ -50,7 +50,12 @@ module Orb
       sig do
         override
           .returns(
-            {applies_to_price_ids: T::Array[String], discount_type: Symbol, usage_discount: Float, reason: T.nilable(String)}
+            {
+              applies_to_price_ids: T::Array[String],
+              discount_type: Symbol,
+              usage_discount: Float,
+              reason: T.nilable(String)
+            }
           )
       end
       def to_hash
