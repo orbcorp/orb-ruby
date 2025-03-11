@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-alpha.25 (2025-03-11)
+
+Full Changelog: [v0.1.0-alpha.24...v0.1.0-alpha.25](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.24...v0.1.0-alpha.25)
+
+### Features
+
+* **api:** api update ([#137](https://github.com/orbcorp/orb-ruby/issues/137)) ([7f2a33b](https://github.com/orbcorp/orb-ruby/commit/7f2a33b6f4794aefe50733a9867f5be9c1314482))
+
+
+### Chores
+
+* **internal:** codegen related update ([#132](https://github.com/orbcorp/orb-ruby/issues/132)) ([d86f52b](https://github.com/orbcorp/orb-ruby/commit/d86f52ba1a56416fe826861e19bcebf314287bab))
+* **internal:** codegen related update ([#133](https://github.com/orbcorp/orb-ruby/issues/133)) ([55e3ee5](https://github.com/orbcorp/orb-ruby/commit/55e3ee56ef6931491e3da4853bc92bcec4a8ec38))
+* **internal:** codegen related update ([#135](https://github.com/orbcorp/orb-ruby/issues/135)) ([4dde2f2](https://github.com/orbcorp/orb-ruby/commit/4dde2f205ea576930473bacad398511a72d23cb5))
+* **internal:** codegen related update ([#136](https://github.com/orbcorp/orb-ruby/issues/136)) ([c6b55f4](https://github.com/orbcorp/orb-ruby/commit/c6b55f457aebc74a4edac6bbcd51363c9be88214))
+* **internal:** version bump ([#130](https://github.com/orbcorp/orb-ruby/issues/130)) ([a9aff2a](https://github.com/orbcorp/orb-ruby/commit/a9aff2a5177db007f46407a3b76dd8ce35ec46af))
+* pagination ([#134](https://github.com/orbcorp/orb-ruby/issues/134)) ([9265d32](https://github.com/orbcorp/orb-ruby/commit/9265d320d1a3e5b4647eff35ec9e3145d59ffea5))
+
 ## 0.1.0-alpha.24 (2025-03-11)
 
 Full Changelog: [v0.1.0-alpha.23...v0.1.0-alpha.24](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.23...v0.1.0-alpha.24)
