@@ -44,9 +44,13 @@ module Orb
         #
         # @param params [Orb::Models::Events::BackfillCreateParams, Hash{Symbol=>Object}] .
         #
-        #   @option params [Time] :timeframe_end The (exclusive) end of the usage timeframe affected by this backfill.
+        #   @option params [Time] :timeframe_end The (exclusive) end of the usage timeframe affected by this backfill. By
+        #     default, Orb allows backfills up to 10 days in duration at a time. Reach out to
+        #     discuss extending this limit and your use case.
         #
-        #   @option params [Time] :timeframe_start The (inclusive) start of the usage timeframe affected by this backfill.
+        #   @option params [Time] :timeframe_start The (inclusive) start of the usage timeframe affected by this backfill. By
+        #     default, Orb allows backfills up to 10 days in duration at a time. Reach out to
+        #     discuss extending this limit and your use case.
         #
         #   @option params [Time, nil] :close_time The time at which no more events will be accepted for this backfill. The
         #     backfill will automatically begin reflecting throughout Orb at the close time.
