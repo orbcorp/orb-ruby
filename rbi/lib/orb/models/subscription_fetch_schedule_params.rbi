@@ -56,14 +56,14 @@ module Orb
 
       sig do
         params(
-            cursor: T.nilable(String),
-            limit: Integer,
-            start_date_gt: T.nilable(Time),
-            start_date_gte: T.nilable(Time),
-            start_date_lt: T.nilable(Time),
-            start_date_lte: T.nilable(Time),
-            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-          )
+          cursor: T.nilable(String),
+          limit: Integer,
+          start_date_gt: T.nilable(Time),
+          start_date_gte: T.nilable(Time),
+          start_date_lt: T.nilable(Time),
+          start_date_lte: T.nilable(Time),
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+        )
           .returns(T.attached_class)
       end
       def self.new(
