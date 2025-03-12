@@ -43,7 +43,7 @@ customer = orb.customers.create(email: "example-customer@withorb.com", name: "My
 puts(customer.id)
 ```
 
-## Pagination
+### Pagination
 
 List methods in the Orb API are paginated.
 

@@ -10,16 +10,16 @@ module Orb
   #
   # @example
   # ```ruby
-  # page.auto_paging_each do |item|
-  # #   item ...
+  # page.auto_paging_each do |coupon|
+  #   puts(coupon)
   # end
   # ```
   #
   # @example
   # ```ruby
-  # items = page.to_enum.take(2)
+  # coupons = page.to_enum.take(2)
   #
-  # items => Array
+  # coupons => Array
   # ```
   class Page
     include Orb::BasePage
