@@ -60,13 +60,13 @@ module Orb
 
       sig do
         params(
-          add: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add],
-          add_adjustments: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment],
-          allow_invoice_credit_or_void: T.nilable(T::Boolean),
-          edit: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit],
-          edit_adjustments: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment],
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            add: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add],
+            add_adjustments: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment],
+            allow_invoice_credit_or_void: T.nilable(T::Boolean),
+            edit: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit],
+            edit_adjustments: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment],
+            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(
@@ -117,32 +117,32 @@ module Orb
 
         sig do
           returns(
-            T.nilable(
-              T::Array[
-              T.any(
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::AmountDiscountCreationParams,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::PercentageDiscountCreationParams,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams
+              T.nilable(
+                T::Array[
+                T.any(
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::AmountDiscountCreationParams,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::PercentageDiscountCreationParams,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams
+                )
+                ]
               )
-              ]
             )
-          )
         end
         def discounts
         end
 
         sig do
           params(
-            _: T.nilable(
-              T::Array[
-              T.any(
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::AmountDiscountCreationParams,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::PercentageDiscountCreationParams,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams
+              _: T.nilable(
+                T::Array[
+                T.any(
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::AmountDiscountCreationParams,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::PercentageDiscountCreationParams,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams
+                )
+                ]
               )
-              ]
             )
-          )
             .returns(
               T.nilable(
                 T::Array[
@@ -184,16 +184,16 @@ module Orb
 
         sig do
           returns(
-            T.nilable(T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition])
-          )
+              T.nilable(T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition])
+            )
         end
         def fixed_fee_quantity_transitions
         end
 
         sig do
           params(
-            _: T.nilable(T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition])
-          )
+              _: T.nilable(T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition])
+            )
             .returns(
               T.nilable(T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition])
             )
@@ -219,78 +219,78 @@ module Orb
 
         sig do
           returns(
-            T.nilable(
-              T.any(
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice
+              T.nilable(
+                T.any(
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice
+                )
               )
             )
-          )
         end
         def price
         end
 
         sig do
           params(
-            _: T.nilable(
-              T.any(
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice
+              _: T.nilable(
+                T.any(
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice
+                )
               )
             )
-          )
             .returns(
               T.nilable(
                 T.any(
@@ -347,58 +347,58 @@ module Orb
 
         sig do
           params(
-            start_date: T.any(Time, Symbol),
-            allocation_price: T.nilable(Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice),
-            discounts: T.nilable(
-              T::Array[
-              T.any(
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::AmountDiscountCreationParams,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::PercentageDiscountCreationParams,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams
-              )
-              ]
-            ),
-            end_date: T.nilable(T.any(Time, Symbol)),
-            external_price_id: T.nilable(String),
-            filter: T.nilable(String),
-            fixed_fee_quantity_transitions: T.nilable(T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition]),
-            maximum_amount: T.nilable(Float),
-            minimum_amount: T.nilable(Float),
-            price: T.nilable(
-              T.any(
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice,
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice
-              )
-            ),
-            price_id: T.nilable(String),
-            usage_customer_ids: T.nilable(T::Array[String])
-          )
+              start_date: T.any(Time, Symbol),
+              allocation_price: T.nilable(Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice),
+              discounts: T.nilable(
+                T::Array[
+                T.any(
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::AmountDiscountCreationParams,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::PercentageDiscountCreationParams,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams
+                )
+                ]
+              ),
+              end_date: T.nilable(T.any(Time, Symbol)),
+              external_price_id: T.nilable(String),
+              filter: T.nilable(String),
+              fixed_fee_quantity_transitions: T.nilable(T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition]),
+              maximum_amount: T.nilable(Float),
+              minimum_amount: T.nilable(Float),
+              price: T.nilable(
+                T.any(
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice
+                )
+              ),
+              price_id: T.nilable(String),
+              usage_customer_ids: T.nilable(T::Array[String])
+            )
             .returns(T.attached_class)
         end
         def self.new(
@@ -530,11 +530,7 @@ module Orb
 
           sig do
             override
-              .returns({
-amount: String, 
-cadence: Symbol, 
-currency: String,
-                        expires_at_end_of_cadence: T::Boolean})
+              .returns({amount: String, cadence: Symbol, currency: String, expires_at_end_of_cadence: T::Boolean})
           end
           def to_hash
           end
@@ -759,20 +755,20 @@ currency: String,
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration
@@ -816,20 +812,20 @@ currency: String,
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration
@@ -852,26 +848,26 @@ currency: String,
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                unit_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::UnitConfig,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  unit_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::UnitConfig,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -1083,8 +1079,8 @@ currency: String,
 
             sig do
               params(
-                _: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::PackageConfig
-              )
+                  _: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::PackageConfig
+                )
                 .returns(Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::PackageConfig)
             end
             def package_config=(_)
@@ -1108,20 +1104,20 @@ currency: String,
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration
@@ -1165,20 +1161,20 @@ currency: String,
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration
@@ -1201,26 +1197,26 @@ currency: String,
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                package_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::PackageConfig,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  package_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::PackageConfig,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -1463,20 +1459,20 @@ currency: String,
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration
@@ -1520,20 +1516,20 @@ currency: String,
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration
@@ -1556,26 +1552,26 @@ currency: String,
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                matrix_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig,
-                name: String,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  matrix_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -1662,20 +1658,20 @@ currency: String,
 
               sig do
                 returns(
-                  T::Array[
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue
-                  ]
-                )
+                    T::Array[
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue
+                    ]
+                  )
               end
               def matrix_values
               end
 
               sig do
                 params(
-                  _: T::Array[
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue
-                  ]
-                )
+                    _: T::Array[
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue
+                    ]
+                  )
                   .returns(
                     T::Array[
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue
@@ -1687,12 +1683,12 @@ currency: String,
 
               sig do
                 params(
-                  default_unit_amount: String,
-                  dimensions: T::Array[T.nilable(String)],
-                  matrix_values: T::Array[
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue
-                  ]
-                )
+                    default_unit_amount: String,
+                    dimensions: T::Array[T.nilable(String)],
+                    matrix_values: T::Array[
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue
+                    ]
+                  )
                   .returns(T.attached_class)
               end
               def self.new(default_unit_amount:, dimensions:, matrix_values:)
@@ -1730,9 +1726,7 @@ currency: String,
                 def unit_amount=(_)
                 end
 
-                sig {
- params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).returns(T.attached_class)
-}
+                sig { params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).returns(T.attached_class) }
                 def self.new(dimension_values:, unit_amount:)
                 end
 
@@ -1848,16 +1842,16 @@ currency: String,
 
             sig do
               returns(
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig
-              )
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig
+                )
             end
             def matrix_with_allocation_config
             end
 
             sig do
               params(
-                _: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig
-              )
+                  _: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig
+                )
                 .returns(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig
                 )
@@ -1899,20 +1893,20 @@ currency: String,
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration
@@ -1956,20 +1950,20 @@ currency: String,
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration
@@ -1992,26 +1986,26 @@ currency: String,
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                matrix_with_allocation_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig,
-                name: String,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  matrix_with_allocation_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -2106,20 +2100,20 @@ currency: String,
 
               sig do
                 returns(
-                  T::Array[
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue
-                  ]
-                )
+                    T::Array[
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue
+                    ]
+                  )
               end
               def matrix_values
               end
 
               sig do
                 params(
-                  _: T::Array[
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue
-                  ]
-                )
+                    _: T::Array[
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue
+                    ]
+                  )
                   .returns(
                     T::Array[
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue
@@ -2131,13 +2125,13 @@ currency: String,
 
               sig do
                 params(
-                  allocation: Float,
-                  default_unit_amount: String,
-                  dimensions: T::Array[T.nilable(String)],
-                  matrix_values: T::Array[
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue
-                  ]
-                )
+                    allocation: Float,
+                    default_unit_amount: String,
+                    dimensions: T::Array[T.nilable(String)],
+                    matrix_values: T::Array[
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue
+                    ]
+                  )
                   .returns(T.attached_class)
               end
               def self.new(allocation:, default_unit_amount:, dimensions:, matrix_values:)
@@ -2176,9 +2170,7 @@ currency: String,
                 def unit_amount=(_)
                 end
 
-                sig {
- params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).returns(T.attached_class)
-}
+                sig { params(dimension_values: T::Array[T.nilable(String)], unit_amount: String).returns(T.attached_class) }
                 def self.new(dimension_values:, unit_amount:)
                 end
 
@@ -2337,20 +2329,20 @@ currency: String,
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration
@@ -2394,20 +2386,20 @@ currency: String,
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration
@@ -2430,26 +2422,26 @@ currency: String,
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                tiered_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  tiered_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -2520,16 +2512,16 @@ currency: String,
             class TieredConfig < Orb::BaseModel
               sig do
                 returns(
-                  T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier]
-                )
+                    T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier]
+                  )
               end
               def tiers
               end
 
               sig do
                 params(
-                  _: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier]
-                )
+                    _: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier]
+                  )
                   .returns(
                     T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier]
                   )
@@ -2539,8 +2531,8 @@ currency: String,
 
               sig do
                 params(
-                  tiers: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier]
-                )
+                    tiers: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier]
+                  )
                   .returns(T.attached_class)
               end
               def self.new(tiers:)
@@ -2582,15 +2574,11 @@ currency: String,
                 def last_unit=(_)
                 end
 
-                sig {
- params(first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)).returns(T.attached_class)
-}
+                sig { params(first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)).returns(T.attached_class) }
                 def self.new(first_unit:, unit_amount:, last_unit: nil)
                 end
 
-                sig {
- override.returns({first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)})
-}
+                sig { override.returns({first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)}) }
                 def to_hash
                 end
               end
@@ -2718,16 +2706,16 @@ currency: String,
 
             sig do
               returns(
-                Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig
-              )
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig
+                )
             end
             def tiered_bps_config
             end
 
             sig do
               params(
-                _: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig
-              )
+                  _: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig
+                )
                 .returns(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig
                 )
@@ -2753,20 +2741,20 @@ currency: String,
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration
@@ -2810,20 +2798,20 @@ currency: String,
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration
@@ -2846,26 +2834,26 @@ currency: String,
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                tiered_bps_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  tiered_bps_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -2936,20 +2924,20 @@ currency: String,
             class TieredBpsConfig < Orb::BaseModel
               sig do
                 returns(
-                  T::Array[
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier
-                  ]
-                )
+                    T::Array[
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier
+                    ]
+                  )
               end
               def tiers
               end
 
               sig do
                 params(
-                  _: T::Array[
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier
-                  ]
-                )
+                    _: T::Array[
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier
+                    ]
+                  )
                   .returns(
                     T::Array[
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier
@@ -2961,10 +2949,10 @@ currency: String,
 
               sig do
                 params(
-                  tiers: T::Array[
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier
-                  ]
-                )
+                    tiers: T::Array[
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier
+                    ]
+                  )
                   .returns(T.attached_class)
               end
               def self.new(tiers:)
@@ -3018,11 +3006,11 @@ currency: String,
 
                 sig do
                   params(
-                    bps: Float,
-                    minimum_amount: String,
-                    maximum_amount: T.nilable(String),
-                    per_unit_maximum: T.nilable(String)
-                  )
+                      bps: Float,
+                      minimum_amount: String,
+                      maximum_amount: T.nilable(String),
+                      per_unit_maximum: T.nilable(String)
+                    )
                     .returns(T.attached_class)
                 end
                 def self.new(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil)
@@ -3031,11 +3019,7 @@ currency: String,
                 sig do
                   override
                     .returns(
-                      {
-bps: Float, 
-minimum_amount: String, 
-maximum_amount: T.nilable(String),
-                       per_unit_maximum: T.nilable(String)}
+                      {bps: Float, minimum_amount: String, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String)}
                     )
                 end
                 def to_hash
@@ -3192,20 +3176,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration
@@ -3249,20 +3233,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration
@@ -3285,26 +3269,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                bps_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BpsConfig,
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  bps_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BpsConfig,
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -3484,8 +3468,8 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                _: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig
-              )
+                  _: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig
+                )
                 .returns(Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig)
             end
             def bulk_bps_config=(_)
@@ -3549,20 +3533,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration
@@ -3606,20 +3590,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration
@@ -3642,26 +3626,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                bulk_bps_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig,
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  bulk_bps_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig,
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -3715,16 +3699,16 @@ maximum_amount: T.nilable(String),
             class BulkBpsConfig < Orb::BaseModel
               sig do
                 returns(
-                  T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier]
-                )
+                    T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier]
+                  )
               end
               def tiers
               end
 
               sig do
                 params(
-                  _: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier]
-                )
+                    _: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier]
+                  )
                   .returns(
                     T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier]
                   )
@@ -3734,8 +3718,8 @@ maximum_amount: T.nilable(String),
 
               sig do
                 params(
-                  tiers: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier]
-                )
+                    tiers: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier]
+                  )
                   .returns(T.attached_class)
               end
               def self.new(tiers:)
@@ -3784,9 +3768,7 @@ maximum_amount: T.nilable(String),
                 def self.new(bps:, maximum_amount: nil, per_unit_maximum: nil)
                 end
 
-                sig {
- override.returns({bps: Float, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String)})
-}
+                sig { override.returns({bps: Float, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String)}) }
                 def to_hash
                 end
               end
@@ -3958,20 +3940,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration
@@ -4015,20 +3997,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration
@@ -4051,26 +4033,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                bulk_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig,
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  bulk_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig,
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -4124,16 +4106,16 @@ maximum_amount: T.nilable(String),
             class BulkConfig < Orb::BaseModel
               sig do
                 returns(
-                  T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier]
-                )
+                    T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier]
+                  )
               end
               def tiers
               end
 
               sig do
                 params(
-                  _: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier]
-                )
+                    _: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier]
+                  )
                   .returns(
                     T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier]
                   )
@@ -4143,8 +4125,8 @@ maximum_amount: T.nilable(String),
 
               sig do
                 params(
-                  tiers: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier]
-                )
+                    tiers: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier]
+                  )
                   .returns(T.attached_class)
               end
               def self.new(tiers:)
@@ -4351,20 +4333,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration
@@ -4408,20 +4390,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration
@@ -4444,26 +4426,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                threshold_total_amount_config: T::Hash[Symbol, T.anything],
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  threshold_total_amount_config: T::Hash[Symbol, T.anything],
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -4677,20 +4659,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration
@@ -4734,20 +4716,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration
@@ -4770,26 +4752,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                tiered_package_config: T::Hash[Symbol, T.anything],
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  tiered_package_config: T::Hash[Symbol, T.anything],
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -5003,20 +4985,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration
@@ -5060,20 +5042,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration
@@ -5096,26 +5078,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                grouped_tiered_config: T::Hash[Symbol, T.anything],
-                item_id: String,
-                name: String,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  grouped_tiered_config: T::Hash[Symbol, T.anything],
+                  item_id: String,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -5329,20 +5311,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration
@@ -5386,20 +5368,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration
@@ -5422,26 +5404,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                max_group_tiered_package_config: T::Hash[Symbol, T.anything],
-                name: String,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  max_group_tiered_package_config: T::Hash[Symbol, T.anything],
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -5655,20 +5637,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration
@@ -5712,20 +5694,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration
@@ -5748,26 +5730,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                tiered_with_minimum_config: T::Hash[Symbol, T.anything],
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  tiered_with_minimum_config: T::Hash[Symbol, T.anything],
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -5981,20 +5963,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration
@@ -6038,20 +6020,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration
@@ -6074,26 +6056,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                package_with_allocation_config: T::Hash[Symbol, T.anything],
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  package_with_allocation_config: T::Hash[Symbol, T.anything],
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -6307,20 +6289,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration
@@ -6364,20 +6346,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration
@@ -6400,26 +6382,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                tiered_package_with_minimum_config: T::Hash[Symbol, T.anything],
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  tiered_package_with_minimum_config: T::Hash[Symbol, T.anything],
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -6633,20 +6615,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration
@@ -6690,20 +6672,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration
@@ -6726,26 +6708,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                unit_with_percent_config: T::Hash[Symbol, T.anything],
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  unit_with_percent_config: T::Hash[Symbol, T.anything],
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -6959,20 +6941,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration
@@ -7016,20 +6998,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration
@@ -7052,26 +7034,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                tiered_with_proration_config: T::Hash[Symbol, T.anything],
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  tiered_with_proration_config: T::Hash[Symbol, T.anything],
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -7285,20 +7267,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration
@@ -7342,20 +7324,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration
@@ -7378,26 +7360,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                unit_with_proration_config: T::Hash[Symbol, T.anything],
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  unit_with_proration_config: T::Hash[Symbol, T.anything],
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -7611,20 +7593,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration
@@ -7668,20 +7650,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration
@@ -7704,26 +7686,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                grouped_allocation_config: T::Hash[Symbol, T.anything],
-                item_id: String,
-                name: String,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  grouped_allocation_config: T::Hash[Symbol, T.anything],
+                  item_id: String,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -7937,20 +7919,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration
@@ -7994,20 +7976,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration
@@ -8030,26 +8012,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                grouped_with_prorated_minimum_config: T::Hash[Symbol, T.anything],
-                item_id: String,
-                name: String,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  grouped_with_prorated_minimum_config: T::Hash[Symbol, T.anything],
+                  item_id: String,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -8263,20 +8245,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration
@@ -8320,20 +8302,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration
@@ -8356,26 +8338,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                grouped_with_metered_minimum_config: T::Hash[Symbol, T.anything],
-                item_id: String,
-                name: String,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  grouped_with_metered_minimum_config: T::Hash[Symbol, T.anything],
+                  item_id: String,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -8589,20 +8571,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration
@@ -8646,20 +8628,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration
@@ -8682,26 +8664,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                matrix_with_display_name_config: T::Hash[Symbol, T.anything],
-                name: String,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  matrix_with_display_name_config: T::Hash[Symbol, T.anything],
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -8915,20 +8897,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration
@@ -8972,20 +8954,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration
@@ -9008,26 +8990,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                bulk_with_proration_config: T::Hash[Symbol, T.anything],
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  bulk_with_proration_config: T::Hash[Symbol, T.anything],
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -9241,20 +9223,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration
@@ -9298,20 +9280,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration
@@ -9334,26 +9316,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                grouped_tiered_package_config: T::Hash[Symbol, T.anything],
-                item_id: String,
-                name: String,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  grouped_tiered_package_config: T::Hash[Symbol, T.anything],
+                  item_id: String,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -9567,20 +9549,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration
@@ -9624,20 +9606,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration
@@ -9660,26 +9642,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                scalable_matrix_with_unit_pricing_config: T::Hash[Symbol, T.anything],
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  scalable_matrix_with_unit_pricing_config: T::Hash[Symbol, T.anything],
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -9893,20 +9875,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration
@@ -9950,20 +9932,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration
@@ -9986,26 +9968,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                currency: String,
-                item_id: String,
-                name: String,
-                scalable_matrix_with_tiered_pricing_config: T::Hash[Symbol, T.anything],
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  scalable_matrix_with_tiered_pricing_config: T::Hash[Symbol, T.anything],
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -10219,20 +10201,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration
+                  )
                 )
-              )
             end
             def billing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration
@@ -10276,20 +10258,20 @@ maximum_amount: T.nilable(String),
 
             sig do
               returns(
-                T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration
+                  T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
             end
             def invoicing_cycle_configuration
             end
 
             sig do
               params(
-                _: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration
+                  _: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration
+                  )
                 )
-              )
                 .returns(
                   T.nilable(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration
@@ -10312,26 +10294,26 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                cadence: Symbol,
-                cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
-                currency: String,
-                item_id: String,
-                name: String,
-                billable_metric_id: T.nilable(String),
-                billed_in_advance: T.nilable(T::Boolean),
-                billing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration
-                ),
-                conversion_rate: T.nilable(Float),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoice_grouping_key: T.nilable(String),
-                invoicing_cycle_configuration: T.nilable(
-                  Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration
-                ),
-                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                model_type: Symbol
-              )
+                  cadence: Symbol,
+                  cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
+                  currency: String,
+                  item_id: String,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration
+                  ),
+                  conversion_rate: T.nilable(Float),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration: T.nilable(
+                    Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration
+                  ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  model_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -10494,28 +10476,28 @@ maximum_amount: T.nilable(String),
       class AddAdjustment < Orb::BaseModel
         sig do
           returns(
-            T.any(
-              Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount,
-              Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewUsageDiscount,
-              Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewAmountDiscount,
-              Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMinimum,
-              Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMaximum
+              T.any(
+                Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount,
+                Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewUsageDiscount,
+                Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewAmountDiscount,
+                Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMinimum,
+                Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMaximum
+              )
             )
-          )
         end
         def adjustment
         end
 
         sig do
           params(
-            _: T.any(
-              Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount,
-              Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewUsageDiscount,
-              Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewAmountDiscount,
-              Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMinimum,
-              Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMaximum
+              _: T.any(
+                Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount,
+                Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewUsageDiscount,
+                Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewAmountDiscount,
+                Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMinimum,
+                Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMaximum
+              )
             )
-          )
             .returns(
               T.any(
                 Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount,
@@ -10547,16 +10529,16 @@ maximum_amount: T.nilable(String),
 
         sig do
           params(
-            adjustment: T.any(
-              Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount,
-              Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewUsageDiscount,
-              Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewAmountDiscount,
-              Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMinimum,
-              Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMaximum
-            ),
-            start_date: T.any(Time, Symbol),
-            end_date: T.nilable(T.any(Time, Symbol))
-          )
+              adjustment: T.any(
+                Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount,
+                Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewUsageDiscount,
+                Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewAmountDiscount,
+                Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMinimum,
+                Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMaximum
+              ),
+              start_date: T.any(Time, Symbol),
+              end_date: T.nilable(T.any(Time, Symbol))
+            )
             .returns(T.attached_class)
         end
         def self.new(adjustment:, start_date:, end_date: nil)
@@ -10619,11 +10601,11 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                applies_to_price_ids: T::Array[String],
-                percentage_discount: Float,
-                is_invoice_level: T::Boolean,
-                adjustment_type: Symbol
-              )
+                  applies_to_price_ids: T::Array[String],
+                  percentage_discount: Float,
+                  is_invoice_level: T::Boolean,
+                  adjustment_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(applies_to_price_ids:, percentage_discount:, is_invoice_level: nil, adjustment_type: :percentage_discount)
@@ -10679,11 +10661,11 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                applies_to_price_ids: T::Array[String],
-                usage_discount: Float,
-                is_invoice_level: T::Boolean,
-                adjustment_type: Symbol
-              )
+                  applies_to_price_ids: T::Array[String],
+                  usage_discount: Float,
+                  is_invoice_level: T::Boolean,
+                  adjustment_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(applies_to_price_ids:, usage_discount:, is_invoice_level: nil, adjustment_type: :usage_discount)
@@ -10739,11 +10721,11 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                amount_discount: String,
-                applies_to_price_ids: T::Array[String],
-                is_invoice_level: T::Boolean,
-                adjustment_type: Symbol
-              )
+                  amount_discount: String,
+                  applies_to_price_ids: T::Array[String],
+                  is_invoice_level: T::Boolean,
+                  adjustment_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(amount_discount:, applies_to_price_ids:, is_invoice_level: nil, adjustment_type: :amount_discount)
@@ -10807,12 +10789,12 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                applies_to_price_ids: T::Array[String],
-                item_id: String,
-                minimum_amount: String,
-                is_invoice_level: T::Boolean,
-                adjustment_type: Symbol
-              )
+                  applies_to_price_ids: T::Array[String],
+                  item_id: String,
+                  minimum_amount: String,
+                  is_invoice_level: T::Boolean,
+                  adjustment_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(applies_to_price_ids:, item_id:, minimum_amount:, is_invoice_level: nil, adjustment_type: :minimum)
@@ -10869,11 +10851,11 @@ maximum_amount: T.nilable(String),
 
             sig do
               params(
-                applies_to_price_ids: T::Array[String],
-                maximum_amount: String,
-                is_invoice_level: T::Boolean,
-                adjustment_type: Symbol
-              )
+                  applies_to_price_ids: T::Array[String],
+                  maximum_amount: String,
+                  is_invoice_level: T::Boolean,
+                  adjustment_type: Symbol
+                )
                 .returns(T.attached_class)
             end
             def self.new(applies_to_price_ids:, maximum_amount:, is_invoice_level: nil, adjustment_type: :maximum)
@@ -10962,16 +10944,16 @@ maximum_amount: T.nilable(String),
 
         sig do
           returns(
-            T.nilable(T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition])
-          )
+              T.nilable(T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition])
+            )
         end
         def fixed_fee_quantity_transitions
         end
 
         sig do
           params(
-            _: T.nilable(T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition])
-          )
+              _: T.nilable(T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition])
+            )
             .returns(
               T.nilable(T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition])
             )
@@ -10997,14 +10979,14 @@ maximum_amount: T.nilable(String),
 
         sig do
           params(
-            price_interval_id: String,
-            billing_cycle_day: T.nilable(Integer),
-            end_date: T.nilable(T.any(Time, Symbol)),
-            filter: T.nilable(String),
-            fixed_fee_quantity_transitions: T.nilable(T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition]),
-            start_date: T.any(Time, Symbol),
-            usage_customer_ids: T.nilable(T::Array[String])
-          )
+              price_interval_id: String,
+              billing_cycle_day: T.nilable(Integer),
+              end_date: T.nilable(T.any(Time, Symbol)),
+              filter: T.nilable(String),
+              fixed_fee_quantity_transitions: T.nilable(T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition]),
+              start_date: T.any(Time, Symbol),
+              usage_customer_ids: T.nilable(T::Array[String])
+            )
             .returns(T.attached_class)
         end
         def self.new(
@@ -11109,10 +11091,10 @@ maximum_amount: T.nilable(String),
 
         sig do
           params(
-            adjustment_interval_id: String,
-            end_date: T.nilable(T.any(Time, Symbol)),
-            start_date: T.any(Time, Symbol)
-          )
+              adjustment_interval_id: String,
+              end_date: T.nilable(T.any(Time, Symbol)),
+              start_date: T.any(Time, Symbol)
+            )
             .returns(T.attached_class)
         end
         def self.new(adjustment_interval_id:, end_date: nil, start_date: nil)
@@ -11121,10 +11103,7 @@ maximum_amount: T.nilable(String),
         sig do
           override
             .returns(
-              {
-adjustment_interval_id: String, 
-end_date: T.nilable(T.any(Time, Symbol)),
-               start_date: T.any(Time, Symbol)}
+              {adjustment_interval_id: String, end_date: T.nilable(T.any(Time, Symbol)), start_date: T.any(Time, Symbol)}
             )
         end
         def to_hash
