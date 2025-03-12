@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.0-alpha.26 (2025-03-12)
+
+Full Changelog: [v0.1.0-alpha.25...v0.1.0-alpha.26](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.25...v0.1.0-alpha.26)
+
+### Bug Fixes
+
+* enums should only coerce matching symbols into strings ([#149](https://github.com/orbcorp/orb-ruby/issues/149)) ([1de63b1](https://github.com/orbcorp/orb-ruby/commit/1de63b1d39a7747b08b51cf416b5fa3db6a980a1))
+
+
+### Chores
+
+* fused enum should use faster internal iteration by default ([#143](https://github.com/orbcorp/orb-ruby/issues/143)) ([1e20ed1](https://github.com/orbcorp/orb-ruby/commit/1e20ed147852db214689352294b4818fb76eff00))
+* improve documentation ([#144](https://github.com/orbcorp/orb-ruby/issues/144)) ([afa2343](https://github.com/orbcorp/orb-ruby/commit/afa234381c6955219e184aa8c14084cdfa8a072d))
+* **internal:** codegen related update ([#140](https://github.com/orbcorp/orb-ruby/issues/140)) ([c7a3c48](https://github.com/orbcorp/orb-ruby/commit/c7a3c48caa6e26c736623c29eaac2466c28083e2))
+* **internal:** codegen related update ([#141](https://github.com/orbcorp/orb-ruby/issues/141)) ([6d86b55](https://github.com/orbcorp/orb-ruby/commit/6d86b558ac458e6f560dcd753bfbbe417dc81f76))
+* **internal:** codegen related update ([#145](https://github.com/orbcorp/orb-ruby/issues/145)) ([39ef52b](https://github.com/orbcorp/orb-ruby/commit/39ef52b535d1495da3b5717b98cf9ea5cba94eff))
+* **internal:** codegen related update ([#146](https://github.com/orbcorp/orb-ruby/issues/146)) ([e26d896](https://github.com/orbcorp/orb-ruby/commit/e26d896ac7e4704a4186e68db3b5784f377e723d))
+* **internal:** codegen related update ([#148](https://github.com/orbcorp/orb-ruby/issues/148)) ([d6758f6](https://github.com/orbcorp/orb-ruby/commit/d6758f61a116f2ec4e7b22010b6a99f1ec6b6318))
+* **internal:** version bump ([#138](https://github.com/orbcorp/orb-ruby/issues/138)) ([94e3490](https://github.com/orbcorp/orb-ruby/commit/94e34903c66b574ac35cd441625e95bf38c4c710))
+
 ## 0.1.0-alpha.25 (2025-03-11)
 
 Full Changelog: [v0.1.0-alpha.24...v0.1.0-alpha.25](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.24...v0.1.0-alpha.25)
