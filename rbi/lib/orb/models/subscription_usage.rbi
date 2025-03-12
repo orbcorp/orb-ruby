@@ -61,10 +61,10 @@ module Orb
 
           sig do
             params(
-                billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric,
-                usage: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage],
-                view_mode: Symbol
-              )
+              billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric,
+              usage: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage],
+              view_mode: Symbol
+            )
               .returns(T.attached_class)
           end
           def self.new(billable_metric:, usage:, view_mode:)
@@ -134,7 +134,9 @@ module Orb
             def timeframe_start=(_)
             end
 
-            sig { params(quantity: Float, timeframe_end: Time, timeframe_start: Time).returns(T.attached_class) }
+            sig do
+              params(quantity: Float, timeframe_end: Time, timeframe_start: Time).returns(T.attached_class)
+            end
             def self.new(quantity:, timeframe_end:, timeframe_start:)
             end
 
@@ -180,9 +182,9 @@ module Orb
 
         sig do
           params(
-              data: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data],
-              pagination_metadata: T.nilable(Orb::Models::PaginationMetadata)
-            )
+            data: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data],
+            pagination_metadata: T.nilable(Orb::Models::PaginationMetadata)
+          )
             .returns(T.attached_class)
         end
         def self.new(data:, pagination_metadata: nil)
@@ -244,11 +246,11 @@ module Orb
 
           sig do
             params(
-                billable_metric: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric,
-                metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup,
-                usage: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage],
-                view_mode: Symbol
-              )
+              billable_metric: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric,
+              metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup,
+              usage: T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage],
+              view_mode: Symbol
+            )
               .returns(T.attached_class)
           end
           def self.new(billable_metric:, metric_group:, usage:, view_mode:)
@@ -345,7 +347,9 @@ module Orb
             def timeframe_start=(_)
             end
 
-            sig { params(quantity: Float, timeframe_end: Time, timeframe_start: Time).returns(T.attached_class) }
+            sig do
+              params(quantity: Float, timeframe_end: Time, timeframe_start: Time).returns(T.attached_class)
+            end
             def self.new(quantity:, timeframe_end:, timeframe_start:)
             end
 
