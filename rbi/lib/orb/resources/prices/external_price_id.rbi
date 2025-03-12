@@ -6,10 +6,10 @@ module Orb
       class ExternalPriceID
         sig do
           params(
-              external_price_id: String,
-              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-            )
+            external_price_id: String,
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
             .returns(
               T.any(
                 Orb::Models::Price::UnitPrice,
@@ -48,9 +48,9 @@ module Orb
 
         sig do
           params(
-              external_price_id: String,
-              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-            )
+            external_price_id: String,
+            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
             .returns(
               T.any(
                 Orb::Models::Price::UnitPrice,

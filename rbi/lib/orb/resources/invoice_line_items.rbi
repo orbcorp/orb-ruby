@@ -5,14 +5,14 @@ module Orb
     class InvoiceLineItems
       sig do
         params(
-            amount: String,
-            end_date: Date,
-            invoice_id: String,
-            name: String,
-            quantity: Float,
-            start_date: Date,
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-          )
+          amount: String,
+          end_date: Date,
+          invoice_id: String,
+          name: String,
+          quantity: Float,
+          start_date: Date,
+          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+        )
           .returns(Orb::Models::InvoiceLineItemCreateResponse)
       end
       def create(amount:, end_date:, invoice_id:, name:, quantity:, start_date:, request_options: {})
