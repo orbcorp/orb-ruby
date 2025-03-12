@@ -40,11 +40,11 @@ module Orb
 
       sig do
         params(
-            created_at: Time,
-            end_date: T.nilable(Time),
-            plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
-            start_date: Time
-          )
+          created_at: Time,
+          end_date: T.nilable(Time),
+          plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
+          start_date: Time
+        )
           .returns(T.attached_class)
       end
       def self.new(created_at:, end_date:, plan:, start_date:)
@@ -96,7 +96,15 @@ module Orb
         def self.new(id:, external_plan_id:, name:)
         end
 
-        sig { override.returns({id: T.nilable(String), external_plan_id: T.nilable(String), name: T.nilable(String)}) }
+        sig do
+          override.returns(
+            {
+              id: T.nilable(String),
+              external_plan_id: T.nilable(String),
+              name: T.nilable(String)
+            }
+          )
+        end
         def to_hash
         end
       end
