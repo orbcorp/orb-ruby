@@ -24,10 +24,10 @@ module Orb
 
       sig do
         params(
-            trial_end_date: T.any(Time, Symbol),
-            shift: T::Boolean,
-            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-          )
+          trial_end_date: T.any(Time, Symbol),
+          shift: T::Boolean,
+          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+        )
           .returns(T.attached_class)
       end
       def self.new(trial_end_date:, shift: nil, request_options: {})
@@ -35,7 +35,11 @@ module Orb
 
       sig do
         override
-          .returns({trial_end_date: T.any(Time, Symbol), shift: T::Boolean, request_options: Orb::RequestOptions})
+          .returns({
+                     trial_end_date: T.any(Time, Symbol),
+                     shift: T::Boolean,
+                     request_options: Orb::RequestOptions
+                   })
       end
       def to_hash
       end
