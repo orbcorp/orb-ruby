@@ -438,7 +438,7 @@ module Orb
       #
       #   @option params [Array<String>, nil] :customer_id
       #
-      #   @option params [String, nil] :external_customer_id
+      #   @option params [Array<String>, nil] :external_customer_id
       #
       #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
       #

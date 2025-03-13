@@ -107,7 +107,7 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           customer_id: T.nilable(T::Array[String]),
-          external_customer_id: T.nilable(String),
+          external_customer_id: T.nilable(T::Array[String]),
           limit: Integer,
           status: T.nilable(Symbol),
           request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
