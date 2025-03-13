@@ -30,7 +30,6 @@ module Orb
     # @return [PaginationMetadata]
     attr_accessor :pagination_metadata
 
-    # rubocop:disable Lint/UnusedMethodArgument
     # @private
     #
     # @param client [Orb::BaseClient]
@@ -39,8 +38,7 @@ module Orb
     # @param page_data [Hash{Symbol=>Object}]
     #
     def initialize(client:, req:, headers:, page_data:)
-      @client = client
-      @req = req
+      super
       model = req.fetch(:model)
 
       case page_data
@@ -55,10 +53,8 @@ module Orb
       else
       end
     end
-    # rubocop:enable Lint/UnusedMethodArgument
 
     # @return [Boolean]
-    #
     def next_page?
       !pagination_metadata&.next_cursor.nil?
     end
