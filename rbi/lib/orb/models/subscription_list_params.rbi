@@ -54,11 +54,11 @@ module Orb
       def customer_id=(_)
       end
 
-      sig { returns(T.nilable(String)) }
+      sig { returns(T.nilable(T::Array[String])) }
       def external_customer_id
       end
 
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
       def external_customer_id=(_)
       end
 
@@ -86,7 +86,7 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           customer_id: T.nilable(T::Array[String]),
-          external_customer_id: T.nilable(String),
+          external_customer_id: T.nilable(T::Array[String]),
           limit: Integer,
           status: T.nilable(Symbol),
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
@@ -117,7 +117,7 @@ module Orb
               created_at_lte: T.nilable(Time),
               cursor: T.nilable(String),
               customer_id: T.nilable(T::Array[String]),
-              external_customer_id: T.nilable(String),
+              external_customer_id: T.nilable(T::Array[String]),
               limit: Integer,
               status: T.nilable(Symbol),
               request_options: Orb::RequestOptions

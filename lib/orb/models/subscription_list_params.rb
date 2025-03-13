@@ -41,8 +41,8 @@ module Orb
 
       # @!attribute external_customer_id
       #
-      #   @return [String, nil]
-      optional :external_customer_id, String, nil?: true
+      #   @return [Array<String>, nil]
+      optional :external_customer_id, Orb::ArrayOf[String], nil?: true
 
       # @!attribute [r] limit
       #   The number of items to fetch. Defaults to 20.
@@ -66,7 +66,7 @@ module Orb
       #   # @param created_at_lte [Time, nil]
       #   # @param cursor [String, nil]
       #   # @param customer_id [Array<String>, nil]
-      #   # @param external_customer_id [String, nil]
+      #   # @param external_customer_id [Array<String>, nil]
       #   # @param limit [Integer]
       #   # @param status [Symbol, Orb::Models::SubscriptionListParams::Status, nil]
       #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
