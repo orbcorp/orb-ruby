@@ -22,18 +22,6 @@ module Orb
     def pagination_metadata=(_)
     end
 
-    sig do
-      params(
-        client: Orb::BaseClient,
-        req: Orb::BaseClient::RequestComponentsShape,
-        headers: T.any(T::Hash[String, String], Net::HTTPHeader),
-        page_data: T::Hash[Symbol, T.anything]
-      )
-        .returns(T.attached_class)
-    end
-    def self.new(client:, req:, headers:, page_data:)
-    end
-
     class PaginationMetadata < Orb::BaseModel
       sig { returns(T::Boolean) }
       def has_more

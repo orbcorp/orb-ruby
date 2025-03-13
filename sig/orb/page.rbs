@@ -6,13 +6,6 @@ module Orb
 
     attr_accessor pagination_metadata: PaginationMetadata
 
-    def initialize: (
-      client: Orb::BaseClient,
-      req: Orb::BaseClient::request_components,
-      headers: ::Hash[String, String],
-      page_data: ::Hash[Symbol, top]
-    ) -> void
-
     type pagination_metadata = { has_more: bool, next_cursor: String? }
     class PaginationMetadata < Orb::BaseModel
       attr_accessor has_more: bool
