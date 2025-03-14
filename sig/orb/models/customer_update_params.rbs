@@ -308,7 +308,7 @@ module Orb
           def to_hash: -> Orb::Models::CustomerUpdateParams::TaxConfiguration::new_tax_jar_configuration
         end
 
-        private def self.variants: -> [[:avalara, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration], [:taxjar, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration]]
+        def self.variants: -> [Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration]
       end
 
       type tax_id =

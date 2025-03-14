@@ -3,6 +3,7 @@
 module Orb
   module Models
     class InvoiceLineItemCreateResponse < Orb::BaseModel
+      # A unique ID for this line item.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,8 @@ module Orb
       def id=(_)
       end
 
+      # The line amount after any adjustments and before overage conversion, credits and
+      #   partial invoicing.
       sig { returns(String) }
       def adjusted_subtotal
       end
@@ -19,6 +22,9 @@ module Orb
       def adjusted_subtotal=(_)
       end
 
+      # All adjustments applied to the line item in the order they were applied based on
+      #   invoice calculations (ie. usage discounts -> amount discounts -> percentage
+      #   discounts -> minimums -> maximums).
       sig do
         returns(
           T::Array[
@@ -62,6 +68,8 @@ module Orb
       def adjustments=(_)
       end
 
+      # The final amount for a line item after all adjustments and pre paid credits have
+      #   been applied.
       sig { returns(String) }
       def amount
       end
@@ -70,6 +78,7 @@ module Orb
       def amount=(_)
       end
 
+      # The number of prepaid credits applied.
       sig { returns(String) }
       def credits_applied
       end
@@ -118,6 +127,7 @@ module Orb
       def discount=(_)
       end
 
+      # The end date of the range of time applied for this line item's price.
       sig { returns(Time) }
       def end_date
       end
@@ -126,6 +136,7 @@ module Orb
       def end_date=(_)
       end
 
+      # An additional filter that was used to calculate the usage for this line item.
       sig { returns(T.nilable(String)) }
       def filter
       end
@@ -134,6 +145,9 @@ module Orb
       def filter=(_)
       end
 
+      # [DEPRECATED] For configured prices that are split by a grouping key, this will
+      #   be populated with the key and a value. The `amount` and `subtotal` will be the
+      #   values for this particular grouping.
       sig { returns(T.nilable(String)) }
       def grouping
       end
@@ -142,6 +156,7 @@ module Orb
       def grouping=(_)
       end
 
+      # This field is deprecated in favor of `adjustments`.
       sig { returns(T.nilable(Orb::Models::InvoiceLineItemCreateResponse::Maximum)) }
       def maximum
       end
@@ -153,6 +168,7 @@ module Orb
       def maximum=(_)
       end
 
+      # This field is deprecated in favor of `adjustments`.
       sig { returns(T.nilable(String)) }
       def maximum_amount
       end
@@ -161,6 +177,7 @@ module Orb
       def maximum_amount=(_)
       end
 
+      # This field is deprecated in favor of `adjustments`.
       sig { returns(T.nilable(Orb::Models::InvoiceLineItemCreateResponse::Minimum)) }
       def minimum
       end
@@ -172,6 +189,7 @@ module Orb
       def minimum=(_)
       end
 
+      # This field is deprecated in favor of `adjustments`.
       sig { returns(T.nilable(String)) }
       def minimum_amount
       end
@@ -180,6 +198,7 @@ module Orb
       def minimum_amount=(_)
       end
 
+      # The name of the price associated with this line item.
       sig { returns(String) }
       def name
       end
@@ -188,6 +207,7 @@ module Orb
       def name=(_)
       end
 
+      # Any amount applied from a partial invoice
       sig { returns(String) }
       def partially_invoiced_amount
       end
@@ -196,6 +216,16 @@ module Orb
       def partially_invoiced_amount=(_)
       end
 
+      # The Price resource represents a price that can be billed on a subscription,
+      #   resulting in a charge on an invoice in the form of an invoice line item. Prices
+      #   take a quantity and determine an amount to bill.
+      #
+      #   Orb supports a few different pricing models out of the box. Each of these models
+      #   is serialized differently in a given Price object. The model_type field
+      #   determines the key for the configuration object that is present.
+      #
+      #   For more on the types of prices, see
+      #   [the core concepts documentation](/core-concepts#plan-and-price)
       sig do
         returns(
           T.nilable(
@@ -308,6 +338,7 @@ module Orb
       def price=(_)
       end
 
+      # Either the fixed fee quantity or the usage during the service period.
       sig { returns(Float) }
       def quantity
       end
@@ -316,6 +347,7 @@ module Orb
       def quantity=(_)
       end
 
+      # The start date of the range of time applied for this line item's price.
       sig { returns(Time) }
       def start_date
       end
@@ -324,6 +356,8 @@ module Orb
       def start_date=(_)
       end
 
+      # For complex pricing structures, the line item can be broken down further in
+      #   `sub_line_items`.
       sig do
         returns(
           T::Array[
@@ -361,6 +395,7 @@ module Orb
       def sub_line_items=(_)
       end
 
+      # The line amount before before any adjustments.
       sig { returns(String) }
       def subtotal
       end
@@ -369,6 +404,8 @@ module Orb
       def subtotal=(_)
       end
 
+      # An array of tax rates and their incurred tax amounts. Empty if no tax
+      #   integration is configured.
       sig { returns(T::Array[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount]) }
       def tax_amounts
       end
@@ -380,6 +417,7 @@ module Orb
       def tax_amounts=(_)
       end
 
+      # A list of customer ids that were used to calculate the usage for this line item.
       sig { returns(T.nilable(T::Array[String])) }
       def usage_customer_ids
       end
@@ -597,6 +635,7 @@ module Orb
           def adjustment_type=(_)
           end
 
+          # The value applied by an adjustment.
           sig { returns(String) }
           def amount
           end
@@ -605,6 +644,7 @@ module Orb
           def amount=(_)
           end
 
+          # The price IDs that this adjustment applies to.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -613,6 +653,8 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # True for adjustments that apply to an entire invocice, false for adjustments
+          #   that apply to only one price.
           sig { returns(T::Boolean) }
           def is_invoice_level
           end
@@ -621,6 +663,7 @@ module Orb
           def is_invoice_level=(_)
           end
 
+          # The reason for the adjustment.
           sig { returns(T.nilable(String)) }
           def reason
           end
@@ -629,6 +672,8 @@ module Orb
           def reason=(_)
           end
 
+          # The number of usage units by which to discount the price this adjustment applies
+          #   to in a given billing period.
           sig { returns(Float) }
           def usage_discount
           end
@@ -695,6 +740,7 @@ module Orb
           def adjustment_type=(_)
           end
 
+          # The value applied by an adjustment.
           sig { returns(String) }
           def amount
           end
@@ -703,6 +749,8 @@ module Orb
           def amount=(_)
           end
 
+          # The amount by which to discount the prices this adjustment applies to in a given
+          #   billing period.
           sig { returns(String) }
           def amount_discount
           end
@@ -711,6 +759,7 @@ module Orb
           def amount_discount=(_)
           end
 
+          # The price IDs that this adjustment applies to.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -719,6 +768,8 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # True for adjustments that apply to an entire invocice, false for adjustments
+          #   that apply to only one price.
           sig { returns(T::Boolean) }
           def is_invoice_level
           end
@@ -727,6 +778,7 @@ module Orb
           def is_invoice_level=(_)
           end
 
+          # The reason for the adjustment.
           sig { returns(T.nilable(String)) }
           def reason
           end
@@ -793,6 +845,7 @@ module Orb
           def adjustment_type=(_)
           end
 
+          # The value applied by an adjustment.
           sig { returns(String) }
           def amount
           end
@@ -801,6 +854,7 @@ module Orb
           def amount=(_)
           end
 
+          # The price IDs that this adjustment applies to.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -809,6 +863,8 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # True for adjustments that apply to an entire invocice, false for adjustments
+          #   that apply to only one price.
           sig { returns(T::Boolean) }
           def is_invoice_level
           end
@@ -817,6 +873,8 @@ module Orb
           def is_invoice_level=(_)
           end
 
+          # The percentage (as a value between 0 and 1) by which to discount the price
+          #   intervals this adjustment applies to in a given billing period.
           sig { returns(Float) }
           def percentage_discount
           end
@@ -825,6 +883,7 @@ module Orb
           def percentage_discount=(_)
           end
 
+          # The reason for the adjustment.
           sig { returns(T.nilable(String)) }
           def reason
           end
@@ -891,6 +950,7 @@ module Orb
           def adjustment_type=(_)
           end
 
+          # The value applied by an adjustment.
           sig { returns(String) }
           def amount
           end
@@ -899,6 +959,7 @@ module Orb
           def amount=(_)
           end
 
+          # The price IDs that this adjustment applies to.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -907,6 +968,8 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # True for adjustments that apply to an entire invocice, false for adjustments
+          #   that apply to only one price.
           sig { returns(T::Boolean) }
           def is_invoice_level
           end
@@ -915,6 +978,7 @@ module Orb
           def is_invoice_level=(_)
           end
 
+          # The item ID that revenue from this minimum will be attributed to.
           sig { returns(String) }
           def item_id
           end
@@ -923,6 +987,8 @@ module Orb
           def item_id=(_)
           end
 
+          # The minimum amount to charge in a given billing period for the prices this
+          #   adjustment applies to.
           sig { returns(String) }
           def minimum_amount
           end
@@ -931,6 +997,7 @@ module Orb
           def minimum_amount=(_)
           end
 
+          # The reason for the adjustment.
           sig { returns(T.nilable(String)) }
           def reason
           end
@@ -1000,6 +1067,7 @@ module Orb
           def adjustment_type=(_)
           end
 
+          # The value applied by an adjustment.
           sig { returns(String) }
           def amount
           end
@@ -1008,6 +1076,7 @@ module Orb
           def amount=(_)
           end
 
+          # The price IDs that this adjustment applies to.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -1016,6 +1085,8 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # True for adjustments that apply to an entire invocice, false for adjustments
+          #   that apply to only one price.
           sig { returns(T::Boolean) }
           def is_invoice_level
           end
@@ -1024,6 +1095,8 @@ module Orb
           def is_invoice_level=(_)
           end
 
+          # The maximum amount to charge in a given billing period for the prices this
+          #   adjustment applies to.
           sig { returns(String) }
           def maximum_amount
           end
@@ -1032,6 +1105,7 @@ module Orb
           def maximum_amount=(_)
           end
 
+          # The reason for the adjustment.
           sig { returns(T.nilable(String)) }
           def reason
           end
@@ -1085,15 +1159,17 @@ module Orb
           sig do
             override
               .returns(
-                [[Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment]]
+                [Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment]
               )
           end
-          private def variants
+          def variants
           end
         end
       end
 
       class Maximum < Orb::BaseModel
+        # List of price_ids that this maximum amount applies to. For plan/plan phase
+        #   maximums, this can be a subset of prices.
         sig { returns(T::Array[String]) }
         def applies_to_price_ids
         end
@@ -1102,6 +1178,7 @@ module Orb
         def applies_to_price_ids=(_)
         end
 
+        # Maximum amount applied
         sig { returns(String) }
         def maximum_amount
         end
@@ -1110,6 +1187,7 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # This field is deprecated in favor of `adjustments`.
         sig do
           params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
         end
@@ -1122,6 +1200,8 @@ module Orb
       end
 
       class Minimum < Orb::BaseModel
+        # List of price_ids that this minimum amount applies to. For plan/plan phase
+        #   minimums, this can be a subset of prices.
         sig { returns(T::Array[String]) }
         def applies_to_price_ids
         end
@@ -1130,6 +1210,7 @@ module Orb
         def applies_to_price_ids=(_)
         end
 
+        # Minimum amount applied
         sig { returns(String) }
         def minimum_amount
         end
@@ -1138,6 +1219,7 @@ module Orb
         def minimum_amount=(_)
         end
 
+        # This field is deprecated in favor of `adjustments`.
         sig do
           params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
         end
@@ -1153,6 +1235,7 @@ module Orb
         abstract!
 
         class MatrixSubLineItem < Orb::BaseModel
+          # The total amount for this sub line item.
           sig { returns(String) }
           def amount
           end
@@ -1246,6 +1329,7 @@ module Orb
             def key=(_)
             end
 
+            # No value indicates the default group
             sig { returns(T.nilable(String)) }
             def value
             end
@@ -1264,6 +1348,7 @@ module Orb
           end
 
           class MatrixConfig < Orb::BaseModel
+            # The ordered dimension values for this line item.
             sig { returns(T::Array[T.nilable(String)]) }
             def dimension_values
             end
@@ -1283,6 +1368,7 @@ module Orb
         end
 
         class TierSubLineItem < Orb::BaseModel
+          # The total amount for this sub line item.
           sig { returns(String) }
           def amount
           end
@@ -1376,6 +1462,7 @@ module Orb
             def key=(_)
             end
 
+            # No value indicates the default group
             sig { returns(T.nilable(String)) }
             def value
             end
@@ -1435,6 +1522,7 @@ module Orb
         end
 
         class OtherSubLineItem < Orb::BaseModel
+          # The total amount for this sub line item.
           sig { returns(String) }
           def amount
           end
@@ -1515,6 +1603,7 @@ module Orb
             def key=(_)
             end
 
+            # No value indicates the default group
             sig { returns(T.nilable(String)) }
             def value
             end
@@ -1537,15 +1626,16 @@ module Orb
           sig do
             override
               .returns(
-                [[Symbol, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem], [Symbol, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem]]
+                [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem]
               )
           end
-          private def variants
+          def variants
           end
         end
       end
 
       class TaxAmount < Orb::BaseModel
+        # The amount of additional tax incurred by this tax rate.
         sig { returns(String) }
         def amount
         end
@@ -1554,6 +1644,7 @@ module Orb
         def amount=(_)
         end
 
+        # The human-readable description of the applied tax rate.
         sig { returns(String) }
         def tax_rate_description
         end
@@ -1562,6 +1653,7 @@ module Orb
         def tax_rate_description=(_)
         end
 
+        # The tax rate percentage, out of 100.
         sig { returns(T.nilable(String)) }
         def tax_rate_percentage
         end

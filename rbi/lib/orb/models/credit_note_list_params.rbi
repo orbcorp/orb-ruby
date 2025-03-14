@@ -6,6 +6,40 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      sig { returns(T.nilable(Time)) }
+      def created_at_gt
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def created_at_gt=(_)
+      end
+
+      sig { returns(T.nilable(Time)) }
+      def created_at_gte
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def created_at_gte=(_)
+      end
+
+      sig { returns(T.nilable(Time)) }
+      def created_at_lt
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def created_at_lt=(_)
+      end
+
+      sig { returns(T.nilable(Time)) }
+      def created_at_lte
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def created_at_lte=(_)
+      end
+
+      # Cursor for pagination. This can be populated by the `next_cursor` value returned
+      #   from the initial request.
       sig { returns(T.nilable(String)) }
       def cursor
       end
@@ -14,6 +48,7 @@ module Orb
       def cursor=(_)
       end
 
+      # The number of items to fetch. Defaults to 20.
       sig { returns(T.nilable(Integer)) }
       def limit
       end
@@ -24,17 +59,40 @@ module Orb
 
       sig do
         params(
+          created_at_gt: T.nilable(Time),
+          created_at_gte: T.nilable(Time),
+          created_at_lt: T.nilable(Time),
+          created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           limit: Integer,
           request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
-      def self.new(cursor: nil, limit: nil, request_options: {})
+      def self.new(
+        created_at_gt: nil,
+        created_at_gte: nil,
+        created_at_lt: nil,
+        created_at_lte: nil,
+        cursor: nil,
+        limit: nil,
+        request_options: {}
+      )
       end
 
       sig do
-        override.returns({cursor: T.nilable(String), limit: Integer, request_options: Orb::RequestOptions})
+        override
+          .returns(
+            {
+              created_at_gt: T.nilable(Time),
+              created_at_gte: T.nilable(Time),
+              created_at_lt: T.nilable(Time),
+              created_at_lte: T.nilable(Time),
+              cursor: T.nilable(String),
+              limit: Integer,
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end

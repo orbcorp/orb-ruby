@@ -382,7 +382,7 @@ module Orb
             def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::plan_phase_maximum_adjustment
           end
 
-          private def self.variants: -> [[:usage_discount, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment], [:amount_discount, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment], [:percentage_discount, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment], [:minimum, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment], [:maximum, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]]
+          def self.variants: -> [Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
         end
       end
 
@@ -532,7 +532,7 @@ module Orb
           def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::usage_discount_interval
         end
 
-        private def self.variants: -> [[:amount, Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::AmountDiscountInterval], [:percentage, Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::PercentageDiscountInterval], [:usage, Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::UsageDiscountInterval]]
+        def self.variants: -> [Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::UsageDiscountInterval]
       end
 
       type fixed_fee_quantity_schedule =

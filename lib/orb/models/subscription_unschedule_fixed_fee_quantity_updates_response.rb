@@ -294,7 +294,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # @abstract
-        #
         class Adjustment < Orb::Union
           discriminator :adjustment_type
 
@@ -660,6 +659,12 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment)]
+          #     def variants; end
+          #   end
         end
       end
 
@@ -699,7 +704,6 @@ module Orb
       end
 
       # @abstract
-      #
       class DiscountInterval < Orb::Union
         discriminator :discount_type
 
@@ -890,6 +894,12 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::DiscountInterval::UsageDiscountInterval)]
+        #     def variants; end
+        #   end
       end
 
       class FixedFeeQuantitySchedule < Orb::BaseModel
@@ -1183,7 +1193,6 @@ module Orb
       end
 
       # @abstract
-      #
       class Status < Orb::Enum
         ACTIVE = :active
         ENDED = :ended

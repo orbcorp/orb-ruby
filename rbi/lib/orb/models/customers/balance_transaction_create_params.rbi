@@ -23,6 +23,7 @@ module Orb
         def type=(_)
         end
 
+        # An optional description that can be specified around this entry.
         sig { returns(T.nilable(String)) }
         def description
         end

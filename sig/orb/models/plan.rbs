@@ -340,7 +340,7 @@ module Orb
           def to_hash: -> Orb::Models::Plan::Adjustment::plan_phase_maximum_adjustment
         end
 
-        private def self.variants: -> [[:usage_discount, Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment], [:amount_discount, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment], [:percentage_discount, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment], [:minimum, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment], [:maximum, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment]]
+        def self.variants: -> [Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment]
       end
 
       type base_plan = { id: String?, external_plan_id: String?, name: String? }

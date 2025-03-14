@@ -38,7 +38,6 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Events::EventVolumes]
-        #
         def list(params)
           parsed, options = Orb::Models::Events::VolumeListParams.dump_request(params)
           @client.request(
@@ -51,7 +50,6 @@ module Orb
         end
 
         # @param client [Orb::Client]
-        #
         def initialize(client:)
           @client = client
         end

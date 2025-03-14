@@ -135,7 +135,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class EntryType < Orb::Enum
             AMENDMENT = :amendment
 

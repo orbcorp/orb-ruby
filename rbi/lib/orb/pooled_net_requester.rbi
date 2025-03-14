@@ -7,14 +7,17 @@ module Orb
     end
 
     class << self
+      # @api private
       sig { params(url: URI::Generic).returns(Net::HTTP) }
       def connect(url)
       end
 
+      # @api private
       sig { params(conn: Net::HTTP, deadline: Float).void }
       def calibrate_socket_timeout(conn, deadline)
       end
 
+      # @api private
       sig do
         params(request: Orb::PooledNetRequester::RequestShape, blk: T.proc.params(arg0: String).void)
           .returns(Net::HTTPGenericRequest)
@@ -23,10 +26,12 @@ module Orb
       end
     end
 
+    # @api private
     sig { params(url: URI::Generic, blk: T.proc.params(arg0: Net::HTTP).void).void }
     private def with_pool(url, &blk)
     end
 
+    # @api private
     sig do
       params(request: Orb::PooledNetRequester::RequestShape).returns(
         [
@@ -38,6 +43,7 @@ module Orb
     def execute(request)
     end
 
+    # @api private
     sig { params(size: Integer).returns(T.attached_class) }
     def self.new(size: Etc.nprocessors)
     end

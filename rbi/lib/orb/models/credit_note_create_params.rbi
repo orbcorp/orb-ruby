@@ -17,6 +17,7 @@ module Orb
       def line_items=(_)
       end
 
+      # An optional memo to attach to the credit note.
       sig { returns(T.nilable(String)) }
       def memo
       end
@@ -25,6 +26,7 @@ module Orb
       def memo=(_)
       end
 
+      # An optional reason for the credit note.
       sig { returns(T.nilable(Symbol)) }
       def reason
       end
@@ -60,6 +62,7 @@ module Orb
       end
 
       class LineItem < Orb::BaseModel
+        # The total amount in the invoice's currency to credit this line item.
         sig { returns(String) }
         def amount
         end
@@ -68,6 +71,7 @@ module Orb
         def amount=(_)
         end
 
+        # The ID of the line item to credit.
         sig { returns(String) }
         def invoice_line_item_id
         end
@@ -85,6 +89,7 @@ module Orb
         end
       end
 
+      # An optional reason for the credit note.
       class Reason < Orb::Enum
         abstract!
 

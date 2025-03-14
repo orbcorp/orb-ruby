@@ -72,7 +72,6 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Events::BackfillCreateResponse]
-        #
         def create(params)
           parsed, options = Orb::Models::Events::BackfillCreateParams.dump_request(params)
           @client.request(
@@ -102,7 +101,6 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Page<Orb::Models::Events::BackfillListResponse>]
-        #
         def list(params = {})
           parsed, options = Orb::Models::Events::BackfillListParams.dump_request(params)
           @client.request(
@@ -127,7 +125,6 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Events::BackfillCloseResponse]
-        #
         def close(backfill_id, params = {})
           @client.request(
             method: :post,
@@ -146,7 +143,6 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Events::BackfillFetchResponse]
-        #
         def fetch(backfill_id, params = {})
           @client.request(
             method: :get,
@@ -171,7 +167,6 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Events::BackfillRevertResponse]
-        #
         def revert(backfill_id, params = {})
           @client.request(
             method: :post,
@@ -182,7 +177,6 @@ module Orb
         end
 
         # @param client [Orb::Client]
-        #
         def initialize(client:)
           @client = client
         end

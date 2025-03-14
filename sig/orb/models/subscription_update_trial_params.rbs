@@ -42,7 +42,7 @@ module Orb
           def self.values: -> ::Array[Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::union_member1]
         end
 
-        private def self.variants: -> [[nil, Time], [nil, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::union_member1]]
+        def self.variants: -> [Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::union_member1]
       end
     end
   end

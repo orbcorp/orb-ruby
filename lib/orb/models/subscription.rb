@@ -306,7 +306,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # @abstract
-        #
         class Adjustment < Orb::Union
           discriminator :adjustment_type
 
@@ -672,6 +671,12 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment)]
+          #     def variants; end
+          #   end
         end
       end
 
@@ -711,7 +716,6 @@ module Orb
       end
 
       # @abstract
-      #
       class DiscountInterval < Orb::Union
         discriminator :discount_type
 
@@ -899,6 +903,12 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval, Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval, Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval)]
+        #     def variants; end
+        #   end
       end
 
       class FixedFeeQuantitySchedule < Orb::BaseModel
@@ -1188,7 +1198,6 @@ module Orb
       end
 
       # @abstract
-      #
       class Status < Orb::Enum
         ACTIVE = :active
         ENDED = :ended

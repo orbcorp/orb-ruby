@@ -6,6 +6,7 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # A description of the metric.
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -14,6 +15,7 @@ module Orb
       def description=(_)
       end
 
+      # The id of the item
       sig { returns(String) }
       def item_id
       end
@@ -22,6 +24,7 @@ module Orb
       def item_id=(_)
       end
 
+      # The name of the metric.
       sig { returns(String) }
       def name
       end
@@ -30,6 +33,7 @@ module Orb
       def name=(_)
       end
 
+      # A sql string defining the metric.
       sig { returns(String) }
       def sql
       end
@@ -38,6 +42,9 @@ module Orb
       def sql=(_)
       end
 
+      # User-specified key/value pairs for the resource. Individual keys can be removed
+      #   by setting the value to `null`, and the entire metadata mapping can be cleared
+      #   by setting `metadata` to `null`.
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
       def metadata
       end

@@ -6,6 +6,7 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # Price for which the updates should be cleared. Must be a fixed fee.
       sig { returns(String) }
       def price_id
       end

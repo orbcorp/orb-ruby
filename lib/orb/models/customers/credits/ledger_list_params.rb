@@ -104,7 +104,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class EntryStatus < Orb::Enum
             COMMITTED = :committed
             PENDING = :pending
@@ -113,7 +112,6 @@ module Orb
           end
 
           # @abstract
-          #
           class EntryType < Orb::Enum
             INCREMENT = :increment
             DECREMENT = :decrement

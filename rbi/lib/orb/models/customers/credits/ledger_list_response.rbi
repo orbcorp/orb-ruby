@@ -4,6 +4,8 @@ module Orb
   module Models
     module Customers
       module Credits
+        # The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid
+        #   credits within Orb.
         class LedgerListResponse < Orb::Union
           abstract!
 
@@ -102,6 +104,10 @@ module Orb
             def ledger_sequence_number=(_)
             end
 
+            # User specified key-value pairs for the resource. If not present, this defaults
+            #   to an empty dictionary. Individual keys can be removed by setting the value to
+            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            #   `null`.
             sig { returns(T::Hash[Symbol, String]) }
             def metadata
             end
@@ -356,6 +362,10 @@ module Orb
             def ledger_sequence_number=(_)
             end
 
+            # User specified key-value pairs for the resource. If not present, this defaults
+            #   to an empty dictionary. Individual keys can be removed by setting the value to
+            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            #   `null`.
             sig { returns(T::Hash[Symbol, String]) }
             def metadata
             end
@@ -643,6 +653,10 @@ module Orb
             def ledger_sequence_number=(_)
             end
 
+            # User specified key-value pairs for the resource. If not present, this defaults
+            #   to an empty dictionary. Individual keys can be removed by setting the value to
+            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            #   `null`.
             sig { returns(T::Hash[Symbol, String]) }
             def metadata
             end
@@ -908,6 +922,10 @@ module Orb
             def ledger_sequence_number=(_)
             end
 
+            # User specified key-value pairs for the resource. If not present, this defaults
+            #   to an empty dictionary. Individual keys can be removed by setting the value to
+            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            #   `null`.
             sig { returns(T::Hash[Symbol, String]) }
             def metadata
             end
@@ -1162,6 +1180,10 @@ module Orb
             def ledger_sequence_number=(_)
             end
 
+            # User specified key-value pairs for the resource. If not present, this defaults
+            #   to an empty dictionary. Individual keys can be removed by setting the value to
+            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            #   `null`.
             sig { returns(T::Hash[Symbol, String]) }
             def metadata
             end
@@ -1438,6 +1460,10 @@ module Orb
             def ledger_sequence_number=(_)
             end
 
+            # User specified key-value pairs for the resource. If not present, this defaults
+            #   to an empty dictionary. Individual keys can be removed by setting the value to
+            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            #   `null`.
             sig { returns(T::Hash[Symbol, String]) }
             def metadata
             end
@@ -1725,6 +1751,10 @@ module Orb
             def ledger_sequence_number=(_)
             end
 
+            # User specified key-value pairs for the resource. If not present, this defaults
+            #   to an empty dictionary. Individual keys can be removed by setting the value to
+            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            #   `null`.
             sig { returns(T::Hash[Symbol, String]) }
             def metadata
             end
@@ -1888,10 +1918,10 @@ module Orb
             sig do
               override
                 .returns(
-                  [[Symbol, Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry], [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry]]
+                  [Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry]
                 )
             end
-            private def variants
+            def variants
             end
           end
         end

@@ -7,6 +7,7 @@ module Orb
         extend Orb::RequestParameters::Converter
         include Orb::RequestParameters
 
+        # The currency or custom pricing unit to use.
         sig { returns(T.nilable(String)) }
         def currency
         end
@@ -15,6 +16,7 @@ module Orb
         def currency=(_)
         end
 
+        # Costs returned are exclusive of `timeframe_end`.
         sig { returns(T.nilable(Time)) }
         def timeframe_end
         end
@@ -23,6 +25,7 @@ module Orb
         def timeframe_end=(_)
         end
 
+        # Costs returned are inclusive of `timeframe_start`.
         sig { returns(T.nilable(Time)) }
         def timeframe_start
         end
@@ -31,6 +34,10 @@ module Orb
         def timeframe_start=(_)
         end
 
+        # Controls whether Orb returns cumulative costs since the start of the billing
+        #   period, or incremental day-by-day costs. If your customer has minimums or
+        #   discounts, it's strongly recommended that you use the default cumulative
+        #   behavior.
         sig { returns(T.nilable(Symbol)) }
         def view_mode
         end
@@ -67,6 +74,10 @@ module Orb
         def to_hash
         end
 
+        # Controls whether Orb returns cumulative costs since the start of the billing
+        #   period, or incremental day-by-day costs. If your customer has minimums or
+        #   discounts, it's strongly recommended that you use the default cumulative
+        #   behavior.
         class ViewMode < Orb::Enum
           abstract!
 

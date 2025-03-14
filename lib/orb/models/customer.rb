@@ -611,7 +611,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # @abstract
-        #
         class Country < Orb::Enum
           AD = :AD
           AE = :AE
@@ -696,7 +695,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Type < Orb::Enum
           AD_NRT = :ad_nrt
           AE_TRN = :ae_trn
@@ -815,7 +813,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class ProviderType < Orb::Enum
             QUICKBOOKS = :quickbooks
             NETSUITE = :netsuite

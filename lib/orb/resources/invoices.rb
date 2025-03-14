@@ -40,7 +40,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Invoice]
-      #
       def create(params)
         parsed, options = Orb::Models::InvoiceCreateParams.dump_request(params)
         @client.request(
@@ -69,7 +68,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Invoice]
-      #
       def update(invoice_id, params = {})
         parsed, options = Orb::Models::InvoiceUpdateParams.dump_request(params)
         @client.request(
@@ -142,7 +140,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Page<Orb::Models::Invoice>]
-      #
       def list(params = {})
         parsed, options = Orb::Models::InvoiceListParams.dump_request(params)
         @client.request(
@@ -165,7 +162,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Invoice]
-      #
       def fetch(invoice_id, params = {})
         @client.request(
           method: :get,
@@ -186,7 +182,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::InvoiceFetchUpcomingResponse]
-      #
       def fetch_upcoming(params)
         parsed, options = Orb::Models::InvoiceFetchUpcomingParams.dump_request(params)
         @client.request(
@@ -218,7 +213,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Invoice]
-      #
       def issue(invoice_id, params = {})
         parsed, options = Orb::Models::InvoiceIssueParams.dump_request(params)
         @client.request(
@@ -246,7 +240,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Invoice]
-      #
       def mark_paid(invoice_id, params)
         parsed, options = Orb::Models::InvoiceMarkPaidParams.dump_request(params)
         @client.request(
@@ -268,7 +261,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Invoice]
-      #
       def pay(invoice_id, params = {})
         @client.request(
           method: :post,
@@ -297,7 +289,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Invoice]
-      #
       def void(invoice_id, params = {})
         @client.request(
           method: :post,
@@ -308,7 +299,6 @@ module Orb
       end
 
       # @param client [Orb::Client]
-      #
       def initialize(client:)
         @client = client
       end

@@ -382,7 +382,7 @@ module Orb
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::plan_phase_maximum_adjustment
           end
 
-          private def self.variants: -> [[:usage_discount, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment], [:amount_discount, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment], [:percentage_discount, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment], [:minimum, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment], [:maximum, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]]
+          def self.variants: -> [Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
         end
       end
 
@@ -532,7 +532,7 @@ module Orb
           def to_hash: -> Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::usage_discount_interval
         end
 
-        private def self.variants: -> [[:amount, Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::AmountDiscountInterval], [:percentage, Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::PercentageDiscountInterval], [:usage, Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::UsageDiscountInterval]]
+        def self.variants: -> [Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::UsageDiscountInterval]
       end
 
       type fixed_fee_quantity_schedule =
