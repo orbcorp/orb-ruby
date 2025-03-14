@@ -188,7 +188,6 @@ module Orb
             end
 
             # @abstract
-            #
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -374,7 +373,6 @@ module Orb
             end
 
             # @abstract
-            #
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -546,7 +544,6 @@ module Orb
             end
 
             # @abstract
-            #
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -711,7 +708,6 @@ module Orb
             end
 
             # @abstract
-            #
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -890,7 +886,6 @@ module Orb
             end
 
             # @abstract
-            #
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -1076,7 +1071,6 @@ module Orb
             end
 
             # @abstract
-            #
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -1241,7 +1235,6 @@ module Orb
             end
 
             # @abstract
-            #
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -1249,6 +1242,12 @@ module Orb
               finalize!
             end
           end
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry)]
+          #     def variants; end
+          #   end
         end
       end
     end

@@ -60,10 +60,9 @@ module Orb
     # @return [Orb::Resources::DimensionalPriceGroups]
     attr_reader :dimensional_price_groups
 
-    # @private
+    # @api private
     #
     # @return [Hash{String=>String}]
-    #
     private def auth_headers
       return {} if @api_key.nil?
 
@@ -85,7 +84,6 @@ module Orb
     # @param max_retry_delay [Float]
     #
     # @param idempotency_header [String]
-    #
     def initialize(
       base_url: nil,
       api_key: ENV["ORB_API_KEY"],

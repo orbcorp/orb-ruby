@@ -122,7 +122,7 @@ module Orb
         type start_date = Time | Orb::Models::billing_cycle_relative_date
 
         class StartDate < Orb::Union
-          private def self.variants: -> [[nil, Time], [nil, Orb::Models::billing_cycle_relative_date]]
+          def self.variants: -> [Time, Orb::Models::billing_cycle_relative_date]
         end
 
         type allocation_price =
@@ -231,13 +231,13 @@ module Orb
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::usage_discount_creation_params
           end
 
-          private def self.variants: -> [[:amount, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::AmountDiscountCreationParams], [:percentage, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::PercentageDiscountCreationParams], [:usage, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams]]
+          def self.variants: -> [Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::AmountDiscountCreationParams, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::PercentageDiscountCreationParams, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams]
         end
 
         type end_date = Time | Orb::Models::billing_cycle_relative_date
 
         class EndDate < Orb::Union
-          private def self.variants: -> [[nil, Time], [nil, Orb::Models::billing_cycle_relative_date]]
+          def self.variants: -> [Time, Orb::Models::billing_cycle_relative_date]
         end
 
         type fixed_fee_quantity_transition =
@@ -5130,7 +5130,7 @@ module Orb
             end
           end
 
-          private def self.variants: -> [[:unit, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice], [:package, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice], [:matrix, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice], [:matrix_with_allocation, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice], [:tiered, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice], [:tiered_bps, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice], [:bps, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice], [:bulk_bps, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice], [:bulk, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice], [:threshold_total_amount, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice], [:tiered_package, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice], [:grouped_tiered, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice], [:max_group_tiered_package, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice], [:tiered_with_minimum, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice], [:package_with_allocation, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice], [:tiered_package_with_minimum, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice], [:unit_with_percent, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice], [:tiered_with_proration, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice], [:unit_with_proration, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice], [:grouped_allocation, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice], [:grouped_with_prorated_minimum, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice], [:grouped_with_metered_minimum, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice], [:matrix_with_display_name, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice], [:bulk_with_proration, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice], [:grouped_tiered_package, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice], [:scalable_matrix_with_unit_pricing, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice], [:scalable_matrix_with_tiered_pricing, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice], [:cumulative_grouped_bulk, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice]]
+          def self.variants: -> [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice]
         end
       end
 
@@ -5343,19 +5343,19 @@ module Orb
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_maximum
           end
 
-          private def self.variants: -> [[:percentage_discount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount], [:usage_discount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewUsageDiscount], [:amount_discount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewAmountDiscount], [:minimum, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMinimum], [:maximum, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMaximum]]
+          def self.variants: -> [Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMaximum]
         end
 
         type start_date = Time | Orb::Models::billing_cycle_relative_date
 
         class StartDate < Orb::Union
-          private def self.variants: -> [[nil, Time], [nil, Orb::Models::billing_cycle_relative_date]]
+          def self.variants: -> [Time, Orb::Models::billing_cycle_relative_date]
         end
 
         type end_date = Time | Orb::Models::billing_cycle_relative_date
 
         class EndDate < Orb::Union
-          private def self.variants: -> [[nil, Time], [nil, Orb::Models::billing_cycle_relative_date]]
+          def self.variants: -> [Time, Orb::Models::billing_cycle_relative_date]
         end
       end
 
@@ -5409,7 +5409,7 @@ module Orb
         type end_date = Time | Orb::Models::billing_cycle_relative_date
 
         class EndDate < Orb::Union
-          private def self.variants: -> [[nil, Time], [nil, Orb::Models::billing_cycle_relative_date]]
+          def self.variants: -> [Time, Orb::Models::billing_cycle_relative_date]
         end
 
         type fixed_fee_quantity_transition =
@@ -5433,7 +5433,7 @@ module Orb
         type start_date = Time | Orb::Models::billing_cycle_relative_date
 
         class StartDate < Orb::Union
-          private def self.variants: -> [[nil, Time], [nil, Orb::Models::billing_cycle_relative_date]]
+          def self.variants: -> [Time, Orb::Models::billing_cycle_relative_date]
         end
       end
 
@@ -5471,13 +5471,13 @@ module Orb
         type end_date = Time | Orb::Models::billing_cycle_relative_date
 
         class EndDate < Orb::Union
-          private def self.variants: -> [[nil, Time], [nil, Orb::Models::billing_cycle_relative_date]]
+          def self.variants: -> [Time, Orb::Models::billing_cycle_relative_date]
         end
 
         type start_date = Time | Orb::Models::billing_cycle_relative_date
 
         class StartDate < Orb::Union
-          private def self.variants: -> [[nil, Time], [nil, Orb::Models::billing_cycle_relative_date]]
+          def self.variants: -> [Time, Orb::Models::billing_cycle_relative_date]
         end
       end
     end

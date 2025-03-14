@@ -3,6 +3,7 @@
 module Orb
   module Models
     class EvaluatePriceGroup < Orb::BaseModel
+      # The price's output for the group
       sig { returns(String) }
       def amount
       end
@@ -11,6 +12,7 @@ module Orb
       def amount=(_)
       end
 
+      # The values for the group in the order specified by `grouping_keys`
       sig { returns(T::Array[T.any(String, Float, T::Boolean)]) }
       def grouping_values
       end
@@ -27,6 +29,7 @@ module Orb
       def grouping_values=(_)
       end
 
+      # The price's usage quantity for the group
       sig { returns(Float) }
       def quantity
       end
@@ -57,8 +60,8 @@ module Orb
         abstract!
 
         class << self
-          sig { override.returns([[NilClass, String], [NilClass, Float], [NilClass, T::Boolean]]) }
-          private def variants
+          sig { override.returns([String, Float, T::Boolean]) }
+          def variants
           end
         end
       end

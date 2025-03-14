@@ -11,6 +11,8 @@ module Orb
       def id=(_)
       end
 
+      # Adjustments for this plan. If the plan has phases, this includes adjustments
+      #   across all phases of the plan.
       sig do
         returns(
           T::Array[
@@ -62,6 +64,8 @@ module Orb
       def base_plan=(_)
       end
 
+      # The parent plan id if the given plan was created by overriding one or more of
+      #   the parent's prices
       sig { returns(T.nilable(String)) }
       def base_plan_id
       end
@@ -78,6 +82,8 @@ module Orb
       def created_at=(_)
       end
 
+      # An ISO 4217 currency string or custom pricing unit (`credits`) for this plan's
+      #   prices.
       sig { returns(String) }
       def currency
       end
@@ -86,6 +92,8 @@ module Orb
       def currency=(_)
       end
 
+      # The default memo text on the invoices corresponding to subscriptions on this
+      #   plan. Note that each subscription may configure its own memo.
       sig { returns(T.nilable(String)) }
       def default_invoice_memo
       end
@@ -142,6 +150,9 @@ module Orb
       def discount=(_)
       end
 
+      # An optional user-defined ID for this plan resource, used throughout the system
+      #   as an alias for this Plan. Use this field to identify a plan by an existing
+      #   identifier in your system.
       sig { returns(T.nilable(String)) }
       def external_plan_id
       end
@@ -150,6 +161,8 @@ module Orb
       def external_plan_id=(_)
       end
 
+      # An ISO 4217 currency string for which this plan is billed in. Matches `currency`
+      #   unless `currency` is a custom pricing unit.
       sig { returns(String) }
       def invoicing_currency
       end
@@ -174,6 +187,10 @@ module Orb
       def maximum_amount=(_)
       end
 
+      # User specified key-value pairs for the resource. If not present, this defaults
+      #   to an empty dictionary. Individual keys can be removed by setting the value to
+      #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+      #   `null`.
       sig { returns(T::Hash[Symbol, String]) }
       def metadata
       end
@@ -206,6 +223,11 @@ module Orb
       def name=(_)
       end
 
+      # Determines the difference between the invoice issue date and the due date. A
+      #   value of "0" here signifies that invoices are due on issue, whereas a value of
+      #   "30" means that the customer has a month to pay the invoice before its overdue.
+      #   Note that individual subscriptions or invoices may set a different net terms
+      #   configuration.
       sig { returns(T.nilable(Integer)) }
       def net_terms
       end
@@ -225,6 +247,8 @@ module Orb
       def plan_phases=(_)
       end
 
+      # Prices for this plan. If the plan has phases, this includes prices across all
+      #   phases of the plan.
       sig do
         returns(
           T::Array[
@@ -369,6 +393,10 @@ module Orb
       def version=(_)
       end
 
+      # The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
+      #   subscribed to by a customer. Plans define the billing behavior of the
+      #   subscription. You can see more about how to configure prices in the
+      #   [Price resource](/reference/price).
       sig do
         params(
           id: String,
@@ -572,6 +600,7 @@ module Orb
           def adjustment_type=(_)
           end
 
+          # The price IDs that this adjustment applies to.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -580,6 +609,8 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # True for adjustments that apply to an entire invocice, false for adjustments
+          #   that apply to only one price.
           sig { returns(T::Boolean) }
           def is_invoice_level
           end
@@ -588,6 +619,7 @@ module Orb
           def is_invoice_level=(_)
           end
 
+          # The plan phase in which this adjustment is active.
           sig { returns(T.nilable(Integer)) }
           def plan_phase_order
           end
@@ -596,6 +628,7 @@ module Orb
           def plan_phase_order=(_)
           end
 
+          # The reason for the adjustment.
           sig { returns(T.nilable(String)) }
           def reason
           end
@@ -604,6 +637,8 @@ module Orb
           def reason=(_)
           end
 
+          # The number of usage units by which to discount the price this adjustment applies
+          #   to in a given billing period.
           sig { returns(Float) }
           def usage_discount
           end
@@ -670,6 +705,8 @@ module Orb
           def adjustment_type=(_)
           end
 
+          # The amount by which to discount the prices this adjustment applies to in a given
+          #   billing period.
           sig { returns(String) }
           def amount_discount
           end
@@ -678,6 +715,7 @@ module Orb
           def amount_discount=(_)
           end
 
+          # The price IDs that this adjustment applies to.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -686,6 +724,8 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # True for adjustments that apply to an entire invocice, false for adjustments
+          #   that apply to only one price.
           sig { returns(T::Boolean) }
           def is_invoice_level
           end
@@ -694,6 +734,7 @@ module Orb
           def is_invoice_level=(_)
           end
 
+          # The plan phase in which this adjustment is active.
           sig { returns(T.nilable(Integer)) }
           def plan_phase_order
           end
@@ -702,6 +743,7 @@ module Orb
           def plan_phase_order=(_)
           end
 
+          # The reason for the adjustment.
           sig { returns(T.nilable(String)) }
           def reason
           end
@@ -768,6 +810,7 @@ module Orb
           def adjustment_type=(_)
           end
 
+          # The price IDs that this adjustment applies to.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -776,6 +819,8 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # True for adjustments that apply to an entire invocice, false for adjustments
+          #   that apply to only one price.
           sig { returns(T::Boolean) }
           def is_invoice_level
           end
@@ -784,6 +829,8 @@ module Orb
           def is_invoice_level=(_)
           end
 
+          # The percentage (as a value between 0 and 1) by which to discount the price
+          #   intervals this adjustment applies to in a given billing period.
           sig { returns(Float) }
           def percentage_discount
           end
@@ -792,6 +839,7 @@ module Orb
           def percentage_discount=(_)
           end
 
+          # The plan phase in which this adjustment is active.
           sig { returns(T.nilable(Integer)) }
           def plan_phase_order
           end
@@ -800,6 +848,7 @@ module Orb
           def plan_phase_order=(_)
           end
 
+          # The reason for the adjustment.
           sig { returns(T.nilable(String)) }
           def reason
           end
@@ -866,6 +915,7 @@ module Orb
           def adjustment_type=(_)
           end
 
+          # The price IDs that this adjustment applies to.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -874,6 +924,8 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # True for adjustments that apply to an entire invocice, false for adjustments
+          #   that apply to only one price.
           sig { returns(T::Boolean) }
           def is_invoice_level
           end
@@ -882,6 +934,7 @@ module Orb
           def is_invoice_level=(_)
           end
 
+          # The item ID that revenue from this minimum will be attributed to.
           sig { returns(String) }
           def item_id
           end
@@ -890,6 +943,8 @@ module Orb
           def item_id=(_)
           end
 
+          # The minimum amount to charge in a given billing period for the prices this
+          #   adjustment applies to.
           sig { returns(String) }
           def minimum_amount
           end
@@ -898,6 +953,7 @@ module Orb
           def minimum_amount=(_)
           end
 
+          # The plan phase in which this adjustment is active.
           sig { returns(T.nilable(Integer)) }
           def plan_phase_order
           end
@@ -906,6 +962,7 @@ module Orb
           def plan_phase_order=(_)
           end
 
+          # The reason for the adjustment.
           sig { returns(T.nilable(String)) }
           def reason
           end
@@ -975,6 +1032,7 @@ module Orb
           def adjustment_type=(_)
           end
 
+          # The price IDs that this adjustment applies to.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -983,6 +1041,8 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # True for adjustments that apply to an entire invocice, false for adjustments
+          #   that apply to only one price.
           sig { returns(T::Boolean) }
           def is_invoice_level
           end
@@ -991,6 +1051,8 @@ module Orb
           def is_invoice_level=(_)
           end
 
+          # The maximum amount to charge in a given billing period for the prices this
+          #   adjustment applies to.
           sig { returns(String) }
           def maximum_amount
           end
@@ -999,6 +1061,7 @@ module Orb
           def maximum_amount=(_)
           end
 
+          # The plan phase in which this adjustment is active.
           sig { returns(T.nilable(Integer)) }
           def plan_phase_order
           end
@@ -1007,6 +1070,7 @@ module Orb
           def plan_phase_order=(_)
           end
 
+          # The reason for the adjustment.
           sig { returns(T.nilable(String)) }
           def reason
           end
@@ -1060,10 +1124,10 @@ module Orb
           sig do
             override
               .returns(
-                [[Symbol, Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment], [Symbol, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment], [Symbol, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment], [Symbol, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment], [Symbol, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment]]
+                [Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment]
               )
           end
-          private def variants
+          def variants
           end
         end
       end
@@ -1077,6 +1141,9 @@ module Orb
         def id=(_)
         end
 
+        # An optional user-defined ID for this plan resource, used throughout the system
+        #   as an alias for this Plan. Use this field to identify a plan by an existing
+        #   identifier in your system.
         sig { returns(T.nilable(String)) }
         def external_plan_id
         end
@@ -1114,6 +1181,8 @@ module Orb
       end
 
       class Maximum < Orb::BaseModel
+        # List of price_ids that this maximum amount applies to. For plan/plan phase
+        #   maximums, this can be a subset of prices.
         sig { returns(T::Array[String]) }
         def applies_to_price_ids
         end
@@ -1122,6 +1191,7 @@ module Orb
         def applies_to_price_ids=(_)
         end
 
+        # Maximum amount applied
         sig { returns(String) }
         def maximum_amount
         end
@@ -1142,6 +1212,8 @@ module Orb
       end
 
       class Minimum < Orb::BaseModel
+        # List of price_ids that this minimum amount applies to. For plan/plan phase
+        #   minimums, this can be a subset of prices.
         sig { returns(T::Array[String]) }
         def applies_to_price_ids
         end
@@ -1150,6 +1222,7 @@ module Orb
         def applies_to_price_ids=(_)
         end
 
+        # Minimum amount applied
         sig { returns(String) }
         def minimum_amount
         end
@@ -1226,6 +1299,8 @@ module Orb
         def discount=(_)
         end
 
+        # How many terms of length `duration_unit` this phase is active for. If null, this
+        #   phase is evergreen and active indefinitely
         sig { returns(T.nilable(Integer)) }
         def duration
         end
@@ -1288,6 +1363,7 @@ module Orb
         def name=(_)
         end
 
+        # Determines the ordering of the phase in a plan's lifecycle. 1 = first phase.
         sig { returns(Integer) }
         def order
         end
@@ -1379,6 +1455,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -1387,6 +1465,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -1407,6 +1486,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -1415,6 +1496,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end

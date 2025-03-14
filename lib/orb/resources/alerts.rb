@@ -12,7 +12,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Alert]
-      #
       def retrieve(alert_id, params = {})
         @client.request(
           method: :get,
@@ -33,7 +32,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Alert]
-      #
       def update(alert_configuration_id, params)
         parsed, options = Orb::Models::AlertUpdateParams.dump_request(params)
         @client.request(
@@ -81,7 +79,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Page<Orb::Models::Alert>]
-      #
       def list(params = {})
         parsed, options = Orb::Models::AlertListParams.dump_request(params)
         @client.request(
@@ -116,7 +113,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Alert]
-      #
       def create_for_customer(customer_id, params)
         parsed, options = Orb::Models::AlertCreateForCustomerParams.dump_request(params)
         @client.request(
@@ -150,7 +146,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Alert]
-      #
       def create_for_external_customer(external_customer_id, params)
         parsed, options = Orb::Models::AlertCreateForExternalCustomerParams.dump_request(params)
         @client.request(
@@ -187,7 +182,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Alert]
-      #
       def create_for_subscription(subscription_id, params)
         parsed, options = Orb::Models::AlertCreateForSubscriptionParams.dump_request(params)
         @client.request(
@@ -212,7 +206,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Alert]
-      #
       def disable(alert_configuration_id, params = {})
         parsed, options = Orb::Models::AlertDisableParams.dump_request(params)
         @client.request(
@@ -237,7 +230,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Alert]
-      #
       def enable(alert_configuration_id, params = {})
         parsed, options = Orb::Models::AlertEnableParams.dump_request(params)
         @client.request(
@@ -250,7 +242,6 @@ module Orb
       end
 
       # @param client [Orb::Client]
-      #
       def initialize(client:)
         @client = client
       end

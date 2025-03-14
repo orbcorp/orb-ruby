@@ -30,6 +30,8 @@ module Orb
       def amount_lt=(_)
       end
 
+      # Cursor for pagination. This can be populated by the `next_cursor` value returned
+      #   from the initial request.
       sig { returns(T.nilable(String)) }
       def cursor
       end
@@ -62,6 +64,10 @@ module Orb
       def due_date=(_)
       end
 
+      # Filters invoices by their due dates within a specific time range in the past.
+      #   Specify the range as a number followed by 'd' (days) or 'm' (months). For
+      #   example, '7d' filters invoices due in the last 7 days, and '2m' filters those
+      #   due in the last 2 months.
       sig { returns(T.nilable(String)) }
       def due_date_window
       end
@@ -134,6 +140,7 @@ module Orb
       def is_recurring=(_)
       end
 
+      # The number of items to fetch. Defaults to 20.
       sig { returns(T.nilable(Integer)) }
       def limit
       end

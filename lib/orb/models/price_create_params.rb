@@ -352,7 +352,6 @@ module Orb
       end
 
       # @abstract
-      #
       class ModelType < Orb::Enum
         CUMULATIVE_GROUPED_BULK = :cumulative_grouped_bulk
 

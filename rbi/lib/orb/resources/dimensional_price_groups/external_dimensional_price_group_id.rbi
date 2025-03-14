@@ -4,6 +4,7 @@ module Orb
   module Resources
     class DimensionalPriceGroups
       class ExternalDimensionalPriceGroupID
+        # Fetch dimensional price group by external ID
         sig do
           params(
             external_dimensional_price_group_id: String,

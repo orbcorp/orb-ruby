@@ -166,7 +166,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # @abstract
-        #
         class ModelType < Orb::Enum
           UNIT = :unit
 

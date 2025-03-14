@@ -8,6 +8,8 @@ module Orb
           extend Orb::RequestParameters::Converter
           include Orb::RequestParameters
 
+          # The number of credits to effect. Note that this is required for increment,
+          #   decrement or void operations.
           sig { returns(Float) }
           def amount
           end
@@ -24,6 +26,8 @@ module Orb
           def entry_type=(_)
           end
 
+          # The currency or custom pricing unit to use for this ledger entry. If this is a
+          #   real-world currency, it must match the customer's invoicing currency.
           sig { returns(T.nilable(String)) }
           def currency
           end
@@ -32,6 +36,9 @@ module Orb
           def currency=(_)
           end
 
+          # Optional metadata that can be specified when adding ledger results via the API.
+          #   For example, this can be used to note an increment refers to trial credits, or
+          #   for noting corrections as a result of an incident, etc.
           sig { returns(T.nilable(String)) }
           def description
           end
@@ -40,6 +47,8 @@ module Orb
           def description=(_)
           end
 
+          # An ISO 8601 format date that denotes when this credit balance should become
+          #   available for use.
           sig { returns(T.nilable(Time)) }
           def effective_date
           end
@@ -48,6 +57,7 @@ module Orb
           def effective_date=(_)
           end
 
+          # An ISO 8601 format date that identifies the origination credit block to expire
           sig { returns(T.nilable(Time)) }
           def expiry_date
           end
@@ -56,6 +66,10 @@ module Orb
           def expiry_date=(_)
           end
 
+          # Passing `invoice_settings` automatically generates an invoice for the newly
+          #   added credits. If `invoice_settings` is passed, you must specify
+          #   per_unit_cost_basis, as the calculation of the invoice total is done on that
+          #   basis.
           sig { returns(T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings)) }
           def invoice_settings
           end
@@ -69,6 +83,9 @@ module Orb
           def invoice_settings=(_)
           end
 
+          # User-specified key/value pairs for the resource. Individual keys can be removed
+          #   by setting the value to `null`, and the entire metadata mapping can be cleared
+          #   by setting `metadata` to `null`.
           sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
           def metadata
           end
@@ -80,6 +97,8 @@ module Orb
           def metadata=(_)
           end
 
+          # Can only be specified when entry_type=increment. How much, in the customer's
+          #   currency, a customer paid for a single credit in this block
           sig { returns(T.nilable(String)) }
           def per_unit_cost_basis
           end
@@ -88,6 +107,9 @@ module Orb
           def per_unit_cost_basis=(_)
           end
 
+          # A future date (specified in YYYY-MM-DD format) used for expiration change,
+          #   denoting when credits transferred (as part of a partial block expiration) should
+          #   expire.
           sig { returns(Date) }
           def target_expiry_date
           end
@@ -96,6 +118,7 @@ module Orb
           def target_expiry_date=(_)
           end
 
+          # The ID of the block to reverse a decrement from.
           sig { returns(String) }
           def block_id
           end
@@ -104,6 +127,7 @@ module Orb
           def block_id=(_)
           end
 
+          # Can only be specified when `entry_type=void`. The reason for the void.
           sig { returns(T.nilable(Symbol)) }
           def void_reason
           end
@@ -183,6 +207,8 @@ module Orb
           end
 
           class InvoiceSettings < Orb::BaseModel
+            # Whether the credits purchase invoice should auto collect with the customer's
+            #   saved payment method.
             sig { returns(T::Boolean) }
             def auto_collection
             end
@@ -191,6 +217,9 @@ module Orb
             def auto_collection=(_)
             end
 
+            # The net terms determines the difference between the invoice date and the issue
+            #   date for the invoice. If you intend the invoice to be due on issue, set this
+            #   to 0.
             sig { returns(Integer) }
             def net_terms
             end
@@ -199,6 +228,7 @@ module Orb
             def net_terms=(_)
             end
 
+            # An optional memo to display on the invoice.
             sig { returns(T.nilable(String)) }
             def memo
             end
@@ -207,6 +237,8 @@ module Orb
             def memo=(_)
             end
 
+            # If true, the new credit block will require that the corresponding invoice is
+            #   paid before it can be drawn down from.
             sig { returns(T.nilable(T::Boolean)) }
             def require_successful_payment
             end
@@ -215,6 +247,10 @@ module Orb
             def require_successful_payment=(_)
             end
 
+            # Passing `invoice_settings` automatically generates an invoice for the newly
+            #   added credits. If `invoice_settings` is passed, you must specify
+            #   per_unit_cost_basis, as the calculation of the invoice total is done on that
+            #   basis.
             sig do
               params(
                 auto_collection: T::Boolean,
@@ -242,6 +278,7 @@ module Orb
             end
           end
 
+          # Can only be specified when `entry_type=void`. The reason for the void.
           class VoidReason < Orb::Enum
             abstract!
 

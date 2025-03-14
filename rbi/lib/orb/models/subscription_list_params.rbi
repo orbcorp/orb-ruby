@@ -38,6 +38,8 @@ module Orb
       def created_at_lte=(_)
       end
 
+      # Cursor for pagination. This can be populated by the `next_cursor` value returned
+      #   from the initial request.
       sig { returns(T.nilable(String)) }
       def cursor
       end
@@ -62,6 +64,7 @@ module Orb
       def external_customer_id=(_)
       end
 
+      # The number of items to fetch. Defaults to 20.
       sig { returns(T.nilable(Integer)) }
       def limit
       end

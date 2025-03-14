@@ -95,7 +95,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # @abstract
-        #
         class Action < Orb::Enum
           APPLIED_TO_INVOICE = :applied_to_invoice
           MANUAL_ADJUSTMENT = :manual_adjustment
@@ -141,7 +140,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Type < Orb::Enum
           INCREMENT = :increment
           DECREMENT = :decrement

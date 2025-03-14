@@ -38,6 +38,7 @@ module Orb
           def per_price_costs=(_)
           end
 
+          # Total costs for the timeframe, excluding any minimums and discounts.
           sig { returns(String) }
           def subtotal
           end
@@ -62,6 +63,7 @@ module Orb
           def timeframe_start=(_)
           end
 
+          # Total costs for the timeframe, including any minimums and discounts.
           sig { returns(String) }
           def total
           end
@@ -99,6 +101,7 @@ module Orb
           end
 
           class PerPriceCost < Orb::BaseModel
+            # The price object
             sig do
               returns(
                 T.any(
@@ -205,6 +208,7 @@ module Orb
             def price=(_)
             end
 
+            # The price the cost is associated with
             sig { returns(String) }
             def price_id
             end
@@ -213,6 +217,7 @@ module Orb
             def price_id=(_)
             end
 
+            # Price's contributions for the timeframe, excluding any minimums and discounts.
             sig { returns(String) }
             def subtotal
             end
@@ -221,6 +226,7 @@ module Orb
             def subtotal=(_)
             end
 
+            # Price's contributions for the timeframe, including minimums and discounts.
             sig { returns(String) }
             def total
             end
@@ -229,6 +235,7 @@ module Orb
             def total=(_)
             end
 
+            # The price's quantity for the timeframe
             sig { returns(T.nilable(Float)) }
             def quantity
             end

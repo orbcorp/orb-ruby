@@ -17,26 +17,31 @@ module Orb
   #
   # @example
   # ```ruby
-  # coupons = page.to_enum.take(2)
+  # coupons = page
+  #   .to_enum
+  #   .lazy
+  #   .select { _1.object_id.even? }
+  #   .map(&:itself)
+  #   .take(2)
+  #   .to_a
   #
   # coupons => Array
   # ```
   class Page
     include Orb::BasePage
 
-    # @return [Array<Object>]
+    # @return [Array<Object>, nil]
     attr_accessor :data
 
     # @return [PaginationMetadata]
     attr_accessor :pagination_metadata
 
-    # @private
+    # @api private
     #
     # @param client [Orb::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
     # @param page_data [Hash{Symbol=>Object}]
-    #
     def initialize(client:, req:, headers:, page_data:)
       super
       model = req.fetch(:model)
@@ -61,7 +66,6 @@ module Orb
 
     # @raise [Orb::HTTP::Error]
     # @return [Orb::Page]
-    #
     def next_page
       unless next_page?
         raise RuntimeError.new("No more pages available. Please check #next_page? before calling ##{__method__}")
@@ -72,7 +76,6 @@ module Orb
     end
 
     # @param blk [Proc]
-    #
     def auto_paging_each(&blk)
       unless block_given?
         raise ArgumentError.new("A block must be given to ##{__method__}")
@@ -86,7 +89,6 @@ module Orb
     end
 
     # @return [String]
-    #
     def inspect
       "#<#{self.class}:0x#{object_id.to_s(16)} data=#{data.inspect} pagination_metadata=#{pagination_metadata.inspect}>"
     end

@@ -322,7 +322,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DiscountType < Orb::Enum
             PERCENTAGE = :percentage
             AMOUNT = :amount
@@ -374,7 +373,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # @abstract
-        #
         class DiscountType < Orb::Enum
           PERCENTAGE = :percentage
 
@@ -403,7 +401,6 @@ module Orb
       end
 
       # @abstract
-      #
       class Reason < Orb::Enum
         DUPLICATE = :Duplicate
         FRAUDULENT = :Fraudulent
@@ -414,7 +411,6 @@ module Orb
       end
 
       # @abstract
-      #
       class Type < Orb::Enum
         REFUND = :refund
         ADJUSTMENT = :adjustment
@@ -462,7 +458,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # @abstract
-        #
         class DiscountType < Orb::Enum
           PERCENTAGE = :percentage
 

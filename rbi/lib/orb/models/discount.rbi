@@ -9,10 +9,10 @@ module Orb
         sig do
           override
             .returns(
-              [[Symbol, Orb::Models::PercentageDiscount], [Symbol, Orb::Models::TrialDiscount], [Symbol, Orb::Models::UsageDiscount], [Symbol, Orb::Models::AmountDiscount]]
+              [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount]
             )
         end
-        private def variants
+        def variants
         end
       end
     end

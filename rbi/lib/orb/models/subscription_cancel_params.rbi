@@ -6,6 +6,7 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # Determines the timing of subscription cancellation
       sig { returns(Symbol) }
       def cancel_option
       end
@@ -14,6 +15,9 @@ module Orb
       def cancel_option=(_)
       end
 
+      # If false, this request will fail if it would void an issued invoice or create a
+      #   credit note. Consider using this as a safety mechanism if you do not expect
+      #   existing invoices to be changed.
       sig { returns(T.nilable(T::Boolean)) }
       def allow_invoice_credit_or_void
       end
@@ -22,6 +26,8 @@ module Orb
       def allow_invoice_credit_or_void=(_)
       end
 
+      # The date that the cancellation should take effect. This parameter can only be
+      #   passed if the `cancel_option` is `requested_date`.
       sig { returns(T.nilable(Time)) }
       def cancellation_date
       end
@@ -56,6 +62,7 @@ module Orb
       def to_hash
       end
 
+      # Determines the timing of subscription cancellation
       class CancelOption < Orb::Enum
         abstract!
 

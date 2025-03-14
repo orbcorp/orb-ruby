@@ -381,7 +381,7 @@ module Orb
             def to_hash: -> Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::plan_phase_maximum_adjustment
           end
 
-          private def self.variants: -> [[:usage_discount, Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment], [:amount_discount, Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment], [:percentage_discount, Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment], [:minimum, Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment], [:maximum, Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]]
+          def self.variants: -> [Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
         end
       end
 
@@ -531,7 +531,7 @@ module Orb
           def to_hash: -> Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::usage_discount_interval
         end
 
-        private def self.variants: -> [[:amount, Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::AmountDiscountInterval], [:percentage, Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::PercentageDiscountInterval], [:usage, Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::UsageDiscountInterval]]
+        def self.variants: -> [Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::UsageDiscountInterval]
       end
 
       type fixed_fee_quantity_schedule =

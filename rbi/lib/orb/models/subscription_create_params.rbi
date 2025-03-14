@@ -6,6 +6,8 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # Additional adjustments to be added to the subscription. (Only available for
+      #   accounts that have migrated off of legacy subscription overrides)
       sig { returns(T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::AddAdjustment])) }
       def add_adjustments
       end
@@ -17,6 +19,8 @@ module Orb
       def add_adjustments=(_)
       end
 
+      # Additional prices to be added to the subscription. (Only available for accounts
+      #   that have migrated off of legacy subscription overrides)
       sig { returns(T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::AddPrice])) }
       def add_prices
       end
@@ -36,6 +40,9 @@ module Orb
       def align_billing_with_subscription_start_date=(_)
       end
 
+      # Determines whether issued invoices for this subscription will automatically be
+      #   charged with the saved payment method on the due date. If not specified, this
+      #   defaults to the behavior configured for this customer.
       sig { returns(T.nilable(T::Boolean)) }
       def auto_collection
       end
@@ -63,6 +70,9 @@ module Orb
       def billing_cycle_anchor_configuration=(_)
       end
 
+      # Redemption code to be used for this subscription. If the coupon cannot be found
+      #   by its redemption code, or cannot be redeemed, an error response will be
+      #   returned and the subscription creation or plan change will not be scheduled.
       sig { returns(T.nilable(String)) }
       def coupon_redemption_code
       end
@@ -87,6 +97,8 @@ module Orb
       def customer_id=(_)
       end
 
+      # Determines the default memo on this subscription's invoices. Note that if this
+      #   is not provided, it is determined by the plan configuration.
       sig { returns(T.nilable(String)) }
       def default_invoice_memo
       end
@@ -127,6 +139,8 @@ module Orb
       def external_marketplace_reporting_id=(_)
       end
 
+      # The external_plan_id of the plan that the given subscription should be switched
+      #   to. Note that either this property or `plan_id` must be specified.
       sig { returns(T.nilable(String)) }
       def external_plan_id
       end
@@ -135,6 +149,10 @@ module Orb
       def external_plan_id=(_)
       end
 
+      # An additional filter to apply to usage queries. This filter must be expressed as
+      #   a boolean
+      #   [computed property](/extensibility/advanced-metrics#computed-properties). If
+      #   null, usage queries will not include any additional filter.
       sig { returns(T.nilable(String)) }
       def filter
       end
@@ -143,6 +161,7 @@ module Orb
       def filter=(_)
       end
 
+      # The phase of the plan to start with
       sig { returns(T.nilable(Integer)) }
       def initial_phase_order
       end
@@ -151,6 +170,9 @@ module Orb
       def initial_phase_order=(_)
       end
 
+      # When this subscription's accrued usage reaches this threshold, an invoice will
+      #   be issued for the subscription. If not specified, invoices will only be issued
+      #   at the end of the billing period.
       sig { returns(T.nilable(String)) }
       def invoicing_threshold
       end
@@ -159,6 +181,9 @@ module Orb
       def invoicing_threshold=(_)
       end
 
+      # User-specified key/value pairs for the resource. Individual keys can be removed
+      #   by setting the value to `null`, and the entire metadata mapping can be cleared
+      #   by setting `metadata` to `null`.
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
       def metadata
       end
@@ -170,6 +195,9 @@ module Orb
       def metadata=(_)
       end
 
+      # The net terms determines the difference between the invoice date and the issue
+      #   date for the invoice. If you intend the invoice to be due on issue, set this
+      #   to 0. If not provided, this defaults to the value specified in the plan.
       sig { returns(T.nilable(Integer)) }
       def net_terms
       end
@@ -186,6 +214,8 @@ module Orb
       def per_credit_overage_amount=(_)
       end
 
+      # The plan that the given subscription should be switched to. Note that either
+      #   this property or `external_plan_id` must be specified.
       sig { returns(T.nilable(String)) }
       def plan_id
       end
@@ -194,6 +224,8 @@ module Orb
       def plan_id=(_)
       end
 
+      # Specifies which version of the plan to subscribe to. If null, the default
+      #   version will be used.
       sig { returns(T.nilable(Integer)) }
       def plan_version_number
       end
@@ -202,6 +234,7 @@ module Orb
       def plan_version_number=(_)
       end
 
+      # Optionally provide a list of overrides for prices on the plan
       sig { returns(T.nilable(T::Array[T.anything])) }
       def price_overrides
       end
@@ -210,6 +243,8 @@ module Orb
       def price_overrides=(_)
       end
 
+      # Plan adjustments to be removed from the subscription. (Only available for
+      #   accounts that have migrated off of legacy subscription overrides)
       sig { returns(T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::RemoveAdjustment])) }
       def remove_adjustments
       end
@@ -221,6 +256,8 @@ module Orb
       def remove_adjustments=(_)
       end
 
+      # Plan prices to be removed from the subscription. (Only available for accounts
+      #   that have migrated off of legacy subscription overrides)
       sig { returns(T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::RemovePrice])) }
       def remove_prices
       end
@@ -232,6 +269,9 @@ module Orb
       def remove_prices=(_)
       end
 
+      # Plan adjustments to be replaced with additional adjustments on the subscription.
+      #   (Only available for accounts that have migrated off of legacy subscription
+      #   overrides)
       sig { returns(T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::ReplaceAdjustment])) }
       def replace_adjustments
       end
@@ -243,6 +283,8 @@ module Orb
       def replace_adjustments=(_)
       end
 
+      # Plan prices to be replaced with additional prices on the subscription. (Only
+      #   available for accounts that have migrated off of legacy subscription overrides)
       sig { returns(T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice])) }
       def replace_prices
       end
@@ -262,6 +304,9 @@ module Orb
       def start_date=(_)
       end
 
+      # The duration of the trial period in days. If not provided, this defaults to the
+      #   value specified in the plan. If `0` is provided, the trial on the plan will be
+      #   skipped.
       sig { returns(T.nilable(Integer)) }
       def trial_duration_days
       end
@@ -270,6 +315,12 @@ module Orb
       def trial_duration_days=(_)
       end
 
+      # A list of customer IDs whose usage events will be aggregated and billed under
+      #   this subscription. By default, a subscription only considers usage events
+      #   associated with its attached customer's customer_id. When usage_customer_ids is
+      #   provided, the subscription includes usage events from the specified customers
+      #   only. Provided usage_customer_ids must be either the customer for this
+      #   subscription itself, or any of that customer's children.
       sig { returns(T.nilable(T::Array[String])) }
       def usage_customer_ids
       end
@@ -394,6 +445,7 @@ module Orb
       end
 
       class AddAdjustment < Orb::BaseModel
+        # The definition of a new adjustment to create and add to the subscription.
         sig do
           returns(
             T.any(
@@ -431,6 +483,8 @@ module Orb
         def adjustment=(_)
         end
 
+        # The end date of the adjustment interval. This is the date that the adjustment
+        #   will stop affecting prices on the subscription.
         sig { returns(T.nilable(Time)) }
         def end_date
         end
@@ -439,6 +493,7 @@ module Orb
         def end_date=(_)
         end
 
+        # The phase to add this adjustment to.
         sig { returns(T.nilable(Integer)) }
         def plan_phase_order
         end
@@ -447,6 +502,9 @@ module Orb
         def plan_phase_order=(_)
         end
 
+        # The start date of the adjustment interval. This is the date that the adjustment
+        #   will start affecting prices on the subscription. If null, the adjustment will
+        #   start when the phase or subscription starts.
         sig { returns(T.nilable(Time)) }
         def start_date
         end
@@ -493,6 +551,7 @@ module Orb
         def to_hash
         end
 
+        # The definition of a new adjustment to create and add to the subscription.
         class Adjustment < Orb::Union
           abstract!
 
@@ -505,6 +564,7 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The set of price IDs to which this adjustment applies.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -521,6 +581,8 @@ module Orb
             def percentage_discount=(_)
             end
 
+            # When false, this adjustment will be applied to a single price. Otherwise, it
+            #   will be applied at the invoice level, possibly to multiple prices.
             sig { returns(T.nilable(T::Boolean)) }
             def is_invoice_level
             end
@@ -565,6 +627,7 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The set of price IDs to which this adjustment applies.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -581,6 +644,8 @@ module Orb
             def usage_discount=(_)
             end
 
+            # When false, this adjustment will be applied to a single price. Otherwise, it
+            #   will be applied at the invoice level, possibly to multiple prices.
             sig { returns(T.nilable(T::Boolean)) }
             def is_invoice_level
             end
@@ -633,6 +698,7 @@ module Orb
             def amount_discount=(_)
             end
 
+            # The set of price IDs to which this adjustment applies.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -641,6 +707,8 @@ module Orb
             def applies_to_price_ids=(_)
             end
 
+            # When false, this adjustment will be applied to a single price. Otherwise, it
+            #   will be applied at the invoice level, possibly to multiple prices.
             sig { returns(T.nilable(T::Boolean)) }
             def is_invoice_level
             end
@@ -685,6 +753,7 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The set of price IDs to which this adjustment applies.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -693,6 +762,7 @@ module Orb
             def applies_to_price_ids=(_)
             end
 
+            # The item ID that revenue from this minimum will be attributed to.
             sig { returns(String) }
             def item_id
             end
@@ -709,6 +779,8 @@ module Orb
             def minimum_amount=(_)
             end
 
+            # When false, this adjustment will be applied to a single price. Otherwise, it
+            #   will be applied at the invoice level, possibly to multiple prices.
             sig { returns(T.nilable(T::Boolean)) }
             def is_invoice_level
             end
@@ -755,6 +827,7 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The set of price IDs to which this adjustment applies.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -771,6 +844,8 @@ module Orb
             def maximum_amount=(_)
             end
 
+            # When false, this adjustment will be applied to a single price. Otherwise, it
+            #   will be applied at the invoice level, possibly to multiple prices.
             sig { returns(T.nilable(T::Boolean)) }
             def is_invoice_level
             end
@@ -810,16 +885,17 @@ module Orb
             sig do
               override
                 .returns(
-                  [[Symbol, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewPercentageDiscount], [Symbol, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewUsageDiscount], [Symbol, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewAmountDiscount], [Symbol, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewMinimum], [Symbol, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewMaximum]]
+                  [Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewMaximum]
                 )
             end
-            private def variants
+            def variants
             end
           end
         end
       end
 
       class AddPrice < Orb::BaseModel
+        # The definition of a new allocation price to create and add to the subscription.
         sig { returns(T.nilable(Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice)) }
         def allocation_price
         end
@@ -831,6 +907,8 @@ module Orb
         def allocation_price=(_)
         end
 
+        # [DEPRECATED] Use add_adjustments instead. The subscription's discounts for this
+        #   price.
         sig { returns(T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Discount])) }
         def discounts
         end
@@ -842,6 +920,9 @@ module Orb
         def discounts=(_)
         end
 
+        # The end date of the price interval. This is the date that the price will stop
+        #   billing on the subscription. If null, billing will end when the phase or
+        #   subscription ends.
         sig { returns(T.nilable(Time)) }
         def end_date
         end
@@ -850,6 +931,7 @@ module Orb
         def end_date=(_)
         end
 
+        # The external price id of the price to add to the subscription.
         sig { returns(T.nilable(String)) }
         def external_price_id
         end
@@ -858,6 +940,8 @@ module Orb
         def external_price_id=(_)
         end
 
+        # [DEPRECATED] Use add_adjustments instead. The subscription's maximum amount for
+        #   this price.
         sig { returns(T.nilable(String)) }
         def maximum_amount
         end
@@ -866,6 +950,8 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # [DEPRECATED] Use add_adjustments instead. The subscription's minimum amount for
+        #   this price.
         sig { returns(T.nilable(String)) }
         def minimum_amount
         end
@@ -874,6 +960,7 @@ module Orb
         def minimum_amount=(_)
         end
 
+        # The phase to add this price to.
         sig { returns(T.nilable(Integer)) }
         def plan_phase_order
         end
@@ -882,6 +969,7 @@ module Orb
         def plan_phase_order=(_)
         end
 
+        # The definition of a new price to create and add to the subscription.
         sig do
           returns(
             T.nilable(
@@ -985,6 +1073,7 @@ module Orb
         def price=(_)
         end
 
+        # The id of the price to add to the subscription.
         sig { returns(T.nilable(String)) }
         def price_id
         end
@@ -993,6 +1082,9 @@ module Orb
         def price_id=(_)
         end
 
+        # The start date of the price interval. This is the date that the price will start
+        #   billing on the subscription. If null, billing will start when the phase or
+        #   subscription starts.
         sig { returns(T.nilable(Time)) }
         def start_date
         end
@@ -1107,6 +1199,7 @@ module Orb
         end
 
         class AllocationPrice < Orb::BaseModel
+          # An amount of the currency to allocate to the customer at the specified cadence.
           sig { returns(String) }
           def amount
           end
@@ -1115,6 +1208,7 @@ module Orb
           def amount=(_)
           end
 
+          # The cadence at which to allocate the amount to the customer.
           sig { returns(Symbol) }
           def cadence
           end
@@ -1123,6 +1217,8 @@ module Orb
           def cadence=(_)
           end
 
+          # An ISO 4217 currency string or a custom pricing unit identifier in which to bill
+          #   this price.
           sig { returns(String) }
           def currency
           end
@@ -1131,6 +1227,8 @@ module Orb
           def currency=(_)
           end
 
+          # Whether the allocated amount should expire at the end of the cadence or roll
+          #   over to the next period.
           sig { returns(T::Boolean) }
           def expires_at_end_of_cadence
           end
@@ -1139,6 +1237,7 @@ module Orb
           def expires_at_end_of_cadence=(_)
           end
 
+          # The definition of a new allocation price to create and add to the subscription.
           sig do
             params(amount: String, cadence: Symbol, currency: String, expires_at_end_of_cadence: T::Boolean)
               .returns(T.attached_class)
@@ -1158,6 +1257,7 @@ module Orb
           def to_hash
           end
 
+          # The cadence at which to allocate the amount to the customer.
           class Cadence < Orb::Enum
             abstract!
 
@@ -1185,6 +1285,7 @@ module Orb
           def discount_type=(_)
           end
 
+          # Only available if discount_type is `amount`.
           sig { returns(T.nilable(String)) }
           def amount_discount
           end
@@ -1193,6 +1294,8 @@ module Orb
           def amount_discount=(_)
           end
 
+          # Only available if discount_type is `percentage`. This is a number between 0
+          #   and 1.
           sig { returns(T.nilable(Float)) }
           def percentage_discount
           end
@@ -1201,6 +1304,8 @@ module Orb
           def percentage_discount=(_)
           end
 
+          # Only available if discount_type is `usage`. Number of usage units that this
+          #   discount is for
           sig { returns(T.nilable(Float)) }
           def usage_discount
           end
@@ -1250,10 +1355,12 @@ module Orb
           end
         end
 
+        # The definition of a new price to create and add to the subscription.
         class Price < Orb::Union
           abstract!
 
           class NewSubscriptionUnitPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -1262,6 +1369,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -1278,6 +1386,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -1297,6 +1406,8 @@ module Orb
             def unit_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -1305,6 +1416,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -1313,6 +1426,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -1338,6 +1453,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -1346,6 +1462,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -1354,6 +1472,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -1362,6 +1481,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -1370,6 +1491,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -1378,6 +1500,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -1403,6 +1527,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -1414,6 +1541,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -1497,6 +1626,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -1515,6 +1645,7 @@ module Orb
             end
 
             class UnitConfig < Orb::BaseModel
+              # Rate per unit of usage
               sig { returns(String) }
               def unit_amount
               end
@@ -1533,6 +1664,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -1541,6 +1673,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -1549,6 +1682,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -1557,6 +1692,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -1572,6 +1708,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -1580,6 +1717,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -1588,6 +1726,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -1596,6 +1736,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -1612,6 +1753,7 @@ module Orb
           end
 
           class NewSubscriptionPackagePrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -1620,6 +1762,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -1636,6 +1779,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -1663,6 +1807,8 @@ module Orb
             def package_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -1671,6 +1817,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -1679,6 +1827,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -1704,6 +1854,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -1712,6 +1863,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -1720,6 +1873,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -1728,6 +1882,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -1736,6 +1892,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -1744,6 +1901,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -1769,6 +1928,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -1780,6 +1942,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -1863,6 +2027,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -1881,6 +2046,7 @@ module Orb
             end
 
             class PackageConfig < Orb::BaseModel
+              # A currency amount to rate usage by
               sig { returns(String) }
               def package_amount
               end
@@ -1889,6 +2055,8 @@ module Orb
               def package_amount=(_)
               end
 
+              # An integer amount to represent package size. For example, 1000 here would divide
+              #   usage by 1000 before multiplying by package_amount in rating
               sig { returns(Integer) }
               def package_size
               end
@@ -1907,6 +2075,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -1915,6 +2084,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -1923,6 +2093,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -1931,6 +2103,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -1946,6 +2119,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -1954,6 +2128,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -1962,6 +2137,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -1970,6 +2147,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -1986,6 +2164,7 @@ module Orb
           end
 
           class NewSubscriptionMatrixPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -1994,6 +2173,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -2023,6 +2203,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -2031,6 +2212,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -2039,6 +2222,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -2047,6 +2232,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -2072,6 +2259,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -2080,6 +2268,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -2088,6 +2278,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -2096,6 +2287,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -2104,6 +2297,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -2112,6 +2306,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -2137,6 +2333,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -2148,6 +2347,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -2231,6 +2432,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -2249,6 +2451,7 @@ module Orb
             end
 
             class MatrixConfig < Orb::BaseModel
+              # Default per unit rate for any usage not bucketed into a specified matrix_value
               sig { returns(String) }
               def default_unit_amount
               end
@@ -2257,6 +2460,7 @@ module Orb
               def default_unit_amount=(_)
               end
 
+              # One or two event property values to evaluate matrix groups by
               sig { returns(T::Array[T.nilable(String)]) }
               def dimensions
               end
@@ -2265,6 +2469,7 @@ module Orb
               def dimensions=(_)
               end
 
+              # Matrix values for specified matrix grouping keys
               sig do
                 returns(
                   T::Array[
@@ -2319,6 +2524,9 @@ module Orb
               end
 
               class MatrixValue < Orb::BaseModel
+                # One or two matrix keys to filter usage to this Matrix value by. For example,
+                #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+                #   instance tier.
                 sig { returns(T::Array[T.nilable(String)]) }
                 def dimension_values
                 end
@@ -2327,6 +2535,7 @@ module Orb
                 def dimension_values=(_)
                 end
 
+                # Unit price for the specified dimension_values
                 sig { returns(String) }
                 def unit_amount
                 end
@@ -2351,6 +2560,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -2359,6 +2569,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -2367,6 +2578,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -2375,6 +2588,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -2390,6 +2604,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -2398,6 +2613,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -2406,6 +2622,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -2414,6 +2632,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -2430,6 +2649,7 @@ module Orb
           end
 
           class NewSubscriptionTieredPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -2438,6 +2658,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -2454,6 +2675,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -2475,6 +2697,8 @@ module Orb
             def tiered_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -2483,6 +2707,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -2491,6 +2717,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -2516,6 +2744,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -2524,6 +2753,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -2532,6 +2763,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -2540,6 +2772,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -2548,6 +2782,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -2556,6 +2791,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -2581,6 +2818,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -2592,6 +2832,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -2675,6 +2917,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -2693,6 +2936,7 @@ module Orb
             end
 
             class TieredConfig < Orb::BaseModel
+              # Tiers for rating based on total usage quantities into the specified tier
               sig do
                 returns(
                   T::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier]
@@ -2733,6 +2977,7 @@ module Orb
               end
 
               class Tier < Orb::BaseModel
+                # Inclusive tier starting value
                 sig { returns(Float) }
                 def first_unit
                 end
@@ -2741,6 +2986,7 @@ module Orb
                 def first_unit=(_)
                 end
 
+                # Amount per unit
                 sig { returns(String) }
                 def unit_amount
                 end
@@ -2749,6 +2995,7 @@ module Orb
                 def unit_amount=(_)
                 end
 
+                # Exclusive tier ending value. If null, this is treated as the last tier
                 sig { returns(T.nilable(Float)) }
                 def last_unit
                 end
@@ -2776,6 +3023,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -2784,6 +3032,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -2792,6 +3041,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -2800,6 +3051,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -2815,6 +3067,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -2823,6 +3076,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -2831,6 +3085,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -2839,6 +3095,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -2855,6 +3112,7 @@ module Orb
           end
 
           class NewSubscriptionTieredBpsPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -2863,6 +3121,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -2879,6 +3138,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -2906,6 +3166,8 @@ module Orb
             def tiered_bps_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -2914,6 +3176,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -2922,6 +3186,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -2947,6 +3213,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -2955,6 +3222,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -2963,6 +3232,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -2971,6 +3241,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -2979,6 +3251,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -2987,6 +3260,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -3012,6 +3287,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -3023,6 +3301,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -3106,6 +3386,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -3124,6 +3405,8 @@ module Orb
             end
 
             class TieredBpsConfig < Orb::BaseModel
+              # Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
+              #   tiers
               sig do
                 returns(
                   T::Array[
@@ -3174,6 +3457,7 @@ module Orb
               end
 
               class Tier < Orb::BaseModel
+                # Per-event basis point rate
                 sig { returns(Float) }
                 def bps
                 end
@@ -3182,6 +3466,7 @@ module Orb
                 def bps=(_)
                 end
 
+                # Inclusive tier starting value
                 sig { returns(String) }
                 def minimum_amount
                 end
@@ -3190,6 +3475,7 @@ module Orb
                 def minimum_amount=(_)
                 end
 
+                # Exclusive tier ending value
                 sig { returns(T.nilable(String)) }
                 def maximum_amount
                 end
@@ -3198,6 +3484,7 @@ module Orb
                 def maximum_amount=(_)
                 end
 
+                # Per unit maximum to charge
                 sig { returns(T.nilable(String)) }
                 def per_unit_maximum
                 end
@@ -3235,6 +3522,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -3243,6 +3531,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -3251,6 +3540,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -3259,6 +3550,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -3274,6 +3566,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -3282,6 +3575,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -3290,6 +3584,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -3298,6 +3594,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -3325,6 +3622,7 @@ module Orb
             def bps_config=(_)
             end
 
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -3333,6 +3631,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -3349,6 +3648,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -3357,6 +3657,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -3365,6 +3667,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -3373,6 +3677,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -3398,6 +3704,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -3406,6 +3713,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -3414,6 +3723,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -3422,6 +3732,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -3430,6 +3742,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -3438,6 +3751,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -3463,6 +3778,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -3474,6 +3792,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -3558,6 +3878,7 @@ module Orb
             end
 
             class BpsConfig < Orb::BaseModel
+              # Basis point take rate per event
               sig { returns(Float) }
               def bps
               end
@@ -3566,6 +3887,7 @@ module Orb
               def bps=(_)
               end
 
+              # Optional currency amount maximum to cap spend per event
               sig { returns(T.nilable(String)) }
               def per_unit_maximum
               end
@@ -3583,6 +3905,7 @@ module Orb
               end
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -3601,6 +3924,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -3609,6 +3933,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -3617,6 +3942,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -3625,6 +3952,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -3640,6 +3968,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -3648,6 +3977,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -3656,6 +3986,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -3664,6 +3996,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -3699,6 +4032,7 @@ module Orb
             def bulk_bps_config=(_)
             end
 
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -3707,6 +4041,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -3723,6 +4058,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -3731,6 +4067,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -3739,6 +4077,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -3747,6 +4087,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -3772,6 +4114,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -3780,6 +4123,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -3788,6 +4133,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -3796,6 +4142,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -3804,6 +4152,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -3812,6 +4161,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -3837,6 +4188,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -3848,6 +4202,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -3932,6 +4288,8 @@ module Orb
             end
 
             class BulkBpsConfig < Orb::BaseModel
+              # Tiers for a bulk BPS pricing model where all usage is aggregated to a single
+              #   tier based on total volume
               sig do
                 returns(
                   T::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier]
@@ -3972,6 +4330,7 @@ module Orb
               end
 
               class Tier < Orb::BaseModel
+                # Basis points to rate on
                 sig { returns(Float) }
                 def bps
                 end
@@ -3980,6 +4339,7 @@ module Orb
                 def bps=(_)
                 end
 
+                # Upper bound for tier
                 sig { returns(T.nilable(String)) }
                 def maximum_amount
                 end
@@ -3988,6 +4348,7 @@ module Orb
                 def maximum_amount=(_)
                 end
 
+                # The maximum amount to charge for any one event
                 sig { returns(T.nilable(String)) }
                 def per_unit_maximum
                 end
@@ -4017,6 +4378,7 @@ module Orb
               end
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -4035,6 +4397,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -4043,6 +4406,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -4051,6 +4415,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -4059,6 +4425,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -4074,6 +4441,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -4082,6 +4450,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -4090,6 +4459,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -4098,6 +4469,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -4125,6 +4497,7 @@ module Orb
             def bulk_config=(_)
             end
 
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -4133,6 +4506,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -4149,6 +4523,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -4157,6 +4532,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -4165,6 +4542,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -4173,6 +4552,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -4198,6 +4579,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -4206,6 +4588,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -4214,6 +4598,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -4222,6 +4607,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -4230,6 +4617,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -4238,6 +4626,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -4263,6 +4653,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -4274,6 +4667,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -4358,6 +4753,7 @@ module Orb
             end
 
             class BulkConfig < Orb::BaseModel
+              # Bulk tiers for rating based on total usage volume
               sig do
                 returns(
                   T::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier]
@@ -4398,6 +4794,7 @@ module Orb
               end
 
               class Tier < Orb::BaseModel
+                # Amount per unit
                 sig { returns(String) }
                 def unit_amount
                 end
@@ -4406,6 +4803,7 @@ module Orb
                 def unit_amount=(_)
                 end
 
+                # Upper bound for this tier
                 sig { returns(T.nilable(Float)) }
                 def maximum_units
                 end
@@ -4424,6 +4822,7 @@ module Orb
               end
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -4442,6 +4841,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -4450,6 +4850,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -4458,6 +4859,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -4466,6 +4869,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -4481,6 +4885,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -4489,6 +4894,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -4497,6 +4903,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -4505,6 +4913,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -4521,6 +4930,7 @@ module Orb
           end
 
           class NewSubscriptionThresholdTotalAmountPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -4529,6 +4939,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -4545,6 +4956,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -4561,6 +4973,8 @@ module Orb
             def threshold_total_amount_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -4569,6 +4983,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -4577,6 +4993,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -4602,6 +5020,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -4610,6 +5029,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -4618,6 +5039,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -4626,6 +5048,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -4634,6 +5058,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -4642,6 +5067,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -4667,6 +5094,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -4678,6 +5108,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -4761,6 +5193,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -4779,6 +5212,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -4787,6 +5221,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -4795,6 +5230,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -4803,6 +5240,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -4818,6 +5256,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -4826,6 +5265,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -4834,6 +5274,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -4842,6 +5284,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -4858,6 +5301,7 @@ module Orb
           end
 
           class NewSubscriptionTieredPackagePrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -4866,6 +5310,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -4882,6 +5327,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -4898,6 +5344,8 @@ module Orb
             def tiered_package_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -4906,6 +5354,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -4914,6 +5364,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -4939,6 +5391,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -4947,6 +5400,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -4955,6 +5410,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -4963,6 +5419,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -4971,6 +5429,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -4979,6 +5438,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -5004,6 +5465,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -5015,6 +5479,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -5098,6 +5564,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -5116,6 +5583,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -5124,6 +5592,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -5132,6 +5601,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -5140,6 +5611,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -5155,6 +5627,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -5163,6 +5636,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -5171,6 +5645,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -5179,6 +5655,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -5195,6 +5672,7 @@ module Orb
           end
 
           class NewSubscriptionTieredWithMinimumPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -5203,6 +5681,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -5219,6 +5698,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -5235,6 +5715,8 @@ module Orb
             def tiered_with_minimum_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -5243,6 +5725,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -5251,6 +5735,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -5276,6 +5762,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -5284,6 +5771,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -5292,6 +5781,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -5300,6 +5790,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -5308,6 +5800,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -5316,6 +5809,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -5341,6 +5836,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -5352,6 +5850,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -5435,6 +5935,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -5453,6 +5954,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -5461,6 +5963,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -5469,6 +5972,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -5477,6 +5982,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -5492,6 +5998,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -5500,6 +6007,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -5508,6 +6016,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -5516,6 +6026,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -5532,6 +6043,7 @@ module Orb
           end
 
           class NewSubscriptionUnitWithPercentPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -5540,6 +6052,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -5556,6 +6069,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -5572,6 +6086,8 @@ module Orb
             def unit_with_percent_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -5580,6 +6096,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -5588,6 +6106,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -5613,6 +6133,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -5621,6 +6142,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -5629,6 +6152,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -5637,6 +6161,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -5645,6 +6171,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -5653,6 +6180,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -5678,6 +6207,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -5689,6 +6221,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -5772,6 +6306,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -5790,6 +6325,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -5798,6 +6334,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -5806,6 +6343,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -5814,6 +6353,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -5829,6 +6369,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -5837,6 +6378,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -5845,6 +6387,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -5853,6 +6397,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -5869,6 +6414,7 @@ module Orb
           end
 
           class NewSubscriptionPackageWithAllocationPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -5877,6 +6423,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -5893,6 +6440,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -5909,6 +6457,8 @@ module Orb
             def package_with_allocation_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -5917,6 +6467,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -5925,6 +6477,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -5950,6 +6504,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -5958,6 +6513,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -5966,6 +6523,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -5974,6 +6532,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -5982,6 +6542,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -5990,6 +6551,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -6015,6 +6578,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -6026,6 +6592,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -6109,6 +6677,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -6127,6 +6696,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -6135,6 +6705,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -6143,6 +6714,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -6151,6 +6724,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -6166,6 +6740,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -6174,6 +6749,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -6182,6 +6758,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -6190,6 +6768,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -6206,6 +6785,7 @@ module Orb
           end
 
           class NewSubscriptionTierWithProrationPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -6214,6 +6794,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -6230,6 +6811,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -6246,6 +6828,8 @@ module Orb
             def tiered_with_proration_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -6254,6 +6838,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -6262,6 +6848,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -6287,6 +6875,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -6295,6 +6884,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -6303,6 +6894,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -6311,6 +6903,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -6319,6 +6913,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -6327,6 +6922,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -6352,6 +6949,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -6363,6 +6963,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -6446,6 +7048,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -6464,6 +7067,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -6472,6 +7076,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -6480,6 +7085,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -6488,6 +7095,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -6503,6 +7111,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -6511,6 +7120,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -6519,6 +7129,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -6527,6 +7139,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -6543,6 +7156,7 @@ module Orb
           end
 
           class NewSubscriptionUnitWithProrationPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -6551,6 +7165,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -6567,6 +7182,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -6583,6 +7199,8 @@ module Orb
             def unit_with_proration_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -6591,6 +7209,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -6599,6 +7219,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -6624,6 +7246,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -6632,6 +7255,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -6640,6 +7265,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -6648,6 +7274,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -6656,6 +7284,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -6664,6 +7293,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -6689,6 +7320,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -6700,6 +7334,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -6783,6 +7419,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -6801,6 +7438,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -6809,6 +7447,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -6817,6 +7456,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -6825,6 +7466,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -6840,6 +7482,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -6848,6 +7491,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -6856,6 +7500,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -6864,6 +7510,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -6880,6 +7527,7 @@ module Orb
           end
 
           class NewSubscriptionGroupedAllocationPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -6896,6 +7544,7 @@ module Orb
             def grouped_allocation_config=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -6912,6 +7561,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -6920,6 +7570,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -6928,6 +7580,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -6936,6 +7590,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -6961,6 +7617,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -6969,6 +7626,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -6977,6 +7636,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -6985,6 +7645,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -6993,6 +7655,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -7001,6 +7664,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -7026,6 +7691,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -7037,6 +7705,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -7120,6 +7790,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -7138,6 +7809,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -7146,6 +7818,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -7154,6 +7827,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -7162,6 +7837,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -7177,6 +7853,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -7185,6 +7862,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -7193,6 +7871,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -7201,6 +7881,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -7217,6 +7898,7 @@ module Orb
           end
 
           class NewSubscriptionGroupedWithProratedMinimumPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -7233,6 +7915,7 @@ module Orb
             def grouped_with_prorated_minimum_config=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -7249,6 +7932,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -7257,6 +7941,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -7265,6 +7951,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -7273,6 +7961,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -7298,6 +7988,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -7306,6 +7997,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -7314,6 +8007,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -7322,6 +8016,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -7330,6 +8026,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -7338,6 +8035,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -7363,6 +8062,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -7374,6 +8076,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -7457,6 +8161,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -7475,6 +8180,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -7483,6 +8189,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -7491,6 +8198,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -7499,6 +8208,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -7514,6 +8224,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -7522,6 +8233,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -7530,6 +8242,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -7538,6 +8252,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -7562,6 +8277,7 @@ module Orb
             def bulk_with_proration_config=(_)
             end
 
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -7570,6 +8286,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -7586,6 +8303,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -7594,6 +8312,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -7602,6 +8322,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -7610,6 +8332,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -7635,6 +8359,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -7643,6 +8368,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -7651,6 +8378,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -7659,6 +8387,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -7667,6 +8397,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -7675,6 +8406,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -7700,6 +8433,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -7711,6 +8447,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -7794,6 +8532,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -7812,6 +8551,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -7820,6 +8560,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -7828,6 +8569,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -7836,6 +8579,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -7851,6 +8595,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -7859,6 +8604,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -7867,6 +8613,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -7875,6 +8623,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -7891,6 +8640,7 @@ module Orb
           end
 
           class NewSubscriptionScalableMatrixWithUnitPricingPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -7899,6 +8649,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -7915,6 +8666,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -7931,6 +8683,8 @@ module Orb
             def scalable_matrix_with_unit_pricing_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -7939,6 +8693,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -7947,6 +8703,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -7972,6 +8730,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -7980,6 +8739,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -7988,6 +8749,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -7996,6 +8758,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -8004,6 +8768,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -8012,6 +8777,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -8037,6 +8804,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -8048,6 +8818,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -8131,6 +8903,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -8149,6 +8922,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -8157,6 +8931,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -8165,6 +8940,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -8173,6 +8950,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -8188,6 +8966,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -8196,6 +8975,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -8204,6 +8984,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -8212,6 +8994,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -8228,6 +9011,7 @@ module Orb
           end
 
           class NewSubscriptionScalableMatrixWithTieredPricingPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -8236,6 +9020,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -8252,6 +9037,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -8268,6 +9054,8 @@ module Orb
             def scalable_matrix_with_tiered_pricing_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -8276,6 +9064,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -8284,6 +9074,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -8309,6 +9101,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -8317,6 +9110,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -8325,6 +9120,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -8333,6 +9129,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -8341,6 +9139,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -8349,6 +9148,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -8374,6 +9175,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -8385,6 +9189,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -8468,6 +9274,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -8486,6 +9293,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -8494,6 +9302,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -8502,6 +9311,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -8510,6 +9321,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -8525,6 +9337,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -8533,6 +9346,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -8541,6 +9355,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -8549,6 +9365,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -8565,6 +9382,7 @@ module Orb
           end
 
           class NewSubscriptionCumulativeGroupedBulkPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -8581,6 +9399,7 @@ module Orb
             def cumulative_grouped_bulk_config=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -8597,6 +9416,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -8605,6 +9425,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -8613,6 +9435,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -8621,6 +9445,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -8646,6 +9472,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -8654,6 +9481,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -8662,6 +9491,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -8670,6 +9500,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -8678,6 +9510,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -8686,6 +9519,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -8711,6 +9546,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -8722,6 +9560,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -8805,6 +9645,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -8823,6 +9664,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -8831,6 +9673,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -8839,6 +9682,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -8847,6 +9692,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -8862,6 +9708,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -8870,6 +9717,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -8878,6 +9726,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -8886,6 +9736,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -8902,6 +9753,7 @@ module Orb
           end
 
           class NewSubscriptionMaxGroupTieredPackagePrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -8910,6 +9762,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -8934,6 +9787,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -8942,6 +9796,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -8950,6 +9806,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -8958,6 +9816,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -8983,6 +9843,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -8991,6 +9852,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -8999,6 +9862,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -9007,6 +9871,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -9015,6 +9881,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -9023,6 +9890,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -9048,6 +9917,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -9059,6 +9931,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -9142,6 +10016,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -9160,6 +10035,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -9168,6 +10044,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -9176,6 +10053,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -9184,6 +10063,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -9199,6 +10079,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -9207,6 +10088,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -9215,6 +10097,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -9223,6 +10107,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -9239,6 +10124,7 @@ module Orb
           end
 
           class NewSubscriptionGroupedWithMeteredMinimumPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -9255,6 +10141,7 @@ module Orb
             def grouped_with_metered_minimum_config=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -9271,6 +10158,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -9279,6 +10167,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -9287,6 +10177,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -9295,6 +10187,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -9320,6 +10214,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -9328,6 +10223,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -9336,6 +10233,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -9344,6 +10242,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -9352,6 +10252,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -9360,6 +10261,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -9385,6 +10288,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -9396,6 +10302,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -9479,6 +10387,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -9497,6 +10406,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -9505,6 +10415,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -9513,6 +10424,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -9521,6 +10434,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -9536,6 +10450,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -9544,6 +10459,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -9552,6 +10468,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -9560,6 +10478,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -9576,6 +10495,7 @@ module Orb
           end
 
           class NewSubscriptionMatrixWithDisplayNamePrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -9584,6 +10504,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -9608,6 +10529,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -9616,6 +10538,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -9624,6 +10548,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -9632,6 +10558,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -9657,6 +10585,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -9665,6 +10594,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -9673,6 +10604,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -9681,6 +10613,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -9689,6 +10623,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -9697,6 +10632,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -9722,6 +10659,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -9733,6 +10673,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -9816,6 +10758,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -9834,6 +10777,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -9842,6 +10786,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -9850,6 +10795,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -9858,6 +10805,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -9873,6 +10821,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -9881,6 +10830,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -9889,6 +10839,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -9897,6 +10849,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -9913,6 +10866,7 @@ module Orb
           end
 
           class NewSubscriptionGroupedTieredPackagePrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -9929,6 +10883,7 @@ module Orb
             def grouped_tiered_package_config=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -9945,6 +10900,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -9953,6 +10909,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -9961,6 +10919,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -9969,6 +10929,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -9994,6 +10956,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -10002,6 +10965,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -10010,6 +10975,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -10018,6 +10984,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -10026,6 +10994,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -10034,6 +11003,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -10059,6 +11030,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -10070,6 +11044,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -10153,6 +11129,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -10171,6 +11148,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -10179,6 +11157,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -10187,6 +11166,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -10195,6 +11176,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -10210,6 +11192,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -10218,6 +11201,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -10226,6 +11210,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -10234,6 +11220,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -10253,16 +11240,20 @@ module Orb
             sig do
               override
                 .returns(
-                  [[Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice], [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice]]
+                  [Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice]
                 )
             end
-            private def variants
+            def variants
             end
           end
         end
       end
 
       class BillingCycleAnchorConfiguration < Orb::BaseModel
+        # The day of the month on which the billing cycle is anchored. If the maximum
+        #   number of days in a month is greater than this value, the last day of the month
+        #   is the billing cycle day (e.g. billing_cycle_day=31 for April means the billing
+        #   period begins on the 30th.
         sig { returns(Integer) }
         def day
         end
@@ -10271,6 +11262,9 @@ module Orb
         def day=(_)
         end
 
+        # The month on which the billing cycle is anchored (e.g. a quarterly price
+        #   anchored in February would have cycles starting February, May, August, and
+        #   November).
         sig { returns(T.nilable(Integer)) }
         def month
         end
@@ -10279,6 +11273,8 @@ module Orb
         def month=(_)
         end
 
+        # The year on which the billing cycle is anchored (e.g. a 2 year billing cycle
+        #   anchored on 2021 would have cycles starting on 2021, 2023, 2025, etc.).
         sig { returns(T.nilable(Integer)) }
         def year
         end
@@ -10313,6 +11309,7 @@ module Orb
       end
 
       class RemoveAdjustment < Orb::BaseModel
+        # The id of the adjustment to remove on the subscription.
         sig { returns(String) }
         def adjustment_id
         end
@@ -10331,6 +11328,7 @@ module Orb
       end
 
       class RemovePrice < Orb::BaseModel
+        # The external price id of the price to remove on the subscription.
         sig { returns(T.nilable(String)) }
         def external_price_id
         end
@@ -10339,6 +11337,7 @@ module Orb
         def external_price_id=(_)
         end
 
+        # The id of the price to remove on the subscription.
         sig { returns(T.nilable(String)) }
         def price_id
         end
@@ -10359,6 +11358,7 @@ module Orb
       end
 
       class ReplaceAdjustment < Orb::BaseModel
+        # The definition of a new adjustment to create and add to the subscription.
         sig do
           returns(
             T.any(
@@ -10396,6 +11396,7 @@ module Orb
         def adjustment=(_)
         end
 
+        # The id of the adjustment on the plan to replace in the subscription.
         sig { returns(String) }
         def replaces_adjustment_id
         end
@@ -10438,6 +11439,7 @@ module Orb
         def to_hash
         end
 
+        # The definition of a new adjustment to create and add to the subscription.
         class Adjustment < Orb::Union
           abstract!
 
@@ -10450,6 +11452,7 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The set of price IDs to which this adjustment applies.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -10466,6 +11469,8 @@ module Orb
             def percentage_discount=(_)
             end
 
+            # When false, this adjustment will be applied to a single price. Otherwise, it
+            #   will be applied at the invoice level, possibly to multiple prices.
             sig { returns(T.nilable(T::Boolean)) }
             def is_invoice_level
             end
@@ -10510,6 +11515,7 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The set of price IDs to which this adjustment applies.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -10526,6 +11532,8 @@ module Orb
             def usage_discount=(_)
             end
 
+            # When false, this adjustment will be applied to a single price. Otherwise, it
+            #   will be applied at the invoice level, possibly to multiple prices.
             sig { returns(T.nilable(T::Boolean)) }
             def is_invoice_level
             end
@@ -10578,6 +11586,7 @@ module Orb
             def amount_discount=(_)
             end
 
+            # The set of price IDs to which this adjustment applies.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -10586,6 +11595,8 @@ module Orb
             def applies_to_price_ids=(_)
             end
 
+            # When false, this adjustment will be applied to a single price. Otherwise, it
+            #   will be applied at the invoice level, possibly to multiple prices.
             sig { returns(T.nilable(T::Boolean)) }
             def is_invoice_level
             end
@@ -10630,6 +11641,7 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The set of price IDs to which this adjustment applies.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -10638,6 +11650,7 @@ module Orb
             def applies_to_price_ids=(_)
             end
 
+            # The item ID that revenue from this minimum will be attributed to.
             sig { returns(String) }
             def item_id
             end
@@ -10654,6 +11667,8 @@ module Orb
             def minimum_amount=(_)
             end
 
+            # When false, this adjustment will be applied to a single price. Otherwise, it
+            #   will be applied at the invoice level, possibly to multiple prices.
             sig { returns(T.nilable(T::Boolean)) }
             def is_invoice_level
             end
@@ -10700,6 +11715,7 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The set of price IDs to which this adjustment applies.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -10716,6 +11732,8 @@ module Orb
             def maximum_amount=(_)
             end
 
+            # When false, this adjustment will be applied to a single price. Otherwise, it
+            #   will be applied at the invoice level, possibly to multiple prices.
             sig { returns(T.nilable(T::Boolean)) }
             def is_invoice_level
             end
@@ -10755,16 +11773,17 @@ module Orb
             sig do
               override
                 .returns(
-                  [[Symbol, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount], [Symbol, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewUsageDiscount], [Symbol, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewAmountDiscount], [Symbol, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewMinimum], [Symbol, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewMaximum]]
+                  [Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewMaximum]
                 )
             end
-            private def variants
+            def variants
             end
           end
         end
       end
 
       class ReplacePrice < Orb::BaseModel
+        # The id of the price on the plan to replace in the subscription.
         sig { returns(String) }
         def replaces_price_id
         end
@@ -10773,6 +11792,7 @@ module Orb
         def replaces_price_id=(_)
         end
 
+        # The definition of a new allocation price to create and add to the subscription.
         sig { returns(T.nilable(Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice)) }
         def allocation_price
         end
@@ -10784,6 +11804,8 @@ module Orb
         def allocation_price=(_)
         end
 
+        # [DEPRECATED] Use add_adjustments instead. The subscription's discounts for the
+        #   replacement price.
         sig { returns(T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Discount])) }
         def discounts
         end
@@ -10795,6 +11817,7 @@ module Orb
         def discounts=(_)
         end
 
+        # The external price id of the price to add to the subscription.
         sig { returns(T.nilable(String)) }
         def external_price_id
         end
@@ -10803,6 +11826,7 @@ module Orb
         def external_price_id=(_)
         end
 
+        # The new quantity of the price, if the price is a fixed price.
         sig { returns(T.nilable(Float)) }
         def fixed_price_quantity
         end
@@ -10811,6 +11835,8 @@ module Orb
         def fixed_price_quantity=(_)
         end
 
+        # [DEPRECATED] Use add_adjustments instead. The subscription's maximum amount for
+        #   the replacement price.
         sig { returns(T.nilable(String)) }
         def maximum_amount
         end
@@ -10819,6 +11845,8 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # [DEPRECATED] Use add_adjustments instead. The subscription's minimum amount for
+        #   the replacement price.
         sig { returns(T.nilable(String)) }
         def minimum_amount
         end
@@ -10827,6 +11855,7 @@ module Orb
         def minimum_amount=(_)
         end
 
+        # The definition of a new price to create and add to the subscription.
         sig do
           returns(
             T.nilable(
@@ -10930,6 +11959,7 @@ module Orb
         def price=(_)
         end
 
+        # The id of the price to add to the subscription.
         sig { returns(T.nilable(String)) }
         def price_id
         end
@@ -11041,6 +12071,7 @@ module Orb
         end
 
         class AllocationPrice < Orb::BaseModel
+          # An amount of the currency to allocate to the customer at the specified cadence.
           sig { returns(String) }
           def amount
           end
@@ -11049,6 +12080,7 @@ module Orb
           def amount=(_)
           end
 
+          # The cadence at which to allocate the amount to the customer.
           sig { returns(Symbol) }
           def cadence
           end
@@ -11057,6 +12089,8 @@ module Orb
           def cadence=(_)
           end
 
+          # An ISO 4217 currency string or a custom pricing unit identifier in which to bill
+          #   this price.
           sig { returns(String) }
           def currency
           end
@@ -11065,6 +12099,8 @@ module Orb
           def currency=(_)
           end
 
+          # Whether the allocated amount should expire at the end of the cadence or roll
+          #   over to the next period.
           sig { returns(T::Boolean) }
           def expires_at_end_of_cadence
           end
@@ -11073,6 +12109,7 @@ module Orb
           def expires_at_end_of_cadence=(_)
           end
 
+          # The definition of a new allocation price to create and add to the subscription.
           sig do
             params(amount: String, cadence: Symbol, currency: String, expires_at_end_of_cadence: T::Boolean)
               .returns(T.attached_class)
@@ -11092,6 +12129,7 @@ module Orb
           def to_hash
           end
 
+          # The cadence at which to allocate the amount to the customer.
           class Cadence < Orb::Enum
             abstract!
 
@@ -11119,6 +12157,7 @@ module Orb
           def discount_type=(_)
           end
 
+          # Only available if discount_type is `amount`.
           sig { returns(T.nilable(String)) }
           def amount_discount
           end
@@ -11127,6 +12166,8 @@ module Orb
           def amount_discount=(_)
           end
 
+          # Only available if discount_type is `percentage`. This is a number between 0
+          #   and 1.
           sig { returns(T.nilable(Float)) }
           def percentage_discount
           end
@@ -11135,6 +12176,8 @@ module Orb
           def percentage_discount=(_)
           end
 
+          # Only available if discount_type is `usage`. Number of usage units that this
+          #   discount is for
           sig { returns(T.nilable(Float)) }
           def usage_discount
           end
@@ -11184,10 +12227,12 @@ module Orb
           end
         end
 
+        # The definition of a new price to create and add to the subscription.
         class Price < Orb::Union
           abstract!
 
           class NewSubscriptionUnitPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -11196,6 +12241,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -11212,6 +12258,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -11233,6 +12280,8 @@ module Orb
             def unit_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -11241,6 +12290,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -11249,6 +12300,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -11274,6 +12327,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -11282,6 +12336,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -11290,6 +12346,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -11298,6 +12355,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -11306,6 +12365,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -11314,6 +12374,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -11339,6 +12401,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -11350,6 +12415,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -11433,6 +12500,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -11451,6 +12519,7 @@ module Orb
             end
 
             class UnitConfig < Orb::BaseModel
+              # Rate per unit of usage
               sig { returns(String) }
               def unit_amount
               end
@@ -11469,6 +12538,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -11477,6 +12547,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -11485,6 +12556,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -11493,6 +12566,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -11508,6 +12582,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -11516,6 +12591,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -11524,6 +12600,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -11532,6 +12610,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -11548,6 +12627,7 @@ module Orb
           end
 
           class NewSubscriptionPackagePrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -11556,6 +12636,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -11572,6 +12653,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -11599,6 +12681,8 @@ module Orb
             def package_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -11607,6 +12691,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -11615,6 +12701,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -11640,6 +12728,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -11648,6 +12737,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -11656,6 +12747,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -11664,6 +12756,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -11672,6 +12766,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -11680,6 +12775,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -11705,6 +12802,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -11716,6 +12816,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -11799,6 +12901,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -11817,6 +12920,7 @@ module Orb
             end
 
             class PackageConfig < Orb::BaseModel
+              # A currency amount to rate usage by
               sig { returns(String) }
               def package_amount
               end
@@ -11825,6 +12929,8 @@ module Orb
               def package_amount=(_)
               end
 
+              # An integer amount to represent package size. For example, 1000 here would divide
+              #   usage by 1000 before multiplying by package_amount in rating
               sig { returns(Integer) }
               def package_size
               end
@@ -11843,6 +12949,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -11851,6 +12958,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -11859,6 +12967,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -11867,6 +12977,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -11882,6 +12993,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -11890,6 +13002,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -11898,6 +13011,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -11906,6 +13021,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -11922,6 +13038,7 @@ module Orb
           end
 
           class NewSubscriptionMatrixPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -11930,6 +13047,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -11965,6 +13083,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -11973,6 +13092,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -11981,6 +13102,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -11989,6 +13112,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -12014,6 +13139,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -12022,6 +13148,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -12030,6 +13158,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -12038,6 +13167,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -12046,6 +13177,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -12054,6 +13186,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -12079,6 +13213,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -12090,6 +13227,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -12173,6 +13312,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -12191,6 +13331,7 @@ module Orb
             end
 
             class MatrixConfig < Orb::BaseModel
+              # Default per unit rate for any usage not bucketed into a specified matrix_value
               sig { returns(String) }
               def default_unit_amount
               end
@@ -12199,6 +13340,7 @@ module Orb
               def default_unit_amount=(_)
               end
 
+              # One or two event property values to evaluate matrix groups by
               sig { returns(T::Array[T.nilable(String)]) }
               def dimensions
               end
@@ -12207,6 +13349,7 @@ module Orb
               def dimensions=(_)
               end
 
+              # Matrix values for specified matrix grouping keys
               sig do
                 returns(
                   T::Array[
@@ -12261,6 +13404,9 @@ module Orb
               end
 
               class MatrixValue < Orb::BaseModel
+                # One or two matrix keys to filter usage to this Matrix value by. For example,
+                #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+                #   instance tier.
                 sig { returns(T::Array[T.nilable(String)]) }
                 def dimension_values
                 end
@@ -12269,6 +13415,7 @@ module Orb
                 def dimension_values=(_)
                 end
 
+                # Unit price for the specified dimension_values
                 sig { returns(String) }
                 def unit_amount
                 end
@@ -12293,6 +13440,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -12301,6 +13449,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -12309,6 +13458,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -12317,6 +13468,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -12332,6 +13484,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -12340,6 +13493,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -12348,6 +13502,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -12356,6 +13512,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -12372,6 +13529,7 @@ module Orb
           end
 
           class NewSubscriptionTieredPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -12380,6 +13538,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -12396,6 +13555,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -12423,6 +13583,8 @@ module Orb
             def tiered_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -12431,6 +13593,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -12439,6 +13603,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -12464,6 +13630,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -12472,6 +13639,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -12480,6 +13649,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -12488,6 +13658,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -12496,6 +13668,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -12504,6 +13677,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -12529,6 +13704,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -12540,6 +13718,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -12623,6 +13803,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -12641,6 +13822,7 @@ module Orb
             end
 
             class TieredConfig < Orb::BaseModel
+              # Tiers for rating based on total usage quantities into the specified tier
               sig do
                 returns(
                   T::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier]
@@ -12681,6 +13863,7 @@ module Orb
               end
 
               class Tier < Orb::BaseModel
+                # Inclusive tier starting value
                 sig { returns(Float) }
                 def first_unit
                 end
@@ -12689,6 +13872,7 @@ module Orb
                 def first_unit=(_)
                 end
 
+                # Amount per unit
                 sig { returns(String) }
                 def unit_amount
                 end
@@ -12697,6 +13881,7 @@ module Orb
                 def unit_amount=(_)
                 end
 
+                # Exclusive tier ending value. If null, this is treated as the last tier
                 sig { returns(T.nilable(Float)) }
                 def last_unit
                 end
@@ -12724,6 +13909,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -12732,6 +13918,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -12740,6 +13927,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -12748,6 +13937,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -12763,6 +13953,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -12771,6 +13962,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -12779,6 +13971,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -12787,6 +13981,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -12803,6 +13998,7 @@ module Orb
           end
 
           class NewSubscriptionTieredBpsPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -12811,6 +14007,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -12827,6 +14024,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -12854,6 +14052,8 @@ module Orb
             def tiered_bps_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -12862,6 +14062,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -12870,6 +14072,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -12895,6 +14099,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -12903,6 +14108,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -12911,6 +14118,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -12919,6 +14127,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -12927,6 +14137,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -12935,6 +14146,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -12960,6 +14173,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -12971,6 +14187,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -13054,6 +14272,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -13072,6 +14291,8 @@ module Orb
             end
 
             class TieredBpsConfig < Orb::BaseModel
+              # Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
+              #   tiers
               sig do
                 returns(
                   T::Array[
@@ -13122,6 +14343,7 @@ module Orb
               end
 
               class Tier < Orb::BaseModel
+                # Per-event basis point rate
                 sig { returns(Float) }
                 def bps
                 end
@@ -13130,6 +14352,7 @@ module Orb
                 def bps=(_)
                 end
 
+                # Inclusive tier starting value
                 sig { returns(String) }
                 def minimum_amount
                 end
@@ -13138,6 +14361,7 @@ module Orb
                 def minimum_amount=(_)
                 end
 
+                # Exclusive tier ending value
                 sig { returns(T.nilable(String)) }
                 def maximum_amount
                 end
@@ -13146,6 +14370,7 @@ module Orb
                 def maximum_amount=(_)
                 end
 
+                # Per unit maximum to charge
                 sig { returns(T.nilable(String)) }
                 def per_unit_maximum
                 end
@@ -13183,6 +14408,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -13191,6 +14417,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -13199,6 +14426,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -13207,6 +14436,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -13222,6 +14452,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -13230,6 +14461,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -13238,6 +14470,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -13246,6 +14480,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -13273,6 +14508,7 @@ module Orb
             def bps_config=(_)
             end
 
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -13281,6 +14517,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -13297,6 +14534,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -13305,6 +14543,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -13313,6 +14553,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -13321,6 +14563,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -13346,6 +14590,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -13354,6 +14599,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -13362,6 +14609,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -13370,6 +14618,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -13378,6 +14628,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -13386,6 +14637,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -13411,6 +14664,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -13422,6 +14678,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -13506,6 +14764,7 @@ module Orb
             end
 
             class BpsConfig < Orb::BaseModel
+              # Basis point take rate per event
               sig { returns(Float) }
               def bps
               end
@@ -13514,6 +14773,7 @@ module Orb
               def bps=(_)
               end
 
+              # Optional currency amount maximum to cap spend per event
               sig { returns(T.nilable(String)) }
               def per_unit_maximum
               end
@@ -13531,6 +14791,7 @@ module Orb
               end
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -13549,6 +14810,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -13557,6 +14819,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -13565,6 +14828,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -13573,6 +14838,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -13588,6 +14854,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -13596,6 +14863,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -13604,6 +14872,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -13612,6 +14882,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -13647,6 +14918,7 @@ module Orb
             def bulk_bps_config=(_)
             end
 
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -13655,6 +14927,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -13671,6 +14944,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -13679,6 +14953,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -13687,6 +14963,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -13695,6 +14973,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -13720,6 +15000,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -13728,6 +15009,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -13736,6 +15019,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -13744,6 +15028,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -13752,6 +15038,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -13760,6 +15047,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -13785,6 +15074,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -13796,6 +15088,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -13880,6 +15174,8 @@ module Orb
             end
 
             class BulkBpsConfig < Orb::BaseModel
+              # Tiers for a bulk BPS pricing model where all usage is aggregated to a single
+              #   tier based on total volume
               sig do
                 returns(
                   T::Array[
@@ -13930,6 +15226,7 @@ module Orb
               end
 
               class Tier < Orb::BaseModel
+                # Basis points to rate on
                 sig { returns(Float) }
                 def bps
                 end
@@ -13938,6 +15235,7 @@ module Orb
                 def bps=(_)
                 end
 
+                # Upper bound for tier
                 sig { returns(T.nilable(String)) }
                 def maximum_amount
                 end
@@ -13946,6 +15244,7 @@ module Orb
                 def maximum_amount=(_)
                 end
 
+                # The maximum amount to charge for any one event
                 sig { returns(T.nilable(String)) }
                 def per_unit_maximum
                 end
@@ -13975,6 +15274,7 @@ module Orb
               end
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -13993,6 +15293,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -14001,6 +15302,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -14009,6 +15311,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -14017,6 +15321,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -14032,6 +15337,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -14040,6 +15346,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -14048,6 +15355,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -14056,6 +15365,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -14085,6 +15395,7 @@ module Orb
             def bulk_config=(_)
             end
 
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -14093,6 +15404,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -14109,6 +15421,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -14117,6 +15430,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -14125,6 +15440,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -14133,6 +15450,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -14158,6 +15477,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -14166,6 +15486,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -14174,6 +15496,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -14182,6 +15505,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -14190,6 +15515,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -14198,6 +15524,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -14223,6 +15551,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -14234,6 +15565,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -14318,6 +15651,7 @@ module Orb
             end
 
             class BulkConfig < Orb::BaseModel
+              # Bulk tiers for rating based on total usage volume
               sig do
                 returns(
                   T::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier]
@@ -14358,6 +15692,7 @@ module Orb
               end
 
               class Tier < Orb::BaseModel
+                # Amount per unit
                 sig { returns(String) }
                 def unit_amount
                 end
@@ -14366,6 +15701,7 @@ module Orb
                 def unit_amount=(_)
                 end
 
+                # Upper bound for this tier
                 sig { returns(T.nilable(Float)) }
                 def maximum_units
                 end
@@ -14384,6 +15720,7 @@ module Orb
               end
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -14402,6 +15739,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -14410,6 +15748,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -14418,6 +15757,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -14426,6 +15767,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -14441,6 +15783,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -14449,6 +15792,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -14457,6 +15801,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -14465,6 +15811,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -14481,6 +15828,7 @@ module Orb
           end
 
           class NewSubscriptionThresholdTotalAmountPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -14489,6 +15837,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -14505,6 +15854,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -14521,6 +15871,8 @@ module Orb
             def threshold_total_amount_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -14529,6 +15881,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -14537,6 +15891,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -14562,6 +15918,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -14570,6 +15927,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -14578,6 +15937,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -14586,6 +15946,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -14594,6 +15956,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -14602,6 +15965,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -14627,6 +15992,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -14638,6 +16006,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -14721,6 +16091,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -14739,6 +16110,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -14747,6 +16119,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -14755,6 +16128,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -14763,6 +16138,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -14778,6 +16154,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -14786,6 +16163,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -14794,6 +16172,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -14802,6 +16182,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -14818,6 +16199,7 @@ module Orb
           end
 
           class NewSubscriptionTieredPackagePrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -14826,6 +16208,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -14842,6 +16225,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -14858,6 +16242,8 @@ module Orb
             def tiered_package_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -14866,6 +16252,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -14874,6 +16262,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -14899,6 +16289,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -14907,6 +16298,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -14915,6 +16308,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -14923,6 +16317,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -14931,6 +16327,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -14939,6 +16336,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -14964,6 +16363,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -14975,6 +16377,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -15058,6 +16462,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -15076,6 +16481,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -15084,6 +16490,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -15092,6 +16499,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -15100,6 +16509,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -15115,6 +16525,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -15123,6 +16534,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -15131,6 +16543,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -15139,6 +16553,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -15155,6 +16570,7 @@ module Orb
           end
 
           class NewSubscriptionTieredWithMinimumPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -15163,6 +16579,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -15179,6 +16596,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -15195,6 +16613,8 @@ module Orb
             def tiered_with_minimum_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -15203,6 +16623,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -15211,6 +16633,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -15236,6 +16660,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -15244,6 +16669,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -15252,6 +16679,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -15260,6 +16688,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -15268,6 +16698,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -15276,6 +16707,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -15301,6 +16734,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -15312,6 +16748,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -15395,6 +16833,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -15413,6 +16852,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -15421,6 +16861,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -15429,6 +16870,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -15437,6 +16880,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -15452,6 +16896,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -15460,6 +16905,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -15468,6 +16914,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -15476,6 +16924,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -15492,6 +16941,7 @@ module Orb
           end
 
           class NewSubscriptionUnitWithPercentPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -15500,6 +16950,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -15516,6 +16967,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -15532,6 +16984,8 @@ module Orb
             def unit_with_percent_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -15540,6 +16994,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -15548,6 +17004,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -15573,6 +17031,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -15581,6 +17040,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -15589,6 +17050,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -15597,6 +17059,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -15605,6 +17069,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -15613,6 +17078,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -15638,6 +17105,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -15649,6 +17119,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -15732,6 +17204,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -15750,6 +17223,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -15758,6 +17232,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -15766,6 +17241,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -15774,6 +17251,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -15789,6 +17267,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -15797,6 +17276,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -15805,6 +17285,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -15813,6 +17295,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -15829,6 +17312,7 @@ module Orb
           end
 
           class NewSubscriptionPackageWithAllocationPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -15837,6 +17321,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -15853,6 +17338,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -15869,6 +17355,8 @@ module Orb
             def package_with_allocation_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -15877,6 +17365,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -15885,6 +17375,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -15910,6 +17402,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -15918,6 +17411,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -15926,6 +17421,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -15934,6 +17430,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -15942,6 +17440,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -15950,6 +17449,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -15975,6 +17476,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -15986,6 +17490,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -16069,6 +17575,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -16087,6 +17594,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -16095,6 +17603,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -16103,6 +17612,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -16111,6 +17622,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -16126,6 +17638,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -16134,6 +17647,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -16142,6 +17656,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -16150,6 +17666,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -16166,6 +17683,7 @@ module Orb
           end
 
           class NewSubscriptionTierWithProrationPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -16174,6 +17692,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -16190,6 +17709,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -16206,6 +17726,8 @@ module Orb
             def tiered_with_proration_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -16214,6 +17736,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -16222,6 +17746,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -16247,6 +17773,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -16255,6 +17782,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -16263,6 +17792,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -16271,6 +17801,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -16279,6 +17811,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -16287,6 +17820,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -16312,6 +17847,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -16323,6 +17861,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -16406,6 +17946,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -16424,6 +17965,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -16432,6 +17974,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -16440,6 +17983,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -16448,6 +17993,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -16463,6 +18009,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -16471,6 +18018,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -16479,6 +18027,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -16487,6 +18037,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -16503,6 +18054,7 @@ module Orb
           end
 
           class NewSubscriptionUnitWithProrationPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -16511,6 +18063,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -16527,6 +18080,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -16543,6 +18097,8 @@ module Orb
             def unit_with_proration_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -16551,6 +18107,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -16559,6 +18117,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -16584,6 +18144,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -16592,6 +18153,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -16600,6 +18163,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -16608,6 +18172,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -16616,6 +18182,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -16624,6 +18191,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -16649,6 +18218,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -16660,6 +18232,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -16743,6 +18317,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -16761,6 +18336,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -16769,6 +18345,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -16777,6 +18354,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -16785,6 +18364,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -16800,6 +18380,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -16808,6 +18389,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -16816,6 +18398,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -16824,6 +18408,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -16840,6 +18425,7 @@ module Orb
           end
 
           class NewSubscriptionGroupedAllocationPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -16856,6 +18442,7 @@ module Orb
             def grouped_allocation_config=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -16872,6 +18459,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -16880,6 +18468,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -16888,6 +18478,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -16896,6 +18488,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -16921,6 +18515,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -16929,6 +18524,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -16937,6 +18534,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -16945,6 +18543,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -16953,6 +18553,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -16961,6 +18562,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -16986,6 +18589,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -16997,6 +18603,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -17080,6 +18688,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -17098,6 +18707,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -17106,6 +18716,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -17114,6 +18725,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -17122,6 +18735,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -17137,6 +18751,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -17145,6 +18760,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -17153,6 +18769,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -17161,6 +18779,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -17177,6 +18796,7 @@ module Orb
           end
 
           class NewSubscriptionGroupedWithProratedMinimumPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -17193,6 +18813,7 @@ module Orb
             def grouped_with_prorated_minimum_config=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -17209,6 +18830,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -17217,6 +18839,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -17225,6 +18849,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -17233,6 +18859,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -17258,6 +18886,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -17266,6 +18895,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -17274,6 +18905,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -17282,6 +18914,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -17290,6 +18924,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -17298,6 +18933,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -17323,6 +18960,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -17334,6 +18974,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -17417,6 +19059,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -17435,6 +19078,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -17443,6 +19087,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -17451,6 +19096,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -17459,6 +19106,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -17474,6 +19122,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -17482,6 +19131,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -17490,6 +19140,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -17498,6 +19150,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -17522,6 +19175,7 @@ module Orb
             def bulk_with_proration_config=(_)
             end
 
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -17530,6 +19184,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -17546,6 +19201,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -17554,6 +19210,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -17562,6 +19220,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -17570,6 +19230,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -17595,6 +19257,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -17603,6 +19266,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -17611,6 +19276,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -17619,6 +19285,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -17627,6 +19295,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -17635,6 +19304,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -17660,6 +19331,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -17671,6 +19345,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -17754,6 +19430,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -17772,6 +19449,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -17780,6 +19458,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -17788,6 +19467,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -17796,6 +19477,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -17811,6 +19493,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -17819,6 +19502,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -17827,6 +19511,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -17835,6 +19521,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -17851,6 +19538,7 @@ module Orb
           end
 
           class NewSubscriptionScalableMatrixWithUnitPricingPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -17859,6 +19547,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -17875,6 +19564,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -17891,6 +19581,8 @@ module Orb
             def scalable_matrix_with_unit_pricing_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -17899,6 +19591,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -17907,6 +19601,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -17932,6 +19628,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -17940,6 +19637,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -17948,6 +19647,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -17956,6 +19656,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -17964,6 +19666,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -17972,6 +19675,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -17997,6 +19702,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -18008,6 +19716,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -18091,6 +19801,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -18109,6 +19820,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -18117,6 +19829,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -18125,6 +19838,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -18133,6 +19848,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -18148,6 +19864,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -18156,6 +19873,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -18164,6 +19882,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -18172,6 +19892,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -18188,6 +19909,7 @@ module Orb
           end
 
           class NewSubscriptionScalableMatrixWithTieredPricingPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -18196,6 +19918,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -18212,6 +19935,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -18228,6 +19952,8 @@ module Orb
             def scalable_matrix_with_tiered_pricing_config=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -18236,6 +19962,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -18244,6 +19972,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -18269,6 +19999,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -18277,6 +20008,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -18285,6 +20018,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -18293,6 +20027,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -18301,6 +20037,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -18309,6 +20046,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -18334,6 +20073,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -18345,6 +20087,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -18428,6 +20172,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -18446,6 +20191,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -18454,6 +20200,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -18462,6 +20209,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -18470,6 +20219,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -18485,6 +20235,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -18493,6 +20244,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -18501,6 +20253,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -18509,6 +20263,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -18525,6 +20280,7 @@ module Orb
           end
 
           class NewSubscriptionCumulativeGroupedBulkPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -18541,6 +20297,7 @@ module Orb
             def cumulative_grouped_bulk_config=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -18557,6 +20314,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -18565,6 +20323,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -18573,6 +20333,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -18581,6 +20343,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -18606,6 +20370,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -18614,6 +20379,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -18622,6 +20389,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -18630,6 +20398,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -18638,6 +20408,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -18646,6 +20417,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -18671,6 +20444,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -18682,6 +20458,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -18765,6 +20543,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -18783,6 +20562,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -18791,6 +20571,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -18799,6 +20580,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -18807,6 +20590,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -18822,6 +20606,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -18830,6 +20615,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -18838,6 +20624,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -18846,6 +20634,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -18862,6 +20651,7 @@ module Orb
           end
 
           class NewSubscriptionMaxGroupTieredPackagePrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -18870,6 +20660,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -18894,6 +20685,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -18902,6 +20694,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -18910,6 +20704,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -18918,6 +20714,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -18943,6 +20741,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -18951,6 +20750,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -18959,6 +20760,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -18967,6 +20769,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -18975,6 +20779,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -18983,6 +20788,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -19008,6 +20815,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -19019,6 +20829,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -19102,6 +20914,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -19120,6 +20933,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -19128,6 +20942,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -19136,6 +20951,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -19144,6 +20961,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -19159,6 +20977,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -19167,6 +20986,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -19175,6 +20995,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -19183,6 +21005,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -19199,6 +21022,7 @@ module Orb
           end
 
           class NewSubscriptionGroupedWithMeteredMinimumPrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -19215,6 +21039,7 @@ module Orb
             def grouped_with_metered_minimum_config=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -19231,6 +21056,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -19239,6 +21065,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -19247,6 +21075,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -19255,6 +21085,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -19280,6 +21112,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -19288,6 +21121,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -19296,6 +21131,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -19304,6 +21140,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -19312,6 +21150,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -19320,6 +21159,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -19345,6 +21186,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -19356,6 +21200,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -19439,6 +21285,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -19457,6 +21304,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -19465,6 +21313,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -19473,6 +21322,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -19481,6 +21332,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -19496,6 +21348,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -19504,6 +21357,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -19512,6 +21366,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -19520,6 +21376,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -19536,6 +21393,7 @@ module Orb
           end
 
           class NewSubscriptionMatrixWithDisplayNamePrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -19544,6 +21402,7 @@ module Orb
             def cadence=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -19568,6 +21427,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -19576,6 +21436,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -19584,6 +21446,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -19592,6 +21456,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -19617,6 +21483,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -19625,6 +21492,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -19633,6 +21502,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -19641,6 +21511,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -19649,6 +21521,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -19657,6 +21530,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -19682,6 +21557,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -19693,6 +21571,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -19776,6 +21656,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -19794,6 +21675,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -19802,6 +21684,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -19810,6 +21693,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -19818,6 +21703,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -19833,6 +21719,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -19841,6 +21728,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -19849,6 +21737,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -19857,6 +21747,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -19873,6 +21764,7 @@ module Orb
           end
 
           class NewSubscriptionGroupedTieredPackagePrice < Orb::BaseModel
+            # The cadence to bill for this price on.
             sig { returns(Symbol) }
             def cadence
             end
@@ -19889,6 +21781,7 @@ module Orb
             def grouped_tiered_package_config=(_)
             end
 
+            # The id of the item the price will be associated with.
             sig { returns(String) }
             def item_id
             end
@@ -19905,6 +21798,7 @@ module Orb
             def model_type=(_)
             end
 
+            # The name of the price.
             sig { returns(String) }
             def name
             end
@@ -19913,6 +21807,8 @@ module Orb
             def name=(_)
             end
 
+            # The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
             sig { returns(T.nilable(String)) }
             def billable_metric_id
             end
@@ -19921,6 +21817,8 @@ module Orb
             def billable_metric_id=(_)
             end
 
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             def billed_in_advance
             end
@@ -19929,6 +21827,8 @@ module Orb
             def billed_in_advance=(_)
             end
 
+            # For custom cadence: specifies the duration of the billing period in days or
+            #   months.
             sig do
               returns(
                 T.nilable(
@@ -19954,6 +21854,7 @@ module Orb
             def billing_cycle_configuration=(_)
             end
 
+            # The per unit conversion rate of the price currency to the invoicing currency.
             sig { returns(T.nilable(Float)) }
             def conversion_rate
             end
@@ -19962,6 +21863,8 @@ module Orb
             def conversion_rate=(_)
             end
 
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
             sig { returns(T.nilable(String)) }
             def currency
             end
@@ -19970,6 +21873,7 @@ module Orb
             def currency=(_)
             end
 
+            # An alias for the price.
             sig { returns(T.nilable(String)) }
             def external_price_id
             end
@@ -19978,6 +21882,8 @@ module Orb
             def external_price_id=(_)
             end
 
+            # If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
             sig { returns(T.nilable(Float)) }
             def fixed_price_quantity
             end
@@ -19986,6 +21892,7 @@ module Orb
             def fixed_price_quantity=(_)
             end
 
+            # The property used to group this price on an invoice
             sig { returns(T.nilable(String)) }
             def invoice_grouping_key
             end
@@ -19994,6 +21901,8 @@ module Orb
             def invoice_grouping_key=(_)
             end
 
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -20019,6 +21928,9 @@ module Orb
             def invoicing_cycle_configuration=(_)
             end
 
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             def metadata
             end
@@ -20030,6 +21942,8 @@ module Orb
             def metadata=(_)
             end
 
+            # A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
             sig { returns(T.nilable(String)) }
             def reference_id
             end
@@ -20113,6 +22027,7 @@ module Orb
             def to_hash
             end
 
+            # The cadence to bill for this price on.
             class Cadence < Orb::Enum
               abstract!
 
@@ -20131,6 +22046,7 @@ module Orb
             end
 
             class BillingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -20139,6 +22055,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -20147,6 +22064,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # For custom cadence: specifies the duration of the billing period in days or
+              #   months.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -20155,6 +22074,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -20170,6 +22090,7 @@ module Orb
             end
 
             class InvoicingCycleConfiguration < Orb::BaseModel
+              # The duration of the billing period.
               sig { returns(Integer) }
               def duration
               end
@@ -20178,6 +22099,7 @@ module Orb
               def duration=(_)
               end
 
+              # The unit of billing period duration.
               sig { returns(Symbol) }
               def duration_unit
               end
@@ -20186,6 +22108,8 @@ module Orb
               def duration_unit=(_)
               end
 
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
               sig { params(duration: Integer, duration_unit: Symbol).returns(T.attached_class) }
               def self.new(duration:, duration_unit:)
               end
@@ -20194,6 +22118,7 @@ module Orb
               def to_hash
               end
 
+              # The unit of billing period duration.
               class DurationUnit < Orb::Enum
                 abstract!
 
@@ -20213,10 +22138,10 @@ module Orb
             sig do
               override
                 .returns(
-                  [[Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice], [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice]]
+                  [Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice]
                 )
             end
-            private def variants
+            def variants
             end
           end
         end

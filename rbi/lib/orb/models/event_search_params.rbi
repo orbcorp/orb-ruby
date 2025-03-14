@@ -6,6 +6,10 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # This is an explicit array of IDs to filter by. Note that an event's ID is the
+      #   idempotency_key that was originally used for ingestion, and this only supports
+      #   events that have not been amended. Values in this array will be treated case
+      #   sensitively.
       sig { returns(T::Array[String]) }
       def event_ids
       end
@@ -14,6 +18,8 @@ module Orb
       def event_ids=(_)
       end
 
+      # The end of the timeframe, exclusive, in which to search events. If not
+      #   specified, the current time is used.
       sig { returns(T.nilable(Time)) }
       def timeframe_end
       end
@@ -22,6 +28,8 @@ module Orb
       def timeframe_end=(_)
       end
 
+      # The start of the timeframe, inclusive, in which to search events. If not
+      #   specified, the one week ago is used.
       sig { returns(T.nilable(Time)) }
       def timeframe_start
       end

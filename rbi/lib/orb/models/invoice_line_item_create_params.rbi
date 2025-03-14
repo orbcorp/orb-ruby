@@ -6,6 +6,7 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # The total amount in the invoice's currency to add to the line item.
       sig { returns(String) }
       def amount
       end
@@ -14,6 +15,7 @@ module Orb
       def amount=(_)
       end
 
+      # A date string to specify the line item's end date in the customer's timezone.
       sig { returns(Date) }
       def end_date
       end
@@ -22,6 +24,7 @@ module Orb
       def end_date=(_)
       end
 
+      # The id of the Invoice to add this line item.
       sig { returns(String) }
       def invoice_id
       end
@@ -30,6 +33,8 @@ module Orb
       def invoice_id=(_)
       end
 
+      # The item name associated with this line item. If an item with the same name
+      #   exists in Orb, that item will be associated with the line item.
       sig { returns(String) }
       def name
       end
@@ -38,6 +43,7 @@ module Orb
       def name=(_)
       end
 
+      # The number of units on the line item
       sig { returns(Float) }
       def quantity
       end
@@ -46,6 +52,7 @@ module Orb
       def quantity=(_)
       end
 
+      # A date string to specify the line item's start date in the customer's timezone.
       sig { returns(Date) }
       def start_date
       end

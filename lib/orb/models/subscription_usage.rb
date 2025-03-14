@@ -3,7 +3,6 @@
 module Orb
   module Models
     # @abstract
-    #
     class SubscriptionUsage < Orb::Union
       variant -> { Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage }
 
@@ -97,7 +96,6 @@ module Orb
           end
 
           # @abstract
-          #
           class ViewMode < Orb::Enum
             PERIODIC = :periodic
             CUMULATIVE = :cumulative
@@ -226,7 +224,6 @@ module Orb
           end
 
           # @abstract
-          #
           class ViewMode < Orb::Enum
             PERIODIC = :periodic
             CUMULATIVE = :cumulative
@@ -235,6 +232,12 @@ module Orb
           end
         end
       end
+
+      # @!parse
+      #   class << self
+      #     # @return [Array(Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage)]
+      #     def variants; end
+      #   end
     end
   end
 end

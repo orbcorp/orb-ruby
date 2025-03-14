@@ -7,6 +7,7 @@ module Orb
         extend Orb::RequestParameters::Converter
         include Orb::RequestParameters
 
+        # The ledger currency or custom pricing unit to use.
         sig { returns(T.nilable(String)) }
         def currency
         end
@@ -15,6 +16,8 @@ module Orb
         def currency=(_)
         end
 
+        # Cursor for pagination. This can be populated by the `next_cursor` value returned
+        #   from the initial request.
         sig { returns(T.nilable(String)) }
         def cursor
         end
@@ -23,6 +26,8 @@ module Orb
         def cursor=(_)
         end
 
+        # If set to True, all expired and depleted blocks, as well as active block will be
+        #   returned.
         sig { returns(T.nilable(T::Boolean)) }
         def include_all_blocks
         end
@@ -31,6 +36,7 @@ module Orb
         def include_all_blocks=(_)
         end
 
+        # The number of items to fetch. Defaults to 20.
         sig { returns(T.nilable(Integer)) }
         def limit
         end

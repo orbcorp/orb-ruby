@@ -6,6 +6,9 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # If false, this request will fail if it would void an issued invoice or create a
+      #   credit note. Consider using this as a safety mechanism if you do not expect
+      #   existing invoices to be changed.
       sig { returns(T.nilable(T::Boolean)) }
       def allow_invoice_credit_or_void
       end
@@ -14,6 +17,8 @@ module Orb
       def allow_invoice_credit_or_void=(_)
       end
 
+      # The date on which the phase change should take effect. If not provided, defaults
+      #   to today in the customer's timezone.
       sig { returns(T.nilable(Date)) }
       def effective_date
       end

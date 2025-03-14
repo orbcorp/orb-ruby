@@ -358,7 +358,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionCreateResponse]
-      #
       def create(params = {})
         parsed, options = Orb::Models::SubscriptionCreateParams.dump_request(params)
         @client.request(
@@ -401,7 +400,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Subscription]
-      #
       def update(subscription_id, params = {})
         parsed, options = Orb::Models::SubscriptionUpdateParams.dump_request(params)
         @client.request(
@@ -447,7 +445,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Page<Orb::Models::Subscription>]
-      #
       def list(params = {})
         parsed, options = Orb::Models::SubscriptionListParams.dump_request(params)
         @client.request(
@@ -538,7 +535,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionCancelResponse]
-      #
       def cancel(subscription_id, params)
         parsed, options = Orb::Models::SubscriptionCancelParams.dump_request(params)
         @client.request(
@@ -560,7 +556,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Subscription]
-      #
       def fetch(subscription_id, params = {})
         @client.request(
           method: :get,
@@ -599,7 +594,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionFetchCostsResponse]
-      #
       def fetch_costs(subscription_id, params = {})
         parsed, options = Orb::Models::SubscriptionFetchCostsParams.dump_request(params)
         @client.request(
@@ -636,7 +630,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Page<Orb::Models::SubscriptionFetchScheduleResponse>]
-      #
       def fetch_schedule(subscription_id, params = {})
         parsed, options = Orb::Models::SubscriptionFetchScheduleParams.dump_request(params)
         @client.request(
@@ -876,7 +869,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]
-      #
       def fetch_usage(subscription_id, params = {})
         parsed, options = Orb::Models::SubscriptionFetchUsageParams.dump_request(params)
         @client.request(
@@ -980,7 +972,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionPriceIntervalsResponse]
-      #
       def price_intervals(subscription_id, params = {})
         parsed, options = Orb::Models::SubscriptionPriceIntervalsParams.dump_request(params)
         @client.request(
@@ -1269,7 +1260,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionSchedulePlanChangeResponse]
-      #
       def schedule_plan_change(subscription_id, params)
         parsed, options = Orb::Models::SubscriptionSchedulePlanChangeParams.dump_request(params)
         @client.request(
@@ -1298,7 +1288,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionTriggerPhaseResponse]
-      #
       def trigger_phase(subscription_id, params = {})
         parsed, options = Orb::Models::SubscriptionTriggerPhaseParams.dump_request(params)
         @client.request(
@@ -1324,7 +1313,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionUnscheduleCancellationResponse]
-      #
       def unschedule_cancellation(subscription_id, params = {})
         @client.request(
           method: :post,
@@ -1349,7 +1337,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse]
-      #
       def unschedule_fixed_fee_quantity_updates(subscription_id, params)
         parsed, options = Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesParams.dump_request(params)
         @client.request(
@@ -1371,7 +1358,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse]
-      #
       def unschedule_pending_plan_changes(subscription_id, params = {})
         @client.request(
           method: :post,
@@ -1419,7 +1405,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse]
-      #
       def update_fixed_fee_quantity(subscription_id, params)
         parsed, options = Orb::Models::SubscriptionUpdateFixedFeeQuantityParams.dump_request(params)
         @client.request(
@@ -1463,7 +1448,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::SubscriptionUpdateTrialResponse]
-      #
       def update_trial(subscription_id, params)
         parsed, options = Orb::Models::SubscriptionUpdateTrialParams.dump_request(params)
         @client.request(
@@ -1476,7 +1460,6 @@ module Orb
       end
 
       # @param client [Orb::Client]
-      #
       def initialize(client:)
         @client = client
       end

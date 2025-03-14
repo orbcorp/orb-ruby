@@ -226,7 +226,7 @@ module Orb
         end
       end
 
-      private def self.variants: -> [[nil, Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage], [nil, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]]
+      def self.variants: -> [Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]
     end
   end
 end

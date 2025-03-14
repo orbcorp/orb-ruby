@@ -17,7 +17,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::CreditNote]
-      #
       def create(params)
         parsed, options = Orb::Models::CreditNoteCreateParams.dump_request(params)
         @client.request(
@@ -35,6 +34,14 @@ module Orb
       #
       # @param params [Orb::Models::CreditNoteListParams, Hash{Symbol=>Object}] .
       #
+      #   @option params [Time, nil] :created_at_gt
+      #
+      #   @option params [Time, nil] :created_at_gte
+      #
+      #   @option params [Time, nil] :created_at_lt
+      #
+      #   @option params [Time, nil] :created_at_lte
+      #
       #   @option params [String, nil] :cursor Cursor for pagination. This can be populated by the `next_cursor` value returned
       #     from the initial request.
       #
@@ -43,7 +50,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Page<Orb::Models::CreditNote>]
-      #
       def list(params = {})
         parsed, options = Orb::Models::CreditNoteListParams.dump_request(params)
         @client.request(
@@ -66,7 +72,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::CreditNote]
-      #
       def fetch(credit_note_id, params = {})
         @client.request(
           method: :get,
@@ -77,7 +82,6 @@ module Orb
       end
 
       # @param client [Orb::Client]
-      #
       def initialize(client:)
         @client = client
       end

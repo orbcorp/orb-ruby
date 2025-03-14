@@ -57,7 +57,6 @@ module Orb
       # def initialize: (Hash | Orb::BaseModel) -> void
 
       # @abstract
-      #
       class Status < Orb::Enum
         ACTIVE = :active
         DRAFT = :draft

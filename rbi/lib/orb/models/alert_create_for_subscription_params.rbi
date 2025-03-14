@@ -6,6 +6,7 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # The thresholds that define the values at which the alert will be triggered.
       sig { returns(T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold]) }
       def thresholds
       end
@@ -17,6 +18,7 @@ module Orb
       def thresholds=(_)
       end
 
+      # The type of alert to create. This must be a valid alert type.
       sig { returns(Symbol) }
       def type
       end
@@ -25,6 +27,7 @@ module Orb
       def type=(_)
       end
 
+      # The metric to track usage for.
       sig { returns(T.nilable(String)) }
       def metric_id
       end
@@ -60,6 +63,9 @@ module Orb
       end
 
       class Threshold < Orb::BaseModel
+        # The value at which an alert will fire. For credit balance alerts, the alert will
+        #   fire at or below this value. For usage and cost alerts, the alert will fire at
+        #   or above this value.
         sig { returns(Float) }
         def value
         end
@@ -68,6 +74,8 @@ module Orb
         def value=(_)
         end
 
+        # Thresholds are used to define the conditions under which an alert will be
+        #   triggered.
         sig { params(value: Float).returns(T.attached_class) }
         def self.new(value:)
         end
@@ -77,6 +85,7 @@ module Orb
         end
       end
 
+      # The type of alert to create. This must be a valid alert type.
       class Type < Orb::Enum
         abstract!
 

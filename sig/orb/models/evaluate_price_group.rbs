@@ -27,7 +27,7 @@ module Orb
       type grouping_value = String | Float | bool
 
       class GroupingValue < Orb::Union
-        private def self.variants: -> [[nil, String], [nil, Float], [nil, bool]]
+        def self.variants: -> [String, Float, bool]
       end
     end
   end

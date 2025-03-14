@@ -49,7 +49,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # @abstract
-        #
         class ExternalConnectionName < Orb::Enum
           STRIPE = :stripe
           QUICKBOOKS = :quickbooks

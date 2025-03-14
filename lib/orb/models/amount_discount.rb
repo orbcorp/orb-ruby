@@ -37,7 +37,6 @@ module Orb
       # def initialize: (Hash | Orb::BaseModel) -> void
 
       # @abstract
-      #
       class DiscountType < Orb::Enum
         AMOUNT = :amount
 

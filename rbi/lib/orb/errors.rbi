@@ -5,6 +5,10 @@ module Orb
     sig { returns(T.nilable(StandardError)) }
     def cause
     end
+
+    sig { params(_: T.nilable(StandardError)).returns(T.nilable(StandardError)) }
+    def cause=(_)
+    end
   end
 
   class ConversionError < Orb::Error
@@ -15,14 +19,27 @@ module Orb
     def url
     end
 
+    sig { params(_: URI::Generic).returns(URI::Generic) }
+    def url=(_)
+    end
+
     sig { returns(T.nilable(Integer)) }
     def status
+    end
+
+    sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+    def status=(_)
     end
 
     sig { returns(T.nilable(T.anything)) }
     def body
     end
 
+    sig { params(_: T.nilable(T.anything)).returns(T.nilable(T.anything)) }
+    def body=(_)
+    end
+
+    # @api private
     sig do
       params(
         url: URI::Generic,
@@ -43,10 +60,19 @@ module Orb
     def status
     end
 
+    sig { params(_: NilClass).void }
+    def status=(_)
+    end
+
     sig { void }
     def body
     end
 
+    sig { params(_: NilClass).void }
+    def body=(_)
+    end
+
+    # @api private
     sig do
       params(
         url: URI::Generic,
@@ -63,6 +89,7 @@ module Orb
   end
 
   class APITimeoutError < Orb::APIConnectionError
+    # @api private
     sig do
       params(
         url: URI::Generic,
@@ -79,6 +106,7 @@ module Orb
   end
 
   class APIStatusError < Orb::APIError
+    # @api private
     sig do
       params(
         url: URI::Generic,
@@ -97,6 +125,11 @@ module Orb
     def status
     end
 
+    sig { params(_: Integer).returns(Integer) }
+    def status=(_)
+    end
+
+    # @api private
     sig do
       params(
         url: URI::Generic,

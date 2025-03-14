@@ -6,6 +6,7 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # A date string to specify the date of the payment.
       sig { returns(Date) }
       def payment_received_date
       end
@@ -14,6 +15,7 @@ module Orb
       def payment_received_date=(_)
       end
 
+      # An optional external ID to associate with the payment.
       sig { returns(T.nilable(String)) }
       def external_id
       end
@@ -22,6 +24,7 @@ module Orb
       def external_id=(_)
       end
 
+      # An optional note to associate with the payment.
       sig { returns(T.nilable(String)) }
       def notes
       end

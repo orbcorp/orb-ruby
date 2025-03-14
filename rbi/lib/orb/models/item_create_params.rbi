@@ -6,6 +6,7 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # The name of the item.
       sig { returns(String) }
       def name
       end

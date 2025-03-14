@@ -3,6 +3,7 @@
 module Orb
   module Models
     class CreditNote < Orb::BaseModel
+      # The Orb id of this credit note.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Orb
       def id=(_)
       end
 
+      # The creation time of the resource in Orb.
       sig { returns(Time) }
       def created_at
       end
@@ -19,6 +21,7 @@ module Orb
       def created_at=(_)
       end
 
+      # The unique identifier for credit notes.
       sig { returns(String) }
       def credit_note_number
       end
@@ -27,6 +30,7 @@ module Orb
       def credit_note_number=(_)
       end
 
+      # A URL to a PDF of the credit note.
       sig { returns(T.nilable(String)) }
       def credit_note_pdf
       end
@@ -43,6 +47,7 @@ module Orb
       def customer=(_)
       end
 
+      # The id of the invoice resource that this credit note is applied to.
       sig { returns(String) }
       def invoice_id
       end
@@ -51,6 +56,7 @@ module Orb
       def invoice_id=(_)
       end
 
+      # All of the line items associated with this credit note.
       sig { returns(T::Array[Orb::Models::CreditNote::LineItem]) }
       def line_items
       end
@@ -61,6 +67,7 @@ module Orb
       def line_items=(_)
       end
 
+      # The maximum amount applied on the original invoice
       sig { returns(T.nilable(Orb::Models::CreditNote::MaximumAmountAdjustment)) }
       def maximum_amount_adjustment
       end
@@ -72,6 +79,7 @@ module Orb
       def maximum_amount_adjustment=(_)
       end
 
+      # An optional memo supplied on the credit note.
       sig { returns(T.nilable(String)) }
       def memo
       end
@@ -80,6 +88,7 @@ module Orb
       def memo=(_)
       end
 
+      # Any credited amount from the applied minimum on the invoice.
       sig { returns(T.nilable(String)) }
       def minimum_amount_refunded
       end
@@ -96,6 +105,7 @@ module Orb
       def reason=(_)
       end
 
+      # The total prior to any creditable invoice-level discounts or minimums.
       sig { returns(String) }
       def subtotal
       end
@@ -104,6 +114,7 @@ module Orb
       def subtotal=(_)
       end
 
+      # The total including creditable invoice-level discounts or minimums, and tax.
       sig { returns(String) }
       def total
       end
@@ -120,6 +131,7 @@ module Orb
       def type=(_)
       end
 
+      # The time at which the credit note was voided in Orb, if applicable.
       sig { returns(T.nilable(Time)) }
       def voided_at
       end
@@ -128,6 +140,7 @@ module Orb
       def voided_at=(_)
       end
 
+      # Any discounts applied on the original invoice.
       sig { returns(T.nilable(T::Array[Orb::Models::CreditNote::Discount])) }
       def discounts
       end
@@ -138,6 +151,8 @@ module Orb
       def discounts=(_)
       end
 
+      # The [Credit Note](/invoicing/credit-notes) resource represents a credit that has
+      #   been applied to a particular invoice.
       sig do
         params(
           id: String,
@@ -232,6 +247,7 @@ module Orb
       end
 
       class LineItem < Orb::BaseModel
+        # The Orb id of this resource.
         sig { returns(String) }
         def id
         end
@@ -240,6 +256,7 @@ module Orb
         def id=(_)
         end
 
+        # The amount of the line item, including any line item minimums and discounts.
         sig { returns(String) }
         def amount
         end
@@ -248,6 +265,7 @@ module Orb
         def amount=(_)
         end
 
+        # The id of the item associated with this line item.
         sig { returns(String) }
         def item_id
         end
@@ -256,6 +274,7 @@ module Orb
         def item_id=(_)
         end
 
+        # The name of the corresponding invoice line item.
         sig { returns(String) }
         def name
         end
@@ -264,6 +283,7 @@ module Orb
         def name=(_)
         end
 
+        # An optional quantity credited.
         sig { returns(T.nilable(Float)) }
         def quantity
         end
@@ -272,6 +292,7 @@ module Orb
         def quantity=(_)
         end
 
+        # The amount of the line item, excluding any line item minimums and discounts.
         sig { returns(String) }
         def subtotal
         end
@@ -280,6 +301,7 @@ module Orb
         def subtotal=(_)
         end
 
+        # Any tax amounts applied onto the line item.
         sig { returns(T::Array[Orb::Models::CreditNote::LineItem::TaxAmount]) }
         def tax_amounts
         end
@@ -291,6 +313,7 @@ module Orb
         def tax_amounts=(_)
         end
 
+        # Any line item discounts from the invoice's line item.
         sig { returns(T.nilable(T::Array[Orb::Models::CreditNote::LineItem::Discount])) }
         def discounts
         end
@@ -337,6 +360,7 @@ module Orb
         end
 
         class TaxAmount < Orb::BaseModel
+          # The amount of additional tax incurred by this tax rate.
           sig { returns(String) }
           def amount
           end
@@ -345,6 +369,7 @@ module Orb
           def amount=(_)
           end
 
+          # The human-readable description of the applied tax rate.
           sig { returns(String) }
           def tax_rate_description
           end
@@ -353,6 +378,7 @@ module Orb
           def tax_rate_description=(_)
           end
 
+          # The tax rate percentage, out of 100.
           sig { returns(T.nilable(String)) }
           def tax_rate_percentage
           end
@@ -537,6 +563,7 @@ module Orb
         def reason=(_)
         end
 
+        # The maximum amount applied on the original invoice
         sig do
           params(
             amount_applied: String,

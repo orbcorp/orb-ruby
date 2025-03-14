@@ -74,7 +74,7 @@ module Orb
           def to_hash: -> Orb::Models::CouponCreateParams::Discount::new_coupon_amount_discount
         end
 
-        private def self.variants: -> [[:percentage, Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount], [:amount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]]
+        def self.variants: -> [Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]
       end
     end
   end
