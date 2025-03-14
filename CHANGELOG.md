@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.28 (2025-03-14)
+
+Full Changelog: [v0.1.0-alpha.27...v0.1.0-alpha.28](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.27...v0.1.0-alpha.28)
+
+### Chores
+
+* **internal:** codegen related update ([#160](https://github.com/orbcorp/orb-ruby/issues/160)) ([2efe526](https://github.com/orbcorp/orb-ruby/commit/2efe526cc8937e1e6c3e334edc1f09ca0b0060d8))
+
 ## 0.1.0-alpha.27 (2025-03-14)
 
 Full Changelog: [v0.1.0-alpha.26...v0.1.0-alpha.27](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.26...v0.1.0-alpha.27)
