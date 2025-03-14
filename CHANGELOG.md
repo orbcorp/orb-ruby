@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.1.0-alpha.27 (2025-03-14)
+
+Full Changelog: [v0.1.0-alpha.26...v0.1.0-alpha.27](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.26...v0.1.0-alpha.27)
+
+### ⚠ BREAKING CHANGES
+
+* remove unreachable properties ([#159](https://github.com/orbcorp/orb-ruby/issues/159))
+
+### Features
+
+* support jsonl uploads ([#158](https://github.com/orbcorp/orb-ruby/issues/158)) ([1859c05](https://github.com/orbcorp/orb-ruby/commit/1859c05fc738cd31ca79a550c7d62ec2bb75e8ce))
+
+
+### Bug Fixes
+
+* remove unreachable properties ([#159](https://github.com/orbcorp/orb-ruby/issues/159)) ([9df3b18](https://github.com/orbcorp/orb-ruby/commit/9df3b182dfdc9182f8b6ea2f9673520f2f9450c1))
+
+
+### Chores
+
+* **api:** correctly support ExternalCustomerID array filter on Subscriptions.List ([#157](https://github.com/orbcorp/orb-ruby/issues/157)) ([5eac667](https://github.com/orbcorp/orb-ruby/commit/5eac66704bf01cf68e277eee50ae5ee9d62cc730))
+* improve rbi typedef for page classes ([#154](https://github.com/orbcorp/orb-ruby/issues/154)) ([bfdeb0d](https://github.com/orbcorp/orb-ruby/commit/bfdeb0d60063461b2e4f1e5357a6d1227dfd47e1))
+* **internal:** codegen related update ([#153](https://github.com/orbcorp/orb-ruby/issues/153)) ([9351bfa](https://github.com/orbcorp/orb-ruby/commit/9351bfa48cacf7ee3ba254920d8ba711760b651a))
+* **internal:** codegen related update ([#155](https://github.com/orbcorp/orb-ruby/issues/155)) ([e7a9137](https://github.com/orbcorp/orb-ruby/commit/e7a913713378f7fc95c60c0dae1deebc4aafa137))
+* **internal:** version bump ([#150](https://github.com/orbcorp/orb-ruby/issues/150)) ([db96109](https://github.com/orbcorp/orb-ruby/commit/db96109a5b6d706f6719f3b07e5478d005dcd394))
+* remove stale thread local checks ([#152](https://github.com/orbcorp/orb-ruby/issues/152)) ([ff62da0](https://github.com/orbcorp/orb-ruby/commit/ff62da08426e3d52d7b2b8c602e19c951cf89d8f))
+* sdk internal updates ([#156](https://github.com/orbcorp/orb-ruby/issues/156)) ([1c988cb](https://github.com/orbcorp/orb-ruby/commit/1c988cb0b9c9f687ce9ae7dfaf4865bbbe313a5e))
+
 ## 0.1.0-alpha.26 (2025-03-12)
 
 Full Changelog: [v0.1.0-alpha.25...v0.1.0-alpha.26](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.25...v0.1.0-alpha.26)
