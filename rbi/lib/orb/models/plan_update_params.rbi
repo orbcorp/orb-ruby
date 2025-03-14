@@ -6,6 +6,9 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # An optional user-defined ID for this plan resource, used throughout the system
+      #   as an alias for this Plan. Use this field to identify a plan by an existing
+      #   identifier in your system.
       sig { returns(T.nilable(String)) }
       def external_plan_id
       end
@@ -14,6 +17,9 @@ module Orb
       def external_plan_id=(_)
       end
 
+      # User-specified key/value pairs for the resource. Individual keys can be removed
+      #   by setting the value to `null`, and the entire metadata mapping can be cleared
+      #   by setting `metadata` to `null`.
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
       def metadata
       end

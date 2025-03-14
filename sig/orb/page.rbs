@@ -2,7 +2,7 @@ module Orb
   class Page[Elem]
     include Orb::BasePage[Elem]
 
-    attr_accessor data: ::Array[Elem]
+    attr_accessor data: ::Array[Elem]?
 
     attr_accessor pagination_metadata: PaginationMetadata
 

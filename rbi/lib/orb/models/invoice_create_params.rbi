@@ -6,6 +6,8 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # An ISO 4217 currency string. Must be the same as the customer's currency if it
+      #   is set.
       sig { returns(String) }
       def currency
       end
@@ -14,6 +16,8 @@ module Orb
       def currency=(_)
       end
 
+      # Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
+      #   set to the current time in the customer's timezone.
       sig { returns(Time) }
       def invoice_date
       end
@@ -33,6 +37,10 @@ module Orb
       def line_items=(_)
       end
 
+      # Determines the difference between the invoice issue date for subscription
+      #   invoices as the date that they are due. A value of '0' here represents that the
+      #   invoice is due on issue, whereas a value of 30 represents that the customer has
+      #   30 days to pay the invoice.
       sig { returns(Integer) }
       def net_terms
       end
@@ -41,6 +49,8 @@ module Orb
       def net_terms=(_)
       end
 
+      # The id of the `Customer` to create this invoice for. One of `customer_id` and
+      #   `external_customer_id` are required.
       sig { returns(T.nilable(String)) }
       def customer_id
       end
@@ -49,6 +59,7 @@ module Orb
       def customer_id=(_)
       end
 
+      # An optional discount to attach to the invoice.
       sig do
         returns(
           T.nilable(
@@ -89,6 +100,8 @@ module Orb
       def discount=(_)
       end
 
+      # The `external_customer_id` of the `Customer` to create this invoice for. One of
+      #   `customer_id` and `external_customer_id` are required.
       sig { returns(T.nilable(String)) }
       def external_customer_id
       end
@@ -97,6 +110,7 @@ module Orb
       def external_customer_id=(_)
       end
 
+      # An optional memo to attach to the invoice.
       sig { returns(T.nilable(String)) }
       def memo
       end
@@ -105,6 +119,9 @@ module Orb
       def memo=(_)
       end
 
+      # User-specified key/value pairs for the resource. Individual keys can be removed
+      #   by setting the value to `null`, and the entire metadata mapping can be cleared
+      #   by setting `metadata` to `null`.
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
       def metadata
       end
@@ -116,6 +133,8 @@ module Orb
       def metadata=(_)
       end
 
+      # When true, this invoice will automatically be issued upon creation. When false,
+      #   the resulting invoice will require manual review to issue. Defaulted to false.
       sig { returns(T.nilable(T::Boolean)) }
       def will_auto_issue
       end
@@ -191,6 +210,7 @@ module Orb
       end
 
       class LineItem < Orb::BaseModel
+        # A date string to specify the line item's end date in the customer's timezone.
         sig { returns(Date) }
         def end_date
         end
@@ -215,6 +235,7 @@ module Orb
         def model_type=(_)
         end
 
+        # The name of the line item.
         sig { returns(String) }
         def name
         end
@@ -223,6 +244,7 @@ module Orb
         def name=(_)
         end
 
+        # The number of units on the line item
         sig { returns(Float) }
         def quantity
         end
@@ -231,6 +253,7 @@ module Orb
         def quantity=(_)
         end
 
+        # A date string to specify the line item's start date in the customer's timezone.
         sig { returns(Date) }
         def start_date
         end
@@ -295,6 +318,7 @@ module Orb
         end
 
         class UnitConfig < Orb::BaseModel
+          # Rate per unit of usage
           sig { returns(String) }
           def unit_amount
           end

@@ -19,6 +19,9 @@ module Orb
       def description=(_)
       end
 
+      # The Item resource represents a sellable product or good. Items are associated
+      #   with all line items, billable metrics, and prices and are used for defining
+      #   external sync behavior for invoices and tax calculation purposes.
       sig { returns(Orb::Models::Item) }
       def item
       end
@@ -27,6 +30,10 @@ module Orb
       def item=(_)
       end
 
+      # User specified key-value pairs for the resource. If not present, this defaults
+      #   to an empty dictionary. Individual keys can be removed by setting the value to
+      #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+      #   `null`.
       sig { returns(T::Hash[Symbol, String]) }
       def metadata
       end
@@ -51,6 +58,9 @@ module Orb
       def status=(_)
       end
 
+      # The Metric resource represents a calculation of a quantity based on events.
+      #   Metrics are defined by the query that transforms raw usage events into
+      #   meaningful values for your customers.
       sig do
         params(
           id: String,

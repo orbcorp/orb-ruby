@@ -44,12 +44,17 @@ module Orb
         variant enum: -> { Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::UnionMember1 }
 
         # @abstract
-        #
         class UnionMember1 < Orb::Enum
           IMMEDIATE = :immediate
 
           finalize!
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::UnionMember1)]
+        #     def variants; end
+        #   end
       end
     end
   end

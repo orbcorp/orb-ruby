@@ -6,6 +6,7 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # A name to meaningfully identify the action or event type.
       sig { returns(String) }
       def event_name
       end
@@ -14,6 +15,8 @@ module Orb
       def event_name=(_)
       end
 
+      # A dictionary of custom properties. Values in this dictionary must be numeric,
+      #   boolean, or strings. Nested dictionaries are disallowed.
       sig { returns(T.anything) }
       def properties
       end
@@ -22,6 +25,9 @@ module Orb
       def properties=(_)
       end
 
+      # An ISO 8601 format date with no timezone offset (i.e. UTC). This should
+      #   represent the time that usage was recorded, and is particularly important to
+      #   attribute usage to a given billing period.
       sig { returns(Time) }
       def timestamp
       end
@@ -30,6 +36,7 @@ module Orb
       def timestamp=(_)
       end
 
+      # The Orb Customer identifier
       sig { returns(T.nilable(String)) }
       def customer_id
       end
@@ -38,6 +45,8 @@ module Orb
       def customer_id=(_)
       end
 
+      # An alias for the Orb customer, whose mapping is specified when creating the
+      #   customer
       sig { returns(T.nilable(String)) }
       def external_customer_id
       end

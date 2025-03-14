@@ -164,7 +164,6 @@ module Orb
       # def initialize: (Hash | Orb::BaseModel) -> void
 
       # @abstract
-      #
       class DateType < Orb::Enum
         DUE_DATE = :due_date
         INVOICE_DATE = :invoice_date
@@ -173,7 +172,6 @@ module Orb
       end
 
       # @abstract
-      #
       class Status < Orb::Enum
         DRAFT = :draft
         ISSUED = :issued

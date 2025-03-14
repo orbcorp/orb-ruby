@@ -3,6 +3,7 @@
 module Orb
   module Models
     class EventDeprecateResponse < Orb::BaseModel
+      # event_id of the deprecated event, if successfully updated
       sig { returns(String) }
       def deprecated
       end

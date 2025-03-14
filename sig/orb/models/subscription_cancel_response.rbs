@@ -381,7 +381,7 @@ module Orb
             def to_hash: -> Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::plan_phase_maximum_adjustment
           end
 
-          private def self.variants: -> [[:usage_discount, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment], [:amount_discount, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment], [:percentage_discount, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment], [:minimum, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment], [:maximum, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]]
+          def self.variants: -> [Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
         end
       end
 
@@ -531,7 +531,7 @@ module Orb
           def to_hash: -> Orb::Models::SubscriptionCancelResponse::DiscountInterval::usage_discount_interval
         end
 
-        private def self.variants: -> [[:amount, Orb::Models::SubscriptionCancelResponse::DiscountInterval::AmountDiscountInterval], [:percentage, Orb::Models::SubscriptionCancelResponse::DiscountInterval::PercentageDiscountInterval], [:usage, Orb::Models::SubscriptionCancelResponse::DiscountInterval::UsageDiscountInterval]]
+        def self.variants: -> [Orb::Models::SubscriptionCancelResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionCancelResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionCancelResponse::DiscountInterval::UsageDiscountInterval]
       end
 
       type fixed_fee_quantity_schedule =

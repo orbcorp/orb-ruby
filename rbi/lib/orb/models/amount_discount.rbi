@@ -3,6 +3,7 @@
 module Orb
   module Models
     class AmountDiscount < Orb::BaseModel
+      # Only available if discount_type is `amount`.
       sig { returns(String) }
       def amount_discount
       end
@@ -11,6 +12,8 @@ module Orb
       def amount_discount=(_)
       end
 
+      # List of price_ids that this discount applies to. For plan/plan phase discounts,
+      #   this can be a subset of prices.
       sig { returns(T::Array[String]) }
       def applies_to_price_ids
       end

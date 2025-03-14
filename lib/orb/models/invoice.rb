@@ -711,7 +711,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # @abstract
-        #
         class Action < Orb::Enum
           APPLIED_TO_INVOICE = :applied_to_invoice
           MANUAL_ADJUSTMENT = :manual_adjustment
@@ -757,7 +756,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Type < Orb::Enum
           INCREMENT = :increment
           DECREMENT = :decrement
@@ -898,7 +896,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # @abstract
-        #
         class Country < Orb::Enum
           AD = :AD
           AE = :AE
@@ -983,7 +980,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Type < Orb::Enum
           AD_NRT = :ad_nrt
           AE_TRN = :ae_trn
@@ -1062,7 +1058,6 @@ module Orb
       end
 
       # @abstract
-      #
       class InvoiceSource < Orb::Enum
         SUBSCRIPTION = :subscription
         PARTIAL = :partial
@@ -1275,7 +1270,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # @abstract
-        #
         class Adjustment < Orb::Union
           discriminator :adjustment_type
 
@@ -1639,10 +1633,15 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment)]
+          #     def variants; end
+          #   end
         end
 
         # @deprecated
-        #
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -1669,7 +1668,6 @@ module Orb
         end
 
         # @deprecated
-        #
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -1696,7 +1694,6 @@ module Orb
         end
 
         # @abstract
-        #
         class SubLineItem < Orb::Union
           discriminator :type
 
@@ -1945,6 +1942,12 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
           end
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem)]
+          #     def variants; end
+          #   end
         end
 
         class TaxAmount < Orb::BaseModel
@@ -2127,7 +2130,6 @@ module Orb
       end
 
       # @abstract
-      #
       class Status < Orb::Enum
         ISSUED = :issued
         PAID = :paid

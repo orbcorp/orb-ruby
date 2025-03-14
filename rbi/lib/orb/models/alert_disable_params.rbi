@@ -6,6 +6,7 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # Used to update the status of a plan alert scoped to this subscription_id
       sig { returns(T.nilable(String)) }
       def subscription_id
       end

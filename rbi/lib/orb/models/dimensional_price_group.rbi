@@ -11,6 +11,9 @@ module Orb
       def id=(_)
       end
 
+      # The billable metric associated with this dimensional price group. All prices
+      #   associated with this dimensional price group will be computed using this
+      #   billable metric.
       sig { returns(String) }
       def billable_metric_id
       end
@@ -19,6 +22,7 @@ module Orb
       def billable_metric_id=(_)
       end
 
+      # The dimensions that this dimensional price group is defined over
       sig { returns(T::Array[String]) }
       def dimensions
       end
@@ -27,6 +31,7 @@ module Orb
       def dimensions=(_)
       end
 
+      # An alias for the dimensional price group
       sig { returns(T.nilable(String)) }
       def external_dimensional_price_group_id
       end
@@ -35,6 +40,10 @@ module Orb
       def external_dimensional_price_group_id=(_)
       end
 
+      # User specified key-value pairs for the resource. If not present, this defaults
+      #   to an empty dictionary. Individual keys can be removed by setting the value to
+      #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+      #   `null`.
       sig { returns(T::Hash[Symbol, String]) }
       def metadata
       end
@@ -43,6 +52,7 @@ module Orb
       def metadata=(_)
       end
 
+      # The name of the dimensional price group
       sig { returns(String) }
       def name
       end
@@ -51,6 +61,9 @@ module Orb
       def name=(_)
       end
 
+      # A dimensional price group is used to partition the result of a billable metric
+      #   by a set of dimensions. Prices in a price group must specify the parition used
+      #   to derive their usage.
       sig do
         params(
           id: String,

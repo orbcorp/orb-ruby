@@ -473,7 +473,6 @@ module Orb
       end
 
       # @abstract
-      #
       class TaxConfiguration < Orb::Union
         discriminator :tax_provider
 
@@ -528,6 +527,12 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration)]
+        #     def variants; end
+        #   end
       end
 
       class TaxID < Orb::BaseModel
@@ -662,7 +667,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # @abstract
-        #
         class Country < Orb::Enum
           AD = :AD
           AE = :AE
@@ -747,7 +751,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Type < Orb::Enum
           AD_NRT = :ad_nrt
           AE_TRN = :ae_trn

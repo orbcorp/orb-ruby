@@ -3,6 +3,7 @@
 module Orb
   module Models
     class EventUpdateResponse < Orb::BaseModel
+      # event_id of the amended event, if successfully ingested
       sig { returns(String) }
       def amended
       end

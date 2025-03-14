@@ -35,7 +35,6 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Page<Orb::Models::Customers::CreditListResponse>]
-        #
         def list(customer_id, params = {})
           parsed, options = Orb::Models::Customers::CreditListParams.dump_request(params)
           @client.request(
@@ -73,7 +72,6 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Page<Orb::Models::Customers::CreditListByExternalIDResponse>]
-        #
         def list_by_external_id(external_customer_id, params = {})
           parsed, options = Orb::Models::Customers::CreditListByExternalIDParams.dump_request(params)
           @client.request(
@@ -87,7 +85,6 @@ module Orb
         end
 
         # @param client [Orb::Client]
-        #
         def initialize(client:)
           @client = client
           @ledger = Orb::Resources::Customers::Credits::Ledger.new(client: client)

@@ -874,7 +874,7 @@ module Orb
             end
           end
 
-          private def self.variants: -> [[:increment, Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry], [:decrement, Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry], [:expiration_change, Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry], [:credit_block_expiry, Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry], [:void, Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry], [:void_initiated, Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry], [:amendment, Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry]]
+          def self.variants: -> [Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry]
         end
       end
     end

@@ -3,6 +3,7 @@
 module Orb
   module Models
     class Alert < Orb::BaseModel
+      # Also referred to as alert_id in this documentation.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Orb
       def id=(_)
       end
 
+      # The creation time of the resource in Orb.
       sig { returns(Time) }
       def created_at
       end
@@ -19,6 +21,7 @@ module Orb
       def created_at=(_)
       end
 
+      # The name of the currency the credit balance or invoice cost is denominated in.
       sig { returns(T.nilable(String)) }
       def currency
       end
@@ -27,6 +30,7 @@ module Orb
       def currency=(_)
       end
 
+      # The customer the alert applies to.
       sig { returns(T.nilable(Orb::Models::Alert::Customer)) }
       def customer
       end
@@ -35,6 +39,7 @@ module Orb
       def customer=(_)
       end
 
+      # Whether the alert is enabled or disabled.
       sig { returns(T::Boolean) }
       def enabled
       end
@@ -43,6 +48,7 @@ module Orb
       def enabled=(_)
       end
 
+      # The metric the alert applies to.
       sig { returns(T.nilable(Orb::Models::Alert::Metric)) }
       def metric
       end
@@ -51,6 +57,7 @@ module Orb
       def metric=(_)
       end
 
+      # The plan the alert applies to.
       sig { returns(T.nilable(Orb::Models::Alert::Plan)) }
       def plan
       end
@@ -59,6 +66,7 @@ module Orb
       def plan=(_)
       end
 
+      # The subscription the alert applies to.
       sig { returns(T.nilable(Orb::Models::Alert::Subscription)) }
       def subscription
       end
@@ -69,6 +77,8 @@ module Orb
       def subscription=(_)
       end
 
+      # The thresholds that define the conditions under which the alert will be
+      #   triggered.
       sig { returns(T.nilable(T::Array[Orb::Models::Alert::Threshold])) }
       def thresholds
       end
@@ -80,6 +90,7 @@ module Orb
       def thresholds=(_)
       end
 
+      # The type of alert. This must be a valid alert type.
       sig { returns(Symbol) }
       def type
       end
@@ -88,6 +99,11 @@ module Orb
       def type=(_)
       end
 
+      # [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
+      #   usage, or credit balance and trigger webhooks when a threshold is exceeded.
+      #
+      #   Alerts created through the API can be scoped to either customers or
+      #   subscriptions.
       sig do
         params(
           id: String,
@@ -143,6 +159,7 @@ module Orb
         def external_customer_id=(_)
         end
 
+        # The customer the alert applies to.
         sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
         def self.new(id:, external_customer_id:)
         end
@@ -161,6 +178,7 @@ module Orb
         def id=(_)
         end
 
+        # The metric the alert applies to.
         sig { params(id: String).returns(T.attached_class) }
         def self.new(id:)
         end
@@ -179,6 +197,9 @@ module Orb
         def id=(_)
         end
 
+        # An optional user-defined ID for this plan resource, used throughout the system
+        #   as an alias for this Plan. Use this field to identify a plan by an existing
+        #   identifier in your system.
         sig { returns(T.nilable(String)) }
         def external_plan_id
         end
@@ -203,6 +224,7 @@ module Orb
         def plan_version=(_)
         end
 
+        # The plan the alert applies to.
         sig do
           params(
             id: T.nilable(String),
@@ -239,6 +261,7 @@ module Orb
         def id=(_)
         end
 
+        # The subscription the alert applies to.
         sig { params(id: String).returns(T.attached_class) }
         def self.new(id:)
         end
@@ -249,6 +272,9 @@ module Orb
       end
 
       class Threshold < Orb::BaseModel
+        # The value at which an alert will fire. For credit balance alerts, the alert will
+        #   fire at or below this value. For usage and cost alerts, the alert will fire at
+        #   or above this value.
         sig { returns(Float) }
         def value
         end
@@ -257,6 +283,8 @@ module Orb
         def value=(_)
         end
 
+        # Thresholds are used to define the conditions under which an alert will be
+        #   triggered.
         sig { params(value: Float).returns(T.attached_class) }
         def self.new(value:)
         end
@@ -266,6 +294,7 @@ module Orb
         end
       end
 
+      # The type of alert. This must be a valid alert type.
       class Type < Orb::Enum
         abstract!
 

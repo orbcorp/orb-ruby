@@ -17,6 +17,10 @@ module Orb
           ?Orb::Models::CreditNoteListParams | ::Hash[Symbol, top] params
         ) -> Orb::Page[Orb::Models::CreditNote]
         | (
+          created_at_gt: Time?,
+          created_at_gte: Time?,
+          created_at_lt: Time?,
+          created_at_lte: Time?,
           cursor: String?,
           limit: Integer,
           request_options: Orb::request_opts

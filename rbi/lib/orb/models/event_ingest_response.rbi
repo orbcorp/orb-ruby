@@ -3,6 +3,8 @@
 module Orb
   module Models
     class EventIngestResponse < Orb::BaseModel
+      # Contains all failing validation events. In the case of a 200, this array will
+      #   always be empty. This field will always be present.
       sig { returns(T::Array[Orb::Models::EventIngestResponse::ValidationFailed]) }
       def validation_failed
       end
@@ -14,6 +16,8 @@ module Orb
       def validation_failed=(_)
       end
 
+      # Optional debug information (only present when debug=true is passed to the
+      #   endpoint). Contains ingested and duplicate event idempotency keys.
       sig { returns(T.nilable(Orb::Models::EventIngestResponse::Debug)) }
       def debug
       end
@@ -48,6 +52,7 @@ module Orb
       end
 
       class ValidationFailed < Orb::BaseModel
+        # The passed idempotency_key corresponding to the validation_errors
         sig { returns(String) }
         def idempotency_key
         end
@@ -56,6 +61,8 @@ module Orb
         def idempotency_key=(_)
         end
 
+        # An array of strings corresponding to validation failures for this
+        #   idempotency_key.
         sig { returns(T::Array[String]) }
         def validation_errors
         end
@@ -90,6 +97,8 @@ module Orb
         def ingested=(_)
         end
 
+        # Optional debug information (only present when debug=true is passed to the
+        #   endpoint). Contains ingested and duplicate event idempotency keys.
         sig { params(duplicate: T::Array[String], ingested: T::Array[String]).returns(T.attached_class) }
         def self.new(duplicate:, ingested:)
         end

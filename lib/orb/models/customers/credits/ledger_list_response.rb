@@ -184,7 +184,6 @@ module Orb
             end
 
             # @abstract
-            #
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -370,7 +369,6 @@ module Orb
             end
 
             # @abstract
-            #
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -542,7 +540,6 @@ module Orb
             end
 
             # @abstract
-            #
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -707,7 +704,6 @@ module Orb
             end
 
             # @abstract
-            #
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -885,7 +881,6 @@ module Orb
             end
 
             # @abstract
-            #
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -1071,7 +1066,6 @@ module Orb
             end
 
             # @abstract
-            #
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -1236,7 +1230,6 @@ module Orb
             end
 
             # @abstract
-            #
             class EntryStatus < Orb::Enum
               COMMITTED = :committed
               PENDING = :pending
@@ -1244,6 +1237,12 @@ module Orb
               finalize!
             end
           end
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry)]
+          #     def variants; end
+          #   end
         end
       end
     end

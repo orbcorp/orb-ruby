@@ -185,7 +185,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Customer]
-      #
       def create(params)
         parsed, options = Orb::Models::CustomerCreateParams.dump_request(params)
         @client.request(
@@ -362,7 +361,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Customer]
-      #
       def update(customer_id, params = {})
         parsed, options = Orb::Models::CustomerUpdateParams.dump_request(params)
         @client.request(
@@ -399,7 +397,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Page<Orb::Models::Customer>]
-      #
       def list(params = {})
         parsed, options = Orb::Models::CustomerListParams.dump_request(params)
         @client.request(
@@ -435,7 +432,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
-      #
       def delete(customer_id, params = {})
         @client.request(
           method: :delete,
@@ -459,7 +455,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Customer]
-      #
       def fetch(customer_id, params = {})
         @client.request(
           method: :get,
@@ -482,7 +477,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Customer]
-      #
       def fetch_by_external_id(external_customer_id, params = {})
         @client.request(
           method: :get,
@@ -506,7 +500,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
-      #
       def sync_payment_methods_from_gateway(external_customer_id, params = {})
         @client.request(
           method: :post,
@@ -533,7 +526,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
-      #
       def sync_payment_methods_from_gateway_by_external_customer_id(customer_id, params = {})
         @client.request(
           method: :post,
@@ -707,7 +699,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Customer]
-      #
       def update_by_external_id(id, params = {})
         parsed, options = Orb::Models::CustomerUpdateByExternalIDParams.dump_request(params)
         @client.request(
@@ -720,7 +711,6 @@ module Orb
       end
 
       # @param client [Orb::Client]
-      #
       def initialize(client:)
         @client = client
         @costs = Orb::Resources::Customers::Costs.new(client: client)

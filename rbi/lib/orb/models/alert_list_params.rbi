@@ -38,6 +38,8 @@ module Orb
       def created_at_lte=(_)
       end
 
+      # Cursor for pagination. This can be populated by the `next_cursor` value returned
+      #   from the initial request.
       sig { returns(T.nilable(String)) }
       def cursor
       end
@@ -46,6 +48,7 @@ module Orb
       def cursor=(_)
       end
 
+      # Fetch alerts scoped to this customer_id
       sig { returns(T.nilable(String)) }
       def customer_id
       end
@@ -54,6 +57,7 @@ module Orb
       def customer_id=(_)
       end
 
+      # Fetch alerts scoped to this external_customer_id
       sig { returns(T.nilable(String)) }
       def external_customer_id
       end
@@ -62,6 +66,7 @@ module Orb
       def external_customer_id=(_)
       end
 
+      # The number of items to fetch. Defaults to 20.
       sig { returns(T.nilable(Integer)) }
       def limit
       end
@@ -70,6 +75,7 @@ module Orb
       def limit=(_)
       end
 
+      # Fetch alerts scoped to this subscription_id
       sig { returns(T.nilable(String)) }
       def subscription_id
       end

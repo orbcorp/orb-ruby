@@ -6,6 +6,7 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # The exclusive upper bound for event timestamps
       sig { returns(Time) }
       def timeframe_end
       end
@@ -14,6 +15,7 @@ module Orb
       def timeframe_end=(_)
       end
 
+      # The inclusive lower bound for event timestamps
       sig { returns(Time) }
       def timeframe_start
       end
@@ -22,6 +24,7 @@ module Orb
       def timeframe_start=(_)
       end
 
+      # The ID of the customer to which this evaluation is scoped.
       sig { returns(T.nilable(String)) }
       def customer_id
       end
@@ -30,6 +33,7 @@ module Orb
       def customer_id=(_)
       end
 
+      # The external customer ID of the customer to which this evaluation is scoped.
       sig { returns(T.nilable(String)) }
       def external_customer_id
       end
@@ -38,6 +42,9 @@ module Orb
       def external_customer_id=(_)
       end
 
+      # A boolean
+      #   [computed property](/extensibility/advanced-metrics#computed-properties) used to
+      #   filter the underlying billable metric
       sig { returns(T.nilable(String)) }
       def filter
       end
@@ -46,6 +53,9 @@ module Orb
       def filter=(_)
       end
 
+      # Properties (or
+      #   [computed properties](/extensibility/advanced-metrics#computed-properties)) used
+      #   to group the underlying billable metric
       sig { returns(T.nilable(T::Array[String])) }
       def grouping_keys
       end

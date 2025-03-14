@@ -6,6 +6,9 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # When specified in conjunction with `group_by`, this parameter filters usage to a
+      #   single billable metric. Note that both `group_by` and `billable_metric_id` must
+      #   be specified together.
       sig { returns(T.nilable(String)) }
       def billable_metric_id
       end
@@ -30,6 +33,7 @@ module Orb
       def first_dimension_value=(_)
       end
 
+      # This determines the windowing of usage reporting.
       sig { returns(T.nilable(Symbol)) }
       def granularity
       end
@@ -38,6 +42,7 @@ module Orb
       def granularity=(_)
       end
 
+      # Groups per-price usage by the key provided.
       sig { returns(T.nilable(String)) }
       def group_by
       end
@@ -62,6 +67,7 @@ module Orb
       def second_dimension_value=(_)
       end
 
+      # Usage returned is exclusive of `timeframe_end`.
       sig { returns(T.nilable(Time)) }
       def timeframe_end
       end
@@ -70,6 +76,7 @@ module Orb
       def timeframe_end=(_)
       end
 
+      # Usage returned is inclusive of `timeframe_start`.
       sig { returns(T.nilable(Time)) }
       def timeframe_start
       end
@@ -78,6 +85,10 @@ module Orb
       def timeframe_start=(_)
       end
 
+      # Controls whether Orb returns cumulative usage since the start of the billing
+      #   period, or incremental day-by-day usage. If your customer has minimums or
+      #   discounts, it's strongly recommended that you use the default cumulative
+      #   behavior.
       sig { returns(T.nilable(Symbol)) }
       def view_mode
       end
@@ -138,6 +149,7 @@ module Orb
       def to_hash
       end
 
+      # This determines the windowing of usage reporting.
       class Granularity < Orb::Enum
         abstract!
 
@@ -150,6 +162,10 @@ module Orb
         end
       end
 
+      # Controls whether Orb returns cumulative usage since the start of the billing
+      #   period, or incremental day-by-day usage. If your customer has minimums or
+      #   discounts, it's strongly recommended that you use the default cumulative
+      #   behavior.
       class ViewMode < Orb::Enum
         abstract!
 

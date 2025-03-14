@@ -21,7 +21,6 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Page<Orb::Models::Subscription>]
-        #
         def list(coupon_id, params = {})
           parsed, options = Orb::Models::Coupons::SubscriptionListParams.dump_request(params)
           @client.request(
@@ -35,7 +34,6 @@ module Orb
         end
 
         # @param client [Orb::Client]
-        #
         def initialize(client:)
           @client = client
         end

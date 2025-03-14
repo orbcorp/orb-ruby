@@ -38,6 +38,8 @@ module Orb
       def created_at_lte=(_)
       end
 
+      # Cursor for pagination. This can be populated by the `next_cursor` value returned
+      #   from the initial request.
       sig { returns(T.nilable(String)) }
       def cursor
       end
@@ -46,6 +48,7 @@ module Orb
       def cursor=(_)
       end
 
+      # The number of items to fetch. Defaults to 20.
       sig { returns(T.nilable(Integer)) }
       def limit
       end
@@ -54,6 +57,7 @@ module Orb
       def limit=(_)
       end
 
+      # The plan status to filter to ('active', 'archived', or 'draft').
       sig { returns(T.nilable(Symbol)) }
       def status
       end
@@ -105,6 +109,7 @@ module Orb
       def to_hash
       end
 
+      # The plan status to filter to ('active', 'archived', or 'draft').
       class Status < Orb::Enum
         abstract!
 

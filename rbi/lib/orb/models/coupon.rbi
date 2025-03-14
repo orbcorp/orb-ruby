@@ -3,6 +3,7 @@
 module Orb
   module Models
     class Coupon < Orb::BaseModel
+      # Also referred to as coupon_id in this documentation.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,8 @@ module Orb
       def id=(_)
       end
 
+      # An archived coupon can no longer be redeemed. Active coupons will have a value
+      #   of null for `archived_at`; this field will be non-null for archived coupons.
       sig { returns(T.nilable(Time)) }
       def archived_at
       end
@@ -30,6 +33,8 @@ module Orb
       def discount=(_)
       end
 
+      # This allows for a coupon's discount to apply for a limited time (determined in
+      #   months); a `null` value here means "unlimited time".
       sig { returns(T.nilable(Integer)) }
       def duration_in_months
       end
@@ -38,6 +43,8 @@ module Orb
       def duration_in_months=(_)
       end
 
+      # The maximum number of redemptions allowed for this coupon before it is
+      #   exhausted; `null` here means "unlimited".
       sig { returns(T.nilable(Integer)) }
       def max_redemptions
       end
@@ -46,6 +53,7 @@ module Orb
       def max_redemptions=(_)
       end
 
+      # This string can be used to redeem this coupon for a given subscription.
       sig { returns(String) }
       def redemption_code
       end
@@ -54,6 +62,7 @@ module Orb
       def redemption_code=(_)
       end
 
+      # The number of times this coupon has been redeemed.
       sig { returns(Integer) }
       def times_redeemed
       end
@@ -62,6 +71,11 @@ module Orb
       def times_redeemed=(_)
       end
 
+      # A coupon represents a reusable discount configuration that can be applied either
+      #   as a fixed or percentage amount to an invoice or subscription. Coupons are
+      #   activated using a redemption code, which applies the discount to a subscription
+      #   or invoice. The duration of a coupon determines how long it remains available
+      #   for use by end users.
       sig do
         params(
           id: String,
@@ -98,8 +112,8 @@ module Orb
         abstract!
 
         class << self
-          sig { override.returns([[Symbol, Orb::Models::PercentageDiscount], [Symbol, Orb::Models::AmountDiscount]]) }
-          private def variants
+          sig { override.returns([Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount]) }
+          def variants
           end
         end
       end

@@ -3,6 +3,8 @@
 module Orb
   module Models
     class PercentageDiscount < Orb::BaseModel
+      # List of price_ids that this discount applies to. For plan/plan phase discounts,
+      #   this can be a subset of prices.
       sig { returns(T::Array[String]) }
       def applies_to_price_ids
       end
@@ -19,6 +21,8 @@ module Orb
       def discount_type=(_)
       end
 
+      # Only available if discount_type is `percentage`. This is a number between 0
+      #   and 1.
       sig { returns(Float) }
       def percentage_discount
       end

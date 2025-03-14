@@ -7,6 +7,8 @@ module Orb
         extend Orb::RequestParameters::Converter
         include Orb::RequestParameters
 
+        # Cursor for pagination. This can be populated by the `next_cursor` value returned
+        #   from the initial request.
         sig { returns(T.nilable(String)) }
         def cursor
         end
@@ -15,6 +17,7 @@ module Orb
         def cursor=(_)
         end
 
+        # The number of items to fetch. Defaults to 20.
         sig { returns(T.nilable(Integer)) }
         def limit
         end

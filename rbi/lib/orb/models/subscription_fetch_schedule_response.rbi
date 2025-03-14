@@ -73,6 +73,9 @@ module Orb
         def id=(_)
         end
 
+        # An optional user-defined ID for this plan resource, used throughout the system
+        #   as an alias for this Plan. Use this field to identify a plan by an existing
+        #   identifier in your system.
         sig { returns(T.nilable(String)) }
         def external_plan_id
         end

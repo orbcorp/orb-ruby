@@ -34,6 +34,7 @@ module Orb
       def discount=(_)
       end
 
+      # This string can be used to redeem this coupon for a given subscription.
       sig { returns(String) }
       def redemption_code
       end
@@ -42,6 +43,8 @@ module Orb
       def redemption_code=(_)
       end
 
+      # This allows for a coupon's discount to apply for a limited time (determined in
+      #   months); a `null` value here means "unlimited time".
       sig { returns(T.nilable(Integer)) }
       def duration_in_months
       end
@@ -50,6 +53,8 @@ module Orb
       def duration_in_months=(_)
       end
 
+      # The maximum number of redemptions allowed for this coupon before it is
+      #   exhausted;`null` here means "unlimited".
       sig { returns(T.nilable(Integer)) }
       def max_redemptions
       end
@@ -151,10 +156,10 @@ module Orb
           sig do
             override
               .returns(
-                [[Symbol, Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount], [Symbol, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]]
+                [Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]
               )
           end
-          private def variants
+          def variants
           end
         end
       end

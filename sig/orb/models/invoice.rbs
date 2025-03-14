@@ -1102,7 +1102,7 @@ module Orb
             def to_hash: -> Orb::Models::Invoice::LineItem::Adjustment::monetary_maximum_adjustment
           end
 
-          private def self.variants: -> [[:usage_discount, Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment], [:amount_discount, Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment], [:percentage_discount, Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment], [:minimum, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment], [:maximum, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment]]
+          def self.variants: -> [Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment]
         end
 
         type maximum =
@@ -1357,7 +1357,7 @@ module Orb
             end
           end
 
-          private def self.variants: -> [[:matrix, Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem], [:tier, Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem], [:"'null'", Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem]]
+          def self.variants: -> [Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem]
         end
 
         type tax_amount =
