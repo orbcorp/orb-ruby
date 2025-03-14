@@ -2,6 +2,16 @@
 
 module Orb
   module Models
+    # The Price resource represents a price that can be billed on a subscription,
+    #   resulting in a charge on an invoice in the form of an invoice line item. Prices
+    #   take a quantity and determine an amount to bill.
+    #
+    #   Orb supports a few different pricing models out of the box. Each of these models
+    #   is serialized differently in a given Price object. The model_type field
+    #   determines the key for the configuration object that is present.
+    #
+    #   For more on the types of prices, see
+    #   [the core concepts documentation](/core-concepts#plan-and-price)
     class Price < Orb::Union
       abstract!
 
@@ -173,6 +183,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -522,6 +536,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -530,6 +546,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -550,6 +567,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -558,6 +577,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -591,6 +611,7 @@ module Orb
         end
 
         class UnitConfig < Orb::BaseModel
+          # Rate per unit of usage
           sig { returns(String) }
           def unit_amount
           end
@@ -808,6 +829,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -1160,6 +1185,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -1168,6 +1195,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -1188,6 +1216,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -1196,6 +1226,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -1216,6 +1247,7 @@ module Orb
         end
 
         class PackageConfig < Orb::BaseModel
+          # A currency amount to rate usage by
           sig { returns(String) }
           def package_amount
           end
@@ -1224,6 +1256,8 @@ module Orb
           def package_amount=(_)
           end
 
+          # An integer amount to represent package size. For example, 1000 here would divide
+          #   usage by 1000 before multiplying by package_amount in rating
           sig { returns(Integer) }
           def package_size
           end
@@ -1465,6 +1499,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -1806,6 +1844,7 @@ module Orb
         end
 
         class MatrixConfig < Orb::BaseModel
+          # Default per unit rate for any usage not bucketed into a specified matrix_value
           sig { returns(String) }
           def default_unit_amount
           end
@@ -1814,6 +1853,7 @@ module Orb
           def default_unit_amount=(_)
           end
 
+          # One or two event property values to evaluate matrix groups by
           sig { returns(T::Array[T.nilable(String)]) }
           def dimensions
           end
@@ -1822,6 +1862,7 @@ module Orb
           def dimensions=(_)
           end
 
+          # Matrix values for specified matrix grouping keys
           sig { returns(T::Array[Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue]) }
           def matrix_values
           end
@@ -1858,6 +1899,9 @@ module Orb
           end
 
           class MatrixValue < Orb::BaseModel
+            # One or two matrix keys to filter usage to this Matrix value by. For example,
+            #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+            #   instance tier.
             sig { returns(T::Array[T.nilable(String)]) }
             def dimension_values
             end
@@ -1866,6 +1910,7 @@ module Orb
             def dimension_values=(_)
             end
 
+            # Unit price for the specified dimension_values
             sig { returns(String) }
             def unit_amount
             end
@@ -1890,6 +1935,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -1898,6 +1945,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -1918,6 +1966,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -1926,6 +1976,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -2158,6 +2209,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -2510,6 +2565,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -2518,6 +2575,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -2538,6 +2596,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -2546,6 +2606,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -2579,6 +2640,7 @@ module Orb
         end
 
         class TieredConfig < Orb::BaseModel
+          # Tiers for rating based on total usage quantities into the specified tier
           sig { returns(T::Array[Orb::Models::Price::TieredPrice::TieredConfig::Tier]) }
           def tiers
           end
@@ -2599,6 +2661,7 @@ module Orb
           end
 
           class Tier < Orb::BaseModel
+            # Inclusive tier starting value
             sig { returns(Float) }
             def first_unit
             end
@@ -2607,6 +2670,7 @@ module Orb
             def first_unit=(_)
             end
 
+            # Amount per unit
             sig { returns(String) }
             def unit_amount
             end
@@ -2615,6 +2679,7 @@ module Orb
             def unit_amount=(_)
             end
 
+            # Exclusive tier ending value. If null, this is treated as the last tier
             sig { returns(T.nilable(Float)) }
             def last_unit
             end
@@ -2839,6 +2904,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -3191,6 +3260,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -3199,6 +3270,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -3219,6 +3291,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -3227,6 +3301,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -3260,6 +3335,8 @@ module Orb
         end
 
         class TieredBpsConfig < Orb::BaseModel
+          # Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
+          #   tiers
           sig { returns(T::Array[Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier]) }
           def tiers
           end
@@ -3283,6 +3360,7 @@ module Orb
           end
 
           class Tier < Orb::BaseModel
+            # Per-event basis point rate
             sig { returns(Float) }
             def bps
             end
@@ -3291,6 +3369,7 @@ module Orb
             def bps=(_)
             end
 
+            # Inclusive tier starting value
             sig { returns(String) }
             def minimum_amount
             end
@@ -3299,6 +3378,7 @@ module Orb
             def minimum_amount=(_)
             end
 
+            # Exclusive tier ending value
             sig { returns(T.nilable(String)) }
             def maximum_amount
             end
@@ -3307,6 +3387,7 @@ module Orb
             def maximum_amount=(_)
             end
 
+            # Per unit maximum to charge
             sig { returns(T.nilable(String)) }
             def per_unit_maximum
             end
@@ -3551,6 +3632,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -3784,6 +3869,7 @@ module Orb
         end
 
         class BpsConfig < Orb::BaseModel
+          # Basis point take rate per event
           sig { returns(Float) }
           def bps
           end
@@ -3792,6 +3878,7 @@ module Orb
           def bps=(_)
           end
 
+          # Optional currency amount maximum to cap spend per event
           sig { returns(T.nilable(String)) }
           def per_unit_maximum
           end
@@ -3918,6 +4005,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -3926,6 +4015,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -3946,6 +4036,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -3954,6 +4046,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -4197,6 +4290,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -4430,6 +4527,8 @@ module Orb
         end
 
         class BulkBpsConfig < Orb::BaseModel
+          # Tiers for a bulk BPS pricing model where all usage is aggregated to a single
+          #   tier based on total volume
           sig { returns(T::Array[Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier]) }
           def tiers
           end
@@ -4450,6 +4549,7 @@ module Orb
           end
 
           class Tier < Orb::BaseModel
+            # Basis points to rate on
             sig { returns(Float) }
             def bps
             end
@@ -4458,6 +4558,7 @@ module Orb
             def bps=(_)
             end
 
+            # Upper bound for tier
             sig { returns(T.nilable(String)) }
             def maximum_amount
             end
@@ -4466,6 +4567,7 @@ module Orb
             def maximum_amount=(_)
             end
 
+            # The maximum amount to charge for any one event
             sig { returns(T.nilable(String)) }
             def per_unit_maximum
             end
@@ -4604,6 +4706,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -4612,6 +4716,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -4632,6 +4737,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -4640,6 +4747,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -4880,6 +4988,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -5113,6 +5225,7 @@ module Orb
         end
 
         class BulkConfig < Orb::BaseModel
+          # Bulk tiers for rating based on total usage volume
           sig { returns(T::Array[Orb::Models::Price::BulkPrice::BulkConfig::Tier]) }
           def tiers
           end
@@ -5133,6 +5246,7 @@ module Orb
           end
 
           class Tier < Orb::BaseModel
+            # Amount per unit
             sig { returns(String) }
             def unit_amount
             end
@@ -5141,6 +5255,7 @@ module Orb
             def unit_amount=(_)
             end
 
+            # Upper bound for this tier
             sig { returns(T.nilable(Float)) }
             def maximum_units
             end
@@ -5268,6 +5383,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -5276,6 +5393,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -5296,6 +5414,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -5304,6 +5424,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -5539,6 +5660,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -5888,6 +6013,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -5896,6 +6023,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -5916,6 +6044,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -5924,6 +6054,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -6159,6 +6290,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -6508,6 +6643,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -6516,6 +6653,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -6536,6 +6674,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -6544,6 +6684,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -6787,6 +6928,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -7128,6 +7273,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -7136,6 +7283,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -7156,6 +7304,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -7164,6 +7314,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -7399,6 +7550,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -7748,6 +7903,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -7756,6 +7913,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -7776,6 +7934,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -7784,6 +7944,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -8019,6 +8180,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -8368,6 +8533,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -8376,6 +8543,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -8396,6 +8564,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -8404,6 +8574,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -8639,6 +8810,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -8988,6 +9163,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -8996,6 +9173,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -9016,6 +9194,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -9024,6 +9204,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -9259,6 +9440,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -9608,6 +9793,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -9616,6 +9803,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -9636,6 +9824,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -9644,6 +9834,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -9890,6 +10081,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -10231,6 +10426,7 @@ module Orb
         end
 
         class MatrixWithAllocationConfig < Orb::BaseModel
+          # Allocation to be used to calculate the price
           sig { returns(Float) }
           def allocation
           end
@@ -10239,6 +10435,7 @@ module Orb
           def allocation=(_)
           end
 
+          # Default per unit rate for any usage not bucketed into a specified matrix_value
           sig { returns(String) }
           def default_unit_amount
           end
@@ -10247,6 +10444,7 @@ module Orb
           def default_unit_amount=(_)
           end
 
+          # One or two event property values to evaluate matrix groups by
           sig { returns(T::Array[T.nilable(String)]) }
           def dimensions
           end
@@ -10255,6 +10453,7 @@ module Orb
           def dimensions=(_)
           end
 
+          # Matrix values for specified matrix grouping keys
           sig { returns(T::Array[Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue]) }
           def matrix_values
           end
@@ -10295,6 +10494,9 @@ module Orb
           end
 
           class MatrixValue < Orb::BaseModel
+            # One or two matrix keys to filter usage to this Matrix value by. For example,
+            #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+            #   instance tier.
             sig { returns(T::Array[T.nilable(String)]) }
             def dimension_values
             end
@@ -10303,6 +10505,7 @@ module Orb
             def dimension_values=(_)
             end
 
+            # Unit price for the specified dimension_values
             sig { returns(String) }
             def unit_amount
             end
@@ -10327,6 +10530,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -10335,6 +10540,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -10355,6 +10561,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -10363,6 +10571,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -10598,6 +10807,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -10947,6 +11160,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -10955,6 +11170,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -10975,6 +11191,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -10983,6 +11201,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -11218,6 +11437,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -11567,6 +11790,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -11575,6 +11800,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -11595,6 +11821,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -11603,6 +11831,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -11846,6 +12075,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -12187,6 +12420,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -12195,6 +12430,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -12215,6 +12451,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -12223,6 +12461,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -12466,6 +12705,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -12807,6 +13050,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -12815,6 +13060,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -12835,6 +13081,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -12843,6 +13091,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -13086,6 +13335,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -13427,6 +13680,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -13435,6 +13690,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -13455,6 +13711,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -13463,6 +13721,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -13706,6 +13965,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -14047,6 +14310,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -14055,6 +14320,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -14075,6 +14341,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -14083,6 +14351,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -14326,6 +14595,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -14667,6 +14940,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -14675,6 +14950,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -14695,6 +14971,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -14703,6 +14981,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -14946,6 +15225,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -15287,6 +15570,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -15295,6 +15580,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -15315,6 +15601,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -15323,6 +15611,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -15566,6 +15855,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -15907,6 +16200,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -15915,6 +16210,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -15935,6 +16231,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -15943,6 +16241,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -16178,6 +16477,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -16529,6 +16832,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -16537,6 +16842,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -16557,6 +16863,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -16565,6 +16873,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -16802,6 +17111,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -17159,6 +17472,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -17167,6 +17482,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -17187,6 +17503,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -17195,6 +17513,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -17438,6 +17757,10 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         sig { returns(T::Hash[Symbol, String]) }
         def metadata
         end
@@ -17779,6 +18102,8 @@ module Orb
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -17787,6 +18112,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -17807,6 +18133,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -17815,6 +18143,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -17883,10 +18212,10 @@ module Orb
         sig do
           override
             .returns(
-              [[Symbol, Orb::Models::Price::UnitPrice], [Symbol, Orb::Models::Price::PackagePrice], [Symbol, Orb::Models::Price::MatrixPrice], [Symbol, Orb::Models::Price::TieredPrice], [Symbol, Orb::Models::Price::TieredBpsPrice], [Symbol, Orb::Models::Price::BpsPrice], [Symbol, Orb::Models::Price::BulkBpsPrice], [Symbol, Orb::Models::Price::BulkPrice], [Symbol, Orb::Models::Price::ThresholdTotalAmountPrice], [Symbol, Orb::Models::Price::TieredPackagePrice], [Symbol, Orb::Models::Price::GroupedTieredPrice], [Symbol, Orb::Models::Price::TieredWithMinimumPrice], [Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice], [Symbol, Orb::Models::Price::PackageWithAllocationPrice], [Symbol, Orb::Models::Price::UnitWithPercentPrice], [Symbol, Orb::Models::Price::MatrixWithAllocationPrice], [Symbol, Orb::Models::Price::TieredWithProrationPrice], [Symbol, Orb::Models::Price::UnitWithProrationPrice], [Symbol, Orb::Models::Price::GroupedAllocationPrice], [Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice], [Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice], [Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice], [Symbol, Orb::Models::Price::BulkWithProrationPrice], [Symbol, Orb::Models::Price::GroupedTieredPackagePrice], [Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice], [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice], [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice], [Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice]]
+              [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice]
             )
         end
-        private def variants
+        def variants
         end
       end
     end

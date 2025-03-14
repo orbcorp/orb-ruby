@@ -4,6 +4,7 @@ module Orb
   module Models
     module Customers
       class BalanceTransactionListResponse < Orb::BaseModel
+        # A unique id for this transaction.
         sig { returns(String) }
         def id
         end
@@ -20,6 +21,7 @@ module Orb
         def action=(_)
         end
 
+        # The value of the amount changed in the transaction.
         sig { returns(String) }
         def amount
         end
@@ -28,6 +30,7 @@ module Orb
         def amount=(_)
         end
 
+        # The creation time of this transaction.
         sig { returns(Time) }
         def created_at
         end
@@ -47,6 +50,7 @@ module Orb
         def credit_note=(_)
         end
 
+        # An optional description provided for manual customer balance adjustments.
         sig { returns(T.nilable(String)) }
         def description
         end
@@ -55,6 +59,8 @@ module Orb
         def description=(_)
         end
 
+        # The new value of the customer's balance prior to the transaction, in the
+        #   customer's currency.
         sig { returns(String) }
         def ending_balance
         end
@@ -74,6 +80,8 @@ module Orb
         def invoice=(_)
         end
 
+        # The original value of the customer's balance prior to the transaction, in the
+        #   customer's currency.
         sig { returns(String) }
         def starting_balance
         end
@@ -160,6 +168,7 @@ module Orb
         end
 
         class CreditNote < Orb::BaseModel
+          # The id of the Credit note
           sig { returns(String) }
           def id
           end
@@ -178,6 +187,7 @@ module Orb
         end
 
         class Invoice < Orb::BaseModel
+          # The Invoice id
           sig { returns(String) }
           def id
           end

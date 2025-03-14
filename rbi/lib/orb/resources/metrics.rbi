@@ -3,6 +3,9 @@
 module Orb
   module Resources
     class Metrics
+      # This endpoint is used to create a [metric](/core-concepts###metric) using a SQL
+      #   string. See [SQL support](/extensibility/advanced-metrics#sql-support) for a
+      #   description of constructing SQL queries with examples.
       sig do
         params(
           description: T.nilable(String),
@@ -14,9 +17,26 @@ module Orb
         )
           .returns(Orb::Models::BillableMetric)
       end
-      def create(description:, item_id:, name:, sql:, metadata: nil, request_options: {})
+      def create(
+        # A description of the metric.
+        description:,
+        # The id of the item
+        item_id:,
+        # The name of the metric.
+        name:,
+        # A sql string defining the metric.
+        sql:,
+        # User-specified key/value pairs for the resource. Individual keys can be removed
+        #   by setting the value to `null`, and the entire metadata mapping can be cleared
+        #   by setting `metadata` to `null`.
+        metadata: nil,
+        request_options: {}
+      )
       end
 
+      # This endpoint allows you to update the `metadata` property on a metric. If you
+      #   pass `null` for the metadata value, it will clear any existing metadata for that
+      #   invoice.
       sig do
         params(
           metric_id: String,
@@ -25,9 +45,19 @@ module Orb
         )
           .returns(Orb::Models::BillableMetric)
       end
-      def update(metric_id, metadata: nil, request_options: {})
+      def update(
+        metric_id,
+        # User-specified key/value pairs for the resource. Individual keys can be removed
+        #   by setting the value to `null`, and the entire metadata mapping can be cleared
+        #   by setting `metadata` to `null`.
+        metadata: nil,
+        request_options: {}
+      )
       end
 
+      # This endpoint is used to fetch [metric](/core-concepts##metric) details given a
+      #   metric identifier. It returns information about the metrics including its name,
+      #   description, and item.
       sig do
         params(
           created_at_gt: T.nilable(Time),
@@ -45,12 +75,17 @@ module Orb
         created_at_gte: nil,
         created_at_lt: nil,
         created_at_lte: nil,
+        # Cursor for pagination. This can be populated by the `next_cursor` value returned
+        #   from the initial request.
         cursor: nil,
+        # The number of items to fetch. Defaults to 20.
         limit: nil,
         request_options: {}
       )
       end
 
+      # This endpoint is used to list [metrics](/core-concepts#metric). It returns
+      #   information about the metrics including its name, description, and item.
       sig do
         params(
           metric_id: String,

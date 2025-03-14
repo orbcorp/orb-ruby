@@ -296,7 +296,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -306,7 +305,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -359,7 +357,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -435,7 +432,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -701,7 +697,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -711,7 +706,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -764,7 +758,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -863,7 +856,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -1114,7 +1106,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -1124,7 +1115,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -1177,7 +1167,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -1306,7 +1295,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -1557,7 +1545,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -1567,7 +1554,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -1620,7 +1606,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -1696,7 +1681,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -1992,7 +1976,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -2002,7 +1985,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -2055,7 +2037,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -2131,7 +2112,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -2434,7 +2414,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -2466,7 +2445,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -2519,7 +2497,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -2595,7 +2572,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -2846,7 +2822,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -2901,7 +2876,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -2954,7 +2928,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -3030,7 +3003,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -3281,7 +3253,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -3328,7 +3299,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -3381,7 +3351,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -3457,7 +3426,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -3713,7 +3681,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -3723,7 +3690,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -3776,7 +3742,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -3852,7 +3817,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -4104,7 +4068,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -4114,7 +4077,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -4167,7 +4129,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -4243,7 +4204,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -4495,7 +4455,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -4505,7 +4464,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -4558,7 +4516,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -4634,7 +4591,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -4888,7 +4844,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -4898,7 +4853,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -4951,7 +4905,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -5027,7 +4980,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -5283,7 +5235,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -5293,7 +5244,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -5346,7 +5296,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -5422,7 +5371,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -5678,7 +5626,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -5688,7 +5635,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -5741,7 +5687,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -5817,7 +5762,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -6069,7 +6013,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -6079,7 +6022,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -6132,7 +6074,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -6208,7 +6149,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -6465,7 +6405,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -6475,7 +6414,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -6528,7 +6466,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -6665,7 +6602,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -6919,7 +6855,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -6929,7 +6864,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -6982,7 +6916,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -7058,7 +6991,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -7312,7 +7244,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -7322,7 +7253,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -7375,7 +7305,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -7451,7 +7380,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -7705,7 +7633,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -7715,7 +7642,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -7768,7 +7694,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -7844,7 +7769,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -8100,7 +8024,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -8110,7 +8033,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -8163,7 +8085,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -8239,7 +8160,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -8495,7 +8415,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -8505,7 +8424,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -8558,7 +8476,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -8634,7 +8551,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -8890,7 +8806,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -8900,7 +8815,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -8953,7 +8867,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -9029,7 +8942,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -9283,7 +9195,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -9293,7 +9204,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -9346,7 +9256,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -9422,7 +9331,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -9678,7 +9586,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -9688,7 +9595,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -9741,7 +9647,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -9817,7 +9722,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -10073,7 +9977,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -10083,7 +9986,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -10136,7 +10038,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -10212,7 +10113,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -10468,7 +10368,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -10478,7 +10377,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -10531,7 +10429,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -10607,7 +10504,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -10863,7 +10759,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -10873,7 +10768,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -10926,7 +10820,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -11002,7 +10895,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -11258,7 +11150,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -11268,7 +11159,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Cadence < Orb::Enum
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -11321,7 +11211,6 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # @abstract
-          #
           class DurationUnit < Orb::Enum
             DAY = :day
             MONTH = :month
@@ -11397,7 +11286,6 @@ module Orb
         end
 
         # @abstract
-        #
         class PriceType < Orb::Enum
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
@@ -11425,6 +11313,12 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
       end
+
+      # @!parse
+      #   class << self
+      #     # @return [Array(Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice)]
+      #     def variants; end
+      #   end
     end
   end
 end

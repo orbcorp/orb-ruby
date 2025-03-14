@@ -24,7 +24,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::BillableMetric]
-      #
       def create(params)
         parsed, options = Orb::Models::MetricCreateParams.dump_request(params)
         @client.request(
@@ -51,7 +50,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::BillableMetric]
-      #
       def update(metric_id, params = {})
         parsed, options = Orb::Models::MetricUpdateParams.dump_request(params)
         @client.request(
@@ -85,7 +83,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Page<Orb::Models::BillableMetric>]
-      #
       def list(params = {})
         parsed, options = Orb::Models::MetricListParams.dump_request(params)
         @client.request(
@@ -108,7 +105,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::BillableMetric]
-      #
       def fetch(metric_id, params = {})
         @client.request(
           method: :get,
@@ -119,7 +115,6 @@ module Orb
       end
 
       # @param client [Orb::Client]
-      #
       def initialize(client:)
         @client = client
       end

@@ -377,10 +377,10 @@ module Orb
         sig do
           override
             .returns(
-              [[NilClass, Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage], [NilClass, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]]
+              [Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]
             )
         end
-        private def variants
+        def variants
         end
       end
     end

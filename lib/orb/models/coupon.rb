@@ -67,13 +67,18 @@ module Orb
       # def initialize: (Hash | Orb::BaseModel) -> void
 
       # @abstract
-      #
       class Discount < Orb::Union
         discriminator :discount_type
 
         variant :percentage, -> { Orb::Models::PercentageDiscount }
 
         variant :amount, -> { Orb::Models::AmountDiscount }
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount)]
+        #     def variants; end
+        #   end
       end
     end
   end

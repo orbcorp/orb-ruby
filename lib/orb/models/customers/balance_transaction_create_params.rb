@@ -35,7 +35,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # @abstract
-        #
         class Type < Orb::Enum
           INCREMENT = :increment
           DECREMENT = :decrement

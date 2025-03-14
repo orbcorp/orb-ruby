@@ -7,6 +7,26 @@ module Orb
       #   extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # @!attribute created_at_gt
+      #
+      #   @return [Time, nil]
+      optional :created_at_gt, Time, api_name: :"created_at[gt]", nil?: true
+
+      # @!attribute created_at_gte
+      #
+      #   @return [Time, nil]
+      optional :created_at_gte, Time, api_name: :"created_at[gte]", nil?: true
+
+      # @!attribute created_at_lt
+      #
+      #   @return [Time, nil]
+      optional :created_at_lt, Time, api_name: :"created_at[lt]", nil?: true
+
+      # @!attribute created_at_lte
+      #
+      #   @return [Time, nil]
+      optional :created_at_lte, Time, api_name: :"created_at[lte]", nil?: true
+
       # @!attribute cursor
       #   Cursor for pagination. This can be populated by the `next_cursor` value returned
       #     from the initial request.
@@ -25,11 +45,26 @@ module Orb
       #   attr_writer :limit
 
       # @!parse
+      #   # @param created_at_gt [Time, nil]
+      #   # @param created_at_gte [Time, nil]
+      #   # @param created_at_lt [Time, nil]
+      #   # @param created_at_lte [Time, nil]
       #   # @param cursor [String, nil]
       #   # @param limit [Integer]
       #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(cursor: nil, limit: nil, request_options: {}, **) = super
+      #   def initialize(
+      #     created_at_gt: nil,
+      #     created_at_gte: nil,
+      #     created_at_lt: nil,
+      #     created_at_lte: nil,
+      #     cursor: nil,
+      #     limit: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Orb::BaseModel) -> void
     end

@@ -211,7 +211,6 @@ module Orb
       # def initialize: (Hash | Orb::BaseModel) -> void
 
       # @abstract
-      #
       class Adjustment < Orb::Union
         discriminator :adjustment_type
 
@@ -572,6 +571,12 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment)]
+        #     def variants; end
+        #   end
       end
 
       class BasePlan < Orb::BaseModel
@@ -741,7 +746,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # @abstract
-        #
         class DurationUnit < Orb::Enum
           DAILY = :daily
           MONTHLY = :monthly
@@ -826,7 +830,6 @@ module Orb
       end
 
       # @abstract
-      #
       class Status < Orb::Enum
         ACTIVE = :active
         ARCHIVED = :archived
@@ -855,7 +858,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # @abstract
-        #
         class TrialPeriodUnit < Orb::Enum
           DAYS = :days
 

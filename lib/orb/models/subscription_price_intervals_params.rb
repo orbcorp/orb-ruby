@@ -212,6 +212,12 @@ module Orb
           variant Time
 
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
+          #     def variants; end
+          #   end
         end
 
         class AllocationPrice < Orb::BaseModel
@@ -270,7 +276,6 @@ module Orb
         end
 
         # @abstract
-        #
         class Discount < Orb::Union
           discriminator :discount_type
 
@@ -347,6 +352,12 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::AmountDiscountCreationParams, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::PercentageDiscountCreationParams, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams)]
+          #     def variants; end
+          #   end
         end
 
         # @abstract
@@ -357,6 +368,12 @@ module Orb
           variant Time
 
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
+          #     def variants; end
+          #   end
         end
 
         class FixedFeeQuantityTransition < Orb::BaseModel
@@ -7227,6 +7244,12 @@ module Orb
               end
             end
           end
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice)]
+          #     def variants; end
+          #   end
         end
       end
 
@@ -7498,6 +7521,12 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMaximum)]
+          #     def variants; end
+          #   end
         end
 
         # @abstract
@@ -7510,6 +7539,12 @@ module Orb
           variant Time
 
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
+          #     def variants; end
+          #   end
         end
 
         # @abstract
@@ -7522,6 +7557,12 @@ module Orb
           variant Time
 
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
+          #     def variants; end
+          #   end
         end
       end
 
@@ -7620,6 +7661,12 @@ module Orb
           variant Time
 
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
+          #     def variants; end
+          #   end
         end
 
         class FixedFeeQuantityTransition < Orb::BaseModel
@@ -7652,6 +7699,12 @@ module Orb
           variant Time
 
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
+          #     def variants; end
+          #   end
         end
       end
 
@@ -7700,6 +7753,12 @@ module Orb
           variant Time
 
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
+          #     def variants; end
+          #   end
         end
 
         # @abstract
@@ -7710,6 +7769,12 @@ module Orb
           variant Time
 
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
+          #     def variants; end
+          #   end
         end
       end
     end

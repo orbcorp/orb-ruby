@@ -11,6 +11,8 @@ module Orb
       def id=(_)
       end
 
+      # This is the final amount required to be charged to the customer and reflects the
+      #   application of the customer balance to the `total` of the invoice.
       sig { returns(String) }
       def amount_due
       end
@@ -41,6 +43,7 @@ module Orb
       def billing_address=(_)
       end
 
+      # The creation time of the resource in Orb.
       sig { returns(Time) }
       def created_at
       end
@@ -49,6 +52,7 @@ module Orb
       def created_at=(_)
       end
 
+      # A list of credit notes associated with the invoice
       sig { returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CreditNote]) }
       def credit_notes
       end
@@ -60,6 +64,7 @@ module Orb
       def credit_notes=(_)
       end
 
+      # An ISO 4217 currency string or `credits`
       sig { returns(String) }
       def currency
       end
@@ -90,6 +95,111 @@ module Orb
       def customer_balance_transactions=(_)
       end
 
+      # Tax IDs are commonly required to be displayed on customer invoices, which are
+      #   added to the headers of invoices.
+      #
+      #   ### Supported Tax ID Countries and Types
+      #
+      #   | Country              | Type         | Description                                                                                             |
+      #   | -------------------- | ------------ | ------------------------------------------------------------------------------------------------------- |
+      #   | Andorra              | `ad_nrt`     | Andorran NRT Number                                                                                     |
+      #   | Argentina            | `ar_cuit`    | Argentinian Tax ID Number                                                                               |
+      #   | Australia            | `au_abn`     | Australian Business Number (AU ABN)                                                                     |
+      #   | Australia            | `au_arn`     | Australian Taxation Office Reference Number                                                             |
+      #   | Austria              | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Bahrain              | `bh_vat`     | Bahraini VAT Number                                                                                     |
+      #   | Belgium              | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Bolivia              | `bo_tin`     | Bolivian Tax ID                                                                                         |
+      #   | Brazil               | `br_cnpj`    | Brazilian CNPJ Number                                                                                   |
+      #   | Brazil               | `br_cpf`     | Brazilian CPF Number                                                                                    |
+      #   | Bulgaria             | `bg_uic`     | Bulgaria Unified Identification Code                                                                    |
+      #   | Bulgaria             | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Canada               | `ca_bn`      | Canadian BN                                                                                             |
+      #   | Canada               | `ca_gst_hst` | Canadian GST/HST Number                                                                                 |
+      #   | Canada               | `ca_pst_bc`  | Canadian PST Number (British Columbia)                                                                  |
+      #   | Canada               | `ca_pst_mb`  | Canadian PST Number (Manitoba)                                                                          |
+      #   | Canada               | `ca_pst_sk`  | Canadian PST Number (Saskatchewan)                                                                      |
+      #   | Canada               | `ca_qst`     | Canadian QST Number (Québec)                                                                            |
+      #   | Chile                | `cl_tin`     | Chilean TIN                                                                                             |
+      #   | China                | `cn_tin`     | Chinese Tax ID                                                                                          |
+      #   | Colombia             | `co_nit`     | Colombian NIT Number                                                                                    |
+      #   | Costa Rica           | `cr_tin`     | Costa Rican Tax ID                                                                                      |
+      #   | Croatia              | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Cyprus               | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Czech Republic       | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Denmark              | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Dominican Republic   | `do_rcn`     | Dominican RCN Number                                                                                    |
+      #   | Ecuador              | `ec_ruc`     | Ecuadorian RUC Number                                                                                   |
+      #   | Egypt                | `eg_tin`     | Egyptian Tax Identification Number                                                                      |
+      #   | El Salvador          | `sv_nit`     | El Salvadorian NIT Number                                                                               |
+      #   | Estonia              | `eu_vat`     | European VAT Number                                                                                     |
+      #   | EU                   | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+      #   | Finland              | `eu_vat`     | European VAT Number                                                                                     |
+      #   | France               | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Georgia              | `ge_vat`     | Georgian VAT                                                                                            |
+      #   | Germany              | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Greece               | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Hong Kong            | `hk_br`      | Hong Kong BR Number                                                                                     |
+      #   | Hungary              | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Hungary              | `hu_tin`     | Hungary Tax Number (adószám)                                                                            |
+      #   | Iceland              | `is_vat`     | Icelandic VAT                                                                                           |
+      #   | India                | `in_gst`     | Indian GST Number                                                                                       |
+      #   | Indonesia            | `id_npwp`    | Indonesian NPWP Number                                                                                  |
+      #   | Ireland              | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Israel               | `il_vat`     | Israel VAT                                                                                              |
+      #   | Italy                | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Japan                | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
+      #   | Japan                | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
+      #   | Japan                | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
+      #   | Kazakhstan           | `kz_bin`     | Kazakhstani Business Identification Number                                                              |
+      #   | Kenya                | `ke_pin`     | Kenya Revenue Authority Personal Identification Number                                                  |
+      #   | Latvia               | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Liechtenstein        | `li_uid`     | Liechtensteinian UID Number                                                                             |
+      #   | Lithuania            | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Luxembourg           | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Malaysia             | `my_frp`     | Malaysian FRP Number                                                                                    |
+      #   | Malaysia             | `my_itn`     | Malaysian ITN                                                                                           |
+      #   | Malaysia             | `my_sst`     | Malaysian SST Number                                                                                    |
+      #   | Malta                | `eu_vat `    | European VAT Number                                                                                     |
+      #   | Mexico               | `mx_rfc`     | Mexican RFC Number                                                                                      |
+      #   | Netherlands          | `eu_vat`     | European VAT Number                                                                                     |
+      #   | New Zealand          | `nz_gst`     | New Zealand GST Number                                                                                  |
+      #   | Nigeria              | `ng_tin`     | Nigerian Tax Identification Number                                                                      |
+      #   | Norway               | `no_vat`     | Norwegian VAT Number                                                                                    |
+      #   | Norway               | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
+      #   | Oman                 | `om_vat`     | Omani VAT Number                                                                                        |
+      #   | Peru                 | `pe_ruc`     | Peruvian RUC Number                                                                                     |
+      #   | Philippines          | `ph_tin `    | Philippines Tax Identification Number                                                                   |
+      #   | Poland               | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Portugal             | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Romania              | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Romania              | `ro_tin`     | Romanian Tax ID Number                                                                                  |
+      #   | Russia               | `ru_inn`     | Russian INN                                                                                             |
+      #   | Russia               | `ru_kpp`     | Russian KPP                                                                                             |
+      #   | Saudi Arabia         | `sa_vat`     | Saudi Arabia VAT                                                                                        |
+      #   | Serbia               | `rs_pib`     | Serbian PIB Number                                                                                      |
+      #   | Singapore            | `sg_gst`     | Singaporean GST                                                                                         |
+      #   | Singapore            | `sg_uen`     | Singaporean UEN                                                                                         |
+      #   | Slovakia             | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Slovenia             | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Slovenia             | `si_tin`     | Slovenia Tax Number (davčna številka)                                                                   |
+      #   | South Africa         | `za_vat`     | South African VAT Number                                                                                |
+      #   | South Korea          | `kr_brn`     | Korean BRN                                                                                              |
+      #   | Spain                | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
+      #   | Spain                | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Sweden               | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Switzerland          | `ch_vat`     | Switzerland VAT Number                                                                                  |
+      #   | Taiwan               | `tw_vat`     | Taiwanese VAT                                                                                           |
+      #   | Thailand             | `th_vat`     | Thai VAT                                                                                                |
+      #   | Turkey               | `tr_tin`     | Turkish Tax Identification Number                                                                       |
+      #   | Ukraine              | `ua_vat`     | Ukrainian VAT                                                                                           |
+      #   | United Arab Emirates | `ae_trn`     | United Arab Emirates TRN                                                                                |
+      #   | United Kingdom       | `eu_vat`     | Northern Ireland VAT Number                                                                             |
+      #   | United Kingdom       | `gb_vat`     | United Kingdom VAT Number                                                                               |
+      #   | United States        | `us_ein`     | United States EIN                                                                                       |
+      #   | Uruguay              | `uy_ruc`     | Uruguayan RUC Number                                                                                    |
+      #   | Venezuela            | `ve_rif`     | Venezuelan RIF Number                                                                                   |
+      #   | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
       sig { returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID)) }
       def customer_tax_id
       end
@@ -101,6 +211,9 @@ module Orb
       def customer_tax_id=(_)
       end
 
+      # This field is deprecated in favor of `discounts`. If a `discounts` list is
+      #   provided, the first discount in the list will be returned. If the list is empty,
+      #   `None` will be returned.
       sig { returns(T.anything) }
       def discount
       end
@@ -128,6 +241,8 @@ module Orb
       def discounts=(_)
       end
 
+      # When the invoice payment is due. The due date is null if the invoice is not yet
+      #   finalized.
       sig { returns(T.nilable(Time)) }
       def due_date
       end
@@ -136,6 +251,9 @@ module Orb
       def due_date=(_)
       end
 
+      # If the invoice has a status of `draft`, this will be the time that the invoice
+      #   will be eligible to be issued, otherwise it will be `null`. If `auto-issue` is
+      #   true, the invoice will automatically begin issuing at this time.
       sig { returns(T.nilable(Time)) }
       def eligible_to_issue_at
       end
@@ -144,6 +262,8 @@ module Orb
       def eligible_to_issue_at=(_)
       end
 
+      # A URL for the customer-facing invoice portal. This URL expires 30 days after the
+      #   invoice's due date, or 60 days after being re-generated through the UI.
       sig { returns(T.nilable(String)) }
       def hosted_invoice_url
       end
@@ -152,6 +272,9 @@ module Orb
       def hosted_invoice_url=(_)
       end
 
+      # Automatically generated invoice number to help track and reconcile invoices.
+      #   Invoice numbers have a prefix such as `RFOBWG`. These can be sequential per
+      #   account or customer.
       sig { returns(String) }
       def invoice_number
       end
@@ -160,6 +283,7 @@ module Orb
       def invoice_number=(_)
       end
 
+      # The link to download the PDF representation of the `Invoice`.
       sig { returns(T.nilable(String)) }
       def invoice_pdf
       end
@@ -176,6 +300,8 @@ module Orb
       def invoice_source=(_)
       end
 
+      # If the invoice failed to issue, this will be the last time it failed to issue
+      #   (even if it is now in a different state.)
       sig { returns(T.nilable(Time)) }
       def issue_failed_at
       end
@@ -184,6 +310,8 @@ module Orb
       def issue_failed_at=(_)
       end
 
+      # If the invoice has been issued, this will be the time it transitioned to
+      #   `issued` (even if it is now in a different state.)
       sig { returns(T.nilable(Time)) }
       def issued_at
       end
@@ -192,6 +320,7 @@ module Orb
       def issued_at=(_)
       end
 
+      # The breakdown of prices in this invoice.
       sig { returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem]) }
       def line_items
       end
@@ -222,6 +351,7 @@ module Orb
       def maximum_amount=(_)
       end
 
+      # Free-form text which is available on the invoice PDF and the Orb invoice portal.
       sig { returns(T.nilable(String)) }
       def memo
       end
@@ -230,6 +360,10 @@ module Orb
       def memo=(_)
       end
 
+      # User specified key-value pairs for the resource. If not present, this defaults
+      #   to an empty dictionary. Individual keys can be removed by setting the value to
+      #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+      #   `null`.
       sig { returns(T::Hash[Symbol, String]) }
       def metadata
       end
@@ -257,6 +391,8 @@ module Orb
       def minimum_amount=(_)
       end
 
+      # If the invoice has a status of `paid`, this gives a timestamp when the invoice
+      #   was paid.
       sig { returns(T.nilable(Time)) }
       def paid_at
       end
@@ -265,6 +401,7 @@ module Orb
       def paid_at=(_)
       end
 
+      # A list of payment attempts associated with the invoice
       sig { returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt]) }
       def payment_attempts
       end
@@ -276,6 +413,8 @@ module Orb
       def payment_attempts=(_)
       end
 
+      # If payment was attempted on this invoice but failed, this will be the time of
+      #   the most recent attempt.
       sig { returns(T.nilable(Time)) }
       def payment_failed_at
       end
@@ -284,6 +423,9 @@ module Orb
       def payment_failed_at=(_)
       end
 
+      # If payment was attempted on this invoice, this will be the start time of the
+      #   most recent attempt. This field is especially useful for delayed-notification
+      #   payment mechanisms (like bank transfers), where payment can take 3 days or more.
       sig { returns(T.nilable(Time)) }
       def payment_started_at
       end
@@ -292,6 +434,8 @@ module Orb
       def payment_started_at=(_)
       end
 
+      # If the invoice is in draft, this timestamp will reflect when the invoice is
+      #   scheduled to be issued.
       sig { returns(T.nilable(Time)) }
       def scheduled_issue_at
       end
@@ -330,6 +474,7 @@ module Orb
       def subscription=(_)
       end
 
+      # The total before any discounts and minimums are applied.
       sig { returns(String) }
       def subtotal
       end
@@ -338,6 +483,9 @@ module Orb
       def subtotal=(_)
       end
 
+      # If the invoice failed to sync, this will be the last time an external invoicing
+      #   provider sync was attempted. This field will always be `null` for invoices using
+      #   Orb Invoicing.
       sig { returns(T.nilable(Time)) }
       def sync_failed_at
       end
@@ -346,6 +494,7 @@ module Orb
       def sync_failed_at=(_)
       end
 
+      # The scheduled date of the invoice
       sig { returns(Time) }
       def target_date
       end
@@ -354,6 +503,7 @@ module Orb
       def target_date=(_)
       end
 
+      # The total after any minimums and discounts have been applied.
       sig { returns(String) }
       def total
       end
@@ -362,6 +512,8 @@ module Orb
       def total=(_)
       end
 
+      # If the invoice has a status of `void`, this gives a timestamp when the invoice
+      #   was voided.
       sig { returns(T.nilable(Time)) }
       def voided_at
       end
@@ -370,6 +522,8 @@ module Orb
       def voided_at=(_)
       end
 
+      # This is true if the invoice will be automatically issued in the future, and
+      #   false otherwise.
       sig { returns(T::Boolean) }
       def will_auto_issue
       end
@@ -521,6 +675,7 @@ module Orb
       end
 
       class AutoCollection < Orb::BaseModel
+        # True only if auto-collection is enabled for this invoice.
         sig { returns(T.nilable(T::Boolean)) }
         def enabled
         end
@@ -529,6 +684,9 @@ module Orb
         def enabled=(_)
         end
 
+        # If the invoice is scheduled for auto-collection, this field will reflect when
+        #   the next attempt will occur. If dunning has been exhausted, or auto-collection
+        #   is not enabled for this invoice, this field will be `null`.
         sig { returns(T.nilable(Time)) }
         def next_attempt_at
         end
@@ -537,6 +695,7 @@ module Orb
         def next_attempt_at=(_)
         end
 
+        # Number of auto-collection payment attempts.
         sig { returns(T.nilable(Integer)) }
         def num_attempts
         end
@@ -545,6 +704,12 @@ module Orb
         def num_attempts=(_)
         end
 
+        # If Orb has ever attempted payment auto-collection for this invoice, this field
+        #   will reflect when that attempt occurred. In conjunction with `next_attempt_at`,
+        #   this can be used to tell whether the invoice is currently in dunning (that is,
+        #   `previously_attempted_at` is non-null, and `next_attempt_time` is non-null), or
+        #   if dunning has been exhausted (`previously_attempted_at` is non-null, but
+        #   `next_attempt_time` is null).
         sig { returns(T.nilable(Time)) }
         def previously_attempted_at
         end
@@ -677,6 +842,7 @@ module Orb
         def credit_note_number=(_)
         end
 
+        # An optional memo supplied on the credit note.
         sig { returns(T.nilable(String)) }
         def memo
         end
@@ -709,6 +875,8 @@ module Orb
         def type=(_)
         end
 
+        # If the credit note has a status of `void`, this gives a timestamp when the
+        #   credit note was voided.
         sig { returns(T.nilable(Time)) }
         def voided_at
         end
@@ -777,6 +945,7 @@ module Orb
       end
 
       class CustomerBalanceTransaction < Orb::BaseModel
+        # A unique id for this transaction.
         sig { returns(String) }
         def id
         end
@@ -793,6 +962,7 @@ module Orb
         def action=(_)
         end
 
+        # The value of the amount changed in the transaction.
         sig { returns(String) }
         def amount
         end
@@ -801,6 +971,7 @@ module Orb
         def amount=(_)
         end
 
+        # The creation time of this transaction.
         sig { returns(Time) }
         def created_at
         end
@@ -820,6 +991,7 @@ module Orb
         def credit_note=(_)
         end
 
+        # An optional description provided for manual customer balance adjustments.
         sig { returns(T.nilable(String)) }
         def description
         end
@@ -828,6 +1000,8 @@ module Orb
         def description=(_)
         end
 
+        # The new value of the customer's balance prior to the transaction, in the
+        #   customer's currency.
         sig { returns(String) }
         def ending_balance
         end
@@ -847,6 +1021,8 @@ module Orb
         def invoice=(_)
         end
 
+        # The original value of the customer's balance prior to the transaction, in the
+        #   customer's currency.
         sig { returns(String) }
         def starting_balance
         end
@@ -933,6 +1109,7 @@ module Orb
         end
 
         class CreditNote < Orb::BaseModel
+          # The id of the Credit note
           sig { returns(String) }
           def id
           end
@@ -951,6 +1128,7 @@ module Orb
         end
 
         class Invoice < Orb::BaseModel
+          # The Invoice id
           sig { returns(String) }
           def id
           end
@@ -1007,6 +1185,111 @@ module Orb
         def value=(_)
         end
 
+        # Tax IDs are commonly required to be displayed on customer invoices, which are
+        #   added to the headers of invoices.
+        #
+        #   ### Supported Tax ID Countries and Types
+        #
+        #   | Country              | Type         | Description                                                                                             |
+        #   | -------------------- | ------------ | ------------------------------------------------------------------------------------------------------- |
+        #   | Andorra              | `ad_nrt`     | Andorran NRT Number                                                                                     |
+        #   | Argentina            | `ar_cuit`    | Argentinian Tax ID Number                                                                               |
+        #   | Australia            | `au_abn`     | Australian Business Number (AU ABN)                                                                     |
+        #   | Australia            | `au_arn`     | Australian Taxation Office Reference Number                                                             |
+        #   | Austria              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Bahrain              | `bh_vat`     | Bahraini VAT Number                                                                                     |
+        #   | Belgium              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Bolivia              | `bo_tin`     | Bolivian Tax ID                                                                                         |
+        #   | Brazil               | `br_cnpj`    | Brazilian CNPJ Number                                                                                   |
+        #   | Brazil               | `br_cpf`     | Brazilian CPF Number                                                                                    |
+        #   | Bulgaria             | `bg_uic`     | Bulgaria Unified Identification Code                                                                    |
+        #   | Bulgaria             | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Canada               | `ca_bn`      | Canadian BN                                                                                             |
+        #   | Canada               | `ca_gst_hst` | Canadian GST/HST Number                                                                                 |
+        #   | Canada               | `ca_pst_bc`  | Canadian PST Number (British Columbia)                                                                  |
+        #   | Canada               | `ca_pst_mb`  | Canadian PST Number (Manitoba)                                                                          |
+        #   | Canada               | `ca_pst_sk`  | Canadian PST Number (Saskatchewan)                                                                      |
+        #   | Canada               | `ca_qst`     | Canadian QST Number (Québec)                                                                            |
+        #   | Chile                | `cl_tin`     | Chilean TIN                                                                                             |
+        #   | China                | `cn_tin`     | Chinese Tax ID                                                                                          |
+        #   | Colombia             | `co_nit`     | Colombian NIT Number                                                                                    |
+        #   | Costa Rica           | `cr_tin`     | Costa Rican Tax ID                                                                                      |
+        #   | Croatia              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Cyprus               | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Czech Republic       | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Denmark              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Dominican Republic   | `do_rcn`     | Dominican RCN Number                                                                                    |
+        #   | Ecuador              | `ec_ruc`     | Ecuadorian RUC Number                                                                                   |
+        #   | Egypt                | `eg_tin`     | Egyptian Tax Identification Number                                                                      |
+        #   | El Salvador          | `sv_nit`     | El Salvadorian NIT Number                                                                               |
+        #   | Estonia              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | EU                   | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+        #   | Finland              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | France               | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Georgia              | `ge_vat`     | Georgian VAT                                                                                            |
+        #   | Germany              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Greece               | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Hong Kong            | `hk_br`      | Hong Kong BR Number                                                                                     |
+        #   | Hungary              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Hungary              | `hu_tin`     | Hungary Tax Number (adószám)                                                                            |
+        #   | Iceland              | `is_vat`     | Icelandic VAT                                                                                           |
+        #   | India                | `in_gst`     | Indian GST Number                                                                                       |
+        #   | Indonesia            | `id_npwp`    | Indonesian NPWP Number                                                                                  |
+        #   | Ireland              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Israel               | `il_vat`     | Israel VAT                                                                                              |
+        #   | Italy                | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Japan                | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
+        #   | Japan                | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
+        #   | Japan                | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
+        #   | Kazakhstan           | `kz_bin`     | Kazakhstani Business Identification Number                                                              |
+        #   | Kenya                | `ke_pin`     | Kenya Revenue Authority Personal Identification Number                                                  |
+        #   | Latvia               | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Liechtenstein        | `li_uid`     | Liechtensteinian UID Number                                                                             |
+        #   | Lithuania            | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Luxembourg           | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Malaysia             | `my_frp`     | Malaysian FRP Number                                                                                    |
+        #   | Malaysia             | `my_itn`     | Malaysian ITN                                                                                           |
+        #   | Malaysia             | `my_sst`     | Malaysian SST Number                                                                                    |
+        #   | Malta                | `eu_vat `    | European VAT Number                                                                                     |
+        #   | Mexico               | `mx_rfc`     | Mexican RFC Number                                                                                      |
+        #   | Netherlands          | `eu_vat`     | European VAT Number                                                                                     |
+        #   | New Zealand          | `nz_gst`     | New Zealand GST Number                                                                                  |
+        #   | Nigeria              | `ng_tin`     | Nigerian Tax Identification Number                                                                      |
+        #   | Norway               | `no_vat`     | Norwegian VAT Number                                                                                    |
+        #   | Norway               | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
+        #   | Oman                 | `om_vat`     | Omani VAT Number                                                                                        |
+        #   | Peru                 | `pe_ruc`     | Peruvian RUC Number                                                                                     |
+        #   | Philippines          | `ph_tin `    | Philippines Tax Identification Number                                                                   |
+        #   | Poland               | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Portugal             | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Romania              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Romania              | `ro_tin`     | Romanian Tax ID Number                                                                                  |
+        #   | Russia               | `ru_inn`     | Russian INN                                                                                             |
+        #   | Russia               | `ru_kpp`     | Russian KPP                                                                                             |
+        #   | Saudi Arabia         | `sa_vat`     | Saudi Arabia VAT                                                                                        |
+        #   | Serbia               | `rs_pib`     | Serbian PIB Number                                                                                      |
+        #   | Singapore            | `sg_gst`     | Singaporean GST                                                                                         |
+        #   | Singapore            | `sg_uen`     | Singaporean UEN                                                                                         |
+        #   | Slovakia             | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Slovenia             | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Slovenia             | `si_tin`     | Slovenia Tax Number (davčna številka)                                                                   |
+        #   | South Africa         | `za_vat`     | South African VAT Number                                                                                |
+        #   | South Korea          | `kr_brn`     | Korean BRN                                                                                              |
+        #   | Spain                | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
+        #   | Spain                | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Sweden               | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Switzerland          | `ch_vat`     | Switzerland VAT Number                                                                                  |
+        #   | Taiwan               | `tw_vat`     | Taiwanese VAT                                                                                           |
+        #   | Thailand             | `th_vat`     | Thai VAT                                                                                                |
+        #   | Turkey               | `tr_tin`     | Turkish Tax Identification Number                                                                       |
+        #   | Ukraine              | `ua_vat`     | Ukrainian VAT                                                                                           |
+        #   | United Arab Emirates | `ae_trn`     | United Arab Emirates TRN                                                                                |
+        #   | United Kingdom       | `eu_vat`     | Northern Ireland VAT Number                                                                             |
+        #   | United Kingdom       | `gb_vat`     | United Kingdom VAT Number                                                                               |
+        #   | United States        | `us_ein`     | United States EIN                                                                                       |
+        #   | Uruguay              | `uy_ruc`     | Uruguayan RUC Number                                                                                    |
+        #   | Venezuela            | `ve_rif`     | Venezuelan RIF Number                                                                                   |
+        #   | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
         sig { params(country: Symbol, type: Symbol, value: String).returns(T.attached_class) }
         def self.new(country:, type:, value:)
         end
@@ -1202,6 +1485,7 @@ module Orb
       end
 
       class LineItem < Orb::BaseModel
+        # A unique ID for this line item.
         sig { returns(String) }
         def id
         end
@@ -1210,6 +1494,8 @@ module Orb
         def id=(_)
         end
 
+        # The line amount after any adjustments and before overage conversion, credits and
+        #   partial invoicing.
         sig { returns(String) }
         def adjusted_subtotal
         end
@@ -1218,6 +1504,9 @@ module Orb
         def adjusted_subtotal=(_)
         end
 
+        # All adjustments applied to the line item in the order they were applied based on
+        #   invoice calculations (ie. usage discounts -> amount discounts -> percentage
+        #   discounts -> minimums -> maximums).
         sig do
           returns(
             T::Array[
@@ -1261,6 +1550,8 @@ module Orb
         def adjustments=(_)
         end
 
+        # The final amount for a line item after all adjustments and pre paid credits have
+        #   been applied.
         sig { returns(String) }
         def amount
         end
@@ -1269,6 +1560,7 @@ module Orb
         def amount=(_)
         end
 
+        # The number of prepaid credits applied.
         sig { returns(String) }
         def credits_applied
         end
@@ -1317,6 +1609,7 @@ module Orb
         def discount=(_)
         end
 
+        # The end date of the range of time applied for this line item's price.
         sig { returns(Time) }
         def end_date
         end
@@ -1325,6 +1618,7 @@ module Orb
         def end_date=(_)
         end
 
+        # An additional filter that was used to calculate the usage for this line item.
         sig { returns(T.nilable(String)) }
         def filter
         end
@@ -1333,6 +1627,9 @@ module Orb
         def filter=(_)
         end
 
+        # [DEPRECATED] For configured prices that are split by a grouping key, this will
+        #   be populated with the key and a value. The `amount` and `subtotal` will be the
+        #   values for this particular grouping.
         sig { returns(T.nilable(String)) }
         def grouping
         end
@@ -1341,6 +1638,7 @@ module Orb
         def grouping=(_)
         end
 
+        # This field is deprecated in favor of `adjustments`.
         sig { returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum)) }
         def maximum
         end
@@ -1352,6 +1650,7 @@ module Orb
         def maximum=(_)
         end
 
+        # This field is deprecated in favor of `adjustments`.
         sig { returns(T.nilable(String)) }
         def maximum_amount
         end
@@ -1360,6 +1659,7 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # This field is deprecated in favor of `adjustments`.
         sig { returns(T.nilable(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum)) }
         def minimum
         end
@@ -1371,6 +1671,7 @@ module Orb
         def minimum=(_)
         end
 
+        # This field is deprecated in favor of `adjustments`.
         sig { returns(T.nilable(String)) }
         def minimum_amount
         end
@@ -1379,6 +1680,7 @@ module Orb
         def minimum_amount=(_)
         end
 
+        # The name of the price associated with this line item.
         sig { returns(String) }
         def name
         end
@@ -1387,6 +1689,7 @@ module Orb
         def name=(_)
         end
 
+        # Any amount applied from a partial invoice
         sig { returns(String) }
         def partially_invoiced_amount
         end
@@ -1395,6 +1698,16 @@ module Orb
         def partially_invoiced_amount=(_)
         end
 
+        # The Price resource represents a price that can be billed on a subscription,
+        #   resulting in a charge on an invoice in the form of an invoice line item. Prices
+        #   take a quantity and determine an amount to bill.
+        #
+        #   Orb supports a few different pricing models out of the box. Each of these models
+        #   is serialized differently in a given Price object. The model_type field
+        #   determines the key for the configuration object that is present.
+        #
+        #   For more on the types of prices, see
+        #   [the core concepts documentation](/core-concepts#plan-and-price)
         sig do
           returns(
             T.nilable(
@@ -1507,6 +1820,7 @@ module Orb
         def price=(_)
         end
 
+        # Either the fixed fee quantity or the usage during the service period.
         sig { returns(Float) }
         def quantity
         end
@@ -1515,6 +1829,7 @@ module Orb
         def quantity=(_)
         end
 
+        # The start date of the range of time applied for this line item's price.
         sig { returns(Time) }
         def start_date
         end
@@ -1523,6 +1838,8 @@ module Orb
         def start_date=(_)
         end
 
+        # For complex pricing structures, the line item can be broken down further in
+        #   `sub_line_items`.
         sig do
           returns(
             T::Array[
@@ -1560,6 +1877,7 @@ module Orb
         def sub_line_items=(_)
         end
 
+        # The line amount before before any adjustments.
         sig { returns(String) }
         def subtotal
         end
@@ -1568,6 +1886,8 @@ module Orb
         def subtotal=(_)
         end
 
+        # An array of tax rates and their incurred tax amounts. Empty if no tax
+        #   integration is configured.
         sig { returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount]) }
         def tax_amounts
         end
@@ -1579,6 +1899,7 @@ module Orb
         def tax_amounts=(_)
         end
 
+        # A list of customer ids that were used to calculate the usage for this line item.
         sig { returns(T.nilable(T::Array[String])) }
         def usage_customer_ids
         end
@@ -1796,6 +2117,7 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The value applied by an adjustment.
             sig { returns(String) }
             def amount
             end
@@ -1804,6 +2126,7 @@ module Orb
             def amount=(_)
             end
 
+            # The price IDs that this adjustment applies to.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -1812,6 +2135,8 @@ module Orb
             def applies_to_price_ids=(_)
             end
 
+            # True for adjustments that apply to an entire invocice, false for adjustments
+            #   that apply to only one price.
             sig { returns(T::Boolean) }
             def is_invoice_level
             end
@@ -1820,6 +2145,7 @@ module Orb
             def is_invoice_level=(_)
             end
 
+            # The reason for the adjustment.
             sig { returns(T.nilable(String)) }
             def reason
             end
@@ -1828,6 +2154,8 @@ module Orb
             def reason=(_)
             end
 
+            # The number of usage units by which to discount the price this adjustment applies
+            #   to in a given billing period.
             sig { returns(Float) }
             def usage_discount
             end
@@ -1894,6 +2222,7 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The value applied by an adjustment.
             sig { returns(String) }
             def amount
             end
@@ -1902,6 +2231,8 @@ module Orb
             def amount=(_)
             end
 
+            # The amount by which to discount the prices this adjustment applies to in a given
+            #   billing period.
             sig { returns(String) }
             def amount_discount
             end
@@ -1910,6 +2241,7 @@ module Orb
             def amount_discount=(_)
             end
 
+            # The price IDs that this adjustment applies to.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -1918,6 +2250,8 @@ module Orb
             def applies_to_price_ids=(_)
             end
 
+            # True for adjustments that apply to an entire invocice, false for adjustments
+            #   that apply to only one price.
             sig { returns(T::Boolean) }
             def is_invoice_level
             end
@@ -1926,6 +2260,7 @@ module Orb
             def is_invoice_level=(_)
             end
 
+            # The reason for the adjustment.
             sig { returns(T.nilable(String)) }
             def reason
             end
@@ -1992,6 +2327,7 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The value applied by an adjustment.
             sig { returns(String) }
             def amount
             end
@@ -2000,6 +2336,7 @@ module Orb
             def amount=(_)
             end
 
+            # The price IDs that this adjustment applies to.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -2008,6 +2345,8 @@ module Orb
             def applies_to_price_ids=(_)
             end
 
+            # True for adjustments that apply to an entire invocice, false for adjustments
+            #   that apply to only one price.
             sig { returns(T::Boolean) }
             def is_invoice_level
             end
@@ -2016,6 +2355,8 @@ module Orb
             def is_invoice_level=(_)
             end
 
+            # The percentage (as a value between 0 and 1) by which to discount the price
+            #   intervals this adjustment applies to in a given billing period.
             sig { returns(Float) }
             def percentage_discount
             end
@@ -2024,6 +2365,7 @@ module Orb
             def percentage_discount=(_)
             end
 
+            # The reason for the adjustment.
             sig { returns(T.nilable(String)) }
             def reason
             end
@@ -2090,6 +2432,7 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The value applied by an adjustment.
             sig { returns(String) }
             def amount
             end
@@ -2098,6 +2441,7 @@ module Orb
             def amount=(_)
             end
 
+            # The price IDs that this adjustment applies to.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -2106,6 +2450,8 @@ module Orb
             def applies_to_price_ids=(_)
             end
 
+            # True for adjustments that apply to an entire invocice, false for adjustments
+            #   that apply to only one price.
             sig { returns(T::Boolean) }
             def is_invoice_level
             end
@@ -2114,6 +2460,7 @@ module Orb
             def is_invoice_level=(_)
             end
 
+            # The item ID that revenue from this minimum will be attributed to.
             sig { returns(String) }
             def item_id
             end
@@ -2122,6 +2469,8 @@ module Orb
             def item_id=(_)
             end
 
+            # The minimum amount to charge in a given billing period for the prices this
+            #   adjustment applies to.
             sig { returns(String) }
             def minimum_amount
             end
@@ -2130,6 +2479,7 @@ module Orb
             def minimum_amount=(_)
             end
 
+            # The reason for the adjustment.
             sig { returns(T.nilable(String)) }
             def reason
             end
@@ -2199,6 +2549,7 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The value applied by an adjustment.
             sig { returns(String) }
             def amount
             end
@@ -2207,6 +2558,7 @@ module Orb
             def amount=(_)
             end
 
+            # The price IDs that this adjustment applies to.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -2215,6 +2567,8 @@ module Orb
             def applies_to_price_ids=(_)
             end
 
+            # True for adjustments that apply to an entire invocice, false for adjustments
+            #   that apply to only one price.
             sig { returns(T::Boolean) }
             def is_invoice_level
             end
@@ -2223,6 +2577,8 @@ module Orb
             def is_invoice_level=(_)
             end
 
+            # The maximum amount to charge in a given billing period for the prices this
+            #   adjustment applies to.
             sig { returns(String) }
             def maximum_amount
             end
@@ -2231,6 +2587,7 @@ module Orb
             def maximum_amount=(_)
             end
 
+            # The reason for the adjustment.
             sig { returns(T.nilable(String)) }
             def reason
             end
@@ -2284,15 +2641,17 @@ module Orb
             sig do
               override
                 .returns(
-                  [[Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment], [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment], [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment], [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment], [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment]]
+                  [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment]
                 )
             end
-            private def variants
+            def variants
             end
           end
         end
 
         class Maximum < Orb::BaseModel
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -2301,6 +2660,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Maximum amount applied
           sig { returns(String) }
           def maximum_amount
           end
@@ -2309,6 +2669,7 @@ module Orb
           def maximum_amount=(_)
           end
 
+          # This field is deprecated in favor of `adjustments`.
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
@@ -2321,6 +2682,8 @@ module Orb
         end
 
         class Minimum < Orb::BaseModel
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -2329,6 +2692,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # Minimum amount applied
           sig { returns(String) }
           def minimum_amount
           end
@@ -2337,6 +2701,7 @@ module Orb
           def minimum_amount=(_)
           end
 
+          # This field is deprecated in favor of `adjustments`.
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
@@ -2352,6 +2717,7 @@ module Orb
           abstract!
 
           class MatrixSubLineItem < Orb::BaseModel
+            # The total amount for this sub line item.
             sig { returns(String) }
             def amount
             end
@@ -2455,6 +2821,7 @@ module Orb
               def key=(_)
               end
 
+              # No value indicates the default group
               sig { returns(T.nilable(String)) }
               def value
               end
@@ -2473,6 +2840,7 @@ module Orb
             end
 
             class MatrixConfig < Orb::BaseModel
+              # The ordered dimension values for this line item.
               sig { returns(T::Array[T.nilable(String)]) }
               def dimension_values
               end
@@ -2492,6 +2860,7 @@ module Orb
           end
 
           class TierSubLineItem < Orb::BaseModel
+            # The total amount for this sub line item.
             sig { returns(String) }
             def amount
             end
@@ -2593,6 +2962,7 @@ module Orb
               def key=(_)
               end
 
+              # No value indicates the default group
               sig { returns(T.nilable(String)) }
               def value
               end
@@ -2652,6 +3022,7 @@ module Orb
           end
 
           class OtherSubLineItem < Orb::BaseModel
+            # The total amount for this sub line item.
             sig { returns(String) }
             def amount
             end
@@ -2740,6 +3111,7 @@ module Orb
               def key=(_)
               end
 
+              # No value indicates the default group
               sig { returns(T.nilable(String)) }
               def value
               end
@@ -2762,15 +3134,16 @@ module Orb
             sig do
               override
                 .returns(
-                  [[Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem], [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem], [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem]]
+                  [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem]
                 )
             end
-            private def variants
+            def variants
             end
           end
         end
 
         class TaxAmount < Orb::BaseModel
+          # The amount of additional tax incurred by this tax rate.
           sig { returns(String) }
           def amount
           end
@@ -2779,6 +3152,7 @@ module Orb
           def amount=(_)
           end
 
+          # The human-readable description of the applied tax rate.
           sig { returns(String) }
           def tax_rate_description
           end
@@ -2787,6 +3161,7 @@ module Orb
           def tax_rate_description=(_)
           end
 
+          # The tax rate percentage, out of 100.
           sig { returns(T.nilable(String)) }
           def tax_rate_percentage
           end
@@ -2817,6 +3192,8 @@ module Orb
       end
 
       class Maximum < Orb::BaseModel
+        # List of price_ids that this maximum amount applies to. For plan/plan phase
+        #   maximums, this can be a subset of prices.
         sig { returns(T::Array[String]) }
         def applies_to_price_ids
         end
@@ -2825,6 +3202,7 @@ module Orb
         def applies_to_price_ids=(_)
         end
 
+        # Maximum amount applied
         sig { returns(String) }
         def maximum_amount
         end
@@ -2845,6 +3223,8 @@ module Orb
       end
 
       class Minimum < Orb::BaseModel
+        # List of price_ids that this minimum amount applies to. For plan/plan phase
+        #   minimums, this can be a subset of prices.
         sig { returns(T::Array[String]) }
         def applies_to_price_ids
         end
@@ -2853,6 +3233,7 @@ module Orb
         def applies_to_price_ids=(_)
         end
 
+        # Minimum amount applied
         sig { returns(String) }
         def minimum_amount
         end
@@ -2873,6 +3254,7 @@ module Orb
       end
 
       class PaymentAttempt < Orb::BaseModel
+        # The ID of the payment attempt.
         sig { returns(String) }
         def id
         end
@@ -2881,6 +3263,7 @@ module Orb
         def id=(_)
         end
 
+        # The amount of the payment attempt.
         sig { returns(String) }
         def amount
         end
@@ -2889,6 +3272,7 @@ module Orb
         def amount=(_)
         end
 
+        # The time at which the payment attempt was created.
         sig { returns(Time) }
         def created_at
         end
@@ -2897,6 +3281,7 @@ module Orb
         def created_at=(_)
         end
 
+        # The payment provider that attempted to collect the payment.
         sig { returns(T.nilable(Symbol)) }
         def payment_provider
         end
@@ -2905,6 +3290,7 @@ module Orb
         def payment_provider=(_)
         end
 
+        # The ID of the payment attempt in the payment provider.
         sig { returns(T.nilable(String)) }
         def payment_provider_id
         end
@@ -2913,6 +3299,7 @@ module Orb
         def payment_provider_id=(_)
         end
 
+        # Whether the payment attempt succeeded.
         sig { returns(T::Boolean) }
         def succeeded
         end
@@ -2951,6 +3338,7 @@ module Orb
         def to_hash
         end
 
+        # The payment provider that attempted to collect the payment.
         class PaymentProvider < Orb::Enum
           abstract!
 

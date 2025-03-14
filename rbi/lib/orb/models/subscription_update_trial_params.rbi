@@ -6,6 +6,8 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
+      # The new date that the trial should end, or the literal string `immediate` to end
+      #   the trial immediately.
       sig { returns(T.any(Time, Symbol)) }
       def trial_end_date
       end
@@ -14,6 +16,8 @@ module Orb
       def trial_end_date=(_)
       end
 
+      # If true, shifts subsequent price and adjustment intervals (preserving their
+      #   durations, but adjusting their absolute dates).
       sig { returns(T.nilable(T::Boolean)) }
       def shift
       end
@@ -44,6 +48,8 @@ module Orb
       def to_hash
       end
 
+      # The new date that the trial should end, or the literal string `immediate` to end
+      #   the trial immediately.
       class TrialEndDate < Orb::Union
         abstract!
 
@@ -60,8 +66,8 @@ module Orb
         end
 
         class << self
-          sig { override.returns([[NilClass, Time], [NilClass, Symbol]]) }
-          private def variants
+          sig { override.returns([Time, Symbol]) }
+          def variants
           end
         end
       end

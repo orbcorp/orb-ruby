@@ -24,7 +24,6 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Plan]
-        #
         def update(other_external_plan_id, params = {})
           parsed, options = Orb::Models::Plans::ExternalPlanIDUpdateParams.dump_request(params)
           @client.request(
@@ -60,7 +59,6 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Plan]
-        #
         def fetch(external_plan_id, params = {})
           @client.request(
             method: :get,
@@ -71,7 +69,6 @@ module Orb
         end
 
         # @param client [Orb::Client]
-        #
         def initialize(client:)
           @client = client
         end

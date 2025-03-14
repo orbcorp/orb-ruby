@@ -11,6 +11,8 @@ module Orb
       def id=(_)
       end
 
+      # The current plan phase that is active, only if the subscription's plan has
+      #   phases.
       sig { returns(T.nilable(Integer)) }
       def active_plan_phase_order
       end
@@ -19,6 +21,8 @@ module Orb
       def active_plan_phase_order=(_)
       end
 
+      # The adjustment intervals for this subscription sorted by the start_date of the
+      #   adjustment interval.
       sig { returns(T::Array[Orb::Models::Subscription::AdjustmentInterval]) }
       def adjustment_intervals
       end
@@ -30,6 +34,9 @@ module Orb
       def adjustment_intervals=(_)
       end
 
+      # Determines whether issued invoices for this subscription will automatically be
+      #   charged with the saved payment method on the due date. This property defaults to
+      #   the plan's behavior. If null, defaults to the customer's setting.
       sig { returns(T.nilable(T::Boolean)) }
       def auto_collection
       end
@@ -49,6 +56,10 @@ module Orb
       def billing_cycle_anchor_configuration=(_)
       end
 
+      # The day of the month on which the billing cycle is anchored. If the maximum
+      #   number of days in a month is greater than this value, the last day of the month
+      #   is the billing cycle day (e.g. billing_cycle_day=31 for April means the billing
+      #   period begins on the 30th.
       sig { returns(Integer) }
       def billing_cycle_day
       end
@@ -65,6 +76,9 @@ module Orb
       def created_at=(_)
       end
 
+      # The end of the current billing period. This is an exclusive timestamp, such that
+      #   the instant returned is not part of the billing period. Set to null for
+      #   subscriptions that are not currently active.
       sig { returns(T.nilable(Time)) }
       def current_billing_period_end_date
       end
@@ -73,6 +87,9 @@ module Orb
       def current_billing_period_end_date=(_)
       end
 
+      # The start date of the current billing period. This is an inclusive timestamp;
+      #   the instant returned is exactly the beginning of the billing period. Set to null
+      #   if the subscription is not currently active.
       sig { returns(T.nilable(Time)) }
       def current_billing_period_start_date
       end
@@ -81,6 +98,24 @@ module Orb
       def current_billing_period_start_date=(_)
       end
 
+      # A customer is a buyer of your products, and the other party to the billing
+      #   relationship.
+      #
+      #   In Orb, customers are assigned system generated identifiers automatically, but
+      #   it's often desirable to have these match existing identifiers in your system. To
+      #   avoid having to denormalize Orb ID information, you can pass in an
+      #   `external_customer_id` with your own identifier. See
+      #   [Customer ID Aliases](/events-and-metrics/customer-aliases) for further
+      #   information about how these aliases work in Orb.
+      #
+      #   In addition to having an identifier in your system, a customer may exist in a
+      #   payment provider solution like Stripe. Use the `payment_provider_id` and the
+      #   `payment_provider` enum field to express this mapping.
+      #
+      #   A customer also has a timezone (from the standard
+      #   [IANA timezone database](https://www.iana.org/time-zones)), which defaults to
+      #   your account's timezone. See [Timezone localization](/essentials/timezones) for
+      #   information on what this timezone parameter influences within Orb.
       sig { returns(Orb::Models::Customer) }
       def customer
       end
@@ -89,6 +124,8 @@ module Orb
       def customer=(_)
       end
 
+      # Determines the default memo on this subscriptions' invoices. Note that if this
+      #   is not provided, it is determined by the plan configuration.
       sig { returns(T.nilable(String)) }
       def default_invoice_memo
       end
@@ -97,6 +134,7 @@ module Orb
       def default_invoice_memo=(_)
       end
 
+      # The discount intervals for this subscription sorted by the start_date.
       sig do
         returns(
           T::Array[
@@ -134,6 +172,7 @@ module Orb
       def discount_intervals=(_)
       end
 
+      # The date Orb stops billing for this subscription.
       sig { returns(T.nilable(Time)) }
       def end_date
       end
@@ -161,6 +200,7 @@ module Orb
       def invoicing_threshold=(_)
       end
 
+      # The maximum intervals for this subscription sorted by the start_date.
       sig { returns(T::Array[Orb::Models::Subscription::MaximumInterval]) }
       def maximum_intervals
       end
@@ -172,6 +212,10 @@ module Orb
       def maximum_intervals=(_)
       end
 
+      # User specified key-value pairs for the resource. If not present, this defaults
+      #   to an empty dictionary. Individual keys can be removed by setting the value to
+      #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+      #   `null`.
       sig { returns(T::Hash[Symbol, String]) }
       def metadata
       end
@@ -180,6 +224,7 @@ module Orb
       def metadata=(_)
       end
 
+      # The minimum intervals for this subscription sorted by the start_date.
       sig { returns(T::Array[Orb::Models::Subscription::MinimumInterval]) }
       def minimum_intervals
       end
@@ -191,6 +236,10 @@ module Orb
       def minimum_intervals=(_)
       end
 
+      # Determines the difference between the invoice issue date for subscription
+      #   invoices as the date that they are due. A value of `0` here represents that the
+      #   invoice is due on issue, whereas a value of `30` represents that the customer
+      #   has a month to pay the invoice.
       sig { returns(Integer) }
       def net_terms
       end
@@ -199,6 +248,10 @@ module Orb
       def net_terms=(_)
       end
 
+      # The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
+      #   subscribed to by a customer. Plans define the billing behavior of the
+      #   subscription. You can see more about how to configure prices in the
+      #   [Price resource](/reference/price).
       sig { returns(Orb::Models::Plan) }
       def plan
       end
@@ -207,6 +260,7 @@ module Orb
       def plan=(_)
       end
 
+      # The price intervals for this subscription.
       sig { returns(T::Array[Orb::Models::Subscription::PriceInterval]) }
       def price_intervals
       end
@@ -229,6 +283,7 @@ module Orb
       def redeemed_coupon=(_)
       end
 
+      # The date Orb starts billing for this subscription.
       sig { returns(Time) }
       def start_date
       end
@@ -253,6 +308,25 @@ module Orb
       def trial_info=(_)
       end
 
+      # A [subscription](/core-concepts#subscription) represents the purchase of a plan
+      #   by a customer.
+      #
+      #   By default, subscriptions begin on the day that they're created and renew
+      #   automatically for each billing cycle at the cadence that's configured in the
+      #   plan definition.
+      #
+      #   Subscriptions also default to **beginning of month alignment**, which means the
+      #   first invoice issued for the subscription will have pro-rated charges between
+      #   the `start_date` and the first of the following month. Subsequent billing
+      #   periods will always start and end on a month boundary (e.g. subsequent month
+      #   starts for monthly billing).
+      #
+      #   Depending on the plan configuration, any _flat_ recurring fees will be billed
+      #   either at the beginning (in-advance) or end (in-arrears) of each billing cycle.
+      #   Plans default to **in-advance billing**. Usage-based fees are billed in arrears
+      #   as usage is accumulated. In the normal course of events, you can expect an
+      #   invoice to contain usage-based charges for the previous period, and a recurring
+      #   fee for the following period.
       sig do
         params(
           id: String,
@@ -405,6 +479,7 @@ module Orb
         def adjustment=(_)
         end
 
+        # The price interval IDs that this adjustment applies to.
         sig { returns(T::Array[String]) }
         def applies_to_price_interval_ids
         end
@@ -413,6 +488,7 @@ module Orb
         def applies_to_price_interval_ids=(_)
         end
 
+        # The end date of the adjustment interval.
         sig { returns(T.nilable(Time)) }
         def end_date
         end
@@ -421,6 +497,7 @@ module Orb
         def end_date=(_)
         end
 
+        # The start date of the adjustment interval.
         sig { returns(Time) }
         def start_date
         end
@@ -489,6 +566,7 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The price IDs that this adjustment applies to.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -497,6 +575,8 @@ module Orb
             def applies_to_price_ids=(_)
             end
 
+            # True for adjustments that apply to an entire invocice, false for adjustments
+            #   that apply to only one price.
             sig { returns(T::Boolean) }
             def is_invoice_level
             end
@@ -505,6 +585,7 @@ module Orb
             def is_invoice_level=(_)
             end
 
+            # The plan phase in which this adjustment is active.
             sig { returns(T.nilable(Integer)) }
             def plan_phase_order
             end
@@ -513,6 +594,7 @@ module Orb
             def plan_phase_order=(_)
             end
 
+            # The reason for the adjustment.
             sig { returns(T.nilable(String)) }
             def reason
             end
@@ -521,6 +603,8 @@ module Orb
             def reason=(_)
             end
 
+            # The number of usage units by which to discount the price this adjustment applies
+            #   to in a given billing period.
             sig { returns(Float) }
             def usage_discount
             end
@@ -587,6 +671,8 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The amount by which to discount the prices this adjustment applies to in a given
+            #   billing period.
             sig { returns(String) }
             def amount_discount
             end
@@ -595,6 +681,7 @@ module Orb
             def amount_discount=(_)
             end
 
+            # The price IDs that this adjustment applies to.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -603,6 +690,8 @@ module Orb
             def applies_to_price_ids=(_)
             end
 
+            # True for adjustments that apply to an entire invocice, false for adjustments
+            #   that apply to only one price.
             sig { returns(T::Boolean) }
             def is_invoice_level
             end
@@ -611,6 +700,7 @@ module Orb
             def is_invoice_level=(_)
             end
 
+            # The plan phase in which this adjustment is active.
             sig { returns(T.nilable(Integer)) }
             def plan_phase_order
             end
@@ -619,6 +709,7 @@ module Orb
             def plan_phase_order=(_)
             end
 
+            # The reason for the adjustment.
             sig { returns(T.nilable(String)) }
             def reason
             end
@@ -685,6 +776,7 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The price IDs that this adjustment applies to.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -693,6 +785,8 @@ module Orb
             def applies_to_price_ids=(_)
             end
 
+            # True for adjustments that apply to an entire invocice, false for adjustments
+            #   that apply to only one price.
             sig { returns(T::Boolean) }
             def is_invoice_level
             end
@@ -701,6 +795,8 @@ module Orb
             def is_invoice_level=(_)
             end
 
+            # The percentage (as a value between 0 and 1) by which to discount the price
+            #   intervals this adjustment applies to in a given billing period.
             sig { returns(Float) }
             def percentage_discount
             end
@@ -709,6 +805,7 @@ module Orb
             def percentage_discount=(_)
             end
 
+            # The plan phase in which this adjustment is active.
             sig { returns(T.nilable(Integer)) }
             def plan_phase_order
             end
@@ -717,6 +814,7 @@ module Orb
             def plan_phase_order=(_)
             end
 
+            # The reason for the adjustment.
             sig { returns(T.nilable(String)) }
             def reason
             end
@@ -783,6 +881,7 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The price IDs that this adjustment applies to.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -791,6 +890,8 @@ module Orb
             def applies_to_price_ids=(_)
             end
 
+            # True for adjustments that apply to an entire invocice, false for adjustments
+            #   that apply to only one price.
             sig { returns(T::Boolean) }
             def is_invoice_level
             end
@@ -799,6 +900,7 @@ module Orb
             def is_invoice_level=(_)
             end
 
+            # The item ID that revenue from this minimum will be attributed to.
             sig { returns(String) }
             def item_id
             end
@@ -807,6 +909,8 @@ module Orb
             def item_id=(_)
             end
 
+            # The minimum amount to charge in a given billing period for the prices this
+            #   adjustment applies to.
             sig { returns(String) }
             def minimum_amount
             end
@@ -815,6 +919,7 @@ module Orb
             def minimum_amount=(_)
             end
 
+            # The plan phase in which this adjustment is active.
             sig { returns(T.nilable(Integer)) }
             def plan_phase_order
             end
@@ -823,6 +928,7 @@ module Orb
             def plan_phase_order=(_)
             end
 
+            # The reason for the adjustment.
             sig { returns(T.nilable(String)) }
             def reason
             end
@@ -892,6 +998,7 @@ module Orb
             def adjustment_type=(_)
             end
 
+            # The price IDs that this adjustment applies to.
             sig { returns(T::Array[String]) }
             def applies_to_price_ids
             end
@@ -900,6 +1007,8 @@ module Orb
             def applies_to_price_ids=(_)
             end
 
+            # True for adjustments that apply to an entire invocice, false for adjustments
+            #   that apply to only one price.
             sig { returns(T::Boolean) }
             def is_invoice_level
             end
@@ -908,6 +1017,8 @@ module Orb
             def is_invoice_level=(_)
             end
 
+            # The maximum amount to charge in a given billing period for the prices this
+            #   adjustment applies to.
             sig { returns(String) }
             def maximum_amount
             end
@@ -916,6 +1027,7 @@ module Orb
             def maximum_amount=(_)
             end
 
+            # The plan phase in which this adjustment is active.
             sig { returns(T.nilable(Integer)) }
             def plan_phase_order
             end
@@ -924,6 +1036,7 @@ module Orb
             def plan_phase_order=(_)
             end
 
+            # The reason for the adjustment.
             sig { returns(T.nilable(String)) }
             def reason
             end
@@ -977,16 +1090,20 @@ module Orb
             sig do
               override
                 .returns(
-                  [[Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment], [Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment], [Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment], [Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment], [Symbol, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]]
+                  [Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
                 )
             end
-            private def variants
+            def variants
             end
           end
         end
       end
 
       class BillingCycleAnchorConfiguration < Orb::BaseModel
+        # The day of the month on which the billing cycle is anchored. If the maximum
+        #   number of days in a month is greater than this value, the last day of the month
+        #   is the billing cycle day (e.g. billing_cycle_day=31 for April means the billing
+        #   period begins on the 30th.
         sig { returns(Integer) }
         def day
         end
@@ -995,6 +1112,9 @@ module Orb
         def day=(_)
         end
 
+        # The month on which the billing cycle is anchored (e.g. a quarterly price
+        #   anchored in February would have cycles starting February, May, August, and
+        #   November).
         sig { returns(T.nilable(Integer)) }
         def month
         end
@@ -1003,6 +1123,8 @@ module Orb
         def month=(_)
         end
 
+        # The year on which the billing cycle is anchored (e.g. a 2 year billing cycle
+        #   anchored on 2021 would have cycles starting on 2021, 2023, 2025, etc.).
         sig { returns(T.nilable(Integer)) }
         def year
         end
@@ -1026,6 +1148,7 @@ module Orb
         abstract!
 
         class AmountDiscountInterval < Orb::BaseModel
+          # Only available if discount_type is `amount`.
           sig { returns(String) }
           def amount_discount
           end
@@ -1034,6 +1157,7 @@ module Orb
           def amount_discount=(_)
           end
 
+          # The price ids that this discount interval applies to.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -1042,6 +1166,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # The price interval ids that this discount interval applies to.
           sig { returns(T::Array[String]) }
           def applies_to_price_interval_ids
           end
@@ -1058,6 +1183,7 @@ module Orb
           def discount_type=(_)
           end
 
+          # The end date of the discount interval.
           sig { returns(T.nilable(Time)) }
           def end_date
           end
@@ -1066,6 +1192,7 @@ module Orb
           def end_date=(_)
           end
 
+          # The start date of the discount interval.
           sig { returns(Time) }
           def start_date
           end
@@ -1113,6 +1240,7 @@ module Orb
         end
 
         class PercentageDiscountInterval < Orb::BaseModel
+          # The price ids that this discount interval applies to.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -1121,6 +1249,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # The price interval ids that this discount interval applies to.
           sig { returns(T::Array[String]) }
           def applies_to_price_interval_ids
           end
@@ -1137,6 +1266,7 @@ module Orb
           def discount_type=(_)
           end
 
+          # The end date of the discount interval.
           sig { returns(T.nilable(Time)) }
           def end_date
           end
@@ -1145,6 +1275,8 @@ module Orb
           def end_date=(_)
           end
 
+          # Only available if discount_type is `percentage`.This is a number between 0
+          #   and 1.
           sig { returns(Float) }
           def percentage_discount
           end
@@ -1153,6 +1285,7 @@ module Orb
           def percentage_discount=(_)
           end
 
+          # The start date of the discount interval.
           sig { returns(Time) }
           def start_date
           end
@@ -1200,6 +1333,7 @@ module Orb
         end
 
         class UsageDiscountInterval < Orb::BaseModel
+          # The price ids that this discount interval applies to.
           sig { returns(T::Array[String]) }
           def applies_to_price_ids
           end
@@ -1208,6 +1342,7 @@ module Orb
           def applies_to_price_ids=(_)
           end
 
+          # The price interval ids that this discount interval applies to.
           sig { returns(T::Array[String]) }
           def applies_to_price_interval_ids
           end
@@ -1224,6 +1359,7 @@ module Orb
           def discount_type=(_)
           end
 
+          # The end date of the discount interval.
           sig { returns(T.nilable(Time)) }
           def end_date
           end
@@ -1232,6 +1368,7 @@ module Orb
           def end_date=(_)
           end
 
+          # The start date of the discount interval.
           sig { returns(Time) }
           def start_date
           end
@@ -1240,6 +1377,8 @@ module Orb
           def start_date=(_)
           end
 
+          # Only available if discount_type is `usage`. Number of usage units that this
+          #   discount is for
           sig { returns(Float) }
           def usage_discount
           end
@@ -1290,10 +1429,10 @@ module Orb
           sig do
             override
               .returns(
-                [[Symbol, Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval], [Symbol, Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval], [Symbol, Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval]]
+                [Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval, Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval, Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval]
               )
           end
-          private def variants
+          def variants
           end
         end
       end
@@ -1346,6 +1485,7 @@ module Orb
       end
 
       class MaximumInterval < Orb::BaseModel
+        # The price ids that this maximum interval applies to.
         sig { returns(T::Array[String]) }
         def applies_to_price_ids
         end
@@ -1354,6 +1494,7 @@ module Orb
         def applies_to_price_ids=(_)
         end
 
+        # The price interval ids that this maximum interval applies to.
         sig { returns(T::Array[String]) }
         def applies_to_price_interval_ids
         end
@@ -1362,6 +1503,7 @@ module Orb
         def applies_to_price_interval_ids=(_)
         end
 
+        # The end date of the maximum interval.
         sig { returns(T.nilable(Time)) }
         def end_date
         end
@@ -1370,6 +1512,8 @@ module Orb
         def end_date=(_)
         end
 
+        # The maximum amount to charge in a given billing period for the price intervals
+        #   this transform applies to.
         sig { returns(String) }
         def maximum_amount
         end
@@ -1378,6 +1522,7 @@ module Orb
         def maximum_amount=(_)
         end
 
+        # The start date of the maximum interval.
         sig { returns(Time) }
         def start_date
         end
@@ -1416,6 +1561,7 @@ module Orb
       end
 
       class MinimumInterval < Orb::BaseModel
+        # The price ids that this minimum interval applies to.
         sig { returns(T::Array[String]) }
         def applies_to_price_ids
         end
@@ -1424,6 +1570,7 @@ module Orb
         def applies_to_price_ids=(_)
         end
 
+        # The price interval ids that this minimum interval applies to.
         sig { returns(T::Array[String]) }
         def applies_to_price_interval_ids
         end
@@ -1432,6 +1579,7 @@ module Orb
         def applies_to_price_interval_ids=(_)
         end
 
+        # The end date of the minimum interval.
         sig { returns(T.nilable(Time)) }
         def end_date
         end
@@ -1440,6 +1588,8 @@ module Orb
         def end_date=(_)
         end
 
+        # The minimum amount to charge in a given billing period for the price intervals
+        #   this minimum applies to.
         sig { returns(String) }
         def minimum_amount
         end
@@ -1448,6 +1598,7 @@ module Orb
         def minimum_amount=(_)
         end
 
+        # The start date of the minimum interval.
         sig { returns(Time) }
         def start_date
         end
@@ -1494,6 +1645,7 @@ module Orb
         def id=(_)
         end
 
+        # The day of the month that Orb bills for this price
         sig { returns(Integer) }
         def billing_cycle_day
         end
@@ -1502,6 +1654,9 @@ module Orb
         def billing_cycle_day=(_)
         end
 
+        # The end of the current billing period. This is an exclusive timestamp, such that
+        #   the instant returned is exactly the end of the billing period. Set to null if
+        #   this price interval is not currently active.
         sig { returns(T.nilable(Time)) }
         def current_billing_period_end_date
         end
@@ -1510,6 +1665,9 @@ module Orb
         def current_billing_period_end_date=(_)
         end
 
+        # The start date of the current billing period. This is an inclusive timestamp;
+        #   the instant returned is exactly the beginning of the billing period. Set to null
+        #   if this price interval is not currently active.
         sig { returns(T.nilable(Time)) }
         def current_billing_period_start_date
         end
@@ -1518,6 +1676,8 @@ module Orb
         def current_billing_period_start_date=(_)
         end
 
+        # The end date of the price interval. This is the date that Orb stops billing for
+        #   this price.
         sig { returns(T.nilable(Time)) }
         def end_date
         end
@@ -1526,6 +1686,7 @@ module Orb
         def end_date=(_)
         end
 
+        # An additional filter to apply to usage queries.
         sig { returns(T.nilable(String)) }
         def filter
         end
@@ -1534,6 +1695,8 @@ module Orb
         def filter=(_)
         end
 
+        # The fixed fee quantity transitions for this price interval. This is only
+        #   relevant for fixed fees.
         sig { returns(T.nilable(T::Array[Orb::Models::Subscription::PriceInterval::FixedFeeQuantityTransition])) }
         def fixed_fee_quantity_transitions
         end
@@ -1545,6 +1708,16 @@ module Orb
         def fixed_fee_quantity_transitions=(_)
         end
 
+        # The Price resource represents a price that can be billed on a subscription,
+        #   resulting in a charge on an invoice in the form of an invoice line item. Prices
+        #   take a quantity and determine an amount to bill.
+        #
+        #   Orb supports a few different pricing models out of the box. Each of these models
+        #   is serialized differently in a given Price object. The model_type field
+        #   determines the key for the configuration object that is present.
+        #
+        #   For more on the types of prices, see
+        #   [the core concepts documentation](/core-concepts#plan-and-price)
         sig do
           returns(
             T.any(
@@ -1651,6 +1824,8 @@ module Orb
         def price=(_)
         end
 
+        # The start date of the price interval. This is the date that Orb starts billing
+        #   for this price.
         sig { returns(Time) }
         def start_date
         end
@@ -1659,6 +1834,8 @@ module Orb
         def start_date=(_)
         end
 
+        # A list of customer IDs whose usage events will be aggregated and billed under
+        #   this price interval.
         sig { returns(T.nilable(T::Array[String])) }
         def usage_customer_ids
         end
@@ -1667,6 +1844,9 @@ module Orb
         def usage_customer_ids=(_)
         end
 
+        # The Price Interval resource represents a period of time for which a price will
+        #   bill on a subscription. A subscription’s price intervals define its billing
+        #   behavior.
         sig do
           params(
             id: String,

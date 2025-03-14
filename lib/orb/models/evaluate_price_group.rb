@@ -31,13 +31,18 @@ module Orb
       # def initialize: (Hash | Orb::BaseModel) -> void
 
       # @abstract
-      #
       class GroupingValue < Orb::Union
         variant String
 
         variant Float
 
         variant Orb::BooleanModel
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(String, Float, Boolean)]
+        #     def variants; end
+        #   end
       end
     end
   end

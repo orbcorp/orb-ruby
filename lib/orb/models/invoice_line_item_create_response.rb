@@ -207,7 +207,6 @@ module Orb
       # def initialize: (Hash | Orb::BaseModel) -> void
 
       # @abstract
-      #
       class Adjustment < Orb::Union
         discriminator :adjustment_type
 
@@ -571,10 +570,15 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment)]
+        #     def variants; end
+        #   end
       end
 
       # @deprecated
-      #
       class Maximum < Orb::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -601,7 +605,6 @@ module Orb
       end
 
       # @deprecated
-      #
       class Minimum < Orb::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -628,7 +631,6 @@ module Orb
       end
 
       # @abstract
-      #
       class SubLineItem < Orb::Union
         discriminator :type
 
@@ -878,6 +880,12 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem)]
+        #     def variants; end
+        #   end
       end
 
       class TaxAmount < Orb::BaseModel

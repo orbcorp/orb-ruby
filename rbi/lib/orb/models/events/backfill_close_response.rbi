@@ -12,6 +12,8 @@ module Orb
         def id=(_)
         end
 
+        # If in the future, the time at which the backfill will automatically close. If in
+        #   the past, the time at which the backfill was closed.
         sig { returns(T.nilable(Time)) }
         def close_time
         end
@@ -28,6 +30,8 @@ module Orb
         def created_at=(_)
         end
 
+        # The Orb-generated ID of the customer to which this backfill is scoped. If
+        #   `null`, this backfill is scoped to all customers.
         sig { returns(T.nilable(String)) }
         def customer_id
         end
@@ -36,6 +40,7 @@ module Orb
         def customer_id=(_)
         end
 
+        # The number of events ingested in this backfill.
         sig { returns(Integer) }
         def events_ingested
         end
@@ -44,6 +49,9 @@ module Orb
         def events_ingested=(_)
         end
 
+        # If `true`, existing events in the backfill's timeframe will be replaced with the
+        #   newly ingested events associated with the backfill. If `false`, newly ingested
+        #   events will be added to the existing events.
         sig { returns(T::Boolean) }
         def replace_existing_events
         end
@@ -52,6 +60,7 @@ module Orb
         def replace_existing_events=(_)
         end
 
+        # The time at which this backfill was reverted.
         sig { returns(T.nilable(Time)) }
         def reverted_at
         end
@@ -60,6 +69,7 @@ module Orb
         def reverted_at=(_)
         end
 
+        # The status of the backfill.
         sig { returns(Symbol) }
         def status
         end
@@ -84,6 +94,9 @@ module Orb
         def timeframe_start=(_)
         end
 
+        # A boolean
+        #   [computed property](/extensibility/advanced-metrics#computed-properties) used to
+        #   filter the set of events to deprecate
         sig { returns(T.nilable(String)) }
         def deprecation_filter
         end
@@ -92,6 +105,8 @@ module Orb
         def deprecation_filter=(_)
         end
 
+        # A backfill represents an update to historical usage data, adding or replacing
+        #   events in a timeframe.
         sig do
           params(
             id: String,
@@ -144,6 +159,7 @@ module Orb
         def to_hash
         end
 
+        # The status of the backfill.
         class Status < Orb::Enum
           abstract!
 

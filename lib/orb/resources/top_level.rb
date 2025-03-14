@@ -15,7 +15,6 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::TopLevelPingResponse]
-      #
       def ping(params = {})
         @client.request(
           method: :get,
@@ -26,7 +25,6 @@ module Orb
       end
 
       # @param client [Orb::Client]
-      #
       def initialize(client:)
         @client = client
       end

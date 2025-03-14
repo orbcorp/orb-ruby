@@ -3,6 +3,8 @@
 module Orb
   module Models
     class TrialDiscount < Orb::BaseModel
+      # List of price_ids that this discount applies to. For plan/plan phase discounts,
+      #   this can be a subset of prices.
       sig { returns(T::Array[String]) }
       def applies_to_price_ids
       end
@@ -27,6 +29,7 @@ module Orb
       def reason=(_)
       end
 
+      # Only available if discount_type is `trial`
       sig { returns(T.nilable(String)) }
       def trial_amount_discount
       end
@@ -35,6 +38,7 @@ module Orb
       def trial_amount_discount=(_)
       end
 
+      # Only available if discount_type is `trial`
       sig { returns(T.nilable(Float)) }
       def trial_percentage_discount
       end

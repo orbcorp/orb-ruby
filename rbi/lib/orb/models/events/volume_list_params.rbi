@@ -7,6 +7,10 @@ module Orb
         extend Orb::RequestParameters::Converter
         include Orb::RequestParameters
 
+        # The start of the timeframe, inclusive, in which to return event volume. All
+        #   datetime values are converted to UTC time. If the specified time isn't
+        #   hour-aligned, the response includes the event volume count for the hour the time
+        #   falls in.
         sig { returns(Time) }
         def timeframe_start
         end
@@ -15,6 +19,8 @@ module Orb
         def timeframe_start=(_)
         end
 
+        # Cursor for pagination. This can be populated by the `next_cursor` value returned
+        #   from the initial request.
         sig { returns(T.nilable(String)) }
         def cursor
         end
@@ -23,6 +29,7 @@ module Orb
         def cursor=(_)
         end
 
+        # The number of items to fetch. Defaults to 20.
         sig { returns(T.nilable(Integer)) }
         def limit
         end
@@ -31,6 +38,10 @@ module Orb
         def limit=(_)
         end
 
+        # The end of the timeframe, exclusive, in which to return event volume. If not
+        #   specified, the current time is used. All datetime values are converted to UTC
+        #   time.If the specified time isn't hour-aligned, the response includes the event
+        #   volumecount for the hour the time falls in.
         sig { returns(T.nilable(Time)) }
         def timeframe_end
         end
