@@ -163,16 +163,12 @@ module Orb
         class Status < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           PENDING = :pending
           REFLECTED = :reflected
           PENDING_REVERT = :pending_revert
           REVERTED = :reverted
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

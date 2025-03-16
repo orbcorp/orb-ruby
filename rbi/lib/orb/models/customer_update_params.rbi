@@ -604,17 +604,13 @@ module Orb
       class PaymentProvider < Orb::Enum
         abstract!
 
-        QUICKBOOKS = T.let(:quickbooks, T.nilable(Symbol))
-        BILL_COM = T.let(:"bill.com", T.nilable(Symbol))
-        STRIPE_CHARGE = T.let(:stripe_charge, T.nilable(Symbol))
-        STRIPE_INVOICE = T.let(:stripe_invoice, T.nilable(Symbol))
-        NETSUITE = T.let(:netsuite, T.nilable(Symbol))
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        QUICKBOOKS = :quickbooks
+        BILL_COM = :"bill.com"
+        STRIPE_CHARGE = :stripe_charge
+        STRIPE_INVOICE = :stripe_invoice
+        NETSUITE = :netsuite
       end
 
       class ReportingConfiguration < Orb::BaseModel
@@ -718,6 +714,15 @@ module Orb
       class TaxConfiguration < Orb::Union
         abstract!
 
+        Variants = type_template(:out) do
+          {
+            fixed: T.any(
+              Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration,
+              Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration
+            )
+          }
+        end
+
         class NewAvalaraTaxConfiguration < Orb::BaseModel
           sig { returns(T::Boolean) }
           def tax_exempt
@@ -786,17 +791,6 @@ module Orb
 
           sig { override.returns({tax_exempt: T::Boolean, tax_provider: Symbol}) }
           def to_hash
-          end
-        end
-
-        class << self
-          sig do
-            override
-              .returns(
-                [Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration]
-              )
-          end
-          def variants
           end
         end
       end
@@ -942,6 +936,8 @@ module Orb
         class Country < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           AD = :AD
           AE = :AE
           AR = :AR
@@ -1020,16 +1016,12 @@ module Orb
           VE = :VE
           VN = :VN
           ZA = :ZA
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class Type < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           AD_NRT = :ad_nrt
           AE_TRN = :ae_trn
@@ -1102,12 +1094,6 @@ module Orb
           VE_RIF = :ve_rif
           VN_TIN = :vn_tin
           ZA_VAT = :za_vat
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

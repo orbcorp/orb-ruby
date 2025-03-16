@@ -113,15 +113,11 @@ module Orb
       class Status < Orb::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         ACTIVE = :active
         ARCHIVED = :archived
         DRAFT = :draft
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end
