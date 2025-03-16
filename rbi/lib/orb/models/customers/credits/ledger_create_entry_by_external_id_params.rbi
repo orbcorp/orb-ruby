@@ -197,13 +197,9 @@ module Orb
           class EntryType < Orb::Enum
             abstract!
 
-            AMENDMENT = :amendment
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            AMENDMENT = :amendment
           end
 
           class InvoiceSettings < Orb::BaseModel
@@ -282,13 +278,9 @@ module Orb
           class VoidReason < Orb::Enum
             abstract!
 
-            REFUND = T.let(:refund, T.nilable(Symbol))
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            REFUND = :refund
           end
         end
       end

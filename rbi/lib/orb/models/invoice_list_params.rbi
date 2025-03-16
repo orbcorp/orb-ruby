@@ -247,30 +247,22 @@ module Orb
       class DateType < Orb::Enum
         abstract!
 
-        DUE_DATE = T.let(:due_date, T.nilable(Symbol))
-        INVOICE_DATE = T.let(:invoice_date, T.nilable(Symbol))
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        DUE_DATE = :due_date
+        INVOICE_DATE = :invoice_date
       end
 
       class Status < Orb::Enum
         abstract!
+
+        Value = type_template(:out) { {fixed: Symbol} }
 
         DRAFT = :draft
         ISSUED = :issued
         PAID = :paid
         SYNCED = :synced
         VOID = :void
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end

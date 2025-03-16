@@ -533,6 +533,18 @@ module Orb
         class Adjustment < Orb::Union
           abstract!
 
+          Variants = type_template(:out) do
+            {
+              fixed: T.any(
+                Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment,
+                Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment,
+                Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment,
+                Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment,
+                Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
+              )
+            }
+          end
+
           class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
             sig { returns(String) }
             def id
@@ -1069,17 +1081,6 @@ module Orb
             def to_hash
             end
           end
-
-          class << self
-            sig do
-              override
-                .returns(
-                  [Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
-                )
-            end
-            def variants
-            end
-          end
         end
       end
 
@@ -1130,6 +1131,16 @@ module Orb
 
       class DiscountInterval < Orb::Union
         abstract!
+
+        Variants = type_template(:out) do
+          {
+            fixed: T.any(
+              Orb::Models::SubscriptionCreateResponse::DiscountInterval::AmountDiscountInterval,
+              Orb::Models::SubscriptionCreateResponse::DiscountInterval::PercentageDiscountInterval,
+              Orb::Models::SubscriptionCreateResponse::DiscountInterval::UsageDiscountInterval
+            )
+          }
+        end
 
         class AmountDiscountInterval < Orb::BaseModel
           # Only available if discount_type is `amount`.
@@ -1406,17 +1417,6 @@ module Orb
               )
           end
           def to_hash
-          end
-        end
-
-        class << self
-          sig do
-            override
-              .returns(
-                [Orb::Models::SubscriptionCreateResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionCreateResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionCreateResponse::DiscountInterval::UsageDiscountInterval]
-              )
-          end
-          def variants
           end
         end
       end
@@ -2020,15 +2020,11 @@ module Orb
       class Status < Orb::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         ACTIVE = :active
         ENDED = :ended
         UPCOMING = :upcoming
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class TrialInfo < Orb::BaseModel

@@ -541,30 +541,22 @@ module Orb
       class Cadence < Orb::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         ANNUAL = :annual
         SEMI_ANNUAL = :semi_annual
         MONTHLY = :monthly
         QUARTERLY = :quarterly
         ONE_TIME = :one_time
         CUSTOM = :custom
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class ModelType < Orb::Enum
         abstract!
 
-        CUMULATIVE_GROUPED_BULK = :cumulative_grouped_bulk
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        CUMULATIVE_GROUPED_BULK = :cumulative_grouped_bulk
       end
 
       class UnitConfig < Orb::BaseModel
@@ -619,14 +611,10 @@ module Orb
         class DurationUnit < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           DAY = :day
           MONTH = :month
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
@@ -663,14 +651,10 @@ module Orb
         class DurationUnit < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           DAY = :day
           MONTH = :month
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 

@@ -153,13 +153,9 @@ module Orb
       class Granularity < Orb::Enum
         abstract!
 
-        DAY = T.let(:day, T.nilable(Symbol))
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        DAY = :day
       end
 
       # Controls whether Orb returns cumulative usage since the start of the billing
@@ -169,14 +165,10 @@ module Orb
       class ViewMode < Orb::Enum
         abstract!
 
-        PERIODIC = T.let(:periodic, T.nilable(Symbol))
-        CUMULATIVE = T.let(:cumulative, T.nilable(Symbol))
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        PERIODIC = :periodic
+        CUMULATIVE = :cumulative
       end
     end
   end

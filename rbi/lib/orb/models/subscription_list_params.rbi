@@ -133,15 +133,11 @@ module Orb
       class Status < Orb::Enum
         abstract!
 
-        ACTIVE = T.let(:active, T.nilable(Symbol))
-        ENDED = T.let(:ended, T.nilable(Symbol))
-        UPCOMING = T.let(:upcoming, T.nilable(Symbol))
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        ACTIVE = :active
+        ENDED = :ended
+        UPCOMING = :upcoming
       end
     end
   end

@@ -93,16 +93,12 @@ module Orb
       class Reason < Orb::Enum
         abstract!
 
-        DUPLICATE = T.let(:duplicate, T.nilable(Symbol))
-        FRAUDULENT = T.let(:fraudulent, T.nilable(Symbol))
-        ORDER_CHANGE = T.let(:order_change, T.nilable(Symbol))
-        PRODUCT_UNSATISFACTORY = T.let(:product_unsatisfactory, T.nilable(Symbol))
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        DUPLICATE = :duplicate
+        FRAUDULENT = :fraudulent
+        ORDER_CHANGE = :order_change
+        PRODUCT_UNSATISFACTORY = :product_unsatisfactory
       end
     end
   end

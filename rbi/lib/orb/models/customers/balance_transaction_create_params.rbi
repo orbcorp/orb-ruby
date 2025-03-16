@@ -61,14 +61,10 @@ module Orb
         class Type < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           INCREMENT = :increment
           DECREMENT = :decrement
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

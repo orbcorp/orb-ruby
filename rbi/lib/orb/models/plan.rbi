@@ -583,6 +583,18 @@ module Orb
       class Adjustment < Orb::Union
         abstract!
 
+        Variants = type_template(:out) do
+          {
+            fixed: T.any(
+              Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment,
+              Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment,
+              Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment,
+              Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment,
+              Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
+            )
+          }
+        end
+
         class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
           sig { returns(String) }
           def id
@@ -1119,17 +1131,6 @@ module Orb
           def to_hash
           end
         end
-
-        class << self
-          sig do
-            override
-              .returns(
-                [Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment]
-              )
-          end
-          def variants
-          end
-        end
       end
 
       class BasePlan < Orb::BaseModel
@@ -1441,17 +1442,13 @@ module Orb
         class DurationUnit < Orb::Enum
           abstract!
 
-          DAILY = T.let(:daily, T.nilable(Symbol))
-          MONTHLY = T.let(:monthly, T.nilable(Symbol))
-          QUARTERLY = T.let(:quarterly, T.nilable(Symbol))
-          SEMI_ANNUAL = T.let(:semi_annual, T.nilable(Symbol))
-          ANNUAL = T.let(:annual, T.nilable(Symbol))
+          Value = type_template(:out) { {fixed: Symbol} }
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
+          DAILY = :daily
+          MONTHLY = :monthly
+          QUARTERLY = :quarterly
+          SEMI_ANNUAL = :semi_annual
+          ANNUAL = :annual
         end
 
         class Maximum < Orb::BaseModel
@@ -1554,15 +1551,11 @@ module Orb
       class Status < Orb::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         ACTIVE = :active
         ARCHIVED = :archived
         DRAFT = :draft
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class TrialConfig < Orb::BaseModel
@@ -1593,13 +1586,9 @@ module Orb
         class TrialPeriodUnit < Orb::Enum
           abstract!
 
-          DAYS = :days
+          Value = type_template(:out) { {fixed: Symbol} }
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
+          DAYS = :days
         end
       end
     end

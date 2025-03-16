@@ -605,17 +605,13 @@ module Orb
       class PaymentProvider < Orb::Enum
         abstract!
 
-        QUICKBOOKS = T.let(:quickbooks, T.nilable(Symbol))
-        BILL_COM = T.let(:"bill.com", T.nilable(Symbol))
-        STRIPE_CHARGE = T.let(:stripe_charge, T.nilable(Symbol))
-        STRIPE_INVOICE = T.let(:stripe_invoice, T.nilable(Symbol))
-        NETSUITE = T.let(:netsuite, T.nilable(Symbol))
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        QUICKBOOKS = :quickbooks
+        BILL_COM = :"bill.com"
+        STRIPE_CHARGE = :stripe_charge
+        STRIPE_INVOICE = :stripe_invoice
+        NETSUITE = :netsuite
       end
 
       class ShippingAddress < Orb::BaseModel
@@ -839,6 +835,8 @@ module Orb
         class Country < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           AD = :AD
           AE = :AE
           AR = :AR
@@ -917,16 +915,12 @@ module Orb
           VE = :VE
           VN = :VN
           ZA = :ZA
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class Type < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           AD_NRT = :ad_nrt
           AE_TRN = :ae_trn
@@ -999,12 +993,6 @@ module Orb
           VE_RIF = :ve_rif
           VN_TIN = :vn_tin
           ZA_VAT = :za_vat
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
@@ -1080,14 +1068,10 @@ module Orb
           class ProviderType < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             QUICKBOOKS = :quickbooks
             NETSUITE = :netsuite
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
       end
