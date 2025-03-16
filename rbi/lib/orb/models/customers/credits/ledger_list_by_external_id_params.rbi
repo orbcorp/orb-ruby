@@ -147,32 +147,24 @@ module Orb
           class EntryStatus < Orb::Enum
             abstract!
 
-            COMMITTED = T.let(:committed, T.nilable(Symbol))
-            PENDING = T.let(:pending, T.nilable(Symbol))
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            COMMITTED = :committed
+            PENDING = :pending
           end
 
           class EntryType < Orb::Enum
             abstract!
 
-            INCREMENT = T.let(:increment, T.nilable(Symbol))
-            DECREMENT = T.let(:decrement, T.nilable(Symbol))
-            EXPIRATION_CHANGE = T.let(:expiration_change, T.nilable(Symbol))
-            CREDIT_BLOCK_EXPIRY = T.let(:credit_block_expiry, T.nilable(Symbol))
-            VOID = T.let(:void, T.nilable(Symbol))
-            VOID_INITIATED = T.let(:void_initiated, T.nilable(Symbol))
-            AMENDMENT = T.let(:amendment, T.nilable(Symbol))
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            INCREMENT = :increment
+            DECREMENT = :decrement
+            EXPIRATION_CHANGE = :expiration_change
+            CREDIT_BLOCK_EXPIRY = :credit_block_expiry
+            VOID = :void
+            VOID_INITIATED = :void_initiated
+            AMENDMENT = :amendment
           end
         end
       end

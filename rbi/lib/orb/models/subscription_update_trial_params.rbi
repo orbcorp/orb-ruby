@@ -53,22 +53,14 @@ module Orb
       class TrialEndDate < Orb::Union
         abstract!
 
+        Variants = type_template(:out) { {fixed: T.any(Time, Symbol)} }
+
         class UnionMember1 < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           IMMEDIATE = :immediate
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
-        end
-
-        class << self
-          sig { override.returns([Time, Symbol]) }
-          def variants
-          end
         end
       end
     end

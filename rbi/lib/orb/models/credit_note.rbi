@@ -507,14 +507,10 @@ module Orb
           class DiscountType < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             PERCENTAGE = :percentage
             AMOUNT = :amount
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
       end
@@ -595,13 +591,9 @@ module Orb
         class DiscountType < Orb::Enum
           abstract!
 
-          PERCENTAGE = :percentage
+          Value = type_template(:out) { {fixed: Symbol} }
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
+          PERCENTAGE = :percentage
         end
 
         class AppliesToPrice < Orb::BaseModel
@@ -634,29 +626,21 @@ module Orb
       class Reason < Orb::Enum
         abstract!
 
-        DUPLICATE = T.let(:Duplicate, T.nilable(Symbol))
-        FRAUDULENT = T.let(:Fraudulent, T.nilable(Symbol))
-        ORDER_CHANGE = T.let(:"Order change", T.nilable(Symbol))
-        PRODUCT_UNSATISFACTORY = T.let(:"Product unsatisfactory", T.nilable(Symbol))
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        DUPLICATE = :Duplicate
+        FRAUDULENT = :Fraudulent
+        ORDER_CHANGE = :"Order change"
+        PRODUCT_UNSATISFACTORY = :"Product unsatisfactory"
       end
 
       class Type < Orb::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         REFUND = :refund
         ADJUSTMENT = :adjustment
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class Discount < Orb::BaseModel
@@ -734,13 +718,9 @@ module Orb
         class DiscountType < Orb::Enum
           abstract!
 
-          PERCENTAGE = :percentage
+          Value = type_template(:out) { {fixed: Symbol} }
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
+          PERCENTAGE = :percentage
         end
 
         class AppliesToPrice < Orb::BaseModel

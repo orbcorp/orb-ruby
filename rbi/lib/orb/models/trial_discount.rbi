@@ -84,13 +84,9 @@ module Orb
       class DiscountType < Orb::Enum
         abstract!
 
-        TRIAL = :trial
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        TRIAL = :trial
       end
     end
   end
