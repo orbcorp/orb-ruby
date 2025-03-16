@@ -43,6 +43,11 @@ module Orb
       response_headers: ::Hash[String, String]
     ) -> Orb::BaseClient::request_input
 
+    def self.reap_connection!: (
+      Integer | Orb::APIConnectionError status,
+      stream: Enumerable[String]?
+    ) -> void
+
     # @api private
     attr_accessor requester: top
 
