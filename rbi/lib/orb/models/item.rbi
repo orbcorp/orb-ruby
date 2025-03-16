@@ -95,6 +95,8 @@ module Orb
         class ExternalConnectionName < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           STRIPE = :stripe
           QUICKBOOKS = :quickbooks
           BILL_COM = :"bill.com"
@@ -102,12 +104,6 @@ module Orb
           TAXJAR = :taxjar
           AVALARA = :avalara
           ANROK = :anrok
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

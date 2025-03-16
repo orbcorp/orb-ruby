@@ -111,11 +111,7 @@ module Orb
       class Discount < Orb::Union
         abstract!
 
-        class << self
-          sig { override.returns([Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount]) }
-          def variants
-          end
-        end
+        Variants = type_template(:out) { {fixed: T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount)} }
       end
     end
   end

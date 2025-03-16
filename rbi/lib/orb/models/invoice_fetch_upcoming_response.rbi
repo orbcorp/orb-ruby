@@ -1091,6 +1091,8 @@ module Orb
         class Action < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           APPLIED_TO_INVOICE = :applied_to_invoice
           MANUAL_ADJUSTMENT = :manual_adjustment
           PRORATED_REFUND = :prorated_refund
@@ -1100,12 +1102,6 @@ module Orb
           CREDIT_NOTE_VOIDED = :credit_note_voided
           OVERPAYMENT_REFUND = :overpayment_refund
           EXTERNAL_PAYMENT = :external_payment
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditNote < Orb::BaseModel
@@ -1149,14 +1145,10 @@ module Orb
         class Type < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           INCREMENT = :increment
           DECREMENT = :decrement
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
@@ -1301,6 +1293,8 @@ module Orb
         class Country < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           AD = :AD
           AE = :AE
           AR = :AR
@@ -1379,16 +1373,12 @@ module Orb
           VE = :VE
           VN = :VN
           ZA = :ZA
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class Type < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           AD_NRT = :ad_nrt
           AE_TRN = :ae_trn
@@ -1461,27 +1451,17 @@ module Orb
           VE_RIF = :ve_rif
           VN_TIN = :vn_tin
           ZA_VAT = :za_vat
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
       class InvoiceSource < Orb::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         SUBSCRIPTION = :subscription
         PARTIAL = :partial
         ONE_OFF = :one_off
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class LineItem < Orb::BaseModel
@@ -2100,6 +2080,18 @@ module Orb
         class Adjustment < Orb::Union
           abstract!
 
+          Variants = type_template(:out) do
+            {
+              fixed: T.any(
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment,
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment,
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment,
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment,
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment
+              )
+            }
+          end
+
           class MonetaryUsageDiscountAdjustment < Orb::BaseModel
             sig { returns(String) }
             def id
@@ -2636,17 +2628,6 @@ module Orb
             def to_hash
             end
           end
-
-          class << self
-            sig do
-              override
-                .returns(
-                  [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment]
-                )
-            end
-            def variants
-            end
-          end
         end
 
         class Maximum < Orb::BaseModel
@@ -2715,6 +2696,16 @@ module Orb
 
         class SubLineItem < Orb::Union
           abstract!
+
+          Variants = type_template(:out) do
+            {
+              fixed: T.any(
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem,
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem,
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem
+              )
+            }
+          end
 
           class MatrixSubLineItem < Orb::BaseModel
             # The total amount for this sub line item.
@@ -3129,17 +3120,6 @@ module Orb
               end
             end
           end
-
-          class << self
-            sig do
-              override
-                .returns(
-                  [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem]
-                )
-            end
-            def variants
-            end
-          end
         end
 
         class TaxAmount < Orb::BaseModel
@@ -3342,13 +3322,9 @@ module Orb
         class PaymentProvider < Orb::Enum
           abstract!
 
-          STRIPE = T.let(:stripe, T.nilable(Symbol))
+          Value = type_template(:out) { {fixed: Symbol} }
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
+          STRIPE = :stripe
         end
       end
 
@@ -3435,17 +3411,13 @@ module Orb
       class Status < Orb::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         ISSUED = :issued
         PAID = :paid
         SYNCED = :synced
         VOID = :void
         DRAFT = :draft
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class Subscription < Orb::BaseModel

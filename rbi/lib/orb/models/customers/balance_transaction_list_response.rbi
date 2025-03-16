@@ -150,6 +150,8 @@ module Orb
         class Action < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           APPLIED_TO_INVOICE = :applied_to_invoice
           MANUAL_ADJUSTMENT = :manual_adjustment
           PRORATED_REFUND = :prorated_refund
@@ -159,12 +161,6 @@ module Orb
           CREDIT_NOTE_VOIDED = :credit_note_voided
           OVERPAYMENT_REFUND = :overpayment_refund
           EXTERNAL_PAYMENT = :external_payment
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditNote < Orb::BaseModel
@@ -208,14 +204,10 @@ module Orb
         class Type < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           INCREMENT = :increment
           DECREMENT = :decrement
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

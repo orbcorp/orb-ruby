@@ -5,6 +5,15 @@ module Orb
     class SubscriptionUsage < Orb::Union
       abstract!
 
+      Variants = type_template(:out) do
+        {
+          fixed: T.any(
+            Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage,
+            Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage
+          )
+        }
+      end
+
       class UngroupedSubscriptionUsage < Orb::BaseModel
         sig { returns(T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]) }
         def data
@@ -148,14 +157,10 @@ module Orb
           class ViewMode < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             PERIODIC = :periodic
             CUMULATIVE = :cumulative
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
       end
@@ -361,26 +366,11 @@ module Orb
           class ViewMode < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             PERIODIC = :periodic
             CUMULATIVE = :cumulative
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
-        end
-      end
-
-      class << self
-        sig do
-          override
-            .returns(
-              [Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]
-            )
-        end
-        def variants
         end
       end
     end

@@ -100,6 +100,15 @@ module Orb
       class Discount < Orb::Union
         abstract!
 
+        Variants = type_template(:out) do
+          {
+            fixed: T.any(
+              Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
+              Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
+            )
+          }
+        end
+
         class NewCouponPercentageDiscount < Orb::BaseModel
           sig { returns(Symbol) }
           def discount_type
@@ -149,17 +158,6 @@ module Orb
 
           sig { override.returns({amount_discount: String, discount_type: Symbol}) }
           def to_hash
-          end
-        end
-
-        class << self
-          sig do
-            override
-              .returns(
-                [Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]
-              )
-          end
-          def variants
           end
         end
       end

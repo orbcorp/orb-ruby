@@ -9,6 +9,20 @@ module Orb
         class LedgerListResponse < Orb::Union
           abstract!
 
+          Variants = type_template(:out) do
+            {
+              fixed: T.any(
+                Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry,
+                Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry,
+                Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry,
+                Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry,
+                Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry,
+                Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry,
+                Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry
+              )
+            }
+          end
+
           class IncrementLedgerEntry < Orb::BaseModel
             sig { returns(String) }
             def id
@@ -256,14 +270,10 @@ module Orb
             class EntryStatus < Orb::Enum
               abstract!
 
+              Value = type_template(:out) { {fixed: Symbol} }
+
               COMMITTED = :committed
               PENDING = :pending
-
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
             end
           end
 
@@ -547,14 +557,10 @@ module Orb
             class EntryStatus < Orb::Enum
               abstract!
 
+              Value = type_template(:out) { {fixed: Symbol} }
+
               COMMITTED = :committed
               PENDING = :pending
-
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
             end
           end
 
@@ -816,14 +822,10 @@ module Orb
             class EntryStatus < Orb::Enum
               abstract!
 
+              Value = type_template(:out) { {fixed: Symbol} }
+
               COMMITTED = :committed
               PENDING = :pending
-
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
             end
           end
 
@@ -1074,14 +1076,10 @@ module Orb
             class EntryStatus < Orb::Enum
               abstract!
 
+              Value = type_template(:out) { {fixed: Symbol} }
+
               COMMITTED = :committed
               PENDING = :pending
-
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
             end
           end
 
@@ -1354,14 +1352,10 @@ module Orb
             class EntryStatus < Orb::Enum
               abstract!
 
+              Value = type_template(:out) { {fixed: Symbol} }
+
               COMMITTED = :committed
               PENDING = :pending
-
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
             end
           end
 
@@ -1645,14 +1639,10 @@ module Orb
             class EntryStatus < Orb::Enum
               abstract!
 
+              Value = type_template(:out) { {fixed: Symbol} }
+
               COMMITTED = :committed
               PENDING = :pending
-
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
             end
           end
 
@@ -1903,25 +1893,10 @@ module Orb
             class EntryStatus < Orb::Enum
               abstract!
 
+              Value = type_template(:out) { {fixed: Symbol} }
+
               COMMITTED = :committed
               PENDING = :pending
-
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
-            end
-          end
-
-          class << self
-            sig do
-              override
-                .returns(
-                  [Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry]
-                )
-            end
-            def variants
             end
           end
         end

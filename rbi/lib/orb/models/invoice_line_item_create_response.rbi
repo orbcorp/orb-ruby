@@ -618,6 +618,18 @@ module Orb
       class Adjustment < Orb::Union
         abstract!
 
+        Variants = type_template(:out) do
+          {
+            fixed: T.any(
+              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment,
+              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment,
+              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment,
+              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment,
+              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment
+            )
+          }
+        end
+
         class MonetaryUsageDiscountAdjustment < Orb::BaseModel
           sig { returns(String) }
           def id
@@ -1154,17 +1166,6 @@ module Orb
           def to_hash
           end
         end
-
-        class << self
-          sig do
-            override
-              .returns(
-                [Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment]
-              )
-          end
-          def variants
-          end
-        end
       end
 
       class Maximum < Orb::BaseModel
@@ -1233,6 +1234,16 @@ module Orb
 
       class SubLineItem < Orb::Union
         abstract!
+
+        Variants = type_template(:out) do
+          {
+            fixed: T.any(
+              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem,
+              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem,
+              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem
+            )
+          }
+        end
 
         class MatrixSubLineItem < Orb::BaseModel
           # The total amount for this sub line item.
@@ -1619,17 +1630,6 @@ module Orb
             sig { override.returns({key: String, value: T.nilable(String)}) }
             def to_hash
             end
-          end
-        end
-
-        class << self
-          sig do
-            override
-              .returns(
-                [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem]
-              )
-          end
-          def variants
           end
         end
       end
