@@ -22,7 +22,7 @@ module Orb
 
     class << self
       # @api private
-      sig { params(input: T.anything).returns(T.any(T::Boolean, T.anything)) }
+      sig { params(input: T.anything).returns(T::Boolean) }
       def primitive?(input)
       end
 
@@ -158,6 +158,8 @@ module Orb
       end
     end
 
+    # @api private
+    #
     # An adapter that satisfies the IO interface required by `::IO.copy_stream`
     class ReadIOAdapter
       # @api private
@@ -237,10 +239,8 @@ module Orb
 
       # @api private
       sig do
-        params(
-          enum: T.nilable(T::Enumerable[T.anything]),
-          blk: T.proc.params(arg0: Enumerator::Yielder).void
-        ).void
+        params(enum: T.nilable(T::Enumerable[T.anything]), blk: T.proc.params(arg0: Enumerator::Yielder).void)
+          .returns(T::Enumerable[T.anything])
       end
       def chain_fused(enum, &blk)
       end

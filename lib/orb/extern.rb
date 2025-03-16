@@ -2,8 +2,6 @@
 
 module Orb
   # @api private
-  #
-  # @abstract
   module Extern
   end
 end

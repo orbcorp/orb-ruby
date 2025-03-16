@@ -1,6 +1,7 @@
 # typed: strong
 
 module Orb
+  # @api private
   class BaseClient
     abstract!
 
@@ -66,6 +67,13 @@ module Orb
           .returns(Orb::BaseClient::RequestInputShape)
       end
       def follow_redirect(request, status:, response_headers:)
+      end
+
+      # @api private
+      sig do
+        params(status: T.any(Integer, Orb::APIConnectionError), stream: T.nilable(T::Enumerable[String])).void
+      end
+      def reap_connection!(status, stream:)
       end
     end
 
