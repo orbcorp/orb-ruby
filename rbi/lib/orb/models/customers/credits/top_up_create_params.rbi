@@ -206,14 +206,10 @@ module Orb
           class ExpiresAfterUnit < Orb::Enum
             abstract!
 
-            DAY = T.let(:day, T.nilable(Symbol))
-            MONTH = T.let(:month, T.nilable(Symbol))
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            DAY = :day
+            MONTH = :month
           end
         end
       end

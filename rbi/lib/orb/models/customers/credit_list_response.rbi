@@ -95,14 +95,10 @@ module Orb
         class Status < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           ACTIVE = :active
           PENDING_PAYMENT = :pending_payment
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

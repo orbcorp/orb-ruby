@@ -5,14 +5,10 @@ module Orb
     class BillingCycleRelativeDate < Orb::Enum
       abstract!
 
+      Value = type_template(:out) { {fixed: Symbol} }
+
       START_OF_TERM = :start_of_term
       END_OF_TERM = :end_of_term
-
-      class << self
-        sig { override.returns(T::Array[Symbol]) }
-        def values
-        end
-      end
     end
   end
 end

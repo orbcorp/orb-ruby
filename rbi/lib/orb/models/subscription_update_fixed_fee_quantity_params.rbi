@@ -99,15 +99,11 @@ module Orb
       class ChangeOption < Orb::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         IMMEDIATE = :immediate
         UPCOMING_INVOICE = :upcoming_invoice
         EFFECTIVE_DATE = :effective_date
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end

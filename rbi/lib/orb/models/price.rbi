@@ -15,6 +15,41 @@ module Orb
     class Price < Orb::Union
       abstract!
 
+      Variants = type_template(:out) do
+        {
+          fixed: T.any(
+            Orb::Models::Price::UnitPrice,
+            Orb::Models::Price::PackagePrice,
+            Orb::Models::Price::MatrixPrice,
+            Orb::Models::Price::TieredPrice,
+            Orb::Models::Price::TieredBpsPrice,
+            Orb::Models::Price::BpsPrice,
+            Orb::Models::Price::BulkBpsPrice,
+            Orb::Models::Price::BulkPrice,
+            Orb::Models::Price::ThresholdTotalAmountPrice,
+            Orb::Models::Price::TieredPackagePrice,
+            Orb::Models::Price::GroupedTieredPrice,
+            Orb::Models::Price::TieredWithMinimumPrice,
+            Orb::Models::Price::TieredPackageWithMinimumPrice,
+            Orb::Models::Price::PackageWithAllocationPrice,
+            Orb::Models::Price::UnitWithPercentPrice,
+            Orb::Models::Price::MatrixWithAllocationPrice,
+            Orb::Models::Price::TieredWithProrationPrice,
+            Orb::Models::Price::UnitWithProrationPrice,
+            Orb::Models::Price::GroupedAllocationPrice,
+            Orb::Models::Price::GroupedWithProratedMinimumPrice,
+            Orb::Models::Price::GroupedWithMeteredMinimumPrice,
+            Orb::Models::Price::MatrixWithDisplayNamePrice,
+            Orb::Models::Price::BulkWithProrationPrice,
+            Orb::Models::Price::GroupedTieredPackagePrice,
+            Orb::Models::Price::MaxGroupTieredPackagePrice,
+            Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
+            Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
+            Orb::Models::Price::CumulativeGroupedBulkPrice
+          )
+        }
+      end
+
       class UnitPrice < Orb::BaseModel
         sig { returns(String) }
         def id
@@ -416,19 +451,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -436,12 +469,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -498,14 +525,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -600,14 +623,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class UnitConfig < Orb::BaseModel
@@ -1065,19 +1084,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -1085,12 +1102,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -1147,14 +1158,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -1278,14 +1285,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -1724,19 +1727,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -1744,12 +1745,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -1806,14 +1801,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -1999,14 +1990,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -2445,19 +2432,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -2465,12 +2450,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -2527,14 +2506,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -2629,14 +2604,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class TieredConfig < Orb::BaseModel
@@ -3140,19 +3111,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -3160,12 +3129,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -3222,14 +3185,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -3324,14 +3283,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class TieredBpsConfig < Orb::BaseModel
@@ -3857,14 +3812,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -3899,18 +3850,14 @@ module Orb
         class Cadence < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -3967,14 +3914,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -4069,14 +4012,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -4515,14 +4454,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -4600,18 +4535,14 @@ module Orb
         class Cadence < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -4668,14 +4599,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -4770,14 +4697,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -5213,14 +5136,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -5277,18 +5196,14 @@ module Orb
         class Cadence < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -5345,14 +5260,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -5447,14 +5358,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -5893,19 +5800,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -5913,12 +5818,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -5975,14 +5874,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -6077,14 +5972,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -6523,19 +6414,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -6543,12 +6432,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -6605,14 +6488,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -6707,14 +6586,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -7153,19 +7028,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -7173,12 +7046,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -7235,14 +7102,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -7337,14 +7200,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -7783,19 +7642,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -7803,12 +7660,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -7865,14 +7716,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -7967,14 +7814,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -8413,19 +8256,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -8433,12 +8274,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -8495,14 +8330,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -8597,14 +8428,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -9043,19 +8870,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -9063,12 +8888,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -9125,14 +8944,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -9227,14 +9042,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -9673,19 +9484,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -9693,12 +9502,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -9755,14 +9558,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -9857,14 +9656,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -10306,19 +10101,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -10326,12 +10119,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -10388,14 +10175,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -10594,14 +10377,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -11040,19 +10819,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -11060,12 +10837,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -11122,14 +10893,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -11224,14 +10991,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -11670,19 +11433,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -11690,12 +11451,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -11752,14 +11507,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -11854,14 +11605,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -12300,19 +12047,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -12320,12 +12065,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -12382,14 +12121,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -12484,14 +12219,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -12930,19 +12661,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -12950,12 +12679,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -13012,14 +12735,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -13114,14 +12833,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -13560,19 +13275,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -13580,12 +13293,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -13642,14 +13349,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -13744,14 +13447,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -14190,19 +13889,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -14210,12 +13907,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -14272,14 +13963,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -14374,14 +14061,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -14820,19 +14503,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -14840,12 +14521,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -14902,14 +14577,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -15004,14 +14675,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -15450,19 +15117,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -15470,12 +15135,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -15532,14 +15191,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -15634,14 +15289,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -16080,19 +15731,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -16100,12 +15749,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -16162,14 +15805,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -16264,14 +15903,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -16712,19 +16347,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -16732,12 +16365,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -16794,14 +16421,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -16896,14 +16519,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -17352,19 +16971,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -17372,12 +16989,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -17434,14 +17045,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -17536,14 +17143,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -17982,19 +17585,17 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
         class Cadence < Orb::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           ONE_TIME = :one_time
           MONTHLY = :monthly
@@ -18002,12 +17603,6 @@ module Orb
           SEMI_ANNUAL = :semi_annual
           ANNUAL = :annual
           CUSTOM = :custom
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -18064,14 +17659,10 @@ module Orb
           class DurationUnit < Orb::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             DAY = :day
             MONTH = :month
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -18166,14 +17757,10 @@ module Orb
         class PriceType < Orb::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -18205,17 +17792,6 @@ module Orb
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
           def to_hash
           end
-        end
-      end
-
-      class << self
-        sig do
-          override
-            .returns(
-              [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice]
-            )
-        end
-        def variants
         end
       end
     end

@@ -82,7 +82,7 @@ module Orb
   class Union
     extend Orb::Converter
 
-    private def self.known_variants: -> ::Array[[Symbol?, Proc]]
+    private def self.known_variants: -> ::Array[[Symbol?, (^-> Orb::Converter::input)]]
 
     def self.derefed_variants: -> ::Array[[Symbol?, top]]
 
@@ -115,7 +115,7 @@ module Orb
     ) -> ([true, top, nil] | [false, bool, Integer])
   end
 
-  class ArrayOf
+  class ArrayOf[Elem]
     include Orb::Converter
 
     def ===: (top other) -> bool
@@ -130,7 +130,7 @@ module Orb
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
 
-    def item_type: -> Orb::Converter::input
+    def item_type: -> Elem
 
     def initialize: (
       ::Hash[Symbol, top]
@@ -140,7 +140,7 @@ module Orb
     ) -> void
   end
 
-  class HashOf
+  class HashOf[Elem]
     include Orb::Converter
 
     def ===: (top other) -> bool
@@ -155,7 +155,7 @@ module Orb
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
 
-    def item_type: -> Orb::Converter::input
+    def item_type: -> Elem
 
     def initialize: (
       ::Hash[Symbol, top]
@@ -172,6 +172,8 @@ module Orb
 
     def self.known_fields: -> ::Hash[Symbol, (Orb::BaseModel::known_field
     & { type_fn: (^-> Orb::Converter::input) })]
+
+    def self.reverse_map: -> ::Hash[Symbol, Symbol]
 
     def self.fields: -> ::Hash[Symbol, (Orb::BaseModel::known_field
     & { type: Orb::Converter::input })]

@@ -66,15 +66,11 @@ module Orb
       class Type < Orb::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         CREDIT_BALANCE_DEPLETED = :credit_balance_depleted
         CREDIT_BALANCE_DROPPED = :credit_balance_dropped
         CREDIT_BALANCE_RECOVERED = :credit_balance_recovered
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class Threshold < Orb::BaseModel

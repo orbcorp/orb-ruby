@@ -3,8 +3,6 @@
 module Orb
   # @api private
   module Converter
-    abstract!
-
     Input = T.type_alias { T.any(Orb::Converter, T::Class[T.anything]) }
 
     # @api private
@@ -78,33 +76,36 @@ module Orb
     end
   end
 
+  # @api private
+  #
   # When we don't know what to expect for the value.
   class Unknown
-    abstract!
-
     extend Orb::Converter
 
-    sig { params(other: T.anything).returns(T::Boolean) }
+    abstract!
+    final!
+
+    sig(:final) { params(other: T.anything).returns(T::Boolean) }
     def self.===(other)
     end
 
-    sig { params(other: T.anything).returns(T::Boolean) }
+    sig(:final) { params(other: T.anything).returns(T::Boolean) }
     def self.==(other)
     end
 
     class << self
       # @api private
-      sig { override.params(value: T.anything).returns(T.anything) }
+      sig(:final) { override.params(value: T.anything).returns(T.anything) }
       def coerce(value)
       end
 
       # @api private
-      sig { override.params(value: T.anything).returns(T.anything) }
+      sig(:final) { override.params(value: T.anything).returns(T.anything) }
       def dump(value)
       end
 
       # @api private
-      sig do
+      sig(:final) do
         override
           .params(value: T.anything)
           .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
@@ -114,33 +115,40 @@ module Orb
     end
   end
 
+  # @api private
+  #
   # Ruby has no Boolean class; this is something for models to refer to.
   class BooleanModel
-    abstract!
-
     extend Orb::Converter
 
-    sig { params(other: T.anything).returns(T::Boolean) }
+    abstract!
+    final!
+
+    sig(:final) { params(other: T.anything).returns(T::Boolean) }
     def self.===(other)
     end
 
-    sig { params(other: T.anything).returns(T::Boolean) }
+    sig(:final) { params(other: T.anything).returns(T::Boolean) }
     def self.==(other)
     end
 
     class << self
       # @api private
-      sig { override.params(value: T.any(T::Boolean, T.anything)).returns(T.any(T::Boolean, T.anything)) }
+      sig(:final) do
+        override.params(value: T.any(T::Boolean, T.anything)).returns(T.any(T::Boolean, T.anything))
+      end
       def coerce(value)
       end
 
       # @api private
-      sig { override.params(value: T.any(T::Boolean, T.anything)).returns(T.any(T::Boolean, T.anything)) }
+      sig(:final) do
+        override.params(value: T.any(T::Boolean, T.anything)).returns(T.any(T::Boolean, T.anything))
+      end
       def dump(value)
       end
 
       # @api private
-      sig do
+      sig(:final) do
         override
           .params(value: T.anything)
           .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
@@ -150,6 +158,8 @@ module Orb
     end
   end
 
+  # @api private
+  #
   # A value from among a specified list of options. OpenAPI enum values map to Ruby
   #   values in the SDK as follows:
   #
@@ -161,13 +171,15 @@ module Orb
   #   We can therefore convert string values to Symbols, but can't convert other
   #   values safely.
   class Enum
+    extend Orb::Converter
+
     abstract!
 
-    extend Orb::Converter
+    Value = type_template(:out)
 
     class << self
       # All of the valid Symbol values for this enum.
-      sig { overridable.returns(T::Array[T.any(NilClass, T::Boolean, Integer, Float, Symbol)]) }
+      sig { overridable.returns(T::Array[Value]) }
       def values
       end
 
@@ -209,26 +221,29 @@ module Orb
     end
   end
 
+  # @api private
   class Union
+    extend Orb::Converter
+
     abstract!
 
-    extend Orb::Converter
+    Variants = type_template(:out)
 
     class << self
       # @api private
       #
       # All of the specified variant info for this union.
-      sig { returns(T::Array[[T.nilable(Symbol), Proc]]) }
+      sig { returns(T::Array[[T.nilable(Symbol), T.proc.returns(Variants)]]) }
       private def known_variants
       end
 
       # @api private
-      sig { returns(T::Array[[T.nilable(Symbol), T.anything]]) }
+      sig { returns(T::Array[[T.nilable(Symbol), Variants]]) }
       protected def derefed_variants
       end
 
       # All of the specified variants for this union.
-      sig { overridable.returns(T::Array[T.anything]) }
+      sig { overridable.returns(T::Array[Variants]) }
       def variants
       end
 
@@ -240,17 +255,8 @@ module Orb
       # @api private
       sig do
         params(
-          key: T.any(
-            Symbol,
-            T::Hash[Symbol, T.anything],
-            T.proc.returns(Orb::Converter::Input),
-            Orb::Converter::Input
-          ),
-          spec: T.any(
-            T::Hash[Symbol, T.anything],
-            T.proc.returns(Orb::Converter::Input),
-            Orb::Converter::Input
-          )
+          key: T.any(Symbol, T::Hash[Symbol, T.anything], T.proc.returns(Variants), Variants),
+          spec: T.any(T::Hash[Symbol, T.anything], T.proc.returns(Variants), Variants)
         )
           .void
       end
@@ -258,7 +264,7 @@ module Orb
       end
 
       # @api private
-      sig { params(value: T.anything).returns(T.nilable(Orb::Converter::Input)) }
+      sig { params(value: T.anything).returns(T.nilable(Variants)) }
       private def resolve_variant(value)
       end
     end
@@ -293,22 +299,27 @@ module Orb
     end
   end
 
+  # @api private
+  #
   # Array of items of a given type.
   class ArrayOf
-    abstract!
-
     include Orb::Converter
 
-    sig { params(other: T.anything).returns(T::Boolean) }
+    abstract!
+    final!
+
+    Elem = type_member(:out)
+
+    sig(:final) { params(other: T.anything).returns(T::Boolean) }
     def ===(other)
     end
 
-    sig { params(other: T.anything).returns(T::Boolean) }
+    sig(:final) { params(other: T.anything).returns(T::Boolean) }
     def ==(other)
     end
 
     # @api private
-    sig do
+    sig(:final) do
       override
         .params(value: T.any(T::Enumerable[T.anything], T.anything))
         .returns(T.any(T::Array[T.anything], T.anything))
@@ -317,7 +328,7 @@ module Orb
     end
 
     # @api private
-    sig do
+    sig(:final) do
       override
         .params(value: T.any(T::Enumerable[T.anything], T.anything))
         .returns(T.any(T::Array[T.anything], T.anything))
@@ -326,7 +337,7 @@ module Orb
     end
 
     # @api private
-    sig do
+    sig(:final) do
       override
         .params(value: T.anything)
         .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
@@ -335,12 +346,12 @@ module Orb
     end
 
     # @api private
-    sig { returns(Orb::Converter::Input) }
+    sig(:final) { returns(Elem) }
     protected def item_type
     end
 
     # @api private
-    sig do
+    sig(:final) do
       params(
         type_info: T.any(
           T::Hash[Symbol, T.anything],
@@ -355,22 +366,27 @@ module Orb
     end
   end
 
+  # @api private
+  #
   # Hash of items of a given type.
   class HashOf
-    abstract!
-
     include Orb::Converter
 
-    sig { params(other: T.anything).returns(T::Boolean) }
+    abstract!
+    final!
+
+    Elem = type_member(:out)
+
+    sig(:final) { params(other: T.anything).returns(T::Boolean) }
     def ===(other)
     end
 
-    sig { params(other: T.anything).returns(T::Boolean) }
+    sig(:final) { params(other: T.anything).returns(T::Boolean) }
     def ==(other)
     end
 
     # @api private
-    sig do
+    sig(:final) do
       override
         .params(value: T.any(T::Hash[T.anything, T.anything], T.anything))
         .returns(T.any(T::Hash[Symbol, T.anything], T.anything))
@@ -379,7 +395,7 @@ module Orb
     end
 
     # @api private
-    sig do
+    sig(:final) do
       override
         .params(value: T.any(T::Hash[T.anything, T.anything], T.anything))
         .returns(T.any(T::Hash[Symbol, T.anything], T.anything))
@@ -388,7 +404,7 @@ module Orb
     end
 
     # @api private
-    sig do
+    sig(:final) do
       override
         .params(value: T.anything)
         .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
@@ -397,12 +413,12 @@ module Orb
     end
 
     # @api private
-    sig { returns(Orb::Converter::Input) }
+    sig(:final) { returns(Elem) }
     protected def item_type
     end
 
     # @api private
-    sig do
+    sig(:final) do
       params(
         type_info: T.any(
           T::Hash[Symbol, T.anything],
@@ -418,9 +434,9 @@ module Orb
   end
 
   class BaseModel
-    abstract!
-
     extend Orb::Converter
+
+    abstract!
 
     KnownFieldShape = T.type_alias { {mode: T.nilable(Symbol), required: T::Boolean} }
 
@@ -436,6 +452,11 @@ module Orb
         )
       end
       def known_fields
+      end
+
+      # @api private
+      sig { returns(T::Hash[Symbol, Symbol]) }
+      def reverse_map
       end
 
       # @api private

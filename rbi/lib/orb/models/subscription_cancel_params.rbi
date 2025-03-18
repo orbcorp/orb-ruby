@@ -66,15 +66,11 @@ module Orb
       class CancelOption < Orb::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         END_OF_SUBSCRIPTION_TERM = :end_of_subscription_term
         IMMEDIATE = :immediate
         REQUESTED_DATE = :requested_date
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end
