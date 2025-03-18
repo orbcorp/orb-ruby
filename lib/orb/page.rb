@@ -91,7 +91,9 @@ module Orb
 
     # @return [String]
     def inspect
+      # rubocop:disable Layout/LineLength
       "#<#{self.class}:0x#{object_id.to_s(16)} data=#{data.inspect} pagination_metadata=#{pagination_metadata.inspect}>"
+      # rubocop:enable Layout/LineLength
     end
 
     class PaginationMetadata < Orb::BaseModel

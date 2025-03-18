@@ -118,6 +118,13 @@ module Orb
   class ArrayOf[Elem]
     include Orb::Converter
 
+    def self.[]: (
+      ::Hash[Symbol, top]
+      | ^-> Orb::Converter::input
+      | Orb::Converter::input type_info,
+      ?::Hash[Symbol, top] spec
+    ) -> instance
+
     def ===: (top other) -> bool
 
     def ==: (top other) -> bool
@@ -142,6 +149,13 @@ module Orb
 
   class HashOf[Elem]
     include Orb::Converter
+
+    def self.[]: (
+      ::Hash[Symbol, top]
+      | ^-> Orb::Converter::input
+      | Orb::Converter::input type_info,
+      ?::Hash[Symbol, top] spec
+    ) -> instance
 
     def ===: (top other) -> bool
 
