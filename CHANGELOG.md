@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.0-alpha.28 (2025-03-18)
+
+Full Changelog: [v0.1.0-alpha.27...v0.1.0-alpha.28](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.27...v0.1.0-alpha.28)
+
+### ⚠ BREAKING CHANGES
+
+* **model:** base model should recursively store coerced base models ([#165](https://github.com/orbcorp/orb-ruby/issues/165))
+
+### Bug Fixes
+
+* **model:** base model should recursively store coerced base models ([#165](https://github.com/orbcorp/orb-ruby/issues/165)) ([da71413](https://github.com/orbcorp/orb-ruby/commit/da71413184f24adcd89ce5bf302077a29193c14c))
+
+
+### Chores
+
+* do not label modules as abstract ([#163](https://github.com/orbcorp/orb-ruby/issues/163)) ([ac4e54c](https://github.com/orbcorp/orb-ruby/commit/ac4e54cf7a68dae174ee27b6477fd5d1a6a6b98a))
+* **internal:** codegen related update ([#160](https://github.com/orbcorp/orb-ruby/issues/160)) ([2efe526](https://github.com/orbcorp/orb-ruby/commit/2efe526cc8937e1e6c3e334edc1f09ca0b0060d8))
+* **internal:** codegen related update ([#164](https://github.com/orbcorp/orb-ruby/issues/164)) ([8b4921d](https://github.com/orbcorp/orb-ruby/commit/8b4921d27329bfbb3d4a27c8105d3dfa963b744d))
+* use generics instead of overloading for sorbet type definitions ([#162](https://github.com/orbcorp/orb-ruby/issues/162)) ([9cec19b](https://github.com/orbcorp/orb-ruby/commit/9cec19b1e001799c2b69e68d37405a30d7f85432))
+
 ## 0.1.0-alpha.27 (2025-03-14)
 
 Full Changelog: [v0.1.0-alpha.26...v0.1.0-alpha.27](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.26...v0.1.0-alpha.27)
