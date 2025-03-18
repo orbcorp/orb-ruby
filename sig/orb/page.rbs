@@ -6,6 +6,8 @@ module Orb
 
     attr_accessor pagination_metadata: PaginationMetadata
 
+    def inspect: -> String
+
     type pagination_metadata = { has_more: bool, next_cursor: String? }
     class PaginationMetadata < Orb::BaseModel
       attr_accessor has_more: bool
