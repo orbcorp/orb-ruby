@@ -173,6 +173,8 @@ module Orb
     def self.known_fields: -> ::Hash[Symbol, (Orb::BaseModel::known_field
     & { type_fn: (^-> Orb::Converter::input) })]
 
+    def self.reverse_map: -> ::Hash[Symbol, Symbol]
+
     def self.fields: -> ::Hash[Symbol, (Orb::BaseModel::known_field
     & { type: Orb::Converter::input })]
 
