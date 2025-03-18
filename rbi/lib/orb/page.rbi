@@ -22,6 +22,10 @@ module Orb
     def pagination_metadata=(_)
     end
 
+    sig { returns(String) }
+    def inspect
+    end
+
     class PaginationMetadata < Orb::BaseModel
       sig { returns(T::Boolean) }
       def has_more
