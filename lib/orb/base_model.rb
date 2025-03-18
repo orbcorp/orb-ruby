@@ -915,6 +915,13 @@ module Orb
 
       # @api private
       #
+      # @return [Hash{Symbol=>Symbol}]
+      def reverse_map
+        @reverse_map ||= (self < Orb::BaseModel ? superclass.reverse_map.dup : {})
+      end
+
+      # @api private
+      #
       # @return [Hash{Symbol=>Hash{Symbol=>Object}}]
       def fields
         known_fields.transform_values do |field|
@@ -956,7 +963,7 @@ module Orb
         fallback = info[:const]
         defaults[name_sym] = fallback if required && !info[:nil?] && info.key?(:const)
 
-        key = info.fetch(:api_name, name_sym)
+        key = info[:api_name]&.tap { reverse_map[_1] = name_sym } || name_sym
         setter = "#{name_sym}="
 
         if known_fields.key?(name_sym)
@@ -1213,7 +1220,21 @@ module Orb
     def initialize(data = {})
       case Orb::Util.coerce_hash(data)
       in Hash => coerced
-        @data = coerced.transform_keys(&:to_sym)
+        @data = coerced.to_h do |key, value|
+          name = key.to_sym
+          mapped = self.class.reverse_map.fetch(name, name)
+          type = self.class.fields[mapped]&.fetch(:type)
+          stored =
+            case [type, value]
+            in [Class, Hash] if type <= Orb::BaseModel
+              type.new(value)
+            in [Orb::ArrayOf, Array] | [Orb::HashOf, Hash]
+              type.coerce(value)
+            else
+              value
+            end
+          [name, stored]
+        end
       else
         raise ArgumentError.new("Expected a #{Hash} or #{Orb::BaseModel}, got #{data.inspect}")
       end

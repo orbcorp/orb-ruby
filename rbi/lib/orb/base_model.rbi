@@ -455,6 +455,11 @@ module Orb
       end
 
       # @api private
+      sig { returns(T::Hash[Symbol, Symbol]) }
+      def reverse_map
+      end
+
+      # @api private
       sig { returns(T::Hash[Symbol, T.all(Orb::BaseModel::KnownFieldShape, {type: Orb::Converter::Input})]) }
       def fields
       end
