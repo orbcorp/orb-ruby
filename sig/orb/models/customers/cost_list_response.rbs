@@ -7,13 +7,9 @@ module Orb
       class CostListResponse < Orb::BaseModel
         attr_accessor data: ::Array[Orb::Models::Customers::CostListResponse::Data]
 
-        def initialize:
-          (
-            data: ::Array[Orb::Models::Customers::CostListResponse::Data]
-          ) -> void
-          | (
-            ?Orb::Models::Customers::cost_list_response | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          data: ::Array[Orb::Models::Customers::CostListResponse::Data]
+        ) -> void
 
         def to_hash: -> Orb::Models::Customers::cost_list_response
 
@@ -37,18 +33,13 @@ module Orb
 
           attr_accessor total: String
 
-          def initialize:
-            (
-              per_price_costs: ::Array[Orb::Models::Customers::CostListResponse::Data::PerPriceCost],
-              subtotal: String,
-              timeframe_end: Time,
-              timeframe_start: Time,
-              total: String
-            ) -> void
-            | (
-              ?Orb::Models::Customers::CostListResponse::data
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            per_price_costs: ::Array[Orb::Models::Customers::CostListResponse::Data::PerPriceCost],
+            subtotal: String,
+            timeframe_end: Time,
+            timeframe_start: Time,
+            total: String
+          ) -> void
 
           def to_hash: -> Orb::Models::Customers::CostListResponse::data
 
@@ -72,18 +63,13 @@ module Orb
 
             attr_accessor quantity: Float?
 
-            def initialize:
-              (
-                price: Orb::Models::price,
-                price_id: String,
-                subtotal: String,
-                total: String,
-                quantity: Float?
-              ) -> void
-              | (
-                ?Orb::Models::Customers::CostListResponse::Data::per_price_cost
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              price: Orb::Models::price,
+              price_id: String,
+              subtotal: String,
+              total: String,
+              ?quantity: Float?
+            ) -> void
 
             def to_hash: -> Orb::Models::Customers::CostListResponse::Data::per_price_cost
           end

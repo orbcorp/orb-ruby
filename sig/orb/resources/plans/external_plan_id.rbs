@@ -2,29 +2,17 @@ module Orb
   module Resources
     class Plans
       class ExternalPlanID
-        def update:
-          (
-            String other_external_plan_id,
-            ?Orb::Models::Plans::ExternalPlanIDUpdateParams
-            | ::Hash[Symbol, top] params
-          ) -> Orb::Models::Plan
-          | (
-            String other_external_plan_id,
-            external_plan_id: String?,
-            metadata: ::Hash[Symbol, String?]?,
-            request_options: Orb::request_opts
-          ) -> Orb::Models::Plan
+        def update: (
+          String other_external_plan_id,
+          ?external_plan_id: String?,
+          ?metadata: ::Hash[Symbol, String?]?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Models::Plan
 
-        def fetch:
-          (
-            String external_plan_id,
-            ?Orb::Models::Plans::ExternalPlanIDFetchParams
-            | ::Hash[Symbol, top] params
-          ) -> Orb::Models::Plan
-          | (
-            String external_plan_id,
-            request_options: Orb::request_opts
-          ) -> Orb::Models::Plan
+        def fetch: (
+          String external_plan_id,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Models::Plan
 
         def initialize: (client: Orb::Client) -> void
       end

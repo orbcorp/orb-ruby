@@ -24,16 +24,14 @@ module Orb
 
       attr_accessor external_customer_id: String?
 
-      def initialize:
-        (
-          event_name: String,
-          properties: top,
-          timestamp: Time,
-          customer_id: String?,
-          external_customer_id: String?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (?Orb::Models::event_update_params | Orb::BaseModel data) -> void
+      def initialize: (
+        event_name: String,
+        properties: top,
+        timestamp: Time,
+        ?customer_id: String?,
+        ?external_customer_id: String?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::event_update_params
     end

@@ -6,35 +6,23 @@ module Orb
 
         attr_reader top_ups: Orb::Resources::Customers::Credits::TopUps
 
-        def list:
-          (
-            String customer_id,
-            ?Orb::Models::Customers::CreditListParams
-            | ::Hash[Symbol, top] params
-          ) -> Orb::Page[Orb::Models::Customers::CreditListResponse]
-          | (
-            String customer_id,
-            currency: String?,
-            cursor: String?,
-            include_all_blocks: bool,
-            limit: Integer,
-            request_options: Orb::request_opts
-          ) -> Orb::Page[Orb::Models::Customers::CreditListResponse]
+        def list: (
+          String customer_id,
+          ?currency: String?,
+          ?cursor: String?,
+          ?include_all_blocks: bool,
+          ?limit: Integer,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Page[Orb::Models::Customers::CreditListResponse]
 
-        def list_by_external_id:
-          (
-            String external_customer_id,
-            ?Orb::Models::Customers::CreditListByExternalIDParams
-            | ::Hash[Symbol, top] params
-          ) -> Orb::Page[Orb::Models::Customers::CreditListByExternalIDResponse]
-          | (
-            String external_customer_id,
-            currency: String?,
-            cursor: String?,
-            include_all_blocks: bool,
-            limit: Integer,
-            request_options: Orb::request_opts
-          ) -> Orb::Page[Orb::Models::Customers::CreditListByExternalIDResponse]
+        def list_by_external_id: (
+          String external_customer_id,
+          ?currency: String?,
+          ?cursor: String?,
+          ?include_all_blocks: bool,
+          ?limit: Integer,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Page[Orb::Models::Customers::CreditListByExternalIDResponse]
 
         def initialize: (client: Orb::Client) -> void
       end

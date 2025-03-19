@@ -33,20 +33,16 @@ module Orb
 
         def replace_existing_events=: (bool) -> bool
 
-        def initialize:
-          (
-            timeframe_end: Time,
-            timeframe_start: Time,
-            close_time: Time?,
-            customer_id: String?,
-            deprecation_filter: String?,
-            external_customer_id: String?,
-            replace_existing_events: bool,
-            request_options: Orb::request_opts
-          ) -> void
-          | (
-            ?Orb::Models::Events::backfill_create_params | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          timeframe_end: Time,
+          timeframe_start: Time,
+          ?close_time: Time?,
+          ?customer_id: String?,
+          ?deprecation_filter: String?,
+          ?external_customer_id: String?,
+          ?replace_existing_events: bool,
+          ?request_options: Orb::request_opts
+        ) -> void
 
         def to_hash: -> Orb::Models::Events::backfill_create_params
       end

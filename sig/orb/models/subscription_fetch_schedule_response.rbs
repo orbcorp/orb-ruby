@@ -17,17 +17,12 @@ module Orb
 
       attr_accessor start_date: Time
 
-      def initialize:
-        (
-          created_at: Time,
-          end_date: Time?,
-          plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
-          start_date: Time
-        ) -> void
-        | (
-          ?Orb::Models::subscription_fetch_schedule_response
-          | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        created_at: Time,
+        end_date: Time?,
+        plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
+        start_date: Time
+      ) -> void
 
       def to_hash: -> Orb::Models::subscription_fetch_schedule_response
 
@@ -40,12 +35,11 @@ module Orb
 
         attr_accessor name: String?
 
-        def initialize:
-          (id: String?, external_plan_id: String?, name: String?) -> void
-          | (
-            ?Orb::Models::SubscriptionFetchScheduleResponse::plan
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          id: String?,
+          external_plan_id: String?,
+          name: String?
+        ) -> void
 
         def to_hash: -> Orb::Models::SubscriptionFetchScheduleResponse::plan
       end

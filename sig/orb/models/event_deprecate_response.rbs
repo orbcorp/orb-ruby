@@ -5,9 +5,7 @@ module Orb
     class EventDeprecateResponse < Orb::BaseModel
       attr_accessor deprecated: String
 
-      def initialize:
-        (deprecated: String) -> void
-        | (?Orb::Models::event_deprecate_response | Orb::BaseModel data) -> void
+      def initialize: (deprecated: String) -> void
 
       def to_hash: -> Orb::Models::event_deprecate_response
     end

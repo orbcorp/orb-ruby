@@ -18,16 +18,12 @@ module Orb
 
       attr_accessor cancellation_date: Time?
 
-      def initialize:
-        (
-          cancel_option: Orb::Models::SubscriptionCancelParams::cancel_option,
-          allow_invoice_credit_or_void: bool?,
-          cancellation_date: Time?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (
-          ?Orb::Models::subscription_cancel_params | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        cancel_option: Orb::Models::SubscriptionCancelParams::cancel_option,
+        ?allow_invoice_credit_or_void: bool?,
+        ?cancellation_date: Time?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::subscription_cancel_params
 

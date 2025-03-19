@@ -8,9 +8,10 @@ module Orb
 
       attr_accessor name: String
 
-      def initialize:
-        (name: String, request_options: Orb::request_opts) -> void
-        | (?Orb::Models::item_create_params | Orb::BaseModel data) -> void
+      def initialize: (
+        name: String,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::item_create_params
     end

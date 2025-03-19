@@ -3,93 +3,57 @@ module Orb
     class Customers
       class Credits
         class TopUps
-          def create:
-            (
-              String customer_id,
-              Orb::Models::Customers::Credits::TopUpCreateParams
-              | ::Hash[Symbol, top] params
-            ) -> Orb::Models::Customers::Credits::TopUpCreateResponse
-            | (
-              String customer_id,
-              amount: String,
-              currency: String,
-              invoice_settings: Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings,
-              per_unit_cost_basis: String,
-              threshold: String,
-              active_from: Time?,
-              expires_after: Integer?,
-              expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateParams::expires_after_unit?,
-              request_options: Orb::request_opts
-            ) -> Orb::Models::Customers::Credits::TopUpCreateResponse
+          def create: (
+            String customer_id,
+            amount: String,
+            currency: String,
+            invoice_settings: Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings,
+            per_unit_cost_basis: String,
+            threshold: String,
+            ?active_from: Time?,
+            ?expires_after: Integer?,
+            ?expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateParams::expires_after_unit?,
+            ?request_options: Orb::request_opts
+          ) -> Orb::Models::Customers::Credits::TopUpCreateResponse
 
-          def list:
-            (
-              String customer_id,
-              ?Orb::Models::Customers::Credits::TopUpListParams
-              | ::Hash[Symbol, top] params
-            ) -> Orb::Page[Orb::Models::Customers::Credits::TopUpListResponse]
-            | (
-              String customer_id,
-              cursor: String?,
-              limit: Integer,
-              request_options: Orb::request_opts
-            ) -> Orb::Page[Orb::Models::Customers::Credits::TopUpListResponse]
+          def list: (
+            String customer_id,
+            ?cursor: String?,
+            ?limit: Integer,
+            ?request_options: Orb::request_opts
+          ) -> Orb::Page[Orb::Models::Customers::Credits::TopUpListResponse]
 
-          def delete:
-            (
-              String top_up_id,
-              Orb::Models::Customers::Credits::TopUpDeleteParams
-              | ::Hash[Symbol, top] params
-            ) -> nil
-            | (
-              String top_up_id,
-              customer_id: String,
-              request_options: Orb::request_opts
-            ) -> nil
+          def delete: (
+            String top_up_id,
+            customer_id: String,
+            ?request_options: Orb::request_opts
+          ) -> nil
 
-          def create_by_external_id:
-            (
-              String external_customer_id,
-              Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams
-              | ::Hash[Symbol, top] params
-            ) -> Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse
-            | (
-              String external_customer_id,
-              amount: String,
-              currency: String,
-              invoice_settings: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::InvoiceSettings,
-              per_unit_cost_basis: String,
-              threshold: String,
-              active_from: Time?,
-              expires_after: Integer?,
-              expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::expires_after_unit?,
-              request_options: Orb::request_opts
-            ) -> Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse
+          def create_by_external_id: (
+            String external_customer_id,
+            amount: String,
+            currency: String,
+            invoice_settings: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::InvoiceSettings,
+            per_unit_cost_basis: String,
+            threshold: String,
+            ?active_from: Time?,
+            ?expires_after: Integer?,
+            ?expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::expires_after_unit?,
+            ?request_options: Orb::request_opts
+          ) -> Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse
 
-          def delete_by_external_id:
-            (
-              String top_up_id,
-              Orb::Models::Customers::Credits::TopUpDeleteByExternalIDParams
-              | ::Hash[Symbol, top] params
-            ) -> nil
-            | (
-              String top_up_id,
-              external_customer_id: String,
-              request_options: Orb::request_opts
-            ) -> nil
+          def delete_by_external_id: (
+            String top_up_id,
+            external_customer_id: String,
+            ?request_options: Orb::request_opts
+          ) -> nil
 
-          def list_by_external_id:
-            (
-              String external_customer_id,
-              ?Orb::Models::Customers::Credits::TopUpListByExternalIDParams
-              | ::Hash[Symbol, top] params
-            ) -> Orb::Page[Orb::Models::Customers::Credits::TopUpListByExternalIDResponse]
-            | (
-              String external_customer_id,
-              cursor: String?,
-              limit: Integer,
-              request_options: Orb::request_opts
-            ) -> Orb::Page[Orb::Models::Customers::Credits::TopUpListByExternalIDResponse]
+          def list_by_external_id: (
+            String external_customer_id,
+            ?cursor: String?,
+            ?limit: Integer,
+            ?request_options: Orb::request_opts
+          ) -> Orb::Page[Orb::Models::Customers::Credits::TopUpListByExternalIDResponse]
 
           def initialize: (client: Orb::Client) -> void
         end

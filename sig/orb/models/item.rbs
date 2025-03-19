@@ -17,14 +17,12 @@ module Orb
 
       attr_accessor name: String
 
-      def initialize:
-        (
-          id: String,
-          created_at: Time,
-          external_connections: ::Array[Orb::Models::Item::ExternalConnection],
-          name: String
-        ) -> void
-        | (?Orb::Models::item | Orb::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        created_at: Time,
+        external_connections: ::Array[Orb::Models::Item::ExternalConnection],
+        name: String
+      ) -> void
 
       def to_hash: -> Orb::Models::item
 
@@ -39,14 +37,10 @@ module Orb
 
         attr_accessor external_entity_id: String
 
-        def initialize:
-          (
-            external_connection_name: Orb::Models::Item::ExternalConnection::external_connection_name,
-            external_entity_id: String
-          ) -> void
-          | (
-            ?Orb::Models::Item::external_connection | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          external_connection_name: Orb::Models::Item::ExternalConnection::external_connection_name,
+          external_entity_id: String
+        ) -> void
 
         def to_hash: -> Orb::Models::Item::external_connection
 

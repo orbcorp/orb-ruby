@@ -40,19 +40,14 @@ module Orb
         ::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment]
       ) -> ::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment]
 
-      def initialize:
-        (
-          add: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add],
-          add_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment],
-          allow_invoice_credit_or_void: bool?,
-          edit: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit],
-          edit_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment],
-          request_options: Orb::request_opts
-        ) -> void
-        | (
-          ?Orb::Models::subscription_price_intervals_params
-          | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        ?add: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add],
+        ?add_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment],
+        ?allow_invoice_credit_or_void: bool?,
+        ?edit: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit],
+        ?edit_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment],
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::subscription_price_intervals_params
 
@@ -97,25 +92,20 @@ module Orb
 
         attr_accessor usage_customer_ids: ::Array[String]?
 
-        def initialize:
-          (
-            start_date: Orb::Models::SubscriptionPriceIntervalsParams::Add::start_date,
-            allocation_price: Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice?,
-            discounts: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::discount]?,
-            end_date: Orb::Models::SubscriptionPriceIntervalsParams::Add::end_date?,
-            external_price_id: String?,
-            filter: String?,
-            fixed_fee_quantity_transitions: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition]?,
-            maximum_amount: Float?,
-            minimum_amount: Float?,
-            price: Orb::Models::SubscriptionPriceIntervalsParams::Add::price?,
-            price_id: String?,
-            usage_customer_ids: ::Array[String]?
-          ) -> void
-          | (
-            ?Orb::Models::SubscriptionPriceIntervalsParams::add
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          start_date: Orb::Models::SubscriptionPriceIntervalsParams::Add::start_date,
+          ?allocation_price: Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice?,
+          ?discounts: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::discount]?,
+          ?end_date: Orb::Models::SubscriptionPriceIntervalsParams::Add::end_date?,
+          ?external_price_id: String?,
+          ?filter: String?,
+          ?fixed_fee_quantity_transitions: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition]?,
+          ?maximum_amount: Float?,
+          ?minimum_amount: Float?,
+          ?price: Orb::Models::SubscriptionPriceIntervalsParams::Add::price?,
+          ?price_id: String?,
+          ?usage_customer_ids: ::Array[String]?
+        ) -> void
 
         def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::add
 
@@ -142,17 +132,12 @@ module Orb
 
           attr_accessor expires_at_end_of_cadence: bool
 
-          def initialize:
-            (
-              amount: String,
-              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice::cadence,
-              currency: String,
-              expires_at_end_of_cadence: bool
-            ) -> void
-            | (
-              ?Orb::Models::SubscriptionPriceIntervalsParams::Add::allocation_price
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            amount: String,
+            cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice::cadence,
+            currency: String,
+            expires_at_end_of_cadence: bool
+          ) -> void
 
           def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::allocation_price
 
@@ -185,12 +170,10 @@ module Orb
 
             attr_accessor discount_type: :amount
 
-            def initialize:
-              (amount_discount: Float, discount_type: :amount) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::amount_discount_creation_params
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              amount_discount: Float,
+              ?discount_type: :amount
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::amount_discount_creation_params
           end
@@ -203,12 +186,10 @@ module Orb
 
             attr_accessor percentage_discount: Float
 
-            def initialize:
-              (percentage_discount: Float, discount_type: :percentage) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::percentage_discount_creation_params
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              percentage_discount: Float,
+              ?discount_type: :percentage
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::percentage_discount_creation_params
           end
@@ -221,12 +202,10 @@ module Orb
 
             attr_accessor usage_discount: Float
 
-            def initialize:
-              (usage_discount: Float, discount_type: :usage) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::usage_discount_creation_params
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              usage_discount: Float,
+              ?discount_type: :usage
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::usage_discount_creation_params
           end
@@ -248,12 +227,7 @@ module Orb
 
           attr_accessor quantity: Integer
 
-          def initialize:
-            (effective_date: Time, quantity: Integer) -> void
-            | (
-              ?Orb::Models::SubscriptionPriceIntervalsParams::Add::fixed_fee_quantity_transition
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (effective_date: Time, quantity: Integer) -> void
 
           def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::fixed_fee_quantity_transition
         end
@@ -339,28 +313,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                unit_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::UnitConfig,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :unit
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_unit_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              unit_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::UnitConfig,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :unit
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_unit_price
 
@@ -388,12 +357,7 @@ module Orb
             class UnitConfig < Orb::BaseModel
               attr_accessor unit_amount: String
 
-              def initialize:
-                (unit_amount: String) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::unit_config
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (unit_amount: String) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::unit_config
             end
@@ -409,15 +373,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::billing_cycle_configuration
 
@@ -442,15 +401,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::invoicing_cycle_configuration
 
@@ -515,28 +469,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                package_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::PackageConfig,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :package
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_package_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              package_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::PackageConfig,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :package
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_package_price
 
@@ -567,12 +516,10 @@ module Orb
 
               attr_accessor package_size: Integer
 
-              def initialize:
-                (package_amount: String, package_size: Integer) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::package_config
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                package_amount: String,
+                package_size: Integer
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::package_config
             end
@@ -588,15 +535,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::billing_cycle_configuration
 
@@ -621,15 +563,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::invoicing_cycle_configuration
 
@@ -694,28 +631,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::cadence,
-                currency: String,
-                item_id: String,
-                matrix_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig,
-                name: String,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :matrix
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_matrix_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::cadence,
+              currency: String,
+              item_id: String,
+              matrix_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :matrix
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_matrix_price
 
@@ -752,16 +684,11 @@ module Orb
 
               attr_accessor matrix_values: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue]
 
-              def initialize:
-                (
-                  default_unit_amount: String,
-                  dimensions: ::Array[String?],
-                  matrix_values: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue]
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::matrix_config
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                default_unit_amount: String,
+                dimensions: ::Array[String?],
+                matrix_values: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue]
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::matrix_config
 
@@ -773,15 +700,10 @@ module Orb
 
                 attr_accessor unit_amount: String
 
-                def initialize:
-                  (
-                    dimension_values: ::Array[String?],
-                    unit_amount: String
-                  ) -> void
-                  | (
-                    ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::matrix_value
-                    | Orb::BaseModel data
-                  ) -> void
+                def initialize: (
+                  dimension_values: ::Array[String?],
+                  unit_amount: String
+                ) -> void
 
                 def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::matrix_value
               end
@@ -798,15 +720,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::billing_cycle_configuration
 
@@ -831,15 +748,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::invoicing_cycle_configuration
 
@@ -904,28 +816,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::cadence,
-                currency: String,
-                item_id: String,
-                matrix_with_allocation_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig,
-                name: String,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :matrix_with_allocation
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_matrix_with_allocation_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::cadence,
+              currency: String,
+              item_id: String,
+              matrix_with_allocation_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :matrix_with_allocation
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_matrix_with_allocation_price
 
@@ -965,17 +872,12 @@ module Orb
 
               attr_accessor matrix_values: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue]
 
-              def initialize:
-                (
-                  allocation: Float,
-                  default_unit_amount: String,
-                  dimensions: ::Array[String?],
-                  matrix_values: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue]
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::matrix_with_allocation_config
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                allocation: Float,
+                default_unit_amount: String,
+                dimensions: ::Array[String?],
+                matrix_values: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue]
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::matrix_with_allocation_config
 
@@ -987,15 +889,10 @@ module Orb
 
                 attr_accessor unit_amount: String
 
-                def initialize:
-                  (
-                    dimension_values: ::Array[String?],
-                    unit_amount: String
-                  ) -> void
-                  | (
-                    ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::matrix_value
-                    | Orb::BaseModel data
-                  ) -> void
+                def initialize: (
+                  dimension_values: ::Array[String?],
+                  unit_amount: String
+                ) -> void
 
                 def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::matrix_value
               end
@@ -1012,15 +909,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::billing_cycle_configuration
 
@@ -1045,15 +937,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::invoicing_cycle_configuration
 
@@ -1118,28 +1005,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                tiered_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :tiered
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              tiered_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :tiered
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_price
 
@@ -1170,14 +1052,9 @@ module Orb
             class TieredConfig < Orb::BaseModel
               attr_accessor tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier]
 
-              def initialize:
-                (
-                  tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier]
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::tiered_config
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier]
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::tiered_config
 
@@ -1191,16 +1068,11 @@ module Orb
 
                 attr_accessor last_unit: Float?
 
-                def initialize:
-                  (
-                    first_unit: Float,
-                    unit_amount: String,
-                    last_unit: Float?
-                  ) -> void
-                  | (
-                    ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::tier
-                    | Orb::BaseModel data
-                  ) -> void
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
 
                 def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::tier
               end
@@ -1217,15 +1089,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::billing_cycle_configuration
 
@@ -1250,15 +1117,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::invoicing_cycle_configuration
 
@@ -1323,28 +1185,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                tiered_bps_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :tiered_bps
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_bps_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              tiered_bps_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :tiered_bps
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_bps_price
 
@@ -1375,14 +1232,9 @@ module Orb
             class TieredBpsConfig < Orb::BaseModel
               attr_accessor tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier]
 
-              def initialize:
-                (
-                  tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier]
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::tiered_bps_config
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier]
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::tiered_bps_config
 
@@ -1403,17 +1255,12 @@ module Orb
 
                 attr_accessor per_unit_maximum: String?
 
-                def initialize:
-                  (
-                    bps: Float,
-                    minimum_amount: String,
-                    maximum_amount: String?,
-                    per_unit_maximum: String?
-                  ) -> void
-                  | (
-                    ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::tier
-                    | Orb::BaseModel data
-                  ) -> void
+                def initialize: (
+                  bps: Float,
+                  minimum_amount: String,
+                  ?maximum_amount: String?,
+                  ?per_unit_maximum: String?
+                ) -> void
 
                 def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::tier
               end
@@ -1430,15 +1277,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::billing_cycle_configuration
 
@@ -1463,15 +1305,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::invoicing_cycle_configuration
 
@@ -1536,28 +1373,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                bps_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BpsConfig,
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :bps
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_bps_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              bps_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BpsConfig,
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :bps
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_bps_price
 
@@ -1568,12 +1400,7 @@ module Orb
 
               attr_accessor per_unit_maximum: String?
 
-              def initialize:
-                (bps: Float, per_unit_maximum: String?) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::bps_config
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (bps: Float, ?per_unit_maximum: String?) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::bps_config
             end
@@ -1608,15 +1435,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::billing_cycle_configuration
 
@@ -1641,15 +1463,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::invoicing_cycle_configuration
 
@@ -1714,28 +1531,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                bulk_bps_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig,
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :bulk_bps
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_bulk_bps_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              bulk_bps_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig,
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :bulk_bps
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_bulk_bps_price
 
@@ -1747,14 +1559,9 @@ module Orb
             class BulkBpsConfig < Orb::BaseModel
               attr_accessor tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier]
 
-              def initialize:
-                (
-                  tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier]
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::bulk_bps_config
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier]
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::bulk_bps_config
 
@@ -1772,16 +1579,11 @@ module Orb
 
                 attr_accessor per_unit_maximum: String?
 
-                def initialize:
-                  (
-                    bps: Float,
-                    maximum_amount: String?,
-                    per_unit_maximum: String?
-                  ) -> void
-                  | (
-                    ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::tier
-                    | Orb::BaseModel data
-                  ) -> void
+                def initialize: (
+                  bps: Float,
+                  ?maximum_amount: String?,
+                  ?per_unit_maximum: String?
+                ) -> void
 
                 def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::tier
               end
@@ -1817,15 +1619,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::billing_cycle_configuration
 
@@ -1850,15 +1647,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::invoicing_cycle_configuration
 
@@ -1923,28 +1715,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                bulk_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig,
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :bulk
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_bulk_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              bulk_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig,
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :bulk
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_bulk_price
 
@@ -1956,14 +1743,9 @@ module Orb
             class BulkConfig < Orb::BaseModel
               attr_accessor tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier]
 
-              def initialize:
-                (
-                  tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier]
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::bulk_config
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier]
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::bulk_config
 
@@ -1974,12 +1756,10 @@ module Orb
 
                 attr_accessor maximum_units: Float?
 
-                def initialize:
-                  (unit_amount: String, maximum_units: Float?) -> void
-                  | (
-                    ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::tier
-                    | Orb::BaseModel data
-                  ) -> void
+                def initialize: (
+                  unit_amount: String,
+                  ?maximum_units: Float?
+                ) -> void
 
                 def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::tier
               end
@@ -2015,15 +1795,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::billing_cycle_configuration
 
@@ -2048,15 +1823,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::invoicing_cycle_configuration
 
@@ -2121,28 +1891,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                threshold_total_amount_config: ::Hash[Symbol, top],
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :threshold_total_amount
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_threshold_total_amount_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              threshold_total_amount_config: ::Hash[Symbol, top],
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :threshold_total_amount
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_threshold_total_amount_price
 
@@ -2176,15 +1941,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::billing_cycle_configuration
 
@@ -2209,15 +1969,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::invoicing_cycle_configuration
 
@@ -2282,28 +2037,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                tiered_package_config: ::Hash[Symbol, top],
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :tiered_package
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_package_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              tiered_package_config: ::Hash[Symbol, top],
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :tiered_package
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_package_price
 
@@ -2337,15 +2087,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::billing_cycle_configuration
 
@@ -2370,15 +2115,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::invoicing_cycle_configuration
 
@@ -2443,28 +2183,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::cadence,
-                currency: String,
-                grouped_tiered_config: ::Hash[Symbol, top],
-                item_id: String,
-                name: String,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :grouped_tiered
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_tiered_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::cadence,
+              currency: String,
+              grouped_tiered_config: ::Hash[Symbol, top],
+              item_id: String,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :grouped_tiered
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_tiered_price
 
@@ -2498,15 +2233,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::billing_cycle_configuration
 
@@ -2531,15 +2261,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::invoicing_cycle_configuration
 
@@ -2604,28 +2329,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::cadence,
-                currency: String,
-                item_id: String,
-                max_group_tiered_package_config: ::Hash[Symbol, top],
-                name: String,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :max_group_tiered_package
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_max_group_tiered_package_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::cadence,
+              currency: String,
+              item_id: String,
+              max_group_tiered_package_config: ::Hash[Symbol, top],
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :max_group_tiered_package
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_max_group_tiered_package_price
 
@@ -2659,15 +2379,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::billing_cycle_configuration
 
@@ -2692,15 +2407,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::invoicing_cycle_configuration
 
@@ -2765,28 +2475,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                tiered_with_minimum_config: ::Hash[Symbol, top],
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :tiered_with_minimum
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_with_minimum_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              tiered_with_minimum_config: ::Hash[Symbol, top],
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :tiered_with_minimum
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_with_minimum_price
 
@@ -2820,15 +2525,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::billing_cycle_configuration
 
@@ -2853,15 +2553,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::invoicing_cycle_configuration
 
@@ -2926,28 +2621,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                package_with_allocation_config: ::Hash[Symbol, top],
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :package_with_allocation
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_package_with_allocation_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              package_with_allocation_config: ::Hash[Symbol, top],
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :package_with_allocation
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_package_with_allocation_price
 
@@ -2981,15 +2671,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::billing_cycle_configuration
 
@@ -3014,15 +2699,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::invoicing_cycle_configuration
 
@@ -3087,28 +2767,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                tiered_package_with_minimum_config: ::Hash[Symbol, top],
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :tiered_package_with_minimum
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_package_with_minimum_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              tiered_package_with_minimum_config: ::Hash[Symbol, top],
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :tiered_package_with_minimum
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_package_with_minimum_price
 
@@ -3142,15 +2817,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::billing_cycle_configuration
 
@@ -3175,15 +2845,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::invoicing_cycle_configuration
 
@@ -3248,28 +2913,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                unit_with_percent_config: ::Hash[Symbol, top],
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :unit_with_percent
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_unit_with_percent_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              unit_with_percent_config: ::Hash[Symbol, top],
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :unit_with_percent
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_unit_with_percent_price
 
@@ -3303,15 +2963,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::billing_cycle_configuration
 
@@ -3336,15 +2991,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::invoicing_cycle_configuration
 
@@ -3409,28 +3059,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                tiered_with_proration_config: ::Hash[Symbol, top],
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :tiered_with_proration
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_with_proration_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              tiered_with_proration_config: ::Hash[Symbol, top],
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :tiered_with_proration
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_tiered_with_proration_price
 
@@ -3464,15 +3109,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::billing_cycle_configuration
 
@@ -3497,15 +3137,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::invoicing_cycle_configuration
 
@@ -3570,28 +3205,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                unit_with_proration_config: ::Hash[Symbol, top],
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :unit_with_proration
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_unit_with_proration_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              unit_with_proration_config: ::Hash[Symbol, top],
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :unit_with_proration
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_unit_with_proration_price
 
@@ -3625,15 +3255,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::billing_cycle_configuration
 
@@ -3658,15 +3283,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::invoicing_cycle_configuration
 
@@ -3731,28 +3351,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::cadence,
-                currency: String,
-                grouped_allocation_config: ::Hash[Symbol, top],
-                item_id: String,
-                name: String,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :grouped_allocation
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_allocation_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::cadence,
+              currency: String,
+              grouped_allocation_config: ::Hash[Symbol, top],
+              item_id: String,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :grouped_allocation
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_allocation_price
 
@@ -3786,15 +3401,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::billing_cycle_configuration
 
@@ -3819,15 +3429,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::invoicing_cycle_configuration
 
@@ -3892,28 +3497,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::cadence,
-                currency: String,
-                grouped_with_prorated_minimum_config: ::Hash[Symbol, top],
-                item_id: String,
-                name: String,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :grouped_with_prorated_minimum
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_with_prorated_minimum_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::cadence,
+              currency: String,
+              grouped_with_prorated_minimum_config: ::Hash[Symbol, top],
+              item_id: String,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :grouped_with_prorated_minimum
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_with_prorated_minimum_price
 
@@ -3947,15 +3547,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::billing_cycle_configuration
 
@@ -3980,15 +3575,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::invoicing_cycle_configuration
 
@@ -4053,28 +3643,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::cadence,
-                currency: String,
-                grouped_with_metered_minimum_config: ::Hash[Symbol, top],
-                item_id: String,
-                name: String,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :grouped_with_metered_minimum
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_with_metered_minimum_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::cadence,
+              currency: String,
+              grouped_with_metered_minimum_config: ::Hash[Symbol, top],
+              item_id: String,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :grouped_with_metered_minimum
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_with_metered_minimum_price
 
@@ -4108,15 +3693,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::billing_cycle_configuration
 
@@ -4141,15 +3721,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::invoicing_cycle_configuration
 
@@ -4214,28 +3789,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::cadence,
-                currency: String,
-                item_id: String,
-                matrix_with_display_name_config: ::Hash[Symbol, top],
-                name: String,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :matrix_with_display_name
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_matrix_with_display_name_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::cadence,
+              currency: String,
+              item_id: String,
+              matrix_with_display_name_config: ::Hash[Symbol, top],
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :matrix_with_display_name
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_matrix_with_display_name_price
 
@@ -4269,15 +3839,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::billing_cycle_configuration
 
@@ -4302,15 +3867,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::invoicing_cycle_configuration
 
@@ -4375,28 +3935,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                bulk_with_proration_config: ::Hash[Symbol, top],
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :bulk_with_proration
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_bulk_with_proration_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              bulk_with_proration_config: ::Hash[Symbol, top],
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :bulk_with_proration
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_bulk_with_proration_price
 
@@ -4430,15 +3985,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::billing_cycle_configuration
 
@@ -4463,15 +4013,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::invoicing_cycle_configuration
 
@@ -4536,28 +4081,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::cadence,
-                currency: String,
-                grouped_tiered_package_config: ::Hash[Symbol, top],
-                item_id: String,
-                name: String,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :grouped_tiered_package
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_tiered_package_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::cadence,
+              currency: String,
+              grouped_tiered_package_config: ::Hash[Symbol, top],
+              item_id: String,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :grouped_tiered_package
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_grouped_tiered_package_price
 
@@ -4591,15 +4131,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::billing_cycle_configuration
 
@@ -4624,15 +4159,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::invoicing_cycle_configuration
 
@@ -4697,28 +4227,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :scalable_matrix_with_unit_pricing
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_scalable_matrix_with_unit_pricing_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :scalable_matrix_with_unit_pricing
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_scalable_matrix_with_unit_pricing_price
 
@@ -4752,15 +4277,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::billing_cycle_configuration
 
@@ -4785,15 +4305,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::invoicing_cycle_configuration
 
@@ -4858,28 +4373,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::cadence,
-                currency: String,
-                item_id: String,
-                name: String,
-                scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :scalable_matrix_with_tiered_pricing
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_scalable_matrix_with_tiered_pricing_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::cadence,
+              currency: String,
+              item_id: String,
+              name: String,
+              scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :scalable_matrix_with_tiered_pricing
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_scalable_matrix_with_tiered_pricing_price
 
@@ -4913,15 +4423,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::billing_cycle_configuration
 
@@ -4946,15 +4451,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::invoicing_cycle_configuration
 
@@ -5019,28 +4519,23 @@ module Orb
 
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            def initialize:
-              (
-                cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::cadence,
-                cumulative_grouped_bulk_config: ::Hash[Symbol, top],
-                currency: String,
-                item_id: String,
-                name: String,
-                billable_metric_id: String?,
-                billed_in_advance: bool?,
-                billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration?,
-                conversion_rate: Float?,
-                external_price_id: String?,
-                fixed_price_quantity: Float?,
-                invoice_grouping_key: String?,
-                invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration?,
-                metadata: ::Hash[Symbol, String?]?,
-                model_type: :cumulative_grouped_bulk
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_cumulative_grouped_bulk_price
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::cadence,
+              cumulative_grouped_bulk_config: ::Hash[Symbol, top],
+              currency: String,
+              item_id: String,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :cumulative_grouped_bulk
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::new_floating_cumulative_grouped_bulk_price
 
@@ -5074,15 +4569,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::billing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::billing_cycle_configuration
 
@@ -5107,15 +4597,10 @@ module Orb
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::duration_unit
 
-              def initialize:
-                (
-                  duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::duration_unit
-                ) -> void
-                | (
-                  ?Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::invoicing_cycle_configuration
-                  | Orb::BaseModel data
-                ) -> void
+              def initialize: (
+                duration: Integer,
+                duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::duration_unit
+              ) -> void
 
               def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::invoicing_cycle_configuration
 
@@ -5148,16 +4633,11 @@ module Orb
 
         attr_accessor end_date: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::end_date?
 
-        def initialize:
-          (
-            adjustment: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::adjustment,
-            start_date: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::start_date,
-            end_date: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::end_date?
-          ) -> void
-          | (
-            ?Orb::Models::SubscriptionPriceIntervalsParams::add_adjustment
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          adjustment: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::adjustment,
+          start_date: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::start_date,
+          ?end_date: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::end_date?
+        ) -> void
 
         def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::add_adjustment
 
@@ -5188,17 +4668,12 @@ module Orb
 
             def is_invoice_level=: (bool) -> bool
 
-            def initialize:
-              (
-                applies_to_price_ids: ::Array[String],
-                percentage_discount: Float,
-                is_invoice_level: bool,
-                adjustment_type: :percentage_discount
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_percentage_discount
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              applies_to_price_ids: ::Array[String],
+              percentage_discount: Float,
+              ?is_invoice_level: bool,
+              ?adjustment_type: :percentage_discount
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_percentage_discount
           end
@@ -5222,17 +4697,12 @@ module Orb
 
             def is_invoice_level=: (bool) -> bool
 
-            def initialize:
-              (
-                applies_to_price_ids: ::Array[String],
-                usage_discount: Float,
-                is_invoice_level: bool,
-                adjustment_type: :usage_discount
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_usage_discount
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              applies_to_price_ids: ::Array[String],
+              usage_discount: Float,
+              ?is_invoice_level: bool,
+              ?adjustment_type: :usage_discount
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_usage_discount
           end
@@ -5256,17 +4726,12 @@ module Orb
 
             def is_invoice_level=: (bool) -> bool
 
-            def initialize:
-              (
-                amount_discount: String,
-                applies_to_price_ids: ::Array[String],
-                is_invoice_level: bool,
-                adjustment_type: :amount_discount
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_amount_discount
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              amount_discount: String,
+              applies_to_price_ids: ::Array[String],
+              ?is_invoice_level: bool,
+              ?adjustment_type: :amount_discount
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_amount_discount
           end
@@ -5293,18 +4758,13 @@ module Orb
 
             def is_invoice_level=: (bool) -> bool
 
-            def initialize:
-              (
-                applies_to_price_ids: ::Array[String],
-                item_id: String,
-                minimum_amount: String,
-                is_invoice_level: bool,
-                adjustment_type: :minimum
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_minimum
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              applies_to_price_ids: ::Array[String],
+              item_id: String,
+              minimum_amount: String,
+              ?is_invoice_level: bool,
+              ?adjustment_type: :minimum
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_minimum
           end
@@ -5328,17 +4788,12 @@ module Orb
 
             def is_invoice_level=: (bool) -> bool
 
-            def initialize:
-              (
-                applies_to_price_ids: ::Array[String],
-                maximum_amount: String,
-                is_invoice_level: bool,
-                adjustment_type: :maximum
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_maximum
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              applies_to_price_ids: ::Array[String],
+              maximum_amount: String,
+              ?is_invoice_level: bool,
+              ?adjustment_type: :maximum
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::new_maximum
           end
@@ -5389,20 +4844,15 @@ module Orb
 
         attr_accessor usage_customer_ids: ::Array[String]?
 
-        def initialize:
-          (
-            price_interval_id: String,
-            billing_cycle_day: Integer?,
-            end_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::end_date?,
-            filter: String?,
-            fixed_fee_quantity_transitions: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition]?,
-            start_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::start_date,
-            usage_customer_ids: ::Array[String]?
-          ) -> void
-          | (
-            ?Orb::Models::SubscriptionPriceIntervalsParams::edit
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          price_interval_id: String,
+          ?billing_cycle_day: Integer?,
+          ?end_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::end_date?,
+          ?filter: String?,
+          ?fixed_fee_quantity_transitions: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition]?,
+          ?start_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::start_date,
+          ?usage_customer_ids: ::Array[String]?
+        ) -> void
 
         def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::edit
 
@@ -5420,12 +4870,7 @@ module Orb
 
           attr_accessor quantity: Integer
 
-          def initialize:
-            (effective_date: Time, quantity: Integer) -> void
-            | (
-              ?Orb::Models::SubscriptionPriceIntervalsParams::Edit::fixed_fee_quantity_transition
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (effective_date: Time, quantity: Integer) -> void
 
           def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::Edit::fixed_fee_quantity_transition
         end
@@ -5455,16 +4900,11 @@ module Orb
           Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment::start_date
         ) -> Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment::start_date
 
-        def initialize:
-          (
-            adjustment_interval_id: String,
-            end_date: Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment::end_date?,
-            start_date: Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment::start_date
-          ) -> void
-          | (
-            ?Orb::Models::SubscriptionPriceIntervalsParams::edit_adjustment
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          adjustment_interval_id: String,
+          ?end_date: Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment::end_date?,
+          ?start_date: Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment::start_date
+        ) -> void
 
         def to_hash: -> Orb::Models::SubscriptionPriceIntervalsParams::edit_adjustment
 

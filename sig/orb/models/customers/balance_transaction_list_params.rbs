@@ -30,20 +30,15 @@ module Orb
 
         attr_accessor operation_time_lte: Time?
 
-        def initialize:
-          (
-            cursor: String?,
-            limit: Integer,
-            operation_time_gt: Time?,
-            operation_time_gte: Time?,
-            operation_time_lt: Time?,
-            operation_time_lte: Time?,
-            request_options: Orb::request_opts
-          ) -> void
-          | (
-            ?Orb::Models::Customers::balance_transaction_list_params
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          ?cursor: String?,
+          ?limit: Integer,
+          ?operation_time_gt: Time?,
+          ?operation_time_gte: Time?,
+          ?operation_time_lt: Time?,
+          ?operation_time_lte: Time?,
+          ?request_options: Orb::request_opts
+        ) -> void
 
         def to_hash: -> Orb::Models::Customers::balance_transaction_list_params
       end

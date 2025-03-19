@@ -1,281 +1,192 @@
 module Orb
   module Resources
     class Subscriptions
-      def create:
-        (
-          ?Orb::Models::SubscriptionCreateParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::SubscriptionCreateResponse
-        | (
-          add_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::AddAdjustment]?,
-          add_prices: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice]?,
-          align_billing_with_subscription_start_date: bool,
-          auto_collection: bool?,
-          aws_region: String?,
-          billing_cycle_anchor_configuration: Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration?,
-          coupon_redemption_code: String?,
-          credits_overage_rate: Float?,
-          customer_id: String?,
-          default_invoice_memo: String?,
-          end_date: Time?,
-          external_customer_id: String?,
-          external_marketplace: Orb::Models::SubscriptionCreateParams::external_marketplace?,
-          external_marketplace_reporting_id: String?,
-          external_plan_id: String?,
-          filter: String?,
-          initial_phase_order: Integer?,
-          invoicing_threshold: String?,
-          metadata: ::Hash[Symbol, String?]?,
-          net_terms: Integer?,
-          per_credit_overage_amount: Float?,
-          plan_id: String?,
-          plan_version_number: Integer?,
-          price_overrides: ::Array[top]?,
-          remove_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::RemoveAdjustment]?,
-          remove_prices: ::Array[Orb::Models::SubscriptionCreateParams::RemovePrice]?,
-          replace_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::ReplaceAdjustment]?,
-          replace_prices: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice]?,
-          start_date: Time?,
-          trial_duration_days: Integer?,
-          usage_customer_ids: ::Array[String]?,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::SubscriptionCreateResponse
+      def create: (
+        ?add_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::AddAdjustment]?,
+        ?add_prices: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice]?,
+        ?align_billing_with_subscription_start_date: bool,
+        ?auto_collection: bool?,
+        ?aws_region: String?,
+        ?billing_cycle_anchor_configuration: Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration?,
+        ?coupon_redemption_code: String?,
+        ?credits_overage_rate: Float?,
+        ?customer_id: String?,
+        ?default_invoice_memo: String?,
+        ?end_date: Time?,
+        ?external_customer_id: String?,
+        ?external_marketplace: Orb::Models::SubscriptionCreateParams::external_marketplace?,
+        ?external_marketplace_reporting_id: String?,
+        ?external_plan_id: String?,
+        ?filter: String?,
+        ?initial_phase_order: Integer?,
+        ?invoicing_threshold: String?,
+        ?metadata: ::Hash[Symbol, String?]?,
+        ?net_terms: Integer?,
+        ?per_credit_overage_amount: Float?,
+        ?plan_id: String?,
+        ?plan_version_number: Integer?,
+        ?price_overrides: ::Array[top]?,
+        ?remove_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::RemoveAdjustment]?,
+        ?remove_prices: ::Array[Orb::Models::SubscriptionCreateParams::RemovePrice]?,
+        ?replace_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::ReplaceAdjustment]?,
+        ?replace_prices: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice]?,
+        ?start_date: Time?,
+        ?trial_duration_days: Integer?,
+        ?usage_customer_ids: ::Array[String]?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::SubscriptionCreateResponse
 
-      def update:
-        (
-          String subscription_id,
-          ?Orb::Models::SubscriptionUpdateParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Subscription
-        | (
-          String subscription_id,
-          auto_collection: bool?,
-          default_invoice_memo: String?,
-          invoicing_threshold: String?,
-          metadata: ::Hash[Symbol, String?]?,
-          net_terms: Integer?,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::Subscription
+      def update: (
+        String subscription_id,
+        ?auto_collection: bool?,
+        ?default_invoice_memo: String?,
+        ?invoicing_threshold: String?,
+        ?metadata: ::Hash[Symbol, String?]?,
+        ?net_terms: Integer?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::Subscription
 
-      def list:
-        (
-          ?Orb::Models::SubscriptionListParams | ::Hash[Symbol, top] params
-        ) -> Orb::Page[Orb::Models::Subscription]
-        | (
-          created_at_gt: Time?,
-          created_at_gte: Time?,
-          created_at_lt: Time?,
-          created_at_lte: Time?,
-          cursor: String?,
-          customer_id: ::Array[String]?,
-          external_customer_id: ::Array[String]?,
-          limit: Integer,
-          status: Orb::Models::SubscriptionListParams::status?,
-          request_options: Orb::request_opts
-        ) -> Orb::Page[Orb::Models::Subscription]
+      def list: (
+        ?created_at_gt: Time?,
+        ?created_at_gte: Time?,
+        ?created_at_lt: Time?,
+        ?created_at_lte: Time?,
+        ?cursor: String?,
+        ?customer_id: ::Array[String]?,
+        ?external_customer_id: ::Array[String]?,
+        ?limit: Integer,
+        ?status: Orb::Models::SubscriptionListParams::status?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Page[Orb::Models::Subscription]
 
-      def cancel:
-        (
-          String subscription_id,
-          Orb::Models::SubscriptionCancelParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::SubscriptionCancelResponse
-        | (
-          String subscription_id,
-          cancel_option: Orb::Models::SubscriptionCancelParams::cancel_option,
-          allow_invoice_credit_or_void: bool?,
-          cancellation_date: Time?,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::SubscriptionCancelResponse
+      def cancel: (
+        String subscription_id,
+        cancel_option: Orb::Models::SubscriptionCancelParams::cancel_option,
+        ?allow_invoice_credit_or_void: bool?,
+        ?cancellation_date: Time?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::SubscriptionCancelResponse
 
-      def fetch:
-        (
-          String subscription_id,
-          ?Orb::Models::SubscriptionFetchParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Subscription
-        | (
-          String subscription_id,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::Subscription
+      def fetch: (
+        String subscription_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::Subscription
 
-      def fetch_costs:
-        (
-          String subscription_id,
-          ?Orb::Models::SubscriptionFetchCostsParams
-          | ::Hash[Symbol, top] params
-        ) -> Orb::Models::SubscriptionFetchCostsResponse
-        | (
-          String subscription_id,
-          currency: String?,
-          timeframe_end: Time?,
-          timeframe_start: Time?,
-          view_mode: Orb::Models::SubscriptionFetchCostsParams::view_mode?,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::SubscriptionFetchCostsResponse
+      def fetch_costs: (
+        String subscription_id,
+        ?currency: String?,
+        ?timeframe_end: Time?,
+        ?timeframe_start: Time?,
+        ?view_mode: Orb::Models::SubscriptionFetchCostsParams::view_mode?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::SubscriptionFetchCostsResponse
 
-      def fetch_schedule:
-        (
-          String subscription_id,
-          ?Orb::Models::SubscriptionFetchScheduleParams
-          | ::Hash[Symbol, top] params
-        ) -> Orb::Page[Orb::Models::SubscriptionFetchScheduleResponse]
-        | (
-          String subscription_id,
-          cursor: String?,
-          limit: Integer,
-          start_date_gt: Time?,
-          start_date_gte: Time?,
-          start_date_lt: Time?,
-          start_date_lte: Time?,
-          request_options: Orb::request_opts
-        ) -> Orb::Page[Orb::Models::SubscriptionFetchScheduleResponse]
+      def fetch_schedule: (
+        String subscription_id,
+        ?cursor: String?,
+        ?limit: Integer,
+        ?start_date_gt: Time?,
+        ?start_date_gte: Time?,
+        ?start_date_lt: Time?,
+        ?start_date_lte: Time?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Page[Orb::Models::SubscriptionFetchScheduleResponse]
 
-      def fetch_usage:
-        (
-          String subscription_id,
-          ?Orb::Models::SubscriptionFetchUsageParams
-          | ::Hash[Symbol, top] params
-        ) -> Orb::Models::subscription_usage
-        | (
-          String subscription_id,
-          billable_metric_id: String?,
-          first_dimension_key: String?,
-          first_dimension_value: String?,
-          granularity: Orb::Models::SubscriptionFetchUsageParams::granularity?,
-          group_by: String?,
-          second_dimension_key: String?,
-          second_dimension_value: String?,
-          timeframe_end: Time?,
-          timeframe_start: Time?,
-          view_mode: Orb::Models::SubscriptionFetchUsageParams::view_mode?,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::subscription_usage
+      def fetch_usage: (
+        String subscription_id,
+        ?billable_metric_id: String?,
+        ?first_dimension_key: String?,
+        ?first_dimension_value: String?,
+        ?granularity: Orb::Models::SubscriptionFetchUsageParams::granularity?,
+        ?group_by: String?,
+        ?second_dimension_key: String?,
+        ?second_dimension_value: String?,
+        ?timeframe_end: Time?,
+        ?timeframe_start: Time?,
+        ?view_mode: Orb::Models::SubscriptionFetchUsageParams::view_mode?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::subscription_usage
 
-      def price_intervals:
-        (
-          String subscription_id,
-          ?Orb::Models::SubscriptionPriceIntervalsParams
-          | ::Hash[Symbol, top] params
-        ) -> Orb::Models::SubscriptionPriceIntervalsResponse
-        | (
-          String subscription_id,
-          add: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add],
-          add_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment],
-          allow_invoice_credit_or_void: bool?,
-          edit: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit],
-          edit_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment],
-          request_options: Orb::request_opts
-        ) -> Orb::Models::SubscriptionPriceIntervalsResponse
+      def price_intervals: (
+        String subscription_id,
+        ?add: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add],
+        ?add_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment],
+        ?allow_invoice_credit_or_void: bool?,
+        ?edit: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit],
+        ?edit_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment],
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::SubscriptionPriceIntervalsResponse
 
-      def schedule_plan_change:
-        (
-          String subscription_id,
-          Orb::Models::SubscriptionSchedulePlanChangeParams
-          | ::Hash[Symbol, top] params
-        ) -> Orb::Models::SubscriptionSchedulePlanChangeResponse
-        | (
-          String subscription_id,
-          change_option: Orb::Models::SubscriptionSchedulePlanChangeParams::change_option,
-          add_adjustments: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment]?,
-          add_prices: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice]?,
-          align_billing_with_plan_change_date: bool?,
-          auto_collection: bool?,
-          billing_cycle_alignment: Orb::Models::SubscriptionSchedulePlanChangeParams::billing_cycle_alignment?,
-          billing_cycle_anchor_configuration: Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration?,
-          change_date: Time?,
-          coupon_redemption_code: String?,
-          credits_overage_rate: Float?,
-          default_invoice_memo: String?,
-          external_plan_id: String?,
-          filter: String?,
-          initial_phase_order: Integer?,
-          invoicing_threshold: String?,
-          net_terms: Integer?,
-          per_credit_overage_amount: Float?,
-          plan_id: String?,
-          plan_version_number: Integer?,
-          price_overrides: ::Array[top]?,
-          remove_adjustments: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::RemoveAdjustment]?,
-          remove_prices: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::RemovePrice]?,
-          replace_adjustments: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment]?,
-          replace_prices: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice]?,
-          trial_duration_days: Integer?,
-          usage_customer_ids: ::Array[String]?,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::SubscriptionSchedulePlanChangeResponse
+      def schedule_plan_change: (
+        String subscription_id,
+        change_option: Orb::Models::SubscriptionSchedulePlanChangeParams::change_option,
+        ?add_adjustments: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment]?,
+        ?add_prices: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice]?,
+        ?align_billing_with_plan_change_date: bool?,
+        ?auto_collection: bool?,
+        ?billing_cycle_alignment: Orb::Models::SubscriptionSchedulePlanChangeParams::billing_cycle_alignment?,
+        ?billing_cycle_anchor_configuration: Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration?,
+        ?change_date: Time?,
+        ?coupon_redemption_code: String?,
+        ?credits_overage_rate: Float?,
+        ?default_invoice_memo: String?,
+        ?external_plan_id: String?,
+        ?filter: String?,
+        ?initial_phase_order: Integer?,
+        ?invoicing_threshold: String?,
+        ?net_terms: Integer?,
+        ?per_credit_overage_amount: Float?,
+        ?plan_id: String?,
+        ?plan_version_number: Integer?,
+        ?price_overrides: ::Array[top]?,
+        ?remove_adjustments: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::RemoveAdjustment]?,
+        ?remove_prices: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::RemovePrice]?,
+        ?replace_adjustments: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment]?,
+        ?replace_prices: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice]?,
+        ?trial_duration_days: Integer?,
+        ?usage_customer_ids: ::Array[String]?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::SubscriptionSchedulePlanChangeResponse
 
-      def trigger_phase:
-        (
-          String subscription_id,
-          ?Orb::Models::SubscriptionTriggerPhaseParams
-          | ::Hash[Symbol, top] params
-        ) -> Orb::Models::SubscriptionTriggerPhaseResponse
-        | (
-          String subscription_id,
-          allow_invoice_credit_or_void: bool?,
-          effective_date: Date?,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::SubscriptionTriggerPhaseResponse
+      def trigger_phase: (
+        String subscription_id,
+        ?allow_invoice_credit_or_void: bool?,
+        ?effective_date: Date?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::SubscriptionTriggerPhaseResponse
 
-      def unschedule_cancellation:
-        (
-          String subscription_id,
-          ?Orb::Models::SubscriptionUnscheduleCancellationParams
-          | ::Hash[Symbol, top] params
-        ) -> Orb::Models::SubscriptionUnscheduleCancellationResponse
-        | (
-          String subscription_id,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::SubscriptionUnscheduleCancellationResponse
+      def unschedule_cancellation: (
+        String subscription_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::SubscriptionUnscheduleCancellationResponse
 
-      def unschedule_fixed_fee_quantity_updates:
-        (
-          String subscription_id,
-          Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesParams
-          | ::Hash[Symbol, top] params
-        ) -> Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse
-        | (
-          String subscription_id,
-          price_id: String,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse
+      def unschedule_fixed_fee_quantity_updates: (
+        String subscription_id,
+        price_id: String,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse
 
-      def unschedule_pending_plan_changes:
-        (
-          String subscription_id,
-          ?Orb::Models::SubscriptionUnschedulePendingPlanChangesParams
-          | ::Hash[Symbol, top] params
-        ) -> Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse
-        | (
-          String subscription_id,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse
+      def unschedule_pending_plan_changes: (
+        String subscription_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse
 
-      def update_fixed_fee_quantity:
-        (
-          String subscription_id,
-          Orb::Models::SubscriptionUpdateFixedFeeQuantityParams
-          | ::Hash[Symbol, top] params
-        ) -> Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse
-        | (
-          String subscription_id,
-          price_id: String,
-          quantity: Float,
-          allow_invoice_credit_or_void: bool?,
-          change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option,
-          effective_date: Date?,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse
+      def update_fixed_fee_quantity: (
+        String subscription_id,
+        price_id: String,
+        quantity: Float,
+        ?allow_invoice_credit_or_void: bool?,
+        ?change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option,
+        ?effective_date: Date?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse
 
-      def update_trial:
-        (
-          String subscription_id,
-          Orb::Models::SubscriptionUpdateTrialParams
-          | ::Hash[Symbol, top] params
-        ) -> Orb::Models::SubscriptionUpdateTrialResponse
-        | (
-          String subscription_id,
-          trial_end_date: Orb::Models::SubscriptionUpdateTrialParams::trial_end_date,
-          shift: bool,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::SubscriptionUpdateTrialResponse
+      def update_trial: (
+        String subscription_id,
+        trial_end_date: Orb::Models::SubscriptionUpdateTrialParams::trial_end_date,
+        ?shift: bool,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::SubscriptionUpdateTrialResponse
 
       def initialize: (client: Orb::Client) -> void
     end

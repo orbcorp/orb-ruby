@@ -14,14 +14,12 @@ module Orb
 
       attr_accessor notes: String?
 
-      def initialize:
-        (
-          payment_received_date: Date,
-          external_id: String?,
-          notes: String?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (?Orb::Models::invoice_mark_paid_params | Orb::BaseModel data) -> void
+      def initialize: (
+        payment_received_date: Date,
+        ?external_id: String?,
+        ?notes: String?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::invoice_mark_paid_params
     end

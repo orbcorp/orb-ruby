@@ -20,14 +20,12 @@ module Orb
 
       def debug=: (bool) -> bool
 
-      def initialize:
-        (
-          events: ::Array[Orb::Models::EventIngestParams::Event],
-          backfill_id: String?,
-          debug: bool,
-          request_options: Orb::request_opts
-        ) -> void
-        | (?Orb::Models::event_ingest_params | Orb::BaseModel data) -> void
+      def initialize: (
+        events: ::Array[Orb::Models::EventIngestParams::Event],
+        ?backfill_id: String?,
+        ?debug: bool,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::event_ingest_params
 
@@ -54,18 +52,14 @@ module Orb
 
         attr_accessor external_customer_id: String?
 
-        def initialize:
-          (
-            event_name: String,
-            idempotency_key: String,
-            properties: top,
-            timestamp: Time,
-            customer_id: String?,
-            external_customer_id: String?
-          ) -> void
-          | (
-            ?Orb::Models::EventIngestParams::event | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          event_name: String,
+          idempotency_key: String,
+          properties: top,
+          timestamp: Time,
+          ?customer_id: String?,
+          ?external_customer_id: String?
+        ) -> void
 
         def to_hash: -> Orb::Models::EventIngestParams::event
       end

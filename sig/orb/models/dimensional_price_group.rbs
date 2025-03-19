@@ -23,16 +23,14 @@ module Orb
 
       attr_accessor name: String
 
-      def initialize:
-        (
-          id: String,
-          billable_metric_id: String,
-          dimensions: ::Array[String],
-          external_dimensional_price_group_id: String?,
-          metadata: ::Hash[Symbol, String],
-          name: String
-        ) -> void
-        | (?Orb::Models::dimensional_price_group | Orb::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        billable_metric_id: String,
+        dimensions: ::Array[String],
+        external_dimensional_price_group_id: String?,
+        metadata: ::Hash[Symbol, String],
+        name: String
+      ) -> void
 
       def to_hash: -> Orb::Models::dimensional_price_group
     end

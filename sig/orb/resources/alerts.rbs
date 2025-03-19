@@ -1,106 +1,65 @@
 module Orb
   module Resources
     class Alerts
-      def retrieve:
-        (
-          String alert_id,
-          ?Orb::Models::AlertRetrieveParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Alert
-        | (
-          String alert_id,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::Alert
+      def retrieve: (
+        String alert_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::Alert
 
-      def update:
-        (
-          String alert_configuration_id,
-          Orb::Models::AlertUpdateParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Alert
-        | (
-          String alert_configuration_id,
-          thresholds: ::Array[Orb::Models::AlertUpdateParams::Threshold],
-          request_options: Orb::request_opts
-        ) -> Orb::Models::Alert
+      def update: (
+        String alert_configuration_id,
+        thresholds: ::Array[Orb::Models::AlertUpdateParams::Threshold],
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::Alert
 
-      def list:
-        (
-          ?Orb::Models::AlertListParams | ::Hash[Symbol, top] params
-        ) -> Orb::Page[Orb::Models::Alert]
-        | (
-          created_at_gt: Time?,
-          created_at_gte: Time?,
-          created_at_lt: Time?,
-          created_at_lte: Time?,
-          cursor: String?,
-          customer_id: String?,
-          external_customer_id: String?,
-          limit: Integer,
-          subscription_id: String?,
-          request_options: Orb::request_opts
-        ) -> Orb::Page[Orb::Models::Alert]
+      def list: (
+        ?created_at_gt: Time?,
+        ?created_at_gte: Time?,
+        ?created_at_lt: Time?,
+        ?created_at_lte: Time?,
+        ?cursor: String?,
+        ?customer_id: String?,
+        ?external_customer_id: String?,
+        ?limit: Integer,
+        ?subscription_id: String?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Page[Orb::Models::Alert]
 
-      def create_for_customer:
-        (
-          String customer_id,
-          Orb::Models::AlertCreateForCustomerParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Alert
-        | (
-          String customer_id,
-          currency: String,
-          type: Orb::Models::AlertCreateForCustomerParams::type_,
-          thresholds: ::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]?,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::Alert
+      def create_for_customer: (
+        String customer_id,
+        currency: String,
+        type: Orb::Models::AlertCreateForCustomerParams::type_,
+        ?thresholds: ::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::Alert
 
-      def create_for_external_customer:
-        (
-          String external_customer_id,
-          Orb::Models::AlertCreateForExternalCustomerParams
-          | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Alert
-        | (
-          String external_customer_id,
-          currency: String,
-          type: Orb::Models::AlertCreateForExternalCustomerParams::type_,
-          thresholds: ::Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold]?,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::Alert
+      def create_for_external_customer: (
+        String external_customer_id,
+        currency: String,
+        type: Orb::Models::AlertCreateForExternalCustomerParams::type_,
+        ?thresholds: ::Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold]?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::Alert
 
-      def create_for_subscription:
-        (
-          String subscription_id,
-          Orb::Models::AlertCreateForSubscriptionParams
-          | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Alert
-        | (
-          String subscription_id,
-          thresholds: ::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold],
-          type: Orb::Models::AlertCreateForSubscriptionParams::type_,
-          metric_id: String?,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::Alert
+      def create_for_subscription: (
+        String subscription_id,
+        thresholds: ::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold],
+        type: Orb::Models::AlertCreateForSubscriptionParams::type_,
+        ?metric_id: String?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::Alert
 
-      def disable:
-        (
-          String alert_configuration_id,
-          ?Orb::Models::AlertDisableParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Alert
-        | (
-          String alert_configuration_id,
-          subscription_id: String?,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::Alert
+      def disable: (
+        String alert_configuration_id,
+        ?subscription_id: String?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::Alert
 
-      def enable:
-        (
-          String alert_configuration_id,
-          ?Orb::Models::AlertEnableParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Alert
-        | (
-          String alert_configuration_id,
-          subscription_id: String?,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::Alert
+      def enable: (
+        String alert_configuration_id,
+        ?subscription_id: String?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::Alert
 
       def initialize: (client: Orb::Client) -> void
     end

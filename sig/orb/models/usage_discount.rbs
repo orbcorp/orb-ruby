@@ -17,14 +17,12 @@ module Orb
 
       attr_accessor reason: String?
 
-      def initialize:
-        (
-          applies_to_price_ids: ::Array[String],
-          discount_type: Orb::Models::UsageDiscount::discount_type,
-          usage_discount: Float,
-          reason: String?
-        ) -> void
-        | (?Orb::Models::usage_discount | Orb::BaseModel data) -> void
+      def initialize: (
+        applies_to_price_ids: ::Array[String],
+        discount_type: Orb::Models::UsageDiscount::discount_type,
+        usage_discount: Float,
+        ?reason: String?
+      ) -> void
 
       def to_hash: -> Orb::Models::usage_discount
 

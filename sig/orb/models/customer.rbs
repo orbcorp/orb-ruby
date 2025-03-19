@@ -71,32 +71,30 @@ module Orb
 
       attr_accessor reporting_configuration: Orb::Models::Customer::ReportingConfiguration?
 
-      def initialize:
-        (
-          id: String,
-          additional_emails: ::Array[String],
-          auto_collection: bool,
-          balance: String,
-          billing_address: Orb::Models::Customer::BillingAddress?,
-          created_at: Time,
-          currency: String?,
-          email: String,
-          email_delivery: bool,
-          exempt_from_automated_tax: bool?,
-          external_customer_id: String?,
-          hierarchy: Orb::Models::Customer::Hierarchy,
-          metadata: ::Hash[Symbol, String],
-          name: String,
-          payment_provider: Orb::Models::Customer::payment_provider?,
-          payment_provider_id: String?,
-          portal_url: String?,
-          shipping_address: Orb::Models::Customer::ShippingAddress?,
-          tax_id: Orb::Models::Customer::TaxID?,
-          timezone: String,
-          accounting_sync_configuration: Orb::Models::Customer::AccountingSyncConfiguration?,
-          reporting_configuration: Orb::Models::Customer::ReportingConfiguration?
-        ) -> void
-        | (?Orb::Models::customer | Orb::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        additional_emails: ::Array[String],
+        auto_collection: bool,
+        balance: String,
+        billing_address: Orb::Models::Customer::BillingAddress?,
+        created_at: Time,
+        currency: String?,
+        email: String,
+        email_delivery: bool,
+        exempt_from_automated_tax: bool?,
+        external_customer_id: String?,
+        hierarchy: Orb::Models::Customer::Hierarchy,
+        metadata: ::Hash[Symbol, String],
+        name: String,
+        payment_provider: Orb::Models::Customer::payment_provider?,
+        payment_provider_id: String?,
+        portal_url: String?,
+        shipping_address: Orb::Models::Customer::ShippingAddress?,
+        tax_id: Orb::Models::Customer::TaxID?,
+        timezone: String,
+        ?accounting_sync_configuration: Orb::Models::Customer::AccountingSyncConfiguration?,
+        ?reporting_configuration: Orb::Models::Customer::ReportingConfiguration?
+      ) -> void
 
       def to_hash: -> Orb::Models::customer
 
@@ -123,18 +121,14 @@ module Orb
 
         attr_accessor state: String?
 
-        def initialize:
-          (
-            city: String?,
-            country: String?,
-            line1: String?,
-            line2: String?,
-            postal_code: String?,
-            state: String?
-          ) -> void
-          | (
-            ?Orb::Models::Customer::billing_address | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          city: String?,
+          country: String?,
+          line1: String?,
+          line2: String?,
+          postal_code: String?,
+          state: String?
+        ) -> void
 
         def to_hash: -> Orb::Models::Customer::billing_address
       end
@@ -150,12 +144,10 @@ module Orb
 
         attr_accessor parent: Orb::Models::Customer::Hierarchy::Parent?
 
-        def initialize:
-          (
-            children: ::Array[Orb::Models::Customer::Hierarchy::Child],
-            parent: Orb::Models::Customer::Hierarchy::Parent?
-          ) -> void
-          | (?Orb::Models::Customer::hierarchy | Orb::BaseModel data) -> void
+        def initialize: (
+          children: ::Array[Orb::Models::Customer::Hierarchy::Child],
+          parent: Orb::Models::Customer::Hierarchy::Parent?
+        ) -> void
 
         def to_hash: -> Orb::Models::Customer::hierarchy
 
@@ -166,11 +158,7 @@ module Orb
 
           attr_accessor external_customer_id: String?
 
-          def initialize:
-            (id: String, external_customer_id: String?) -> void
-            | (
-              ?Orb::Models::Customer::Hierarchy::child | Orb::BaseModel data
-            ) -> void
+          def initialize: (id: String, external_customer_id: String?) -> void
 
           def to_hash: -> Orb::Models::Customer::Hierarchy::child
         end
@@ -182,11 +170,7 @@ module Orb
 
           attr_accessor external_customer_id: String?
 
-          def initialize:
-            (id: String, external_customer_id: String?) -> void
-            | (
-              ?Orb::Models::Customer::Hierarchy::parent | Orb::BaseModel data
-            ) -> void
+          def initialize: (id: String, external_customer_id: String?) -> void
 
           def to_hash: -> Orb::Models::Customer::Hierarchy::parent
         end
@@ -228,18 +212,14 @@ module Orb
 
         attr_accessor state: String?
 
-        def initialize:
-          (
-            city: String?,
-            country: String?,
-            line1: String?,
-            line2: String?,
-            postal_code: String?,
-            state: String?
-          ) -> void
-          | (
-            ?Orb::Models::Customer::shipping_address | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          city: String?,
+          country: String?,
+          line1: String?,
+          line2: String?,
+          postal_code: String?,
+          state: String?
+        ) -> void
 
         def to_hash: -> Orb::Models::Customer::shipping_address
       end
@@ -258,13 +238,11 @@ module Orb
 
         attr_accessor value: String
 
-        def initialize:
-          (
-            country: Orb::Models::Customer::TaxID::country,
-            type: Orb::Models::Customer::TaxID::type_,
-            value: String
-          ) -> void
-          | (?Orb::Models::Customer::tax_id | Orb::BaseModel data) -> void
+        def initialize: (
+          country: Orb::Models::Customer::TaxID::country,
+          type: Orb::Models::Customer::TaxID::type_,
+          value: String
+        ) -> void
 
         def to_hash: -> Orb::Models::Customer::tax_id
 
@@ -592,15 +570,10 @@ module Orb
 
         attr_accessor excluded: bool
 
-        def initialize:
-          (
-            accounting_providers: ::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider],
-            excluded: bool
-          ) -> void
-          | (
-            ?Orb::Models::Customer::accounting_sync_configuration
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          accounting_providers: ::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider],
+          excluded: bool
+        ) -> void
 
         def to_hash: -> Orb::Models::Customer::accounting_sync_configuration
 
@@ -615,15 +588,10 @@ module Orb
 
           attr_accessor provider_type: Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type
 
-          def initialize:
-            (
-              external_provider_id: String?,
-              provider_type: Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type
-            ) -> void
-            | (
-              ?Orb::Models::Customer::AccountingSyncConfiguration::accounting_provider
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            external_provider_id: String?,
+            provider_type: Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type
+          ) -> void
 
           def to_hash: -> Orb::Models::Customer::AccountingSyncConfiguration::accounting_provider
 
@@ -643,12 +611,7 @@ module Orb
       class ReportingConfiguration < Orb::BaseModel
         attr_accessor exempt: bool
 
-        def initialize:
-          (exempt: bool) -> void
-          | (
-            ?Orb::Models::Customer::reporting_configuration
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (exempt: bool) -> void
 
         def to_hash: -> Orb::Models::Customer::reporting_configuration
       end

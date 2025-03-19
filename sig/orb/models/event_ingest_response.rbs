@@ -11,12 +11,10 @@ module Orb
 
       attr_accessor debug: Orb::Models::EventIngestResponse::Debug?
 
-      def initialize:
-        (
-          validation_failed: ::Array[Orb::Models::EventIngestResponse::ValidationFailed],
-          debug: Orb::Models::EventIngestResponse::Debug?
-        ) -> void
-        | (?Orb::Models::event_ingest_response | Orb::BaseModel data) -> void
+      def initialize: (
+        validation_failed: ::Array[Orb::Models::EventIngestResponse::ValidationFailed],
+        ?debug: Orb::Models::EventIngestResponse::Debug?
+      ) -> void
 
       def to_hash: -> Orb::Models::event_ingest_response
 
@@ -28,12 +26,10 @@ module Orb
 
         attr_accessor validation_errors: ::Array[String]
 
-        def initialize:
-          (idempotency_key: String, validation_errors: ::Array[String]) -> void
-          | (
-            ?Orb::Models::EventIngestResponse::validation_failed
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          idempotency_key: String,
+          validation_errors: ::Array[String]
+        ) -> void
 
         def to_hash: -> Orb::Models::EventIngestResponse::validation_failed
       end
@@ -45,11 +41,10 @@ module Orb
 
         attr_accessor ingested: ::Array[String]
 
-        def initialize:
-          (duplicate: ::Array[String], ingested: ::Array[String]) -> void
-          | (
-            ?Orb::Models::EventIngestResponse::debug | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          duplicate: ::Array[String],
+          ingested: ::Array[String]
+        ) -> void
 
         def to_hash: -> Orb::Models::EventIngestResponse::debug
       end

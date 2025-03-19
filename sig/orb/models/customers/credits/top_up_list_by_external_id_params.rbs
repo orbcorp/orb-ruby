@@ -15,16 +15,11 @@ module Orb
 
           def limit=: (Integer) -> Integer
 
-          def initialize:
-            (
-              cursor: String?,
-              limit: Integer,
-              request_options: Orb::request_opts
-            ) -> void
-            | (
-              ?Orb::Models::Customers::Credits::top_up_list_by_external_id_params
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            ?cursor: String?,
+            ?limit: Integer,
+            ?request_options: Orb::request_opts
+          ) -> void
 
           def to_hash: -> Orb::Models::Customers::Credits::top_up_list_by_external_id_params
         end
