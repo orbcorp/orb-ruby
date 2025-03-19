@@ -20,15 +20,13 @@ module Orb
 
       attr_accessor trial_percentage_discount: Float?
 
-      def initialize:
-        (
-          applies_to_price_ids: ::Array[String],
-          discount_type: Orb::Models::TrialDiscount::discount_type,
-          reason: String?,
-          trial_amount_discount: String?,
-          trial_percentage_discount: Float?
-        ) -> void
-        | (?Orb::Models::trial_discount | Orb::BaseModel data) -> void
+      def initialize: (
+        applies_to_price_ids: ::Array[String],
+        discount_type: Orb::Models::TrialDiscount::discount_type,
+        ?reason: String?,
+        ?trial_amount_discount: String?,
+        ?trial_percentage_discount: Float?
+      ) -> void
 
       def to_hash: -> Orb::Models::trial_discount
 

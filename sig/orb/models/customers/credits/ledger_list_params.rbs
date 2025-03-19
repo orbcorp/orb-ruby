@@ -43,24 +43,19 @@ module Orb
 
           attr_accessor minimum_amount: String?
 
-          def initialize:
-            (
-              created_at_gt: Time?,
-              created_at_gte: Time?,
-              created_at_lt: Time?,
-              created_at_lte: Time?,
-              currency: String?,
-              cursor: String?,
-              entry_status: Orb::Models::Customers::Credits::LedgerListParams::entry_status?,
-              entry_type: Orb::Models::Customers::Credits::LedgerListParams::entry_type?,
-              limit: Integer,
-              minimum_amount: String?,
-              request_options: Orb::request_opts
-            ) -> void
-            | (
-              ?Orb::Models::Customers::Credits::ledger_list_params
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            ?created_at_gt: Time?,
+            ?created_at_gte: Time?,
+            ?created_at_lt: Time?,
+            ?created_at_lte: Time?,
+            ?currency: String?,
+            ?cursor: String?,
+            ?entry_status: Orb::Models::Customers::Credits::LedgerListParams::entry_status?,
+            ?entry_type: Orb::Models::Customers::Credits::LedgerListParams::entry_type?,
+            ?limit: Integer,
+            ?minimum_amount: String?,
+            ?request_options: Orb::request_opts
+          ) -> void
 
           def to_hash: -> Orb::Models::Customers::Credits::ledger_list_params
 

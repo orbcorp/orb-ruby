@@ -7,12 +7,7 @@ module Orb
         extend Orb::RequestParameters::Converter
         include Orb::RequestParameters
 
-        def initialize:
-          (request_options: Orb::request_opts) -> void
-          | (
-            ?Orb::Models::Plans::external_plan_id_fetch_params
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (?request_options: Orb::request_opts) -> void
 
         def to_hash: -> Orb::Models::Plans::external_plan_id_fetch_params
       end

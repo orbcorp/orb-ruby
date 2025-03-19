@@ -27,20 +27,15 @@ module Orb
 
         attr_accessor status: Orb::Models::Customers::CreditListByExternalIDResponse::status
 
-        def initialize:
-          (
-            id: String,
-            balance: Float,
-            effective_date: Time?,
-            expiry_date: Time?,
-            maximum_initial_balance: Float?,
-            per_unit_cost_basis: String?,
-            status: Orb::Models::Customers::CreditListByExternalIDResponse::status
-          ) -> void
-          | (
-            ?Orb::Models::Customers::credit_list_by_external_id_response
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          id: String,
+          balance: Float,
+          effective_date: Time?,
+          expiry_date: Time?,
+          maximum_initial_balance: Float?,
+          per_unit_cost_basis: String?,
+          status: Orb::Models::Customers::CreditListByExternalIDResponse::status
+        ) -> void
 
         def to_hash: -> Orb::Models::Customers::credit_list_by_external_id_response
 

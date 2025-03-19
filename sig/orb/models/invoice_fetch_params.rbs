@@ -6,9 +6,7 @@ module Orb
       extend Orb::RequestParameters::Converter
       include Orb::RequestParameters
 
-      def initialize:
-        (request_options: Orb::request_opts) -> void
-        | (?Orb::Models::invoice_fetch_params | Orb::BaseModel data) -> void
+      def initialize: (?request_options: Orb::request_opts) -> void
 
       def to_hash: -> Orb::Models::invoice_fetch_params
     end

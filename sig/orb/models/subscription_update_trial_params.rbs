@@ -17,15 +17,11 @@ module Orb
 
       def shift=: (bool) -> bool
 
-      def initialize:
-        (
-          trial_end_date: Orb::Models::SubscriptionUpdateTrialParams::trial_end_date,
-          shift: bool,
-          request_options: Orb::request_opts
-        ) -> void
-        | (
-          ?Orb::Models::subscription_update_trial_params | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        trial_end_date: Orb::Models::SubscriptionUpdateTrialParams::trial_end_date,
+        ?shift: bool,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::subscription_update_trial_params
 

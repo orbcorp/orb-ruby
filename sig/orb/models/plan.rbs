@@ -77,34 +77,32 @@ module Orb
 
       attr_accessor version: Integer
 
-      def initialize:
-        (
-          id: String,
-          adjustments: ::Array[Orb::Models::Plan::adjustment],
-          base_plan: Orb::Models::Plan::BasePlan?,
-          base_plan_id: String?,
-          created_at: Time,
-          currency: String,
-          default_invoice_memo: String?,
-          description: String,
-          discount: Orb::Models::discount?,
-          external_plan_id: String?,
-          invoicing_currency: String,
-          maximum: Orb::Models::Plan::Maximum?,
-          maximum_amount: String?,
-          metadata: ::Hash[Symbol, String],
-          minimum: Orb::Models::Plan::Minimum?,
-          minimum_amount: String?,
-          name: String,
-          net_terms: Integer?,
-          plan_phases: ::Array[Orb::Models::Plan::PlanPhase]?,
-          prices: ::Array[Orb::Models::price],
-          product: Orb::Models::Plan::Product,
-          status: Orb::Models::Plan::status,
-          trial_config: Orb::Models::Plan::TrialConfig,
-          version: Integer
-        ) -> void
-        | (?Orb::Models::plan | Orb::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        adjustments: ::Array[Orb::Models::Plan::adjustment],
+        base_plan: Orb::Models::Plan::BasePlan?,
+        base_plan_id: String?,
+        created_at: Time,
+        currency: String,
+        default_invoice_memo: String?,
+        description: String,
+        discount: Orb::Models::discount?,
+        external_plan_id: String?,
+        invoicing_currency: String,
+        maximum: Orb::Models::Plan::Maximum?,
+        maximum_amount: String?,
+        metadata: ::Hash[Symbol, String],
+        minimum: Orb::Models::Plan::Minimum?,
+        minimum_amount: String?,
+        name: String,
+        net_terms: Integer?,
+        plan_phases: ::Array[Orb::Models::Plan::PlanPhase]?,
+        prices: ::Array[Orb::Models::price],
+        product: Orb::Models::Plan::Product,
+        status: Orb::Models::Plan::status,
+        trial_config: Orb::Models::Plan::TrialConfig,
+        version: Integer
+      ) -> void
 
       def to_hash: -> Orb::Models::plan
 
@@ -142,20 +140,15 @@ module Orb
 
           attr_accessor usage_discount: Float
 
-          def initialize:
-            (
-              id: String,
-              applies_to_price_ids: ::Array[String],
-              is_invoice_level: bool,
-              plan_phase_order: Integer?,
-              reason: String?,
-              usage_discount: Float,
-              adjustment_type: :usage_discount
-            ) -> void
-            | (
-              ?Orb::Models::Plan::Adjustment::plan_phase_usage_discount_adjustment
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            applies_to_price_ids: ::Array[String],
+            is_invoice_level: bool,
+            plan_phase_order: Integer?,
+            reason: String?,
+            usage_discount: Float,
+            ?adjustment_type: :usage_discount
+          ) -> void
 
           def to_hash: -> Orb::Models::Plan::Adjustment::plan_phase_usage_discount_adjustment
         end
@@ -186,20 +179,15 @@ module Orb
 
           attr_accessor reason: String?
 
-          def initialize:
-            (
-              id: String,
-              amount_discount: String,
-              applies_to_price_ids: ::Array[String],
-              is_invoice_level: bool,
-              plan_phase_order: Integer?,
-              reason: String?,
-              adjustment_type: :amount_discount
-            ) -> void
-            | (
-              ?Orb::Models::Plan::Adjustment::plan_phase_amount_discount_adjustment
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            amount_discount: String,
+            applies_to_price_ids: ::Array[String],
+            is_invoice_level: bool,
+            plan_phase_order: Integer?,
+            reason: String?,
+            ?adjustment_type: :amount_discount
+          ) -> void
 
           def to_hash: -> Orb::Models::Plan::Adjustment::plan_phase_amount_discount_adjustment
         end
@@ -230,20 +218,15 @@ module Orb
 
           attr_accessor reason: String?
 
-          def initialize:
-            (
-              id: String,
-              applies_to_price_ids: ::Array[String],
-              is_invoice_level: bool,
-              percentage_discount: Float,
-              plan_phase_order: Integer?,
-              reason: String?,
-              adjustment_type: :percentage_discount
-            ) -> void
-            | (
-              ?Orb::Models::Plan::Adjustment::plan_phase_percentage_discount_adjustment
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            applies_to_price_ids: ::Array[String],
+            is_invoice_level: bool,
+            percentage_discount: Float,
+            plan_phase_order: Integer?,
+            reason: String?,
+            ?adjustment_type: :percentage_discount
+          ) -> void
 
           def to_hash: -> Orb::Models::Plan::Adjustment::plan_phase_percentage_discount_adjustment
         end
@@ -277,21 +260,16 @@ module Orb
 
           attr_accessor reason: String?
 
-          def initialize:
-            (
-              id: String,
-              applies_to_price_ids: ::Array[String],
-              is_invoice_level: bool,
-              item_id: String,
-              minimum_amount: String,
-              plan_phase_order: Integer?,
-              reason: String?,
-              adjustment_type: :minimum
-            ) -> void
-            | (
-              ?Orb::Models::Plan::Adjustment::plan_phase_minimum_adjustment
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            applies_to_price_ids: ::Array[String],
+            is_invoice_level: bool,
+            item_id: String,
+            minimum_amount: String,
+            plan_phase_order: Integer?,
+            reason: String?,
+            ?adjustment_type: :minimum
+          ) -> void
 
           def to_hash: -> Orb::Models::Plan::Adjustment::plan_phase_minimum_adjustment
         end
@@ -322,20 +300,15 @@ module Orb
 
           attr_accessor reason: String?
 
-          def initialize:
-            (
-              id: String,
-              applies_to_price_ids: ::Array[String],
-              is_invoice_level: bool,
-              maximum_amount: String,
-              plan_phase_order: Integer?,
-              reason: String?,
-              adjustment_type: :maximum
-            ) -> void
-            | (
-              ?Orb::Models::Plan::Adjustment::plan_phase_maximum_adjustment
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            applies_to_price_ids: ::Array[String],
+            is_invoice_level: bool,
+            maximum_amount: String,
+            plan_phase_order: Integer?,
+            reason: String?,
+            ?adjustment_type: :maximum
+          ) -> void
 
           def to_hash: -> Orb::Models::Plan::Adjustment::plan_phase_maximum_adjustment
         end
@@ -352,9 +325,11 @@ module Orb
 
         attr_accessor name: String?
 
-        def initialize:
-          (id: String?, external_plan_id: String?, name: String?) -> void
-          | (?Orb::Models::Plan::base_plan | Orb::BaseModel data) -> void
+        def initialize: (
+          id: String?,
+          external_plan_id: String?,
+          name: String?
+        ) -> void
 
         def to_hash: -> Orb::Models::Plan::base_plan
       end
@@ -367,12 +342,10 @@ module Orb
 
         attr_accessor maximum_amount: String
 
-        def initialize:
-          (
-            applies_to_price_ids: ::Array[String],
-            maximum_amount: String
-          ) -> void
-          | (?Orb::Models::Plan::maximum | Orb::BaseModel data) -> void
+        def initialize: (
+          applies_to_price_ids: ::Array[String],
+          maximum_amount: String
+        ) -> void
 
         def to_hash: -> Orb::Models::Plan::maximum
       end
@@ -385,12 +358,10 @@ module Orb
 
         attr_accessor minimum_amount: String
 
-        def initialize:
-          (
-            applies_to_price_ids: ::Array[String],
-            minimum_amount: String
-          ) -> void
-          | (?Orb::Models::Plan::minimum | Orb::BaseModel data) -> void
+        def initialize: (
+          applies_to_price_ids: ::Array[String],
+          minimum_amount: String
+        ) -> void
 
         def to_hash: -> Orb::Models::Plan::minimum
       end
@@ -433,21 +404,19 @@ module Orb
 
         attr_accessor order: Integer
 
-        def initialize:
-          (
-            id: String,
-            description: String?,
-            discount: Orb::Models::discount?,
-            duration: Integer?,
-            duration_unit: Orb::Models::Plan::PlanPhase::duration_unit?,
-            maximum: Orb::Models::Plan::PlanPhase::Maximum?,
-            maximum_amount: String?,
-            minimum: Orb::Models::Plan::PlanPhase::Minimum?,
-            minimum_amount: String?,
-            name: String,
-            order: Integer
-          ) -> void
-          | (?Orb::Models::Plan::plan_phase | Orb::BaseModel data) -> void
+        def initialize: (
+          id: String,
+          description: String?,
+          discount: Orb::Models::discount?,
+          duration: Integer?,
+          duration_unit: Orb::Models::Plan::PlanPhase::duration_unit?,
+          maximum: Orb::Models::Plan::PlanPhase::Maximum?,
+          maximum_amount: String?,
+          minimum: Orb::Models::Plan::PlanPhase::Minimum?,
+          minimum_amount: String?,
+          name: String,
+          order: Integer
+        ) -> void
 
         def to_hash: -> Orb::Models::Plan::plan_phase
 
@@ -472,14 +441,10 @@ module Orb
 
           attr_accessor maximum_amount: String
 
-          def initialize:
-            (
-              applies_to_price_ids: ::Array[String],
-              maximum_amount: String
-            ) -> void
-            | (
-              ?Orb::Models::Plan::PlanPhase::maximum | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            applies_to_price_ids: ::Array[String],
+            maximum_amount: String
+          ) -> void
 
           def to_hash: -> Orb::Models::Plan::PlanPhase::maximum
         end
@@ -492,14 +457,10 @@ module Orb
 
           attr_accessor minimum_amount: String
 
-          def initialize:
-            (
-              applies_to_price_ids: ::Array[String],
-              minimum_amount: String
-            ) -> void
-            | (
-              ?Orb::Models::Plan::PlanPhase::minimum | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            applies_to_price_ids: ::Array[String],
+            minimum_amount: String
+          ) -> void
 
           def to_hash: -> Orb::Models::Plan::PlanPhase::minimum
         end
@@ -514,9 +475,7 @@ module Orb
 
         attr_accessor name: String
 
-        def initialize:
-          (id: String, created_at: Time, name: String) -> void
-          | (?Orb::Models::Plan::product | Orb::BaseModel data) -> void
+        def initialize: (id: String, created_at: Time, name: String) -> void
 
         def to_hash: -> Orb::Models::Plan::product
       end
@@ -542,12 +501,10 @@ module Orb
 
         attr_accessor trial_period_unit: Orb::Models::Plan::TrialConfig::trial_period_unit
 
-        def initialize:
-          (
-            trial_period: Integer?,
-            trial_period_unit: Orb::Models::Plan::TrialConfig::trial_period_unit
-          ) -> void
-          | (?Orb::Models::Plan::trial_config | Orb::BaseModel data) -> void
+        def initialize: (
+          trial_period: Integer?,
+          trial_period_unit: Orb::Models::Plan::TrialConfig::trial_period_unit
+        ) -> void
 
         def to_hash: -> Orb::Models::Plan::trial_config
 

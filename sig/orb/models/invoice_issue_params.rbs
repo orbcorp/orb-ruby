@@ -10,9 +10,10 @@ module Orb
 
       def synchronous=: (bool) -> bool
 
-      def initialize:
-        (synchronous: bool, request_options: Orb::request_opts) -> void
-        | (?Orb::Models::invoice_issue_params | Orb::BaseModel data) -> void
+      def initialize: (
+        ?synchronous: bool,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::invoice_issue_params
     end

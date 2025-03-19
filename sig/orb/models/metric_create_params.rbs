@@ -24,16 +24,14 @@ module Orb
 
       attr_accessor metadata: ::Hash[Symbol, String?]?
 
-      def initialize:
-        (
-          description: String?,
-          item_id: String,
-          name: String,
-          sql: String,
-          metadata: ::Hash[Symbol, String?]?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (?Orb::Models::metric_create_params | Orb::BaseModel data) -> void
+      def initialize: (
+        description: String?,
+        item_id: String,
+        name: String,
+        sql: String,
+        ?metadata: ::Hash[Symbol, String?]?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::metric_create_params
     end

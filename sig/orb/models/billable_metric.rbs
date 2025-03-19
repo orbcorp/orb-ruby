@@ -23,16 +23,14 @@ module Orb
 
       attr_accessor status: Orb::Models::BillableMetric::status
 
-      def initialize:
-        (
-          id: String,
-          description: String?,
-          item: Orb::Models::Item,
-          metadata: ::Hash[Symbol, String],
-          name: String,
-          status: Orb::Models::BillableMetric::status
-        ) -> void
-        | (?Orb::Models::billable_metric | Orb::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        description: String?,
+        item: Orb::Models::Item,
+        metadata: ::Hash[Symbol, String],
+        name: String,
+        status: Orb::Models::BillableMetric::status
+      ) -> void
 
       def to_hash: -> Orb::Models::billable_metric
 

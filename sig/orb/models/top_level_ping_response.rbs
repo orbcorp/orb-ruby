@@ -5,9 +5,7 @@ module Orb
     class TopLevelPingResponse < Orb::BaseModel
       attr_accessor response: String
 
-      def initialize:
-        (response: String) -> void
-        | (?Orb::Models::top_level_ping_response | Orb::BaseModel data) -> void
+      def initialize: (response: String) -> void
 
       def to_hash: -> Orb::Models::top_level_ping_response
     end

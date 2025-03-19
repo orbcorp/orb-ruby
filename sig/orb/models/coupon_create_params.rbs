@@ -21,15 +21,13 @@ module Orb
 
       attr_accessor max_redemptions: Integer?
 
-      def initialize:
-        (
-          discount: Orb::Models::CouponCreateParams::discount,
-          redemption_code: String,
-          duration_in_months: Integer?,
-          max_redemptions: Integer?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (?Orb::Models::coupon_create_params | Orb::BaseModel data) -> void
+      def initialize: (
+        discount: Orb::Models::CouponCreateParams::discount,
+        redemption_code: String,
+        ?duration_in_months: Integer?,
+        ?max_redemptions: Integer?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::coupon_create_params
 
@@ -46,12 +44,10 @@ module Orb
 
           attr_accessor percentage_discount: Float
 
-          def initialize:
-            (percentage_discount: Float, discount_type: :percentage) -> void
-            | (
-              ?Orb::Models::CouponCreateParams::Discount::new_coupon_percentage_discount
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            percentage_discount: Float,
+            ?discount_type: :percentage
+          ) -> void
 
           def to_hash: -> Orb::Models::CouponCreateParams::Discount::new_coupon_percentage_discount
         end
@@ -64,12 +60,10 @@ module Orb
 
           attr_accessor discount_type: :amount
 
-          def initialize:
-            (amount_discount: String, discount_type: :amount) -> void
-            | (
-              ?Orb::Models::CouponCreateParams::Discount::new_coupon_amount_discount
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            amount_discount: String,
+            ?discount_type: :amount
+          ) -> void
 
           def to_hash: -> Orb::Models::CouponCreateParams::Discount::new_coupon_amount_discount
         end

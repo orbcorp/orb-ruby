@@ -9,11 +9,10 @@ module Orb
 
       attr_accessor subscription_id: String
 
-      def initialize:
-        (subscription_id: String, request_options: Orb::request_opts) -> void
-        | (
-          ?Orb::Models::invoice_fetch_upcoming_params | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        subscription_id: String,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::invoice_fetch_upcoming_params
     end

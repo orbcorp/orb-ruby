@@ -29,19 +29,15 @@ module Orb
 
       attr_accessor start_date_lte: Time?
 
-      def initialize:
-        (
-          cursor: String?,
-          limit: Integer,
-          start_date_gt: Time?,
-          start_date_gte: Time?,
-          start_date_lt: Time?,
-          start_date_lte: Time?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (
-          ?Orb::Models::subscription_fetch_schedule_params | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        ?cursor: String?,
+        ?limit: Integer,
+        ?start_date_gt: Time?,
+        ?start_date_gte: Time?,
+        ?start_date_lt: Time?,
+        ?start_date_lte: Time?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::subscription_fetch_schedule_params
     end
