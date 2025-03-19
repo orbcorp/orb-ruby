@@ -13,16 +13,11 @@ module Orb
 
         attr_accessor metadata: ::Hash[Symbol, String?]?
 
-        def initialize:
-          (
-            external_plan_id: String?,
-            metadata: ::Hash[Symbol, String?]?,
-            request_options: Orb::request_opts
-          ) -> void
-          | (
-            ?Orb::Models::Plans::external_plan_id_update_params
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          ?external_plan_id: String?,
+          ?metadata: ::Hash[Symbol, String?]?,
+          ?request_options: Orb::request_opts
+        ) -> void
 
         def to_hash: -> Orb::Models::Plans::external_plan_id_update_params
       end

@@ -27,19 +27,15 @@ module Orb
 
       attr_accessor start_date: Date
 
-      def initialize:
-        (
-          amount: String,
-          end_date: Date,
-          invoice_id: String,
-          name: String,
-          quantity: Float,
-          start_date: Date,
-          request_options: Orb::request_opts
-        ) -> void
-        | (
-          ?Orb::Models::invoice_line_item_create_params | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        amount: String,
+        end_date: Date,
+        invoice_id: String,
+        name: String,
+        quantity: Float,
+        start_date: Date,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::invoice_line_item_create_params
     end

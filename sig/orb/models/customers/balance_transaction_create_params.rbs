@@ -19,17 +19,12 @@ module Orb
 
         attr_accessor description: String?
 
-        def initialize:
-          (
-            amount: String,
-            type: Orb::Models::Customers::BalanceTransactionCreateParams::type_,
-            description: String?,
-            request_options: Orb::request_opts
-          ) -> void
-          | (
-            ?Orb::Models::Customers::balance_transaction_create_params
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          amount: String,
+          type: Orb::Models::Customers::BalanceTransactionCreateParams::type_,
+          ?description: String?,
+          ?request_options: Orb::request_opts
+        ) -> void
 
         def to_hash: -> Orb::Models::Customers::balance_transaction_create_params
 

@@ -80,38 +80,33 @@ module Orb
 
       attr_accessor trial_info: Orb::Models::SubscriptionTriggerPhaseResponse::TrialInfo
 
-      def initialize:
-        (
-          id: String,
-          active_plan_phase_order: Integer?,
-          adjustment_intervals: ::Array[Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval],
-          auto_collection: bool?,
-          billing_cycle_anchor_configuration: Orb::Models::SubscriptionTriggerPhaseResponse::BillingCycleAnchorConfiguration,
-          billing_cycle_day: Integer,
-          created_at: Time,
-          current_billing_period_end_date: Time?,
-          current_billing_period_start_date: Time?,
-          customer: Orb::Models::Customer,
-          default_invoice_memo: String?,
-          discount_intervals: ::Array[Orb::Models::SubscriptionTriggerPhaseResponse::discount_interval],
-          end_date: Time?,
-          fixed_fee_quantity_schedule: ::Array[Orb::Models::SubscriptionTriggerPhaseResponse::FixedFeeQuantitySchedule],
-          invoicing_threshold: String?,
-          maximum_intervals: ::Array[Orb::Models::SubscriptionTriggerPhaseResponse::MaximumInterval],
-          metadata: ::Hash[Symbol, String],
-          minimum_intervals: ::Array[Orb::Models::SubscriptionTriggerPhaseResponse::MinimumInterval],
-          net_terms: Integer,
-          plan: Orb::Models::Plan,
-          price_intervals: ::Array[Orb::Models::SubscriptionTriggerPhaseResponse::PriceInterval],
-          redeemed_coupon: Orb::Models::SubscriptionTriggerPhaseResponse::RedeemedCoupon?,
-          start_date: Time,
-          status: Orb::Models::SubscriptionTriggerPhaseResponse::status,
-          trial_info: Orb::Models::SubscriptionTriggerPhaseResponse::TrialInfo
-        ) -> void
-        | (
-          ?Orb::Models::subscription_trigger_phase_response
-          | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        active_plan_phase_order: Integer?,
+        adjustment_intervals: ::Array[Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval],
+        auto_collection: bool?,
+        billing_cycle_anchor_configuration: Orb::Models::SubscriptionTriggerPhaseResponse::BillingCycleAnchorConfiguration,
+        billing_cycle_day: Integer,
+        created_at: Time,
+        current_billing_period_end_date: Time?,
+        current_billing_period_start_date: Time?,
+        customer: Orb::Models::Customer,
+        default_invoice_memo: String?,
+        discount_intervals: ::Array[Orb::Models::SubscriptionTriggerPhaseResponse::discount_interval],
+        end_date: Time?,
+        fixed_fee_quantity_schedule: ::Array[Orb::Models::SubscriptionTriggerPhaseResponse::FixedFeeQuantitySchedule],
+        invoicing_threshold: String?,
+        maximum_intervals: ::Array[Orb::Models::SubscriptionTriggerPhaseResponse::MaximumInterval],
+        metadata: ::Hash[Symbol, String],
+        minimum_intervals: ::Array[Orb::Models::SubscriptionTriggerPhaseResponse::MinimumInterval],
+        net_terms: Integer,
+        plan: Orb::Models::Plan,
+        price_intervals: ::Array[Orb::Models::SubscriptionTriggerPhaseResponse::PriceInterval],
+        redeemed_coupon: Orb::Models::SubscriptionTriggerPhaseResponse::RedeemedCoupon?,
+        start_date: Time,
+        status: Orb::Models::SubscriptionTriggerPhaseResponse::status,
+        trial_info: Orb::Models::SubscriptionTriggerPhaseResponse::TrialInfo
+      ) -> void
 
       def to_hash: -> Orb::Models::subscription_trigger_phase_response
 
@@ -135,18 +130,13 @@ module Orb
 
         attr_accessor start_date: Time
 
-        def initialize:
-          (
-            id: String,
-            adjustment: Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::adjustment,
-            applies_to_price_interval_ids: ::Array[String],
-            end_date: Time?,
-            start_date: Time
-          ) -> void
-          | (
-            ?Orb::Models::SubscriptionTriggerPhaseResponse::adjustment_interval
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          id: String,
+          adjustment: Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::adjustment,
+          applies_to_price_interval_ids: ::Array[String],
+          end_date: Time?,
+          start_date: Time
+        ) -> void
 
         def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::adjustment_interval
 
@@ -184,20 +174,15 @@ module Orb
 
             attr_accessor usage_discount: Float
 
-            def initialize:
-              (
-                id: String,
-                applies_to_price_ids: ::Array[String],
-                is_invoice_level: bool,
-                plan_phase_order: Integer?,
-                reason: String?,
-                usage_discount: Float,
-                adjustment_type: :usage_discount
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::plan_phase_usage_discount_adjustment
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              id: String,
+              applies_to_price_ids: ::Array[String],
+              is_invoice_level: bool,
+              plan_phase_order: Integer?,
+              reason: String?,
+              usage_discount: Float,
+              ?adjustment_type: :usage_discount
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::plan_phase_usage_discount_adjustment
           end
@@ -228,20 +213,15 @@ module Orb
 
             attr_accessor reason: String?
 
-            def initialize:
-              (
-                id: String,
-                amount_discount: String,
-                applies_to_price_ids: ::Array[String],
-                is_invoice_level: bool,
-                plan_phase_order: Integer?,
-                reason: String?,
-                adjustment_type: :amount_discount
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::plan_phase_amount_discount_adjustment
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              id: String,
+              amount_discount: String,
+              applies_to_price_ids: ::Array[String],
+              is_invoice_level: bool,
+              plan_phase_order: Integer?,
+              reason: String?,
+              ?adjustment_type: :amount_discount
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::plan_phase_amount_discount_adjustment
           end
@@ -272,20 +252,15 @@ module Orb
 
             attr_accessor reason: String?
 
-            def initialize:
-              (
-                id: String,
-                applies_to_price_ids: ::Array[String],
-                is_invoice_level: bool,
-                percentage_discount: Float,
-                plan_phase_order: Integer?,
-                reason: String?,
-                adjustment_type: :percentage_discount
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::plan_phase_percentage_discount_adjustment
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              id: String,
+              applies_to_price_ids: ::Array[String],
+              is_invoice_level: bool,
+              percentage_discount: Float,
+              plan_phase_order: Integer?,
+              reason: String?,
+              ?adjustment_type: :percentage_discount
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::plan_phase_percentage_discount_adjustment
           end
@@ -319,21 +294,16 @@ module Orb
 
             attr_accessor reason: String?
 
-            def initialize:
-              (
-                id: String,
-                applies_to_price_ids: ::Array[String],
-                is_invoice_level: bool,
-                item_id: String,
-                minimum_amount: String,
-                plan_phase_order: Integer?,
-                reason: String?,
-                adjustment_type: :minimum
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::plan_phase_minimum_adjustment
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              id: String,
+              applies_to_price_ids: ::Array[String],
+              is_invoice_level: bool,
+              item_id: String,
+              minimum_amount: String,
+              plan_phase_order: Integer?,
+              reason: String?,
+              ?adjustment_type: :minimum
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::plan_phase_minimum_adjustment
           end
@@ -364,20 +334,15 @@ module Orb
 
             attr_accessor reason: String?
 
-            def initialize:
-              (
-                id: String,
-                applies_to_price_ids: ::Array[String],
-                is_invoice_level: bool,
-                maximum_amount: String,
-                plan_phase_order: Integer?,
-                reason: String?,
-                adjustment_type: :maximum
-              ) -> void
-              | (
-                ?Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::plan_phase_maximum_adjustment
-                | Orb::BaseModel data
-              ) -> void
+            def initialize: (
+              id: String,
+              applies_to_price_ids: ::Array[String],
+              is_invoice_level: bool,
+              maximum_amount: String,
+              plan_phase_order: Integer?,
+              reason: String?,
+              ?adjustment_type: :maximum
+            ) -> void
 
             def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::plan_phase_maximum_adjustment
           end
@@ -396,12 +361,11 @@ module Orb
 
         attr_accessor year: Integer?
 
-        def initialize:
-          (day: Integer, month: Integer?, year: Integer?) -> void
-          | (
-            ?Orb::Models::SubscriptionTriggerPhaseResponse::billing_cycle_anchor_configuration
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          day: Integer,
+          ?month: Integer?,
+          ?year: Integer?
+        ) -> void
 
         def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::billing_cycle_anchor_configuration
       end
@@ -435,19 +399,14 @@ module Orb
 
           attr_accessor start_date: Time
 
-          def initialize:
-            (
-              amount_discount: String,
-              applies_to_price_ids: ::Array[String],
-              applies_to_price_interval_ids: ::Array[String],
-              end_date: Time?,
-              start_date: Time,
-              discount_type: :amount
-            ) -> void
-            | (
-              ?Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::amount_discount_interval
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            amount_discount: String,
+            applies_to_price_ids: ::Array[String],
+            applies_to_price_interval_ids: ::Array[String],
+            end_date: Time?,
+            start_date: Time,
+            ?discount_type: :amount
+          ) -> void
 
           def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::amount_discount_interval
         end
@@ -475,19 +434,14 @@ module Orb
 
           attr_accessor start_date: Time
 
-          def initialize:
-            (
-              applies_to_price_ids: ::Array[String],
-              applies_to_price_interval_ids: ::Array[String],
-              end_date: Time?,
-              percentage_discount: Float,
-              start_date: Time,
-              discount_type: :percentage
-            ) -> void
-            | (
-              ?Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::percentage_discount_interval
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            applies_to_price_ids: ::Array[String],
+            applies_to_price_interval_ids: ::Array[String],
+            end_date: Time?,
+            percentage_discount: Float,
+            start_date: Time,
+            ?discount_type: :percentage
+          ) -> void
 
           def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::percentage_discount_interval
         end
@@ -515,19 +469,14 @@ module Orb
 
           attr_accessor usage_discount: Float
 
-          def initialize:
-            (
-              applies_to_price_ids: ::Array[String],
-              applies_to_price_interval_ids: ::Array[String],
-              end_date: Time?,
-              start_date: Time,
-              usage_discount: Float,
-              discount_type: :usage
-            ) -> void
-            | (
-              ?Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::usage_discount_interval
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            applies_to_price_ids: ::Array[String],
+            applies_to_price_interval_ids: ::Array[String],
+            end_date: Time?,
+            start_date: Time,
+            usage_discount: Float,
+            ?discount_type: :usage
+          ) -> void
 
           def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::usage_discount_interval
         end
@@ -547,17 +496,12 @@ module Orb
 
         attr_accessor start_date: Time
 
-        def initialize:
-          (
-            end_date: Time?,
-            price_id: String,
-            quantity: Float,
-            start_date: Time
-          ) -> void
-          | (
-            ?Orb::Models::SubscriptionTriggerPhaseResponse::fixed_fee_quantity_schedule
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          end_date: Time?,
+          price_id: String,
+          quantity: Float,
+          start_date: Time
+        ) -> void
 
         def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::fixed_fee_quantity_schedule
       end
@@ -582,18 +526,13 @@ module Orb
 
         attr_accessor start_date: Time
 
-        def initialize:
-          (
-            applies_to_price_ids: ::Array[String],
-            applies_to_price_interval_ids: ::Array[String],
-            end_date: Time?,
-            maximum_amount: String,
-            start_date: Time
-          ) -> void
-          | (
-            ?Orb::Models::SubscriptionTriggerPhaseResponse::maximum_interval
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          applies_to_price_ids: ::Array[String],
+          applies_to_price_interval_ids: ::Array[String],
+          end_date: Time?,
+          maximum_amount: String,
+          start_date: Time
+        ) -> void
 
         def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::maximum_interval
       end
@@ -618,18 +557,13 @@ module Orb
 
         attr_accessor start_date: Time
 
-        def initialize:
-          (
-            applies_to_price_ids: ::Array[String],
-            applies_to_price_interval_ids: ::Array[String],
-            end_date: Time?,
-            minimum_amount: String,
-            start_date: Time
-          ) -> void
-          | (
-            ?Orb::Models::SubscriptionTriggerPhaseResponse::minimum_interval
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          applies_to_price_ids: ::Array[String],
+          applies_to_price_interval_ids: ::Array[String],
+          end_date: Time?,
+          minimum_amount: String,
+          start_date: Time
+        ) -> void
 
         def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::minimum_interval
       end
@@ -669,23 +603,18 @@ module Orb
 
         attr_accessor usage_customer_ids: ::Array[String]?
 
-        def initialize:
-          (
-            id: String,
-            billing_cycle_day: Integer,
-            current_billing_period_end_date: Time?,
-            current_billing_period_start_date: Time?,
-            end_date: Time?,
-            filter: String?,
-            fixed_fee_quantity_transitions: ::Array[Orb::Models::SubscriptionTriggerPhaseResponse::PriceInterval::FixedFeeQuantityTransition]?,
-            price: Orb::Models::price,
-            start_date: Time,
-            usage_customer_ids: ::Array[String]?
-          ) -> void
-          | (
-            ?Orb::Models::SubscriptionTriggerPhaseResponse::price_interval
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          id: String,
+          billing_cycle_day: Integer,
+          current_billing_period_end_date: Time?,
+          current_billing_period_start_date: Time?,
+          end_date: Time?,
+          filter: String?,
+          fixed_fee_quantity_transitions: ::Array[Orb::Models::SubscriptionTriggerPhaseResponse::PriceInterval::FixedFeeQuantityTransition]?,
+          price: Orb::Models::price,
+          start_date: Time,
+          usage_customer_ids: ::Array[String]?
+        ) -> void
 
         def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::price_interval
 
@@ -699,12 +628,11 @@ module Orb
 
           attr_accessor quantity: Integer
 
-          def initialize:
-            (effective_date: Time, price_id: String, quantity: Integer) -> void
-            | (
-              ?Orb::Models::SubscriptionTriggerPhaseResponse::PriceInterval::fixed_fee_quantity_transition
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            effective_date: Time,
+            price_id: String,
+            quantity: Integer
+          ) -> void
 
           def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::PriceInterval::fixed_fee_quantity_transition
         end
@@ -720,12 +648,11 @@ module Orb
 
         attr_accessor start_date: Time
 
-        def initialize:
-          (coupon_id: String, end_date: Time?, start_date: Time) -> void
-          | (
-            ?Orb::Models::SubscriptionTriggerPhaseResponse::redeemed_coupon
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          coupon_id: String,
+          end_date: Time?,
+          start_date: Time
+        ) -> void
 
         def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::redeemed_coupon
       end
@@ -745,12 +672,7 @@ module Orb
       class TrialInfo < Orb::BaseModel
         attr_accessor end_date: Time?
 
-        def initialize:
-          (end_date: Time?) -> void
-          | (
-            ?Orb::Models::SubscriptionTriggerPhaseResponse::trial_info
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (end_date: Time?) -> void
 
         def to_hash: -> Orb::Models::SubscriptionTriggerPhaseResponse::trial_info
       end

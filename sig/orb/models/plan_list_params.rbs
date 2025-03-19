@@ -36,18 +36,16 @@ module Orb
         Orb::Models::PlanListParams::status
       ) -> Orb::Models::PlanListParams::status
 
-      def initialize:
-        (
-          created_at_gt: Time?,
-          created_at_gte: Time?,
-          created_at_lt: Time?,
-          created_at_lte: Time?,
-          cursor: String?,
-          limit: Integer,
-          status: Orb::Models::PlanListParams::status,
-          request_options: Orb::request_opts
-        ) -> void
-        | (?Orb::Models::plan_list_params | Orb::BaseModel data) -> void
+      def initialize: (
+        ?created_at_gt: Time?,
+        ?created_at_gte: Time?,
+        ?created_at_lt: Time?,
+        ?created_at_lte: Time?,
+        ?cursor: String?,
+        ?limit: Integer,
+        ?status: Orb::Models::PlanListParams::status,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::plan_list_params
 

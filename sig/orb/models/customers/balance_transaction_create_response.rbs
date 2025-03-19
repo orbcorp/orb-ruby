@@ -36,23 +36,18 @@ module Orb
 
         attr_accessor type: Orb::Models::Customers::BalanceTransactionCreateResponse::type_
 
-        def initialize:
-          (
-            id: String,
-            action: Orb::Models::Customers::BalanceTransactionCreateResponse::action,
-            amount: String,
-            created_at: Time,
-            credit_note: Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote?,
-            description: String?,
-            ending_balance: String,
-            invoice: Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice?,
-            starting_balance: String,
-            type: Orb::Models::Customers::BalanceTransactionCreateResponse::type_
-          ) -> void
-          | (
-            ?Orb::Models::Customers::balance_transaction_create_response
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          id: String,
+          action: Orb::Models::Customers::BalanceTransactionCreateResponse::action,
+          amount: String,
+          created_at: Time,
+          credit_note: Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote?,
+          description: String?,
+          ending_balance: String,
+          invoice: Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice?,
+          starting_balance: String,
+          type: Orb::Models::Customers::BalanceTransactionCreateResponse::type_
+        ) -> void
 
         def to_hash: -> Orb::Models::Customers::balance_transaction_create_response
 
@@ -86,12 +81,7 @@ module Orb
         class CreditNote < Orb::BaseModel
           attr_accessor id: String
 
-          def initialize:
-            (id: String) -> void
-            | (
-              ?Orb::Models::Customers::BalanceTransactionCreateResponse::credit_note
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (id: String) -> void
 
           def to_hash: -> Orb::Models::Customers::BalanceTransactionCreateResponse::credit_note
         end
@@ -101,12 +91,7 @@ module Orb
         class Invoice < Orb::BaseModel
           attr_accessor id: String
 
-          def initialize:
-            (id: String) -> void
-            | (
-              ?Orb::Models::Customers::BalanceTransactionCreateResponse::invoice
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (id: String) -> void
 
           def to_hash: -> Orb::Models::Customers::BalanceTransactionCreateResponse::invoice
         end

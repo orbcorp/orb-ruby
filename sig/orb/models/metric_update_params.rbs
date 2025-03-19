@@ -9,12 +9,10 @@ module Orb
 
       attr_accessor metadata: ::Hash[Symbol, String?]?
 
-      def initialize:
-        (
-          metadata: ::Hash[Symbol, String?]?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (?Orb::Models::metric_update_params | Orb::BaseModel data) -> void
+      def initialize: (
+        ?metadata: ::Hash[Symbol, String?]?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::metric_update_params
     end

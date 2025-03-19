@@ -21,17 +21,13 @@ module Orb
 
       attr_accessor view_mode: Orb::Models::SubscriptionFetchCostsParams::view_mode?
 
-      def initialize:
-        (
-          currency: String?,
-          timeframe_end: Time?,
-          timeframe_start: Time?,
-          view_mode: Orb::Models::SubscriptionFetchCostsParams::view_mode?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (
-          ?Orb::Models::subscription_fetch_costs_params | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        ?currency: String?,
+        ?timeframe_end: Time?,
+        ?timeframe_start: Time?,
+        ?view_mode: Orb::Models::SubscriptionFetchCostsParams::view_mode?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::subscription_fetch_costs_params
 

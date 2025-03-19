@@ -15,13 +15,11 @@ module Orb
 
       attr_accessor name: String?
 
-      def initialize:
-        (
-          external_connections: ::Array[Orb::Models::ItemUpdateParams::ExternalConnection]?,
-          name: String?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (?Orb::Models::item_update_params | Orb::BaseModel data) -> void
+      def initialize: (
+        ?external_connections: ::Array[Orb::Models::ItemUpdateParams::ExternalConnection]?,
+        ?name: String?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::item_update_params
 
@@ -36,15 +34,10 @@ module Orb
 
         attr_accessor external_entity_id: String
 
-        def initialize:
-          (
-            external_connection_name: Orb::Models::ItemUpdateParams::ExternalConnection::external_connection_name,
-            external_entity_id: String
-          ) -> void
-          | (
-            ?Orb::Models::ItemUpdateParams::external_connection
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          external_connection_name: Orb::Models::ItemUpdateParams::ExternalConnection::external_connection_name,
+          external_entity_id: String
+        ) -> void
 
         def to_hash: -> Orb::Models::ItemUpdateParams::external_connection
 

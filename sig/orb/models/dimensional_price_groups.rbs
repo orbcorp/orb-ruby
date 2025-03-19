@@ -11,14 +11,10 @@ module Orb
 
       attr_accessor pagination_metadata: Orb::Models::PaginationMetadata
 
-      def initialize:
-        (
-          data: ::Array[Orb::Models::DimensionalPriceGroup],
-          pagination_metadata: Orb::Models::PaginationMetadata
-        ) -> void
-        | (
-          ?Orb::Models::dimensional_price_groups_api | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        data: ::Array[Orb::Models::DimensionalPriceGroup],
+        pagination_metadata: Orb::Models::PaginationMetadata
+      ) -> void
 
       def to_hash: -> Orb::Models::dimensional_price_groups_api
     end

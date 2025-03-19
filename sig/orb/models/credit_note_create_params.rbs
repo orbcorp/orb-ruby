@@ -18,16 +18,12 @@ module Orb
 
       attr_accessor reason: Orb::Models::CreditNoteCreateParams::reason?
 
-      def initialize:
-        (
-          line_items: ::Array[Orb::Models::CreditNoteCreateParams::LineItem],
-          memo: String?,
-          reason: Orb::Models::CreditNoteCreateParams::reason?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (
-          ?Orb::Models::credit_note_create_params | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        line_items: ::Array[Orb::Models::CreditNoteCreateParams::LineItem],
+        ?memo: String?,
+        ?reason: Orb::Models::CreditNoteCreateParams::reason?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::credit_note_create_params
 
@@ -38,12 +34,7 @@ module Orb
 
         attr_accessor invoice_line_item_id: String
 
-        def initialize:
-          (amount: String, invoice_line_item_id: String) -> void
-          | (
-            ?Orb::Models::CreditNoteCreateParams::line_item
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (amount: String, invoice_line_item_id: String) -> void
 
         def to_hash: -> Orb::Models::CreditNoteCreateParams::line_item
       end

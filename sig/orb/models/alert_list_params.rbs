@@ -38,20 +38,18 @@ module Orb
 
       attr_accessor subscription_id: String?
 
-      def initialize:
-        (
-          created_at_gt: Time?,
-          created_at_gte: Time?,
-          created_at_lt: Time?,
-          created_at_lte: Time?,
-          cursor: String?,
-          customer_id: String?,
-          external_customer_id: String?,
-          limit: Integer,
-          subscription_id: String?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (?Orb::Models::alert_list_params | Orb::BaseModel data) -> void
+      def initialize: (
+        ?created_at_gt: Time?,
+        ?created_at_gte: Time?,
+        ?created_at_lt: Time?,
+        ?created_at_lte: Time?,
+        ?cursor: String?,
+        ?customer_id: String?,
+        ?external_customer_id: String?,
+        ?limit: Integer,
+        ?subscription_id: String?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::alert_list_params
     end
