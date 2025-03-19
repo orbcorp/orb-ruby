@@ -100,14 +100,15 @@ module Orb
       class Discount < Orb::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
-              Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
+                Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
+              )
+            }
+          end
 
         class NewCouponPercentageDiscount < Orb::BaseModel
           sig { returns(Symbol) }

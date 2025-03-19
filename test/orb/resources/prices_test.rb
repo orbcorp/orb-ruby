@@ -4,14 +4,15 @@ require_relative "../test_helper"
 
 class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
   def test_create_required_params
-    response = @orb.prices.create(
-      cadence: :annual,
-      currency: "currency",
-      item_id: "item_id",
-      model_type: :unit,
-      name: "Annual fee",
-      unit_config: {unit_amount: "unit_amount"}
-    )
+    response =
+      @orb.prices.create(
+        cadence: :annual,
+        currency: "currency",
+        item_id: "item_id",
+        model_type: :unit,
+        name: "Annual fee",
+        unit_config: {unit_amount: "unit_amount"}
+      )
 
     assert_pattern do
       response => Orb::Models::Price
@@ -2338,11 +2339,12 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
   end
 
   def test_evaluate_required_params
-    response = @orb.prices.evaluate(
-      "price_id",
-      timeframe_end: "2019-12-27T18:11:19.117Z",
-      timeframe_start: "2019-12-27T18:11:19.117Z"
-    )
+    response =
+      @orb.prices.evaluate(
+        "price_id",
+        timeframe_end: "2019-12-27T18:11:19.117Z",
+        timeframe_start: "2019-12-27T18:11:19.117Z"
+      )
 
     assert_pattern do
       response => Orb::Models::PriceEvaluateResponse

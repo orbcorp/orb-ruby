@@ -4,10 +4,11 @@ require_relative "../../test_helper"
 
 class Orb::Test::Resources::Events::BackfillsTest < Orb::Test::ResourceTest
   def test_create_required_params
-    response = @orb.events.backfills.create(
-      timeframe_end: "2019-12-27T18:11:19.117Z",
-      timeframe_start: "2019-12-27T18:11:19.117Z"
-    )
+    response =
+      @orb.events.backfills.create(
+        timeframe_end: "2019-12-27T18:11:19.117Z",
+        timeframe_start: "2019-12-27T18:11:19.117Z"
+      )
 
     assert_pattern do
       response => Orb::Models::Events::BackfillCreateResponse

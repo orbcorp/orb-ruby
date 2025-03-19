@@ -148,12 +148,13 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
   end
 
   def test_create_entry_required_params
-    response = @orb.customers.credits.ledger.create_entry(
-      "customer_id",
-      entry_type: :expiration_change,
-      expiry_date: "2019-12-27T18:11:19.117Z",
-      target_expiry_date: "2019-12-27"
-    )
+    response =
+      @orb.customers.credits.ledger.create_entry(
+        "customer_id",
+        entry_type: :expiration_change,
+        expiry_date: "2019-12-27T18:11:19.117Z",
+        target_expiry_date: "2019-12-27"
+      )
 
     assert_pattern do
       response => Orb::Models::Customers::Credits::LedgerCreateEntryResponse
@@ -292,12 +293,13 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
   end
 
   def test_create_entry_by_external_id_required_params
-    response = @orb.customers.credits.ledger.create_entry_by_external_id(
-      "external_customer_id",
-      entry_type: :expiration_change,
-      expiry_date: "2019-12-27T18:11:19.117Z",
-      target_expiry_date: "2019-12-27"
-    )
+    response =
+      @orb.customers.credits.ledger.create_entry_by_external_id(
+        "external_customer_id",
+        entry_type: :expiration_change,
+        expiry_date: "2019-12-27T18:11:19.117Z",
+        target_expiry_date: "2019-12-27"
+      )
 
     assert_pattern do
       response => Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse

@@ -618,17 +618,18 @@ module Orb
       class Adjustment < Orb::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment,
-              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment,
-              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment,
-              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment,
-              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment,
+                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment,
+                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment,
+                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment,
+                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment
+              )
+            }
+          end
 
         class MonetaryUsageDiscountAdjustment < Orb::BaseModel
           sig { returns(String) }
@@ -1235,15 +1236,16 @@ module Orb
       class SubLineItem < Orb::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem,
-              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem,
-              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem,
+                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem,
+                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem
+              )
+            }
+          end
 
         class MatrixSubLineItem < Orb::BaseModel
           # The total amount for this sub line item.

@@ -91,9 +91,10 @@ module Orb
           # @return [nil]
           def delete(top_up_id, params)
             parsed, options = Orb::Models::Customers::Credits::TopUpDeleteParams.dump_request(params)
-            customer_id = parsed.delete(:customer_id) do
-              raise ArgumentError.new("missing required path argument #{_1}")
-            end
+            customer_id =
+              parsed.delete(:customer_id) do
+                raise ArgumentError.new("missing required path argument #{_1}")
+              end
             @client.request(
               method: :delete,
               path: ["customers/%0s/credits/top_ups/%1s", customer_id, top_up_id],
@@ -162,9 +163,10 @@ module Orb
           # @return [nil]
           def delete_by_external_id(top_up_id, params)
             parsed, options = Orb::Models::Customers::Credits::TopUpDeleteByExternalIDParams.dump_request(params)
-            external_customer_id = parsed.delete(:external_customer_id) do
-              raise ArgumentError.new("missing required path argument #{_1}")
-            end
+            external_customer_id =
+              parsed.delete(:external_customer_id) do
+                raise ArgumentError.new("missing required path argument #{_1}")
+              end
             @client.request(
               method: :delete,
               path: [
