@@ -406,10 +406,8 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
   end
 
   def test_unschedule_fixed_fee_quantity_updates_required_params
-    response = @orb.subscriptions.unschedule_fixed_fee_quantity_updates(
-      "subscription_id",
-      price_id: "price_id"
-    )
+    response =
+      @orb.subscriptions.unschedule_fixed_fee_quantity_updates("subscription_id", price_id: "price_id")
 
     assert_pattern do
       response => Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse
@@ -485,11 +483,8 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
   end
 
   def test_update_fixed_fee_quantity_required_params
-    response = @orb.subscriptions.update_fixed_fee_quantity(
-      "subscription_id",
-      price_id: "price_id",
-      quantity: 0
-    )
+    response =
+      @orb.subscriptions.update_fixed_fee_quantity("subscription_id", price_id: "price_id", quantity: 0)
 
     assert_pattern do
       response => Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse

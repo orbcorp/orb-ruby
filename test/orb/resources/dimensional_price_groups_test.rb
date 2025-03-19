@@ -4,11 +4,12 @@ require_relative "../test_helper"
 
 class Orb::Test::Resources::DimensionalPriceGroupsTest < Orb::Test::ResourceTest
   def test_create_required_params
-    response = @orb.dimensional_price_groups.create(
-      billable_metric_id: "billable_metric_id",
-      dimensions: %w[region instance_type],
-      name: "name"
-    )
+    response =
+      @orb.dimensional_price_groups.create(
+        billable_metric_id: "billable_metric_id",
+        dimensions: %w[region instance_type],
+        name: "name"
+      )
 
     assert_pattern do
       response => Orb::Models::DimensionalPriceGroup

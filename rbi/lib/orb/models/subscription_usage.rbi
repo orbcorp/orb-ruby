@@ -5,14 +5,15 @@ module Orb
     class SubscriptionUsage < Orb::Union
       abstract!
 
-      Variants = type_template(:out) do
-        {
-          fixed: T.any(
-            Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage,
-            Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage
-          )
-        }
-      end
+      Variants =
+        type_template(:out) do
+          {
+            fixed: T.any(
+              Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage,
+              Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage
+            )
+          }
+        end
 
       class UngroupedSubscriptionUsage < Orb::BaseModel
         sig { returns(T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]) }

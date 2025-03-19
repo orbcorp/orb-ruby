@@ -88,7 +88,8 @@ module Orb
       # @param client [Orb::Client]
       def initialize(client:)
         @client = client
-        @external_dimensional_price_group_id = Orb::Resources::DimensionalPriceGroups::ExternalDimensionalPriceGroupID.new(client: client)
+        @external_dimensional_price_group_id =
+          Orb::Resources::DimensionalPriceGroups::ExternalDimensionalPriceGroupID.new(client: client)
       end
     end
   end

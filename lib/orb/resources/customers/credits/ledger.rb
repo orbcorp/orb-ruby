@@ -449,7 +449,8 @@ module Orb
           #
           # @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry]
           def create_entry_by_external_id(external_customer_id, params)
-            parsed, options = Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams.dump_request(params)
+            parsed, options =
+              Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams.dump_request(params)
             @client.request(
               method: :post,
               path: ["customers/external_customer_id/%0s/credits/ledger_entry", external_customer_id],

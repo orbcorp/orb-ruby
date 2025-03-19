@@ -9,19 +9,20 @@ module Orb
         class LedgerListByExternalIDResponse < Orb::Union
           abstract!
 
-          Variants = type_template(:out) do
-            {
-              fixed: T.any(
-                Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry,
-                Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry,
-                Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry,
-                Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry,
-                Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry,
-                Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry,
-                Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry
-              )
-            }
-          end
+          Variants =
+            type_template(:out) do
+              {
+                fixed: T.any(
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry
+                )
+              }
+            end
 
           class IncrementLedgerEntry < Orb::BaseModel
             sig { returns(String) }
