@@ -4,12 +4,13 @@ require_relative "../test_helper"
 
 class Orb::Test::Resources::MetricsTest < Orb::Test::ResourceTest
   def test_create_required_params
-    response = @orb.metrics.create(
-      description: "Sum of bytes downloaded in fast mode",
-      item_id: "item_id",
-      name: "Bytes downloaded",
-      sql: "SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'"
-    )
+    response =
+      @orb.metrics.create(
+        description: "Sum of bytes downloaded in fast mode",
+        item_id: "item_id",
+        name: "Bytes downloaded",
+        sql: "SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'"
+      )
 
     assert_pattern do
       response => Orb::Models::BillableMetric

@@ -17,7 +17,8 @@ module Orb
   #
   # @example
   # ```ruby
-  # top_levels = page
+  # top_levels =
+  #   page
   #   .to_enum
   #   .lazy
   #   .select { _1.object_id.even? }

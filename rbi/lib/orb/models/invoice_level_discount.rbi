@@ -5,7 +5,8 @@ module Orb
     class InvoiceLevelDiscount < Orb::Union
       abstract!
 
-      Variants = type_template(:out) { {fixed: T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount)} }
+      Variants =
+        type_template(:out) { {fixed: T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount)} }
     end
   end
 end

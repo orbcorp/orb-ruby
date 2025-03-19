@@ -4,9 +4,10 @@ require_relative "../../test_helper"
 
 class Orb::Test::Resources::DimensionalPriceGroups::ExternalDimensionalPriceGroupIDTest < Orb::Test::ResourceTest
   def test_retrieve
-    response = @orb.dimensional_price_groups.external_dimensional_price_group_id.retrieve(
-      "external_dimensional_price_group_id"
-    )
+    response =
+      @orb.dimensional_price_groups.external_dimensional_price_group_id.retrieve(
+        "external_dimensional_price_group_id"
+      )
 
     assert_pattern do
       response => Orb::Models::DimensionalPriceGroup

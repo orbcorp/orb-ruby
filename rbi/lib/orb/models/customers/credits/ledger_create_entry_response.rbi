@@ -9,19 +9,20 @@ module Orb
         class LedgerCreateEntryResponse < Orb::Union
           abstract!
 
-          Variants = type_template(:out) do
-            {
-              fixed: T.any(
-                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry,
-                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry,
-                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry,
-                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry,
-                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry,
-                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry,
-                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry
-              )
-            }
-          end
+          Variants =
+            type_template(:out) do
+              {
+                fixed: T.any(
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry,
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry
+                )
+              }
+            end
 
           class IncrementLedgerEntry < Orb::BaseModel
             sig { returns(String) }

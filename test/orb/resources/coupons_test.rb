@@ -4,10 +4,11 @@ require_relative "../test_helper"
 
 class Orb::Test::Resources::CouponsTest < Orb::Test::ResourceTest
   def test_create_required_params
-    response = @orb.coupons.create(
-      discount: {discount_type: :percentage, percentage_discount: 0},
-      redemption_code: "HALFOFF"
-    )
+    response =
+      @orb.coupons.create(
+        discount: {discount_type: :percentage, percentage_discount: 0},
+        redemption_code: "HALFOFF"
+      )
 
     assert_pattern do
       response => Orb::Models::Coupon

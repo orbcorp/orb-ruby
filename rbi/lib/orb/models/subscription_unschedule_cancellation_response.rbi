@@ -533,17 +533,18 @@ module Orb
         class Adjustment < Orb::Union
           abstract!
 
-          Variants = type_template(:out) do
-            {
-              fixed: T.any(
-                Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment,
-                Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment,
-                Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment,
-                Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment,
-                Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
-              )
-            }
-          end
+          Variants =
+            type_template(:out) do
+              {
+                fixed: T.any(
+                  Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment,
+                  Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment,
+                  Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment,
+                  Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment,
+                  Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
+                )
+              }
+            end
 
           class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
             sig { returns(String) }
@@ -1132,15 +1133,16 @@ module Orb
       class DiscountInterval < Orb::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::AmountDiscountInterval,
-              Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::PercentageDiscountInterval,
-              Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::UsageDiscountInterval
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::AmountDiscountInterval,
+                Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::PercentageDiscountInterval,
+                Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::UsageDiscountInterval
+              )
+            }
+          end
 
         class AmountDiscountInterval < Orb::BaseModel
           # Only available if discount_type is `amount`.

@@ -4,22 +4,23 @@ require_relative "../test_helper"
 
 class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
   def test_create_required_params
-    response = @orb.invoices.create(
-      currency: "USD",
-      invoice_date: "2019-12-27T18:11:19.117Z",
-      line_items: [
-        {
-          end_date: "2023-09-22",
-          item_id: "4khy3nwzktxv7",
-          model_type: :unit,
-          name: "Line Item Name",
-          quantity: 1,
-          start_date: "2023-09-22",
-          unit_config: {unit_amount: "unit_amount"}
-        }
-      ],
-      net_terms: 0
-    )
+    response =
+      @orb.invoices.create(
+        currency: "USD",
+        invoice_date: "2019-12-27T18:11:19.117Z",
+        line_items: [
+          {
+            end_date: "2023-09-22",
+            item_id: "4khy3nwzktxv7",
+            model_type: :unit,
+            name: "Line Item Name",
+            quantity: 1,
+            start_date: "2023-09-22",
+            unit_config: {unit_amount: "unit_amount"}
+          }
+        ],
+        net_terms: 0
+      )
 
     assert_pattern do
       response => Orb::Models::Invoice
