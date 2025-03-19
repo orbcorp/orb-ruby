@@ -26,17 +26,13 @@ module Orb
 
         def timeframe_end=: (Time) -> Time
 
-        def initialize:
-          (
-            timeframe_start: Time,
-            cursor: String?,
-            limit: Integer,
-            timeframe_end: Time,
-            request_options: Orb::request_opts
-          ) -> void
-          | (
-            ?Orb::Models::Events::volume_list_params | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          timeframe_start: Time,
+          ?cursor: String?,
+          ?limit: Integer,
+          ?timeframe_end: Time,
+          ?request_options: Orb::request_opts
+        ) -> void
 
         def to_hash: -> Orb::Models::Events::volume_list_params
       end

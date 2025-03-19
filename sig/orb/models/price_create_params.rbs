@@ -135,53 +135,51 @@ module Orb
 
       attr_accessor cumulative_grouped_bulk_config: ::Hash[Symbol, top]
 
-      def initialize:
-        (
-          cadence: Orb::Models::PriceCreateParams::cadence,
-          currency: String,
-          item_id: String,
-          model_type: Orb::Models::PriceCreateParams::model_type,
-          name: String,
-          unit_config: Orb::Models::PriceCreateParams::UnitConfig,
-          package_config: Orb::Models::PriceCreateParams::PackageConfig,
-          matrix_config: Orb::Models::PriceCreateParams::MatrixConfig,
-          matrix_with_allocation_config: Orb::Models::PriceCreateParams::MatrixWithAllocationConfig,
-          tiered_config: Orb::Models::PriceCreateParams::TieredConfig,
-          tiered_bps_config: Orb::Models::PriceCreateParams::TieredBpsConfig,
-          bps_config: Orb::Models::PriceCreateParams::BpsConfig,
-          bulk_bps_config: Orb::Models::PriceCreateParams::BulkBpsConfig,
-          bulk_config: Orb::Models::PriceCreateParams::BulkConfig,
-          threshold_total_amount_config: ::Hash[Symbol, top],
-          tiered_package_config: ::Hash[Symbol, top],
-          grouped_tiered_config: ::Hash[Symbol, top],
-          max_group_tiered_package_config: ::Hash[Symbol, top],
-          tiered_with_minimum_config: ::Hash[Symbol, top],
-          package_with_allocation_config: ::Hash[Symbol, top],
-          tiered_package_with_minimum_config: ::Hash[Symbol, top],
-          unit_with_percent_config: ::Hash[Symbol, top],
-          tiered_with_proration_config: ::Hash[Symbol, top],
-          unit_with_proration_config: ::Hash[Symbol, top],
-          grouped_allocation_config: ::Hash[Symbol, top],
-          grouped_with_prorated_minimum_config: ::Hash[Symbol, top],
-          grouped_with_metered_minimum_config: ::Hash[Symbol, top],
-          matrix_with_display_name_config: ::Hash[Symbol, top],
-          bulk_with_proration_config: ::Hash[Symbol, top],
-          grouped_tiered_package_config: ::Hash[Symbol, top],
-          scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
-          scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
-          cumulative_grouped_bulk_config: ::Hash[Symbol, top],
-          billable_metric_id: String?,
-          billed_in_advance: bool?,
-          billing_cycle_configuration: Orb::Models::PriceCreateParams::BillingCycleConfiguration?,
-          conversion_rate: Float?,
-          external_price_id: String?,
-          fixed_price_quantity: Float?,
-          invoice_grouping_key: String?,
-          invoicing_cycle_configuration: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration?,
-          metadata: ::Hash[Symbol, String?]?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (?Orb::Models::price_create_params | Orb::BaseModel data) -> void
+      def initialize: (
+        cadence: Orb::Models::PriceCreateParams::cadence,
+        currency: String,
+        item_id: String,
+        model_type: Orb::Models::PriceCreateParams::model_type,
+        name: String,
+        unit_config: Orb::Models::PriceCreateParams::UnitConfig,
+        package_config: Orb::Models::PriceCreateParams::PackageConfig,
+        matrix_config: Orb::Models::PriceCreateParams::MatrixConfig,
+        matrix_with_allocation_config: Orb::Models::PriceCreateParams::MatrixWithAllocationConfig,
+        tiered_config: Orb::Models::PriceCreateParams::TieredConfig,
+        tiered_bps_config: Orb::Models::PriceCreateParams::TieredBpsConfig,
+        bps_config: Orb::Models::PriceCreateParams::BpsConfig,
+        bulk_bps_config: Orb::Models::PriceCreateParams::BulkBpsConfig,
+        bulk_config: Orb::Models::PriceCreateParams::BulkConfig,
+        threshold_total_amount_config: ::Hash[Symbol, top],
+        tiered_package_config: ::Hash[Symbol, top],
+        grouped_tiered_config: ::Hash[Symbol, top],
+        max_group_tiered_package_config: ::Hash[Symbol, top],
+        tiered_with_minimum_config: ::Hash[Symbol, top],
+        package_with_allocation_config: ::Hash[Symbol, top],
+        tiered_package_with_minimum_config: ::Hash[Symbol, top],
+        unit_with_percent_config: ::Hash[Symbol, top],
+        tiered_with_proration_config: ::Hash[Symbol, top],
+        unit_with_proration_config: ::Hash[Symbol, top],
+        grouped_allocation_config: ::Hash[Symbol, top],
+        grouped_with_prorated_minimum_config: ::Hash[Symbol, top],
+        grouped_with_metered_minimum_config: ::Hash[Symbol, top],
+        matrix_with_display_name_config: ::Hash[Symbol, top],
+        bulk_with_proration_config: ::Hash[Symbol, top],
+        grouped_tiered_package_config: ::Hash[Symbol, top],
+        scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
+        scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
+        cumulative_grouped_bulk_config: ::Hash[Symbol, top],
+        ?billable_metric_id: String?,
+        ?billed_in_advance: bool?,
+        ?billing_cycle_configuration: Orb::Models::PriceCreateParams::BillingCycleConfiguration?,
+        ?conversion_rate: Float?,
+        ?external_price_id: String?,
+        ?fixed_price_quantity: Float?,
+        ?invoice_grouping_key: String?,
+        ?invoicing_cycle_configuration: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration?,
+        ?metadata: ::Hash[Symbol, String?]?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::price_create_params
 
@@ -212,11 +210,7 @@ module Orb
       class UnitConfig < Orb::BaseModel
         attr_accessor unit_amount: String
 
-        def initialize:
-          (unit_amount: String) -> void
-          | (
-            ?Orb::Models::PriceCreateParams::unit_config | Orb::BaseModel data
-          ) -> void
+        def initialize: (unit_amount: String) -> void
 
         def to_hash: -> Orb::Models::PriceCreateParams::unit_config
       end
@@ -232,15 +226,10 @@ module Orb
 
         attr_accessor duration_unit: Orb::Models::PriceCreateParams::BillingCycleConfiguration::duration_unit
 
-        def initialize:
-          (
-            duration: Integer,
-            duration_unit: Orb::Models::PriceCreateParams::BillingCycleConfiguration::duration_unit
-          ) -> void
-          | (
-            ?Orb::Models::PriceCreateParams::billing_cycle_configuration
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          duration: Integer,
+          duration_unit: Orb::Models::PriceCreateParams::BillingCycleConfiguration::duration_unit
+        ) -> void
 
         def to_hash: -> Orb::Models::PriceCreateParams::billing_cycle_configuration
 
@@ -265,15 +254,10 @@ module Orb
 
         attr_accessor duration_unit: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
 
-        def initialize:
-          (
-            duration: Integer,
-            duration_unit: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
-          ) -> void
-          | (
-            ?Orb::Models::PriceCreateParams::invoicing_cycle_configuration
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          duration: Integer,
+          duration_unit: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
+        ) -> void
 
         def to_hash: -> Orb::Models::PriceCreateParams::invoicing_cycle_configuration
 
@@ -294,12 +278,7 @@ module Orb
 
         attr_accessor package_size: Integer
 
-        def initialize:
-          (package_amount: String, package_size: Integer) -> void
-          | (
-            ?Orb::Models::PriceCreateParams::package_config
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (package_amount: String, package_size: Integer) -> void
 
         def to_hash: -> Orb::Models::PriceCreateParams::package_config
       end
@@ -318,15 +297,11 @@ module Orb
 
         attr_accessor matrix_values: ::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue]
 
-        def initialize:
-          (
-            default_unit_amount: String,
-            dimensions: ::Array[String?],
-            matrix_values: ::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue]
-          ) -> void
-          | (
-            ?Orb::Models::PriceCreateParams::matrix_config | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          default_unit_amount: String,
+          dimensions: ::Array[String?],
+          matrix_values: ::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue]
+        ) -> void
 
         def to_hash: -> Orb::Models::PriceCreateParams::matrix_config
 
@@ -338,12 +313,10 @@ module Orb
 
           attr_accessor unit_amount: String
 
-          def initialize:
-            (dimension_values: ::Array[String?], unit_amount: String) -> void
-            | (
-              ?Orb::Models::PriceCreateParams::MatrixConfig::matrix_value
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            dimension_values: ::Array[String?],
+            unit_amount: String
+          ) -> void
 
           def to_hash: -> Orb::Models::PriceCreateParams::MatrixConfig::matrix_value
         end
@@ -366,17 +339,12 @@ module Orb
 
         attr_accessor matrix_values: ::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
 
-        def initialize:
-          (
-            allocation: Float,
-            default_unit_amount: String,
-            dimensions: ::Array[String?],
-            matrix_values: ::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
-          ) -> void
-          | (
-            ?Orb::Models::PriceCreateParams::matrix_with_allocation_config
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          allocation: Float,
+          default_unit_amount: String,
+          dimensions: ::Array[String?],
+          matrix_values: ::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
+        ) -> void
 
         def to_hash: -> Orb::Models::PriceCreateParams::matrix_with_allocation_config
 
@@ -388,12 +356,10 @@ module Orb
 
           attr_accessor unit_amount: String
 
-          def initialize:
-            (dimension_values: ::Array[String?], unit_amount: String) -> void
-            | (
-              ?Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::matrix_value
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            dimension_values: ::Array[String?],
+            unit_amount: String
+          ) -> void
 
           def to_hash: -> Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::matrix_value
         end
@@ -405,13 +371,9 @@ module Orb
       class TieredConfig < Orb::BaseModel
         attr_accessor tiers: ::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]
 
-        def initialize:
-          (
-            tiers: ::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]
-          ) -> void
-          | (
-            ?Orb::Models::PriceCreateParams::tiered_config | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          tiers: ::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]
+        ) -> void
 
         def to_hash: -> Orb::Models::PriceCreateParams::tiered_config
 
@@ -425,12 +387,11 @@ module Orb
 
           attr_accessor last_unit: Float?
 
-          def initialize:
-            (first_unit: Float, unit_amount: String, last_unit: Float?) -> void
-            | (
-              ?Orb::Models::PriceCreateParams::TieredConfig::tier
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            first_unit: Float,
+            unit_amount: String,
+            ?last_unit: Float?
+          ) -> void
 
           def to_hash: -> Orb::Models::PriceCreateParams::TieredConfig::tier
         end
@@ -444,14 +405,9 @@ module Orb
       class TieredBpsConfig < Orb::BaseModel
         attr_accessor tiers: ::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]
 
-        def initialize:
-          (
-            tiers: ::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]
-          ) -> void
-          | (
-            ?Orb::Models::PriceCreateParams::tiered_bps_config
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          tiers: ::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]
+        ) -> void
 
         def to_hash: -> Orb::Models::PriceCreateParams::tiered_bps_config
 
@@ -472,17 +428,12 @@ module Orb
 
           attr_accessor per_unit_maximum: String?
 
-          def initialize:
-            (
-              bps: Float,
-              minimum_amount: String,
-              maximum_amount: String?,
-              per_unit_maximum: String?
-            ) -> void
-            | (
-              ?Orb::Models::PriceCreateParams::TieredBpsConfig::tier
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            bps: Float,
+            minimum_amount: String,
+            ?maximum_amount: String?,
+            ?per_unit_maximum: String?
+          ) -> void
 
           def to_hash: -> Orb::Models::PriceCreateParams::TieredBpsConfig::tier
         end
@@ -495,11 +446,7 @@ module Orb
 
         attr_accessor per_unit_maximum: String?
 
-        def initialize:
-          (bps: Float, per_unit_maximum: String?) -> void
-          | (
-            ?Orb::Models::PriceCreateParams::bps_config | Orb::BaseModel data
-          ) -> void
+        def initialize: (bps: Float, ?per_unit_maximum: String?) -> void
 
         def to_hash: -> Orb::Models::PriceCreateParams::bps_config
       end
@@ -510,14 +457,9 @@ module Orb
       class BulkBpsConfig < Orb::BaseModel
         attr_accessor tiers: ::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]
 
-        def initialize:
-          (
-            tiers: ::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]
-          ) -> void
-          | (
-            ?Orb::Models::PriceCreateParams::bulk_bps_config
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          tiers: ::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]
+        ) -> void
 
         def to_hash: -> Orb::Models::PriceCreateParams::bulk_bps_config
 
@@ -531,16 +473,11 @@ module Orb
 
           attr_accessor per_unit_maximum: String?
 
-          def initialize:
-            (
-              bps: Float,
-              maximum_amount: String?,
-              per_unit_maximum: String?
-            ) -> void
-            | (
-              ?Orb::Models::PriceCreateParams::BulkBpsConfig::tier
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            bps: Float,
+            ?maximum_amount: String?,
+            ?per_unit_maximum: String?
+          ) -> void
 
           def to_hash: -> Orb::Models::PriceCreateParams::BulkBpsConfig::tier
         end
@@ -552,13 +489,9 @@ module Orb
       class BulkConfig < Orb::BaseModel
         attr_accessor tiers: ::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]
 
-        def initialize:
-          (
-            tiers: ::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]
-          ) -> void
-          | (
-            ?Orb::Models::PriceCreateParams::bulk_config | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          tiers: ::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]
+        ) -> void
 
         def to_hash: -> Orb::Models::PriceCreateParams::bulk_config
 
@@ -569,12 +502,7 @@ module Orb
 
           attr_accessor maximum_units: Float?
 
-          def initialize:
-            (unit_amount: String, maximum_units: Float?) -> void
-            | (
-              ?Orb::Models::PriceCreateParams::BulkConfig::tier
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (unit_amount: String, ?maximum_units: Float?) -> void
 
           def to_hash: -> Orb::Models::PriceCreateParams::BulkConfig::tier
         end

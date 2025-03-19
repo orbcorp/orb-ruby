@@ -39,23 +39,19 @@ module Orb
 
         attr_accessor deprecation_filter: String?
 
-        def initialize:
-          (
-            id: String,
-            close_time: Time?,
-            created_at: Time,
-            customer_id: String?,
-            events_ingested: Integer,
-            replace_existing_events: bool,
-            reverted_at: Time?,
-            status: Orb::Models::Events::BackfillFetchResponse::status,
-            timeframe_end: Time,
-            timeframe_start: Time,
-            deprecation_filter: String?
-          ) -> void
-          | (
-            ?Orb::Models::Events::backfill_fetch_response | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          id: String,
+          close_time: Time?,
+          created_at: Time,
+          customer_id: String?,
+          events_ingested: Integer,
+          replace_existing_events: bool,
+          reverted_at: Time?,
+          status: Orb::Models::Events::BackfillFetchResponse::status,
+          timeframe_end: Time,
+          timeframe_start: Time,
+          ?deprecation_filter: String?
+        ) -> void
 
         def to_hash: -> Orb::Models::Events::backfill_fetch_response
 

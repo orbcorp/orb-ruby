@@ -24,18 +24,14 @@ module Orb
 
       attr_accessor net_terms: Integer?
 
-      def initialize:
-        (
-          auto_collection: bool?,
-          default_invoice_memo: String?,
-          invoicing_threshold: String?,
-          metadata: ::Hash[Symbol, String?]?,
-          net_terms: Integer?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (
-          ?Orb::Models::subscription_update_params | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        ?auto_collection: bool?,
+        ?default_invoice_memo: String?,
+        ?invoicing_threshold: String?,
+        ?metadata: ::Hash[Symbol, String?]?,
+        ?net_terms: Integer?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::subscription_update_params
     end

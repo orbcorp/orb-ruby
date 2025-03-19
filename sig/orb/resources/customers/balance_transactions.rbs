@@ -2,36 +2,24 @@ module Orb
   module Resources
     class Customers
       class BalanceTransactions
-        def create:
-          (
-            String customer_id,
-            Orb::Models::Customers::BalanceTransactionCreateParams
-            | ::Hash[Symbol, top] params
-          ) -> Orb::Models::Customers::BalanceTransactionCreateResponse
-          | (
-            String customer_id,
-            amount: String,
-            type: Orb::Models::Customers::BalanceTransactionCreateParams::type_,
-            description: String?,
-            request_options: Orb::request_opts
-          ) -> Orb::Models::Customers::BalanceTransactionCreateResponse
+        def create: (
+          String customer_id,
+          amount: String,
+          type: Orb::Models::Customers::BalanceTransactionCreateParams::type_,
+          ?description: String?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Models::Customers::BalanceTransactionCreateResponse
 
-        def list:
-          (
-            String customer_id,
-            ?Orb::Models::Customers::BalanceTransactionListParams
-            | ::Hash[Symbol, top] params
-          ) -> Orb::Page[Orb::Models::Customers::BalanceTransactionListResponse]
-          | (
-            String customer_id,
-            cursor: String?,
-            limit: Integer,
-            operation_time_gt: Time?,
-            operation_time_gte: Time?,
-            operation_time_lt: Time?,
-            operation_time_lte: Time?,
-            request_options: Orb::request_opts
-          ) -> Orb::Page[Orb::Models::Customers::BalanceTransactionListResponse]
+        def list: (
+          String customer_id,
+          ?cursor: String?,
+          ?limit: Integer,
+          ?operation_time_gt: Time?,
+          ?operation_time_gte: Time?,
+          ?operation_time_lt: Time?,
+          ?operation_time_lte: Time?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Page[Orb::Models::Customers::BalanceTransactionListResponse]
 
         def initialize: (client: Orb::Client) -> void
       end

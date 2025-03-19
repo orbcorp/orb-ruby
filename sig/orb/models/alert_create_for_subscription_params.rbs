@@ -18,17 +18,12 @@ module Orb
 
       attr_accessor metric_id: String?
 
-      def initialize:
-        (
-          thresholds: ::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold],
-          type: Orb::Models::AlertCreateForSubscriptionParams::type_,
-          metric_id: String?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (
-          ?Orb::Models::alert_create_for_subscription_params
-          | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        thresholds: ::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold],
+        type: Orb::Models::AlertCreateForSubscriptionParams::type_,
+        ?metric_id: String?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::alert_create_for_subscription_params
 
@@ -37,12 +32,7 @@ module Orb
       class Threshold < Orb::BaseModel
         attr_accessor value: Float
 
-        def initialize:
-          (value: Float) -> void
-          | (
-            ?Orb::Models::AlertCreateForSubscriptionParams::threshold
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (value: Float) -> void
 
         def to_hash: -> Orb::Models::AlertCreateForSubscriptionParams::threshold
       end

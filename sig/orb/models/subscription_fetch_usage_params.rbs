@@ -39,23 +39,19 @@ module Orb
 
       attr_accessor view_mode: Orb::Models::SubscriptionFetchUsageParams::view_mode?
 
-      def initialize:
-        (
-          billable_metric_id: String?,
-          first_dimension_key: String?,
-          first_dimension_value: String?,
-          granularity: Orb::Models::SubscriptionFetchUsageParams::granularity?,
-          group_by: String?,
-          second_dimension_key: String?,
-          second_dimension_value: String?,
-          timeframe_end: Time?,
-          timeframe_start: Time?,
-          view_mode: Orb::Models::SubscriptionFetchUsageParams::view_mode?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (
-          ?Orb::Models::subscription_fetch_usage_params | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        ?billable_metric_id: String?,
+        ?first_dimension_key: String?,
+        ?first_dimension_value: String?,
+        ?granularity: Orb::Models::SubscriptionFetchUsageParams::granularity?,
+        ?group_by: String?,
+        ?second_dimension_key: String?,
+        ?second_dimension_value: String?,
+        ?timeframe_end: Time?,
+        ?timeframe_start: Time?,
+        ?view_mode: Orb::Models::SubscriptionFetchUsageParams::view_mode?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::subscription_fetch_usage_params
 

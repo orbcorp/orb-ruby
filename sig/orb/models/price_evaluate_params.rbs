@@ -29,17 +29,15 @@ module Orb
 
       def grouping_keys=: (::Array[String]) -> ::Array[String]
 
-      def initialize:
-        (
-          timeframe_end: Time,
-          timeframe_start: Time,
-          customer_id: String?,
-          external_customer_id: String?,
-          filter: String?,
-          grouping_keys: ::Array[String],
-          request_options: Orb::request_opts
-        ) -> void
-        | (?Orb::Models::price_evaluate_params | Orb::BaseModel data) -> void
+      def initialize: (
+        timeframe_end: Time,
+        timeframe_start: Time,
+        ?customer_id: String?,
+        ?external_customer_id: String?,
+        ?filter: String?,
+        ?grouping_keys: ::Array[String],
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::price_evaluate_params
     end

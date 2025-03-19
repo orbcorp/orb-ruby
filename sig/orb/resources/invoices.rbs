@@ -1,124 +1,82 @@
 module Orb
   module Resources
     class Invoices
-      def create:
-        (
-          Orb::Models::InvoiceCreateParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Invoice
-        | (
-          currency: String,
-          invoice_date: Time,
-          line_items: ::Array[Orb::Models::InvoiceCreateParams::LineItem],
-          net_terms: Integer,
-          customer_id: String?,
-          discount: Orb::Models::discount?,
-          external_customer_id: String?,
-          memo: String?,
-          metadata: ::Hash[Symbol, String?]?,
-          will_auto_issue: bool,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::Invoice
+      def create: (
+        currency: String,
+        invoice_date: Time,
+        line_items: ::Array[Orb::Models::InvoiceCreateParams::LineItem],
+        net_terms: Integer,
+        ?customer_id: String?,
+        ?discount: Orb::Models::discount?,
+        ?external_customer_id: String?,
+        ?memo: String?,
+        ?metadata: ::Hash[Symbol, String?]?,
+        ?will_auto_issue: bool,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::Invoice
 
-      def update:
-        (
-          String invoice_id,
-          ?Orb::Models::InvoiceUpdateParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Invoice
-        | (
-          String invoice_id,
-          metadata: ::Hash[Symbol, String?]?,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::Invoice
+      def update: (
+        String invoice_id,
+        ?metadata: ::Hash[Symbol, String?]?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::Invoice
 
-      def list:
-        (
-          ?Orb::Models::InvoiceListParams | ::Hash[Symbol, top] params
-        ) -> Orb::Page[Orb::Models::Invoice]
-        | (
-          amount: String?,
-          amount_gt: String?,
-          amount_lt: String?,
-          cursor: String?,
-          customer_id: String?,
-          date_type: Orb::Models::InvoiceListParams::date_type?,
-          due_date: Date?,
-          due_date_window: String?,
-          due_date_gt: Date?,
-          due_date_lt: Date?,
-          external_customer_id: String?,
-          invoice_date_gt: Time?,
-          invoice_date_gte: Time?,
-          invoice_date_lt: Time?,
-          invoice_date_lte: Time?,
-          is_recurring: bool?,
-          limit: Integer,
-          status: ::Array[Orb::Models::InvoiceListParams::status]?,
-          subscription_id: String?,
-          request_options: Orb::request_opts
-        ) -> Orb::Page[Orb::Models::Invoice]
+      def list: (
+        ?amount: String?,
+        ?amount_gt: String?,
+        ?amount_lt: String?,
+        ?cursor: String?,
+        ?customer_id: String?,
+        ?date_type: Orb::Models::InvoiceListParams::date_type?,
+        ?due_date: Date?,
+        ?due_date_window: String?,
+        ?due_date_gt: Date?,
+        ?due_date_lt: Date?,
+        ?external_customer_id: String?,
+        ?invoice_date_gt: Time?,
+        ?invoice_date_gte: Time?,
+        ?invoice_date_lt: Time?,
+        ?invoice_date_lte: Time?,
+        ?is_recurring: bool?,
+        ?limit: Integer,
+        ?status: ::Array[Orb::Models::InvoiceListParams::status]?,
+        ?subscription_id: String?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Page[Orb::Models::Invoice]
 
-      def fetch:
-        (
-          String invoice_id,
-          ?Orb::Models::InvoiceFetchParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Invoice
-        | (
-          String invoice_id,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::Invoice
+      def fetch: (
+        String invoice_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::Invoice
 
-      def fetch_upcoming:
-        (
-          Orb::Models::InvoiceFetchUpcomingParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::InvoiceFetchUpcomingResponse
-        | (
-          subscription_id: String,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::InvoiceFetchUpcomingResponse
+      def fetch_upcoming: (
+        subscription_id: String,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::InvoiceFetchUpcomingResponse
 
-      def issue:
-        (
-          String invoice_id,
-          ?Orb::Models::InvoiceIssueParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Invoice
-        | (
-          String invoice_id,
-          synchronous: bool,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::Invoice
+      def issue: (
+        String invoice_id,
+        ?synchronous: bool,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::Invoice
 
-      def mark_paid:
-        (
-          String invoice_id,
-          Orb::Models::InvoiceMarkPaidParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Invoice
-        | (
-          String invoice_id,
-          payment_received_date: Date,
-          external_id: String?,
-          notes: String?,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::Invoice
+      def mark_paid: (
+        String invoice_id,
+        payment_received_date: Date,
+        ?external_id: String?,
+        ?notes: String?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::Invoice
 
-      def pay:
-        (
-          String invoice_id,
-          ?Orb::Models::InvoicePayParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Invoice
-        | (
-          String invoice_id,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::Invoice
+      def pay: (
+        String invoice_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::Invoice
 
-      def `void`:
-        (
-          String invoice_id,
-          ?Orb::Models::InvoiceVoidParams | ::Hash[Symbol, top] params
-        ) -> Orb::Models::Invoice
-        | (
-          String invoice_id,
-          request_options: Orb::request_opts
-        ) -> Orb::Models::Invoice
+      def `void`: (
+        String invoice_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::Invoice
 
       def initialize: (client: Orb::Client) -> void
     end

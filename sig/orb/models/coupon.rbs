@@ -26,17 +26,15 @@ module Orb
 
       attr_accessor times_redeemed: Integer
 
-      def initialize:
-        (
-          id: String,
-          archived_at: Time?,
-          discount: Orb::Models::Coupon::discount,
-          duration_in_months: Integer?,
-          max_redemptions: Integer?,
-          redemption_code: String,
-          times_redeemed: Integer
-        ) -> void
-        | (?Orb::Models::coupon | Orb::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        archived_at: Time?,
+        discount: Orb::Models::Coupon::discount,
+        duration_in_months: Integer?,
+        max_redemptions: Integer?,
+        redemption_code: String,
+        times_redeemed: Integer
+      ) -> void
 
       def to_hash: -> Orb::Models::coupon
 

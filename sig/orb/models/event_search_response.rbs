@@ -6,9 +6,9 @@ module Orb
     class EventSearchResponse < Orb::BaseModel
       attr_accessor data: ::Array[Orb::Models::EventSearchResponse::Data]
 
-      def initialize:
-        (data: ::Array[Orb::Models::EventSearchResponse::Data]) -> void
-        | (?Orb::Models::event_search_response | Orb::BaseModel data) -> void
+      def initialize: (
+        data: ::Array[Orb::Models::EventSearchResponse::Data]
+      ) -> void
 
       def to_hash: -> Orb::Models::event_search_response
 
@@ -38,19 +38,15 @@ module Orb
 
         attr_accessor timestamp: Time
 
-        def initialize:
-          (
-            id: String,
-            customer_id: String?,
-            deprecated: bool,
-            event_name: String,
-            external_customer_id: String?,
-            properties: top,
-            timestamp: Time
-          ) -> void
-          | (
-            ?Orb::Models::EventSearchResponse::data | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          id: String,
+          customer_id: String?,
+          deprecated: bool,
+          event_name: String,
+          external_customer_id: String?,
+          properties: top,
+          timestamp: Time
+        ) -> void
 
         def to_hash: -> Orb::Models::EventSearchResponse::data
       end

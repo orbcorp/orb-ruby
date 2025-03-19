@@ -35,20 +35,18 @@ module Orb
 
       attr_accessor type: Orb::Models::Alert::type_
 
-      def initialize:
-        (
-          id: String,
-          created_at: Time,
-          currency: String?,
-          customer: Orb::Models::Alert::Customer?,
-          enabled: bool,
-          metric: Orb::Models::Alert::Metric?,
-          plan: Orb::Models::Alert::Plan?,
-          subscription: Orb::Models::Alert::Subscription?,
-          thresholds: ::Array[Orb::Models::Alert::Threshold]?,
-          type: Orb::Models::Alert::type_
-        ) -> void
-        | (?Orb::Models::alert | Orb::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        created_at: Time,
+        currency: String?,
+        customer: Orb::Models::Alert::Customer?,
+        enabled: bool,
+        metric: Orb::Models::Alert::Metric?,
+        plan: Orb::Models::Alert::Plan?,
+        subscription: Orb::Models::Alert::Subscription?,
+        thresholds: ::Array[Orb::Models::Alert::Threshold]?,
+        type: Orb::Models::Alert::type_
+      ) -> void
 
       def to_hash: -> Orb::Models::alert
 
@@ -59,9 +57,7 @@ module Orb
 
         attr_accessor external_customer_id: String?
 
-        def initialize:
-          (id: String, external_customer_id: String?) -> void
-          | (?Orb::Models::Alert::customer | Orb::BaseModel data) -> void
+        def initialize: (id: String, external_customer_id: String?) -> void
 
         def to_hash: -> Orb::Models::Alert::customer
       end
@@ -71,9 +67,7 @@ module Orb
       class Metric < Orb::BaseModel
         attr_accessor id: String
 
-        def initialize:
-          (id: String) -> void
-          | (?Orb::Models::Alert::metric | Orb::BaseModel data) -> void
+        def initialize: (id: String) -> void
 
         def to_hash: -> Orb::Models::Alert::metric
       end
@@ -95,14 +89,12 @@ module Orb
 
         attr_accessor plan_version: String
 
-        def initialize:
-          (
-            id: String?,
-            external_plan_id: String?,
-            name: String?,
-            plan_version: String
-          ) -> void
-          | (?Orb::Models::Alert::plan | Orb::BaseModel data) -> void
+        def initialize: (
+          id: String?,
+          external_plan_id: String?,
+          name: String?,
+          plan_version: String
+        ) -> void
 
         def to_hash: -> Orb::Models::Alert::plan
       end
@@ -112,9 +104,7 @@ module Orb
       class Subscription < Orb::BaseModel
         attr_accessor id: String
 
-        def initialize:
-          (id: String) -> void
-          | (?Orb::Models::Alert::subscription | Orb::BaseModel data) -> void
+        def initialize: (id: String) -> void
 
         def to_hash: -> Orb::Models::Alert::subscription
       end
@@ -124,9 +114,7 @@ module Orb
       class Threshold < Orb::BaseModel
         attr_accessor value: Float
 
-        def initialize:
-          (value: Float) -> void
-          | (?Orb::Models::Alert::threshold | Orb::BaseModel data) -> void
+        def initialize: (value: Float) -> void
 
         def to_hash: -> Orb::Models::Alert::threshold
       end

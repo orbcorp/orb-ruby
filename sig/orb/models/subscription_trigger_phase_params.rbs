@@ -12,15 +12,11 @@ module Orb
 
       attr_accessor effective_date: Date?
 
-      def initialize:
-        (
-          allow_invoice_credit_or_void: bool?,
-          effective_date: Date?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (
-          ?Orb::Models::subscription_trigger_phase_params | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        ?allow_invoice_credit_or_void: bool?,
+        ?effective_date: Date?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::subscription_trigger_phase_params
     end

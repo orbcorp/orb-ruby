@@ -10,9 +10,9 @@ module Orb
       class EventVolumes < Orb::BaseModel
         attr_accessor data: ::Array[Orb::Models::Events::EventVolumes::Data]
 
-        def initialize:
-          (data: ::Array[Orb::Models::Events::EventVolumes::Data]) -> void
-          | (?Orb::Models::Events::event_volumes | Orb::BaseModel data) -> void
+        def initialize: (
+          data: ::Array[Orb::Models::Events::EventVolumes::Data]
+        ) -> void
 
         def to_hash: -> Orb::Models::Events::event_volumes
 
@@ -26,11 +26,11 @@ module Orb
 
           attr_accessor timeframe_start: Time
 
-          def initialize:
-            (count: Integer, timeframe_end: Time, timeframe_start: Time) -> void
-            | (
-              ?Orb::Models::Events::EventVolumes::data | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            count: Integer,
+            timeframe_end: Time,
+            timeframe_start: Time
+          ) -> void
 
           def to_hash: -> Orb::Models::Events::EventVolumes::data
         end

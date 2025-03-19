@@ -28,19 +28,14 @@ module Orb
 
       attr_accessor effective_date: Date?
 
-      def initialize:
-        (
-          price_id: String,
-          quantity: Float,
-          allow_invoice_credit_or_void: bool?,
-          change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option,
-          effective_date: Date?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (
-          ?Orb::Models::subscription_update_fixed_fee_quantity_params
-          | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        price_id: String,
+        quantity: Float,
+        ?allow_invoice_credit_or_void: bool?,
+        ?change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option,
+        ?effective_date: Date?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::subscription_update_fixed_fee_quantity_params
 

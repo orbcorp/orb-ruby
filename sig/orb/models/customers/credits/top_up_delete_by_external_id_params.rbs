@@ -11,15 +11,10 @@ module Orb
 
           attr_accessor external_customer_id: String
 
-          def initialize:
-            (
-              external_customer_id: String,
-              request_options: Orb::request_opts
-            ) -> void
-            | (
-              ?Orb::Models::Customers::Credits::top_up_delete_by_external_id_params
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            external_customer_id: String,
+            ?request_options: Orb::request_opts
+          ) -> void
 
           def to_hash: -> Orb::Models::Customers::Credits::top_up_delete_by_external_id_params
         end

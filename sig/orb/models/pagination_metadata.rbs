@@ -7,9 +7,7 @@ module Orb
 
       attr_accessor next_cursor: String?
 
-      def initialize:
-        (has_more: bool, next_cursor: String?) -> void
-        | (?Orb::Models::pagination_metadata | Orb::BaseModel data) -> void
+      def initialize: (has_more: bool, next_cursor: String?) -> void
 
       def to_hash: -> Orb::Models::pagination_metadata
     end

@@ -14,15 +14,11 @@ module Orb
 
         def limit=: (Integer) -> Integer
 
-        def initialize:
-          (
-            cursor: String?,
-            limit: Integer,
-            request_options: Orb::request_opts
-          ) -> void
-          | (
-            ?Orb::Models::Events::backfill_list_params | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          ?cursor: String?,
+          ?limit: Integer,
+          ?request_options: Orb::request_opts
+        ) -> void
 
         def to_hash: -> Orb::Models::Events::backfill_list_params
       end

@@ -60,31 +60,26 @@ module Orb
 
       attr_accessor tax_id: Orb::Models::CustomerUpdateByExternalIDParams::TaxID?
 
-      def initialize:
-        (
-          accounting_sync_configuration: Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration?,
-          additional_emails: ::Array[String]?,
-          auto_collection: bool?,
-          billing_address: Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress?,
-          currency: String?,
-          email: String?,
-          email_delivery: bool?,
-          external_customer_id: String?,
-          hierarchy: Orb::Models::CustomerUpdateByExternalIDParams::Hierarchy?,
-          metadata: ::Hash[Symbol, String?]?,
-          name: String?,
-          payment_provider: Orb::Models::CustomerUpdateByExternalIDParams::payment_provider?,
-          payment_provider_id: String?,
-          reporting_configuration: Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration?,
-          shipping_address: Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress?,
-          tax_configuration: Orb::Models::CustomerUpdateByExternalIDParams::tax_configuration?,
-          tax_id: Orb::Models::CustomerUpdateByExternalIDParams::TaxID?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (
-          ?Orb::Models::customer_update_by_external_id_params
-          | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        ?accounting_sync_configuration: Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration?,
+        ?additional_emails: ::Array[String]?,
+        ?auto_collection: bool?,
+        ?billing_address: Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress?,
+        ?currency: String?,
+        ?email: String?,
+        ?email_delivery: bool?,
+        ?external_customer_id: String?,
+        ?hierarchy: Orb::Models::CustomerUpdateByExternalIDParams::Hierarchy?,
+        ?metadata: ::Hash[Symbol, String?]?,
+        ?name: String?,
+        ?payment_provider: Orb::Models::CustomerUpdateByExternalIDParams::payment_provider?,
+        ?payment_provider_id: String?,
+        ?reporting_configuration: Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration?,
+        ?shipping_address: Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress?,
+        ?tax_configuration: Orb::Models::CustomerUpdateByExternalIDParams::tax_configuration?,
+        ?tax_id: Orb::Models::CustomerUpdateByExternalIDParams::TaxID?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::customer_update_by_external_id_params
 
@@ -99,15 +94,10 @@ module Orb
 
         attr_accessor excluded: bool?
 
-        def initialize:
-          (
-            accounting_providers: ::Array[Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]?,
-            excluded: bool?
-          ) -> void
-          | (
-            ?Orb::Models::CustomerUpdateByExternalIDParams::accounting_sync_configuration
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          ?accounting_providers: ::Array[Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]?,
+          ?excluded: bool?
+        ) -> void
 
         def to_hash: -> Orb::Models::CustomerUpdateByExternalIDParams::accounting_sync_configuration
 
@@ -119,12 +109,10 @@ module Orb
 
           attr_accessor provider_type: String
 
-          def initialize:
-            (external_provider_id: String, provider_type: String) -> void
-            | (
-              ?Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::accounting_provider
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            external_provider_id: String,
+            provider_type: String
+          ) -> void
 
           def to_hash: -> Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::accounting_provider
         end
@@ -153,19 +141,14 @@ module Orb
 
         attr_accessor state: String?
 
-        def initialize:
-          (
-            city: String?,
-            country: String?,
-            line1: String?,
-            line2: String?,
-            postal_code: String?,
-            state: String?
-          ) -> void
-          | (
-            ?Orb::Models::CustomerUpdateByExternalIDParams::billing_address
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          ?city: String?,
+          ?country: String?,
+          ?line1: String?,
+          ?line2: String?,
+          ?postal_code: String?,
+          ?state: String?
+        ) -> void
 
         def to_hash: -> Orb::Models::CustomerUpdateByExternalIDParams::billing_address
       end
@@ -180,15 +163,10 @@ module Orb
 
         attr_accessor parent_customer_id: String?
 
-        def initialize:
-          (
-            child_customer_ids: ::Array[String],
-            parent_customer_id: String?
-          ) -> void
-          | (
-            ?Orb::Models::CustomerUpdateByExternalIDParams::hierarchy
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          ?child_customer_ids: ::Array[String],
+          ?parent_customer_id: String?
+        ) -> void
 
         def to_hash: -> Orb::Models::CustomerUpdateByExternalIDParams::hierarchy
       end
@@ -211,12 +189,7 @@ module Orb
       class ReportingConfiguration < Orb::BaseModel
         attr_accessor exempt: bool
 
-        def initialize:
-          (exempt: bool) -> void
-          | (
-            ?Orb::Models::CustomerUpdateByExternalIDParams::reporting_configuration
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (exempt: bool) -> void
 
         def to_hash: -> Orb::Models::CustomerUpdateByExternalIDParams::reporting_configuration
       end
@@ -244,19 +217,14 @@ module Orb
 
         attr_accessor state: String?
 
-        def initialize:
-          (
-            city: String?,
-            country: String?,
-            line1: String?,
-            line2: String?,
-            postal_code: String?,
-            state: String?
-          ) -> void
-          | (
-            ?Orb::Models::CustomerUpdateByExternalIDParams::shipping_address
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          ?city: String?,
+          ?country: String?,
+          ?line1: String?,
+          ?line2: String?,
+          ?postal_code: String?,
+          ?state: String?
+        ) -> void
 
         def to_hash: -> Orb::Models::CustomerUpdateByExternalIDParams::shipping_address
       end
@@ -280,16 +248,11 @@ module Orb
 
           attr_accessor tax_exemption_code: String?
 
-          def initialize:
-            (
-              tax_exempt: bool,
-              tax_exemption_code: String?,
-              tax_provider: :avalara
-            ) -> void
-            | (
-              ?Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::new_avalara_tax_configuration
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (
+            tax_exempt: bool,
+            ?tax_exemption_code: String?,
+            ?tax_provider: :avalara
+          ) -> void
 
           def to_hash: -> Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::new_avalara_tax_configuration
         end
@@ -302,12 +265,7 @@ module Orb
 
           attr_accessor tax_provider: :taxjar
 
-          def initialize:
-            (tax_exempt: bool, tax_provider: :taxjar) -> void
-            | (
-              ?Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::new_tax_jar_configuration
-              | Orb::BaseModel data
-            ) -> void
+          def initialize: (tax_exempt: bool, ?tax_provider: :taxjar) -> void
 
           def to_hash: -> Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::new_tax_jar_configuration
         end
@@ -329,16 +287,11 @@ module Orb
 
         attr_accessor value: String
 
-        def initialize:
-          (
-            country: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::country,
-            type: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::type_,
-            value: String
-          ) -> void
-          | (
-            ?Orb::Models::CustomerUpdateByExternalIDParams::tax_id
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (
+          country: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::country,
+          type: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::type_,
+          value: String
+        ) -> void
 
         def to_hash: -> Orb::Models::CustomerUpdateByExternalIDParams::tax_id
 

@@ -18,16 +18,12 @@ module Orb
 
       attr_accessor thresholds: ::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]?
 
-      def initialize:
-        (
-          currency: String,
-          type: Orb::Models::AlertCreateForCustomerParams::type_,
-          thresholds: ::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]?,
-          request_options: Orb::request_opts
-        ) -> void
-        | (
-          ?Orb::Models::alert_create_for_customer_params | Orb::BaseModel data
-        ) -> void
+      def initialize: (
+        currency: String,
+        type: Orb::Models::AlertCreateForCustomerParams::type_,
+        ?thresholds: ::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]?,
+        ?request_options: Orb::request_opts
+      ) -> void
 
       def to_hash: -> Orb::Models::alert_create_for_customer_params
 
@@ -49,12 +45,7 @@ module Orb
       class Threshold < Orb::BaseModel
         attr_accessor value: Float
 
-        def initialize:
-          (value: Float) -> void
-          | (
-            ?Orb::Models::AlertCreateForCustomerParams::threshold
-            | Orb::BaseModel data
-          ) -> void
+        def initialize: (value: Float) -> void
 
         def to_hash: -> Orb::Models::AlertCreateForCustomerParams::threshold
       end

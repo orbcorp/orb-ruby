@@ -2,17 +2,13 @@ module Orb
   module Resources
     class Events
       class Volume
-        def list:
-          (
-            Orb::Models::Events::VolumeListParams | ::Hash[Symbol, top] params
-          ) -> Orb::Models::Events::EventVolumes
-          | (
-            timeframe_start: Time,
-            cursor: String?,
-            limit: Integer,
-            timeframe_end: Time,
-            request_options: Orb::request_opts
-          ) -> Orb::Models::Events::EventVolumes
+        def list: (
+          timeframe_start: Time,
+          ?cursor: String?,
+          ?limit: Integer,
+          ?timeframe_end: Time,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Models::Events::EventVolumes
 
         def initialize: (client: Orb::Client) -> void
       end
