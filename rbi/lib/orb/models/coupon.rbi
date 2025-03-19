@@ -111,7 +111,8 @@ module Orb
       class Discount < Orb::Union
         abstract!
 
-        Variants = type_template(:out) { {fixed: T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount)} }
+        Variants =
+          type_template(:out) { {fixed: T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount)} }
       end
     end
   end

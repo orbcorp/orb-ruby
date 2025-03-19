@@ -17,7 +17,8 @@ module Orb
   #
   # @example
   # ```ruby
-  # coupons = page
+  # coupons =
+  #   page
   #   .to_enum
   #   .lazy
   #   .select { _1.object_id.even? }

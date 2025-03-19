@@ -583,17 +583,18 @@ module Orb
       class Adjustment < Orb::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment,
-              Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment,
-              Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment,
-              Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment,
-              Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment,
+                Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment,
+                Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment,
+                Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment,
+                Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
+              )
+            }
+          end
 
         class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
           sig { returns(String) }

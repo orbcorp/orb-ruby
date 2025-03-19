@@ -723,14 +723,15 @@ module Orb
       class TaxConfiguration < Orb::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Orb::Models::CustomerCreateParams::TaxConfiguration::NewAvalaraTaxConfiguration,
-              Orb::Models::CustomerCreateParams::TaxConfiguration::NewTaxJarConfiguration
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Orb::Models::CustomerCreateParams::TaxConfiguration::NewAvalaraTaxConfiguration,
+                Orb::Models::CustomerCreateParams::TaxConfiguration::NewTaxJarConfiguration
+              )
+            }
+          end
 
         class NewAvalaraTaxConfiguration < Orb::BaseModel
           sig { returns(T::Boolean) }

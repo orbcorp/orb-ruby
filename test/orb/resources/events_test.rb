@@ -4,12 +4,13 @@ require_relative "../test_helper"
 
 class Orb::Test::Resources::EventsTest < Orb::Test::ResourceTest
   def test_update_required_params
-    response = @orb.events.update(
-      "event_id",
-      event_name: "event_name",
-      properties: {},
-      timestamp: "2020-12-09T16:09:53Z"
-    )
+    response =
+      @orb.events.update(
+        "event_id",
+        event_name: "event_name",
+        properties: {},
+        timestamp: "2020-12-09T16:09:53Z"
+      )
 
     assert_pattern do
       response => Orb::Models::EventUpdateResponse
@@ -37,16 +38,17 @@ class Orb::Test::Resources::EventsTest < Orb::Test::ResourceTest
   end
 
   def test_ingest_required_params
-    response = @orb.events.ingest(
-      events: [
-        {
-          event_name: "event_name",
-          idempotency_key: "idempotency_key",
-          properties: {},
-          timestamp: "2020-12-09T16:09:53Z"
-        }
-      ]
-    )
+    response =
+      @orb.events.ingest(
+        events: [
+          {
+            event_name: "event_name",
+            idempotency_key: "idempotency_key",
+            properties: {},
+            timestamp: "2020-12-09T16:09:53Z"
+          }
+        ]
+      )
 
     assert_pattern do
       response => Orb::Models::EventIngestResponse
