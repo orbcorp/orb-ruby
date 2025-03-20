@@ -115,7 +115,7 @@ module Orb
     ) -> ([true, top, nil] | [false, bool, Integer])
   end
 
-  class ArrayOf[Elem]
+  class ArrayOf
     include Orb::Converter
 
     def self.[]: (
@@ -137,7 +137,7 @@ module Orb
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
 
-    def item_type: -> Elem
+    def item_type: -> top
 
     def initialize: (
       ::Hash[Symbol, top]
@@ -147,7 +147,7 @@ module Orb
     ) -> void
   end
 
-  class HashOf[Elem]
+  class HashOf
     include Orb::Converter
 
     def self.[]: (
@@ -169,7 +169,7 @@ module Orb
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
 
-    def item_type: -> Elem
+    def item_type: -> top
 
     def initialize: (
       ::Hash[Symbol, top]
