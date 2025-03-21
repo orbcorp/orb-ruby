@@ -70,10 +70,8 @@ module Orb
           CUMULATIVE =
             T.let(:cumulative, Orb::Models::Customers::CostListByExternalIDParams::ViewMode::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Customers::CostListByExternalIDParams::ViewMode::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Customers::CostListByExternalIDParams::ViewMode::TaggedSymbol]) }
+          def self.values
           end
         end
       end

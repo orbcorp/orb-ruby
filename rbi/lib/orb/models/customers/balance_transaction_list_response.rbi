@@ -137,10 +137,8 @@ module Orb
           EXTERNAL_PAYMENT =
             T.let(:external_payment, Orb::Models::Customers::BalanceTransactionListResponse::Action::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Customers::BalanceTransactionListResponse::Action::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Customers::BalanceTransactionListResponse::Action::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -183,10 +181,8 @@ module Orb
           INCREMENT = T.let(:increment, Orb::Models::Customers::BalanceTransactionListResponse::Type::TaggedSymbol)
           DECREMENT = T.let(:decrement, Orb::Models::Customers::BalanceTransactionListResponse::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Customers::BalanceTransactionListResponse::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Customers::BalanceTransactionListResponse::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end

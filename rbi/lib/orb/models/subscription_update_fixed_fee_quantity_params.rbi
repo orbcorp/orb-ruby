@@ -92,13 +92,11 @@ module Orb
         EFFECTIVE_DATE =
           T.let(:effective_date, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::TaggedSymbol)
 
-        class << self
-          sig do
-            override
-              .returns(T::Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::TaggedSymbol])
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(T::Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::TaggedSymbol])
+        end
+        def self.values
         end
       end
     end

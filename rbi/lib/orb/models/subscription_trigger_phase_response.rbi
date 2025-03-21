@@ -351,19 +351,6 @@ module Orb
         module Adjustment
           extend Orb::Union
 
-          Variants =
-            type_template(:out) do
-              {
-                fixed: T.any(
-                  Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment,
-                  Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment,
-                  Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment,
-                  Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment,
-                  Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
-                )
-              }
-            end
-
           class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
             sig { returns(String) }
             attr_accessor :id
@@ -721,15 +708,13 @@ module Orb
             end
           end
 
-          class << self
-            sig do
-              override
-                .returns(
-                  [Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
-                )
-            end
-            def variants
-            end
+          sig do
+            override
+              .returns(
+                [Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
+              )
+          end
+          def self.variants
           end
         end
       end
@@ -766,17 +751,6 @@ module Orb
 
       module DiscountInterval
         extend Orb::Union
-
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::AmountDiscountInterval,
-                Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::PercentageDiscountInterval,
-                Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::UsageDiscountInterval
-              )
-            }
-          end
 
         class AmountDiscountInterval < Orb::BaseModel
           # Only available if discount_type is `amount`.
@@ -966,15 +940,13 @@ module Orb
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::UsageDiscountInterval]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::UsageDiscountInterval]
+            )
+        end
+        def self.variants
         end
       end
 
@@ -1375,10 +1347,8 @@ module Orb
         ENDED = T.let(:ended, Orb::Models::SubscriptionTriggerPhaseResponse::Status::TaggedSymbol)
         UPCOMING = T.let(:upcoming, Orb::Models::SubscriptionTriggerPhaseResponse::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::SubscriptionTriggerPhaseResponse::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::SubscriptionTriggerPhaseResponse::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 

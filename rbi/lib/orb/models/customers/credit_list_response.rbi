@@ -68,10 +68,8 @@ module Orb
           PENDING_PAYMENT =
             T.let(:pending_payment, Orb::Models::Customers::CreditListResponse::Status::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Customers::CreditListResponse::Status::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Customers::CreditListResponse::Status::TaggedSymbol]) }
+          def self.values
           end
         end
       end

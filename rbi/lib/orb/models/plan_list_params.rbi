@@ -91,10 +91,8 @@ module Orb
         ARCHIVED = T.let(:archived, Orb::Models::PlanListParams::Status::TaggedSymbol)
         DRAFT = T.let(:draft, Orb::Models::PlanListParams::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::PlanListParams::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::PlanListParams::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

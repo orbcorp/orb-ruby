@@ -74,10 +74,8 @@ module Orb
         DRAFT = T.let(:draft, Orb::Models::BillableMetric::Status::TaggedSymbol)
         ARCHIVED = T.let(:archived, Orb::Models::BillableMetric::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::BillableMetric::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::BillableMetric::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end
