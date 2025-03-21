@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.1.0-alpha.29 (2025-03-21)
+
+Full Changelog: [v0.1.0-alpha.28...v0.1.0-alpha.29](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.28...v0.1.0-alpha.29)
+
+### ⚠ BREAKING CHANGES
+
+* support `for item in stream` style iteration on `Stream`s ([#173](https://github.com/orbcorp/orb-ruby/issues/173))
+
+### Features
+
+* support `for item in stream` style iteration on `Stream`s ([#173](https://github.com/orbcorp/orb-ruby/issues/173)) ([588fd1d](https://github.com/orbcorp/orb-ruby/commit/588fd1de378ca262b9db8b368386a7aab7b2a36f))
+
+
+### Bug Fixes
+
+* pages should be able to accept non-converter models ([#176](https://github.com/orbcorp/orb-ruby/issues/176)) ([99b36e2](https://github.com/orbcorp/orb-ruby/commit/99b36e212b42bcc173fb6b37991f4d82731ef507))
+
+
+### Chores
+
+* add `[@yieldparam](https://github.com/yieldparam)` to yard doc ([#170](https://github.com/orbcorp/orb-ruby/issues/170)) ([b6918c1](https://github.com/orbcorp/orb-ruby/commit/b6918c1152a904e29ce040c5dd2cd5e5cb056191))
+* disable overloads in `*.rbs` definitions for readable LSP errors ([#172](https://github.com/orbcorp/orb-ruby/issues/172)) ([44a5b19](https://github.com/orbcorp/orb-ruby/commit/44a5b194dfcbea531ee4bdf63a34008304f9c878))
+* document Client's concurrency capability ([#169](https://github.com/orbcorp/orb-ruby/issues/169)) ([99f36ef](https://github.com/orbcorp/orb-ruby/commit/99f36efba8586dae3cde19d103254335142e8341))
+* ignore some spurious linter warnings and formatting changes ([#168](https://github.com/orbcorp/orb-ruby/issues/168)) ([0925835](https://github.com/orbcorp/orb-ruby/commit/0925835eceda886f027946a4368ddc534f5c3ce0))
+* **internal:** codegen related update ([#174](https://github.com/orbcorp/orb-ruby/issues/174)) ([4b4ddd6](https://github.com/orbcorp/orb-ruby/commit/4b4ddd67f9c8f51e786dd6cd902f0e4677942945))
+* **internal:** version bump ([#166](https://github.com/orbcorp/orb-ruby/issues/166)) ([421c2f7](https://github.com/orbcorp/orb-ruby/commit/421c2f770dcb42147266c5630f0919f247d21b9c))
+* switch to prettier looking sorbet annotations ([#175](https://github.com/orbcorp/orb-ruby/issues/175)) ([19ab2d6](https://github.com/orbcorp/orb-ruby/commit/19ab2d6ba75461fd1f96598b480932e152407157))
+* use multi-line formatting style for really long lines ([#171](https://github.com/orbcorp/orb-ruby/issues/171)) ([7b3ad6e](https://github.com/orbcorp/orb-ruby/commit/7b3ad6e5dbee813dfc0a7f1ea04e01a48e31dd11))
+
 ## 0.1.0-alpha.28 (2025-03-18)
 
 Full Changelog: [v0.1.0-alpha.27...v0.1.0-alpha.28](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.27...v0.1.0-alpha.28)
