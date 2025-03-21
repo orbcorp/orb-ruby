@@ -4,14 +4,12 @@ module Orb
   module Models
     class PriceEvaluateResponse < Orb::BaseModel
       sig { returns(T::Array[Orb::Models::EvaluatePriceGroup]) }
-      def data
-      end
+      attr_accessor :data
 
-      sig { params(_: T::Array[Orb::Models::EvaluatePriceGroup]).returns(T::Array[Orb::Models::EvaluatePriceGroup]) }
-      def data=(_)
+      sig do
+        params(data: T::Array[T.any(Orb::Models::EvaluatePriceGroup, Orb::Util::AnyHash)])
+          .returns(T.attached_class)
       end
-
-      sig { params(data: T::Array[Orb::Models::EvaluatePriceGroup]).returns(T.attached_class) }
       def self.new(data:)
       end
 

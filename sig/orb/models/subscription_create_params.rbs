@@ -174,7 +174,9 @@ module Orb
           | Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewMinimum
           | Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewMaximum
 
-        class Adjustment < Orb::Union
+        module Adjustment
+          extend Orb::Union
+
           type new_percentage_discount =
             {
               adjustment_type: :percentage_discount,
@@ -324,7 +326,7 @@ module Orb
             def to_hash: -> Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::new_maximum
           end
 
-          def self.variants: -> [Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewMaximum]
+          def self?.variants: -> [Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewMaximum]
         end
       end
 
@@ -407,7 +409,9 @@ module Orb
           type cadence =
             :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
 
-          class Cadence < Orb::Enum
+          module Cadence
+            extend Orb::Enum
+
             ONE_TIME: :one_time
             MONTHLY: :monthly
             QUARTERLY: :quarterly
@@ -415,7 +419,7 @@ module Orb
             ANNUAL: :annual
             CUSTOM: :custom
 
-            def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice::cadence]
+            def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice::cadence]
           end
         end
 
@@ -447,12 +451,14 @@ module Orb
 
           type discount_type = :percentage | :usage | :amount
 
-          class DiscountType < Orb::Enum
+          module DiscountType
+            extend Orb::Enum
+
             PERCENTAGE: :percentage
             USAGE: :usage
             AMOUNT: :amount
 
-            def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Discount::discount_type]
+            def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Discount::discount_type]
           end
         end
 
@@ -483,7 +489,9 @@ module Orb
           | Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice
           | Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice
 
-        class Price < Orb::Union
+        module Price
+          extend Orb::Union
+
           type new_subscription_unit_price =
             {
               cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::cadence,
@@ -566,7 +574,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -574,7 +584,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::cadence]
             end
 
             type unit_config = { unit_amount: String }
@@ -607,11 +617,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -635,11 +647,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -726,7 +740,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -734,7 +750,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::cadence]
             end
 
             type package_config =
@@ -773,11 +789,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -801,11 +819,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -892,7 +912,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -900,7 +922,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::cadence]
             end
 
             type matrix_config =
@@ -962,11 +984,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -990,11 +1014,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -1081,7 +1107,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -1089,7 +1117,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::cadence]
             end
 
             type tiered_config =
@@ -1146,11 +1174,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -1174,11 +1204,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -1265,7 +1297,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -1273,7 +1307,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::cadence]
             end
 
             type tiered_bps_config =
@@ -1338,11 +1372,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -1366,11 +1402,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -1469,7 +1507,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -1477,7 +1517,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -1500,11 +1540,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -1528,11 +1570,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -1657,7 +1701,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -1665,7 +1711,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -1688,11 +1734,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -1716,11 +1764,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -1837,7 +1887,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -1845,7 +1897,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -1868,11 +1920,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -1896,11 +1950,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -1987,7 +2043,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -1995,7 +2053,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -2018,11 +2076,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -2046,11 +2106,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -2137,7 +2199,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -2145,7 +2209,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -2168,11 +2232,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -2196,11 +2262,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -2287,7 +2355,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -2295,7 +2365,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -2318,11 +2388,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -2346,11 +2418,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -2437,7 +2511,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -2445,7 +2521,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -2468,11 +2544,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -2496,11 +2574,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -2587,7 +2667,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -2595,7 +2677,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -2618,11 +2700,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -2646,11 +2730,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -2737,7 +2823,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -2745,7 +2833,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -2768,11 +2856,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -2796,11 +2886,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -2887,7 +2979,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -2895,7 +2989,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -2918,11 +3012,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -2946,11 +3042,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -3037,7 +3135,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -3045,7 +3145,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -3068,11 +3168,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -3096,11 +3198,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -3187,7 +3291,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -3195,7 +3301,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -3218,11 +3324,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -3246,11 +3354,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -3337,7 +3447,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -3345,7 +3457,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -3368,11 +3480,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -3396,11 +3510,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -3487,7 +3603,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -3495,7 +3613,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -3518,11 +3636,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -3546,11 +3666,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -3637,7 +3759,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -3645,7 +3769,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -3668,11 +3792,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -3696,11 +3822,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -3787,7 +3915,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -3795,7 +3925,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -3818,11 +3948,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -3846,11 +3978,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -3937,7 +4071,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -3945,7 +4081,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -3968,11 +4104,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -3996,11 +4134,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -4087,7 +4227,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -4095,7 +4237,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -4118,11 +4260,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -4146,11 +4290,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -4237,7 +4383,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -4245,7 +4393,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -4268,11 +4416,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -4296,11 +4446,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -4387,7 +4539,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -4395,7 +4549,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -4418,11 +4572,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -4446,16 +4602,18 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
 
-          def self.variants: -> [Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice]
+          def self?.variants: -> [Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice]
         end
       end
 
@@ -4480,12 +4638,14 @@ module Orb
 
       type external_marketplace = :google | :aws | :azure
 
-      class ExternalMarketplace < Orb::Enum
+      module ExternalMarketplace
+        extend Orb::Enum
+
         GOOGLE: :google
         AWS: :aws
         AZURE: :azure
 
-        def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::external_marketplace]
+        def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::external_marketplace]
       end
 
       type remove_adjustment = { adjustment_id: String }
@@ -4538,7 +4698,9 @@ module Orb
           | Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewMinimum
           | Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewMaximum
 
-        class Adjustment < Orb::Union
+        module Adjustment
+          extend Orb::Union
+
           type new_percentage_discount =
             {
               adjustment_type: :percentage_discount,
@@ -4688,7 +4850,7 @@ module Orb
             def to_hash: -> Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::new_maximum
           end
 
-          def self.variants: -> [Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewMaximum]
+          def self?.variants: -> [Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewMaximum]
         end
       end
 
@@ -4767,7 +4929,9 @@ module Orb
           type cadence =
             :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
 
-          class Cadence < Orb::Enum
+          module Cadence
+            extend Orb::Enum
+
             ONE_TIME: :one_time
             MONTHLY: :monthly
             QUARTERLY: :quarterly
@@ -4775,7 +4939,7 @@ module Orb
             ANNUAL: :annual
             CUSTOM: :custom
 
-            def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice::cadence]
+            def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice::cadence]
           end
         end
 
@@ -4807,12 +4971,14 @@ module Orb
 
           type discount_type = :percentage | :usage | :amount
 
-          class DiscountType < Orb::Enum
+          module DiscountType
+            extend Orb::Enum
+
             PERCENTAGE: :percentage
             USAGE: :usage
             AMOUNT: :amount
 
-            def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Discount::discount_type]
+            def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Discount::discount_type]
           end
         end
 
@@ -4843,7 +5009,9 @@ module Orb
           | Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice
           | Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice
 
-        class Price < Orb::Union
+        module Price
+          extend Orb::Union
+
           type new_subscription_unit_price =
             {
               cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::cadence,
@@ -4926,7 +5094,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -4934,7 +5104,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::cadence]
             end
 
             type unit_config = { unit_amount: String }
@@ -4967,11 +5137,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -4995,11 +5167,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -5086,7 +5260,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -5094,7 +5270,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::cadence]
             end
 
             type package_config =
@@ -5133,11 +5309,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -5161,11 +5339,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -5252,7 +5432,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -5260,7 +5442,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::cadence]
             end
 
             type matrix_config =
@@ -5322,11 +5504,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -5350,11 +5534,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -5441,7 +5627,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -5449,7 +5637,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::cadence]
             end
 
             type tiered_config =
@@ -5506,11 +5694,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -5534,11 +5724,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -5625,7 +5817,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -5633,7 +5827,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::cadence]
             end
 
             type tiered_bps_config =
@@ -5698,11 +5892,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -5726,11 +5922,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -5829,7 +6027,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -5837,7 +6037,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -5860,11 +6060,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -5888,11 +6090,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -6017,7 +6221,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -6025,7 +6231,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -6048,11 +6254,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -6076,11 +6284,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -6197,7 +6407,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -6205,7 +6417,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -6228,11 +6440,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -6256,11 +6470,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -6347,7 +6563,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -6355,7 +6573,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -6378,11 +6596,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -6406,11 +6626,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -6497,7 +6719,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -6505,7 +6729,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -6528,11 +6752,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -6556,11 +6782,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -6647,7 +6875,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -6655,7 +6885,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -6678,11 +6908,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -6706,11 +6938,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -6797,7 +7031,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -6805,7 +7041,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -6828,11 +7064,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -6856,11 +7094,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -6947,7 +7187,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -6955,7 +7197,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -6978,11 +7220,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -7006,11 +7250,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -7097,7 +7343,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -7105,7 +7353,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -7128,11 +7376,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -7156,11 +7406,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -7247,7 +7499,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -7255,7 +7509,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -7278,11 +7532,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -7306,11 +7562,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -7397,7 +7655,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -7405,7 +7665,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -7428,11 +7688,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -7456,11 +7718,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -7547,7 +7811,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -7555,7 +7821,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -7578,11 +7844,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -7606,11 +7874,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -7697,7 +7967,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -7705,7 +7977,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -7728,11 +8000,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -7756,11 +8030,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -7847,7 +8123,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -7855,7 +8133,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -7878,11 +8156,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -7906,11 +8186,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -7997,7 +8279,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -8005,7 +8289,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -8028,11 +8312,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -8056,11 +8342,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -8147,7 +8435,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -8155,7 +8445,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -8178,11 +8468,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -8206,11 +8498,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -8297,7 +8591,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -8305,7 +8601,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -8328,11 +8624,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -8356,11 +8654,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -8447,7 +8747,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -8455,7 +8757,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -8478,11 +8780,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -8506,11 +8810,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -8597,7 +8903,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -8605,7 +8913,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -8628,11 +8936,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -8656,11 +8966,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
@@ -8747,7 +9059,9 @@ module Orb
               | :one_time
               | :custom
 
-            class Cadence < Orb::Enum
+            module Cadence
+              extend Orb::Enum
+
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
               MONTHLY: :monthly
@@ -8755,7 +9069,7 @@ module Orb
               ONE_TIME: :one_time
               CUSTOM: :custom
 
-              def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::cadence]
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::cadence]
             end
 
             type billing_cycle_configuration =
@@ -8778,11 +9092,13 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::duration_unit]
               end
             end
 
@@ -8806,16 +9122,18 @@ module Orb
 
               type duration_unit = :day | :month
 
-              class DurationUnit < Orb::Enum
+              module DurationUnit
+                extend Orb::Enum
+
                 DAY: :day
                 MONTH: :month
 
-                def self.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
+                def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::duration_unit]
               end
             end
           end
 
-          def self.variants: -> [Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice]
+          def self?.variants: -> [Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice]
         end
       end
     end

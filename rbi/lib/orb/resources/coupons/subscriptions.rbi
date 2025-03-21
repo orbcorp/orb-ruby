@@ -13,7 +13,7 @@ module Orb
             coupon_id: String,
             cursor: T.nilable(String),
             limit: Integer,
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
           )
             .returns(Orb::Page[Orb::Models::Subscription])
         end

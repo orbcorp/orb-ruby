@@ -6,43 +6,23 @@ module Orb
       # List of price_ids that this discount applies to. For plan/plan phase discounts,
       #   this can be a subset of prices.
       sig { returns(T::Array[String]) }
-      def applies_to_price_ids
-      end
+      attr_accessor :applies_to_price_ids
 
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def applies_to_price_ids=(_)
-      end
-
-      sig { returns(Symbol) }
-      def discount_type
-      end
-
-      sig { params(_: Symbol).returns(Symbol) }
-      def discount_type=(_)
-      end
+      sig { returns(Orb::Models::PercentageDiscount::DiscountType::OrSymbol) }
+      attr_accessor :discount_type
 
       # Only available if discount_type is `percentage`. This is a number between 0
       #   and 1.
       sig { returns(Float) }
-      def percentage_discount
-      end
-
-      sig { params(_: Float).returns(Float) }
-      def percentage_discount=(_)
-      end
+      attr_accessor :percentage_discount
 
       sig { returns(T.nilable(String)) }
-      def reason
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def reason=(_)
-      end
+      attr_accessor :reason
 
       sig do
         params(
           applies_to_price_ids: T::Array[String],
-          discount_type: Symbol,
+          discount_type: Orb::Models::PercentageDiscount::DiscountType::OrSymbol,
           percentage_discount: Float,
           reason: T.nilable(String)
         )
@@ -56,7 +36,7 @@ module Orb
           .returns(
             {
               applies_to_price_ids: T::Array[String],
-              discount_type: Symbol,
+              discount_type: Orb::Models::PercentageDiscount::DiscountType::OrSymbol,
               percentage_discount: Float,
               reason: T.nilable(String)
             }
@@ -65,12 +45,19 @@ module Orb
       def to_hash
       end
 
-      class DiscountType < Orb::Enum
-        abstract!
+      module DiscountType
+        extend Orb::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::PercentageDiscount::DiscountType) }
+        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::PercentageDiscount::DiscountType::TaggedSymbol) }
 
-        PERCENTAGE = :percentage
+        PERCENTAGE = T.let(:percentage, Orb::Models::PercentageDiscount::DiscountType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Orb::Models::PercentageDiscount::DiscountType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -8,29 +8,22 @@ module Orb
 
       # The new date that the trial should end, or the literal string `immediate` to end
       #   the trial immediately.
-      sig { returns(T.any(Time, Symbol)) }
-      def trial_end_date
-      end
-
-      sig { params(_: T.any(Time, Symbol)).returns(T.any(Time, Symbol)) }
-      def trial_end_date=(_)
-      end
+      sig { returns(T.any(Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol)) }
+      attr_accessor :trial_end_date
 
       # If true, shifts subsequent price and adjustment intervals (preserving their
       #   durations, but adjusting their absolute dates).
       sig { returns(T.nilable(T::Boolean)) }
-      def shift
-      end
+      attr_reader :shift
 
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def shift=(_)
-      end
+      sig { params(shift: T::Boolean).void }
+      attr_writer :shift
 
       sig do
         params(
-          trial_end_date: T.any(Time, Symbol),
+          trial_end_date: T.any(Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol),
           shift: T::Boolean,
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -39,28 +32,35 @@ module Orb
 
       sig do
         override
-          .returns({
-                     trial_end_date: T.any(Time, Symbol),
-                     shift: T::Boolean,
-                     request_options: Orb::RequestOptions
-                   })
+          .returns(
+            {
+              trial_end_date: T.any(Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol),
+              shift: T::Boolean,
+              request_options: Orb::RequestOptions
+            }
+          )
       end
       def to_hash
       end
 
       # The new date that the trial should end, or the literal string `immediate` to end
       #   the trial immediately.
-      class TrialEndDate < Orb::Union
-        abstract!
+      module TrialEndDate
+        extend Orb::Union
 
-        Variants = type_template(:out) { {fixed: T.any(Time, Symbol)} }
+        Variants =
+          type_template(:out) { {fixed: T.any(Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol)} }
 
-        class UnionMember1 < Orb::Enum
-          abstract!
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::TaggedSymbol) }
 
-          Value = type_template(:out) { {fixed: Symbol} }
+        IMMEDIATE = T.let(:immediate, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::TaggedSymbol)
 
-          IMMEDIATE = :immediate
+        class << self
+          sig { override.returns([Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol]) }
+          def variants
+          end
         end
       end
     end

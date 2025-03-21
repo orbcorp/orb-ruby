@@ -8,40 +8,24 @@ module Orb
 
       # The case sensitive currency or custom pricing unit to use for this alert.
       sig { returns(String) }
-      def currency
-      end
-
-      sig { params(_: String).returns(String) }
-      def currency=(_)
-      end
+      attr_accessor :currency
 
       # The type of alert to create. This must be a valid alert type.
-      sig { returns(Symbol) }
-      def type
-      end
-
-      sig { params(_: Symbol).returns(Symbol) }
-      def type=(_)
-      end
+      sig { returns(Orb::Models::AlertCreateForExternalCustomerParams::Type::OrSymbol) }
+      attr_accessor :type
 
       # The thresholds that define the values at which the alert will be triggered.
       sig { returns(T.nilable(T::Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold])) }
-      def thresholds
-      end
-
-      sig do
-        params(_: T.nilable(T::Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold]))
-          .returns(T.nilable(T::Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold]))
-      end
-      def thresholds=(_)
-      end
+      attr_accessor :thresholds
 
       sig do
         params(
           currency: String,
-          type: Symbol,
-          thresholds: T.nilable(T::Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold]),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          type: Orb::Models::AlertCreateForExternalCustomerParams::Type::OrSymbol,
+          thresholds: T.nilable(
+            T::Array[T.any(Orb::Models::AlertCreateForExternalCustomerParams::Threshold, Orb::Util::AnyHash)]
+          ),
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -53,7 +37,7 @@ module Orb
           .returns(
             {
               currency: String,
-              type: Symbol,
+              type: Orb::Models::AlertCreateForExternalCustomerParams::Type::OrSymbol,
               thresholds: T.nilable(T::Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold]),
               request_options: Orb::RequestOptions
             }
@@ -63,14 +47,25 @@ module Orb
       end
 
       # The type of alert to create. This must be a valid alert type.
-      class Type < Orb::Enum
-        abstract!
+      module Type
+        extend Orb::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::AlertCreateForExternalCustomerParams::Type) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Orb::Models::AlertCreateForExternalCustomerParams::Type::TaggedSymbol) }
 
-        CREDIT_BALANCE_DEPLETED = :credit_balance_depleted
-        CREDIT_BALANCE_DROPPED = :credit_balance_dropped
-        CREDIT_BALANCE_RECOVERED = :credit_balance_recovered
+        CREDIT_BALANCE_DEPLETED =
+          T.let(:credit_balance_depleted, Orb::Models::AlertCreateForExternalCustomerParams::Type::TaggedSymbol)
+        CREDIT_BALANCE_DROPPED =
+          T.let(:credit_balance_dropped, Orb::Models::AlertCreateForExternalCustomerParams::Type::TaggedSymbol)
+        CREDIT_BALANCE_RECOVERED =
+          T.let(:credit_balance_recovered, Orb::Models::AlertCreateForExternalCustomerParams::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Orb::Models::AlertCreateForExternalCustomerParams::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Threshold < Orb::BaseModel
@@ -78,12 +73,7 @@ module Orb
         #   fire at or below this value. For usage and cost alerts, the alert will fire at
         #   or above this value.
         sig { returns(Float) }
-        def value
-        end
-
-        sig { params(_: Float).returns(Float) }
-        def value=(_)
-        end
+        attr_accessor :value
 
         # Thresholds are used to define the conditions under which an alert will be
         #   triggered.

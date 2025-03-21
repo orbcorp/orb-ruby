@@ -32,12 +32,14 @@ module Orb
         | :credit_balance_dropped
         | :credit_balance_recovered
 
-      class Type < Orb::Enum
+      module Type
+        extend Orb::Enum
+
         CREDIT_BALANCE_DEPLETED: :credit_balance_depleted
         CREDIT_BALANCE_DROPPED: :credit_balance_dropped
         CREDIT_BALANCE_RECOVERED: :credit_balance_recovered
 
-        def self.values: -> ::Array[Orb::Models::AlertCreateForCustomerParams::type_]
+        def self?.values: -> ::Array[Orb::Models::AlertCreateForCustomerParams::type_]
       end
 
       type threshold = { value: Float }

@@ -5,10 +5,7 @@ module Orb
     class Alerts
       # This endpoint retrieves an alert by its ID.
       sig do
-        params(
-          alert_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+        params(alert_id: String, request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash)))
           .returns(Orb::Models::Alert)
       end
       def retrieve(alert_id, request_options: {})
@@ -18,8 +15,8 @@ module Orb
       sig do
         params(
           alert_configuration_id: String,
-          thresholds: T::Array[Orb::Models::AlertUpdateParams::Threshold],
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          thresholds: T::Array[T.any(Orb::Models::AlertUpdateParams::Threshold, Orb::Util::AnyHash)],
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::Alert)
       end
@@ -53,7 +50,7 @@ module Orb
           external_customer_id: T.nilable(String),
           limit: Integer,
           subscription_id: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Page[Orb::Models::Alert])
       end
@@ -89,9 +86,9 @@ module Orb
         params(
           customer_id: String,
           currency: String,
-          type: Symbol,
-          thresholds: T.nilable(T::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          type: Orb::Models::AlertCreateForCustomerParams::Type::OrSymbol,
+          thresholds: T.nilable(T::Array[T.any(Orb::Models::AlertCreateForCustomerParams::Threshold, Orb::Util::AnyHash)]),
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::Alert)
       end
@@ -119,9 +116,11 @@ module Orb
         params(
           external_customer_id: String,
           currency: String,
-          type: Symbol,
-          thresholds: T.nilable(T::Array[Orb::Models::AlertCreateForExternalCustomerParams::Threshold]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          type: Orb::Models::AlertCreateForExternalCustomerParams::Type::OrSymbol,
+          thresholds: T.nilable(
+            T::Array[T.any(Orb::Models::AlertCreateForExternalCustomerParams::Threshold, Orb::Util::AnyHash)]
+          ),
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::Alert)
       end
@@ -151,10 +150,10 @@ module Orb
       sig do
         params(
           subscription_id: String,
-          thresholds: T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold],
-          type: Symbol,
+          thresholds: T::Array[T.any(Orb::Models::AlertCreateForSubscriptionParams::Threshold, Orb::Util::AnyHash)],
+          type: Orb::Models::AlertCreateForSubscriptionParams::Type::OrSymbol,
           metric_id: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::Alert)
       end
@@ -177,7 +176,7 @@ module Orb
         params(
           alert_configuration_id: String,
           subscription_id: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::Alert)
       end
@@ -196,7 +195,7 @@ module Orb
         params(
           alert_configuration_id: String,
           subscription_id: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::Alert)
       end

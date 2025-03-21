@@ -5,8 +5,10 @@ module Orb
       | Orb::Models::AmountDiscount
       | Orb::Models::TrialDiscount
 
-    class InvoiceLevelDiscount < Orb::Union
-      def self.variants: -> [Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount]
+    module InvoiceLevelDiscount
+      extend Orb::Union
+
+      def self?.variants: -> [Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount]
     end
   end
 end

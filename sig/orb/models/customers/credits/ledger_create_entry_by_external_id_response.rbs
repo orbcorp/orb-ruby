@@ -11,7 +11,9 @@ module Orb
           | Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry
           | Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry
 
-        class LedgerCreateEntryByExternalIDResponse < Orb::Union
+        module LedgerCreateEntryByExternalIDResponse
+          extend Orb::Union
+
           type increment_ledger_entry =
             {
               id: String,
@@ -110,11 +112,13 @@ module Orb
 
             type entry_status = :committed | :pending
 
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry::entry_status]
             end
           end
 
@@ -228,11 +232,13 @@ module Orb
 
             type entry_status = :committed | :pending
 
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry::entry_status]
             end
           end
 
@@ -338,11 +344,13 @@ module Orb
 
             type entry_status = :committed | :pending
 
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry::entry_status]
             end
           end
 
@@ -444,11 +452,13 @@ module Orb
 
             type entry_status = :committed | :pending
 
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry::entry_status]
             end
           end
 
@@ -558,11 +568,13 @@ module Orb
 
             type entry_status = :committed | :pending
 
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry::entry_status]
             end
           end
 
@@ -676,11 +688,13 @@ module Orb
 
             type entry_status = :committed | :pending
 
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry::entry_status]
             end
           end
 
@@ -782,15 +796,17 @@ module Orb
 
             type entry_status = :committed | :pending
 
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry::entry_status]
             end
           end
 
-          def self.variants: -> [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry]
+          def self?.variants: -> [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry]
         end
       end
     end

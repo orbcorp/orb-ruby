@@ -4,59 +4,32 @@ module Orb
   module Models
     class BillableMetric < Orb::BaseModel
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # The Item resource represents a sellable product or good. Items are associated
       #   with all line items, billable metrics, and prices and are used for defining
       #   external sync behavior for invoices and tax calculation purposes.
       sig { returns(Orb::Models::Item) }
-      def item
-      end
+      attr_reader :item
 
-      sig { params(_: Orb::Models::Item).returns(Orb::Models::Item) }
-      def item=(_)
-      end
+      sig { params(item: T.any(Orb::Models::Item, Orb::Util::AnyHash)).void }
+      attr_writer :item
 
       # User specified key-value pairs for the resource. If not present, this defaults
       #   to an empty dictionary. Individual keys can be removed by setting the value to
       #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
       #   `null`.
       sig { returns(T::Hash[Symbol, String]) }
-      def metadata
-      end
-
-      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
-      def metadata=(_)
-      end
+      attr_accessor :metadata
 
       sig { returns(String) }
-      def name
-      end
+      attr_accessor :name
 
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
-
-      sig { returns(Symbol) }
-      def status
-      end
-
-      sig { params(_: Symbol).returns(Symbol) }
-      def status=(_)
-      end
+      sig { returns(Orb::Models::BillableMetric::Status::TaggedSymbol) }
+      attr_accessor :status
 
       # The Metric resource represents a calculation of a quantity based on events.
       #   Metrics are defined by the query that transforms raw usage events into
@@ -65,10 +38,10 @@ module Orb
         params(
           id: String,
           description: T.nilable(String),
-          item: Orb::Models::Item,
+          item: T.any(Orb::Models::Item, Orb::Util::AnyHash),
           metadata: T::Hash[Symbol, String],
           name: String,
-          status: Symbol
+          status: Orb::Models::BillableMetric::Status::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -84,21 +57,28 @@ module Orb
               item: Orb::Models::Item,
               metadata: T::Hash[Symbol, String],
               name: String,
-              status: Symbol
+              status: Orb::Models::BillableMetric::Status::TaggedSymbol
             }
           )
       end
       def to_hash
       end
 
-      class Status < Orb::Enum
-        abstract!
+      module Status
+        extend Orb::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::BillableMetric::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::BillableMetric::Status::TaggedSymbol) }
 
-        ACTIVE = :active
-        DRAFT = :draft
-        ARCHIVED = :archived
+        ACTIVE = T.let(:active, Orb::Models::BillableMetric::Status::TaggedSymbol)
+        DRAFT = T.let(:draft, Orb::Models::BillableMetric::Status::TaggedSymbol)
+        ARCHIVED = T.let(:archived, Orb::Models::BillableMetric::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Orb::Models::BillableMetric::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -8,52 +8,27 @@ module Orb
 
       # A name to meaningfully identify the action or event type.
       sig { returns(String) }
-      def event_name
-      end
-
-      sig { params(_: String).returns(String) }
-      def event_name=(_)
-      end
+      attr_accessor :event_name
 
       # A dictionary of custom properties. Values in this dictionary must be numeric,
       #   boolean, or strings. Nested dictionaries are disallowed.
       sig { returns(T.anything) }
-      def properties
-      end
-
-      sig { params(_: T.anything).returns(T.anything) }
-      def properties=(_)
-      end
+      attr_accessor :properties
 
       # An ISO 8601 format date with no timezone offset (i.e. UTC). This should
       #   represent the time that usage was recorded, and is particularly important to
       #   attribute usage to a given billing period.
       sig { returns(Time) }
-      def timestamp
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def timestamp=(_)
-      end
+      attr_accessor :timestamp
 
       # The Orb Customer identifier
       sig { returns(T.nilable(String)) }
-      def customer_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def customer_id=(_)
-      end
+      attr_accessor :customer_id
 
       # An alias for the Orb customer, whose mapping is specified when creating the
       #   customer
       sig { returns(T.nilable(String)) }
-      def external_customer_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def external_customer_id=(_)
-      end
+      attr_accessor :external_customer_id
 
       sig do
         params(
@@ -62,7 +37,7 @@ module Orb
           timestamp: Time,
           customer_id: T.nilable(String),
           external_customer_id: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

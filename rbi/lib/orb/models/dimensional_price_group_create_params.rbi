@@ -7,51 +7,23 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(String) }
-      def billable_metric_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def billable_metric_id=(_)
-      end
+      attr_accessor :billable_metric_id
 
       # The set of keys (in order) used to disambiguate prices in the group.
       sig { returns(T::Array[String]) }
-      def dimensions
-      end
-
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def dimensions=(_)
-      end
+      attr_accessor :dimensions
 
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       sig { returns(T.nilable(String)) }
-      def external_dimensional_price_group_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def external_dimensional_price_group_id=(_)
-      end
+      attr_accessor :external_dimensional_price_group_id
 
       # User-specified key/value pairs for the resource. Individual keys can be removed
       #   by setting the value to `null`, and the entire metadata mapping can be cleared
       #   by setting `metadata` to `null`.
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-      def metadata
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, T.nilable(String)]))
-          .returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
-      end
-      def metadata=(_)
-      end
+      attr_accessor :metadata
 
       sig do
         params(
@@ -60,7 +32,7 @@ module Orb
           name: String,
           external_dimensional_price_group_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

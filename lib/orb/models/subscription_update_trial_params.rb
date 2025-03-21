@@ -11,7 +11,7 @@ module Orb
       #   The new date that the trial should end, or the literal string `immediate` to end
       #     the trial immediately.
       #
-      #   @return [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::UnionMember1]
+      #   @return [Time, Symbol]
       required :trial_end_date, union: -> { Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate }
 
       # @!attribute [r] shift
@@ -26,7 +26,7 @@ module Orb
       #   attr_writer :shift
 
       # @!parse
-      #   # @param trial_end_date [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::UnionMember1]
+      #   # @param trial_end_date [Time, Symbol]
       #   # @param shift [Boolean]
       #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       #   #
@@ -34,25 +34,24 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @abstract
-      #
       # The new date that the trial should end, or the literal string `immediate` to end
       #   the trial immediately.
-      class TrialEndDate < Orb::Union
+      module TrialEndDate
+        extend Orb::Union
+
+        # @!group
+
+        IMMEDIATE = :immediate
+
+        # @!endgroup
+
         variant Time
 
-        variant enum: -> { Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::UnionMember1 }
-
-        # @abstract
-        class UnionMember1 < Orb::Enum
-          IMMEDIATE = :immediate
-
-          finalize!
-        end
+        variant const: Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::IMMEDIATE
 
         # @!parse
         #   class << self
-        #     # @return [Array(Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::UnionMember1)]
+        #     # @return [Array(Time, Symbol)]
         #     def variants; end
         #   end
       end

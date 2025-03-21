@@ -7,64 +7,35 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T.nilable(Time)) }
-      def created_at_gt
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created_at_gt=(_)
-      end
+      attr_accessor :created_at_gt
 
       sig { returns(T.nilable(Time)) }
-      def created_at_gte
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created_at_gte=(_)
-      end
+      attr_accessor :created_at_gte
 
       sig { returns(T.nilable(Time)) }
-      def created_at_lt
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created_at_lt=(_)
-      end
+      attr_accessor :created_at_lt
 
       sig { returns(T.nilable(Time)) }
-      def created_at_lte
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created_at_lte=(_)
-      end
+      attr_accessor :created_at_lte
 
       # Cursor for pagination. This can be populated by the `next_cursor` value returned
       #   from the initial request.
       sig { returns(T.nilable(String)) }
-      def cursor
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def cursor=(_)
-      end
+      attr_accessor :cursor
 
       # The number of items to fetch. Defaults to 20.
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
+      attr_reader :limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def limit=(_)
-      end
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
       # The plan status to filter to ('active', 'archived', or 'draft').
-      sig { returns(T.nilable(Symbol)) }
-      def status
-      end
+      sig { returns(T.nilable(Orb::Models::PlanListParams::Status::OrSymbol)) }
+      attr_reader :status
 
-      sig { params(_: Symbol).returns(Symbol) }
-      def status=(_)
-      end
+      sig { params(status: Orb::Models::PlanListParams::Status::OrSymbol).void }
+      attr_writer :status
 
       sig do
         params(
@@ -74,8 +45,8 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           limit: Integer,
-          status: Symbol,
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          status: Orb::Models::PlanListParams::Status::OrSymbol,
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -101,7 +72,7 @@ module Orb
               created_at_lte: T.nilable(Time),
               cursor: T.nilable(String),
               limit: Integer,
-              status: Symbol,
+              status: Orb::Models::PlanListParams::Status::OrSymbol,
               request_options: Orb::RequestOptions
             }
           )
@@ -110,14 +81,21 @@ module Orb
       end
 
       # The plan status to filter to ('active', 'archived', or 'draft').
-      class Status < Orb::Enum
-        abstract!
+      module Status
+        extend Orb::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::PlanListParams::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::PlanListParams::Status::TaggedSymbol) }
 
-        ACTIVE = :active
-        ARCHIVED = :archived
-        DRAFT = :draft
+        ACTIVE = T.let(:active, Orb::Models::PlanListParams::Status::TaggedSymbol)
+        ARCHIVED = T.let(:archived, Orb::Models::PlanListParams::Status::TaggedSymbol)
+        DRAFT = T.let(:draft, Orb::Models::PlanListParams::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Orb::Models::PlanListParams::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

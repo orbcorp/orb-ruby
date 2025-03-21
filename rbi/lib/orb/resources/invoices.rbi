@@ -8,12 +8,13 @@ module Orb
         params(
           currency: String,
           invoice_date: Time,
-          line_items: T::Array[Orb::Models::InvoiceCreateParams::LineItem],
+          line_items: T::Array[T.any(Orb::Models::InvoiceCreateParams::LineItem, Orb::Util::AnyHash)],
           net_terms: Integer,
           customer_id: T.nilable(String),
           discount: T.nilable(
             T.any(
               Orb::Models::PercentageDiscount,
+              Orb::Util::AnyHash,
               Orb::Models::TrialDiscount,
               Orb::Models::UsageDiscount,
               Orb::Models::AmountDiscount
@@ -23,7 +24,7 @@ module Orb
           memo: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           will_auto_issue: T::Boolean,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::Invoice)
       end
@@ -70,7 +71,7 @@ module Orb
         params(
           invoice_id: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::Invoice)
       end
@@ -104,7 +105,7 @@ module Orb
           amount_lt: T.nilable(String),
           cursor: T.nilable(String),
           customer_id: T.nilable(String),
-          date_type: T.nilable(Symbol),
+          date_type: T.nilable(Orb::Models::InvoiceListParams::DateType::OrSymbol),
           due_date: T.nilable(Date),
           due_date_window: T.nilable(String),
           due_date_gt: T.nilable(Date),
@@ -116,9 +117,9 @@ module Orb
           invoice_date_lte: T.nilable(Time),
           is_recurring: T.nilable(T::Boolean),
           limit: Integer,
-          status: T.nilable(T::Array[Symbol]),
+          status: T.nilable(T::Array[Orb::Models::InvoiceListParams::Status::OrSymbol]),
           subscription_id: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Page[Orb::Models::Invoice])
       end
@@ -156,10 +157,7 @@ module Orb
       # This endpoint is used to fetch an [`Invoice`](/core-concepts#invoice) given an
       #   identifier.
       sig do
-        params(
-          invoice_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+        params(invoice_id: String, request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash)))
           .returns(Orb::Models::Invoice)
       end
       def fetch(invoice_id, request_options: {})
@@ -171,7 +169,7 @@ module Orb
       sig do
         params(
           subscription_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::InvoiceFetchUpcomingResponse)
       end
@@ -188,7 +186,7 @@ module Orb
         params(
           invoice_id: String,
           synchronous: T::Boolean,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::Invoice)
       end
@@ -212,7 +210,7 @@ module Orb
           payment_received_date: Date,
           external_id: T.nilable(String),
           notes: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::Invoice)
       end
@@ -231,10 +229,7 @@ module Orb
       # This endpoint collects payment for an invoice using the customer's default
       #   payment method. This action can only be taken on invoices with status "issued".
       sig do
-        params(
-          invoice_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+        params(invoice_id: String, request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash)))
           .returns(Orb::Models::Invoice)
       end
       def pay(invoice_id, request_options: {})
@@ -252,10 +247,7 @@ module Orb
       #   paid, the credit block will be voided. If the invoice was created due to a
       #   top-up, the top-up will be disabled.
       sig do
-        params(
-          invoice_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+        params(invoice_id: String, request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash)))
           .returns(Orb::Models::Invoice)
       end
       def void(invoice_id, request_options: {})

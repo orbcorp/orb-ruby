@@ -41,11 +41,13 @@ module Orb
 
         type status = :active | :pending_payment
 
-        class Status < Orb::Enum
+        module Status
+          extend Orb::Enum
+
           ACTIVE: :active
           PENDING_PAYMENT: :pending_payment
 
-          def self.values: -> ::Array[Orb::Models::Customers::CreditListByExternalIDResponse::status]
+          def self?.values: -> ::Array[Orb::Models::Customers::CreditListByExternalIDResponse::status]
         end
       end
     end

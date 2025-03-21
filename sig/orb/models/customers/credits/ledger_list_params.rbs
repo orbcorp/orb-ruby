@@ -61,11 +61,13 @@ module Orb
 
           type entry_status = :committed | :pending
 
-          class EntryStatus < Orb::Enum
+          module EntryStatus
+            extend Orb::Enum
+
             COMMITTED: :committed
             PENDING: :pending
 
-            def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListParams::entry_status]
+            def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListParams::entry_status]
           end
 
           type entry_type =
@@ -77,7 +79,9 @@ module Orb
             | :void_initiated
             | :amendment
 
-          class EntryType < Orb::Enum
+          module EntryType
+            extend Orb::Enum
+
             INCREMENT: :increment
             DECREMENT: :decrement
             EXPIRATION_CHANGE: :expiration_change
@@ -86,7 +90,7 @@ module Orb
             VOID_INITIATED: :void_initiated
             AMENDMENT: :amendment
 
-            def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListParams::entry_type]
+            def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListParams::entry_type]
           end
         end
       end

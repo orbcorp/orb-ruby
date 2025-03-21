@@ -67,10 +67,12 @@ module Orb
 
           type entry_type = :amendment
 
-          class EntryType < Orb::Enum
+          module EntryType
+            extend Orb::Enum
+
             AMENDMENT: :amendment
 
-            def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::entry_type]
+            def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::entry_type]
           end
 
           type invoice_settings =
@@ -104,10 +106,12 @@ module Orb
 
           type void_reason = :refund
 
-          class VoidReason < Orb::Enum
+          module VoidReason
+            extend Orb::Enum
+
             REFUND: :refund
 
-            def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::void_reason]
+            def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::void_reason]
           end
         end
       end

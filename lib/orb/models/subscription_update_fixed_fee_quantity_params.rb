@@ -68,17 +68,23 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @abstract
-      #
       # Determines when the change takes effect. Note that if `effective_date` is
       #   specified, this defaults to `effective_date`. Otherwise, this defaults to
       #   `immediate` unless it's explicitly set to `upcoming_invoice`.
-      class ChangeOption < Orb::Enum
+      module ChangeOption
+        extend Orb::Enum
+
         IMMEDIATE = :immediate
         UPCOMING_INVOICE = :upcoming_invoice
         EFFECTIVE_DATE = :effective_date
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

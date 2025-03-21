@@ -75,11 +75,13 @@ module Orb
 
           type expires_after_unit = :day | :month
 
-          class ExpiresAfterUnit < Orb::Enum
+          module ExpiresAfterUnit
+            extend Orb::Enum
+
             DAY: :day
             MONTH: :month
 
-            def self.values: -> ::Array[Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse::expires_after_unit]
+            def self?.values: -> ::Array[Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse::expires_after_unit]
           end
         end
       end

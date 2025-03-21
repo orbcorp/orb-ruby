@@ -7,40 +7,22 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T::Array[Orb::Models::CreditNoteCreateParams::LineItem]) }
-      def line_items
-      end
-
-      sig do
-        params(_: T::Array[Orb::Models::CreditNoteCreateParams::LineItem])
-          .returns(T::Array[Orb::Models::CreditNoteCreateParams::LineItem])
-      end
-      def line_items=(_)
-      end
+      attr_accessor :line_items
 
       # An optional memo to attach to the credit note.
       sig { returns(T.nilable(String)) }
-      def memo
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def memo=(_)
-      end
+      attr_accessor :memo
 
       # An optional reason for the credit note.
-      sig { returns(T.nilable(Symbol)) }
-      def reason
-      end
-
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-      def reason=(_)
-      end
+      sig { returns(T.nilable(Orb::Models::CreditNoteCreateParams::Reason::OrSymbol)) }
+      attr_accessor :reason
 
       sig do
         params(
-          line_items: T::Array[Orb::Models::CreditNoteCreateParams::LineItem],
+          line_items: T::Array[T.any(Orb::Models::CreditNoteCreateParams::LineItem, Orb::Util::AnyHash)],
           memo: T.nilable(String),
-          reason: T.nilable(Symbol),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          reason: T.nilable(Orb::Models::CreditNoteCreateParams::Reason::OrSymbol),
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -53,7 +35,7 @@ module Orb
             {
               line_items: T::Array[Orb::Models::CreditNoteCreateParams::LineItem],
               memo: T.nilable(String),
-              reason: T.nilable(Symbol),
+              reason: T.nilable(Orb::Models::CreditNoteCreateParams::Reason::OrSymbol),
               request_options: Orb::RequestOptions
             }
           )
@@ -64,21 +46,11 @@ module Orb
       class LineItem < Orb::BaseModel
         # The total amount in the invoice's currency to credit this line item.
         sig { returns(String) }
-        def amount
-        end
-
-        sig { params(_: String).returns(String) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # The ID of the line item to credit.
         sig { returns(String) }
-        def invoice_line_item_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def invoice_line_item_id=(_)
-        end
+        attr_accessor :invoice_line_item_id
 
         sig { params(amount: String, invoice_line_item_id: String).returns(T.attached_class) }
         def self.new(amount:, invoice_line_item_id:)
@@ -90,15 +62,23 @@ module Orb
       end
 
       # An optional reason for the credit note.
-      class Reason < Orb::Enum
-        abstract!
+      module Reason
+        extend Orb::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CreditNoteCreateParams::Reason) }
+        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::CreditNoteCreateParams::Reason::TaggedSymbol) }
 
-        DUPLICATE = :duplicate
-        FRAUDULENT = :fraudulent
-        ORDER_CHANGE = :order_change
-        PRODUCT_UNSATISFACTORY = :product_unsatisfactory
+        DUPLICATE = T.let(:duplicate, Orb::Models::CreditNoteCreateParams::Reason::TaggedSymbol)
+        FRAUDULENT = T.let(:fraudulent, Orb::Models::CreditNoteCreateParams::Reason::TaggedSymbol)
+        ORDER_CHANGE = T.let(:order_change, Orb::Models::CreditNoteCreateParams::Reason::TaggedSymbol)
+        PRODUCT_UNSATISFACTORY =
+          T.let(:product_unsatisfactory, Orb::Models::CreditNoteCreateParams::Reason::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Orb::Models::CreditNoteCreateParams::Reason::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -4,11 +4,11 @@ module Orb
   module Models
     module Customers
       module Credits
-        # @abstract
-        #
         # The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid
         #   credits within Orb.
-        class LedgerListResponse < Orb::Union
+        module LedgerListResponse
+          extend Orb::Union
+
           discriminator :entry_type
 
           variant :increment, -> { Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry }
@@ -183,12 +183,19 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @abstract
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED = :committed
               PENDING = :pending
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -368,12 +375,19 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @abstract
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED = :committed
               PENDING = :pending
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -539,12 +553,19 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @abstract
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED = :committed
               PENDING = :pending
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -703,12 +724,19 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @abstract
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED = :committed
               PENDING = :pending
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -880,12 +908,19 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @abstract
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED = :committed
               PENDING = :pending
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -1065,12 +1100,19 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @abstract
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED = :committed
               PENDING = :pending
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -1229,12 +1271,19 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
-            # @abstract
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED = :committed
               PENDING = :pending
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
