@@ -14,65 +14,33 @@ module Orb
           )
         )
       end
-      def discount
-      end
-
-      sig do
-        params(
-          _: T.any(
-            Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
-            Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
-          )
-        )
-          .returns(
-            T.any(
-              Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
-              Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
-            )
-          )
-      end
-      def discount=(_)
-      end
+      attr_accessor :discount
 
       # This string can be used to redeem this coupon for a given subscription.
       sig { returns(String) }
-      def redemption_code
-      end
-
-      sig { params(_: String).returns(String) }
-      def redemption_code=(_)
-      end
+      attr_accessor :redemption_code
 
       # This allows for a coupon's discount to apply for a limited time (determined in
       #   months); a `null` value here means "unlimited time".
       sig { returns(T.nilable(Integer)) }
-      def duration_in_months
-      end
-
-      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-      def duration_in_months=(_)
-      end
+      attr_accessor :duration_in_months
 
       # The maximum number of redemptions allowed for this coupon before it is
       #   exhausted;`null` here means "unlimited".
       sig { returns(T.nilable(Integer)) }
-      def max_redemptions
-      end
-
-      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-      def max_redemptions=(_)
-      end
+      attr_accessor :max_redemptions
 
       sig do
         params(
           discount: T.any(
             Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
+            Orb::Util::AnyHash,
             Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
           ),
           redemption_code: String,
           duration_in_months: T.nilable(Integer),
           max_redemptions: T.nilable(Integer),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -97,8 +65,8 @@ module Orb
       def to_hash
       end
 
-      class Discount < Orb::Union
-        abstract!
+      module Discount
+        extend Orb::Union
 
         Variants =
           type_template(:out) do
@@ -112,20 +80,10 @@ module Orb
 
         class NewCouponPercentageDiscount < Orb::BaseModel
           sig { returns(Symbol) }
-          def discount_type
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def discount_type=(_)
-          end
+          attr_accessor :discount_type
 
           sig { returns(Float) }
-          def percentage_discount
-          end
-
-          sig { params(_: Float).returns(Float) }
-          def percentage_discount=(_)
-          end
+          attr_accessor :percentage_discount
 
           sig { params(percentage_discount: Float, discount_type: Symbol).returns(T.attached_class) }
           def self.new(percentage_discount:, discount_type: :percentage)
@@ -138,20 +96,10 @@ module Orb
 
         class NewCouponAmountDiscount < Orb::BaseModel
           sig { returns(String) }
-          def amount_discount
-          end
-
-          sig { params(_: String).returns(String) }
-          def amount_discount=(_)
-          end
+          attr_accessor :amount_discount
 
           sig { returns(Symbol) }
-          def discount_type
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def discount_type=(_)
-          end
+          attr_accessor :discount_type
 
           sig { params(amount_discount: String, discount_type: Symbol).returns(T.attached_class) }
           def self.new(amount_discount:, discount_type: :amount)
@@ -159,6 +107,17 @@ module Orb
 
           sig { override.returns({amount_discount: String, discount_type: Symbol}) }
           def to_hash
+          end
+        end
+
+        class << self
+          sig do
+            override
+              .returns(
+                [Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]
+              )
+          end
+          def variants
           end
         end
       end

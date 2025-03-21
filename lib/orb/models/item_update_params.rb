@@ -48,8 +48,9 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @abstract
-        class ExternalConnectionName < Orb::Enum
+        module ExternalConnectionName
+          extend Orb::Enum
+
           STRIPE = :stripe
           QUICKBOOKS = :quickbooks
           BILL_COM = :"bill.com"
@@ -59,6 +60,12 @@ module Orb
           ANROK = :anrok
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

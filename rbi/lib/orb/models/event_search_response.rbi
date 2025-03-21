@@ -4,17 +4,12 @@ module Orb
   module Models
     class EventSearchResponse < Orb::BaseModel
       sig { returns(T::Array[Orb::Models::EventSearchResponse::Data]) }
-      def data
-      end
+      attr_accessor :data
 
       sig do
-        params(_: T::Array[Orb::Models::EventSearchResponse::Data])
-          .returns(T::Array[Orb::Models::EventSearchResponse::Data])
+        params(data: T::Array[T.any(Orb::Models::EventSearchResponse::Data, Orb::Util::AnyHash)])
+          .returns(T.attached_class)
       end
-      def data=(_)
-      end
-
-      sig { params(data: T::Array[Orb::Models::EventSearchResponse::Data]).returns(T.attached_class) }
       def self.new(data:)
       end
 
@@ -27,70 +22,35 @@ module Orb
         #   Exactly one event with a given idempotency key will be ingested, which allows
         #   for safe request retries.
         sig { returns(String) }
-        def id
-        end
-
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
+        attr_accessor :id
 
         # The Orb Customer identifier
         sig { returns(T.nilable(String)) }
-        def customer_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def customer_id=(_)
-        end
+        attr_accessor :customer_id
 
         # A boolean indicating whether the event is currently deprecated.
         sig { returns(T::Boolean) }
-        def deprecated
-        end
-
-        sig { params(_: T::Boolean).returns(T::Boolean) }
-        def deprecated=(_)
-        end
+        attr_accessor :deprecated
 
         # A name to meaningfully identify the action or event type.
         sig { returns(String) }
-        def event_name
-        end
-
-        sig { params(_: String).returns(String) }
-        def event_name=(_)
-        end
+        attr_accessor :event_name
 
         # An alias for the Orb customer, whose mapping is specified when creating the
         #   customer
         sig { returns(T.nilable(String)) }
-        def external_customer_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def external_customer_id=(_)
-        end
+        attr_accessor :external_customer_id
 
         # A dictionary of custom properties. Values in this dictionary must be numeric,
         #   boolean, or strings. Nested dictionaries are disallowed.
         sig { returns(T.anything) }
-        def properties
-        end
-
-        sig { params(_: T.anything).returns(T.anything) }
-        def properties=(_)
-        end
+        attr_accessor :properties
 
         # An ISO 8601 format date with no timezone offset (i.e. UTC). This should
         #   represent the time that usage was recorded, and is particularly important to
         #   attribute usage to a given billing period.
         sig { returns(Time) }
-        def timestamp
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def timestamp=(_)
-        end
+        attr_accessor :timestamp
 
         # The [Event](/core-concepts#event) resource represents a usage event that has
         #   been created for a customer. Events are the core of Orb's usage-based billing

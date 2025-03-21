@@ -50,7 +50,9 @@ module Orb
           | :avalara
           | :anrok
 
-        class ExternalConnectionName < Orb::Enum
+        module ExternalConnectionName
+          extend Orb::Enum
+
           STRIPE: :stripe
           QUICKBOOKS: :quickbooks
           BILL_COM: :"bill.com"
@@ -59,7 +61,7 @@ module Orb
           AVALARA: :avalara
           ANROK: :anrok
 
-          def self.values: -> ::Array[Orb::Models::ItemUpdateParams::ExternalConnection::external_connection_name]
+          def self?.values: -> ::Array[Orb::Models::ItemUpdateParams::ExternalConnection::external_connection_name]
         end
       end
     end

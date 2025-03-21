@@ -8,58 +8,28 @@ module Orb
 
       # The total amount in the invoice's currency to add to the line item.
       sig { returns(String) }
-      def amount
-      end
-
-      sig { params(_: String).returns(String) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # A date string to specify the line item's end date in the customer's timezone.
       sig { returns(Date) }
-      def end_date
-      end
-
-      sig { params(_: Date).returns(Date) }
-      def end_date=(_)
-      end
+      attr_accessor :end_date
 
       # The id of the Invoice to add this line item.
       sig { returns(String) }
-      def invoice_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def invoice_id=(_)
-      end
+      attr_accessor :invoice_id
 
       # The item name associated with this line item. If an item with the same name
       #   exists in Orb, that item will be associated with the line item.
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # The number of units on the line item
       sig { returns(Float) }
-      def quantity
-      end
-
-      sig { params(_: Float).returns(Float) }
-      def quantity=(_)
-      end
+      attr_accessor :quantity
 
       # A date string to specify the line item's start date in the customer's timezone.
       sig { returns(Date) }
-      def start_date
-      end
-
-      sig { params(_: Date).returns(Date) }
-      def start_date=(_)
-      end
+      attr_accessor :start_date
 
       sig do
         params(
@@ -69,7 +39,7 @@ module Orb
           name: String,
           quantity: Float,
           start_date: Date,
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

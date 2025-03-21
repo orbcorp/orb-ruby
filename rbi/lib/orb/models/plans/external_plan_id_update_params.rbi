@@ -11,32 +11,19 @@ module Orb
         #   as an alias for this Plan. Use this field to identify a plan by an existing
         #   identifier in your system.
         sig { returns(T.nilable(String)) }
-        def external_plan_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def external_plan_id=(_)
-        end
+        attr_accessor :external_plan_id
 
         # User-specified key/value pairs for the resource. Individual keys can be removed
         #   by setting the value to `null`, and the entire metadata mapping can be cleared
         #   by setting `metadata` to `null`.
         sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-        def metadata
-        end
-
-        sig do
-          params(_: T.nilable(T::Hash[Symbol, T.nilable(String)]))
-            .returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
-        end
-        def metadata=(_)
-        end
+        attr_accessor :metadata
 
         sig do
           params(
             external_plan_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

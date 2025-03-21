@@ -8,20 +8,12 @@ module Orb
 
       # The thresholds that define the values at which the alert will be triggered.
       sig { returns(T::Array[Orb::Models::AlertUpdateParams::Threshold]) }
-      def thresholds
-      end
-
-      sig do
-        params(_: T::Array[Orb::Models::AlertUpdateParams::Threshold])
-          .returns(T::Array[Orb::Models::AlertUpdateParams::Threshold])
-      end
-      def thresholds=(_)
-      end
+      attr_accessor :thresholds
 
       sig do
         params(
-          thresholds: T::Array[Orb::Models::AlertUpdateParams::Threshold],
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          thresholds: T::Array[T.any(Orb::Models::AlertUpdateParams::Threshold, Orb::Util::AnyHash)],
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -42,12 +34,7 @@ module Orb
         #   fire at or below this value. For usage and cost alerts, the alert will fire at
         #   or above this value.
         sig { returns(Float) }
-        def value
-        end
-
-        sig { params(_: Float).returns(Float) }
-        def value=(_)
-        end
+        attr_accessor :value
 
         # Thresholds are used to define the conditions under which an alert will be
         #   triggered.

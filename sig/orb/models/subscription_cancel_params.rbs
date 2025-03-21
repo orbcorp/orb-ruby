@@ -30,12 +30,14 @@ module Orb
       type cancel_option =
         :end_of_subscription_term | :immediate | :requested_date
 
-      class CancelOption < Orb::Enum
+      module CancelOption
+        extend Orb::Enum
+
         END_OF_SUBSCRIPTION_TERM: :end_of_subscription_term
         IMMEDIATE: :immediate
         REQUESTED_DATE: :requested_date
 
-        def self.values: -> ::Array[Orb::Models::SubscriptionCancelParams::cancel_option]
+        def self?.values: -> ::Array[Orb::Models::SubscriptionCancelParams::cancel_option]
       end
     end
   end

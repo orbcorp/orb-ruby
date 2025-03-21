@@ -174,14 +174,16 @@ module Orb
       type payment_provider =
         :quickbooks | :"bill.com" | :stripe_charge | :stripe_invoice | :netsuite
 
-      class PaymentProvider < Orb::Enum
+      module PaymentProvider
+        extend Orb::Enum
+
         QUICKBOOKS: :quickbooks
         BILL_COM: :"bill.com"
         STRIPE_CHARGE: :stripe_charge
         STRIPE_INVOICE: :stripe_invoice
         NETSUITE: :netsuite
 
-        def self.values: -> ::Array[Orb::Models::CustomerUpdateParams::payment_provider]
+        def self?.values: -> ::Array[Orb::Models::CustomerUpdateParams::payment_provider]
       end
 
       type reporting_configuration = { exempt: bool }
@@ -233,7 +235,9 @@ module Orb
         Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration
         | Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration
 
-      class TaxConfiguration < Orb::Union
+      module TaxConfiguration
+        extend Orb::Union
+
         type new_avalara_tax_configuration =
           {
             tax_exempt: bool,
@@ -270,7 +274,7 @@ module Orb
           def to_hash: -> Orb::Models::CustomerUpdateParams::TaxConfiguration::new_tax_jar_configuration
         end
 
-        def self.variants: -> [Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration]
+        def self?.variants: -> [Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration]
       end
 
       type tax_id =
@@ -375,7 +379,9 @@ module Orb
           | :VN
           | :ZA
 
-        class Country < Orb::Enum
+        module Country
+          extend Orb::Enum
+
           AD: :AD
           AE: :AE
           AR: :AR
@@ -455,7 +461,7 @@ module Orb
           VN: :VN
           ZA: :ZA
 
-          def self.values: -> ::Array[Orb::Models::CustomerUpdateParams::TaxID::country]
+          def self?.values: -> ::Array[Orb::Models::CustomerUpdateParams::TaxID::country]
         end
 
         type type_ =
@@ -531,7 +537,9 @@ module Orb
           | :vn_tin
           | :za_vat
 
-        class Type < Orb::Enum
+        module Type
+          extend Orb::Enum
+
           AD_NRT: :ad_nrt
           AE_TRN: :ae_trn
           AR_CUIT: :ar_cuit
@@ -604,7 +612,7 @@ module Orb
           VN_TIN: :vn_tin
           ZA_VAT: :za_vat
 
-          def self.values: -> ::Array[Orb::Models::CustomerUpdateParams::TaxID::type_]
+          def self?.values: -> ::Array[Orb::Models::CustomerUpdateParams::TaxID::type_]
         end
       end
     end

@@ -5,17 +5,12 @@ module Orb
     module Customers
       class CostListResponse < Orb::BaseModel
         sig { returns(T::Array[Orb::Models::Customers::CostListResponse::Data]) }
-        def data
-        end
+        attr_accessor :data
 
         sig do
-          params(_: T::Array[Orb::Models::Customers::CostListResponse::Data])
-            .returns(T::Array[Orb::Models::Customers::CostListResponse::Data])
+          params(data: T::Array[T.any(Orb::Models::Customers::CostListResponse::Data, Orb::Util::AnyHash)])
+            .returns(T.attached_class)
         end
-        def data=(_)
-        end
-
-        sig { params(data: T::Array[Orb::Models::Customers::CostListResponse::Data]).returns(T.attached_class) }
         def self.new(data:)
         end
 
@@ -25,53 +20,25 @@ module Orb
 
         class Data < Orb::BaseModel
           sig { returns(T::Array[Orb::Models::Customers::CostListResponse::Data::PerPriceCost]) }
-          def per_price_costs
-          end
-
-          sig do
-            params(_: T::Array[Orb::Models::Customers::CostListResponse::Data::PerPriceCost])
-              .returns(T::Array[Orb::Models::Customers::CostListResponse::Data::PerPriceCost])
-          end
-          def per_price_costs=(_)
-          end
+          attr_accessor :per_price_costs
 
           # Total costs for the timeframe, excluding any minimums and discounts.
           sig { returns(String) }
-          def subtotal
-          end
-
-          sig { params(_: String).returns(String) }
-          def subtotal=(_)
-          end
+          attr_accessor :subtotal
 
           sig { returns(Time) }
-          def timeframe_end
-          end
-
-          sig { params(_: Time).returns(Time) }
-          def timeframe_end=(_)
-          end
+          attr_accessor :timeframe_end
 
           sig { returns(Time) }
-          def timeframe_start
-          end
-
-          sig { params(_: Time).returns(Time) }
-          def timeframe_start=(_)
-          end
+          attr_accessor :timeframe_start
 
           # Total costs for the timeframe, including any minimums and discounts.
           sig { returns(String) }
-          def total
-          end
-
-          sig { params(_: String).returns(String) }
-          def total=(_)
-          end
+          attr_accessor :total
 
           sig do
             params(
-              per_price_costs: T::Array[Orb::Models::Customers::CostListResponse::Data::PerPriceCost],
+              per_price_costs: T::Array[T.any(Orb::Models::Customers::CostListResponse::Data::PerPriceCost, Orb::Util::AnyHash)],
               subtotal: String,
               timeframe_end: Time,
               timeframe_start: Time,
@@ -133,118 +100,29 @@ module Orb
                 )
               )
             end
-            def price
-            end
-
-            sig do
-              params(
-                _: T.any(
-                  Orb::Models::Price::UnitPrice,
-                  Orb::Models::Price::PackagePrice,
-                  Orb::Models::Price::MatrixPrice,
-                  Orb::Models::Price::TieredPrice,
-                  Orb::Models::Price::TieredBpsPrice,
-                  Orb::Models::Price::BpsPrice,
-                  Orb::Models::Price::BulkBpsPrice,
-                  Orb::Models::Price::BulkPrice,
-                  Orb::Models::Price::ThresholdTotalAmountPrice,
-                  Orb::Models::Price::TieredPackagePrice,
-                  Orb::Models::Price::GroupedTieredPrice,
-                  Orb::Models::Price::TieredWithMinimumPrice,
-                  Orb::Models::Price::TieredPackageWithMinimumPrice,
-                  Orb::Models::Price::PackageWithAllocationPrice,
-                  Orb::Models::Price::UnitWithPercentPrice,
-                  Orb::Models::Price::MatrixWithAllocationPrice,
-                  Orb::Models::Price::TieredWithProrationPrice,
-                  Orb::Models::Price::UnitWithProrationPrice,
-                  Orb::Models::Price::GroupedAllocationPrice,
-                  Orb::Models::Price::GroupedWithProratedMinimumPrice,
-                  Orb::Models::Price::GroupedWithMeteredMinimumPrice,
-                  Orb::Models::Price::MatrixWithDisplayNamePrice,
-                  Orb::Models::Price::BulkWithProrationPrice,
-                  Orb::Models::Price::GroupedTieredPackagePrice,
-                  Orb::Models::Price::MaxGroupTieredPackagePrice,
-                  Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                  Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
-                  Orb::Models::Price::CumulativeGroupedBulkPrice
-                )
-              )
-                .returns(
-                  T.any(
-                    Orb::Models::Price::UnitPrice,
-                    Orb::Models::Price::PackagePrice,
-                    Orb::Models::Price::MatrixPrice,
-                    Orb::Models::Price::TieredPrice,
-                    Orb::Models::Price::TieredBpsPrice,
-                    Orb::Models::Price::BpsPrice,
-                    Orb::Models::Price::BulkBpsPrice,
-                    Orb::Models::Price::BulkPrice,
-                    Orb::Models::Price::ThresholdTotalAmountPrice,
-                    Orb::Models::Price::TieredPackagePrice,
-                    Orb::Models::Price::GroupedTieredPrice,
-                    Orb::Models::Price::TieredWithMinimumPrice,
-                    Orb::Models::Price::TieredPackageWithMinimumPrice,
-                    Orb::Models::Price::PackageWithAllocationPrice,
-                    Orb::Models::Price::UnitWithPercentPrice,
-                    Orb::Models::Price::MatrixWithAllocationPrice,
-                    Orb::Models::Price::TieredWithProrationPrice,
-                    Orb::Models::Price::UnitWithProrationPrice,
-                    Orb::Models::Price::GroupedAllocationPrice,
-                    Orb::Models::Price::GroupedWithProratedMinimumPrice,
-                    Orb::Models::Price::GroupedWithMeteredMinimumPrice,
-                    Orb::Models::Price::MatrixWithDisplayNamePrice,
-                    Orb::Models::Price::BulkWithProrationPrice,
-                    Orb::Models::Price::GroupedTieredPackagePrice,
-                    Orb::Models::Price::MaxGroupTieredPackagePrice,
-                    Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                    Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
-                    Orb::Models::Price::CumulativeGroupedBulkPrice
-                  )
-                )
-            end
-            def price=(_)
-            end
+            attr_accessor :price
 
             # The price the cost is associated with
             sig { returns(String) }
-            def price_id
-            end
-
-            sig { params(_: String).returns(String) }
-            def price_id=(_)
-            end
+            attr_accessor :price_id
 
             # Price's contributions for the timeframe, excluding any minimums and discounts.
             sig { returns(String) }
-            def subtotal
-            end
-
-            sig { params(_: String).returns(String) }
-            def subtotal=(_)
-            end
+            attr_accessor :subtotal
 
             # Price's contributions for the timeframe, including minimums and discounts.
             sig { returns(String) }
-            def total
-            end
-
-            sig { params(_: String).returns(String) }
-            def total=(_)
-            end
+            attr_accessor :total
 
             # The price's quantity for the timeframe
             sig { returns(T.nilable(Float)) }
-            def quantity
-            end
-
-            sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
-            def quantity=(_)
-            end
+            attr_accessor :quantity
 
             sig do
               params(
                 price: T.any(
                   Orb::Models::Price::UnitPrice,
+                  Orb::Util::AnyHash,
                   Orb::Models::Price::PackagePrice,
                   Orb::Models::Price::MatrixPrice,
                   Orb::Models::Price::TieredPrice,

@@ -291,8 +291,9 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @abstract
-        class Adjustment < Orb::Union
+        module Adjustment
+          extend Orb::Union
+
           discriminator :adjustment_type
 
           variant :usage_discount,
@@ -701,8 +702,9 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @abstract
-      class DiscountInterval < Orb::Union
+      module DiscountInterval
+        extend Orb::Union
+
         discriminator :discount_type
 
         variant :amount,
@@ -1186,13 +1188,20 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @abstract
-      class Status < Orb::Enum
+      module Status
+        extend Orb::Enum
+
         ACTIVE = :active
         ENDED = :ended
         UPCOMING = :upcoming
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class TrialInfo < Orb::BaseModel

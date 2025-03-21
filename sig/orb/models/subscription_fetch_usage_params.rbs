@@ -57,19 +57,23 @@ module Orb
 
       type granularity = :day
 
-      class Granularity < Orb::Enum
+      module Granularity
+        extend Orb::Enum
+
         DAY: :day
 
-        def self.values: -> ::Array[Orb::Models::SubscriptionFetchUsageParams::granularity]
+        def self?.values: -> ::Array[Orb::Models::SubscriptionFetchUsageParams::granularity]
       end
 
       type view_mode = :periodic | :cumulative
 
-      class ViewMode < Orb::Enum
+      module ViewMode
+        extend Orb::Enum
+
         PERIODIC: :periodic
         CUMULATIVE: :cumulative
 
-        def self.values: -> ::Array[Orb::Models::SubscriptionFetchUsageParams::view_mode]
+        def self?.values: -> ::Array[Orb::Models::SubscriptionFetchUsageParams::view_mode]
       end
     end
   end

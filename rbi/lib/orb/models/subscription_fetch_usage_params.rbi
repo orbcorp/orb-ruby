@@ -10,106 +10,56 @@ module Orb
       #   single billable metric. Note that both `group_by` and `billable_metric_id` must
       #   be specified together.
       sig { returns(T.nilable(String)) }
-      def billable_metric_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def billable_metric_id=(_)
-      end
+      attr_accessor :billable_metric_id
 
       sig { returns(T.nilable(String)) }
-      def first_dimension_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def first_dimension_key=(_)
-      end
+      attr_accessor :first_dimension_key
 
       sig { returns(T.nilable(String)) }
-      def first_dimension_value
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def first_dimension_value=(_)
-      end
+      attr_accessor :first_dimension_value
 
       # This determines the windowing of usage reporting.
-      sig { returns(T.nilable(Symbol)) }
-      def granularity
-      end
-
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-      def granularity=(_)
-      end
+      sig { returns(T.nilable(Orb::Models::SubscriptionFetchUsageParams::Granularity::OrSymbol)) }
+      attr_accessor :granularity
 
       # Groups per-price usage by the key provided.
       sig { returns(T.nilable(String)) }
-      def group_by
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def group_by=(_)
-      end
+      attr_accessor :group_by
 
       sig { returns(T.nilable(String)) }
-      def second_dimension_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def second_dimension_key=(_)
-      end
+      attr_accessor :second_dimension_key
 
       sig { returns(T.nilable(String)) }
-      def second_dimension_value
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def second_dimension_value=(_)
-      end
+      attr_accessor :second_dimension_value
 
       # Usage returned is exclusive of `timeframe_end`.
       sig { returns(T.nilable(Time)) }
-      def timeframe_end
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def timeframe_end=(_)
-      end
+      attr_accessor :timeframe_end
 
       # Usage returned is inclusive of `timeframe_start`.
       sig { returns(T.nilable(Time)) }
-      def timeframe_start
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def timeframe_start=(_)
-      end
+      attr_accessor :timeframe_start
 
       # Controls whether Orb returns cumulative usage since the start of the billing
       #   period, or incremental day-by-day usage. If your customer has minimums or
       #   discounts, it's strongly recommended that you use the default cumulative
       #   behavior.
-      sig { returns(T.nilable(Symbol)) }
-      def view_mode
-      end
-
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-      def view_mode=(_)
-      end
+      sig { returns(T.nilable(Orb::Models::SubscriptionFetchUsageParams::ViewMode::OrSymbol)) }
+      attr_accessor :view_mode
 
       sig do
         params(
           billable_metric_id: T.nilable(String),
           first_dimension_key: T.nilable(String),
           first_dimension_value: T.nilable(String),
-          granularity: T.nilable(Symbol),
+          granularity: T.nilable(Orb::Models::SubscriptionFetchUsageParams::Granularity::OrSymbol),
           group_by: T.nilable(String),
           second_dimension_key: T.nilable(String),
           second_dimension_value: T.nilable(String),
           timeframe_end: T.nilable(Time),
           timeframe_start: T.nilable(Time),
-          view_mode: T.nilable(Symbol),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          view_mode: T.nilable(Orb::Models::SubscriptionFetchUsageParams::ViewMode::OrSymbol),
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -135,13 +85,13 @@ module Orb
               billable_metric_id: T.nilable(String),
               first_dimension_key: T.nilable(String),
               first_dimension_value: T.nilable(String),
-              granularity: T.nilable(Symbol),
+              granularity: T.nilable(Orb::Models::SubscriptionFetchUsageParams::Granularity::OrSymbol),
               group_by: T.nilable(String),
               second_dimension_key: T.nilable(String),
               second_dimension_value: T.nilable(String),
               timeframe_end: T.nilable(Time),
               timeframe_start: T.nilable(Time),
-              view_mode: T.nilable(Symbol),
+              view_mode: T.nilable(Orb::Models::SubscriptionFetchUsageParams::ViewMode::OrSymbol),
               request_options: Orb::RequestOptions
             }
           )
@@ -150,25 +100,41 @@ module Orb
       end
 
       # This determines the windowing of usage reporting.
-      class Granularity < Orb::Enum
-        abstract!
+      module Granularity
+        extend Orb::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionFetchUsageParams::Granularity) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Orb::Models::SubscriptionFetchUsageParams::Granularity::TaggedSymbol) }
 
-        DAY = :day
+        DAY = T.let(:day, Orb::Models::SubscriptionFetchUsageParams::Granularity::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Orb::Models::SubscriptionFetchUsageParams::Granularity::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Controls whether Orb returns cumulative usage since the start of the billing
       #   period, or incremental day-by-day usage. If your customer has minimums or
       #   discounts, it's strongly recommended that you use the default cumulative
       #   behavior.
-      class ViewMode < Orb::Enum
-        abstract!
+      module ViewMode
+        extend Orb::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionFetchUsageParams::ViewMode) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Orb::Models::SubscriptionFetchUsageParams::ViewMode::TaggedSymbol) }
 
-        PERIODIC = :periodic
-        CUMULATIVE = :cumulative
+        PERIODIC = T.let(:periodic, Orb::Models::SubscriptionFetchUsageParams::ViewMode::TaggedSymbol)
+        CUMULATIVE = T.let(:cumulative, Orb::Models::SubscriptionFetchUsageParams::ViewMode::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Orb::Models::SubscriptionFetchUsageParams::ViewMode::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -1439,7 +1439,7 @@ module Orb
       #
       # @param params [Orb::Models::SubscriptionUpdateTrialParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::UnionMember1] :trial_end_date The new date that the trial should end, or the literal string `immediate` to end
+      #   @option params [Time, Symbol] :trial_end_date The new date that the trial should end, or the literal string `immediate` to end
       #     the trial immediately.
       #
       #   @option params [Boolean] :shift If true, shifts subsequent price and adjustment intervals (preserving their

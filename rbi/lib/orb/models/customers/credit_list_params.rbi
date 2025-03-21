@@ -9,41 +9,27 @@ module Orb
 
         # The ledger currency or custom pricing unit to use.
         sig { returns(T.nilable(String)) }
-        def currency
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def currency=(_)
-        end
+        attr_accessor :currency
 
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
         #   from the initial request.
         sig { returns(T.nilable(String)) }
-        def cursor
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def cursor=(_)
-        end
+        attr_accessor :cursor
 
         # If set to True, all expired and depleted blocks, as well as active block will be
         #   returned.
         sig { returns(T.nilable(T::Boolean)) }
-        def include_all_blocks
-        end
+        attr_reader :include_all_blocks
 
-        sig { params(_: T::Boolean).returns(T::Boolean) }
-        def include_all_blocks=(_)
-        end
+        sig { params(include_all_blocks: T::Boolean).void }
+        attr_writer :include_all_blocks
 
         # The number of items to fetch. Defaults to 20.
         sig { returns(T.nilable(Integer)) }
-        def limit
-        end
+        attr_reader :limit
 
-        sig { params(_: Integer).returns(Integer) }
-        def limit=(_)
-        end
+        sig { params(limit: Integer).void }
+        attr_writer :limit
 
         sig do
           params(
@@ -51,7 +37,7 @@ module Orb
             cursor: T.nilable(String),
             include_all_blocks: T::Boolean,
             limit: Integer,
-            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

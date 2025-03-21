@@ -11,7 +11,7 @@ module Orb
           params(
             external_price_id: String,
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
           )
             .returns(
               T.any(
@@ -62,7 +62,7 @@ module Orb
         sig do
           params(
             external_price_id: String,
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
           )
             .returns(
               T.any(

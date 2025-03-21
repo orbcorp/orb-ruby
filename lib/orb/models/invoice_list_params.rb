@@ -163,16 +163,24 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @abstract
-      class DateType < Orb::Enum
+      module DateType
+        extend Orb::Enum
+
         DUE_DATE = :due_date
         INVOICE_DATE = :invoice_date
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
-      # @abstract
-      class Status < Orb::Enum
+      module Status
+        extend Orb::Enum
+
         DRAFT = :draft
         ISSUED = :issued
         PAID = :paid
@@ -180,6 +188,12 @@ module Orb
         VOID = :void
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

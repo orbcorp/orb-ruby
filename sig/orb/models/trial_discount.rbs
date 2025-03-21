@@ -32,10 +32,12 @@ module Orb
 
       type discount_type = :trial
 
-      class DiscountType < Orb::Enum
+      module DiscountType
+        extend Orb::Enum
+
         TRIAL: :trial
 
-        def self.values: -> ::Array[Orb::Models::TrialDiscount::discount_type]
+        def self?.values: -> ::Array[Orb::Models::TrialDiscount::discount_type]
       end
     end
   end

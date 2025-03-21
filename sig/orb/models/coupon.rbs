@@ -41,8 +41,10 @@ module Orb
       type discount =
         Orb::Models::PercentageDiscount | Orb::Models::AmountDiscount
 
-      class Discount < Orb::Union
-        def self.variants: -> [Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount]
+      module Discount
+        extend Orb::Union
+
+        def self?.variants: -> [Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount]
       end
     end
   end

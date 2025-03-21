@@ -5,12 +5,7 @@ module Orb
     class EventDeprecateResponse < Orb::BaseModel
       # event_id of the deprecated event, if successfully updated
       sig { returns(String) }
-      def deprecated
-      end
-
-      sig { params(_: String).returns(String) }
-      def deprecated=(_)
-      end
+      attr_accessor :deprecated
 
       sig { params(deprecated: String).returns(T.attached_class) }
       def self.new(deprecated:)

@@ -179,14 +179,16 @@ module Orb
       type payment_provider =
         :quickbooks | :"bill.com" | :stripe_charge | :stripe_invoice | :netsuite
 
-      class PaymentProvider < Orb::Enum
+      module PaymentProvider
+        extend Orb::Enum
+
         QUICKBOOKS: :quickbooks
         BILL_COM: :"bill.com"
         STRIPE_CHARGE: :stripe_charge
         STRIPE_INVOICE: :stripe_invoice
         NETSUITE: :netsuite
 
-        def self.values: -> ::Array[Orb::Models::Customer::payment_provider]
+        def self?.values: -> ::Array[Orb::Models::Customer::payment_provider]
       end
 
       type shipping_address =
@@ -326,7 +328,9 @@ module Orb
           | :VN
           | :ZA
 
-        class Country < Orb::Enum
+        module Country
+          extend Orb::Enum
+
           AD: :AD
           AE: :AE
           AR: :AR
@@ -406,7 +410,7 @@ module Orb
           VN: :VN
           ZA: :ZA
 
-          def self.values: -> ::Array[Orb::Models::Customer::TaxID::country]
+          def self?.values: -> ::Array[Orb::Models::Customer::TaxID::country]
         end
 
         type type_ =
@@ -482,7 +486,9 @@ module Orb
           | :vn_tin
           | :za_vat
 
-        class Type < Orb::Enum
+        module Type
+          extend Orb::Enum
+
           AD_NRT: :ad_nrt
           AE_TRN: :ae_trn
           AR_CUIT: :ar_cuit
@@ -555,7 +561,7 @@ module Orb
           VN_TIN: :vn_tin
           ZA_VAT: :za_vat
 
-          def self.values: -> ::Array[Orb::Models::Customer::TaxID::type_]
+          def self?.values: -> ::Array[Orb::Models::Customer::TaxID::type_]
         end
       end
 
@@ -597,11 +603,13 @@ module Orb
 
           type provider_type = :quickbooks | :netsuite
 
-          class ProviderType < Orb::Enum
+          module ProviderType
+            extend Orb::Enum
+
             QUICKBOOKS: :quickbooks
             NETSUITE: :netsuite
 
-            def self.values: -> ::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type]
+            def self?.values: -> ::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type]
           end
         end
       end

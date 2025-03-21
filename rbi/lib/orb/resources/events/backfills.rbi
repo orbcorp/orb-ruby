@@ -50,7 +50,7 @@ module Orb
             deprecation_filter: T.nilable(String),
             external_customer_id: T.nilable(String),
             replace_existing_events: T::Boolean,
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
           )
             .returns(Orb::Models::Events::BackfillCreateResponse)
         end
@@ -95,7 +95,7 @@ module Orb
           params(
             cursor: T.nilable(String),
             limit: Integer,
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
           )
             .returns(Orb::Page[Orb::Models::Events::BackfillListResponse])
         end
@@ -116,7 +116,7 @@ module Orb
         sig do
           params(
             backfill_id: String,
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
           )
             .returns(Orb::Models::Events::BackfillCloseResponse)
         end
@@ -127,7 +127,7 @@ module Orb
         sig do
           params(
             backfill_id: String,
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
           )
             .returns(Orb::Models::Events::BackfillFetchResponse)
         end
@@ -144,7 +144,7 @@ module Orb
         sig do
           params(
             backfill_id: String,
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
           )
             .returns(Orb::Models::Events::BackfillRevertResponse)
         end

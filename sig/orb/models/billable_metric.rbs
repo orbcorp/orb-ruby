@@ -36,12 +36,14 @@ module Orb
 
       type status = :active | :draft | :archived
 
-      class Status < Orb::Enum
+      module Status
+        extend Orb::Enum
+
         ACTIVE: :active
         DRAFT: :draft
         ARCHIVED: :archived
 
-        def self.values: -> ::Array[Orb::Models::BillableMetric::status]
+        def self?.values: -> ::Array[Orb::Models::BillableMetric::status]
       end
     end
   end

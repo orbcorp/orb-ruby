@@ -4,45 +4,25 @@ module Orb
   module Models
     class SubscriptionFetchScheduleResponse < Orb::BaseModel
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       sig { returns(T.nilable(Time)) }
-      def end_date
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def end_date=(_)
-      end
+      attr_accessor :end_date
 
       sig { returns(Orb::Models::SubscriptionFetchScheduleResponse::Plan) }
-      def plan
-      end
+      attr_reader :plan
 
-      sig do
-        params(_: Orb::Models::SubscriptionFetchScheduleResponse::Plan)
-          .returns(Orb::Models::SubscriptionFetchScheduleResponse::Plan)
-      end
-      def plan=(_)
-      end
+      sig { params(plan: T.any(Orb::Models::SubscriptionFetchScheduleResponse::Plan, Orb::Util::AnyHash)).void }
+      attr_writer :plan
 
       sig { returns(Time) }
-      def start_date
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def start_date=(_)
-      end
+      attr_accessor :start_date
 
       sig do
         params(
           created_at: Time,
           end_date: T.nilable(Time),
-          plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
+          plan: T.any(Orb::Models::SubscriptionFetchScheduleResponse::Plan, Orb::Util::AnyHash),
           start_date: Time
         )
           .returns(T.attached_class)
@@ -66,31 +46,16 @@ module Orb
 
       class Plan < Orb::BaseModel
         sig { returns(T.nilable(String)) }
-        def id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def id=(_)
-        end
+        attr_accessor :id
 
         # An optional user-defined ID for this plan resource, used throughout the system
         #   as an alias for this Plan. Use this field to identify a plan by an existing
         #   identifier in your system.
         sig { returns(T.nilable(String)) }
-        def external_plan_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def external_plan_id=(_)
-        end
+        attr_accessor :external_plan_id
 
         sig { returns(T.nilable(String)) }
-        def name
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def name=(_)
-        end
+        attr_accessor :name
 
         sig do
           params(id: T.nilable(String), external_plan_id: T.nilable(String), name: T.nilable(String))

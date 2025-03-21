@@ -337,10 +337,10 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @abstract
-      #
       # The cadence to bill for this price on.
-      class Cadence < Orb::Enum
+      module Cadence
+        extend Orb::Enum
+
         ANNUAL = :annual
         SEMI_ANNUAL = :semi_annual
         MONTHLY = :monthly
@@ -349,13 +349,26 @@ module Orb
         CUSTOM = :custom
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
-      # @abstract
-      class ModelType < Orb::Enum
+      module ModelType
+        extend Orb::Enum
+
         CUMULATIVE_GROUPED_BULK = :cumulative_grouped_bulk
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class UnitConfig < Orb::BaseModel
@@ -398,14 +411,20 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @abstract
-        #
         # The unit of billing period duration.
-        class DurationUnit < Orb::Enum
+        module DurationUnit
+          extend Orb::Enum
+
           DAY = :day
           MONTH = :month
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -434,14 +453,20 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @abstract
-        #
         # The unit of billing period duration.
-        class DurationUnit < Orb::Enum
+        module DurationUnit
+          extend Orb::Enum
+
           DAY = :day
           MONTH = :month
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 

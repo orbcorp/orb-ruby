@@ -387,8 +387,6 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # This is used for creating charges or invoices in an external system via Orb.
       #   When not in test mode:
       #
@@ -396,7 +394,9 @@ module Orb
       #   - if the provider is an invoicing provider (`stripe_invoice`, `quickbooks`,
       #     `bill.com`, `netsuite`), any product mappings must first be configured with
       #     the Orb team.
-      class PaymentProvider < Orb::Enum
+      module PaymentProvider
+        extend Orb::Enum
+
         QUICKBOOKS = :quickbooks
         BILL_COM = :"bill.com"
         STRIPE_CHARGE = :stripe_charge
@@ -404,6 +404,12 @@ module Orb
         NETSUITE = :netsuite
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class ReportingConfiguration < Orb::BaseModel
@@ -464,8 +470,9 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @abstract
-      class TaxConfiguration < Orb::Union
+      module TaxConfiguration
+        extend Orb::Union
+
         discriminator :tax_provider
 
         variant :avalara, -> { Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration }
@@ -656,8 +663,9 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @abstract
-        class Country < Orb::Enum
+        module Country
+          extend Orb::Enum
+
           AD = :AD
           AE = :AE
           AR = :AR
@@ -738,10 +746,17 @@ module Orb
           ZA = :ZA
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
-        # @abstract
-        class Type < Orb::Enum
+        module Type
+          extend Orb::Enum
+
           AD_NRT = :ad_nrt
           AE_TRN = :ae_trn
           AR_CUIT = :ar_cuit
@@ -815,6 +830,12 @@ module Orb
           ZA_VAT = :za_vat
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

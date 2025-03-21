@@ -321,12 +321,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DiscountType < Orb::Enum
+          module DiscountType
+            extend Orb::Enum
+
             PERCENTAGE = :percentage
             AMOUNT = :amount
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end
@@ -372,11 +379,18 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @abstract
-        class DiscountType < Orb::Enum
+        module DiscountType
+          extend Orb::Enum
+
           PERCENTAGE = :percentage
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class AppliesToPrice < Orb::BaseModel
@@ -400,22 +414,36 @@ module Orb
         end
       end
 
-      # @abstract
-      class Reason < Orb::Enum
+      module Reason
+        extend Orb::Enum
+
         DUPLICATE = :Duplicate
         FRAUDULENT = :Fraudulent
         ORDER_CHANGE = :"Order change"
         PRODUCT_UNSATISFACTORY = :"Product unsatisfactory"
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
-      # @abstract
-      class Type < Orb::Enum
+      module Type
+        extend Orb::Enum
+
         REFUND = :refund
         ADJUSTMENT = :adjustment
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Discount < Orb::BaseModel
@@ -457,11 +485,18 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @abstract
-        class DiscountType < Orb::Enum
+        module DiscountType
+          extend Orb::Enum
+
           PERCENTAGE = :percentage
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class AppliesToPrice < Orb::BaseModel

@@ -348,7 +348,9 @@ module Orb
           | :overpayment_refund
           | :external_payment
 
-        class Action < Orb::Enum
+        module Action
+          extend Orb::Enum
+
           APPLIED_TO_INVOICE: :applied_to_invoice
           MANUAL_ADJUSTMENT: :manual_adjustment
           PRORATED_REFUND: :prorated_refund
@@ -359,7 +361,7 @@ module Orb
           OVERPAYMENT_REFUND: :overpayment_refund
           EXTERNAL_PAYMENT: :external_payment
 
-          def self.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::action]
+          def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::action]
         end
 
         type credit_note = { id: String }
@@ -384,11 +386,13 @@ module Orb
 
         type type_ = :increment | :decrement
 
-        class Type < Orb::Enum
+        module Type
+          extend Orb::Enum
+
           INCREMENT: :increment
           DECREMENT: :decrement
 
-          def self.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::type_]
+          def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::type_]
         end
       end
 
@@ -494,7 +498,9 @@ module Orb
           | :VN
           | :ZA
 
-        class Country < Orb::Enum
+        module Country
+          extend Orb::Enum
+
           AD: :AD
           AE: :AE
           AR: :AR
@@ -574,7 +580,7 @@ module Orb
           VN: :VN
           ZA: :ZA
 
-          def self.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::country]
+          def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::country]
         end
 
         type type_ =
@@ -650,7 +656,9 @@ module Orb
           | :vn_tin
           | :za_vat
 
-        class Type < Orb::Enum
+        module Type
+          extend Orb::Enum
+
           AD_NRT: :ad_nrt
           AE_TRN: :ae_trn
           AR_CUIT: :ar_cuit
@@ -723,18 +731,20 @@ module Orb
           VN_TIN: :vn_tin
           ZA_VAT: :za_vat
 
-          def self.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::type_]
+          def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::type_]
         end
       end
 
       type invoice_source = :subscription | :partial | :one_off
 
-      class InvoiceSource < Orb::Enum
+      module InvoiceSource
+        extend Orb::Enum
+
         SUBSCRIPTION: :subscription
         PARTIAL: :partial
         ONE_OFF: :one_off
 
-        def self.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::invoice_source]
+        def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::invoice_source]
       end
 
       type line_item =
@@ -842,7 +852,9 @@ module Orb
           | Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment
           | Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment
 
-        class Adjustment < Orb::Union
+        module Adjustment
+          extend Orb::Union
+
           type monetary_usage_discount_adjustment =
             {
               id: String,
@@ -1042,7 +1054,7 @@ module Orb
             def to_hash: -> Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::monetary_maximum_adjustment
           end
 
-          def self.variants: -> [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment]
+          def self?.variants: -> [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment]
         end
 
         type maximum =
@@ -1082,7 +1094,9 @@ module Orb
           | Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem
           | Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem
 
-        class SubLineItem < Orb::Union
+        module SubLineItem
+          extend Orb::Union
+
           type matrix_sub_line_item =
             {
               amount: String,
@@ -1249,7 +1263,7 @@ module Orb
             end
           end
 
-          def self.variants: -> [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem]
+          def self?.variants: -> [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem]
         end
 
         type tax_amount =
@@ -1344,10 +1358,12 @@ module Orb
 
         type payment_provider = :stripe
 
-        class PaymentProvider < Orb::Enum
+        module PaymentProvider
+          extend Orb::Enum
+
           STRIPE: :stripe
 
-          def self.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt::payment_provider]
+          def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt::payment_provider]
         end
       end
 
@@ -1388,14 +1404,16 @@ module Orb
 
       type status = :issued | :paid | :synced | :void | :draft
 
-      class Status < Orb::Enum
+      module Status
+        extend Orb::Enum
+
         ISSUED: :issued
         PAID: :paid
         SYNCED: :synced
         VOID: :void
         DRAFT: :draft
 
-        def self.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::status]
+        def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::status]
       end
 
       type subscription = { id: String }

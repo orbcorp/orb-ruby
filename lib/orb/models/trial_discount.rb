@@ -52,11 +52,18 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @abstract
-      class DiscountType < Orb::Enum
+      module DiscountType
+        extend Orb::Enum
+
         TRIAL = :trial
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

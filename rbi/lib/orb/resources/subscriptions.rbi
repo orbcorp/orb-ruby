@@ -261,19 +261,21 @@ module Orb
       #   $10.00 for a subscription that invoices in USD.
       sig do
         params(
-          add_adjustments: T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::AddAdjustment]),
-          add_prices: T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::AddPrice]),
+          add_adjustments: T.nilable(T::Array[T.any(Orb::Models::SubscriptionCreateParams::AddAdjustment, Orb::Util::AnyHash)]),
+          add_prices: T.nilable(T::Array[T.any(Orb::Models::SubscriptionCreateParams::AddPrice, Orb::Util::AnyHash)]),
           align_billing_with_subscription_start_date: T::Boolean,
           auto_collection: T.nilable(T::Boolean),
           aws_region: T.nilable(String),
-          billing_cycle_anchor_configuration: T.nilable(Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration),
+          billing_cycle_anchor_configuration: T.nilable(
+            T.any(Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration, Orb::Util::AnyHash)
+          ),
           coupon_redemption_code: T.nilable(String),
           credits_overage_rate: T.nilable(Float),
           customer_id: T.nilable(String),
           default_invoice_memo: T.nilable(String),
           end_date: T.nilable(Time),
           external_customer_id: T.nilable(String),
-          external_marketplace: T.nilable(Symbol),
+          external_marketplace: T.nilable(Orb::Models::SubscriptionCreateParams::ExternalMarketplace::OrSymbol),
           external_marketplace_reporting_id: T.nilable(String),
           external_plan_id: T.nilable(String),
           filter: T.nilable(String),
@@ -285,14 +287,14 @@ module Orb
           plan_id: T.nilable(String),
           plan_version_number: T.nilable(Integer),
           price_overrides: T.nilable(T::Array[T.anything]),
-          remove_adjustments: T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::RemoveAdjustment]),
-          remove_prices: T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::RemovePrice]),
-          replace_adjustments: T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::ReplaceAdjustment]),
-          replace_prices: T.nilable(T::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice]),
+          remove_adjustments: T.nilable(T::Array[T.any(Orb::Models::SubscriptionCreateParams::RemoveAdjustment, Orb::Util::AnyHash)]),
+          remove_prices: T.nilable(T::Array[T.any(Orb::Models::SubscriptionCreateParams::RemovePrice, Orb::Util::AnyHash)]),
+          replace_adjustments: T.nilable(T::Array[T.any(Orb::Models::SubscriptionCreateParams::ReplaceAdjustment, Orb::Util::AnyHash)]),
+          replace_prices: T.nilable(T::Array[T.any(Orb::Models::SubscriptionCreateParams::ReplacePrice, Orb::Util::AnyHash)]),
           start_date: T.nilable(Time),
           trial_duration_days: T.nilable(Integer),
           usage_customer_ids: T.nilable(T::Array[String]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::SubscriptionCreateResponse)
       end
@@ -394,7 +396,7 @@ module Orb
           invoicing_threshold: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           net_terms: T.nilable(Integer),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::Subscription)
       end
@@ -443,8 +445,8 @@ module Orb
           customer_id: T.nilable(T::Array[String]),
           external_customer_id: T.nilable(T::Array[String]),
           limit: Integer,
-          status: T.nilable(Symbol),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          status: T.nilable(Orb::Models::SubscriptionListParams::Status::OrSymbol),
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Page[Orb::Models::Subscription])
       end
@@ -529,10 +531,10 @@ module Orb
       sig do
         params(
           subscription_id: String,
-          cancel_option: Symbol,
+          cancel_option: Orb::Models::SubscriptionCancelParams::CancelOption::OrSymbol,
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
           cancellation_date: T.nilable(Time),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::SubscriptionCancelResponse)
       end
@@ -556,7 +558,7 @@ module Orb
       sig do
         params(
           subscription_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::Subscription)
       end
@@ -579,8 +581,8 @@ module Orb
           currency: T.nilable(String),
           timeframe_end: T.nilable(Time),
           timeframe_start: T.nilable(Time),
-          view_mode: T.nilable(Symbol),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          view_mode: T.nilable(Orb::Models::SubscriptionFetchCostsParams::ViewMode::OrSymbol),
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::SubscriptionFetchCostsResponse)
       end
@@ -614,7 +616,7 @@ module Orb
           start_date_gte: T.nilable(Time),
           start_date_lt: T.nilable(Time),
           start_date_lte: T.nilable(Time),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Page[Orb::Models::SubscriptionFetchScheduleResponse])
       end
@@ -833,14 +835,14 @@ module Orb
           billable_metric_id: T.nilable(String),
           first_dimension_key: T.nilable(String),
           first_dimension_value: T.nilable(String),
-          granularity: T.nilable(Symbol),
+          granularity: T.nilable(Orb::Models::SubscriptionFetchUsageParams::Granularity::OrSymbol),
           group_by: T.nilable(String),
           second_dimension_key: T.nilable(String),
           second_dimension_value: T.nilable(String),
           timeframe_end: T.nilable(Time),
           timeframe_start: T.nilable(Time),
-          view_mode: T.nilable(Symbol),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          view_mode: T.nilable(Orb::Models::SubscriptionFetchUsageParams::ViewMode::OrSymbol),
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(
             T.any(
@@ -951,12 +953,12 @@ module Orb
       sig do
         params(
           subscription_id: String,
-          add: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add],
-          add_adjustments: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment],
+          add: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::Add, Orb::Util::AnyHash)],
+          add_adjustments: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment, Orb::Util::AnyHash)],
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
-          edit: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit],
-          edit_adjustments: T::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment],
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          edit: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::Edit, Orb::Util::AnyHash)],
+          edit_adjustments: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment, Orb::Util::AnyHash)],
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::SubscriptionPriceIntervalsResponse)
       end
@@ -1164,13 +1166,22 @@ module Orb
       sig do
         params(
           subscription_id: String,
-          change_option: Symbol,
-          add_adjustments: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment]),
-          add_prices: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice]),
+          change_option: Orb::Models::SubscriptionSchedulePlanChangeParams::ChangeOption::OrSymbol,
+          add_adjustments: T.nilable(
+            T::Array[T.any(Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment, Orb::Util::AnyHash)]
+          ),
+          add_prices: T.nilable(
+            T::Array[T.any(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice, Orb::Util::AnyHash)]
+          ),
           align_billing_with_plan_change_date: T.nilable(T::Boolean),
           auto_collection: T.nilable(T::Boolean),
-          billing_cycle_alignment: T.nilable(Symbol),
-          billing_cycle_anchor_configuration: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration),
+          billing_cycle_alignment: T.nilable(Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAlignment::OrSymbol),
+          billing_cycle_anchor_configuration: T.nilable(
+            T.any(
+              Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration,
+              Orb::Util::AnyHash
+            )
+          ),
           change_date: T.nilable(Time),
           coupon_redemption_code: T.nilable(String),
           credits_overage_rate: T.nilable(Float),
@@ -1184,13 +1195,21 @@ module Orb
           plan_id: T.nilable(String),
           plan_version_number: T.nilable(Integer),
           price_overrides: T.nilable(T::Array[T.anything]),
-          remove_adjustments: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::RemoveAdjustment]),
-          remove_prices: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::RemovePrice]),
-          replace_adjustments: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment]),
-          replace_prices: T.nilable(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice]),
+          remove_adjustments: T.nilable(
+            T::Array[T.any(Orb::Models::SubscriptionSchedulePlanChangeParams::RemoveAdjustment, Orb::Util::AnyHash)]
+          ),
+          remove_prices: T.nilable(
+            T::Array[T.any(Orb::Models::SubscriptionSchedulePlanChangeParams::RemovePrice, Orb::Util::AnyHash)]
+          ),
+          replace_adjustments: T.nilable(
+            T::Array[T.any(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment, Orb::Util::AnyHash)]
+          ),
+          replace_prices: T.nilable(
+            T::Array[T.any(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice, Orb::Util::AnyHash)]
+          ),
           trial_duration_days: T.nilable(Integer),
           usage_customer_ids: T.nilable(T::Array[String]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::SubscriptionSchedulePlanChangeResponse)
       end
@@ -1289,7 +1308,7 @@ module Orb
           subscription_id: String,
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
           effective_date: T.nilable(Date),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::SubscriptionTriggerPhaseResponse)
       end
@@ -1315,7 +1334,7 @@ module Orb
       sig do
         params(
           subscription_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::SubscriptionUnscheduleCancellationResponse)
       end
@@ -1331,7 +1350,7 @@ module Orb
         params(
           subscription_id: String,
           price_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse)
       end
@@ -1348,7 +1367,7 @@ module Orb
       sig do
         params(
           subscription_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse)
       end
@@ -1375,9 +1394,9 @@ module Orb
           price_id: String,
           quantity: Float,
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
-          change_option: Symbol,
+          change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::OrSymbol,
           effective_date: T.nilable(Date),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse)
       end
@@ -1423,9 +1442,9 @@ module Orb
       sig do
         params(
           subscription_id: String,
-          trial_end_date: T.any(Time, Symbol),
+          trial_end_date: T.any(Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol),
           shift: T::Boolean,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::SubscriptionUpdateTrialResponse)
       end

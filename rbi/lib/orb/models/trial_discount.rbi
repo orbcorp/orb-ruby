@@ -6,51 +6,26 @@ module Orb
       # List of price_ids that this discount applies to. For plan/plan phase discounts,
       #   this can be a subset of prices.
       sig { returns(T::Array[String]) }
-      def applies_to_price_ids
-      end
+      attr_accessor :applies_to_price_ids
 
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def applies_to_price_ids=(_)
-      end
-
-      sig { returns(Symbol) }
-      def discount_type
-      end
-
-      sig { params(_: Symbol).returns(Symbol) }
-      def discount_type=(_)
-      end
+      sig { returns(Orb::Models::TrialDiscount::DiscountType::OrSymbol) }
+      attr_accessor :discount_type
 
       sig { returns(T.nilable(String)) }
-      def reason
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def reason=(_)
-      end
+      attr_accessor :reason
 
       # Only available if discount_type is `trial`
       sig { returns(T.nilable(String)) }
-      def trial_amount_discount
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def trial_amount_discount=(_)
-      end
+      attr_accessor :trial_amount_discount
 
       # Only available if discount_type is `trial`
       sig { returns(T.nilable(Float)) }
-      def trial_percentage_discount
-      end
-
-      sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
-      def trial_percentage_discount=(_)
-      end
+      attr_accessor :trial_percentage_discount
 
       sig do
         params(
           applies_to_price_ids: T::Array[String],
-          discount_type: Symbol,
+          discount_type: Orb::Models::TrialDiscount::DiscountType::OrSymbol,
           reason: T.nilable(String),
           trial_amount_discount: T.nilable(String),
           trial_percentage_discount: T.nilable(Float)
@@ -71,7 +46,7 @@ module Orb
           .returns(
             {
               applies_to_price_ids: T::Array[String],
-              discount_type: Symbol,
+              discount_type: Orb::Models::TrialDiscount::DiscountType::OrSymbol,
               reason: T.nilable(String),
               trial_amount_discount: T.nilable(String),
               trial_percentage_discount: T.nilable(Float)
@@ -81,12 +56,19 @@ module Orb
       def to_hash
       end
 
-      class DiscountType < Orb::Enum
-        abstract!
+      module DiscountType
+        extend Orb::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::TrialDiscount::DiscountType) }
+        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::TrialDiscount::DiscountType::TaggedSymbol) }
 
-        TRIAL = :trial
+        TRIAL = T.let(:trial, Orb::Models::TrialDiscount::DiscountType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Orb::Models::TrialDiscount::DiscountType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

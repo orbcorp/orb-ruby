@@ -107,16 +107,22 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @abstract
-        #
         # The status of the backfill.
-        class Status < Orb::Enum
+        module Status
+          extend Orb::Enum
+
           PENDING = :pending
           REFLECTED = :reflected
           PENDING_REVERT = :pending_revert
           REVERTED = :reverted
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

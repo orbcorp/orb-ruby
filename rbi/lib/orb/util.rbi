@@ -3,6 +3,10 @@
 module Orb
   # @api private
   module Util
+    # Due to the current WIP status of Shapes support in Sorbet, types referencing
+    #   this alias might be refined in the future.
+    AnyHash = T.type_alias { T::Hash[Symbol, T.anything] }
+
     # @api private
     sig { returns(Float) }
     def self.monotonic_secs
@@ -85,7 +89,7 @@ module Orb
       # @api private
       sig do
         params(
-          data: T.any(T::Hash[Symbol, T.anything], T::Array[T.anything], T.anything),
+          data: T.any(Orb::Util::AnyHash, T::Array[T.anything], T.anything),
           pick: T.nilable(T.any(Symbol, Integer, T::Array[T.any(Symbol, Integer)])),
           sentinel: T.nilable(T.anything),
           blk: T.nilable(T.proc.returns(T.anything))

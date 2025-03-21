@@ -25,20 +25,14 @@ module Orb
 
       def to_hash: -> Orb::Models::subscription_update_trial_params
 
-      type trial_end_date =
-        Time
-        | Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::union_member1
+      type trial_end_date = Time | :immediate
 
-      class TrialEndDate < Orb::Union
-        type union_member1 = :immediate
+      module TrialEndDate
+        extend Orb::Union
 
-        class UnionMember1 < Orb::Enum
-          IMMEDIATE: :immediate
+        IMMEDIATE: :immediate
 
-          def self.values: -> ::Array[Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::union_member1]
-        end
-
-        def self.variants: -> [Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::union_member1]
+        def self?.variants: -> [Time, :immediate]
       end
     end
   end

@@ -5,17 +5,12 @@ module Orb
     module Events
       class EventVolumes < Orb::BaseModel
         sig { returns(T::Array[Orb::Models::Events::EventVolumes::Data]) }
-        def data
-        end
+        attr_accessor :data
 
         sig do
-          params(_: T::Array[Orb::Models::Events::EventVolumes::Data])
-            .returns(T::Array[Orb::Models::Events::EventVolumes::Data])
+          params(data: T::Array[T.any(Orb::Models::Events::EventVolumes::Data, Orb::Util::AnyHash)])
+            .returns(T.attached_class)
         end
-        def data=(_)
-        end
-
-        sig { params(data: T::Array[Orb::Models::Events::EventVolumes::Data]).returns(T.attached_class) }
         def self.new(data:)
         end
 
@@ -26,28 +21,13 @@ module Orb
         class Data < Orb::BaseModel
           # The number of events ingested with a timestamp between the timeframe
           sig { returns(Integer) }
-          def count
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def count=(_)
-          end
+          attr_accessor :count
 
           sig { returns(Time) }
-          def timeframe_end
-          end
-
-          sig { params(_: Time).returns(Time) }
-          def timeframe_end=(_)
-          end
+          attr_accessor :timeframe_end
 
           sig { returns(Time) }
-          def timeframe_start
-          end
-
-          sig { params(_: Time).returns(Time) }
-          def timeframe_start=(_)
-          end
+          attr_accessor :timeframe_start
 
           # An EventVolume contains the event volume ingested in an hourly window. The
           #   timestamp used for the aggregation is the `timestamp` datetime field on events.

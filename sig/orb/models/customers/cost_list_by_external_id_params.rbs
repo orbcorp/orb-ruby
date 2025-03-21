@@ -34,11 +34,13 @@ module Orb
 
         type view_mode = :periodic | :cumulative
 
-        class ViewMode < Orb::Enum
+        module ViewMode
+          extend Orb::Enum
+
           PERIODIC: :periodic
           CUMULATIVE: :cumulative
 
-          def self.values: -> ::Array[Orb::Models::Customers::CostListByExternalIDParams::view_mode]
+          def self?.values: -> ::Array[Orb::Models::Customers::CostListByExternalIDParams::view_mode]
         end
       end
     end

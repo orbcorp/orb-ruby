@@ -2,13 +2,20 @@
 
 module Orb
   module Models
-    class BillingCycleRelativeDate < Orb::Enum
-      abstract!
+    module BillingCycleRelativeDate
+      extend Orb::Enum
 
-      Value = type_template(:out) { {fixed: Symbol} }
+      TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::BillingCycleRelativeDate) }
+      OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::BillingCycleRelativeDate::TaggedSymbol) }
 
-      START_OF_TERM = :start_of_term
-      END_OF_TERM = :end_of_term
+      START_OF_TERM = T.let(:start_of_term, Orb::Models::BillingCycleRelativeDate::TaggedSymbol)
+      END_OF_TERM = T.let(:end_of_term, Orb::Models::BillingCycleRelativeDate::TaggedSymbol)
+
+      class << self
+        sig { override.returns(T::Array[Orb::Models::BillingCycleRelativeDate::TaggedSymbol]) }
+        def values
+        end
+      end
     end
   end
 end

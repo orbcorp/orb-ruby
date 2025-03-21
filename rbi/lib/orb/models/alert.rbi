@@ -5,99 +5,56 @@ module Orb
     class Alert < Orb::BaseModel
       # Also referred to as alert_id in this documentation.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The creation time of the resource in Orb.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The name of the currency the credit balance or invoice cost is denominated in.
       sig { returns(T.nilable(String)) }
-      def currency
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def currency=(_)
-      end
+      attr_accessor :currency
 
       # The customer the alert applies to.
       sig { returns(T.nilable(Orb::Models::Alert::Customer)) }
-      def customer
-      end
+      attr_reader :customer
 
-      sig { params(_: T.nilable(Orb::Models::Alert::Customer)).returns(T.nilable(Orb::Models::Alert::Customer)) }
-      def customer=(_)
-      end
+      sig { params(customer: T.nilable(T.any(Orb::Models::Alert::Customer, Orb::Util::AnyHash))).void }
+      attr_writer :customer
 
       # Whether the alert is enabled or disabled.
       sig { returns(T::Boolean) }
-      def enabled
-      end
-
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def enabled=(_)
-      end
+      attr_accessor :enabled
 
       # The metric the alert applies to.
       sig { returns(T.nilable(Orb::Models::Alert::Metric)) }
-      def metric
-      end
+      attr_reader :metric
 
-      sig { params(_: T.nilable(Orb::Models::Alert::Metric)).returns(T.nilable(Orb::Models::Alert::Metric)) }
-      def metric=(_)
-      end
+      sig { params(metric: T.nilable(T.any(Orb::Models::Alert::Metric, Orb::Util::AnyHash))).void }
+      attr_writer :metric
 
       # The plan the alert applies to.
       sig { returns(T.nilable(Orb::Models::Alert::Plan)) }
-      def plan
-      end
+      attr_reader :plan
 
-      sig { params(_: T.nilable(Orb::Models::Alert::Plan)).returns(T.nilable(Orb::Models::Alert::Plan)) }
-      def plan=(_)
-      end
+      sig { params(plan: T.nilable(T.any(Orb::Models::Alert::Plan, Orb::Util::AnyHash))).void }
+      attr_writer :plan
 
       # The subscription the alert applies to.
       sig { returns(T.nilable(Orb::Models::Alert::Subscription)) }
-      def subscription
-      end
+      attr_reader :subscription
 
-      sig do
-        params(_: T.nilable(Orb::Models::Alert::Subscription)).returns(T.nilable(Orb::Models::Alert::Subscription))
-      end
-      def subscription=(_)
-      end
+      sig { params(subscription: T.nilable(T.any(Orb::Models::Alert::Subscription, Orb::Util::AnyHash))).void }
+      attr_writer :subscription
 
       # The thresholds that define the conditions under which the alert will be
       #   triggered.
       sig { returns(T.nilable(T::Array[Orb::Models::Alert::Threshold])) }
-      def thresholds
-      end
-
-      sig do
-        params(_: T.nilable(T::Array[Orb::Models::Alert::Threshold]))
-          .returns(T.nilable(T::Array[Orb::Models::Alert::Threshold]))
-      end
-      def thresholds=(_)
-      end
+      attr_accessor :thresholds
 
       # The type of alert. This must be a valid alert type.
-      sig { returns(Symbol) }
-      def type
-      end
-
-      sig { params(_: Symbol).returns(Symbol) }
-      def type=(_)
-      end
+      sig { returns(Orb::Models::Alert::Type::TaggedSymbol) }
+      attr_accessor :type
 
       # [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
       #   usage, or credit balance and trigger webhooks when a threshold is exceeded.
@@ -109,13 +66,13 @@ module Orb
           id: String,
           created_at: Time,
           currency: T.nilable(String),
-          customer: T.nilable(Orb::Models::Alert::Customer),
+          customer: T.nilable(T.any(Orb::Models::Alert::Customer, Orb::Util::AnyHash)),
           enabled: T::Boolean,
-          metric: T.nilable(Orb::Models::Alert::Metric),
-          plan: T.nilable(Orb::Models::Alert::Plan),
-          subscription: T.nilable(Orb::Models::Alert::Subscription),
-          thresholds: T.nilable(T::Array[Orb::Models::Alert::Threshold]),
-          type: Symbol
+          metric: T.nilable(T.any(Orb::Models::Alert::Metric, Orb::Util::AnyHash)),
+          plan: T.nilable(T.any(Orb::Models::Alert::Plan, Orb::Util::AnyHash)),
+          subscription: T.nilable(T.any(Orb::Models::Alert::Subscription, Orb::Util::AnyHash)),
+          thresholds: T.nilable(T::Array[T.any(Orb::Models::Alert::Threshold, Orb::Util::AnyHash)]),
+          type: Orb::Models::Alert::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -135,7 +92,7 @@ module Orb
               plan: T.nilable(Orb::Models::Alert::Plan),
               subscription: T.nilable(Orb::Models::Alert::Subscription),
               thresholds: T.nilable(T::Array[Orb::Models::Alert::Threshold]),
-              type: Symbol
+              type: Orb::Models::Alert::Type::TaggedSymbol
             }
           )
       end
@@ -144,20 +101,10 @@ module Orb
 
       class Customer < Orb::BaseModel
         sig { returns(String) }
-        def id
-        end
-
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
+        attr_accessor :id
 
         sig { returns(T.nilable(String)) }
-        def external_customer_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def external_customer_id=(_)
-        end
+        attr_accessor :external_customer_id
 
         # The customer the alert applies to.
         sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
@@ -171,12 +118,7 @@ module Orb
 
       class Metric < Orb::BaseModel
         sig { returns(String) }
-        def id
-        end
-
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
+        attr_accessor :id
 
         # The metric the alert applies to.
         sig { params(id: String).returns(T.attached_class) }
@@ -190,39 +132,19 @@ module Orb
 
       class Plan < Orb::BaseModel
         sig { returns(T.nilable(String)) }
-        def id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def id=(_)
-        end
+        attr_accessor :id
 
         # An optional user-defined ID for this plan resource, used throughout the system
         #   as an alias for this Plan. Use this field to identify a plan by an existing
         #   identifier in your system.
         sig { returns(T.nilable(String)) }
-        def external_plan_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def external_plan_id=(_)
-        end
+        attr_accessor :external_plan_id
 
         sig { returns(T.nilable(String)) }
-        def name
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def name=(_)
-        end
+        attr_accessor :name
 
         sig { returns(String) }
-        def plan_version
-        end
-
-        sig { params(_: String).returns(String) }
-        def plan_version=(_)
-        end
+        attr_accessor :plan_version
 
         # The plan the alert applies to.
         sig do
@@ -254,12 +176,7 @@ module Orb
 
       class Subscription < Orb::BaseModel
         sig { returns(String) }
-        def id
-        end
-
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
+        attr_accessor :id
 
         # The subscription the alert applies to.
         sig { params(id: String).returns(T.attached_class) }
@@ -276,12 +193,7 @@ module Orb
         #   fire at or below this value. For usage and cost alerts, the alert will fire at
         #   or above this value.
         sig { returns(Float) }
-        def value
-        end
-
-        sig { params(_: Float).returns(Float) }
-        def value=(_)
-        end
+        attr_accessor :value
 
         # Thresholds are used to define the conditions under which an alert will be
         #   triggered.
@@ -295,16 +207,23 @@ module Orb
       end
 
       # The type of alert. This must be a valid alert type.
-      class Type < Orb::Enum
-        abstract!
+      module Type
+        extend Orb::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Alert::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Alert::Type::TaggedSymbol) }
 
-        CREDIT_BALANCE_DEPLETED = :credit_balance_depleted
-        CREDIT_BALANCE_DROPPED = :credit_balance_dropped
-        CREDIT_BALANCE_RECOVERED = :credit_balance_recovered
-        USAGE_EXCEEDED = :usage_exceeded
-        COST_EXCEEDED = :cost_exceeded
+        CREDIT_BALANCE_DEPLETED = T.let(:credit_balance_depleted, Orb::Models::Alert::Type::TaggedSymbol)
+        CREDIT_BALANCE_DROPPED = T.let(:credit_balance_dropped, Orb::Models::Alert::Type::TaggedSymbol)
+        CREDIT_BALANCE_RECOVERED = T.let(:credit_balance_recovered, Orb::Models::Alert::Type::TaggedSymbol)
+        USAGE_EXCEEDED = T.let(:usage_exceeded, Orb::Models::Alert::Type::TaggedSymbol)
+        COST_EXCEEDED = T.let(:cost_exceeded, Orb::Models::Alert::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Orb::Models::Alert::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

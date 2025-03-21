@@ -210,8 +210,9 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @abstract
-      class Adjustment < Orb::Union
+      module Adjustment
+        extend Orb::Union
+
         discriminator :adjustment_type
 
         variant :usage_discount, -> { Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment }
@@ -745,8 +746,9 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @abstract
-        class DurationUnit < Orb::Enum
+        module DurationUnit
+          extend Orb::Enum
+
           DAILY = :daily
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -754,6 +756,12 @@ module Orb
           ANNUAL = :annual
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Maximum < Orb::BaseModel
@@ -829,13 +837,20 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @abstract
-      class Status < Orb::Enum
+      module Status
+        extend Orb::Enum
+
         ACTIVE = :active
         ARCHIVED = :archived
         DRAFT = :draft
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class TrialConfig < Orb::BaseModel
@@ -857,11 +872,18 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @abstract
-        class TrialPeriodUnit < Orb::Enum
+        module TrialPeriodUnit
+          extend Orb::Enum
+
           DAYS = :days
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

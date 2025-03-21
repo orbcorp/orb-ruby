@@ -2,8 +2,8 @@
 
 module Orb
   module Models
-    class Discount < Orb::Union
-      abstract!
+    module Discount
+      extend Orb::Union
 
       Variants =
         type_template(:out) do
@@ -16,6 +16,17 @@ module Orb
             )
           }
         end
+
+      class << self
+        sig do
+          override
+            .returns(
+              [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount]
+            )
+        end
+        def variants
+        end
+      end
     end
   end
 end

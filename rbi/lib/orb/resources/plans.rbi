@@ -4,8 +4,7 @@ module Orb
   module Resources
     class Plans
       sig { returns(Orb::Resources::Plans::ExternalPlanID) }
-      def external_plan_id
-      end
+      attr_reader :external_plan_id
 
       # This endpoint allows creation of plans including their prices.
       sig do
@@ -15,6 +14,7 @@ module Orb
           prices: T::Array[
           T.any(
             Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice,
+            Orb::Util::AnyHash,
             Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice,
             Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice,
             Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice,
@@ -45,8 +45,8 @@ module Orb
           external_plan_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           net_terms: T.nilable(Integer),
-          status: Symbol,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          status: Orb::Models::PlanCreateParams::Status::OrSymbol,
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::Plan)
       end
@@ -85,7 +85,7 @@ module Orb
           plan_id: String,
           external_plan_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::Plan)
       end
@@ -116,8 +116,8 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           limit: Integer,
-          status: Symbol,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          status: Orb::Models::PlanListParams::Status::OrSymbol,
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Page[Orb::Models::Plan])
       end
@@ -155,10 +155,7 @@ module Orb
       #   Orb supports plan phases, also known as contract ramps. For plans with phases,
       #   the serialized prices refer to all prices across all phases.
       sig do
-        params(
-          plan_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+        params(plan_id: String, request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash)))
           .returns(Orb::Models::Plan)
       end
       def fetch(plan_id, request_options: {})

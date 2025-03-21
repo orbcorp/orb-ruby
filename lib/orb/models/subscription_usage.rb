@@ -2,8 +2,9 @@
 
 module Orb
   module Models
-    # @abstract
-    class SubscriptionUsage < Orb::Union
+    module SubscriptionUsage
+      extend Orb::Union
+
       variant -> { Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage }
 
       variant -> { Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage }
@@ -95,12 +96,19 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @abstract
-          class ViewMode < Orb::Enum
+          module ViewMode
+            extend Orb::Enum
+
             PERIODIC = :periodic
             CUMULATIVE = :cumulative
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end
@@ -223,12 +231,19 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @abstract
-          class ViewMode < Orb::Enum
+          module ViewMode
+            extend Orb::Enum
+
             PERIODIC = :periodic
             CUMULATIVE = :cumulative
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end

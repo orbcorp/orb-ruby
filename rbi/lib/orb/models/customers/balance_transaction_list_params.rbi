@@ -10,53 +10,26 @@ module Orb
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
         #   from the initial request.
         sig { returns(T.nilable(String)) }
-        def cursor
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def cursor=(_)
-        end
+        attr_accessor :cursor
 
         # The number of items to fetch. Defaults to 20.
         sig { returns(T.nilable(Integer)) }
-        def limit
-        end
+        attr_reader :limit
 
-        sig { params(_: Integer).returns(Integer) }
-        def limit=(_)
-        end
+        sig { params(limit: Integer).void }
+        attr_writer :limit
 
         sig { returns(T.nilable(Time)) }
-        def operation_time_gt
-        end
-
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def operation_time_gt=(_)
-        end
+        attr_accessor :operation_time_gt
 
         sig { returns(T.nilable(Time)) }
-        def operation_time_gte
-        end
-
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def operation_time_gte=(_)
-        end
+        attr_accessor :operation_time_gte
 
         sig { returns(T.nilable(Time)) }
-        def operation_time_lt
-        end
-
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def operation_time_lt=(_)
-        end
+        attr_accessor :operation_time_lt
 
         sig { returns(T.nilable(Time)) }
-        def operation_time_lte
-        end
-
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def operation_time_lte=(_)
-        end
+        attr_accessor :operation_time_lte
 
         sig do
           params(
@@ -66,7 +39,7 @@ module Orb
             operation_time_gte: T.nilable(Time),
             operation_time_lt: T.nilable(Time),
             operation_time_lte: T.nilable(Time),
-            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

@@ -8,36 +8,21 @@ module Orb
         include Orb::RequestParameters
 
         sig { returns(String) }
-        def amount
-        end
+        attr_accessor :amount
 
-        sig { params(_: String).returns(String) }
-        def amount=(_)
-        end
-
-        sig { returns(Symbol) }
-        def type
-        end
-
-        sig { params(_: Symbol).returns(Symbol) }
-        def type=(_)
-        end
+        sig { returns(Orb::Models::Customers::BalanceTransactionCreateParams::Type::OrSymbol) }
+        attr_accessor :type
 
         # An optional description that can be specified around this entry.
         sig { returns(T.nilable(String)) }
-        def description
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def description=(_)
-        end
+        attr_accessor :description
 
         sig do
           params(
             amount: String,
-            type: Symbol,
+            type: Orb::Models::Customers::BalanceTransactionCreateParams::Type::OrSymbol,
             description: T.nilable(String),
-            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -49,7 +34,7 @@ module Orb
             .returns(
               {
                 amount: String,
-                type: Symbol,
+                type: Orb::Models::Customers::BalanceTransactionCreateParams::Type::OrSymbol,
                 description: T.nilable(String),
                 request_options: Orb::RequestOptions
               }
@@ -58,13 +43,22 @@ module Orb
         def to_hash
         end
 
-        class Type < Orb::Enum
-          abstract!
+        module Type
+          extend Orb::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Models::Customers::BalanceTransactionCreateParams::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Orb::Models::Customers::BalanceTransactionCreateParams::Type::TaggedSymbol) }
 
-          INCREMENT = :increment
-          DECREMENT = :decrement
+          INCREMENT = T.let(:increment, Orb::Models::Customers::BalanceTransactionCreateParams::Type::TaggedSymbol)
+          DECREMENT = T.let(:decrement, Orb::Models::Customers::BalanceTransactionCreateParams::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Orb::Models::Customers::BalanceTransactionCreateParams::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

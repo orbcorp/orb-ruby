@@ -8,40 +8,22 @@ module Orb
 
       # The thresholds that define the values at which the alert will be triggered.
       sig { returns(T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold]) }
-      def thresholds
-      end
-
-      sig do
-        params(_: T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold])
-          .returns(T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold])
-      end
-      def thresholds=(_)
-      end
+      attr_accessor :thresholds
 
       # The type of alert to create. This must be a valid alert type.
-      sig { returns(Symbol) }
-      def type
-      end
-
-      sig { params(_: Symbol).returns(Symbol) }
-      def type=(_)
-      end
+      sig { returns(Orb::Models::AlertCreateForSubscriptionParams::Type::OrSymbol) }
+      attr_accessor :type
 
       # The metric to track usage for.
       sig { returns(T.nilable(String)) }
-      def metric_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def metric_id=(_)
-      end
+      attr_accessor :metric_id
 
       sig do
         params(
-          thresholds: T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold],
-          type: Symbol,
+          thresholds: T::Array[T.any(Orb::Models::AlertCreateForSubscriptionParams::Threshold, Orb::Util::AnyHash)],
+          type: Orb::Models::AlertCreateForSubscriptionParams::Type::OrSymbol,
           metric_id: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -53,7 +35,7 @@ module Orb
           .returns(
             {
               thresholds: T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold],
-              type: Symbol,
+              type: Orb::Models::AlertCreateForSubscriptionParams::Type::OrSymbol,
               metric_id: T.nilable(String),
               request_options: Orb::RequestOptions
             }
@@ -67,12 +49,7 @@ module Orb
         #   fire at or below this value. For usage and cost alerts, the alert will fire at
         #   or above this value.
         sig { returns(Float) }
-        def value
-        end
-
-        sig { params(_: Float).returns(Float) }
-        def value=(_)
-        end
+        attr_accessor :value
 
         # Thresholds are used to define the conditions under which an alert will be
         #   triggered.
@@ -86,13 +63,22 @@ module Orb
       end
 
       # The type of alert to create. This must be a valid alert type.
-      class Type < Orb::Enum
-        abstract!
+      module Type
+        extend Orb::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type::TaggedSymbol) }
 
-        USAGE_EXCEEDED = :usage_exceeded
-        COST_EXCEEDED = :cost_exceeded
+        USAGE_EXCEEDED =
+          T.let(:usage_exceeded, Orb::Models::AlertCreateForSubscriptionParams::Type::TaggedSymbol)
+        COST_EXCEEDED = T.let(:cost_exceeded, Orb::Models::AlertCreateForSubscriptionParams::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Orb::Models::AlertCreateForSubscriptionParams::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end
