@@ -8,37 +8,22 @@ module Orb
 
       # A date string to specify the date of the payment.
       sig { returns(Date) }
-      def payment_received_date
-      end
-
-      sig { params(_: Date).returns(Date) }
-      def payment_received_date=(_)
-      end
+      attr_accessor :payment_received_date
 
       # An optional external ID to associate with the payment.
       sig { returns(T.nilable(String)) }
-      def external_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def external_id=(_)
-      end
+      attr_accessor :external_id
 
       # An optional note to associate with the payment.
       sig { returns(T.nilable(String)) }
-      def notes
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def notes=(_)
-      end
+      attr_accessor :notes
 
       sig do
         params(
           payment_received_date: Date,
           external_id: T.nilable(String),
           notes: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -62,7 +62,9 @@ module Orb
           | :overpayment_refund
           | :external_payment
 
-        class Action < Orb::Enum
+        module Action
+          extend Orb::Enum
+
           APPLIED_TO_INVOICE: :applied_to_invoice
           MANUAL_ADJUSTMENT: :manual_adjustment
           PRORATED_REFUND: :prorated_refund
@@ -73,7 +75,7 @@ module Orb
           OVERPAYMENT_REFUND: :overpayment_refund
           EXTERNAL_PAYMENT: :external_payment
 
-          def self.values: -> ::Array[Orb::Models::Customers::BalanceTransactionCreateResponse::action]
+          def self?.values: -> ::Array[Orb::Models::Customers::BalanceTransactionCreateResponse::action]
         end
 
         type credit_note = { id: String }
@@ -98,11 +100,13 @@ module Orb
 
         type type_ = :increment | :decrement
 
-        class Type < Orb::Enum
+        module Type
+          extend Orb::Enum
+
           INCREMENT: :increment
           DECREMENT: :decrement
 
-          def self.values: -> ::Array[Orb::Models::Customers::BalanceTransactionCreateResponse::type_]
+          def self?.values: -> ::Array[Orb::Models::Customers::BalanceTransactionCreateResponse::type_]
         end
       end
     end

@@ -147,7 +147,9 @@ module Orb
           | Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment
           | Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
 
-        class Adjustment < Orb::Union
+        module Adjustment
+          extend Orb::Union
+
           type plan_phase_usage_discount_adjustment =
             {
               id: String,
@@ -347,7 +349,7 @@ module Orb
             def to_hash: -> Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::plan_phase_maximum_adjustment
           end
 
-          def self.variants: -> [Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
+          def self?.variants: -> [Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
         end
       end
 
@@ -375,7 +377,9 @@ module Orb
         | Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::PercentageDiscountInterval
         | Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::UsageDiscountInterval
 
-      class DiscountInterval < Orb::Union
+      module DiscountInterval
+        extend Orb::Union
+
         type amount_discount_interval =
           {
             amount_discount: String,
@@ -481,7 +485,7 @@ module Orb
           def to_hash: -> Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::usage_discount_interval
         end
 
-        def self.variants: -> [Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::UsageDiscountInterval]
+        def self?.variants: -> [Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::UsageDiscountInterval]
       end
 
       type fixed_fee_quantity_schedule =
@@ -659,12 +663,14 @@ module Orb
 
       type status = :active | :ended | :upcoming
 
-      class Status < Orb::Enum
+      module Status
+        extend Orb::Enum
+
         ACTIVE: :active
         ENDED: :ended
         UPCOMING: :upcoming
 
-        def self.values: -> ::Array[Orb::Models::SubscriptionPriceIntervalsResponse::status]
+        def self?.values: -> ::Array[Orb::Models::SubscriptionPriceIntervalsResponse::status]
       end
 
       type trial_info = { end_date: Time? }

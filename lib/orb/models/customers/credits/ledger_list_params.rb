@@ -103,16 +103,24 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class EntryStatus < Orb::Enum
+          module EntryStatus
+            extend Orb::Enum
+
             COMMITTED = :committed
             PENDING = :pending
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
-          # @abstract
-          class EntryType < Orb::Enum
+          module EntryType
+            extend Orb::Enum
+
             INCREMENT = :increment
             DECREMENT = :decrement
             EXPIRATION_CHANGE = :expiration_change
@@ -122,6 +130,12 @@ module Orb
             AMENDMENT = :amendment
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end

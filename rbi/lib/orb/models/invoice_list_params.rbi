@@ -7,163 +7,71 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      def amount
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       sig { returns(T.nilable(String)) }
-      def amount_gt
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def amount_gt=(_)
-      end
+      attr_accessor :amount_gt
 
       sig { returns(T.nilable(String)) }
-      def amount_lt
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def amount_lt=(_)
-      end
+      attr_accessor :amount_lt
 
       # Cursor for pagination. This can be populated by the `next_cursor` value returned
       #   from the initial request.
       sig { returns(T.nilable(String)) }
-      def cursor
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def cursor=(_)
-      end
+      attr_accessor :cursor
 
       sig { returns(T.nilable(String)) }
-      def customer_id
-      end
+      attr_accessor :customer_id
 
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def customer_id=(_)
-      end
-
-      sig { returns(T.nilable(Symbol)) }
-      def date_type
-      end
-
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-      def date_type=(_)
-      end
+      sig { returns(T.nilable(Orb::Models::InvoiceListParams::DateType::OrSymbol)) }
+      attr_accessor :date_type
 
       sig { returns(T.nilable(Date)) }
-      def due_date
-      end
-
-      sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
-      def due_date=(_)
-      end
+      attr_accessor :due_date
 
       # Filters invoices by their due dates within a specific time range in the past.
       #   Specify the range as a number followed by 'd' (days) or 'm' (months). For
       #   example, '7d' filters invoices due in the last 7 days, and '2m' filters those
       #   due in the last 2 months.
       sig { returns(T.nilable(String)) }
-      def due_date_window
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def due_date_window=(_)
-      end
+      attr_accessor :due_date_window
 
       sig { returns(T.nilable(Date)) }
-      def due_date_gt
-      end
-
-      sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
-      def due_date_gt=(_)
-      end
+      attr_accessor :due_date_gt
 
       sig { returns(T.nilable(Date)) }
-      def due_date_lt
-      end
-
-      sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
-      def due_date_lt=(_)
-      end
+      attr_accessor :due_date_lt
 
       sig { returns(T.nilable(String)) }
-      def external_customer_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def external_customer_id=(_)
-      end
+      attr_accessor :external_customer_id
 
       sig { returns(T.nilable(Time)) }
-      def invoice_date_gt
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def invoice_date_gt=(_)
-      end
+      attr_accessor :invoice_date_gt
 
       sig { returns(T.nilable(Time)) }
-      def invoice_date_gte
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def invoice_date_gte=(_)
-      end
+      attr_accessor :invoice_date_gte
 
       sig { returns(T.nilable(Time)) }
-      def invoice_date_lt
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def invoice_date_lt=(_)
-      end
+      attr_accessor :invoice_date_lt
 
       sig { returns(T.nilable(Time)) }
-      def invoice_date_lte
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def invoice_date_lte=(_)
-      end
+      attr_accessor :invoice_date_lte
 
       sig { returns(T.nilable(T::Boolean)) }
-      def is_recurring
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def is_recurring=(_)
-      end
+      attr_accessor :is_recurring
 
       # The number of items to fetch. Defaults to 20.
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
+      attr_reader :limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def limit=(_)
-      end
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
-      sig { returns(T.nilable(T::Array[Symbol])) }
-      def status
-      end
-
-      sig { params(_: T.nilable(T::Array[Symbol])).returns(T.nilable(T::Array[Symbol])) }
-      def status=(_)
-      end
+      sig { returns(T.nilable(T::Array[Orb::Models::InvoiceListParams::Status::OrSymbol])) }
+      attr_accessor :status
 
       sig { returns(T.nilable(String)) }
-      def subscription_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def subscription_id=(_)
-      end
+      attr_accessor :subscription_id
 
       sig do
         params(
@@ -172,7 +80,7 @@ module Orb
           amount_lt: T.nilable(String),
           cursor: T.nilable(String),
           customer_id: T.nilable(String),
-          date_type: T.nilable(Symbol),
+          date_type: T.nilable(Orb::Models::InvoiceListParams::DateType::OrSymbol),
           due_date: T.nilable(Date),
           due_date_window: T.nilable(String),
           due_date_gt: T.nilable(Date),
@@ -184,9 +92,9 @@ module Orb
           invoice_date_lte: T.nilable(Time),
           is_recurring: T.nilable(T::Boolean),
           limit: Integer,
-          status: T.nilable(T::Array[Symbol]),
+          status: T.nilable(T::Array[Orb::Models::InvoiceListParams::Status::OrSymbol]),
           subscription_id: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -223,7 +131,7 @@ module Orb
               amount_lt: T.nilable(String),
               cursor: T.nilable(String),
               customer_id: T.nilable(String),
-              date_type: T.nilable(Symbol),
+              date_type: T.nilable(Orb::Models::InvoiceListParams::DateType::OrSymbol),
               due_date: T.nilable(Date),
               due_date_window: T.nilable(String),
               due_date_gt: T.nilable(Date),
@@ -235,7 +143,7 @@ module Orb
               invoice_date_lte: T.nilable(Time),
               is_recurring: T.nilable(T::Boolean),
               limit: Integer,
-              status: T.nilable(T::Array[Symbol]),
+              status: T.nilable(T::Array[Orb::Models::InvoiceListParams::Status::OrSymbol]),
               subscription_id: T.nilable(String),
               request_options: Orb::RequestOptions
             }
@@ -244,25 +152,39 @@ module Orb
       def to_hash
       end
 
-      class DateType < Orb::Enum
-        abstract!
+      module DateType
+        extend Orb::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::InvoiceListParams::DateType) }
+        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::InvoiceListParams::DateType::TaggedSymbol) }
 
-        DUE_DATE = :due_date
-        INVOICE_DATE = :invoice_date
+        DUE_DATE = T.let(:due_date, Orb::Models::InvoiceListParams::DateType::TaggedSymbol)
+        INVOICE_DATE = T.let(:invoice_date, Orb::Models::InvoiceListParams::DateType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Orb::Models::InvoiceListParams::DateType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
-      class Status < Orb::Enum
-        abstract!
+      module Status
+        extend Orb::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::InvoiceListParams::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::InvoiceListParams::Status::TaggedSymbol) }
 
-        DRAFT = :draft
-        ISSUED = :issued
-        PAID = :paid
-        SYNCED = :synced
-        VOID = :void
+        DRAFT = T.let(:draft, Orb::Models::InvoiceListParams::Status::TaggedSymbol)
+        ISSUED = T.let(:issued, Orb::Models::InvoiceListParams::Status::TaggedSymbol)
+        PAID = T.let(:paid, Orb::Models::InvoiceListParams::Status::TaggedSymbol)
+        SYNCED = T.let(:synced, Orb::Models::InvoiceListParams::Status::TaggedSymbol)
+        VOID = T.let(:void, Orb::Models::InvoiceListParams::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Orb::Models::InvoiceListParams::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

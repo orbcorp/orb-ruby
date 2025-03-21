@@ -7,79 +7,37 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T.nilable(Time)) }
-      def created_at_gt
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created_at_gt=(_)
-      end
+      attr_accessor :created_at_gt
 
       sig { returns(T.nilable(Time)) }
-      def created_at_gte
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created_at_gte=(_)
-      end
+      attr_accessor :created_at_gte
 
       sig { returns(T.nilable(Time)) }
-      def created_at_lt
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created_at_lt=(_)
-      end
+      attr_accessor :created_at_lt
 
       sig { returns(T.nilable(Time)) }
-      def created_at_lte
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created_at_lte=(_)
-      end
+      attr_accessor :created_at_lte
 
       # Cursor for pagination. This can be populated by the `next_cursor` value returned
       #   from the initial request.
       sig { returns(T.nilable(String)) }
-      def cursor
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def cursor=(_)
-      end
+      attr_accessor :cursor
 
       sig { returns(T.nilable(T::Array[String])) }
-      def customer_id
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def customer_id=(_)
-      end
+      attr_accessor :customer_id
 
       sig { returns(T.nilable(T::Array[String])) }
-      def external_customer_id
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def external_customer_id=(_)
-      end
+      attr_accessor :external_customer_id
 
       # The number of items to fetch. Defaults to 20.
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
+      attr_reader :limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def limit=(_)
-      end
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
-      sig { returns(T.nilable(Symbol)) }
-      def status
-      end
-
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-      def status=(_)
-      end
+      sig { returns(T.nilable(Orb::Models::SubscriptionListParams::Status::OrSymbol)) }
+      attr_accessor :status
 
       sig do
         params(
@@ -91,8 +49,8 @@ module Orb
           customer_id: T.nilable(T::Array[String]),
           external_customer_id: T.nilable(T::Array[String]),
           limit: Integer,
-          status: T.nilable(Symbol),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          status: T.nilable(Orb::Models::SubscriptionListParams::Status::OrSymbol),
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -122,7 +80,7 @@ module Orb
               customer_id: T.nilable(T::Array[String]),
               external_customer_id: T.nilable(T::Array[String]),
               limit: Integer,
-              status: T.nilable(Symbol),
+              status: T.nilable(Orb::Models::SubscriptionListParams::Status::OrSymbol),
               request_options: Orb::RequestOptions
             }
           )
@@ -130,14 +88,21 @@ module Orb
       def to_hash
       end
 
-      class Status < Orb::Enum
-        abstract!
+      module Status
+        extend Orb::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionListParams::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::SubscriptionListParams::Status::TaggedSymbol) }
 
-        ACTIVE = :active
-        ENDED = :ended
-        UPCOMING = :upcoming
+        ACTIVE = T.let(:active, Orb::Models::SubscriptionListParams::Status::TaggedSymbol)
+        ENDED = T.let(:ended, Orb::Models::SubscriptionListParams::Status::TaggedSymbol)
+        UPCOMING = T.let(:upcoming, Orb::Models::SubscriptionListParams::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Orb::Models::SubscriptionListParams::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

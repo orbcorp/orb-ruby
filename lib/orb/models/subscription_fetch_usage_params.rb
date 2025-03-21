@@ -100,26 +100,38 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @abstract
-      #
       # This determines the windowing of usage reporting.
-      class Granularity < Orb::Enum
+      module Granularity
+        extend Orb::Enum
+
         DAY = :day
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
-      # @abstract
-      #
       # Controls whether Orb returns cumulative usage since the start of the billing
       #   period, or incremental day-by-day usage. If your customer has minimums or
       #   discounts, it's strongly recommended that you use the default cumulative
       #   behavior.
-      class ViewMode < Orb::Enum
+      module ViewMode
+        extend Orb::Enum
+
         PERIODIC = :periodic
         CUMULATIVE = :cumulative
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

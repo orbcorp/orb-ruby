@@ -38,15 +38,21 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @abstract
-      #
       # Determines the timing of subscription cancellation
-      class CancelOption < Orb::Enum
+      module CancelOption
+        extend Orb::Enum
+
         END_OF_SUBSCRIPTION_TERM = :end_of_subscription_term
         IMMEDIATE = :immediate
         REQUESTED_DATE = :requested_date
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

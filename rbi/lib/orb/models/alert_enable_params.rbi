@@ -8,17 +8,12 @@ module Orb
 
       # Used to update the status of a plan alert scoped to this subscription_id
       sig { returns(T.nilable(String)) }
-      def subscription_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def subscription_id=(_)
-      end
+      attr_accessor :subscription_id
 
       sig do
         params(
           subscription_id: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

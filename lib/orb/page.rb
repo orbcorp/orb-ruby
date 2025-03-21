@@ -2,32 +2,26 @@
 
 module Orb
   # @example
-  # ```ruby
-  # if page.has_next?
-  #   page = page.next_page
-  # end
-  # ```
+  #   if page.has_next?
+  #     page = page.next_page
+  #   end
   #
   # @example
-  # ```ruby
-  # page.auto_paging_each do |coupon|
-  #   puts(coupon)
-  # end
-  # ```
+  #   page.auto_paging_each do |coupon|
+  #     puts(coupon)
+  #   end
   #
   # @example
-  # ```ruby
-  # coupons =
-  #   page
-  #   .to_enum
-  #   .lazy
-  #   .select { _1.object_id.even? }
-  #   .map(&:itself)
-  #   .take(2)
-  #   .to_a
+  #   coupons =
+  #     page
+  #     .to_enum
+  #     .lazy
+  #     .select { _1.object_id.even? }
+  #     .map(&:itself)
+  #     .take(2)
+  #     .to_a
   #
-  # coupons => Array
-  # ```
+  #   coupons => Array
   class Page
     include Orb::BasePage
 

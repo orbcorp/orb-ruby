@@ -12,43 +12,29 @@ module Orb
         #   hour-aligned, the response includes the event volume count for the hour the time
         #   falls in.
         sig { returns(Time) }
-        def timeframe_start
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def timeframe_start=(_)
-        end
+        attr_accessor :timeframe_start
 
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
         #   from the initial request.
         sig { returns(T.nilable(String)) }
-        def cursor
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def cursor=(_)
-        end
+        attr_accessor :cursor
 
         # The number of items to fetch. Defaults to 20.
         sig { returns(T.nilable(Integer)) }
-        def limit
-        end
+        attr_reader :limit
 
-        sig { params(_: Integer).returns(Integer) }
-        def limit=(_)
-        end
+        sig { params(limit: Integer).void }
+        attr_writer :limit
 
         # The end of the timeframe, exclusive, in which to return event volume. If not
         #   specified, the current time is used. All datetime values are converted to UTC
         #   time.If the specified time isn't hour-aligned, the response includes the event
         #   volumecount for the hour the time falls in.
         sig { returns(T.nilable(Time)) }
-        def timeframe_end
-        end
+        attr_reader :timeframe_end
 
-        sig { params(_: Time).returns(Time) }
-        def timeframe_end=(_)
-        end
+        sig { params(timeframe_end: Time).void }
+        attr_writer :timeframe_end
 
         sig do
           params(
@@ -56,7 +42,7 @@ module Orb
             cursor: T.nilable(String),
             limit: Integer,
             timeframe_end: Time,
-            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

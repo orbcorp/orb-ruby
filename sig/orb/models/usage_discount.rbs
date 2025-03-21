@@ -28,10 +28,12 @@ module Orb
 
       type discount_type = :usage
 
-      class DiscountType < Orb::Enum
+      module DiscountType
+        extend Orb::Enum
+
         USAGE: :usage
 
-        def self.values: -> ::Array[Orb::Models::UsageDiscount::discount_type]
+        def self?.values: -> ::Array[Orb::Models::UsageDiscount::discount_type]
       end
     end
   end

@@ -127,8 +127,8 @@ module Orb
             currency: T.nilable(String),
             timeframe_end: T.nilable(Time),
             timeframe_start: T.nilable(Time),
-            view_mode: T.nilable(Symbol),
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            view_mode: T.nilable(Orb::Models::Customers::CostListParams::ViewMode::OrSymbol),
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
           )
             .returns(Orb::Models::Customers::CostListResponse)
         end
@@ -272,8 +272,8 @@ module Orb
             currency: T.nilable(String),
             timeframe_end: T.nilable(Time),
             timeframe_start: T.nilable(Time),
-            view_mode: T.nilable(Symbol),
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            view_mode: T.nilable(Orb::Models::Customers::CostListByExternalIDParams::ViewMode::OrSymbol),
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
           )
             .returns(Orb::Models::Customers::CostListByExternalIDResponse)
         end

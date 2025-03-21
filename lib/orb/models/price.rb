@@ -2,8 +2,6 @@
 
 module Orb
   module Models
-    # @abstract
-    #
     # The Price resource represents a price that can be billed on a subscription,
     #   resulting in a charge on an invoice in the form of an invoice line item. Prices
     #   take a quantity and determine an amount to bill.
@@ -14,7 +12,9 @@ module Orb
     #
     #   For more on the types of prices, see
     #   [the core concepts documentation](/core-concepts#plan-and-price)
-    class Price < Orb::Union
+    module Price
+      extend Orb::Union
+
       discriminator :model_type
 
       variant :unit, -> { Orb::Models::Price::UnitPrice }
@@ -295,17 +295,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -314,6 +322,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -356,12 +370,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -431,12 +452,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class UnitConfig < Orb::BaseModel
@@ -696,17 +724,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -715,6 +751,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -757,12 +799,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -855,12 +904,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -1105,17 +1161,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -1124,6 +1188,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -1166,12 +1236,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -1294,12 +1371,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -1544,17 +1628,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -1563,6 +1655,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -1605,12 +1703,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -1680,12 +1785,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class TieredConfig < Orb::BaseModel
@@ -1975,17 +2087,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -1994,6 +2114,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -2036,12 +2162,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -2111,12 +2244,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class TieredBpsConfig < Orb::BaseModel
@@ -2413,12 +2553,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -2444,8 +2591,9 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -2454,6 +2602,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -2496,12 +2650,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -2571,12 +2732,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -2821,12 +2989,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -2875,8 +3050,9 @@ module Orb
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -2885,6 +3061,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -2927,12 +3109,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -3002,12 +3191,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -3252,12 +3448,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -3298,8 +3501,9 @@ module Orb
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -3308,6 +3512,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -3350,12 +3560,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -3425,12 +3642,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -3680,17 +3904,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -3699,6 +3931,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -3741,12 +3979,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -3816,12 +4061,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -4067,17 +4319,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -4086,6 +4346,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -4128,12 +4394,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -4203,12 +4476,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -4454,17 +4734,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -4473,6 +4761,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -4515,12 +4809,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -4590,12 +4891,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -4843,17 +5151,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -4862,6 +5178,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -4904,12 +5226,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -4979,12 +5308,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -5234,17 +5570,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -5253,6 +5597,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -5295,12 +5645,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -5370,12 +5727,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -5625,17 +5989,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -5644,6 +6016,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -5686,12 +6064,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -5761,12 +6146,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -6012,17 +6404,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -6031,6 +6431,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -6073,12 +6479,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -6148,12 +6561,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -6404,17 +6824,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -6423,6 +6851,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -6465,12 +6899,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -6601,12 +7042,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -6854,17 +7302,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -6873,6 +7329,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -6915,12 +7377,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -6990,12 +7459,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -7243,17 +7719,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -7262,6 +7746,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -7304,12 +7794,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -7379,12 +7876,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -7632,17 +8136,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -7651,6 +8163,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -7693,12 +8211,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -7768,12 +8293,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -8023,17 +8555,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -8042,6 +8582,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -8084,12 +8630,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -8159,12 +8712,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -8414,17 +8974,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -8433,6 +9001,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -8475,12 +9049,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -8550,12 +9131,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -8805,17 +9393,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -8824,6 +9420,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -8866,12 +9468,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -8941,12 +9550,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -9194,17 +9810,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -9213,6 +9837,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -9255,12 +9885,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -9330,12 +9967,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -9585,17 +10229,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -9604,6 +10256,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -9646,12 +10304,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -9721,12 +10386,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -9976,17 +10648,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -9995,6 +10675,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -10037,12 +10723,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -10112,12 +10805,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -10367,17 +11067,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -10386,6 +11094,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -10428,12 +11142,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -10503,12 +11224,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -10758,17 +11486,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -10777,6 +11513,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -10819,12 +11561,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -10894,12 +11643,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -11149,17 +11905,25 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
-        # @abstract
-        class Cadence < Orb::Enum
+        module Cadence
+          extend Orb::Enum
+
           ONE_TIME = :one_time
           MONTHLY = :monthly
           QUARTERLY = :quarterly
@@ -11168,6 +11932,12 @@ module Orb
           CUSTOM = :custom
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -11210,12 +11980,19 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class DurationUnit < Orb::Enum
+          module DurationUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -11285,12 +12062,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class PriceType < Orb::Enum
+        module PriceType
+          extend Orb::Enum
+
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel

@@ -8,15 +8,10 @@ module Orb
 
       # The name of the item.
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       sig do
-        params(name: String, request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+        params(name: String, request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash))
           .returns(T.attached_class)
       end
       def self.new(name:, request_options: {})

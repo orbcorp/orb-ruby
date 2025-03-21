@@ -4,7 +4,9 @@ module Orb
       Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage
       | Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage
 
-    class SubscriptionUsage < Orb::Union
+    module SubscriptionUsage
+      extend Orb::Union
+
       type ungrouped_subscription_usage =
         {
           data: ::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]
@@ -74,11 +76,13 @@ module Orb
 
           type view_mode = :periodic | :cumulative
 
-          class ViewMode < Orb::Enum
+          module ViewMode
+            extend Orb::Enum
+
             PERIODIC: :periodic
             CUMULATIVE: :cumulative
 
-            def self.values: -> ::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::view_mode]
+            def self?.values: -> ::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::view_mode]
           end
         end
       end
@@ -175,16 +179,18 @@ module Orb
 
           type view_mode = :periodic | :cumulative
 
-          class ViewMode < Orb::Enum
+          module ViewMode
+            extend Orb::Enum
+
             PERIODIC: :periodic
             CUMULATIVE: :cumulative
 
-            def self.values: -> ::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::view_mode]
+            def self?.values: -> ::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::view_mode]
           end
         end
       end
 
-      def self.variants: -> [Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]
+      def self?.variants: -> [Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]
     end
   end
 end

@@ -55,14 +55,20 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # The type of alert to create. This must be a valid alert type.
-      class Type < Orb::Enum
+      module Type
+        extend Orb::Enum
+
         USAGE_EXCEEDED = :usage_exceeded
         COST_EXCEEDED = :cost_exceeded
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

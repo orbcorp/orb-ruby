@@ -199,11 +199,13 @@ module Orb
 
           type discount_type = :percentage | :amount
 
-          class DiscountType < Orb::Enum
+          module DiscountType
+            extend Orb::Enum
+
             PERCENTAGE: :percentage
             AMOUNT: :amount
 
-            def self.values: -> ::Array[Orb::Models::CreditNote::LineItem::Discount::discount_type]
+            def self?.values: -> ::Array[Orb::Models::CreditNote::LineItem::Discount::discount_type]
           end
         end
       end
@@ -240,10 +242,12 @@ module Orb
 
         type discount_type = :percentage
 
-        class DiscountType < Orb::Enum
+        module DiscountType
+          extend Orb::Enum
+
           PERCENTAGE: :percentage
 
-          def self.values: -> ::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::discount_type]
+          def self?.values: -> ::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::discount_type]
         end
 
         type applies_to_price = { id: String, name: String }
@@ -262,22 +266,26 @@ module Orb
       type reason =
         :Duplicate | :Fraudulent | :"Order change" | :"Product unsatisfactory"
 
-      class Reason < Orb::Enum
+      module Reason
+        extend Orb::Enum
+
         DUPLICATE: :Duplicate
         FRAUDULENT: :Fraudulent
         ORDER_CHANGE: :"Order change"
         PRODUCT_UNSATISFACTORY: :"Product unsatisfactory"
 
-        def self.values: -> ::Array[Orb::Models::CreditNote::reason]
+        def self?.values: -> ::Array[Orb::Models::CreditNote::reason]
       end
 
       type type_ = :refund | :adjustment
 
-      class Type < Orb::Enum
+      module Type
+        extend Orb::Enum
+
         REFUND: :refund
         ADJUSTMENT: :adjustment
 
-        def self.values: -> ::Array[Orb::Models::CreditNote::type_]
+        def self?.values: -> ::Array[Orb::Models::CreditNote::type_]
       end
 
       type discount =
@@ -312,10 +320,12 @@ module Orb
 
         type discount_type = :percentage
 
-        class DiscountType < Orb::Enum
+        module DiscountType
+          extend Orb::Enum
+
           PERCENTAGE: :percentage
 
-          def self.values: -> ::Array[Orb::Models::CreditNote::Discount::discount_type]
+          def self?.values: -> ::Array[Orb::Models::CreditNote::Discount::discount_type]
         end
 
         type applies_to_price = { id: String, name: String }

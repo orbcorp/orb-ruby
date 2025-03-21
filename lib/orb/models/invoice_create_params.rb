@@ -165,11 +165,18 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @abstract
-        class ModelType < Orb::Enum
+        module ModelType
+          extend Orb::Enum
+
           UNIT = :unit
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class UnitConfig < Orb::BaseModel

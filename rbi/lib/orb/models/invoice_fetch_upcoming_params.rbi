@@ -7,18 +7,10 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(String) }
-      def subscription_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def subscription_id=(_)
-      end
+      attr_accessor :subscription_id
 
       sig do
-        params(
-          subscription_id: String,
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+        params(subscription_id: String, request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash))
           .returns(T.attached_class)
       end
       def self.new(subscription_id:, request_options: {})

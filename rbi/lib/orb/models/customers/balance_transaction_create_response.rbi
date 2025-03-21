@@ -6,110 +6,70 @@ module Orb
       class BalanceTransactionCreateResponse < Orb::BaseModel
         # A unique id for this transaction.
         sig { returns(String) }
-        def id
-        end
+        attr_accessor :id
 
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
-
-        sig { returns(Symbol) }
-        def action
-        end
-
-        sig { params(_: Symbol).returns(Symbol) }
-        def action=(_)
-        end
+        sig { returns(Orb::Models::Customers::BalanceTransactionCreateResponse::Action::TaggedSymbol) }
+        attr_accessor :action
 
         # The value of the amount changed in the transaction.
         sig { returns(String) }
-        def amount
-        end
-
-        sig { params(_: String).returns(String) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # The creation time of this transaction.
         sig { returns(Time) }
-        def created_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def created_at=(_)
-        end
+        attr_accessor :created_at
 
         sig { returns(T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote)) }
-        def credit_note
-        end
+        attr_reader :credit_note
 
         sig do
-          params(_: T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote))
-            .returns(T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote))
+          params(
+            credit_note: T.nilable(T.any(Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote, Orb::Util::AnyHash))
+          )
+            .void
         end
-        def credit_note=(_)
-        end
+        attr_writer :credit_note
 
         # An optional description provided for manual customer balance adjustments.
         sig { returns(T.nilable(String)) }
-        def description
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def description=(_)
-        end
+        attr_accessor :description
 
         # The new value of the customer's balance prior to the transaction, in the
         #   customer's currency.
         sig { returns(String) }
-        def ending_balance
-        end
-
-        sig { params(_: String).returns(String) }
-        def ending_balance=(_)
-        end
+        attr_accessor :ending_balance
 
         sig { returns(T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice)) }
-        def invoice
-        end
+        attr_reader :invoice
 
         sig do
-          params(_: T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice))
-            .returns(T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice))
+          params(
+            invoice: T.nilable(T.any(Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice, Orb::Util::AnyHash))
+          )
+            .void
         end
-        def invoice=(_)
-        end
+        attr_writer :invoice
 
         # The original value of the customer's balance prior to the transaction, in the
         #   customer's currency.
         sig { returns(String) }
-        def starting_balance
-        end
+        attr_accessor :starting_balance
 
-        sig { params(_: String).returns(String) }
-        def starting_balance=(_)
-        end
-
-        sig { returns(Symbol) }
-        def type
-        end
-
-        sig { params(_: Symbol).returns(Symbol) }
-        def type=(_)
-        end
+        sig { returns(Orb::Models::Customers::BalanceTransactionCreateResponse::Type::TaggedSymbol) }
+        attr_accessor :type
 
         sig do
           params(
             id: String,
-            action: Symbol,
+            action: Orb::Models::Customers::BalanceTransactionCreateResponse::Action::OrSymbol,
             amount: String,
             created_at: Time,
-            credit_note: T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote),
+            credit_note: T.nilable(T.any(Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote, Orb::Util::AnyHash)),
             description: T.nilable(String),
             ending_balance: String,
-            invoice: T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice),
+            invoice: T.nilable(T.any(Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice, Orb::Util::AnyHash)),
             starting_balance: String,
-            type: Symbol
+            type: Orb::Models::Customers::BalanceTransactionCreateResponse::Type::OrSymbol
           )
             .returns(T.attached_class)
         end
@@ -132,7 +92,7 @@ module Orb
             .returns(
               {
                 id: String,
-                action: Symbol,
+                action: Orb::Models::Customers::BalanceTransactionCreateResponse::Action::TaggedSymbol,
                 amount: String,
                 created_at: Time,
                 credit_note: T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote),
@@ -140,38 +100,60 @@ module Orb
                 ending_balance: String,
                 invoice: T.nilable(Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice),
                 starting_balance: String,
-                type: Symbol
+                type: Orb::Models::Customers::BalanceTransactionCreateResponse::Type::TaggedSymbol
               }
             )
         end
         def to_hash
         end
 
-        class Action < Orb::Enum
-          abstract!
+        module Action
+          extend Orb::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Models::Customers::BalanceTransactionCreateResponse::Action) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Orb::Models::Customers::BalanceTransactionCreateResponse::Action::TaggedSymbol) }
 
-          APPLIED_TO_INVOICE = :applied_to_invoice
-          MANUAL_ADJUSTMENT = :manual_adjustment
-          PRORATED_REFUND = :prorated_refund
-          REVERT_PRORATED_REFUND = :revert_prorated_refund
-          RETURN_FROM_VOIDING = :return_from_voiding
-          CREDIT_NOTE_APPLIED = :credit_note_applied
-          CREDIT_NOTE_VOIDED = :credit_note_voided
-          OVERPAYMENT_REFUND = :overpayment_refund
-          EXTERNAL_PAYMENT = :external_payment
+          APPLIED_TO_INVOICE =
+            T.let(:applied_to_invoice, Orb::Models::Customers::BalanceTransactionCreateResponse::Action::TaggedSymbol)
+          MANUAL_ADJUSTMENT =
+            T.let(:manual_adjustment, Orb::Models::Customers::BalanceTransactionCreateResponse::Action::TaggedSymbol)
+          PRORATED_REFUND =
+            T.let(:prorated_refund, Orb::Models::Customers::BalanceTransactionCreateResponse::Action::TaggedSymbol)
+          REVERT_PRORATED_REFUND =
+            T.let(
+              :revert_prorated_refund,
+              Orb::Models::Customers::BalanceTransactionCreateResponse::Action::TaggedSymbol
+            )
+          RETURN_FROM_VOIDING =
+            T.let(
+              :return_from_voiding,
+              Orb::Models::Customers::BalanceTransactionCreateResponse::Action::TaggedSymbol
+            )
+          CREDIT_NOTE_APPLIED =
+            T.let(
+              :credit_note_applied,
+              Orb::Models::Customers::BalanceTransactionCreateResponse::Action::TaggedSymbol
+            )
+          CREDIT_NOTE_VOIDED =
+            T.let(:credit_note_voided, Orb::Models::Customers::BalanceTransactionCreateResponse::Action::TaggedSymbol)
+          OVERPAYMENT_REFUND =
+            T.let(:overpayment_refund, Orb::Models::Customers::BalanceTransactionCreateResponse::Action::TaggedSymbol)
+          EXTERNAL_PAYMENT =
+            T.let(:external_payment, Orb::Models::Customers::BalanceTransactionCreateResponse::Action::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Orb::Models::Customers::BalanceTransactionCreateResponse::Action::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class CreditNote < Orb::BaseModel
           # The id of the Credit note
           sig { returns(String) }
-          def id
-          end
-
-          sig { params(_: String).returns(String) }
-          def id=(_)
-          end
+          attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
           def self.new(id:)
@@ -185,12 +167,7 @@ module Orb
         class Invoice < Orb::BaseModel
           # The Invoice id
           sig { returns(String) }
-          def id
-          end
-
-          sig { params(_: String).returns(String) }
-          def id=(_)
-          end
+          attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
           def self.new(id:)
@@ -201,13 +178,24 @@ module Orb
           end
         end
 
-        class Type < Orb::Enum
-          abstract!
+        module Type
+          extend Orb::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Models::Customers::BalanceTransactionCreateResponse::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Orb::Models::Customers::BalanceTransactionCreateResponse::Type::TaggedSymbol) }
 
-          INCREMENT = :increment
-          DECREMENT = :decrement
+          INCREMENT =
+            T.let(:increment, Orb::Models::Customers::BalanceTransactionCreateResponse::Type::TaggedSymbol)
+          DECREMENT =
+            T.let(:decrement, Orb::Models::Customers::BalanceTransactionCreateResponse::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Orb::Models::Customers::BalanceTransactionCreateResponse::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

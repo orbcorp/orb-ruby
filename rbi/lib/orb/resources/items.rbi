@@ -5,15 +5,7 @@ module Orb
     class Items
       # This endpoint is used to create an [Item](/core-concepts#item).
       sig do
-        params(
-          name: String,
-          request_options: T.nilable(
-            T.any(
-              Orb::RequestOptions,
-              T::Hash[Symbol, T.anything]
-            )
-          )
-        )
+        params(name: String, request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash)))
           .returns(Orb::Models::Item)
       end
       def create(
@@ -27,9 +19,9 @@ module Orb
       sig do
         params(
           item_id: String,
-          external_connections: T.nilable(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection]),
+          external_connections: T.nilable(T::Array[T.any(Orb::Models::ItemUpdateParams::ExternalConnection, Orb::Util::AnyHash)]),
           name: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::Item)
       end
@@ -42,7 +34,7 @@ module Orb
         params(
           cursor: T.nilable(String),
           limit: Integer,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Page[Orb::Models::Item])
       end
@@ -58,10 +50,7 @@ module Orb
 
       # This endpoint returns an item identified by its item_id.
       sig do
-        params(
-          item_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+        params(item_id: String, request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash)))
           .returns(Orb::Models::Item)
       end
       def fetch(item_id, request_options: {})

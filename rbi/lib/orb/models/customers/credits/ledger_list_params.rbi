@@ -9,88 +9,41 @@ module Orb
           include Orb::RequestParameters
 
           sig { returns(T.nilable(Time)) }
-          def created_at_gt
-          end
-
-          sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-          def created_at_gt=(_)
-          end
+          attr_accessor :created_at_gt
 
           sig { returns(T.nilable(Time)) }
-          def created_at_gte
-          end
-
-          sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-          def created_at_gte=(_)
-          end
+          attr_accessor :created_at_gte
 
           sig { returns(T.nilable(Time)) }
-          def created_at_lt
-          end
-
-          sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-          def created_at_lt=(_)
-          end
+          attr_accessor :created_at_lt
 
           sig { returns(T.nilable(Time)) }
-          def created_at_lte
-          end
-
-          sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-          def created_at_lte=(_)
-          end
+          attr_accessor :created_at_lte
 
           # The ledger currency or custom pricing unit to use.
           sig { returns(T.nilable(String)) }
-          def currency
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def currency=(_)
-          end
+          attr_accessor :currency
 
           # Cursor for pagination. This can be populated by the `next_cursor` value returned
           #   from the initial request.
           sig { returns(T.nilable(String)) }
-          def cursor
-          end
+          attr_accessor :cursor
 
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def cursor=(_)
-          end
+          sig { returns(T.nilable(Orb::Models::Customers::Credits::LedgerListParams::EntryStatus::OrSymbol)) }
+          attr_accessor :entry_status
 
-          sig { returns(T.nilable(Symbol)) }
-          def entry_status
-          end
-
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-          def entry_status=(_)
-          end
-
-          sig { returns(T.nilable(Symbol)) }
-          def entry_type
-          end
-
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-          def entry_type=(_)
-          end
+          sig { returns(T.nilable(Orb::Models::Customers::Credits::LedgerListParams::EntryType::OrSymbol)) }
+          attr_accessor :entry_type
 
           # The number of items to fetch. Defaults to 20.
           sig { returns(T.nilable(Integer)) }
-          def limit
-          end
+          attr_reader :limit
 
-          sig { params(_: Integer).returns(Integer) }
-          def limit=(_)
-          end
+          sig { params(limit: Integer).void }
+          attr_writer :limit
 
           sig { returns(T.nilable(String)) }
-          def minimum_amount
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def minimum_amount=(_)
-          end
+          attr_accessor :minimum_amount
 
           sig do
             params(
@@ -100,11 +53,11 @@ module Orb
               created_at_lte: T.nilable(Time),
               currency: T.nilable(String),
               cursor: T.nilable(String),
-              entry_status: T.nilable(Symbol),
-              entry_type: T.nilable(Symbol),
+              entry_status: T.nilable(Orb::Models::Customers::Credits::LedgerListParams::EntryStatus::OrSymbol),
+              entry_type: T.nilable(Orb::Models::Customers::Credits::LedgerListParams::EntryType::OrSymbol),
               limit: Integer,
               minimum_amount: T.nilable(String),
-              request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+              request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
             )
               .returns(T.attached_class)
           end
@@ -133,8 +86,8 @@ module Orb
                   created_at_lte: T.nilable(Time),
                   currency: T.nilable(String),
                   cursor: T.nilable(String),
-                  entry_status: T.nilable(Symbol),
-                  entry_type: T.nilable(Symbol),
+                  entry_status: T.nilable(Orb::Models::Customers::Credits::LedgerListParams::EntryStatus::OrSymbol),
+                  entry_type: T.nilable(Orb::Models::Customers::Credits::LedgerListParams::EntryType::OrSymbol),
                   limit: Integer,
                   minimum_amount: T.nilable(String),
                   request_options: Orb::RequestOptions
@@ -144,27 +97,49 @@ module Orb
           def to_hash
           end
 
-          class EntryStatus < Orb::Enum
-            abstract!
+          module EntryStatus
+            extend Orb::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryStatus) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryStatus::TaggedSymbol) }
 
-            COMMITTED = :committed
-            PENDING = :pending
+            COMMITTED =
+              T.let(:committed, Orb::Models::Customers::Credits::LedgerListParams::EntryStatus::TaggedSymbol)
+            PENDING = T.let(:pending, Orb::Models::Customers::Credits::LedgerListParams::EntryStatus::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Orb::Models::Customers::Credits::LedgerListParams::EntryStatus::TaggedSymbol]) }
+              def values
+              end
+            end
           end
 
-          class EntryType < Orb::Enum
-            abstract!
+          module EntryType
+            extend Orb::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryType) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryType::TaggedSymbol) }
 
-            INCREMENT = :increment
-            DECREMENT = :decrement
-            EXPIRATION_CHANGE = :expiration_change
-            CREDIT_BLOCK_EXPIRY = :credit_block_expiry
-            VOID = :void
-            VOID_INITIATED = :void_initiated
-            AMENDMENT = :amendment
+            INCREMENT = T.let(:increment, Orb::Models::Customers::Credits::LedgerListParams::EntryType::TaggedSymbol)
+            DECREMENT = T.let(:decrement, Orb::Models::Customers::Credits::LedgerListParams::EntryType::TaggedSymbol)
+            EXPIRATION_CHANGE =
+              T.let(:expiration_change, Orb::Models::Customers::Credits::LedgerListParams::EntryType::TaggedSymbol)
+            CREDIT_BLOCK_EXPIRY =
+              T.let(:credit_block_expiry, Orb::Models::Customers::Credits::LedgerListParams::EntryType::TaggedSymbol)
+            VOID = T.let(:void, Orb::Models::Customers::Credits::LedgerListParams::EntryType::TaggedSymbol)
+            VOID_INITIATED =
+              T.let(:void_initiated, Orb::Models::Customers::Credits::LedgerListParams::EntryType::TaggedSymbol)
+            AMENDMENT = T.let(:amendment, Orb::Models::Customers::Credits::LedgerListParams::EntryType::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Orb::Models::Customers::Credits::LedgerListParams::EntryType::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
       end

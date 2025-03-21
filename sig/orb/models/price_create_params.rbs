@@ -186,7 +186,9 @@ module Orb
       type cadence =
         :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
 
-      class Cadence < Orb::Enum
+      module Cadence
+        extend Orb::Enum
+
         ANNUAL: :annual
         SEMI_ANNUAL: :semi_annual
         MONTHLY: :monthly
@@ -194,15 +196,17 @@ module Orb
         ONE_TIME: :one_time
         CUSTOM: :custom
 
-        def self.values: -> ::Array[Orb::Models::PriceCreateParams::cadence]
+        def self?.values: -> ::Array[Orb::Models::PriceCreateParams::cadence]
       end
 
       type model_type = :cumulative_grouped_bulk
 
-      class ModelType < Orb::Enum
+      module ModelType
+        extend Orb::Enum
+
         CUMULATIVE_GROUPED_BULK: :cumulative_grouped_bulk
 
-        def self.values: -> ::Array[Orb::Models::PriceCreateParams::model_type]
+        def self?.values: -> ::Array[Orb::Models::PriceCreateParams::model_type]
       end
 
       type unit_config = { unit_amount: String }
@@ -235,11 +239,13 @@ module Orb
 
         type duration_unit = :day | :month
 
-        class DurationUnit < Orb::Enum
+        module DurationUnit
+          extend Orb::Enum
+
           DAY: :day
           MONTH: :month
 
-          def self.values: -> ::Array[Orb::Models::PriceCreateParams::BillingCycleConfiguration::duration_unit]
+          def self?.values: -> ::Array[Orb::Models::PriceCreateParams::BillingCycleConfiguration::duration_unit]
         end
       end
 
@@ -263,11 +269,13 @@ module Orb
 
         type duration_unit = :day | :month
 
-        class DurationUnit < Orb::Enum
+        module DurationUnit
+          extend Orb::Enum
+
           DAY: :day
           MONTH: :month
 
-          def self.values: -> ::Array[Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::duration_unit]
+          def self?.values: -> ::Array[Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::duration_unit]
         end
       end
 

@@ -1,6 +1,5 @@
 module Orb
   module Models
-    
     class EventVolumes = Events::EventVolumes
 
     module Events

@@ -12,18 +12,13 @@ module Orb
       #   provider, a successful response from this endpoint guarantees the invoice is
       #   present in the provider.
       sig { returns(T.nilable(T::Boolean)) }
-      def synchronous
-      end
+      attr_reader :synchronous
 
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def synchronous=(_)
-      end
+      sig { params(synchronous: T::Boolean).void }
+      attr_writer :synchronous
 
       sig do
-        params(
-          synchronous: T::Boolean,
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+        params(synchronous: T::Boolean, request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash))
           .returns(T.attached_class)
       end
       def self.new(synchronous: nil, request_options: {})

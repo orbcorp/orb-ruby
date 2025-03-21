@@ -26,7 +26,7 @@ module Orb
           page: T.nilable(T::Class[Orb::BasePage[Orb::BaseModel]]),
           stream: T.nilable(T::Class[T.anything]),
           model: T.nilable(Orb::Converter::Input),
-          options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         }
       end
 
@@ -80,13 +80,9 @@ module Orb
       end
     end
 
+    # @api private
     sig { returns(T.anything) }
-    def requester
-    end
-
-    sig { params(_: T.anything).returns(T.anything) }
-    def requester=(_)
-    end
+    attr_accessor :requester
 
     # @api private
     sig do
@@ -126,7 +122,7 @@ module Orb
     # @api private
     sig do
       overridable
-        .params(req: Orb::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
+        .params(req: Orb::BaseClient::RequestComponentsShape, opts: Orb::Util::AnyHash)
         .returns(Orb::BaseClient::RequestInputShape)
     end
     private def build_request(req, opts)
@@ -172,7 +168,7 @@ module Orb
         page: T.nilable(T::Class[Orb::BasePage[Orb::BaseModel]]),
         stream: T.nilable(T::Class[T.anything]),
         model: T.nilable(Orb::Converter::Input),
-        options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+        options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
       )
         .returns(T.anything)
     end

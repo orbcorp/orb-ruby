@@ -9,40 +9,23 @@ module Orb
       # Cursor for pagination. This can be populated by the `next_cursor` value returned
       #   from the initial request.
       sig { returns(T.nilable(String)) }
-      def cursor
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def cursor=(_)
-      end
+      attr_accessor :cursor
 
       # The number of items to fetch. Defaults to 20.
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
+      attr_reader :limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def limit=(_)
-      end
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
       # Filter to coupons matching this redemption code.
       sig { returns(T.nilable(String)) }
-      def redemption_code
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def redemption_code=(_)
-      end
+      attr_accessor :redemption_code
 
       # Show archived coupons as well (by default, this endpoint only returns active
       #   coupons).
       sig { returns(T.nilable(T::Boolean)) }
-      def show_archived
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def show_archived=(_)
-      end
+      attr_accessor :show_archived
 
       sig do
         params(
@@ -50,7 +33,7 @@ module Orb
           limit: Integer,
           redemption_code: T.nilable(String),
           show_archived: T.nilable(T::Boolean),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

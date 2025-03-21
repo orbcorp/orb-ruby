@@ -56,16 +56,22 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # An optional reason for the credit note.
-      class Reason < Orb::Enum
+      module Reason
+        extend Orb::Enum
+
         DUPLICATE = :duplicate
         FRAUDULENT = :fraudulent
         ORDER_CHANGE = :order_change
         PRODUCT_UNSATISFACTORY = :product_unsatisfactory
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

@@ -5,12 +5,7 @@ module Orb
     class EventUpdateResponse < Orb::BaseModel
       # event_id of the amended event, if successfully ingested
       sig { returns(String) }
-      def amended
-      end
-
-      sig { params(_: String).returns(String) }
-      def amended=(_)
-      end
+      attr_accessor :amended
 
       sig { params(amended: String).returns(T.attached_class) }
       def self.new(amended:)

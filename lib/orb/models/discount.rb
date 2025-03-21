@@ -2,8 +2,9 @@
 
 module Orb
   module Models
-    # @abstract
-    class Discount < Orb::Union
+    module Discount
+      extend Orb::Union
+
       discriminator :discount_type
 
       variant :percentage, -> { Orb::Models::PercentageDiscount }

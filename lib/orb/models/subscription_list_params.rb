@@ -89,13 +89,20 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @abstract
-      class Status < Orb::Enum
+      module Status
+        extend Orb::Enum
+
         ACTIVE = :active
         ENDED = :ended
         UPCOMING = :upcoming
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

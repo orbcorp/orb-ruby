@@ -10,7 +10,7 @@ module Orb
       #
       #   This API does not have any side-effects or return any Orb resources.
       sig do
-        params(request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])))
+        params(request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash)))
           .returns(Orb::Models::TopLevelPingResponse)
       end
       def ping(request_options: {})

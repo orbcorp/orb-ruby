@@ -7,119 +7,71 @@ module Orb
       include Orb::RequestParameters
 
       sig { returns(T.nilable(Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration)) }
-      def accounting_sync_configuration
-      end
+      attr_reader :accounting_sync_configuration
 
       sig do
-        params(_: T.nilable(Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration))
-          .returns(T.nilable(Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration))
+        params(
+          accounting_sync_configuration: T.nilable(T.any(Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration, Orb::Util::AnyHash))
+        )
+          .void
       end
-      def accounting_sync_configuration=(_)
-      end
+      attr_writer :accounting_sync_configuration
 
       # Additional email addresses for this customer. If populated, these email
       #   addresses will be CC'd for customer communications.
       sig { returns(T.nilable(T::Array[String])) }
-      def additional_emails
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def additional_emails=(_)
-      end
+      attr_accessor :additional_emails
 
       # Used to determine if invoices for this customer will automatically attempt to
       #   charge a saved payment method, if available. This parameter defaults to `True`
       #   when a payment provider is provided on customer creation.
       sig { returns(T.nilable(T::Boolean)) }
-      def auto_collection
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def auto_collection=(_)
-      end
+      attr_accessor :auto_collection
 
       sig { returns(T.nilable(Orb::Models::CustomerUpdateParams::BillingAddress)) }
-      def billing_address
-      end
+      attr_reader :billing_address
 
       sig do
-        params(_: T.nilable(Orb::Models::CustomerUpdateParams::BillingAddress))
-          .returns(T.nilable(Orb::Models::CustomerUpdateParams::BillingAddress))
+        params(
+          billing_address: T.nilable(T.any(Orb::Models::CustomerUpdateParams::BillingAddress, Orb::Util::AnyHash))
+        )
+          .void
       end
-      def billing_address=(_)
-      end
+      attr_writer :billing_address
 
       # An ISO 4217 currency string used for the customer's invoices and balance. If not
       #   set at creation time, will be set at subscription creation time.
       sig { returns(T.nilable(String)) }
-      def currency
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def currency=(_)
-      end
+      attr_accessor :currency
 
       # A valid customer email, to be used for invoicing and notifications.
       sig { returns(T.nilable(String)) }
-      def email
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def email=(_)
-      end
+      attr_accessor :email
 
       sig { returns(T.nilable(T::Boolean)) }
-      def email_delivery
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def email_delivery=(_)
-      end
+      attr_accessor :email_delivery
 
       # The external customer ID. This can only be set if empty and the customer has no
       #   past or current subscriptions.
       sig { returns(T.nilable(String)) }
-      def external_customer_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def external_customer_id=(_)
-      end
+      attr_accessor :external_customer_id
 
       # The hierarchical relationships for this customer.
       sig { returns(T.nilable(Orb::Models::CustomerUpdateParams::Hierarchy)) }
-      def hierarchy
-      end
+      attr_reader :hierarchy
 
-      sig do
-        params(_: T.nilable(Orb::Models::CustomerUpdateParams::Hierarchy))
-          .returns(T.nilable(Orb::Models::CustomerUpdateParams::Hierarchy))
-      end
-      def hierarchy=(_)
-      end
+      sig { params(hierarchy: T.nilable(T.any(Orb::Models::CustomerUpdateParams::Hierarchy, Orb::Util::AnyHash))).void }
+      attr_writer :hierarchy
 
       # User-specified key/value pairs for the resource. Individual keys can be removed
       #   by setting the value to `null`, and the entire metadata mapping can be cleared
       #   by setting `metadata` to `null`.
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-      def metadata
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, T.nilable(String)]))
-          .returns(T.nilable(T::Hash[Symbol, T.nilable(String)]))
-      end
-      def metadata=(_)
-      end
+      attr_accessor :metadata
 
       # The full name of the customer
       sig { returns(T.nilable(String)) }
-      def name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # This is used for creating charges or invoices in an external system via Orb.
       #   When not in test mode:
@@ -128,45 +80,35 @@ module Orb
       #   - if the provider is an invoicing provider (`stripe_invoice`, `quickbooks`,
       #     `bill.com`, `netsuite`), any product mappings must first be configured with
       #     the Orb team.
-      sig { returns(T.nilable(Symbol)) }
-      def payment_provider
-      end
-
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-      def payment_provider=(_)
-      end
+      sig { returns(T.nilable(Orb::Models::CustomerUpdateParams::PaymentProvider::OrSymbol)) }
+      attr_accessor :payment_provider
 
       # The ID of this customer in an external payments solution, such as Stripe. This
       #   is used for creating charges or invoices in the external system via Orb.
       sig { returns(T.nilable(String)) }
-      def payment_provider_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def payment_provider_id=(_)
-      end
+      attr_accessor :payment_provider_id
 
       sig { returns(T.nilable(Orb::Models::CustomerUpdateParams::ReportingConfiguration)) }
-      def reporting_configuration
-      end
+      attr_reader :reporting_configuration
 
       sig do
-        params(_: T.nilable(Orb::Models::CustomerUpdateParams::ReportingConfiguration))
-          .returns(T.nilable(Orb::Models::CustomerUpdateParams::ReportingConfiguration))
+        params(
+          reporting_configuration: T.nilable(T.any(Orb::Models::CustomerUpdateParams::ReportingConfiguration, Orb::Util::AnyHash))
+        )
+          .void
       end
-      def reporting_configuration=(_)
-      end
+      attr_writer :reporting_configuration
 
       sig { returns(T.nilable(Orb::Models::CustomerUpdateParams::ShippingAddress)) }
-      def shipping_address
-      end
+      attr_reader :shipping_address
 
       sig do
-        params(_: T.nilable(Orb::Models::CustomerUpdateParams::ShippingAddress))
-          .returns(T.nilable(Orb::Models::CustomerUpdateParams::ShippingAddress))
+        params(
+          shipping_address: T.nilable(T.any(Orb::Models::CustomerUpdateParams::ShippingAddress, Orb::Util::AnyHash))
+        )
+          .void
       end
-      def shipping_address=(_)
-      end
+      attr_writer :shipping_address
 
       sig do
         returns(
@@ -178,29 +120,7 @@ module Orb
           )
         )
       end
-      def tax_configuration
-      end
-
-      sig do
-        params(
-          _: T.nilable(
-            T.any(
-              Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration,
-              Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration
-            )
-          )
-        )
-          .returns(
-            T.nilable(
-              T.any(
-                Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration,
-                Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration
-              )
-            )
-          )
-      end
-      def tax_configuration=(_)
-      end
+      attr_accessor :tax_configuration
 
       # Tax IDs are commonly required to be displayed on customer invoices, which are
       #   added to the headers of invoices.
@@ -308,41 +228,37 @@ module Orb
       #   | Venezuela            | `ve_rif`     | Venezuelan RIF Number                                                                                   |
       #   | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
       sig { returns(T.nilable(Orb::Models::CustomerUpdateParams::TaxID)) }
-      def tax_id
-      end
+      attr_reader :tax_id
 
-      sig do
-        params(_: T.nilable(Orb::Models::CustomerUpdateParams::TaxID))
-          .returns(T.nilable(Orb::Models::CustomerUpdateParams::TaxID))
-      end
-      def tax_id=(_)
-      end
+      sig { params(tax_id: T.nilable(T.any(Orb::Models::CustomerUpdateParams::TaxID, Orb::Util::AnyHash))).void }
+      attr_writer :tax_id
 
       sig do
         params(
-          accounting_sync_configuration: T.nilable(Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration),
+          accounting_sync_configuration: T.nilable(T.any(Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration, Orb::Util::AnyHash)),
           additional_emails: T.nilable(T::Array[String]),
           auto_collection: T.nilable(T::Boolean),
-          billing_address: T.nilable(Orb::Models::CustomerUpdateParams::BillingAddress),
+          billing_address: T.nilable(T.any(Orb::Models::CustomerUpdateParams::BillingAddress, Orb::Util::AnyHash)),
           currency: T.nilable(String),
           email: T.nilable(String),
           email_delivery: T.nilable(T::Boolean),
           external_customer_id: T.nilable(String),
-          hierarchy: T.nilable(Orb::Models::CustomerUpdateParams::Hierarchy),
+          hierarchy: T.nilable(T.any(Orb::Models::CustomerUpdateParams::Hierarchy, Orb::Util::AnyHash)),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           name: T.nilable(String),
-          payment_provider: T.nilable(Symbol),
+          payment_provider: T.nilable(Orb::Models::CustomerUpdateParams::PaymentProvider::OrSymbol),
           payment_provider_id: T.nilable(String),
-          reporting_configuration: T.nilable(Orb::Models::CustomerUpdateParams::ReportingConfiguration),
-          shipping_address: T.nilable(Orb::Models::CustomerUpdateParams::ShippingAddress),
+          reporting_configuration: T.nilable(T.any(Orb::Models::CustomerUpdateParams::ReportingConfiguration, Orb::Util::AnyHash)),
+          shipping_address: T.nilable(T.any(Orb::Models::CustomerUpdateParams::ShippingAddress, Orb::Util::AnyHash)),
           tax_configuration: T.nilable(
             T.any(
               Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration,
+              Orb::Util::AnyHash,
               Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration
             )
           ),
-          tax_id: T.nilable(Orb::Models::CustomerUpdateParams::TaxID),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          tax_id: T.nilable(T.any(Orb::Models::CustomerUpdateParams::TaxID, Orb::Util::AnyHash)),
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -383,7 +299,7 @@ module Orb
               hierarchy: T.nilable(Orb::Models::CustomerUpdateParams::Hierarchy),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               name: T.nilable(String),
-              payment_provider: T.nilable(Symbol),
+              payment_provider: T.nilable(Orb::Models::CustomerUpdateParams::PaymentProvider::OrSymbol),
               payment_provider_id: T.nilable(String),
               reporting_configuration: T.nilable(Orb::Models::CustomerUpdateParams::ReportingConfiguration),
               shipping_address: T.nilable(Orb::Models::CustomerUpdateParams::ShippingAddress),
@@ -407,31 +323,21 @@ module Orb
             T.nilable(T::Array[Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider])
           )
         end
-        def accounting_providers
-        end
-
-        sig do
-          params(
-            _: T.nilable(T::Array[Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider])
-          )
-            .returns(
-              T.nilable(T::Array[Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider])
-            )
-        end
-        def accounting_providers=(_)
-        end
+        attr_accessor :accounting_providers
 
         sig { returns(T.nilable(T::Boolean)) }
-        def excluded
-        end
-
-        sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-        def excluded=(_)
-        end
+        attr_accessor :excluded
 
         sig do
           params(
-            accounting_providers: T.nilable(T::Array[Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider]),
+            accounting_providers: T.nilable(
+              T::Array[
+              T.any(
+                Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider,
+                Orb::Util::AnyHash
+              )
+              ]
+            ),
             excluded: T.nilable(T::Boolean)
           )
             .returns(T.attached_class)
@@ -453,20 +359,10 @@ module Orb
 
         class AccountingProvider < Orb::BaseModel
           sig { returns(String) }
-          def external_provider_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def external_provider_id=(_)
-          end
+          attr_accessor :external_provider_id
 
           sig { returns(String) }
-          def provider_type
-          end
-
-          sig { params(_: String).returns(String) }
-          def provider_type=(_)
-          end
+          attr_accessor :provider_type
 
           sig { params(external_provider_id: String, provider_type: String).returns(T.attached_class) }
           def self.new(external_provider_id:, provider_type:)
@@ -480,52 +376,22 @@ module Orb
 
       class BillingAddress < Orb::BaseModel
         sig { returns(T.nilable(String)) }
-        def city
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def city=(_)
-        end
+        attr_accessor :city
 
         sig { returns(T.nilable(String)) }
-        def country
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def country=(_)
-        end
+        attr_accessor :country
 
         sig { returns(T.nilable(String)) }
-        def line1
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def line1=(_)
-        end
+        attr_accessor :line1
 
         sig { returns(T.nilable(String)) }
-        def line2
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def line2=(_)
-        end
+        attr_accessor :line2
 
         sig { returns(T.nilable(String)) }
-        def postal_code
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def postal_code=(_)
-        end
+        attr_accessor :postal_code
 
         sig { returns(T.nilable(String)) }
-        def state
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def state=(_)
-        end
+        attr_accessor :state
 
         sig do
           params(
@@ -562,22 +428,15 @@ module Orb
         # A list of child customer IDs to add to the hierarchy. The desired child
         #   customers must not already be part of another hierarchy.
         sig { returns(T.nilable(T::Array[String])) }
-        def child_customer_ids
-        end
+        attr_reader :child_customer_ids
 
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def child_customer_ids=(_)
-        end
+        sig { params(child_customer_ids: T::Array[String]).void }
+        attr_writer :child_customer_ids
 
         # The ID of the parent customer in the hierarchy. The desired parent customer must
         #   not be a child of another customer.
         sig { returns(T.nilable(String)) }
-        def parent_customer_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def parent_customer_id=(_)
-        end
+        attr_accessor :parent_customer_id
 
         # The hierarchical relationships for this customer.
         sig do
@@ -601,26 +460,29 @@ module Orb
       #   - if the provider is an invoicing provider (`stripe_invoice`, `quickbooks`,
       #     `bill.com`, `netsuite`), any product mappings must first be configured with
       #     the Orb team.
-      class PaymentProvider < Orb::Enum
-        abstract!
+      module PaymentProvider
+        extend Orb::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CustomerUpdateParams::PaymentProvider) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Orb::Models::CustomerUpdateParams::PaymentProvider::TaggedSymbol) }
 
-        QUICKBOOKS = :quickbooks
-        BILL_COM = :"bill.com"
-        STRIPE_CHARGE = :stripe_charge
-        STRIPE_INVOICE = :stripe_invoice
-        NETSUITE = :netsuite
+        QUICKBOOKS = T.let(:quickbooks, Orb::Models::CustomerUpdateParams::PaymentProvider::TaggedSymbol)
+        BILL_COM = T.let(:"bill.com", Orb::Models::CustomerUpdateParams::PaymentProvider::TaggedSymbol)
+        STRIPE_CHARGE = T.let(:stripe_charge, Orb::Models::CustomerUpdateParams::PaymentProvider::TaggedSymbol)
+        STRIPE_INVOICE = T.let(:stripe_invoice, Orb::Models::CustomerUpdateParams::PaymentProvider::TaggedSymbol)
+        NETSUITE = T.let(:netsuite, Orb::Models::CustomerUpdateParams::PaymentProvider::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Orb::Models::CustomerUpdateParams::PaymentProvider::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class ReportingConfiguration < Orb::BaseModel
         sig { returns(T::Boolean) }
-        def exempt
-        end
-
-        sig { params(_: T::Boolean).returns(T::Boolean) }
-        def exempt=(_)
-        end
+        attr_accessor :exempt
 
         sig { params(exempt: T::Boolean).returns(T.attached_class) }
         def self.new(exempt:)
@@ -633,52 +495,22 @@ module Orb
 
       class ShippingAddress < Orb::BaseModel
         sig { returns(T.nilable(String)) }
-        def city
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def city=(_)
-        end
+        attr_accessor :city
 
         sig { returns(T.nilable(String)) }
-        def country
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def country=(_)
-        end
+        attr_accessor :country
 
         sig { returns(T.nilable(String)) }
-        def line1
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def line1=(_)
-        end
+        attr_accessor :line1
 
         sig { returns(T.nilable(String)) }
-        def line2
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def line2=(_)
-        end
+        attr_accessor :line2
 
         sig { returns(T.nilable(String)) }
-        def postal_code
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def postal_code=(_)
-        end
+        attr_accessor :postal_code
 
         sig { returns(T.nilable(String)) }
-        def state
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def state=(_)
-        end
+        attr_accessor :state
 
         sig do
           params(
@@ -711,8 +543,8 @@ module Orb
         end
       end
 
-      class TaxConfiguration < Orb::Union
-        abstract!
+      module TaxConfiguration
+        extend Orb::Union
 
         Variants =
           type_template(:out) do
@@ -726,28 +558,13 @@ module Orb
 
         class NewAvalaraTaxConfiguration < Orb::BaseModel
           sig { returns(T::Boolean) }
-          def tax_exempt
-          end
-
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def tax_exempt=(_)
-          end
+          attr_accessor :tax_exempt
 
           sig { returns(Symbol) }
-          def tax_provider
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def tax_provider=(_)
-          end
+          attr_accessor :tax_provider
 
           sig { returns(T.nilable(String)) }
-          def tax_exemption_code
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def tax_exemption_code=(_)
-          end
+          attr_accessor :tax_exemption_code
 
           sig do
             params(tax_exempt: T::Boolean, tax_exemption_code: T.nilable(String), tax_provider: Symbol)
@@ -771,20 +588,10 @@ module Orb
 
         class NewTaxJarConfiguration < Orb::BaseModel
           sig { returns(T::Boolean) }
-          def tax_exempt
-          end
-
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def tax_exempt=(_)
-          end
+          attr_accessor :tax_exempt
 
           sig { returns(Symbol) }
-          def tax_provider
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def tax_provider=(_)
-          end
+          attr_accessor :tax_provider
 
           sig { params(tax_exempt: T::Boolean, tax_provider: Symbol).returns(T.attached_class) }
           def self.new(tax_exempt:, tax_provider: :taxjar)
@@ -794,32 +601,28 @@ module Orb
           def to_hash
           end
         end
+
+        class << self
+          sig do
+            override
+              .returns(
+                [Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration]
+              )
+          end
+          def variants
+          end
+        end
       end
 
       class TaxID < Orb::BaseModel
-        sig { returns(Symbol) }
-        def country
-        end
+        sig { returns(Orb::Models::CustomerUpdateParams::TaxID::Country::OrSymbol) }
+        attr_accessor :country
 
-        sig { params(_: Symbol).returns(Symbol) }
-        def country=(_)
-        end
-
-        sig { returns(Symbol) }
-        def type
-        end
-
-        sig { params(_: Symbol).returns(Symbol) }
-        def type=(_)
-        end
+        sig { returns(Orb::Models::CustomerUpdateParams::TaxID::Type::OrSymbol) }
+        attr_accessor :type
 
         sig { returns(String) }
-        def value
-        end
-
-        sig { params(_: String).returns(String) }
-        def value=(_)
-        end
+        attr_accessor :value
 
         # Tax IDs are commonly required to be displayed on customer invoices, which are
         #   added to the headers of invoices.
@@ -926,175 +729,206 @@ module Orb
         #   | Uruguay              | `uy_ruc`     | Uruguayan RUC Number                                                                                    |
         #   | Venezuela            | `ve_rif`     | Venezuelan RIF Number                                                                                   |
         #   | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
-        sig { params(country: Symbol, type: Symbol, value: String).returns(T.attached_class) }
+        sig do
+          params(
+            country: Orb::Models::CustomerUpdateParams::TaxID::Country::OrSymbol,
+            type: Orb::Models::CustomerUpdateParams::TaxID::Type::OrSymbol,
+            value: String
+          )
+            .returns(T.attached_class)
+        end
         def self.new(country:, type:, value:)
         end
 
-        sig { override.returns({country: Symbol, type: Symbol, value: String}) }
+        sig do
+          override
+            .returns(
+              {
+                country: Orb::Models::CustomerUpdateParams::TaxID::Country::OrSymbol,
+                type: Orb::Models::CustomerUpdateParams::TaxID::Type::OrSymbol,
+                value: String
+              }
+            )
+        end
         def to_hash
         end
 
-        class Country < Orb::Enum
-          abstract!
+        module Country
+          extend Orb::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CustomerUpdateParams::TaxID::Country) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol) }
 
-          AD = :AD
-          AE = :AE
-          AR = :AR
-          AT = :AT
-          AU = :AU
-          BE = :BE
-          BG = :BG
-          BH = :BH
-          BO = :BO
-          BR = :BR
-          CA = :CA
-          CH = :CH
-          CL = :CL
-          CN = :CN
-          CO = :CO
-          CR = :CR
-          CY = :CY
-          CZ = :CZ
-          DE = :DE
-          DK = :DK
-          EE = :EE
-          DO = :DO
-          EC = :EC
-          EG = :EG
-          ES = :ES
-          EU = :EU
-          FI = :FI
-          FR = :FR
-          GB = :GB
-          GE = :GE
-          GR = :GR
-          HK = :HK
-          HR = :HR
-          HU = :HU
-          ID = :ID
-          IE = :IE
-          IL = :IL
-          IN = :IN
-          IS = :IS
-          IT = :IT
-          JP = :JP
-          KE = :KE
-          KR = :KR
-          KZ = :KZ
-          LI = :LI
-          LT = :LT
-          LU = :LU
-          LV = :LV
-          MT = :MT
-          MX = :MX
-          MY = :MY
-          NG = :NG
-          NL = :NL
-          NO = :NO
-          NZ = :NZ
-          OM = :OM
-          PE = :PE
-          PH = :PH
-          PL = :PL
-          PT = :PT
-          RO = :RO
-          RS = :RS
-          RU = :RU
-          SA = :SA
-          SE = :SE
-          SG = :SG
-          SI = :SI
-          SK = :SK
-          SV = :SV
-          TH = :TH
-          TR = :TR
-          TW = :TW
-          UA = :UA
-          US = :US
-          UY = :UY
-          VE = :VE
-          VN = :VN
-          ZA = :ZA
+          AD = T.let(:AD, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          AE = T.let(:AE, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          AR = T.let(:AR, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          AT = T.let(:AT, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          AU = T.let(:AU, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          BE = T.let(:BE, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          BG = T.let(:BG, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          BH = T.let(:BH, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          BO = T.let(:BO, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          BR = T.let(:BR, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          CA = T.let(:CA, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          CH = T.let(:CH, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          CL = T.let(:CL, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          CN = T.let(:CN, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          CO = T.let(:CO, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          CR = T.let(:CR, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          CY = T.let(:CY, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          CZ = T.let(:CZ, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          DE = T.let(:DE, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          DK = T.let(:DK, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          EE = T.let(:EE, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          DO = T.let(:DO, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          EC = T.let(:EC, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          EG = T.let(:EG, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          ES = T.let(:ES, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          EU = T.let(:EU, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          FI = T.let(:FI, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          FR = T.let(:FR, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          GB = T.let(:GB, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          GE = T.let(:GE, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          GR = T.let(:GR, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          HK = T.let(:HK, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          HR = T.let(:HR, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          HU = T.let(:HU, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          ID = T.let(:ID, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          IE = T.let(:IE, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          IL = T.let(:IL, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          IN = T.let(:IN, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          IS = T.let(:IS, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          IT = T.let(:IT, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          JP = T.let(:JP, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          KE = T.let(:KE, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          KR = T.let(:KR, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          KZ = T.let(:KZ, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          LI = T.let(:LI, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          LT = T.let(:LT, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          LU = T.let(:LU, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          LV = T.let(:LV, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          MT = T.let(:MT, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          MX = T.let(:MX, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          MY = T.let(:MY, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          NG = T.let(:NG, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          NL = T.let(:NL, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          NO = T.let(:NO, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          NZ = T.let(:NZ, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          OM = T.let(:OM, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          PE = T.let(:PE, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          PH = T.let(:PH, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          PL = T.let(:PL, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          PT = T.let(:PT, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          RO = T.let(:RO, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          RS = T.let(:RS, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          RU = T.let(:RU, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          SA = T.let(:SA, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          SE = T.let(:SE, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          SG = T.let(:SG, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          SI = T.let(:SI, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          SK = T.let(:SK, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          SV = T.let(:SV, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          TH = T.let(:TH, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          TR = T.let(:TR, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          TW = T.let(:TW, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          UA = T.let(:UA, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          US = T.let(:US, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          UY = T.let(:UY, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          VE = T.let(:VE, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          VN = T.let(:VN, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+          ZA = T.let(:ZA, Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Orb::Models::CustomerUpdateParams::TaxID::Country::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
-        class Type < Orb::Enum
-          abstract!
+        module Type
+          extend Orb::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CustomerUpdateParams::TaxID::Type) }
+          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol) }
 
-          AD_NRT = :ad_nrt
-          AE_TRN = :ae_trn
-          AR_CUIT = :ar_cuit
-          EU_VAT = :eu_vat
-          AU_ABN = :au_abn
-          AU_ARN = :au_arn
-          BG_UIC = :bg_uic
-          BH_VAT = :bh_vat
-          BO_TIN = :bo_tin
-          BR_CNPJ = :br_cnpj
-          BR_CPF = :br_cpf
-          CA_BN = :ca_bn
-          CA_GST_HST = :ca_gst_hst
-          CA_PST_BC = :ca_pst_bc
-          CA_PST_MB = :ca_pst_mb
-          CA_PST_SK = :ca_pst_sk
-          CA_QST = :ca_qst
-          CH_VAT = :ch_vat
-          CL_TIN = :cl_tin
-          CN_TIN = :cn_tin
-          CO_NIT = :co_nit
-          CR_TIN = :cr_tin
-          DO_RCN = :do_rcn
-          EC_RUC = :ec_ruc
-          EG_TIN = :eg_tin
-          ES_CIF = :es_cif
-          EU_OSS_VAT = :eu_oss_vat
-          GB_VAT = :gb_vat
-          GE_VAT = :ge_vat
-          HK_BR = :hk_br
-          HU_TIN = :hu_tin
-          ID_NPWP = :id_npwp
-          IL_VAT = :il_vat
-          IN_GST = :in_gst
-          IS_VAT = :is_vat
-          JP_CN = :jp_cn
-          JP_RN = :jp_rn
-          JP_TRN = :jp_trn
-          KE_PIN = :ke_pin
-          KR_BRN = :kr_brn
-          KZ_BIN = :kz_bin
-          LI_UID = :li_uid
-          MX_RFC = :mx_rfc
-          MY_FRP = :my_frp
-          MY_ITN = :my_itn
-          MY_SST = :my_sst
-          NG_TIN = :ng_tin
-          NO_VAT = :no_vat
-          NO_VOEC = :no_voec
-          NZ_GST = :nz_gst
-          OM_VAT = :om_vat
-          PE_RUC = :pe_ruc
-          PH_TIN = :ph_tin
-          RO_TIN = :ro_tin
-          RS_PIB = :rs_pib
-          RU_INN = :ru_inn
-          RU_KPP = :ru_kpp
-          SA_VAT = :sa_vat
-          SG_GST = :sg_gst
-          SG_UEN = :sg_uen
-          SI_TIN = :si_tin
-          SV_NIT = :sv_nit
-          TH_VAT = :th_vat
-          TR_TIN = :tr_tin
-          TW_VAT = :tw_vat
-          UA_VAT = :ua_vat
-          US_EIN = :us_ein
-          UY_RUC = :uy_ruc
-          VE_RIF = :ve_rif
-          VN_TIN = :vn_tin
-          ZA_VAT = :za_vat
+          AD_NRT = T.let(:ad_nrt, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          AE_TRN = T.let(:ae_trn, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          AR_CUIT = T.let(:ar_cuit, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          EU_VAT = T.let(:eu_vat, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          AU_ABN = T.let(:au_abn, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          AU_ARN = T.let(:au_arn, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          BG_UIC = T.let(:bg_uic, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          BH_VAT = T.let(:bh_vat, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          BO_TIN = T.let(:bo_tin, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          BR_CNPJ = T.let(:br_cnpj, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          BR_CPF = T.let(:br_cpf, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          CA_BN = T.let(:ca_bn, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          CA_GST_HST = T.let(:ca_gst_hst, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          CA_PST_BC = T.let(:ca_pst_bc, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          CA_PST_MB = T.let(:ca_pst_mb, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          CA_PST_SK = T.let(:ca_pst_sk, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          CA_QST = T.let(:ca_qst, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          CH_VAT = T.let(:ch_vat, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          CL_TIN = T.let(:cl_tin, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          CN_TIN = T.let(:cn_tin, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          CO_NIT = T.let(:co_nit, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          CR_TIN = T.let(:cr_tin, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          DO_RCN = T.let(:do_rcn, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          EC_RUC = T.let(:ec_ruc, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          EG_TIN = T.let(:eg_tin, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          ES_CIF = T.let(:es_cif, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          EU_OSS_VAT = T.let(:eu_oss_vat, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          GB_VAT = T.let(:gb_vat, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          GE_VAT = T.let(:ge_vat, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          HK_BR = T.let(:hk_br, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          HU_TIN = T.let(:hu_tin, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          ID_NPWP = T.let(:id_npwp, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          IL_VAT = T.let(:il_vat, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          IN_GST = T.let(:in_gst, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          IS_VAT = T.let(:is_vat, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          JP_CN = T.let(:jp_cn, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          JP_RN = T.let(:jp_rn, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          JP_TRN = T.let(:jp_trn, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          KE_PIN = T.let(:ke_pin, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          KR_BRN = T.let(:kr_brn, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          KZ_BIN = T.let(:kz_bin, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          LI_UID = T.let(:li_uid, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          MX_RFC = T.let(:mx_rfc, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          MY_FRP = T.let(:my_frp, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          MY_ITN = T.let(:my_itn, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          MY_SST = T.let(:my_sst, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          NG_TIN = T.let(:ng_tin, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          NO_VAT = T.let(:no_vat, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          NO_VOEC = T.let(:no_voec, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          NZ_GST = T.let(:nz_gst, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          OM_VAT = T.let(:om_vat, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          PE_RUC = T.let(:pe_ruc, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          PH_TIN = T.let(:ph_tin, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          RO_TIN = T.let(:ro_tin, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          RS_PIB = T.let(:rs_pib, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          RU_INN = T.let(:ru_inn, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          RU_KPP = T.let(:ru_kpp, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          SA_VAT = T.let(:sa_vat, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          SG_GST = T.let(:sg_gst, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          SG_UEN = T.let(:sg_uen, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          SI_TIN = T.let(:si_tin, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          SV_NIT = T.let(:sv_nit, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          TH_VAT = T.let(:th_vat, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          TR_TIN = T.let(:tr_tin, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          TW_VAT = T.let(:tw_vat, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          UA_VAT = T.let(:ua_vat, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          US_EIN = T.let(:us_ein, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          UY_RUC = T.let(:uy_ruc, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          VE_RIF = T.let(:ve_rif, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          VN_TIN = T.let(:vn_tin, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+          ZA_VAT = T.let(:za_vat, Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Orb::Models::CustomerUpdateParams::TaxID::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

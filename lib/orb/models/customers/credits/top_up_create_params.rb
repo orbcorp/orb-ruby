@@ -137,14 +137,20 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @abstract
-          #
           # The unit of expires_after.
-          class ExpiresAfterUnit < Orb::Enum
+          module ExpiresAfterUnit
+            extend Orb::Enum
+
             DAY = :day
             MONTH = :month
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end

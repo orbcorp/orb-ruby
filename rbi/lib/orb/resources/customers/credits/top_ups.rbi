@@ -17,13 +17,13 @@ module Orb
               customer_id: String,
               amount: String,
               currency: String,
-              invoice_settings: Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings,
+              invoice_settings: T.any(Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings, Orb::Util::AnyHash),
               per_unit_cost_basis: String,
               threshold: String,
               active_from: T.nilable(Time),
               expires_after: T.nilable(Integer),
-              expires_after_unit: T.nilable(Symbol),
-              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+              expires_after_unit: T.nilable(Orb::Models::Customers::Credits::TopUpCreateParams::ExpiresAfterUnit::OrSymbol),
+              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
             )
               .returns(Orb::Models::Customers::Credits::TopUpCreateResponse)
           end
@@ -59,7 +59,7 @@ module Orb
               customer_id: String,
               cursor: T.nilable(String),
               limit: Integer,
-              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
             )
               .returns(Orb::Page[Orb::Models::Customers::Credits::TopUpListResponse])
           end
@@ -80,7 +80,7 @@ module Orb
             params(
               top_up_id: String,
               customer_id: String,
-              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
             )
               .void
           end
@@ -99,13 +99,13 @@ module Orb
               external_customer_id: String,
               amount: String,
               currency: String,
-              invoice_settings: Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::InvoiceSettings,
+              invoice_settings: T.any(Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::InvoiceSettings, Orb::Util::AnyHash),
               per_unit_cost_basis: String,
               threshold: String,
               active_from: T.nilable(Time),
               expires_after: T.nilable(Integer),
-              expires_after_unit: T.nilable(Symbol),
-              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+              expires_after_unit: T.nilable(Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::ExpiresAfterUnit::OrSymbol),
+              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
             )
               .returns(Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse)
           end
@@ -141,7 +141,7 @@ module Orb
             params(
               top_up_id: String,
               external_customer_id: String,
-              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
             )
               .void
           end
@@ -154,7 +154,7 @@ module Orb
               external_customer_id: String,
               cursor: T.nilable(String),
               limit: Integer,
-              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
             )
               .returns(Orb::Page[Orb::Models::Customers::Credits::TopUpListByExternalIDResponse])
           end

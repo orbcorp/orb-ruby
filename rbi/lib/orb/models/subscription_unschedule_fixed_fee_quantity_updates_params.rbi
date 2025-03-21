@@ -8,15 +8,10 @@ module Orb
 
       # Price for which the updates should be cleared. Must be a fixed fee.
       sig { returns(String) }
-      def price_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def price_id=(_)
-      end
+      attr_accessor :price_id
 
       sig do
-        params(price_id: String, request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+        params(price_id: String, request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash))
           .returns(T.attached_class)
       end
       def self.new(price_id:, request_options: {})

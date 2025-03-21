@@ -34,12 +34,19 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @abstract
-        class Type < Orb::Enum
+        module Type
+          extend Orb::Enum
+
           INCREMENT = :increment
           DECREMENT = :decrement
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

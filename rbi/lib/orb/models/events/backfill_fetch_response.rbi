@@ -5,105 +5,50 @@ module Orb
     module Events
       class BackfillFetchResponse < Orb::BaseModel
         sig { returns(String) }
-        def id
-        end
-
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
+        attr_accessor :id
 
         # If in the future, the time at which the backfill will automatically close. If in
         #   the past, the time at which the backfill was closed.
         sig { returns(T.nilable(Time)) }
-        def close_time
-        end
-
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def close_time=(_)
-        end
+        attr_accessor :close_time
 
         sig { returns(Time) }
-        def created_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def created_at=(_)
-        end
+        attr_accessor :created_at
 
         # The Orb-generated ID of the customer to which this backfill is scoped. If
         #   `null`, this backfill is scoped to all customers.
         sig { returns(T.nilable(String)) }
-        def customer_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def customer_id=(_)
-        end
+        attr_accessor :customer_id
 
         # The number of events ingested in this backfill.
         sig { returns(Integer) }
-        def events_ingested
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def events_ingested=(_)
-        end
+        attr_accessor :events_ingested
 
         # If `true`, existing events in the backfill's timeframe will be replaced with the
         #   newly ingested events associated with the backfill. If `false`, newly ingested
         #   events will be added to the existing events.
         sig { returns(T::Boolean) }
-        def replace_existing_events
-        end
-
-        sig { params(_: T::Boolean).returns(T::Boolean) }
-        def replace_existing_events=(_)
-        end
+        attr_accessor :replace_existing_events
 
         # The time at which this backfill was reverted.
         sig { returns(T.nilable(Time)) }
-        def reverted_at
-        end
-
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def reverted_at=(_)
-        end
+        attr_accessor :reverted_at
 
         # The status of the backfill.
-        sig { returns(Symbol) }
-        def status
-        end
-
-        sig { params(_: Symbol).returns(Symbol) }
-        def status=(_)
-        end
+        sig { returns(Orb::Models::Events::BackfillFetchResponse::Status::TaggedSymbol) }
+        attr_accessor :status
 
         sig { returns(Time) }
-        def timeframe_end
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def timeframe_end=(_)
-        end
+        attr_accessor :timeframe_end
 
         sig { returns(Time) }
-        def timeframe_start
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def timeframe_start=(_)
-        end
+        attr_accessor :timeframe_start
 
         # A boolean
         #   [computed property](/extensibility/advanced-metrics#computed-properties) used to
         #   filter the set of events to deprecate
         sig { returns(T.nilable(String)) }
-        def deprecation_filter
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def deprecation_filter=(_)
-        end
+        attr_accessor :deprecation_filter
 
         # A backfill represents an update to historical usage data, adding or replacing
         #   events in a timeframe.
@@ -116,7 +61,7 @@ module Orb
             events_ingested: Integer,
             replace_existing_events: T::Boolean,
             reverted_at: T.nilable(Time),
-            status: Symbol,
+            status: Orb::Models::Events::BackfillFetchResponse::Status::OrSymbol,
             timeframe_end: Time,
             timeframe_start: Time,
             deprecation_filter: T.nilable(String)
@@ -149,7 +94,7 @@ module Orb
                 events_ingested: Integer,
                 replace_existing_events: T::Boolean,
                 reverted_at: T.nilable(Time),
-                status: Symbol,
+                status: Orb::Models::Events::BackfillFetchResponse::Status::TaggedSymbol,
                 timeframe_end: Time,
                 timeframe_start: Time,
                 deprecation_filter: T.nilable(String)
@@ -160,15 +105,23 @@ module Orb
         end
 
         # The status of the backfill.
-        class Status < Orb::Enum
-          abstract!
+        module Status
+          extend Orb::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Events::BackfillFetchResponse::Status) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Orb::Models::Events::BackfillFetchResponse::Status::TaggedSymbol) }
 
-          PENDING = :pending
-          REFLECTED = :reflected
-          PENDING_REVERT = :pending_revert
-          REVERTED = :reverted
+          PENDING = T.let(:pending, Orb::Models::Events::BackfillFetchResponse::Status::TaggedSymbol)
+          REFLECTED = T.let(:reflected, Orb::Models::Events::BackfillFetchResponse::Status::TaggedSymbol)
+          PENDING_REVERT = T.let(:pending_revert, Orb::Models::Events::BackfillFetchResponse::Status::TaggedSymbol)
+          REVERTED = T.let(:reverted, Orb::Models::Events::BackfillFetchResponse::Status::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Orb::Models::Events::BackfillFetchResponse::Status::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end
