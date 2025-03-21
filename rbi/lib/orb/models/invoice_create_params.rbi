@@ -206,10 +206,8 @@ module Orb
 
           UNIT = T.let(:unit, Orb::Models::InvoiceCreateParams::LineItem::ModelType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::InvoiceCreateParams::LineItem::ModelType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::InvoiceCreateParams::LineItem::ModelType::TaggedSymbol]) }
+          def self.values
           end
         end
 

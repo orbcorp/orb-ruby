@@ -155,13 +155,11 @@ module Orb
             MONTH =
               T.let(:month, Orb::Models::Customers::Credits::TopUpCreateResponse::ExpiresAfterUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Orb::Models::Customers::Credits::TopUpCreateResponse::ExpiresAfterUnit::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Orb::Models::Customers::Credits::TopUpCreateResponse::ExpiresAfterUnit::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end

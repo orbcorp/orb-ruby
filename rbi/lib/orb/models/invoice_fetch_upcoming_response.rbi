@@ -835,15 +835,13 @@ module Orb
               Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Action::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Action::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Action::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
 
@@ -894,15 +892,13 @@ module Orb
               Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Type::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Type::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Type::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
       end
@@ -1133,12 +1129,10 @@ module Orb
           VN = T.let(:VN, Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Country::TaggedSymbol)
           ZA = T.let(:ZA, Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Country::TaggedSymbol)
 
-          class << self
-            sig do
-              override.returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Country::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override.returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Country::TaggedSymbol])
+          end
+          def self.values
           end
         end
 
@@ -1227,10 +1221,8 @@ module Orb
           VN_TIN = T.let(:vn_tin, Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Type::TaggedSymbol)
           ZA_VAT = T.let(:za_vat, Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -1247,10 +1239,8 @@ module Orb
         PARTIAL = T.let(:partial, Orb::Models::InvoiceFetchUpcomingResponse::InvoiceSource::TaggedSymbol)
         ONE_OFF = T.let(:one_off, Orb::Models::InvoiceFetchUpcomingResponse::InvoiceSource::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::InvoiceSource::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::InvoiceSource::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -1639,19 +1629,6 @@ module Orb
         module Adjustment
           extend Orb::Union
 
-          Variants =
-            type_template(:out) do
-              {
-                fixed: T.any(
-                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment,
-                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment,
-                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment,
-                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment,
-                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment
-                )
-              }
-            end
-
           class MonetaryUsageDiscountAdjustment < Orb::BaseModel
             sig { returns(String) }
             attr_accessor :id
@@ -2009,15 +1986,13 @@ module Orb
             end
           end
 
-          class << self
-            sig do
-              override
-                .returns(
-                  [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment]
-                )
-            end
-            def variants
-            end
+          sig do
+            override
+              .returns(
+                [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment]
+              )
+          end
+          def self.variants
           end
         end
 
@@ -2067,17 +2042,6 @@ module Orb
 
         module SubLineItem
           extend Orb::Union
-
-          Variants =
-            type_template(:out) do
-              {
-                fixed: T.any(
-                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem,
-                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem,
-                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem
-                )
-              }
-            end
 
           class MatrixSubLineItem < Orb::BaseModel
             # The total amount for this sub line item.
@@ -2411,15 +2375,13 @@ module Orb
             end
           end
 
-          class << self
-            sig do
-              override
-                .returns(
-                  [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem]
-                )
-            end
-            def variants
-            end
+          sig do
+            override
+              .returns(
+                [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem]
+              )
+          end
+          def self.variants
           end
         end
 
@@ -2570,15 +2532,13 @@ module Orb
           STRIPE =
             T.let(:stripe, Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt::PaymentProvider::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt::PaymentProvider::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt::PaymentProvider::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
       end
@@ -2646,10 +2606,8 @@ module Orb
         VOID = T.let(:void, Orb::Models::InvoiceFetchUpcomingResponse::Status::TaggedSymbol)
         DRAFT = T.let(:draft, Orb::Models::InvoiceFetchUpcomingResponse::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 

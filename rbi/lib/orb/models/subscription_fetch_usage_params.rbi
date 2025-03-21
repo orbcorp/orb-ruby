@@ -109,10 +109,8 @@ module Orb
 
         DAY = T.let(:day, Orb::Models::SubscriptionFetchUsageParams::Granularity::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::SubscriptionFetchUsageParams::Granularity::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::SubscriptionFetchUsageParams::Granularity::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -130,10 +128,8 @@ module Orb
         PERIODIC = T.let(:periodic, Orb::Models::SubscriptionFetchUsageParams::ViewMode::TaggedSymbol)
         CUMULATIVE = T.let(:cumulative, Orb::Models::SubscriptionFetchUsageParams::ViewMode::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::SubscriptionFetchUsageParams::ViewMode::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::SubscriptionFetchUsageParams::ViewMode::TaggedSymbol]) }
+        def self.values
         end
       end
     end

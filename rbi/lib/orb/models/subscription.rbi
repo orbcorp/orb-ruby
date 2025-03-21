@@ -365,19 +365,6 @@ module Orb
         module Adjustment
           extend Orb::Union
 
-          Variants =
-            type_template(:out) do
-              {
-                fixed: T.any(
-                  Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment,
-                  Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment,
-                  Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment,
-                  Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment,
-                  Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
-                )
-              }
-            end
-
           class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
             sig { returns(String) }
             attr_accessor :id
@@ -735,15 +722,13 @@ module Orb
             end
           end
 
-          class << self
-            sig do
-              override
-                .returns(
-                  [Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
-                )
-            end
-            def variants
-            end
+          sig do
+            override
+              .returns(
+                [Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
+              )
+          end
+          def self.variants
           end
         end
       end
@@ -780,17 +765,6 @@ module Orb
 
       module DiscountInterval
         extend Orb::Union
-
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval,
-                Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval,
-                Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval
-              )
-            }
-          end
 
         class AmountDiscountInterval < Orb::BaseModel
           # Only available if discount_type is `amount`.
@@ -980,15 +954,13 @@ module Orb
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval, Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval, Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval, Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval, Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval]
+            )
+        end
+        def self.variants
         end
       end
 
@@ -1375,10 +1347,8 @@ module Orb
         ENDED = T.let(:ended, Orb::Models::Subscription::Status::TaggedSymbol)
         UPCOMING = T.let(:upcoming, Orb::Models::Subscription::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::Subscription::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::Subscription::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 

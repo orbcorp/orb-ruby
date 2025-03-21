@@ -53,10 +53,8 @@ module Orb
 
         PERCENTAGE = T.let(:percentage, Orb::Models::PercentageDiscount::DiscountType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::PercentageDiscount::DiscountType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::PercentageDiscount::DiscountType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

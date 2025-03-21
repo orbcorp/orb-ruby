@@ -109,10 +109,8 @@ module Orb
               T.let(:committed, Orb::Models::Customers::Credits::LedgerListParams::EntryStatus::TaggedSymbol)
             PENDING = T.let(:pending, Orb::Models::Customers::Credits::LedgerListParams::EntryStatus::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[Orb::Models::Customers::Credits::LedgerListParams::EntryStatus::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Orb::Models::Customers::Credits::LedgerListParams::EntryStatus::TaggedSymbol]) }
+            def self.values
             end
           end
 
@@ -135,10 +133,8 @@ module Orb
               T.let(:void_initiated, Orb::Models::Customers::Credits::LedgerListParams::EntryType::TaggedSymbol)
             AMENDMENT = T.let(:amendment, Orb::Models::Customers::Credits::LedgerListParams::EntryType::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[Orb::Models::Customers::Credits::LedgerListParams::EntryType::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Orb::Models::Customers::Credits::LedgerListParams::EntryType::TaggedSymbol]) }
+            def self.values
             end
           end
         end

@@ -54,10 +54,8 @@ module Orb
           INCREMENT = T.let(:increment, Orb::Models::Customers::BalanceTransactionCreateParams::Type::TaggedSymbol)
           DECREMENT = T.let(:decrement, Orb::Models::Customers::BalanceTransactionCreateParams::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Customers::BalanceTransactionCreateParams::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Customers::BalanceTransactionCreateParams::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end
