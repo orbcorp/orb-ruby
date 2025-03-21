@@ -9,27 +9,20 @@ module Orb
       # Cursor for pagination. This can be populated by the `next_cursor` value returned
       #   from the initial request.
       sig { returns(T.nilable(String)) }
-      def cursor
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def cursor=(_)
-      end
+      attr_accessor :cursor
 
       # The number of items to fetch. Defaults to 20.
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
+      attr_reader :limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def limit=(_)
-      end
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
       sig do
         params(
           cursor: T.nilable(String),
           limit: Integer,
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

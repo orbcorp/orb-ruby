@@ -206,8 +206,9 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @abstract
-      class Adjustment < Orb::Union
+      module Adjustment
+        extend Orb::Union
+
         discriminator :adjustment_type
 
         variant :usage_discount,
@@ -630,8 +631,9 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @abstract
-      class SubLineItem < Orb::Union
+      module SubLineItem
+        extend Orb::Union
+
         discriminator :type
 
         variant :matrix, -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem }

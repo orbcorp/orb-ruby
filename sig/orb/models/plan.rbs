@@ -113,7 +113,9 @@ module Orb
         | Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment
         | Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
 
-      class Adjustment < Orb::Union
+      module Adjustment
+        extend Orb::Union
+
         type plan_phase_usage_discount_adjustment =
           {
             id: String,
@@ -313,7 +315,7 @@ module Orb
           def to_hash: -> Orb::Models::Plan::Adjustment::plan_phase_maximum_adjustment
         end
 
-        def self.variants: -> [Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment]
+        def self?.variants: -> [Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment]
       end
 
       type base_plan = { id: String?, external_plan_id: String?, name: String? }
@@ -423,14 +425,16 @@ module Orb
         type duration_unit =
           :daily | :monthly | :quarterly | :semi_annual | :annual
 
-        class DurationUnit < Orb::Enum
+        module DurationUnit
+          extend Orb::Enum
+
           DAILY: :daily
           MONTHLY: :monthly
           QUARTERLY: :quarterly
           SEMI_ANNUAL: :semi_annual
           ANNUAL: :annual
 
-          def self.values: -> ::Array[Orb::Models::Plan::PlanPhase::duration_unit]
+          def self?.values: -> ::Array[Orb::Models::Plan::PlanPhase::duration_unit]
         end
 
         type maximum =
@@ -482,12 +486,14 @@ module Orb
 
       type status = :active | :archived | :draft
 
-      class Status < Orb::Enum
+      module Status
+        extend Orb::Enum
+
         ACTIVE: :active
         ARCHIVED: :archived
         DRAFT: :draft
 
-        def self.values: -> ::Array[Orb::Models::Plan::status]
+        def self?.values: -> ::Array[Orb::Models::Plan::status]
       end
 
       type trial_config =
@@ -510,10 +516,12 @@ module Orb
 
         type trial_period_unit = :days
 
-        class TrialPeriodUnit < Orb::Enum
+        module TrialPeriodUnit
+          extend Orb::Enum
+
           DAYS: :days
 
-          def self.values: -> ::Array[Orb::Models::Plan::TrialConfig::trial_period_unit]
+          def self?.values: -> ::Array[Orb::Models::Plan::TrialConfig::trial_period_unit]
         end
       end
     end

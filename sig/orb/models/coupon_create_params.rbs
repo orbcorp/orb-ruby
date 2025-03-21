@@ -35,7 +35,9 @@ module Orb
         Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount
         | Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
 
-      class Discount < Orb::Union
+      module Discount
+        extend Orb::Union
+
         type new_coupon_percentage_discount =
           { discount_type: :percentage, percentage_discount: Float }
 
@@ -68,7 +70,7 @@ module Orb
           def to_hash: -> Orb::Models::CouponCreateParams::Discount::new_coupon_amount_discount
         end
 
-        def self.variants: -> [Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]
+        def self?.variants: -> [Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]
       end
     end
   end

@@ -710,8 +710,9 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @abstract
-        class Action < Orb::Enum
+        module Action
+          extend Orb::Enum
+
           APPLIED_TO_INVOICE = :applied_to_invoice
           MANUAL_ADJUSTMENT = :manual_adjustment
           PRORATED_REFUND = :prorated_refund
@@ -723,6 +724,12 @@ module Orb
           EXTERNAL_PAYMENT = :external_payment
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditNote < Orb::BaseModel
@@ -755,12 +762,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class Type < Orb::Enum
+        module Type
+          extend Orb::Enum
+
           INCREMENT = :increment
           DECREMENT = :decrement
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -895,8 +909,9 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @abstract
-        class Country < Orb::Enum
+        module Country
+          extend Orb::Enum
+
           AD = :AD
           AE = :AE
           AR = :AR
@@ -977,10 +992,17 @@ module Orb
           ZA = :ZA
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
-        # @abstract
-        class Type < Orb::Enum
+        module Type
+          extend Orb::Enum
+
           AD_NRT = :ad_nrt
           AE_TRN = :ae_trn
           AR_CUIT = :ar_cuit
@@ -1054,16 +1076,29 @@ module Orb
           ZA_VAT = :za_vat
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
-      # @abstract
-      class InvoiceSource < Orb::Enum
+      module InvoiceSource
+        extend Orb::Enum
+
         SUBSCRIPTION = :subscription
         PARTIAL = :partial
         ONE_OFF = :one_off
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class LineItem < Orb::BaseModel
@@ -1269,8 +1304,9 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @abstract
-        class Adjustment < Orb::Union
+        module Adjustment
+          extend Orb::Union
+
           discriminator :adjustment_type
 
           variant :usage_discount,
@@ -1693,8 +1729,9 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class SubLineItem < Orb::Union
+        module SubLineItem
+          extend Orb::Union
+
           discriminator :type
 
           variant :matrix, -> { Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem }
@@ -2075,13 +2112,19 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @abstract
-        #
         # The payment provider that attempted to collect the payment.
-        class PaymentProvider < Orb::Enum
+        module PaymentProvider
+          extend Orb::Enum
+
           STRIPE = :stripe
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -2129,8 +2172,9 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
-      # @abstract
-      class Status < Orb::Enum
+      module Status
+        extend Orb::Enum
+
         ISSUED = :issued
         PAID = :paid
         SYNCED = :synced
@@ -2138,6 +2182,12 @@ module Orb
         DRAFT = :draft
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Subscription < Orb::BaseModel

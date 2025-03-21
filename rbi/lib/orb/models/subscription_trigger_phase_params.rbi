@@ -10,28 +10,18 @@ module Orb
       #   credit note. Consider using this as a safety mechanism if you do not expect
       #   existing invoices to be changed.
       sig { returns(T.nilable(T::Boolean)) }
-      def allow_invoice_credit_or_void
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def allow_invoice_credit_or_void=(_)
-      end
+      attr_accessor :allow_invoice_credit_or_void
 
       # The date on which the phase change should take effect. If not provided, defaults
       #   to today in the customer's timezone.
       sig { returns(T.nilable(Date)) }
-      def effective_date
-      end
-
-      sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
-      def effective_date=(_)
-      end
+      attr_accessor :effective_date
 
       sig do
         params(
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
           effective_date: T.nilable(Date),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

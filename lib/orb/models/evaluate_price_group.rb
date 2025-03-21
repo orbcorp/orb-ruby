@@ -30,8 +30,9 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @abstract
-      class GroupingValue < Orb::Union
+      module GroupingValue
+        extend Orb::Union
+
         variant String
 
         variant Float

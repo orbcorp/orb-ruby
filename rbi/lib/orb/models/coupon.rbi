@@ -5,71 +5,33 @@ module Orb
     class Coupon < Orb::BaseModel
       # Also referred to as coupon_id in this documentation.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # An archived coupon can no longer be redeemed. Active coupons will have a value
       #   of null for `archived_at`; this field will be non-null for archived coupons.
       sig { returns(T.nilable(Time)) }
-      def archived_at
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def archived_at=(_)
-      end
+      attr_accessor :archived_at
 
       sig { returns(T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount)) }
-      def discount
-      end
-
-      sig do
-        params(_: T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount))
-          .returns(T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount))
-      end
-      def discount=(_)
-      end
+      attr_accessor :discount
 
       # This allows for a coupon's discount to apply for a limited time (determined in
       #   months); a `null` value here means "unlimited time".
       sig { returns(T.nilable(Integer)) }
-      def duration_in_months
-      end
-
-      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-      def duration_in_months=(_)
-      end
+      attr_accessor :duration_in_months
 
       # The maximum number of redemptions allowed for this coupon before it is
       #   exhausted; `null` here means "unlimited".
       sig { returns(T.nilable(Integer)) }
-      def max_redemptions
-      end
-
-      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-      def max_redemptions=(_)
-      end
+      attr_accessor :max_redemptions
 
       # This string can be used to redeem this coupon for a given subscription.
       sig { returns(String) }
-      def redemption_code
-      end
-
-      sig { params(_: String).returns(String) }
-      def redemption_code=(_)
-      end
+      attr_accessor :redemption_code
 
       # The number of times this coupon has been redeemed.
       sig { returns(Integer) }
-      def times_redeemed
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def times_redeemed=(_)
-      end
+      attr_accessor :times_redeemed
 
       # A coupon represents a reusable discount configuration that can be applied either
       #   as a fixed or percentage amount to an invoice or subscription. Coupons are
@@ -80,7 +42,7 @@ module Orb
         params(
           id: String,
           archived_at: T.nilable(Time),
-          discount: T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount),
+          discount: T.any(Orb::Models::PercentageDiscount, Orb::Util::AnyHash, Orb::Models::AmountDiscount),
           duration_in_months: T.nilable(Integer),
           max_redemptions: T.nilable(Integer),
           redemption_code: String,
@@ -108,11 +70,17 @@ module Orb
       def to_hash
       end
 
-      class Discount < Orb::Union
-        abstract!
+      module Discount
+        extend Orb::Union
 
         Variants =
           type_template(:out) { {fixed: T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount)} }
+
+        class << self
+          sig { override.returns([Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount]) }
+          def variants
+          end
+        end
       end
     end
   end

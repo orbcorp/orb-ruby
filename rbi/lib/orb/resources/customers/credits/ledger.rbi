@@ -95,11 +95,11 @@ module Orb
               created_at_lte: T.nilable(Time),
               currency: T.nilable(String),
               cursor: T.nilable(String),
-              entry_status: T.nilable(Symbol),
-              entry_type: T.nilable(Symbol),
+              entry_status: T.nilable(Orb::Models::Customers::Credits::LedgerListParams::EntryStatus::OrSymbol),
+              entry_type: T.nilable(Orb::Models::Customers::Credits::LedgerListParams::EntryType::OrSymbol),
               limit: Integer,
               minimum_amount: T.nilable(String),
-              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
             )
               .returns(
                 Orb::Page[
@@ -249,18 +249,20 @@ module Orb
             params(
               customer_id: String,
               amount: Float,
-              entry_type: Symbol,
+              entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType::OrSymbol,
               expiry_date: T.nilable(Time),
               target_expiry_date: Date,
               block_id: String,
               currency: T.nilable(String),
               description: T.nilable(String),
               effective_date: T.nilable(Time),
-              invoice_settings: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings),
+              invoice_settings: T.nilable(
+                T.any(Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, Orb::Util::AnyHash)
+              ),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               per_unit_cost_basis: T.nilable(String),
-              void_reason: T.nilable(Symbol),
-              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+              void_reason: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason::OrSymbol),
+              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
             )
               .returns(
                 T.any(
@@ -430,18 +432,23 @@ module Orb
             params(
               external_customer_id: String,
               amount: Float,
-              entry_type: Symbol,
+              entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType::OrSymbol,
               expiry_date: T.nilable(Time),
               target_expiry_date: Date,
               block_id: String,
               currency: T.nilable(String),
               description: T.nilable(String),
               effective_date: T.nilable(Time),
-              invoice_settings: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings),
+              invoice_settings: T.nilable(
+                T.any(
+                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings,
+                  Orb::Util::AnyHash
+                )
+              ),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               per_unit_cost_basis: T.nilable(String),
-              void_reason: T.nilable(Symbol),
-              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+              void_reason: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason::OrSymbol),
+              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
             )
               .returns(
                 T.any(
@@ -587,11 +594,11 @@ module Orb
               created_at_lte: T.nilable(Time),
               currency: T.nilable(String),
               cursor: T.nilable(String),
-              entry_status: T.nilable(Symbol),
-              entry_type: T.nilable(Symbol),
+              entry_status: T.nilable(Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryStatus::OrSymbol),
+              entry_type: T.nilable(Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryType::OrSymbol),
               limit: Integer,
               minimum_amount: T.nilable(String),
-              request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
             )
               .returns(
                 Orb::Page[

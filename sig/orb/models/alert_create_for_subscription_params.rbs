@@ -39,11 +39,13 @@ module Orb
 
       type type_ = :usage_exceeded | :cost_exceeded
 
-      class Type < Orb::Enum
+      module Type
+        extend Orb::Enum
+
         USAGE_EXCEEDED: :usage_exceeded
         COST_EXCEEDED: :cost_exceeded
 
-        def self.values: -> ::Array[Orb::Models::AlertCreateForSubscriptionParams::type_]
+        def self?.values: -> ::Array[Orb::Models::AlertCreateForSubscriptionParams::type_]
       end
     end
   end

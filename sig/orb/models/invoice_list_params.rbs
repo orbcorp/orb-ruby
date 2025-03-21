@@ -95,23 +95,27 @@ module Orb
 
       type date_type = :due_date | :invoice_date
 
-      class DateType < Orb::Enum
+      module DateType
+        extend Orb::Enum
+
         DUE_DATE: :due_date
         INVOICE_DATE: :invoice_date
 
-        def self.values: -> ::Array[Orb::Models::InvoiceListParams::date_type]
+        def self?.values: -> ::Array[Orb::Models::InvoiceListParams::date_type]
       end
 
       type status = :draft | :issued | :paid | :synced | :void
 
-      class Status < Orb::Enum
+      module Status
+        extend Orb::Enum
+
         DRAFT: :draft
         ISSUED: :issued
         PAID: :paid
         SYNCED: :synced
         VOID: :void
 
-        def self.values: -> ::Array[Orb::Models::InvoiceListParams::status]
+        def self?.values: -> ::Array[Orb::Models::InvoiceListParams::status]
       end
     end
   end

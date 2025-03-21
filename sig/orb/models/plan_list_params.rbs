@@ -51,12 +51,14 @@ module Orb
 
       type status = :active | :archived | :draft
 
-      class Status < Orb::Enum
+      module Status
+        extend Orb::Enum
+
         ACTIVE: :active
         ARCHIVED: :archived
         DRAFT: :draft
 
-        def self.values: -> ::Array[Orb::Models::PlanListParams::status]
+        def self?.values: -> ::Array[Orb::Models::PlanListParams::status]
       end
     end
   end

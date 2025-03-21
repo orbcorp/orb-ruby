@@ -57,13 +57,15 @@ module Orb
 
         type status = :pending | :reflected | :pending_revert | :reverted
 
-        class Status < Orb::Enum
+        module Status
+          extend Orb::Enum
+
           PENDING: :pending
           REFLECTED: :reflected
           PENDING_REVERT: :pending_revert
           REVERTED: :reverted
 
-          def self.values: -> ::Array[Orb::Models::Events::BackfillRevertResponse::status]
+          def self?.values: -> ::Array[Orb::Models::Events::BackfillRevertResponse::status]
         end
       end
     end

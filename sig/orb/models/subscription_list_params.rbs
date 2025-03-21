@@ -55,12 +55,14 @@ module Orb
 
       type status = :active | :ended | :upcoming
 
-      class Status < Orb::Enum
+      module Status
+        extend Orb::Enum
+
         ACTIVE: :active
         ENDED: :ended
         UPCOMING: :upcoming
 
-        def self.values: -> ::Array[Orb::Models::SubscriptionListParams::status]
+        def self?.values: -> ::Array[Orb::Models::SubscriptionListParams::status]
       end
     end
   end

@@ -4,8 +4,7 @@ module Orb
   module Resources
     class DimensionalPriceGroups
       sig { returns(Orb::Resources::DimensionalPriceGroups::ExternalDimensionalPriceGroupID) }
-      def external_dimensional_price_group_id
-      end
+      attr_reader :external_dimensional_price_group_id
 
       # A dimensional price group is used to partition the result of a billable metric
       #   by a set of dimensions. Prices in a price group must specify the parition used
@@ -22,7 +21,7 @@ module Orb
           name: String,
           external_dimensional_price_group_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::DimensionalPriceGroup)
       end
@@ -44,7 +43,7 @@ module Orb
       sig do
         params(
           dimensional_price_group_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Models::DimensionalPriceGroup)
       end
@@ -56,7 +55,7 @@ module Orb
         params(
           cursor: T.nilable(String),
           limit: Integer,
-          request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
         )
           .returns(Orb::Page[Orb::Models::DimensionalPriceGroup])
       end

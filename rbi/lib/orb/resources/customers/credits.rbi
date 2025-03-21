@@ -5,12 +5,10 @@ module Orb
     class Customers
       class Credits
         sig { returns(Orb::Resources::Customers::Credits::Ledger) }
-        def ledger
-        end
+        attr_reader :ledger
 
         sig { returns(Orb::Resources::Customers::Credits::TopUps) }
-        def top_ups
-        end
+        attr_reader :top_ups
 
         # Returns a paginated list of unexpired, non-zero credit blocks for a customer.
         #
@@ -26,7 +24,7 @@ module Orb
             cursor: T.nilable(String),
             include_all_blocks: T::Boolean,
             limit: Integer,
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
           )
             .returns(Orb::Page[Orb::Models::Customers::CreditListResponse])
         end
@@ -60,7 +58,7 @@ module Orb
             cursor: T.nilable(String),
             include_all_blocks: T::Boolean,
             limit: Integer,
-            request_options: T.nilable(T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
           )
             .returns(Orb::Page[Orb::Models::Customers::CreditListByExternalIDResponse])
         end

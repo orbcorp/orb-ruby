@@ -94,8 +94,9 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
-        # @abstract
-        class Action < Orb::Enum
+        module Action
+          extend Orb::Enum
+
           APPLIED_TO_INVOICE = :applied_to_invoice
           MANUAL_ADJUSTMENT = :manual_adjustment
           PRORATED_REFUND = :prorated_refund
@@ -107,6 +108,12 @@ module Orb
           EXTERNAL_PAYMENT = :external_payment
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CreditNote < Orb::BaseModel
@@ -139,12 +146,19 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
-        # @abstract
-        class Type < Orb::Enum
+        module Type
+          extend Orb::Enum
+
           INCREMENT = :increment
           DECREMENT = :decrement
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

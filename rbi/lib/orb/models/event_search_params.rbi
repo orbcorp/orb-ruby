@@ -11,39 +11,24 @@ module Orb
       #   events that have not been amended. Values in this array will be treated case
       #   sensitively.
       sig { returns(T::Array[String]) }
-      def event_ids
-      end
-
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def event_ids=(_)
-      end
+      attr_accessor :event_ids
 
       # The end of the timeframe, exclusive, in which to search events. If not
       #   specified, the current time is used.
       sig { returns(T.nilable(Time)) }
-      def timeframe_end
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def timeframe_end=(_)
-      end
+      attr_accessor :timeframe_end
 
       # The start of the timeframe, inclusive, in which to search events. If not
       #   specified, the one week ago is used.
       sig { returns(T.nilable(Time)) }
-      def timeframe_start
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def timeframe_start=(_)
-      end
+      attr_accessor :timeframe_start
 
       sig do
         params(
           event_ids: T::Array[String],
           timeframe_end: T.nilable(Time),
           timeframe_start: T.nilable(Time),
-          request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

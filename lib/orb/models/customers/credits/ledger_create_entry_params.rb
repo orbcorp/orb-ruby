@@ -133,11 +133,18 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
-          # @abstract
-          class EntryType < Orb::Enum
+          module EntryType
+            extend Orb::Enum
+
             AMENDMENT = :amendment
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class InvoiceSettings < Orb::BaseModel
@@ -189,13 +196,19 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
-          # @abstract
-          #
           # Can only be specified when `entry_type=void`. The reason for the void.
-          class VoidReason < Orb::Enum
+          module VoidReason
+            extend Orb::Enum
+
             REFUND = :refund
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end

@@ -11,7 +11,9 @@ module Orb
           | Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry
           | Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry
 
-        class LedgerCreateEntryResponse < Orb::Union
+        module LedgerCreateEntryResponse
+          extend Orb::Union
+
           type increment_ledger_entry =
             {
               id: String,
@@ -110,11 +112,13 @@ module Orb
 
             type entry_status = :committed | :pending
 
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::entry_status]
             end
           end
 
@@ -228,11 +232,13 @@ module Orb
 
             type entry_status = :committed | :pending
 
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::entry_status]
             end
           end
 
@@ -338,11 +344,13 @@ module Orb
 
             type entry_status = :committed | :pending
 
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::entry_status]
             end
           end
 
@@ -444,11 +452,13 @@ module Orb
 
             type entry_status = :committed | :pending
 
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::entry_status]
             end
           end
 
@@ -558,11 +568,13 @@ module Orb
 
             type entry_status = :committed | :pending
 
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::entry_status]
             end
           end
 
@@ -676,11 +688,13 @@ module Orb
 
             type entry_status = :committed | :pending
 
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::entry_status]
             end
           end
 
@@ -782,15 +796,17 @@ module Orb
 
             type entry_status = :committed | :pending
 
-            class EntryStatus < Orb::Enum
+            module EntryStatus
+              extend Orb::Enum
+
               COMMITTED: :committed
               PENDING: :pending
 
-              def self.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::entry_status]
             end
           end
 
-          def self.variants: -> [Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry]
+          def self?.variants: -> [Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry]
         end
       end
     end

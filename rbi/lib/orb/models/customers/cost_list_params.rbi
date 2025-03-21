@@ -9,50 +9,30 @@ module Orb
 
         # The currency or custom pricing unit to use.
         sig { returns(T.nilable(String)) }
-        def currency
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def currency=(_)
-        end
+        attr_accessor :currency
 
         # Costs returned are exclusive of `timeframe_end`.
         sig { returns(T.nilable(Time)) }
-        def timeframe_end
-        end
-
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def timeframe_end=(_)
-        end
+        attr_accessor :timeframe_end
 
         # Costs returned are inclusive of `timeframe_start`.
         sig { returns(T.nilable(Time)) }
-        def timeframe_start
-        end
-
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def timeframe_start=(_)
-        end
+        attr_accessor :timeframe_start
 
         # Controls whether Orb returns cumulative costs since the start of the billing
         #   period, or incremental day-by-day costs. If your customer has minimums or
         #   discounts, it's strongly recommended that you use the default cumulative
         #   behavior.
-        sig { returns(T.nilable(Symbol)) }
-        def view_mode
-        end
-
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
-        def view_mode=(_)
-        end
+        sig { returns(T.nilable(Orb::Models::Customers::CostListParams::ViewMode::OrSymbol)) }
+        attr_accessor :view_mode
 
         sig do
           params(
             currency: T.nilable(String),
             timeframe_end: T.nilable(Time),
             timeframe_start: T.nilable(Time),
-            view_mode: T.nilable(Symbol),
-            request_options: T.any(Orb::RequestOptions, T::Hash[Symbol, T.anything])
+            view_mode: T.nilable(Orb::Models::Customers::CostListParams::ViewMode::OrSymbol),
+            request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -66,7 +46,7 @@ module Orb
                 currency: T.nilable(String),
                 timeframe_end: T.nilable(Time),
                 timeframe_start: T.nilable(Time),
-                view_mode: T.nilable(Symbol),
+                view_mode: T.nilable(Orb::Models::Customers::CostListParams::ViewMode::OrSymbol),
                 request_options: Orb::RequestOptions
               }
             )
@@ -78,13 +58,20 @@ module Orb
         #   period, or incremental day-by-day costs. If your customer has minimums or
         #   discounts, it's strongly recommended that you use the default cumulative
         #   behavior.
-        class ViewMode < Orb::Enum
-          abstract!
+        module ViewMode
+          extend Orb::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Customers::CostListParams::ViewMode) }
+          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Customers::CostListParams::ViewMode::TaggedSymbol) }
 
-          PERIODIC = :periodic
-          CUMULATIVE = :cumulative
+          PERIODIC = T.let(:periodic, Orb::Models::Customers::CostListParams::ViewMode::TaggedSymbol)
+          CUMULATIVE = T.let(:cumulative, Orb::Models::Customers::CostListParams::ViewMode::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Orb::Models::Customers::CostListParams::ViewMode::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

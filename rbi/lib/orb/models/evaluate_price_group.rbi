@@ -5,38 +5,15 @@ module Orb
     class EvaluatePriceGroup < Orb::BaseModel
       # The price's output for the group
       sig { returns(String) }
-      def amount
-      end
-
-      sig { params(_: String).returns(String) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # The values for the group in the order specified by `grouping_keys`
       sig { returns(T::Array[T.any(String, Float, T::Boolean)]) }
-      def grouping_values
-      end
-
-      sig do
-        params(
-          _: T::Array[T.any(
-            String,
-            Float,
-            T::Boolean
-          )]
-        ).returns(T::Array[T.any(String, Float, T::Boolean)])
-      end
-      def grouping_values=(_)
-      end
+      attr_accessor :grouping_values
 
       # The price's usage quantity for the group
       sig { returns(Float) }
-      def quantity
-      end
-
-      sig { params(_: Float).returns(Float) }
-      def quantity=(_)
-      end
+      attr_accessor :quantity
 
       sig do
         params(amount: String, grouping_values: T::Array[T.any(String, Float, T::Boolean)], quantity: Float)
@@ -56,10 +33,16 @@ module Orb
       def to_hash
       end
 
-      class GroupingValue < Orb::Union
-        abstract!
+      module GroupingValue
+        extend Orb::Union
 
         Variants = type_template(:out) { {fixed: T.any(String, Float, T::Boolean)} }
+
+        class << self
+          sig { override.returns([String, Float, T::Boolean]) }
+          def variants
+          end
+        end
       end
     end
   end

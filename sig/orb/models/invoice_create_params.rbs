@@ -97,10 +97,12 @@ module Orb
 
         type model_type = :unit
 
-        class ModelType < Orb::Enum
+        module ModelType
+          extend Orb::Enum
+
           UNIT: :unit
 
-          def self.values: -> ::Array[Orb::Models::InvoiceCreateParams::LineItem::model_type]
+          def self?.values: -> ::Array[Orb::Models::InvoiceCreateParams::LineItem::model_type]
         end
 
         type unit_config = { unit_amount: String }

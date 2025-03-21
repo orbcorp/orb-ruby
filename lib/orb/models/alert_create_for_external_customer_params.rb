@@ -37,15 +37,21 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @abstract
-      #
       # The type of alert to create. This must be a valid alert type.
-      class Type < Orb::Enum
+      module Type
+        extend Orb::Enum
+
         CREDIT_BALANCE_DEPLETED = :credit_balance_depleted
         CREDIT_BALANCE_DROPPED = :credit_balance_dropped
         CREDIT_BALANCE_RECOVERED = :credit_balance_recovered
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Threshold < Orb::BaseModel

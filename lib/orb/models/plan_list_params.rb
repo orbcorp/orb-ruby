@@ -80,15 +80,21 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
-      # @abstract
-      #
       # The plan status to filter to ('active', 'archived', or 'draft').
-      class Status < Orb::Enum
+      module Status
+        extend Orb::Enum
+
         ACTIVE = :active
         ARCHIVED = :archived
         DRAFT = :draft
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end
