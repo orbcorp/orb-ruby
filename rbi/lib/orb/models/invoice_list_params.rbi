@@ -161,10 +161,8 @@ module Orb
         DUE_DATE = T.let(:due_date, Orb::Models::InvoiceListParams::DateType::TaggedSymbol)
         INVOICE_DATE = T.let(:invoice_date, Orb::Models::InvoiceListParams::DateType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::InvoiceListParams::DateType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::InvoiceListParams::DateType::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -180,10 +178,8 @@ module Orb
         SYNCED = T.let(:synced, Orb::Models::InvoiceListParams::Status::TaggedSymbol)
         VOID = T.let(:void, Orb::Models::InvoiceListParams::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::InvoiceListParams::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::InvoiceListParams::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

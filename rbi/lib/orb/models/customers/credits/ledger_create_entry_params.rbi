@@ -149,13 +149,11 @@ module Orb
             AMENDMENT =
               T.let(:amendment, Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType::TaggedSymbol])
+            end
+            def self.values
             end
           end
 
@@ -226,13 +224,11 @@ module Orb
             REFUND =
               T.let(:refund, Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end

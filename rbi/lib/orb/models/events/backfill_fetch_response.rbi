@@ -117,10 +117,8 @@ module Orb
           PENDING_REVERT = T.let(:pending_revert, Orb::Models::Events::BackfillFetchResponse::Status::TaggedSymbol)
           REVERTED = T.let(:reverted, Orb::Models::Events::BackfillFetchResponse::Status::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Events::BackfillFetchResponse::Status::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Events::BackfillFetchResponse::Status::TaggedSymbol]) }
+          def self.values
           end
         end
       end

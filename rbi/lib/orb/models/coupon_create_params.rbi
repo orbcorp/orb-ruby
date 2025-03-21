@@ -68,16 +68,6 @@ module Orb
       module Discount
         extend Orb::Union
 
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
-                Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
-              )
-            }
-          end
-
         class NewCouponPercentageDiscount < Orb::BaseModel
           sig { returns(Symbol) }
           attr_accessor :discount_type
@@ -110,15 +100,13 @@ module Orb
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]
+            )
+        end
+        def self.variants
         end
       end
     end
