@@ -194,11 +194,9 @@ module Orb
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
 
@@ -386,11 +384,9 @@ module Orb
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
 
@@ -564,11 +560,9 @@ module Orb
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
 
@@ -735,11 +729,9 @@ module Orb
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
 
@@ -920,11 +912,9 @@ module Orb
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
 
@@ -1112,11 +1102,9 @@ module Orb
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
 
@@ -1283,19 +1271,15 @@ module Orb
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
 
           # @!parse
-          #   class << self
-          #     # @return [Array(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry)]
-          #     def variants; end
-          #   end
+          #   # @return [Array(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry)]
+          #   def self.variants; end
         end
       end
     end

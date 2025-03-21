@@ -74,10 +74,8 @@ module Orb
           T.let(:usage_exceeded, Orb::Models::AlertCreateForSubscriptionParams::Type::TaggedSymbol)
         COST_EXCEEDED = T.let(:cost_exceeded, Orb::Models::AlertCreateForSubscriptionParams::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::AlertCreateForSubscriptionParams::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::AlertCreateForSubscriptionParams::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

@@ -724,11 +724,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditNote < Orb::BaseModel
@@ -769,11 +767,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
 
@@ -992,11 +988,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         module Type
@@ -1076,11 +1070,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
 
@@ -1093,11 +1085,9 @@ module Orb
 
         finalize!
 
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       class LineItem < Orb::BaseModel
@@ -1674,10 +1664,8 @@ module Orb
           end
 
           # @!parse
-          #   class << self
-          #     # @return [Array(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment)]
-          #     def variants; end
-          #   end
+          #   # @return [Array(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment)]
+          #   def self.variants; end
         end
 
         # @deprecated
@@ -1987,10 +1975,8 @@ module Orb
           end
 
           # @!parse
-          #   class << self
-          #     # @return [Array(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem)]
-          #     def variants; end
-          #   end
+          #   # @return [Array(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem)]
+          #   def self.variants; end
         end
 
         class TaxAmount < Orb::BaseModel
@@ -2128,11 +2114,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
 
@@ -2191,11 +2175,9 @@ module Orb
 
         finalize!
 
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       class Subscription < Orb::BaseModel

@@ -405,11 +405,9 @@ module Orb
 
         finalize!
 
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       class ReportingConfiguration < Orb::BaseModel
@@ -526,10 +524,8 @@ module Orb
         end
 
         # @!parse
-        #   class << self
-        #     # @return [Array(Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration)]
+        #   def self.variants; end
       end
 
       class TaxID < Orb::BaseModel
@@ -747,11 +743,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         module Type
@@ -831,11 +825,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
     end

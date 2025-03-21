@@ -338,10 +338,8 @@ module Orb
             PERCENTAGE = T.let(:percentage, Orb::Models::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol)
             AMOUNT = T.let(:amount, Orb::Models::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[Orb::Models::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Orb::Models::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol]) }
+            def self.values
             end
           end
         end
@@ -405,10 +403,8 @@ module Orb
           PERCENTAGE =
             T.let(:percentage, Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -440,10 +436,8 @@ module Orb
         ORDER_CHANGE = T.let(:"Order change", Orb::Models::CreditNote::Reason::TaggedSymbol)
         PRODUCT_UNSATISFACTORY = T.let(:"Product unsatisfactory", Orb::Models::CreditNote::Reason::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::CreditNote::Reason::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::CreditNote::Reason::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -456,10 +450,8 @@ module Orb
         REFUND = T.let(:refund, Orb::Models::CreditNote::Type::TaggedSymbol)
         ADJUSTMENT = T.let(:adjustment, Orb::Models::CreditNote::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::CreditNote::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::CreditNote::Type::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -515,10 +507,8 @@ module Orb
 
           PERCENTAGE = T.let(:percentage, Orb::Models::CreditNote::Discount::DiscountType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::CreditNote::Discount::DiscountType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::CreditNote::Discount::DiscountType::TaggedSymbol]) }
+          def self.values
           end
         end
 

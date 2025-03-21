@@ -457,10 +457,8 @@ module Orb
         STRIPE_INVOICE = T.let(:stripe_invoice, Orb::Models::Customer::PaymentProvider::TaggedSymbol)
         NETSUITE = T.let(:netsuite, Orb::Models::Customer::PaymentProvider::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::Customer::PaymentProvider::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::Customer::PaymentProvider::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -738,10 +736,8 @@ module Orb
           VN = T.let(:VN, Orb::Models::Customer::TaxID::Country::TaggedSymbol)
           ZA = T.let(:ZA, Orb::Models::Customer::TaxID::Country::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Customer::TaxID::Country::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Customer::TaxID::Country::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -823,10 +819,8 @@ module Orb
           VN_TIN = T.let(:vn_tin, Orb::Models::Customer::TaxID::Type::TaggedSymbol)
           ZA_VAT = T.let(:za_vat, Orb::Models::Customer::TaxID::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Customer::TaxID::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Customer::TaxID::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -917,15 +911,13 @@ module Orb
                 Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end

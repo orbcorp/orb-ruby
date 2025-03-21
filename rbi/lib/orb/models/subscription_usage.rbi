@@ -5,16 +5,6 @@ module Orb
     module SubscriptionUsage
       extend Orb::Union
 
-      Variants =
-        type_template(:out) do
-          {
-            fixed: T.any(
-              Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage,
-              Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage
-            )
-          }
-        end
-
       class UngroupedSubscriptionUsage < Orb::BaseModel
         sig { returns(T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]) }
         attr_accessor :data
@@ -133,15 +123,13 @@ module Orb
                 Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -300,27 +288,23 @@ module Orb
             CUMULATIVE =
               T.let(:cumulative, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
       end
 
-      class << self
-        sig do
-          override
-            .returns(
-              [Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]
-            )
-        end
-        def variants
-        end
+      sig do
+        override
+          .returns(
+            [Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]
+          )
+      end
+      def self.variants
       end
     end
   end

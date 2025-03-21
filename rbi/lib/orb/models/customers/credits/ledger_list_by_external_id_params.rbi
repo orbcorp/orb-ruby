@@ -113,15 +113,13 @@ module Orb
             PENDING =
               T.let(:pending, Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryStatus::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryStatus::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryStatus::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
 
@@ -157,13 +155,11 @@ module Orb
             AMENDMENT =
               T.let(:amendment, Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryType::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryType::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryType::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end

@@ -767,10 +767,8 @@ module Orb
           EXTERNAL_PAYMENT =
             T.let(:external_payment, Orb::Models::Invoice::CustomerBalanceTransaction::Action::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Invoice::CustomerBalanceTransaction::Action::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Invoice::CustomerBalanceTransaction::Action::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -812,10 +810,8 @@ module Orb
           INCREMENT = T.let(:increment, Orb::Models::Invoice::CustomerBalanceTransaction::Type::TaggedSymbol)
           DECREMENT = T.let(:decrement, Orb::Models::Invoice::CustomerBalanceTransaction::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Invoice::CustomerBalanceTransaction::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Invoice::CustomerBalanceTransaction::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -1044,10 +1040,8 @@ module Orb
           VN = T.let(:VN, Orb::Models::Invoice::CustomerTaxID::Country::TaggedSymbol)
           ZA = T.let(:ZA, Orb::Models::Invoice::CustomerTaxID::Country::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Invoice::CustomerTaxID::Country::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Invoice::CustomerTaxID::Country::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -1129,10 +1123,8 @@ module Orb
           VN_TIN = T.let(:vn_tin, Orb::Models::Invoice::CustomerTaxID::Type::TaggedSymbol)
           ZA_VAT = T.let(:za_vat, Orb::Models::Invoice::CustomerTaxID::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Invoice::CustomerTaxID::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Invoice::CustomerTaxID::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -1147,10 +1139,8 @@ module Orb
         PARTIAL = T.let(:partial, Orb::Models::Invoice::InvoiceSource::TaggedSymbol)
         ONE_OFF = T.let(:one_off, Orb::Models::Invoice::InvoiceSource::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::Invoice::InvoiceSource::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::Invoice::InvoiceSource::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -1529,19 +1519,6 @@ module Orb
         module Adjustment
           extend Orb::Union
 
-          Variants =
-            type_template(:out) do
-              {
-                fixed: T.any(
-                  Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment,
-                  Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment,
-                  Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment,
-                  Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment,
-                  Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment
-                )
-              }
-            end
-
           class MonetaryUsageDiscountAdjustment < Orb::BaseModel
             sig { returns(String) }
             attr_accessor :id
@@ -1899,15 +1876,13 @@ module Orb
             end
           end
 
-          class << self
-            sig do
-              override
-                .returns(
-                  [Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment]
-                )
-            end
-            def variants
-            end
+          sig do
+            override
+              .returns(
+                [Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment]
+              )
+          end
+          def self.variants
           end
         end
 
@@ -1957,17 +1932,6 @@ module Orb
 
         module SubLineItem
           extend Orb::Union
-
-          Variants =
-            type_template(:out) do
-              {
-                fixed: T.any(
-                  Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem,
-                  Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem,
-                  Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem
-                )
-              }
-            end
 
           class MatrixSubLineItem < Orb::BaseModel
             # The total amount for this sub line item.
@@ -2259,15 +2223,13 @@ module Orb
             end
           end
 
-          class << self
-            sig do
-              override
-                .returns(
-                  [Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem]
-                )
-            end
-            def variants
-            end
+          sig do
+            override
+              .returns(
+                [Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem]
+              )
+          end
+          def self.variants
           end
         end
 
@@ -2412,10 +2374,8 @@ module Orb
 
           STRIPE = T.let(:stripe, Orb::Models::Invoice::PaymentAttempt::PaymentProvider::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Invoice::PaymentAttempt::PaymentProvider::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Invoice::PaymentAttempt::PaymentProvider::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -2482,10 +2442,8 @@ module Orb
         VOID = T.let(:void, Orb::Models::Invoice::Status::TaggedSymbol)
         DRAFT = T.let(:draft, Orb::Models::Invoice::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::Invoice::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::Invoice::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 

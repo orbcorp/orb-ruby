@@ -383,19 +383,6 @@ module Orb
       module Adjustment
         extend Orb::Union
 
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment,
-                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment,
-                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment,
-                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment,
-                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment
-              )
-            }
-          end
-
         class MonetaryUsageDiscountAdjustment < Orb::BaseModel
           sig { returns(String) }
           attr_accessor :id
@@ -753,15 +740,13 @@ module Orb
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment]
+            )
+        end
+        def self.variants
         end
       end
 
@@ -811,17 +796,6 @@ module Orb
 
       module SubLineItem
         extend Orb::Union
-
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem,
-                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem,
-                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem
-              )
-            }
-          end
 
         class MatrixSubLineItem < Orb::BaseModel
           # The total amount for this sub line item.
@@ -1143,15 +1117,13 @@ module Orb
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem]
+            )
+        end
+        def self.variants
         end
       end
 

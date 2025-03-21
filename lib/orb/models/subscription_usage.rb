@@ -104,11 +104,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
       end
@@ -239,20 +237,16 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
       end
 
       # @!parse
-      #   class << self
-      #     # @return [Array(Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage)]
-      #     def variants; end
-      #   end
+      #   # @return [Array(Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage)]
+      #   def self.variants; end
     end
   end
 end

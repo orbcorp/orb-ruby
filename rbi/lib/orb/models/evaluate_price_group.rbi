@@ -36,12 +36,8 @@ module Orb
       module GroupingValue
         extend Orb::Union
 
-        Variants = type_template(:out) { {fixed: T.any(String, Float, T::Boolean)} }
-
-        class << self
-          sig { override.returns([String, Float, T::Boolean]) }
-          def variants
-          end
+        sig { override.returns([String, Float, T::Boolean]) }
+        def self.variants
         end
       end
     end

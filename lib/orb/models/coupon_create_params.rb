@@ -93,10 +93,8 @@ module Orb
         end
 
         # @!parse
-        #   class << self
-        #     # @return [Array(Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount)]
+        #   def self.variants; end
       end
     end
   end

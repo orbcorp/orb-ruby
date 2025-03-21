@@ -94,13 +94,11 @@ module Orb
           ANROK =
             T.let(:anrok, Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol])
+          end
+          def self.values
           end
         end
       end

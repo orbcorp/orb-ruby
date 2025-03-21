@@ -167,15 +167,13 @@ module Orb
                 Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
 
@@ -254,15 +252,13 @@ module Orb
                 Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end

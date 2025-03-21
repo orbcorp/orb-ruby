@@ -98,10 +98,8 @@ module Orb
         ENDED = T.let(:ended, Orb::Models::SubscriptionListParams::Status::TaggedSymbol)
         UPCOMING = T.let(:upcoming, Orb::Models::SubscriptionListParams::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::SubscriptionListParams::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::SubscriptionListParams::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

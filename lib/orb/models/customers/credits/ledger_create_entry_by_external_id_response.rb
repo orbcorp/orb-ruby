@@ -195,11 +195,9 @@ module Orb
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
 
@@ -387,11 +385,9 @@ module Orb
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
 
@@ -565,11 +561,9 @@ module Orb
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
 
@@ -736,11 +730,9 @@ module Orb
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
 
@@ -921,11 +913,9 @@ module Orb
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
 
@@ -1113,11 +1103,9 @@ module Orb
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
 
@@ -1284,19 +1272,15 @@ module Orb
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
 
           # @!parse
-          #   class << self
-          #     # @return [Array(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry)]
-          #     def variants; end
-          #   end
+          #   # @return [Array(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry)]
+          #   def self.variants; end
         end
       end
     end

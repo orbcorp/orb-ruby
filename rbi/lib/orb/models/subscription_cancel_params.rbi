@@ -61,10 +61,8 @@ module Orb
         REQUESTED_DATE =
           T.let(:requested_date, Orb::Models::SubscriptionCancelParams::CancelOption::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::SubscriptionCancelParams::CancelOption::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::SubscriptionCancelParams::CancelOption::TaggedSymbol]) }
+        def self.values
         end
       end
     end

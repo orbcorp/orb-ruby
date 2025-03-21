@@ -171,15 +171,13 @@ module Orb
                 Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::ExpiresAfterUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::ExpiresAfterUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::ExpiresAfterUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end

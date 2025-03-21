@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-alpha.30 (2025-03-21)
+
+Full Changelog: [v0.1.0-alpha.29...v0.1.0-alpha.30](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.29...v0.1.0-alpha.30)
+
+### Chores
+
+* disable dangerous rubocop auto correct rule ([#180](https://github.com/orbcorp/orb-ruby/issues/180)) ([0fdaa59](https://github.com/orbcorp/orb-ruby/commit/0fdaa59ee48e9a3e5563c209eb1fc1a4535f5897))
+* **internal:** codegen related update ([#179](https://github.com/orbcorp/orb-ruby/issues/179)) ([7946e79](https://github.com/orbcorp/orb-ruby/commit/7946e79a28f9451e9c4bd00d43333734e7f5c4a6))
+* **internal:** version bump ([#177](https://github.com/orbcorp/orb-ruby/issues/177)) ([adbaaa7](https://github.com/orbcorp/orb-ruby/commit/adbaaa7ee0d790f72fa67d6f2b7e5b12ff2314c2))
+
 ## 0.1.0-alpha.29 (2025-03-21)
 
 Full Changelog: [v0.1.0-alpha.28...v0.1.0-alpha.29](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.28...v0.1.0-alpha.29)

@@ -162,13 +162,11 @@ module Orb
             DAY = T.let(:day, Orb::Models::Customers::Credits::TopUpCreateParams::ExpiresAfterUnit::TaggedSymbol)
             MONTH = T.let(:month, Orb::Models::Customers::Credits::TopUpCreateParams::ExpiresAfterUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Orb::Models::Customers::Credits::TopUpCreateParams::ExpiresAfterUnit::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Orb::Models::Customers::Credits::TopUpCreateParams::ExpiresAfterUnit::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end

@@ -365,19 +365,6 @@ module Orb
       module Adjustment
         extend Orb::Union
 
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment,
-                Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment,
-                Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment,
-                Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment,
-                Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
-              )
-            }
-          end
-
         class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
           sig { returns(String) }
           attr_accessor :id
@@ -735,15 +722,13 @@ module Orb
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment]
+            )
+        end
+        def self.variants
         end
       end
 
@@ -955,10 +940,8 @@ module Orb
           SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Plan::PlanPhase::DurationUnit::TaggedSymbol)
           ANNUAL = T.let(:annual, Orb::Models::Plan::PlanPhase::DurationUnit::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Plan::PlanPhase::DurationUnit::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Plan::PlanPhase::DurationUnit::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -1034,10 +1017,8 @@ module Orb
         ARCHIVED = T.let(:archived, Orb::Models::Plan::Status::TaggedSymbol)
         DRAFT = T.let(:draft, Orb::Models::Plan::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::Plan::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::Plan::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -1078,10 +1059,8 @@ module Orb
 
           DAYS = T.let(:days, Orb::Models::Plan::TrialConfig::TrialPeriodUnit::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Plan::TrialConfig::TrialPeriodUnit::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Plan::TrialConfig::TrialPeriodUnit::TaggedSymbol]) }
+          def self.values
           end
         end
       end

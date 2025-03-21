@@ -9,21 +9,6 @@ module Orb
         module LedgerCreateEntryResponse
           extend Orb::Union
 
-          Variants =
-            type_template(:out) do
-              {
-                fixed: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry
-                )
-              }
-            end
-
           class IncrementLedgerEntry < Orb::BaseModel
             sig { returns(String) }
             attr_accessor :id
@@ -230,17 +215,15 @@ module Orb
                   Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::EntryStatus::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::EntryStatus::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry::EntryStatus::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
           end
@@ -469,17 +452,15 @@ module Orb
                   Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::EntryStatus::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::EntryStatus::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry::EntryStatus::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
           end
@@ -700,17 +681,15 @@ module Orb
                   Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::EntryStatus::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::EntryStatus::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry::EntryStatus::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
           end
@@ -929,17 +908,15 @@ module Orb
                   Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::EntryStatus::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::EntryStatus::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry::EntryStatus::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
           end
@@ -1160,15 +1137,13 @@ module Orb
                   Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::EntryStatus::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::EntryStatus::TaggedSymbol]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry::EntryStatus::TaggedSymbol]
+                  )
+              end
+              def self.values
               end
             end
           end
@@ -1397,17 +1372,15 @@ module Orb
                   Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::EntryStatus::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::EntryStatus::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry::EntryStatus::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
           end
@@ -1618,30 +1591,26 @@ module Orb
                   Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::EntryStatus::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::EntryStatus::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry::EntryStatus::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
           end
 
-          class << self
-            sig do
-              override
-                .returns(
-                  [Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry]
-                )
-            end
-            def variants
-            end
+          sig do
+            override
+              .returns(
+                [Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry]
+              )
+          end
+          def self.variants
           end
         end
       end

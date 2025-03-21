@@ -662,10 +662,8 @@ module Orb
           end
 
           # @!parse
-          #   class << self
-          #     # @return [Array(Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment)]
-          #     def variants; end
-          #   end
+          #   # @return [Array(Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment)]
+          #   def self.variants; end
         end
       end
 
@@ -898,10 +896,8 @@ module Orb
         end
 
         # @!parse
-        #   class << self
-        #     # @return [Array(Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::UsageDiscountInterval)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::UsageDiscountInterval)]
+        #   def self.variants; end
       end
 
       class FixedFeeQuantitySchedule < Orb::BaseModel
@@ -1199,11 +1195,9 @@ module Orb
 
         finalize!
 
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       class TrialInfo < Orb::BaseModel

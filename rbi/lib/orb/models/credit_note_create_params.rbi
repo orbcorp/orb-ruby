@@ -74,10 +74,8 @@ module Orb
         PRODUCT_UNSATISFACTORY =
           T.let(:product_unsatisfactory, Orb::Models::CreditNoteCreateParams::Reason::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::CreditNoteCreateParams::Reason::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::CreditNoteCreateParams::Reason::TaggedSymbol]) }
+        def self.values
         end
       end
     end

@@ -58,10 +58,8 @@ module Orb
         CREDIT_BALANCE_RECOVERED =
           T.let(:credit_balance_recovered, Orb::Models::AlertCreateForCustomerParams::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::AlertCreateForCustomerParams::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::AlertCreateForCustomerParams::Type::TaggedSymbol]) }
+        def self.values
         end
       end
 

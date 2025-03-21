@@ -303,11 +303,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -323,11 +321,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -378,11 +374,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -460,11 +454,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class UnitConfig < Orb::BaseModel
@@ -732,11 +724,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -752,11 +742,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -807,11 +795,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -912,11 +898,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -1169,11 +1153,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -1189,11 +1171,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -1244,11 +1224,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -1379,11 +1357,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -1636,11 +1612,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -1656,11 +1630,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -1711,11 +1683,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -1793,11 +1763,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class TieredConfig < Orb::BaseModel
@@ -2095,11 +2063,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -2115,11 +2081,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -2170,11 +2134,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -2252,11 +2214,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class TieredBpsConfig < Orb::BaseModel
@@ -2561,11 +2521,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -2603,11 +2561,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -2658,11 +2614,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -2740,11 +2694,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -2997,11 +2949,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -3062,11 +3012,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -3117,11 +3065,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -3199,11 +3145,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -3456,11 +3400,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -3513,11 +3455,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -3568,11 +3508,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -3650,11 +3588,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -3912,11 +3848,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -3932,11 +3866,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -3987,11 +3919,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -4069,11 +3999,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -4327,11 +4255,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -4347,11 +4273,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -4402,11 +4326,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -4484,11 +4406,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -4742,11 +4662,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -4762,11 +4680,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -4817,11 +4733,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -4899,11 +4813,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -5159,11 +5071,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -5179,11 +5089,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -5234,11 +5142,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -5316,11 +5222,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -5578,11 +5482,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -5598,11 +5500,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -5653,11 +5553,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -5735,11 +5633,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -5997,11 +5893,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -6017,11 +5911,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -6072,11 +5964,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -6154,11 +6044,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -6412,11 +6300,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -6432,11 +6318,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -6487,11 +6371,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -6569,11 +6451,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -6832,11 +6712,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -6852,11 +6730,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -6907,11 +6783,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -7050,11 +6924,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -7310,11 +7182,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -7330,11 +7200,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -7385,11 +7253,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -7467,11 +7333,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -7727,11 +7591,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -7747,11 +7609,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -7802,11 +7662,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -7884,11 +7742,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -8144,11 +8000,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -8164,11 +8018,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -8219,11 +8071,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -8301,11 +8151,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -8563,11 +8411,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -8583,11 +8429,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -8638,11 +8482,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -8720,11 +8562,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -8982,11 +8822,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -9002,11 +8840,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -9057,11 +8893,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -9139,11 +8973,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -9401,11 +9233,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -9421,11 +9251,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -9476,11 +9304,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -9558,11 +9384,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -9818,11 +9642,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -9838,11 +9660,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -9893,11 +9713,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -9975,11 +9793,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -10237,11 +10053,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -10257,11 +10071,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -10312,11 +10124,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -10394,11 +10204,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -10656,11 +10464,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -10676,11 +10482,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -10731,11 +10535,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -10813,11 +10615,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -11075,11 +10875,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -11095,11 +10893,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -11150,11 +10946,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -11232,11 +11026,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -11494,11 +11286,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -11514,11 +11304,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -11569,11 +11357,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -11651,11 +11437,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -11913,11 +11697,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -11933,11 +11715,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class CreditAllocation < Orb::BaseModel
@@ -11988,11 +11768,9 @@ module Orb
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -12070,11 +11848,9 @@ module Orb
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::BaseModel
@@ -12099,10 +11875,8 @@ module Orb
       end
 
       # @!parse
-      #   class << self
-      #     # @return [Array(Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice)]
-      #     def variants; end
-      #   end
+      #   # @return [Array(Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice)]
+      #   def self.variants; end
     end
   end
 end

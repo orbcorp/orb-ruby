@@ -11,10 +11,8 @@ module Orb
       START_OF_TERM = T.let(:start_of_term, Orb::Models::BillingCycleRelativeDate::TaggedSymbol)
       END_OF_TERM = T.let(:end_of_term, Orb::Models::BillingCycleRelativeDate::TaggedSymbol)
 
-      class << self
-        sig { override.returns(T::Array[Orb::Models::BillingCycleRelativeDate::TaggedSymbol]) }
-        def values
-        end
+      sig { override.returns(T::Array[Orb::Models::BillingCycleRelativeDate::TaggedSymbol]) }
+      def self.values
       end
     end
   end

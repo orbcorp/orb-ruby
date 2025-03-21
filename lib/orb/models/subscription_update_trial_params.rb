@@ -50,10 +50,8 @@ module Orb
         variant const: Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::IMMEDIATE
 
         # @!parse
-        #   class << self
-        #     # @return [Array(Time, Symbol)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(Time, Symbol)]
+        #   def self.variants; end
       end
     end
   end

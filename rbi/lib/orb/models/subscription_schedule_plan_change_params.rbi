@@ -288,10 +288,8 @@ module Orb
         IMMEDIATE =
           T.let(:immediate, Orb::Models::SubscriptionSchedulePlanChangeParams::ChangeOption::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ChangeOption::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ChangeOption::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -367,19 +365,6 @@ module Orb
         # The definition of a new adjustment to create and add to the subscription.
         module Adjustment
           extend Orb::Union
-
-          Variants =
-            type_template(:out) do
-              {
-                fixed: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewPercentageDiscount,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewUsageDiscount,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewAmountDiscount,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMinimum,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMaximum
-                )
-              }
-            end
 
           class NewPercentageDiscount < Orb::BaseModel
             sig { returns(Symbol) }
@@ -617,15 +602,13 @@ module Orb
             end
           end
 
-          class << self
-            sig do
-              override
-                .returns(
-                  [Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMaximum]
-                )
-            end
-            def variants
-            end
+          sig do
+            override
+              .returns(
+                [Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMaximum]
+              )
+          end
+          def self.variants
           end
         end
       end
@@ -921,15 +904,13 @@ module Orb
                 Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice::Cadence::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice::Cadence::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice::Cadence::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -1007,15 +988,13 @@ module Orb
                 Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount::DiscountType::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount::DiscountType::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount::DiscountType::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -1023,39 +1002,6 @@ module Orb
         # The definition of a new price to create and add to the subscription.
         module Price
           extend Orb::Union
-
-          Variants =
-            type_template(:out) do
-              {
-                fixed: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice
-                )
-              }
-            end
 
           class NewSubscriptionUnitPrice < Orb::BaseModel
             # The cadence to bill for this price on.
@@ -1317,17 +1263,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -1409,17 +1353,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -1488,17 +1430,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -1764,17 +1704,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -1861,17 +1799,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -1940,17 +1876,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -2216,17 +2150,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -2370,17 +2302,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -2449,17 +2379,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -2725,17 +2653,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -2872,17 +2798,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -2951,17 +2875,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -3227,17 +3149,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -3389,17 +3309,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -3468,17 +3386,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -3762,17 +3678,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -3840,17 +3754,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -3919,17 +3831,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -4268,17 +4178,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -4346,17 +4254,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -4425,17 +4331,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -4758,17 +4662,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -4836,17 +4738,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -4915,17 +4815,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -5173,17 +5071,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -5251,17 +5147,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -5330,17 +5224,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -5588,17 +5480,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -5666,17 +5556,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -5745,17 +5633,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -6003,17 +5889,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -6081,17 +5965,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -6160,17 +6042,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -6418,17 +6298,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -6496,17 +6374,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -6575,17 +6451,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -6833,17 +6707,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -6911,17 +6783,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -6990,17 +6860,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -7248,17 +7116,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -7326,17 +7192,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -7405,17 +7269,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -7663,17 +7525,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -7741,17 +7601,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -7820,17 +7678,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -8078,17 +7934,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -8156,17 +8010,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -8235,17 +8087,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -8493,17 +8343,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -8571,17 +8419,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -8650,17 +8496,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -8908,17 +8752,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -8986,17 +8828,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -9065,17 +8905,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -9323,17 +9161,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -9401,17 +9237,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -9480,17 +9314,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -9738,17 +9570,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -9816,17 +9646,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -9895,17 +9723,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -10153,17 +9979,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -10231,17 +10055,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -10310,17 +10132,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -10568,17 +10388,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -10646,17 +10464,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -10725,17 +10541,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -10983,17 +10797,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -11061,17 +10873,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -11140,17 +10950,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -11398,17 +11206,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -11476,17 +11282,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -11555,17 +11359,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -11813,17 +11615,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -11891,17 +11691,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -11970,31 +11768,27 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
           end
 
-          class << self
-            sig do
-              override
-                .returns(
-                  [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice]
-                )
-            end
-            def variants
-            end
+          sig do
+            override
+              .returns(
+                [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice]
+              )
+          end
+          def self.variants
           end
         end
       end
@@ -12023,13 +11817,11 @@ module Orb
             Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAlignment::TaggedSymbol
           )
 
-        class << self
-          sig do
-            override
-              .returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAlignment::TaggedSymbol])
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAlignment::TaggedSymbol])
+        end
+        def self.values
         end
       end
 
@@ -12154,19 +11946,6 @@ module Orb
         # The definition of a new adjustment to create and add to the subscription.
         module Adjustment
           extend Orb::Union
-
-          Variants =
-            type_template(:out) do
-              {
-                fixed: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewUsageDiscount,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewAmountDiscount,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMinimum,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMaximum
-                )
-              }
-            end
 
           class NewPercentageDiscount < Orb::BaseModel
             sig { returns(Symbol) }
@@ -12404,15 +12183,13 @@ module Orb
             end
           end
 
-          class << self
-            sig do
-              override
-                .returns(
-                  [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMaximum]
-                )
-            end
-            def variants
-            end
+          sig do
+            override
+              .returns(
+                [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMaximum]
+              )
+          end
+          def self.variants
           end
         end
       end
@@ -12707,15 +12484,13 @@ module Orb
                 Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice::Cadence::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice::Cadence::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice::Cadence::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -12793,15 +12568,13 @@ module Orb
                 Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount::DiscountType::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount::DiscountType::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount::DiscountType::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -12809,39 +12582,6 @@ module Orb
         # The definition of a new price to create and add to the subscription.
         module Price
           extend Orb::Union
-
-          Variants =
-            type_template(:out) do
-              {
-                fixed: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice
-                )
-              }
-            end
 
           class NewSubscriptionUnitPrice < Orb::BaseModel
             # The cadence to bill for this price on.
@@ -13103,17 +12843,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -13195,17 +12933,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -13274,17 +13010,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -13550,17 +13284,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -13647,17 +13379,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -13726,17 +13456,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -14002,17 +13730,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -14156,17 +13882,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -14235,17 +13959,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -14511,17 +14233,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -14658,17 +14378,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -14737,17 +14455,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -15013,17 +14729,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -15175,17 +14889,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -15254,17 +14966,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -15548,17 +15258,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -15626,17 +15334,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -15705,17 +15411,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -16054,17 +15758,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -16132,17 +15834,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -16211,17 +15911,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -16544,17 +16242,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -16622,17 +16318,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -16701,17 +16395,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -16959,17 +16651,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -17037,17 +16727,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -17116,17 +16804,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -17374,17 +17060,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -17452,17 +17136,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -17531,17 +17213,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -17789,17 +17469,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -17867,17 +17545,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -17946,17 +17622,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -18204,17 +17878,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -18282,17 +17954,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -18361,17 +18031,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -18619,17 +18287,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -18697,17 +18363,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -18776,17 +18440,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -19034,17 +18696,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -19112,17 +18772,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -19191,17 +18849,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -19449,17 +19105,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -19527,17 +19181,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -19606,17 +19258,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -19864,17 +19514,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -19942,17 +19590,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -20021,17 +19667,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -20279,17 +19923,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -20357,17 +19999,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -20436,17 +20076,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -20694,17 +20332,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -20772,17 +20408,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -20851,17 +20485,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -21109,17 +20741,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -21187,17 +20817,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -21266,17 +20894,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -21524,17 +21150,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -21602,17 +21226,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -21681,17 +21303,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -21939,17 +21559,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -22017,17 +21635,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -22096,17 +21712,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -22354,17 +21968,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -22432,17 +22044,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -22511,17 +22121,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -22769,17 +22377,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -22847,17 +22453,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -22926,17 +22530,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -23184,17 +22786,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -23262,17 +22862,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -23341,17 +22939,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -23599,17 +23195,15 @@ module Orb
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -23677,17 +23271,15 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -23756,31 +23348,27 @@ module Orb
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
           end
 
-          class << self
-            sig do
-              override
-                .returns(
-                  [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice]
-                )
-            end
-            def variants
-            end
+          sig do
+            override
+              .returns(
+                [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice]
+              )
+          end
+          def self.variants
           end
         end
       end

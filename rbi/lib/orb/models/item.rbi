@@ -91,10 +91,8 @@ module Orb
           AVALARA = T.let(:avalara, Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol)
           ANROK = T.let(:anrok, Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol]) }
+          def self.values
           end
         end
       end
