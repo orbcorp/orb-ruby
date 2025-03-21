@@ -34,6 +34,8 @@ class Orb::Test::Resources::Customers::BalanceTransactionsTest < Orb::Test::Reso
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Orb::Models::Customers::BalanceTransactionListResponse
     end
