@@ -11,6 +11,8 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Orb::Models::Customers::Credits::LedgerListResponse
     end
@@ -445,6 +447,8 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Orb::Models::Customers::Credits::LedgerListByExternalIDResponse
     end

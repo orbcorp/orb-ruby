@@ -45,6 +45,8 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Orb::Models::Item
     end

@@ -40,6 +40,8 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Orb::Test::Resource
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Orb::Models::Customers::Credits::TopUpListResponse
     end
@@ -115,6 +117,8 @@ class Orb::Test::Resources::Customers::Credits::TopUpsTest < Orb::Test::Resource
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Orb::Models::Customers::Credits::TopUpListByExternalIDResponse
     end

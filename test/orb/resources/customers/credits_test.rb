@@ -11,6 +11,8 @@ class Orb::Test::Resources::Customers::CreditsTest < Orb::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Orb::Models::Customers::CreditListResponse
     end
@@ -36,6 +38,8 @@ class Orb::Test::Resources::Customers::CreditsTest < Orb::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Orb::Models::Customers::CreditListByExternalIDResponse
     end

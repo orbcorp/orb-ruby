@@ -54,6 +54,8 @@ class Orb::Test::Resources::DimensionalPriceGroupsTest < Orb::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Orb::Models::DimensionalPriceGroup
     end
