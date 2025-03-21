@@ -362,10 +362,8 @@ module Orb
         ONE_TIME = T.let(:one_time, Orb::Models::PriceCreateParams::Cadence::TaggedSymbol)
         CUSTOM = T.let(:custom, Orb::Models::PriceCreateParams::Cadence::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::PriceCreateParams::Cadence::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::PriceCreateParams::Cadence::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -378,10 +376,8 @@ module Orb
         CUMULATIVE_GROUPED_BULK =
           T.let(:cumulative_grouped_bulk, Orb::Models::PriceCreateParams::ModelType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::PriceCreateParams::ModelType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::PriceCreateParams::ModelType::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -445,13 +441,11 @@ module Orb
           MONTH =
             T.let(:month, Orb::Models::PriceCreateParams::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Orb::Models::PriceCreateParams::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Orb::Models::PriceCreateParams::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
+          end
+          def self.values
           end
         end
       end
@@ -503,13 +497,11 @@ module Orb
           MONTH =
             T.let(:month, Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
+          end
+          def self.values
           end
         end
       end

@@ -477,10 +477,8 @@ module Orb
         STRIPE_INVOICE = T.let(:stripe_invoice, Orb::Models::CustomerCreateParams::PaymentProvider::TaggedSymbol)
         NETSUITE = T.let(:netsuite, Orb::Models::CustomerCreateParams::PaymentProvider::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::CustomerCreateParams::PaymentProvider::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::CustomerCreateParams::PaymentProvider::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -550,16 +548,6 @@ module Orb
       module TaxConfiguration
         extend Orb::Union
 
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Orb::Models::CustomerCreateParams::TaxConfiguration::NewAvalaraTaxConfiguration,
-                Orb::Models::CustomerCreateParams::TaxConfiguration::NewTaxJarConfiguration
-              )
-            }
-          end
-
         class NewAvalaraTaxConfiguration < Orb::BaseModel
           sig { returns(T::Boolean) }
           attr_accessor :tax_exempt
@@ -606,15 +594,13 @@ module Orb
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Orb::Models::CustomerCreateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerCreateParams::TaxConfiguration::NewTaxJarConfiguration]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Orb::Models::CustomerCreateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerCreateParams::TaxConfiguration::NewTaxJarConfiguration]
+            )
+        end
+        def self.variants
         end
       end
 
@@ -843,10 +829,8 @@ module Orb
           VN = T.let(:VN, Orb::Models::CustomerCreateParams::TaxID::Country::TaggedSymbol)
           ZA = T.let(:ZA, Orb::Models::CustomerCreateParams::TaxID::Country::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::CustomerCreateParams::TaxID::Country::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::CustomerCreateParams::TaxID::Country::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -928,10 +912,8 @@ module Orb
           VN_TIN = T.let(:vn_tin, Orb::Models::CustomerCreateParams::TaxID::Type::TaggedSymbol)
           ZA_VAT = T.let(:za_vat, Orb::Models::CustomerCreateParams::TaxID::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::CustomerCreateParams::TaxID::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::CustomerCreateParams::TaxID::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end

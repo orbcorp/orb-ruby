@@ -52,10 +52,8 @@ module Orb
 
         AMOUNT = T.let(:amount, Orb::Models::AmountDiscount::DiscountType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::AmountDiscount::DiscountType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::AmountDiscount::DiscountType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

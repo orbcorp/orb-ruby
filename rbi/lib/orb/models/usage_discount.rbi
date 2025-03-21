@@ -53,10 +53,8 @@ module Orb
 
         USAGE = T.let(:usage, Orb::Models::UsageDiscount::DiscountType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::UsageDiscount::DiscountType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::UsageDiscount::DiscountType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

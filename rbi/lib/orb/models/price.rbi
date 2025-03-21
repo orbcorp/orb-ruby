@@ -15,42 +15,6 @@ module Orb
     module Price
       extend Orb::Union
 
-      Variants =
-        type_template(:out) do
-          {
-            fixed: T.any(
-              Orb::Models::Price::UnitPrice,
-              Orb::Models::Price::PackagePrice,
-              Orb::Models::Price::MatrixPrice,
-              Orb::Models::Price::TieredPrice,
-              Orb::Models::Price::TieredBpsPrice,
-              Orb::Models::Price::BpsPrice,
-              Orb::Models::Price::BulkBpsPrice,
-              Orb::Models::Price::BulkPrice,
-              Orb::Models::Price::ThresholdTotalAmountPrice,
-              Orb::Models::Price::TieredPackagePrice,
-              Orb::Models::Price::GroupedTieredPrice,
-              Orb::Models::Price::TieredWithMinimumPrice,
-              Orb::Models::Price::TieredPackageWithMinimumPrice,
-              Orb::Models::Price::PackageWithAllocationPrice,
-              Orb::Models::Price::UnitWithPercentPrice,
-              Orb::Models::Price::MatrixWithAllocationPrice,
-              Orb::Models::Price::TieredWithProrationPrice,
-              Orb::Models::Price::UnitWithProrationPrice,
-              Orb::Models::Price::GroupedAllocationPrice,
-              Orb::Models::Price::GroupedWithProratedMinimumPrice,
-              Orb::Models::Price::GroupedWithMeteredMinimumPrice,
-              Orb::Models::Price::MatrixWithDisplayNamePrice,
-              Orb::Models::Price::BulkWithProrationPrice,
-              Orb::Models::Price::GroupedTieredPackagePrice,
-              Orb::Models::Price::MaxGroupTieredPackagePrice,
-              Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
-              Orb::Models::Price::CumulativeGroupedBulkPrice
-            )
-          }
-        end
-
       class UnitPrice < Orb::BaseModel
         sig { returns(String) }
         attr_accessor :id
@@ -351,13 +315,11 @@ module Orb
             MONTH =
               T.let(:month, Orb::Models::Price::UnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Orb::Models::Price::UnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Orb::Models::Price::UnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -375,10 +337,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::UnitPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::UnitPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::UnitPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::UnitPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -439,13 +399,11 @@ module Orb
             MONTH =
               T.let(:month, Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -517,10 +475,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::UnitPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::UnitPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::UnitPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::UnitPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -861,13 +817,11 @@ module Orb
             MONTH =
               T.let(:month, Orb::Models::Price::PackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Orb::Models::Price::PackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Orb::Models::Price::PackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -885,10 +839,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::PackagePrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::PackagePrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::PackagePrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::PackagePrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -950,15 +902,13 @@ module Orb
             MONTH =
               T.let(:month, Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -1049,10 +999,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::PackagePrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::PackagePrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::PackagePrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::PackagePrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -1378,13 +1326,11 @@ module Orb
             MONTH =
               T.let(:month, Orb::Models::Price::MatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Orb::Models::Price::MatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Orb::Models::Price::MatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -1402,10 +1348,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::MatrixPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::MatrixPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::MatrixPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::MatrixPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -1467,15 +1411,13 @@ module Orb
             MONTH =
               T.let(:month, Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -1610,10 +1552,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::MatrixPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::MatrixPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::MatrixPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::MatrixPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -1939,13 +1879,11 @@ module Orb
             MONTH =
               T.let(:month, Orb::Models::Price::TieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Orb::Models::Price::TieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Orb::Models::Price::TieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -1963,10 +1901,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::TieredPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::TieredPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::TieredPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::TieredPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -2028,15 +1964,13 @@ module Orb
             MONTH =
               T.let(:month, Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -2108,10 +2042,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::TieredPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::TieredPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::TieredPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -2486,15 +2418,13 @@ module Orb
             MONTH =
               T.let(:month, Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -2512,10 +2442,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::TieredBpsPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::TieredBpsPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::TieredBpsPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::TieredBpsPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -2577,15 +2505,13 @@ module Orb
             MONTH =
               T.let(:month, Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -2657,10 +2583,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::TieredBpsPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredBpsPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::TieredBpsPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::TieredBpsPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -3050,13 +2974,11 @@ module Orb
             MONTH =
               T.let(:month, Orb::Models::Price::BpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Orb::Models::Price::BpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Orb::Models::Price::BpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -3092,10 +3014,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::BpsPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::BpsPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::BpsPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::BpsPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -3156,13 +3076,11 @@ module Orb
             MONTH =
               T.let(:month, Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -3234,10 +3152,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::BpsPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::BpsPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::BpsPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::BpsPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -3564,13 +3480,11 @@ module Orb
             MONTH =
               T.let(:month, Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -3639,10 +3553,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::BulkBpsPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::BulkBpsPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::BulkBpsPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::BulkBpsPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -3704,15 +3616,13 @@ module Orb
             MONTH =
               T.let(:month, Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -3784,10 +3694,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::BulkBpsPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::BulkBpsPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::BulkBpsPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::BulkBpsPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -4113,13 +4021,11 @@ module Orb
             MONTH =
               T.let(:month, Orb::Models::Price::BulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Orb::Models::Price::BulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Orb::Models::Price::BulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -4172,10 +4078,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::BulkPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::BulkPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::BulkPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::BulkPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -4236,13 +4140,11 @@ module Orb
             MONTH =
               T.let(:month, Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -4314,10 +4216,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::BulkPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::BulkPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::BulkPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::BulkPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -4674,15 +4574,13 @@ module Orb
                 Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -4701,10 +4599,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::ThresholdTotalAmountPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::ThresholdTotalAmountPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::ThresholdTotalAmountPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::ThresholdTotalAmountPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -4781,15 +4677,13 @@ module Orb
                 Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -4862,10 +4756,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::ThresholdTotalAmountPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::ThresholdTotalAmountPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::ThresholdTotalAmountPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::ThresholdTotalAmountPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -5201,15 +5093,13 @@ module Orb
                 Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -5227,10 +5117,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::TieredPackagePrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::TieredPackagePrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::TieredPackagePrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::TieredPackagePrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -5303,15 +5191,13 @@ module Orb
                 Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -5384,10 +5270,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::TieredPackagePrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredPackagePrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::TieredPackagePrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::TieredPackagePrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -5723,15 +5607,13 @@ module Orb
                 Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -5749,10 +5631,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::GroupedTieredPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::GroupedTieredPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::GroupedTieredPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::GroupedTieredPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -5825,15 +5705,13 @@ module Orb
                 Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -5906,10 +5784,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::GroupedTieredPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::GroupedTieredPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::GroupedTieredPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::GroupedTieredPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -6258,15 +6134,13 @@ module Orb
                 Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -6285,10 +6159,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::TieredWithMinimumPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::TieredWithMinimumPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::TieredWithMinimumPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::TieredWithMinimumPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -6365,15 +6237,13 @@ module Orb
                 Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -6446,10 +6316,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::TieredWithMinimumPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredWithMinimumPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::TieredWithMinimumPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::TieredWithMinimumPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -6812,15 +6680,13 @@ module Orb
                 Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -6840,10 +6706,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::TieredPackageWithMinimumPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::TieredPackageWithMinimumPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::TieredPackageWithMinimumPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::TieredPackageWithMinimumPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -6922,15 +6786,13 @@ module Orb
                 Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -7006,10 +6868,8 @@ module Orb
           FIXED_PRICE =
             T.let(:fixed_price, Orb::Models::Price::TieredPackageWithMinimumPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::TieredPackageWithMinimumPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::TieredPackageWithMinimumPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -7366,15 +7226,13 @@ module Orb
                 Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -7393,10 +7251,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::PackageWithAllocationPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::PackageWithAllocationPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::PackageWithAllocationPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::PackageWithAllocationPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -7473,15 +7329,13 @@ module Orb
                 Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -7556,10 +7410,8 @@ module Orb
           FIXED_PRICE =
             T.let(:fixed_price, Orb::Models::Price::PackageWithAllocationPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::PackageWithAllocationPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::PackageWithAllocationPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -7908,15 +7760,13 @@ module Orb
                 Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -7935,10 +7785,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::UnitWithPercentPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::UnitWithPercentPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::UnitWithPercentPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::UnitWithPercentPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -8011,15 +7859,13 @@ module Orb
                 Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -8092,10 +7938,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::UnitWithPercentPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::UnitWithPercentPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::UnitWithPercentPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::UnitWithPercentPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -8460,15 +8304,13 @@ module Orb
                 Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -8487,10 +8329,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::MatrixWithAllocationPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::MatrixWithAllocationPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::MatrixWithAllocationPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::MatrixWithAllocationPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -8567,15 +8407,13 @@ module Orb
                 Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -8722,10 +8560,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::MatrixWithAllocationPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::MatrixWithAllocationPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::MatrixWithAllocationPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::MatrixWithAllocationPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -9082,15 +8918,13 @@ module Orb
                 Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -9109,10 +8943,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::TieredWithProrationPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::TieredWithProrationPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::TieredWithProrationPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::TieredWithProrationPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -9189,15 +9021,13 @@ module Orb
                 Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -9270,10 +9100,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::TieredWithProrationPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredWithProrationPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::TieredWithProrationPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::TieredWithProrationPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -9622,15 +9450,13 @@ module Orb
                 Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -9649,10 +9475,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::UnitWithProrationPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::UnitWithProrationPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::UnitWithProrationPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::UnitWithProrationPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -9729,15 +9553,13 @@ module Orb
                 Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -9810,10 +9632,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::UnitWithProrationPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::UnitWithProrationPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::UnitWithProrationPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::UnitWithProrationPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -10162,15 +9982,13 @@ module Orb
                 Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -10189,10 +10007,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::GroupedAllocationPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::GroupedAllocationPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::GroupedAllocationPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::GroupedAllocationPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -10269,15 +10085,13 @@ module Orb
                 Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -10350,10 +10164,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::GroupedAllocationPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::GroupedAllocationPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::GroupedAllocationPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::GroupedAllocationPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -10728,15 +10540,13 @@ module Orb
                 Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -10757,10 +10567,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::GroupedWithProratedMinimumPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::GroupedWithProratedMinimumPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::GroupedWithProratedMinimumPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::GroupedWithProratedMinimumPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -10839,17 +10647,15 @@ module Orb
                 Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                    ]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[
+                  Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                  ]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -10925,10 +10731,8 @@ module Orb
           FIXED_PRICE =
             T.let(:fixed_price, Orb::Models::Price::GroupedWithProratedMinimumPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::GroupedWithProratedMinimumPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::GroupedWithProratedMinimumPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -11291,15 +11095,13 @@ module Orb
                 Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -11320,10 +11122,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::GroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::GroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::GroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::GroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -11402,17 +11202,15 @@ module Orb
                 Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                    ]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[
+                  Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                  ]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -11488,10 +11286,8 @@ module Orb
           FIXED_PRICE =
             T.let(:fixed_price, Orb::Models::Price::GroupedWithMeteredMinimumPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::GroupedWithMeteredMinimumPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::GroupedWithMeteredMinimumPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -11848,15 +11644,13 @@ module Orb
                 Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -11875,10 +11669,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::MatrixWithDisplayNamePrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::MatrixWithDisplayNamePrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::MatrixWithDisplayNamePrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::MatrixWithDisplayNamePrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -11955,15 +11747,13 @@ module Orb
                 Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -12038,10 +11828,8 @@ module Orb
           FIXED_PRICE =
             T.let(:fixed_price, Orb::Models::Price::MatrixWithDisplayNamePrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::MatrixWithDisplayNamePrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::MatrixWithDisplayNamePrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -12390,15 +12178,13 @@ module Orb
                 Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -12417,10 +12203,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::BulkWithProrationPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::BulkWithProrationPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::BulkWithProrationPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::BulkWithProrationPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -12497,15 +12281,13 @@ module Orb
                 Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -12578,10 +12360,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::BulkWithProrationPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::BulkWithProrationPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::BulkWithProrationPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::BulkWithProrationPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -12938,15 +12718,13 @@ module Orb
                 Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -12965,10 +12743,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::GroupedTieredPackagePrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::GroupedTieredPackagePrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::GroupedTieredPackagePrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::GroupedTieredPackagePrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -13045,15 +12821,13 @@ module Orb
                 Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -13126,10 +12900,8 @@ module Orb
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::GroupedTieredPackagePrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::GroupedTieredPackagePrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::GroupedTieredPackagePrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::GroupedTieredPackagePrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -13486,15 +13258,13 @@ module Orb
                 Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -13513,10 +13283,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::MaxGroupTieredPackagePrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::MaxGroupTieredPackagePrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::MaxGroupTieredPackagePrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::MaxGroupTieredPackagePrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -13593,15 +13361,13 @@ module Orb
                 Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -13676,10 +13442,8 @@ module Orb
           FIXED_PRICE =
             T.let(:fixed_price, Orb::Models::Price::MaxGroupTieredPackagePrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::MaxGroupTieredPackagePrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::MaxGroupTieredPackagePrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -14064,17 +13828,15 @@ module Orb
                 Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                    ]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[
+                  Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                  ]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -14097,10 +13859,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -14179,17 +13939,15 @@ module Orb
                 Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                    ]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[
+                  Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                  ]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -14265,12 +14023,10 @@ module Orb
           FIXED_PRICE =
             T.let(:fixed_price, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig do
-              override.returns(T::Array[Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::PriceType::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override.returns(T::Array[Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::PriceType::TaggedSymbol])
+          end
+          def self.values
           end
         end
 
@@ -14662,17 +14418,15 @@ module Orb
                 Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                    ]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[
+                  Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                  ]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -14696,12 +14450,10 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig do
-              override.returns(T::Array[Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override.returns(T::Array[Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol])
+          end
+          def self.values
           end
         end
 
@@ -14780,17 +14532,15 @@ module Orb
                 Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                    ]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[
+                  Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                  ]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -14866,13 +14616,11 @@ module Orb
           FIXED_PRICE =
             T.let(:fixed_price, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::PriceType::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::PriceType::TaggedSymbol])
+          end
+          def self.values
           end
         end
 
@@ -15229,15 +14977,13 @@ module Orb
                 Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -15256,10 +15002,8 @@ module Orb
           ANNUAL = T.let(:annual, Orb::Models::Price::CumulativeGroupedBulkPrice::Cadence::TaggedSymbol)
           CUSTOM = T.let(:custom, Orb::Models::Price::CumulativeGroupedBulkPrice::Cadence::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::CumulativeGroupedBulkPrice::Cadence::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::CumulativeGroupedBulkPrice::Cadence::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -15336,15 +15080,13 @@ module Orb
                 Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -15419,10 +15161,8 @@ module Orb
           FIXED_PRICE =
             T.let(:fixed_price, Orb::Models::Price::CumulativeGroupedBulkPrice::PriceType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Orb::Models::Price::CumulativeGroupedBulkPrice::PriceType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Orb::Models::Price::CumulativeGroupedBulkPrice::PriceType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -15448,15 +15188,13 @@ module Orb
         end
       end
 
-      class << self
-        sig do
-          override
-            .returns(
-              [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice]
-            )
-        end
-        def variants
-        end
+      sig do
+        override
+          .returns(
+            [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice]
+          )
+      end
+      def self.variants
       end
     end
   end

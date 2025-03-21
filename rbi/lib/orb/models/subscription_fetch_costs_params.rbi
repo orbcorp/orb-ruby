@@ -67,10 +67,8 @@ module Orb
         PERIODIC = T.let(:periodic, Orb::Models::SubscriptionFetchCostsParams::ViewMode::TaggedSymbol)
         CUMULATIVE = T.let(:cumulative, Orb::Models::SubscriptionFetchCostsParams::ViewMode::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Orb::Models::SubscriptionFetchCostsParams::ViewMode::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Orb::Models::SubscriptionFetchCostsParams::ViewMode::TaggedSymbol]) }
+        def self.values
         end
       end
     end
