@@ -30,9 +30,9 @@ module Orb
       module TrialEndDate
         extend Orb::Union
 
-        IMMEDIATE: :immediate
-
         def self?.variants: -> [Time, :immediate]
+
+        IMMEDIATE: :immediate
       end
     end
   end

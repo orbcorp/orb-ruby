@@ -39,19 +39,19 @@ module Orb
       module TrialEndDate
         extend Orb::Union
 
+        variant Time
+
+        variant const: -> { Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::IMMEDIATE }
+
+        # @!parse
+        #   # @return [Array(Time, Symbol)]
+        #   def self.variants; end
+
         # @!group
 
         IMMEDIATE = :immediate
 
         # @!endgroup
-
-        variant Time
-
-        variant const: Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::IMMEDIATE
-
-        # @!parse
-        #   # @return [Array(Time, Symbol)]
-        #   def self.variants; end
       end
     end
   end

@@ -48,15 +48,15 @@ module Orb
       module TrialEndDate
         extend Orb::Union
 
+        sig { override.returns([Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol]) }
+        def self.variants
+        end
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate) }
         OrSymbol =
           T.type_alias { T.any(Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::TaggedSymbol) }
 
         IMMEDIATE = T.let(:immediate, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::TaggedSymbol)
-
-        sig { override.returns([Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol]) }
-        def self.variants
-        end
       end
     end
   end
