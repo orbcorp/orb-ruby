@@ -5,23 +5,23 @@ module Orb
   module Converter
     Input = T.type_alias { T.any(Orb::Converter, T::Class[T.anything]) }
 
+    State =
+      T.type_alias do
+        {
+          strictness: T.any(T::Boolean, Symbol),
+          exactness: {yes: Integer, no: Integer, maybe: Integer},
+          branched: Integer
+        }
+      end
+
     # @api private
-    sig { overridable.params(value: T.anything).returns(T.anything) }
-    def coerce(value)
+    sig { overridable.params(value: T.anything, state: Orb::Converter::State).returns(T.anything) }
+    def coerce(value, state:)
     end
 
     # @api private
     sig { overridable.params(value: T.anything).returns(T.anything) }
     def dump(value)
-    end
-
-    # @api private
-    sig do
-      overridable
-        .params(value: T.anything)
-        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
-    end
-    def try_strict_coerce(value)
     end
 
     class << self
@@ -51,27 +51,45 @@ module Orb
       #   2. if it's possible and safe to convert the given `value` to `target`, then the
       #      converted value
       #   3. otherwise, the given `value` unaltered
-      sig { params(target: Orb::Converter::Input, value: T.anything).returns(T.anything) }
-      def self.coerce(target, value)
+      #
+      #   The coercion process is subject to improvement between minor release versions.
+      #   See https://docs.pydantic.dev/latest/concepts/unions/#smart-mode
+      sig do
+        params(
+          target: Orb::Converter::Input,
+          value: T.anything,
+          state: Orb::Converter::State
+        ).returns(T.anything)
+      end
+      def self.coerce(
+        target,
+        value,
+        # The `strictness` is one of `true`, `false`, or `:strong`. This informs the
+        #   coercion strategy when we have to decide between multiple possible conversion
+        #   targets:
+        #
+        #   - `true`: the conversion must be exact, with minimum coercion.
+        #   - `false`: the conversion can be approximate, with some coercion.
+        #   - `:strong`: the conversion must be exact, with no coercion, and raise an error
+        #     if not possible.
+        #
+        #   The `exactness` is `Hash` with keys being one of `yes`, `no`, or `maybe`. For
+        #   any given conversion attempt, the exactness will be updated based on how closely
+        #   the value recursively matches the target type:
+        #
+        #   - `yes`: the value can be converted to the target type with minimum coercion.
+        #   - `maybe`: the value can be converted to the target type with some reasonable
+        #     coercion.
+        #   - `no`: the value cannot be converted to the target type.
+        #
+        #   See implementation below for more details.
+        state: {strictness: true, exactness: {yes: 0, no: 0, maybe: 0}, branched: 0}
+      )
       end
 
       # @api private
       sig { params(target: Orb::Converter::Input, value: T.anything).returns(T.anything) }
       def self.dump(target, value)
-      end
-
-      # @api private
-      #
-      # The underlying algorithm for computing maximal compatibility is subject to
-      #   future improvements.
-      #
-      #   Similar to `#.coerce`, used to determine the best union variant to decode into.
-      #
-      #   1. determine if strict-ish coercion is possible
-      #   2. return either result of successful coercion or if loose coercion is possible
-      #   3. return a score for recursively tallied count for fields that can be coerced
-      sig { params(target: Orb::Converter::Input, value: T.anything).returns(T.anything) }
-      def self.try_strict_coerce(target, value)
       end
     end
   end
@@ -95,22 +113,13 @@ module Orb
 
     class << self
       # @api private
-      sig(:final) { override.params(value: T.anything).returns(T.anything) }
-      def coerce(value)
+      sig(:final) { override.params(value: T.anything, state: Orb::Converter::State).returns(T.anything) }
+      def coerce(value, state:)
       end
 
       # @api private
       sig(:final) { override.params(value: T.anything).returns(T.anything) }
       def dump(value)
-      end
-
-      # @api private
-      sig(:final) do
-        override
-          .params(value: T.anything)
-          .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
-      end
-      def try_strict_coerce(value)
       end
     end
   end
@@ -135,9 +144,11 @@ module Orb
     class << self
       # @api private
       sig(:final) do
-        override.params(value: T.any(T::Boolean, T.anything)).returns(T.any(T::Boolean, T.anything))
+        override
+          .params(value: T.any(T::Boolean, T.anything), state: Orb::Converter::State)
+          .returns(T.any(T::Boolean, T.anything))
       end
-      def coerce(value)
+      def coerce(value, state:)
       end
 
       # @api private
@@ -145,15 +156,6 @@ module Orb
         override.params(value: T.any(T::Boolean, T.anything)).returns(T.any(T::Boolean, T.anything))
       end
       def dump(value)
-      end
-
-      # @api private
-      sig(:final) do
-        override
-          .params(value: T.anything)
-          .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
-      end
-      def try_strict_coerce(value)
       end
     end
   end
@@ -194,22 +196,20 @@ module Orb
     end
 
     # @api private
-    sig { override.params(value: T.any(String, Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
-    def coerce(value)
+    #
+    # Unlike with primitives, `Enum` additionally validates that the value is a member
+    #   of the enum.
+    sig do
+      override
+        .params(value: T.any(String, Symbol, T.anything), state: Orb::Converter::State)
+        .returns(T.any(Symbol, T.anything))
+    end
+    def coerce(value, state:)
     end
 
     # @api private
     sig { override.params(value: T.any(Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
     def dump(value)
-    end
-
-    # @api private
-    sig do
-      override
-        .params(value: T.anything)
-        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
-    end
-    def try_strict_coerce(value)
     end
   end
 
@@ -264,22 +264,13 @@ module Orb
     end
 
     # @api private
-    sig { override.params(value: T.anything).returns(T.anything) }
-    def coerce(value)
+    sig { override.params(value: T.anything, state: Orb::Converter::State).returns(T.anything) }
+    def coerce(value, state:)
     end
 
     # @api private
     sig { override.params(value: T.anything).returns(T.anything) }
     def dump(value)
-    end
-
-    # @api private
-    sig do
-      override
-        .params(value: T.anything)
-        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
-    end
-    def try_strict_coerce(value)
     end
   end
 
@@ -313,10 +304,10 @@ module Orb
     # @api private
     sig(:final) do
       override
-        .params(value: T.any(T::Enumerable[T.anything], T.anything))
+        .params(value: T.any(T::Enumerable[T.anything], T.anything), state: Orb::Converter::State)
         .returns(T.any(T::Array[T.anything], T.anything))
     end
-    def coerce(value)
+    def coerce(value, state:)
     end
 
     # @api private
@@ -329,17 +320,13 @@ module Orb
     end
 
     # @api private
-    sig(:final) do
-      override
-        .params(value: T.anything)
-        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
-    end
-    def try_strict_coerce(value)
+    sig(:final) { returns(T.anything) }
+    protected def item_type
     end
 
     # @api private
-    sig(:final) { returns(T.anything) }
-    protected def item_type
+    sig(:final) { returns(T::Boolean) }
+    protected def nilable?
     end
 
     # @api private
@@ -384,10 +371,10 @@ module Orb
     # @api private
     sig(:final) do
       override
-        .params(value: T.any(T::Hash[T.anything, T.anything], T.anything))
+        .params(value: T.any(T::Hash[T.anything, T.anything], T.anything), state: Orb::Converter::State)
         .returns(T.any(Orb::Util::AnyHash, T.anything))
     end
-    def coerce(value)
+    def coerce(value, state:)
     end
 
     # @api private
@@ -400,17 +387,13 @@ module Orb
     end
 
     # @api private
-    sig(:final) do
-      override
-        .params(value: T.anything)
-        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
-    end
-    def try_strict_coerce(value)
+    sig(:final) { returns(T.anything) }
+    protected def item_type
     end
 
     # @api private
-    sig(:final) { returns(T.anything) }
-    protected def item_type
+    sig(:final) { returns(T::Boolean) }
+    protected def nilable?
     end
 
     # @api private
@@ -430,7 +413,7 @@ module Orb
 
     abstract!
 
-    KnownFieldShape = T.type_alias { {mode: T.nilable(Symbol), required: T::Boolean} }
+    KnownFieldShape = T.type_alias { {mode: T.nilable(Symbol), required: T::Boolean, nilable: T::Boolean} }
 
     class << self
       # @api private
@@ -447,18 +430,8 @@ module Orb
       end
 
       # @api private
-      sig { returns(T::Hash[Symbol, Symbol]) }
-      def reverse_map
-      end
-
-      # @api private
       sig { returns(T::Hash[Symbol, T.all(Orb::BaseModel::KnownFieldShape, {type: Orb::Converter::Input})]) }
       def fields
-      end
-
-      # @api private
-      sig { returns(T::Hash[Symbol, T.proc.returns(T::Class[T.anything])]) }
-      def defaults
       end
 
       # @api private
@@ -530,6 +503,10 @@ module Orb
       sig { params(blk: T.proc.void).void }
       private def response_only(&blk)
       end
+
+      sig { params(other: T.anything).returns(T::Boolean) }
+      def ==(other)
+      end
     end
 
     sig { params(other: T.anything).returns(T::Boolean) }
@@ -540,10 +517,13 @@ module Orb
       # @api private
       sig do
         override
-          .params(value: T.any(Orb::BaseModel, T::Hash[T.anything, T.anything], T.anything))
+          .params(
+            value: T.any(Orb::BaseModel, T::Hash[T.anything, T.anything], T.anything),
+            state: Orb::Converter::State
+          )
           .returns(T.any(T.attached_class, T.anything))
       end
-      def coerce(value)
+      def coerce(value, state:)
       end
 
       # @api private
@@ -553,15 +533,6 @@ module Orb
           .returns(T.any(T::Hash[T.anything, T.anything], T.anything))
       end
       def dump(value)
-      end
-
-      # @api private
-      sig do
-        override
-          .params(value: T.anything)
-          .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
-      end
-      def try_strict_coerce(value)
       end
     end
 
