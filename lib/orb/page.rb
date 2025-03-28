@@ -49,7 +49,7 @@ module Orb
 
       case page_data
       in {pagination_metadata: Hash | nil => pagination_metadata}
-        @pagination_metadata = Orb::Page::PaginationMetadata.coerce(pagination_metadata)
+        @pagination_metadata = Orb::Converter.coerce(Orb::Page::PaginationMetadata, pagination_metadata)
       else
       end
     end
