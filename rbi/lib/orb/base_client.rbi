@@ -81,7 +81,7 @@ module Orb
     end
 
     # @api private
-    sig { returns(T.anything) }
+    sig { returns(Orb::PooledNetRequester) }
     attr_accessor :requester
 
     # @api private
