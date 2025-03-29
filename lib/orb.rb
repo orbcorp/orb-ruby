@@ -36,7 +36,6 @@ require "connection_pool"
 # Package files.
 require_relative "orb/version"
 require_relative "orb/util"
-require_relative "orb/extern"
 require_relative "orb/base_model"
 require_relative "orb/base_page"
 require_relative "orb/request_options"
