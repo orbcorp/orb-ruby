@@ -10,22 +10,16 @@ The underlying REST API documentation can be found on [docs.withorb.com](https:/
 
 ## Installation
 
-To use this gem during the beta, install directly from GitHub with Bundler by adding the following to your application's `Gemfile`:
+To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
 
 ```ruby
-gem "orb", git: "https://github.com/orbcorp/orb-ruby", branch: "main"
+gem "orb", "~> 0.1.0.pre.alpha.29"
 ```
 
 To fetch an initial copy of the gem:
 
 ```sh
 bundle install
-```
-
-To update the version used by your application when updates are pushed to GitHub:
-
-```sh
-bundle update orb
 ```
 
 ## Usage
