@@ -3,7 +3,7 @@
 module Orb
   module Models
     class SubscriptionSchedulePlanChangeParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ChangeOption::OrSymbol) }

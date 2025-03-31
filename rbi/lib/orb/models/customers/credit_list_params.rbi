@@ -4,7 +4,7 @@ module Orb
   module Models
     module Customers
       class CreditListParams < Orb::BaseModel
-        extend Orb::RequestParameters::Converter
+        extend Orb::Type::RequestParameters::Converter
         include Orb::RequestParameters
 
         # The ledger currency or custom pricing unit to use.

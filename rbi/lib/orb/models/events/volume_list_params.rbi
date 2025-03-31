@@ -4,7 +4,7 @@ module Orb
   module Models
     module Events
       class VolumeListParams < Orb::BaseModel
-        extend Orb::RequestParameters::Converter
+        extend Orb::Type::RequestParameters::Converter
         include Orb::RequestParameters
 
         # The start of the timeframe, inclusive, in which to return event volume. All

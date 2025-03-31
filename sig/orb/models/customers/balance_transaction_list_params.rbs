@@ -13,7 +13,7 @@ module Orb
         & Orb::request_parameters
 
       class BalanceTransactionListParams < Orb::BaseModel
-        extend Orb::RequestParameters::Converter
+        extend Orb::Type::RequestParameters::Converter
         include Orb::RequestParameters
 
         attr_accessor cursor: String?

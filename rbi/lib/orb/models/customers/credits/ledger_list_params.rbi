@@ -5,7 +5,7 @@ module Orb
     module Customers
       module Credits
         class LedgerListParams < Orb::BaseModel
-          extend Orb::RequestParameters::Converter
+          extend Orb::Type::RequestParameters::Converter
           include Orb::RequestParameters
 
           sig { returns(T.nilable(Time)) }

@@ -3,7 +3,7 @@
 module Orb
   module Models
     class InvoiceLineItemCreateParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # The total amount in the invoice's currency to add to the line item.

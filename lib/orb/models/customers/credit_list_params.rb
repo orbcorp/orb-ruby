@@ -5,7 +5,7 @@ module Orb
     module Customers
       class CreditListParams < Orb::BaseModel
         # @!parse
-        #   extend Orb::RequestParameters::Converter
+        #   extend Orb::Type::RequestParameters::Converter
         include Orb::RequestParameters
 
         # @!attribute currency

@@ -15,7 +15,7 @@ module Orb
       & Orb::request_parameters
 
     class AlertListParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       attr_accessor created_at_gt: Time?

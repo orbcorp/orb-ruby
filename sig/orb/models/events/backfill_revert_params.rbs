@@ -4,7 +4,7 @@ module Orb
       type backfill_revert_params = {  } & Orb::request_parameters
 
       class BackfillRevertParams < Orb::BaseModel
-        extend Orb::RequestParameters::Converter
+        extend Orb::Type::RequestParameters::Converter
         include Orb::RequestParameters
 
         def initialize: (?request_options: Orb::request_opts) -> void

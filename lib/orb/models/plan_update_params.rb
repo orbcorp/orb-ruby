@@ -4,7 +4,7 @@ module Orb
   module Models
     class PlanUpdateParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::RequestParameters::Converter
+      #   extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # @!attribute external_plan_id

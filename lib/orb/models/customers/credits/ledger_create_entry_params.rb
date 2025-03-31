@@ -6,7 +6,7 @@ module Orb
       module Credits
         class LedgerCreateEntryParams < Orb::BaseModel
           # @!parse
-          #   extend Orb::RequestParameters::Converter
+          #   extend Orb::Type::RequestParameters::Converter
           include Orb::RequestParameters
 
           # @!attribute amount

@@ -3,7 +3,7 @@
 module Orb
   module Models
     class PriceCreateParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # The cadence to bill for this price on.

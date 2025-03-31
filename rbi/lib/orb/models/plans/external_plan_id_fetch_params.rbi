@@ -4,7 +4,7 @@ module Orb
   module Models
     module Plans
       class ExternalPlanIDFetchParams < Orb::BaseModel
-        extend Orb::RequestParameters::Converter
+        extend Orb::Type::RequestParameters::Converter
         include Orb::RequestParameters
 
         sig do

@@ -3,7 +3,7 @@
 module Orb
   module Models
     class InvoiceMarkPaidParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # A date string to specify the date of the payment.

@@ -12,7 +12,7 @@ module Orb
       & Orb::request_parameters
 
     class InvoiceLineItemCreateParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       attr_accessor amount: String

@@ -12,7 +12,7 @@ module Orb
       & Orb::request_parameters
 
     class PriceEvaluateParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       attr_accessor timeframe_end: Time

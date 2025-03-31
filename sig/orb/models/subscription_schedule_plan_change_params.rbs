@@ -32,7 +32,7 @@ module Orb
       & Orb::request_parameters
 
     class SubscriptionSchedulePlanChangeParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       attr_accessor change_option: Orb::Models::SubscriptionSchedulePlanChangeParams::change_option

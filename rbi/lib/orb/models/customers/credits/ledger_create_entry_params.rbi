@@ -5,7 +5,7 @@ module Orb
     module Customers
       module Credits
         class LedgerCreateEntryParams < Orb::BaseModel
-          extend Orb::RequestParameters::Converter
+          extend Orb::Type::RequestParameters::Converter
           include Orb::RequestParameters
 
           # The number of credits to effect. Note that this is required for increment,

@@ -3,7 +3,7 @@ module Orb
     type metric_fetch_params = {  } & Orb::request_parameters
 
     class MetricFetchParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       def initialize: (?request_options: Orb::request_opts) -> void

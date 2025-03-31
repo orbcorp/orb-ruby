@@ -3,7 +3,7 @@
 module Orb
   module Models
     class CouponListParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # Cursor for pagination. This can be populated by the `next_cursor` value returned
