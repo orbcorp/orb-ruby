@@ -3,7 +3,7 @@
 module Orb
   module Models
     class EventSearchParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # This is an explicit array of IDs to filter by. Note that an event's ID is the

@@ -3,7 +3,7 @@
 module Orb
   module Models
     class SubscriptionFetchUsageParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # When specified in conjunction with `group_by`, this parameter filters usage to a

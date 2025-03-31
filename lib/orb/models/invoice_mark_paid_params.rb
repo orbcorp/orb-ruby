@@ -4,7 +4,7 @@ module Orb
   module Models
     class InvoiceMarkPaidParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::RequestParameters::Converter
+      #   extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # @!attribute payment_received_date

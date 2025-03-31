@@ -3,7 +3,7 @@
 module Orb
   module Models
     class SubscriptionUnscheduleFixedFeeQuantityUpdatesParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # Price for which the updates should be cleared. Must be a fixed fee.

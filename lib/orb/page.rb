@@ -23,7 +23,7 @@ module Orb
   #
   #   coupons => Array
   class Page
-    include Orb::BasePage
+    include Orb::Type::BasePage
 
     # @return [Array<Object>, nil]
     attr_accessor :data
@@ -33,7 +33,7 @@ module Orb
 
     # @api private
     #
-    # @param client [Orb::BaseClient]
+    # @param client [Orb::Transport::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
     # @param page_data [Hash{Symbol=>Object}]
@@ -43,13 +43,13 @@ module Orb
 
       case page_data
       in {data: Array | nil => data}
-        @data = data&.map { Orb::Converter.coerce(model, _1) }
+        @data = data&.map { Orb::Type::Converter.coerce(model, _1) }
       else
       end
 
       case page_data
       in {pagination_metadata: Hash | nil => pagination_metadata}
-        @pagination_metadata = Orb::Converter.coerce(Orb::Page::PaginationMetadata, pagination_metadata)
+        @pagination_metadata = Orb::Type::Converter.coerce(Orb::Page::PaginationMetadata, pagination_metadata)
       else
       end
     end

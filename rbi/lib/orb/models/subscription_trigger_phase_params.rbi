@@ -3,7 +3,7 @@
 module Orb
   module Models
     class SubscriptionTriggerPhaseParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # If false, this request will fail if it would void an issued invoice or create a

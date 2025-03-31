@@ -3,7 +3,7 @@
 module Orb
   module Models
     class InvoiceIssueParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # If true, the invoice will be issued synchronously. If false, the invoice will be

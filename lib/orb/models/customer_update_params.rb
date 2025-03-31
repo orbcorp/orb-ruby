@@ -4,7 +4,7 @@ module Orb
   module Models
     class CustomerUpdateParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::RequestParameters::Converter
+      #   extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # @!attribute accounting_sync_configuration

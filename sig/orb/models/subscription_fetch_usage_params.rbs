@@ -16,7 +16,7 @@ module Orb
       & Orb::request_parameters
 
     class SubscriptionFetchUsageParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       attr_accessor billable_metric_id: String?

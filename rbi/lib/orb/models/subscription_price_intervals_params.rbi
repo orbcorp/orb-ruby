@@ -3,7 +3,7 @@
 module Orb
   module Models
     class SubscriptionPriceIntervalsParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # A list of price intervals to add to the subscription.

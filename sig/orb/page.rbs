@@ -1,6 +1,6 @@
 module Orb
   class Page[Elem]
-    include Orb::BasePage[Elem]
+    include Orb::Type::BasePage[Elem]
 
     attr_accessor data: ::Array[Elem]?
 

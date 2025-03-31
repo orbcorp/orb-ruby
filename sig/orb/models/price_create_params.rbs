@@ -48,7 +48,7 @@ module Orb
       & Orb::request_parameters
 
     class PriceCreateParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       attr_accessor cadence: Orb::Models::PriceCreateParams::cadence

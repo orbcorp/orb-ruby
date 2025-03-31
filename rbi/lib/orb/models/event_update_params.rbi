@@ -3,7 +3,7 @@
 module Orb
   module Models
     class EventUpdateParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # A name to meaningfully identify the action or event type.

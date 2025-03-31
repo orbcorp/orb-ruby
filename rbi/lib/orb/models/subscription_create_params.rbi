@@ -3,7 +3,7 @@
 module Orb
   module Models
     class SubscriptionCreateParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # Additional adjustments to be added to the subscription. (Only available for

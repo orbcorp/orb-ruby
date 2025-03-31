@@ -9,7 +9,7 @@ module Orb
       & Orb::request_parameters
 
     class CreditNoteCreateParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       attr_accessor line_items: ::Array[Orb::Models::CreditNoteCreateParams::LineItem]

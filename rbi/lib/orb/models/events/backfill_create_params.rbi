@@ -4,7 +4,7 @@ module Orb
   module Models
     module Events
       class BackfillCreateParams < Orb::BaseModel
-        extend Orb::RequestParameters::Converter
+        extend Orb::Type::RequestParameters::Converter
         include Orb::RequestParameters
 
         # The (exclusive) end of the usage timeframe affected by this backfill. By

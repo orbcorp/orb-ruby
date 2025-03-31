@@ -2,7 +2,7 @@
 
 module Orb
   class Page
-    include Orb::BasePage
+    include Orb::Type::BasePage
 
     Elem = type_member
 
