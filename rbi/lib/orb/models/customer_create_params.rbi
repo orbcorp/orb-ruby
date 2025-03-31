@@ -3,7 +3,7 @@
 module Orb
   module Models
     class CustomerCreateParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # A valid customer email, to be used for notifications. When Orb triggers payment

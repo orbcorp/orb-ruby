@@ -3,7 +3,7 @@ module Orb
     type item_create_params = { name: String } & Orb::request_parameters
 
     class ItemCreateParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       attr_accessor name: String

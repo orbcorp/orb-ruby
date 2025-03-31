@@ -3,7 +3,7 @@
 module Orb
   module Models
     class AlertRetrieveParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       sig do

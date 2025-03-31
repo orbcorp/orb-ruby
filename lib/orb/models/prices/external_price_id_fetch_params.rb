@@ -5,7 +5,7 @@ module Orb
     module Prices
       class ExternalPriceIDFetchParams < Orb::BaseModel
         # @!parse
-        #   extend Orb::RequestParameters::Converter
+        #   extend Orb::Type::RequestParameters::Converter
         include Orb::RequestParameters
 
         # @!parse

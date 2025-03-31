@@ -3,7 +3,7 @@
 module Orb
   module Models
     class AlertUpdateParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # The thresholds that define the values at which the alert will be triggered.

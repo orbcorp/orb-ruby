@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Orb
-  class Client < Orb::BaseClient
+  class Client < Orb::Transport::BaseClient
     # Default max number of retries to attempt after a failed retryable request.
     DEFAULT_MAX_RETRIES = 2
 

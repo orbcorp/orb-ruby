@@ -6,7 +6,7 @@ module Orb
           { customer_id: String } & Orb::request_parameters
 
         class TopUpDeleteParams < Orb::BaseModel
-          extend Orb::RequestParameters::Converter
+          extend Orb::Type::RequestParameters::Converter
           include Orb::RequestParameters
 
           attr_accessor customer_id: String

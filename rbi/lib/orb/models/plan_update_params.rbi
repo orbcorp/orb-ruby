@@ -3,7 +3,7 @@
 module Orb
   module Models
     class PlanUpdateParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # An optional user-defined ID for this plan resource, used throughout the system

@@ -4,7 +4,7 @@ module Orb
   module Models
     class InvoiceLineItemCreateParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::RequestParameters::Converter
+      #   extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # @!attribute amount

@@ -3,7 +3,7 @@
 module Orb
   module Models
     class AlertCreateForCustomerParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # The case sensitive currency or custom pricing unit to use for this alert.

@@ -4,7 +4,7 @@ module Orb
   module Models
     module Customers
       class CostListParams < Orb::BaseModel
-        extend Orb::RequestParameters::Converter
+        extend Orb::Type::RequestParameters::Converter
         include Orb::RequestParameters
 
         # The currency or custom pricing unit to use.

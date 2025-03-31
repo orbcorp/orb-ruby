@@ -5,7 +5,7 @@ module Orb
     module Customers
       module Credits
         class TopUpCreateByExternalIDParams < Orb::BaseModel
-          extend Orb::RequestParameters::Converter
+          extend Orb::Type::RequestParameters::Converter
           include Orb::RequestParameters
 
           # The amount to increment when the threshold is reached.
