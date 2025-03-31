@@ -8,7 +8,7 @@ module Orb
       & Orb::request_parameters
 
     class ItemUpdateParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       attr_accessor external_connections: ::Array[Orb::Models::ItemUpdateParams::ExternalConnection]?

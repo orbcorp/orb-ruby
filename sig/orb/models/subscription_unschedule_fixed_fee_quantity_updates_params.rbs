@@ -4,7 +4,7 @@ module Orb
       { price_id: String } & Orb::request_parameters
 
     class SubscriptionUnscheduleFixedFeeQuantityUpdatesParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       attr_accessor price_id: String

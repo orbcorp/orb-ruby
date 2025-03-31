@@ -4,7 +4,7 @@ module Orb
       {  } & Orb::request_parameters
 
     class DimensionalPriceGroupRetrieveParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       def initialize: (?request_options: Orb::request_opts) -> void

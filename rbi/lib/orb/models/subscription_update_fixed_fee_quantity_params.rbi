@@ -3,7 +3,7 @@
 module Orb
   module Models
     class SubscriptionUpdateFixedFeeQuantityParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # Price for which the quantity should be updated. Must be a fixed fee.

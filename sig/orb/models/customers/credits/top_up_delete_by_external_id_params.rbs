@@ -6,7 +6,7 @@ module Orb
           { external_customer_id: String } & Orb::request_parameters
 
         class TopUpDeleteByExternalIDParams < Orb::BaseModel
-          extend Orb::RequestParameters::Converter
+          extend Orb::Type::RequestParameters::Converter
           include Orb::RequestParameters
 
           attr_accessor external_customer_id: String

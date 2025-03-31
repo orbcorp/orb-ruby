@@ -3,7 +3,7 @@
 module Orb
   module Models
     class PriceUpdateParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # User-specified key/value pairs for the resource. Individual keys can be removed

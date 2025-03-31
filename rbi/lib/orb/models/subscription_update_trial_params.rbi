@@ -3,7 +3,7 @@
 module Orb
   module Models
     class SubscriptionUpdateTrialParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # The new date that the trial should end, or the literal string `immediate` to end

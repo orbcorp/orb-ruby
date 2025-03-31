@@ -23,7 +23,7 @@ module Orb
       & Orb::request_parameters
 
     class CustomerUpdateByExternalIDParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       attr_accessor accounting_sync_configuration: Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration?

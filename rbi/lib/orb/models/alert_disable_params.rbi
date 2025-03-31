@@ -3,7 +3,7 @@
 module Orb
   module Models
     class AlertDisableParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # Used to update the status of a plan alert scoped to this subscription_id

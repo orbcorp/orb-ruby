@@ -4,7 +4,7 @@ module Orb
   module Models
     class CustomerListParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::RequestParameters::Converter
+      #   extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # @!attribute created_at_gt

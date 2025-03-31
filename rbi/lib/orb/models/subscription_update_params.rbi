@@ -3,7 +3,7 @@
 module Orb
   module Models
     class SubscriptionUpdateParams < Orb::BaseModel
-      extend Orb::RequestParameters::Converter
+      extend Orb::Type::RequestParameters::Converter
       include Orb::RequestParameters
 
       # Determines whether issued invoices for this subscription will automatically be
