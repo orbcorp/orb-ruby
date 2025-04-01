@@ -57,6 +57,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Item::ExternalConnection#external_connection_name
         module ExternalConnectionName
           extend Orb::Enum
 

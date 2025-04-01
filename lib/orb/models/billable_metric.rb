@@ -56,6 +56,7 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
+      # @see Orb::Models::BillableMetric#status
       module Status
         extend Orb::Enum
 

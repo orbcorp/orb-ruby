@@ -3,6 +3,7 @@
 module Orb
   module Models
     module Events
+      # @see Orb::Resources::Events::Volume#list
       class VolumeListParams < Orb::BaseModel
         # @!parse
         #   extend Orb::Type::RequestParameters::Converter

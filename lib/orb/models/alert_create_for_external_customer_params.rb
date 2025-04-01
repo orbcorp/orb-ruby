@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Alerts#create_for_external_customer
     class AlertCreateForExternalCustomerParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

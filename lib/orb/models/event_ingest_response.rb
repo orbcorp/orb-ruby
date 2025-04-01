@@ -48,6 +48,7 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
+      # @see Orb::Models::EventIngestResponse#debug
       class Debug < Orb::BaseModel
         # @!attribute duplicate
         #

@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#update_trial
     class SubscriptionUpdateTrialParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

@@ -140,6 +140,8 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Customers::CostListResponse]
+        #
+        # @see Orb::Models::Customers::CostListParams
         def list(customer_id, params = {})
           parsed, options = Orb::Models::Customers::CostListParams.dump_request(params)
           @client.request(
@@ -287,6 +289,8 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Customers::CostListByExternalIDResponse]
+        #
+        # @see Orb::Models::Customers::CostListByExternalIDParams
         def list_by_external_id(external_customer_id, params = {})
           parsed, options = Orb::Models::Customers::CostListByExternalIDParams.dump_request(params)
           @client.request(
@@ -298,6 +302,8 @@ module Orb
           )
         end
 
+        # @api private
+        #
         # @param client [Orb::Client]
         def initialize(client:)
           @client = client

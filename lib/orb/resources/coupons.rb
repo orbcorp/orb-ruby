@@ -24,6 +24,8 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Coupon]
+      #
+      # @see Orb::Models::CouponCreateParams
       def create(params)
         parsed, options = Orb::Models::CouponCreateParams.dump_request(params)
         @client.request(
@@ -57,6 +59,8 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Page<Orb::Models::Coupon>]
+      #
+      # @see Orb::Models::CouponListParams
       def list(params = {})
         parsed, options = Orb::Models::CouponListParams.dump_request(params)
         @client.request(
@@ -80,6 +84,8 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Coupon]
+      #
+      # @see Orb::Models::CouponArchiveParams
       def archive(coupon_id, params = {})
         @client.request(
           method: :post,
@@ -100,6 +106,8 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Coupon]
+      #
+      # @see Orb::Models::CouponFetchParams
       def fetch(coupon_id, params = {})
         @client.request(
           method: :get,
@@ -109,6 +117,8 @@ module Orb
         )
       end
 
+      # @api private
+      #
       # @param client [Orb::Client]
       def initialize(client:)
         @client = client

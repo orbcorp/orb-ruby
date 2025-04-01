@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Plans#update
     class PlanUpdateParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

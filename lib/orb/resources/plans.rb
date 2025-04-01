@@ -36,6 +36,8 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Plan]
+      #
+      # @see Orb::Models::PlanCreateParams
       def create(params)
         parsed, options = Orb::Models::PlanCreateParams.dump_request(params)
         @client.request(method: :post, path: "plans", body: parsed, model: Orb::Models::Plan, options: options)
@@ -61,6 +63,8 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Plan]
+      #
+      # @see Orb::Models::PlanUpdateParams
       def update(plan_id, params = {})
         parsed, options = Orb::Models::PlanUpdateParams.dump_request(params)
         @client.request(
@@ -98,6 +102,8 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Page<Orb::Models::Plan>]
+      #
+      # @see Orb::Models::PlanListParams
       def list(params = {})
         parsed, options = Orb::Models::PlanListParams.dump_request(params)
         @client.request(
@@ -135,6 +141,8 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Plan]
+      #
+      # @see Orb::Models::PlanFetchParams
       def fetch(plan_id, params = {})
         @client.request(
           method: :get,
@@ -144,6 +152,8 @@ module Orb
         )
       end
 
+      # @api private
+      #
       # @param client [Orb::Client]
       def initialize(client:)
         @client = client

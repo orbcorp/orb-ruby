@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Events#update
     class EventUpdateParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

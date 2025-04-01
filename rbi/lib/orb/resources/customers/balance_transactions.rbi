@@ -82,6 +82,7 @@ module Orb
         )
         end
 
+        # @api private
         sig { params(client: Orb::Client).returns(T.attached_class) }
         def self.new(client:)
         end

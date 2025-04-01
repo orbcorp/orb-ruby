@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Prices#fetch
     class PriceFetchParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Prices#list
     class PriceListParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

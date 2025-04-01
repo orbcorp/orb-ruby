@@ -3,6 +3,7 @@
 module Orb
   module Models
     module Events
+      # @see Orb::Resources::Events::Backfills#fetch
       class BackfillFetchParams < Orb::BaseModel
         # @!parse
         #   extend Orb::Type::RequestParameters::Converter

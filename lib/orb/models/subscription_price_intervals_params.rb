@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#price_intervals
     class SubscriptionPriceIntervalsParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter
@@ -206,6 +207,8 @@ module Orb
 
         # The start date of the price interval. This is the date that the price will start
         #   billing on the subscription.
+        #
+        # @see Orb::Models::SubscriptionPriceIntervalsParams::Add#start_date
         module StartDate
           extend Orb::Union
 
@@ -218,6 +221,7 @@ module Orb
           #   def self.variants; end
         end
 
+        # @see Orb::Models::SubscriptionPriceIntervalsParams::Add#allocation_price
         class AllocationPrice < Orb::BaseModel
           # @!attribute amount
           #   An amount of the currency to allocate to the customer at the specified cadence.
@@ -259,6 +263,8 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
 
           # The cadence at which to allocate the amount to the customer.
+          #
+          # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice#cadence
           module Cadence
             extend Orb::Enum
 
@@ -363,6 +369,8 @@ module Orb
 
         # The end date of the price interval. This is the date that the price will stop
         #   billing on the subscription.
+        #
+        # @see Orb::Models::SubscriptionPriceIntervalsParams::Add#end_date
         module EndDate
           extend Orb::Union
 
@@ -398,6 +406,8 @@ module Orb
         end
 
         # The definition of a new price to create and add to the subscription.
+        #
+        # @see Orb::Models::SubscriptionPriceIntervalsParams::Add#price
         module Price
           extend Orb::Union
 
@@ -625,6 +635,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -642,6 +654,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice#unit_config
             class UnitConfig < Orb::BaseModel
               # @!attribute unit_amount
               #   Rate per unit of usage
@@ -657,6 +670,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -683,6 +697,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -697,6 +713,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -723,6 +740,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -881,6 +900,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -898,6 +919,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice#package_config
             class PackageConfig < Orb::BaseModel
               # @!attribute package_amount
               #   A currency amount to rate usage by
@@ -921,6 +943,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -947,6 +970,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -961,6 +986,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -987,6 +1013,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -1145,6 +1173,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -1162,6 +1192,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice#matrix_config
             class MatrixConfig < Orb::BaseModel
               # @!attribute default_unit_amount
               #   Default per unit rate for any usage not bucketed into a specified matrix_value
@@ -1220,6 +1251,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -1246,6 +1278,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -1260,6 +1294,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -1286,6 +1321,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -1444,6 +1481,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -1461,6 +1500,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice#matrix_with_allocation_config
             class MatrixWithAllocationConfig < Orb::BaseModel
               # @!attribute allocation
               #   Allocation to be used to calculate the price
@@ -1526,6 +1566,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -1552,6 +1593,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -1566,6 +1609,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -1592,6 +1636,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -1750,6 +1796,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -1767,6 +1815,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice#tiered_config
             class TieredConfig < Orb::BaseModel
               # @!attribute tiers
               #   Tiers for rating based on total usage quantities into the specified tier
@@ -1812,6 +1861,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -1838,6 +1888,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -1852,6 +1904,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -1878,6 +1931,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -2036,6 +2091,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -2053,6 +2110,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice#tiered_bps_config
             class TieredBpsConfig < Orb::BaseModel
               # @!attribute tiers
               #   Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
@@ -2110,6 +2168,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -2136,6 +2195,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -2150,6 +2211,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -2176,6 +2238,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -2333,6 +2397,7 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice#bps_config
             class BpsConfig < Orb::BaseModel
               # @!attribute bps
               #   Basis point take rate per event
@@ -2356,6 +2421,8 @@ module Orb
             end
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -2373,6 +2440,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -2399,6 +2467,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -2413,6 +2483,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -2439,6 +2510,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -2596,6 +2669,7 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice#bulk_bps_config
             class BulkBpsConfig < Orb::BaseModel
               # @!attribute tiers
               #   Tiers for a bulk BPS pricing model where all usage is aggregated to a single
@@ -2643,6 +2717,8 @@ module Orb
             end
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -2660,6 +2736,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -2686,6 +2763,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -2700,6 +2779,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -2726,6 +2806,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -2883,6 +2965,7 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice#bulk_config
             class BulkConfig < Orb::BaseModel
               # @!attribute tiers
               #   Bulk tiers for rating based on total usage volume
@@ -2922,6 +3005,8 @@ module Orb
             end
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -2939,6 +3024,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -2965,6 +3051,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -2979,6 +3067,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -3005,6 +3094,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -3162,6 +3253,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -3179,6 +3272,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -3205,6 +3299,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -3219,6 +3315,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -3245,6 +3342,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -3402,6 +3501,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -3419,6 +3520,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -3445,6 +3547,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -3459,6 +3563,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -3485,6 +3590,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -3642,6 +3749,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -3659,6 +3768,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -3685,6 +3795,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -3699,6 +3811,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -3725,6 +3838,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -3882,6 +3997,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -3899,6 +4016,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -3925,6 +4043,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -3939,6 +4059,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -3965,6 +4086,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -4122,6 +4245,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -4139,6 +4264,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -4165,6 +4291,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -4179,6 +4307,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -4205,6 +4334,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -4362,6 +4493,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -4379,6 +4512,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -4405,6 +4539,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -4419,6 +4555,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -4445,6 +4582,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -4602,6 +4741,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -4619,6 +4760,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -4645,6 +4787,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -4659,6 +4803,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -4685,6 +4830,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -4842,6 +4989,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -4859,6 +5008,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -4885,6 +5035,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -4899,6 +5051,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -4925,6 +5078,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -5082,6 +5237,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -5099,6 +5256,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -5125,6 +5283,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -5139,6 +5299,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -5165,6 +5326,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -5322,6 +5485,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -5339,6 +5504,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -5365,6 +5531,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -5379,6 +5547,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -5405,6 +5574,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -5562,6 +5733,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -5579,6 +5752,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -5605,6 +5779,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -5619,6 +5795,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -5645,6 +5822,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -5802,6 +5981,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -5819,6 +6000,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -5845,6 +6027,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -5859,6 +6043,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -5885,6 +6070,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -6042,6 +6229,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -6059,6 +6248,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -6085,6 +6275,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -6099,6 +6291,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -6125,6 +6318,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -6282,6 +6477,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -6299,6 +6496,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -6325,6 +6523,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -6339,6 +6539,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -6365,6 +6566,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -6522,6 +6725,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -6539,6 +6744,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -6565,6 +6771,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -6579,6 +6787,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -6605,6 +6814,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -6762,6 +6973,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -6779,6 +6992,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -6805,6 +7019,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -6819,6 +7035,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -6845,6 +7062,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -7002,6 +7221,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -7019,6 +7240,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -7045,6 +7267,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -7059,6 +7283,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -7085,6 +7310,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -7242,6 +7469,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -7259,6 +7488,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -7285,6 +7515,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -7299,6 +7531,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -7325,6 +7558,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -7482,6 +7717,8 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
 
             # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice#cadence
             module Cadence
               extend Orb::Enum
 
@@ -7499,6 +7736,7 @@ module Orb
               #   def self.values; end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice#billing_cycle_configuration
             class BillingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -7525,6 +7763,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -7539,6 +7779,7 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
@@ -7565,6 +7806,8 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
 
               # The unit of billing period duration.
+              #
+              # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
                 extend Orb::Enum
 
@@ -7625,6 +7868,8 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # The definition of a new adjustment to create and add to the subscription.
+        #
+        # @see Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment#adjustment
         module Adjustment
           extend Orb::Union
 
@@ -7864,6 +8109,8 @@ module Orb
         #   will start affecting prices on the subscription. The adjustment will apply to
         #   invoice dates that overlap with this `start_date`. This `start_date` is treated
         #   as inclusive for in-advance prices, and exclusive for in-arrears prices.
+        #
+        # @see Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment#start_date
         module StartDate
           extend Orb::Union
 
@@ -7880,6 +8127,8 @@ module Orb
         #   will stop affecting prices on the subscription. The adjustment will apply to
         #   invoice dates that overlap with this `end_date`.This `end_date` is treated as
         #   exclusive for in-advance prices, and inclusive for in-arrears prices.
+        #
+        # @see Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment#end_date
         module EndDate
           extend Orb::Union
 
@@ -7982,6 +8231,8 @@ module Orb
 
         # The updated end date of this price interval. If not specified, the start date
         #   will not be updated.
+        #
+        # @see Orb::Models::SubscriptionPriceIntervalsParams::Edit#end_date
         module EndDate
           extend Orb::Union
 
@@ -8018,6 +8269,8 @@ module Orb
 
         # The updated start date of this price interval. If not specified, the start date
         #   will not be updated.
+        #
+        # @see Orb::Models::SubscriptionPriceIntervalsParams::Edit#start_date
         module StartDate
           extend Orb::Union
 
@@ -8070,6 +8323,8 @@ module Orb
 
         # The updated end date of this adjustment interval. If not specified, the start
         #   date will not be updated.
+        #
+        # @see Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment#end_date
         module EndDate
           extend Orb::Union
 
@@ -8084,6 +8339,8 @@ module Orb
 
         # The updated start date of this adjustment interval. If not specified, the start
         #   date will not be updated.
+        #
+        # @see Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment#start_date
         module StartDate
           extend Orb::Union
 

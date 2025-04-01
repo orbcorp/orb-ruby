@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Prices#create
     class PriceCreateParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter
@@ -408,6 +409,8 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # The unit of billing period duration.
+        #
+        # @see Orb::Models::PriceCreateParams::BillingCycleConfiguration#duration_unit
         module DurationUnit
           extend Orb::Enum
 
@@ -448,6 +451,8 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # The unit of billing period duration.
+        #
+        # @see Orb::Models::PriceCreateParams::InvoicingCycleConfiguration#duration_unit
         module DurationUnit
           extend Orb::Enum
 
