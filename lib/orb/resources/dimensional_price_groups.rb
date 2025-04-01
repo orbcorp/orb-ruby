@@ -55,7 +55,7 @@ module Orb
       def retrieve(dimensional_price_group_id, params = {})
         @client.request(
           method: :get,
-          path: ["dimensional_price_groups/%0s", dimensional_price_group_id],
+          path: ["dimensional_price_groups/%1$s", dimensional_price_group_id],
           model: Orb::Models::DimensionalPriceGroup,
           options: params[:request_options]
         )

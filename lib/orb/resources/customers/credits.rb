@@ -39,7 +39,7 @@ module Orb
           parsed, options = Orb::Models::Customers::CreditListParams.dump_request(params)
           @client.request(
             method: :get,
-            path: ["customers/%0s/credits", customer_id],
+            path: ["customers/%1$s/credits", customer_id],
             query: parsed,
             page: Orb::Page,
             model: Orb::Models::Customers::CreditListResponse,
@@ -76,7 +76,7 @@ module Orb
           parsed, options = Orb::Models::Customers::CreditListByExternalIDParams.dump_request(params)
           @client.request(
             method: :get,
-            path: ["customers/external_customer_id/%0s/credits", external_customer_id],
+            path: ["customers/external_customer_id/%1$s/credits", external_customer_id],
             query: parsed,
             page: Orb::Page,
             model: Orb::Models::Customers::CreditListByExternalIDResponse,

@@ -24,7 +24,7 @@ module Orb
           parsed, options = Orb::Models::Customers::BalanceTransactionCreateParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["customers/%0s/balance_transactions", customer_id],
+            path: ["customers/%1$s/balance_transactions", customer_id],
             body: parsed,
             model: Orb::Models::Customers::BalanceTransactionCreateResponse,
             options: options
@@ -84,7 +84,7 @@ module Orb
           parsed, options = Orb::Models::Customers::BalanceTransactionListParams.dump_request(params)
           @client.request(
             method: :get,
-            path: ["customers/%0s/balance_transactions", customer_id],
+            path: ["customers/%1$s/balance_transactions", customer_id],
             query: parsed,
             page: Orb::Page,
             model: Orb::Models::Customers::BalanceTransactionListResponse,

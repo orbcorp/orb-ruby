@@ -83,7 +83,7 @@ module Orb
       def archive(coupon_id, params = {})
         @client.request(
           method: :post,
-          path: ["coupons/%0s/archive", coupon_id],
+          path: ["coupons/%1$s/archive", coupon_id],
           model: Orb::Models::Coupon,
           options: params[:request_options]
         )
@@ -103,7 +103,7 @@ module Orb
       def fetch(coupon_id, params = {})
         @client.request(
           method: :get,
-          path: ["coupons/%0s", coupon_id],
+          path: ["coupons/%1$s", coupon_id],
           model: Orb::Models::Coupon,
           options: params[:request_options]
         )
