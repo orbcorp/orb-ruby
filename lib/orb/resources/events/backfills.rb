@@ -72,6 +72,8 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Events::BackfillCreateResponse]
+        #
+        # @see Orb::Models::Events::BackfillCreateParams
         def create(params)
           parsed, options = Orb::Models::Events::BackfillCreateParams.dump_request(params)
           @client.request(
@@ -101,6 +103,8 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Page<Orb::Models::Events::BackfillListResponse>]
+        #
+        # @see Orb::Models::Events::BackfillListParams
         def list(params = {})
           parsed, options = Orb::Models::Events::BackfillListParams.dump_request(params)
           @client.request(
@@ -125,6 +129,8 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Events::BackfillCloseResponse]
+        #
+        # @see Orb::Models::Events::BackfillCloseParams
         def close(backfill_id, params = {})
           @client.request(
             method: :post,
@@ -143,6 +149,8 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Events::BackfillFetchResponse]
+        #
+        # @see Orb::Models::Events::BackfillFetchParams
         def fetch(backfill_id, params = {})
           @client.request(
             method: :get,
@@ -167,6 +175,8 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Events::BackfillRevertResponse]
+        #
+        # @see Orb::Models::Events::BackfillRevertParams
         def revert(backfill_id, params = {})
           @client.request(
             method: :post,
@@ -176,6 +186,8 @@ module Orb
           )
         end
 
+        # @api private
+        #
         # @param client [Orb::Client]
         def initialize(client:)
           @client = client

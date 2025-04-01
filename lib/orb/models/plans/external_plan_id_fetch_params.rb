@@ -3,6 +3,7 @@
 module Orb
   module Models
     module Plans
+      # @see Orb::Resources::Plans::ExternalPlanID#fetch
       class ExternalPlanIDFetchParams < Orb::BaseModel
         # @!parse
         #   extend Orb::Type::RequestParameters::Converter

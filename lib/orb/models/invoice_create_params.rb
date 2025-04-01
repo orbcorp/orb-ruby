@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Invoices#create
     class InvoiceCreateParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter
@@ -165,6 +166,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::InvoiceCreateParams::LineItem#model_type
         module ModelType
           extend Orb::Enum
 
@@ -177,6 +179,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::InvoiceCreateParams::LineItem#unit_config
         class UnitConfig < Orb::BaseModel
           # @!attribute unit_amount
           #   Rate per unit of usage

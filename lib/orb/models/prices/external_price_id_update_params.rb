@@ -3,6 +3,7 @@
 module Orb
   module Models
     module Prices
+      # @see Orb::Resources::Prices::ExternalPriceID#update
       class ExternalPriceIDUpdateParams < Orb::BaseModel
         # @!parse
         #   extend Orb::Type::RequestParameters::Converter

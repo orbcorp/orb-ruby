@@ -66,6 +66,7 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
+      # @see Orb::Models::Coupon#discount
       module Discount
         extend Orb::Union
 

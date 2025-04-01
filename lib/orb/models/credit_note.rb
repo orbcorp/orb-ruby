@@ -145,6 +145,7 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
+      # @see Orb::Models::CreditNote#customer
       class Customer < Orb::BaseModel
         # @!attribute id
         #
@@ -321,6 +322,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::CreditNote::LineItem::Discount#discount_type
           module DiscountType
             extend Orb::Enum
 
@@ -336,6 +338,7 @@ module Orb
         end
       end
 
+      # @see Orb::Models::CreditNote#maximum_amount_adjustment
       class MaximumAmountAdjustment < Orb::BaseModel
         # @!attribute amount_applied
         #
@@ -377,6 +380,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::CreditNote::MaximumAmountAdjustment#discount_type
         module DiscountType
           extend Orb::Enum
 
@@ -410,6 +414,7 @@ module Orb
         end
       end
 
+      # @see Orb::Models::CreditNote#reason
       module Reason
         extend Orb::Enum
 
@@ -425,6 +430,7 @@ module Orb
         #   def self.values; end
       end
 
+      # @see Orb::Models::CreditNote#type
       module Type
         extend Orb::Enum
 
@@ -477,6 +483,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::CreditNote::Discount#discount_type
         module DiscountType
           extend Orb::Enum
 

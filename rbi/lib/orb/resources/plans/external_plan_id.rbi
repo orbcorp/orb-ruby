@@ -57,6 +57,7 @@ module Orb
         def fetch(external_plan_id, request_options: {})
         end
 
+        # @api private
         sig { params(client: Orb::Client).returns(T.attached_class) }
         def self.new(client:)
         end

@@ -76,6 +76,8 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::EventUpdateResponse]
+      #
+      # @see Orb::Models::EventUpdateParams
       def update(event_id, params)
         parsed, options = Orb::Models::EventUpdateParams.dump_request(params)
         @client.request(
@@ -135,6 +137,8 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::EventDeprecateResponse]
+      #
+      # @see Orb::Models::EventDeprecateParams
       def deprecate(event_id, params = {})
         @client.request(
           method: :put,
@@ -362,6 +366,8 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::EventIngestResponse]
+      #
+      # @see Orb::Models::EventIngestParams
       def ingest(params)
         parsed, options = Orb::Models::EventIngestParams.dump_request(params)
         query_params = [:backfill_id, :debug]
@@ -407,6 +413,8 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::EventSearchResponse]
+      #
+      # @see Orb::Models::EventSearchParams
       def search(params)
         parsed, options = Orb::Models::EventSearchParams.dump_request(params)
         @client.request(
@@ -418,6 +426,8 @@ module Orb
         )
       end
 
+      # @api private
+      #
       # @param client [Orb::Client]
       def initialize(client:)
         @client = client

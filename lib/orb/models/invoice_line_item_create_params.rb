@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::InvoiceLineItems#create
     class InvoiceLineItemCreateParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

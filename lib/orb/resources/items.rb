@@ -12,6 +12,8 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Item]
+      #
+      # @see Orb::Models::ItemCreateParams
       def create(params)
         parsed, options = Orb::Models::ItemCreateParams.dump_request(params)
         @client.request(method: :post, path: "items", body: parsed, model: Orb::Models::Item, options: options)
@@ -30,6 +32,8 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Item]
+      #
+      # @see Orb::Models::ItemUpdateParams
       def update(item_id, params = {})
         parsed, options = Orb::Models::ItemUpdateParams.dump_request(params)
         @client.request(
@@ -54,6 +58,8 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Page<Orb::Models::Item>]
+      #
+      # @see Orb::Models::ItemListParams
       def list(params = {})
         parsed, options = Orb::Models::ItemListParams.dump_request(params)
         @client.request(
@@ -75,6 +81,8 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::Item]
+      #
+      # @see Orb::Models::ItemFetchParams
       def fetch(item_id, params = {})
         @client.request(
           method: :get,
@@ -84,6 +92,8 @@ module Orb
         )
       end
 
+      # @api private
+      #
       # @param client [Orb::Client]
       def initialize(client:)
         @client = client

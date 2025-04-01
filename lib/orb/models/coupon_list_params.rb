@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Coupons#list
     class CouponListParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

@@ -4,6 +4,7 @@ module Orb
   module Models
     module Customers
       module Credits
+        # @see Orb::Resources::Customers::Credits::Ledger#create_entry_by_external_id
         class LedgerCreateEntryByExternalIDParams < Orb::BaseModel
           # @!parse
           #   extend Orb::Type::RequestParameters::Converter

@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Customers#sync_payment_methods_from_gateway
     class CustomerSyncPaymentMethodsFromGatewayParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

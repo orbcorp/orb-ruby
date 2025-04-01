@@ -3,6 +3,7 @@
 module Orb
   module Models
     module Coupons
+      # @see Orb::Resources::Coupons::Subscriptions#list
       class SubscriptionListParams < Orb::BaseModel
         # @!parse
         #   extend Orb::Type::RequestParameters::Converter

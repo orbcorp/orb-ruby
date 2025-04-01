@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Customers#sync_payment_methods_from_gateway_by_external_customer_id
     class CustomerSyncPaymentMethodsFromGatewayByExternalCustomerIDParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

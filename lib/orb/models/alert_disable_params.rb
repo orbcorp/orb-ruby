@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Alerts#disable
     class AlertDisableParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

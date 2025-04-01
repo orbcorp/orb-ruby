@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#fetch
     class SubscriptionFetchParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

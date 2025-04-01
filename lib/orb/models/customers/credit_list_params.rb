@@ -3,6 +3,7 @@
 module Orb
   module Models
     module Customers
+      # @see Orb::Resources::Customers::Credits#list
       class CreditListParams < Orb::BaseModel
         # @!parse
         #   extend Orb::Type::RequestParameters::Converter

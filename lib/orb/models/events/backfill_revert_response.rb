@@ -108,6 +108,8 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # The status of the backfill.
+        #
+        # @see Orb::Models::Events::BackfillRevertResponse#status
         module Status
           extend Orb::Enum
 

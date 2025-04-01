@@ -314,6 +314,7 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
+      # @see Orb::Models::Customer#billing_address
       class BillingAddress < Orb::BaseModel
         # @!attribute city
         #
@@ -358,6 +359,7 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
+      # @see Orb::Models::Customer#hierarchy
       class Hierarchy < Orb::BaseModel
         # @!attribute children
         #
@@ -399,6 +401,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Customer::Hierarchy#parent
         class Parent < Orb::BaseModel
           # @!attribute id
           #
@@ -423,6 +426,8 @@ module Orb
       # This is used for creating charges or invoices in an external system via Orb.
       #   When not in test mode, the connection must first be configured in the Orb
       #   webapp.
+      #
+      # @see Orb::Models::Customer#payment_provider
       module PaymentProvider
         extend Orb::Enum
 
@@ -439,6 +444,7 @@ module Orb
         #   def self.values; end
       end
 
+      # @see Orb::Models::Customer#shipping_address
       class ShippingAddress < Orb::BaseModel
         # @!attribute city
         #
@@ -483,6 +489,7 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
+      # @see Orb::Models::Customer#tax_id
       class TaxID < Orb::BaseModel
         # @!attribute country
         #
@@ -614,6 +621,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Customer::TaxID#country
         module Country
           extend Orb::Enum
 
@@ -703,6 +711,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Customer::TaxID#type
         module Type
           extend Orb::Enum
 
@@ -786,6 +795,7 @@ module Orb
         end
       end
 
+      # @see Orb::Models::Customer#accounting_sync_configuration
       class AccountingSyncConfiguration < Orb::BaseModel
         # @!attribute accounting_providers
         #
@@ -826,6 +836,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider#provider_type
           module ProviderType
             extend Orb::Enum
 
@@ -841,6 +852,7 @@ module Orb
         end
       end
 
+      # @see Orb::Models::Customer#reporting_configuration
       class ReportingConfiguration < Orb::BaseModel
         # @!attribute exempt
         #

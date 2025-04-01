@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::CreditNotes#fetch
     class CreditNoteFetchParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter
