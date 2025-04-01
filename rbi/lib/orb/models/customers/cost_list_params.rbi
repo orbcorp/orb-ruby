@@ -36,7 +36,13 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(currency: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
+        def self.new(
+          currency: nil,
+          timeframe_end: nil,
+          timeframe_start: nil,
+          view_mode: nil,
+          request_options: {}
+        )
         end
 
         sig do
