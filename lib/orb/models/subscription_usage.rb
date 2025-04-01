@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#fetch_usage
     module SubscriptionUsage
       extend Orb::Union
 

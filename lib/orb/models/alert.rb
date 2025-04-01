@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Alerts#retrieve
     class Alert < Orb::BaseModel
       # @!attribute id
       #   Also referred to as alert_id in this documentation.

@@ -3,6 +3,7 @@
 module Orb
   module Models
     module Customers
+      # @see Orb::Resources::Customers::Costs#list
       class CostListResponse < Orb::BaseModel
         # @!attribute data
         #

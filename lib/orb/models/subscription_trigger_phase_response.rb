@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#trigger_phase
     class SubscriptionTriggerPhaseResponse < Orb::BaseModel
       # @!attribute id
       #

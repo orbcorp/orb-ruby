@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Plans#create
     class Plan < Orb::BaseModel
       # @!attribute id
       #

@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#cancel
     class SubscriptionCancelResponse < Orb::BaseModel
       # @!attribute id
       #

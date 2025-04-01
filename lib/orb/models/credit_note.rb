@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::CreditNotes#create
     class CreditNote < Orb::BaseModel
       # @!attribute id
       #   The Orb id of this credit note.

@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Customers#create
     class Customer < Orb::BaseModel
       # @!attribute id
       #

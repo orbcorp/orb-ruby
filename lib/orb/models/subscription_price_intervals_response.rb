@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#price_intervals
     class SubscriptionPriceIntervalsResponse < Orb::BaseModel
       # @!attribute id
       #

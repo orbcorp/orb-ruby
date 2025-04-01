@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Metrics#create
     class BillableMetric < Orb::BaseModel
       # @!attribute id
       #
