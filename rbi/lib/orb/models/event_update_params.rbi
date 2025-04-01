@@ -41,7 +41,14 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(event_name:, properties:, timestamp:, customer_id: nil, external_customer_id: nil, request_options: {})
+      def self.new(
+        event_name:,
+        properties:,
+        timestamp:,
+        customer_id: nil,
+        external_customer_id: nil,
+        request_options: {}
+      )
       end
 
       sig do
