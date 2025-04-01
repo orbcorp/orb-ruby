@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Events#search
     class EventSearchResponse < Orb::BaseModel
       # @!attribute data
       #

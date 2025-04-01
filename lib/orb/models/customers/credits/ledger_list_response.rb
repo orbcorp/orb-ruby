@@ -6,6 +6,8 @@ module Orb
       module Credits
         # The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid
         #   credits within Orb.
+        #
+        # @see Orb::Resources::Customers::Credits::Ledger#list
         module LedgerListResponse
           extend Orb::Union
 

@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#update
     class Subscription < Orb::BaseModel
       # @!attribute id
       #

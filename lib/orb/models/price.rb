@@ -12,6 +12,8 @@ module Orb
     #
     #   For more on the types of prices, see
     #   [the core concepts documentation](/core-concepts#plan-and-price)
+    #
+    # @see Orb::Resources::Prices#create
     module Price
       extend Orb::Union
 

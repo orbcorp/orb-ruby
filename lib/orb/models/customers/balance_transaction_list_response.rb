@@ -3,6 +3,7 @@
 module Orb
   module Models
     module Customers
+      # @see Orb::Resources::Customers::BalanceTransactions#list
       class BalanceTransactionListResponse < Orb::BaseModel
         # @!attribute id
         #   A unique id for this transaction.

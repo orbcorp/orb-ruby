@@ -4,6 +4,7 @@ module Orb
   module Models
     module Customers
       module Credits
+        # @see Orb::Resources::Customers::Credits::TopUps#create_by_external_id
         class TopUpCreateByExternalIDResponse < Orb::BaseModel
           # @!attribute id
           #

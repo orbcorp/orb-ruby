@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#unschedule_fixed_fee_quantity_updates
     class SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse < Orb::BaseModel
       # @!attribute id
       #

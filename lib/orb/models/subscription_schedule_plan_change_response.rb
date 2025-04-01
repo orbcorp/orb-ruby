@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#schedule_plan_change
     class SubscriptionSchedulePlanChangeResponse < Orb::BaseModel
       # @!attribute id
       #

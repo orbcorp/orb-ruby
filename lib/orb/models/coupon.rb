@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Coupons#create
     class Coupon < Orb::BaseModel
       # @!attribute id
       #   Also referred to as coupon_id in this documentation.

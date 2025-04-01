@@ -4,6 +4,7 @@ module Orb
   module Models
     module Customers
       module Credits
+        # @see Orb::Resources::Customers::Credits::TopUps#list
         class TopUpListResponse < Orb::BaseModel
           # @!attribute id
           #

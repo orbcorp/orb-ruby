@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::InvoiceLineItems#create
     class InvoiceLineItemCreateResponse < Orb::BaseModel
       # @!attribute id
       #   A unique ID for this line item.

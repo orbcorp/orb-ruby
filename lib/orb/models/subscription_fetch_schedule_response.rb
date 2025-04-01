@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#fetch_schedule
     class SubscriptionFetchScheduleResponse < Orb::BaseModel
       # @!attribute created_at
       #

@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::DimensionalPriceGroups#create
     class DimensionalPriceGroup < Orb::BaseModel
       # @!attribute id
       #

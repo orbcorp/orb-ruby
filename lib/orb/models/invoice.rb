@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Invoices#create
     class Invoice < Orb::BaseModel
       # @!attribute id
       #

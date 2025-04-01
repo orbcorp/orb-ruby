@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#unschedule_cancellation
     class SubscriptionUnscheduleCancellationResponse < Orb::BaseModel
       # @!attribute id
       #
