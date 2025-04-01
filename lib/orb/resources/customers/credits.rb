@@ -18,21 +18,14 @@ module Orb
         #   Note that `currency` defaults to credits if not specified. To use a real world
         #   currency, set `currency` to an ISO 4217 string.
         #
+        # @overload list(customer_id, currency: nil, cursor: nil, include_all_blocks: nil, limit: nil, request_options: {})
+        #
         # @param customer_id [String]
-        #
-        # @param params [Orb::Models::Customers::CreditListParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [String, nil] :currency The ledger currency or custom pricing unit to use.
-        #
-        #   @option params [String, nil] :cursor Cursor for pagination. This can be populated by the `next_cursor` value returned
-        #     from the initial request.
-        #
-        #   @option params [Boolean] :include_all_blocks If set to True, all expired and depleted blocks, as well as active block will be
-        #     returned.
-        #
-        #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
-        #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param currency [String, nil]
+        # @param cursor [String, nil]
+        # @param include_all_blocks [Boolean]
+        # @param limit [Integer]
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Page<Orb::Models::Customers::CreditListResponse>]
         #
@@ -57,21 +50,14 @@ module Orb
         #   Note that `currency` defaults to credits if not specified. To use a real world
         #   currency, set `currency` to an ISO 4217 string.
         #
+        # @overload list_by_external_id(external_customer_id, currency: nil, cursor: nil, include_all_blocks: nil, limit: nil, request_options: {})
+        #
         # @param external_customer_id [String]
-        #
-        # @param params [Orb::Models::Customers::CreditListByExternalIDParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [String, nil] :currency The ledger currency or custom pricing unit to use.
-        #
-        #   @option params [String, nil] :cursor Cursor for pagination. This can be populated by the `next_cursor` value returned
-        #     from the initial request.
-        #
-        #   @option params [Boolean] :include_all_blocks If set to True, all expired and depleted blocks, as well as active block will be
-        #     returned.
-        #
-        #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
-        #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param currency [String, nil]
+        # @param cursor [String, nil]
+        # @param include_all_blocks [Boolean]
+        # @param limit [Integer]
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Page<Orb::Models::Customers::CreditListByExternalIDResponse>]
         #

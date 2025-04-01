@@ -42,34 +42,16 @@ module Orb
         #   expressiveness of computed properties allows you to deprecate existing events
         #   based on both a period of time and specific property values.
         #
-        # @param params [Orb::Models::Events::BackfillCreateParams, Hash{Symbol=>Object}] .
+        # @overload create(timeframe_end:, timeframe_start:, close_time: nil, customer_id: nil, deprecation_filter: nil, external_customer_id: nil, replace_existing_events: nil, request_options: {})
         #
-        #   @option params [Time] :timeframe_end The (exclusive) end of the usage timeframe affected by this backfill. By
-        #     default, Orb allows backfills up to 10 days in duration at a time. Reach out to
-        #     discuss extending this limit and your use case.
-        #
-        #   @option params [Time] :timeframe_start The (inclusive) start of the usage timeframe affected by this backfill. By
-        #     default, Orb allows backfills up to 10 days in duration at a time. Reach out to
-        #     discuss extending this limit and your use case.
-        #
-        #   @option params [Time, nil] :close_time The time at which no more events will be accepted for this backfill. The
-        #     backfill will automatically begin reflecting throughout Orb at the close time.
-        #     If not specified, it will default to 1 day after the creation of the backfill.
-        #
-        #   @option params [String, nil] :customer_id The Orb-generated ID of the customer to which this backfill is scoped. Omitting
-        #     this field will scope the backfill to all customers.
-        #
-        #   @option params [String, nil] :deprecation_filter A boolean
-        #     [computed property](/extensibility/advanced-metrics#computed-properties) used to
-        #     filter the set of events to deprecate
-        #
-        #   @option params [String, nil] :external_customer_id The external customer ID of the customer to which this backfill is scoped.
-        #     Omitting this field will scope the backfill to all customers.
-        #
-        #   @option params [Boolean] :replace_existing_events If true, replaces all existing events in the timeframe with the newly ingested
-        #     events. If false, adds the newly ingested events to the existing events.
-        #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param timeframe_end [Time]
+        # @param timeframe_start [Time]
+        # @param close_time [Time, nil]
+        # @param customer_id [String, nil]
+        # @param deprecation_filter [String, nil]
+        # @param external_customer_id [String, nil]
+        # @param replace_existing_events [Boolean]
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Models::Events::BackfillCreateResponse]
         #
@@ -93,14 +75,11 @@ module Orb
         #   retrieve the next page of results if they exist. More information about
         #   pagination can be found in the [Pagination-metadata schema](pagination).
         #
-        # @param params [Orb::Models::Events::BackfillListParams, Hash{Symbol=>Object}] .
+        # @overload list(cursor: nil, limit: nil, request_options: {})
         #
-        #   @option params [String, nil] :cursor Cursor for pagination. This can be populated by the `next_cursor` value returned
-        #     from the initial request.
-        #
-        #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
-        #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param cursor [String, nil]
+        # @param limit [Integer]
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Page<Orb::Models::Events::BackfillListResponse>]
         #
@@ -122,11 +101,10 @@ module Orb
         #   and usage graphs. Once all of the updates are complete, the backfill's status
         #   will transition to `reflected`.
         #
+        # @overload close(backfill_id, request_options: {})
+        #
         # @param backfill_id [String]
-        #
-        # @param params [Orb::Models::Events::BackfillCloseParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Models::Events::BackfillCloseResponse]
         #
@@ -142,11 +120,10 @@ module Orb
 
         # This endpoint is used to fetch a backfill given an identifier.
         #
+        # @overload fetch(backfill_id, request_options: {})
+        #
         # @param backfill_id [String]
-        #
-        # @param params [Orb::Models::Events::BackfillFetchParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Models::Events::BackfillFetchResponse]
         #
@@ -168,11 +145,10 @@ module Orb
         #   If a backfill is reverted before its closed, no usage will be updated as a
         #   result of the backfill and it will immediately transition to `reverted`.
         #
+        # @overload revert(backfill_id, request_options: {})
+        #
         # @param backfill_id [String]
-        #
-        # @param params [Orb::Models::Events::BackfillRevertParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Models::Events::BackfillRevertResponse]
         #
