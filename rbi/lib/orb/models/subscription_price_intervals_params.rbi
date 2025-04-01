@@ -12434,7 +12434,12 @@ module Orb
               )
                 .returns(T.attached_class)
             end
-            def self.new(applies_to_price_ids:, percentage_discount:, is_invoice_level: nil, adjustment_type: :percentage_discount)
+            def self.new(
+              applies_to_price_ids:,
+              percentage_discount:,
+              is_invoice_level: nil,
+              adjustment_type: :percentage_discount
+            )
             end
 
             sig do
@@ -12480,7 +12485,12 @@ module Orb
               )
                 .returns(T.attached_class)
             end
-            def self.new(applies_to_price_ids:, usage_discount:, is_invoice_level: nil, adjustment_type: :usage_discount)
+            def self.new(
+              applies_to_price_ids:,
+              usage_discount:,
+              is_invoice_level: nil,
+              adjustment_type: :usage_discount
+            )
             end
 
             sig do
@@ -12526,7 +12536,12 @@ module Orb
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount_discount:, applies_to_price_ids:, is_invoice_level: nil, adjustment_type: :amount_discount)
+            def self.new(
+              amount_discount:,
+              applies_to_price_ids:,
+              is_invoice_level: nil,
+              adjustment_type: :amount_discount
+            )
             end
 
             sig do
@@ -12577,7 +12592,13 @@ module Orb
               )
                 .returns(T.attached_class)
             end
-            def self.new(applies_to_price_ids:, item_id:, minimum_amount:, is_invoice_level: nil, adjustment_type: :minimum)
+            def self.new(
+              applies_to_price_ids:,
+              item_id:,
+              minimum_amount:,
+              is_invoice_level: nil,
+              adjustment_type: :minimum
+            )
             end
 
             sig do
@@ -12624,7 +12645,12 @@ module Orb
               )
                 .returns(T.attached_class)
             end
-            def self.new(applies_to_price_ids:, maximum_amount:, is_invoice_level: nil, adjustment_type: :maximum)
+            def self.new(
+              applies_to_price_ids:,
+              maximum_amount:,
+              is_invoice_level: nil,
+              adjustment_type: :maximum
+            )
             end
 
             sig do

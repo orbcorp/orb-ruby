@@ -89,7 +89,14 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(event_name:, idempotency_key:, properties:, timestamp:, customer_id: nil, external_customer_id: nil)
+        def self.new(
+          event_name:,
+          idempotency_key:,
+          properties:,
+          timestamp:,
+          customer_id: nil,
+          external_customer_id: nil
+        )
         end
 
         sig do

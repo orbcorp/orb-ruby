@@ -76,7 +76,18 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, created_at:, currency:, customer:, enabled:, metric:, plan:, subscription:, thresholds:, type:)
+      def self.new(
+        id:,
+        created_at:,
+        currency:,
+        customer:,
+        enabled:,
+        metric:,
+        plan:,
+        subscription:,
+        thresholds:,
+        type:
+      )
       end
 
       sig do

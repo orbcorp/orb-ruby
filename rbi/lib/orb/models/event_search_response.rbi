@@ -67,7 +67,15 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(id:, customer_id:, deprecated:, event_name:, external_customer_id:, properties:, timestamp:)
+        def self.new(
+          id:,
+          customer_id:,
+          deprecated:,
+          event_name:,
+          external_customer_id:,
+          properties:,
+          timestamp:
+        )
         end
 
         sig do
