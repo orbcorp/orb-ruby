@@ -28,7 +28,7 @@ module Orb
           parsed, options = Orb::Models::Plans::ExternalPlanIDUpdateParams.dump_request(params)
           @client.request(
             method: :put,
-            path: ["plans/external_plan_id/%0s", other_external_plan_id],
+            path: ["plans/external_plan_id/%1$s", other_external_plan_id],
             body: parsed,
             model: Orb::Models::Plan,
             options: options
@@ -62,7 +62,7 @@ module Orb
         def fetch(external_plan_id, params = {})
           @client.request(
             method: :get,
-            path: ["plans/external_plan_id/%0s", external_plan_id],
+            path: ["plans/external_plan_id/%1$s", external_plan_id],
             model: Orb::Models::Plan,
             options: params[:request_options]
           )

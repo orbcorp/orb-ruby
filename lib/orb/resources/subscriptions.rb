@@ -404,7 +404,7 @@ module Orb
         parsed, options = Orb::Models::SubscriptionUpdateParams.dump_request(params)
         @client.request(
           method: :put,
-          path: ["subscriptions/%0s", subscription_id],
+          path: ["subscriptions/%1$s", subscription_id],
           body: parsed,
           model: Orb::Models::Subscription,
           options: options
@@ -539,7 +539,7 @@ module Orb
         parsed, options = Orb::Models::SubscriptionCancelParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["subscriptions/%0s/cancel", subscription_id],
+          path: ["subscriptions/%1$s/cancel", subscription_id],
           body: parsed,
           model: Orb::Models::SubscriptionCancelResponse,
           options: options
@@ -559,7 +559,7 @@ module Orb
       def fetch(subscription_id, params = {})
         @client.request(
           method: :get,
-          path: ["subscriptions/%0s", subscription_id],
+          path: ["subscriptions/%1$s", subscription_id],
           model: Orb::Models::Subscription,
           options: params[:request_options]
         )
@@ -598,7 +598,7 @@ module Orb
         parsed, options = Orb::Models::SubscriptionFetchCostsParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["subscriptions/%0s/costs", subscription_id],
+          path: ["subscriptions/%1$s/costs", subscription_id],
           query: parsed,
           model: Orb::Models::SubscriptionFetchCostsResponse,
           options: options
@@ -634,7 +634,7 @@ module Orb
         parsed, options = Orb::Models::SubscriptionFetchScheduleParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["subscriptions/%0s/schedule", subscription_id],
+          path: ["subscriptions/%1$s/schedule", subscription_id],
           query: parsed,
           page: Orb::Page,
           model: Orb::Models::SubscriptionFetchScheduleResponse,
@@ -873,7 +873,7 @@ module Orb
         parsed, options = Orb::Models::SubscriptionFetchUsageParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["subscriptions/%0s/usage", subscription_id],
+          path: ["subscriptions/%1$s/usage", subscription_id],
           query: parsed,
           model: Orb::Models::SubscriptionUsage,
           options: options
@@ -976,7 +976,7 @@ module Orb
         parsed, options = Orb::Models::SubscriptionPriceIntervalsParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["subscriptions/%0s/price_intervals", subscription_id],
+          path: ["subscriptions/%1$s/price_intervals", subscription_id],
           body: parsed,
           model: Orb::Models::SubscriptionPriceIntervalsResponse,
           options: options
@@ -1264,7 +1264,7 @@ module Orb
         parsed, options = Orb::Models::SubscriptionSchedulePlanChangeParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["subscriptions/%0s/schedule_plan_change", subscription_id],
+          path: ["subscriptions/%1$s/schedule_plan_change", subscription_id],
           body: parsed,
           model: Orb::Models::SubscriptionSchedulePlanChangeResponse,
           options: options
@@ -1292,7 +1292,7 @@ module Orb
         parsed, options = Orb::Models::SubscriptionTriggerPhaseParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["subscriptions/%0s/trigger_phase", subscription_id],
+          path: ["subscriptions/%1$s/trigger_phase", subscription_id],
           body: parsed,
           model: Orb::Models::SubscriptionTriggerPhaseResponse,
           options: options
@@ -1316,7 +1316,7 @@ module Orb
       def unschedule_cancellation(subscription_id, params = {})
         @client.request(
           method: :post,
-          path: ["subscriptions/%0s/unschedule_cancellation", subscription_id],
+          path: ["subscriptions/%1$s/unschedule_cancellation", subscription_id],
           model: Orb::Models::SubscriptionUnscheduleCancellationResponse,
           options: params[:request_options]
         )
@@ -1341,7 +1341,7 @@ module Orb
         parsed, options = Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["subscriptions/%0s/unschedule_fixed_fee_quantity_updates", subscription_id],
+          path: ["subscriptions/%1$s/unschedule_fixed_fee_quantity_updates", subscription_id],
           body: parsed,
           model: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse,
           options: options
@@ -1361,7 +1361,7 @@ module Orb
       def unschedule_pending_plan_changes(subscription_id, params = {})
         @client.request(
           method: :post,
-          path: ["subscriptions/%0s/unschedule_pending_plan_changes", subscription_id],
+          path: ["subscriptions/%1$s/unschedule_pending_plan_changes", subscription_id],
           model: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse,
           options: params[:request_options]
         )
@@ -1409,7 +1409,7 @@ module Orb
         parsed, options = Orb::Models::SubscriptionUpdateFixedFeeQuantityParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["subscriptions/%0s/update_fixed_fee_quantity", subscription_id],
+          path: ["subscriptions/%1$s/update_fixed_fee_quantity", subscription_id],
           body: parsed,
           model: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse,
           options: options
@@ -1452,7 +1452,7 @@ module Orb
         parsed, options = Orb::Models::SubscriptionUpdateTrialParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["subscriptions/%0s/update_trial", subscription_id],
+          path: ["subscriptions/%1$s/update_trial", subscription_id],
           body: parsed,
           model: Orb::Models::SubscriptionUpdateTrialResponse,
           options: options

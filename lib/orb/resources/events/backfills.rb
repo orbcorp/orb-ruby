@@ -128,7 +128,7 @@ module Orb
         def close(backfill_id, params = {})
           @client.request(
             method: :post,
-            path: ["events/backfills/%0s/close", backfill_id],
+            path: ["events/backfills/%1$s/close", backfill_id],
             model: Orb::Models::Events::BackfillCloseResponse,
             options: params[:request_options]
           )
@@ -146,7 +146,7 @@ module Orb
         def fetch(backfill_id, params = {})
           @client.request(
             method: :get,
-            path: ["events/backfills/%0s", backfill_id],
+            path: ["events/backfills/%1$s", backfill_id],
             model: Orb::Models::Events::BackfillFetchResponse,
             options: params[:request_options]
           )
@@ -170,7 +170,7 @@ module Orb
         def revert(backfill_id, params = {})
           @client.request(
             method: :post,
-            path: ["events/backfills/%0s/revert", backfill_id],
+            path: ["events/backfills/%1$s/revert", backfill_id],
             model: Orb::Models::Events::BackfillRevertResponse,
             options: params[:request_options]
           )

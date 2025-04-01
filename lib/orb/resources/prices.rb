@@ -137,7 +137,7 @@ module Orb
         parsed, options = Orb::Models::PriceUpdateParams.dump_request(params)
         @client.request(
           method: :put,
-          path: ["prices/%0s", price_id],
+          path: ["prices/%1$s", price_id],
           body: parsed,
           model: Orb::Models::Price,
           options: options
@@ -218,7 +218,7 @@ module Orb
         parsed, options = Orb::Models::PriceEvaluateParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["prices/%0s/evaluate", price_id],
+          path: ["prices/%1$s/evaluate", price_id],
           body: parsed,
           model: Orb::Models::PriceEvaluateResponse,
           options: options
@@ -237,7 +237,7 @@ module Orb
       def fetch(price_id, params = {})
         @client.request(
           method: :get,
-          path: ["prices/%0s", price_id],
+          path: ["prices/%1$s", price_id],
           model: Orb::Models::Price,
           options: params[:request_options]
         )

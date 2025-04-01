@@ -72,7 +72,7 @@ module Orb
         parsed, options = Orb::Models::InvoiceUpdateParams.dump_request(params)
         @client.request(
           method: :put,
-          path: ["invoices/%0s", invoice_id],
+          path: ["invoices/%1$s", invoice_id],
           body: parsed,
           model: Orb::Models::Invoice,
           options: options
@@ -165,7 +165,7 @@ module Orb
       def fetch(invoice_id, params = {})
         @client.request(
           method: :get,
-          path: ["invoices/%0s", invoice_id],
+          path: ["invoices/%1$s", invoice_id],
           model: Orb::Models::Invoice,
           options: params[:request_options]
         )
@@ -217,7 +217,7 @@ module Orb
         parsed, options = Orb::Models::InvoiceIssueParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["invoices/%0s/issue", invoice_id],
+          path: ["invoices/%1$s/issue", invoice_id],
           body: parsed,
           model: Orb::Models::Invoice,
           options: options
@@ -244,7 +244,7 @@ module Orb
         parsed, options = Orb::Models::InvoiceMarkPaidParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["invoices/%0s/mark_paid", invoice_id],
+          path: ["invoices/%1$s/mark_paid", invoice_id],
           body: parsed,
           model: Orb::Models::Invoice,
           options: options
@@ -264,7 +264,7 @@ module Orb
       def pay(invoice_id, params = {})
         @client.request(
           method: :post,
-          path: ["invoices/%0s/pay", invoice_id],
+          path: ["invoices/%1$s/pay", invoice_id],
           model: Orb::Models::Invoice,
           options: params[:request_options]
         )
@@ -292,7 +292,7 @@ module Orb
       def void(invoice_id, params = {})
         @client.request(
           method: :post,
-          path: ["invoices/%0s/void", invoice_id],
+          path: ["invoices/%1$s/void", invoice_id],
           model: Orb::Models::Invoice,
           options: params[:request_options]
         )

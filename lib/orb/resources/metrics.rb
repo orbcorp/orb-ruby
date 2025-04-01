@@ -54,7 +54,7 @@ module Orb
         parsed, options = Orb::Models::MetricUpdateParams.dump_request(params)
         @client.request(
           method: :put,
-          path: ["metrics/%0s", metric_id],
+          path: ["metrics/%1$s", metric_id],
           body: parsed,
           model: Orb::Models::BillableMetric,
           options: options
@@ -108,7 +108,7 @@ module Orb
       def fetch(metric_id, params = {})
         @client.request(
           method: :get,
-          path: ["metrics/%0s", metric_id],
+          path: ["metrics/%1$s", metric_id],
           model: Orb::Models::BillableMetric,
           options: params[:request_options]
         )
