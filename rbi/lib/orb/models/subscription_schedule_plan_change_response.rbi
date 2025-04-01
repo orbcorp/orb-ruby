@@ -1017,7 +1017,13 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, maximum_amount:, start_date:)
+        def self.new(
+          applies_to_price_ids:,
+          applies_to_price_interval_ids:,
+          end_date:,
+          maximum_amount:,
+          start_date:
+        )
         end
 
         sig do
@@ -1068,7 +1074,13 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, minimum_amount:, start_date:)
+        def self.new(
+          applies_to_price_ids:,
+          applies_to_price_interval_ids:,
+          end_date:,
+          minimum_amount:,
+          start_date:
+        )
         end
 
         sig do

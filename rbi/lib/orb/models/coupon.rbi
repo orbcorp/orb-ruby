@@ -50,7 +50,15 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, archived_at:, discount:, duration_in_months:, max_redemptions:, redemption_code:, times_redeemed:)
+      def self.new(
+        id:,
+        archived_at:,
+        discount:,
+        duration_in_months:,
+        max_redemptions:,
+        redemption_code:,
+        times_redeemed:
+      )
       end
 
       sig do
