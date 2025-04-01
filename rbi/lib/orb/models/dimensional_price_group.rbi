@@ -45,7 +45,14 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, billable_metric_id:, dimensions:, external_dimensional_price_group_id:, metadata:, name:)
+      def self.new(
+        id:,
+        billable_metric_id:,
+        dimensions:,
+        external_dimensional_price_group_id:,
+        metadata:,
+        name:
+      )
       end
 
       sig do

@@ -374,7 +374,13 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(amount_applied:, discount_type:, percentage_discount:, applies_to_prices: nil, reason: nil)
+        def self.new(
+          amount_applied:,
+          discount_type:,
+          percentage_discount:,
+          applies_to_prices: nil,
+          reason: nil
+        )
         end
 
         sig do
@@ -481,7 +487,13 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(amount_applied:, discount_type:, percentage_discount:, applies_to_prices: nil, reason: nil)
+        def self.new(
+          amount_applied:,
+          discount_type:,
+          percentage_discount:,
+          applies_to_prices: nil,
+          reason: nil
+        )
         end
 
         sig do
