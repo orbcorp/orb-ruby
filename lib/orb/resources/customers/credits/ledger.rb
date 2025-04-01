@@ -115,6 +115,8 @@ module Orb
           #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Orb::Page<Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry>]
+          #
+          # @see Orb::Models::Customers::Credits::LedgerListParams
           def list(customer_id, params = {})
             parsed, options = Orb::Models::Customers::Credits::LedgerListParams.dump_request(params)
             @client.request(
@@ -282,6 +284,8 @@ module Orb
           #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry]
+          #
+          # @see Orb::Models::Customers::Credits::LedgerCreateEntryParams
           def create_entry(customer_id, params)
             parsed, options = Orb::Models::Customers::Credits::LedgerCreateEntryParams.dump_request(params)
             @client.request(
@@ -448,6 +452,8 @@ module Orb
           #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry]
+          #
+          # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams
           def create_entry_by_external_id(external_customer_id, params)
             parsed, options =
               Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams.dump_request(params)
@@ -570,6 +576,8 @@ module Orb
           #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Orb::Page<Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry>]
+          #
+          # @see Orb::Models::Customers::Credits::LedgerListByExternalIDParams
           def list_by_external_id(external_customer_id, params = {})
             parsed, options = Orb::Models::Customers::Credits::LedgerListByExternalIDParams.dump_request(params)
             @client.request(
@@ -582,6 +590,8 @@ module Orb
             )
           end
 
+          # @api private
+          #
           # @param client [Orb::Client]
           def initialize(client:)
             @client = client

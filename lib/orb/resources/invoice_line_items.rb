@@ -24,6 +24,8 @@ module Orb
       #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Orb::Models::InvoiceLineItemCreateResponse]
+      #
+      # @see Orb::Models::InvoiceLineItemCreateParams
       def create(params)
         parsed, options = Orb::Models::InvoiceLineItemCreateParams.dump_request(params)
         @client.request(
@@ -35,6 +37,8 @@ module Orb
         )
       end
 
+      # @api private
+      #
       # @param client [Orb::Client]
       def initialize(client:)
         @client = client

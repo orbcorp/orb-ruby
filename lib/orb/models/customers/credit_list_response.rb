@@ -52,6 +52,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Customers::CreditListResponse#status
         module Status
           extend Orb::Enum
 

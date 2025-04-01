@@ -40,6 +40,8 @@ module Orb
           #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Orb::Models::Customers::Credits::TopUpCreateResponse]
+          #
+          # @see Orb::Models::Customers::Credits::TopUpCreateParams
           def create(customer_id, params)
             parsed, options = Orb::Models::Customers::Credits::TopUpCreateParams.dump_request(params)
             @client.request(
@@ -65,6 +67,8 @@ module Orb
           #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Orb::Page<Orb::Models::Customers::Credits::TopUpListResponse>]
+          #
+          # @see Orb::Models::Customers::Credits::TopUpListParams
           def list(customer_id, params = {})
             parsed, options = Orb::Models::Customers::Credits::TopUpListParams.dump_request(params)
             @client.request(
@@ -89,6 +93,8 @@ module Orb
           #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [nil]
+          #
+          # @see Orb::Models::Customers::Credits::TopUpDeleteParams
           def delete(top_up_id, params)
             parsed, options = Orb::Models::Customers::Credits::TopUpDeleteParams.dump_request(params)
             customer_id =
@@ -138,6 +144,8 @@ module Orb
           #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse]
+          #
+          # @see Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams
           def create_by_external_id(external_customer_id, params)
             parsed, options = Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams.dump_request(params)
             @client.request(
@@ -161,6 +169,8 @@ module Orb
           #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [nil]
+          #
+          # @see Orb::Models::Customers::Credits::TopUpDeleteByExternalIDParams
           def delete_by_external_id(top_up_id, params)
             parsed, options = Orb::Models::Customers::Credits::TopUpDeleteByExternalIDParams.dump_request(params)
             external_customer_id =
@@ -193,6 +203,8 @@ module Orb
           #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Orb::Page<Orb::Models::Customers::Credits::TopUpListByExternalIDResponse>]
+          #
+          # @see Orb::Models::Customers::Credits::TopUpListByExternalIDParams
           def list_by_external_id(external_customer_id, params = {})
             parsed, options = Orb::Models::Customers::Credits::TopUpListByExternalIDParams.dump_request(params)
             @client.request(
@@ -205,6 +217,8 @@ module Orb
             )
           end
 
+          # @api private
+          #
           # @param client [Orb::Client]
           def initialize(client:)
             @client = client

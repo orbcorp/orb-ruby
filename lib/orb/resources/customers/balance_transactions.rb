@@ -20,6 +20,8 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Models::Customers::BalanceTransactionCreateResponse]
+        #
+        # @see Orb::Models::Customers::BalanceTransactionCreateParams
         def create(customer_id, params)
           parsed, options = Orb::Models::Customers::BalanceTransactionCreateParams.dump_request(params)
           @client.request(
@@ -80,6 +82,8 @@ module Orb
         #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Orb::Page<Orb::Models::Customers::BalanceTransactionListResponse>]
+        #
+        # @see Orb::Models::Customers::BalanceTransactionListParams
         def list(customer_id, params = {})
           parsed, options = Orb::Models::Customers::BalanceTransactionListParams.dump_request(params)
           @client.request(
@@ -92,6 +96,8 @@ module Orb
           )
         end
 
+        # @api private
+        #
         # @param client [Orb::Client]
         def initialize(client:)
           @client = client

@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Alerts#list
     class AlertListParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

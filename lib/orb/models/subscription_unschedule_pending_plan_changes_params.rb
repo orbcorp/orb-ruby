@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#unschedule_pending_plan_changes
     class SubscriptionUnschedulePendingPlanChangesParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Plans#fetch
     class PlanFetchParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

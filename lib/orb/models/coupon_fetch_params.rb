@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Coupons#fetch
     class CouponFetchParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

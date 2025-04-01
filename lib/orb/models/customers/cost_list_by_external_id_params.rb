@@ -3,6 +3,7 @@
 module Orb
   module Models
     module Customers
+      # @see Orb::Resources::Customers::Costs#list_by_external_id
       class CostListByExternalIDParams < Orb::BaseModel
         # @!parse
         #   extend Orb::Type::RequestParameters::Converter

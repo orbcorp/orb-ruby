@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Customers#update
     class CustomerUpdateParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter
@@ -659,6 +660,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::CustomerUpdateParams::TaxID#country
         module Country
           extend Orb::Enum
 
@@ -748,6 +750,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::CustomerUpdateParams::TaxID#type
         module Type
           extend Orb::Enum
 

@@ -50,6 +50,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data#billable_metric
           class BillableMetric < Orb::BaseModel
             # @!attribute id
             #
@@ -96,6 +97,7 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
+          # @see Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data#view_mode
           module ViewMode
             extend Orb::Enum
 
@@ -163,6 +165,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data#billable_metric
           class BillableMetric < Orb::BaseModel
             # @!attribute id
             #
@@ -183,6 +186,7 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
+          # @see Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data#metric_group
           class MetricGroup < Orb::BaseModel
             # @!attribute property_key
             #
@@ -229,6 +233,7 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
+          # @see Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data#view_mode
           module ViewMode
             extend Orb::Enum
 

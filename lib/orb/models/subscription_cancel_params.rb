@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#cancel
     class SubscriptionCancelParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

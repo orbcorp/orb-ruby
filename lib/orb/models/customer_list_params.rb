@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Customers#list
     class CustomerListParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

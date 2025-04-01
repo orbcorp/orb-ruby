@@ -293,6 +293,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval#adjustment
         module Adjustment
           extend Orb::Union
 
@@ -667,6 +668,7 @@ module Orb
         end
       end
 
+      # @see Orb::Models::SubscriptionTriggerPhaseResponse#billing_cycle_anchor_configuration
       class BillingCycleAnchorConfiguration < Orb::BaseModel
         # @!attribute day
         #   The day of the month on which the billing cycle is anchored. If the maximum
@@ -1160,6 +1162,7 @@ module Orb
         end
       end
 
+      # @see Orb::Models::SubscriptionTriggerPhaseResponse#redeemed_coupon
       class RedeemedCoupon < Orb::BaseModel
         # @!attribute coupon_id
         #
@@ -1186,6 +1189,7 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
+      # @see Orb::Models::SubscriptionTriggerPhaseResponse#status
       module Status
         extend Orb::Enum
 
@@ -1200,6 +1204,7 @@ module Orb
         #   def self.values; end
       end
 
+      # @see Orb::Models::SubscriptionTriggerPhaseResponse#trial_info
       class TrialInfo < Orb::BaseModel
         # @!attribute end_date
         #

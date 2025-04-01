@@ -33,6 +33,7 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
+      # @see Orb::Models::SubscriptionFetchScheduleResponse#plan
       class Plan < Orb::BaseModel
         # @!attribute id
         #

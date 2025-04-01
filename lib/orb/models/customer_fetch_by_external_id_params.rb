@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Customers#fetch_by_external_id
     class CustomerFetchByExternalIDParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

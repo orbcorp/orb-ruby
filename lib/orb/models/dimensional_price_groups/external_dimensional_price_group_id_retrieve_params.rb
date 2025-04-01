@@ -3,6 +3,7 @@
 module Orb
   module Models
     module DimensionalPriceGroups
+      # @see Orb::Resources::DimensionalPriceGroups::ExternalDimensionalPriceGroupID#retrieve
       class ExternalDimensionalPriceGroupIDRetrieveParams < Orb::BaseModel
         # @!parse
         #   extend Orb::Type::RequestParameters::Converter

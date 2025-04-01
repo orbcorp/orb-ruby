@@ -15,6 +15,7 @@ module Orb
         def retrieve(external_dimensional_price_group_id, request_options: {})
         end
 
+        # @api private
         sig { params(client: Orb::Client).returns(T.attached_class) }
         def self.new(client:)
         end

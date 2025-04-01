@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Metrics#list
     class MetricListParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

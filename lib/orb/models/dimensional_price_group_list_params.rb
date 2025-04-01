@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::DimensionalPriceGroups#list
     class DimensionalPriceGroupListParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

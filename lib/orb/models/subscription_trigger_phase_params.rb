@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#trigger_phase
     class SubscriptionTriggerPhaseParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

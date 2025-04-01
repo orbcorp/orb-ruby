@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#unschedule_fixed_fee_quantity_updates
     class SubscriptionUnscheduleFixedFeeQuantityUpdatesParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter
