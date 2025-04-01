@@ -25,7 +25,7 @@ module Orb
           parsed, options = Orb::Models::Coupons::SubscriptionListParams.dump_request(params)
           @client.request(
             method: :get,
-            path: ["coupons/%0s/subscriptions", coupon_id],
+            path: ["coupons/%1$s/subscriptions", coupon_id],
             query: parsed,
             page: Orb::Page,
             model: Orb::Models::Subscription,

@@ -15,7 +15,7 @@ module Orb
       def retrieve(alert_id, params = {})
         @client.request(
           method: :get,
-          path: ["alerts/%0s", alert_id],
+          path: ["alerts/%1$s", alert_id],
           model: Orb::Models::Alert,
           options: params[:request_options]
         )
@@ -36,7 +36,7 @@ module Orb
         parsed, options = Orb::Models::AlertUpdateParams.dump_request(params)
         @client.request(
           method: :put,
-          path: ["alerts/%0s", alert_configuration_id],
+          path: ["alerts/%1$s", alert_configuration_id],
           body: parsed,
           model: Orb::Models::Alert,
           options: options
@@ -117,7 +117,7 @@ module Orb
         parsed, options = Orb::Models::AlertCreateForCustomerParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["alerts/customer_id/%0s", customer_id],
+          path: ["alerts/customer_id/%1$s", customer_id],
           body: parsed,
           model: Orb::Models::Alert,
           options: options
@@ -150,7 +150,7 @@ module Orb
         parsed, options = Orb::Models::AlertCreateForExternalCustomerParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["alerts/external_customer_id/%0s", external_customer_id],
+          path: ["alerts/external_customer_id/%1$s", external_customer_id],
           body: parsed,
           model: Orb::Models::Alert,
           options: options
@@ -186,7 +186,7 @@ module Orb
         parsed, options = Orb::Models::AlertCreateForSubscriptionParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["alerts/subscription_id/%0s", subscription_id],
+          path: ["alerts/subscription_id/%1$s", subscription_id],
           body: parsed,
           model: Orb::Models::Alert,
           options: options
@@ -210,7 +210,7 @@ module Orb
         parsed, options = Orb::Models::AlertDisableParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["alerts/%0s/disable", alert_configuration_id],
+          path: ["alerts/%1$s/disable", alert_configuration_id],
           query: parsed,
           model: Orb::Models::Alert,
           options: options
@@ -234,7 +234,7 @@ module Orb
         parsed, options = Orb::Models::AlertEnableParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["alerts/%0s/enable", alert_configuration_id],
+          path: ["alerts/%1$s/enable", alert_configuration_id],
           query: parsed,
           model: Orb::Models::Alert,
           options: options

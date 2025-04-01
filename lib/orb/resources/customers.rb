@@ -365,7 +365,7 @@ module Orb
         parsed, options = Orb::Models::CustomerUpdateParams.dump_request(params)
         @client.request(
           method: :put,
-          path: ["customers/%0s", customer_id],
+          path: ["customers/%1$s", customer_id],
           body: parsed,
           model: Orb::Models::Customer,
           options: options
@@ -435,7 +435,7 @@ module Orb
       def delete(customer_id, params = {})
         @client.request(
           method: :delete,
-          path: ["customers/%0s", customer_id],
+          path: ["customers/%1$s", customer_id],
           model: NilClass,
           options: params[:request_options]
         )
@@ -458,7 +458,7 @@ module Orb
       def fetch(customer_id, params = {})
         @client.request(
           method: :get,
-          path: ["customers/%0s", customer_id],
+          path: ["customers/%1$s", customer_id],
           model: Orb::Models::Customer,
           options: params[:request_options]
         )
@@ -480,7 +480,7 @@ module Orb
       def fetch_by_external_id(external_customer_id, params = {})
         @client.request(
           method: :get,
-          path: ["customers/external_customer_id/%0s", external_customer_id],
+          path: ["customers/external_customer_id/%1$s", external_customer_id],
           model: Orb::Models::Customer,
           options: params[:request_options]
         )
@@ -504,7 +504,7 @@ module Orb
         @client.request(
           method: :post,
           path: [
-            "customers/external_customer_id/%0s/sync_payment_methods_from_gateway",
+            "customers/external_customer_id/%1$s/sync_payment_methods_from_gateway",
             external_customer_id
           ],
           model: NilClass,
@@ -529,7 +529,7 @@ module Orb
       def sync_payment_methods_from_gateway_by_external_customer_id(customer_id, params = {})
         @client.request(
           method: :post,
-          path: ["customers/%0s/sync_payment_methods_from_gateway", customer_id],
+          path: ["customers/%1$s/sync_payment_methods_from_gateway", customer_id],
           model: NilClass,
           options: params[:request_options]
         )
@@ -703,7 +703,7 @@ module Orb
         parsed, options = Orb::Models::CustomerUpdateByExternalIDParams.dump_request(params)
         @client.request(
           method: :put,
-          path: ["customers/external_customer_id/%0s", id],
+          path: ["customers/external_customer_id/%1$s", id],
           body: parsed,
           model: Orb::Models::Customer,
           options: options
