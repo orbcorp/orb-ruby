@@ -198,6 +198,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -431,6 +432,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -654,6 +656,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -873,6 +876,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -1092,6 +1096,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -1325,6 +1330,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -1540,6 +1546,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end

@@ -68,7 +68,7 @@ module Orb
         extend Orb::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::BillableMetric::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::BillableMetric::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::BillableMetric::Status::TaggedSymbol) }
 
         ACTIVE = T.let(:active, Orb::Models::BillableMetric::Status::TaggedSymbol)
         DRAFT = T.let(:draft, Orb::Models::BillableMetric::Status::TaggedSymbol)

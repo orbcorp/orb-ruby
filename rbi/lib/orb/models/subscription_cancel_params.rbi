@@ -58,7 +58,7 @@ module Orb
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionCancelParams::CancelOption) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Orb::Models::SubscriptionCancelParams::CancelOption::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Orb::Models::SubscriptionCancelParams::CancelOption::TaggedSymbol) }
 
         END_OF_SUBSCRIPTION_TERM =
           T.let(:end_of_subscription_term, Orb::Models::SubscriptionCancelParams::CancelOption::TaggedSymbol)

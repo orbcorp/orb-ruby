@@ -156,7 +156,7 @@ module Orb
         extend Orb::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::InvoiceListParams::DateType) }
-        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::InvoiceListParams::DateType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::InvoiceListParams::DateType::TaggedSymbol) }
 
         DUE_DATE = T.let(:due_date, Orb::Models::InvoiceListParams::DateType::TaggedSymbol)
         INVOICE_DATE = T.let(:invoice_date, Orb::Models::InvoiceListParams::DateType::TaggedSymbol)
@@ -170,7 +170,7 @@ module Orb
         extend Orb::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::InvoiceListParams::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::InvoiceListParams::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::InvoiceListParams::Status::TaggedSymbol) }
 
         DRAFT = T.let(:draft, Orb::Models::InvoiceListParams::Status::TaggedSymbol)
         ISSUED = T.let(:issued, Orb::Models::InvoiceListParams::Status::TaggedSymbol)

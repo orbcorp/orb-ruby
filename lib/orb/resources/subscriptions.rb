@@ -1249,7 +1249,7 @@ module Orb
       # @overload update_trial(subscription_id, trial_end_date:, shift: nil, request_options: {})
       #
       # @param subscription_id [String]
-      # @param trial_end_date [Time, Symbol]
+      # @param trial_end_date [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate]
       # @param shift [Boolean]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
