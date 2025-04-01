@@ -3,6 +3,7 @@
 module Orb
   module Models
     module Events
+      # @see Orb::Resources::Events::Volume#list
       class EventVolumes < Orb::BaseModel
         # @!attribute data
         #

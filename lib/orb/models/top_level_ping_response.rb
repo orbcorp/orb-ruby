@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::TopLevel#ping
     class TopLevelPingResponse < Orb::BaseModel
       # @!attribute response
       #

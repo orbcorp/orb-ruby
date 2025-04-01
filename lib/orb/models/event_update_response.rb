@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Events#update
     class EventUpdateResponse < Orb::BaseModel
       # @!attribute amended
       #   event_id of the amended event, if successfully ingested

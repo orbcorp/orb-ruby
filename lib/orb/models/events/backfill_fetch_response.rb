@@ -3,6 +3,7 @@
 module Orb
   module Models
     module Events
+      # @see Orb::Resources::Events::Backfills#fetch
       class BackfillFetchResponse < Orb::BaseModel
         # @!attribute id
         #

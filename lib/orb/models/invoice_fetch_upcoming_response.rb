@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Invoices#fetch_upcoming
     class InvoiceFetchUpcomingResponse < Orb::BaseModel
       # @!attribute id
       #

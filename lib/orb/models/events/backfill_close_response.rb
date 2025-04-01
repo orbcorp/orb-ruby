@@ -3,6 +3,7 @@
 module Orb
   module Models
     module Events
+      # @see Orb::Resources::Events::Backfills#close
       class BackfillCloseResponse < Orb::BaseModel
         # @!attribute id
         #

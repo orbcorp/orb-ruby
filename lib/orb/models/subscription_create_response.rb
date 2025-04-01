@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#create
     class SubscriptionCreateResponse < Orb::BaseModel
       # @!attribute id
       #

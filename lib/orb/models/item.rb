@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Items#create
     class Item < Orb::BaseModel
       # @!attribute id
       #

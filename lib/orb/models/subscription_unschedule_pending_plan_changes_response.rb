@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#unschedule_pending_plan_changes
     class SubscriptionUnschedulePendingPlanChangesResponse < Orb::BaseModel
       # @!attribute id
       #
