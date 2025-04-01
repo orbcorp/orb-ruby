@@ -34,7 +34,7 @@ module Orb
         parsed, options = Orb::Models::ItemUpdateParams.dump_request(params)
         @client.request(
           method: :put,
-          path: ["items/%0s", item_id],
+          path: ["items/%1$s", item_id],
           body: parsed,
           model: Orb::Models::Item,
           options: options
@@ -78,7 +78,7 @@ module Orb
       def fetch(item_id, params = {})
         @client.request(
           method: :get,
-          path: ["items/%0s", item_id],
+          path: ["items/%1$s", item_id],
           model: Orb::Models::Item,
           options: params[:request_options]
         )

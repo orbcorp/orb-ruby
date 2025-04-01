@@ -144,7 +144,7 @@ module Orb
           parsed, options = Orb::Models::Customers::CostListParams.dump_request(params)
           @client.request(
             method: :get,
-            path: ["customers/%0s/costs", customer_id],
+            path: ["customers/%1$s/costs", customer_id],
             query: parsed,
             model: Orb::Models::Customers::CostListResponse,
             options: options
@@ -291,7 +291,7 @@ module Orb
           parsed, options = Orb::Models::Customers::CostListByExternalIDParams.dump_request(params)
           @client.request(
             method: :get,
-            path: ["customers/external_customer_id/%0s/costs", external_customer_id],
+            path: ["customers/external_customer_id/%1$s/costs", external_customer_id],
             query: parsed,
             model: Orb::Models::Customers::CostListByExternalIDResponse,
             options: options

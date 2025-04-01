@@ -80,7 +80,7 @@ module Orb
         parsed, options = Orb::Models::EventUpdateParams.dump_request(params)
         @client.request(
           method: :put,
-          path: ["events/%0s", event_id],
+          path: ["events/%1$s", event_id],
           body: parsed,
           model: Orb::Models::EventUpdateResponse,
           options: options
@@ -138,7 +138,7 @@ module Orb
       def deprecate(event_id, params = {})
         @client.request(
           method: :put,
-          path: ["events/%0s/deprecate", event_id],
+          path: ["events/%1$s/deprecate", event_id],
           model: Orb::Models::EventDeprecateResponse,
           options: params[:request_options]
         )

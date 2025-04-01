@@ -75,7 +75,7 @@ module Orb
       def fetch(credit_note_id, params = {})
         @client.request(
           method: :get,
-          path: ["credit_notes/%0s", credit_note_id],
+          path: ["credit_notes/%1$s", credit_note_id],
           model: Orb::Models::CreditNote,
           options: params[:request_options]
         )

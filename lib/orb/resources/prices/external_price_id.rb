@@ -23,7 +23,7 @@ module Orb
           parsed, options = Orb::Models::Prices::ExternalPriceIDUpdateParams.dump_request(params)
           @client.request(
             method: :put,
-            path: ["prices/external_price_id/%0s", external_price_id],
+            path: ["prices/external_price_id/%1$s", external_price_id],
             body: parsed,
             model: Orb::Models::Price,
             options: options
@@ -44,7 +44,7 @@ module Orb
         def fetch(external_price_id, params = {})
           @client.request(
             method: :get,
-            path: ["prices/external_price_id/%0s", external_price_id],
+            path: ["prices/external_price_id/%1$s", external_price_id],
             model: Orb::Models::Price,
             options: params[:request_options]
           )

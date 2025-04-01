@@ -119,7 +119,7 @@ module Orb
             parsed, options = Orb::Models::Customers::Credits::LedgerListParams.dump_request(params)
             @client.request(
               method: :get,
-              path: ["customers/%0s/credits/ledger", customer_id],
+              path: ["customers/%1$s/credits/ledger", customer_id],
               query: parsed,
               page: Orb::Page,
               model: Orb::Models::Customers::Credits::LedgerListResponse,
@@ -286,7 +286,7 @@ module Orb
             parsed, options = Orb::Models::Customers::Credits::LedgerCreateEntryParams.dump_request(params)
             @client.request(
               method: :post,
-              path: ["customers/%0s/credits/ledger_entry", customer_id],
+              path: ["customers/%1$s/credits/ledger_entry", customer_id],
               body: parsed,
               model: Orb::Models::Customers::Credits::LedgerCreateEntryResponse,
               options: options
@@ -453,7 +453,7 @@ module Orb
               Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams.dump_request(params)
             @client.request(
               method: :post,
-              path: ["customers/external_customer_id/%0s/credits/ledger_entry", external_customer_id],
+              path: ["customers/external_customer_id/%1$s/credits/ledger_entry", external_customer_id],
               body: parsed,
               model: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse,
               options: options
@@ -574,7 +574,7 @@ module Orb
             parsed, options = Orb::Models::Customers::Credits::LedgerListByExternalIDParams.dump_request(params)
             @client.request(
               method: :get,
-              path: ["customers/external_customer_id/%0s/credits/ledger", external_customer_id],
+              path: ["customers/external_customer_id/%1$s/credits/ledger", external_customer_id],
               query: parsed,
               page: Orb::Page,
               model: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse,

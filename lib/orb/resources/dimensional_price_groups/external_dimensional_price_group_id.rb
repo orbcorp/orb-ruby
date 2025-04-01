@@ -17,7 +17,7 @@ module Orb
           @client.request(
             method: :get,
             path: [
-              "dimensional_price_groups/external_dimensional_price_group_id/%0s",
+              "dimensional_price_groups/external_dimensional_price_group_id/%1$s",
               external_dimensional_price_group_id
             ],
             model: Orb::Models::DimensionalPriceGroup,
