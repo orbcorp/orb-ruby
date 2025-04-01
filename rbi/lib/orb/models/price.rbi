@@ -309,7 +309,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Price::UnitPrice::BillingCycleConfiguration::DurationUnit) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Price::UnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::Price::UnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                )
+              end
 
             DAY = T.let(:day, Orb::Models::Price::UnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
             MONTH =
@@ -328,7 +334,7 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::UnitPrice::Cadence) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::UnitPrice::Cadence::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Price::UnitPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::UnitPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::UnitPrice::Cadence::TaggedSymbol)
@@ -393,7 +399,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration::DurationUnit) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                )
+              end
 
             DAY = T.let(:day, Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
             MONTH =
@@ -470,7 +482,7 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::UnitPrice::PriceType) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::UnitPrice::PriceType::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Price::UnitPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::UnitPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::UnitPrice::PriceType::TaggedSymbol)
@@ -810,7 +822,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Price::PackagePrice::BillingCycleConfiguration::DurationUnit) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Price::PackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::Price::PackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                )
+              end
 
             DAY =
               T.let(:day, Orb::Models::Price::PackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
@@ -830,7 +848,8 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::PackagePrice::Cadence) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::PackagePrice::Cadence::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::PackagePrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::PackagePrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::PackagePrice::Cadence::TaggedSymbol)
@@ -895,7 +914,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration::DurationUnit) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                )
+              end
 
             DAY =
               T.let(:day, Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
@@ -994,7 +1019,8 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::PackagePrice::PriceType) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::PackagePrice::PriceType::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::PackagePrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::PackagePrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::PackagePrice::PriceType::TaggedSymbol)
@@ -1320,7 +1346,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Price::MatrixPrice::BillingCycleConfiguration::DurationUnit) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Price::MatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::Price::MatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                )
+              end
 
             DAY = T.let(:day, Orb::Models::Price::MatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
             MONTH =
@@ -1339,7 +1371,7 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::MatrixPrice::Cadence) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::MatrixPrice::Cadence::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Price::MatrixPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::MatrixPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::MatrixPrice::Cadence::TaggedSymbol)
@@ -1404,7 +1436,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration::DurationUnit) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                )
+              end
 
             DAY =
               T.let(:day, Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
@@ -1547,7 +1585,8 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::MatrixPrice::PriceType) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::MatrixPrice::PriceType::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::MatrixPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::MatrixPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::MatrixPrice::PriceType::TaggedSymbol)
@@ -1873,7 +1912,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Price::TieredPrice::BillingCycleConfiguration::DurationUnit) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Price::TieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::Price::TieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                )
+              end
 
             DAY = T.let(:day, Orb::Models::Price::TieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
             MONTH =
@@ -1892,7 +1937,7 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredPrice::Cadence) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::TieredPrice::Cadence::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Price::TieredPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::TieredPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::TieredPrice::Cadence::TaggedSymbol)
@@ -1957,7 +2002,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration::DurationUnit) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                )
+              end
 
             DAY =
               T.let(:day, Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
@@ -2037,7 +2088,8 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredPrice::PriceType) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::TieredPrice::PriceType::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::TieredPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::TieredPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredPrice::PriceType::TaggedSymbol)
@@ -2411,7 +2463,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration::DurationUnit) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                )
+              end
 
             DAY =
               T.let(:day, Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
@@ -2433,7 +2491,8 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredBpsPrice::Cadence) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::TieredBpsPrice::Cadence::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::TieredBpsPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::TieredBpsPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::TieredBpsPrice::Cadence::TaggedSymbol)
@@ -2498,7 +2557,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration::DurationUnit) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                )
+              end
 
             DAY =
               T.let(:day, Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
@@ -2578,7 +2643,8 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredBpsPrice::PriceType) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::TieredBpsPrice::PriceType::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::TieredBpsPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::TieredBpsPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredBpsPrice::PriceType::TaggedSymbol)
@@ -2968,7 +3034,7 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Price::BpsPrice::BillingCycleConfiguration::DurationUnit) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Price::BpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Orb::Models::Price::BpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
 
             DAY = T.let(:day, Orb::Models::Price::BpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
             MONTH =
@@ -3005,7 +3071,7 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::BpsPrice::Cadence) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::BpsPrice::Cadence::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Price::BpsPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::BpsPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::BpsPrice::Cadence::TaggedSymbol)
@@ -3070,7 +3136,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration::DurationUnit) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                )
+              end
 
             DAY = T.let(:day, Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
             MONTH =
@@ -3147,7 +3219,7 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::BpsPrice::PriceType) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::BpsPrice::PriceType::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Price::BpsPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::BpsPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::BpsPrice::PriceType::TaggedSymbol)
@@ -3473,7 +3545,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration::DurationUnit) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                )
+              end
 
             DAY =
               T.let(:day, Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
@@ -3544,7 +3622,8 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::BulkBpsPrice::Cadence) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::BulkBpsPrice::Cadence::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::BulkBpsPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::BulkBpsPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::BulkBpsPrice::Cadence::TaggedSymbol)
@@ -3609,7 +3688,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration::DurationUnit) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                )
+              end
 
             DAY =
               T.let(:day, Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
@@ -3689,7 +3774,8 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::BulkBpsPrice::PriceType) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::BulkBpsPrice::PriceType::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::BulkBpsPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::BulkBpsPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::BulkBpsPrice::PriceType::TaggedSymbol)
@@ -4015,7 +4101,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Price::BulkPrice::BillingCycleConfiguration::DurationUnit) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Price::BulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::Price::BulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                )
+              end
 
             DAY = T.let(:day, Orb::Models::Price::BulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
             MONTH =
@@ -4069,7 +4161,7 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::BulkPrice::Cadence) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::BulkPrice::Cadence::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Price::BulkPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::BulkPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::BulkPrice::Cadence::TaggedSymbol)
@@ -4134,7 +4226,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration::DurationUnit) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                )
+              end
 
             DAY = T.let(:day, Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
             MONTH =
@@ -4211,7 +4309,7 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::BulkPrice::PriceType) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::BulkPrice::PriceType::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Price::BulkPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::BulkPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::BulkPrice::PriceType::TaggedSymbol)
@@ -4559,6 +4657,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -4590,7 +4689,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::ThresholdTotalAmountPrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::ThresholdTotalAmountPrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::ThresholdTotalAmountPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::ThresholdTotalAmountPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::ThresholdTotalAmountPrice::Cadence::TaggedSymbol)
@@ -4662,6 +4761,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -4751,7 +4851,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::ThresholdTotalAmountPrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::ThresholdTotalAmountPrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::ThresholdTotalAmountPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::ThresholdTotalAmountPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::ThresholdTotalAmountPrice::PriceType::TaggedSymbol)
@@ -5081,6 +5181,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -5108,7 +5209,8 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredPackagePrice::Cadence) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::TieredPackagePrice::Cadence::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::TieredPackagePrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::TieredPackagePrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::TieredPackagePrice::Cadence::TaggedSymbol)
@@ -5176,6 +5278,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -5265,7 +5368,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredPackagePrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::TieredPackagePrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::TieredPackagePrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::TieredPackagePrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredPackagePrice::PriceType::TaggedSymbol)
@@ -5595,6 +5698,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -5622,7 +5726,8 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedTieredPrice::Cadence) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Price::GroupedTieredPrice::Cadence::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::GroupedTieredPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::GroupedTieredPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::GroupedTieredPrice::Cadence::TaggedSymbol)
@@ -5690,6 +5795,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -5779,7 +5885,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedTieredPrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::GroupedTieredPrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::GroupedTieredPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::GroupedTieredPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::GroupedTieredPrice::PriceType::TaggedSymbol)
@@ -6119,6 +6225,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -6150,7 +6257,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredWithMinimumPrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::TieredWithMinimumPrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::TieredWithMinimumPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::TieredWithMinimumPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::TieredWithMinimumPrice::Cadence::TaggedSymbol)
@@ -6222,6 +6329,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -6311,7 +6419,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredWithMinimumPrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::TieredWithMinimumPrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::TieredWithMinimumPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::TieredWithMinimumPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredWithMinimumPrice::PriceType::TaggedSymbol)
@@ -6665,6 +6773,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -6696,7 +6805,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::TieredPackageWithMinimumPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::TieredPackageWithMinimumPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::TieredPackageWithMinimumPrice::Cadence::TaggedSymbol)
@@ -6771,6 +6880,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -6861,7 +6971,7 @@ module Orb
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::TieredPackageWithMinimumPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE =
             T.let(:usage_price, Orb::Models::Price::TieredPackageWithMinimumPrice::PriceType::TaggedSymbol)
@@ -7211,6 +7321,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -7242,7 +7353,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::PackageWithAllocationPrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::PackageWithAllocationPrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::PackageWithAllocationPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::PackageWithAllocationPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::PackageWithAllocationPrice::Cadence::TaggedSymbol)
@@ -7314,6 +7425,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -7403,7 +7515,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::PackageWithAllocationPrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::PackageWithAllocationPrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::PackageWithAllocationPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE =
             T.let(:usage_price, Orb::Models::Price::PackageWithAllocationPrice::PriceType::TaggedSymbol)
@@ -7745,6 +7857,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -7776,7 +7889,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::UnitWithPercentPrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::UnitWithPercentPrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::UnitWithPercentPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::UnitWithPercentPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::UnitWithPercentPrice::Cadence::TaggedSymbol)
@@ -7844,6 +7957,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -7933,7 +8047,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::UnitWithPercentPrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::UnitWithPercentPrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::UnitWithPercentPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::UnitWithPercentPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::UnitWithPercentPrice::PriceType::TaggedSymbol)
@@ -8289,6 +8403,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -8320,7 +8435,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::MatrixWithAllocationPrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::MatrixWithAllocationPrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::MatrixWithAllocationPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::MatrixWithAllocationPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::MatrixWithAllocationPrice::Cadence::TaggedSymbol)
@@ -8392,6 +8507,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -8555,7 +8671,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::MatrixWithAllocationPrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::MatrixWithAllocationPrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::MatrixWithAllocationPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::MatrixWithAllocationPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::MatrixWithAllocationPrice::PriceType::TaggedSymbol)
@@ -8903,6 +9019,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -8934,7 +9051,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredWithProrationPrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::TieredWithProrationPrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::TieredWithProrationPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::TieredWithProrationPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::TieredWithProrationPrice::Cadence::TaggedSymbol)
@@ -9006,6 +9123,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -9095,7 +9213,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredWithProrationPrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::TieredWithProrationPrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::TieredWithProrationPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::TieredWithProrationPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredWithProrationPrice::PriceType::TaggedSymbol)
@@ -9435,6 +9553,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -9466,7 +9585,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::UnitWithProrationPrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::UnitWithProrationPrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::UnitWithProrationPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::UnitWithProrationPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::UnitWithProrationPrice::Cadence::TaggedSymbol)
@@ -9538,6 +9657,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -9627,7 +9747,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::UnitWithProrationPrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::UnitWithProrationPrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::UnitWithProrationPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::UnitWithProrationPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::UnitWithProrationPrice::PriceType::TaggedSymbol)
@@ -9967,6 +10087,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -9998,7 +10119,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedAllocationPrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::GroupedAllocationPrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::GroupedAllocationPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::GroupedAllocationPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::GroupedAllocationPrice::Cadence::TaggedSymbol)
@@ -10070,6 +10191,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -10159,7 +10281,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedAllocationPrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::GroupedAllocationPrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::GroupedAllocationPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::GroupedAllocationPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::GroupedAllocationPrice::PriceType::TaggedSymbol)
@@ -10525,6 +10647,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -10557,7 +10680,7 @@ module Orb
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::GroupedWithProratedMinimumPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::GroupedWithProratedMinimumPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::GroupedWithProratedMinimumPrice::Cadence::TaggedSymbol)
@@ -10632,6 +10755,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -10724,7 +10848,7 @@ module Orb
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::GroupedWithProratedMinimumPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE =
             T.let(:usage_price, Orb::Models::Price::GroupedWithProratedMinimumPrice::PriceType::TaggedSymbol)
@@ -11080,6 +11204,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -11112,7 +11237,7 @@ module Orb
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::GroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::GroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::GroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol)
@@ -11187,6 +11312,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -11279,7 +11405,7 @@ module Orb
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::GroupedWithMeteredMinimumPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE =
             T.let(:usage_price, Orb::Models::Price::GroupedWithMeteredMinimumPrice::PriceType::TaggedSymbol)
@@ -11629,6 +11755,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -11660,7 +11787,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::MatrixWithDisplayNamePrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::MatrixWithDisplayNamePrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::MatrixWithDisplayNamePrice::Cadence::TaggedSymbol)
@@ -11732,6 +11859,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -11821,7 +11949,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::MatrixWithDisplayNamePrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE =
             T.let(:usage_price, Orb::Models::Price::MatrixWithDisplayNamePrice::PriceType::TaggedSymbol)
@@ -12163,6 +12291,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -12194,7 +12323,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::BulkWithProrationPrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::BulkWithProrationPrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::BulkWithProrationPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::BulkWithProrationPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::BulkWithProrationPrice::Cadence::TaggedSymbol)
@@ -12266,6 +12395,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -12355,7 +12485,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::BulkWithProrationPrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::BulkWithProrationPrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::BulkWithProrationPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::BulkWithProrationPrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::BulkWithProrationPrice::PriceType::TaggedSymbol)
@@ -12703,6 +12833,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -12734,7 +12865,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedTieredPackagePrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::GroupedTieredPackagePrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::GroupedTieredPackagePrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::GroupedTieredPackagePrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::GroupedTieredPackagePrice::Cadence::TaggedSymbol)
@@ -12806,6 +12937,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -12895,7 +13027,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedTieredPackagePrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::GroupedTieredPackagePrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::GroupedTieredPackagePrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::GroupedTieredPackagePrice::PriceType::TaggedSymbol)
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::GroupedTieredPackagePrice::PriceType::TaggedSymbol)
@@ -13243,6 +13375,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -13274,7 +13407,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::MaxGroupTieredPackagePrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::MaxGroupTieredPackagePrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::MaxGroupTieredPackagePrice::Cadence::TaggedSymbol)
@@ -13346,6 +13479,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -13435,7 +13569,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::MaxGroupTieredPackagePrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE =
             T.let(:usage_price, Orb::Models::Price::MaxGroupTieredPackagePrice::PriceType::TaggedSymbol)
@@ -13813,6 +13947,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -13847,7 +13982,7 @@ module Orb
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME =
             T.let(:one_time, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol)
@@ -13924,6 +14059,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -14016,7 +14152,7 @@ module Orb
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE =
             T.let(:usage_price, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::PriceType::TaggedSymbol)
@@ -14403,6 +14539,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -14437,7 +14574,7 @@ module Orb
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME =
             T.let(:one_time, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol)
@@ -14517,6 +14654,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -14609,7 +14747,7 @@ module Orb
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE =
             T.let(:usage_price, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::PriceType::TaggedSymbol)
@@ -14962,6 +15100,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -14993,7 +15132,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice::Cadence) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice::Cadence::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::CumulativeGroupedBulkPrice::Cadence::TaggedSymbol) }
 
           ONE_TIME = T.let(:one_time, Orb::Models::Price::CumulativeGroupedBulkPrice::Cadence::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Price::CumulativeGroupedBulkPrice::Cadence::TaggedSymbol)
@@ -15065,6 +15204,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                 )
               end
@@ -15154,7 +15294,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice::PriceType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice::PriceType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Price::CumulativeGroupedBulkPrice::PriceType::TaggedSymbol) }
 
           USAGE_PRICE =
             T.let(:usage_price, Orb::Models::Price::CumulativeGroupedBulkPrice::PriceType::TaggedSymbol)

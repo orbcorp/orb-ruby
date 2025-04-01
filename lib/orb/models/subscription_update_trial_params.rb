@@ -12,7 +12,7 @@ module Orb
       #   The new date that the trial should end, or the literal string `immediate` to end
       #     the trial immediately.
       #
-      #   @return [Time, Symbol]
+      #   @return [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate]
       required :trial_end_date, union: -> { Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate }
 
       # @!attribute [r] shift
@@ -27,7 +27,7 @@ module Orb
       #   attr_writer :shift
 
       # @!parse
-      #   # @param trial_end_date [Time, Symbol]
+      #   # @param trial_end_date [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate]
       #   # @param shift [Boolean]
       #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       #   #

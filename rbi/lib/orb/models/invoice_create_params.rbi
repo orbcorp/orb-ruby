@@ -202,7 +202,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::InvoiceCreateParams::LineItem::ModelType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::InvoiceCreateParams::LineItem::ModelType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::InvoiceCreateParams::LineItem::ModelType::TaggedSymbol) }
 
           UNIT = T.let(:unit, Orb::Models::InvoiceCreateParams::LineItem::ModelType::TaggedSymbol)
 

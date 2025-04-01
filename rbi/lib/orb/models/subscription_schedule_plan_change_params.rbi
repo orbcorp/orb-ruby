@@ -276,7 +276,7 @@ module Orb
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ChangeOption) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ChangeOption::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Orb::Models::SubscriptionSchedulePlanChangeParams::ChangeOption::TaggedSymbol) }
 
         REQUESTED_DATE =
           T.let(:requested_date, Orb::Models::SubscriptionSchedulePlanChangeParams::ChangeOption::TaggedSymbol)
@@ -895,6 +895,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice::Cadence::TaggedSymbol
                 )
               end
@@ -994,6 +995,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount::DiscountType::TaggedSymbol
                 )
               end
@@ -1254,6 +1256,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -1364,6 +1367,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -1441,6 +1445,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -1695,6 +1700,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
                   )
                 end
@@ -1810,6 +1816,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -1887,6 +1894,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -2141,6 +2149,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -2313,6 +2322,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -2390,6 +2400,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -2644,6 +2655,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -2809,6 +2821,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -2886,6 +2899,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -3140,6 +3154,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -3320,6 +3335,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -3397,6 +3413,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -3669,6 +3686,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -3765,6 +3783,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -3842,6 +3861,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -4169,6 +4189,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -4265,6 +4286,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -4342,6 +4364,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -4653,6 +4676,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -4749,6 +4773,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -4826,6 +4851,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -5062,6 +5088,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -5158,6 +5185,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -5235,6 +5263,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -5471,6 +5500,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
                   )
                 end
@@ -5567,6 +5597,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -5644,6 +5675,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -5880,6 +5912,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -5976,6 +6009,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -6053,6 +6087,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -6289,6 +6324,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -6385,6 +6421,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -6462,6 +6499,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -6698,6 +6736,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -6794,6 +6833,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -6871,6 +6911,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -7107,6 +7148,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -7203,6 +7245,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -7280,6 +7323,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -7516,6 +7560,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -7612,6 +7657,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -7689,6 +7735,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -7925,6 +7972,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -8021,6 +8069,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -8098,6 +8147,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -8334,6 +8384,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -8430,6 +8481,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -8507,6 +8559,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -8743,6 +8796,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -8839,6 +8893,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -8916,6 +8971,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -9152,6 +9208,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -9248,6 +9305,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -9325,6 +9383,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -9561,6 +9620,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -9657,6 +9717,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -9734,6 +9795,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -9970,6 +10032,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -10066,6 +10129,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -10143,6 +10207,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -10379,6 +10444,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
                   )
                 end
@@ -10475,6 +10541,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -10552,6 +10619,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -10788,6 +10856,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -10884,6 +10953,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -10961,6 +11031,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -11197,6 +11268,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
                   )
                 end
@@ -11293,6 +11365,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -11370,6 +11443,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -11606,6 +11680,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
                   )
                 end
@@ -11702,6 +11777,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -11779,6 +11855,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -11828,7 +11905,13 @@ module Orb
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAlignment) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAlignment::TaggedSymbol) }
+          T.type_alias do
+            T.any(
+              Symbol,
+              String,
+              Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAlignment::TaggedSymbol
+            )
+          end
 
         UNCHANGED =
           T.let(:unchanged, Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAlignment::TaggedSymbol)
@@ -12501,6 +12584,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice::Cadence::TaggedSymbol
                 )
               end
@@ -12600,6 +12684,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount::DiscountType::TaggedSymbol
                 )
               end
@@ -12860,6 +12945,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -12970,6 +13056,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -13047,6 +13134,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -13301,6 +13389,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
                   )
                 end
@@ -13416,6 +13505,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -13493,6 +13583,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -13747,6 +13838,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -13919,6 +14011,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -13996,6 +14089,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -14250,6 +14344,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -14415,6 +14510,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -14492,6 +14588,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -14746,6 +14843,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -14926,6 +15024,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -15003,6 +15102,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -15275,6 +15375,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -15371,6 +15472,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -15448,6 +15550,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -15775,6 +15878,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -15871,6 +15975,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -15948,6 +16053,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -16259,6 +16365,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -16355,6 +16462,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -16432,6 +16540,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -16668,6 +16777,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -16764,6 +16874,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -16841,6 +16952,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -17077,6 +17189,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
                   )
                 end
@@ -17173,6 +17286,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -17250,6 +17364,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -17486,6 +17601,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -17582,6 +17698,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -17659,6 +17776,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -17895,6 +18013,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -17991,6 +18110,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -18068,6 +18188,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -18304,6 +18425,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -18400,6 +18522,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -18477,6 +18600,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -18713,6 +18837,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -18809,6 +18934,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -18886,6 +19012,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -19122,6 +19249,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -19218,6 +19346,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -19295,6 +19424,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -19531,6 +19661,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -19627,6 +19758,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -19704,6 +19836,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -19940,6 +20073,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -20036,6 +20170,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -20113,6 +20248,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -20349,6 +20485,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -20445,6 +20582,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -20522,6 +20660,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -20758,6 +20897,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -20854,6 +20994,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -20931,6 +21072,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -21167,6 +21309,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -21263,6 +21406,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -21340,6 +21484,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -21576,6 +21721,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -21672,6 +21818,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -21749,6 +21896,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -21985,6 +22133,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
                   )
                 end
@@ -22081,6 +22230,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -22158,6 +22308,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -22394,6 +22545,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -22490,6 +22642,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -22567,6 +22720,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -22803,6 +22957,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
                   )
                 end
@@ -22899,6 +23054,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -22976,6 +23132,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -23212,6 +23369,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
                   )
                 end
@@ -23308,6 +23466,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -23385,6 +23544,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end

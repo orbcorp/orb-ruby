@@ -71,7 +71,13 @@ module Orb
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol
+              )
+            end
 
           STRIPE =
             T.let(:stripe, Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol)

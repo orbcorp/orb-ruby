@@ -366,7 +366,7 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::Cadence) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::Cadence::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::Cadence::TaggedSymbol) }
 
             ANNUAL = T.let(:annual, Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::Cadence::TaggedSymbol)
             SEMI_ANNUAL =
@@ -446,6 +446,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -523,6 +524,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -734,7 +736,7 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::Cadence) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::Cadence::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::Cadence::TaggedSymbol) }
 
             ANNUAL = T.let(:annual, Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::Cadence::TaggedSymbol)
             SEMI_ANNUAL =
@@ -823,6 +825,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -900,6 +903,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -1111,7 +1115,7 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::Cadence) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::Cadence::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::Cadence::TaggedSymbol) }
 
             ANNUAL = T.let(:annual, Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::Cadence::TaggedSymbol)
             SEMI_ANNUAL =
@@ -1248,6 +1252,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -1325,6 +1330,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -1536,7 +1542,7 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::Cadence) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::Cadence::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::Cadence::TaggedSymbol) }
 
             ANNUAL = T.let(:annual, Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::Cadence::TaggedSymbol)
             SEMI_ANNUAL =
@@ -1655,6 +1661,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -1732,6 +1739,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -1947,7 +1955,7 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::Cadence) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::Cadence::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::Cadence::TaggedSymbol) }
 
             ANNUAL =
               T.let(:annual, Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::Cadence::TaggedSymbol)
@@ -2093,6 +2101,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -2170,6 +2179,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -2399,7 +2409,7 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::Cadence) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::Cadence::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::Cadence::TaggedSymbol) }
 
             ANNUAL = T.let(:annual, Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::Cadence::TaggedSymbol)
             SEMI_ANNUAL =
@@ -2464,6 +2474,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -2541,6 +2552,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -2808,7 +2820,7 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::Cadence) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::Cadence::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::Cadence::TaggedSymbol) }
 
             ANNUAL = T.let(:annual, Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::Cadence::TaggedSymbol)
             SEMI_ANNUAL =
@@ -2878,6 +2890,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -2955,6 +2968,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -3206,7 +3220,7 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::Cadence) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::Cadence::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::Cadence::TaggedSymbol) }
 
             ANNUAL = T.let(:annual, Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::Cadence::TaggedSymbol)
             SEMI_ANNUAL =
@@ -3272,6 +3286,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -3349,6 +3364,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -3571,6 +3587,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::Cadence::TaggedSymbol
                 )
               end
@@ -3665,6 +3682,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -3742,6 +3760,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -3953,7 +3972,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::Cadence) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::Cadence::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::Cadence::TaggedSymbol
+                )
+              end
 
             ANNUAL =
               T.let(:annual, Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::Cadence::TaggedSymbol)
@@ -4028,6 +4053,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -4105,6 +4131,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -4320,7 +4347,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::Cadence) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::Cadence::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::Cadence::TaggedSymbol
+                )
+              end
 
             ANNUAL =
               T.let(:annual, Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::Cadence::TaggedSymbol)
@@ -4406,6 +4439,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -4483,6 +4517,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -4694,7 +4729,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::Cadence) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::Cadence::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::Cadence::TaggedSymbol
+                )
+              end
 
             ANNUAL =
               T.let(:annual, Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::Cadence::TaggedSymbol)
@@ -4774,6 +4815,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -4851,6 +4893,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -5073,6 +5116,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::Cadence::TaggedSymbol
                 )
               end
@@ -5167,6 +5211,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -5244,6 +5289,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -5459,7 +5505,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::Cadence) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::Cadence::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::Cadence::TaggedSymbol
+                )
+              end
 
             ANNUAL =
               T.let(:annual, Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::Cadence::TaggedSymbol)
@@ -5545,6 +5597,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -5622,6 +5675,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -5837,7 +5891,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::Cadence) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::Cadence::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::Cadence::TaggedSymbol
+                )
+              end
 
             ANNUAL =
               T.let(:annual, Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::Cadence::TaggedSymbol)
@@ -5923,6 +5983,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -6000,6 +6061,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -6215,7 +6277,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::Cadence) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::Cadence::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::Cadence::TaggedSymbol
+                )
+              end
 
             ANNUAL =
               T.let(:annual, Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::Cadence::TaggedSymbol)
@@ -6301,6 +6369,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -6378,6 +6447,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -6600,6 +6670,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
                 )
               end
@@ -6694,6 +6765,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -6771,6 +6843,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -6993,6 +7066,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
                 )
               end
@@ -7087,6 +7161,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -7164,6 +7239,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -7386,6 +7462,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
                 )
               end
@@ -7480,6 +7557,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -7557,6 +7635,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -7772,7 +7851,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::Cadence) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::Cadence::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::Cadence::TaggedSymbol
+                )
+              end
 
             ANNUAL =
               T.let(:annual, Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::Cadence::TaggedSymbol)
@@ -7858,6 +7943,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -7935,6 +8021,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -8157,6 +8244,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::Cadence::TaggedSymbol
                 )
               end
@@ -8251,6 +8339,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -8328,6 +8417,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -8550,6 +8640,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
                 )
               end
@@ -8644,6 +8735,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -8721,6 +8813,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -8947,6 +9040,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
                 )
               end
@@ -9041,6 +9135,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -9118,6 +9213,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -9344,6 +9440,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
                 )
               end
@@ -9438,6 +9535,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -9515,6 +9613,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -9737,6 +9836,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
                 )
               end
@@ -9831,6 +9931,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -9908,6 +10009,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 end
@@ -9953,7 +10055,7 @@ module Orb
         extend Orb::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::PlanCreateParams::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::PlanCreateParams::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::PlanCreateParams::Status::TaggedSymbol) }
 
         ACTIVE = T.let(:active, Orb::Models::PlanCreateParams::Status::TaggedSymbol)
         DRAFT = T.let(:draft, Orb::Models::PlanCreateParams::Status::TaggedSymbol)

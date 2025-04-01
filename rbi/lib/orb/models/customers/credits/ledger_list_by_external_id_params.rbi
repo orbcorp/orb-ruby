@@ -103,7 +103,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryStatus) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryStatus::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryStatus::TaggedSymbol
+                )
+              end
 
             COMMITTED =
               T.let(
@@ -129,7 +135,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryType) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryType::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryType::TaggedSymbol
+                )
+              end
 
             INCREMENT =
               T.let(:increment, Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryType::TaggedSymbol)

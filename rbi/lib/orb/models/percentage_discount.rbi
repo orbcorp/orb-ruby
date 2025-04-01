@@ -49,7 +49,8 @@ module Orb
         extend Orb::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::PercentageDiscount::DiscountType) }
-        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::PercentageDiscount::DiscountType::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Orb::Models::PercentageDiscount::DiscountType::TaggedSymbol) }
 
         PERCENTAGE = T.let(:percentage, Orb::Models::PercentageDiscount::DiscountType::TaggedSymbol)
 

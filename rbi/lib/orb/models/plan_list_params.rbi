@@ -85,7 +85,7 @@ module Orb
         extend Orb::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::PlanListParams::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::PlanListParams::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::PlanListParams::Status::TaggedSymbol) }
 
         ACTIVE = T.let(:active, Orb::Models::PlanListParams::Status::TaggedSymbol)
         ARCHIVED = T.let(:archived, Orb::Models::PlanListParams::Status::TaggedSymbol)
