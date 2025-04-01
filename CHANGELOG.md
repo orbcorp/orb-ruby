@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.31 (2025-04-01)
+
+Full Changelog: [v0.1.0-alpha.30...v0.1.0-alpha.31](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.30...v0.1.0-alpha.31)
+
+### Bug Fixes
+
+* path interpolation template strings ([#193](https://github.com/orbcorp/orb-ruby/issues/193)) ([d7f8470](https://github.com/orbcorp/orb-ruby/commit/d7f847086456498cf218c449137e88d9b6d2aa64))
+
+
+### Chores
+
+* fix misc rubocop errors ([#192](https://github.com/orbcorp/orb-ruby/issues/192)) ([9a01dbc](https://github.com/orbcorp/orb-ruby/commit/9a01dbc37ef0e6508ed133d1a7e1891b6883f498))
+* **internal:** version bump ([#190](https://github.com/orbcorp/orb-ruby/issues/190)) ([a25b776](https://github.com/orbcorp/orb-ruby/commit/a25b776d48ecb47779a0ec9d57d9047d5b627ed7))
+
 ## 0.1.0-alpha.30 (2025-04-01)
 
 Full Changelog: [v0.1.0-alpha.29...v0.1.0-alpha.30](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.29...v0.1.0-alpha.30)
