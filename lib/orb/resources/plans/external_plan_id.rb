@@ -9,19 +9,12 @@ module Orb
         #
         #   Other fields on a customer are currently immutable.
         #
+        # @overload update(other_external_plan_id, external_plan_id: nil, metadata: nil, request_options: {})
+        #
         # @param other_external_plan_id [String]
-        #
-        # @param params [Orb::Models::Plans::ExternalPlanIDUpdateParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [String, nil] :external_plan_id An optional user-defined ID for this plan resource, used throughout the system
-        #     as an alias for this Plan. Use this field to identify a plan by an existing
-        #     identifier in your system.
-        #
-        #   @option params [Hash{Symbol=>String, nil}, nil] :metadata User-specified key/value pairs for the resource. Individual keys can be removed
-        #     by setting the value to `null`, and the entire metadata mapping can be cleared
-        #     by setting `metadata` to `null`.
-        #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param external_plan_id [String, nil]
+        # @param metadata [Hash{Symbol=>String, nil}, nil]
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Models::Plan]
         #
@@ -54,11 +47,10 @@ module Orb
         #   that is present. A detailed explanation of price types can be found in the
         #   [Price schema](/core-concepts#plan-and-price). "
         #
+        # @overload fetch(external_plan_id, request_options: {})
+        #
         # @param external_plan_id [String]
-        #
-        # @param params [Orb::Models::Plans::ExternalPlanIDFetchParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Models::Plan]
         #

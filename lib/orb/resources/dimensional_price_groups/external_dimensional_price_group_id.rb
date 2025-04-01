@@ -6,11 +6,10 @@ module Orb
       class ExternalDimensionalPriceGroupID
         # Fetch dimensional price group by external ID
         #
+        # @overload retrieve(external_dimensional_price_group_id, request_options: {})
+        #
         # @param external_dimensional_price_group_id [String]
-        #
-        # @param params [Orb::Models::DimensionalPriceGroups::ExternalDimensionalPriceGroupIDRetrieveParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Models::DimensionalPriceGroup]
         #

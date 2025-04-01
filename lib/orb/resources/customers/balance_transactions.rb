@@ -7,17 +7,13 @@ module Orb
         # Creates an immutable balance transaction that updates the customer's balance and
         #   returns back the newly created transaction.
         #
+        # @overload create(customer_id, amount:, type:, description: nil, request_options: {})
+        #
         # @param customer_id [String]
-        #
-        # @param params [Orb::Models::Customers::BalanceTransactionCreateParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [String] :amount
-        #
-        #   @option params [Symbol, Orb::Models::Customers::BalanceTransactionCreateParams::Type] :type
-        #
-        #   @option params [String, nil] :description An optional description that can be specified around this entry.
-        #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param amount [String]
+        # @param type [Symbol, Orb::Models::Customers::BalanceTransactionCreateParams::Type]
+        # @param description [String, nil]
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Models::Customers::BalanceTransactionCreateResponse]
         #
@@ -62,24 +58,16 @@ module Orb
         #   such as Stripe is used, the balance will be applied to the invoice before
         #   forwarding payment to the gateway.
         #
+        # @overload list(customer_id, cursor: nil, limit: nil, operation_time_gt: nil, operation_time_gte: nil, operation_time_lt: nil, operation_time_lte: nil, request_options: {})
+        #
         # @param customer_id [String]
-        #
-        # @param params [Orb::Models::Customers::BalanceTransactionListParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [String, nil] :cursor Cursor for pagination. This can be populated by the `next_cursor` value returned
-        #     from the initial request.
-        #
-        #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
-        #
-        #   @option params [Time, nil] :operation_time_gt
-        #
-        #   @option params [Time, nil] :operation_time_gte
-        #
-        #   @option params [Time, nil] :operation_time_lt
-        #
-        #   @option params [Time, nil] :operation_time_lte
-        #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param cursor [String, nil]
+        # @param limit [Integer]
+        # @param operation_time_gt [Time, nil]
+        # @param operation_time_gte [Time, nil]
+        # @param operation_time_lt [Time, nil]
+        # @param operation_time_lte [Time, nil]
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Page<Orb::Models::Customers::BalanceTransactionListResponse>]
         #
