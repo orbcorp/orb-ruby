@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.1.0-alpha.30 (2025-04-01)
+
+Full Changelog: [v0.1.0-alpha.29...v0.1.0-alpha.30](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.29...v0.1.0-alpha.30)
+
+### Bug Fixes
+
+* switch to github compatible markdown engine ([#189](https://github.com/orbcorp/orb-ruby/issues/189)) ([d7fc30d](https://github.com/orbcorp/orb-ruby/commit/d7fc30ddbf8ff3310c14184dea09dd1c54f29f2d))
+
+
+### Chores
+
+* disable dangerous rubocop auto correct rule ([#180](https://github.com/orbcorp/orb-ruby/issues/180)) ([0fdaa59](https://github.com/orbcorp/orb-ruby/commit/0fdaa59ee48e9a3e5563c209eb1fc1a4535f5897))
+* **internal:** codegen related update ([#179](https://github.com/orbcorp/orb-ruby/issues/179)) ([7946e79](https://github.com/orbcorp/orb-ruby/commit/7946e79a28f9451e9c4bd00d43333734e7f5c4a6))
+* **internal:** codegen related update ([#184](https://github.com/orbcorp/orb-ruby/issues/184)) ([ecaf100](https://github.com/orbcorp/orb-ruby/commit/ecaf100bea5029971bcf424a48fe5fe241a433b4))
+* **internal:** minor refactoring of utils ([#183](https://github.com/orbcorp/orb-ruby/issues/183)) ([3ac6554](https://github.com/orbcorp/orb-ruby/commit/3ac65546773f869f554233156f4c958b1a1d0810))
+* **internal:** version bump ([#177](https://github.com/orbcorp/orb-ruby/issues/177)) ([adbaaa7](https://github.com/orbcorp/orb-ruby/commit/adbaaa7ee0d790f72fa67d6f2b7e5b12ff2314c2))
+* more accurate type annotations for SDK internals ([#187](https://github.com/orbcorp/orb-ruby/issues/187)) ([76fc06e](https://github.com/orbcorp/orb-ruby/commit/76fc06e5b6566c63b7521db57089112014b507c3))
+* more readable output when tests fail ([#181](https://github.com/orbcorp/orb-ruby/issues/181)) ([8310ee4](https://github.com/orbcorp/orb-ruby/commit/8310ee4c764c7edec013d71b07dac2c6025df5a7))
+* re-order assignment lines to make unions easier to read ([#182](https://github.com/orbcorp/orb-ruby/issues/182)) ([384e751](https://github.com/orbcorp/orb-ruby/commit/384e751c5f36eec90e1e31b6a6110abe22ed0890))
+* relocate internal modules ([#186](https://github.com/orbcorp/orb-ruby/issues/186)) ([b939695](https://github.com/orbcorp/orb-ruby/commit/b9396955c4ae4b18356218fb1742c6518e3ad37e))
+* remove unnecessary & confusing module ([#185](https://github.com/orbcorp/orb-ruby/issues/185)) ([aa3588c](https://github.com/orbcorp/orb-ruby/commit/aa3588c525b6f62bda302bd3ad80228035972448))
+* update readme ([#188](https://github.com/orbcorp/orb-ruby/issues/188)) ([6a671ec](https://github.com/orbcorp/orb-ruby/commit/6a671ec91b3f11cd3a7a4e1359d795e8d2fdf22c))
+
 ## 0.1.0-alpha.29 (2025-03-21)
 
 Full Changelog: [v0.1.0-alpha.28...v0.1.0-alpha.29](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.28...v0.1.0-alpha.29)
