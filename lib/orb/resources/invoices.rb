@@ -5,39 +5,19 @@ module Orb
     class Invoices
       # This endpoint is used to create a one-off invoice for a customer.
       #
-      # @param params [Orb::Models::InvoiceCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(currency:, invoice_date:, line_items:, net_terms:, customer_id: nil, discount: nil, external_customer_id: nil, memo: nil, metadata: nil, will_auto_issue: nil, request_options: {})
       #
-      #   @option params [String] :currency An ISO 4217 currency string. Must be the same as the customer's currency if it
-      #     is set.
-      #
-      #   @option params [Time] :invoice_date Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
-      #     set to the current time in the customer's timezone.
-      #
-      #   @option params [Array<Orb::Models::InvoiceCreateParams::LineItem>] :line_items
-      #
-      #   @option params [Integer] :net_terms Determines the difference between the invoice issue date for subscription
-      #     invoices as the date that they are due. A value of '0' here represents that the
-      #     invoice is due on issue, whereas a value of 30 represents that the customer has
-      #     30 days to pay the invoice.
-      #
-      #   @option params [String, nil] :customer_id The id of the `Customer` to create this invoice for. One of `customer_id` and
-      #     `external_customer_id` are required.
-      #
-      #   @option params [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil] :discount An optional discount to attach to the invoice.
-      #
-      #   @option params [String, nil] :external_customer_id The `external_customer_id` of the `Customer` to create this invoice for. One of
-      #     `customer_id` and `external_customer_id` are required.
-      #
-      #   @option params [String, nil] :memo An optional memo to attach to the invoice.
-      #
-      #   @option params [Hash{Symbol=>String, nil}, nil] :metadata User-specified key/value pairs for the resource. Individual keys can be removed
-      #     by setting the value to `null`, and the entire metadata mapping can be cleared
-      #     by setting `metadata` to `null`.
-      #
-      #   @option params [Boolean] :will_auto_issue When true, this invoice will automatically be issued upon creation. When false,
-      #     the resulting invoice will require manual review to issue. Defaulted to false.
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param currency [String]
+      # @param invoice_date [Time]
+      # @param line_items [Array<Orb::Models::InvoiceCreateParams::LineItem>]
+      # @param net_terms [Integer]
+      # @param customer_id [String, nil]
+      # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+      # @param external_customer_id [String, nil]
+      # @param memo [String, nil]
+      # @param metadata [Hash{Symbol=>String, nil}, nil]
+      # @param will_auto_issue [Boolean]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Invoice]
       #
@@ -59,15 +39,11 @@ module Orb
       #
       #   `metadata` can be modified regardless of invoice state.
       #
+      # @overload update(invoice_id, metadata: nil, request_options: {})
+      #
       # @param invoice_id [String]
-      #
-      # @param params [Orb::Models::InvoiceUpdateParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Hash{Symbol=>String, nil}, nil] :metadata User-specified key/value pairs for the resource. Individual keys can be removed
-      #     by setting the value to `null`, and the entire metadata mapping can be cleared
-      #     by setting `metadata` to `null`.
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param metadata [Hash{Symbol=>String, nil}, nil]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Invoice]
       #
@@ -97,51 +73,28 @@ module Orb
       #   values for each draft invoice, which may not always be up-to-date since Orb
       #   regularly refreshes invoices asynchronously.
       #
-      # @param params [Orb::Models::InvoiceListParams, Hash{Symbol=>Object}] .
+      # @overload list(amount: nil, amount_gt: nil, amount_lt: nil, cursor: nil, customer_id: nil, date_type: nil, due_date: nil, due_date_window: nil, due_date_gt: nil, due_date_lt: nil, external_customer_id: nil, invoice_date_gt: nil, invoice_date_gte: nil, invoice_date_lt: nil, invoice_date_lte: nil, is_recurring: nil, limit: nil, status: nil, subscription_id: nil, request_options: {})
       #
-      #   @option params [String, nil] :amount
-      #
-      #   @option params [String, nil] :amount_gt
-      #
-      #   @option params [String, nil] :amount_lt
-      #
-      #   @option params [String, nil] :cursor Cursor for pagination. This can be populated by the `next_cursor` value returned
-      #     from the initial request.
-      #
-      #   @option params [String, nil] :customer_id
-      #
-      #   @option params [Symbol, Orb::Models::InvoiceListParams::DateType, nil] :date_type
-      #
-      #   @option params [Date, nil] :due_date
-      #
-      #   @option params [String, nil] :due_date_window Filters invoices by their due dates within a specific time range in the past.
-      #     Specify the range as a number followed by 'd' (days) or 'm' (months). For
-      #     example, '7d' filters invoices due in the last 7 days, and '2m' filters those
-      #     due in the last 2 months.
-      #
-      #   @option params [Date, nil] :due_date_gt
-      #
-      #   @option params [Date, nil] :due_date_lt
-      #
-      #   @option params [String, nil] :external_customer_id
-      #
-      #   @option params [Time, nil] :invoice_date_gt
-      #
-      #   @option params [Time, nil] :invoice_date_gte
-      #
-      #   @option params [Time, nil] :invoice_date_lt
-      #
-      #   @option params [Time, nil] :invoice_date_lte
-      #
-      #   @option params [Boolean, nil] :is_recurring
-      #
-      #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
-      #
-      #   @option params [Array<Symbol, Orb::Models::InvoiceListParams::Status>, nil] :status
-      #
-      #   @option params [String, nil] :subscription_id
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param amount [String, nil]
+      # @param amount_gt [String, nil]
+      # @param amount_lt [String, nil]
+      # @param cursor [String, nil]
+      # @param customer_id [String, nil]
+      # @param date_type [Symbol, Orb::Models::InvoiceListParams::DateType, nil]
+      # @param due_date [Date, nil]
+      # @param due_date_window [String, nil]
+      # @param due_date_gt [Date, nil]
+      # @param due_date_lt [Date, nil]
+      # @param external_customer_id [String, nil]
+      # @param invoice_date_gt [Time, nil]
+      # @param invoice_date_gte [Time, nil]
+      # @param invoice_date_lt [Time, nil]
+      # @param invoice_date_lte [Time, nil]
+      # @param is_recurring [Boolean, nil]
+      # @param limit [Integer]
+      # @param status [Array<Symbol, Orb::Models::InvoiceListParams::Status>, nil]
+      # @param subscription_id [String, nil]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Page<Orb::Models::Invoice>]
       #
@@ -161,11 +114,10 @@ module Orb
       # This endpoint is used to fetch an [`Invoice`](/core-concepts#invoice) given an
       #   identifier.
       #
+      # @overload fetch(invoice_id, request_options: {})
+      #
       # @param invoice_id [String]
-      #
-      # @param params [Orb::Models::InvoiceFetchParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Invoice]
       #
@@ -183,11 +135,10 @@ module Orb
       #   [invoice](/core-concepts#invoice) for the current billing period given a
       #   subscription.
       #
-      # @param params [Orb::Models::InvoiceFetchUpcomingParams, Hash{Symbol=>Object}] .
+      # @overload fetch_upcoming(subscription_id:, request_options: {})
       #
-      #   @option params [String] :subscription_id
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param subscription_id [String]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::InvoiceFetchUpcomingResponse]
       #
@@ -210,17 +161,11 @@ module Orb
       #   sending emails, auto-collecting payment, syncing the invoice to external
       #   providers, etc).
       #
+      # @overload issue(invoice_id, synchronous: nil, request_options: {})
+      #
       # @param invoice_id [String]
-      #
-      # @param params [Orb::Models::InvoiceIssueParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Boolean] :synchronous If true, the invoice will be issued synchronously. If false, the invoice will be
-      #     issued asynchronously. The synchronous option is only available for invoices
-      #     that have no usage fees. If the invoice is configured to sync to an external
-      #     provider, a successful response from this endpoint guarantees the invoice is
-      #     present in the provider.
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param synchronous [Boolean]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Invoice]
       #
@@ -239,17 +184,13 @@ module Orb
       # This endpoint allows an invoice's status to be set the `paid` status. This can
       #   only be done to invoices that are in the `issued` status.
       #
+      # @overload mark_paid(invoice_id, payment_received_date:, external_id: nil, notes: nil, request_options: {})
+      #
       # @param invoice_id [String]
-      #
-      # @param params [Orb::Models::InvoiceMarkPaidParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Date] :payment_received_date A date string to specify the date of the payment.
-      #
-      #   @option params [String, nil] :external_id An optional external ID to associate with the payment.
-      #
-      #   @option params [String, nil] :notes An optional note to associate with the payment.
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param payment_received_date [Date]
+      # @param external_id [String, nil]
+      # @param notes [String, nil]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Invoice]
       #
@@ -268,11 +209,10 @@ module Orb
       # This endpoint collects payment for an invoice using the customer's default
       #   payment method. This action can only be taken on invoices with status "issued".
       #
+      # @overload pay(invoice_id, request_options: {})
+      #
       # @param invoice_id [String]
-      #
-      # @param params [Orb::Models::InvoicePayParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Invoice]
       #
@@ -298,11 +238,10 @@ module Orb
       #   paid, the credit block will be voided. If the invoice was created due to a
       #   top-up, the top-up will be disabled.
       #
+      # @overload void(invoice_id, request_options: {})
+      #
       # @param invoice_id [String]
-      #
-      # @param params [Orb::Models::InvoiceVoidParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Invoice]
       #

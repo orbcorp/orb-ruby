@@ -10,9 +10,9 @@ module Orb
       #
       #   This API does not have any side-effects or return any Orb resources.
       #
-      # @param params [Orb::Models::TopLevelPingParams, Hash{Symbol=>Object}] .
+      # @overload ping(request_options: {})
       #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::TopLevelPingResponse]
       #

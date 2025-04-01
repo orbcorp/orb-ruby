@@ -122,22 +122,14 @@ module Orb
         #   `secondary_grouping_key` based on the matrix price definition, for each
         #   `grouping_value` and `secondary_grouping_value` available.
         #
+        # @overload list(customer_id, currency: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
+        #
         # @param customer_id [String]
-        #
-        # @param params [Orb::Models::Customers::CostListParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [String, nil] :currency The currency or custom pricing unit to use.
-        #
-        #   @option params [Time, nil] :timeframe_end Costs returned are exclusive of `timeframe_end`.
-        #
-        #   @option params [Time, nil] :timeframe_start Costs returned are inclusive of `timeframe_start`.
-        #
-        #   @option params [Symbol, Orb::Models::Customers::CostListParams::ViewMode, nil] :view_mode Controls whether Orb returns cumulative costs since the start of the billing
-        #     period, or incremental day-by-day costs. If your customer has minimums or
-        #     discounts, it's strongly recommended that you use the default cumulative
-        #     behavior.
-        #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param currency [String, nil]
+        # @param timeframe_end [Time, nil]
+        # @param timeframe_start [Time, nil]
+        # @param view_mode [Symbol, Orb::Models::Customers::CostListParams::ViewMode, nil]
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Models::Customers::CostListResponse]
         #
@@ -271,22 +263,14 @@ module Orb
         #   `secondary_grouping_key` based on the matrix price definition, for each
         #   `grouping_value` and `secondary_grouping_value` available.
         #
+        # @overload list_by_external_id(external_customer_id, currency: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
+        #
         # @param external_customer_id [String]
-        #
-        # @param params [Orb::Models::Customers::CostListByExternalIDParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [String, nil] :currency The currency or custom pricing unit to use.
-        #
-        #   @option params [Time, nil] :timeframe_end Costs returned are exclusive of `timeframe_end`.
-        #
-        #   @option params [Time, nil] :timeframe_start Costs returned are inclusive of `timeframe_start`.
-        #
-        #   @option params [Symbol, Orb::Models::Customers::CostListByExternalIDParams::ViewMode, nil] :view_mode Controls whether Orb returns cumulative costs since the start of the billing
-        #     period, or incremental day-by-day costs. If your customer has minimums or
-        #     discounts, it's strongly recommended that you use the default cumulative
-        #     behavior.
-        #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param currency [String, nil]
+        # @param timeframe_end [Time, nil]
+        # @param timeframe_start [Time, nil]
+        # @param view_mode [Symbol, Orb::Models::Customers::CostListByExternalIDParams::ViewMode, nil]
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Models::Customers::CostListByExternalIDResponse]
         #

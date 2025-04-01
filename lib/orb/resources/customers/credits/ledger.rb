@@ -87,32 +87,20 @@ module Orb
           #   When credits are added to a customer's balance as a result of a correction, this
           #   entry will be added to the ledger to indicate the adjustment of credits.
           #
+          # @overload list(customer_id, created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, currency: nil, cursor: nil, entry_status: nil, entry_type: nil, limit: nil, minimum_amount: nil, request_options: {})
+          #
           # @param customer_id [String]
-          #
-          # @param params [Orb::Models::Customers::Credits::LedgerListParams, Hash{Symbol=>Object}] .
-          #
-          #   @option params [Time, nil] :created_at_gt
-          #
-          #   @option params [Time, nil] :created_at_gte
-          #
-          #   @option params [Time, nil] :created_at_lt
-          #
-          #   @option params [Time, nil] :created_at_lte
-          #
-          #   @option params [String, nil] :currency The ledger currency or custom pricing unit to use.
-          #
-          #   @option params [String, nil] :cursor Cursor for pagination. This can be populated by the `next_cursor` value returned
-          #     from the initial request.
-          #
-          #   @option params [Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryStatus, nil] :entry_status
-          #
-          #   @option params [Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryType, nil] :entry_type
-          #
-          #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
-          #
-          #   @option params [String, nil] :minimum_amount
-          #
-          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+          # @param created_at_gt [Time, nil]
+          # @param created_at_gte [Time, nil]
+          # @param created_at_lt [Time, nil]
+          # @param created_at_lte [Time, nil]
+          # @param currency [String, nil]
+          # @param cursor [String, nil]
+          # @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryStatus, nil]
+          # @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryType, nil]
+          # @param limit [Integer]
+          # @param minimum_amount [String, nil]
+          # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Orb::Page<Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry>]
           #
@@ -240,48 +228,22 @@ module Orb
           #   that was originally decremented from, and `amount` indicates how many credits to
           #   return to the customer, up to the block's initial balance.
           #
+          # @overload create_entry(customer_id, amount:, entry_type:, expiry_date:, target_expiry_date:, block_id:, currency: nil, description: nil, effective_date: nil, invoice_settings: nil, metadata: nil, per_unit_cost_basis: nil, void_reason: nil, request_options: {})
+          #
           # @param customer_id [String]
-          #
-          # @param params [Orb::Models::Customers::Credits::LedgerCreateEntryParams, Hash{Symbol=>Object}] .
-          #
-          #   @option params [Float] :amount The number of credits to effect. Note that this is required for increment,
-          #     decrement or void operations.
-          #
-          #   @option params [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType] :entry_type
-          #
-          #   @option params [Time, nil] :expiry_date An ISO 8601 format date that identifies the origination credit block to expire
-          #
-          #   @option params [Date] :target_expiry_date A future date (specified in YYYY-MM-DD format) used for expiration change,
-          #     denoting when credits transferred (as part of a partial block expiration) should
-          #     expire.
-          #
-          #   @option params [String] :block_id The ID of the block to reverse a decrement from.
-          #
-          #   @option params [String, nil] :currency The currency or custom pricing unit to use for this ledger entry. If this is a
-          #     real-world currency, it must match the customer's invoicing currency.
-          #
-          #   @option params [String, nil] :description Optional metadata that can be specified when adding ledger results via the API.
-          #     For example, this can be used to note an increment refers to trial credits, or
-          #     for noting corrections as a result of an incident, etc.
-          #
-          #   @option params [Time, nil] :effective_date An ISO 8601 format date that denotes when this credit balance should become
-          #     available for use.
-          #
-          #   @option params [Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, nil] :invoice_settings Passing `invoice_settings` automatically generates an invoice for the newly
-          #     added credits. If `invoice_settings` is passed, you must specify
-          #     per_unit_cost_basis, as the calculation of the invoice total is done on that
-          #     basis.
-          #
-          #   @option params [Hash{Symbol=>String, nil}, nil] :metadata User-specified key/value pairs for the resource. Individual keys can be removed
-          #     by setting the value to `null`, and the entire metadata mapping can be cleared
-          #     by setting `metadata` to `null`.
-          #
-          #   @option params [String, nil] :per_unit_cost_basis Can only be specified when entry_type=increment. How much, in the customer's
-          #     currency, a customer paid for a single credit in this block
-          #
-          #   @option params [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason, nil] :void_reason Can only be specified when `entry_type=void`. The reason for the void.
-          #
-          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+          # @param amount [Float]
+          # @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType]
+          # @param expiry_date [Time, nil]
+          # @param target_expiry_date [Date]
+          # @param block_id [String]
+          # @param currency [String, nil]
+          # @param description [String, nil]
+          # @param effective_date [Time, nil]
+          # @param invoice_settings [Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, nil]
+          # @param metadata [Hash{Symbol=>String, nil}, nil]
+          # @param per_unit_cost_basis [String, nil]
+          # @param void_reason [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason, nil]
+          # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry]
           #
@@ -408,48 +370,22 @@ module Orb
           #   that was originally decremented from, and `amount` indicates how many credits to
           #   return to the customer, up to the block's initial balance.
           #
+          # @overload create_entry_by_external_id(external_customer_id, amount:, entry_type:, expiry_date:, target_expiry_date:, block_id:, currency: nil, description: nil, effective_date: nil, invoice_settings: nil, metadata: nil, per_unit_cost_basis: nil, void_reason: nil, request_options: {})
+          #
           # @param external_customer_id [String]
-          #
-          # @param params [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams, Hash{Symbol=>Object}] .
-          #
-          #   @option params [Float] :amount The number of credits to effect. Note that this is required for increment,
-          #     decrement or void operations.
-          #
-          #   @option params [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType] :entry_type
-          #
-          #   @option params [Time, nil] :expiry_date An ISO 8601 format date that identifies the origination credit block to expire
-          #
-          #   @option params [Date] :target_expiry_date A future date (specified in YYYY-MM-DD format) used for expiration change,
-          #     denoting when credits transferred (as part of a partial block expiration) should
-          #     expire.
-          #
-          #   @option params [String] :block_id The ID of the block to reverse a decrement from.
-          #
-          #   @option params [String, nil] :currency The currency or custom pricing unit to use for this ledger entry. If this is a
-          #     real-world currency, it must match the customer's invoicing currency.
-          #
-          #   @option params [String, nil] :description Optional metadata that can be specified when adding ledger results via the API.
-          #     For example, this can be used to note an increment refers to trial credits, or
-          #     for noting corrections as a result of an incident, etc.
-          #
-          #   @option params [Time, nil] :effective_date An ISO 8601 format date that denotes when this credit balance should become
-          #     available for use.
-          #
-          #   @option params [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings, nil] :invoice_settings Passing `invoice_settings` automatically generates an invoice for the newly
-          #     added credits. If `invoice_settings` is passed, you must specify
-          #     per_unit_cost_basis, as the calculation of the invoice total is done on that
-          #     basis.
-          #
-          #   @option params [Hash{Symbol=>String, nil}, nil] :metadata User-specified key/value pairs for the resource. Individual keys can be removed
-          #     by setting the value to `null`, and the entire metadata mapping can be cleared
-          #     by setting `metadata` to `null`.
-          #
-          #   @option params [String, nil] :per_unit_cost_basis Can only be specified when entry_type=increment. How much, in the customer's
-          #     currency, a customer paid for a single credit in this block
-          #
-          #   @option params [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason, nil] :void_reason Can only be specified when `entry_type=void`. The reason for the void.
-          #
-          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+          # @param amount [Float]
+          # @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType]
+          # @param expiry_date [Time, nil]
+          # @param target_expiry_date [Date]
+          # @param block_id [String]
+          # @param currency [String, nil]
+          # @param description [String, nil]
+          # @param effective_date [Time, nil]
+          # @param invoice_settings [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings, nil]
+          # @param metadata [Hash{Symbol=>String, nil}, nil]
+          # @param per_unit_cost_basis [String, nil]
+          # @param void_reason [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason, nil]
+          # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry]
           #
@@ -548,32 +484,20 @@ module Orb
           #   When credits are added to a customer's balance as a result of a correction, this
           #   entry will be added to the ledger to indicate the adjustment of credits.
           #
+          # @overload list_by_external_id(external_customer_id, created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, currency: nil, cursor: nil, entry_status: nil, entry_type: nil, limit: nil, minimum_amount: nil, request_options: {})
+          #
           # @param external_customer_id [String]
-          #
-          # @param params [Orb::Models::Customers::Credits::LedgerListByExternalIDParams, Hash{Symbol=>Object}] .
-          #
-          #   @option params [Time, nil] :created_at_gt
-          #
-          #   @option params [Time, nil] :created_at_gte
-          #
-          #   @option params [Time, nil] :created_at_lt
-          #
-          #   @option params [Time, nil] :created_at_lte
-          #
-          #   @option params [String, nil] :currency The ledger currency or custom pricing unit to use.
-          #
-          #   @option params [String, nil] :cursor Cursor for pagination. This can be populated by the `next_cursor` value returned
-          #     from the initial request.
-          #
-          #   @option params [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryStatus, nil] :entry_status
-          #
-          #   @option params [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryType, nil] :entry_type
-          #
-          #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
-          #
-          #   @option params [String, nil] :minimum_amount
-          #
-          #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+          # @param created_at_gt [Time, nil]
+          # @param created_at_gte [Time, nil]
+          # @param created_at_lt [Time, nil]
+          # @param created_at_lte [Time, nil]
+          # @param currency [String, nil]
+          # @param cursor [String, nil]
+          # @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryStatus, nil]
+          # @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryType, nil]
+          # @param limit [Integer]
+          # @param minimum_amount [String, nil]
+          # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Orb::Page<Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry>]
           #

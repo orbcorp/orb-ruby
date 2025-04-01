@@ -15,21 +15,14 @@ module Orb
       #   widget. We can create a price group with a dimension "color" and two prices: one
       #   that charges $10 per red widget and one that charges $20 per blue widget.
       #
-      # @param params [Orb::Models::DimensionalPriceGroupCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(billable_metric_id:, dimensions:, name:, external_dimensional_price_group_id: nil, metadata: nil, request_options: {})
       #
-      #   @option params [String] :billable_metric_id
-      #
-      #   @option params [Array<String>] :dimensions The set of keys (in order) used to disambiguate prices in the group.
-      #
-      #   @option params [String] :name
-      #
-      #   @option params [String, nil] :external_dimensional_price_group_id
-      #
-      #   @option params [Hash{Symbol=>String, nil}, nil] :metadata User-specified key/value pairs for the resource. Individual keys can be removed
-      #     by setting the value to `null`, and the entire metadata mapping can be cleared
-      #     by setting `metadata` to `null`.
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param billable_metric_id [String]
+      # @param dimensions [Array<String>]
+      # @param name [String]
+      # @param external_dimensional_price_group_id [String, nil]
+      # @param metadata [Hash{Symbol=>String, nil}, nil]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::DimensionalPriceGroup]
       #
@@ -47,11 +40,10 @@ module Orb
 
       # Fetch dimensional price group
       #
+      # @overload retrieve(dimensional_price_group_id, request_options: {})
+      #
       # @param dimensional_price_group_id [String]
-      #
-      # @param params [Orb::Models::DimensionalPriceGroupRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::DimensionalPriceGroup]
       #
@@ -67,14 +59,11 @@ module Orb
 
       # List dimensional price groups
       #
-      # @param params [Orb::Models::DimensionalPriceGroupListParams, Hash{Symbol=>Object}] .
+      # @overload list(cursor: nil, limit: nil, request_options: {})
       #
-      #   @option params [String, nil] :cursor Cursor for pagination. This can be populated by the `next_cursor` value returned
-      #     from the initial request.
-      #
-      #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param cursor [String, nil]
+      # @param limit [Integer]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Page<Orb::Models::DimensionalPriceGroup>]
       #
