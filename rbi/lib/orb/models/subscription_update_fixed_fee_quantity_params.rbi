@@ -80,7 +80,7 @@ module Orb
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::TaggedSymbol) }
 
         IMMEDIATE =
           T.let(:immediate, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::TaggedSymbol)

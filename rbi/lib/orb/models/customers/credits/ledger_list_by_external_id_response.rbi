@@ -204,6 +204,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -445,6 +446,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -678,6 +680,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -905,6 +908,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -1136,6 +1140,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -1381,6 +1386,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -1604,6 +1610,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end

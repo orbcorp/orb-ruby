@@ -208,6 +208,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -453,6 +454,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -686,6 +688,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -913,6 +916,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -1148,6 +1152,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -1393,6 +1398,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end
@@ -1620,6 +1626,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry::EntryStatus::TaggedSymbol
                   )
                 end

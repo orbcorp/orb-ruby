@@ -70,7 +70,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Customers::CreditListResponse::Status) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Customers::CreditListResponse::Status::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Customers::CreditListResponse::Status::TaggedSymbol) }
 
           ACTIVE = T.let(:active, Orb::Models::Customers::CreditListResponse::Status::TaggedSymbol)
           PENDING_PAYMENT =

@@ -157,6 +157,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType::TaggedSymbol
                 )
               end
@@ -242,6 +243,7 @@ module Orb
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason::TaggedSymbol
                 )
               end

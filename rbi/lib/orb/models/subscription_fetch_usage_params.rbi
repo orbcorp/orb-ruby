@@ -105,7 +105,7 @@ module Orb
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionFetchUsageParams::Granularity) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Orb::Models::SubscriptionFetchUsageParams::Granularity::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Orb::Models::SubscriptionFetchUsageParams::Granularity::TaggedSymbol) }
 
         DAY = T.let(:day, Orb::Models::SubscriptionFetchUsageParams::Granularity::TaggedSymbol)
 
@@ -123,7 +123,7 @@ module Orb
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionFetchUsageParams::ViewMode) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Orb::Models::SubscriptionFetchUsageParams::ViewMode::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Orb::Models::SubscriptionFetchUsageParams::ViewMode::TaggedSymbol) }
 
         PERIODIC = T.let(:periodic, Orb::Models::SubscriptionFetchUsageParams::ViewMode::TaggedSymbol)
         CUMULATIVE = T.let(:cumulative, Orb::Models::SubscriptionFetchUsageParams::ViewMode::TaggedSymbol)

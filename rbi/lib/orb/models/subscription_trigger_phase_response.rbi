@@ -1353,7 +1353,7 @@ module Orb
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionTriggerPhaseResponse::Status) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Orb::Models::SubscriptionTriggerPhaseResponse::Status::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Orb::Models::SubscriptionTriggerPhaseResponse::Status::TaggedSymbol) }
 
         ACTIVE = T.let(:active, Orb::Models::SubscriptionTriggerPhaseResponse::Status::TaggedSymbol)
         ENDED = T.let(:ended, Orb::Models::SubscriptionTriggerPhaseResponse::Status::TaggedSymbol)

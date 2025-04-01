@@ -407,7 +407,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice::Cadence) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice::Cadence::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice::Cadence::TaggedSymbol
+                )
+              end
 
             ONE_TIME =
               T.let(
@@ -753,6 +759,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -861,6 +868,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -938,6 +946,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -1177,6 +1186,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::Cadence::TaggedSymbol
                   )
                 end
@@ -1290,6 +1300,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -1367,6 +1378,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -1606,6 +1618,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -1776,6 +1789,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -1853,6 +1867,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -2098,6 +2113,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -2276,6 +2292,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -2353,6 +2370,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -2592,6 +2610,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -2751,6 +2770,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -2828,6 +2848,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -3073,6 +3094,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -3253,6 +3275,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -3330,6 +3353,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -3583,6 +3607,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -3677,6 +3702,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -3754,6 +3780,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -4062,6 +4089,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -4156,6 +4184,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -4233,6 +4262,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -4525,6 +4555,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -4619,6 +4650,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -4696,6 +4728,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -4923,6 +4956,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -5019,6 +5053,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -5096,6 +5131,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -5323,6 +5359,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::Cadence::TaggedSymbol
                   )
                 end
@@ -5419,6 +5456,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -5496,6 +5534,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -5723,6 +5762,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -5819,6 +5859,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -5896,6 +5937,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -6123,6 +6165,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
                   )
                 end
@@ -6219,6 +6262,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -6296,6 +6340,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -6523,6 +6568,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -6619,6 +6665,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -6696,6 +6743,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -6923,6 +6971,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -7019,6 +7068,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -7096,6 +7146,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -7323,6 +7374,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -7419,6 +7471,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -7496,6 +7549,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -7723,6 +7777,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -7819,6 +7874,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -7896,6 +7952,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -8123,6 +8180,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -8219,6 +8277,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -8296,6 +8355,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -8523,6 +8583,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -8619,6 +8680,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -8696,6 +8758,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -8923,6 +8986,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -9019,6 +9083,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -9096,6 +9161,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -9323,6 +9389,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -9419,6 +9486,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -9496,6 +9564,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -9723,6 +9792,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -9819,6 +9889,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -9896,6 +9967,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -10123,6 +10195,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
                   )
                 end
@@ -10219,6 +10292,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -10296,6 +10370,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -10523,6 +10598,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -10619,6 +10695,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -10696,6 +10773,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -10923,6 +11001,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::Cadence::TaggedSymbol
                   )
                 end
@@ -11019,6 +11098,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -11096,6 +11176,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -11323,6 +11404,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -11419,6 +11501,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -11496,6 +11579,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -11723,6 +11807,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -11819,6 +11904,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -11896,6 +11982,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -12123,6 +12210,7 @@ module Orb
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
                   )
                 end
@@ -12219,6 +12307,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end
@@ -12296,6 +12385,7 @@ module Orb
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     )
                   end

@@ -92,7 +92,8 @@ module Orb
         extend Orb::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionListParams::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::SubscriptionListParams::Status::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Orb::Models::SubscriptionListParams::Status::TaggedSymbol) }
 
         ACTIVE = T.let(:active, Orb::Models::SubscriptionListParams::Status::TaggedSymbol)
         ENDED = T.let(:ended, Orb::Models::SubscriptionListParams::Status::TaggedSymbol)
