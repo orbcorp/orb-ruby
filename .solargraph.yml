@@ -5,6 +5,6 @@ include:
   - 'Rakefile'
   - 'examples/**/*.rb'
   - 'lib/**/*.rb'
-  - 'test/orb/test_helper.rb'
+  - 'test/orb-billing/test_helper.rb'
 exclude:
   - 'rbi/**/*'

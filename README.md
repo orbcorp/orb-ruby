@@ -4,7 +4,7 @@ The Orb Ruby library provides convenient access to the Orb REST API from any Rub
 
 ## Documentation
 
-Documentation for released of this gem can be found [on RubyDoc](https://gemdocs.org/gems/orb).
+Documentation for released of this gem can be found [on RubyDoc](https://gemdocs.org/gems/orb-billing).
 
 The underlying REST API documentation can be found on [docs.withorb.com](https://docs.withorb.com/reference/api-reference).
 
@@ -13,7 +13,7 @@ The underlying REST API documentation can be found on [docs.withorb.com](https:/
 To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
 
 ```ruby
-gem "orb", "~> 0.1.0.pre.alpha.32"
+gem "orb-billing", "~> 0.1.0.pre.alpha.32"
 ```
 
 To fetch an initial copy of the gem:
@@ -26,7 +26,7 @@ bundle install
 
 ```ruby
 require "bundler/setup"
-require "orb"
+require "orb-billing"
 
 orb = Orb::Client.new(
   api_key: "My API Key" # defaults to ENV["ORB_API_KEY"]
