@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.34 (2025-04-02)
+
+Full Changelog: [v0.1.0-alpha.33...v0.1.0-alpha.34](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.33...v0.1.0-alpha.34)
+
+### Chores
+
+* **internal:** version bump ([#205](https://github.com/orbcorp/orb-ruby/issues/205)) ([eff998e](https://github.com/orbcorp/orb-ruby/commit/eff998ea9bb85edc4987b45026da06d14b905964))
+
 ## 0.1.0-alpha.33 (2025-04-02)
 
 Full Changelog: [v0.1.0-alpha.32...v0.1.0-alpha.33](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.32...v0.1.0-alpha.33)
