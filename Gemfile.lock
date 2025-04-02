@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    orb (0.1.0.pre.alpha.32)
+    orb-billing (0.1.0.pre.alpha.32)
       connection_pool
 
 GEM
@@ -181,7 +181,7 @@ DEPENDENCIES
   minitest-hooks
   minitest-proveit
   minitest-rg
-  orb!
+  orb-billing!
   rake
   rbs
   redcarpet
