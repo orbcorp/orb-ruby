@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module Orb
-  VERSION = "0.1.0-alpha.34"
+  VERSION = "0.1.0-alpha.35"
 end
