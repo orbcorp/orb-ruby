@@ -1,5 +1,5 @@
 # typed: strong
 
 module Orb
-  VERSION = "0.1.0-alpha.35"
+  VERSION = "0.1.0-alpha.36"
 end
