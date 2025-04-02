@@ -29,7 +29,7 @@ module Orb
       # @return [Boolean]
       def next_page? = (raise NotImplementedError)
 
-      # @raise [Orb::APIError]
+      # @raise [Orb::Errors::APIError]
       # @return [Orb::Type::BasePage]
       def next_page = (raise NotImplementedError)
 

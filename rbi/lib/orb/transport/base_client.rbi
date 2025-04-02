@@ -82,9 +82,10 @@ module Orb
         # @api private
         sig do
           params(
-            status: T.any(Integer, Orb::APIConnectionError),
+            status: T.any(Integer, Orb::Errors::APIConnectionError),
             stream: T.nilable(T::Enumerable[String])
-          ).void
+          )
+            .void
         end
         def reap_connection!(status, stream:)
         end
