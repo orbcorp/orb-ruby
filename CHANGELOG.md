@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.0-alpha.36 (2025-04-02)
+
+Full Changelog: [v0.1.0-alpha.35...v0.1.0-alpha.36](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.35...v0.1.0-alpha.36)
+
+### ⚠ BREAKING CHANGES
+
+* use descriptive prefixes for enum names that start with otherwise illegal identifiers ([#209](https://github.com/orbcorp/orb-ruby/issues/209))
+
+### Bug Fixes
+
+* use descriptive prefixes for enum names that start with otherwise illegal identifiers ([#209](https://github.com/orbcorp/orb-ruby/issues/209)) ([0baed23](https://github.com/orbcorp/orb-ruby/commit/0baed2304bbd33fe3f03cf365e5b64b796ace2b2))
+
 ## 0.1.0-alpha.35 (2025-04-02)
 
 Full Changelog: [v0.1.0-alpha.34...v0.1.0-alpha.35](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.34...v0.1.0-alpha.35)
