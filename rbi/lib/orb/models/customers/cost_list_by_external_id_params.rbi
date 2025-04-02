@@ -70,7 +70,7 @@ module Orb
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Customers::CostListByExternalIDParams::ViewMode) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Customers::CostListByExternalIDParams::ViewMode::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Customers::CostListByExternalIDParams::ViewMode::TaggedSymbol) }
 
           PERIODIC = T.let(:periodic, Orb::Models::Customers::CostListByExternalIDParams::ViewMode::TaggedSymbol)
           CUMULATIVE =

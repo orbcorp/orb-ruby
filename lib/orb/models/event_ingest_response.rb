@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Events#ingest
     class EventIngestResponse < Orb::BaseModel
       # @!attribute validation_failed
       #   Contains all failing validation events. In the case of a 200, this array will
@@ -48,6 +49,7 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
+      # @see Orb::Models::EventIngestResponse#debug
       class Debug < Orb::BaseModel
         # @!attribute duplicate
         #

@@ -113,7 +113,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode::TaggedSymbol
+                )
+              end
 
             PERIODIC =
               T.let(:periodic, Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode::TaggedSymbol)
@@ -281,7 +287,13 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode::TaggedSymbol
+                )
+              end
 
             PERIODIC =
               T.let(:periodic, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode::TaggedSymbol)

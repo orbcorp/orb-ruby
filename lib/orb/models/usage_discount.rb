@@ -37,6 +37,7 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
+      # @see Orb::Models::UsageDiscount#discount_type
       module DiscountType
         extend Orb::Enum
 

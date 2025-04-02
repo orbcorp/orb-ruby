@@ -49,7 +49,8 @@ module Orb
         extend Orb::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::AlertCreateForCustomerParams::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::AlertCreateForCustomerParams::Type::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Orb::Models::AlertCreateForCustomerParams::Type::TaggedSymbol) }
 
         CREDIT_BALANCE_DEPLETED =
           T.let(:credit_balance_depleted, Orb::Models::AlertCreateForCustomerParams::Type::TaggedSymbol)

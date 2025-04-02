@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#fetch_schedule
     class SubscriptionFetchScheduleResponse < Orb::BaseModel
       # @!attribute created_at
       #
@@ -33,6 +34,7 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
+      # @see Orb::Models::SubscriptionFetchScheduleResponse#plan
       class Plan < Orb::BaseModel
         # @!attribute id
         #

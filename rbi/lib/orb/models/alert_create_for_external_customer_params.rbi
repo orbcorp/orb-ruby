@@ -52,7 +52,7 @@ module Orb
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::AlertCreateForExternalCustomerParams::Type) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Orb::Models::AlertCreateForExternalCustomerParams::Type::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Orb::Models::AlertCreateForExternalCustomerParams::Type::TaggedSymbol) }
 
         CREDIT_BALANCE_DEPLETED =
           T.let(:credit_balance_depleted, Orb::Models::AlertCreateForExternalCustomerParams::Type::TaggedSymbol)

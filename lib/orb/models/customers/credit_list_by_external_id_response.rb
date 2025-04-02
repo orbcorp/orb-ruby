@@ -3,6 +3,7 @@
 module Orb
   module Models
     module Customers
+      # @see Orb::Resources::Customers::Credits#list_by_external_id
       class CreditListByExternalIDResponse < Orb::BaseModel
         # @!attribute id
         #
@@ -52,6 +53,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Customers::CreditListByExternalIDResponse#status
         module Status
           extend Orb::Enum
 

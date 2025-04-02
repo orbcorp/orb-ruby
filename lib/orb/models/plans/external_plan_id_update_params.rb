@@ -3,6 +3,7 @@
 module Orb
   module Models
     module Plans
+      # @see Orb::Resources::Plans::ExternalPlanID#update
       class ExternalPlanIDUpdateParams < Orb::BaseModel
         # @!parse
         #   extend Orb::Type::RequestParameters::Converter

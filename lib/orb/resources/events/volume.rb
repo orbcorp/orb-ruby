@@ -18,26 +18,17 @@ module Orb
         #   timestamp is passed in for either start or end time, the response includes the
         #   hours the timestamp falls in.
         #
-        # @param params [Orb::Models::Events::VolumeListParams, Hash{Symbol=>Object}] .
+        # @overload list(timeframe_start:, cursor: nil, limit: nil, timeframe_end: nil, request_options: {})
         #
-        #   @option params [Time] :timeframe_start The start of the timeframe, inclusive, in which to return event volume. All
-        #     datetime values are converted to UTC time. If the specified time isn't
-        #     hour-aligned, the response includes the event volume count for the hour the time
-        #     falls in.
-        #
-        #   @option params [String, nil] :cursor Cursor for pagination. This can be populated by the `next_cursor` value returned
-        #     from the initial request.
-        #
-        #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
-        #
-        #   @option params [Time] :timeframe_end The end of the timeframe, exclusive, in which to return event volume. If not
-        #     specified, the current time is used. All datetime values are converted to UTC
-        #     time.If the specified time isn't hour-aligned, the response includes the event
-        #     volumecount for the hour the time falls in.
-        #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param timeframe_start [Time]
+        # @param cursor [String, nil]
+        # @param limit [Integer]
+        # @param timeframe_end [Time]
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Models::Events::EventVolumes]
+        #
+        # @see Orb::Models::Events::VolumeListParams
         def list(params)
           parsed, options = Orb::Models::Events::VolumeListParams.dump_request(params)
           @client.request(
@@ -49,6 +40,8 @@ module Orb
           )
         end
 
+        # @api private
+        #
         # @param client [Orb::Client]
         def initialize(client:)
           @client = client

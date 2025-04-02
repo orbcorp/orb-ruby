@@ -55,27 +55,19 @@ module Orb
       #     100 day period. For higher volume updates, consider using the
       #     [event backfill](create-backfill) endpoint.
       #
+      # @overload update(event_id, event_name:, properties:, timestamp:, customer_id: nil, external_customer_id: nil, request_options: {})
+      #
       # @param event_id [String]
-      #
-      # @param params [Orb::Models::EventUpdateParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [String] :event_name A name to meaningfully identify the action or event type.
-      #
-      #   @option params [Object] :properties A dictionary of custom properties. Values in this dictionary must be numeric,
-      #     boolean, or strings. Nested dictionaries are disallowed.
-      #
-      #   @option params [Time] :timestamp An ISO 8601 format date with no timezone offset (i.e. UTC). This should
-      #     represent the time that usage was recorded, and is particularly important to
-      #     attribute usage to a given billing period.
-      #
-      #   @option params [String, nil] :customer_id The Orb Customer identifier
-      #
-      #   @option params [String, nil] :external_customer_id An alias for the Orb customer, whose mapping is specified when creating the
-      #     customer
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param event_name [String]
+      # @param properties [Object]
+      # @param timestamp [Time]
+      # @param customer_id [String, nil]
+      # @param external_customer_id [String, nil]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::EventUpdateResponse]
+      #
+      # @see Orb::Models::EventUpdateParams
       def update(event_id, params)
         parsed, options = Orb::Models::EventUpdateParams.dump_request(params)
         @client.request(
@@ -128,13 +120,14 @@ module Orb
       #     a 100 day period. For higher volume updates, consider using the
       #     [event backfill](create-backfill) endpoint.
       #
+      # @overload deprecate(event_id, request_options: {})
+      #
       # @param event_id [String]
-      #
-      # @param params [Orb::Models::EventDeprecateParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::EventDeprecateResponse]
+      #
+      # @see Orb::Models::EventDeprecateParams
       def deprecate(event_id, params = {})
         @client.request(
           method: :put,
@@ -349,19 +342,16 @@ module Orb
       #   }
       #   ```
       #
-      # @param params [Orb::Models::EventIngestParams, Hash{Symbol=>Object}] .
+      # @overload ingest(events:, backfill_id: nil, debug: nil, request_options: {})
       #
-      #   @option params [Array<Orb::Models::EventIngestParams::Event>] :events Body param:
-      #
-      #   @option params [String, nil] :backfill_id Query param: If this ingestion request is part of a backfill, this parameter
-      #     ties the ingested events to the backfill
-      #
-      #   @option params [Boolean] :debug Query param: Flag to enable additional debug information in the endpoint
-      #     response
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param events [Array<Orb::Models::EventIngestParams::Event>]
+      # @param backfill_id [String, nil]
+      # @param debug [Boolean]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::EventIngestResponse]
+      #
+      # @see Orb::Models::EventIngestParams
       def ingest(params)
         parsed, options = Orb::Models::EventIngestParams.dump_request(params)
         query_params = [:backfill_id, :debug]
@@ -391,22 +381,16 @@ module Orb
       #   By default, Orb will not throw a `404` if no events matched, Orb will return an
       #   empty array for `data` instead.
       #
-      # @param params [Orb::Models::EventSearchParams, Hash{Symbol=>Object}] .
+      # @overload search(event_ids:, timeframe_end: nil, timeframe_start: nil, request_options: {})
       #
-      #   @option params [Array<String>] :event_ids This is an explicit array of IDs to filter by. Note that an event's ID is the
-      #     idempotency_key that was originally used for ingestion, and this only supports
-      #     events that have not been amended. Values in this array will be treated case
-      #     sensitively.
-      #
-      #   @option params [Time, nil] :timeframe_end The end of the timeframe, exclusive, in which to search events. If not
-      #     specified, the current time is used.
-      #
-      #   @option params [Time, nil] :timeframe_start The start of the timeframe, inclusive, in which to search events. If not
-      #     specified, the one week ago is used.
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param event_ids [Array<String>]
+      # @param timeframe_end [Time, nil]
+      # @param timeframe_start [Time, nil]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::EventSearchResponse]
+      #
+      # @see Orb::Models::EventSearchParams
       def search(params)
         parsed, options = Orb::Models::EventSearchParams.dump_request(params)
         @client.request(
@@ -418,6 +402,8 @@ module Orb
         )
       end
 
+      # @api private
+      #
       # @param client [Orb::Client]
       def initialize(client:)
         @client = client

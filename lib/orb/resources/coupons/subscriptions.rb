@@ -9,18 +9,16 @@ module Orb
         #   the most recently created subscription. For a full discussion of the
         #   subscription resource, see [Subscription](/core-concepts#subscription).
         #
+        # @overload list(coupon_id, cursor: nil, limit: nil, request_options: {})
+        #
         # @param coupon_id [String]
-        #
-        # @param params [Orb::Models::Coupons::SubscriptionListParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [String, nil] :cursor Cursor for pagination. This can be populated by the `next_cursor` value returned
-        #     from the initial request.
-        #
-        #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
-        #
-        #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param cursor [String, nil]
+        # @param limit [Integer]
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Page<Orb::Models::Subscription>]
+        #
+        # @see Orb::Models::Coupons::SubscriptionListParams
         def list(coupon_id, params = {})
           parsed, options = Orb::Models::Coupons::SubscriptionListParams.dump_request(params)
           @client.request(
@@ -33,6 +31,8 @@ module Orb
           )
         end
 
+        # @api private
+        #
         # @param client [Orb::Client]
         def initialize(client:)
           @client = client

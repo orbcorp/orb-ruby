@@ -333,7 +333,7 @@ module Orb
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CreditNote::LineItem::Discount::DiscountType) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Orb::Models::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol) }
 
             PERCENTAGE = T.let(:percentage, Orb::Models::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol)
             AMOUNT = T.let(:amount, Orb::Models::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol)
@@ -404,7 +404,7 @@ module Orb
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType::TaggedSymbol) }
 
           PERCENTAGE =
             T.let(:percentage, Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType::TaggedSymbol)
@@ -435,7 +435,7 @@ module Orb
         extend Orb::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CreditNote::Reason) }
-        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::CreditNote::Reason::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::CreditNote::Reason::TaggedSymbol) }
 
         DUPLICATE = T.let(:Duplicate, Orb::Models::CreditNote::Reason::TaggedSymbol)
         FRAUDULENT = T.let(:Fraudulent, Orb::Models::CreditNote::Reason::TaggedSymbol)
@@ -451,7 +451,7 @@ module Orb
         extend Orb::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CreditNote::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::CreditNote::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::CreditNote::Type::TaggedSymbol) }
 
         REFUND = T.let(:refund, Orb::Models::CreditNote::Type::TaggedSymbol)
         ADJUSTMENT = T.let(:adjustment, Orb::Models::CreditNote::Type::TaggedSymbol)
@@ -515,7 +515,8 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CreditNote::Discount::DiscountType) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::CreditNote::Discount::DiscountType::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Orb::Models::CreditNote::Discount::DiscountType::TaggedSymbol) }
 
           PERCENTAGE = T.let(:percentage, Orb::Models::CreditNote::Discount::DiscountType::TaggedSymbol)
 

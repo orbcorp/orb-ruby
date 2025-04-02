@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Events#search
     class EventSearchParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

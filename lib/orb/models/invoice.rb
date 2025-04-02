@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Invoices#create
     class Invoice < Orb::BaseModel
       # @!attribute id
       #
@@ -461,6 +462,7 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
+      # @see Orb::Models::Invoice#auto_collection
       class AutoCollection < Orb::BaseModel
         # @!attribute enabled
         #   True only if auto-collection is enabled for this invoice.
@@ -504,6 +506,7 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
+      # @see Orb::Models::Invoice#billing_address
       class BillingAddress < Orb::BaseModel
         # @!attribute city
         #
@@ -601,6 +604,7 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
+      # @see Orb::Models::Invoice#customer
       class Customer < Orb::BaseModel
         # @!attribute id
         #
@@ -710,6 +714,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Invoice::CustomerBalanceTransaction#action
         module Action
           extend Orb::Enum
 
@@ -730,6 +735,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Invoice::CustomerBalanceTransaction#credit_note
         class CreditNote < Orb::BaseModel
           # @!attribute id
           #   The id of the Credit note
@@ -745,6 +751,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Invoice::CustomerBalanceTransaction#invoice
         class Invoice < Orb::BaseModel
           # @!attribute id
           #   The Invoice id
@@ -760,6 +767,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Invoice::CustomerBalanceTransaction#type
         module Type
           extend Orb::Enum
 
@@ -774,6 +782,7 @@ module Orb
         end
       end
 
+      # @see Orb::Models::Invoice#customer_tax_id
       class CustomerTaxID < Orb::BaseModel
         # @!attribute country
         #
@@ -905,6 +914,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Invoice::CustomerTaxID#country
         module Country
           extend Orb::Enum
 
@@ -994,6 +1004,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Invoice::CustomerTaxID#type
         module Type
           extend Orb::Enum
 
@@ -1077,6 +1088,7 @@ module Orb
         end
       end
 
+      # @see Orb::Models::Invoice#invoice_source
       module InvoiceSource
         extend Orb::Enum
 
@@ -1666,6 +1678,8 @@ module Orb
         end
 
         # @deprecated
+        #
+        # @see Orb::Models::Invoice::LineItem#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -1692,6 +1706,8 @@ module Orb
         end
 
         # @deprecated
+        #
+        # @see Orb::Models::Invoice::LineItem#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -1775,6 +1791,7 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
+            # @see Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem#grouping
             class Grouping < Orb::BaseModel
               # @!attribute key
               #
@@ -1796,6 +1813,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem#matrix_config
             class MatrixConfig < Orb::BaseModel
               # @!attribute dimension_values
               #   The ordered dimension values for this line item.
@@ -1858,6 +1876,7 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
+            # @see Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem#grouping
             class Grouping < Orb::BaseModel
               # @!attribute key
               #
@@ -1879,6 +1898,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem#tier_config
             class TierConfig < Orb::BaseModel
               # @!attribute first_unit
               #
@@ -1946,6 +1966,7 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
+            # @see Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem#grouping
             class Grouping < Orb::BaseModel
               # @!attribute key
               #
@@ -2003,6 +2024,7 @@ module Orb
         end
       end
 
+      # @see Orb::Models::Invoice#maximum
       class Maximum < Orb::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -2026,6 +2048,7 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
+      # @see Orb::Models::Invoice#minimum
       class Minimum < Orb::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -2099,6 +2122,8 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
 
         # The payment provider that attempted to collect the payment.
+        #
+        # @see Orb::Models::Invoice::PaymentAttempt#payment_provider
         module PaymentProvider
           extend Orb::Enum
 
@@ -2112,6 +2137,7 @@ module Orb
         end
       end
 
+      # @see Orb::Models::Invoice#shipping_address
       class ShippingAddress < Orb::BaseModel
         # @!attribute city
         #
@@ -2156,6 +2182,7 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
+      # @see Orb::Models::Invoice#status
       module Status
         extend Orb::Enum
 
@@ -2172,6 +2199,7 @@ module Orb
         #   def self.values; end
       end
 
+      # @see Orb::Models::Invoice#subscription
       class Subscription < Orb::BaseModel
         # @!attribute id
         #

@@ -65,6 +65,7 @@ module Orb
       def fetch(credit_note_id, request_options: {})
       end
 
+      # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
       def self.new(client:)
       end

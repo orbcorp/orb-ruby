@@ -149,7 +149,7 @@ module Orb
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::TopUpListResponse::ExpiresAfterUnit) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Orb::Models::Customers::Credits::TopUpListResponse::ExpiresAfterUnit::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Orb::Models::Customers::Credits::TopUpListResponse::ExpiresAfterUnit::TaggedSymbol) }
 
             DAY = T.let(:day, Orb::Models::Customers::Credits::TopUpListResponse::ExpiresAfterUnit::TaggedSymbol)
             MONTH = T.let(:month, Orb::Models::Customers::Credits::TopUpListResponse::ExpiresAfterUnit::TaggedSymbol)

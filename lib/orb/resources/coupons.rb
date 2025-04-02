@@ -9,21 +9,17 @@ module Orb
       # This endpoint allows the creation of coupons, which can then be redeemed at
       #   subscription creation or plan change.
       #
-      # @param params [Orb::Models::CouponCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(discount:, redemption_code:, duration_in_months: nil, max_redemptions: nil, request_options: {})
       #
-      #   @option params [Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount] :discount
-      #
-      #   @option params [String] :redemption_code This string can be used to redeem this coupon for a given subscription.
-      #
-      #   @option params [Integer, nil] :duration_in_months This allows for a coupon's discount to apply for a limited time (determined in
-      #     months); a `null` value here means "unlimited time".
-      #
-      #   @option params [Integer, nil] :max_redemptions The maximum number of redemptions allowed for this coupon before it is
-      #     exhausted;`null` here means "unlimited".
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param discount [Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]
+      # @param redemption_code [String]
+      # @param duration_in_months [Integer, nil]
+      # @param max_redemptions [Integer, nil]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Coupon]
+      #
+      # @see Orb::Models::CouponCreateParams
       def create(params)
         parsed, options = Orb::Models::CouponCreateParams.dump_request(params)
         @client.request(
@@ -42,21 +38,17 @@ module Orb
       #   the next page of results if they exist. More information about pagination can be
       #   found in the Pagination-metadata schema.
       #
-      # @param params [Orb::Models::CouponListParams, Hash{Symbol=>Object}] .
+      # @overload list(cursor: nil, limit: nil, redemption_code: nil, show_archived: nil, request_options: {})
       #
-      #   @option params [String, nil] :cursor Cursor for pagination. This can be populated by the `next_cursor` value returned
-      #     from the initial request.
-      #
-      #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
-      #
-      #   @option params [String, nil] :redemption_code Filter to coupons matching this redemption code.
-      #
-      #   @option params [Boolean, nil] :show_archived Show archived coupons as well (by default, this endpoint only returns active
-      #     coupons).
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param cursor [String, nil]
+      # @param limit [Integer]
+      # @param redemption_code [String, nil]
+      # @param show_archived [Boolean, nil]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Page<Orb::Models::Coupon>]
+      #
+      # @see Orb::Models::CouponListParams
       def list(params = {})
         parsed, options = Orb::Models::CouponListParams.dump_request(params)
         @client.request(
@@ -73,13 +65,14 @@ module Orb
       #   redeemed, and will be hidden from lists of active coupons. Additionally, once a
       #   coupon is archived, its redemption code can be reused for a different coupon.
       #
+      # @overload archive(coupon_id, request_options: {})
+      #
       # @param coupon_id [String]
-      #
-      # @param params [Orb::Models::CouponArchiveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Coupon]
+      #
+      # @see Orb::Models::CouponArchiveParams
       def archive(coupon_id, params = {})
         @client.request(
           method: :post,
@@ -93,13 +86,14 @@ module Orb
       #   code, use the [List coupons](list-coupons) endpoint with the redemption_code
       #   parameter.
       #
+      # @overload fetch(coupon_id, request_options: {})
+      #
       # @param coupon_id [String]
-      #
-      # @param params [Orb::Models::CouponFetchParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Coupon]
+      #
+      # @see Orb::Models::CouponFetchParams
       def fetch(coupon_id, params = {})
         @client.request(
           method: :get,
@@ -109,6 +103,8 @@ module Orb
         )
       end
 
+      # @api private
+      #
       # @param client [Orb::Client]
       def initialize(client:)
         @client = client

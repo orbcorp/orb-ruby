@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Events#ingest
     class EventIngestParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

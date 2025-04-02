@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Invoices#issue
     class InvoiceIssueParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

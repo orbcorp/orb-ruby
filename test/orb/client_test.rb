@@ -191,7 +191,7 @@ class OrbTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "/redirected"}, {})
     orb.requester = requester
 
-    assert_raises(Orb::APIConnectionError) do
+    assert_raises(Orb::Errors::APIConnectionError) do
       orb.customers.create(email: "dev@stainless.com", name: "x", request_options: {extra_headers: {}})
     end
 
@@ -209,7 +209,7 @@ class OrbTest < Minitest::Test
     requester = MockRequester.new(303, {"location" => "/redirected"}, {})
     orb.requester = requester
 
-    assert_raises(Orb::APIConnectionError) do
+    assert_raises(Orb::Errors::APIConnectionError) do
       orb.customers.create(email: "dev@stainless.com", name: "x", request_options: {extra_headers: {}})
     end
 
@@ -224,7 +224,7 @@ class OrbTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "/redirected"}, {})
     orb.requester = requester
 
-    assert_raises(Orb::APIConnectionError) do
+    assert_raises(Orb::Errors::APIConnectionError) do
       orb.customers.create(
         email: "dev@stainless.com",
         name: "x",
@@ -243,7 +243,7 @@ class OrbTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "https://example.com/redirected"}, {})
     orb.requester = requester
 
-    assert_raises(Orb::APIConnectionError) do
+    assert_raises(Orb::Errors::APIConnectionError) do
       orb.customers.create(
         email: "dev@stainless.com",
         name: "x",

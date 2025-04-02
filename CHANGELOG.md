@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-alpha.32 (2025-04-02)
+
+Full Changelog: [v0.1.0-alpha.31...v0.1.0-alpha.32](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.31...v0.1.0-alpha.32)
+
+### Features
+
+* link response models to their methods in yard doc ([#198](https://github.com/orbcorp/orb-ruby/issues/198)) ([6f6cc29](https://github.com/orbcorp/orb-ruby/commit/6f6cc2972dd0f0863201d4d7642dbec922893364))
+
+
+### Chores
+
+* improve yard docs readability ([#197](https://github.com/orbcorp/orb-ruby/issues/197)) ([6416b4c](https://github.com/orbcorp/orb-ruby/commit/6416b4c1725c50e22dd7360ce0175651cc7b86fa))
+* **internal:** codegen related update ([#196](https://github.com/orbcorp/orb-ruby/issues/196)) ([d2e04d6](https://github.com/orbcorp/orb-ruby/commit/d2e04d695150fc6253f47f00693f9967a7fa69d4))
+* **internal:** codegen related update ([#199](https://github.com/orbcorp/orb-ruby/issues/199)) ([70d35b6](https://github.com/orbcorp/orb-ruby/commit/70d35b67ae45e59e17e3cbc8b490094b5e74ae75))
+* **internal:** codegen related update ([#201](https://github.com/orbcorp/orb-ruby/issues/201)) ([641222f](https://github.com/orbcorp/orb-ruby/commit/641222f1f19b2e4d14e7eabe8f9b4ef429fe02e9))
+* **internal:** version bump ([#194](https://github.com/orbcorp/orb-ruby/issues/194)) ([42ffeeb](https://github.com/orbcorp/orb-ruby/commit/42ffeebb1ea9141981bd5a92ad8268db02162d7b))
+* order client variables by "importance" ([#200](https://github.com/orbcorp/orb-ruby/issues/200)) ([59fb348](https://github.com/orbcorp/orb-ruby/commit/59fb348f33a4379778338d4f1791707713627a1e))
+
 ## 0.1.0-alpha.31 (2025-04-01)
 
 Full Changelog: [v0.1.0-alpha.30...v0.1.0-alpha.31](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.30...v0.1.0-alpha.31)

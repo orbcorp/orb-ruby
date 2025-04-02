@@ -4,6 +4,7 @@ module Orb
   module Models
     module Customers
       module Credits
+        # @see Orb::Resources::Customers::Credits::TopUps#list
         class TopUpListResponse < Orb::BaseModel
           # @!attribute id
           #
@@ -83,6 +84,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Customers::Credits::TopUpListResponse#invoice_settings
           class InvoiceSettings < Orb::BaseModel
             # @!attribute auto_collection
             #   Whether the credits purchase invoice should auto collect with the customer's
@@ -130,6 +132,8 @@ module Orb
           end
 
           # The unit of expires_after.
+          #
+          # @see Orb::Models::Customers::Credits::TopUpListResponse#expires_after_unit
           module ExpiresAfterUnit
             extend Orb::Enum
 

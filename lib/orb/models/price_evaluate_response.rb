@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Prices#evaluate
     class PriceEvaluateResponse < Orb::BaseModel
       # @!attribute data
       #

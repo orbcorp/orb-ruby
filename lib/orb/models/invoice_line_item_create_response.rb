@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::InvoiceLineItems#create
     class InvoiceLineItemCreateResponse < Orb::BaseModel
       # @!attribute id
       #   A unique ID for this line item.
@@ -578,6 +579,8 @@ module Orb
       end
 
       # @deprecated
+      #
+      # @see Orb::Models::InvoiceLineItemCreateResponse#maximum
       class Maximum < Orb::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -604,6 +607,8 @@ module Orb
       end
 
       # @deprecated
+      #
+      # @see Orb::Models::InvoiceLineItemCreateResponse#minimum
       class Minimum < Orb::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -687,6 +692,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem#grouping
           class Grouping < Orb::BaseModel
             # @!attribute key
             #
@@ -708,6 +714,7 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
+          # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem#matrix_config
           class MatrixConfig < Orb::BaseModel
             # @!attribute dimension_values
             #   The ordered dimension values for this line item.
@@ -771,6 +778,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem#grouping
           class Grouping < Orb::BaseModel
             # @!attribute key
             #
@@ -792,6 +800,7 @@ module Orb
             # def initialize: (Hash | Orb::BaseModel) -> void
           end
 
+          # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem#tier_config
           class TierConfig < Orb::BaseModel
             # @!attribute first_unit
             #
@@ -859,6 +868,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem#grouping
           class Grouping < Orb::BaseModel
             # @!attribute key
             #

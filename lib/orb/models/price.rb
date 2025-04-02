@@ -12,6 +12,8 @@ module Orb
     #
     #   For more on the types of prices, see
     #   [the core concepts documentation](/core-concepts#plan-and-price)
+    #
+    # @see Orb::Resources::Prices#create
     module Price
       extend Orb::Union
 
@@ -261,6 +263,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::UnitPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -275,6 +278,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::UnitPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -295,6 +299,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::UnitPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -309,6 +314,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::UnitPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -326,6 +332,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::UnitPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -346,6 +353,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::UnitPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -366,6 +374,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -380,6 +389,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::UnitPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -400,6 +410,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::UnitPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -423,6 +434,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::UnitPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -446,6 +458,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::UnitPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -459,6 +472,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::UnitPrice#unit_config
         class UnitConfig < Orb::BaseModel
           # @!attribute unit_amount
           #   Rate per unit of usage
@@ -474,6 +488,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::UnitPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -682,6 +697,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::PackagePrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -696,6 +712,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::PackagePrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -716,6 +733,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::PackagePrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -730,6 +748,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::PackagePrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -747,6 +766,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::PackagePrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -767,6 +787,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::PackagePrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -787,6 +808,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -801,6 +823,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::PackagePrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -821,6 +844,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::PackagePrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -844,6 +868,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::PackagePrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -867,6 +892,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::PackagePrice#package_config
         class PackageConfig < Orb::BaseModel
           # @!attribute package_amount
           #   A currency amount to rate usage by
@@ -890,6 +916,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::PackagePrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -903,6 +930,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::PackagePrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -1111,6 +1139,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::MatrixPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -1125,6 +1154,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MatrixPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -1145,6 +1175,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::MatrixPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -1159,6 +1190,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::MatrixPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -1176,6 +1208,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::MatrixPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -1196,6 +1229,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MatrixPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -1216,6 +1250,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -1230,6 +1265,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::MatrixPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -1250,6 +1286,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MatrixPrice#matrix_config
         class MatrixConfig < Orb::BaseModel
           # @!attribute default_unit_amount
           #   Default per unit rate for any usage not bucketed into a specified matrix_value
@@ -1303,6 +1340,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::MatrixPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -1326,6 +1364,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MatrixPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -1349,6 +1388,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MatrixPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -1362,6 +1402,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::MatrixPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -1570,6 +1611,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::TieredPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -1584,6 +1626,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -1604,6 +1647,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::TieredPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -1618,6 +1662,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::TieredPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -1635,6 +1680,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::TieredPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -1655,6 +1701,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -1675,6 +1722,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -1689,6 +1737,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::TieredPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -1709,6 +1758,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -1732,6 +1782,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -1755,6 +1806,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -1768,6 +1820,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::TieredPrice#tiered_config
         class TieredConfig < Orb::BaseModel
           # @!attribute tiers
           #   Tiers for rating based on total usage quantities into the specified tier
@@ -1812,6 +1865,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::TieredPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -2021,6 +2075,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::TieredBpsPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -2035,6 +2090,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredBpsPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -2055,6 +2111,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -2069,6 +2126,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::TieredBpsPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -2086,6 +2144,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::TieredBpsPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -2106,6 +2165,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredBpsPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -2126,6 +2186,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -2140,6 +2201,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::TieredBpsPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -2160,6 +2222,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredBpsPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -2183,6 +2246,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredBpsPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -2206,6 +2270,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredBpsPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -2219,6 +2284,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::TieredBpsPrice#tiered_bps_config
         class TieredBpsConfig < Orb::BaseModel
           # @!attribute tiers
           #   Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
@@ -2271,6 +2337,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::TieredBpsPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -2479,6 +2546,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::BpsPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -2493,6 +2561,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BpsPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -2513,6 +2582,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::BpsPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -2527,6 +2597,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::BpsPrice#bps_config
         class BpsConfig < Orb::BaseModel
           # @!attribute bps
           #   Basis point take rate per event
@@ -2549,6 +2620,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BpsPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -2566,6 +2638,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::BpsPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -2586,6 +2659,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BpsPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -2606,6 +2680,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -2620,6 +2695,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::BpsPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -2640,6 +2716,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BpsPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -2663,6 +2740,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BpsPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -2686,6 +2764,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BpsPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -2699,6 +2778,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::BpsPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -2907,6 +2987,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::BulkBpsPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -2921,6 +3002,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BulkBpsPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -2941,6 +3023,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -2955,6 +3038,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::BulkBpsPrice#bulk_bps_config
         class BulkBpsConfig < Orb::BaseModel
           # @!attribute tiers
           #   Tiers for a bulk BPS pricing model where all usage is aggregated to a single
@@ -3000,6 +3084,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::BulkBpsPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -3017,6 +3102,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::BulkBpsPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -3037,6 +3123,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BulkBpsPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -3057,6 +3144,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -3071,6 +3159,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::BulkBpsPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -3091,6 +3180,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BulkBpsPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -3114,6 +3204,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BulkBpsPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -3137,6 +3228,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BulkBpsPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -3150,6 +3242,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::BulkBpsPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -3358,6 +3451,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::BulkPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -3372,6 +3466,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BulkPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -3392,6 +3487,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::BulkPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -3406,6 +3502,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::BulkPrice#bulk_config
         class BulkConfig < Orb::BaseModel
           # @!attribute tiers
           #   Bulk tiers for rating based on total usage volume
@@ -3443,6 +3540,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::BulkPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -3460,6 +3558,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::BulkPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -3480,6 +3579,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BulkPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -3500,6 +3600,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -3514,6 +3615,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::BulkPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -3534,6 +3636,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BulkPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -3557,6 +3660,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BulkPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -3580,6 +3684,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BulkPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -3593,6 +3698,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::BulkPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -3806,6 +3912,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::ThresholdTotalAmountPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -3820,6 +3927,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::ThresholdTotalAmountPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -3840,6 +3948,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -3854,6 +3963,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::ThresholdTotalAmountPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -3871,6 +3981,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::ThresholdTotalAmountPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -3891,6 +4002,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::ThresholdTotalAmountPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -3911,6 +4023,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -3925,6 +4038,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::ThresholdTotalAmountPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -3945,6 +4059,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::ThresholdTotalAmountPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -3968,6 +4083,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::ThresholdTotalAmountPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -3991,6 +4107,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::ThresholdTotalAmountPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -4004,6 +4121,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::ThresholdTotalAmountPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -4213,6 +4331,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::TieredPackagePrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -4227,6 +4346,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredPackagePrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -4247,6 +4367,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -4261,6 +4382,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::TieredPackagePrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -4278,6 +4400,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::TieredPackagePrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -4298,6 +4421,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredPackagePrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -4318,6 +4442,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -4332,6 +4457,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::TieredPackagePrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -4352,6 +4478,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredPackagePrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -4375,6 +4502,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredPackagePrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -4398,6 +4526,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredPackagePrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -4411,6 +4540,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::TieredPackagePrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -4620,6 +4750,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::GroupedTieredPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -4634,6 +4765,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedTieredPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -4654,6 +4786,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -4668,6 +4801,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::GroupedTieredPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -4685,6 +4819,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::GroupedTieredPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -4705,6 +4840,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedTieredPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -4725,6 +4861,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -4739,6 +4876,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::GroupedTieredPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -4759,6 +4897,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedTieredPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -4782,6 +4921,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedTieredPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -4805,6 +4945,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedTieredPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -4818,6 +4959,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::GroupedTieredPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -5029,6 +5171,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::TieredWithMinimumPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -5043,6 +5186,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredWithMinimumPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -5063,6 +5207,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -5077,6 +5222,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::TieredWithMinimumPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -5094,6 +5240,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::TieredWithMinimumPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -5114,6 +5261,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredWithMinimumPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -5134,6 +5282,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -5148,6 +5297,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::TieredWithMinimumPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -5168,6 +5318,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredWithMinimumPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -5191,6 +5342,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredWithMinimumPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -5214,6 +5366,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredWithMinimumPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -5227,6 +5380,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::TieredWithMinimumPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -5440,6 +5594,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::TieredPackageWithMinimumPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -5454,6 +5609,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredPackageWithMinimumPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -5474,6 +5630,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -5488,6 +5645,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::TieredPackageWithMinimumPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -5505,6 +5663,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::TieredPackageWithMinimumPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -5525,6 +5684,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredPackageWithMinimumPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -5545,6 +5705,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -5559,6 +5720,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::TieredPackageWithMinimumPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -5579,6 +5741,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredPackageWithMinimumPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -5602,6 +5765,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredPackageWithMinimumPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -5625,6 +5789,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredPackageWithMinimumPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -5638,6 +5803,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::TieredPackageWithMinimumPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -5851,6 +6017,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::PackageWithAllocationPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -5865,6 +6032,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::PackageWithAllocationPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -5885,6 +6053,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -5899,6 +6068,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::PackageWithAllocationPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -5916,6 +6086,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::PackageWithAllocationPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -5936,6 +6107,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::PackageWithAllocationPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -5956,6 +6128,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -5970,6 +6143,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::PackageWithAllocationPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -5990,6 +6164,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::PackageWithAllocationPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -6013,6 +6188,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::PackageWithAllocationPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -6036,6 +6212,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::PackageWithAllocationPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -6049,6 +6226,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::PackageWithAllocationPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -6258,6 +6436,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::UnitWithPercentPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -6272,6 +6451,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::UnitWithPercentPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -6292,6 +6472,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -6306,6 +6487,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::UnitWithPercentPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -6323,6 +6505,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::UnitWithPercentPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -6343,6 +6526,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::UnitWithPercentPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -6363,6 +6547,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -6377,6 +6562,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::UnitWithPercentPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -6397,6 +6583,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::UnitWithPercentPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -6420,6 +6607,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::UnitWithPercentPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -6443,6 +6631,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::UnitWithPercentPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -6456,6 +6645,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::UnitWithPercentPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -6670,6 +6860,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::MatrixWithAllocationPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -6684,6 +6875,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MatrixWithAllocationPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -6704,6 +6896,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -6718,6 +6911,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::MatrixWithAllocationPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -6735,6 +6929,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::MatrixWithAllocationPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -6755,6 +6950,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MatrixWithAllocationPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -6775,6 +6971,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -6789,6 +6986,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::MatrixWithAllocationPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -6809,6 +7007,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MatrixWithAllocationPrice#matrix_with_allocation_config
         class MatrixWithAllocationConfig < Orb::BaseModel
           # @!attribute allocation
           #   Allocation to be used to calculate the price
@@ -6870,6 +7069,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::MatrixWithAllocationPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -6893,6 +7093,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MatrixWithAllocationPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -6916,6 +7117,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MatrixWithAllocationPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -6929,6 +7131,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::MatrixWithAllocationPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -7140,6 +7343,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::TieredWithProrationPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -7154,6 +7358,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredWithProrationPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -7174,6 +7379,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -7188,6 +7394,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::TieredWithProrationPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -7205,6 +7412,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::TieredWithProrationPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -7225,6 +7433,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredWithProrationPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -7245,6 +7454,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -7259,6 +7469,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::TieredWithProrationPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -7279,6 +7490,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredWithProrationPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -7302,6 +7514,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredWithProrationPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -7325,6 +7538,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::TieredWithProrationPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -7338,6 +7552,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::TieredWithProrationPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -7549,6 +7764,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::UnitWithProrationPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -7563,6 +7779,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::UnitWithProrationPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -7583,6 +7800,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -7597,6 +7815,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::UnitWithProrationPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -7614,6 +7833,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::UnitWithProrationPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -7634,6 +7854,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::UnitWithProrationPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -7654,6 +7875,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -7668,6 +7890,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::UnitWithProrationPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -7688,6 +7911,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::UnitWithProrationPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -7711,6 +7935,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::UnitWithProrationPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -7734,6 +7959,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::UnitWithProrationPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -7747,6 +7973,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::UnitWithProrationPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -7958,6 +8185,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::GroupedAllocationPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -7972,6 +8200,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedAllocationPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -7992,6 +8221,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -8006,6 +8236,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::GroupedAllocationPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -8023,6 +8254,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::GroupedAllocationPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -8043,6 +8275,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedAllocationPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -8063,6 +8296,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -8077,6 +8311,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::GroupedAllocationPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -8097,6 +8332,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedAllocationPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -8120,6 +8356,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedAllocationPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -8143,6 +8380,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedAllocationPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -8156,6 +8394,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::GroupedAllocationPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -8369,6 +8608,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -8383,6 +8623,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -8403,6 +8644,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -8417,6 +8659,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -8434,6 +8677,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -8454,6 +8698,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -8474,6 +8719,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -8488,6 +8734,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -8508,6 +8755,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -8531,6 +8779,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -8554,6 +8803,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -8567,6 +8817,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -8780,6 +9031,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -8794,6 +9046,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -8814,6 +9067,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -8828,6 +9082,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -8845,6 +9100,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -8865,6 +9121,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -8885,6 +9142,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -8899,6 +9157,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -8919,6 +9178,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -8942,6 +9202,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -8965,6 +9226,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -8978,6 +9240,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -9191,6 +9454,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::MatrixWithDisplayNamePrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -9205,6 +9469,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MatrixWithDisplayNamePrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -9225,6 +9490,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -9239,6 +9505,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::MatrixWithDisplayNamePrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -9256,6 +9523,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::MatrixWithDisplayNamePrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -9276,6 +9544,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MatrixWithDisplayNamePrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -9296,6 +9565,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -9310,6 +9580,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::MatrixWithDisplayNamePrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -9330,6 +9601,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MatrixWithDisplayNamePrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -9353,6 +9625,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MatrixWithDisplayNamePrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -9376,6 +9649,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MatrixWithDisplayNamePrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -9389,6 +9663,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::MatrixWithDisplayNamePrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -9600,6 +9875,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::BulkWithProrationPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -9614,6 +9890,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BulkWithProrationPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -9634,6 +9911,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -9648,6 +9926,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::BulkWithProrationPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -9665,6 +9944,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::BulkWithProrationPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -9685,6 +9965,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BulkWithProrationPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -9705,6 +9986,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -9719,6 +10001,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::BulkWithProrationPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -9739,6 +10022,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BulkWithProrationPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -9762,6 +10046,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BulkWithProrationPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -9785,6 +10070,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::BulkWithProrationPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -9798,6 +10084,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::BulkWithProrationPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -10011,6 +10298,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::GroupedTieredPackagePrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -10025,6 +10313,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedTieredPackagePrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -10045,6 +10334,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -10059,6 +10349,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::GroupedTieredPackagePrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -10076,6 +10367,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::GroupedTieredPackagePrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -10096,6 +10388,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedTieredPackagePrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -10116,6 +10409,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -10130,6 +10424,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::GroupedTieredPackagePrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -10150,6 +10445,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedTieredPackagePrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -10173,6 +10469,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedTieredPackagePrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -10196,6 +10493,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::GroupedTieredPackagePrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -10209,6 +10507,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::GroupedTieredPackagePrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -10422,6 +10721,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::MaxGroupTieredPackagePrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -10436,6 +10736,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MaxGroupTieredPackagePrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -10456,6 +10757,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -10470,6 +10772,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::MaxGroupTieredPackagePrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -10487,6 +10790,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::MaxGroupTieredPackagePrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -10507,6 +10811,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MaxGroupTieredPackagePrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -10527,6 +10832,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -10541,6 +10847,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::MaxGroupTieredPackagePrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -10561,6 +10868,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MaxGroupTieredPackagePrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -10584,6 +10892,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MaxGroupTieredPackagePrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -10607,6 +10916,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::MaxGroupTieredPackagePrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -10620,6 +10930,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::MaxGroupTieredPackagePrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -10833,6 +11144,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -10847,6 +11159,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -10867,6 +11180,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -10881,6 +11195,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -10898,6 +11213,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -10918,6 +11234,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -10938,6 +11255,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -10952,6 +11270,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -10972,6 +11291,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -10995,6 +11315,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -11018,6 +11339,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -11031,6 +11353,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -11244,6 +11567,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -11258,6 +11582,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -11278,6 +11603,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -11292,6 +11618,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -11309,6 +11636,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -11329,6 +11657,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -11349,6 +11678,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -11363,6 +11693,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -11383,6 +11714,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -11406,6 +11738,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -11429,6 +11762,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -11442,6 +11776,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #
@@ -11655,6 +11990,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Price::CumulativeGroupedBulkPrice#billable_metric
         class BillableMetric < Orb::BaseModel
           # @!attribute id
           #
@@ -11669,6 +12005,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::CumulativeGroupedBulkPrice#billing_cycle_configuration
         class BillingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -11689,6 +12026,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -11703,6 +12041,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::CumulativeGroupedBulkPrice#cadence
         module Cadence
           extend Orb::Enum
 
@@ -11720,6 +12059,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::CumulativeGroupedBulkPrice#credit_allocation
         class CreditAllocation < Orb::BaseModel
           # @!attribute allows_rollover
           #
@@ -11740,6 +12080,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::CumulativeGroupedBulkPrice#invoicing_cycle_configuration
         class InvoicingCycleConfiguration < Orb::BaseModel
           # @!attribute duration
           #
@@ -11760,6 +12101,7 @@ module Orb
 
           # def initialize: (Hash | Orb::BaseModel) -> void
 
+          # @see Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
             extend Orb::Enum
 
@@ -11774,6 +12116,7 @@ module Orb
           end
         end
 
+        # @see Orb::Models::Price::CumulativeGroupedBulkPrice#item
         class Item < Orb::BaseModel
           # @!attribute id
           #
@@ -11794,6 +12137,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::CumulativeGroupedBulkPrice#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -11817,6 +12161,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::CumulativeGroupedBulkPrice#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -11840,6 +12185,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Price::CumulativeGroupedBulkPrice#price_type
         module PriceType
           extend Orb::Enum
 
@@ -11853,6 +12199,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Price::CumulativeGroupedBulkPrice#dimensional_price_configuration
         class DimensionalPriceConfiguration < Orb::BaseModel
           # @!attribute dimension_values
           #

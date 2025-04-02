@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Metrics#create
     class BillableMetric < Orb::BaseModel
       # @!attribute id
       #
@@ -56,6 +57,7 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
+      # @see Orb::Models::BillableMetric#status
       module Status
         extend Orb::Enum
 

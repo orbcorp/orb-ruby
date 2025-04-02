@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Subscriptions#update_fixed_fee_quantity
     class SubscriptionUpdateFixedFeeQuantityParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

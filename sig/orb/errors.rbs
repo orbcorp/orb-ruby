@@ -1,171 +1,201 @@
 module Orb
-  class Error < StandardError
-    attr_accessor cause: StandardError?
+  module Errors
+    class Error < StandardError
+      attr_accessor cause: StandardError?
+    end
+
+    class ConversionError < Orb::Errors::Error
+    end
+
+    class APIError < Orb::Errors::Error
+      attr_accessor url: URI::Generic
+
+      attr_accessor status: Integer?
+
+      attr_accessor body: top?
+
+      def initialize: (
+        url: URI::Generic,
+        ?status: Integer?,
+        ?body: Object?,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APIConnectionError < Orb::Errors::APIError
+      def initialize: (
+        url: URI::Generic,
+        ?status: nil,
+        ?body: nil,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APITimeoutError < Orb::Errors::APIConnectionError
+      def initialize: (
+        url: URI::Generic,
+        ?status: nil,
+        ?body: nil,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APIStatusError < Orb::Errors::APIError
+      def self.for: (
+        url: URI::Generic,
+        status: Integer,
+        body: Object?,
+        request: nil,
+        response: nil,
+        ?message: String?
+      ) -> instance
+
+      def initialize: (
+        url: URI::Generic,
+        status: Integer,
+        body: Object?,
+        request: nil,
+        response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class BadRequestError < Orb::Errors::APIStatusError
+      HTTP_STATUS: 400
+    end
+
+    class AuthenticationError < Orb::Errors::APIStatusError
+      HTTP_STATUS: 401
+    end
+
+    class PermissionDeniedError < Orb::Errors::APIStatusError
+      HTTP_STATUS: 403
+    end
+
+    class NotFoundError < Orb::Errors::APIStatusError
+      HTTP_STATUS: 404
+    end
+
+    class ConflictError < Orb::Errors::APIStatusError
+      HTTP_STATUS: 409
+    end
+
+    class UnprocessableEntityError < Orb::Errors::APIStatusError
+      HTTP_STATUS: 422
+    end
+
+    class RateLimitError < Orb::Errors::APIStatusError
+      HTTP_STATUS: 429
+    end
+
+    class InternalServerError < Orb::Errors::APIStatusError
+      HTTP_STATUS: Range[Integer]
+    end
+
+    class ConstraintViolation < Orb::Errors::BadRequestError
+      TYPE: "https://docs.withorb.com/reference/error-responses#400-constraint-violation"
+    end
+
+    class DuplicateResourceCreation < Orb::Errors::BadRequestError
+      TYPE: "https://docs.withorb.com/reference/error-responses#400-duplicate-resource-creation"
+    end
+
+    class FeatureNotAvailable < Orb::Errors::BadRequestError
+      TYPE: "https://docs.withorb.com/reference/error-responses#404-feature-not-available"
+    end
+
+    class RequestValidationError < Orb::Errors::BadRequestError
+      TYPE: "https://docs.withorb.com/reference/error-responses#400-request-validation-errors"
+    end
+
+    class OrbAuthenticationError < Orb::Errors::AuthenticationError
+      TYPE: "https://docs.withorb.com/reference/error-responses#401-authentication-error"
+    end
+
+    class ResourceNotFound < Orb::Errors::NotFoundError
+      TYPE: "https://docs.withorb.com/reference/error-responses#404-resource-not-found"
+    end
+
+    class URLNotFound < Orb::Errors::NotFoundError
+      TYPE: "https://docs.withorb.com/reference/error-responses#404-url-not-found"
+    end
+
+    class ResourceConflict < Orb::Errors::ConflictError
+      TYPE: "https://docs.withorb.com/reference/error-responses#409-resource-conflict"
+    end
+
+    class RequestTooLarge < Orb::Errors::APIStatusError
+      TYPE: "https://docs.withorb.com/reference/error-responses#413-request-too-large"
+    end
+
+    class ResourceTooLarge < Orb::Errors::APIStatusError
+      TYPE: "https://docs.withorb.com/reference/error-responses#413-resource-too-large"
+    end
+
+    class TooManyRequests < Orb::Errors::RateLimitError
+      TYPE: "https://docs.withorb.com/reference/error-responses#429-too-many-requests"
+    end
+
+    class OrbInternalServerError < Orb::Errors::InternalServerError
+      TYPE: "https://docs.withorb.com/reference/error-responses#500-internal-server-error"
+    end
   end
 
-  class ConversionError < Orb::Error
-  end
+  class Error = Orb::Errors::Error
 
-  class APIError < Orb::Error
-    attr_accessor url: URI::Generic
+  class ConversionError = Orb::Errors::ConversionError
 
-    attr_accessor status: Integer?
+  class APIError = Orb::Errors::APIError
 
-    attr_accessor body: top?
+  class APIStatusError = Orb::Errors::APIStatusError
 
-    def initialize: (
-      url: URI::Generic,
-      ?status: Integer?,
-      ?body: Object?,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class APIConnectionError = Orb::Errors::APIConnectionError
 
-  class APIConnectionError < Orb::APIError
-    def initialize: (
-      url: URI::Generic,
-      ?status: nil,
-      ?body: nil,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class APITimeoutError = Orb::Errors::APITimeoutError
 
-  class APITimeoutError < Orb::APIConnectionError
-    def initialize: (
-      url: URI::Generic,
-      ?status: nil,
-      ?body: nil,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class BadRequestError = Orb::Errors::BadRequestError
 
-  class APIStatusError < Orb::APIError
-    def self.for: (
-      url: URI::Generic,
-      status: Integer,
-      body: Object?,
-      request: nil,
-      response: nil,
-      ?message: String?
-    ) -> instance
+  class AuthenticationError = Orb::Errors::AuthenticationError
 
-    def initialize: (
-      url: URI::Generic,
-      status: Integer,
-      body: Object?,
-      request: nil,
-      response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class PermissionDeniedError = Orb::Errors::PermissionDeniedError
 
-  class BadRequestError < Orb::APIStatusError
-    HTTP_STATUS: 400
-  end
+  class NotFoundError = Orb::Errors::NotFoundError
 
-  class AuthenticationError < Orb::APIStatusError
-    HTTP_STATUS: 401
-  end
+  class ConflictError = Orb::Errors::ConflictError
 
-  class PermissionDeniedError < Orb::APIStatusError
-    HTTP_STATUS: 403
-  end
+  class UnprocessableEntityError = Orb::Errors::UnprocessableEntityError
 
-  class NotFoundError < Orb::APIStatusError
-    HTTP_STATUS: 404
-  end
+  class RateLimitError = Orb::Errors::RateLimitError
 
-  class ConflictError < Orb::APIStatusError
-    HTTP_STATUS: 409
-  end
+  class InternalServerError = Orb::Errors::InternalServerError
 
-  class UnprocessableEntityError < Orb::APIStatusError
-    HTTP_STATUS: 422
-  end
+  class ConstraintViolation = Orb::Errors::ConstraintViolation
 
-  class RateLimitError < Orb::APIStatusError
-    HTTP_STATUS: 429
-  end
+  class DuplicateResourceCreation = Orb::Errors::DuplicateResourceCreation
 
-  class InternalServerError < Orb::APIStatusError
-    HTTP_STATUS: Range[Integer]
-  end
+  class FeatureNotAvailable = Orb::Errors::FeatureNotAvailable
 
-  class ConstraintViolation < Orb::BadRequestError
-    HTTP_STATUS: 400
+  class RequestValidationError = Orb::Errors::RequestValidationError
 
-    TYPE: "https://docs.withorb.com/reference/error-responses#400-constraint-violation"
-  end
+  class OrbAuthenticationError = Orb::Errors::OrbAuthenticationError
 
-  class DuplicateResourceCreation < Orb::BadRequestError
-    HTTP_STATUS: 400
+  class ResourceNotFound = Orb::Errors::ResourceNotFound
 
-    TYPE: "https://docs.withorb.com/reference/error-responses#400-duplicate-resource-creation"
-  end
+  class URLNotFound = Orb::Errors::URLNotFound
 
-  class FeatureNotAvailable < Orb::BadRequestError
-    HTTP_STATUS: 400
+  class ResourceConflict = Orb::Errors::ResourceConflict
 
-    TYPE: "https://docs.withorb.com/reference/error-responses#404-feature-not-available"
-  end
+  class RequestTooLarge = Orb::Errors::RequestTooLarge
 
-  class RequestValidationError < Orb::BadRequestError
-    HTTP_STATUS: 400
+  class ResourceTooLarge = Orb::Errors::ResourceTooLarge
 
-    TYPE: "https://docs.withorb.com/reference/error-responses#400-request-validation-errors"
-  end
+  class TooManyRequests = Orb::Errors::TooManyRequests
 
-  class OrbAuthenticationError < Orb::AuthenticationError
-    HTTP_STATUS: 401
-
-    TYPE: "https://docs.withorb.com/reference/error-responses#401-authentication-error"
-  end
-
-  class ResourceNotFound < Orb::NotFoundError
-    HTTP_STATUS: 404
-
-    TYPE: "https://docs.withorb.com/reference/error-responses#404-resource-not-found"
-  end
-
-  class URLNotFound < Orb::NotFoundError
-    HTTP_STATUS: 404
-
-    TYPE: "https://docs.withorb.com/reference/error-responses#404-url-not-found"
-  end
-
-  class ResourceConflict < Orb::ConflictError
-    HTTP_STATUS: 409
-
-    TYPE: "https://docs.withorb.com/reference/error-responses#409-resource-conflict"
-  end
-
-  class RequestTooLarge < Orb::APIStatusError
-    HTTP_STATUS: 413
-
-    TYPE: "https://docs.withorb.com/reference/error-responses#413-request-too-large"
-  end
-
-  class ResourceTooLarge < Orb::APIStatusError
-    HTTP_STATUS: 413
-
-    TYPE: "https://docs.withorb.com/reference/error-responses#413-resource-too-large"
-  end
-
-  class TooManyRequests < Orb::RateLimitError
-    HTTP_STATUS: 429
-
-    TYPE: "https://docs.withorb.com/reference/error-responses#429-too-many-requests"
-  end
-
-  class OrbInternalServerError < Orb::InternalServerError
-    HTTP_STATUS: Range[Integer]
-
-    TYPE: "https://docs.withorb.com/reference/error-responses#500-internal-server-error"
-  end
+  class OrbInternalServerError = Orb::Errors::OrbInternalServerError
 end

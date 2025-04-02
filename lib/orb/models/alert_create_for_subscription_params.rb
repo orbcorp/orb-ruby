@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Alerts#create_for_subscription
     class AlertCreateForSubscriptionParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

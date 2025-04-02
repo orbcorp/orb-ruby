@@ -932,7 +932,8 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Plan::PlanPhase::DurationUnit) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Plan::PlanPhase::DurationUnit::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Orb::Models::Plan::PlanPhase::DurationUnit::TaggedSymbol) }
 
           DAILY = T.let(:daily, Orb::Models::Plan::PlanPhase::DurationUnit::TaggedSymbol)
           MONTHLY = T.let(:monthly, Orb::Models::Plan::PlanPhase::DurationUnit::TaggedSymbol)
@@ -1011,7 +1012,7 @@ module Orb
         extend Orb::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Plan::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Plan::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Plan::Status::TaggedSymbol) }
 
         ACTIVE = T.let(:active, Orb::Models::Plan::Status::TaggedSymbol)
         ARCHIVED = T.let(:archived, Orb::Models::Plan::Status::TaggedSymbol)
@@ -1055,7 +1056,8 @@ module Orb
           extend Orb::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Plan::TrialConfig::TrialPeriodUnit) }
-          OrSymbol = T.type_alias { T.any(Symbol, Orb::Models::Plan::TrialConfig::TrialPeriodUnit::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Orb::Models::Plan::TrialConfig::TrialPeriodUnit::TaggedSymbol) }
 
           DAYS = T.let(:days, Orb::Models::Plan::TrialConfig::TrialPeriodUnit::TaggedSymbol)
 

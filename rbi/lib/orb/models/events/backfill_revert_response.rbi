@@ -110,7 +110,7 @@ module Orb
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Events::BackfillRevertResponse::Status) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Orb::Models::Events::BackfillRevertResponse::Status::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Orb::Models::Events::BackfillRevertResponse::Status::TaggedSymbol) }
 
           PENDING = T.let(:pending, Orb::Models::Events::BackfillRevertResponse::Status::TaggedSymbol)
           REFLECTED = T.let(:reflected, Orb::Models::Events::BackfillRevertResponse::Status::TaggedSymbol)

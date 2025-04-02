@@ -153,7 +153,7 @@ module Orb
             end
           end
         rescue Timeout::Error
-          raise Orb::APITimeoutError
+          raise Orb::Errors::APITimeoutError
         end
 
         conn, _, response = enum.next

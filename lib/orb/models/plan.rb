@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Plans#create
     class Plan < Orb::BaseModel
       # @!attribute id
       #
@@ -578,6 +579,7 @@ module Orb
         #   def self.variants; end
       end
 
+      # @see Orb::Models::Plan#base_plan
       class BasePlan < Orb::BaseModel
         # @!attribute id
         #
@@ -607,6 +609,7 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
+      # @see Orb::Models::Plan#maximum
       class Maximum < Orb::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -630,6 +633,7 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
+      # @see Orb::Models::Plan#minimum
       class Minimum < Orb::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -744,6 +748,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Plan::PlanPhase#duration_unit
         module DurationUnit
           extend Orb::Enum
 
@@ -760,6 +765,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Plan::PlanPhase#maximum
         class Maximum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -783,6 +789,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Plan::PlanPhase#minimum
         class Minimum < Orb::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -807,6 +814,7 @@ module Orb
         end
       end
 
+      # @see Orb::Models::Plan#product
       class Product < Orb::BaseModel
         # @!attribute id
         #
@@ -833,6 +841,7 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
+      # @see Orb::Models::Plan#status
       module Status
         extend Orb::Enum
 
@@ -847,6 +856,7 @@ module Orb
         #   def self.values; end
       end
 
+      # @see Orb::Models::Plan#trial_config
       class TrialConfig < Orb::BaseModel
         # @!attribute trial_period
         #
@@ -866,6 +876,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Plan::TrialConfig#trial_period_unit
         module TrialPeriodUnit
           extend Orb::Enum
 

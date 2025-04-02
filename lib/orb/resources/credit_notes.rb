@@ -6,17 +6,16 @@ module Orb
       # This endpoint is used to create a single
       #   [`Credit Note`](/invoicing/credit-notes).
       #
-      # @param params [Orb::Models::CreditNoteCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(line_items:, memo: nil, reason: nil, request_options: {})
       #
-      #   @option params [Array<Orb::Models::CreditNoteCreateParams::LineItem>] :line_items
-      #
-      #   @option params [String, nil] :memo An optional memo to attach to the credit note.
-      #
-      #   @option params [Symbol, Orb::Models::CreditNoteCreateParams::Reason, nil] :reason An optional reason for the credit note.
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param line_items [Array<Orb::Models::CreditNoteCreateParams::LineItem>]
+      # @param memo [String, nil]
+      # @param reason [Symbol, Orb::Models::CreditNoteCreateParams::Reason, nil]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::CreditNote]
+      #
+      # @see Orb::Models::CreditNoteCreateParams
       def create(params)
         parsed, options = Orb::Models::CreditNoteCreateParams.dump_request(params)
         @client.request(
@@ -32,24 +31,19 @@ module Orb
       #   subscription_id, or external_customer_id. The credit notes will be returned in
       #   reverse chronological order by `creation_time`.
       #
-      # @param params [Orb::Models::CreditNoteListParams, Hash{Symbol=>Object}] .
+      # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, request_options: {})
       #
-      #   @option params [Time, nil] :created_at_gt
-      #
-      #   @option params [Time, nil] :created_at_gte
-      #
-      #   @option params [Time, nil] :created_at_lt
-      #
-      #   @option params [Time, nil] :created_at_lte
-      #
-      #   @option params [String, nil] :cursor Cursor for pagination. This can be populated by the `next_cursor` value returned
-      #     from the initial request.
-      #
-      #   @option params [Integer] :limit The number of items to fetch. Defaults to 20.
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param created_at_gt [Time, nil]
+      # @param created_at_gte [Time, nil]
+      # @param created_at_lt [Time, nil]
+      # @param created_at_lte [Time, nil]
+      # @param cursor [String, nil]
+      # @param limit [Integer]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Page<Orb::Models::CreditNote>]
+      #
+      # @see Orb::Models::CreditNoteListParams
       def list(params = {})
         parsed, options = Orb::Models::CreditNoteListParams.dump_request(params)
         @client.request(
@@ -65,13 +59,14 @@ module Orb
       # This endpoint is used to fetch a single [`Credit Note`](/invoicing/credit-notes)
       #   given an identifier.
       #
+      # @overload fetch(credit_note_id, request_options: {})
+      #
       # @param credit_note_id [String]
-      #
-      # @param params [Orb::Models::CreditNoteFetchParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Orb::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::CreditNote]
+      #
+      # @see Orb::Models::CreditNoteFetchParams
       def fetch(credit_note_id, params = {})
         @client.request(
           method: :get,
@@ -81,6 +76,8 @@ module Orb
         )
       end
 
+      # @api private
+      #
       # @param client [Orb::Client]
       def initialize(client:)
         @client = client

@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Items#list
     class ItemListParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

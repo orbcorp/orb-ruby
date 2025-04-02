@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Alerts#retrieve
     class Alert < Orb::BaseModel
       # @!attribute id
       #   Also referred to as alert_id in this documentation.
@@ -86,6 +87,7 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
+      # @see Orb::Models::Alert#customer
       class Customer < Orb::BaseModel
         # @!attribute id
         #
@@ -108,6 +110,7 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
+      # @see Orb::Models::Alert#metric
       class Metric < Orb::BaseModel
         # @!attribute id
         #
@@ -124,6 +127,7 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
+      # @see Orb::Models::Alert#plan
       class Plan < Orb::BaseModel
         # @!attribute id
         #
@@ -161,6 +165,7 @@ module Orb
         # def initialize: (Hash | Orb::BaseModel) -> void
       end
 
+      # @see Orb::Models::Alert#subscription
       class Subscription < Orb::BaseModel
         # @!attribute id
         #
@@ -198,6 +203,8 @@ module Orb
       end
 
       # The type of alert. This must be a valid alert type.
+      #
+      # @see Orb::Models::Alert#type
       module Type
         extend Orb::Enum
 

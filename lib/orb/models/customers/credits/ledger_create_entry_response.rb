@@ -6,6 +6,8 @@ module Orb
       module Credits
         # The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid
         #   credits within Orb.
+        #
+        # @see Orb::Resources::Customers::Credits::Ledger#create_entry
         module LedgerCreateEntryResponse
           extend Orb::Union
 
@@ -140,6 +142,7 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry#credit_block
             class CreditBlock < Orb::BaseModel
               # @!attribute id
               #
@@ -166,6 +169,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry#customer
             class Customer < Orb::BaseModel
               # @!attribute id
               #
@@ -186,6 +190,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::IncrementLedgerEntry#entry_status
             module EntryStatus
               extend Orb::Enum
 
@@ -330,6 +335,7 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry#credit_block
             class CreditBlock < Orb::BaseModel
               # @!attribute id
               #
@@ -356,6 +362,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry#customer
             class Customer < Orb::BaseModel
               # @!attribute id
               #
@@ -376,6 +383,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::DecrementLedgerEntry#entry_status
             module EntryStatus
               extend Orb::Enum
 
@@ -506,6 +514,7 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry#credit_block
             class CreditBlock < Orb::BaseModel
               # @!attribute id
               #
@@ -532,6 +541,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry#customer
             class Customer < Orb::BaseModel
               # @!attribute id
               #
@@ -552,6 +562,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChangeLedgerEntry#entry_status
             module EntryStatus
               extend Orb::Enum
 
@@ -675,6 +686,7 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry#credit_block
             class CreditBlock < Orb::BaseModel
               # @!attribute id
               #
@@ -701,6 +713,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry#customer
             class Customer < Orb::BaseModel
               # @!attribute id
               #
@@ -721,6 +734,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiryLedgerEntry#entry_status
             module EntryStatus
               extend Orb::Enum
 
@@ -858,6 +872,7 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry#credit_block
             class CreditBlock < Orb::BaseModel
               # @!attribute id
               #
@@ -884,6 +899,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry#customer
             class Customer < Orb::BaseModel
               # @!attribute id
               #
@@ -904,6 +920,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidLedgerEntry#entry_status
             module EntryStatus
               extend Orb::Enum
 
@@ -1048,6 +1065,7 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry#credit_block
             class CreditBlock < Orb::BaseModel
               # @!attribute id
               #
@@ -1074,6 +1092,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry#customer
             class Customer < Orb::BaseModel
               # @!attribute id
               #
@@ -1094,6 +1113,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiatedLedgerEntry#entry_status
             module EntryStatus
               extend Orb::Enum
 
@@ -1217,6 +1237,7 @@ module Orb
 
             # def initialize: (Hash | Orb::BaseModel) -> void
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry#credit_block
             class CreditBlock < Orb::BaseModel
               # @!attribute id
               #
@@ -1243,6 +1264,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry#customer
             class Customer < Orb::BaseModel
               # @!attribute id
               #
@@ -1263,6 +1285,7 @@ module Orb
               # def initialize: (Hash | Orb::BaseModel) -> void
             end
 
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryResponse::AmendmentLedgerEntry#entry_status
             module EntryStatus
               extend Orb::Enum
 

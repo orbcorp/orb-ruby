@@ -54,7 +54,7 @@ module Orb
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::TaggedSymbol) }
 
         IMMEDIATE = T.let(:immediate, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::TaggedSymbol)
       end

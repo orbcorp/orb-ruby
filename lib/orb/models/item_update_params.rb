@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Items#update
     class ItemUpdateParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter
@@ -48,6 +49,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::ItemUpdateParams::ExternalConnection#external_connection_name
         module ExternalConnectionName
           extend Orb::Enum
 

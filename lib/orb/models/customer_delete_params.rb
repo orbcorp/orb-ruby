@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Customers#delete
     class CustomerDeleteParams < Orb::BaseModel
       # @!parse
       #   extend Orb::Type::RequestParameters::Converter

@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Events#deprecate
     class EventDeprecateResponse < Orb::BaseModel
       # @!attribute deprecated
       #   event_id of the deprecated event, if successfully updated

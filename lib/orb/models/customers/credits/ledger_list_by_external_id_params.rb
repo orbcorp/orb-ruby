@@ -4,6 +4,7 @@ module Orb
   module Models
     module Customers
       module Credits
+        # @see Orb::Resources::Customers::Credits::Ledger#list_by_external_id
         class LedgerListByExternalIDParams < Orb::BaseModel
           # @!parse
           #   extend Orb::Type::RequestParameters::Converter

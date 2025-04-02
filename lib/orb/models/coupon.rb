@@ -2,6 +2,7 @@
 
 module Orb
   module Models
+    # @see Orb::Resources::Coupons#create
     class Coupon < Orb::BaseModel
       # @!attribute id
       #   Also referred to as coupon_id in this documentation.
@@ -66,6 +67,7 @@ module Orb
 
       # def initialize: (Hash | Orb::BaseModel) -> void
 
+      # @see Orb::Models::Coupon#discount
       module Discount
         extend Orb::Union
 

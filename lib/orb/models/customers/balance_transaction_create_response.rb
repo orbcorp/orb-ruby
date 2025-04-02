@@ -3,6 +3,7 @@
 module Orb
   module Models
     module Customers
+      # @see Orb::Resources::Customers::BalanceTransactions#create
       class BalanceTransactionCreateResponse < Orb::BaseModel
         # @!attribute id
         #   A unique id for this transaction.
@@ -94,6 +95,7 @@ module Orb
 
         # def initialize: (Hash | Orb::BaseModel) -> void
 
+        # @see Orb::Models::Customers::BalanceTransactionCreateResponse#action
         module Action
           extend Orb::Enum
 
@@ -114,6 +116,7 @@ module Orb
           #   def self.values; end
         end
 
+        # @see Orb::Models::Customers::BalanceTransactionCreateResponse#credit_note
         class CreditNote < Orb::BaseModel
           # @!attribute id
           #   The id of the Credit note
@@ -129,6 +132,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Customers::BalanceTransactionCreateResponse#invoice
         class Invoice < Orb::BaseModel
           # @!attribute id
           #   The Invoice id
@@ -144,6 +148,7 @@ module Orb
           # def initialize: (Hash | Orb::BaseModel) -> void
         end
 
+        # @see Orb::Models::Customers::BalanceTransactionCreateResponse#type
         module Type
           extend Orb::Enum
 
