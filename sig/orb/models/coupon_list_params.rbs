@@ -7,11 +7,11 @@ module Orb
         redemption_code: String?,
         show_archived: bool?
       }
-      & Orb::request_parameters
+      & Orb::Internal::Type::request_parameters
 
     class CouponListParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor cursor: String?
 

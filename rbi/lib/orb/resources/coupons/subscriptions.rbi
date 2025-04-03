@@ -13,9 +13,9 @@ module Orb
             coupon_id: String,
             cursor: T.nilable(String),
             limit: Integer,
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
           )
-            .returns(Orb::Page[Orb::Models::Subscription])
+            .returns(Orb::Internal::Page[Orb::Models::Subscription])
         end
         def list(
           coupon_id,

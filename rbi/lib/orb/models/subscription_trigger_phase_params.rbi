@@ -3,8 +3,8 @@
 module Orb
   module Models
     class SubscriptionTriggerPhaseParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # If false, this request will fail if it would void an issued invoice or create a
       #   credit note. Consider using this as a safety mechanism if you do not expect
@@ -21,7 +21,7 @@ module Orb
         params(
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
           effective_date: T.nilable(Date),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Events#deprecate
     class EventDeprecateParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!parse
       #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]

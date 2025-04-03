@@ -9,7 +9,7 @@ module Orb
 
         sig do
           params(
-            data: T::Array[T.any(Orb::Models::Customers::CostListByExternalIDResponse::Data, Orb::Util::AnyHash)]
+            data: T::Array[T.any(Orb::Models::Customers::CostListByExternalIDResponse::Data, Orb::Internal::Util::AnyHash)]
           )
             .returns(T.attached_class)
         end
@@ -40,7 +40,12 @@ module Orb
 
           sig do
             params(
-              per_price_costs: T::Array[T.any(Orb::Models::Customers::CostListByExternalIDResponse::Data::PerPriceCost, Orb::Util::AnyHash)],
+              per_price_costs: T::Array[
+              T.any(
+                Orb::Models::Customers::CostListByExternalIDResponse::Data::PerPriceCost,
+                Orb::Internal::Util::AnyHash
+              )
+              ],
               subtotal: String,
               timeframe_end: Time,
               timeframe_start: Time,
@@ -124,7 +129,7 @@ module Orb
               params(
                 price: T.any(
                   Orb::Models::Price::UnitPrice,
-                  Orb::Util::AnyHash,
+                  Orb::Internal::Util::AnyHash,
                   Orb::Models::Price::PackagePrice,
                   Orb::Models::Price::MatrixPrice,
                   Orb::Models::Price::TieredPrice,

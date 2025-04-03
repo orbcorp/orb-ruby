@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Metrics#create
     class MetricCreateParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute description
       #   A description of the metric.

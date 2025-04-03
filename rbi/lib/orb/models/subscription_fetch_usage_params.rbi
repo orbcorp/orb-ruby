@@ -3,8 +3,8 @@
 module Orb
   module Models
     class SubscriptionFetchUsageParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # When specified in conjunction with `group_by`, this parameter filters usage to a
       #   single billable metric. Note that both `group_by` and `billable_metric_id` must
@@ -59,7 +59,7 @@ module Orb
           timeframe_end: T.nilable(Time),
           timeframe_start: T.nilable(Time),
           view_mode: T.nilable(Orb::Models::SubscriptionFetchUsageParams::ViewMode::OrSymbol),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

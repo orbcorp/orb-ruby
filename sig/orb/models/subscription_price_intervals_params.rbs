@@ -8,11 +8,11 @@ module Orb
         edit: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit],
         edit_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment]
       }
-      & Orb::request_parameters
+      & Orb::Internal::Type::request_parameters
 
     class SubscriptionPriceIntervalsParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_reader add: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add]?
 

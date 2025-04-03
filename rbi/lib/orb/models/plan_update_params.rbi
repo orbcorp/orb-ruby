@@ -3,8 +3,8 @@
 module Orb
   module Models
     class PlanUpdateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # An optional user-defined ID for this plan resource, used throughout the system
       #   as an alias for this Plan. Use this field to identify a plan by an existing
@@ -22,7 +22,7 @@ module Orb
         params(
           external_plan_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

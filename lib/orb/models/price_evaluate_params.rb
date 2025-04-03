@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Prices#evaluate
     class PriceEvaluateParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute timeframe_end
       #   The exclusive upper bound for event timestamps

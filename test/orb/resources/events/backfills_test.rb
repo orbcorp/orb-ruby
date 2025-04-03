@@ -35,7 +35,7 @@ class Orb::Test::Resources::Events::BackfillsTest < Orb::Test::ResourceTest
     response = @orb.events.backfills.list
 
     assert_pattern do
-      response => Orb::Page
+      response => Orb::Internal::Page
     end
 
     row = response.to_enum.first

@@ -22,7 +22,7 @@ module Orb
         params(
           id: String,
           created_at: Time,
-          external_connections: T::Array[T.any(Orb::Models::Item::ExternalConnection, Orb::Util::AnyHash)],
+          external_connections: T::Array[T.any(Orb::Models::Item::ExternalConnection, Orb::Internal::Util::AnyHash)],
           name: String
         )
           .returns(T.attached_class)

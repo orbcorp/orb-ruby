@@ -1,11 +1,12 @@
 module Orb
   module Models
     type price_list_params =
-      { cursor: String?, limit: Integer } & Orb::request_parameters
+      { cursor: String?, limit: Integer }
+      & Orb::Internal::Type::request_parameters
 
     class PriceListParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor cursor: String?
 

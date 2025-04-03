@@ -21,11 +21,11 @@ module Orb
         tax_id: Orb::Models::CustomerCreateParams::TaxID?,
         timezone: String?
       }
-      & Orb::request_parameters
+      & Orb::Internal::Type::request_parameters
 
     class CustomerCreateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor email: String
 

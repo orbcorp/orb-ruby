@@ -46,7 +46,7 @@ module Orb
       # @param show_archived [Boolean, nil]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Page<Orb::Models::Coupon>]
+      # @return [Orb::Internal::Page<Orb::Models::Coupon>]
       #
       # @see Orb::Models::CouponListParams
       def list(params = {})
@@ -55,7 +55,7 @@ module Orb
           method: :get,
           path: "coupons",
           query: parsed,
-          page: Orb::Page,
+          page: Orb::Internal::Page,
           model: Orb::Models::Coupon,
           options: options
         )

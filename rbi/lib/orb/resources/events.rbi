@@ -62,7 +62,7 @@ module Orb
           timestamp: Time,
           customer_id: T.nilable(String),
           external_customer_id: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
         )
           .returns(Orb::Models::EventUpdateResponse)
       end
@@ -127,7 +127,10 @@ module Orb
       #     a 100 day period. For higher volume updates, consider using the
       #     [event backfill](create-backfill) endpoint.
       sig do
-        params(event_id: String, request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash)))
+        params(
+          event_id: String,
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+        )
           .returns(Orb::Models::EventDeprecateResponse)
       end
       def deprecate(event_id, request_options: {})
@@ -339,10 +342,10 @@ module Orb
       #   ```
       sig do
         params(
-          events: T::Array[T.any(Orb::Models::EventIngestParams::Event, Orb::Util::AnyHash)],
+          events: T::Array[T.any(Orb::Models::EventIngestParams::Event, Orb::Internal::Util::AnyHash)],
           backfill_id: T.nilable(String),
           debug: T::Boolean,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
         )
           .returns(Orb::Models::EventIngestResponse)
       end
@@ -379,7 +382,7 @@ module Orb
           event_ids: T::Array[String],
           timeframe_end: T.nilable(Time),
           timeframe_start: T.nilable(Time),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
         )
           .returns(Orb::Models::EventSearchResponse)
       end

@@ -51,7 +51,7 @@ class Orb::Test::Resources::MetricsTest < Orb::Test::ResourceTest
     response = @orb.metrics.list
 
     assert_pattern do
-      response => Orb::Page
+      response => Orb::Internal::Page
     end
 
     row = response.to_enum.first

@@ -69,7 +69,7 @@ module Orb
         # @param operation_time_lte [Time, nil]
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Orb::Page<Orb::Models::Customers::BalanceTransactionListResponse>]
+        # @return [Orb::Internal::Page<Orb::Models::Customers::BalanceTransactionListResponse>]
         #
         # @see Orb::Models::Customers::BalanceTransactionListParams
         def list(customer_id, params = {})
@@ -78,7 +78,7 @@ module Orb
             method: :get,
             path: ["customers/%1$s/balance_transactions", customer_id],
             query: parsed,
-            page: Orb::Page,
+            page: Orb::Internal::Page,
             model: Orb::Models::Customers::BalanceTransactionListResponse,
             options: options
           )

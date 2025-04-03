@@ -1,10 +1,10 @@
 module Orb
   module Models
-    type top_level_ping_params = {  } & Orb::request_parameters
+    type top_level_ping_params = {  } & Orb::Internal::Type::request_parameters
 
     class TopLevelPingParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       def initialize: (?request_options: Orb::request_opts) -> void
 

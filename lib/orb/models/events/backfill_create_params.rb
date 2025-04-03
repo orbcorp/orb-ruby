@@ -6,8 +6,8 @@ module Orb
       # @see Orb::Resources::Events::Backfills#create
       class BackfillCreateParams < Orb::BaseModel
         # @!parse
-        #   extend Orb::Type::RequestParameters::Converter
-        include Orb::RequestParameters
+        #   extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
 
         # @!attribute timeframe_end
         #   The (exclusive) end of the usage timeframe affected by this backfill. By

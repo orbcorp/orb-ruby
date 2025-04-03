@@ -14,7 +14,7 @@ module Orb
           prices: T::Array[
           T.any(
             Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice,
-            Orb::Util::AnyHash,
+            Orb::Internal::Util::AnyHash,
             Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice,
             Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice,
             Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice,
@@ -46,7 +46,7 @@ module Orb
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           net_terms: T.nilable(Integer),
           status: Orb::Models::PlanCreateParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
         )
           .returns(Orb::Models::Plan)
       end
@@ -85,7 +85,7 @@ module Orb
           plan_id: String,
           external_plan_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
         )
           .returns(Orb::Models::Plan)
       end
@@ -117,9 +117,9 @@ module Orb
           cursor: T.nilable(String),
           limit: Integer,
           status: Orb::Models::PlanListParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
         )
-          .returns(Orb::Page[Orb::Models::Plan])
+          .returns(Orb::Internal::Page[Orb::Models::Plan])
       end
       def list(
         created_at_gt: nil,
@@ -155,7 +155,10 @@ module Orb
       #   Orb supports plan phases, also known as contract ramps. For plans with phases,
       #   the serialized prices refer to all prices across all phases.
       sig do
-        params(plan_id: String, request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash)))
+        params(
+          plan_id: String,
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+        )
           .returns(Orb::Models::Plan)
       end
       def fetch(plan_id, request_options: {})

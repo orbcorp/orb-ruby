@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Subscriptions#price_intervals
     class SubscriptionPriceIntervalsParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute [r] add
       #   A list of price intervals to add to the subscription.

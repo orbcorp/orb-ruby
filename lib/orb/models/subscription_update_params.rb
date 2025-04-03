@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Subscriptions#update
     class SubscriptionUpdateParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute auto_collection
       #   Determines whether issued invoices for this subscription will automatically be

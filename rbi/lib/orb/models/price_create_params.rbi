@@ -3,8 +3,8 @@
 module Orb
   module Models
     class PriceCreateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # The cadence to bill for this price on.
       sig { returns(Orb::Models::PriceCreateParams::Cadence::OrSymbol) }
@@ -28,7 +28,7 @@ module Orb
       sig { returns(Orb::Models::PriceCreateParams::UnitConfig) }
       attr_reader :unit_config
 
-      sig { params(unit_config: T.any(Orb::Models::PriceCreateParams::UnitConfig, Orb::Util::AnyHash)).void }
+      sig { params(unit_config: T.any(Orb::Models::PriceCreateParams::UnitConfig, Orb::Internal::Util::AnyHash)).void }
       attr_writer :unit_config
 
       # The id of the billable metric for the price. Only needed if the price is
@@ -48,7 +48,7 @@ module Orb
 
       sig do
         params(
-          billing_cycle_configuration: T.nilable(T.any(Orb::Models::PriceCreateParams::BillingCycleConfiguration, Orb::Util::AnyHash))
+          billing_cycle_configuration: T.nilable(T.any(Orb::Models::PriceCreateParams::BillingCycleConfiguration, Orb::Internal::Util::AnyHash))
         )
           .void
       end
@@ -78,7 +78,9 @@ module Orb
 
       sig do
         params(
-          invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration, Orb::Util::AnyHash))
+          invoicing_cycle_configuration: T.nilable(
+            T.any(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration, Orb::Internal::Util::AnyHash)
+          )
         )
           .void
       end
@@ -93,13 +95,19 @@ module Orb
       sig { returns(Orb::Models::PriceCreateParams::PackageConfig) }
       attr_reader :package_config
 
-      sig { params(package_config: T.any(Orb::Models::PriceCreateParams::PackageConfig, Orb::Util::AnyHash)).void }
+      sig do
+        params(package_config: T.any(Orb::Models::PriceCreateParams::PackageConfig, Orb::Internal::Util::AnyHash))
+          .void
+      end
       attr_writer :package_config
 
       sig { returns(Orb::Models::PriceCreateParams::MatrixConfig) }
       attr_reader :matrix_config
 
-      sig { params(matrix_config: T.any(Orb::Models::PriceCreateParams::MatrixConfig, Orb::Util::AnyHash)).void }
+      sig do
+        params(matrix_config: T.any(Orb::Models::PriceCreateParams::MatrixConfig, Orb::Internal::Util::AnyHash))
+          .void
+      end
       attr_writer :matrix_config
 
       sig { returns(Orb::Models::PriceCreateParams::MatrixWithAllocationConfig) }
@@ -107,7 +115,7 @@ module Orb
 
       sig do
         params(
-          matrix_with_allocation_config: T.any(Orb::Models::PriceCreateParams::MatrixWithAllocationConfig, Orb::Util::AnyHash)
+          matrix_with_allocation_config: T.any(Orb::Models::PriceCreateParams::MatrixWithAllocationConfig, Orb::Internal::Util::AnyHash)
         )
           .void
       end
@@ -116,31 +124,44 @@ module Orb
       sig { returns(Orb::Models::PriceCreateParams::TieredConfig) }
       attr_reader :tiered_config
 
-      sig { params(tiered_config: T.any(Orb::Models::PriceCreateParams::TieredConfig, Orb::Util::AnyHash)).void }
+      sig do
+        params(tiered_config: T.any(Orb::Models::PriceCreateParams::TieredConfig, Orb::Internal::Util::AnyHash))
+          .void
+      end
       attr_writer :tiered_config
 
       sig { returns(Orb::Models::PriceCreateParams::TieredBpsConfig) }
       attr_reader :tiered_bps_config
 
-      sig { params(tiered_bps_config: T.any(Orb::Models::PriceCreateParams::TieredBpsConfig, Orb::Util::AnyHash)).void }
+      sig do
+        params(
+          tiered_bps_config: T.any(Orb::Models::PriceCreateParams::TieredBpsConfig, Orb::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :tiered_bps_config
 
       sig { returns(Orb::Models::PriceCreateParams::BpsConfig) }
       attr_reader :bps_config
 
-      sig { params(bps_config: T.any(Orb::Models::PriceCreateParams::BpsConfig, Orb::Util::AnyHash)).void }
+      sig { params(bps_config: T.any(Orb::Models::PriceCreateParams::BpsConfig, Orb::Internal::Util::AnyHash)).void }
       attr_writer :bps_config
 
       sig { returns(Orb::Models::PriceCreateParams::BulkBpsConfig) }
       attr_reader :bulk_bps_config
 
-      sig { params(bulk_bps_config: T.any(Orb::Models::PriceCreateParams::BulkBpsConfig, Orb::Util::AnyHash)).void }
+      sig do
+        params(
+          bulk_bps_config: T.any(Orb::Models::PriceCreateParams::BulkBpsConfig, Orb::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :bulk_bps_config
 
       sig { returns(Orb::Models::PriceCreateParams::BulkConfig) }
       attr_reader :bulk_config
 
-      sig { params(bulk_config: T.any(Orb::Models::PriceCreateParams::BulkConfig, Orb::Util::AnyHash)).void }
+      sig { params(bulk_config: T.any(Orb::Models::PriceCreateParams::BulkConfig, Orb::Internal::Util::AnyHash)).void }
       attr_writer :bulk_config
 
       sig { returns(T::Hash[Symbol, T.anything]) }
@@ -207,15 +228,15 @@ module Orb
           item_id: String,
           model_type: Orb::Models::PriceCreateParams::ModelType::OrSymbol,
           name: String,
-          unit_config: T.any(Orb::Models::PriceCreateParams::UnitConfig, Orb::Util::AnyHash),
-          package_config: T.any(Orb::Models::PriceCreateParams::PackageConfig, Orb::Util::AnyHash),
-          matrix_config: T.any(Orb::Models::PriceCreateParams::MatrixConfig, Orb::Util::AnyHash),
-          matrix_with_allocation_config: T.any(Orb::Models::PriceCreateParams::MatrixWithAllocationConfig, Orb::Util::AnyHash),
-          tiered_config: T.any(Orb::Models::PriceCreateParams::TieredConfig, Orb::Util::AnyHash),
-          tiered_bps_config: T.any(Orb::Models::PriceCreateParams::TieredBpsConfig, Orb::Util::AnyHash),
-          bps_config: T.any(Orb::Models::PriceCreateParams::BpsConfig, Orb::Util::AnyHash),
-          bulk_bps_config: T.any(Orb::Models::PriceCreateParams::BulkBpsConfig, Orb::Util::AnyHash),
-          bulk_config: T.any(Orb::Models::PriceCreateParams::BulkConfig, Orb::Util::AnyHash),
+          unit_config: T.any(Orb::Models::PriceCreateParams::UnitConfig, Orb::Internal::Util::AnyHash),
+          package_config: T.any(Orb::Models::PriceCreateParams::PackageConfig, Orb::Internal::Util::AnyHash),
+          matrix_config: T.any(Orb::Models::PriceCreateParams::MatrixConfig, Orb::Internal::Util::AnyHash),
+          matrix_with_allocation_config: T.any(Orb::Models::PriceCreateParams::MatrixWithAllocationConfig, Orb::Internal::Util::AnyHash),
+          tiered_config: T.any(Orb::Models::PriceCreateParams::TieredConfig, Orb::Internal::Util::AnyHash),
+          tiered_bps_config: T.any(Orb::Models::PriceCreateParams::TieredBpsConfig, Orb::Internal::Util::AnyHash),
+          bps_config: T.any(Orb::Models::PriceCreateParams::BpsConfig, Orb::Internal::Util::AnyHash),
+          bulk_bps_config: T.any(Orb::Models::PriceCreateParams::BulkBpsConfig, Orb::Internal::Util::AnyHash),
+          bulk_config: T.any(Orb::Models::PriceCreateParams::BulkConfig, Orb::Internal::Util::AnyHash),
           threshold_total_amount_config: T::Hash[Symbol, T.anything],
           tiered_package_config: T::Hash[Symbol, T.anything],
           grouped_tiered_config: T::Hash[Symbol, T.anything],
@@ -237,14 +258,16 @@ module Orb
           cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
-          billing_cycle_configuration: T.nilable(T.any(Orb::Models::PriceCreateParams::BillingCycleConfiguration, Orb::Util::AnyHash)),
+          billing_cycle_configuration: T.nilable(T.any(Orb::Models::PriceCreateParams::BillingCycleConfiguration, Orb::Internal::Util::AnyHash)),
           conversion_rate: T.nilable(Float),
           external_price_id: T.nilable(String),
           fixed_price_quantity: T.nilable(Float),
           invoice_grouping_key: T.nilable(String),
-          invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration, Orb::Util::AnyHash)),
+          invoicing_cycle_configuration: T.nilable(
+            T.any(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration, Orb::Internal::Util::AnyHash)
+          ),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -555,7 +578,7 @@ module Orb
           params(
             default_unit_amount: String,
             dimensions: T::Array[T.nilable(String)],
-            matrix_values: T::Array[T.any(Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue, Orb::Util::AnyHash)]
+            matrix_values: T::Array[T.any(Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue, Orb::Internal::Util::AnyHash)]
           )
             .returns(T.attached_class)
         end
@@ -623,7 +646,12 @@ module Orb
             allocation: Float,
             default_unit_amount: String,
             dimensions: T::Array[T.nilable(String)],
-            matrix_values: T::Array[T.any(Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue, Orb::Util::AnyHash)]
+            matrix_values: T::Array[
+            T.any(
+              Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue,
+              Orb::Internal::Util::AnyHash
+            )
+            ]
           )
             .returns(T.attached_class)
         end
@@ -676,7 +704,9 @@ module Orb
         attr_accessor :tiers
 
         sig do
-          params(tiers: T::Array[T.any(Orb::Models::PriceCreateParams::TieredConfig::Tier, Orb::Util::AnyHash)])
+          params(
+            tiers: T::Array[T.any(Orb::Models::PriceCreateParams::TieredConfig::Tier, Orb::Internal::Util::AnyHash)]
+          )
             .returns(T.attached_class)
         end
         def self.new(tiers:)
@@ -722,7 +752,9 @@ module Orb
         attr_accessor :tiers
 
         sig do
-          params(tiers: T::Array[T.any(Orb::Models::PriceCreateParams::TieredBpsConfig::Tier, Orb::Util::AnyHash)])
+          params(
+            tiers: T::Array[T.any(Orb::Models::PriceCreateParams::TieredBpsConfig::Tier, Orb::Internal::Util::AnyHash)]
+          )
             .returns(T.attached_class)
         end
         def self.new(tiers:)
@@ -802,7 +834,9 @@ module Orb
         attr_accessor :tiers
 
         sig do
-          params(tiers: T::Array[T.any(Orb::Models::PriceCreateParams::BulkBpsConfig::Tier, Orb::Util::AnyHash)])
+          params(
+            tiers: T::Array[T.any(Orb::Models::PriceCreateParams::BulkBpsConfig::Tier, Orb::Internal::Util::AnyHash)]
+          )
             .returns(T.attached_class)
         end
         def self.new(tiers:)
@@ -852,7 +886,9 @@ module Orb
         attr_accessor :tiers
 
         sig do
-          params(tiers: T::Array[T.any(Orb::Models::PriceCreateParams::BulkConfig::Tier, Orb::Util::AnyHash)])
+          params(
+            tiers: T::Array[T.any(Orb::Models::PriceCreateParams::BulkConfig::Tier, Orb::Internal::Util::AnyHash)]
+          )
             .returns(T.attached_class)
         end
         def self.new(tiers:)

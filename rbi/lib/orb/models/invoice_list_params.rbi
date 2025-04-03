@@ -3,8 +3,8 @@
 module Orb
   module Models
     class InvoiceListParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       sig { returns(T.nilable(String)) }
       attr_accessor :amount
@@ -94,7 +94,7 @@ module Orb
           limit: Integer,
           status: T.nilable(T::Array[Orb::Models::InvoiceListParams::Status::OrSymbol]),
           subscription_id: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

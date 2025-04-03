@@ -19,7 +19,12 @@ module Orb
       sig { returns(T.nilable(Orb::Models::Customer::BillingAddress)) }
       attr_reader :billing_address
 
-      sig { params(billing_address: T.nilable(T.any(Orb::Models::Customer::BillingAddress, Orb::Util::AnyHash))).void }
+      sig do
+        params(
+          billing_address: T.nilable(T.any(Orb::Models::Customer::BillingAddress, Orb::Internal::Util::AnyHash))
+        )
+          .void
+      end
       attr_writer :billing_address
 
       sig { returns(Time) }
@@ -50,7 +55,7 @@ module Orb
       sig { returns(Orb::Models::Customer::Hierarchy) }
       attr_reader :hierarchy
 
-      sig { params(hierarchy: T.any(Orb::Models::Customer::Hierarchy, Orb::Util::AnyHash)).void }
+      sig { params(hierarchy: T.any(Orb::Models::Customer::Hierarchy, Orb::Internal::Util::AnyHash)).void }
       attr_writer :hierarchy
 
       # User specified key-value pairs for the resource. If not present, this defaults
@@ -81,7 +86,12 @@ module Orb
       sig { returns(T.nilable(Orb::Models::Customer::ShippingAddress)) }
       attr_reader :shipping_address
 
-      sig { params(shipping_address: T.nilable(T.any(Orb::Models::Customer::ShippingAddress, Orb::Util::AnyHash))).void }
+      sig do
+        params(
+          shipping_address: T.nilable(T.any(Orb::Models::Customer::ShippingAddress, Orb::Internal::Util::AnyHash))
+        )
+          .void
+      end
       attr_writer :shipping_address
 
       # Tax IDs are commonly required to be displayed on customer invoices, which are
@@ -192,7 +202,7 @@ module Orb
       sig { returns(T.nilable(Orb::Models::Customer::TaxID)) }
       attr_reader :tax_id
 
-      sig { params(tax_id: T.nilable(T.any(Orb::Models::Customer::TaxID, Orb::Util::AnyHash))).void }
+      sig { params(tax_id: T.nilable(T.any(Orb::Models::Customer::TaxID, Orb::Internal::Util::AnyHash))).void }
       attr_writer :tax_id
 
       # A timezone identifier from the IANA timezone database, such as
@@ -206,7 +216,7 @@ module Orb
 
       sig do
         params(
-          accounting_sync_configuration: T.nilable(T.any(Orb::Models::Customer::AccountingSyncConfiguration, Orb::Util::AnyHash))
+          accounting_sync_configuration: T.nilable(T.any(Orb::Models::Customer::AccountingSyncConfiguration, Orb::Internal::Util::AnyHash))
         )
           .void
       end
@@ -217,7 +227,7 @@ module Orb
 
       sig do
         params(
-          reporting_configuration: T.nilable(T.any(Orb::Models::Customer::ReportingConfiguration, Orb::Util::AnyHash))
+          reporting_configuration: T.nilable(T.any(Orb::Models::Customer::ReportingConfiguration, Orb::Internal::Util::AnyHash))
         )
           .void
       end
@@ -247,24 +257,24 @@ module Orb
           additional_emails: T::Array[String],
           auto_collection: T::Boolean,
           balance: String,
-          billing_address: T.nilable(T.any(Orb::Models::Customer::BillingAddress, Orb::Util::AnyHash)),
+          billing_address: T.nilable(T.any(Orb::Models::Customer::BillingAddress, Orb::Internal::Util::AnyHash)),
           created_at: Time,
           currency: T.nilable(String),
           email: String,
           email_delivery: T::Boolean,
           exempt_from_automated_tax: T.nilable(T::Boolean),
           external_customer_id: T.nilable(String),
-          hierarchy: T.any(Orb::Models::Customer::Hierarchy, Orb::Util::AnyHash),
+          hierarchy: T.any(Orb::Models::Customer::Hierarchy, Orb::Internal::Util::AnyHash),
           metadata: T::Hash[Symbol, String],
           name: String,
           payment_provider: T.nilable(Orb::Models::Customer::PaymentProvider::OrSymbol),
           payment_provider_id: T.nilable(String),
           portal_url: T.nilable(String),
-          shipping_address: T.nilable(T.any(Orb::Models::Customer::ShippingAddress, Orb::Util::AnyHash)),
-          tax_id: T.nilable(T.any(Orb::Models::Customer::TaxID, Orb::Util::AnyHash)),
+          shipping_address: T.nilable(T.any(Orb::Models::Customer::ShippingAddress, Orb::Internal::Util::AnyHash)),
+          tax_id: T.nilable(T.any(Orb::Models::Customer::TaxID, Orb::Internal::Util::AnyHash)),
           timezone: String,
-          accounting_sync_configuration: T.nilable(T.any(Orb::Models::Customer::AccountingSyncConfiguration, Orb::Util::AnyHash)),
-          reporting_configuration: T.nilable(T.any(Orb::Models::Customer::ReportingConfiguration, Orb::Util::AnyHash))
+          accounting_sync_configuration: T.nilable(T.any(Orb::Models::Customer::AccountingSyncConfiguration, Orb::Internal::Util::AnyHash)),
+          reporting_configuration: T.nilable(T.any(Orb::Models::Customer::ReportingConfiguration, Orb::Internal::Util::AnyHash))
         )
           .returns(T.attached_class)
       end
@@ -383,14 +393,17 @@ module Orb
         sig { returns(T.nilable(Orb::Models::Customer::Hierarchy::Parent)) }
         attr_reader :parent
 
-        sig { params(parent: T.nilable(T.any(Orb::Models::Customer::Hierarchy::Parent, Orb::Util::AnyHash))).void }
+        sig do
+          params(parent: T.nilable(T.any(Orb::Models::Customer::Hierarchy::Parent, Orb::Internal::Util::AnyHash)))
+            .void
+        end
         attr_writer :parent
 
         # The hierarchical relationships for this customer.
         sig do
           params(
-            children: T::Array[T.any(Orb::Models::Customer::Hierarchy::Child, Orb::Util::AnyHash)],
-            parent: T.nilable(T.any(Orb::Models::Customer::Hierarchy::Parent, Orb::Util::AnyHash))
+            children: T::Array[T.any(Orb::Models::Customer::Hierarchy::Child, Orb::Internal::Util::AnyHash)],
+            parent: T.nilable(T.any(Orb::Models::Customer::Hierarchy::Parent, Orb::Internal::Util::AnyHash))
           )
             .returns(T.attached_class)
         end
@@ -834,7 +847,12 @@ module Orb
 
         sig do
           params(
-            accounting_providers: T::Array[T.any(Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider, Orb::Util::AnyHash)],
+            accounting_providers: T::Array[
+            T.any(
+              Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider,
+              Orb::Internal::Util::AnyHash
+            )
+            ],
             excluded: T::Boolean
           )
             .returns(T.attached_class)

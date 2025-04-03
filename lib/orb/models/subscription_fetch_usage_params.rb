@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Subscriptions#fetch_usage
     class SubscriptionFetchUsageParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute billable_metric_id
       #   When specified in conjunction with `group_by`, this parameter filters usage to a

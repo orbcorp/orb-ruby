@@ -1,11 +1,11 @@
 module Orb
   module Models
     type subscription_unschedule_fixed_fee_quantity_updates_params =
-      { price_id: String } & Orb::request_parameters
+      { price_id: String } & Orb::Internal::Type::request_parameters
 
     class SubscriptionUnscheduleFixedFeeQuantityUpdatesParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor price_id: String
 

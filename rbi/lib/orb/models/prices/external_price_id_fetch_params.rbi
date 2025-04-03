@@ -4,11 +4,16 @@ module Orb
   module Models
     module Prices
       class ExternalPriceIDFetchParams < Orb::BaseModel
-        extend Orb::Type::RequestParameters::Converter
-        include Orb::RequestParameters
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
 
         sig do
-          params(request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)).returns(T.attached_class)
+          params(
+            request_options: T.any(
+              Orb::RequestOptions,
+              Orb::Internal::Util::AnyHash
+            )
+          ).returns(T.attached_class)
         end
         def self.new(request_options: {})
         end

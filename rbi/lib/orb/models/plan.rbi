@@ -26,7 +26,7 @@ module Orb
       sig { returns(T.nilable(Orb::Models::Plan::BasePlan)) }
       attr_reader :base_plan
 
-      sig { params(base_plan: T.nilable(T.any(Orb::Models::Plan::BasePlan, Orb::Util::AnyHash))).void }
+      sig { params(base_plan: T.nilable(T.any(Orb::Models::Plan::BasePlan, Orb::Internal::Util::AnyHash))).void }
       attr_writer :base_plan
 
       # The parent plan id if the given plan was created by overriding one or more of
@@ -78,7 +78,7 @@ module Orb
       sig { returns(T.nilable(Orb::Models::Plan::Maximum)) }
       attr_reader :maximum
 
-      sig { params(maximum: T.nilable(T.any(Orb::Models::Plan::Maximum, Orb::Util::AnyHash))).void }
+      sig { params(maximum: T.nilable(T.any(Orb::Models::Plan::Maximum, Orb::Internal::Util::AnyHash))).void }
       attr_writer :maximum
 
       sig { returns(T.nilable(String)) }
@@ -94,7 +94,7 @@ module Orb
       sig { returns(T.nilable(Orb::Models::Plan::Minimum)) }
       attr_reader :minimum
 
-      sig { params(minimum: T.nilable(T.any(Orb::Models::Plan::Minimum, Orb::Util::AnyHash))).void }
+      sig { params(minimum: T.nilable(T.any(Orb::Models::Plan::Minimum, Orb::Internal::Util::AnyHash))).void }
       attr_writer :minimum
 
       sig { returns(T.nilable(String)) }
@@ -157,7 +157,7 @@ module Orb
       sig { returns(Orb::Models::Plan::Product) }
       attr_reader :product
 
-      sig { params(product: T.any(Orb::Models::Plan::Product, Orb::Util::AnyHash)).void }
+      sig { params(product: T.any(Orb::Models::Plan::Product, Orb::Internal::Util::AnyHash)).void }
       attr_writer :product
 
       sig { returns(Orb::Models::Plan::Status::TaggedSymbol) }
@@ -166,7 +166,7 @@ module Orb
       sig { returns(Orb::Models::Plan::TrialConfig) }
       attr_reader :trial_config
 
-      sig { params(trial_config: T.any(Orb::Models::Plan::TrialConfig, Orb::Util::AnyHash)).void }
+      sig { params(trial_config: T.any(Orb::Models::Plan::TrialConfig, Orb::Internal::Util::AnyHash)).void }
       attr_writer :trial_config
 
       sig { returns(Integer) }
@@ -182,14 +182,14 @@ module Orb
           adjustments: T::Array[
           T.any(
             Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment,
-            Orb::Util::AnyHash,
+            Orb::Internal::Util::AnyHash,
             Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment,
             Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment,
             Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment,
             Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
           )
           ],
-          base_plan: T.nilable(T.any(Orb::Models::Plan::BasePlan, Orb::Util::AnyHash)),
+          base_plan: T.nilable(T.any(Orb::Models::Plan::BasePlan, Orb::Internal::Util::AnyHash)),
           base_plan_id: T.nilable(String),
           created_at: Time,
           currency: String,
@@ -198,7 +198,7 @@ module Orb
           discount: T.nilable(
             T.any(
               Orb::Models::PercentageDiscount,
-              Orb::Util::AnyHash,
+              Orb::Internal::Util::AnyHash,
               Orb::Models::TrialDiscount,
               Orb::Models::UsageDiscount,
               Orb::Models::AmountDiscount
@@ -206,18 +206,18 @@ module Orb
           ),
           external_plan_id: T.nilable(String),
           invoicing_currency: String,
-          maximum: T.nilable(T.any(Orb::Models::Plan::Maximum, Orb::Util::AnyHash)),
+          maximum: T.nilable(T.any(Orb::Models::Plan::Maximum, Orb::Internal::Util::AnyHash)),
           maximum_amount: T.nilable(String),
           metadata: T::Hash[Symbol, String],
-          minimum: T.nilable(T.any(Orb::Models::Plan::Minimum, Orb::Util::AnyHash)),
+          minimum: T.nilable(T.any(Orb::Models::Plan::Minimum, Orb::Internal::Util::AnyHash)),
           minimum_amount: T.nilable(String),
           name: String,
           net_terms: T.nilable(Integer),
-          plan_phases: T.nilable(T::Array[T.any(Orb::Models::Plan::PlanPhase, Orb::Util::AnyHash)]),
+          plan_phases: T.nilable(T::Array[T.any(Orb::Models::Plan::PlanPhase, Orb::Internal::Util::AnyHash)]),
           prices: T::Array[
           T.any(
             Orb::Models::Price::UnitPrice,
-            Orb::Util::AnyHash,
+            Orb::Internal::Util::AnyHash,
             Orb::Models::Price::PackagePrice,
             Orb::Models::Price::MatrixPrice,
             Orb::Models::Price::TieredPrice,
@@ -247,9 +247,9 @@ module Orb
             Orb::Models::Price::CumulativeGroupedBulkPrice
           )
           ],
-          product: T.any(Orb::Models::Plan::Product, Orb::Util::AnyHash),
+          product: T.any(Orb::Models::Plan::Product, Orb::Internal::Util::AnyHash),
           status: Orb::Models::Plan::Status::OrSymbol,
-          trial_config: T.any(Orb::Models::Plan::TrialConfig, Orb::Util::AnyHash),
+          trial_config: T.any(Orb::Models::Plan::TrialConfig, Orb::Internal::Util::AnyHash),
           version: Integer
         )
           .returns(T.attached_class)
@@ -839,7 +839,7 @@ module Orb
         sig { returns(T.nilable(Orb::Models::Plan::PlanPhase::Maximum)) }
         attr_reader :maximum
 
-        sig { params(maximum: T.nilable(T.any(Orb::Models::Plan::PlanPhase::Maximum, Orb::Util::AnyHash))).void }
+        sig { params(maximum: T.nilable(T.any(Orb::Models::Plan::PlanPhase::Maximum, Orb::Internal::Util::AnyHash))).void }
         attr_writer :maximum
 
         sig { returns(T.nilable(String)) }
@@ -848,7 +848,7 @@ module Orb
         sig { returns(T.nilable(Orb::Models::Plan::PlanPhase::Minimum)) }
         attr_reader :minimum
 
-        sig { params(minimum: T.nilable(T.any(Orb::Models::Plan::PlanPhase::Minimum, Orb::Util::AnyHash))).void }
+        sig { params(minimum: T.nilable(T.any(Orb::Models::Plan::PlanPhase::Minimum, Orb::Internal::Util::AnyHash))).void }
         attr_writer :minimum
 
         sig { returns(T.nilable(String)) }
@@ -868,7 +868,7 @@ module Orb
             discount: T.nilable(
               T.any(
                 Orb::Models::PercentageDiscount,
-                Orb::Util::AnyHash,
+                Orb::Internal::Util::AnyHash,
                 Orb::Models::TrialDiscount,
                 Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
@@ -876,9 +876,9 @@ module Orb
             ),
             duration: T.nilable(Integer),
             duration_unit: T.nilable(Orb::Models::Plan::PlanPhase::DurationUnit::OrSymbol),
-            maximum: T.nilable(T.any(Orb::Models::Plan::PlanPhase::Maximum, Orb::Util::AnyHash)),
+            maximum: T.nilable(T.any(Orb::Models::Plan::PlanPhase::Maximum, Orb::Internal::Util::AnyHash)),
             maximum_amount: T.nilable(String),
-            minimum: T.nilable(T.any(Orb::Models::Plan::PlanPhase::Minimum, Orb::Util::AnyHash)),
+            minimum: T.nilable(T.any(Orb::Models::Plan::PlanPhase::Minimum, Orb::Internal::Util::AnyHash)),
             minimum_amount: T.nilable(String),
             name: String,
             order: Integer

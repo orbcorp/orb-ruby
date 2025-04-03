@@ -15,7 +15,7 @@ module Orb
       sig { returns(Orb::Models::Item) }
       attr_reader :item
 
-      sig { params(item: T.any(Orb::Models::Item, Orb::Util::AnyHash)).void }
+      sig { params(item: T.any(Orb::Models::Item, Orb::Internal::Util::AnyHash)).void }
       attr_writer :item
 
       # User specified key-value pairs for the resource. If not present, this defaults
@@ -38,7 +38,7 @@ module Orb
         params(
           id: String,
           description: T.nilable(String),
-          item: T.any(Orb::Models::Item, Orb::Util::AnyHash),
+          item: T.any(Orb::Models::Item, Orb::Internal::Util::AnyHash),
           metadata: T::Hash[Symbol, String],
           name: String,
           status: Orb::Models::BillableMetric::Status::OrSymbol

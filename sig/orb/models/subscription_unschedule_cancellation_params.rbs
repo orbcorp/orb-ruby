@@ -1,11 +1,11 @@
 module Orb
   module Models
     type subscription_unschedule_cancellation_params =
-      {  } & Orb::request_parameters
+      {  } & Orb::Internal::Type::request_parameters
 
     class SubscriptionUnscheduleCancellationParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       def initialize: (?request_options: Orb::request_opts) -> void
 
