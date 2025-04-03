@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Subscriptions#trigger_phase
-    class SubscriptionTriggerPhaseParams < Orb::BaseModel
+    class SubscriptionTriggerPhaseParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -14,7 +14,7 @@ module Orb
       #     existing invoices to be changed.
       #
       #   @return [Boolean, nil]
-      optional :allow_invoice_credit_or_void, Orb::BooleanModel, nil?: true
+      optional :allow_invoice_credit_or_void, Orb::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute effective_date
       #   The date on which the phase change should take effect. If not provided, defaults
@@ -30,7 +30,7 @@ module Orb
       #   #
       #   def initialize(allow_invoice_credit_or_void: nil, effective_date: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
     end
   end
 end

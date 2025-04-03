@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class SubscriptionListParams < Orb::BaseModel
+    class SubscriptionListParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -50,7 +50,7 @@ module Orb
           external_customer_id: T.nilable(T::Array[String]),
           limit: Integer,
           status: T.nilable(Orb::Models::SubscriptionListParams::Status::OrSymbol),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -89,7 +89,7 @@ module Orb
       end
 
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionListParams::Status) }
         OrSymbol =

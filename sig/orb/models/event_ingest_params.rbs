@@ -8,7 +8,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class EventIngestParams < Orb::BaseModel
+    class EventIngestParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -39,7 +39,7 @@ module Orb
           external_customer_id: String?
         }
 
-      class Event < Orb::BaseModel
+      class Event < Orb::Internal::Type::BaseModel
         attr_accessor event_name: String
 
         attr_accessor idempotency_key: String

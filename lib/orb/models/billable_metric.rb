@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Metrics#create
-    class BillableMetric < Orb::BaseModel
+    class BillableMetric < Orb::Internal::Type::BaseModel
       # @!attribute id
       #
       #   @return [String]
@@ -29,7 +29,7 @@ module Orb
       #     `null`.
       #
       #   @return [Hash{Symbol=>String}]
-      required :metadata, Orb::HashOf[String]
+      required :metadata, Orb::Internal::Type::HashOf[String]
 
       # @!attribute name
       #
@@ -55,11 +55,11 @@ module Orb
       #   #
       #   def initialize(id:, description:, item:, metadata:, name:, status:, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # @see Orb::Models::BillableMetric#status
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         ACTIVE = :active
         DRAFT = :draft

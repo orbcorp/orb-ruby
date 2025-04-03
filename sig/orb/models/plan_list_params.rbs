@@ -12,7 +12,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class PlanListParams < Orb::BaseModel
+    class PlanListParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -52,7 +52,7 @@ module Orb
       type status = :active | :archived | :draft
 
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         ACTIVE: :active
         ARCHIVED: :archived

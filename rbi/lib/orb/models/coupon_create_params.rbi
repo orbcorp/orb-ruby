@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class CouponCreateParams < Orb::BaseModel
+    class CouponCreateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -34,13 +34,13 @@ module Orb
         params(
           discount: T.any(
             Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
-            Orb::Internal::Util::AnyHash,
+            Orb::Internal::AnyHash,
             Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
           ),
           redemption_code: String,
           duration_in_months: T.nilable(Integer),
           max_redemptions: T.nilable(Integer),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -72,9 +72,9 @@ module Orb
       end
 
       module Discount
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
-        class NewCouponPercentageDiscount < Orb::BaseModel
+        class NewCouponPercentageDiscount < Orb::Internal::Type::BaseModel
           sig { returns(Symbol) }
           attr_accessor :discount_type
 
@@ -90,7 +90,7 @@ module Orb
           end
         end
 
-        class NewCouponAmountDiscount < Orb::BaseModel
+        class NewCouponAmountDiscount < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :amount_discount
 

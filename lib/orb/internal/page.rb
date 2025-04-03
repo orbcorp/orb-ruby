@@ -96,11 +96,11 @@ module Orb
         # rubocop:enable Layout/LineLength
       end
 
-      class PaginationMetadata < Orb::BaseModel
+      class PaginationMetadata < Orb::Internal::Type::BaseModel
         # @!attribute has_more
         #
         #   @return [Boolean]
-        required :has_more, Orb::BooleanModel
+        required :has_more, Orb::Internal::Type::BooleanModel
 
         # @!attribute next_cursor
         #
@@ -113,7 +113,7 @@ module Orb
         #   #
         #   def initialize(has_more:, next_cursor:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
     end
   end

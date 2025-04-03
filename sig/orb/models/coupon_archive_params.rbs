@@ -2,7 +2,7 @@ module Orb
   module Models
     type coupon_archive_params = {  } & Orb::Internal::Type::request_parameters
 
-    class CouponArchiveParams < Orb::BaseModel
+    class CouponArchiveParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 

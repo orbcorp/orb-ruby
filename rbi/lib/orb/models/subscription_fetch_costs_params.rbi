@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class SubscriptionFetchCostsParams < Orb::BaseModel
+    class SubscriptionFetchCostsParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -31,7 +31,7 @@ module Orb
           timeframe_end: T.nilable(Time),
           timeframe_start: T.nilable(Time),
           view_mode: T.nilable(Orb::Models::SubscriptionFetchCostsParams::ViewMode::OrSymbol),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -64,7 +64,7 @@ module Orb
       #   discounts, it's strongly recommended that you use the default cumulative
       #   behavior.
       module ViewMode
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionFetchCostsParams::ViewMode) }
         OrSymbol =

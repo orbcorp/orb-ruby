@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Alerts#create_for_external_customer
-    class AlertCreateForExternalCustomerParams < Orb::BaseModel
+    class AlertCreateForExternalCustomerParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -25,7 +25,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::AlertCreateForExternalCustomerParams::Threshold>, nil]
       optional :thresholds,
-               -> { Orb::ArrayOf[Orb::Models::AlertCreateForExternalCustomerParams::Threshold] },
+               -> { Orb::Internal::Type::ArrayOf[Orb::Models::AlertCreateForExternalCustomerParams::Threshold] },
                nil?: true
 
       # @!parse
@@ -36,11 +36,11 @@ module Orb
       #   #
       #   def initialize(currency:, type:, thresholds: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # The type of alert to create. This must be a valid alert type.
       module Type
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         CREDIT_BALANCE_DEPLETED = :credit_balance_depleted
         CREDIT_BALANCE_DROPPED = :credit_balance_dropped
@@ -53,7 +53,7 @@ module Orb
         #   def self.values; end
       end
 
-      class Threshold < Orb::BaseModel
+      class Threshold < Orb::Internal::Type::BaseModel
         # @!attribute value
         #   The value at which an alert will fire. For credit balance alerts, the alert will
         #     fire at or below this value. For usage and cost alerts, the alert will fire at
@@ -70,7 +70,7 @@ module Orb
         #   #
         #   def initialize(value:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
     end
   end

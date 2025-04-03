@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class SubscriptionUpdateFixedFeeQuantityParams < Orb::BaseModel
+    class SubscriptionUpdateFixedFeeQuantityParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -41,7 +41,7 @@ module Orb
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
           change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::OrSymbol,
           effective_date: T.nilable(Date),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -75,7 +75,7 @@ module Orb
       #   specified, this defaults to `effective_date`. Otherwise, this defaults to
       #   `immediate` unless it's explicitly set to `upcoming_invoice`.
       module ChangeOption
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption) }

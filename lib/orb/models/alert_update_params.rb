@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Alerts#update
-    class AlertUpdateParams < Orb::BaseModel
+    class AlertUpdateParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -12,7 +12,7 @@ module Orb
       #   The thresholds that define the values at which the alert will be triggered.
       #
       #   @return [Array<Orb::Models::AlertUpdateParams::Threshold>]
-      required :thresholds, -> { Orb::ArrayOf[Orb::Models::AlertUpdateParams::Threshold] }
+      required :thresholds, -> { Orb::Internal::Type::ArrayOf[Orb::Models::AlertUpdateParams::Threshold] }
 
       # @!parse
       #   # @param thresholds [Array<Orb::Models::AlertUpdateParams::Threshold>]
@@ -20,9 +20,9 @@ module Orb
       #   #
       #   def initialize(thresholds:, request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-      class Threshold < Orb::BaseModel
+      class Threshold < Orb::Internal::Type::BaseModel
         # @!attribute value
         #   The value at which an alert will fire. For credit balance alerts, the alert will
         #     fire at or below this value. For usage and cost alerts, the alert will fire at
@@ -39,7 +39,7 @@ module Orb
         #   #
         #   def initialize(value:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
     end
   end

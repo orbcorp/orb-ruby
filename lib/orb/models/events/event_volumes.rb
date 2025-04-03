@@ -4,20 +4,20 @@ module Orb
   module Models
     module Events
       # @see Orb::Resources::Events::Volume#list
-      class EventVolumes < Orb::BaseModel
+      class EventVolumes < Orb::Internal::Type::BaseModel
         # @!attribute data
         #
         #   @return [Array<Orb::Models::Events::EventVolumes::Data>]
-        required :data, -> { Orb::ArrayOf[Orb::Models::Events::EventVolumes::Data] }
+        required :data, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Events::EventVolumes::Data] }
 
         # @!parse
         #   # @param data [Array<Orb::Models::Events::EventVolumes::Data>]
         #   #
         #   def initialize(data:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-        class Data < Orb::BaseModel
+        class Data < Orb::Internal::Type::BaseModel
           # @!attribute count
           #   The number of events ingested with a timestamp between the timeframe
           #
@@ -44,7 +44,7 @@ module Orb
           #   #
           #   def initialize(count:, timeframe_end:, timeframe_start:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
       end
     end

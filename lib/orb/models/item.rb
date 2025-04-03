@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Items#create
-    class Item < Orb::BaseModel
+    class Item < Orb::Internal::Type::BaseModel
       # @!attribute id
       #
       #   @return [String]
@@ -17,7 +17,7 @@ module Orb
       # @!attribute external_connections
       #
       #   @return [Array<Orb::Models::Item::ExternalConnection>]
-      required :external_connections, -> { Orb::ArrayOf[Orb::Models::Item::ExternalConnection] }
+      required :external_connections, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Item::ExternalConnection] }
 
       # @!attribute name
       #
@@ -36,9 +36,9 @@ module Orb
       #   #
       #   def initialize(id:, created_at:, external_connections:, name:, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-      class ExternalConnection < Orb::BaseModel
+      class ExternalConnection < Orb::Internal::Type::BaseModel
         # @!attribute external_connection_name
         #
         #   @return [Symbol, Orb::Models::Item::ExternalConnection::ExternalConnectionName]
@@ -56,11 +56,11 @@ module Orb
         #   #
         #   def initialize(external_connection_name:, external_entity_id:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # @see Orb::Models::Item::ExternalConnection#external_connection_name
         module ExternalConnectionName
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           STRIPE = :stripe
           QUICKBOOKS = :quickbooks

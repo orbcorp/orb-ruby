@@ -13,7 +13,7 @@ module Orb
         }
         & Orb::Internal::Type::request_parameters
 
-      class BackfillCreateParams < Orb::BaseModel
+      class BackfillCreateParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 

@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class CreditNoteCreateParams < Orb::BaseModel
+    class CreditNoteCreateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -19,10 +19,10 @@ module Orb
 
       sig do
         params(
-          line_items: T::Array[T.any(Orb::Models::CreditNoteCreateParams::LineItem, Orb::Internal::Util::AnyHash)],
+          line_items: T::Array[T.any(Orb::Models::CreditNoteCreateParams::LineItem, Orb::Internal::AnyHash)],
           memo: T.nilable(String),
           reason: T.nilable(Orb::Models::CreditNoteCreateParams::Reason::OrSymbol),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -43,7 +43,7 @@ module Orb
       def to_hash
       end
 
-      class LineItem < Orb::BaseModel
+      class LineItem < Orb::Internal::Type::BaseModel
         # The total amount in the invoice's currency to credit this line item.
         sig { returns(String) }
         attr_accessor :amount
@@ -63,7 +63,7 @@ module Orb
 
       # An optional reason for the credit note.
       module Reason
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CreditNoteCreateParams::Reason) }
         OrSymbol =

@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Subscriptions#fetch_schedule
-    class SubscriptionFetchScheduleResponse < Orb::BaseModel
+    class SubscriptionFetchScheduleResponse < Orb::Internal::Type::BaseModel
       # @!attribute created_at
       #
       #   @return [Time]
@@ -32,10 +32,10 @@ module Orb
       #   #
       #   def initialize(created_at:, end_date:, plan:, start_date:, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # @see Orb::Models::SubscriptionFetchScheduleResponse#plan
-      class Plan < Orb::BaseModel
+      class Plan < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String, nil]
@@ -61,7 +61,7 @@ module Orb
         #   #
         #   def initialize(id:, external_plan_id:, name:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
     end
   end

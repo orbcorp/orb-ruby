@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class EventDeprecateResponse < Orb::BaseModel
+    class EventDeprecateResponse < Orb::Internal::Type::BaseModel
       # event_id of the deprecated event, if successfully updated
       sig { returns(String) }
       attr_accessor :deprecated

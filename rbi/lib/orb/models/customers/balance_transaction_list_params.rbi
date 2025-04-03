@@ -3,7 +3,7 @@
 module Orb
   module Models
     module Customers
-      class BalanceTransactionListParams < Orb::BaseModel
+      class BalanceTransactionListParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
@@ -39,7 +39,7 @@ module Orb
             operation_time_gte: T.nilable(Time),
             operation_time_lt: T.nilable(Time),
             operation_time_lte: T.nilable(Time),
-            request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+            request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end

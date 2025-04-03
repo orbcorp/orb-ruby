@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Invoices#mark_paid
-    class InvoiceMarkPaidParams < Orb::BaseModel
+    class InvoiceMarkPaidParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -34,7 +34,7 @@ module Orb
       #   #
       #   def initialize(payment_received_date:, external_id: nil, notes: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
     end
   end
 end

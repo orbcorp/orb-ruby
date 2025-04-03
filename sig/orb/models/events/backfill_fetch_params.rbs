@@ -4,7 +4,7 @@ module Orb
       type backfill_fetch_params =
         {  } & Orb::Internal::Type::request_parameters
 
-      class BackfillFetchParams < Orb::BaseModel
+      class BackfillFetchParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 

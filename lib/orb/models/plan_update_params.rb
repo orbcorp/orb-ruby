@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Plans#update
-    class PlanUpdateParams < Orb::BaseModel
+    class PlanUpdateParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -22,7 +22,7 @@ module Orb
       #     by setting `metadata` to `null`.
       #
       #   @return [Hash{Symbol=>String, nil}, nil]
-      optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+      optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
       # @!parse
       #   # @param external_plan_id [String, nil]
@@ -31,7 +31,7 @@ module Orb
       #   #
       #   def initialize(external_plan_id: nil, metadata: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
     end
   end
 end

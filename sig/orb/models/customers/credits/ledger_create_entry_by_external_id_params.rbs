@@ -19,7 +19,7 @@ module Orb
           }
           & Orb::Internal::Type::request_parameters
 
-        class LedgerCreateEntryByExternalIDParams < Orb::BaseModel
+        class LedgerCreateEntryByExternalIDParams < Orb::Internal::Type::BaseModel
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
@@ -68,7 +68,7 @@ module Orb
           type entry_type = :amendment
 
           module EntryType
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             AMENDMENT: :amendment
 
@@ -83,7 +83,7 @@ module Orb
               require_successful_payment: bool
             }
 
-          class InvoiceSettings < Orb::BaseModel
+          class InvoiceSettings < Orb::Internal::Type::BaseModel
             attr_accessor auto_collection: bool
 
             attr_accessor net_terms: Integer
@@ -107,7 +107,7 @@ module Orb
           type void_reason = :refund
 
           module VoidReason
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             REFUND: :refund
 

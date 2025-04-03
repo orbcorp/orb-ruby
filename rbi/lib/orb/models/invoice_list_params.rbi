@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class InvoiceListParams < Orb::BaseModel
+    class InvoiceListParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -94,7 +94,7 @@ module Orb
           limit: Integer,
           status: T.nilable(T::Array[Orb::Models::InvoiceListParams::Status::OrSymbol]),
           subscription_id: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -153,7 +153,7 @@ module Orb
       end
 
       module DateType
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::InvoiceListParams::DateType) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::InvoiceListParams::DateType::TaggedSymbol) }
@@ -167,7 +167,7 @@ module Orb
       end
 
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::InvoiceListParams::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::InvoiceListParams::Status::TaggedSymbol) }

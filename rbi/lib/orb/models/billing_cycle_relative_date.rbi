@@ -3,7 +3,7 @@
 module Orb
   module Models
     module BillingCycleRelativeDate
-      extend Orb::Enum
+      extend Orb::Internal::Type::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::BillingCycleRelativeDate) }
       OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::BillingCycleRelativeDate::TaggedSymbol) }

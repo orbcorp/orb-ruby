@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Subscriptions#update
-    class SubscriptionUpdateParams < Orb::BaseModel
+    class SubscriptionUpdateParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -14,7 +14,7 @@ module Orb
       #     the plan's behavior.
       #
       #   @return [Boolean, nil]
-      optional :auto_collection, Orb::BooleanModel, nil?: true
+      optional :auto_collection, Orb::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute default_invoice_memo
       #   Determines the default memo on this subscription's invoices. Note that if this
@@ -37,7 +37,7 @@ module Orb
       #     by setting `metadata` to `null`.
       #
       #   @return [Hash{Symbol=>String, nil}, nil]
-      optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+      optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
       # @!attribute net_terms
       #   Determines the difference between the invoice issue date for subscription
@@ -68,7 +68,7 @@ module Orb
       #     super
       #   end
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
     end
   end
 end

@@ -4,7 +4,7 @@ module Orb
       type cost_list_response =
         { data: ::Array[Orb::Models::Customers::CostListResponse::Data] }
 
-      class CostListResponse < Orb::BaseModel
+      class CostListResponse < Orb::Internal::Type::BaseModel
         attr_accessor data: ::Array[Orb::Models::Customers::CostListResponse::Data]
 
         def initialize: (
@@ -22,7 +22,7 @@ module Orb
             total: String
           }
 
-        class Data < Orb::BaseModel
+        class Data < Orb::Internal::Type::BaseModel
           attr_accessor per_price_costs: ::Array[Orb::Models::Customers::CostListResponse::Data::PerPriceCost]
 
           attr_accessor subtotal: String
@@ -52,7 +52,7 @@ module Orb
               quantity: Float?
             }
 
-          class PerPriceCost < Orb::BaseModel
+          class PerPriceCost < Orb::Internal::Type::BaseModel
             attr_accessor price: Orb::Models::price
 
             attr_accessor price_id: String

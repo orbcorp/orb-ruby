@@ -17,11 +17,11 @@ module Orb
         sig(:final) do
           params(
             type_info: T.any(
-              Orb::Internal::Util::AnyHash,
+              Orb::Internal::AnyHash,
               T.proc.returns(Orb::Internal::Type::Converter::Input),
               Orb::Internal::Type::Converter::Input
             ),
-            spec: Orb::Internal::Util::AnyHash
+            spec: Orb::Internal::AnyHash
           )
             .returns(T.attached_class)
         end
@@ -72,11 +72,11 @@ module Orb
         sig(:final) do
           params(
             type_info: T.any(
-              Orb::Internal::Util::AnyHash,
+              Orb::Internal::AnyHash,
               T.proc.returns(Orb::Internal::Type::Converter::Input),
               Orb::Internal::Type::Converter::Input
             ),
-            spec: Orb::Internal::Util::AnyHash
+            spec: Orb::Internal::AnyHash
           )
             .void
         end

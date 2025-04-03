@@ -14,7 +14,7 @@ module Orb
           prices: T::Array[
           T.any(
             Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice,
-            Orb::Internal::Util::AnyHash,
+            Orb::Internal::AnyHash,
             Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice,
             Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice,
             Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice,
@@ -46,7 +46,7 @@ module Orb
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           net_terms: T.nilable(Integer),
           status: Orb::Models::PlanCreateParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::Plan)
       end
@@ -85,7 +85,7 @@ module Orb
           plan_id: String,
           external_plan_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::Plan)
       end
@@ -117,7 +117,7 @@ module Orb
           cursor: T.nilable(String),
           limit: Integer,
           status: Orb::Models::PlanListParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Internal::Page[Orb::Models::Plan])
       end
@@ -157,7 +157,7 @@ module Orb
       sig do
         params(
           plan_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::Plan)
       end

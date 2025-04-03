@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Items#update
-    class ItemUpdateParams < Orb::BaseModel
+    class ItemUpdateParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -12,7 +12,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::ItemUpdateParams::ExternalConnection>, nil]
       optional :external_connections,
-               -> { Orb::ArrayOf[Orb::Models::ItemUpdateParams::ExternalConnection] },
+               -> { Orb::Internal::Type::ArrayOf[Orb::Models::ItemUpdateParams::ExternalConnection] },
                nil?: true
 
       # @!attribute name
@@ -27,9 +27,9 @@ module Orb
       #   #
       #   def initialize(external_connections: nil, name: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-      class ExternalConnection < Orb::BaseModel
+      class ExternalConnection < Orb::Internal::Type::BaseModel
         # @!attribute external_connection_name
         #
         #   @return [Symbol, Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName]
@@ -47,11 +47,11 @@ module Orb
         #   #
         #   def initialize(external_connection_name:, external_entity_id:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # @see Orb::Models::ItemUpdateParams::ExternalConnection#external_connection_name
         module ExternalConnectionName
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           STRIPE = :stripe
           QUICKBOOKS = :quickbooks

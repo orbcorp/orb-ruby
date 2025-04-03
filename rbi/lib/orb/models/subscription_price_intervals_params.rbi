@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class SubscriptionPriceIntervalsParams < Orb::BaseModel
+    class SubscriptionPriceIntervalsParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -11,9 +11,7 @@ module Orb
       attr_reader :add
 
       sig do
-        params(
-          add: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::Add, Orb::Internal::Util::AnyHash)]
-        )
+        params(add: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::Add, Orb::Internal::AnyHash)])
           .void
       end
       attr_writer :add
@@ -24,7 +22,7 @@ module Orb
 
       sig do
         params(
-          add_adjustments: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment, Orb::Internal::Util::AnyHash)]
+          add_adjustments: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment, Orb::Internal::AnyHash)]
         )
           .void
       end
@@ -41,9 +39,7 @@ module Orb
       attr_reader :edit
 
       sig do
-        params(
-          edit: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::Edit, Orb::Internal::Util::AnyHash)]
-        )
+        params(edit: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::Edit, Orb::Internal::AnyHash)])
           .void
       end
       attr_writer :edit
@@ -54,7 +50,7 @@ module Orb
 
       sig do
         params(
-          edit_adjustments: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment, Orb::Internal::Util::AnyHash)]
+          edit_adjustments: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment, Orb::Internal::AnyHash)]
         )
           .void
       end
@@ -62,12 +58,12 @@ module Orb
 
       sig do
         params(
-          add: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::Add, Orb::Internal::Util::AnyHash)],
-          add_adjustments: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment, Orb::Internal::Util::AnyHash)],
+          add: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::Add, Orb::Internal::AnyHash)],
+          add_adjustments: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment, Orb::Internal::AnyHash)],
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
-          edit: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::Edit, Orb::Internal::Util::AnyHash)],
-          edit_adjustments: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment, Orb::Internal::Util::AnyHash)],
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          edit: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::Edit, Orb::Internal::AnyHash)],
+          edit_adjustments: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment, Orb::Internal::AnyHash)],
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -97,7 +93,7 @@ module Orb
       def to_hash
       end
 
-      class Add < Orb::BaseModel
+      class Add < Orb::Internal::Type::BaseModel
         # The start date of the price interval. This is the date that the price will start
         #   billing on the subscription.
         sig { returns(T.any(Time, Orb::Models::BillingCycleRelativeDate::OrSymbol)) }
@@ -110,7 +106,7 @@ module Orb
         sig do
           params(
             allocation_price: T.nilable(
-              T.any(Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice, Orb::Internal::Util::AnyHash)
+              T.any(Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice, Orb::Internal::AnyHash)
             )
           )
             .void
@@ -223,13 +219,13 @@ module Orb
           params(
             start_date: T.any(Time, Orb::Models::BillingCycleRelativeDate::OrSymbol),
             allocation_price: T.nilable(
-              T.any(Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice, Orb::Internal::Util::AnyHash)
+              T.any(Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice, Orb::Internal::AnyHash)
             ),
             discounts: T.nilable(
               T::Array[
               T.any(
                 Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::AmountDiscountCreationParams,
-                Orb::Internal::Util::AnyHash,
+                Orb::Internal::AnyHash,
                 Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::PercentageDiscountCreationParams,
                 Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams
               )
@@ -242,7 +238,7 @@ module Orb
               T::Array[
               T.any(
                 Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition,
-                Orb::Internal::Util::AnyHash
+                Orb::Internal::AnyHash
               )
               ]
             ),
@@ -251,7 +247,7 @@ module Orb
             price: T.nilable(
               T.any(
                 Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice,
-                Orb::Internal::Util::AnyHash,
+                Orb::Internal::AnyHash,
                 Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice,
                 Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice,
                 Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice,
@@ -366,14 +362,14 @@ module Orb
         # The start date of the price interval. This is the date that the price will start
         #   billing on the subscription.
         module StartDate
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           sig { override.returns([Time, Orb::Models::BillingCycleRelativeDate::OrSymbol]) }
           def self.variants
           end
         end
 
-        class AllocationPrice < Orb::BaseModel
+        class AllocationPrice < Orb::Internal::Type::BaseModel
           # An amount of the currency to allocate to the customer at the specified cadence.
           sig { returns(String) }
           attr_accessor :amount
@@ -421,7 +417,7 @@ module Orb
 
           # The cadence at which to allocate the amount to the customer.
           module Cadence
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice::Cadence) }
@@ -471,9 +467,9 @@ module Orb
         end
 
         module Discount
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
-          class AmountDiscountCreationParams < Orb::BaseModel
+          class AmountDiscountCreationParams < Orb::Internal::Type::BaseModel
             # Only available if discount_type is `amount`.
             sig { returns(Float) }
             attr_accessor :amount_discount
@@ -490,7 +486,7 @@ module Orb
             end
           end
 
-          class PercentageDiscountCreationParams < Orb::BaseModel
+          class PercentageDiscountCreationParams < Orb::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :discount_type
 
@@ -508,7 +504,7 @@ module Orb
             end
           end
 
-          class UsageDiscountCreationParams < Orb::BaseModel
+          class UsageDiscountCreationParams < Orb::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :discount_type
 
@@ -539,14 +535,14 @@ module Orb
         # The end date of the price interval. This is the date that the price will stop
         #   billing on the subscription.
         module EndDate
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           sig { override.returns([Time, Orb::Models::BillingCycleRelativeDate::OrSymbol]) }
           def self.variants
           end
         end
 
-        class FixedFeeQuantityTransition < Orb::BaseModel
+        class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
           # The date that the fixed fee quantity transition should take effect.
           sig { returns(Time) }
           attr_accessor :effective_date
@@ -566,9 +562,9 @@ module Orb
 
         # The definition of a new price to create and add to the subscription.
         module Price
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
-          class NewFloatingUnitPrice < Orb::BaseModel
+          class NewFloatingUnitPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -599,7 +595,7 @@ module Orb
               params(
                 unit_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::UnitConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -632,7 +628,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -673,7 +669,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -695,14 +691,14 @@ module Orb
                 name: String,
                 unit_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::UnitConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -712,7 +708,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -770,7 +766,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::Cadence) }
@@ -824,7 +820,7 @@ module Orb
               end
             end
 
-            class UnitConfig < Orb::BaseModel
+            class UnitConfig < Orb::Internal::Type::BaseModel
               # Rate per unit of usage
               sig { returns(String) }
               attr_accessor :unit_amount
@@ -838,7 +834,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -877,7 +873,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -916,7 +912,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -955,7 +951,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -995,7 +991,7 @@ module Orb
             end
           end
 
-          class NewFloatingPackagePrice < Orb::BaseModel
+          class NewFloatingPackagePrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -1026,7 +1022,7 @@ module Orb
               params(
                 package_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::PackageConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -1059,7 +1055,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -1100,7 +1096,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -1122,14 +1118,14 @@ module Orb
                 name: String,
                 package_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::PackageConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -1139,7 +1135,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -1197,7 +1193,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::Cadence) }
@@ -1251,7 +1247,7 @@ module Orb
               end
             end
 
-            class PackageConfig < Orb::BaseModel
+            class PackageConfig < Orb::Internal::Type::BaseModel
               # A currency amount to rate usage by
               sig { returns(String) }
               attr_accessor :package_amount
@@ -1270,7 +1266,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -1309,7 +1305,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -1348,7 +1344,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -1387,7 +1383,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -1427,7 +1423,7 @@ module Orb
             end
           end
 
-          class NewFloatingMatrixPrice < Orb::BaseModel
+          class NewFloatingMatrixPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -1451,7 +1447,7 @@ module Orb
               params(
                 matrix_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -1491,7 +1487,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -1532,7 +1528,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -1553,7 +1549,7 @@ module Orb
                 item_id: String,
                 matrix_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 name: String,
                 billable_metric_id: T.nilable(String),
@@ -1561,7 +1557,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -1571,7 +1567,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -1629,7 +1625,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::Cadence) }
@@ -1683,7 +1679,7 @@ module Orb
               end
             end
 
-            class MatrixConfig < Orb::BaseModel
+            class MatrixConfig < Orb::Internal::Type::BaseModel
               # Default per unit rate for any usage not bucketed into a specified matrix_value
               sig { returns(String) }
               attr_accessor :default_unit_amount
@@ -1709,7 +1705,7 @@ module Orb
                   matrix_values: T::Array[
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                   ]
                 )
@@ -1733,7 +1729,7 @@ module Orb
               def to_hash
               end
 
-              class MatrixValue < Orb::BaseModel
+              class MatrixValue < Orb::Internal::Type::BaseModel
                 # One or two matrix keys to filter usage to this Matrix value by. For example,
                 #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
                 #   instance tier.
@@ -1759,7 +1755,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -1798,7 +1794,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -1837,7 +1833,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -1876,7 +1872,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -1916,7 +1912,7 @@ module Orb
             end
           end
 
-          class NewFloatingMatrixWithAllocationPrice < Orb::BaseModel
+          class NewFloatingMatrixWithAllocationPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -1944,7 +1940,7 @@ module Orb
               params(
                 matrix_with_allocation_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -1984,7 +1980,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -2025,7 +2021,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -2046,7 +2042,7 @@ module Orb
                 item_id: String,
                 matrix_with_allocation_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 name: String,
                 billable_metric_id: T.nilable(String),
@@ -2054,7 +2050,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -2064,7 +2060,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -2122,7 +2118,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -2180,7 +2176,7 @@ module Orb
               end
             end
 
-            class MatrixWithAllocationConfig < Orb::BaseModel
+            class MatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
               # Allocation to be used to calculate the price
               sig { returns(Float) }
               attr_accessor :allocation
@@ -2211,7 +2207,7 @@ module Orb
                   matrix_values: T::Array[
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                   ]
                 )
@@ -2236,7 +2232,7 @@ module Orb
               def to_hash
               end
 
-              class MatrixValue < Orb::BaseModel
+              class MatrixValue < Orb::Internal::Type::BaseModel
                 # One or two matrix keys to filter usage to this Matrix value by. For example,
                 #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
                 #   instance tier.
@@ -2262,7 +2258,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -2301,7 +2297,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -2340,7 +2336,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -2379,7 +2375,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -2419,7 +2415,7 @@ module Orb
             end
           end
 
-          class NewFloatingTieredPrice < Orb::BaseModel
+          class NewFloatingTieredPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -2450,7 +2446,7 @@ module Orb
               params(
                 tiered_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -2483,7 +2479,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -2524,7 +2520,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -2546,14 +2542,14 @@ module Orb
                 name: String,
                 tiered_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -2563,7 +2559,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -2621,7 +2617,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::Cadence) }
@@ -2675,7 +2671,7 @@ module Orb
               end
             end
 
-            class TieredConfig < Orb::BaseModel
+            class TieredConfig < Orb::Internal::Type::BaseModel
               # Tiers for rating based on total usage quantities into the specified tier
               sig do
                 returns(
@@ -2689,7 +2685,7 @@ module Orb
                   tiers: T::Array[
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                   ]
                 )
@@ -2709,7 +2705,7 @@ module Orb
               def to_hash
               end
 
-              class Tier < Orb::BaseModel
+              class Tier < Orb::Internal::Type::BaseModel
                 # Inclusive tier starting value
                 sig { returns(Float) }
                 attr_accessor :first_unit
@@ -2740,7 +2736,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -2779,7 +2775,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -2818,7 +2814,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -2857,7 +2853,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -2897,7 +2893,7 @@ module Orb
             end
           end
 
-          class NewFloatingTieredBpsPrice < Orb::BaseModel
+          class NewFloatingTieredBpsPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -2932,7 +2928,7 @@ module Orb
               params(
                 tiered_bps_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -2965,7 +2961,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -3006,7 +3002,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -3028,14 +3024,14 @@ module Orb
                 name: String,
                 tiered_bps_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -3045,7 +3041,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -3103,7 +3099,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -3161,7 +3157,7 @@ module Orb
               end
             end
 
-            class TieredBpsConfig < Orb::BaseModel
+            class TieredBpsConfig < Orb::Internal::Type::BaseModel
               # Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
               #   tiers
               sig do
@@ -3178,7 +3174,7 @@ module Orb
                   tiers: T::Array[
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                   ]
                 )
@@ -3200,7 +3196,7 @@ module Orb
               def to_hash
               end
 
-              class Tier < Orb::BaseModel
+              class Tier < Orb::Internal::Type::BaseModel
                 # Per-event basis point rate
                 sig { returns(Float) }
                 attr_accessor :bps
@@ -3245,7 +3241,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -3284,7 +3280,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -3323,7 +3319,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -3362,7 +3358,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -3402,7 +3398,7 @@ module Orb
             end
           end
 
-          class NewFloatingBpsPrice < Orb::BaseModel
+          class NewFloatingBpsPrice < Orb::Internal::Type::BaseModel
             sig { returns(Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BpsConfig) }
             attr_reader :bps_config
 
@@ -3410,7 +3406,7 @@ module Orb
               params(
                 bps_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BpsConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -3462,7 +3458,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -3503,7 +3499,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -3521,7 +3517,7 @@ module Orb
               params(
                 bps_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BpsConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::Cadence::OrSymbol,
                 currency: String,
@@ -3532,7 +3528,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -3542,7 +3538,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -3598,7 +3594,7 @@ module Orb
             def to_hash
             end
 
-            class BpsConfig < Orb::BaseModel
+            class BpsConfig < Orb::Internal::Type::BaseModel
               # Basis point take rate per event
               sig { returns(Float) }
               attr_accessor :bps
@@ -3618,7 +3614,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::Cadence) }
@@ -3672,7 +3668,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -3711,7 +3707,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -3750,7 +3746,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -3789,7 +3785,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -3829,7 +3825,7 @@ module Orb
             end
           end
 
-          class NewFloatingBulkBpsPrice < Orb::BaseModel
+          class NewFloatingBulkBpsPrice < Orb::Internal::Type::BaseModel
             sig { returns(Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig) }
             attr_reader :bulk_bps_config
 
@@ -3837,7 +3833,7 @@ module Orb
               params(
                 bulk_bps_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -3893,7 +3889,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -3934,7 +3930,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -3952,7 +3948,7 @@ module Orb
               params(
                 bulk_bps_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::Cadence::OrSymbol,
                 currency: String,
@@ -3963,7 +3959,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -3973,7 +3969,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -4029,7 +4025,7 @@ module Orb
             def to_hash
             end
 
-            class BulkBpsConfig < Orb::BaseModel
+            class BulkBpsConfig < Orb::Internal::Type::BaseModel
               # Tiers for a bulk BPS pricing model where all usage is aggregated to a single
               #   tier based on total volume
               sig do
@@ -4044,7 +4040,7 @@ module Orb
                   tiers: T::Array[
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                   ]
                 )
@@ -4064,7 +4060,7 @@ module Orb
               def to_hash
               end
 
-              class Tier < Orb::BaseModel
+              class Tier < Orb::Internal::Type::BaseModel
                 # Basis points to rate on
                 sig { returns(Float) }
                 attr_accessor :bps
@@ -4100,7 +4096,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::Cadence) }
@@ -4154,7 +4150,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -4193,7 +4189,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -4232,7 +4228,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -4271,7 +4267,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -4311,7 +4307,7 @@ module Orb
             end
           end
 
-          class NewFloatingBulkPrice < Orb::BaseModel
+          class NewFloatingBulkPrice < Orb::Internal::Type::BaseModel
             sig { returns(Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig) }
             attr_reader :bulk_config
 
@@ -4319,7 +4315,7 @@ module Orb
               params(
                 bulk_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -4375,7 +4371,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -4416,7 +4412,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -4434,7 +4430,7 @@ module Orb
               params(
                 bulk_config: T.any(
                   Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::Cadence::OrSymbol,
                 currency: String,
@@ -4445,7 +4441,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -4455,7 +4451,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -4511,7 +4507,7 @@ module Orb
             def to_hash
             end
 
-            class BulkConfig < Orb::BaseModel
+            class BulkConfig < Orb::Internal::Type::BaseModel
               # Bulk tiers for rating based on total usage volume
               sig do
                 returns(
@@ -4525,7 +4521,7 @@ module Orb
                   tiers: T::Array[
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                   ]
                 )
@@ -4545,7 +4541,7 @@ module Orb
               def to_hash
               end
 
-              class Tier < Orb::BaseModel
+              class Tier < Orb::Internal::Type::BaseModel
                 # Amount per unit
                 sig { returns(String) }
                 attr_accessor :unit_amount
@@ -4566,7 +4562,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::Cadence) }
@@ -4620,7 +4616,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -4659,7 +4655,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -4698,7 +4694,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -4737,7 +4733,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -4777,7 +4773,7 @@ module Orb
             end
           end
 
-          class NewFloatingThresholdTotalAmountPrice < Orb::BaseModel
+          class NewFloatingThresholdTotalAmountPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -4830,7 +4826,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -4871,7 +4867,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -4897,7 +4893,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -4907,7 +4903,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -4965,7 +4961,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -5023,7 +5019,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -5062,7 +5058,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -5101,7 +5097,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -5140,7 +5136,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -5180,7 +5176,7 @@ module Orb
             end
           end
 
-          class NewFloatingTieredPackagePrice < Orb::BaseModel
+          class NewFloatingTieredPackagePrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -5233,7 +5229,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -5274,7 +5270,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -5300,7 +5296,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -5310,7 +5306,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -5368,7 +5364,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -5426,7 +5422,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -5465,7 +5461,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -5504,7 +5500,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -5543,7 +5539,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -5583,7 +5579,7 @@ module Orb
             end
           end
 
-          class NewFloatingGroupedTieredPrice < Orb::BaseModel
+          class NewFloatingGroupedTieredPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -5636,7 +5632,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -5677,7 +5673,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -5703,7 +5699,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -5713,7 +5709,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -5771,7 +5767,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -5829,7 +5825,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -5868,7 +5864,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -5907,7 +5903,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -5946,7 +5942,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -5986,7 +5982,7 @@ module Orb
             end
           end
 
-          class NewFloatingMaxGroupTieredPackagePrice < Orb::BaseModel
+          class NewFloatingMaxGroupTieredPackagePrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -6039,7 +6035,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -6080,7 +6076,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -6106,7 +6102,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -6116,7 +6112,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -6174,7 +6170,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -6232,7 +6228,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -6271,7 +6267,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -6310,7 +6306,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -6349,7 +6345,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -6389,7 +6385,7 @@ module Orb
             end
           end
 
-          class NewFloatingTieredWithMinimumPrice < Orb::BaseModel
+          class NewFloatingTieredWithMinimumPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -6442,7 +6438,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -6483,7 +6479,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -6509,7 +6505,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -6519,7 +6515,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -6577,7 +6573,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -6635,7 +6631,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -6674,7 +6670,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -6713,7 +6709,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -6752,7 +6748,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -6792,7 +6788,7 @@ module Orb
             end
           end
 
-          class NewFloatingPackageWithAllocationPrice < Orb::BaseModel
+          class NewFloatingPackageWithAllocationPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -6845,7 +6841,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -6886,7 +6882,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -6912,7 +6908,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -6922,7 +6918,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -6980,7 +6976,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -7038,7 +7034,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -7077,7 +7073,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -7116,7 +7112,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -7155,7 +7151,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -7195,7 +7191,7 @@ module Orb
             end
           end
 
-          class NewFloatingTieredPackageWithMinimumPrice < Orb::BaseModel
+          class NewFloatingTieredPackageWithMinimumPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -7248,7 +7244,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -7289,7 +7285,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -7315,7 +7311,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -7325,7 +7321,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -7383,7 +7379,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -7441,7 +7437,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -7480,7 +7476,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -7519,7 +7515,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -7558,7 +7554,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -7598,7 +7594,7 @@ module Orb
             end
           end
 
-          class NewFloatingUnitWithPercentPrice < Orb::BaseModel
+          class NewFloatingUnitWithPercentPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -7651,7 +7647,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -7692,7 +7688,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -7718,7 +7714,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -7728,7 +7724,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -7786,7 +7782,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -7844,7 +7840,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -7883,7 +7879,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -7922,7 +7918,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -7961,7 +7957,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -8001,7 +7997,7 @@ module Orb
             end
           end
 
-          class NewFloatingTieredWithProrationPrice < Orb::BaseModel
+          class NewFloatingTieredWithProrationPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -8054,7 +8050,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -8095,7 +8091,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -8121,7 +8117,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -8131,7 +8127,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -8189,7 +8185,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -8247,7 +8243,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -8286,7 +8282,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -8325,7 +8321,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -8364,7 +8360,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -8404,7 +8400,7 @@ module Orb
             end
           end
 
-          class NewFloatingUnitWithProrationPrice < Orb::BaseModel
+          class NewFloatingUnitWithProrationPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -8457,7 +8453,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -8498,7 +8494,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -8524,7 +8520,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -8534,7 +8530,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -8592,7 +8588,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -8650,7 +8646,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -8689,7 +8685,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -8728,7 +8724,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -8767,7 +8763,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -8807,7 +8803,7 @@ module Orb
             end
           end
 
-          class NewFloatingGroupedAllocationPrice < Orb::BaseModel
+          class NewFloatingGroupedAllocationPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -8860,7 +8856,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -8901,7 +8897,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -8927,7 +8923,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -8937,7 +8933,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -8995,7 +8991,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -9053,7 +9049,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -9092,7 +9088,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -9131,7 +9127,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -9170,7 +9166,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -9210,7 +9206,7 @@ module Orb
             end
           end
 
-          class NewFloatingGroupedWithProratedMinimumPrice < Orb::BaseModel
+          class NewFloatingGroupedWithProratedMinimumPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -9263,7 +9259,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -9304,7 +9300,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -9330,7 +9326,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -9340,7 +9336,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -9398,7 +9394,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -9456,7 +9452,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -9495,7 +9491,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -9534,7 +9530,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -9573,7 +9569,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -9613,7 +9609,7 @@ module Orb
             end
           end
 
-          class NewFloatingGroupedWithMeteredMinimumPrice < Orb::BaseModel
+          class NewFloatingGroupedWithMeteredMinimumPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -9666,7 +9662,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -9707,7 +9703,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -9733,7 +9729,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -9743,7 +9739,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -9801,7 +9797,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -9859,7 +9855,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -9898,7 +9894,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -9937,7 +9933,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -9976,7 +9972,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -10016,7 +10012,7 @@ module Orb
             end
           end
 
-          class NewFloatingMatrixWithDisplayNamePrice < Orb::BaseModel
+          class NewFloatingMatrixWithDisplayNamePrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -10069,7 +10065,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -10110,7 +10106,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -10136,7 +10132,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -10146,7 +10142,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -10204,7 +10200,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -10262,7 +10258,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -10301,7 +10297,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -10340,7 +10336,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -10379,7 +10375,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -10419,7 +10415,7 @@ module Orb
             end
           end
 
-          class NewFloatingBulkWithProrationPrice < Orb::BaseModel
+          class NewFloatingBulkWithProrationPrice < Orb::Internal::Type::BaseModel
             sig { returns(T::Hash[Symbol, T.anything]) }
             attr_accessor :bulk_with_proration_config
 
@@ -10472,7 +10468,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -10513,7 +10509,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -10539,7 +10535,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -10549,7 +10545,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -10607,7 +10603,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -10665,7 +10661,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -10704,7 +10700,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -10743,7 +10739,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -10782,7 +10778,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -10822,7 +10818,7 @@ module Orb
             end
           end
 
-          class NewFloatingGroupedTieredPackagePrice < Orb::BaseModel
+          class NewFloatingGroupedTieredPackagePrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -10875,7 +10871,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -10916,7 +10912,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -10942,7 +10938,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -10952,7 +10948,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -11010,7 +11006,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -11068,7 +11064,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -11107,7 +11103,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -11146,7 +11142,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -11185,7 +11181,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -11225,7 +11221,7 @@ module Orb
             end
           end
 
-          class NewFloatingScalableMatrixWithUnitPricingPrice < Orb::BaseModel
+          class NewFloatingScalableMatrixWithUnitPricingPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -11278,7 +11274,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -11319,7 +11315,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -11345,7 +11341,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -11355,7 +11351,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -11413,7 +11409,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -11471,7 +11467,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -11510,7 +11506,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -11549,7 +11545,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -11588,7 +11584,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -11628,7 +11624,7 @@ module Orb
             end
           end
 
-          class NewFloatingScalableMatrixWithTieredPricingPrice < Orb::BaseModel
+          class NewFloatingScalableMatrixWithTieredPricingPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -11681,7 +11677,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -11722,7 +11718,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -11748,7 +11744,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -11758,7 +11754,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -11816,7 +11812,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -11874,7 +11870,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -11913,7 +11909,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -11952,7 +11948,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -11991,7 +11987,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -12031,7 +12027,7 @@ module Orb
             end
           end
 
-          class NewFloatingCumulativeGroupedBulkPrice < Orb::BaseModel
+          class NewFloatingCumulativeGroupedBulkPrice < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
@@ -12084,7 +12080,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -12125,7 +12121,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 )
               )
@@ -12151,7 +12147,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -12161,7 +12157,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration,
-                    Orb::Internal::Util::AnyHash
+                    Orb::Internal::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -12219,7 +12215,7 @@ module Orb
 
             # The cadence to bill for this price on.
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -12277,7 +12273,7 @@ module Orb
               end
             end
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -12316,7 +12312,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -12355,7 +12351,7 @@ module Orb
               end
             end
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # The duration of the billing period.
               sig { returns(Integer) }
               attr_accessor :duration
@@ -12394,7 +12390,7 @@ module Orb
 
               # The unit of billing period duration.
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -12445,7 +12441,7 @@ module Orb
         end
       end
 
-      class AddAdjustment < Orb::BaseModel
+      class AddAdjustment < Orb::Internal::Type::BaseModel
         # The definition of a new adjustment to create and add to the subscription.
         sig do
           returns(
@@ -12478,7 +12474,7 @@ module Orb
           params(
             adjustment: T.any(
               Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount,
-              Orb::Internal::Util::AnyHash,
+              Orb::Internal::AnyHash,
               Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewUsageDiscount,
               Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewAmountDiscount,
               Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMinimum,
@@ -12513,9 +12509,9 @@ module Orb
 
         # The definition of a new adjustment to create and add to the subscription.
         module Adjustment
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
-          class NewPercentageDiscount < Orb::BaseModel
+          class NewPercentageDiscount < Orb::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
@@ -12566,7 +12562,7 @@ module Orb
             end
           end
 
-          class NewUsageDiscount < Orb::BaseModel
+          class NewUsageDiscount < Orb::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
@@ -12617,7 +12613,7 @@ module Orb
             end
           end
 
-          class NewAmountDiscount < Orb::BaseModel
+          class NewAmountDiscount < Orb::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
@@ -12668,7 +12664,7 @@ module Orb
             end
           end
 
-          class NewMinimum < Orb::BaseModel
+          class NewMinimum < Orb::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
@@ -12726,7 +12722,7 @@ module Orb
             end
           end
 
-          class NewMaximum < Orb::BaseModel
+          class NewMaximum < Orb::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
@@ -12792,7 +12788,7 @@ module Orb
         #   invoice dates that overlap with this `start_date`. This `start_date` is treated
         #   as inclusive for in-advance prices, and exclusive for in-arrears prices.
         module StartDate
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           sig { override.returns([Time, Orb::Models::BillingCycleRelativeDate::OrSymbol]) }
           def self.variants
@@ -12804,7 +12800,7 @@ module Orb
         #   invoice dates that overlap with this `end_date`.This `end_date` is treated as
         #   exclusive for in-advance prices, and inclusive for in-arrears prices.
         module EndDate
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           sig { override.returns([Time, Orb::Models::BillingCycleRelativeDate::OrSymbol]) }
           def self.variants
@@ -12812,7 +12808,7 @@ module Orb
         end
       end
 
-      class Edit < Orb::BaseModel
+      class Edit < Orb::Internal::Type::BaseModel
         # The id of the price interval to edit.
         sig { returns(String) }
         attr_accessor :price_interval_id
@@ -12872,7 +12868,7 @@ module Orb
               T::Array[
               T.any(
                 Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition,
-                Orb::Internal::Util::AnyHash
+                Orb::Internal::AnyHash
               )
               ]
             ),
@@ -12912,14 +12908,14 @@ module Orb
         # The updated end date of this price interval. If not specified, the start date
         #   will not be updated.
         module EndDate
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           sig { override.returns([Time, Orb::Models::BillingCycleRelativeDate::OrSymbol]) }
           def self.variants
           end
         end
 
-        class FixedFeeQuantityTransition < Orb::BaseModel
+        class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
           # The date that the fixed fee quantity transition should take effect.
           sig { returns(Time) }
           attr_accessor :effective_date
@@ -12940,7 +12936,7 @@ module Orb
         # The updated start date of this price interval. If not specified, the start date
         #   will not be updated.
         module StartDate
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           sig { override.returns([Time, Orb::Models::BillingCycleRelativeDate::OrSymbol]) }
           def self.variants
@@ -12948,7 +12944,7 @@ module Orb
         end
       end
 
-      class EditAdjustment < Orb::BaseModel
+      class EditAdjustment < Orb::Internal::Type::BaseModel
         # The id of the adjustment interval to edit.
         sig { returns(String) }
         attr_accessor :adjustment_interval_id
@@ -12993,7 +12989,7 @@ module Orb
         # The updated end date of this adjustment interval. If not specified, the start
         #   date will not be updated.
         module EndDate
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           sig { override.returns([Time, Orb::Models::BillingCycleRelativeDate::OrSymbol]) }
           def self.variants
@@ -13003,7 +12999,7 @@ module Orb
         # The updated start date of this adjustment interval. If not specified, the start
         #   date will not be updated.
         module StartDate
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           sig { override.returns([Time, Orb::Models::BillingCycleRelativeDate::OrSymbol]) }
           def self.variants

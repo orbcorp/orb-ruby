@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Invoices#create
-    class InvoiceCreateParams < Orb::BaseModel
+    class InvoiceCreateParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -25,7 +25,7 @@ module Orb
       # @!attribute line_items
       #
       #   @return [Array<Orb::Models::InvoiceCreateParams::LineItem>]
-      required :line_items, -> { Orb::ArrayOf[Orb::Models::InvoiceCreateParams::LineItem] }
+      required :line_items, -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceCreateParams::LineItem] }
 
       # @!attribute net_terms
       #   Determines the difference between the invoice issue date for subscription
@@ -68,14 +68,14 @@ module Orb
       #     by setting `metadata` to `null`.
       #
       #   @return [Hash{Symbol=>String, nil}, nil]
-      optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+      optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
       # @!attribute [r] will_auto_issue
       #   When true, this invoice will automatically be issued upon creation. When false,
       #     the resulting invoice will require manual review to issue. Defaulted to false.
       #
       #   @return [Boolean, nil]
-      optional :will_auto_issue, Orb::BooleanModel
+      optional :will_auto_issue, Orb::Internal::Type::BooleanModel
 
       # @!parse
       #   # @return [Boolean]
@@ -111,9 +111,9 @@ module Orb
       #     super
       #   end
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-      class LineItem < Orb::BaseModel
+      class LineItem < Orb::Internal::Type::BaseModel
         # @!attribute end_date
         #   A date string to specify the line item's end date in the customer's timezone.
         #
@@ -164,11 +164,11 @@ module Orb
         #   #
         #   def initialize(end_date:, item_id:, model_type:, name:, quantity:, start_date:, unit_config:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # @see Orb::Models::InvoiceCreateParams::LineItem#model_type
         module ModelType
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           UNIT = :unit
 
@@ -180,7 +180,7 @@ module Orb
         end
 
         # @see Orb::Models::InvoiceCreateParams::LineItem#unit_config
-        class UnitConfig < Orb::BaseModel
+        class UnitConfig < Orb::Internal::Type::BaseModel
           # @!attribute unit_amount
           #   Rate per unit of usage
           #
@@ -192,7 +192,7 @@ module Orb
           #   #
           #   def initialize(unit_amount:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
       end
     end

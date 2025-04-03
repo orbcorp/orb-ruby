@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class Coupon < Orb::BaseModel
+    class Coupon < Orb::Internal::Type::BaseModel
       # Also referred to as coupon_id in this documentation.
       sig { returns(String) }
       attr_accessor :id
@@ -42,7 +42,7 @@ module Orb
         params(
           id: String,
           archived_at: T.nilable(Time),
-          discount: T.any(Orb::Models::PercentageDiscount, Orb::Internal::Util::AnyHash, Orb::Models::AmountDiscount),
+          discount: T.any(Orb::Models::PercentageDiscount, Orb::Internal::AnyHash, Orb::Models::AmountDiscount),
           duration_in_months: T.nilable(Integer),
           max_redemptions: T.nilable(Integer),
           redemption_code: String,
@@ -79,7 +79,7 @@ module Orb
       end
 
       module Discount
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
         sig { override.returns([Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount]) }
         def self.variants

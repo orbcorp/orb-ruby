@@ -9,7 +9,7 @@ module Orb
         #
         # @see Orb::Resources::Customers::Credits::Ledger#list
         module LedgerListResponse
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           discriminator :entry_type
 
@@ -30,7 +30,7 @@ module Orb
 
           variant :amendment, -> { Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry }
 
-          class IncrementLedgerEntry < Orb::BaseModel
+          class IncrementLedgerEntry < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -96,7 +96,7 @@ module Orb
             #     `null`.
             #
             #   @return [Hash{Symbol=>String}]
-            required :metadata, Orb::HashOf[String]
+            required :metadata, Orb::Internal::Type::HashOf[String]
 
             # @!attribute starting_balance
             #
@@ -137,10 +137,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry#credit_block
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -163,11 +163,11 @@ module Orb
               #   #
               #   def initialize(id:, expiry_date:, per_unit_cost_basis:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry#customer
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -184,12 +184,12 @@ module Orb
               #   #
               #   def initialize(id:, external_customer_id:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry#entry_status
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               COMMITTED = :committed
               PENDING = :pending
@@ -202,7 +202,7 @@ module Orb
             end
           end
 
-          class DecrementLedgerEntry < Orb::BaseModel
+          class DecrementLedgerEntry < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -268,7 +268,7 @@ module Orb
             #     `null`.
             #
             #   @return [Hash{Symbol=>String}]
-            required :metadata, Orb::HashOf[String]
+            required :metadata, Orb::Internal::Type::HashOf[String]
 
             # @!attribute starting_balance
             #
@@ -330,10 +330,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry#credit_block
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -356,11 +356,11 @@ module Orb
               #   #
               #   def initialize(id:, expiry_date:, per_unit_cost_basis:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry#customer
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -377,12 +377,12 @@ module Orb
               #   #
               #   def initialize(id:, external_customer_id:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry#entry_status
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               COMMITTED = :committed
               PENDING = :pending
@@ -395,7 +395,7 @@ module Orb
             end
           end
 
-          class ExpirationChangeLedgerEntry < Orb::BaseModel
+          class ExpirationChangeLedgerEntry < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -461,7 +461,7 @@ module Orb
             #     `null`.
             #
             #   @return [Hash{Symbol=>String}]
-            required :metadata, Orb::HashOf[String]
+            required :metadata, Orb::Internal::Type::HashOf[String]
 
             # @!attribute new_block_expiry_date
             #
@@ -509,10 +509,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry#credit_block
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -535,11 +535,11 @@ module Orb
               #   #
               #   def initialize(id:, expiry_date:, per_unit_cost_basis:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry#customer
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -556,12 +556,12 @@ module Orb
               #   #
               #   def initialize(id:, external_customer_id:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry#entry_status
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               COMMITTED = :committed
               PENDING = :pending
@@ -574,7 +574,7 @@ module Orb
             end
           end
 
-          class CreditBlockExpiryLedgerEntry < Orb::BaseModel
+          class CreditBlockExpiryLedgerEntry < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -640,7 +640,7 @@ module Orb
             #     `null`.
             #
             #   @return [Hash{Symbol=>String}]
-            required :metadata, Orb::HashOf[String]
+            required :metadata, Orb::Internal::Type::HashOf[String]
 
             # @!attribute starting_balance
             #
@@ -681,10 +681,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry#credit_block
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -707,11 +707,11 @@ module Orb
               #   #
               #   def initialize(id:, expiry_date:, per_unit_cost_basis:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry#customer
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -728,12 +728,12 @@ module Orb
               #   #
               #   def initialize(id:, external_customer_id:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry#entry_status
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               COMMITTED = :committed
               PENDING = :pending
@@ -746,7 +746,7 @@ module Orb
             end
           end
 
-          class VoidLedgerEntry < Orb::BaseModel
+          class VoidLedgerEntry < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -811,7 +811,7 @@ module Orb
             #     `null`.
             #
             #   @return [Hash{Symbol=>String}]
-            required :metadata, Orb::HashOf[String]
+            required :metadata, Orb::Internal::Type::HashOf[String]
 
             # @!attribute starting_balance
             #
@@ -866,10 +866,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry#credit_block
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -892,11 +892,11 @@ module Orb
               #   #
               #   def initialize(id:, expiry_date:, per_unit_cost_basis:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry#customer
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -913,12 +913,12 @@ module Orb
               #   #
               #   def initialize(id:, external_customer_id:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry#entry_status
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               COMMITTED = :committed
               PENDING = :pending
@@ -931,7 +931,7 @@ module Orb
             end
           end
 
-          class VoidInitiatedLedgerEntry < Orb::BaseModel
+          class VoidInitiatedLedgerEntry < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -997,7 +997,7 @@ module Orb
             #     `null`.
             #
             #   @return [Hash{Symbol=>String}]
-            required :metadata, Orb::HashOf[String]
+            required :metadata, Orb::Internal::Type::HashOf[String]
 
             # @!attribute new_block_expiry_date
             #
@@ -1059,10 +1059,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry#credit_block
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -1085,11 +1085,11 @@ module Orb
               #   #
               #   def initialize(id:, expiry_date:, per_unit_cost_basis:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry#customer
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -1106,12 +1106,12 @@ module Orb
               #   #
               #   def initialize(id:, external_customer_id:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry#entry_status
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               COMMITTED = :committed
               PENDING = :pending
@@ -1124,7 +1124,7 @@ module Orb
             end
           end
 
-          class AmendmentLedgerEntry < Orb::BaseModel
+          class AmendmentLedgerEntry < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -1190,7 +1190,7 @@ module Orb
             #     `null`.
             #
             #   @return [Hash{Symbol=>String}]
-            required :metadata, Orb::HashOf[String]
+            required :metadata, Orb::Internal::Type::HashOf[String]
 
             # @!attribute starting_balance
             #
@@ -1231,10 +1231,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry#credit_block
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -1257,11 +1257,11 @@ module Orb
               #   #
               #   def initialize(id:, expiry_date:, per_unit_cost_basis:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry#customer
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -1278,12 +1278,12 @@ module Orb
               #   #
               #   def initialize(id:, external_customer_id:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry#entry_status
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               COMMITTED = :committed
               PENDING = :pending

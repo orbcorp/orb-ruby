@@ -5,7 +5,7 @@ module Orb
         type top_up_delete_params =
           { customer_id: String } & Orb::Internal::Type::request_parameters
 
-        class TopUpDeleteParams < Orb::BaseModel
+        class TopUpDeleteParams < Orb::Internal::Type::BaseModel
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 

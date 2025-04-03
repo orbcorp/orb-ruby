@@ -4,7 +4,7 @@ module Orb
       { allow_invoice_credit_or_void: bool?, effective_date: Date? }
       & Orb::Internal::Type::request_parameters
 
-    class SubscriptionTriggerPhaseParams < Orb::BaseModel
+    class SubscriptionTriggerPhaseParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 

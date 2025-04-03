@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Subscriptions#schedule_plan_change
-    class SubscriptionSchedulePlanChangeParams < Orb::BaseModel
+    class SubscriptionSchedulePlanChangeParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -19,7 +19,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment>, nil]
       optional :add_adjustments,
-               -> { Orb::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment] },
+               -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment] },
                nil?: true
 
       # @!attribute add_prices
@@ -28,7 +28,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice>, nil]
       optional :add_prices,
-               -> { Orb::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice] },
+               -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice] },
                nil?: true
 
       # @!attribute align_billing_with_plan_change_date
@@ -36,7 +36,7 @@ module Orb
       #     aligned with the plan change's effective date.
       #
       #   @return [Boolean, nil]
-      optional :align_billing_with_plan_change_date, Orb::BooleanModel, nil?: true
+      optional :align_billing_with_plan_change_date, Orb::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute auto_collection
       #   Determines whether issued invoices for this subscription will automatically be
@@ -44,7 +44,7 @@ module Orb
       #     defaults to the behavior configured for this customer.
       #
       #   @return [Boolean, nil]
-      optional :auto_collection, Orb::BooleanModel, nil?: true
+      optional :auto_collection, Orb::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute billing_cycle_alignment
       #   Reset billing periods to be aligned with the plan change's effective date or
@@ -152,7 +152,7 @@ module Orb
       #   Optionally provide a list of overrides for prices on the plan
       #
       #   @return [Array<Object>, nil]
-      optional :price_overrides, Orb::ArrayOf[Orb::Unknown], nil?: true
+      optional :price_overrides, Orb::Internal::Type::ArrayOf[Orb::Internal::Type::Unknown], nil?: true
 
       # @!attribute remove_adjustments
       #   Plan adjustments to be removed from the subscription. (Only available for
@@ -160,7 +160,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::RemoveAdjustment>, nil]
       optional :remove_adjustments,
-               -> { Orb::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::RemoveAdjustment] },
+               -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::RemoveAdjustment] },
                nil?: true
 
       # @!attribute remove_prices
@@ -169,7 +169,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::RemovePrice>, nil]
       optional :remove_prices,
-               -> { Orb::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::RemovePrice] },
+               -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::RemovePrice] },
                nil?: true
 
       # @!attribute replace_adjustments
@@ -179,7 +179,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment>, nil]
       optional :replace_adjustments,
-               -> { Orb::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment] },
+               -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment] },
                nil?: true
 
       # @!attribute replace_prices
@@ -188,7 +188,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice>, nil]
       optional :replace_prices,
-               -> { Orb::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice] },
+               -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice] },
                nil?: true
 
       # @!attribute trial_duration_days
@@ -208,7 +208,7 @@ module Orb
       #     subscription itself, or any of that customer's children.
       #
       #   @return [Array<String>, nil]
-      optional :usage_customer_ids, Orb::ArrayOf[String], nil?: true
+      optional :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
       # @!parse
       #   # @param change_option [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ChangeOption]
@@ -272,10 +272,10 @@ module Orb
       #     super
       #   end
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       module ChangeOption
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         REQUESTED_DATE = :requested_date
         END_OF_SUBSCRIPTION_TERM = :end_of_subscription_term
@@ -288,7 +288,7 @@ module Orb
         #   def self.values; end
       end
 
-      class AddAdjustment < Orb::BaseModel
+      class AddAdjustment < Orb::Internal::Type::BaseModel
         # @!attribute adjustment
         #   The definition of a new adjustment to create and add to the subscription.
         #
@@ -325,13 +325,13 @@ module Orb
         #   #
         #   def initialize(adjustment:, end_date: nil, plan_phase_order: nil, start_date: nil, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # The definition of a new adjustment to create and add to the subscription.
         #
         # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment#adjustment
         module Adjustment
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           discriminator :adjustment_type
 
@@ -350,7 +350,7 @@ module Orb
           variant :maximum,
                   -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMaximum }
 
-          class NewPercentageDiscount < Orb::BaseModel
+          class NewPercentageDiscount < Orb::Internal::Type::BaseModel
             # @!attribute adjustment_type
             #
             #   @return [Symbol, :percentage_discount]
@@ -360,7 +360,7 @@ module Orb
             #   The set of price IDs to which this adjustment applies.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute percentage_discount
             #
@@ -372,7 +372,7 @@ module Orb
             #     will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
-            optional :is_invoice_level, Orb::BooleanModel
+            optional :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!parse
             #   # @return [Boolean]
@@ -394,10 +394,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class NewUsageDiscount < Orb::BaseModel
+          class NewUsageDiscount < Orb::Internal::Type::BaseModel
             # @!attribute adjustment_type
             #
             #   @return [Symbol, :usage_discount]
@@ -407,7 +407,7 @@ module Orb
             #   The set of price IDs to which this adjustment applies.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute usage_discount
             #
@@ -419,7 +419,7 @@ module Orb
             #     will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
-            optional :is_invoice_level, Orb::BooleanModel
+            optional :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!parse
             #   # @return [Boolean]
@@ -433,10 +433,10 @@ module Orb
             #   #
             #   def initialize(applies_to_price_ids:, usage_discount:, is_invoice_level: nil, adjustment_type: :usage_discount, **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class NewAmountDiscount < Orb::BaseModel
+          class NewAmountDiscount < Orb::Internal::Type::BaseModel
             # @!attribute adjustment_type
             #
             #   @return [Symbol, :amount_discount]
@@ -451,14 +451,14 @@ module Orb
             #   The set of price IDs to which this adjustment applies.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute [r] is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #     will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
-            optional :is_invoice_level, Orb::BooleanModel
+            optional :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!parse
             #   # @return [Boolean]
@@ -472,10 +472,10 @@ module Orb
             #   #
             #   def initialize(amount_discount:, applies_to_price_ids:, is_invoice_level: nil, adjustment_type: :amount_discount, **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class NewMinimum < Orb::BaseModel
+          class NewMinimum < Orb::Internal::Type::BaseModel
             # @!attribute adjustment_type
             #
             #   @return [Symbol, :minimum]
@@ -485,7 +485,7 @@ module Orb
             #   The set of price IDs to which this adjustment applies.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute item_id
             #   The item ID that revenue from this minimum will be attributed to.
@@ -503,7 +503,7 @@ module Orb
             #     will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
-            optional :is_invoice_level, Orb::BooleanModel
+            optional :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!parse
             #   # @return [Boolean]
@@ -518,10 +518,10 @@ module Orb
             #   #
             #   def initialize(applies_to_price_ids:, item_id:, minimum_amount:, is_invoice_level: nil, adjustment_type: :minimum, **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class NewMaximum < Orb::BaseModel
+          class NewMaximum < Orb::Internal::Type::BaseModel
             # @!attribute adjustment_type
             #
             #   @return [Symbol, :maximum]
@@ -531,7 +531,7 @@ module Orb
             #   The set of price IDs to which this adjustment applies.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute maximum_amount
             #
@@ -543,7 +543,7 @@ module Orb
             #     will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
-            optional :is_invoice_level, Orb::BooleanModel
+            optional :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!parse
             #   # @return [Boolean]
@@ -557,7 +557,7 @@ module Orb
             #   #
             #   def initialize(applies_to_price_ids:, maximum_amount:, is_invoice_level: nil, adjustment_type: :maximum, **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
           # @!parse
@@ -566,7 +566,7 @@ module Orb
         end
       end
 
-      class AddPrice < Orb::BaseModel
+      class AddPrice < Orb::Internal::Type::BaseModel
         # @!attribute allocation_price
         #   The definition of a new allocation price to create and add to the subscription.
         #
@@ -581,7 +581,7 @@ module Orb
         #
         #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount>, nil]
         optional :discounts,
-                 -> { Orb::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount] },
                  nil?: true
 
         # @!attribute end_date
@@ -668,10 +668,10 @@ module Orb
         #     super
         #   end
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice#allocation_price
-        class AllocationPrice < Orb::BaseModel
+        class AllocationPrice < Orb::Internal::Type::BaseModel
           # @!attribute amount
           #   An amount of the currency to allocate to the customer at the specified cadence.
           #
@@ -697,7 +697,7 @@ module Orb
           #     over to the next period.
           #
           #   @return [Boolean]
-          required :expires_at_end_of_cadence, Orb::BooleanModel
+          required :expires_at_end_of_cadence, Orb::Internal::Type::BooleanModel
 
           # @!parse
           #   # The definition of a new allocation price to create and add to the subscription.
@@ -709,13 +709,13 @@ module Orb
           #   #
           #   def initialize(amount:, cadence:, currency:, expires_at_end_of_cadence:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
           # The cadence at which to allocate the amount to the customer.
           #
           # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice#cadence
           module Cadence
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             ONE_TIME = :one_time
             MONTHLY = :monthly
@@ -732,7 +732,7 @@ module Orb
           end
         end
 
-        class Discount < Orb::BaseModel
+        class Discount < Orb::Internal::Type::BaseModel
           # @!attribute discount_type
           #
           #   @return [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount::DiscountType]
@@ -767,11 +767,11 @@ module Orb
           #   #
           #   def initialize(discount_type:, amount_discount: nil, percentage_discount: nil, usage_discount: nil, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
           # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount#discount_type
           module DiscountType
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             PERCENTAGE = :percentage
             USAGE = :usage
@@ -789,7 +789,7 @@ module Orb
         #
         # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice#price
         module Price
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           discriminator :model_type
 
@@ -868,7 +868,7 @@ module Orb
           variant :grouped_tiered_package,
                   -> { Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice }
 
-          class NewSubscriptionUnitPrice < Orb::BaseModel
+          class NewSubscriptionUnitPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -911,7 +911,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -969,7 +969,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -1018,13 +1018,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -1041,7 +1041,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice#unit_config
-            class UnitConfig < Orb::BaseModel
+            class UnitConfig < Orb::Internal::Type::BaseModel
               # @!attribute unit_amount
               #   Rate per unit of usage
               #
@@ -1053,11 +1053,11 @@ module Orb
               #   #
               #   def initialize(unit_amount:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -1080,13 +1080,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -1100,7 +1100,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -1123,13 +1123,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -1143,7 +1143,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionPackagePrice < Orb::BaseModel
+          class NewSubscriptionPackagePrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -1186,7 +1186,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -1244,7 +1244,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -1293,13 +1293,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -1316,7 +1316,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice#package_config
-            class PackageConfig < Orb::BaseModel
+            class PackageConfig < Orb::Internal::Type::BaseModel
               # @!attribute package_amount
               #   A currency amount to rate usage by
               #
@@ -1336,11 +1336,11 @@ module Orb
               #   #
               #   def initialize(package_amount:, package_size:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -1363,13 +1363,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -1383,7 +1383,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -1406,13 +1406,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -1426,7 +1426,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionMatrixPrice < Orb::BaseModel
+          class NewSubscriptionMatrixPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -1469,7 +1469,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -1527,7 +1527,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -1576,13 +1576,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -1599,7 +1599,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice#matrix_config
-            class MatrixConfig < Orb::BaseModel
+            class MatrixConfig < Orb::Internal::Type::BaseModel
               # @!attribute default_unit_amount
               #   Default per unit rate for any usage not bucketed into a specified matrix_value
               #
@@ -1610,7 +1610,7 @@ module Orb
               #   One or two event property values to evaluate matrix groups by
               #
               #   @return [Array<String, nil>]
-              required :dimensions, Orb::ArrayOf[String, nil?: true]
+              required :dimensions, Orb::Internal::Type::ArrayOf[String, nil?: true]
 
               # @!attribute matrix_values
               #   Matrix values for specified matrix grouping keys
@@ -1618,7 +1618,7 @@ module Orb
               #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue>]
               required :matrix_values,
                        -> do
-                         Orb::ArrayOf[
+                         Orb::Internal::Type::ArrayOf[
                          Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
                          ]
                        end
@@ -1630,16 +1630,16 @@ module Orb
               #   #
               #   def initialize(default_unit_amount:, dimensions:, matrix_values:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-              class MatrixValue < Orb::BaseModel
+              class MatrixValue < Orb::Internal::Type::BaseModel
                 # @!attribute dimension_values
                 #   One or two matrix keys to filter usage to this Matrix value by. For example,
                 #     ["region", "tier"] could be used to filter cloud usage by a cloud region and an
                 #     instance tier.
                 #
                 #   @return [Array<String, nil>]
-                required :dimension_values, Orb::ArrayOf[String, nil?: true]
+                required :dimension_values, Orb::Internal::Type::ArrayOf[String, nil?: true]
 
                 # @!attribute unit_amount
                 #   Unit price for the specified dimension_values
@@ -1653,12 +1653,12 @@ module Orb
                 #   #
                 #   def initialize(dimension_values:, unit_amount:, **) = super
 
-                # def initialize: (Hash | Orb::BaseModel) -> void
+                # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
               end
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -1681,13 +1681,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -1701,7 +1701,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -1724,13 +1724,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -1744,7 +1744,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionTieredPrice < Orb::BaseModel
+          class NewSubscriptionTieredPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -1787,7 +1787,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -1845,7 +1845,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -1894,13 +1894,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -1917,14 +1917,14 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice#tiered_config
-            class TieredConfig < Orb::BaseModel
+            class TieredConfig < Orb::Internal::Type::BaseModel
               # @!attribute tiers
               #   Tiers for rating based on total usage quantities into the specified tier
               #
               #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier>]
               required :tiers,
                        -> do
-                         Orb::ArrayOf[
+                         Orb::Internal::Type::ArrayOf[
                          Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier
                          ]
                        end
@@ -1934,9 +1934,9 @@ module Orb
               #   #
               #   def initialize(tiers:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-              class Tier < Orb::BaseModel
+              class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute first_unit
                 #   Inclusive tier starting value
                 #
@@ -1962,12 +1962,12 @@ module Orb
                 #   #
                 #   def initialize(first_unit:, unit_amount:, last_unit: nil, **) = super
 
-                # def initialize: (Hash | Orb::BaseModel) -> void
+                # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
               end
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -1990,13 +1990,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -2010,7 +2010,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -2033,13 +2033,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -2053,7 +2053,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionTieredBpsPrice < Orb::BaseModel
+          class NewSubscriptionTieredBpsPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -2096,7 +2096,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -2154,7 +2154,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -2203,13 +2203,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -2226,7 +2226,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice#tiered_bps_config
-            class TieredBpsConfig < Orb::BaseModel
+            class TieredBpsConfig < Orb::Internal::Type::BaseModel
               # @!attribute tiers
               #   Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
               #     tiers
@@ -2234,7 +2234,7 @@ module Orb
               #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier>]
               required :tiers,
                        -> do
-                         Orb::ArrayOf[
+                         Orb::Internal::Type::ArrayOf[
                          Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
                          ]
                        end
@@ -2244,9 +2244,9 @@ module Orb
               #   #
               #   def initialize(tiers:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-              class Tier < Orb::BaseModel
+              class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute bps
                 #   Per-event basis point rate
                 #
@@ -2279,12 +2279,12 @@ module Orb
                 #   #
                 #   def initialize(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil, **) = super
 
-                # def initialize: (Hash | Orb::BaseModel) -> void
+                # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
               end
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -2307,13 +2307,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -2327,7 +2327,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -2350,13 +2350,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -2370,7 +2370,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionBpsPrice < Orb::BaseModel
+          class NewSubscriptionBpsPrice < Orb::Internal::Type::BaseModel
             # @!attribute bps_config
             #
             #   @return [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BpsConfig]
@@ -2413,7 +2413,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -2471,7 +2471,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -2520,10 +2520,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice#bps_config
-            class BpsConfig < Orb::BaseModel
+            class BpsConfig < Orb::Internal::Type::BaseModel
               # @!attribute bps
               #   Basis point take rate per event
               #
@@ -2542,14 +2542,14 @@ module Orb
               #   #
               #   def initialize(bps:, per_unit_maximum: nil, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -2566,7 +2566,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -2589,13 +2589,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -2609,7 +2609,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -2632,13 +2632,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -2652,7 +2652,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionBulkBpsPrice < Orb::BaseModel
+          class NewSubscriptionBulkBpsPrice < Orb::Internal::Type::BaseModel
             # @!attribute bulk_bps_config
             #
             #   @return [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig]
@@ -2695,7 +2695,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -2753,7 +2753,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -2802,10 +2802,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice#bulk_bps_config
-            class BulkBpsConfig < Orb::BaseModel
+            class BulkBpsConfig < Orb::Internal::Type::BaseModel
               # @!attribute tiers
               #   Tiers for a bulk BPS pricing model where all usage is aggregated to a single
               #     tier based on total volume
@@ -2813,7 +2813,7 @@ module Orb
               #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier>]
               required :tiers,
                        -> do
-                         Orb::ArrayOf[
+                         Orb::Internal::Type::ArrayOf[
                          Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier
                          ]
                        end
@@ -2823,9 +2823,9 @@ module Orb
               #   #
               #   def initialize(tiers:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-              class Tier < Orb::BaseModel
+              class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute bps
                 #   Basis points to rate on
                 #
@@ -2851,7 +2851,7 @@ module Orb
                 #   #
                 #   def initialize(bps:, maximum_amount: nil, per_unit_maximum: nil, **) = super
 
-                # def initialize: (Hash | Orb::BaseModel) -> void
+                # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
               end
             end
 
@@ -2859,7 +2859,7 @@ module Orb
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -2876,7 +2876,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -2899,13 +2899,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -2919,7 +2919,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -2942,13 +2942,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -2962,7 +2962,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionBulkPrice < Orb::BaseModel
+          class NewSubscriptionBulkPrice < Orb::Internal::Type::BaseModel
             # @!attribute bulk_config
             #
             #   @return [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig]
@@ -3005,7 +3005,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -3063,7 +3063,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -3112,17 +3112,17 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice#bulk_config
-            class BulkConfig < Orb::BaseModel
+            class BulkConfig < Orb::Internal::Type::BaseModel
               # @!attribute tiers
               #   Bulk tiers for rating based on total usage volume
               #
               #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier>]
               required :tiers,
                        -> do
-                         Orb::ArrayOf[
+                         Orb::Internal::Type::ArrayOf[
                          Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier
                          ]
                        end
@@ -3132,9 +3132,9 @@ module Orb
               #   #
               #   def initialize(tiers:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-              class Tier < Orb::BaseModel
+              class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute unit_amount
                 #   Amount per unit
                 #
@@ -3153,7 +3153,7 @@ module Orb
                 #   #
                 #   def initialize(unit_amount:, maximum_units: nil, **) = super
 
-                # def initialize: (Hash | Orb::BaseModel) -> void
+                # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
               end
             end
 
@@ -3161,7 +3161,7 @@ module Orb
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -3178,7 +3178,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -3201,13 +3201,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -3221,7 +3221,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -3244,13 +3244,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -3264,7 +3264,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionThresholdTotalAmountPrice < Orb::BaseModel
+          class NewSubscriptionThresholdTotalAmountPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -3292,7 +3292,7 @@ module Orb
             # @!attribute threshold_total_amount_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :threshold_total_amount_config, Orb::HashOf[Orb::Unknown]
+            required :threshold_total_amount_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -3306,7 +3306,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -3364,7 +3364,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -3413,13 +3413,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -3436,7 +3436,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -3459,13 +3459,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -3479,7 +3479,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -3502,13 +3502,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -3522,7 +3522,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionTieredPackagePrice < Orb::BaseModel
+          class NewSubscriptionTieredPackagePrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -3550,7 +3550,7 @@ module Orb
             # @!attribute tiered_package_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :tiered_package_config, Orb::HashOf[Orb::Unknown]
+            required :tiered_package_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -3564,7 +3564,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -3622,7 +3622,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -3671,13 +3671,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -3694,7 +3694,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -3717,13 +3717,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -3737,7 +3737,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -3760,13 +3760,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -3780,7 +3780,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionTieredWithMinimumPrice < Orb::BaseModel
+          class NewSubscriptionTieredWithMinimumPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -3808,7 +3808,7 @@ module Orb
             # @!attribute tiered_with_minimum_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :tiered_with_minimum_config, Orb::HashOf[Orb::Unknown]
+            required :tiered_with_minimum_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -3822,7 +3822,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -3880,7 +3880,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -3929,13 +3929,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -3952,7 +3952,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -3975,13 +3975,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -3995,7 +3995,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -4018,13 +4018,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -4038,7 +4038,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionUnitWithPercentPrice < Orb::BaseModel
+          class NewSubscriptionUnitWithPercentPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -4066,7 +4066,7 @@ module Orb
             # @!attribute unit_with_percent_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :unit_with_percent_config, Orb::HashOf[Orb::Unknown]
+            required :unit_with_percent_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -4080,7 +4080,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -4138,7 +4138,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -4187,13 +4187,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -4210,7 +4210,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -4233,13 +4233,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -4253,7 +4253,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -4276,13 +4276,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -4296,7 +4296,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionPackageWithAllocationPrice < Orb::BaseModel
+          class NewSubscriptionPackageWithAllocationPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -4324,7 +4324,8 @@ module Orb
             # @!attribute package_with_allocation_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :package_with_allocation_config, Orb::HashOf[Orb::Unknown]
+            required :package_with_allocation_config,
+                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -4338,7 +4339,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -4396,7 +4397,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -4445,13 +4446,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -4468,7 +4469,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -4491,13 +4492,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -4511,7 +4512,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -4534,13 +4535,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -4554,7 +4555,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionTierWithProrationPrice < Orb::BaseModel
+          class NewSubscriptionTierWithProrationPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -4582,7 +4583,7 @@ module Orb
             # @!attribute tiered_with_proration_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :tiered_with_proration_config, Orb::HashOf[Orb::Unknown]
+            required :tiered_with_proration_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -4596,7 +4597,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -4654,7 +4655,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -4703,13 +4704,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -4726,7 +4727,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -4749,13 +4750,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -4769,7 +4770,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -4792,13 +4793,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -4812,7 +4813,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionUnitWithProrationPrice < Orb::BaseModel
+          class NewSubscriptionUnitWithProrationPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -4840,7 +4841,7 @@ module Orb
             # @!attribute unit_with_proration_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :unit_with_proration_config, Orb::HashOf[Orb::Unknown]
+            required :unit_with_proration_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -4854,7 +4855,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -4912,7 +4913,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -4961,13 +4962,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -4984,7 +4985,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -5007,13 +5008,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -5027,7 +5028,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -5050,13 +5051,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -5070,7 +5071,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionGroupedAllocationPrice < Orb::BaseModel
+          class NewSubscriptionGroupedAllocationPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -5081,7 +5082,7 @@ module Orb
             # @!attribute grouped_allocation_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :grouped_allocation_config, Orb::HashOf[Orb::Unknown]
+            required :grouped_allocation_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute item_id
             #   The id of the item the price will be associated with.
@@ -5112,7 +5113,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -5170,7 +5171,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -5219,13 +5220,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -5242,7 +5243,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -5265,13 +5266,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -5285,7 +5286,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -5308,13 +5309,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -5328,7 +5329,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionGroupedWithProratedMinimumPrice < Orb::BaseModel
+          class NewSubscriptionGroupedWithProratedMinimumPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -5339,7 +5340,8 @@ module Orb
             # @!attribute grouped_with_prorated_minimum_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :grouped_with_prorated_minimum_config, Orb::HashOf[Orb::Unknown]
+            required :grouped_with_prorated_minimum_config,
+                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute item_id
             #   The id of the item the price will be associated with.
@@ -5370,7 +5372,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -5428,7 +5430,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -5477,13 +5479,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -5500,7 +5502,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -5523,13 +5525,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -5543,7 +5545,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -5566,13 +5568,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -5586,11 +5588,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionBulkWithProrationPrice < Orb::BaseModel
+          class NewSubscriptionBulkWithProrationPrice < Orb::Internal::Type::BaseModel
             # @!attribute bulk_with_proration_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :bulk_with_proration_config, Orb::HashOf[Orb::Unknown]
+            required :bulk_with_proration_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -5628,7 +5630,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -5686,7 +5688,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -5735,13 +5737,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -5758,7 +5760,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -5781,13 +5783,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -5801,7 +5803,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -5824,13 +5826,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -5844,7 +5846,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionScalableMatrixWithUnitPricingPrice < Orb::BaseModel
+          class NewSubscriptionScalableMatrixWithUnitPricingPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -5872,7 +5874,8 @@ module Orb
             # @!attribute scalable_matrix_with_unit_pricing_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :scalable_matrix_with_unit_pricing_config, Orb::HashOf[Orb::Unknown]
+            required :scalable_matrix_with_unit_pricing_config,
+                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -5886,7 +5889,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -5944,7 +5947,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -5993,13 +5996,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -6016,7 +6019,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -6039,13 +6042,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -6059,7 +6062,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -6082,13 +6085,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -6102,7 +6105,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionScalableMatrixWithTieredPricingPrice < Orb::BaseModel
+          class NewSubscriptionScalableMatrixWithTieredPricingPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -6130,7 +6133,8 @@ module Orb
             # @!attribute scalable_matrix_with_tiered_pricing_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :scalable_matrix_with_tiered_pricing_config, Orb::HashOf[Orb::Unknown]
+            required :scalable_matrix_with_tiered_pricing_config,
+                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -6144,7 +6148,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -6202,7 +6206,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -6251,13 +6255,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -6274,7 +6278,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -6297,13 +6301,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -6317,7 +6321,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -6340,13 +6344,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -6360,7 +6364,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionCumulativeGroupedBulkPrice < Orb::BaseModel
+          class NewSubscriptionCumulativeGroupedBulkPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -6371,7 +6375,8 @@ module Orb
             # @!attribute cumulative_grouped_bulk_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :cumulative_grouped_bulk_config, Orb::HashOf[Orb::Unknown]
+            required :cumulative_grouped_bulk_config,
+                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute item_id
             #   The id of the item the price will be associated with.
@@ -6402,7 +6407,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -6460,7 +6465,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -6509,13 +6514,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -6532,7 +6537,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -6555,13 +6560,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -6575,7 +6580,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -6598,13 +6603,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -6618,7 +6623,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionMaxGroupTieredPackagePrice < Orb::BaseModel
+          class NewSubscriptionMaxGroupTieredPackagePrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -6635,7 +6640,8 @@ module Orb
             # @!attribute max_group_tiered_package_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :max_group_tiered_package_config, Orb::HashOf[Orb::Unknown]
+            required :max_group_tiered_package_config,
+                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute model_type
             #
@@ -6660,7 +6666,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -6718,7 +6724,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -6767,13 +6773,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -6790,7 +6796,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -6813,13 +6819,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -6833,7 +6839,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -6856,13 +6862,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -6876,7 +6882,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionGroupedWithMeteredMinimumPrice < Orb::BaseModel
+          class NewSubscriptionGroupedWithMeteredMinimumPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -6887,7 +6893,8 @@ module Orb
             # @!attribute grouped_with_metered_minimum_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :grouped_with_metered_minimum_config, Orb::HashOf[Orb::Unknown]
+            required :grouped_with_metered_minimum_config,
+                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute item_id
             #   The id of the item the price will be associated with.
@@ -6918,7 +6925,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -6976,7 +6983,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -7025,13 +7032,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -7048,7 +7055,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -7071,13 +7078,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -7091,7 +7098,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -7114,13 +7121,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -7134,7 +7141,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionMatrixWithDisplayNamePrice < Orb::BaseModel
+          class NewSubscriptionMatrixWithDisplayNamePrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -7151,7 +7158,8 @@ module Orb
             # @!attribute matrix_with_display_name_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :matrix_with_display_name_config, Orb::HashOf[Orb::Unknown]
+            required :matrix_with_display_name_config,
+                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute model_type
             #
@@ -7176,7 +7184,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -7234,7 +7242,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -7283,13 +7291,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -7306,7 +7314,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -7329,13 +7337,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -7349,7 +7357,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -7372,13 +7380,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -7392,7 +7400,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionGroupedTieredPackagePrice < Orb::BaseModel
+          class NewSubscriptionGroupedTieredPackagePrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -7403,7 +7411,7 @@ module Orb
             # @!attribute grouped_tiered_package_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :grouped_tiered_package_config, Orb::HashOf[Orb::Unknown]
+            required :grouped_tiered_package_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute item_id
             #   The id of the item the price will be associated with.
@@ -7434,7 +7442,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -7492,7 +7500,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -7541,13 +7549,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -7564,7 +7572,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -7587,13 +7595,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -7607,7 +7615,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -7630,13 +7638,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -7660,7 +7668,7 @@ module Orb
       #   start of the month. Defaults to `unchanged` which keeps subscription's existing
       #   billing cycle alignment.
       module BillingCycleAlignment
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         UNCHANGED = :unchanged
         PLAN_CHANGE_DATE = :plan_change_date
@@ -7673,7 +7681,7 @@ module Orb
         #   def self.values; end
       end
 
-      class BillingCycleAnchorConfiguration < Orb::BaseModel
+      class BillingCycleAnchorConfiguration < Orb::Internal::Type::BaseModel
         # @!attribute day
         #   The day of the month on which the billing cycle is anchored. If the maximum
         #     number of days in a month is greater than this value, the last day of the month
@@ -7705,10 +7713,10 @@ module Orb
         #   #
         #   def initialize(day:, month: nil, year: nil, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
-      class RemoveAdjustment < Orb::BaseModel
+      class RemoveAdjustment < Orb::Internal::Type::BaseModel
         # @!attribute adjustment_id
         #   The id of the adjustment to remove on the subscription.
         #
@@ -7720,10 +7728,10 @@ module Orb
         #   #
         #   def initialize(adjustment_id:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
-      class RemovePrice < Orb::BaseModel
+      class RemovePrice < Orb::Internal::Type::BaseModel
         # @!attribute external_price_id
         #   The external price id of the price to remove on the subscription.
         #
@@ -7742,10 +7750,10 @@ module Orb
         #   #
         #   def initialize(external_price_id: nil, price_id: nil, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
-      class ReplaceAdjustment < Orb::BaseModel
+      class ReplaceAdjustment < Orb::Internal::Type::BaseModel
         # @!attribute adjustment
         #   The definition of a new adjustment to create and add to the subscription.
         #
@@ -7765,13 +7773,13 @@ module Orb
         #   #
         #   def initialize(adjustment:, replaces_adjustment_id:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # The definition of a new adjustment to create and add to the subscription.
         #
         # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment#adjustment
         module Adjustment
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           discriminator :adjustment_type
 
@@ -7790,7 +7798,7 @@ module Orb
           variant :maximum,
                   -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMaximum }
 
-          class NewPercentageDiscount < Orb::BaseModel
+          class NewPercentageDiscount < Orb::Internal::Type::BaseModel
             # @!attribute adjustment_type
             #
             #   @return [Symbol, :percentage_discount]
@@ -7800,7 +7808,7 @@ module Orb
             #   The set of price IDs to which this adjustment applies.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute percentage_discount
             #
@@ -7812,7 +7820,7 @@ module Orb
             #     will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
-            optional :is_invoice_level, Orb::BooleanModel
+            optional :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!parse
             #   # @return [Boolean]
@@ -7834,10 +7842,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class NewUsageDiscount < Orb::BaseModel
+          class NewUsageDiscount < Orb::Internal::Type::BaseModel
             # @!attribute adjustment_type
             #
             #   @return [Symbol, :usage_discount]
@@ -7847,7 +7855,7 @@ module Orb
             #   The set of price IDs to which this adjustment applies.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute usage_discount
             #
@@ -7859,7 +7867,7 @@ module Orb
             #     will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
-            optional :is_invoice_level, Orb::BooleanModel
+            optional :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!parse
             #   # @return [Boolean]
@@ -7873,10 +7881,10 @@ module Orb
             #   #
             #   def initialize(applies_to_price_ids:, usage_discount:, is_invoice_level: nil, adjustment_type: :usage_discount, **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class NewAmountDiscount < Orb::BaseModel
+          class NewAmountDiscount < Orb::Internal::Type::BaseModel
             # @!attribute adjustment_type
             #
             #   @return [Symbol, :amount_discount]
@@ -7891,14 +7899,14 @@ module Orb
             #   The set of price IDs to which this adjustment applies.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute [r] is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #     will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
-            optional :is_invoice_level, Orb::BooleanModel
+            optional :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!parse
             #   # @return [Boolean]
@@ -7912,10 +7920,10 @@ module Orb
             #   #
             #   def initialize(amount_discount:, applies_to_price_ids:, is_invoice_level: nil, adjustment_type: :amount_discount, **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class NewMinimum < Orb::BaseModel
+          class NewMinimum < Orb::Internal::Type::BaseModel
             # @!attribute adjustment_type
             #
             #   @return [Symbol, :minimum]
@@ -7925,7 +7933,7 @@ module Orb
             #   The set of price IDs to which this adjustment applies.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute item_id
             #   The item ID that revenue from this minimum will be attributed to.
@@ -7943,7 +7951,7 @@ module Orb
             #     will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
-            optional :is_invoice_level, Orb::BooleanModel
+            optional :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!parse
             #   # @return [Boolean]
@@ -7958,10 +7966,10 @@ module Orb
             #   #
             #   def initialize(applies_to_price_ids:, item_id:, minimum_amount:, is_invoice_level: nil, adjustment_type: :minimum, **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class NewMaximum < Orb::BaseModel
+          class NewMaximum < Orb::Internal::Type::BaseModel
             # @!attribute adjustment_type
             #
             #   @return [Symbol, :maximum]
@@ -7971,7 +7979,7 @@ module Orb
             #   The set of price IDs to which this adjustment applies.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute maximum_amount
             #
@@ -7983,7 +7991,7 @@ module Orb
             #     will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
-            optional :is_invoice_level, Orb::BooleanModel
+            optional :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!parse
             #   # @return [Boolean]
@@ -7997,7 +8005,7 @@ module Orb
             #   #
             #   def initialize(applies_to_price_ids:, maximum_amount:, is_invoice_level: nil, adjustment_type: :maximum, **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
           # @!parse
@@ -8006,7 +8014,7 @@ module Orb
         end
       end
 
-      class ReplacePrice < Orb::BaseModel
+      class ReplacePrice < Orb::Internal::Type::BaseModel
         # @!attribute replaces_price_id
         #   The id of the price on the plan to replace in the subscription.
         #
@@ -8027,7 +8035,7 @@ module Orb
         #
         #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount>, nil]
         optional :discounts,
-                 -> { Orb::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount] },
                  nil?: true
 
         # @!attribute external_price_id
@@ -8096,10 +8104,10 @@ module Orb
         #     super
         #   end
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice#allocation_price
-        class AllocationPrice < Orb::BaseModel
+        class AllocationPrice < Orb::Internal::Type::BaseModel
           # @!attribute amount
           #   An amount of the currency to allocate to the customer at the specified cadence.
           #
@@ -8125,7 +8133,7 @@ module Orb
           #     over to the next period.
           #
           #   @return [Boolean]
-          required :expires_at_end_of_cadence, Orb::BooleanModel
+          required :expires_at_end_of_cadence, Orb::Internal::Type::BooleanModel
 
           # @!parse
           #   # The definition of a new allocation price to create and add to the subscription.
@@ -8137,13 +8145,13 @@ module Orb
           #   #
           #   def initialize(amount:, cadence:, currency:, expires_at_end_of_cadence:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
           # The cadence at which to allocate the amount to the customer.
           #
           # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice#cadence
           module Cadence
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             ONE_TIME = :one_time
             MONTHLY = :monthly
@@ -8160,7 +8168,7 @@ module Orb
           end
         end
 
-        class Discount < Orb::BaseModel
+        class Discount < Orb::Internal::Type::BaseModel
           # @!attribute discount_type
           #
           #   @return [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount::DiscountType]
@@ -8195,11 +8203,11 @@ module Orb
           #   #
           #   def initialize(discount_type:, amount_discount: nil, percentage_discount: nil, usage_discount: nil, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
           # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount#discount_type
           module DiscountType
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             PERCENTAGE = :percentage
             USAGE = :usage
@@ -8217,7 +8225,7 @@ module Orb
         #
         # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice#price
         module Price
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           discriminator :model_type
 
@@ -8296,7 +8304,7 @@ module Orb
           variant :grouped_tiered_package,
                   -> { Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice }
 
-          class NewSubscriptionUnitPrice < Orb::BaseModel
+          class NewSubscriptionUnitPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -8339,7 +8347,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -8397,7 +8405,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -8446,13 +8454,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -8469,7 +8477,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice#unit_config
-            class UnitConfig < Orb::BaseModel
+            class UnitConfig < Orb::Internal::Type::BaseModel
               # @!attribute unit_amount
               #   Rate per unit of usage
               #
@@ -8481,11 +8489,11 @@ module Orb
               #   #
               #   def initialize(unit_amount:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -8508,13 +8516,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -8528,7 +8536,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -8551,13 +8559,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -8571,7 +8579,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionPackagePrice < Orb::BaseModel
+          class NewSubscriptionPackagePrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -8614,7 +8622,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -8672,7 +8680,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -8721,13 +8729,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -8744,7 +8752,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice#package_config
-            class PackageConfig < Orb::BaseModel
+            class PackageConfig < Orb::Internal::Type::BaseModel
               # @!attribute package_amount
               #   A currency amount to rate usage by
               #
@@ -8764,11 +8772,11 @@ module Orb
               #   #
               #   def initialize(package_amount:, package_size:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -8791,13 +8799,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -8811,7 +8819,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -8834,13 +8842,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -8854,7 +8862,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionMatrixPrice < Orb::BaseModel
+          class NewSubscriptionMatrixPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -8897,7 +8905,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -8955,7 +8963,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -9004,13 +9012,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -9027,7 +9035,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice#matrix_config
-            class MatrixConfig < Orb::BaseModel
+            class MatrixConfig < Orb::Internal::Type::BaseModel
               # @!attribute default_unit_amount
               #   Default per unit rate for any usage not bucketed into a specified matrix_value
               #
@@ -9038,7 +9046,7 @@ module Orb
               #   One or two event property values to evaluate matrix groups by
               #
               #   @return [Array<String, nil>]
-              required :dimensions, Orb::ArrayOf[String, nil?: true]
+              required :dimensions, Orb::Internal::Type::ArrayOf[String, nil?: true]
 
               # @!attribute matrix_values
               #   Matrix values for specified matrix grouping keys
@@ -9046,7 +9054,7 @@ module Orb
               #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue>]
               required :matrix_values,
                        -> do
-                         Orb::ArrayOf[
+                         Orb::Internal::Type::ArrayOf[
                          Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
                          ]
                        end
@@ -9058,16 +9066,16 @@ module Orb
               #   #
               #   def initialize(default_unit_amount:, dimensions:, matrix_values:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-              class MatrixValue < Orb::BaseModel
+              class MatrixValue < Orb::Internal::Type::BaseModel
                 # @!attribute dimension_values
                 #   One or two matrix keys to filter usage to this Matrix value by. For example,
                 #     ["region", "tier"] could be used to filter cloud usage by a cloud region and an
                 #     instance tier.
                 #
                 #   @return [Array<String, nil>]
-                required :dimension_values, Orb::ArrayOf[String, nil?: true]
+                required :dimension_values, Orb::Internal::Type::ArrayOf[String, nil?: true]
 
                 # @!attribute unit_amount
                 #   Unit price for the specified dimension_values
@@ -9081,12 +9089,12 @@ module Orb
                 #   #
                 #   def initialize(dimension_values:, unit_amount:, **) = super
 
-                # def initialize: (Hash | Orb::BaseModel) -> void
+                # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
               end
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -9109,13 +9117,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -9129,7 +9137,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -9152,13 +9160,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -9172,7 +9180,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionTieredPrice < Orb::BaseModel
+          class NewSubscriptionTieredPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -9215,7 +9223,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -9273,7 +9281,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -9322,13 +9330,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -9345,14 +9353,14 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice#tiered_config
-            class TieredConfig < Orb::BaseModel
+            class TieredConfig < Orb::Internal::Type::BaseModel
               # @!attribute tiers
               #   Tiers for rating based on total usage quantities into the specified tier
               #
               #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier>]
               required :tiers,
                        -> do
-                         Orb::ArrayOf[
+                         Orb::Internal::Type::ArrayOf[
                          Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier
                          ]
                        end
@@ -9362,9 +9370,9 @@ module Orb
               #   #
               #   def initialize(tiers:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-              class Tier < Orb::BaseModel
+              class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute first_unit
                 #   Inclusive tier starting value
                 #
@@ -9390,12 +9398,12 @@ module Orb
                 #   #
                 #   def initialize(first_unit:, unit_amount:, last_unit: nil, **) = super
 
-                # def initialize: (Hash | Orb::BaseModel) -> void
+                # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
               end
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -9418,13 +9426,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -9438,7 +9446,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -9461,13 +9469,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -9481,7 +9489,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionTieredBpsPrice < Orb::BaseModel
+          class NewSubscriptionTieredBpsPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -9524,7 +9532,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -9582,7 +9590,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -9631,13 +9639,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -9654,7 +9662,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice#tiered_bps_config
-            class TieredBpsConfig < Orb::BaseModel
+            class TieredBpsConfig < Orb::Internal::Type::BaseModel
               # @!attribute tiers
               #   Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
               #     tiers
@@ -9662,7 +9670,7 @@ module Orb
               #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier>]
               required :tiers,
                        -> do
-                         Orb::ArrayOf[
+                         Orb::Internal::Type::ArrayOf[
                          Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
                          ]
                        end
@@ -9672,9 +9680,9 @@ module Orb
               #   #
               #   def initialize(tiers:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-              class Tier < Orb::BaseModel
+              class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute bps
                 #   Per-event basis point rate
                 #
@@ -9707,12 +9715,12 @@ module Orb
                 #   #
                 #   def initialize(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil, **) = super
 
-                # def initialize: (Hash | Orb::BaseModel) -> void
+                # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
               end
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -9735,13 +9743,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -9755,7 +9763,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -9778,13 +9786,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -9798,7 +9806,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionBpsPrice < Orb::BaseModel
+          class NewSubscriptionBpsPrice < Orb::Internal::Type::BaseModel
             # @!attribute bps_config
             #
             #   @return [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BpsConfig]
@@ -9841,7 +9849,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -9899,7 +9907,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -9948,10 +9956,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice#bps_config
-            class BpsConfig < Orb::BaseModel
+            class BpsConfig < Orb::Internal::Type::BaseModel
               # @!attribute bps
               #   Basis point take rate per event
               #
@@ -9970,14 +9978,14 @@ module Orb
               #   #
               #   def initialize(bps:, per_unit_maximum: nil, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -9994,7 +10002,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -10017,13 +10025,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -10037,7 +10045,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -10060,13 +10068,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -10080,7 +10088,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionBulkBpsPrice < Orb::BaseModel
+          class NewSubscriptionBulkBpsPrice < Orb::Internal::Type::BaseModel
             # @!attribute bulk_bps_config
             #
             #   @return [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig]
@@ -10123,7 +10131,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -10181,7 +10189,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -10230,10 +10238,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice#bulk_bps_config
-            class BulkBpsConfig < Orb::BaseModel
+            class BulkBpsConfig < Orb::Internal::Type::BaseModel
               # @!attribute tiers
               #   Tiers for a bulk BPS pricing model where all usage is aggregated to a single
               #     tier based on total volume
@@ -10241,7 +10249,7 @@ module Orb
               #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier>]
               required :tiers,
                        -> do
-                         Orb::ArrayOf[
+                         Orb::Internal::Type::ArrayOf[
                          Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier
                          ]
                        end
@@ -10251,9 +10259,9 @@ module Orb
               #   #
               #   def initialize(tiers:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-              class Tier < Orb::BaseModel
+              class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute bps
                 #   Basis points to rate on
                 #
@@ -10279,7 +10287,7 @@ module Orb
                 #   #
                 #   def initialize(bps:, maximum_amount: nil, per_unit_maximum: nil, **) = super
 
-                # def initialize: (Hash | Orb::BaseModel) -> void
+                # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
               end
             end
 
@@ -10287,7 +10295,7 @@ module Orb
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -10304,7 +10312,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -10327,13 +10335,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -10347,7 +10355,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -10370,13 +10378,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -10390,7 +10398,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionBulkPrice < Orb::BaseModel
+          class NewSubscriptionBulkPrice < Orb::Internal::Type::BaseModel
             # @!attribute bulk_config
             #
             #   @return [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig]
@@ -10433,7 +10441,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -10491,7 +10499,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -10540,17 +10548,17 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice#bulk_config
-            class BulkConfig < Orb::BaseModel
+            class BulkConfig < Orb::Internal::Type::BaseModel
               # @!attribute tiers
               #   Bulk tiers for rating based on total usage volume
               #
               #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier>]
               required :tiers,
                        -> do
-                         Orb::ArrayOf[
+                         Orb::Internal::Type::ArrayOf[
                          Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier
                          ]
                        end
@@ -10560,9 +10568,9 @@ module Orb
               #   #
               #   def initialize(tiers:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-              class Tier < Orb::BaseModel
+              class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute unit_amount
                 #   Amount per unit
                 #
@@ -10581,7 +10589,7 @@ module Orb
                 #   #
                 #   def initialize(unit_amount:, maximum_units: nil, **) = super
 
-                # def initialize: (Hash | Orb::BaseModel) -> void
+                # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
               end
             end
 
@@ -10589,7 +10597,7 @@ module Orb
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -10606,7 +10614,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -10629,13 +10637,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -10649,7 +10657,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -10672,13 +10680,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -10692,7 +10700,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionThresholdTotalAmountPrice < Orb::BaseModel
+          class NewSubscriptionThresholdTotalAmountPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -10720,7 +10728,7 @@ module Orb
             # @!attribute threshold_total_amount_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :threshold_total_amount_config, Orb::HashOf[Orb::Unknown]
+            required :threshold_total_amount_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -10734,7 +10742,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -10792,7 +10800,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -10841,13 +10849,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -10864,7 +10872,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -10887,13 +10895,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -10907,7 +10915,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -10930,13 +10938,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -10950,7 +10958,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionTieredPackagePrice < Orb::BaseModel
+          class NewSubscriptionTieredPackagePrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -10978,7 +10986,7 @@ module Orb
             # @!attribute tiered_package_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :tiered_package_config, Orb::HashOf[Orb::Unknown]
+            required :tiered_package_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -10992,7 +11000,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -11050,7 +11058,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -11099,13 +11107,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -11122,7 +11130,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -11145,13 +11153,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -11165,7 +11173,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -11188,13 +11196,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -11208,7 +11216,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionTieredWithMinimumPrice < Orb::BaseModel
+          class NewSubscriptionTieredWithMinimumPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -11236,7 +11244,7 @@ module Orb
             # @!attribute tiered_with_minimum_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :tiered_with_minimum_config, Orb::HashOf[Orb::Unknown]
+            required :tiered_with_minimum_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -11250,7 +11258,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -11308,7 +11316,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -11357,13 +11365,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -11380,7 +11388,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -11403,13 +11411,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -11423,7 +11431,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -11446,13 +11454,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -11466,7 +11474,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionUnitWithPercentPrice < Orb::BaseModel
+          class NewSubscriptionUnitWithPercentPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -11494,7 +11502,7 @@ module Orb
             # @!attribute unit_with_percent_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :unit_with_percent_config, Orb::HashOf[Orb::Unknown]
+            required :unit_with_percent_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -11508,7 +11516,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -11566,7 +11574,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -11615,13 +11623,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -11638,7 +11646,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -11661,13 +11669,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -11681,7 +11689,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -11704,13 +11712,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -11724,7 +11732,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionPackageWithAllocationPrice < Orb::BaseModel
+          class NewSubscriptionPackageWithAllocationPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -11752,7 +11760,8 @@ module Orb
             # @!attribute package_with_allocation_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :package_with_allocation_config, Orb::HashOf[Orb::Unknown]
+            required :package_with_allocation_config,
+                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -11766,7 +11775,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -11824,7 +11833,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -11873,13 +11882,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -11896,7 +11905,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -11919,13 +11928,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -11939,7 +11948,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -11962,13 +11971,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -11982,7 +11991,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionTierWithProrationPrice < Orb::BaseModel
+          class NewSubscriptionTierWithProrationPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -12010,7 +12019,7 @@ module Orb
             # @!attribute tiered_with_proration_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :tiered_with_proration_config, Orb::HashOf[Orb::Unknown]
+            required :tiered_with_proration_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -12024,7 +12033,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -12082,7 +12091,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -12131,13 +12140,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -12154,7 +12163,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -12177,13 +12186,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -12197,7 +12206,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -12220,13 +12229,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -12240,7 +12249,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionUnitWithProrationPrice < Orb::BaseModel
+          class NewSubscriptionUnitWithProrationPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -12268,7 +12277,7 @@ module Orb
             # @!attribute unit_with_proration_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :unit_with_proration_config, Orb::HashOf[Orb::Unknown]
+            required :unit_with_proration_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -12282,7 +12291,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -12340,7 +12349,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -12389,13 +12398,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -12412,7 +12421,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -12435,13 +12444,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -12455,7 +12464,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -12478,13 +12487,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -12498,7 +12507,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionGroupedAllocationPrice < Orb::BaseModel
+          class NewSubscriptionGroupedAllocationPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -12509,7 +12518,7 @@ module Orb
             # @!attribute grouped_allocation_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :grouped_allocation_config, Orb::HashOf[Orb::Unknown]
+            required :grouped_allocation_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute item_id
             #   The id of the item the price will be associated with.
@@ -12540,7 +12549,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -12598,7 +12607,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -12647,13 +12656,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -12670,7 +12679,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -12693,13 +12702,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -12713,7 +12722,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -12736,13 +12745,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -12756,7 +12765,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionGroupedWithProratedMinimumPrice < Orb::BaseModel
+          class NewSubscriptionGroupedWithProratedMinimumPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -12767,7 +12776,8 @@ module Orb
             # @!attribute grouped_with_prorated_minimum_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :grouped_with_prorated_minimum_config, Orb::HashOf[Orb::Unknown]
+            required :grouped_with_prorated_minimum_config,
+                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute item_id
             #   The id of the item the price will be associated with.
@@ -12798,7 +12808,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -12856,7 +12866,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -12905,13 +12915,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -12928,7 +12938,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -12951,13 +12961,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -12971,7 +12981,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -12994,13 +13004,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -13014,11 +13024,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionBulkWithProrationPrice < Orb::BaseModel
+          class NewSubscriptionBulkWithProrationPrice < Orb::Internal::Type::BaseModel
             # @!attribute bulk_with_proration_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :bulk_with_proration_config, Orb::HashOf[Orb::Unknown]
+            required :bulk_with_proration_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute cadence
             #   The cadence to bill for this price on.
@@ -13056,7 +13066,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -13114,7 +13124,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -13163,13 +13173,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -13186,7 +13196,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -13209,13 +13219,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -13229,7 +13239,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -13252,13 +13262,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -13272,7 +13282,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionScalableMatrixWithUnitPricingPrice < Orb::BaseModel
+          class NewSubscriptionScalableMatrixWithUnitPricingPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -13300,7 +13310,8 @@ module Orb
             # @!attribute scalable_matrix_with_unit_pricing_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :scalable_matrix_with_unit_pricing_config, Orb::HashOf[Orb::Unknown]
+            required :scalable_matrix_with_unit_pricing_config,
+                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -13314,7 +13325,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -13372,7 +13383,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -13421,13 +13432,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -13444,7 +13455,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -13467,13 +13478,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -13487,7 +13498,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -13510,13 +13521,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -13530,7 +13541,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionScalableMatrixWithTieredPricingPrice < Orb::BaseModel
+          class NewSubscriptionScalableMatrixWithTieredPricingPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -13558,7 +13569,8 @@ module Orb
             # @!attribute scalable_matrix_with_tiered_pricing_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :scalable_matrix_with_tiered_pricing_config, Orb::HashOf[Orb::Unknown]
+            required :scalable_matrix_with_tiered_pricing_config,
+                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
@@ -13572,7 +13584,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -13630,7 +13642,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -13679,13 +13691,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -13702,7 +13714,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -13725,13 +13737,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -13745,7 +13757,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -13768,13 +13780,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -13788,7 +13800,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionCumulativeGroupedBulkPrice < Orb::BaseModel
+          class NewSubscriptionCumulativeGroupedBulkPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -13799,7 +13811,8 @@ module Orb
             # @!attribute cumulative_grouped_bulk_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :cumulative_grouped_bulk_config, Orb::HashOf[Orb::Unknown]
+            required :cumulative_grouped_bulk_config,
+                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute item_id
             #   The id of the item the price will be associated with.
@@ -13830,7 +13843,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -13888,7 +13901,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -13937,13 +13950,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -13960,7 +13973,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -13983,13 +13996,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -14003,7 +14016,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -14026,13 +14039,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -14046,7 +14059,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionMaxGroupTieredPackagePrice < Orb::BaseModel
+          class NewSubscriptionMaxGroupTieredPackagePrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -14063,7 +14076,8 @@ module Orb
             # @!attribute max_group_tiered_package_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :max_group_tiered_package_config, Orb::HashOf[Orb::Unknown]
+            required :max_group_tiered_package_config,
+                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute model_type
             #
@@ -14088,7 +14102,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -14146,7 +14160,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -14195,13 +14209,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -14218,7 +14232,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -14241,13 +14255,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -14261,7 +14275,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -14284,13 +14298,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -14304,7 +14318,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionGroupedWithMeteredMinimumPrice < Orb::BaseModel
+          class NewSubscriptionGroupedWithMeteredMinimumPrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -14315,7 +14329,8 @@ module Orb
             # @!attribute grouped_with_metered_minimum_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :grouped_with_metered_minimum_config, Orb::HashOf[Orb::Unknown]
+            required :grouped_with_metered_minimum_config,
+                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute item_id
             #   The id of the item the price will be associated with.
@@ -14346,7 +14361,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -14404,7 +14419,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -14453,13 +14468,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -14476,7 +14491,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -14499,13 +14514,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -14519,7 +14534,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -14542,13 +14557,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -14562,7 +14577,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionMatrixWithDisplayNamePrice < Orb::BaseModel
+          class NewSubscriptionMatrixWithDisplayNamePrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -14579,7 +14594,8 @@ module Orb
             # @!attribute matrix_with_display_name_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :matrix_with_display_name_config, Orb::HashOf[Orb::Unknown]
+            required :matrix_with_display_name_config,
+                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute model_type
             #
@@ -14604,7 +14620,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -14662,7 +14678,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -14711,13 +14727,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -14734,7 +14750,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -14757,13 +14773,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -14777,7 +14793,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -14800,13 +14816,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -14820,7 +14836,7 @@ module Orb
             end
           end
 
-          class NewSubscriptionGroupedTieredPackagePrice < Orb::BaseModel
+          class NewSubscriptionGroupedTieredPackagePrice < Orb::Internal::Type::BaseModel
             # @!attribute cadence
             #   The cadence to bill for this price on.
             #
@@ -14831,7 +14847,7 @@ module Orb
             # @!attribute grouped_tiered_package_config
             #
             #   @return [Hash{Symbol=>Object}]
-            required :grouped_tiered_package_config, Orb::HashOf[Orb::Unknown]
+            required :grouped_tiered_package_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
             # @!attribute item_id
             #   The id of the item the price will be associated with.
@@ -14862,7 +14878,7 @@ module Orb
             #     this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::BooleanModel, nil?: true
+            optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
@@ -14920,7 +14936,7 @@ module Orb
             #     by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
             # @!attribute reference_id
             #   A transient ID that can be used to reference this price when adding adjustments
@@ -14969,13 +14985,13 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # The cadence to bill for this price on.
             #
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice#cadence
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL = :annual
               SEMI_ANNUAL = :semi_annual
@@ -14992,7 +15008,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice#billing_cycle_configuration
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -15015,13 +15031,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month
@@ -15035,7 +15051,7 @@ module Orb
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice#invoicing_cycle_configuration
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
               #   The duration of the billing period.
               #
@@ -15058,13 +15074,13 @@ module Orb
               #   #
               #   def initialize(duration:, duration_unit:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
               # The unit of billing period duration.
               #
               # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration#duration_unit
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY = :day
                 MONTH = :month

@@ -29,7 +29,7 @@ module Orb
         trial_info: Orb::Models::SubscriptionSchedulePlanChangeResponse::TrialInfo
       }
 
-    class SubscriptionSchedulePlanChangeResponse < Orb::BaseModel
+    class SubscriptionSchedulePlanChangeResponse < Orb::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor active_plan_phase_order: Integer?
@@ -119,7 +119,7 @@ module Orb
           start_date: Time
         }
 
-      class AdjustmentInterval < Orb::BaseModel
+      class AdjustmentInterval < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor adjustment: Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::adjustment
@@ -148,7 +148,7 @@ module Orb
           | Orb::Models::SubscriptionSchedulePlanChangeResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
 
         module Adjustment
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           type plan_phase_usage_discount_adjustment =
             {
@@ -161,7 +161,7 @@ module Orb
               usage_discount: Float
             }
 
-          class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
+          class PlanPhaseUsageDiscountAdjustment < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :usage_discount
@@ -200,7 +200,7 @@ module Orb
               reason: String?
             }
 
-          class PlanPhaseAmountDiscountAdjustment < Orb::BaseModel
+          class PlanPhaseAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :amount_discount
@@ -239,7 +239,7 @@ module Orb
               reason: String?
             }
 
-          class PlanPhasePercentageDiscountAdjustment < Orb::BaseModel
+          class PlanPhasePercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :percentage_discount
@@ -279,7 +279,7 @@ module Orb
               reason: String?
             }
 
-          class PlanPhaseMinimumAdjustment < Orb::BaseModel
+          class PlanPhaseMinimumAdjustment < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :minimum
@@ -321,7 +321,7 @@ module Orb
               reason: String?
             }
 
-          class PlanPhaseMaximumAdjustment < Orb::BaseModel
+          class PlanPhaseMaximumAdjustment < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :maximum
@@ -356,7 +356,7 @@ module Orb
       type billing_cycle_anchor_configuration =
         { day: Integer, month: Integer?, year: Integer? }
 
-      class BillingCycleAnchorConfiguration < Orb::BaseModel
+      class BillingCycleAnchorConfiguration < Orb::Internal::Type::BaseModel
         attr_accessor day: Integer
 
         attr_accessor month: Integer?
@@ -378,7 +378,7 @@ module Orb
         | Orb::Models::SubscriptionSchedulePlanChangeResponse::DiscountInterval::UsageDiscountInterval
 
       module DiscountInterval
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
         type amount_discount_interval =
           {
@@ -390,7 +390,7 @@ module Orb
             start_date: Time
           }
 
-        class AmountDiscountInterval < Orb::BaseModel
+        class AmountDiscountInterval < Orb::Internal::Type::BaseModel
           attr_accessor amount_discount: String
 
           attr_accessor applies_to_price_ids: ::Array[String]
@@ -425,7 +425,7 @@ module Orb
             start_date: Time
           }
 
-        class PercentageDiscountInterval < Orb::BaseModel
+        class PercentageDiscountInterval < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor applies_to_price_interval_ids: ::Array[String]
@@ -460,7 +460,7 @@ module Orb
             usage_discount: Float
           }
 
-        class UsageDiscountInterval < Orb::BaseModel
+        class UsageDiscountInterval < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor applies_to_price_interval_ids: ::Array[String]
@@ -491,7 +491,7 @@ module Orb
       type fixed_fee_quantity_schedule =
         { end_date: Time?, price_id: String, quantity: Float, start_date: Time }
 
-      class FixedFeeQuantitySchedule < Orb::BaseModel
+      class FixedFeeQuantitySchedule < Orb::Internal::Type::BaseModel
         attr_accessor end_date: Time?
 
         attr_accessor price_id: String
@@ -519,7 +519,7 @@ module Orb
           start_date: Time
         }
 
-      class MaximumInterval < Orb::BaseModel
+      class MaximumInterval < Orb::Internal::Type::BaseModel
         attr_accessor applies_to_price_ids: ::Array[String]
 
         attr_accessor applies_to_price_interval_ids: ::Array[String]
@@ -550,7 +550,7 @@ module Orb
           start_date: Time
         }
 
-      class MinimumInterval < Orb::BaseModel
+      class MinimumInterval < Orb::Internal::Type::BaseModel
         attr_accessor applies_to_price_ids: ::Array[String]
 
         attr_accessor applies_to_price_interval_ids: ::Array[String]
@@ -586,7 +586,7 @@ module Orb
           usage_customer_ids: ::Array[String]?
         }
 
-      class PriceInterval < Orb::BaseModel
+      class PriceInterval < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor billing_cycle_day: Integer
@@ -625,7 +625,7 @@ module Orb
         type fixed_fee_quantity_transition =
           { effective_date: Time, price_id: String, quantity: Integer }
 
-        class FixedFeeQuantityTransition < Orb::BaseModel
+        class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
           attr_accessor effective_date: Time
 
           attr_accessor price_id: String
@@ -645,7 +645,7 @@ module Orb
       type redeemed_coupon =
         { coupon_id: String, end_date: Time?, start_date: Time }
 
-      class RedeemedCoupon < Orb::BaseModel
+      class RedeemedCoupon < Orb::Internal::Type::BaseModel
         attr_accessor coupon_id: String
 
         attr_accessor end_date: Time?
@@ -664,7 +664,7 @@ module Orb
       type status = :active | :ended | :upcoming
 
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         ACTIVE: :active
         ENDED: :ended
@@ -675,7 +675,7 @@ module Orb
 
       type trial_info = { end_date: Time? }
 
-      class TrialInfo < Orb::BaseModel
+      class TrialInfo < Orb::Internal::Type::BaseModel
         attr_accessor end_date: Time?
 
         def initialize: (end_date: Time?) -> void

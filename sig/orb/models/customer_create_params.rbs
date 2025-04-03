@@ -23,7 +23,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class CustomerCreateParams < Orb::BaseModel
+    class CustomerCreateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -93,7 +93,7 @@ module Orb
           excluded: bool?
         }
 
-      class AccountingSyncConfiguration < Orb::BaseModel
+      class AccountingSyncConfiguration < Orb::Internal::Type::BaseModel
         attr_accessor accounting_providers: ::Array[Orb::Models::CustomerCreateParams::AccountingSyncConfiguration::AccountingProvider]?
 
         attr_accessor excluded: bool?
@@ -108,7 +108,7 @@ module Orb
         type accounting_provider =
           { external_provider_id: String, provider_type: String }
 
-        class AccountingProvider < Orb::BaseModel
+        class AccountingProvider < Orb::Internal::Type::BaseModel
           attr_accessor external_provider_id: String
 
           attr_accessor provider_type: String
@@ -132,7 +132,7 @@ module Orb
           state: String?
         }
 
-      class BillingAddress < Orb::BaseModel
+      class BillingAddress < Orb::Internal::Type::BaseModel
         attr_accessor city: String?
 
         attr_accessor country: String?
@@ -160,7 +160,7 @@ module Orb
       type hierarchy =
         { child_customer_ids: ::Array[String], parent_customer_id: String? }
 
-      class Hierarchy < Orb::BaseModel
+      class Hierarchy < Orb::Internal::Type::BaseModel
         attr_reader child_customer_ids: ::Array[String]?
 
         def child_customer_ids=: (::Array[String]) -> ::Array[String]
@@ -179,7 +179,7 @@ module Orb
         :quickbooks | :"bill.com" | :stripe_charge | :stripe_invoice | :netsuite
 
       module PaymentProvider
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         QUICKBOOKS: :quickbooks
         BILL_COM: :"bill.com"
@@ -192,7 +192,7 @@ module Orb
 
       type reporting_configuration = { exempt: bool }
 
-      class ReportingConfiguration < Orb::BaseModel
+      class ReportingConfiguration < Orb::Internal::Type::BaseModel
         attr_accessor exempt: bool
 
         def initialize: (exempt: bool) -> void
@@ -210,7 +210,7 @@ module Orb
           state: String?
         }
 
-      class ShippingAddress < Orb::BaseModel
+      class ShippingAddress < Orb::Internal::Type::BaseModel
         attr_accessor city: String?
 
         attr_accessor country: String?
@@ -240,7 +240,7 @@ module Orb
         | Orb::Models::CustomerCreateParams::TaxConfiguration::NewTaxJarConfiguration
 
       module TaxConfiguration
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
         type new_avalara_tax_configuration =
           {
@@ -249,7 +249,7 @@ module Orb
             tax_exemption_code: String?
           }
 
-        class NewAvalaraTaxConfiguration < Orb::BaseModel
+        class NewAvalaraTaxConfiguration < Orb::Internal::Type::BaseModel
           attr_accessor tax_exempt: bool
 
           attr_accessor tax_provider: :avalara
@@ -268,7 +268,7 @@ module Orb
         type new_tax_jar_configuration =
           { tax_exempt: bool, tax_provider: :taxjar }
 
-        class NewTaxJarConfiguration < Orb::BaseModel
+        class NewTaxJarConfiguration < Orb::Internal::Type::BaseModel
           attr_accessor tax_exempt: bool
 
           attr_accessor tax_provider: :taxjar
@@ -288,7 +288,7 @@ module Orb
           value: String
         }
 
-      class TaxID < Orb::BaseModel
+      class TaxID < Orb::Internal::Type::BaseModel
         attr_accessor country: Orb::Models::CustomerCreateParams::TaxID::country
 
         attr_accessor type: Orb::Models::CustomerCreateParams::TaxID::type_
@@ -384,7 +384,7 @@ module Orb
           | :ZA
 
         module Country
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           AD: :AD
           AE: :AE
@@ -542,7 +542,7 @@ module Orb
           | :za_vat
 
         module Type
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           AD_NRT: :ad_nrt
           AE_TRN: :ae_trn

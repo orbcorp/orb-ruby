@@ -3,7 +3,7 @@ module Orb
     type subscription_fetch_params =
       {  } & Orb::Internal::Type::request_parameters
 
-    class SubscriptionFetchParams < Orb::BaseModel
+    class SubscriptionFetchParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 

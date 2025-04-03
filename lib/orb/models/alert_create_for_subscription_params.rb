@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Alerts#create_for_subscription
-    class AlertCreateForSubscriptionParams < Orb::BaseModel
+    class AlertCreateForSubscriptionParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -12,7 +12,8 @@ module Orb
       #   The thresholds that define the values at which the alert will be triggered.
       #
       #   @return [Array<Orb::Models::AlertCreateForSubscriptionParams::Threshold>]
-      required :thresholds, -> { Orb::ArrayOf[Orb::Models::AlertCreateForSubscriptionParams::Threshold] }
+      required :thresholds,
+               -> { Orb::Internal::Type::ArrayOf[Orb::Models::AlertCreateForSubscriptionParams::Threshold] }
 
       # @!attribute type
       #   The type of alert to create. This must be a valid alert type.
@@ -34,9 +35,9 @@ module Orb
       #   #
       #   def initialize(thresholds:, type:, metric_id: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-      class Threshold < Orb::BaseModel
+      class Threshold < Orb::Internal::Type::BaseModel
         # @!attribute value
         #   The value at which an alert will fire. For credit balance alerts, the alert will
         #     fire at or below this value. For usage and cost alerts, the alert will fire at
@@ -53,12 +54,12 @@ module Orb
         #   #
         #   def initialize(value:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       # The type of alert to create. This must be a valid alert type.
       module Type
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         USAGE_EXCEEDED = :usage_exceeded
         COST_EXCEEDED = :cost_exceeded

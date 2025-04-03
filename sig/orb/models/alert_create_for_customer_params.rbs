@@ -8,7 +8,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class AlertCreateForCustomerParams < Orb::BaseModel
+    class AlertCreateForCustomerParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -33,7 +33,7 @@ module Orb
         | :credit_balance_recovered
 
       module Type
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         CREDIT_BALANCE_DEPLETED: :credit_balance_depleted
         CREDIT_BALANCE_DROPPED: :credit_balance_dropped
@@ -44,7 +44,7 @@ module Orb
 
       type threshold = { value: Float }
 
-      class Threshold < Orb::BaseModel
+      class Threshold < Orb::Internal::Type::BaseModel
         attr_accessor value: Float
 
         def initialize: (value: Float) -> void

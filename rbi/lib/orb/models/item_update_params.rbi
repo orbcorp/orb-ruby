@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class ItemUpdateParams < Orb::BaseModel
+    class ItemUpdateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -14,11 +14,9 @@ module Orb
 
       sig do
         params(
-          external_connections: T.nilable(
-            T::Array[T.any(Orb::Models::ItemUpdateParams::ExternalConnection, Orb::Internal::Util::AnyHash)]
-          ),
+          external_connections: T.nilable(T::Array[T.any(Orb::Models::ItemUpdateParams::ExternalConnection, Orb::Internal::AnyHash)]),
           name: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -38,7 +36,7 @@ module Orb
       def to_hash
       end
 
-      class ExternalConnection < Orb::BaseModel
+      class ExternalConnection < Orb::Internal::Type::BaseModel
         sig { returns(Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::OrSymbol) }
         attr_accessor :external_connection_name
 
@@ -68,7 +66,7 @@ module Orb
         end
 
         module ExternalConnectionName
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName) }
