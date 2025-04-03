@@ -120,7 +120,7 @@ module Orb
       # @param limit [Integer]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Page<Orb::Models::Customer>]
+      # @return [Orb::Internal::Page<Orb::Models::Customer>]
       #
       # @see Orb::Models::CustomerListParams
       def list(params = {})
@@ -129,7 +129,7 @@ module Orb
           method: :get,
           path: "customers",
           query: parsed,
-          page: Orb::Page,
+          page: Orb::Internal::Page,
           model: Orb::Models::Customer,
           options: options
         )

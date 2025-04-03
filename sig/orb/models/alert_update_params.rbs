@@ -2,11 +2,11 @@ module Orb
   module Models
     type alert_update_params =
       { thresholds: ::Array[Orb::Models::AlertUpdateParams::Threshold] }
-      & Orb::request_parameters
+      & Orb::Internal::Type::request_parameters
 
     class AlertUpdateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor thresholds: ::Array[Orb::Models::AlertUpdateParams::Threshold]
 

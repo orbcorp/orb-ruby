@@ -4,8 +4,8 @@ module Orb
   module Models
     module Customers
       class CostListParams < Orb::BaseModel
-        extend Orb::Type::RequestParameters::Converter
-        include Orb::RequestParameters
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
 
         # The currency or custom pricing unit to use.
         sig { returns(T.nilable(String)) }
@@ -32,7 +32,7 @@ module Orb
             timeframe_end: T.nilable(Time),
             timeframe_start: T.nilable(Time),
             view_mode: T.nilable(Orb::Models::Customers::CostListParams::ViewMode::OrSymbol),
-            request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+            request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

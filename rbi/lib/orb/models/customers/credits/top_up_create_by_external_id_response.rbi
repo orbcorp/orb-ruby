@@ -25,7 +25,7 @@ module Orb
             params(
               invoice_settings: T.any(
                 Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse::InvoiceSettings,
-                Orb::Util::AnyHash
+                Orb::Internal::Util::AnyHash
               )
             )
               .void
@@ -63,7 +63,7 @@ module Orb
               currency: String,
               invoice_settings: T.any(
                 Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse::InvoiceSettings,
-                Orb::Util::AnyHash
+                Orb::Internal::Util::AnyHash
               ),
               per_unit_cost_basis: String,
               threshold: String,

@@ -8,11 +8,11 @@ module Orb
         customer_id: String?,
         external_customer_id: String?
       }
-      & Orb::request_parameters
+      & Orb::Internal::Type::request_parameters
 
     class EventUpdateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor event_name: String
 

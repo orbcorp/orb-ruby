@@ -9,13 +9,13 @@ module Orb
       sig { returns(Orb::Models::PaginationMetadata) }
       attr_reader :pagination_metadata
 
-      sig { params(pagination_metadata: T.any(Orb::Models::PaginationMetadata, Orb::Util::AnyHash)).void }
+      sig { params(pagination_metadata: T.any(Orb::Models::PaginationMetadata, Orb::Internal::Util::AnyHash)).void }
       attr_writer :pagination_metadata
 
       sig do
         params(
-          data: T::Array[T.any(Orb::Models::DimensionalPriceGroup, Orb::Util::AnyHash)],
-          pagination_metadata: T.any(Orb::Models::PaginationMetadata, Orb::Util::AnyHash)
+          data: T::Array[T.any(Orb::Models::DimensionalPriceGroup, Orb::Internal::Util::AnyHash)],
+          pagination_metadata: T.any(Orb::Models::PaginationMetadata, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

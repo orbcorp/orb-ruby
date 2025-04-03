@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Customers#create
     class CustomerCreateParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute email
       #   A valid customer email, to be used for notifications. When Orb triggers payment

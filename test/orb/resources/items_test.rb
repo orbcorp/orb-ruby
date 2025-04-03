@@ -41,7 +41,7 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
     response = @orb.items.list
 
     assert_pattern do
-      response => Orb::Page
+      response => Orb::Internal::Page
     end
 
     row = response.to_enum.first

@@ -3,8 +3,8 @@
 module Orb
   module Models
     class EventSearchParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # This is an explicit array of IDs to filter by. Note that an event's ID is the
       #   idempotency_key that was originally used for ingestion, and this only supports
@@ -28,7 +28,7 @@ module Orb
           event_ids: T::Array[String],
           timeframe_end: T.nilable(Time),
           timeframe_start: T.nilable(Time),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -4,8 +4,8 @@ module Orb
   module Models
     module Customers
       class CreditListByExternalIDParams < Orb::BaseModel
-        extend Orb::Type::RequestParameters::Converter
-        include Orb::RequestParameters
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
 
         # The ledger currency or custom pricing unit to use.
         sig { returns(T.nilable(String)) }
@@ -37,7 +37,7 @@ module Orb
             cursor: T.nilable(String),
             include_all_blocks: T::Boolean,
             limit: Integer,
-            request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+            request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

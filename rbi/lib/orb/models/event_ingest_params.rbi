@@ -3,8 +3,8 @@
 module Orb
   module Models
     class EventIngestParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       sig { returns(T::Array[Orb::Models::EventIngestParams::Event]) }
       attr_accessor :events
@@ -23,10 +23,10 @@ module Orb
 
       sig do
         params(
-          events: T::Array[T.any(Orb::Models::EventIngestParams::Event, Orb::Util::AnyHash)],
+          events: T::Array[T.any(Orb::Models::EventIngestParams::Event, Orb::Internal::Util::AnyHash)],
           backfill_id: T.nilable(String),
           debug: T::Boolean,
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

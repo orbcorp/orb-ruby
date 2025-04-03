@@ -3,15 +3,15 @@
 module Orb
   module Models
     class SubscriptionUnscheduleFixedFeeQuantityUpdatesParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # Price for which the updates should be cleared. Must be a fixed fee.
       sig { returns(String) }
       attr_accessor :price_id
 
       sig do
-        params(price_id: String, request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+        params(price_id: String, request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
           .returns(T.attached_class)
       end
       def self.new(price_id:, request_options: {})

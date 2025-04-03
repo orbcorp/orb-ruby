@@ -3,8 +3,8 @@
 module Orb
   module Models
     class AlertDisableParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # Used to update the status of a plan alert scoped to this subscription_id
       sig { returns(T.nilable(String)) }
@@ -13,7 +13,7 @@ module Orb
       sig do
         params(
           subscription_id: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

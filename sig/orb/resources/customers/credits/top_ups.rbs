@@ -21,7 +21,7 @@ module Orb
             ?cursor: String?,
             ?limit: Integer,
             ?request_options: Orb::request_opts
-          ) -> Orb::Page[Orb::Models::Customers::Credits::TopUpListResponse]
+          ) -> Orb::Internal::Page[Orb::Models::Customers::Credits::TopUpListResponse]
 
           def delete: (
             String top_up_id,
@@ -53,7 +53,7 @@ module Orb
             ?cursor: String?,
             ?limit: Integer,
             ?request_options: Orb::request_opts
-          ) -> Orb::Page[Orb::Models::Customers::Credits::TopUpListByExternalIDResponse]
+          ) -> Orb::Internal::Page[Orb::Models::Customers::Credits::TopUpListByExternalIDResponse]
 
           def initialize: (client: Orb::Client) -> void
         end

@@ -3,8 +3,8 @@
 module Orb
   module Models
     class InvoiceMarkPaidParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # A date string to specify the date of the payment.
       sig { returns(Date) }
@@ -23,7 +23,7 @@ module Orb
           payment_received_date: Date,
           external_id: T.nilable(String),
           notes: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

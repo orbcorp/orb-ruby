@@ -24,9 +24,9 @@ module Orb
             cursor: T.nilable(String),
             include_all_blocks: T::Boolean,
             limit: Integer,
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
           )
-            .returns(Orb::Page[Orb::Models::Customers::CreditListResponse])
+            .returns(Orb::Internal::Page[Orb::Models::Customers::CreditListResponse])
         end
         def list(
           customer_id,
@@ -58,9 +58,9 @@ module Orb
             cursor: T.nilable(String),
             include_all_blocks: T::Boolean,
             limit: Integer,
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
           )
-            .returns(Orb::Page[Orb::Models::Customers::CreditListByExternalIDResponse])
+            .returns(Orb::Internal::Page[Orb::Models::Customers::CreditListByExternalIDResponse])
         end
         def list_by_external_id(
           external_customer_id,

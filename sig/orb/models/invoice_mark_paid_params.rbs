@@ -2,11 +2,11 @@ module Orb
   module Models
     type invoice_mark_paid_params =
       { payment_received_date: Date, external_id: String?, notes: String? }
-      & Orb::request_parameters
+      & Orb::Internal::Type::request_parameters
 
     class InvoiceMarkPaidParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor payment_received_date: Date
 

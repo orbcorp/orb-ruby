@@ -360,7 +360,7 @@ module Orb
       # @param status [Symbol, Orb::Models::SubscriptionListParams::Status, nil]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Page<Orb::Models::Subscription>]
+      # @return [Orb::Internal::Page<Orb::Models::Subscription>]
       #
       # @see Orb::Models::SubscriptionListParams
       def list(params = {})
@@ -369,7 +369,7 @@ module Orb
           method: :get,
           path: "subscriptions",
           query: parsed,
-          page: Orb::Page,
+          page: Orb::Internal::Page,
           model: Orb::Models::Subscription,
           options: options
         )
@@ -529,7 +529,7 @@ module Orb
       # @param start_date_lte [Time, nil]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Page<Orb::Models::SubscriptionFetchScheduleResponse>]
+      # @return [Orb::Internal::Page<Orb::Models::SubscriptionFetchScheduleResponse>]
       #
       # @see Orb::Models::SubscriptionFetchScheduleParams
       def fetch_schedule(subscription_id, params = {})
@@ -538,7 +538,7 @@ module Orb
           method: :get,
           path: ["subscriptions/%1$s/schedule", subscription_id],
           query: parsed,
-          page: Orb::Page,
+          page: Orb::Internal::Page,
           model: Orb::Models::SubscriptionFetchScheduleResponse,
           options: options
         )

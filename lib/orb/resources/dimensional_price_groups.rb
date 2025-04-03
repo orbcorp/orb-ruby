@@ -65,7 +65,7 @@ module Orb
       # @param limit [Integer]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Page<Orb::Models::DimensionalPriceGroup>]
+      # @return [Orb::Internal::Page<Orb::Models::DimensionalPriceGroup>]
       #
       # @see Orb::Models::DimensionalPriceGroupListParams
       def list(params = {})
@@ -74,7 +74,7 @@ module Orb
           method: :get,
           path: "dimensional_price_groups",
           query: parsed,
-          page: Orb::Page,
+          page: Orb::Internal::Page,
           model: Orb::Models::DimensionalPriceGroup,
           options: options
         )

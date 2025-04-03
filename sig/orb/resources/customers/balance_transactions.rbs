@@ -19,7 +19,7 @@ module Orb
           ?operation_time_lt: Time?,
           ?operation_time_lte: Time?,
           ?request_options: Orb::request_opts
-        ) -> Orb::Page[Orb::Models::Customers::BalanceTransactionListResponse]
+        ) -> Orb::Internal::Page[Orb::Models::Customers::BalanceTransactionListResponse]
 
         def initialize: (client: Orb::Client) -> void
       end

@@ -4,8 +4,8 @@ module Orb
   module Models
     module Events
       class BackfillCreateParams < Orb::BaseModel
-        extend Orb::Type::RequestParameters::Converter
-        include Orb::RequestParameters
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
 
         # The (exclusive) end of the usage timeframe affected by this backfill. By
         #   default, Orb allows backfills up to 10 days in duration at a time. Reach out to
@@ -58,7 +58,7 @@ module Orb
             deprecation_filter: T.nilable(String),
             external_customer_id: T.nilable(String),
             replace_existing_events: T::Boolean,
-            request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+            request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

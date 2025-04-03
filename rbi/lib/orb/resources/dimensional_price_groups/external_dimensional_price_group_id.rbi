@@ -8,7 +8,7 @@ module Orb
         sig do
           params(
             external_dimensional_price_group_id: String,
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
           )
             .returns(Orb::Models::DimensionalPriceGroup)
         end

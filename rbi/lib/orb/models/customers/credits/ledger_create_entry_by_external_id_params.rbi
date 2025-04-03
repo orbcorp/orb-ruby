@@ -5,8 +5,8 @@ module Orb
     module Customers
       module Credits
         class LedgerCreateEntryByExternalIDParams < Orb::BaseModel
-          extend Orb::Type::RequestParameters::Converter
-          include Orb::RequestParameters
+          extend Orb::Internal::Type::RequestParameters::Converter
+          include Orb::Internal::Type::RequestParameters
 
           # The number of credits to effect. Note that this is required for increment,
           #   decrement or void operations.
@@ -48,7 +48,7 @@ module Orb
               invoice_settings: T.nilable(
                 T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
             )
@@ -98,13 +98,13 @@ module Orb
               invoice_settings: T.nilable(
                 T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               ),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               per_unit_cost_basis: T.nilable(String),
               void_reason: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason::OrSymbol),
-              request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+              request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
             )
               .returns(T.attached_class)
           end

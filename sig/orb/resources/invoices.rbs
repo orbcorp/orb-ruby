@@ -42,7 +42,7 @@ module Orb
         ?status: ::Array[Orb::Models::InvoiceListParams::status]?,
         ?subscription_id: String?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Page[Orb::Models::Invoice]
+      ) -> Orb::Internal::Page[Orb::Models::Invoice]
 
       def fetch: (
         String invoice_id,

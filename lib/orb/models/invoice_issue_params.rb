@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Invoices#issue
     class InvoiceIssueParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute [r] synchronous
       #   If true, the invoice will be issued synchronously. If false, the invoice will be

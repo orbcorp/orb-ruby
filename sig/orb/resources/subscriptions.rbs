@@ -57,7 +57,7 @@ module Orb
         ?limit: Integer,
         ?status: Orb::Models::SubscriptionListParams::status?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Page[Orb::Models::Subscription]
+      ) -> Orb::Internal::Page[Orb::Models::Subscription]
 
       def cancel: (
         String subscription_id,
@@ -90,7 +90,7 @@ module Orb
         ?start_date_lt: Time?,
         ?start_date_lte: Time?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Page[Orb::Models::SubscriptionFetchScheduleResponse]
+      ) -> Orb::Internal::Page[Orb::Models::SubscriptionFetchScheduleResponse]
 
       def fetch_usage: (
         String subscription_id,

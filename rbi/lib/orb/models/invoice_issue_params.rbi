@@ -3,8 +3,8 @@
 module Orb
   module Models
     class InvoiceIssueParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # If true, the invoice will be issued synchronously. If false, the invoice will be
       #   issued asynchronously. The synchronous option is only available for invoices
@@ -18,7 +18,10 @@ module Orb
       attr_writer :synchronous
 
       sig do
-        params(synchronous: T::Boolean, request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+        params(
+          synchronous: T::Boolean,
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+        )
           .returns(T.attached_class)
       end
       def self.new(synchronous: nil, request_options: {})

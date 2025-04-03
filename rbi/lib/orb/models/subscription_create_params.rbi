@@ -3,8 +3,8 @@
 module Orb
   module Models
     class SubscriptionCreateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # Additional adjustments to be added to the subscription. (Only available for
       #   accounts that have migrated off of legacy subscription overrides)
@@ -37,7 +37,10 @@ module Orb
       sig do
         params(
           billing_cycle_anchor_configuration: T.nilable(
-            T.any(Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration, Orb::Util::AnyHash)
+            T.any(
+              Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration,
+              Orb::Internal::Util::AnyHash
+            )
           )
         )
           .void
@@ -165,13 +168,18 @@ module Orb
 
       sig do
         params(
-          add_adjustments: T.nilable(T::Array[T.any(Orb::Models::SubscriptionCreateParams::AddAdjustment, Orb::Util::AnyHash)]),
-          add_prices: T.nilable(T::Array[T.any(Orb::Models::SubscriptionCreateParams::AddPrice, Orb::Util::AnyHash)]),
+          add_adjustments: T.nilable(
+            T::Array[T.any(Orb::Models::SubscriptionCreateParams::AddAdjustment, Orb::Internal::Util::AnyHash)]
+          ),
+          add_prices: T.nilable(T::Array[T.any(Orb::Models::SubscriptionCreateParams::AddPrice, Orb::Internal::Util::AnyHash)]),
           align_billing_with_subscription_start_date: T::Boolean,
           auto_collection: T.nilable(T::Boolean),
           aws_region: T.nilable(String),
           billing_cycle_anchor_configuration: T.nilable(
-            T.any(Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration, Orb::Util::AnyHash)
+            T.any(
+              Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration,
+              Orb::Internal::Util::AnyHash
+            )
           ),
           coupon_redemption_code: T.nilable(String),
           credits_overage_rate: T.nilable(Float),
@@ -191,14 +199,22 @@ module Orb
           plan_id: T.nilable(String),
           plan_version_number: T.nilable(Integer),
           price_overrides: T.nilable(T::Array[T.anything]),
-          remove_adjustments: T.nilable(T::Array[T.any(Orb::Models::SubscriptionCreateParams::RemoveAdjustment, Orb::Util::AnyHash)]),
-          remove_prices: T.nilable(T::Array[T.any(Orb::Models::SubscriptionCreateParams::RemovePrice, Orb::Util::AnyHash)]),
-          replace_adjustments: T.nilable(T::Array[T.any(Orb::Models::SubscriptionCreateParams::ReplaceAdjustment, Orb::Util::AnyHash)]),
-          replace_prices: T.nilable(T::Array[T.any(Orb::Models::SubscriptionCreateParams::ReplacePrice, Orb::Util::AnyHash)]),
+          remove_adjustments: T.nilable(
+            T::Array[T.any(Orb::Models::SubscriptionCreateParams::RemoveAdjustment, Orb::Internal::Util::AnyHash)]
+          ),
+          remove_prices: T.nilable(
+            T::Array[T.any(Orb::Models::SubscriptionCreateParams::RemovePrice, Orb::Internal::Util::AnyHash)]
+          ),
+          replace_adjustments: T.nilable(
+            T::Array[T.any(Orb::Models::SubscriptionCreateParams::ReplaceAdjustment, Orb::Internal::Util::AnyHash)]
+          ),
+          replace_prices: T.nilable(
+            T::Array[T.any(Orb::Models::SubscriptionCreateParams::ReplacePrice, Orb::Internal::Util::AnyHash)]
+          ),
           start_date: T.nilable(Time),
           trial_duration_days: T.nilable(Integer),
           usage_customer_ids: T.nilable(T::Array[String]),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -314,7 +330,7 @@ module Orb
           params(
             adjustment: T.any(
               Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewPercentageDiscount,
-              Orb::Util::AnyHash,
+              Orb::Internal::Util::AnyHash,
               Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewUsageDiscount,
               Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewAmountDiscount,
               Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewMinimum,
@@ -633,7 +649,9 @@ module Orb
 
         sig do
           params(
-            allocation_price: T.nilable(T.any(Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice, Orb::Util::AnyHash))
+            allocation_price: T.nilable(
+              T.any(Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice, Orb::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -716,8 +734,12 @@ module Orb
 
         sig do
           params(
-            allocation_price: T.nilable(T.any(Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice, Orb::Util::AnyHash)),
-            discounts: T.nilable(T::Array[T.any(Orb::Models::SubscriptionCreateParams::AddPrice::Discount, Orb::Util::AnyHash)]),
+            allocation_price: T.nilable(
+              T.any(Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice, Orb::Internal::Util::AnyHash)
+            ),
+            discounts: T.nilable(
+              T::Array[T.any(Orb::Models::SubscriptionCreateParams::AddPrice::Discount, Orb::Internal::Util::AnyHash)]
+            ),
             end_date: T.nilable(Time),
             external_price_id: T.nilable(String),
             maximum_amount: T.nilable(String),
@@ -726,7 +748,7 @@ module Orb
             price: T.nilable(
               T.any(
                 Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice,
-                Orb::Util::AnyHash,
+                Orb::Internal::Util::AnyHash,
                 Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice,
                 Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice,
                 Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice,
@@ -1011,7 +1033,7 @@ module Orb
               params(
                 unit_config: T.any(
                   Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::UnitConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1044,7 +1066,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -1090,7 +1112,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -1116,14 +1138,14 @@ module Orb
                 name: String,
                 unit_config: T.any(
                   Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::UnitConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -1134,7 +1156,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -1451,7 +1473,7 @@ module Orb
               params(
                 package_config: T.any(
                   Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::PackageConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1484,7 +1506,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -1530,7 +1552,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -1556,14 +1578,14 @@ module Orb
                 name: String,
                 package_config: T.any(
                   Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::PackageConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -1574,7 +1596,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -1887,7 +1909,7 @@ module Orb
               params(
                 matrix_config: T.any(
                   Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1927,7 +1949,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -1973,7 +1995,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -1998,7 +2020,7 @@ module Orb
                 item_id: String,
                 matrix_config: T.any(
                   Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 name: String,
                 billable_metric_id: T.nilable(String),
@@ -2006,7 +2028,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -2017,7 +2039,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -2158,7 +2180,7 @@ module Orb
                   matrix_values: T::Array[
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                   ]
                 )
@@ -2392,7 +2414,7 @@ module Orb
               params(
                 tiered_config: T.any(
                   Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -2425,7 +2447,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -2471,7 +2493,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -2497,14 +2519,14 @@ module Orb
                 name: String,
                 tiered_config: T.any(
                   Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -2515,7 +2537,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -2644,7 +2666,7 @@ module Orb
                   tiers: T::Array[
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                   ]
                 )
@@ -2883,7 +2905,7 @@ module Orb
               params(
                 tiered_bps_config: T.any(
                   Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -2916,7 +2938,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -2962,7 +2984,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -2988,14 +3010,14 @@ module Orb
                 name: String,
                 tiered_bps_config: T.any(
                   Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -3006,7 +3028,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -3142,7 +3164,7 @@ module Orb
                   tiers: T::Array[
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                   ]
                 )
@@ -3374,7 +3396,7 @@ module Orb
               params(
                 bps_config: T.any(
                   Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::BpsConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -3426,7 +3448,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -3472,7 +3494,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -3495,7 +3517,7 @@ module Orb
               params(
                 bps_config: T.any(
                   Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::BpsConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence::OrSymbol,
                 item_id: String,
@@ -3505,7 +3527,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -3516,7 +3538,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -3818,7 +3840,7 @@ module Orb
               params(
                 bulk_bps_config: T.any(
                   Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -3870,7 +3892,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -3916,7 +3938,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -3939,7 +3961,7 @@ module Orb
               params(
                 bulk_bps_config: T.any(
                   Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence::OrSymbol,
                 item_id: String,
@@ -3949,7 +3971,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -3960,7 +3982,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -4034,7 +4056,7 @@ module Orb
                   tiers: T::Array[
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                   ]
                 )
@@ -4311,7 +4333,7 @@ module Orb
               params(
                 bulk_config: T.any(
                   Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -4363,7 +4385,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -4409,7 +4431,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -4432,7 +4454,7 @@ module Orb
               params(
                 bulk_config: T.any(
                   Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence::OrSymbol,
                 item_id: String,
@@ -4442,7 +4464,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -4453,7 +4475,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -4526,7 +4548,7 @@ module Orb
                   tiers: T::Array[
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                   ]
                 )
@@ -4827,7 +4849,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -4873,7 +4895,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -4903,7 +4925,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -4914,7 +4936,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -5239,7 +5261,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -5285,7 +5307,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -5315,7 +5337,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -5326,7 +5348,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -5651,7 +5673,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -5697,7 +5719,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -5727,7 +5749,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -5738,7 +5760,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -6063,7 +6085,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -6109,7 +6131,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -6139,7 +6161,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -6150,7 +6172,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -6475,7 +6497,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -6521,7 +6543,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -6551,7 +6573,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -6562,7 +6584,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -6887,7 +6909,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -6933,7 +6955,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -6963,7 +6985,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -6974,7 +6996,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -7299,7 +7321,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -7345,7 +7367,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -7375,7 +7397,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -7386,7 +7408,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -7711,7 +7733,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -7757,7 +7779,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -7787,7 +7809,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -7798,7 +7820,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -8123,7 +8145,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -8169,7 +8191,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -8199,7 +8221,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -8210,7 +8232,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -8535,7 +8557,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -8581,7 +8603,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -8611,7 +8633,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -8622,7 +8644,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -8947,7 +8969,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -8993,7 +9015,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -9023,7 +9045,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -9034,7 +9056,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -9359,7 +9381,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -9405,7 +9427,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -9435,7 +9457,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -9446,7 +9468,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -9771,7 +9793,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -9817,7 +9839,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -9847,7 +9869,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -9858,7 +9880,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -10183,7 +10205,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -10229,7 +10251,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -10259,7 +10281,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -10270,7 +10292,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -10595,7 +10617,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -10641,7 +10663,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -10671,7 +10693,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -10682,7 +10704,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -11007,7 +11029,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -11053,7 +11075,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -11083,7 +11105,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -11094,7 +11116,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -11419,7 +11441,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -11465,7 +11487,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -11495,7 +11517,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -11506,7 +11528,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -11896,7 +11918,7 @@ module Orb
           params(
             adjustment: T.any(
               Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount,
-              Orb::Util::AnyHash,
+              Orb::Internal::Util::AnyHash,
               Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewUsageDiscount,
               Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewAmountDiscount,
               Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewMinimum,
@@ -12215,7 +12237,9 @@ module Orb
 
         sig do
           params(
-            allocation_price: T.nilable(T.any(Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice, Orb::Util::AnyHash))
+            allocation_price: T.nilable(
+              T.any(Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice, Orb::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -12287,9 +12311,11 @@ module Orb
         sig do
           params(
             replaces_price_id: String,
-            allocation_price: T.nilable(T.any(Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice, Orb::Util::AnyHash)),
+            allocation_price: T.nilable(
+              T.any(Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice, Orb::Internal::Util::AnyHash)
+            ),
             discounts: T.nilable(
-              T::Array[T.any(Orb::Models::SubscriptionCreateParams::ReplacePrice::Discount, Orb::Util::AnyHash)]
+              T::Array[T.any(Orb::Models::SubscriptionCreateParams::ReplacePrice::Discount, Orb::Internal::Util::AnyHash)]
             ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
@@ -12298,7 +12324,7 @@ module Orb
             price: T.nilable(
               T.any(
                 Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice,
-                Orb::Util::AnyHash,
+                Orb::Internal::Util::AnyHash,
                 Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice,
                 Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice,
                 Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice,
@@ -12602,7 +12628,7 @@ module Orb
               params(
                 unit_config: T.any(
                   Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::UnitConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -12635,7 +12661,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -12681,7 +12707,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -12707,14 +12733,14 @@ module Orb
                 name: String,
                 unit_config: T.any(
                   Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::UnitConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -12725,7 +12751,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -13046,7 +13072,7 @@ module Orb
               params(
                 package_config: T.any(
                   Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::PackageConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -13079,7 +13105,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -13125,7 +13151,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -13151,14 +13177,14 @@ module Orb
                 name: String,
                 package_config: T.any(
                   Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::PackageConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -13169,7 +13195,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -13488,7 +13514,7 @@ module Orb
               params(
                 matrix_config: T.any(
                   Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -13528,7 +13554,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -13574,7 +13600,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -13599,7 +13625,7 @@ module Orb
                 item_id: String,
                 matrix_config: T.any(
                   Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 name: String,
                 billable_metric_id: T.nilable(String),
@@ -13607,7 +13633,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -13618,7 +13644,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -13763,7 +13789,7 @@ module Orb
                   matrix_values: T::Array[
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                   ]
                 )
@@ -14001,7 +14027,7 @@ module Orb
               params(
                 tiered_config: T.any(
                   Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -14034,7 +14060,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -14080,7 +14106,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -14106,14 +14132,14 @@ module Orb
                 name: String,
                 tiered_config: T.any(
                   Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -14124,7 +14150,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -14257,7 +14283,7 @@ module Orb
                   tiers: T::Array[
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                   ]
                 )
@@ -14496,7 +14522,7 @@ module Orb
               params(
                 tiered_bps_config: T.any(
                   Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -14529,7 +14555,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -14575,7 +14601,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -14601,14 +14627,14 @@ module Orb
                 name: String,
                 tiered_bps_config: T.any(
                   Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -14619,7 +14645,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -14755,7 +14781,7 @@ module Orb
                   tiers: T::Array[
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                   ]
                 )
@@ -14987,7 +15013,7 @@ module Orb
               params(
                 bps_config: T.any(
                   Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BpsConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -15039,7 +15065,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -15085,7 +15111,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -15108,7 +15134,7 @@ module Orb
               params(
                 bps_config: T.any(
                   Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BpsConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence::OrSymbol,
                 item_id: String,
@@ -15118,7 +15144,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -15129,7 +15155,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -15433,7 +15459,7 @@ module Orb
               params(
                 bulk_bps_config: T.any(
                   Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -15485,7 +15511,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -15531,7 +15557,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -15554,7 +15580,7 @@ module Orb
               params(
                 bulk_bps_config: T.any(
                   Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence::OrSymbol,
                 item_id: String,
@@ -15564,7 +15590,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -15575,7 +15601,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -15651,7 +15677,7 @@ module Orb
                   tiers: T::Array[
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                   ]
                 )
@@ -15932,7 +15958,7 @@ module Orb
               params(
                 bulk_config: T.any(
                   Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -15984,7 +16010,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -16030,7 +16056,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -16053,7 +16079,7 @@ module Orb
               params(
                 bulk_config: T.any(
                   Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence::OrSymbol,
                 item_id: String,
@@ -16063,7 +16089,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -16074,7 +16100,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -16147,7 +16173,7 @@ module Orb
                   tiers: T::Array[
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                   ]
                 )
@@ -16452,7 +16478,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -16498,7 +16524,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -16528,7 +16554,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -16539,7 +16565,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -16864,7 +16890,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -16910,7 +16936,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -16940,7 +16966,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -16951,7 +16977,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -17276,7 +17302,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -17322,7 +17348,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -17352,7 +17378,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -17363,7 +17389,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -17688,7 +17714,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -17734,7 +17760,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -17764,7 +17790,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -17775,7 +17801,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -18100,7 +18126,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -18146,7 +18172,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -18176,7 +18202,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -18187,7 +18213,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -18512,7 +18538,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -18558,7 +18584,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -18588,7 +18614,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -18599,7 +18625,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -18924,7 +18950,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -18970,7 +18996,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -19000,7 +19026,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -19011,7 +19037,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -19336,7 +19362,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -19382,7 +19408,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -19412,7 +19438,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -19423,7 +19449,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -19748,7 +19774,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -19794,7 +19820,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -19824,7 +19850,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -19835,7 +19861,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -20160,7 +20186,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -20206,7 +20232,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -20236,7 +20262,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -20247,7 +20273,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -20572,7 +20598,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -20618,7 +20644,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -20648,7 +20674,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -20659,7 +20685,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -20984,7 +21010,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -21030,7 +21056,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -21060,7 +21086,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -21071,7 +21097,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -21396,7 +21422,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -21442,7 +21468,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -21472,7 +21498,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -21483,7 +21509,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -21808,7 +21834,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -21854,7 +21880,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -21884,7 +21910,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -21895,7 +21921,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -22220,7 +22246,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -22266,7 +22292,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -22296,7 +22322,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -22307,7 +22333,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -22632,7 +22658,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -22678,7 +22704,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -22708,7 +22734,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -22719,7 +22745,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -23044,7 +23070,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -23090,7 +23116,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -23120,7 +23146,7 @@ module Orb
                 billing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 conversion_rate: T.nilable(Float),
@@ -23131,7 +23157,7 @@ module Orb
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
                     Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),

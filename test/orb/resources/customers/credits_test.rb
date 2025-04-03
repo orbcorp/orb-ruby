@@ -7,7 +7,7 @@ class Orb::Test::Resources::Customers::CreditsTest < Orb::Test::ResourceTest
     response = @orb.customers.credits.list("customer_id")
 
     assert_pattern do
-      response => Orb::Page
+      response => Orb::Internal::Page
     end
 
     row = response.to_enum.first
@@ -34,7 +34,7 @@ class Orb::Test::Resources::Customers::CreditsTest < Orb::Test::ResourceTest
     response = @orb.customers.credits.list_by_external_id("external_customer_id")
 
     assert_pattern do
-      response => Orb::Page
+      response => Orb::Internal::Page
     end
 
     row = response.to_enum.first

@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Subscriptions#schedule_plan_change
     class SubscriptionSchedulePlanChangeParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute change_option
       #

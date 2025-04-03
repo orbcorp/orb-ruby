@@ -3,8 +3,8 @@
 module Orb
   module Models
     class SubscriptionCancelParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # Determines the timing of subscription cancellation
       sig { returns(Orb::Models::SubscriptionCancelParams::CancelOption::OrSymbol) }
@@ -26,7 +26,7 @@ module Orb
           cancel_option: Orb::Models::SubscriptionCancelParams::CancelOption::OrSymbol,
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
           cancellation_date: T.nilable(Time),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

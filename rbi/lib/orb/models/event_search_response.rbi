@@ -7,7 +7,7 @@ module Orb
       attr_accessor :data
 
       sig do
-        params(data: T::Array[T.any(Orb::Models::EventSearchResponse::Data, Orb::Util::AnyHash)])
+        params(data: T::Array[T.any(Orb::Models::EventSearchResponse::Data, Orb::Internal::Util::AnyHash)])
           .returns(T.attached_class)
       end
       def self.new(data:)

@@ -3,11 +3,11 @@ module Orb
     module Plans
       type external_plan_id_update_params =
         { external_plan_id: String?, metadata: ::Hash[Symbol, String?]? }
-        & Orb::request_parameters
+        & Orb::Internal::Type::request_parameters
 
       class ExternalPlanIDUpdateParams < Orb::BaseModel
-        extend Orb::Type::RequestParameters::Converter
-        include Orb::RequestParameters
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
 
         attr_accessor external_plan_id: String?
 

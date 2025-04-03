@@ -1,0 +1,19 @@
+module Orb
+  class Unknown = Orb::Internal::Type::Unknown
+
+  class BooleanModel = Orb::Internal::Type::BooleanModel
+
+  module Enum = Orb::Internal::Type::Enum
+
+  module Union = Orb::Internal::Type::Union
+
+  class ArrayOf = Orb::Internal::Type::ArrayOf
+
+  class HashOf = Orb::Internal::Type::HashOf
+
+  class BaseModel = Orb::Internal::Type::BaseModel
+
+  type request_parameters = Orb::Internal::Type::request_parameters
+
+  module RequestParameters = Orb::Internal::Type::RequestParameters
+end

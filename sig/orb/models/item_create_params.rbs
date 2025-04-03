@@ -1,10 +1,11 @@
 module Orb
   module Models
-    type item_create_params = { name: String } & Orb::request_parameters
+    type item_create_params =
+      { name: String } & Orb::Internal::Type::request_parameters
 
     class ItemCreateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor name: String
 

@@ -3,8 +3,8 @@
 module Orb
   module Models
     class InvoiceCreateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # An ISO 4217 currency string. Must be the same as the customer's currency if it
       #   is set.
@@ -73,13 +73,13 @@ module Orb
         params(
           currency: String,
           invoice_date: Time,
-          line_items: T::Array[T.any(Orb::Models::InvoiceCreateParams::LineItem, Orb::Util::AnyHash)],
+          line_items: T::Array[T.any(Orb::Models::InvoiceCreateParams::LineItem, Orb::Internal::Util::AnyHash)],
           net_terms: Integer,
           customer_id: T.nilable(String),
           discount: T.nilable(
             T.any(
               Orb::Models::PercentageDiscount,
-              Orb::Util::AnyHash,
+              Orb::Internal::Util::AnyHash,
               Orb::Models::TrialDiscount,
               Orb::Models::UsageDiscount,
               Orb::Models::AmountDiscount
@@ -89,7 +89,7 @@ module Orb
           memo: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           will_auto_issue: T::Boolean,
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -162,7 +162,12 @@ module Orb
         sig { returns(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig) }
         attr_reader :unit_config
 
-        sig { params(unit_config: T.any(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig, Orb::Util::AnyHash)).void }
+        sig do
+          params(
+            unit_config: T.any(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig, Orb::Internal::Util::AnyHash)
+          )
+            .void
+        end
         attr_writer :unit_config
 
         sig do
@@ -173,7 +178,7 @@ module Orb
             name: String,
             quantity: Float,
             start_date: Date,
-            unit_config: T.any(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig, Orb::Util::AnyHash)
+            unit_config: T.any(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig, Orb::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

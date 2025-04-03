@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Plans#update
     class PlanUpdateParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute external_plan_id
       #   An optional user-defined ID for this plan resource, used throughout the system
