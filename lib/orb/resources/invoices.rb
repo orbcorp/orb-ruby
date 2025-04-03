@@ -96,7 +96,7 @@ module Orb
       # @param subscription_id [String, nil]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Page<Orb::Models::Invoice>]
+      # @return [Orb::Internal::Page<Orb::Models::Invoice>]
       #
       # @see Orb::Models::InvoiceListParams
       def list(params = {})
@@ -105,7 +105,7 @@ module Orb
           method: :get,
           path: "invoices",
           query: parsed,
-          page: Orb::Page,
+          page: Orb::Internal::Page,
           model: Orb::Models::Invoice,
           options: options
         )

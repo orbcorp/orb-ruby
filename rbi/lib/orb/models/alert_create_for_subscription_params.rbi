@@ -3,8 +3,8 @@
 module Orb
   module Models
     class AlertCreateForSubscriptionParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # The thresholds that define the values at which the alert will be triggered.
       sig { returns(T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold]) }
@@ -20,10 +20,10 @@ module Orb
 
       sig do
         params(
-          thresholds: T::Array[T.any(Orb::Models::AlertCreateForSubscriptionParams::Threshold, Orb::Util::AnyHash)],
+          thresholds: T::Array[T.any(Orb::Models::AlertCreateForSubscriptionParams::Threshold, Orb::Internal::Util::AnyHash)],
           type: Orb::Models::AlertCreateForSubscriptionParams::Type::OrSymbol,
           metric_id: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

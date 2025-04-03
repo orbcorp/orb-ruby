@@ -17,7 +17,7 @@ module Orb
         ?redemption_code: String?,
         ?show_archived: bool?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Page[Orb::Models::Coupon]
+      ) -> Orb::Internal::Page[Orb::Models::Coupon]
 
       def archive: (
         String coupon_id,

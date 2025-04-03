@@ -31,7 +31,7 @@ class Orb::Test::Resources::CouponsTest < Orb::Test::ResourceTest
     response = @orb.coupons.list
 
     assert_pattern do
-      response => Orb::Page
+      response => Orb::Internal::Page
     end
 
     row = response.to_enum.first

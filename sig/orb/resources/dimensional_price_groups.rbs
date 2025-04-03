@@ -21,7 +21,7 @@ module Orb
         ?cursor: String?,
         ?limit: Integer,
         ?request_options: Orb::request_opts
-      ) -> Orb::Page[Orb::Models::DimensionalPriceGroup]
+      ) -> Orb::Internal::Page[Orb::Models::DimensionalPriceGroup]
 
       def initialize: (client: Orb::Client) -> void
     end

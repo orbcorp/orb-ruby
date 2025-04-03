@@ -3,8 +3,8 @@
 module Orb
   module Models
     class EventUpdateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # A name to meaningfully identify the action or event type.
       sig { returns(String) }
@@ -37,7 +37,7 @@ module Orb
           timestamp: Time,
           customer_id: T.nilable(String),
           external_customer_id: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

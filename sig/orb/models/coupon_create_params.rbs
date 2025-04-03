@@ -7,11 +7,11 @@ module Orb
         duration_in_months: Integer?,
         max_redemptions: Integer?
       }
-      & Orb::request_parameters
+      & Orb::Internal::Type::request_parameters
 
     class CouponCreateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor discount: Orb::Models::CouponCreateParams::discount
 

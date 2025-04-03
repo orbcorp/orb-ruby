@@ -3,15 +3,15 @@
 module Orb
   module Models
     class ItemCreateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # The name of the item.
       sig { returns(String) }
       attr_accessor :name
 
       sig do
-        params(name: String, request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+        params(name: String, request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
           .returns(T.attached_class)
       end
       def self.new(name:, request_options: {})

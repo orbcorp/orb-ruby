@@ -16,7 +16,7 @@ module Orb
 
       sig do
         params(
-          auto_collection: T.any(Orb::Models::InvoiceFetchUpcomingResponse::AutoCollection, Orb::Util::AnyHash)
+          auto_collection: T.any(Orb::Models::InvoiceFetchUpcomingResponse::AutoCollection, Orb::Internal::Util::AnyHash)
         )
           .void
       end
@@ -27,7 +27,7 @@ module Orb
 
       sig do
         params(
-          billing_address: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress, Orb::Util::AnyHash))
+          billing_address: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress, Orb::Internal::Util::AnyHash))
         )
           .void
       end
@@ -48,7 +48,10 @@ module Orb
       sig { returns(Orb::Models::InvoiceFetchUpcomingResponse::Customer) }
       attr_reader :customer
 
-      sig { params(customer: T.any(Orb::Models::InvoiceFetchUpcomingResponse::Customer, Orb::Util::AnyHash)).void }
+      sig do
+        params(customer: T.any(Orb::Models::InvoiceFetchUpcomingResponse::Customer, Orb::Internal::Util::AnyHash))
+          .void
+      end
       attr_writer :customer
 
       sig { returns(T::Array[Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction]) }
@@ -164,7 +167,7 @@ module Orb
 
       sig do
         params(
-          customer_tax_id: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID, Orb::Util::AnyHash))
+          customer_tax_id: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID, Orb::Internal::Util::AnyHash))
         )
           .void
       end
@@ -230,7 +233,9 @@ module Orb
       attr_reader :maximum
 
       sig do
-        params(maximum: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::Maximum, Orb::Util::AnyHash)))
+        params(
+          maximum: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::Maximum, Orb::Internal::Util::AnyHash))
+        )
           .void
       end
       attr_writer :maximum
@@ -253,7 +258,9 @@ module Orb
       attr_reader :minimum
 
       sig do
-        params(minimum: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::Minimum, Orb::Util::AnyHash)))
+        params(
+          minimum: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::Minimum, Orb::Internal::Util::AnyHash))
+        )
           .void
       end
       attr_writer :minimum
@@ -291,7 +298,7 @@ module Orb
 
       sig do
         params(
-          shipping_address: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress, Orb::Util::AnyHash))
+          shipping_address: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress, Orb::Internal::Util::AnyHash))
         )
           .void
       end
@@ -305,7 +312,7 @@ module Orb
 
       sig do
         params(
-          subscription: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::Subscription, Orb::Util::AnyHash))
+          subscription: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::Subscription, Orb::Internal::Util::AnyHash))
         )
           .void
       end
@@ -343,19 +350,19 @@ module Orb
         params(
           id: String,
           amount_due: String,
-          auto_collection: T.any(Orb::Models::InvoiceFetchUpcomingResponse::AutoCollection, Orb::Util::AnyHash),
-          billing_address: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress, Orb::Util::AnyHash)),
+          auto_collection: T.any(Orb::Models::InvoiceFetchUpcomingResponse::AutoCollection, Orb::Internal::Util::AnyHash),
+          billing_address: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress, Orb::Internal::Util::AnyHash)),
           created_at: Time,
-          credit_notes: T::Array[T.any(Orb::Models::InvoiceFetchUpcomingResponse::CreditNote, Orb::Util::AnyHash)],
+          credit_notes: T::Array[T.any(Orb::Models::InvoiceFetchUpcomingResponse::CreditNote, Orb::Internal::Util::AnyHash)],
           currency: String,
-          customer: T.any(Orb::Models::InvoiceFetchUpcomingResponse::Customer, Orb::Util::AnyHash),
-          customer_balance_transactions: T::Array[T.any(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction, Orb::Util::AnyHash)],
-          customer_tax_id: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID, Orb::Util::AnyHash)),
+          customer: T.any(Orb::Models::InvoiceFetchUpcomingResponse::Customer, Orb::Internal::Util::AnyHash),
+          customer_balance_transactions: T::Array[T.any(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction, Orb::Internal::Util::AnyHash)],
+          customer_tax_id: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID, Orb::Internal::Util::AnyHash)),
           discount: T.anything,
           discounts: T::Array[
           T.any(
             Orb::Models::PercentageDiscount,
-            Orb::Util::AnyHash,
+            Orb::Internal::Util::AnyHash,
             Orb::Models::AmountDiscount,
             Orb::Models::TrialDiscount
           )
@@ -368,21 +375,21 @@ module Orb
           invoice_source: Orb::Models::InvoiceFetchUpcomingResponse::InvoiceSource::OrSymbol,
           issue_failed_at: T.nilable(Time),
           issued_at: T.nilable(Time),
-          line_items: T::Array[T.any(Orb::Models::InvoiceFetchUpcomingResponse::LineItem, Orb::Util::AnyHash)],
-          maximum: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::Maximum, Orb::Util::AnyHash)),
+          line_items: T::Array[T.any(Orb::Models::InvoiceFetchUpcomingResponse::LineItem, Orb::Internal::Util::AnyHash)],
+          maximum: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::Maximum, Orb::Internal::Util::AnyHash)),
           maximum_amount: T.nilable(String),
           memo: T.nilable(String),
           metadata: T::Hash[Symbol, String],
-          minimum: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::Minimum, Orb::Util::AnyHash)),
+          minimum: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::Minimum, Orb::Internal::Util::AnyHash)),
           minimum_amount: T.nilable(String),
           paid_at: T.nilable(Time),
-          payment_attempts: T::Array[T.any(Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt, Orb::Util::AnyHash)],
+          payment_attempts: T::Array[T.any(Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt, Orb::Internal::Util::AnyHash)],
           payment_failed_at: T.nilable(Time),
           payment_started_at: T.nilable(Time),
           scheduled_issue_at: T.nilable(Time),
-          shipping_address: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress, Orb::Util::AnyHash)),
+          shipping_address: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress, Orb::Internal::Util::AnyHash)),
           status: Orb::Models::InvoiceFetchUpcomingResponse::Status::OrSymbol,
-          subscription: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::Subscription, Orb::Util::AnyHash)),
+          subscription: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::Subscription, Orb::Internal::Util::AnyHash)),
           subtotal: String,
           sync_failed_at: T.nilable(Time),
           target_date: Time,
@@ -687,7 +694,7 @@ module Orb
             credit_note: T.nilable(
               T.any(
                 Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote,
-                Orb::Util::AnyHash
+                Orb::Internal::Util::AnyHash
               )
             )
           )
@@ -710,7 +717,10 @@ module Orb
         sig do
           params(
             invoice: T.nilable(
-              T.any(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice, Orb::Util::AnyHash)
+              T.any(
+                Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice,
+                Orb::Internal::Util::AnyHash
+              )
             )
           )
             .void
@@ -734,13 +744,16 @@ module Orb
             credit_note: T.nilable(
               T.any(
                 Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote,
-                Orb::Util::AnyHash
+                Orb::Internal::Util::AnyHash
               )
             ),
             description: T.nilable(String),
             ending_balance: String,
             invoice: T.nilable(
-              T.any(Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice, Orb::Util::AnyHash)
+              T.any(
+                Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice,
+                Orb::Internal::Util::AnyHash
+              )
             ),
             starting_balance: String,
             type: Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Type::OrSymbol
@@ -1327,7 +1340,9 @@ module Orb
 
         sig do
           params(
-            maximum: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum, Orb::Util::AnyHash))
+            maximum: T.nilable(
+              T.any(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum, Orb::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -1343,7 +1358,9 @@ module Orb
 
         sig do
           params(
-            minimum: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum, Orb::Util::AnyHash))
+            minimum: T.nilable(
+              T.any(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum, Orb::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -1452,7 +1469,7 @@ module Orb
             adjustments: T::Array[
             T.any(
               Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryUsageDiscountAdjustment,
-              Orb::Util::AnyHash,
+              Orb::Internal::Util::AnyHash,
               Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryAmountDiscountAdjustment,
               Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment,
               Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMinimumAdjustment,
@@ -1464,7 +1481,7 @@ module Orb
             discount: T.nilable(
               T.any(
                 Orb::Models::PercentageDiscount,
-                Orb::Util::AnyHash,
+                Orb::Internal::Util::AnyHash,
                 Orb::Models::TrialDiscount,
                 Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
@@ -1473,16 +1490,20 @@ module Orb
             end_date: Time,
             filter: T.nilable(String),
             grouping: T.nilable(String),
-            maximum: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum, Orb::Util::AnyHash)),
+            maximum: T.nilable(
+              T.any(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum, Orb::Internal::Util::AnyHash)
+            ),
             maximum_amount: T.nilable(String),
-            minimum: T.nilable(T.any(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum, Orb::Util::AnyHash)),
+            minimum: T.nilable(
+              T.any(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum, Orb::Internal::Util::AnyHash)
+            ),
             minimum_amount: T.nilable(String),
             name: String,
             partially_invoiced_amount: String,
             price: T.nilable(
               T.any(
                 Orb::Models::Price::UnitPrice,
-                Orb::Util::AnyHash,
+                Orb::Internal::Util::AnyHash,
                 Orb::Models::Price::PackagePrice,
                 Orb::Models::Price::MatrixPrice,
                 Orb::Models::Price::TieredPrice,
@@ -1517,13 +1538,13 @@ module Orb
             sub_line_items: T::Array[
             T.any(
               Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem,
-              Orb::Util::AnyHash,
+              Orb::Internal::Util::AnyHash,
               Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem,
               Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem
             )
             ],
             subtotal: String,
-            tax_amounts: T::Array[T.any(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount, Orb::Util::AnyHash)],
+            tax_amounts: T::Array[T.any(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount, Orb::Internal::Util::AnyHash)],
             usage_customer_ids: T.nilable(T::Array[String])
           )
             .returns(T.attached_class)
@@ -2072,7 +2093,7 @@ module Orb
                 grouping: T.nilable(
                   T.any(
                     Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -2087,7 +2108,7 @@ module Orb
               params(
                 matrix_config: T.any(
                   Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -2109,12 +2130,12 @@ module Orb
                 grouping: T.nilable(
                   T.any(
                     Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 matrix_config: T.any(
                   Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 name: String,
                 quantity: Float,
@@ -2190,7 +2211,7 @@ module Orb
                 grouping: T.nilable(
                   T.any(
                     Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -2211,7 +2232,7 @@ module Orb
               params(
                 tier_config: T.any(
                   Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::TierConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -2227,14 +2248,14 @@ module Orb
                 grouping: T.nilable(
                   T.any(
                     Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 name: String,
                 quantity: Float,
                 tier_config: T.any(
                   Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::TierConfig,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 type: Symbol
               )
@@ -2319,7 +2340,7 @@ module Orb
                 grouping: T.nilable(
                   T.any(
                     Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 )
               )
@@ -2342,7 +2363,7 @@ module Orb
                 grouping: T.nilable(
                   T.any(
                     Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping,
-                    Orb::Util::AnyHash
+                    Orb::Internal::Util::AnyHash
                   )
                 ),
                 name: String,

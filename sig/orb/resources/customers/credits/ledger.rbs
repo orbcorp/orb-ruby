@@ -16,7 +16,7 @@ module Orb
             ?limit: Integer,
             ?minimum_amount: String?,
             ?request_options: Orb::request_opts
-          ) -> Orb::Page[Orb::Models::Customers::Credits::ledger_list_response]
+          ) -> Orb::Internal::Page[Orb::Models::Customers::Credits::ledger_list_response]
 
           def create_entry: (
             String customer_id,
@@ -65,7 +65,7 @@ module Orb
             ?limit: Integer,
             ?minimum_amount: String?,
             ?request_options: Orb::request_opts
-          ) -> Orb::Page[Orb::Models::Customers::Credits::ledger_list_by_external_id_response]
+          ) -> Orb::Internal::Page[Orb::Models::Customers::Credits::ledger_list_by_external_id_response]
 
           def initialize: (client: Orb::Client) -> void
         end

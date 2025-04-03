@@ -26,7 +26,7 @@ module Orb
               params(
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::CreditBlock,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -43,7 +43,7 @@ module Orb
               params(
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::Customer,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -86,12 +86,12 @@ module Orb
                 created_at: Time,
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::CreditBlock,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 currency: String,
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::Customer,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 description: T.nilable(String),
                 ending_balance: Float,
@@ -242,7 +242,7 @@ module Orb
               params(
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::CreditBlock,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -259,7 +259,7 @@ module Orb
               params(
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::Customer,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -311,12 +311,12 @@ module Orb
                 created_at: Time,
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::CreditBlock,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 currency: String,
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::Customer,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 description: T.nilable(String),
                 ending_balance: Float,
@@ -476,7 +476,7 @@ module Orb
               params(
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::CreditBlock,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -493,7 +493,7 @@ module Orb
               params(
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::Customer,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -539,12 +539,12 @@ module Orb
                 created_at: Time,
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::CreditBlock,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 currency: String,
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::Customer,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 description: T.nilable(String),
                 ending_balance: Float,
@@ -702,7 +702,7 @@ module Orb
               params(
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::CreditBlock,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -719,7 +719,7 @@ module Orb
               params(
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::Customer,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -762,12 +762,12 @@ module Orb
                 created_at: Time,
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::CreditBlock,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 currency: String,
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::Customer,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 description: T.nilable(String),
                 ending_balance: Float,
@@ -922,7 +922,7 @@ module Orb
               params(
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::CreditBlock,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -937,7 +937,10 @@ module Orb
 
             sig do
               params(
-                customer: T.any(Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::Customer, Orb::Util::AnyHash)
+                customer: T.any(
+                  Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::Customer,
+                  Orb::Internal::Util::AnyHash
+                )
               )
                 .void
             end
@@ -981,10 +984,13 @@ module Orb
                 created_at: Time,
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::CreditBlock,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 currency: String,
-                customer: T.any(Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::Customer, Orb::Util::AnyHash),
+                customer: T.any(
+                  Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::Customer,
+                  Orb::Internal::Util::AnyHash
+                ),
                 description: T.nilable(String),
                 ending_balance: Float,
                 entry_status: Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::EntryStatus::OrSymbol,
@@ -1140,7 +1146,7 @@ module Orb
               params(
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::CreditBlock,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1157,7 +1163,7 @@ module Orb
               params(
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::Customer,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1209,12 +1215,12 @@ module Orb
                 created_at: Time,
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::CreditBlock,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 currency: String,
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::Customer,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 description: T.nilable(String),
                 ending_balance: Float,
@@ -1374,7 +1380,7 @@ module Orb
               params(
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::CreditBlock,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1391,7 +1397,7 @@ module Orb
               params(
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::Customer,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1434,12 +1440,12 @@ module Orb
                 created_at: Time,
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::CreditBlock,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 currency: String,
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::Customer,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 ),
                 description: T.nilable(String),
                 ending_balance: Float,

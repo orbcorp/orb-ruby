@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Subscriptions#trigger_phase
     class SubscriptionTriggerPhaseParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute allow_invoice_credit_or_void
       #   If false, this request will fail if it would void an issued invoice or create a

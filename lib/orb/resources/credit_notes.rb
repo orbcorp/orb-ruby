@@ -41,7 +41,7 @@ module Orb
       # @param limit [Integer]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Page<Orb::Models::CreditNote>]
+      # @return [Orb::Internal::Page<Orb::Models::CreditNote>]
       #
       # @see Orb::Models::CreditNoteListParams
       def list(params = {})
@@ -50,7 +50,7 @@ module Orb
           method: :get,
           path: "credit_notes",
           query: parsed,
-          page: Orb::Page,
+          page: Orb::Internal::Page,
           model: Orb::Models::CreditNote,
           options: options
         )

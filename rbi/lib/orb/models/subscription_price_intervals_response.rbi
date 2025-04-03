@@ -29,7 +29,7 @@ module Orb
         params(
           billing_cycle_anchor_configuration: T.any(
             Orb::Models::SubscriptionPriceIntervalsResponse::BillingCycleAnchorConfiguration,
-            Orb::Util::AnyHash
+            Orb::Internal::Util::AnyHash
           )
         )
           .void
@@ -79,7 +79,7 @@ module Orb
       sig { returns(Orb::Models::Customer) }
       attr_reader :customer
 
-      sig { params(customer: T.any(Orb::Models::Customer, Orb::Util::AnyHash)).void }
+      sig { params(customer: T.any(Orb::Models::Customer, Orb::Internal::Util::AnyHash)).void }
       attr_writer :customer
 
       # Determines the default memo on this subscriptions' invoices. Note that if this
@@ -140,7 +140,7 @@ module Orb
       sig { returns(Orb::Models::Plan) }
       attr_reader :plan
 
-      sig { params(plan: T.any(Orb::Models::Plan, Orb::Util::AnyHash)).void }
+      sig { params(plan: T.any(Orb::Models::Plan, Orb::Internal::Util::AnyHash)).void }
       attr_writer :plan
 
       # The price intervals for this subscription.
@@ -152,7 +152,9 @@ module Orb
 
       sig do
         params(
-          redeemed_coupon: T.nilable(T.any(Orb::Models::SubscriptionPriceIntervalsResponse::RedeemedCoupon, Orb::Util::AnyHash))
+          redeemed_coupon: T.nilable(
+            T.any(Orb::Models::SubscriptionPriceIntervalsResponse::RedeemedCoupon, Orb::Internal::Util::AnyHash)
+          )
         )
           .void
       end
@@ -169,7 +171,9 @@ module Orb
       attr_reader :trial_info
 
       sig do
-        params(trial_info: T.any(Orb::Models::SubscriptionPriceIntervalsResponse::TrialInfo, Orb::Util::AnyHash))
+        params(
+          trial_info: T.any(Orb::Models::SubscriptionPriceIntervalsResponse::TrialInfo, Orb::Internal::Util::AnyHash)
+        )
           .void
       end
       attr_writer :trial_info
@@ -178,39 +182,46 @@ module Orb
         params(
           id: String,
           active_plan_phase_order: T.nilable(Integer),
-          adjustment_intervals: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval, Orb::Util::AnyHash)],
+          adjustment_intervals: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval, Orb::Internal::Util::AnyHash)],
           auto_collection: T.nilable(T::Boolean),
           billing_cycle_anchor_configuration: T.any(
             Orb::Models::SubscriptionPriceIntervalsResponse::BillingCycleAnchorConfiguration,
-            Orb::Util::AnyHash
+            Orb::Internal::Util::AnyHash
           ),
           billing_cycle_day: Integer,
           created_at: Time,
           current_billing_period_end_date: T.nilable(Time),
           current_billing_period_start_date: T.nilable(Time),
-          customer: T.any(Orb::Models::Customer, Orb::Util::AnyHash),
+          customer: T.any(Orb::Models::Customer, Orb::Internal::Util::AnyHash),
           default_invoice_memo: T.nilable(String),
           discount_intervals: T::Array[
           T.any(
             Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::AmountDiscountInterval,
-            Orb::Util::AnyHash,
+            Orb::Internal::Util::AnyHash,
             Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::PercentageDiscountInterval,
             Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::UsageDiscountInterval
           )
           ],
           end_date: T.nilable(Time),
-          fixed_fee_quantity_schedule: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsResponse::FixedFeeQuantitySchedule, Orb::Util::AnyHash)],
+          fixed_fee_quantity_schedule: T::Array[
+          T.any(
+            Orb::Models::SubscriptionPriceIntervalsResponse::FixedFeeQuantitySchedule,
+            Orb::Internal::Util::AnyHash
+          )
+          ],
           invoicing_threshold: T.nilable(String),
-          maximum_intervals: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsResponse::MaximumInterval, Orb::Util::AnyHash)],
+          maximum_intervals: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsResponse::MaximumInterval, Orb::Internal::Util::AnyHash)],
           metadata: T::Hash[Symbol, String],
-          minimum_intervals: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsResponse::MinimumInterval, Orb::Util::AnyHash)],
+          minimum_intervals: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsResponse::MinimumInterval, Orb::Internal::Util::AnyHash)],
           net_terms: Integer,
-          plan: T.any(Orb::Models::Plan, Orb::Util::AnyHash),
-          price_intervals: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsResponse::PriceInterval, Orb::Util::AnyHash)],
-          redeemed_coupon: T.nilable(T.any(Orb::Models::SubscriptionPriceIntervalsResponse::RedeemedCoupon, Orb::Util::AnyHash)),
+          plan: T.any(Orb::Models::Plan, Orb::Internal::Util::AnyHash),
+          price_intervals: T::Array[T.any(Orb::Models::SubscriptionPriceIntervalsResponse::PriceInterval, Orb::Internal::Util::AnyHash)],
+          redeemed_coupon: T.nilable(
+            T.any(Orb::Models::SubscriptionPriceIntervalsResponse::RedeemedCoupon, Orb::Internal::Util::AnyHash)
+          ),
           start_date: Time,
           status: Orb::Models::SubscriptionPriceIntervalsResponse::Status::OrSymbol,
-          trial_info: T.any(Orb::Models::SubscriptionPriceIntervalsResponse::TrialInfo, Orb::Util::AnyHash)
+          trial_info: T.any(Orb::Models::SubscriptionPriceIntervalsResponse::TrialInfo, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -318,7 +329,7 @@ module Orb
             id: String,
             adjustment: T.any(
               Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment,
-              Orb::Util::AnyHash,
+              Orb::Internal::Util::AnyHash,
               Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment,
               Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment,
               Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment,
@@ -1208,13 +1219,13 @@ module Orb
               T::Array[
               T.any(
                 Orb::Models::SubscriptionPriceIntervalsResponse::PriceInterval::FixedFeeQuantityTransition,
-                Orb::Util::AnyHash
+                Orb::Internal::Util::AnyHash
               )
               ]
             ),
             price: T.any(
               Orb::Models::Price::UnitPrice,
-              Orb::Util::AnyHash,
+              Orb::Internal::Util::AnyHash,
               Orb::Models::Price::PackagePrice,
               Orb::Models::Price::MatrixPrice,
               Orb::Models::Price::TieredPrice,

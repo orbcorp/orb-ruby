@@ -6,8 +6,8 @@ module Orb
       # @see Orb::Resources::Coupons::Subscriptions#list
       class SubscriptionListParams < Orb::BaseModel
         # @!parse
-        #   extend Orb::Type::RequestParameters::Converter
-        include Orb::RequestParameters
+        #   extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
 
         # @!attribute cursor
         #   Cursor for pagination. This can be populated by the `next_cursor` value returned

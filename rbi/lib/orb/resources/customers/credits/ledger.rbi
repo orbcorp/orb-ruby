@@ -99,10 +99,10 @@ module Orb
               entry_type: T.nilable(Orb::Models::Customers::Credits::LedgerListParams::EntryType::OrSymbol),
               limit: Integer,
               minimum_amount: T.nilable(String),
-              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
             )
               .returns(
-                Orb::Page[
+                Orb::Internal::Page[
                 T.any(
                   Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry,
                   Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry,
@@ -257,12 +257,15 @@ module Orb
               description: T.nilable(String),
               effective_date: T.nilable(Time),
               invoice_settings: T.nilable(
-                T.any(Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, Orb::Util::AnyHash)
+                T.any(
+                  Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings,
+                  Orb::Internal::Util::AnyHash
+                )
               ),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               per_unit_cost_basis: T.nilable(String),
               void_reason: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason::OrSymbol),
-              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
             )
               .returns(
                 T.any(
@@ -442,13 +445,13 @@ module Orb
               invoice_settings: T.nilable(
                 T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               ),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               per_unit_cost_basis: T.nilable(String),
               void_reason: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason::OrSymbol),
-              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
             )
               .returns(
                 T.any(
@@ -598,10 +601,10 @@ module Orb
               entry_type: T.nilable(Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryType::OrSymbol),
               limit: Integer,
               minimum_amount: T.nilable(String),
-              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
             )
               .returns(
-                Orb::Page[
+                Orb::Internal::Page[
                 T.any(
                   Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry,
                   Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry,

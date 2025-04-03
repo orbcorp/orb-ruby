@@ -6,11 +6,11 @@ module Orb
         memo: String?,
         reason: Orb::Models::CreditNoteCreateParams::reason?
       }
-      & Orb::request_parameters
+      & Orb::Internal::Type::request_parameters
 
     class CreditNoteCreateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor line_items: ::Array[Orb::Models::CreditNoteCreateParams::LineItem]
 

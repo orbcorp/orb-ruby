@@ -9,11 +9,11 @@ module Orb
         filter: String?,
         grouping_keys: ::Array[String]
       }
-      & Orb::request_parameters
+      & Orb::Internal::Type::request_parameters
 
     class PriceEvaluateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor timeframe_end: Time
 

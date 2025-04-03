@@ -7,8 +7,8 @@ module Orb
         # @see Orb::Resources::Customers::Credits::Ledger#create_entry
         class LedgerCreateEntryParams < Orb::BaseModel
           # @!parse
-          #   extend Orb::Type::RequestParameters::Converter
-          include Orb::RequestParameters
+          #   extend Orb::Internal::Type::RequestParameters::Converter
+          include Orb::Internal::Type::RequestParameters
 
           # @!attribute amount
           #   The number of credits to effect. Note that this is required for increment,

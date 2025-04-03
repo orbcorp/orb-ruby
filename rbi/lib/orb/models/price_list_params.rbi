@@ -3,8 +3,8 @@
 module Orb
   module Models
     class PriceListParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # Cursor for pagination. This can be populated by the `next_cursor` value returned
       #   from the initial request.
@@ -22,7 +22,7 @@ module Orb
         params(
           cursor: T.nilable(String),
           limit: Integer,
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

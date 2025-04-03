@@ -8,11 +8,11 @@ module Orb
           timeframe_start: Time?,
           view_mode: Orb::Models::Customers::CostListByExternalIDParams::view_mode?
         }
-        & Orb::request_parameters
+        & Orb::Internal::Type::request_parameters
 
       class CostListByExternalIDParams < Orb::BaseModel
-        extend Orb::Type::RequestParameters::Converter
-        include Orb::RequestParameters
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
 
         attr_accessor currency: String?
 

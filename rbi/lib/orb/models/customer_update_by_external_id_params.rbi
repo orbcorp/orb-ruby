@@ -3,8 +3,8 @@
 module Orb
   module Models
     class CustomerUpdateByExternalIDParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       sig { returns(T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration)) }
       attr_reader :accounting_sync_configuration
@@ -12,7 +12,10 @@ module Orb
       sig do
         params(
           accounting_sync_configuration: T.nilable(
-            T.any(Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration, Orb::Util::AnyHash)
+            T.any(
+              Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration,
+              Orb::Internal::Util::AnyHash
+            )
           )
         )
           .void
@@ -35,7 +38,9 @@ module Orb
 
       sig do
         params(
-          billing_address: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress, Orb::Util::AnyHash))
+          billing_address: T.nilable(
+            T.any(Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress, Orb::Internal::Util::AnyHash)
+          )
         )
           .void
       end
@@ -64,7 +69,7 @@ module Orb
 
       sig do
         params(
-          hierarchy: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::Hierarchy, Orb::Util::AnyHash))
+          hierarchy: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::Hierarchy, Orb::Internal::Util::AnyHash))
         )
           .void
       end
@@ -101,7 +106,7 @@ module Orb
       sig do
         params(
           reporting_configuration: T.nilable(
-            T.any(Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration, Orb::Util::AnyHash)
+            T.any(Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration, Orb::Internal::Util::AnyHash)
           )
         )
           .void
@@ -113,7 +118,9 @@ module Orb
 
       sig do
         params(
-          shipping_address: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress, Orb::Util::AnyHash))
+          shipping_address: T.nilable(
+            T.any(Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress, Orb::Internal::Util::AnyHash)
+          )
         )
           .void
       end
@@ -240,7 +247,9 @@ module Orb
       attr_reader :tax_id
 
       sig do
-        params(tax_id: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::TaxID, Orb::Util::AnyHash)))
+        params(
+          tax_id: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::TaxID, Orb::Internal::Util::AnyHash))
+        )
           .void
       end
       attr_writer :tax_id
@@ -248,33 +257,40 @@ module Orb
       sig do
         params(
           accounting_sync_configuration: T.nilable(
-            T.any(Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration, Orb::Util::AnyHash)
+            T.any(
+              Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration,
+              Orb::Internal::Util::AnyHash
+            )
           ),
           additional_emails: T.nilable(T::Array[String]),
           auto_collection: T.nilable(T::Boolean),
-          billing_address: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress, Orb::Util::AnyHash)),
+          billing_address: T.nilable(
+            T.any(Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress, Orb::Internal::Util::AnyHash)
+          ),
           currency: T.nilable(String),
           email: T.nilable(String),
           email_delivery: T.nilable(T::Boolean),
           external_customer_id: T.nilable(String),
-          hierarchy: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::Hierarchy, Orb::Util::AnyHash)),
+          hierarchy: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::Hierarchy, Orb::Internal::Util::AnyHash)),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           name: T.nilable(String),
           payment_provider: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::PaymentProvider::OrSymbol),
           payment_provider_id: T.nilable(String),
           reporting_configuration: T.nilable(
-            T.any(Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration, Orb::Util::AnyHash)
+            T.any(Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration, Orb::Internal::Util::AnyHash)
           ),
-          shipping_address: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress, Orb::Util::AnyHash)),
+          shipping_address: T.nilable(
+            T.any(Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress, Orb::Internal::Util::AnyHash)
+          ),
           tax_configuration: T.nilable(
             T.any(
               Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration,
-              Orb::Util::AnyHash,
+              Orb::Internal::Util::AnyHash,
               Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration
             )
           ),
-          tax_id: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::TaxID, Orb::Util::AnyHash)),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          tax_id: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::TaxID, Orb::Internal::Util::AnyHash)),
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -352,7 +368,7 @@ module Orb
               T::Array[
               T.any(
                 Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider,
-                Orb::Util::AnyHash
+                Orb::Internal::Util::AnyHash
               )
               ]
             ),

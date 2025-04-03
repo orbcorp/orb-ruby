@@ -3,8 +3,8 @@
 module Orb
   module Models
     class CouponCreateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       sig do
         returns(
@@ -34,13 +34,13 @@ module Orb
         params(
           discount: T.any(
             Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
-            Orb::Util::AnyHash,
+            Orb::Internal::Util::AnyHash,
             Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
           ),
           redemption_code: String,
           duration_in_months: T.nilable(Integer),
           max_redemptions: T.nilable(Integer),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

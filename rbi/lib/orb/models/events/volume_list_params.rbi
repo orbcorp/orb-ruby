@@ -4,8 +4,8 @@ module Orb
   module Models
     module Events
       class VolumeListParams < Orb::BaseModel
-        extend Orb::Type::RequestParameters::Converter
-        include Orb::RequestParameters
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
 
         # The start of the timeframe, inclusive, in which to return event volume. All
         #   datetime values are converted to UTC time. If the specified time isn't
@@ -42,7 +42,7 @@ module Orb
             cursor: T.nilable(String),
             limit: Integer,
             timeframe_end: Time,
-            request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+            request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

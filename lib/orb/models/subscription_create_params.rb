@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Subscriptions#create
     class SubscriptionCreateParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute add_adjustments
       #   Additional adjustments to be added to the subscription. (Only available for

@@ -6,8 +6,8 @@ module Orb
       # @see Orb::Resources::Customers::Credits#list_by_external_id
       class CreditListByExternalIDParams < Orb::BaseModel
         # @!parse
-        #   extend Orb::Type::RequestParameters::Converter
-        include Orb::RequestParameters
+        #   extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
 
         # @!attribute currency
         #   The ledger currency or custom pricing unit to use.

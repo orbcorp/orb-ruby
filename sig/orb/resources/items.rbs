@@ -17,7 +17,7 @@ module Orb
         ?cursor: String?,
         ?limit: Integer,
         ?request_options: Orb::request_opts
-      ) -> Orb::Page[Orb::Models::Item]
+      ) -> Orb::Internal::Page[Orb::Models::Item]
 
       def fetch: (
         String item_id,

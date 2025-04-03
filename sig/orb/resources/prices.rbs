@@ -59,7 +59,7 @@ module Orb
         ?cursor: String?,
         ?limit: Integer,
         ?request_options: Orb::request_opts
-      ) -> Orb::Page[Orb::Models::price]
+      ) -> Orb::Internal::Page[Orb::Models::price]
 
       def evaluate: (
         String price_id,

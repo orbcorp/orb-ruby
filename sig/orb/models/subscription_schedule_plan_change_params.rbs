@@ -29,11 +29,11 @@ module Orb
         trial_duration_days: Integer?,
         usage_customer_ids: ::Array[String]?
       }
-      & Orb::request_parameters
+      & Orb::Internal::Type::request_parameters
 
     class SubscriptionSchedulePlanChangeParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor change_option: Orb::Models::SubscriptionSchedulePlanChangeParams::change_option
 

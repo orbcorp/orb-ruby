@@ -3,8 +3,8 @@
 module Orb
   module Models
     class CreditNoteCreateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       sig { returns(T::Array[Orb::Models::CreditNoteCreateParams::LineItem]) }
       attr_accessor :line_items
@@ -19,10 +19,10 @@ module Orb
 
       sig do
         params(
-          line_items: T::Array[T.any(Orb::Models::CreditNoteCreateParams::LineItem, Orb::Util::AnyHash)],
+          line_items: T::Array[T.any(Orb::Models::CreditNoteCreateParams::LineItem, Orb::Internal::Util::AnyHash)],
           memo: T.nilable(String),
           reason: T.nilable(Orb::Models::CreditNoteCreateParams::Reason::OrSymbol),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

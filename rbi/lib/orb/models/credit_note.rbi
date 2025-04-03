@@ -22,7 +22,7 @@ module Orb
       sig { returns(Orb::Models::CreditNote::Customer) }
       attr_reader :customer
 
-      sig { params(customer: T.any(Orb::Models::CreditNote::Customer, Orb::Util::AnyHash)).void }
+      sig { params(customer: T.any(Orb::Models::CreditNote::Customer, Orb::Internal::Util::AnyHash)).void }
       attr_writer :customer
 
       # The id of the invoice resource that this credit note is applied to.
@@ -39,7 +39,7 @@ module Orb
 
       sig do
         params(
-          maximum_amount_adjustment: T.nilable(T.any(Orb::Models::CreditNote::MaximumAmountAdjustment, Orb::Util::AnyHash))
+          maximum_amount_adjustment: T.nilable(T.any(Orb::Models::CreditNote::MaximumAmountAdjustment, Orb::Internal::Util::AnyHash))
         )
           .void
       end
@@ -75,7 +75,7 @@ module Orb
       sig { returns(T.nilable(T::Array[Orb::Models::CreditNote::Discount])) }
       attr_reader :discounts
 
-      sig { params(discounts: T::Array[T.any(Orb::Models::CreditNote::Discount, Orb::Util::AnyHash)]).void }
+      sig { params(discounts: T::Array[T.any(Orb::Models::CreditNote::Discount, Orb::Internal::Util::AnyHash)]).void }
       attr_writer :discounts
 
       # The [Credit Note](/invoicing/credit-notes) resource represents a credit that has
@@ -86,10 +86,10 @@ module Orb
           created_at: Time,
           credit_note_number: String,
           credit_note_pdf: T.nilable(String),
-          customer: T.any(Orb::Models::CreditNote::Customer, Orb::Util::AnyHash),
+          customer: T.any(Orb::Models::CreditNote::Customer, Orb::Internal::Util::AnyHash),
           invoice_id: String,
-          line_items: T::Array[T.any(Orb::Models::CreditNote::LineItem, Orb::Util::AnyHash)],
-          maximum_amount_adjustment: T.nilable(T.any(Orb::Models::CreditNote::MaximumAmountAdjustment, Orb::Util::AnyHash)),
+          line_items: T::Array[T.any(Orb::Models::CreditNote::LineItem, Orb::Internal::Util::AnyHash)],
+          maximum_amount_adjustment: T.nilable(T.any(Orb::Models::CreditNote::MaximumAmountAdjustment, Orb::Internal::Util::AnyHash)),
           memo: T.nilable(String),
           minimum_amount_refunded: T.nilable(String),
           reason: T.nilable(Orb::Models::CreditNote::Reason::OrSymbol),
@@ -97,7 +97,7 @@ module Orb
           total: String,
           type: Orb::Models::CreditNote::Type::OrSymbol,
           voided_at: T.nilable(Time),
-          discounts: T::Array[T.any(Orb::Models::CreditNote::Discount, Orb::Util::AnyHash)]
+          discounts: T::Array[T.any(Orb::Models::CreditNote::Discount, Orb::Internal::Util::AnyHash)]
         )
           .returns(T.attached_class)
       end
@@ -196,7 +196,12 @@ module Orb
         sig { returns(T.nilable(T::Array[Orb::Models::CreditNote::LineItem::Discount])) }
         attr_reader :discounts
 
-        sig { params(discounts: T::Array[T.any(Orb::Models::CreditNote::LineItem::Discount, Orb::Util::AnyHash)]).void }
+        sig do
+          params(
+            discounts: T::Array[T.any(Orb::Models::CreditNote::LineItem::Discount, Orb::Internal::Util::AnyHash)]
+          )
+            .void
+        end
         attr_writer :discounts
 
         sig do
@@ -207,8 +212,8 @@ module Orb
             name: String,
             quantity: T.nilable(Float),
             subtotal: String,
-            tax_amounts: T::Array[T.any(Orb::Models::CreditNote::LineItem::TaxAmount, Orb::Util::AnyHash)],
-            discounts: T::Array[T.any(Orb::Models::CreditNote::LineItem::Discount, Orb::Util::AnyHash)]
+            tax_amounts: T::Array[T.any(Orb::Models::CreditNote::LineItem::TaxAmount, Orb::Internal::Util::AnyHash)],
+            discounts: T::Array[T.any(Orb::Models::CreditNote::LineItem::Discount, Orb::Internal::Util::AnyHash)]
           )
             .returns(T.attached_class)
         end
@@ -368,7 +373,7 @@ module Orb
             discount_type: Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType::OrSymbol,
             percentage_discount: Float,
             applies_to_prices: T.nilable(
-              T::Array[T.any(Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice, Orb::Util::AnyHash)]
+              T::Array[T.any(Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice, Orb::Internal::Util::AnyHash)]
             ),
             reason: T.nilable(String)
           )
@@ -482,7 +487,9 @@ module Orb
             amount_applied: String,
             discount_type: Orb::Models::CreditNote::Discount::DiscountType::OrSymbol,
             percentage_discount: Float,
-            applies_to_prices: T.nilable(T::Array[T.any(Orb::Models::CreditNote::Discount::AppliesToPrice, Orb::Util::AnyHash)]),
+            applies_to_prices: T.nilable(
+              T::Array[T.any(Orb::Models::CreditNote::Discount::AppliesToPrice, Orb::Internal::Util::AnyHash)]
+            ),
             reason: T.nilable(String)
           )
             .returns(T.attached_class)

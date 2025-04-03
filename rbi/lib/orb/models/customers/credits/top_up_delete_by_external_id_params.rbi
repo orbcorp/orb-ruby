@@ -5,8 +5,8 @@ module Orb
     module Customers
       module Credits
         class TopUpDeleteByExternalIDParams < Orb::BaseModel
-          extend Orb::Type::RequestParameters::Converter
-          include Orb::RequestParameters
+          extend Orb::Internal::Type::RequestParameters::Converter
+          include Orb::Internal::Type::RequestParameters
 
           sig { returns(String) }
           attr_accessor :external_customer_id
@@ -14,7 +14,7 @@ module Orb
           sig do
             params(
               external_customer_id: String,
-              request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+              request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
             )
               .returns(T.attached_class)
           end

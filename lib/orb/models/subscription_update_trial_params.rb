@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Subscriptions#update_trial
     class SubscriptionUpdateTrialParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute trial_end_date
       #   The new date that the trial should end, or the literal string `immediate` to end

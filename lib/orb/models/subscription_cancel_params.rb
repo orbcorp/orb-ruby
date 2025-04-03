@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Subscriptions#cancel
     class SubscriptionCancelParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute cancel_option
       #   Determines the timing of subscription cancellation

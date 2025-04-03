@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Alerts#create_for_external_customer
     class AlertCreateForExternalCustomerParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute currency
       #   The case sensitive currency or custom pricing unit to use for this alert.

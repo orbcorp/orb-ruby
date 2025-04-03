@@ -50,7 +50,7 @@ module Orb
       # @param limit [Integer]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Page<Orb::Models::Item>]
+      # @return [Orb::Internal::Page<Orb::Models::Item>]
       #
       # @see Orb::Models::ItemListParams
       def list(params = {})
@@ -59,7 +59,7 @@ module Orb
           method: :get,
           path: "items",
           query: parsed,
-          page: Orb::Page,
+          page: Orb::Internal::Page,
           model: Orb::Models::Item,
           options: options
         )

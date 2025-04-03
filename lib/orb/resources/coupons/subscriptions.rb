@@ -16,7 +16,7 @@ module Orb
         # @param limit [Integer]
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Orb::Page<Orb::Models::Subscription>]
+        # @return [Orb::Internal::Page<Orb::Models::Subscription>]
         #
         # @see Orb::Models::Coupons::SubscriptionListParams
         def list(coupon_id, params = {})
@@ -25,7 +25,7 @@ module Orb
             method: :get,
             path: ["coupons/%1$s/subscriptions", coupon_id],
             query: parsed,
-            page: Orb::Page,
+            page: Orb::Internal::Page,
             model: Orb::Models::Subscription,
             options: options
           )

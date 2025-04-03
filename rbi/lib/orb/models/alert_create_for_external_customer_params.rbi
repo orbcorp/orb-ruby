@@ -3,8 +3,8 @@
 module Orb
   module Models
     class AlertCreateForExternalCustomerParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # The case sensitive currency or custom pricing unit to use for this alert.
       sig { returns(String) }
@@ -23,9 +23,9 @@ module Orb
           currency: String,
           type: Orb::Models::AlertCreateForExternalCustomerParams::Type::OrSymbol,
           thresholds: T.nilable(
-            T::Array[T.any(Orb::Models::AlertCreateForExternalCustomerParams::Threshold, Orb::Util::AnyHash)]
+            T::Array[T.any(Orb::Models::AlertCreateForExternalCustomerParams::Threshold, Orb::Internal::Util::AnyHash)]
           ),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

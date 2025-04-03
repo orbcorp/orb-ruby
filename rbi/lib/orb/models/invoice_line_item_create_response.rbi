@@ -72,7 +72,9 @@ module Orb
       attr_reader :maximum
 
       sig do
-        params(maximum: T.nilable(T.any(Orb::Models::InvoiceLineItemCreateResponse::Maximum, Orb::Util::AnyHash)))
+        params(
+          maximum: T.nilable(T.any(Orb::Models::InvoiceLineItemCreateResponse::Maximum, Orb::Internal::Util::AnyHash))
+        )
           .void
       end
       attr_writer :maximum
@@ -86,7 +88,9 @@ module Orb
       attr_reader :minimum
 
       sig do
-        params(minimum: T.nilable(T.any(Orb::Models::InvoiceLineItemCreateResponse::Minimum, Orb::Util::AnyHash)))
+        params(
+          minimum: T.nilable(T.any(Orb::Models::InvoiceLineItemCreateResponse::Minimum, Orb::Internal::Util::AnyHash))
+        )
           .void
       end
       attr_writer :minimum
@@ -194,7 +198,7 @@ module Orb
           adjustments: T::Array[
           T.any(
             Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment,
-            Orb::Util::AnyHash,
+            Orb::Internal::Util::AnyHash,
             Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment,
             Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment,
             Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment,
@@ -206,7 +210,7 @@ module Orb
           discount: T.nilable(
             T.any(
               Orb::Models::PercentageDiscount,
-              Orb::Util::AnyHash,
+              Orb::Internal::Util::AnyHash,
               Orb::Models::TrialDiscount,
               Orb::Models::UsageDiscount,
               Orb::Models::AmountDiscount
@@ -215,16 +219,16 @@ module Orb
           end_date: Time,
           filter: T.nilable(String),
           grouping: T.nilable(String),
-          maximum: T.nilable(T.any(Orb::Models::InvoiceLineItemCreateResponse::Maximum, Orb::Util::AnyHash)),
+          maximum: T.nilable(T.any(Orb::Models::InvoiceLineItemCreateResponse::Maximum, Orb::Internal::Util::AnyHash)),
           maximum_amount: T.nilable(String),
-          minimum: T.nilable(T.any(Orb::Models::InvoiceLineItemCreateResponse::Minimum, Orb::Util::AnyHash)),
+          minimum: T.nilable(T.any(Orb::Models::InvoiceLineItemCreateResponse::Minimum, Orb::Internal::Util::AnyHash)),
           minimum_amount: T.nilable(String),
           name: String,
           partially_invoiced_amount: String,
           price: T.nilable(
             T.any(
               Orb::Models::Price::UnitPrice,
-              Orb::Util::AnyHash,
+              Orb::Internal::Util::AnyHash,
               Orb::Models::Price::PackagePrice,
               Orb::Models::Price::MatrixPrice,
               Orb::Models::Price::TieredPrice,
@@ -259,13 +263,13 @@ module Orb
           sub_line_items: T::Array[
           T.any(
             Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem,
-            Orb::Util::AnyHash,
+            Orb::Internal::Util::AnyHash,
             Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem,
             Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem
           )
           ],
           subtotal: String,
-          tax_amounts: T::Array[T.any(Orb::Models::InvoiceLineItemCreateResponse::TaxAmount, Orb::Util::AnyHash)],
+          tax_amounts: T::Array[T.any(Orb::Models::InvoiceLineItemCreateResponse::TaxAmount, Orb::Internal::Util::AnyHash)],
           usage_customer_ids: T.nilable(T::Array[String])
         )
           .returns(T.attached_class)
@@ -810,7 +814,7 @@ module Orb
               grouping: T.nilable(
                 T.any(
                   Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::Grouping,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
             )
@@ -825,7 +829,7 @@ module Orb
             params(
               matrix_config: T.any(
                 Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::MatrixConfig,
-                Orb::Util::AnyHash
+                Orb::Internal::Util::AnyHash
               )
             )
               .void
@@ -847,12 +851,12 @@ module Orb
               grouping: T.nilable(
                 T.any(
                   Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::Grouping,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               ),
               matrix_config: T.any(
                 Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::MatrixConfig,
-                Orb::Util::AnyHash
+                Orb::Internal::Util::AnyHash
               ),
               name: String,
               quantity: Float,
@@ -924,7 +928,7 @@ module Orb
               grouping: T.nilable(
                 T.any(
                   Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::Grouping,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
             )
@@ -945,7 +949,7 @@ module Orb
             params(
               tier_config: T.any(
                 Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::TierConfig,
-                Orb::Util::AnyHash
+                Orb::Internal::Util::AnyHash
               )
             )
               .void
@@ -961,14 +965,14 @@ module Orb
               grouping: T.nilable(
                 T.any(
                   Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::Grouping,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               ),
               name: String,
               quantity: Float,
               tier_config: T.any(
                 Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::TierConfig,
-                Orb::Util::AnyHash
+                Orb::Internal::Util::AnyHash
               ),
               type: Symbol
             )
@@ -1049,7 +1053,7 @@ module Orb
               grouping: T.nilable(
                 T.any(
                   Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem::Grouping,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               )
             )
@@ -1072,7 +1076,7 @@ module Orb
               grouping: T.nilable(
                 T.any(
                   Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem::Grouping,
-                  Orb::Util::AnyHash
+                  Orb::Internal::Util::AnyHash
                 )
               ),
               name: String,

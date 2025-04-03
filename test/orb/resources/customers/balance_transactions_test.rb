@@ -30,7 +30,7 @@ class Orb::Test::Resources::Customers::BalanceTransactionsTest < Orb::Test::Reso
     response = @orb.customers.balance_transactions.list("customer_id")
 
     assert_pattern do
-      response => Orb::Page
+      response => Orb::Internal::Page
     end
 
     row = response.to_enum.first
