@@ -3,7 +3,7 @@
 module Orb
   module Models
     module Customers
-      class BalanceTransactionCreateParams < Orb::BaseModel
+      class BalanceTransactionCreateParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
@@ -22,7 +22,7 @@ module Orb
             amount: String,
             type: Orb::Models::Customers::BalanceTransactionCreateParams::Type::OrSymbol,
             description: T.nilable(String),
-            request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+            request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -44,7 +44,7 @@ module Orb
         end
 
         module Type
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Customers::BalanceTransactionCreateParams::Type) }

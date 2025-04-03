@@ -3,7 +3,7 @@
 module Orb
   module Models
     module Events
-      class BackfillCloseParams < Orb::BaseModel
+      class BackfillCloseParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
@@ -11,7 +11,7 @@ module Orb
           params(
             request_options: T.any(
               Orb::RequestOptions,
-              Orb::Internal::Util::AnyHash
+              Orb::Internal::AnyHash
             )
           ).returns(T.attached_class)
         end

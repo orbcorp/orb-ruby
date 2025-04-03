@@ -2,14 +2,12 @@
 
 module Orb
   module Models
-    class SubscriptionFetchCostsResponse < Orb::BaseModel
+    class SubscriptionFetchCostsResponse < Orb::Internal::Type::BaseModel
       sig { returns(T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data]) }
       attr_accessor :data
 
       sig do
-        params(
-          data: T::Array[T.any(Orb::Models::SubscriptionFetchCostsResponse::Data, Orb::Internal::Util::AnyHash)]
-        )
+        params(data: T::Array[T.any(Orb::Models::SubscriptionFetchCostsResponse::Data, Orb::Internal::AnyHash)])
           .returns(T.attached_class)
       end
       def self.new(data:)
@@ -19,7 +17,7 @@ module Orb
       def to_hash
       end
 
-      class Data < Orb::BaseModel
+      class Data < Orb::Internal::Type::BaseModel
         sig { returns(T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost]) }
         attr_accessor :per_price_costs
 
@@ -39,7 +37,7 @@ module Orb
 
         sig do
           params(
-            per_price_costs: T::Array[T.any(Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost, Orb::Internal::Util::AnyHash)],
+            per_price_costs: T::Array[T.any(Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost, Orb::Internal::AnyHash)],
             subtotal: String,
             timeframe_end: Time,
             timeframe_start: Time,
@@ -65,7 +63,7 @@ module Orb
         def to_hash
         end
 
-        class PerPriceCost < Orb::BaseModel
+        class PerPriceCost < Orb::Internal::Type::BaseModel
           # The price object
           sig do
             returns(
@@ -123,7 +121,7 @@ module Orb
             params(
               price: T.any(
                 Orb::Models::Price::UnitPrice,
-                Orb::Internal::Util::AnyHash,
+                Orb::Internal::AnyHash,
                 Orb::Models::Price::PackagePrice,
                 Orb::Models::Price::MatrixPrice,
                 Orb::Models::Price::TieredPrice,

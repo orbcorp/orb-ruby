@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class EventSearchParams < Orb::BaseModel
+    class EventSearchParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -28,7 +28,7 @@ module Orb
           event_ids: T::Array[String],
           timeframe_end: T.nilable(Time),
           timeframe_start: T.nilable(Time),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

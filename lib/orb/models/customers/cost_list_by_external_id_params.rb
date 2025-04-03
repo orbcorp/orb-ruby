@@ -4,7 +4,7 @@ module Orb
   module Models
     module Customers
       # @see Orb::Resources::Customers::Costs#list_by_external_id
-      class CostListByExternalIDParams < Orb::BaseModel
+      class CostListByExternalIDParams < Orb::Internal::Type::BaseModel
         # @!parse
         #   extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
@@ -45,14 +45,14 @@ module Orb
         #   #
         #   def initialize(currency: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # Controls whether Orb returns cumulative costs since the start of the billing
         #   period, or incremental day-by-day costs. If your customer has minimums or
         #   discounts, it's strongly recommended that you use the default cumulative
         #   behavior.
         module ViewMode
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           PERIODIC = :periodic
           CUMULATIVE = :cumulative

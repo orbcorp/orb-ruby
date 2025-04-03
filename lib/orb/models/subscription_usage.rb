@@ -4,26 +4,27 @@ module Orb
   module Models
     # @see Orb::Resources::Subscriptions#fetch_usage
     module SubscriptionUsage
-      extend Orb::Union
+      extend Orb::Internal::Type::Union
 
       variant -> { Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage }
 
       variant -> { Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage }
 
-      class UngroupedSubscriptionUsage < Orb::BaseModel
+      class UngroupedSubscriptionUsage < Orb::Internal::Type::BaseModel
         # @!attribute data
         #
         #   @return [Array<Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data>]
-        required :data, -> { Orb::ArrayOf[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data] }
+        required :data,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data] }
 
         # @!parse
         #   # @param data [Array<Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data>]
         #   #
         #   def initialize(data:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-        class Data < Orb::BaseModel
+        class Data < Orb::Internal::Type::BaseModel
           # @!attribute billable_metric
           #
           #   @return [Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric]
@@ -34,7 +35,7 @@ module Orb
           #
           #   @return [Array<Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage>]
           required :usage,
-                   -> { Orb::ArrayOf[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage] }
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage] }
 
           # @!attribute view_mode
           #
@@ -49,10 +50,10 @@ module Orb
           #   #
           #   def initialize(billable_metric:, usage:, view_mode:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
           # @see Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data#billable_metric
-          class BillableMetric < Orb::BaseModel
+          class BillableMetric < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -69,10 +70,10 @@ module Orb
             #   #
             #   def initialize(id:, name:, **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class Usage < Orb::BaseModel
+          class Usage < Orb::Internal::Type::BaseModel
             # @!attribute quantity
             #
             #   @return [Float]
@@ -95,12 +96,12 @@ module Orb
             #   #
             #   def initialize(quantity:, timeframe_end:, timeframe_start:, **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
           # @see Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data#view_mode
           module ViewMode
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             PERIODIC = :periodic
             CUMULATIVE = :cumulative
@@ -114,11 +115,12 @@ module Orb
         end
       end
 
-      class GroupedSubscriptionUsage < Orb::BaseModel
+      class GroupedSubscriptionUsage < Orb::Internal::Type::BaseModel
         # @!attribute data
         #
         #   @return [Array<Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data>]
-        required :data, -> { Orb::ArrayOf[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data] }
+        required :data,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data] }
 
         # @!attribute pagination_metadata
         #
@@ -131,9 +133,9 @@ module Orb
         #   #
         #   def initialize(data:, pagination_metadata: nil, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-        class Data < Orb::BaseModel
+        class Data < Orb::Internal::Type::BaseModel
           # @!attribute billable_metric
           #
           #   @return [Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric]
@@ -149,7 +151,7 @@ module Orb
           #
           #   @return [Array<Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage>]
           required :usage,
-                   -> { Orb::ArrayOf[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage] }
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage] }
 
           # @!attribute view_mode
           #
@@ -164,10 +166,10 @@ module Orb
           #   #
           #   def initialize(billable_metric:, metric_group:, usage:, view_mode:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
           # @see Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data#billable_metric
-          class BillableMetric < Orb::BaseModel
+          class BillableMetric < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -184,11 +186,11 @@ module Orb
             #   #
             #   def initialize(id:, name:, **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
           # @see Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data#metric_group
-          class MetricGroup < Orb::BaseModel
+          class MetricGroup < Orb::Internal::Type::BaseModel
             # @!attribute property_key
             #
             #   @return [String]
@@ -205,10 +207,10 @@ module Orb
             #   #
             #   def initialize(property_key:, property_value:, **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class Usage < Orb::BaseModel
+          class Usage < Orb::Internal::Type::BaseModel
             # @!attribute quantity
             #
             #   @return [Float]
@@ -231,12 +233,12 @@ module Orb
             #   #
             #   def initialize(quantity:, timeframe_end:, timeframe_start:, **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
           # @see Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data#view_mode
           module ViewMode
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             PERIODIC = :periodic
             CUMULATIVE = :cumulative

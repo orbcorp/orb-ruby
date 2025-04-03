@@ -10,7 +10,7 @@ module Orb
         name: String
       }
 
-    class DimensionalPriceGroup < Orb::BaseModel
+    class DimensionalPriceGroup < Orb::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor billable_metric_id: String

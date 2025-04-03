@@ -8,7 +8,7 @@ module Orb
         start_date: Time
       }
 
-    class SubscriptionFetchScheduleResponse < Orb::BaseModel
+    class SubscriptionFetchScheduleResponse < Orb::Internal::Type::BaseModel
       attr_accessor created_at: Time
 
       attr_accessor end_date: Time?
@@ -28,7 +28,7 @@ module Orb
 
       type plan = { id: String?, external_plan_id: String?, name: String? }
 
-      class Plan < Orb::BaseModel
+      class Plan < Orb::Internal::Type::BaseModel
         attr_accessor id: String?
 
         attr_accessor external_plan_id: String?

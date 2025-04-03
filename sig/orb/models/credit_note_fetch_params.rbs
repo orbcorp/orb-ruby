@@ -3,7 +3,7 @@ module Orb
     type credit_note_fetch_params =
       {  } & Orb::Internal::Type::request_parameters
 
-    class CreditNoteFetchParams < Orb::BaseModel
+    class CreditNoteFetchParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 

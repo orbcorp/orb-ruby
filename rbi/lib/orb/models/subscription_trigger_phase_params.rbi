@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class SubscriptionTriggerPhaseParams < Orb::BaseModel
+    class SubscriptionTriggerPhaseParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -21,7 +21,7 @@ module Orb
         params(
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
           effective_date: T.nilable(Date),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

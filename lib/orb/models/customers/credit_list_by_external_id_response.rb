@@ -4,7 +4,7 @@ module Orb
   module Models
     module Customers
       # @see Orb::Resources::Customers::Credits#list_by_external_id
-      class CreditListByExternalIDResponse < Orb::BaseModel
+      class CreditListByExternalIDResponse < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String]
@@ -51,11 +51,11 @@ module Orb
         #   #
         #   def initialize(id:, balance:, effective_date:, expiry_date:, maximum_initial_balance:, per_unit_cost_basis:, status:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # @see Orb::Models::Customers::CreditListByExternalIDResponse#status
         module Status
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           ACTIVE = :active
           PENDING_PAYMENT = :pending_payment

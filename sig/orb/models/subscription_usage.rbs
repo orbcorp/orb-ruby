@@ -5,14 +5,14 @@ module Orb
       | Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage
 
     module SubscriptionUsage
-      extend Orb::Union
+      extend Orb::Internal::Type::Union
 
       type ungrouped_subscription_usage =
         {
           data: ::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]
         }
 
-      class UngroupedSubscriptionUsage < Orb::BaseModel
+      class UngroupedSubscriptionUsage < Orb::Internal::Type::BaseModel
         attr_accessor data: ::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]
 
         def initialize: (
@@ -28,7 +28,7 @@ module Orb
             view_mode: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::view_mode
           }
 
-        class Data < Orb::BaseModel
+        class Data < Orb::Internal::Type::BaseModel
           attr_accessor billable_metric: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric
 
           attr_accessor usage: ::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage]
@@ -45,7 +45,7 @@ module Orb
 
           type billable_metric = { id: String, name: String }
 
-          class BillableMetric < Orb::BaseModel
+          class BillableMetric < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor name: String
@@ -58,7 +58,7 @@ module Orb
           type usage =
             { quantity: Float, timeframe_end: Time, timeframe_start: Time }
 
-          class Usage < Orb::BaseModel
+          class Usage < Orb::Internal::Type::BaseModel
             attr_accessor quantity: Float
 
             attr_accessor timeframe_end: Time
@@ -77,7 +77,7 @@ module Orb
           type view_mode = :periodic | :cumulative
 
           module ViewMode
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             PERIODIC: :periodic
             CUMULATIVE: :cumulative
@@ -93,7 +93,7 @@ module Orb
           pagination_metadata: Orb::Models::PaginationMetadata?
         }
 
-      class GroupedSubscriptionUsage < Orb::BaseModel
+      class GroupedSubscriptionUsage < Orb::Internal::Type::BaseModel
         attr_accessor data: ::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data]
 
         attr_accessor pagination_metadata: Orb::Models::PaginationMetadata?
@@ -113,7 +113,7 @@ module Orb
             view_mode: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::view_mode
           }
 
-        class Data < Orb::BaseModel
+        class Data < Orb::Internal::Type::BaseModel
           attr_accessor billable_metric: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric
 
           attr_accessor metric_group: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup
@@ -133,7 +133,7 @@ module Orb
 
           type billable_metric = { id: String, name: String }
 
-          class BillableMetric < Orb::BaseModel
+          class BillableMetric < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor name: String
@@ -145,7 +145,7 @@ module Orb
 
           type metric_group = { property_key: String, property_value: String }
 
-          class MetricGroup < Orb::BaseModel
+          class MetricGroup < Orb::Internal::Type::BaseModel
             attr_accessor property_key: String
 
             attr_accessor property_value: String
@@ -161,7 +161,7 @@ module Orb
           type usage =
             { quantity: Float, timeframe_end: Time, timeframe_start: Time }
 
-          class Usage < Orb::BaseModel
+          class Usage < Orb::Internal::Type::BaseModel
             attr_accessor quantity: Float
 
             attr_accessor timeframe_end: Time
@@ -180,7 +180,7 @@ module Orb
           type view_mode = :periodic | :cumulative
 
           module ViewMode
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             PERIODIC: :periodic
             CUMULATIVE: :cumulative

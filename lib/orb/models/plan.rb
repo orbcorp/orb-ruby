@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Plans#create
-    class Plan < Orb::BaseModel
+    class Plan < Orb::Internal::Type::BaseModel
       # @!attribute id
       #
       #   @return [String]
@@ -14,7 +14,7 @@ module Orb
       #     across all phases of the plan.
       #
       #   @return [Array<Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment>]
-      required :adjustments, -> { Orb::ArrayOf[union: Orb::Models::Plan::Adjustment] }
+      required :adjustments, -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::Plan::Adjustment] }
 
       # @!attribute base_plan
       #
@@ -89,7 +89,7 @@ module Orb
       #     `null`.
       #
       #   @return [Hash{Symbol=>String}]
-      required :metadata, Orb::HashOf[String]
+      required :metadata, Orb::Internal::Type::HashOf[String]
 
       # @!attribute minimum
       #
@@ -119,14 +119,14 @@ module Orb
       # @!attribute plan_phases
       #
       #   @return [Array<Orb::Models::Plan::PlanPhase>, nil]
-      required :plan_phases, -> { Orb::ArrayOf[Orb::Models::Plan::PlanPhase] }, nil?: true
+      required :plan_phases, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Plan::PlanPhase] }, nil?: true
 
       # @!attribute prices
       #   Prices for this plan. If the plan has phases, this includes prices across all
       #     phases of the plan.
       #
       #   @return [Array<Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice>]
-      required :prices, -> { Orb::ArrayOf[union: Orb::Models::Price] }
+      required :prices, -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::Price] }
 
       # @!attribute product
       #
@@ -209,10 +209,10 @@ module Orb
       #     super
       #   end
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       module Adjustment
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
         discriminator :adjustment_type
 
@@ -226,7 +226,7 @@ module Orb
 
         variant :maximum, -> { Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment }
 
-        class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
+        class PlanPhaseUsageDiscountAdjustment < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -241,14 +241,14 @@ module Orb
           #   The price IDs that this adjustment applies to.
           #
           #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::ArrayOf[String]
+          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
           #     that apply to only one price.
           #
           #   @return [Boolean]
-          required :is_invoice_level, Orb::BooleanModel
+          required :is_invoice_level, Orb::Internal::Type::BooleanModel
 
           # @!attribute plan_phase_order
           #   The plan phase in which this adjustment is active.
@@ -291,10 +291,10 @@ module Orb
           #     super
           #   end
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
-        class PlanPhaseAmountDiscountAdjustment < Orb::BaseModel
+        class PlanPhaseAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -316,14 +316,14 @@ module Orb
           #   The price IDs that this adjustment applies to.
           #
           #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::ArrayOf[String]
+          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
           #     that apply to only one price.
           #
           #   @return [Boolean]
-          required :is_invoice_level, Orb::BooleanModel
+          required :is_invoice_level, Orb::Internal::Type::BooleanModel
 
           # @!attribute plan_phase_order
           #   The plan phase in which this adjustment is active.
@@ -359,10 +359,10 @@ module Orb
           #     super
           #   end
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
-        class PlanPhasePercentageDiscountAdjustment < Orb::BaseModel
+        class PlanPhasePercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -377,14 +377,14 @@ module Orb
           #   The price IDs that this adjustment applies to.
           #
           #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::ArrayOf[String]
+          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
           #     that apply to only one price.
           #
           #   @return [Boolean]
-          required :is_invoice_level, Orb::BooleanModel
+          required :is_invoice_level, Orb::Internal::Type::BooleanModel
 
           # @!attribute percentage_discount
           #   The percentage (as a value between 0 and 1) by which to discount the price
@@ -427,10 +427,10 @@ module Orb
           #     super
           #   end
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
-        class PlanPhaseMinimumAdjustment < Orb::BaseModel
+        class PlanPhaseMinimumAdjustment < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -445,14 +445,14 @@ module Orb
           #   The price IDs that this adjustment applies to.
           #
           #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::ArrayOf[String]
+          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
           #     that apply to only one price.
           #
           #   @return [Boolean]
-          required :is_invoice_level, Orb::BooleanModel
+          required :is_invoice_level, Orb::Internal::Type::BooleanModel
 
           # @!attribute item_id
           #   The item ID that revenue from this minimum will be attributed to.
@@ -503,10 +503,10 @@ module Orb
           #     super
           #   end
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
-        class PlanPhaseMaximumAdjustment < Orb::BaseModel
+        class PlanPhaseMaximumAdjustment < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -521,14 +521,14 @@ module Orb
           #   The price IDs that this adjustment applies to.
           #
           #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::ArrayOf[String]
+          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
           #     that apply to only one price.
           #
           #   @return [Boolean]
-          required :is_invoice_level, Orb::BooleanModel
+          required :is_invoice_level, Orb::Internal::Type::BooleanModel
 
           # @!attribute maximum_amount
           #   The maximum amount to charge in a given billing period for the prices this
@@ -571,7 +571,7 @@ module Orb
           #     super
           #   end
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
         # @!parse
@@ -580,7 +580,7 @@ module Orb
       end
 
       # @see Orb::Models::Plan#base_plan
-      class BasePlan < Orb::BaseModel
+      class BasePlan < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String, nil]
@@ -606,17 +606,17 @@ module Orb
         #   #
         #   def initialize(id:, external_plan_id:, name:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       # @see Orb::Models::Plan#maximum
-      class Maximum < Orb::BaseModel
+      class Maximum < Orb::Internal::Type::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this maximum amount applies to. For plan/plan phase
         #     maximums, this can be a subset of prices.
         #
         #   @return [Array<String>]
-        required :applies_to_price_ids, Orb::ArrayOf[String]
+        required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
         # @!attribute maximum_amount
         #   Maximum amount applied
@@ -630,17 +630,17 @@ module Orb
         #   #
         #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       # @see Orb::Models::Plan#minimum
-      class Minimum < Orb::BaseModel
+      class Minimum < Orb::Internal::Type::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this minimum amount applies to. For plan/plan phase
         #     minimums, this can be a subset of prices.
         #
         #   @return [Array<String>]
-        required :applies_to_price_ids, Orb::ArrayOf[String]
+        required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
         # @!attribute minimum_amount
         #   Minimum amount applied
@@ -654,10 +654,10 @@ module Orb
         #   #
         #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
-      class PlanPhase < Orb::BaseModel
+      class PlanPhase < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String]
@@ -746,11 +746,11 @@ module Orb
         #     super
         #   end
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # @see Orb::Models::Plan::PlanPhase#duration_unit
         module DurationUnit
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           DAILY = :daily
           MONTHLY = :monthly
@@ -766,13 +766,13 @@ module Orb
         end
 
         # @see Orb::Models::Plan::PlanPhase#maximum
-        class Maximum < Orb::BaseModel
+        class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #     maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::ArrayOf[String]
+          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -786,17 +786,17 @@ module Orb
           #   #
           #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
         # @see Orb::Models::Plan::PlanPhase#minimum
-        class Minimum < Orb::BaseModel
+        class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #     minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::ArrayOf[String]
+          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -810,12 +810,12 @@ module Orb
           #   #
           #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
       end
 
       # @see Orb::Models::Plan#product
-      class Product < Orb::BaseModel
+      class Product < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String]
@@ -838,12 +838,12 @@ module Orb
         #   #
         #   def initialize(id:, created_at:, name:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       # @see Orb::Models::Plan#status
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         ACTIVE = :active
         ARCHIVED = :archived
@@ -857,7 +857,7 @@ module Orb
       end
 
       # @see Orb::Models::Plan#trial_config
-      class TrialConfig < Orb::BaseModel
+      class TrialConfig < Orb::Internal::Type::BaseModel
         # @!attribute trial_period
         #
         #   @return [Integer, nil]
@@ -874,11 +874,11 @@ module Orb
         #   #
         #   def initialize(trial_period:, trial_period_unit:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # @see Orb::Models::Plan::TrialConfig#trial_period_unit
         module TrialPeriodUnit
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           DAYS = :days
 

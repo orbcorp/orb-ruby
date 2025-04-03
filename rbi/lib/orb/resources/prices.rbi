@@ -23,15 +23,15 @@ module Orb
           item_id: String,
           model_type: Orb::Models::PriceCreateParams::ModelType::OrSymbol,
           name: String,
-          unit_config: T.any(Orb::Models::PriceCreateParams::UnitConfig, Orb::Internal::Util::AnyHash),
-          package_config: T.any(Orb::Models::PriceCreateParams::PackageConfig, Orb::Internal::Util::AnyHash),
-          matrix_config: T.any(Orb::Models::PriceCreateParams::MatrixConfig, Orb::Internal::Util::AnyHash),
-          matrix_with_allocation_config: T.any(Orb::Models::PriceCreateParams::MatrixWithAllocationConfig, Orb::Internal::Util::AnyHash),
-          tiered_config: T.any(Orb::Models::PriceCreateParams::TieredConfig, Orb::Internal::Util::AnyHash),
-          tiered_bps_config: T.any(Orb::Models::PriceCreateParams::TieredBpsConfig, Orb::Internal::Util::AnyHash),
-          bps_config: T.any(Orb::Models::PriceCreateParams::BpsConfig, Orb::Internal::Util::AnyHash),
-          bulk_bps_config: T.any(Orb::Models::PriceCreateParams::BulkBpsConfig, Orb::Internal::Util::AnyHash),
-          bulk_config: T.any(Orb::Models::PriceCreateParams::BulkConfig, Orb::Internal::Util::AnyHash),
+          unit_config: T.any(Orb::Models::PriceCreateParams::UnitConfig, Orb::Internal::AnyHash),
+          package_config: T.any(Orb::Models::PriceCreateParams::PackageConfig, Orb::Internal::AnyHash),
+          matrix_config: T.any(Orb::Models::PriceCreateParams::MatrixConfig, Orb::Internal::AnyHash),
+          matrix_with_allocation_config: T.any(Orb::Models::PriceCreateParams::MatrixWithAllocationConfig, Orb::Internal::AnyHash),
+          tiered_config: T.any(Orb::Models::PriceCreateParams::TieredConfig, Orb::Internal::AnyHash),
+          tiered_bps_config: T.any(Orb::Models::PriceCreateParams::TieredBpsConfig, Orb::Internal::AnyHash),
+          bps_config: T.any(Orb::Models::PriceCreateParams::BpsConfig, Orb::Internal::AnyHash),
+          bulk_bps_config: T.any(Orb::Models::PriceCreateParams::BulkBpsConfig, Orb::Internal::AnyHash),
+          bulk_config: T.any(Orb::Models::PriceCreateParams::BulkConfig, Orb::Internal::AnyHash),
           threshold_total_amount_config: T::Hash[Symbol, T.anything],
           tiered_package_config: T::Hash[Symbol, T.anything],
           grouped_tiered_config: T::Hash[Symbol, T.anything],
@@ -53,16 +53,14 @@ module Orb
           cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
-          billing_cycle_configuration: T.nilable(T.any(Orb::Models::PriceCreateParams::BillingCycleConfiguration, Orb::Internal::Util::AnyHash)),
+          billing_cycle_configuration: T.nilable(T.any(Orb::Models::PriceCreateParams::BillingCycleConfiguration, Orb::Internal::AnyHash)),
           conversion_rate: T.nilable(Float),
           external_price_id: T.nilable(String),
           fixed_price_quantity: T.nilable(Float),
           invoice_grouping_key: T.nilable(String),
-          invoicing_cycle_configuration: T.nilable(
-            T.any(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration, Orb::Internal::Util::AnyHash)
-          ),
+          invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration, Orb::Internal::AnyHash)),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(
             T.any(
@@ -171,7 +169,7 @@ module Orb
         params(
           price_id: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(
             T.any(
@@ -222,7 +220,7 @@ module Orb
         params(
           cursor: T.nilable(String),
           limit: Integer,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(
             Orb::Internal::Page[
@@ -299,7 +297,7 @@ module Orb
           external_customer_id: T.nilable(String),
           filter: T.nilable(String),
           grouping_keys: T::Array[String],
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::PriceEvaluateResponse)
       end
@@ -329,7 +327,7 @@ module Orb
       sig do
         params(
           price_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(
             T.any(

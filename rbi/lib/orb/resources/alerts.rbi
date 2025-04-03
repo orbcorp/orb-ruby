@@ -7,7 +7,7 @@ module Orb
       sig do
         params(
           alert_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::Alert)
       end
@@ -18,8 +18,8 @@ module Orb
       sig do
         params(
           alert_configuration_id: String,
-          thresholds: T::Array[T.any(Orb::Models::AlertUpdateParams::Threshold, Orb::Internal::Util::AnyHash)],
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          thresholds: T::Array[T.any(Orb::Models::AlertUpdateParams::Threshold, Orb::Internal::AnyHash)],
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::Alert)
       end
@@ -53,7 +53,7 @@ module Orb
           external_customer_id: T.nilable(String),
           limit: Integer,
           subscription_id: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Internal::Page[Orb::Models::Alert])
       end
@@ -90,10 +90,8 @@ module Orb
           customer_id: String,
           currency: String,
           type: Orb::Models::AlertCreateForCustomerParams::Type::OrSymbol,
-          thresholds: T.nilable(
-            T::Array[T.any(Orb::Models::AlertCreateForCustomerParams::Threshold, Orb::Internal::Util::AnyHash)]
-          ),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          thresholds: T.nilable(T::Array[T.any(Orb::Models::AlertCreateForCustomerParams::Threshold, Orb::Internal::AnyHash)]),
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::Alert)
       end
@@ -123,9 +121,9 @@ module Orb
           currency: String,
           type: Orb::Models::AlertCreateForExternalCustomerParams::Type::OrSymbol,
           thresholds: T.nilable(
-            T::Array[T.any(Orb::Models::AlertCreateForExternalCustomerParams::Threshold, Orb::Internal::Util::AnyHash)]
+            T::Array[T.any(Orb::Models::AlertCreateForExternalCustomerParams::Threshold, Orb::Internal::AnyHash)]
           ),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::Alert)
       end
@@ -155,10 +153,10 @@ module Orb
       sig do
         params(
           subscription_id: String,
-          thresholds: T::Array[T.any(Orb::Models::AlertCreateForSubscriptionParams::Threshold, Orb::Internal::Util::AnyHash)],
+          thresholds: T::Array[T.any(Orb::Models::AlertCreateForSubscriptionParams::Threshold, Orb::Internal::AnyHash)],
           type: Orb::Models::AlertCreateForSubscriptionParams::Type::OrSymbol,
           metric_id: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::Alert)
       end
@@ -181,7 +179,7 @@ module Orb
         params(
           alert_configuration_id: String,
           subscription_id: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::Alert)
       end
@@ -200,7 +198,7 @@ module Orb
         params(
           alert_configuration_id: String,
           subscription_id: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::Alert)
       end

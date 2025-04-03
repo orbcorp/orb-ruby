@@ -3,13 +3,14 @@
 module Orb
   module Models
     # @see Orb::Resources::Events#ingest
-    class EventIngestResponse < Orb::BaseModel
+    class EventIngestResponse < Orb::Internal::Type::BaseModel
       # @!attribute validation_failed
       #   Contains all failing validation events. In the case of a 200, this array will
       #     always be empty. This field will always be present.
       #
       #   @return [Array<Orb::Models::EventIngestResponse::ValidationFailed>]
-      required :validation_failed, -> { Orb::ArrayOf[Orb::Models::EventIngestResponse::ValidationFailed] }
+      required :validation_failed,
+               -> { Orb::Internal::Type::ArrayOf[Orb::Models::EventIngestResponse::ValidationFailed] }
 
       # @!attribute debug
       #   Optional debug information (only present when debug=true is passed to the
@@ -24,9 +25,9 @@ module Orb
       #   #
       #   def initialize(validation_failed:, debug: nil, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-      class ValidationFailed < Orb::BaseModel
+      class ValidationFailed < Orb::Internal::Type::BaseModel
         # @!attribute idempotency_key
         #   The passed idempotency_key corresponding to the validation_errors
         #
@@ -38,7 +39,7 @@ module Orb
         #     idempotency_key.
         #
         #   @return [Array<String>]
-        required :validation_errors, Orb::ArrayOf[String]
+        required :validation_errors, Orb::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @param idempotency_key [String]
@@ -46,20 +47,20 @@ module Orb
         #   #
         #   def initialize(idempotency_key:, validation_errors:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       # @see Orb::Models::EventIngestResponse#debug
-      class Debug < Orb::BaseModel
+      class Debug < Orb::Internal::Type::BaseModel
         # @!attribute duplicate
         #
         #   @return [Array<String>]
-        required :duplicate, Orb::ArrayOf[String]
+        required :duplicate, Orb::Internal::Type::ArrayOf[String]
 
         # @!attribute ingested
         #
         #   @return [Array<String>]
-        required :ingested, Orb::ArrayOf[String]
+        required :ingested, Orb::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # Optional debug information (only present when debug=true is passed to the
@@ -70,7 +71,7 @@ module Orb
         #   #
         #   def initialize(duplicate:, ingested:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
     end
   end

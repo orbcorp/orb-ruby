@@ -21,7 +21,7 @@ module Orb
         # @param other [Object]
         #
         # @return [Boolean]
-        def self.==(other) = other.is_a?(Class) && other <= Orb::Unknown
+        def self.==(other) = other.is_a?(Class) && other <= Orb::Internal::Type::Unknown
 
         class << self
           # @api private

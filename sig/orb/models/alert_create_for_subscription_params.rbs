@@ -8,7 +8,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class AlertCreateForSubscriptionParams < Orb::BaseModel
+    class AlertCreateForSubscriptionParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -29,7 +29,7 @@ module Orb
 
       type threshold = { value: Float }
 
-      class Threshold < Orb::BaseModel
+      class Threshold < Orb::Internal::Type::BaseModel
         attr_accessor value: Float
 
         def initialize: (value: Float) -> void
@@ -40,7 +40,7 @@ module Orb
       type type_ = :usage_exceeded | :cost_exceeded
 
       module Type
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         USAGE_EXCEEDED: :usage_exceeded
         COST_EXCEEDED: :cost_exceeded

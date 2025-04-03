@@ -21,7 +21,7 @@ class Orb::Test::Resources::MetricsTest < Orb::Test::ResourceTest
         id: String,
         description: String | nil,
         item: Orb::Models::Item,
-        metadata: ^(Orb::HashOf[String]),
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
         name: String,
         status: Orb::Models::BillableMetric::Status
       }
@@ -40,7 +40,7 @@ class Orb::Test::Resources::MetricsTest < Orb::Test::ResourceTest
         id: String,
         description: String | nil,
         item: Orb::Models::Item,
-        metadata: ^(Orb::HashOf[String]),
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
         name: String,
         status: Orb::Models::BillableMetric::Status
       }
@@ -66,7 +66,7 @@ class Orb::Test::Resources::MetricsTest < Orb::Test::ResourceTest
         id: String,
         description: String | nil,
         item: Orb::Models::Item,
-        metadata: ^(Orb::HashOf[String]),
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
         name: String,
         status: Orb::Models::BillableMetric::Status
       }
@@ -85,7 +85,7 @@ class Orb::Test::Resources::MetricsTest < Orb::Test::ResourceTest
         id: String,
         description: String | nil,
         item: Orb::Models::Item,
-        metadata: ^(Orb::HashOf[String]),
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
         name: String,
         status: Orb::Models::BillableMetric::Status
       }

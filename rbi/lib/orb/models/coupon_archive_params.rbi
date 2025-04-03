@@ -2,17 +2,12 @@
 
 module Orb
   module Models
-    class CouponArchiveParams < Orb::BaseModel
+    class CouponArchiveParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       sig do
-        params(
-          request_options: T.any(
-            Orb::RequestOptions,
-            Orb::Internal::Util::AnyHash
-          )
-        ).returns(T.attached_class)
+        params(request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)).returns(T.attached_class)
       end
       def self.new(request_options: {})
       end

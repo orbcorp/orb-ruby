@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class SubscriptionCancelParams < Orb::BaseModel
+    class SubscriptionCancelParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -26,7 +26,7 @@ module Orb
           cancel_option: Orb::Models::SubscriptionCancelParams::CancelOption::OrSymbol,
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
           cancellation_date: T.nilable(Time),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -54,7 +54,7 @@ module Orb
 
       # Determines the timing of subscription cancellation
       module CancelOption
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionCancelParams::CancelOption) }
         OrSymbol =

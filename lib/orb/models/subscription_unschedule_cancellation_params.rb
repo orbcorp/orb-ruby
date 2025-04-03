@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Subscriptions#unschedule_cancellation
-    class SubscriptionUnscheduleCancellationParams < Orb::BaseModel
+    class SubscriptionUnscheduleCancellationParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -13,7 +13,7 @@ module Orb
       #   #
       #   def initialize(request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
     end
   end
 end

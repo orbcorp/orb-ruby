@@ -4,7 +4,7 @@ module Orb
   module Models
     module Events
       # @see Orb::Resources::Events::Volume#list
-      class VolumeListParams < Orb::BaseModel
+      class VolumeListParams < Orb::Internal::Type::BaseModel
         # @!parse
         #   extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
@@ -57,7 +57,7 @@ module Orb
         #   #
         #   def initialize(timeframe_start:, cursor: nil, limit: nil, timeframe_end: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
     end
   end

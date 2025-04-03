@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class Invoice < Orb::BaseModel
+    class Invoice < Orb::Internal::Type::BaseModel
       sig { returns(String) }
       attr_accessor :id
 
@@ -14,16 +14,14 @@ module Orb
       sig { returns(Orb::Models::Invoice::AutoCollection) }
       attr_reader :auto_collection
 
-      sig { params(auto_collection: T.any(Orb::Models::Invoice::AutoCollection, Orb::Internal::Util::AnyHash)).void }
+      sig { params(auto_collection: T.any(Orb::Models::Invoice::AutoCollection, Orb::Internal::AnyHash)).void }
       attr_writer :auto_collection
 
       sig { returns(T.nilable(Orb::Models::Invoice::BillingAddress)) }
       attr_reader :billing_address
 
       sig do
-        params(
-          billing_address: T.nilable(T.any(Orb::Models::Invoice::BillingAddress, Orb::Internal::Util::AnyHash))
-        )
+        params(billing_address: T.nilable(T.any(Orb::Models::Invoice::BillingAddress, Orb::Internal::AnyHash)))
           .void
       end
       attr_writer :billing_address
@@ -43,7 +41,7 @@ module Orb
       sig { returns(Orb::Models::Invoice::Customer) }
       attr_reader :customer
 
-      sig { params(customer: T.any(Orb::Models::Invoice::Customer, Orb::Internal::Util::AnyHash)).void }
+      sig { params(customer: T.any(Orb::Models::Invoice::Customer, Orb::Internal::AnyHash)).void }
       attr_writer :customer
 
       sig { returns(T::Array[Orb::Models::Invoice::CustomerBalanceTransaction]) }
@@ -157,12 +155,7 @@ module Orb
       sig { returns(T.nilable(Orb::Models::Invoice::CustomerTaxID)) }
       attr_reader :customer_tax_id
 
-      sig do
-        params(
-          customer_tax_id: T.nilable(T.any(Orb::Models::Invoice::CustomerTaxID, Orb::Internal::Util::AnyHash))
-        )
-          .void
-      end
+      sig { params(customer_tax_id: T.nilable(T.any(Orb::Models::Invoice::CustomerTaxID, Orb::Internal::AnyHash))).void }
       attr_writer :customer_tax_id
 
       # This field is deprecated in favor of `discounts`. If a `discounts` list is
@@ -228,7 +221,7 @@ module Orb
       sig { returns(T.nilable(Orb::Models::Invoice::Maximum)) }
       attr_reader :maximum
 
-      sig { params(maximum: T.nilable(T.any(Orb::Models::Invoice::Maximum, Orb::Internal::Util::AnyHash))).void }
+      sig { params(maximum: T.nilable(T.any(Orb::Models::Invoice::Maximum, Orb::Internal::AnyHash))).void }
       attr_writer :maximum
 
       sig { returns(T.nilable(String)) }
@@ -248,7 +241,7 @@ module Orb
       sig { returns(T.nilable(Orb::Models::Invoice::Minimum)) }
       attr_reader :minimum
 
-      sig { params(minimum: T.nilable(T.any(Orb::Models::Invoice::Minimum, Orb::Internal::Util::AnyHash))).void }
+      sig { params(minimum: T.nilable(T.any(Orb::Models::Invoice::Minimum, Orb::Internal::AnyHash))).void }
       attr_writer :minimum
 
       sig { returns(T.nilable(String)) }
@@ -283,9 +276,7 @@ module Orb
       attr_reader :shipping_address
 
       sig do
-        params(
-          shipping_address: T.nilable(T.any(Orb::Models::Invoice::ShippingAddress, Orb::Internal::Util::AnyHash))
-        )
+        params(shipping_address: T.nilable(T.any(Orb::Models::Invoice::ShippingAddress, Orb::Internal::AnyHash)))
           .void
       end
       attr_writer :shipping_address
@@ -296,10 +287,7 @@ module Orb
       sig { returns(T.nilable(Orb::Models::Invoice::Subscription)) }
       attr_reader :subscription
 
-      sig do
-        params(subscription: T.nilable(T.any(Orb::Models::Invoice::Subscription, Orb::Internal::Util::AnyHash)))
-          .void
-      end
+      sig { params(subscription: T.nilable(T.any(Orb::Models::Invoice::Subscription, Orb::Internal::AnyHash))).void }
       attr_writer :subscription
 
       # The total before any discounts and minimums are applied.
@@ -335,19 +323,19 @@ module Orb
         params(
           id: String,
           amount_due: String,
-          auto_collection: T.any(Orb::Models::Invoice::AutoCollection, Orb::Internal::Util::AnyHash),
-          billing_address: T.nilable(T.any(Orb::Models::Invoice::BillingAddress, Orb::Internal::Util::AnyHash)),
+          auto_collection: T.any(Orb::Models::Invoice::AutoCollection, Orb::Internal::AnyHash),
+          billing_address: T.nilable(T.any(Orb::Models::Invoice::BillingAddress, Orb::Internal::AnyHash)),
           created_at: Time,
-          credit_notes: T::Array[T.any(Orb::Models::Invoice::CreditNote, Orb::Internal::Util::AnyHash)],
+          credit_notes: T::Array[T.any(Orb::Models::Invoice::CreditNote, Orb::Internal::AnyHash)],
           currency: String,
-          customer: T.any(Orb::Models::Invoice::Customer, Orb::Internal::Util::AnyHash),
-          customer_balance_transactions: T::Array[T.any(Orb::Models::Invoice::CustomerBalanceTransaction, Orb::Internal::Util::AnyHash)],
-          customer_tax_id: T.nilable(T.any(Orb::Models::Invoice::CustomerTaxID, Orb::Internal::Util::AnyHash)),
+          customer: T.any(Orb::Models::Invoice::Customer, Orb::Internal::AnyHash),
+          customer_balance_transactions: T::Array[T.any(Orb::Models::Invoice::CustomerBalanceTransaction, Orb::Internal::AnyHash)],
+          customer_tax_id: T.nilable(T.any(Orb::Models::Invoice::CustomerTaxID, Orb::Internal::AnyHash)),
           discount: T.anything,
           discounts: T::Array[
           T.any(
             Orb::Models::PercentageDiscount,
-            Orb::Internal::Util::AnyHash,
+            Orb::Internal::AnyHash,
             Orb::Models::AmountDiscount,
             Orb::Models::TrialDiscount
           )
@@ -361,21 +349,21 @@ module Orb
           invoice_source: Orb::Models::Invoice::InvoiceSource::OrSymbol,
           issue_failed_at: T.nilable(Time),
           issued_at: T.nilable(Time),
-          line_items: T::Array[T.any(Orb::Models::Invoice::LineItem, Orb::Internal::Util::AnyHash)],
-          maximum: T.nilable(T.any(Orb::Models::Invoice::Maximum, Orb::Internal::Util::AnyHash)),
+          line_items: T::Array[T.any(Orb::Models::Invoice::LineItem, Orb::Internal::AnyHash)],
+          maximum: T.nilable(T.any(Orb::Models::Invoice::Maximum, Orb::Internal::AnyHash)),
           maximum_amount: T.nilable(String),
           memo: T.nilable(String),
           metadata: T::Hash[Symbol, String],
-          minimum: T.nilable(T.any(Orb::Models::Invoice::Minimum, Orb::Internal::Util::AnyHash)),
+          minimum: T.nilable(T.any(Orb::Models::Invoice::Minimum, Orb::Internal::AnyHash)),
           minimum_amount: T.nilable(String),
           paid_at: T.nilable(Time),
-          payment_attempts: T::Array[T.any(Orb::Models::Invoice::PaymentAttempt, Orb::Internal::Util::AnyHash)],
+          payment_attempts: T::Array[T.any(Orb::Models::Invoice::PaymentAttempt, Orb::Internal::AnyHash)],
           payment_failed_at: T.nilable(Time),
           payment_started_at: T.nilable(Time),
           scheduled_issue_at: T.nilable(Time),
-          shipping_address: T.nilable(T.any(Orb::Models::Invoice::ShippingAddress, Orb::Internal::Util::AnyHash)),
+          shipping_address: T.nilable(T.any(Orb::Models::Invoice::ShippingAddress, Orb::Internal::AnyHash)),
           status: Orb::Models::Invoice::Status::OrSymbol,
-          subscription: T.nilable(T.any(Orb::Models::Invoice::Subscription, Orb::Internal::Util::AnyHash)),
+          subscription: T.nilable(T.any(Orb::Models::Invoice::Subscription, Orb::Internal::AnyHash)),
           subtotal: String,
           sync_failed_at: T.nilable(Time),
           total: String,
@@ -480,7 +468,7 @@ module Orb
       def to_hash
       end
 
-      class AutoCollection < Orb::BaseModel
+      class AutoCollection < Orb::Internal::Type::BaseModel
         # True only if auto-collection is enabled for this invoice.
         sig { returns(T.nilable(T::Boolean)) }
         attr_accessor :enabled
@@ -531,7 +519,7 @@ module Orb
         end
       end
 
-      class BillingAddress < Orb::BaseModel
+      class BillingAddress < Orb::Internal::Type::BaseModel
         sig { returns(T.nilable(String)) }
         attr_accessor :city
 
@@ -581,7 +569,7 @@ module Orb
         end
       end
 
-      class CreditNote < Orb::BaseModel
+      class CreditNote < Orb::Internal::Type::BaseModel
         sig { returns(String) }
         attr_accessor :id
 
@@ -639,7 +627,7 @@ module Orb
         end
       end
 
-      class Customer < Orb::BaseModel
+      class Customer < Orb::Internal::Type::BaseModel
         sig { returns(String) }
         attr_accessor :id
 
@@ -655,7 +643,7 @@ module Orb
         end
       end
 
-      class CustomerBalanceTransaction < Orb::BaseModel
+      class CustomerBalanceTransaction < Orb::Internal::Type::BaseModel
         # A unique id for this transaction.
         sig { returns(String) }
         attr_accessor :id
@@ -676,9 +664,7 @@ module Orb
 
         sig do
           params(
-            credit_note: T.nilable(
-              T.any(Orb::Models::Invoice::CustomerBalanceTransaction::CreditNote, Orb::Internal::Util::AnyHash)
-            )
+            credit_note: T.nilable(T.any(Orb::Models::Invoice::CustomerBalanceTransaction::CreditNote, Orb::Internal::AnyHash))
           )
             .void
         end
@@ -698,7 +684,7 @@ module Orb
 
         sig do
           params(
-            invoice: T.nilable(T.any(Orb::Models::Invoice::CustomerBalanceTransaction::Invoice, Orb::Internal::Util::AnyHash))
+            invoice: T.nilable(T.any(Orb::Models::Invoice::CustomerBalanceTransaction::Invoice, Orb::Internal::AnyHash))
           )
             .void
         end
@@ -718,12 +704,10 @@ module Orb
             action: Orb::Models::Invoice::CustomerBalanceTransaction::Action::OrSymbol,
             amount: String,
             created_at: Time,
-            credit_note: T.nilable(
-              T.any(Orb::Models::Invoice::CustomerBalanceTransaction::CreditNote, Orb::Internal::Util::AnyHash)
-            ),
+            credit_note: T.nilable(T.any(Orb::Models::Invoice::CustomerBalanceTransaction::CreditNote, Orb::Internal::AnyHash)),
             description: T.nilable(String),
             ending_balance: String,
-            invoice: T.nilable(T.any(Orb::Models::Invoice::CustomerBalanceTransaction::Invoice, Orb::Internal::Util::AnyHash)),
+            invoice: T.nilable(T.any(Orb::Models::Invoice::CustomerBalanceTransaction::Invoice, Orb::Internal::AnyHash)),
             starting_balance: String,
             type: Orb::Models::Invoice::CustomerBalanceTransaction::Type::OrSymbol
           )
@@ -764,7 +748,7 @@ module Orb
         end
 
         module Action
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Invoice::CustomerBalanceTransaction::Action) }
           OrSymbol =
@@ -794,7 +778,7 @@ module Orb
           end
         end
 
-        class CreditNote < Orb::BaseModel
+        class CreditNote < Orb::Internal::Type::BaseModel
           # The id of the Credit note
           sig { returns(String) }
           attr_accessor :id
@@ -808,7 +792,7 @@ module Orb
           end
         end
 
-        class Invoice < Orb::BaseModel
+        class Invoice < Orb::Internal::Type::BaseModel
           # The Invoice id
           sig { returns(String) }
           attr_accessor :id
@@ -823,7 +807,7 @@ module Orb
         end
 
         module Type
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Invoice::CustomerBalanceTransaction::Type) }
           OrSymbol =
@@ -838,7 +822,7 @@ module Orb
         end
       end
 
-      class CustomerTaxID < Orb::BaseModel
+      class CustomerTaxID < Orb::Internal::Type::BaseModel
         sig { returns(Orb::Models::Invoice::CustomerTaxID::Country::TaggedSymbol) }
         attr_accessor :country
 
@@ -978,7 +962,7 @@ module Orb
         end
 
         module Country
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Invoice::CustomerTaxID::Country) }
           OrSymbol =
@@ -1069,7 +1053,7 @@ module Orb
         end
 
         module Type
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Invoice::CustomerTaxID::Type) }
           OrSymbol =
@@ -1154,7 +1138,7 @@ module Orb
       end
 
       module InvoiceSource
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Invoice::InvoiceSource) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Invoice::InvoiceSource::TaggedSymbol) }
@@ -1168,7 +1152,7 @@ module Orb
         end
       end
 
-      class LineItem < Orb::BaseModel
+      class LineItem < Orb::Internal::Type::BaseModel
         # A unique ID for this line item.
         sig { returns(String) }
         attr_accessor :id
@@ -1237,10 +1221,7 @@ module Orb
         sig { returns(T.nilable(Orb::Models::Invoice::LineItem::Maximum)) }
         attr_reader :maximum
 
-        sig do
-          params(maximum: T.nilable(T.any(Orb::Models::Invoice::LineItem::Maximum, Orb::Internal::Util::AnyHash)))
-            .void
-        end
+        sig { params(maximum: T.nilable(T.any(Orb::Models::Invoice::LineItem::Maximum, Orb::Internal::AnyHash))).void }
         attr_writer :maximum
 
         # This field is deprecated in favor of `adjustments`.
@@ -1251,10 +1232,7 @@ module Orb
         sig { returns(T.nilable(Orb::Models::Invoice::LineItem::Minimum)) }
         attr_reader :minimum
 
-        sig do
-          params(minimum: T.nilable(T.any(Orb::Models::Invoice::LineItem::Minimum, Orb::Internal::Util::AnyHash)))
-            .void
-        end
+        sig { params(minimum: T.nilable(T.any(Orb::Models::Invoice::LineItem::Minimum, Orb::Internal::AnyHash))).void }
         attr_writer :minimum
 
         # This field is deprecated in favor of `adjustments`.
@@ -1360,7 +1338,7 @@ module Orb
             adjustments: T::Array[
             T.any(
               Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment,
-              Orb::Internal::Util::AnyHash,
+              Orb::Internal::AnyHash,
               Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment,
               Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment,
               Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment,
@@ -1372,7 +1350,7 @@ module Orb
             discount: T.nilable(
               T.any(
                 Orb::Models::PercentageDiscount,
-                Orb::Internal::Util::AnyHash,
+                Orb::Internal::AnyHash,
                 Orb::Models::TrialDiscount,
                 Orb::Models::UsageDiscount,
                 Orb::Models::AmountDiscount
@@ -1381,16 +1359,16 @@ module Orb
             end_date: Time,
             filter: T.nilable(String),
             grouping: T.nilable(String),
-            maximum: T.nilable(T.any(Orb::Models::Invoice::LineItem::Maximum, Orb::Internal::Util::AnyHash)),
+            maximum: T.nilable(T.any(Orb::Models::Invoice::LineItem::Maximum, Orb::Internal::AnyHash)),
             maximum_amount: T.nilable(String),
-            minimum: T.nilable(T.any(Orb::Models::Invoice::LineItem::Minimum, Orb::Internal::Util::AnyHash)),
+            minimum: T.nilable(T.any(Orb::Models::Invoice::LineItem::Minimum, Orb::Internal::AnyHash)),
             minimum_amount: T.nilable(String),
             name: String,
             partially_invoiced_amount: String,
             price: T.nilable(
               T.any(
                 Orb::Models::Price::UnitPrice,
-                Orb::Internal::Util::AnyHash,
+                Orb::Internal::AnyHash,
                 Orb::Models::Price::PackagePrice,
                 Orb::Models::Price::MatrixPrice,
                 Orb::Models::Price::TieredPrice,
@@ -1425,13 +1403,13 @@ module Orb
             sub_line_items: T::Array[
             T.any(
               Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem,
-              Orb::Internal::Util::AnyHash,
+              Orb::Internal::AnyHash,
               Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem,
               Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem
             )
             ],
             subtotal: String,
-            tax_amounts: T::Array[T.any(Orb::Models::Invoice::LineItem::TaxAmount, Orb::Internal::Util::AnyHash)],
+            tax_amounts: T::Array[T.any(Orb::Models::Invoice::LineItem::TaxAmount, Orb::Internal::AnyHash)],
             usage_customer_ids: T.nilable(T::Array[String])
           )
             .returns(T.attached_class)
@@ -1547,9 +1525,9 @@ module Orb
         end
 
         module Adjustment
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
-          class MonetaryUsageDiscountAdjustment < Orb::BaseModel
+          class MonetaryUsageDiscountAdjustment < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -1619,7 +1597,7 @@ module Orb
             end
           end
 
-          class MonetaryAmountDiscountAdjustment < Orb::BaseModel
+          class MonetaryAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -1689,7 +1667,7 @@ module Orb
             end
           end
 
-          class MonetaryPercentageDiscountAdjustment < Orb::BaseModel
+          class MonetaryPercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -1759,7 +1737,7 @@ module Orb
             end
           end
 
-          class MonetaryMinimumAdjustment < Orb::BaseModel
+          class MonetaryMinimumAdjustment < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -1836,7 +1814,7 @@ module Orb
             end
           end
 
-          class MonetaryMaximumAdjustment < Orb::BaseModel
+          class MonetaryMaximumAdjustment < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -1916,7 +1894,7 @@ module Orb
           end
         end
 
-        class Maximum < Orb::BaseModel
+        class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -1938,7 +1916,7 @@ module Orb
           end
         end
 
-        class Minimum < Orb::BaseModel
+        class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -1961,9 +1939,9 @@ module Orb
         end
 
         module SubLineItem
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
-          class MatrixSubLineItem < Orb::BaseModel
+          class MatrixSubLineItem < Orb::Internal::Type::BaseModel
             # The total amount for this sub line item.
             sig { returns(String) }
             attr_accessor :amount
@@ -1974,10 +1952,7 @@ module Orb
             sig do
               params(
                 grouping: T.nilable(
-                  T.any(
-                    Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::Grouping,
-                    Orb::Internal::Util::AnyHash
-                  )
+                  T.any(Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::Grouping, Orb::Internal::AnyHash)
                 )
               )
                 .void
@@ -1991,7 +1966,7 @@ module Orb
               params(
                 matrix_config: T.any(
                   Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -2011,14 +1986,11 @@ module Orb
               params(
                 amount: String,
                 grouping: T.nilable(
-                  T.any(
-                    Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::Grouping,
-                    Orb::Internal::Util::AnyHash
-                  )
+                  T.any(Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::Grouping, Orb::Internal::AnyHash)
                 ),
                 matrix_config: T.any(
                   Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 name: String,
                 quantity: Float,
@@ -2045,7 +2017,7 @@ module Orb
             def to_hash
             end
 
-            class Grouping < Orb::BaseModel
+            class Grouping < Orb::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :key
 
@@ -2062,7 +2034,7 @@ module Orb
               end
             end
 
-            class MatrixConfig < Orb::BaseModel
+            class MatrixConfig < Orb::Internal::Type::BaseModel
               # The ordered dimension values for this line item.
               sig { returns(T::Array[T.nilable(String)]) }
               attr_accessor :dimension_values
@@ -2077,7 +2049,7 @@ module Orb
             end
           end
 
-          class TierSubLineItem < Orb::BaseModel
+          class TierSubLineItem < Orb::Internal::Type::BaseModel
             # The total amount for this sub line item.
             sig { returns(String) }
             attr_accessor :amount
@@ -2088,10 +2060,7 @@ module Orb
             sig do
               params(
                 grouping: T.nilable(
-                  T.any(
-                    Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::Grouping,
-                    Orb::Internal::Util::AnyHash
-                  )
+                  T.any(Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::Grouping, Orb::Internal::AnyHash)
                 )
               )
                 .void
@@ -2109,10 +2078,7 @@ module Orb
 
             sig do
               params(
-                tier_config: T.any(
-                  Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::TierConfig,
-                  Orb::Internal::Util::AnyHash
-                )
+                tier_config: T.any(Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::TierConfig, Orb::Internal::AnyHash)
               )
                 .void
             end
@@ -2125,17 +2091,11 @@ module Orb
               params(
                 amount: String,
                 grouping: T.nilable(
-                  T.any(
-                    Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::Grouping,
-                    Orb::Internal::Util::AnyHash
-                  )
+                  T.any(Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::Grouping, Orb::Internal::AnyHash)
                 ),
                 name: String,
                 quantity: Float,
-                tier_config: T.any(
-                  Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::TierConfig,
-                  Orb::Internal::Util::AnyHash
-                ),
+                tier_config: T.any(Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::TierConfig, Orb::Internal::AnyHash),
                 type: Symbol
               )
                 .returns(T.attached_class)
@@ -2159,7 +2119,7 @@ module Orb
             def to_hash
             end
 
-            class Grouping < Orb::BaseModel
+            class Grouping < Orb::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :key
 
@@ -2176,7 +2136,7 @@ module Orb
               end
             end
 
-            class TierConfig < Orb::BaseModel
+            class TierConfig < Orb::Internal::Type::BaseModel
               sig { returns(Float) }
               attr_accessor :first_unit
 
@@ -2202,7 +2162,7 @@ module Orb
             end
           end
 
-          class OtherSubLineItem < Orb::BaseModel
+          class OtherSubLineItem < Orb::Internal::Type::BaseModel
             # The total amount for this sub line item.
             sig { returns(String) }
             attr_accessor :amount
@@ -2213,10 +2173,7 @@ module Orb
             sig do
               params(
                 grouping: T.nilable(
-                  T.any(
-                    Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem::Grouping,
-                    Orb::Internal::Util::AnyHash
-                  )
+                  T.any(Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem::Grouping, Orb::Internal::AnyHash)
                 )
               )
                 .void
@@ -2236,10 +2193,7 @@ module Orb
               params(
                 amount: String,
                 grouping: T.nilable(
-                  T.any(
-                    Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem::Grouping,
-                    Orb::Internal::Util::AnyHash
-                  )
+                  T.any(Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem::Grouping, Orb::Internal::AnyHash)
                 ),
                 name: String,
                 quantity: Float,
@@ -2265,7 +2219,7 @@ module Orb
             def to_hash
             end
 
-            class Grouping < Orb::BaseModel
+            class Grouping < Orb::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :key
 
@@ -2293,7 +2247,7 @@ module Orb
           end
         end
 
-        class TaxAmount < Orb::BaseModel
+        class TaxAmount < Orb::Internal::Type::BaseModel
           # The amount of additional tax incurred by this tax rate.
           sig { returns(String) }
           attr_accessor :amount
@@ -2327,7 +2281,7 @@ module Orb
         end
       end
 
-      class Maximum < Orb::BaseModel
+      class Maximum < Orb::Internal::Type::BaseModel
         # List of price_ids that this maximum amount applies to. For plan/plan phase
         #   maximums, this can be a subset of prices.
         sig { returns(T::Array[String]) }
@@ -2348,7 +2302,7 @@ module Orb
         end
       end
 
-      class Minimum < Orb::BaseModel
+      class Minimum < Orb::Internal::Type::BaseModel
         # List of price_ids that this minimum amount applies to. For plan/plan phase
         #   minimums, this can be a subset of prices.
         sig { returns(T::Array[String]) }
@@ -2369,7 +2323,7 @@ module Orb
         end
       end
 
-      class PaymentAttempt < Orb::BaseModel
+      class PaymentAttempt < Orb::Internal::Type::BaseModel
         # The ID of the payment attempt.
         sig { returns(String) }
         attr_accessor :id
@@ -2426,7 +2380,7 @@ module Orb
 
         # The payment provider that attempted to collect the payment.
         module PaymentProvider
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Invoice::PaymentAttempt::PaymentProvider) }
           OrSymbol =
@@ -2440,7 +2394,7 @@ module Orb
         end
       end
 
-      class ShippingAddress < Orb::BaseModel
+      class ShippingAddress < Orb::Internal::Type::BaseModel
         sig { returns(T.nilable(String)) }
         attr_accessor :city
 
@@ -2491,7 +2445,7 @@ module Orb
       end
 
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Invoice::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Invoice::Status::TaggedSymbol) }
@@ -2507,7 +2461,7 @@ module Orb
         end
       end
 
-      class Subscription < Orb::BaseModel
+      class Subscription < Orb::Internal::Type::BaseModel
         sig { returns(String) }
         attr_accessor :id
 

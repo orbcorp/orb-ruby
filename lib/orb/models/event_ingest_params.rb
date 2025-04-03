@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Events#ingest
-    class EventIngestParams < Orb::BaseModel
+    class EventIngestParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -11,7 +11,7 @@ module Orb
       # @!attribute events
       #
       #   @return [Array<Orb::Models::EventIngestParams::Event>]
-      required :events, -> { Orb::ArrayOf[Orb::Models::EventIngestParams::Event] }
+      required :events, -> { Orb::Internal::Type::ArrayOf[Orb::Models::EventIngestParams::Event] }
 
       # @!attribute backfill_id
       #   If this ingestion request is part of a backfill, this parameter ties the
@@ -24,7 +24,7 @@ module Orb
       #   Flag to enable additional debug information in the endpoint response
       #
       #   @return [Boolean, nil]
-      optional :debug, Orb::BooleanModel
+      optional :debug, Orb::Internal::Type::BooleanModel
 
       # @!parse
       #   # @return [Boolean]
@@ -38,9 +38,9 @@ module Orb
       #   #
       #   def initialize(events:, backfill_id: nil, debug: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-      class Event < Orb::BaseModel
+      class Event < Orb::Internal::Type::BaseModel
         # @!attribute event_name
         #   A name to meaningfully identify the action or event type.
         #
@@ -60,7 +60,7 @@ module Orb
         #     boolean, or strings. Nested dictionaries are disallowed.
         #
         #   @return [Object]
-        required :properties, Orb::Unknown
+        required :properties, Orb::Internal::Type::Unknown
 
         # @!attribute timestamp
         #   An ISO 8601 format date with no timezone offset (i.e. UTC). This should
@@ -93,7 +93,7 @@ module Orb
         #   #
         #   def initialize(event_name:, idempotency_key:, properties:, timestamp:, customer_id: nil, external_customer_id: nil, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
     end
   end

@@ -24,7 +24,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class InvoiceListParams < Orb::BaseModel
+    class InvoiceListParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -96,7 +96,7 @@ module Orb
       type date_type = :due_date | :invoice_date
 
       module DateType
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         DUE_DATE: :due_date
         INVOICE_DATE: :invoice_date
@@ -107,7 +107,7 @@ module Orb
       type status = :draft | :issued | :paid | :synced | :void
 
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         DRAFT: :draft
         ISSUED: :issued

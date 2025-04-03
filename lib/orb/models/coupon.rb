@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Coupons#create
-    class Coupon < Orb::BaseModel
+    class Coupon < Orb::Internal::Type::BaseModel
       # @!attribute id
       #   Also referred to as coupon_id in this documentation.
       #
@@ -65,11 +65,11 @@ module Orb
       #   #
       #   def initialize(id:, archived_at:, discount:, duration_in_months:, max_redemptions:, redemption_code:, times_redeemed:, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # @see Orb::Models::Coupon#discount
       module Discount
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
         discriminator :discount_type
 

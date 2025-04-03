@@ -2,7 +2,7 @@ module Orb
   module Models
     type event_update_response = { amended: String }
 
-    class EventUpdateResponse < Orb::BaseModel
+    class EventUpdateResponse < Orb::Internal::Type::BaseModel
       attr_accessor amended: String
 
       def initialize: (amended: String) -> void

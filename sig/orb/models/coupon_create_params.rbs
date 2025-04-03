@@ -9,7 +9,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class CouponCreateParams < Orb::BaseModel
+    class CouponCreateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -36,12 +36,12 @@ module Orb
         | Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
 
       module Discount
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
         type new_coupon_percentage_discount =
           { discount_type: :percentage, percentage_discount: Float }
 
-        class NewCouponPercentageDiscount < Orb::BaseModel
+        class NewCouponPercentageDiscount < Orb::Internal::Type::BaseModel
           attr_accessor discount_type: :percentage
 
           attr_accessor percentage_discount: Float
@@ -57,7 +57,7 @@ module Orb
         type new_coupon_amount_discount =
           { amount_discount: String, discount_type: :amount }
 
-        class NewCouponAmountDiscount < Orb::BaseModel
+        class NewCouponAmountDiscount < Orb::Internal::Type::BaseModel
           attr_accessor amount_discount: String
 
           attr_accessor discount_type: :amount

@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Customers#list
-    class CustomerListParams < Orb::BaseModel
+    class CustomerListParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -67,7 +67,7 @@ module Orb
       #     super
       #   end
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
     end
   end
 end

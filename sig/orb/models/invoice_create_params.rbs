@@ -15,7 +15,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class InvoiceCreateParams < Orb::BaseModel
+    class InvoiceCreateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -68,7 +68,7 @@ module Orb
           unit_config: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig
         }
 
-      class LineItem < Orb::BaseModel
+      class LineItem < Orb::Internal::Type::BaseModel
         attr_accessor end_date: Date
 
         attr_accessor item_id: String
@@ -98,7 +98,7 @@ module Orb
         type model_type = :unit
 
         module ModelType
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           UNIT: :unit
 
@@ -107,7 +107,7 @@ module Orb
 
         type unit_config = { unit_amount: String }
 
-        class UnitConfig < Orb::BaseModel
+        class UnitConfig < Orb::Internal::Type::BaseModel
           attr_accessor unit_amount: String
 
           def initialize: (unit_amount: String) -> void

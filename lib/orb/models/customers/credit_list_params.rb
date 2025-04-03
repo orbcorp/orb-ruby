@@ -4,7 +4,7 @@ module Orb
   module Models
     module Customers
       # @see Orb::Resources::Customers::Credits#list
-      class CreditListParams < Orb::BaseModel
+      class CreditListParams < Orb::Internal::Type::BaseModel
         # @!parse
         #   extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
@@ -27,7 +27,7 @@ module Orb
         #     returned.
         #
         #   @return [Boolean, nil]
-        optional :include_all_blocks, Orb::BooleanModel
+        optional :include_all_blocks, Orb::Internal::Type::BooleanModel
 
         # @!parse
         #   # @return [Boolean]
@@ -52,7 +52,7 @@ module Orb
         #   #
         #   def initialize(currency: nil, cursor: nil, include_all_blocks: nil, limit: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
     end
   end

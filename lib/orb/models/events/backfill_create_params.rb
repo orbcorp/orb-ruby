@@ -4,7 +4,7 @@ module Orb
   module Models
     module Events
       # @see Orb::Resources::Events::Backfills#create
-      class BackfillCreateParams < Orb::BaseModel
+      class BackfillCreateParams < Orb::Internal::Type::BaseModel
         # @!parse
         #   extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
@@ -60,7 +60,7 @@ module Orb
         #     events. If false, adds the newly ingested events to the existing events.
         #
         #   @return [Boolean, nil]
-        optional :replace_existing_events, Orb::BooleanModel
+        optional :replace_existing_events, Orb::Internal::Type::BooleanModel
 
         # @!parse
         #   # @return [Boolean]
@@ -90,7 +90,7 @@ module Orb
         #     super
         #   end
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
     end
   end

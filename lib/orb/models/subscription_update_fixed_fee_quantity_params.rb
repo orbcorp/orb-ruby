@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Subscriptions#update_fixed_fee_quantity
-    class SubscriptionUpdateFixedFeeQuantityParams < Orb::BaseModel
+    class SubscriptionUpdateFixedFeeQuantityParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -25,7 +25,7 @@ module Orb
       #     existing invoices to be changed.
       #
       #   @return [Boolean, nil]
-      optional :allow_invoice_credit_or_void, Orb::BooleanModel, nil?: true
+      optional :allow_invoice_credit_or_void, Orb::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute [r] change_option
       #   Determines when the change takes effect. Note that if `effective_date` is
@@ -67,13 +67,13 @@ module Orb
       #     super
       #   end
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # Determines when the change takes effect. Note that if `effective_date` is
       #   specified, this defaults to `effective_date`. Otherwise, this defaults to
       #   `immediate` unless it's explicitly set to `upcoming_invoice`.
       module ChangeOption
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         IMMEDIATE = :immediate
         UPCOMING_INVOICE = :upcoming_invoice

@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::DimensionalPriceGroups#create
-    class DimensionalPriceGroupCreateParams < Orb::BaseModel
+    class DimensionalPriceGroupCreateParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -17,7 +17,7 @@ module Orb
       #   The set of keys (in order) used to disambiguate prices in the group.
       #
       #   @return [Array<String>]
-      required :dimensions, Orb::ArrayOf[String]
+      required :dimensions, Orb::Internal::Type::ArrayOf[String]
 
       # @!attribute name
       #
@@ -35,7 +35,7 @@ module Orb
       #     by setting `metadata` to `null`.
       #
       #   @return [Hash{Symbol=>String, nil}, nil]
-      optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+      optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
       # @!parse
       #   # @param billable_metric_id [String]
@@ -57,7 +57,7 @@ module Orb
       #     super
       #   end
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
     end
   end
 end

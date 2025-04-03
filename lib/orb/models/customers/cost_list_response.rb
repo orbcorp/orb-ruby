@@ -4,25 +4,25 @@ module Orb
   module Models
     module Customers
       # @see Orb::Resources::Customers::Costs#list
-      class CostListResponse < Orb::BaseModel
+      class CostListResponse < Orb::Internal::Type::BaseModel
         # @!attribute data
         #
         #   @return [Array<Orb::Models::Customers::CostListResponse::Data>]
-        required :data, -> { Orb::ArrayOf[Orb::Models::Customers::CostListResponse::Data] }
+        required :data, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Customers::CostListResponse::Data] }
 
         # @!parse
         #   # @param data [Array<Orb::Models::Customers::CostListResponse::Data>]
         #   #
         #   def initialize(data:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-        class Data < Orb::BaseModel
+        class Data < Orb::Internal::Type::BaseModel
           # @!attribute per_price_costs
           #
           #   @return [Array<Orb::Models::Customers::CostListResponse::Data::PerPriceCost>]
           required :per_price_costs,
-                   -> { Orb::ArrayOf[Orb::Models::Customers::CostListResponse::Data::PerPriceCost] }
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Models::Customers::CostListResponse::Data::PerPriceCost] }
 
           # @!attribute subtotal
           #   Total costs for the timeframe, excluding any minimums and discounts.
@@ -55,9 +55,9 @@ module Orb
           #   #
           #   def initialize(per_price_costs:, subtotal:, timeframe_end:, timeframe_start:, total:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-          class PerPriceCost < Orb::BaseModel
+          class PerPriceCost < Orb::Internal::Type::BaseModel
             # @!attribute price
             #   The price object
             #
@@ -97,7 +97,7 @@ module Orb
             #   #
             #   def initialize(price:, price_id:, subtotal:, total:, quantity: nil, **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
         end
       end

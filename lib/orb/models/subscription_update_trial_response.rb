@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Subscriptions#update_trial
-    class SubscriptionUpdateTrialResponse < Orb::BaseModel
+    class SubscriptionUpdateTrialResponse < Orb::Internal::Type::BaseModel
       # @!attribute id
       #
       #   @return [String]
@@ -22,7 +22,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval>]
       required :adjustment_intervals,
-               -> { Orb::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval] }
+               -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval] }
 
       # @!attribute auto_collection
       #   Determines whether issued invoices for this subscription will automatically be
@@ -30,7 +30,7 @@ module Orb
       #     the plan's behavior. If null, defaults to the customer's setting.
       #
       #   @return [Boolean, nil]
-      required :auto_collection, Orb::BooleanModel, nil?: true
+      required :auto_collection, Orb::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute billing_cycle_anchor_configuration
       #
@@ -103,7 +103,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::UsageDiscountInterval>]
       required :discount_intervals,
-               -> { Orb::ArrayOf[union: Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval] }
+               -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval] }
 
       # @!attribute end_date
       #   The date Orb stops billing for this subscription.
@@ -115,7 +115,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionUpdateTrialResponse::FixedFeeQuantitySchedule>]
       required :fixed_fee_quantity_schedule,
-               -> { Orb::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::FixedFeeQuantitySchedule] }
+               -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::FixedFeeQuantitySchedule] }
 
       # @!attribute invoicing_threshold
       #
@@ -127,7 +127,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionUpdateTrialResponse::MaximumInterval>]
       required :maximum_intervals,
-               -> { Orb::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::MaximumInterval] }
+               -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::MaximumInterval] }
 
       # @!attribute metadata
       #   User specified key-value pairs for the resource. If not present, this defaults
@@ -136,14 +136,14 @@ module Orb
       #     `null`.
       #
       #   @return [Hash{Symbol=>String}]
-      required :metadata, Orb::HashOf[String]
+      required :metadata, Orb::Internal::Type::HashOf[String]
 
       # @!attribute minimum_intervals
       #   The minimum intervals for this subscription sorted by the start_date.
       #
       #   @return [Array<Orb::Models::SubscriptionUpdateTrialResponse::MinimumInterval>]
       required :minimum_intervals,
-               -> { Orb::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::MinimumInterval] }
+               -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::MinimumInterval] }
 
       # @!attribute net_terms
       #   Determines the difference between the invoice issue date for subscription
@@ -168,7 +168,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::SubscriptionUpdateTrialResponse::PriceInterval>]
       required :price_intervals,
-               -> { Orb::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::PriceInterval] }
+               -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::PriceInterval] }
 
       # @!attribute redeemed_coupon
       #
@@ -249,9 +249,9 @@ module Orb
       #     super
       #   end
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-      class AdjustmentInterval < Orb::BaseModel
+      class AdjustmentInterval < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String]
@@ -267,7 +267,7 @@ module Orb
         #   The price interval IDs that this adjustment applies to.
         #
         #   @return [Array<String>]
-        required :applies_to_price_interval_ids, Orb::ArrayOf[String]
+        required :applies_to_price_interval_ids, Orb::Internal::Type::ArrayOf[String]
 
         # @!attribute end_date
         #   The end date of the adjustment interval.
@@ -290,11 +290,11 @@ module Orb
         #   #
         #   def initialize(id:, adjustment:, applies_to_price_interval_ids:, end_date:, start_date:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # @see Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval#adjustment
         module Adjustment
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           discriminator :adjustment_type
 
@@ -313,7 +313,7 @@ module Orb
           variant :maximum,
                   -> { Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment }
 
-          class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
+          class PlanPhaseUsageDiscountAdjustment < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -328,14 +328,14 @@ module Orb
             #   The price IDs that this adjustment applies to.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
             #     that apply to only one price.
             #
             #   @return [Boolean]
-            required :is_invoice_level, Orb::BooleanModel
+            required :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!attribute plan_phase_order
             #   The plan phase in which this adjustment is active.
@@ -378,10 +378,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class PlanPhaseAmountDiscountAdjustment < Orb::BaseModel
+          class PlanPhaseAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -403,14 +403,14 @@ module Orb
             #   The price IDs that this adjustment applies to.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
             #     that apply to only one price.
             #
             #   @return [Boolean]
-            required :is_invoice_level, Orb::BooleanModel
+            required :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!attribute plan_phase_order
             #   The plan phase in which this adjustment is active.
@@ -446,10 +446,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class PlanPhasePercentageDiscountAdjustment < Orb::BaseModel
+          class PlanPhasePercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -464,14 +464,14 @@ module Orb
             #   The price IDs that this adjustment applies to.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
             #     that apply to only one price.
             #
             #   @return [Boolean]
-            required :is_invoice_level, Orb::BooleanModel
+            required :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!attribute percentage_discount
             #   The percentage (as a value between 0 and 1) by which to discount the price
@@ -514,10 +514,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class PlanPhaseMinimumAdjustment < Orb::BaseModel
+          class PlanPhaseMinimumAdjustment < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -532,14 +532,14 @@ module Orb
             #   The price IDs that this adjustment applies to.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
             #     that apply to only one price.
             #
             #   @return [Boolean]
-            required :is_invoice_level, Orb::BooleanModel
+            required :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!attribute item_id
             #   The item ID that revenue from this minimum will be attributed to.
@@ -590,10 +590,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class PlanPhaseMaximumAdjustment < Orb::BaseModel
+          class PlanPhaseMaximumAdjustment < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -608,14 +608,14 @@ module Orb
             #   The price IDs that this adjustment applies to.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
             #     that apply to only one price.
             #
             #   @return [Boolean]
-            required :is_invoice_level, Orb::BooleanModel
+            required :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!attribute maximum_amount
             #   The maximum amount to charge in a given billing period for the prices this
@@ -658,7 +658,7 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
           # @!parse
@@ -668,7 +668,7 @@ module Orb
       end
 
       # @see Orb::Models::SubscriptionUpdateTrialResponse#billing_cycle_anchor_configuration
-      class BillingCycleAnchorConfiguration < Orb::BaseModel
+      class BillingCycleAnchorConfiguration < Orb::Internal::Type::BaseModel
         # @!attribute day
         #   The day of the month on which the billing cycle is anchored. If the maximum
         #     number of days in a month is greater than this value, the last day of the month
@@ -700,11 +700,11 @@ module Orb
         #   #
         #   def initialize(day:, month: nil, year: nil, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       module DiscountInterval
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
         discriminator :discount_type
 
@@ -717,7 +717,7 @@ module Orb
         variant :usage,
                 -> { Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::UsageDiscountInterval }
 
-        class AmountDiscountInterval < Orb::BaseModel
+        class AmountDiscountInterval < Orb::Internal::Type::BaseModel
           # @!attribute amount_discount
           #   Only available if discount_type is `amount`.
           #
@@ -728,13 +728,13 @@ module Orb
           #   The price ids that this discount interval applies to.
           #
           #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::ArrayOf[String]
+          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
           # @!attribute applies_to_price_interval_ids
           #   The price interval ids that this discount interval applies to.
           #
           #   @return [Array<String>]
-          required :applies_to_price_interval_ids, Orb::ArrayOf[String]
+          required :applies_to_price_interval_ids, Orb::Internal::Type::ArrayOf[String]
 
           # @!attribute discount_type
           #
@@ -773,21 +773,21 @@ module Orb
           #     super
           #   end
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
-        class PercentageDiscountInterval < Orb::BaseModel
+        class PercentageDiscountInterval < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   The price ids that this discount interval applies to.
           #
           #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::ArrayOf[String]
+          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
           # @!attribute applies_to_price_interval_ids
           #   The price interval ids that this discount interval applies to.
           #
           #   @return [Array<String>]
-          required :applies_to_price_interval_ids, Orb::ArrayOf[String]
+          required :applies_to_price_interval_ids, Orb::Internal::Type::ArrayOf[String]
 
           # @!attribute discount_type
           #
@@ -833,21 +833,21 @@ module Orb
           #     super
           #   end
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
-        class UsageDiscountInterval < Orb::BaseModel
+        class UsageDiscountInterval < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   The price ids that this discount interval applies to.
           #
           #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::ArrayOf[String]
+          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
           # @!attribute applies_to_price_interval_ids
           #   The price interval ids that this discount interval applies to.
           #
           #   @return [Array<String>]
-          required :applies_to_price_interval_ids, Orb::ArrayOf[String]
+          required :applies_to_price_interval_ids, Orb::Internal::Type::ArrayOf[String]
 
           # @!attribute discount_type
           #
@@ -893,7 +893,7 @@ module Orb
           #     super
           #   end
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
         # @!parse
@@ -901,7 +901,7 @@ module Orb
         #   def self.variants; end
       end
 
-      class FixedFeeQuantitySchedule < Orb::BaseModel
+      class FixedFeeQuantitySchedule < Orb::Internal::Type::BaseModel
         # @!attribute end_date
         #
         #   @return [Time, nil]
@@ -930,21 +930,21 @@ module Orb
         #   #
         #   def initialize(end_date:, price_id:, quantity:, start_date:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
-      class MaximumInterval < Orb::BaseModel
+      class MaximumInterval < Orb::Internal::Type::BaseModel
         # @!attribute applies_to_price_ids
         #   The price ids that this maximum interval applies to.
         #
         #   @return [Array<String>]
-        required :applies_to_price_ids, Orb::ArrayOf[String]
+        required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
         # @!attribute applies_to_price_interval_ids
         #   The price interval ids that this maximum interval applies to.
         #
         #   @return [Array<String>]
-        required :applies_to_price_interval_ids, Orb::ArrayOf[String]
+        required :applies_to_price_interval_ids, Orb::Internal::Type::ArrayOf[String]
 
         # @!attribute end_date
         #   The end date of the maximum interval.
@@ -974,21 +974,21 @@ module Orb
         #   #
         #   def initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, maximum_amount:, start_date:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
-      class MinimumInterval < Orb::BaseModel
+      class MinimumInterval < Orb::Internal::Type::BaseModel
         # @!attribute applies_to_price_ids
         #   The price ids that this minimum interval applies to.
         #
         #   @return [Array<String>]
-        required :applies_to_price_ids, Orb::ArrayOf[String]
+        required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
         # @!attribute applies_to_price_interval_ids
         #   The price interval ids that this minimum interval applies to.
         #
         #   @return [Array<String>]
-        required :applies_to_price_interval_ids, Orb::ArrayOf[String]
+        required :applies_to_price_interval_ids, Orb::Internal::Type::ArrayOf[String]
 
         # @!attribute end_date
         #   The end date of the minimum interval.
@@ -1018,10 +1018,10 @@ module Orb
         #   #
         #   def initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, minimum_amount:, start_date:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
-      class PriceInterval < Orb::BaseModel
+      class PriceInterval < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String]
@@ -1068,7 +1068,7 @@ module Orb
         #
         #   @return [Array<Orb::Models::SubscriptionUpdateTrialResponse::PriceInterval::FixedFeeQuantityTransition>, nil]
         required :fixed_fee_quantity_transitions,
-                 -> { Orb::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::PriceInterval::FixedFeeQuantityTransition] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::PriceInterval::FixedFeeQuantityTransition] },
                  nil?: true
 
         # @!attribute price
@@ -1098,7 +1098,7 @@ module Orb
         #     this price interval.
         #
         #   @return [Array<String>, nil]
-        required :usage_customer_ids, Orb::ArrayOf[String], nil?: true
+        required :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
         # @!parse
         #   # The Price Interval resource represents a period of time for which a price will
@@ -1132,9 +1132,9 @@ module Orb
         #     super
         #   end
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-        class FixedFeeQuantityTransition < Orb::BaseModel
+        class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
           # @!attribute effective_date
           #
           #   @return [Time]
@@ -1157,12 +1157,12 @@ module Orb
           #   #
           #   def initialize(effective_date:, price_id:, quantity:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
       end
 
       # @see Orb::Models::SubscriptionUpdateTrialResponse#redeemed_coupon
-      class RedeemedCoupon < Orb::BaseModel
+      class RedeemedCoupon < Orb::Internal::Type::BaseModel
         # @!attribute coupon_id
         #
         #   @return [String]
@@ -1185,12 +1185,12 @@ module Orb
         #   #
         #   def initialize(coupon_id:, end_date:, start_date:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       # @see Orb::Models::SubscriptionUpdateTrialResponse#status
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         ACTIVE = :active
         ENDED = :ended
@@ -1204,7 +1204,7 @@ module Orb
       end
 
       # @see Orb::Models::SubscriptionUpdateTrialResponse#trial_info
-      class TrialInfo < Orb::BaseModel
+      class TrialInfo < Orb::Internal::Type::BaseModel
         # @!attribute end_date
         #
         #   @return [Time, nil]
@@ -1215,7 +1215,7 @@ module Orb
         #   #
         #   def initialize(end_date:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
     end
   end

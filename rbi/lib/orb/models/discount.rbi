@@ -3,7 +3,7 @@
 module Orb
   module Models
     module Discount
-      extend Orb::Union
+      extend Orb::Internal::Type::Union
 
       sig do
         override

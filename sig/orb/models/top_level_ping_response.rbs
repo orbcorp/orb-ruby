@@ -2,7 +2,7 @@ module Orb
   module Models
     type top_level_ping_response = { response: String }
 
-    class TopLevelPingResponse < Orb::BaseModel
+    class TopLevelPingResponse < Orb::Internal::Type::BaseModel
       attr_accessor response: String
 
       def initialize: (response: String) -> void

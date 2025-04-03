@@ -14,7 +14,7 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
       response => {
         id: String,
         created_at: Time,
-        external_connections: ^(Orb::ArrayOf[Orb::Models::Item::ExternalConnection]),
+        external_connections: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Item::ExternalConnection]),
         name: String
       }
     end
@@ -31,7 +31,7 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
       response => {
         id: String,
         created_at: Time,
-        external_connections: ^(Orb::ArrayOf[Orb::Models::Item::ExternalConnection]),
+        external_connections: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Item::ExternalConnection]),
         name: String
       }
     end
@@ -55,7 +55,7 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
       row => {
         id: String,
         created_at: Time,
-        external_connections: ^(Orb::ArrayOf[Orb::Models::Item::ExternalConnection]),
+        external_connections: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Item::ExternalConnection]),
         name: String
       }
     end
@@ -72,7 +72,7 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
       response => {
         id: String,
         created_at: Time,
-        external_connections: ^(Orb::ArrayOf[Orb::Models::Item::ExternalConnection]),
+        external_connections: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Item::ExternalConnection]),
         name: String
       }
     end

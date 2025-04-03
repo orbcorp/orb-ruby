@@ -28,7 +28,7 @@ module Orb
         version: Integer
       }
 
-    class Plan < Orb::BaseModel
+    class Plan < Orb::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor adjustments: ::Array[Orb::Models::Plan::adjustment]
@@ -114,7 +114,7 @@ module Orb
         | Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
 
       module Adjustment
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
         type plan_phase_usage_discount_adjustment =
           {
@@ -127,7 +127,7 @@ module Orb
             usage_discount: Float
           }
 
-        class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
+        class PlanPhaseUsageDiscountAdjustment < Orb::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor adjustment_type: :usage_discount
@@ -166,7 +166,7 @@ module Orb
             reason: String?
           }
 
-        class PlanPhaseAmountDiscountAdjustment < Orb::BaseModel
+        class PlanPhaseAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor adjustment_type: :amount_discount
@@ -205,7 +205,7 @@ module Orb
             reason: String?
           }
 
-        class PlanPhasePercentageDiscountAdjustment < Orb::BaseModel
+        class PlanPhasePercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor adjustment_type: :percentage_discount
@@ -245,7 +245,7 @@ module Orb
             reason: String?
           }
 
-        class PlanPhaseMinimumAdjustment < Orb::BaseModel
+        class PlanPhaseMinimumAdjustment < Orb::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor adjustment_type: :minimum
@@ -287,7 +287,7 @@ module Orb
             reason: String?
           }
 
-        class PlanPhaseMaximumAdjustment < Orb::BaseModel
+        class PlanPhaseMaximumAdjustment < Orb::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor adjustment_type: :maximum
@@ -320,7 +320,7 @@ module Orb
 
       type base_plan = { id: String?, external_plan_id: String?, name: String? }
 
-      class BasePlan < Orb::BaseModel
+      class BasePlan < Orb::Internal::Type::BaseModel
         attr_accessor id: String?
 
         attr_accessor external_plan_id: String?
@@ -339,7 +339,7 @@ module Orb
       type maximum =
         { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
-      class Maximum < Orb::BaseModel
+      class Maximum < Orb::Internal::Type::BaseModel
         attr_accessor applies_to_price_ids: ::Array[String]
 
         attr_accessor maximum_amount: String
@@ -355,7 +355,7 @@ module Orb
       type minimum =
         { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
-      class Minimum < Orb::BaseModel
+      class Minimum < Orb::Internal::Type::BaseModel
         attr_accessor applies_to_price_ids: ::Array[String]
 
         attr_accessor minimum_amount: String
@@ -383,7 +383,7 @@ module Orb
           order: Integer
         }
 
-      class PlanPhase < Orb::BaseModel
+      class PlanPhase < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor description: String?
@@ -426,7 +426,7 @@ module Orb
           :daily | :monthly | :quarterly | :semi_annual | :annual
 
         module DurationUnit
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           DAILY: :daily
           MONTHLY: :monthly
@@ -440,7 +440,7 @@ module Orb
         type maximum =
           { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
-        class Maximum < Orb::BaseModel
+        class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
@@ -456,7 +456,7 @@ module Orb
         type minimum =
           { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
-        class Minimum < Orb::BaseModel
+        class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
@@ -472,7 +472,7 @@ module Orb
 
       type product = { id: String, created_at: Time, name: String }
 
-      class Product < Orb::BaseModel
+      class Product < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor created_at: Time
@@ -487,7 +487,7 @@ module Orb
       type status = :active | :archived | :draft
 
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         ACTIVE: :active
         ARCHIVED: :archived
@@ -502,7 +502,7 @@ module Orb
           trial_period_unit: Orb::Models::Plan::TrialConfig::trial_period_unit
         }
 
-      class TrialConfig < Orb::BaseModel
+      class TrialConfig < Orb::Internal::Type::BaseModel
         attr_accessor trial_period: Integer?
 
         attr_accessor trial_period_unit: Orb::Models::Plan::TrialConfig::trial_period_unit
@@ -517,7 +517,7 @@ module Orb
         type trial_period_unit = :days
 
         module TrialPeriodUnit
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           DAYS: :days
 

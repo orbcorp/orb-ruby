@@ -2,11 +2,11 @@
 
 module Orb
   module Models
-    class DimensionalPriceGroupsAPI < Orb::BaseModel
+    class DimensionalPriceGroupsAPI < Orb::Internal::Type::BaseModel
       # @!attribute data
       #
       #   @return [Array<Orb::Models::DimensionalPriceGroup>]
-      required :data, -> { Orb::ArrayOf[Orb::Models::DimensionalPriceGroup] }
+      required :data, -> { Orb::Internal::Type::ArrayOf[Orb::Models::DimensionalPriceGroup] }
 
       # @!attribute pagination_metadata
       #
@@ -19,7 +19,7 @@ module Orb
       #   #
       #   def initialize(data:, pagination_metadata:, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
     end
   end
 end

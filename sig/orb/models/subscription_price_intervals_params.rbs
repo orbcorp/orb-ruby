@@ -10,7 +10,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class SubscriptionPriceIntervalsParams < Orb::BaseModel
+    class SubscriptionPriceIntervalsParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -67,7 +67,7 @@ module Orb
           usage_customer_ids: ::Array[String]?
         }
 
-      class Add < Orb::BaseModel
+      class Add < Orb::Internal::Type::BaseModel
         attr_accessor start_date: Orb::Models::SubscriptionPriceIntervalsParams::Add::start_date
 
         attr_accessor allocation_price: Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice?
@@ -112,7 +112,7 @@ module Orb
         type start_date = Time | Orb::Models::billing_cycle_relative_date
 
         module StartDate
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           def self?.variants: -> [Time, Orb::Models::billing_cycle_relative_date]
         end
@@ -125,7 +125,7 @@ module Orb
             expires_at_end_of_cadence: bool
           }
 
-        class AllocationPrice < Orb::BaseModel
+        class AllocationPrice < Orb::Internal::Type::BaseModel
           attr_accessor amount: String
 
           attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice::cadence
@@ -147,7 +147,7 @@ module Orb
             :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
 
           module Cadence
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             ONE_TIME: :one_time
             MONTHLY: :monthly
@@ -166,12 +166,12 @@ module Orb
           | Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams
 
         module Discount
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           type amount_discount_creation_params =
             { amount_discount: Float, discount_type: :amount }
 
-          class AmountDiscountCreationParams < Orb::BaseModel
+          class AmountDiscountCreationParams < Orb::Internal::Type::BaseModel
             attr_accessor amount_discount: Float
 
             attr_accessor discount_type: :amount
@@ -187,7 +187,7 @@ module Orb
           type percentage_discount_creation_params =
             { discount_type: :percentage, percentage_discount: Float }
 
-          class PercentageDiscountCreationParams < Orb::BaseModel
+          class PercentageDiscountCreationParams < Orb::Internal::Type::BaseModel
             attr_accessor discount_type: :percentage
 
             attr_accessor percentage_discount: Float
@@ -203,7 +203,7 @@ module Orb
           type usage_discount_creation_params =
             { discount_type: :usage, usage_discount: Float }
 
-          class UsageDiscountCreationParams < Orb::BaseModel
+          class UsageDiscountCreationParams < Orb::Internal::Type::BaseModel
             attr_accessor discount_type: :usage
 
             attr_accessor usage_discount: Float
@@ -222,7 +222,7 @@ module Orb
         type end_date = Time | Orb::Models::billing_cycle_relative_date
 
         module EndDate
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           def self?.variants: -> [Time, Orb::Models::billing_cycle_relative_date]
         end
@@ -230,7 +230,7 @@ module Orb
         type fixed_fee_quantity_transition =
           { effective_date: Time, quantity: Integer }
 
-        class FixedFeeQuantityTransition < Orb::BaseModel
+        class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
           attr_accessor effective_date: Time
 
           attr_accessor quantity: Integer
@@ -271,7 +271,7 @@ module Orb
           | Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice
 
         module Price
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           type new_floating_unit_price =
             {
@@ -292,7 +292,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingUnitPrice < Orb::BaseModel
+          class NewFloatingUnitPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::cadence
 
             attr_accessor currency: String
@@ -352,7 +352,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -366,7 +366,7 @@ module Orb
 
             type unit_config = { unit_amount: String }
 
-            class UnitConfig < Orb::BaseModel
+            class UnitConfig < Orb::Internal::Type::BaseModel
               attr_accessor unit_amount: String
 
               def initialize: (unit_amount: String) -> void
@@ -380,7 +380,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration::duration_unit
@@ -395,7 +395,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -410,7 +410,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration::duration_unit
@@ -425,7 +425,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -454,7 +454,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingPackagePrice < Orb::BaseModel
+          class NewFloatingPackagePrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::cadence
 
             attr_accessor currency: String
@@ -514,7 +514,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -529,7 +529,7 @@ module Orb
             type package_config =
               { package_amount: String, package_size: Integer }
 
-            class PackageConfig < Orb::BaseModel
+            class PackageConfig < Orb::Internal::Type::BaseModel
               attr_accessor package_amount: String
 
               attr_accessor package_size: Integer
@@ -548,7 +548,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration::duration_unit
@@ -563,7 +563,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -578,7 +578,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration::duration_unit
@@ -593,7 +593,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -622,7 +622,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingMatrixPrice < Orb::BaseModel
+          class NewFloatingMatrixPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::cadence
 
             attr_accessor currency: String
@@ -682,7 +682,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -701,7 +701,7 @@ module Orb
                 matrix_values: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue]
               }
 
-            class MatrixConfig < Orb::BaseModel
+            class MatrixConfig < Orb::Internal::Type::BaseModel
               attr_accessor default_unit_amount: String
 
               attr_accessor dimensions: ::Array[String?]
@@ -719,7 +719,7 @@ module Orb
               type matrix_value =
                 { dimension_values: ::Array[String?], unit_amount: String }
 
-              class MatrixValue < Orb::BaseModel
+              class MatrixValue < Orb::Internal::Type::BaseModel
                 attr_accessor dimension_values: ::Array[String?]
 
                 attr_accessor unit_amount: String
@@ -739,7 +739,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration::duration_unit
@@ -754,7 +754,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -769,7 +769,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration::duration_unit
@@ -784,7 +784,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -813,7 +813,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingMatrixWithAllocationPrice < Orb::BaseModel
+          class NewFloatingMatrixWithAllocationPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::cadence
 
             attr_accessor currency: String
@@ -873,7 +873,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -893,7 +893,7 @@ module Orb
                 matrix_values: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue]
               }
 
-            class MatrixWithAllocationConfig < Orb::BaseModel
+            class MatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
               attr_accessor allocation: Float
 
               attr_accessor default_unit_amount: String
@@ -914,7 +914,7 @@ module Orb
               type matrix_value =
                 { dimension_values: ::Array[String?], unit_amount: String }
 
-              class MatrixValue < Orb::BaseModel
+              class MatrixValue < Orb::Internal::Type::BaseModel
                 attr_accessor dimension_values: ::Array[String?]
 
                 attr_accessor unit_amount: String
@@ -934,7 +934,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration::duration_unit
@@ -949,7 +949,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -964,7 +964,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration::duration_unit
@@ -979,7 +979,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -1008,7 +1008,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingTieredPrice < Orb::BaseModel
+          class NewFloatingTieredPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::cadence
 
             attr_accessor currency: String
@@ -1068,7 +1068,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -1085,7 +1085,7 @@ module Orb
                 tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier]
               }
 
-            class TieredConfig < Orb::BaseModel
+            class TieredConfig < Orb::Internal::Type::BaseModel
               attr_accessor tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier]
 
               def initialize: (
@@ -1097,7 +1097,7 @@ module Orb
               type tier =
                 { first_unit: Float, unit_amount: String, last_unit: Float? }
 
-              class Tier < Orb::BaseModel
+              class Tier < Orb::Internal::Type::BaseModel
                 attr_accessor first_unit: Float
 
                 attr_accessor unit_amount: String
@@ -1120,7 +1120,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration::duration_unit
@@ -1135,7 +1135,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -1150,7 +1150,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration::duration_unit
@@ -1165,7 +1165,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -1194,7 +1194,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingTieredBpsPrice < Orb::BaseModel
+          class NewFloatingTieredBpsPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::cadence
 
             attr_accessor currency: String
@@ -1254,7 +1254,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -1271,7 +1271,7 @@ module Orb
                 tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier]
               }
 
-            class TieredBpsConfig < Orb::BaseModel
+            class TieredBpsConfig < Orb::Internal::Type::BaseModel
               attr_accessor tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier]
 
               def initialize: (
@@ -1288,7 +1288,7 @@ module Orb
                   per_unit_maximum: String?
                 }
 
-              class Tier < Orb::BaseModel
+              class Tier < Orb::Internal::Type::BaseModel
                 attr_accessor bps: Float
 
                 attr_accessor minimum_amount: String
@@ -1314,7 +1314,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration::duration_unit
@@ -1329,7 +1329,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -1344,7 +1344,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration::duration_unit
@@ -1359,7 +1359,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -1388,7 +1388,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingBpsPrice < Orb::BaseModel
+          class NewFloatingBpsPrice < Orb::Internal::Type::BaseModel
             attr_accessor bps_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BpsConfig
 
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::cadence
@@ -1441,7 +1441,7 @@ module Orb
 
             type bps_config = { bps: Float, per_unit_maximum: String? }
 
-            class BpsConfig < Orb::BaseModel
+            class BpsConfig < Orb::Internal::Type::BaseModel
               attr_accessor bps: Float
 
               attr_accessor per_unit_maximum: String?
@@ -1460,7 +1460,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -1478,7 +1478,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration::duration_unit
@@ -1493,7 +1493,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -1508,7 +1508,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration::duration_unit
@@ -1523,7 +1523,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -1552,7 +1552,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingBulkBpsPrice < Orb::BaseModel
+          class NewFloatingBulkBpsPrice < Orb::Internal::Type::BaseModel
             attr_accessor bulk_bps_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig
 
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::cadence
@@ -1608,7 +1608,7 @@ module Orb
                 tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier]
               }
 
-            class BulkBpsConfig < Orb::BaseModel
+            class BulkBpsConfig < Orb::Internal::Type::BaseModel
               attr_accessor tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier]
 
               def initialize: (
@@ -1624,7 +1624,7 @@ module Orb
                   per_unit_maximum: String?
                 }
 
-              class Tier < Orb::BaseModel
+              class Tier < Orb::Internal::Type::BaseModel
                 attr_accessor bps: Float
 
                 attr_accessor maximum_amount: String?
@@ -1650,7 +1650,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -1668,7 +1668,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration::duration_unit
@@ -1683,7 +1683,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -1698,7 +1698,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration::duration_unit
@@ -1713,7 +1713,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -1742,7 +1742,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingBulkPrice < Orb::BaseModel
+          class NewFloatingBulkPrice < Orb::Internal::Type::BaseModel
             attr_accessor bulk_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig
 
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::cadence
@@ -1798,7 +1798,7 @@ module Orb
                 tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier]
               }
 
-            class BulkConfig < Orb::BaseModel
+            class BulkConfig < Orb::Internal::Type::BaseModel
               attr_accessor tiers: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier]
 
               def initialize: (
@@ -1809,7 +1809,7 @@ module Orb
 
               type tier = { unit_amount: String, maximum_units: Float? }
 
-              class Tier < Orb::BaseModel
+              class Tier < Orb::Internal::Type::BaseModel
                 attr_accessor unit_amount: String
 
                 attr_accessor maximum_units: Float?
@@ -1832,7 +1832,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -1850,7 +1850,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration::duration_unit
@@ -1865,7 +1865,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -1880,7 +1880,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration::duration_unit
@@ -1895,7 +1895,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -1924,7 +1924,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingThresholdTotalAmountPrice < Orb::BaseModel
+          class NewFloatingThresholdTotalAmountPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::cadence
 
             attr_accessor currency: String
@@ -1984,7 +1984,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -2002,7 +2002,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration::duration_unit
@@ -2017,7 +2017,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -2032,7 +2032,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration::duration_unit
@@ -2047,7 +2047,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -2076,7 +2076,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingTieredPackagePrice < Orb::BaseModel
+          class NewFloatingTieredPackagePrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::cadence
 
             attr_accessor currency: String
@@ -2136,7 +2136,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -2154,7 +2154,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration::duration_unit
@@ -2169,7 +2169,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -2184,7 +2184,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
@@ -2199,7 +2199,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -2228,7 +2228,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingGroupedTieredPrice < Orb::BaseModel
+          class NewFloatingGroupedTieredPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::cadence
 
             attr_accessor currency: String
@@ -2288,7 +2288,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -2306,7 +2306,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration::duration_unit
@@ -2321,7 +2321,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -2336,7 +2336,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration::duration_unit
@@ -2351,7 +2351,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -2380,7 +2380,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingMaxGroupTieredPackagePrice < Orb::BaseModel
+          class NewFloatingMaxGroupTieredPackagePrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::cadence
 
             attr_accessor currency: String
@@ -2440,7 +2440,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -2458,7 +2458,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration::duration_unit
@@ -2473,7 +2473,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -2488,7 +2488,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
@@ -2503,7 +2503,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -2532,7 +2532,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingTieredWithMinimumPrice < Orb::BaseModel
+          class NewFloatingTieredWithMinimumPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::cadence
 
             attr_accessor currency: String
@@ -2592,7 +2592,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -2610,7 +2610,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration::duration_unit
@@ -2625,7 +2625,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -2640,7 +2640,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration::duration_unit
@@ -2655,7 +2655,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -2684,7 +2684,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingPackageWithAllocationPrice < Orb::BaseModel
+          class NewFloatingPackageWithAllocationPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::cadence
 
             attr_accessor currency: String
@@ -2744,7 +2744,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -2762,7 +2762,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration::duration_unit
@@ -2777,7 +2777,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -2792,7 +2792,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration::duration_unit
@@ -2807,7 +2807,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -2836,7 +2836,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingTieredPackageWithMinimumPrice < Orb::BaseModel
+          class NewFloatingTieredPackageWithMinimumPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::cadence
 
             attr_accessor currency: String
@@ -2896,7 +2896,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -2914,7 +2914,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration::duration_unit
@@ -2929,7 +2929,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -2944,7 +2944,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration::duration_unit
@@ -2959,7 +2959,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -2988,7 +2988,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingUnitWithPercentPrice < Orb::BaseModel
+          class NewFloatingUnitWithPercentPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::cadence
 
             attr_accessor currency: String
@@ -3048,7 +3048,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -3066,7 +3066,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration::duration_unit
@@ -3081,7 +3081,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -3096,7 +3096,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration::duration_unit
@@ -3111,7 +3111,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -3140,7 +3140,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingTieredWithProrationPrice < Orb::BaseModel
+          class NewFloatingTieredWithProrationPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::cadence
 
             attr_accessor currency: String
@@ -3200,7 +3200,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -3218,7 +3218,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration::duration_unit
@@ -3233,7 +3233,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -3248,7 +3248,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration::duration_unit
@@ -3263,7 +3263,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -3292,7 +3292,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingUnitWithProrationPrice < Orb::BaseModel
+          class NewFloatingUnitWithProrationPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::cadence
 
             attr_accessor currency: String
@@ -3352,7 +3352,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -3370,7 +3370,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration::duration_unit
@@ -3385,7 +3385,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -3400,7 +3400,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration::duration_unit
@@ -3415,7 +3415,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -3444,7 +3444,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingGroupedAllocationPrice < Orb::BaseModel
+          class NewFloatingGroupedAllocationPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::cadence
 
             attr_accessor currency: String
@@ -3504,7 +3504,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -3522,7 +3522,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration::duration_unit
@@ -3537,7 +3537,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -3552,7 +3552,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration::duration_unit
@@ -3567,7 +3567,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -3596,7 +3596,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingGroupedWithProratedMinimumPrice < Orb::BaseModel
+          class NewFloatingGroupedWithProratedMinimumPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::cadence
 
             attr_accessor currency: String
@@ -3656,7 +3656,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -3674,7 +3674,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration::duration_unit
@@ -3689,7 +3689,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -3704,7 +3704,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::duration_unit
@@ -3719,7 +3719,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -3748,7 +3748,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingGroupedWithMeteredMinimumPrice < Orb::BaseModel
+          class NewFloatingGroupedWithMeteredMinimumPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::cadence
 
             attr_accessor currency: String
@@ -3808,7 +3808,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -3826,7 +3826,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::duration_unit
@@ -3841,7 +3841,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -3856,7 +3856,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::duration_unit
@@ -3871,7 +3871,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -3900,7 +3900,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingMatrixWithDisplayNamePrice < Orb::BaseModel
+          class NewFloatingMatrixWithDisplayNamePrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::cadence
 
             attr_accessor currency: String
@@ -3960,7 +3960,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -3978,7 +3978,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration::duration_unit
@@ -3993,7 +3993,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -4008,7 +4008,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::duration_unit
@@ -4023,7 +4023,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -4052,7 +4052,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingBulkWithProrationPrice < Orb::BaseModel
+          class NewFloatingBulkWithProrationPrice < Orb::Internal::Type::BaseModel
             attr_accessor bulk_with_proration_config: ::Hash[Symbol, top]
 
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::cadence
@@ -4112,7 +4112,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -4130,7 +4130,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration::duration_unit
@@ -4145,7 +4145,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -4160,7 +4160,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration::duration_unit
@@ -4175,7 +4175,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -4204,7 +4204,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingGroupedTieredPackagePrice < Orb::BaseModel
+          class NewFloatingGroupedTieredPackagePrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::cadence
 
             attr_accessor currency: String
@@ -4264,7 +4264,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -4282,7 +4282,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration::duration_unit
@@ -4297,7 +4297,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -4312,7 +4312,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration::duration_unit
@@ -4327,7 +4327,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -4356,7 +4356,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingScalableMatrixWithUnitPricingPrice < Orb::BaseModel
+          class NewFloatingScalableMatrixWithUnitPricingPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::cadence
 
             attr_accessor currency: String
@@ -4416,7 +4416,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -4434,7 +4434,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::duration_unit
@@ -4449,7 +4449,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -4464,7 +4464,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::duration_unit
@@ -4479,7 +4479,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -4508,7 +4508,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingScalableMatrixWithTieredPricingPrice < Orb::BaseModel
+          class NewFloatingScalableMatrixWithTieredPricingPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::cadence
 
             attr_accessor currency: String
@@ -4568,7 +4568,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -4586,7 +4586,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::duration_unit
@@ -4601,7 +4601,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -4616,7 +4616,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::duration_unit
@@ -4631,7 +4631,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -4660,7 +4660,7 @@ module Orb
               metadata: ::Hash[Symbol, String?]?
             }
 
-          class NewFloatingCumulativeGroupedBulkPrice < Orb::BaseModel
+          class NewFloatingCumulativeGroupedBulkPrice < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::cadence
 
             attr_accessor cumulative_grouped_bulk_config: ::Hash[Symbol, top]
@@ -4720,7 +4720,7 @@ module Orb
               | :custom
 
             module Cadence
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               ANNUAL: :annual
               SEMI_ANNUAL: :semi_annual
@@ -4738,7 +4738,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration::duration_unit
               }
 
-            class BillingCycleConfiguration < Orb::BaseModel
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration::duration_unit
@@ -4753,7 +4753,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -4768,7 +4768,7 @@ module Orb
                 duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::duration_unit
               }
 
-            class InvoicingCycleConfiguration < Orb::BaseModel
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               attr_accessor duration: Integer
 
               attr_accessor duration_unit: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::duration_unit
@@ -4783,7 +4783,7 @@ module Orb
               type duration_unit = :day | :month
 
               module DurationUnit
-                extend Orb::Enum
+                extend Orb::Internal::Type::Enum
 
                 DAY: :day
                 MONTH: :month
@@ -4804,7 +4804,7 @@ module Orb
           end_date: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::end_date?
         }
 
-      class AddAdjustment < Orb::BaseModel
+      class AddAdjustment < Orb::Internal::Type::BaseModel
         attr_accessor adjustment: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::adjustment
 
         attr_accessor start_date: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::start_date
@@ -4827,7 +4827,7 @@ module Orb
           | Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMaximum
 
         module Adjustment
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           type new_percentage_discount =
             {
@@ -4837,7 +4837,7 @@ module Orb
               is_invoice_level: bool
             }
 
-          class NewPercentageDiscount < Orb::BaseModel
+          class NewPercentageDiscount < Orb::Internal::Type::BaseModel
             attr_accessor adjustment_type: :percentage_discount
 
             attr_accessor applies_to_price_ids: ::Array[String]
@@ -4866,7 +4866,7 @@ module Orb
               is_invoice_level: bool
             }
 
-          class NewUsageDiscount < Orb::BaseModel
+          class NewUsageDiscount < Orb::Internal::Type::BaseModel
             attr_accessor adjustment_type: :usage_discount
 
             attr_accessor applies_to_price_ids: ::Array[String]
@@ -4895,7 +4895,7 @@ module Orb
               is_invoice_level: bool
             }
 
-          class NewAmountDiscount < Orb::BaseModel
+          class NewAmountDiscount < Orb::Internal::Type::BaseModel
             attr_accessor adjustment_type: :amount_discount
 
             attr_accessor amount_discount: String
@@ -4925,7 +4925,7 @@ module Orb
               is_invoice_level: bool
             }
 
-          class NewMinimum < Orb::BaseModel
+          class NewMinimum < Orb::Internal::Type::BaseModel
             attr_accessor adjustment_type: :minimum
 
             attr_accessor applies_to_price_ids: ::Array[String]
@@ -4957,7 +4957,7 @@ module Orb
               is_invoice_level: bool
             }
 
-          class NewMaximum < Orb::BaseModel
+          class NewMaximum < Orb::Internal::Type::BaseModel
             attr_accessor adjustment_type: :maximum
 
             attr_accessor applies_to_price_ids: ::Array[String]
@@ -4984,7 +4984,7 @@ module Orb
         type start_date = Time | Orb::Models::billing_cycle_relative_date
 
         module StartDate
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           def self?.variants: -> [Time, Orb::Models::billing_cycle_relative_date]
         end
@@ -4992,7 +4992,7 @@ module Orb
         type end_date = Time | Orb::Models::billing_cycle_relative_date
 
         module EndDate
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           def self?.variants: -> [Time, Orb::Models::billing_cycle_relative_date]
         end
@@ -5009,7 +5009,7 @@ module Orb
           usage_customer_ids: ::Array[String]?
         }
 
-      class Edit < Orb::BaseModel
+      class Edit < Orb::Internal::Type::BaseModel
         attr_accessor price_interval_id: String
 
         attr_accessor billing_cycle_day: Integer?
@@ -5043,7 +5043,7 @@ module Orb
         type end_date = Time | Orb::Models::billing_cycle_relative_date
 
         module EndDate
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           def self?.variants: -> [Time, Orb::Models::billing_cycle_relative_date]
         end
@@ -5051,7 +5051,7 @@ module Orb
         type fixed_fee_quantity_transition =
           { effective_date: Time, quantity: Integer }
 
-        class FixedFeeQuantityTransition < Orb::BaseModel
+        class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
           attr_accessor effective_date: Time
 
           attr_accessor quantity: Integer
@@ -5064,7 +5064,7 @@ module Orb
         type start_date = Time | Orb::Models::billing_cycle_relative_date
 
         module StartDate
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           def self?.variants: -> [Time, Orb::Models::billing_cycle_relative_date]
         end
@@ -5077,7 +5077,7 @@ module Orb
           start_date: Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment::start_date
         }
 
-      class EditAdjustment < Orb::BaseModel
+      class EditAdjustment < Orb::Internal::Type::BaseModel
         attr_accessor adjustment_interval_id: String
 
         attr_accessor end_date: Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment::end_date?
@@ -5099,7 +5099,7 @@ module Orb
         type end_date = Time | Orb::Models::billing_cycle_relative_date
 
         module EndDate
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           def self?.variants: -> [Time, Orb::Models::billing_cycle_relative_date]
         end
@@ -5107,7 +5107,7 @@ module Orb
         type start_date = Time | Orb::Models::billing_cycle_relative_date
 
         module StartDate
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           def self?.variants: -> [Time, Orb::Models::billing_cycle_relative_date]
         end

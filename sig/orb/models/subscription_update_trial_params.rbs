@@ -7,7 +7,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class SubscriptionUpdateTrialParams < Orb::BaseModel
+    class SubscriptionUpdateTrialParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -28,7 +28,7 @@ module Orb
       type trial_end_date = Time | :immediate
 
       module TrialEndDate
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
         def self?.variants: -> [Time, :immediate]
 

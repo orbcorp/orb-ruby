@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Coupons#create
-    class CouponCreateParams < Orb::BaseModel
+    class CouponCreateParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -42,10 +42,10 @@ module Orb
       #   #
       #   def initialize(discount:, redemption_code:, duration_in_months: nil, max_redemptions: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       module Discount
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
         discriminator :discount_type
 
@@ -53,7 +53,7 @@ module Orb
 
         variant :amount, -> { Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount }
 
-        class NewCouponPercentageDiscount < Orb::BaseModel
+        class NewCouponPercentageDiscount < Orb::Internal::Type::BaseModel
           # @!attribute discount_type
           #
           #   @return [Symbol, :percentage]
@@ -70,10 +70,10 @@ module Orb
           #   #
           #   def initialize(percentage_discount:, discount_type: :percentage, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
-        class NewCouponAmountDiscount < Orb::BaseModel
+        class NewCouponAmountDiscount < Orb::Internal::Type::BaseModel
           # @!attribute amount_discount
           #
           #   @return [String]
@@ -90,7 +90,7 @@ module Orb
           #   #
           #   def initialize(amount_discount:, discount_type: :amount, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
         # @!parse

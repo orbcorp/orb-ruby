@@ -3,7 +3,7 @@ module Orb
     type alert_disable_params =
       { subscription_id: String? } & Orb::Internal::Type::request_parameters
 
-    class AlertDisableParams < Orb::BaseModel
+    class AlertDisableParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 

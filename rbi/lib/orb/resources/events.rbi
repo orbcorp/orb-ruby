@@ -62,7 +62,7 @@ module Orb
           timestamp: Time,
           customer_id: T.nilable(String),
           external_customer_id: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::EventUpdateResponse)
       end
@@ -129,7 +129,7 @@ module Orb
       sig do
         params(
           event_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::EventDeprecateResponse)
       end
@@ -342,10 +342,10 @@ module Orb
       #   ```
       sig do
         params(
-          events: T::Array[T.any(Orb::Models::EventIngestParams::Event, Orb::Internal::Util::AnyHash)],
+          events: T::Array[T.any(Orb::Models::EventIngestParams::Event, Orb::Internal::AnyHash)],
           backfill_id: T.nilable(String),
           debug: T::Boolean,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::EventIngestResponse)
       end
@@ -382,7 +382,7 @@ module Orb
           event_ids: T::Array[String],
           timeframe_end: T.nilable(Time),
           timeframe_start: T.nilable(Time),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::EventSearchResponse)
       end

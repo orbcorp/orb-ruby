@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Events#search
-    class EventSearchParams < Orb::BaseModel
+    class EventSearchParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -15,7 +15,7 @@ module Orb
       #     sensitively.
       #
       #   @return [Array<String>]
-      required :event_ids, Orb::ArrayOf[String]
+      required :event_ids, Orb::Internal::Type::ArrayOf[String]
 
       # @!attribute timeframe_end
       #   The end of the timeframe, exclusive, in which to search events. If not
@@ -39,7 +39,7 @@ module Orb
       #   #
       #   def initialize(event_ids:, timeframe_end: nil, timeframe_start: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
     end
   end
 end

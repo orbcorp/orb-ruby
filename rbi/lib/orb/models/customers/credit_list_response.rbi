@@ -3,7 +3,7 @@
 module Orb
   module Models
     module Customers
-      class CreditListResponse < Orb::BaseModel
+      class CreditListResponse < Orb::Internal::Type::BaseModel
         sig { returns(String) }
         attr_accessor :id
 
@@ -66,7 +66,7 @@ module Orb
         end
 
         module Status
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Customers::CreditListResponse::Status) }
           OrSymbol =

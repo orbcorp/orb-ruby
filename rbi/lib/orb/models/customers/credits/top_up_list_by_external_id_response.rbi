@@ -4,7 +4,7 @@ module Orb
   module Models
     module Customers
       module Credits
-        class TopUpListByExternalIDResponse < Orb::BaseModel
+        class TopUpListByExternalIDResponse < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
@@ -25,7 +25,7 @@ module Orb
             params(
               invoice_settings: T.any(
                 Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::InvoiceSettings,
-                Orb::Internal::Util::AnyHash
+                Orb::Internal::AnyHash
               )
             )
               .void
@@ -61,7 +61,7 @@ module Orb
               currency: String,
               invoice_settings: T.any(
                 Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::InvoiceSettings,
-                Orb::Internal::Util::AnyHash
+                Orb::Internal::AnyHash
               ),
               per_unit_cost_basis: String,
               threshold: String,
@@ -100,7 +100,7 @@ module Orb
           def to_hash
           end
 
-          class InvoiceSettings < Orb::BaseModel
+          class InvoiceSettings < Orb::Internal::Type::BaseModel
             # Whether the credits purchase invoice should auto collect with the customer's
             #   saved payment method.
             sig { returns(T::Boolean) }
@@ -154,7 +154,7 @@ module Orb
 
           # The unit of expires_after.
           module ExpiresAfterUnit
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::ExpiresAfterUnit) }
