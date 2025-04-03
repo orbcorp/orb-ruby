@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0-alpha.37 (2025-04-03)
+
+Full Changelog: [v0.1.0-alpha.36...v0.1.0-alpha.37](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.36...v0.1.0-alpha.37)
+
+### Bug Fixes
+
+* pre-release version string should match ruby, not semver conventions ([#217](https://github.com/orbcorp/orb-ruby/issues/217)) ([a625486](https://github.com/orbcorp/orb-ruby/commit/a625486906ad75706e32c1c0542be9dafe9a8934))
+
+
+### Chores
+
+* demonstrate how to make undocumented requests in README ([#216](https://github.com/orbcorp/orb-ruby/issues/216)) ([fb65338](https://github.com/orbcorp/orb-ruby/commit/fb65338138069e09385b7d8f0f21eab810c39b91))
+* **internal:** codegen related update ([#214](https://github.com/orbcorp/orb-ruby/issues/214)) ([3c5cd96](https://github.com/orbcorp/orb-ruby/commit/3c5cd96ec0ef0d725e327d40979456c0dea9b434))
+* **internal:** codegen related update ([#215](https://github.com/orbcorp/orb-ruby/issues/215)) ([a7b225e](https://github.com/orbcorp/orb-ruby/commit/a7b225e091e967479f57ec0ba956d39e1fedb367))
+* **internal:** version bump ([#211](https://github.com/orbcorp/orb-ruby/issues/211)) ([7c53448](https://github.com/orbcorp/orb-ruby/commit/7c53448564312f3fb638811f826366fcc267caa5))
+* move private classes into internal module ([#213](https://github.com/orbcorp/orb-ruby/issues/213)) ([9217e7b](https://github.com/orbcorp/orb-ruby/commit/9217e7bff4eb522d63dde18e65ee5075ba851ab7))
+
 ## 0.1.0-alpha.36 (2025-04-02)
 
 Full Changelog: [v0.1.0-alpha.35...v0.1.0-alpha.36](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.35...v0.1.0-alpha.36)
