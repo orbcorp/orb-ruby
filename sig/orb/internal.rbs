@@ -1,4 +1,5 @@
 module Orb
   module Internal
+    OMIT: top
   end
 end
