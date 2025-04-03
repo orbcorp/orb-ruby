@@ -131,7 +131,7 @@ class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
     response = @orb.invoices.list
 
     assert_pattern do
-      response => Orb::Page
+      response => Orb::Internal::Page
     end
 
     row = response.to_enum.first

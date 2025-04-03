@@ -24,7 +24,9 @@ module Orb
 
         sig do
           params(
-            credit_note: T.nilable(T.any(Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote, Orb::Util::AnyHash))
+            credit_note: T.nilable(
+              T.any(Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote, Orb::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -44,7 +46,9 @@ module Orb
 
         sig do
           params(
-            invoice: T.nilable(T.any(Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice, Orb::Util::AnyHash))
+            invoice: T.nilable(
+              T.any(Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice, Orb::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -64,10 +68,14 @@ module Orb
             action: Orb::Models::Customers::BalanceTransactionCreateResponse::Action::OrSymbol,
             amount: String,
             created_at: Time,
-            credit_note: T.nilable(T.any(Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote, Orb::Util::AnyHash)),
+            credit_note: T.nilable(
+              T.any(Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote, Orb::Internal::Util::AnyHash)
+            ),
             description: T.nilable(String),
             ending_balance: String,
-            invoice: T.nilable(T.any(Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice, Orb::Util::AnyHash)),
+            invoice: T.nilable(
+              T.any(Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice, Orb::Internal::Util::AnyHash)
+            ),
             starting_balance: String,
             type: Orb::Models::Customers::BalanceTransactionCreateResponse::Type::OrSymbol
           )

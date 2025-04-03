@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Prices#update
     class PriceUpdateParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute metadata
       #   User-specified key/value pairs for the resource. Individual keys can be removed

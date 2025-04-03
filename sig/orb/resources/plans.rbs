@@ -31,7 +31,7 @@ module Orb
         ?limit: Integer,
         ?status: Orb::Models::PlanListParams::status,
         ?request_options: Orb::request_opts
-      ) -> Orb::Page[Orb::Models::Plan]
+      ) -> Orb::Internal::Page[Orb::Models::Plan]
 
       def fetch: (
         String plan_id,

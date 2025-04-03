@@ -5,11 +5,11 @@ module Orb
         trial_end_date: Orb::Models::SubscriptionUpdateTrialParams::trial_end_date,
         shift: bool
       }
-      & Orb::request_parameters
+      & Orb::Internal::Type::request_parameters
 
     class SubscriptionUpdateTrialParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor trial_end_date: Orb::Models::SubscriptionUpdateTrialParams::trial_end_date
 

@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Subscriptions#update_fixed_fee_quantity
     class SubscriptionUpdateFixedFeeQuantityParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute price_id
       #   Price for which the quantity should be updated. Must be a fixed fee.

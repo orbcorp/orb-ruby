@@ -7,7 +7,7 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
     response = @orb.customers.credits.ledger.list("customer_id")
 
     assert_pattern do
-      response => Orb::Page
+      response => Orb::Internal::Page
     end
 
     row = response.to_enum.first
@@ -443,7 +443,7 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
     response = @orb.customers.credits.ledger.list_by_external_id("external_customer_id")
 
     assert_pattern do
-      response => Orb::Page
+      response => Orb::Internal::Page
     end
 
     row = response.to_enum.first

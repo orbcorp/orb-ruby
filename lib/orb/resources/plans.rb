@@ -71,7 +71,7 @@ module Orb
       # @param status [Symbol, Orb::Models::PlanListParams::Status]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Page<Orb::Models::Plan>]
+      # @return [Orb::Internal::Page<Orb::Models::Plan>]
       #
       # @see Orb::Models::PlanListParams
       def list(params = {})
@@ -80,7 +80,7 @@ module Orb
           method: :get,
           path: "plans",
           query: parsed,
-          page: Orb::Page,
+          page: Orb::Internal::Page,
           model: Orb::Models::Plan,
           options: options
         )

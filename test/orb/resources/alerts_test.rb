@@ -55,7 +55,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
     response = @orb.alerts.list
 
     assert_pattern do
-      response => Orb::Page
+      response => Orb::Internal::Page
     end
 
     row = response.to_enum.first

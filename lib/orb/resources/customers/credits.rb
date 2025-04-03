@@ -27,7 +27,7 @@ module Orb
         # @param limit [Integer]
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Orb::Page<Orb::Models::Customers::CreditListResponse>]
+        # @return [Orb::Internal::Page<Orb::Models::Customers::CreditListResponse>]
         #
         # @see Orb::Models::Customers::CreditListParams
         def list(customer_id, params = {})
@@ -36,7 +36,7 @@ module Orb
             method: :get,
             path: ["customers/%1$s/credits", customer_id],
             query: parsed,
-            page: Orb::Page,
+            page: Orb::Internal::Page,
             model: Orb::Models::Customers::CreditListResponse,
             options: options
           )
@@ -59,7 +59,7 @@ module Orb
         # @param limit [Integer]
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Orb::Page<Orb::Models::Customers::CreditListByExternalIDResponse>]
+        # @return [Orb::Internal::Page<Orb::Models::Customers::CreditListByExternalIDResponse>]
         #
         # @see Orb::Models::Customers::CreditListByExternalIDParams
         def list_by_external_id(external_customer_id, params = {})
@@ -68,7 +68,7 @@ module Orb
             method: :get,
             path: ["customers/external_customer_id/%1$s/credits", external_customer_id],
             query: parsed,
-            page: Orb::Page,
+            page: Orb::Internal::Page,
             model: Orb::Models::Customers::CreditListByExternalIDResponse,
             options: options
           )

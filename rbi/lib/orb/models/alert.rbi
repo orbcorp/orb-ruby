@@ -19,7 +19,7 @@ module Orb
       sig { returns(T.nilable(Orb::Models::Alert::Customer)) }
       attr_reader :customer
 
-      sig { params(customer: T.nilable(T.any(Orb::Models::Alert::Customer, Orb::Util::AnyHash))).void }
+      sig { params(customer: T.nilable(T.any(Orb::Models::Alert::Customer, Orb::Internal::Util::AnyHash))).void }
       attr_writer :customer
 
       # Whether the alert is enabled or disabled.
@@ -30,21 +30,21 @@ module Orb
       sig { returns(T.nilable(Orb::Models::Alert::Metric)) }
       attr_reader :metric
 
-      sig { params(metric: T.nilable(T.any(Orb::Models::Alert::Metric, Orb::Util::AnyHash))).void }
+      sig { params(metric: T.nilable(T.any(Orb::Models::Alert::Metric, Orb::Internal::Util::AnyHash))).void }
       attr_writer :metric
 
       # The plan the alert applies to.
       sig { returns(T.nilable(Orb::Models::Alert::Plan)) }
       attr_reader :plan
 
-      sig { params(plan: T.nilable(T.any(Orb::Models::Alert::Plan, Orb::Util::AnyHash))).void }
+      sig { params(plan: T.nilable(T.any(Orb::Models::Alert::Plan, Orb::Internal::Util::AnyHash))).void }
       attr_writer :plan
 
       # The subscription the alert applies to.
       sig { returns(T.nilable(Orb::Models::Alert::Subscription)) }
       attr_reader :subscription
 
-      sig { params(subscription: T.nilable(T.any(Orb::Models::Alert::Subscription, Orb::Util::AnyHash))).void }
+      sig { params(subscription: T.nilable(T.any(Orb::Models::Alert::Subscription, Orb::Internal::Util::AnyHash))).void }
       attr_writer :subscription
 
       # The thresholds that define the conditions under which the alert will be
@@ -66,12 +66,12 @@ module Orb
           id: String,
           created_at: Time,
           currency: T.nilable(String),
-          customer: T.nilable(T.any(Orb::Models::Alert::Customer, Orb::Util::AnyHash)),
+          customer: T.nilable(T.any(Orb::Models::Alert::Customer, Orb::Internal::Util::AnyHash)),
           enabled: T::Boolean,
-          metric: T.nilable(T.any(Orb::Models::Alert::Metric, Orb::Util::AnyHash)),
-          plan: T.nilable(T.any(Orb::Models::Alert::Plan, Orb::Util::AnyHash)),
-          subscription: T.nilable(T.any(Orb::Models::Alert::Subscription, Orb::Util::AnyHash)),
-          thresholds: T.nilable(T::Array[T.any(Orb::Models::Alert::Threshold, Orb::Util::AnyHash)]),
+          metric: T.nilable(T.any(Orb::Models::Alert::Metric, Orb::Internal::Util::AnyHash)),
+          plan: T.nilable(T.any(Orb::Models::Alert::Plan, Orb::Internal::Util::AnyHash)),
+          subscription: T.nilable(T.any(Orb::Models::Alert::Subscription, Orb::Internal::Util::AnyHash)),
+          thresholds: T.nilable(T::Array[T.any(Orb::Models::Alert::Threshold, Orb::Internal::Util::AnyHash)]),
           type: Orb::Models::Alert::Type::OrSymbol
         )
           .returns(T.attached_class)

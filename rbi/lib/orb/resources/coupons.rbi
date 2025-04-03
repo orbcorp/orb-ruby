@@ -12,13 +12,13 @@ module Orb
         params(
           discount: T.any(
             Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
-            Orb::Util::AnyHash,
+            Orb::Internal::Util::AnyHash,
             Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
           ),
           redemption_code: String,
           duration_in_months: T.nilable(Integer),
           max_redemptions: T.nilable(Integer),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
         )
           .returns(Orb::Models::Coupon)
       end
@@ -48,9 +48,9 @@ module Orb
           limit: Integer,
           redemption_code: T.nilable(String),
           show_archived: T.nilable(T::Boolean),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
         )
-          .returns(Orb::Page[Orb::Models::Coupon])
+          .returns(Orb::Internal::Page[Orb::Models::Coupon])
       end
       def list(
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -71,7 +71,10 @@ module Orb
       #   redeemed, and will be hidden from lists of active coupons. Additionally, once a
       #   coupon is archived, its redemption code can be reused for a different coupon.
       sig do
-        params(coupon_id: String, request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash)))
+        params(
+          coupon_id: String,
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+        )
           .returns(Orb::Models::Coupon)
       end
       def archive(coupon_id, request_options: {})
@@ -81,7 +84,10 @@ module Orb
       #   code, use the [List coupons](list-coupons) endpoint with the redemption_code
       #   parameter.
       sig do
-        params(coupon_id: String, request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Util::AnyHash)))
+        params(
+          coupon_id: String,
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+        )
           .returns(Orb::Models::Coupon)
       end
       def fetch(coupon_id, request_options: {})

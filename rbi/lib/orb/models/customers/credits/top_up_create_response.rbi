@@ -23,7 +23,7 @@ module Orb
 
           sig do
             params(
-              invoice_settings: T.any(Orb::Models::Customers::Credits::TopUpCreateResponse::InvoiceSettings, Orb::Util::AnyHash)
+              invoice_settings: T.any(Orb::Models::Customers::Credits::TopUpCreateResponse::InvoiceSettings, Orb::Internal::Util::AnyHash)
             )
               .void
           end
@@ -52,7 +52,7 @@ module Orb
               id: String,
               amount: String,
               currency: String,
-              invoice_settings: T.any(Orb::Models::Customers::Credits::TopUpCreateResponse::InvoiceSettings, Orb::Util::AnyHash),
+              invoice_settings: T.any(Orb::Models::Customers::Credits::TopUpCreateResponse::InvoiceSettings, Orb::Internal::Util::AnyHash),
               per_unit_cost_basis: String,
               threshold: String,
               expires_after: T.nilable(Integer),

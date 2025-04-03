@@ -3,8 +3,8 @@
 module Orb
   module Models
     class SubscriptionUpdateFixedFeeQuantityParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # Price for which the quantity should be updated. Must be a fixed fee.
       sig { returns(String) }
@@ -41,7 +41,7 @@ module Orb
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
           change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::OrSymbol,
           effective_date: T.nilable(Date),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Subscriptions#unschedule_fixed_fee_quantity_updates
     class SubscriptionUnscheduleFixedFeeQuantityUpdatesParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute price_id
       #   Price for which the updates should be cleared. Must be a fixed fee.

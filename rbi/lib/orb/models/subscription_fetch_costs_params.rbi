@@ -3,8 +3,8 @@
 module Orb
   module Models
     class SubscriptionFetchCostsParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # The currency or custom pricing unit to use.
       sig { returns(T.nilable(String)) }
@@ -31,7 +31,7 @@ module Orb
           timeframe_end: T.nilable(Time),
           timeframe_start: T.nilable(Time),
           view_mode: T.nilable(Orb::Models::SubscriptionFetchCostsParams::ViewMode::OrSymbol),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

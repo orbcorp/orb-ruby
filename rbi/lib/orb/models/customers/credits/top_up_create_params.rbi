@@ -5,8 +5,8 @@ module Orb
     module Customers
       module Credits
         class TopUpCreateParams < Orb::BaseModel
-          extend Orb::Type::RequestParameters::Converter
-          include Orb::RequestParameters
+          extend Orb::Internal::Type::RequestParameters::Converter
+          include Orb::Internal::Type::RequestParameters
 
           # The amount to increment when the threshold is reached.
           sig { returns(String) }
@@ -23,7 +23,7 @@ module Orb
 
           sig do
             params(
-              invoice_settings: T.any(Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings, Orb::Util::AnyHash)
+              invoice_settings: T.any(Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings, Orb::Internal::Util::AnyHash)
             )
               .void
           end
@@ -56,13 +56,13 @@ module Orb
             params(
               amount: String,
               currency: String,
-              invoice_settings: T.any(Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings, Orb::Util::AnyHash),
+              invoice_settings: T.any(Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings, Orb::Internal::Util::AnyHash),
               per_unit_cost_basis: String,
               threshold: String,
               active_from: T.nilable(Time),
               expires_after: T.nilable(Integer),
               expires_after_unit: T.nilable(Orb::Models::Customers::Credits::TopUpCreateParams::ExpiresAfterUnit::OrSymbol),
-              request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+              request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
             )
               .returns(T.attached_class)
           end

@@ -9,11 +9,11 @@ module Orb
         start_date_lt: Time?,
         start_date_lte: Time?
       }
-      & Orb::request_parameters
+      & Orb::Internal::Type::request_parameters
 
     class SubscriptionFetchScheduleParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor cursor: String?
 

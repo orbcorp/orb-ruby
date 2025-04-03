@@ -6,11 +6,11 @@ module Orb
         allow_invoice_credit_or_void: bool?,
         cancellation_date: Time?
       }
-      & Orb::request_parameters
+      & Orb::Internal::Type::request_parameters
 
     class SubscriptionCancelParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor cancel_option: Orb::Models::SubscriptionCancelParams::cancel_option
 

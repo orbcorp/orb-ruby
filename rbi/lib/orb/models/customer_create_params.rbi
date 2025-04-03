@@ -3,8 +3,8 @@
 module Orb
   module Models
     class CustomerCreateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # A valid customer email, to be used for notifications. When Orb triggers payment
       #   through a payment gateway, this email will be used for any automatically issued
@@ -21,7 +21,9 @@ module Orb
 
       sig do
         params(
-          accounting_sync_configuration: T.nilable(T.any(Orb::Models::CustomerCreateParams::AccountingSyncConfiguration, Orb::Util::AnyHash))
+          accounting_sync_configuration: T.nilable(
+            T.any(Orb::Models::CustomerCreateParams::AccountingSyncConfiguration, Orb::Internal::Util::AnyHash)
+          )
         )
           .void
       end
@@ -43,7 +45,7 @@ module Orb
 
       sig do
         params(
-          billing_address: T.nilable(T.any(Orb::Models::CustomerCreateParams::BillingAddress, Orb::Util::AnyHash))
+          billing_address: T.nilable(T.any(Orb::Models::CustomerCreateParams::BillingAddress, Orb::Internal::Util::AnyHash))
         )
           .void
       end
@@ -67,7 +69,12 @@ module Orb
       sig { returns(T.nilable(Orb::Models::CustomerCreateParams::Hierarchy)) }
       attr_reader :hierarchy
 
-      sig { params(hierarchy: T.nilable(T.any(Orb::Models::CustomerCreateParams::Hierarchy, Orb::Util::AnyHash))).void }
+      sig do
+        params(
+          hierarchy: T.nilable(T.any(Orb::Models::CustomerCreateParams::Hierarchy, Orb::Internal::Util::AnyHash))
+        )
+          .void
+      end
       attr_writer :hierarchy
 
       # User-specified key/value pairs for the resource. Individual keys can be removed
@@ -92,7 +99,7 @@ module Orb
 
       sig do
         params(
-          reporting_configuration: T.nilable(T.any(Orb::Models::CustomerCreateParams::ReportingConfiguration, Orb::Util::AnyHash))
+          reporting_configuration: T.nilable(T.any(Orb::Models::CustomerCreateParams::ReportingConfiguration, Orb::Internal::Util::AnyHash))
         )
           .void
       end
@@ -103,7 +110,7 @@ module Orb
 
       sig do
         params(
-          shipping_address: T.nilable(T.any(Orb::Models::CustomerCreateParams::ShippingAddress, Orb::Util::AnyHash))
+          shipping_address: T.nilable(T.any(Orb::Models::CustomerCreateParams::ShippingAddress, Orb::Internal::Util::AnyHash))
         )
           .void
       end
@@ -229,7 +236,10 @@ module Orb
       sig { returns(T.nilable(Orb::Models::CustomerCreateParams::TaxID)) }
       attr_reader :tax_id
 
-      sig { params(tax_id: T.nilable(T.any(Orb::Models::CustomerCreateParams::TaxID, Orb::Util::AnyHash))).void }
+      sig do
+        params(tax_id: T.nilable(T.any(Orb::Models::CustomerCreateParams::TaxID, Orb::Internal::Util::AnyHash)))
+          .void
+      end
       attr_writer :tax_id
 
       # A timezone identifier from the IANA timezone database, such as
@@ -242,29 +252,31 @@ module Orb
         params(
           email: String,
           name: String,
-          accounting_sync_configuration: T.nilable(T.any(Orb::Models::CustomerCreateParams::AccountingSyncConfiguration, Orb::Util::AnyHash)),
+          accounting_sync_configuration: T.nilable(
+            T.any(Orb::Models::CustomerCreateParams::AccountingSyncConfiguration, Orb::Internal::Util::AnyHash)
+          ),
           additional_emails: T.nilable(T::Array[String]),
           auto_collection: T.nilable(T::Boolean),
-          billing_address: T.nilable(T.any(Orb::Models::CustomerCreateParams::BillingAddress, Orb::Util::AnyHash)),
+          billing_address: T.nilable(T.any(Orb::Models::CustomerCreateParams::BillingAddress, Orb::Internal::Util::AnyHash)),
           currency: T.nilable(String),
           email_delivery: T.nilable(T::Boolean),
           external_customer_id: T.nilable(String),
-          hierarchy: T.nilable(T.any(Orb::Models::CustomerCreateParams::Hierarchy, Orb::Util::AnyHash)),
+          hierarchy: T.nilable(T.any(Orb::Models::CustomerCreateParams::Hierarchy, Orb::Internal::Util::AnyHash)),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           payment_provider: T.nilable(Orb::Models::CustomerCreateParams::PaymentProvider::OrSymbol),
           payment_provider_id: T.nilable(String),
-          reporting_configuration: T.nilable(T.any(Orb::Models::CustomerCreateParams::ReportingConfiguration, Orb::Util::AnyHash)),
-          shipping_address: T.nilable(T.any(Orb::Models::CustomerCreateParams::ShippingAddress, Orb::Util::AnyHash)),
+          reporting_configuration: T.nilable(T.any(Orb::Models::CustomerCreateParams::ReportingConfiguration, Orb::Internal::Util::AnyHash)),
+          shipping_address: T.nilable(T.any(Orb::Models::CustomerCreateParams::ShippingAddress, Orb::Internal::Util::AnyHash)),
           tax_configuration: T.nilable(
             T.any(
               Orb::Models::CustomerCreateParams::TaxConfiguration::NewAvalaraTaxConfiguration,
-              Orb::Util::AnyHash,
+              Orb::Internal::Util::AnyHash,
               Orb::Models::CustomerCreateParams::TaxConfiguration::NewTaxJarConfiguration
             )
           ),
-          tax_id: T.nilable(T.any(Orb::Models::CustomerCreateParams::TaxID, Orb::Util::AnyHash)),
+          tax_id: T.nilable(T.any(Orb::Models::CustomerCreateParams::TaxID, Orb::Internal::Util::AnyHash)),
           timezone: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -342,7 +354,7 @@ module Orb
               T::Array[
               T.any(
                 Orb::Models::CustomerCreateParams::AccountingSyncConfiguration::AccountingProvider,
-                Orb::Util::AnyHash
+                Orb::Internal::Util::AnyHash
               )
               ]
             ),

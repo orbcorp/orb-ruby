@@ -37,7 +37,7 @@ class Orb::Test::Resources::CreditNotesTest < Orb::Test::ResourceTest
     response = @orb.credit_notes.list
 
     assert_pattern do
-      response => Orb::Page
+      response => Orb::Internal::Page
     end
 
     row = response.to_enum.first

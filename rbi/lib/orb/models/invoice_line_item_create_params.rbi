@@ -3,8 +3,8 @@
 module Orb
   module Models
     class InvoiceLineItemCreateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # The total amount in the invoice's currency to add to the line item.
       sig { returns(String) }
@@ -39,7 +39,7 @@ module Orb
           name: String,
           quantity: Float,
           start_date: Date,
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

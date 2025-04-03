@@ -42,7 +42,7 @@ module Orb
         params(
           id: String,
           archived_at: T.nilable(Time),
-          discount: T.any(Orb::Models::PercentageDiscount, Orb::Util::AnyHash, Orb::Models::AmountDiscount),
+          discount: T.any(Orb::Models::PercentageDiscount, Orb::Internal::Util::AnyHash, Orb::Models::AmountDiscount),
           duration_in_months: T.nilable(Integer),
           max_redemptions: T.nilable(Integer),
           redemption_code: String,

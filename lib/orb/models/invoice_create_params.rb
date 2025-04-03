@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Invoices#create
     class InvoiceCreateParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute currency
       #   An ISO 4217 currency string. Must be the same as the customer's currency if it

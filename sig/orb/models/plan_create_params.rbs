@@ -11,11 +11,11 @@ module Orb
         net_terms: Integer?,
         status: Orb::Models::PlanCreateParams::status
       }
-      & Orb::request_parameters
+      & Orb::Internal::Type::request_parameters
 
     class PlanCreateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor currency: String
 

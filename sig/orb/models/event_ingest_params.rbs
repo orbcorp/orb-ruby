@@ -6,11 +6,11 @@ module Orb
         backfill_id: String?,
         debug: bool
       }
-      & Orb::request_parameters
+      & Orb::Internal::Type::request_parameters
 
     class EventIngestParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor events: ::Array[Orb::Models::EventIngestParams::Event]
 

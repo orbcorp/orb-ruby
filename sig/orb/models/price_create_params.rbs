@@ -45,11 +45,11 @@ module Orb
         scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
         cumulative_grouped_bulk_config: ::Hash[Symbol, top]
       }
-      & Orb::request_parameters
+      & Orb::Internal::Type::request_parameters
 
     class PriceCreateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor cadence: Orb::Models::PriceCreateParams::cadence
 

@@ -13,7 +13,7 @@ module Orb
           ?include_all_blocks: bool,
           ?limit: Integer,
           ?request_options: Orb::request_opts
-        ) -> Orb::Page[Orb::Models::Customers::CreditListResponse]
+        ) -> Orb::Internal::Page[Orb::Models::Customers::CreditListResponse]
 
         def list_by_external_id: (
           String external_customer_id,
@@ -22,7 +22,7 @@ module Orb
           ?include_all_blocks: bool,
           ?limit: Integer,
           ?request_options: Orb::request_opts
-        ) -> Orb::Page[Orb::Models::Customers::CreditListByExternalIDResponse]
+        ) -> Orb::Internal::Page[Orb::Models::Customers::CreditListByExternalIDResponse]
 
         def initialize: (client: Orb::Client) -> void
       end

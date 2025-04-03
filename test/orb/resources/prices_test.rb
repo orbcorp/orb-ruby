@@ -1563,7 +1563,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
     response = @orb.prices.list
 
     assert_pattern do
-      response => Orb::Page
+      response => Orb::Internal::Page
     end
 
     row = response.to_enum.first

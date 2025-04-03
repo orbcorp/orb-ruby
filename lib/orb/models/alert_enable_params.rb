@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Alerts#enable
     class AlertEnableParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute subscription_id
       #   Used to update the status of a plan alert scoped to this subscription_id

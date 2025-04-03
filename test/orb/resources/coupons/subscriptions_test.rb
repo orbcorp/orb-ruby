@@ -7,7 +7,7 @@ class Orb::Test::Resources::Coupons::SubscriptionsTest < Orb::Test::ResourceTest
     response = @orb.coupons.subscriptions.list("coupon_id")
 
     assert_pattern do
-      response => Orb::Page
+      response => Orb::Internal::Page
     end
 
     row = response.to_enum.first

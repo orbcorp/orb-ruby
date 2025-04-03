@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::DimensionalPriceGroups#create
     class DimensionalPriceGroupCreateParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute billable_metric_id
       #

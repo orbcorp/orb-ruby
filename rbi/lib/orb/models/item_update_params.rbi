@@ -3,8 +3,8 @@
 module Orb
   module Models
     class ItemUpdateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       sig { returns(T.nilable(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection])) }
       attr_accessor :external_connections
@@ -14,9 +14,11 @@ module Orb
 
       sig do
         params(
-          external_connections: T.nilable(T::Array[T.any(Orb::Models::ItemUpdateParams::ExternalConnection, Orb::Util::AnyHash)]),
+          external_connections: T.nilable(
+            T::Array[T.any(Orb::Models::ItemUpdateParams::ExternalConnection, Orb::Internal::Util::AnyHash)]
+          ),
           name: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -5,8 +5,8 @@ module Orb
     # @see Orb::Resources::Subscriptions#fetch_costs
     class SubscriptionFetchCostsParams < Orb::BaseModel
       # @!parse
-      #   extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      #   extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # @!attribute currency
       #   The currency or custom pricing unit to use.

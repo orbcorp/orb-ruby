@@ -6,8 +6,8 @@ module Orb
       # @see Orb::Resources::Customers::BalanceTransactions#create
       class BalanceTransactionCreateParams < Orb::BaseModel
         # @!parse
-        #   extend Orb::Type::RequestParameters::Converter
-        include Orb::RequestParameters
+        #   extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
 
         # @!attribute amount
         #

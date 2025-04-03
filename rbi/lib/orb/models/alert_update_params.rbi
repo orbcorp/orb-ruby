@@ -3,8 +3,8 @@
 module Orb
   module Models
     class AlertUpdateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       # The thresholds that define the values at which the alert will be triggered.
       sig { returns(T::Array[Orb::Models::AlertUpdateParams::Threshold]) }
@@ -12,8 +12,8 @@ module Orb
 
       sig do
         params(
-          thresholds: T::Array[T.any(Orb::Models::AlertUpdateParams::Threshold, Orb::Util::AnyHash)],
-          request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+          thresholds: T::Array[T.any(Orb::Models::AlertUpdateParams::Threshold, Orb::Internal::Util::AnyHash)],
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

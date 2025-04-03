@@ -81,7 +81,7 @@ module Orb
         # @param limit [Integer]
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Orb::Page<Orb::Models::Events::BackfillListResponse>]
+        # @return [Orb::Internal::Page<Orb::Models::Events::BackfillListResponse>]
         #
         # @see Orb::Models::Events::BackfillListParams
         def list(params = {})
@@ -90,7 +90,7 @@ module Orb
             method: :get,
             path: "events/backfills",
             query: parsed,
-            page: Orb::Page,
+            page: Orb::Internal::Page,
             model: Orb::Models::Events::BackfillListResponse,
             options: options
           )

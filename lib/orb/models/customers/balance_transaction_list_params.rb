@@ -6,8 +6,8 @@ module Orb
       # @see Orb::Resources::Customers::BalanceTransactions#list
       class BalanceTransactionListParams < Orb::BaseModel
         # @!parse
-        #   extend Orb::Type::RequestParameters::Converter
-        include Orb::RequestParameters
+        #   extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
 
         # @!attribute cursor
         #   Cursor for pagination. This can be populated by the `next_cursor` value returned

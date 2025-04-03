@@ -5,8 +5,8 @@ module Orb
     module Customers
       module Credits
         class LedgerListParams < Orb::BaseModel
-          extend Orb::Type::RequestParameters::Converter
-          include Orb::RequestParameters
+          extend Orb::Internal::Type::RequestParameters::Converter
+          include Orb::Internal::Type::RequestParameters
 
           sig { returns(T.nilable(Time)) }
           attr_accessor :created_at_gt
@@ -57,7 +57,7 @@ module Orb
               entry_type: T.nilable(Orb::Models::Customers::Credits::LedgerListParams::EntryType::OrSymbol),
               limit: Integer,
               minimum_amount: T.nilable(String),
-              request_options: T.any(Orb::RequestOptions, Orb::Util::AnyHash)
+              request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
             )
               .returns(T.attached_class)
           end

@@ -1,11 +1,11 @@
 module Orb
   module Models
     type alert_enable_params =
-      { subscription_id: String? } & Orb::request_parameters
+      { subscription_id: String? } & Orb::Internal::Type::request_parameters
 
     class AlertEnableParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor subscription_id: String?
 

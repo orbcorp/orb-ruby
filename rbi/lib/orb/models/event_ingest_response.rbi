@@ -13,13 +13,13 @@ module Orb
       sig { returns(T.nilable(Orb::Models::EventIngestResponse::Debug)) }
       attr_reader :debug
 
-      sig { params(debug: T.nilable(T.any(Orb::Models::EventIngestResponse::Debug, Orb::Util::AnyHash))).void }
+      sig { params(debug: T.nilable(T.any(Orb::Models::EventIngestResponse::Debug, Orb::Internal::Util::AnyHash))).void }
       attr_writer :debug
 
       sig do
         params(
-          validation_failed: T::Array[T.any(Orb::Models::EventIngestResponse::ValidationFailed, Orb::Util::AnyHash)],
-          debug: T.nilable(T.any(Orb::Models::EventIngestResponse::Debug, Orb::Util::AnyHash))
+          validation_failed: T::Array[T.any(Orb::Models::EventIngestResponse::ValidationFailed, Orb::Internal::Util::AnyHash)],
+          debug: T.nilable(T.any(Orb::Models::EventIngestResponse::Debug, Orb::Internal::Util::AnyHash))
         )
           .returns(T.attached_class)
       end

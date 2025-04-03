@@ -1,0 +1,44 @@
+module Orb
+  module Internal
+    module Type
+      module Converter
+        type input = Orb::Internal::Type::Converter | Class
+
+        type state =
+          {
+            strictness: bool | :strong,
+            exactness: { yes: Integer, no: Integer, maybe: Integer },
+            branched: Integer
+          }
+
+        def coerce: (
+          top value,
+          state: Orb::Internal::Type::Converter::state
+        ) -> top
+
+        def dump: (top value) -> top
+
+        def self.type_info: (
+          {
+            const: (nil | bool | Integer | Float | Symbol)?,
+            enum: ^-> Orb::Internal::Type::Converter::input?,
+            union: ^-> Orb::Internal::Type::Converter::input?
+          }
+          | ^-> Orb::Internal::Type::Converter::input
+          | Orb::Internal::Type::Converter::input spec
+        ) -> (^-> top)
+
+        def self.coerce: (
+          Orb::Internal::Type::Converter::input target,
+          top value,
+          ?state: Orb::Internal::Type::Converter::state
+        ) -> top
+
+        def self.dump: (
+          Orb::Internal::Type::Converter::input target,
+          top value
+        ) -> top
+      end
+    end
+  end
+end

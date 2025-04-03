@@ -94,7 +94,7 @@ class Orb::Test::Resources::PlansTest < Orb::Test::ResourceTest
     response = @orb.plans.list
 
     assert_pattern do
-      response => Orb::Page
+      response => Orb::Internal::Page
     end
 
     row = response.to_enum.first

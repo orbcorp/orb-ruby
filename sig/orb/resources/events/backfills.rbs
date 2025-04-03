@@ -17,7 +17,7 @@ module Orb
           ?cursor: String?,
           ?limit: Integer,
           ?request_options: Orb::request_opts
-        ) -> Orb::Page[Orb::Models::Events::BackfillListResponse]
+        ) -> Orb::Internal::Page[Orb::Models::Events::BackfillListResponse]
 
         def close: (
           String backfill_id,

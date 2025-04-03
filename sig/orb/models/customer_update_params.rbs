@@ -20,11 +20,11 @@ module Orb
         tax_configuration: Orb::Models::CustomerUpdateParams::tax_configuration?,
         tax_id: Orb::Models::CustomerUpdateParams::TaxID?
       }
-      & Orb::request_parameters
+      & Orb::Internal::Type::request_parameters
 
     class CustomerUpdateParams < Orb::BaseModel
-      extend Orb::Type::RequestParameters::Converter
-      include Orb::RequestParameters
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
 
       attr_accessor accounting_sync_configuration: Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration?
 

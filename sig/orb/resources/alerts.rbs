@@ -23,7 +23,7 @@ module Orb
         ?limit: Integer,
         ?subscription_id: String?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Page[Orb::Models::Alert]
+      ) -> Orb::Internal::Page[Orb::Models::Alert]
 
       def create_for_customer: (
         String customer_id,
