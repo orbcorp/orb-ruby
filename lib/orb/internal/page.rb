@@ -11,18 +11,6 @@ module Orb
     #   page.auto_paging_each do |coupon|
     #     puts(coupon)
     #   end
-    #
-    # @example
-    #   coupons =
-    #     page
-    #     .to_enum
-    #     .lazy
-    #     .select { _1.object_id.even? }
-    #     .map(&:itself)
-    #     .take(2)
-    #     .to_a
-    #
-    #   coupons => Array
     class Page
       include Orb::Internal::Type::BasePage
 
