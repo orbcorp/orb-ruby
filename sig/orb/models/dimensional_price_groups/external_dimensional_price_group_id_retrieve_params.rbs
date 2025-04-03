@@ -4,7 +4,7 @@ module Orb
       type external_dimensional_price_group_id_retrieve_params =
         {  } & Orb::Internal::Type::request_parameters
 
-      class ExternalDimensionalPriceGroupIDRetrieveParams < Orb::BaseModel
+      class ExternalDimensionalPriceGroupIDRetrieveParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 

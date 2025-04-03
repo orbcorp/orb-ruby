@@ -5,7 +5,7 @@ module Orb
     module Customers
       module Credits
         # @see Orb::Resources::Customers::Credits::TopUps#delete
-        class TopUpDeleteParams < Orb::BaseModel
+        class TopUpDeleteParams < Orb::Internal::Type::BaseModel
           # @!parse
           #   extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
@@ -21,7 +21,7 @@ module Orb
           #   #
           #   def initialize(customer_id:, request_options: {}, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
       end
     end

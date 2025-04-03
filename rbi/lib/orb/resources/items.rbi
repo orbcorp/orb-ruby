@@ -5,15 +5,7 @@ module Orb
     class Items
       # This endpoint is used to create an [Item](/core-concepts#item).
       sig do
-        params(
-          name: String,
-          request_options: T.nilable(
-            T.any(
-              Orb::RequestOptions,
-              Orb::Internal::Util::AnyHash
-            )
-          )
-        )
+        params(name: String, request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash)))
           .returns(Orb::Models::Item)
       end
       def create(
@@ -27,11 +19,9 @@ module Orb
       sig do
         params(
           item_id: String,
-          external_connections: T.nilable(
-            T::Array[T.any(Orb::Models::ItemUpdateParams::ExternalConnection, Orb::Internal::Util::AnyHash)]
-          ),
+          external_connections: T.nilable(T::Array[T.any(Orb::Models::ItemUpdateParams::ExternalConnection, Orb::Internal::AnyHash)]),
           name: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::Item)
       end
@@ -44,7 +34,7 @@ module Orb
         params(
           cursor: T.nilable(String),
           limit: Integer,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Internal::Page[Orb::Models::Item])
       end
@@ -62,7 +52,7 @@ module Orb
       sig do
         params(
           item_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::Item)
       end

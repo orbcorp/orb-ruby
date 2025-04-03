@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Subscriptions#update_trial
-    class SubscriptionUpdateTrialParams < Orb::BaseModel
+    class SubscriptionUpdateTrialParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -20,7 +20,7 @@ module Orb
       #     durations, but adjusting their absolute dates).
       #
       #   @return [Boolean, nil]
-      optional :shift, Orb::BooleanModel
+      optional :shift, Orb::Internal::Type::BooleanModel
 
       # @!parse
       #   # @return [Boolean]
@@ -33,12 +33,12 @@ module Orb
       #   #
       #   def initialize(trial_end_date:, shift: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # The new date that the trial should end, or the literal string `immediate` to end
       #   the trial immediately.
       module TrialEndDate
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
         variant Time
 

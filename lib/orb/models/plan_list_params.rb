@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Plans#list
-    class PlanListParams < Orb::BaseModel
+    class PlanListParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -79,11 +79,11 @@ module Orb
       #     super
       #   end
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # The plan status to filter to ('active', 'archived', or 'draft').
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         ACTIVE = :active
         ARCHIVED = :archived

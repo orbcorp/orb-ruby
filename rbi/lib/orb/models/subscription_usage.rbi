@@ -3,15 +3,15 @@
 module Orb
   module Models
     module SubscriptionUsage
-      extend Orb::Union
+      extend Orb::Internal::Type::Union
 
-      class UngroupedSubscriptionUsage < Orb::BaseModel
+      class UngroupedSubscriptionUsage < Orb::Internal::Type::BaseModel
         sig { returns(T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]) }
         attr_accessor :data
 
         sig do
           params(
-            data: T::Array[T.any(Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data, Orb::Internal::Util::AnyHash)]
+            data: T::Array[T.any(Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data, Orb::Internal::AnyHash)]
           )
             .returns(T.attached_class)
         end
@@ -22,7 +22,7 @@ module Orb
         def to_hash
         end
 
-        class Data < Orb::BaseModel
+        class Data < Orb::Internal::Type::BaseModel
           sig { returns(Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric) }
           attr_reader :billable_metric
 
@@ -30,7 +30,7 @@ module Orb
             params(
               billable_metric: T.any(
                 Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric,
-                Orb::Internal::Util::AnyHash
+                Orb::Internal::AnyHash
               )
             )
               .void
@@ -47,14 +47,9 @@ module Orb
             params(
               billable_metric: T.any(
                 Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric,
-                Orb::Internal::Util::AnyHash
+                Orb::Internal::AnyHash
               ),
-              usage: T::Array[
-              T.any(
-                Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage,
-                Orb::Internal::Util::AnyHash
-              )
-              ],
+              usage: T::Array[T.any(Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage, Orb::Internal::AnyHash)],
               view_mode: Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode::OrSymbol
             )
               .returns(T.attached_class)
@@ -75,7 +70,7 @@ module Orb
           def to_hash
           end
 
-          class BillableMetric < Orb::BaseModel
+          class BillableMetric < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -91,7 +86,7 @@ module Orb
             end
           end
 
-          class Usage < Orb::BaseModel
+          class Usage < Orb::Internal::Type::BaseModel
             sig { returns(Float) }
             attr_accessor :quantity
 
@@ -113,7 +108,7 @@ module Orb
           end
 
           module ViewMode
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode) }
@@ -146,25 +141,20 @@ module Orb
         end
       end
 
-      class GroupedSubscriptionUsage < Orb::BaseModel
+      class GroupedSubscriptionUsage < Orb::Internal::Type::BaseModel
         sig { returns(T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data]) }
         attr_accessor :data
 
         sig { returns(T.nilable(Orb::Models::PaginationMetadata)) }
         attr_reader :pagination_metadata
 
-        sig do
-          params(
-            pagination_metadata: T.nilable(T.any(Orb::Models::PaginationMetadata, Orb::Internal::Util::AnyHash))
-          )
-            .void
-        end
+        sig { params(pagination_metadata: T.nilable(T.any(Orb::Models::PaginationMetadata, Orb::Internal::AnyHash))).void }
         attr_writer :pagination_metadata
 
         sig do
           params(
-            data: T::Array[T.any(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data, Orb::Internal::Util::AnyHash)],
-            pagination_metadata: T.nilable(T.any(Orb::Models::PaginationMetadata, Orb::Internal::Util::AnyHash))
+            data: T::Array[T.any(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data, Orb::Internal::AnyHash)],
+            pagination_metadata: T.nilable(T.any(Orb::Models::PaginationMetadata, Orb::Internal::AnyHash))
           )
             .returns(T.attached_class)
         end
@@ -183,7 +173,7 @@ module Orb
         def to_hash
         end
 
-        class Data < Orb::BaseModel
+        class Data < Orb::Internal::Type::BaseModel
           sig { returns(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric) }
           attr_reader :billable_metric
 
@@ -191,7 +181,7 @@ module Orb
             params(
               billable_metric: T.any(
                 Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric,
-                Orb::Internal::Util::AnyHash
+                Orb::Internal::AnyHash
               )
             )
               .void
@@ -203,10 +193,7 @@ module Orb
 
           sig do
             params(
-              metric_group: T.any(
-                Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup,
-                Orb::Internal::Util::AnyHash
-              )
+              metric_group: T.any(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup, Orb::Internal::AnyHash)
             )
               .void
           end
@@ -222,13 +209,10 @@ module Orb
             params(
               billable_metric: T.any(
                 Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric,
-                Orb::Internal::Util::AnyHash
+                Orb::Internal::AnyHash
               ),
-              metric_group: T.any(
-                Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup,
-                Orb::Internal::Util::AnyHash
-              ),
-              usage: T::Array[T.any(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage, Orb::Internal::Util::AnyHash)],
+              metric_group: T.any(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup, Orb::Internal::AnyHash),
+              usage: T::Array[T.any(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage, Orb::Internal::AnyHash)],
               view_mode: Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode::OrSymbol
             )
               .returns(T.attached_class)
@@ -250,7 +234,7 @@ module Orb
           def to_hash
           end
 
-          class BillableMetric < Orb::BaseModel
+          class BillableMetric < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -266,7 +250,7 @@ module Orb
             end
           end
 
-          class MetricGroup < Orb::BaseModel
+          class MetricGroup < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :property_key
 
@@ -282,7 +266,7 @@ module Orb
             end
           end
 
-          class Usage < Orb::BaseModel
+          class Usage < Orb::Internal::Type::BaseModel
             sig { returns(Float) }
             attr_accessor :quantity
 
@@ -304,7 +288,7 @@ module Orb
           end
 
           module ViewMode
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode) }

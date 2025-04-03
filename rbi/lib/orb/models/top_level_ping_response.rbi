@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class TopLevelPingResponse < Orb::BaseModel
+    class TopLevelPingResponse < Orb::Internal::Type::BaseModel
       sig { returns(String) }
       attr_accessor :response
 

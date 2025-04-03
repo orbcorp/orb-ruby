@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Subscriptions#fetch_usage
-    class SubscriptionFetchUsageParams < Orb::BaseModel
+    class SubscriptionFetchUsageParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -99,11 +99,11 @@ module Orb
       #     super
       #   end
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # This determines the windowing of usage reporting.
       module Granularity
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         DAY = :day
 
@@ -119,7 +119,7 @@ module Orb
       #   discounts, it's strongly recommended that you use the default cumulative
       #   behavior.
       module ViewMode
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         PERIODIC = :periodic
         CUMULATIVE = :cumulative

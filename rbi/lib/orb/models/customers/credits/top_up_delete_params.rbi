@@ -4,7 +4,7 @@ module Orb
   module Models
     module Customers
       module Credits
-        class TopUpDeleteParams < Orb::BaseModel
+        class TopUpDeleteParams < Orb::Internal::Type::BaseModel
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
@@ -12,13 +12,7 @@ module Orb
           attr_accessor :customer_id
 
           sig do
-            params(
-              customer_id: String,
-              request_options: T.any(
-                Orb::RequestOptions,
-                Orb::Internal::Util::AnyHash
-              )
-            )
+            params(customer_id: String, request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
               .returns(T.attached_class)
           end
           def self.new(customer_id:, request_options: {})

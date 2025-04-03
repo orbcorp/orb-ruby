@@ -22,7 +22,7 @@ module Orb
               T::Hash[
               Symbol,
               T.all(
-                Orb::BaseModel::KnownFieldShape,
+                Orb::Internal::Type::BaseModel::KnownFieldShape,
                 {type_fn: T.proc.returns(Orb::Internal::Type::Converter::Input)}
               )
               ]
@@ -34,8 +34,13 @@ module Orb
           # @api private
           sig do
             returns(
-              T::Hash[Symbol,
-                      T.all(Orb::BaseModel::KnownFieldShape, {type: Orb::Internal::Type::Converter::Input})]
+              T::Hash[
+              Symbol,
+              T.all(
+                Orb::Internal::Type::BaseModel::KnownFieldShape,
+                {type: Orb::Internal::Type::Converter::Input}
+              )
+              ]
             )
           end
           def fields
@@ -57,7 +62,7 @@ module Orb
                 T.proc.returns(Orb::Internal::Type::Converter::Input),
                 Orb::Internal::Type::Converter::Input
               ),
-              spec: Orb::Internal::Util::AnyHash
+              spec: Orb::Internal::AnyHash
             )
               .void
           end
@@ -69,11 +74,11 @@ module Orb
             params(
               name_sym: Symbol,
               type_info: T.any(
-                Orb::Internal::Util::AnyHash,
+                Orb::Internal::AnyHash,
                 T.proc.returns(Orb::Internal::Type::Converter::Input),
                 Orb::Internal::Type::Converter::Input
               ),
-              spec: Orb::Internal::Util::AnyHash
+              spec: Orb::Internal::AnyHash
             )
               .void
           end
@@ -85,11 +90,11 @@ module Orb
             params(
               name_sym: Symbol,
               type_info: T.any(
-                Orb::Internal::Util::AnyHash,
+                Orb::Internal::AnyHash,
                 T.proc.returns(Orb::Internal::Type::Converter::Input),
                 Orb::Internal::Type::Converter::Input
               ),
-              spec: Orb::Internal::Util::AnyHash
+              spec: Orb::Internal::AnyHash
             )
               .void
           end
@@ -125,7 +130,7 @@ module Orb
           sig do
             override
               .params(
-                value: T.any(Orb::BaseModel, T::Hash[T.anything, T.anything], T.anything),
+                value: T.any(Orb::Internal::Type::BaseModel, T::Hash[T.anything, T.anything], T.anything),
                 state: Orb::Internal::Type::Converter::State
               )
               .returns(T.any(T.attached_class, T.anything))
@@ -161,7 +166,7 @@ module Orb
         #
         #   This method is not recursive. The returned value is shared by the object, so it
         #   should not be mutated.
-        sig { overridable.returns(Orb::Internal::Util::AnyHash) }
+        sig { overridable.returns(Orb::Internal::AnyHash) }
         def to_h
         end
 
@@ -173,11 +178,11 @@ module Orb
         #
         #   This method is not recursive. The returned value is shared by the object, so it
         #   should not be mutated.
-        sig { overridable.returns(Orb::Internal::Util::AnyHash) }
+        sig { overridable.returns(Orb::Internal::AnyHash) }
         def to_hash
         end
 
-        sig { params(keys: T.nilable(T::Array[Symbol])).returns(Orb::Internal::Util::AnyHash) }
+        sig { params(keys: T.nilable(T::Array[Symbol])).returns(Orb::Internal::AnyHash) }
         def deconstruct_keys(keys)
         end
 

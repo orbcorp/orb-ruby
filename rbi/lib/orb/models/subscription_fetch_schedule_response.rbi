@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class SubscriptionFetchScheduleResponse < Orb::BaseModel
+    class SubscriptionFetchScheduleResponse < Orb::Internal::Type::BaseModel
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -12,10 +12,7 @@ module Orb
       sig { returns(Orb::Models::SubscriptionFetchScheduleResponse::Plan) }
       attr_reader :plan
 
-      sig do
-        params(plan: T.any(Orb::Models::SubscriptionFetchScheduleResponse::Plan, Orb::Internal::Util::AnyHash))
-          .void
-      end
+      sig { params(plan: T.any(Orb::Models::SubscriptionFetchScheduleResponse::Plan, Orb::Internal::AnyHash)).void }
       attr_writer :plan
 
       sig { returns(Time) }
@@ -25,7 +22,7 @@ module Orb
         params(
           created_at: Time,
           end_date: T.nilable(Time),
-          plan: T.any(Orb::Models::SubscriptionFetchScheduleResponse::Plan, Orb::Internal::Util::AnyHash),
+          plan: T.any(Orb::Models::SubscriptionFetchScheduleResponse::Plan, Orb::Internal::AnyHash),
           start_date: Time
         )
           .returns(T.attached_class)
@@ -47,7 +44,7 @@ module Orb
       def to_hash
       end
 
-      class Plan < Orb::BaseModel
+      class Plan < Orb::Internal::Type::BaseModel
         sig { returns(T.nilable(String)) }
         attr_accessor :id
 

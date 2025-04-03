@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class DimensionalPriceGroup < Orb::BaseModel
+    class DimensionalPriceGroup < Orb::Internal::Type::BaseModel
       sig { returns(String) }
       attr_accessor :id
 

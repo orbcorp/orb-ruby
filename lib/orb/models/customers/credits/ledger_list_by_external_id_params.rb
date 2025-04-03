@@ -5,7 +5,7 @@ module Orb
     module Customers
       module Credits
         # @see Orb::Resources::Customers::Credits::Ledger#list_by_external_id
-        class LedgerListByExternalIDParams < Orb::BaseModel
+        class LedgerListByExternalIDParams < Orb::Internal::Type::BaseModel
           # @!parse
           #   extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
@@ -102,10 +102,10 @@ module Orb
           #     super
           #   end
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
           module EntryStatus
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             COMMITTED = :committed
             PENDING = :pending
@@ -118,7 +118,7 @@ module Orb
           end
 
           module EntryType
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             INCREMENT = :increment
             DECREMENT = :decrement

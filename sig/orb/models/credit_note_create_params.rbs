@@ -8,7 +8,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class CreditNoteCreateParams < Orb::BaseModel
+    class CreditNoteCreateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -29,7 +29,7 @@ module Orb
 
       type line_item = { amount: String, invoice_line_item_id: String }
 
-      class LineItem < Orb::BaseModel
+      class LineItem < Orb::Internal::Type::BaseModel
         attr_accessor amount: String
 
         attr_accessor invoice_line_item_id: String
@@ -43,7 +43,7 @@ module Orb
         :duplicate | :fraudulent | :order_change | :product_unsatisfactory
 
       module Reason
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         DUPLICATE: :duplicate
         FRAUDULENT: :fraudulent

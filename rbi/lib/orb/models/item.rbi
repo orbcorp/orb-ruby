@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class Item < Orb::BaseModel
+    class Item < Orb::Internal::Type::BaseModel
       sig { returns(String) }
       attr_accessor :id
 
@@ -22,7 +22,7 @@ module Orb
         params(
           id: String,
           created_at: Time,
-          external_connections: T::Array[T.any(Orb::Models::Item::ExternalConnection, Orb::Internal::Util::AnyHash)],
+          external_connections: T::Array[T.any(Orb::Models::Item::ExternalConnection, Orb::Internal::AnyHash)],
           name: String
         )
           .returns(T.attached_class)
@@ -44,7 +44,7 @@ module Orb
       def to_hash
       end
 
-      class ExternalConnection < Orb::BaseModel
+      class ExternalConnection < Orb::Internal::Type::BaseModel
         sig { returns(Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol) }
         attr_accessor :external_connection_name
 
@@ -74,7 +74,7 @@ module Orb
         end
 
         module ExternalConnectionName
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Item::ExternalConnection::ExternalConnectionName) }

@@ -47,7 +47,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class PriceCreateParams < Orb::BaseModel
+    class PriceCreateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -187,7 +187,7 @@ module Orb
         :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
 
       module Cadence
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         ANNUAL: :annual
         SEMI_ANNUAL: :semi_annual
@@ -202,7 +202,7 @@ module Orb
       type model_type = :cumulative_grouped_bulk
 
       module ModelType
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         CUMULATIVE_GROUPED_BULK: :cumulative_grouped_bulk
 
@@ -211,7 +211,7 @@ module Orb
 
       type unit_config = { unit_amount: String }
 
-      class UnitConfig < Orb::BaseModel
+      class UnitConfig < Orb::Internal::Type::BaseModel
         attr_accessor unit_amount: String
 
         def initialize: (unit_amount: String) -> void
@@ -225,7 +225,7 @@ module Orb
           duration_unit: Orb::Models::PriceCreateParams::BillingCycleConfiguration::duration_unit
         }
 
-      class BillingCycleConfiguration < Orb::BaseModel
+      class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
         attr_accessor duration: Integer
 
         attr_accessor duration_unit: Orb::Models::PriceCreateParams::BillingCycleConfiguration::duration_unit
@@ -240,7 +240,7 @@ module Orb
         type duration_unit = :day | :month
 
         module DurationUnit
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           DAY: :day
           MONTH: :month
@@ -255,7 +255,7 @@ module Orb
           duration_unit: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
         }
 
-      class InvoicingCycleConfiguration < Orb::BaseModel
+      class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
         attr_accessor duration: Integer
 
         attr_accessor duration_unit: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
@@ -270,7 +270,7 @@ module Orb
         type duration_unit = :day | :month
 
         module DurationUnit
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           DAY: :day
           MONTH: :month
@@ -281,7 +281,7 @@ module Orb
 
       type package_config = { package_amount: String, package_size: Integer }
 
-      class PackageConfig < Orb::BaseModel
+      class PackageConfig < Orb::Internal::Type::BaseModel
         attr_accessor package_amount: String
 
         attr_accessor package_size: Integer
@@ -298,7 +298,7 @@ module Orb
           matrix_values: ::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue]
         }
 
-      class MatrixConfig < Orb::BaseModel
+      class MatrixConfig < Orb::Internal::Type::BaseModel
         attr_accessor default_unit_amount: String
 
         attr_accessor dimensions: ::Array[String?]
@@ -316,7 +316,7 @@ module Orb
         type matrix_value =
           { dimension_values: ::Array[String?], unit_amount: String }
 
-        class MatrixValue < Orb::BaseModel
+        class MatrixValue < Orb::Internal::Type::BaseModel
           attr_accessor dimension_values: ::Array[String?]
 
           attr_accessor unit_amount: String
@@ -338,7 +338,7 @@ module Orb
           matrix_values: ::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
         }
 
-      class MatrixWithAllocationConfig < Orb::BaseModel
+      class MatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
         attr_accessor allocation: Float
 
         attr_accessor default_unit_amount: String
@@ -359,7 +359,7 @@ module Orb
         type matrix_value =
           { dimension_values: ::Array[String?], unit_amount: String }
 
-        class MatrixValue < Orb::BaseModel
+        class MatrixValue < Orb::Internal::Type::BaseModel
           attr_accessor dimension_values: ::Array[String?]
 
           attr_accessor unit_amount: String
@@ -376,7 +376,7 @@ module Orb
       type tiered_config =
         { tiers: ::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier] }
 
-      class TieredConfig < Orb::BaseModel
+      class TieredConfig < Orb::Internal::Type::BaseModel
         attr_accessor tiers: ::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]
 
         def initialize: (
@@ -388,7 +388,7 @@ module Orb
         type tier =
           { first_unit: Float, unit_amount: String, last_unit: Float? }
 
-        class Tier < Orb::BaseModel
+        class Tier < Orb::Internal::Type::BaseModel
           attr_accessor first_unit: Float
 
           attr_accessor unit_amount: String
@@ -410,7 +410,7 @@ module Orb
           tiers: ::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]
         }
 
-      class TieredBpsConfig < Orb::BaseModel
+      class TieredBpsConfig < Orb::Internal::Type::BaseModel
         attr_accessor tiers: ::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]
 
         def initialize: (
@@ -427,7 +427,7 @@ module Orb
             per_unit_maximum: String?
           }
 
-        class Tier < Orb::BaseModel
+        class Tier < Orb::Internal::Type::BaseModel
           attr_accessor bps: Float
 
           attr_accessor minimum_amount: String
@@ -449,7 +449,7 @@ module Orb
 
       type bps_config = { bps: Float, per_unit_maximum: String? }
 
-      class BpsConfig < Orb::BaseModel
+      class BpsConfig < Orb::Internal::Type::BaseModel
         attr_accessor bps: Float
 
         attr_accessor per_unit_maximum: String?
@@ -462,7 +462,7 @@ module Orb
       type bulk_bps_config =
         { tiers: ::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier] }
 
-      class BulkBpsConfig < Orb::BaseModel
+      class BulkBpsConfig < Orb::Internal::Type::BaseModel
         attr_accessor tiers: ::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]
 
         def initialize: (
@@ -474,7 +474,7 @@ module Orb
         type tier =
           { bps: Float, maximum_amount: String?, per_unit_maximum: String? }
 
-        class Tier < Orb::BaseModel
+        class Tier < Orb::Internal::Type::BaseModel
           attr_accessor bps: Float
 
           attr_accessor maximum_amount: String?
@@ -494,7 +494,7 @@ module Orb
       type bulk_config =
         { tiers: ::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier] }
 
-      class BulkConfig < Orb::BaseModel
+      class BulkConfig < Orb::Internal::Type::BaseModel
         attr_accessor tiers: ::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]
 
         def initialize: (
@@ -505,7 +505,7 @@ module Orb
 
         type tier = { unit_amount: String, maximum_units: Float? }
 
-        class Tier < Orb::BaseModel
+        class Tier < Orb::Internal::Type::BaseModel
           attr_accessor unit_amount: String
 
           attr_accessor maximum_units: Float?

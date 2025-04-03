@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class PlanListParams < Orb::BaseModel
+    class PlanListParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -46,7 +46,7 @@ module Orb
           cursor: T.nilable(String),
           limit: Integer,
           status: Orb::Models::PlanListParams::Status::OrSymbol,
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -82,7 +82,7 @@ module Orb
 
       # The plan status to filter to ('active', 'archived', or 'draft').
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::PlanListParams::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::PlanListParams::Status::TaggedSymbol) }

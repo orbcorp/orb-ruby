@@ -2,7 +2,7 @@ module Orb
   module Models
     type alert_retrieve_params = {  } & Orb::Internal::Type::request_parameters
 
-    class AlertRetrieveParams < Orb::BaseModel
+    class AlertRetrieveParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 

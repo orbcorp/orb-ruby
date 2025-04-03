@@ -24,7 +24,7 @@ module Orb
             cursor: T.nilable(String),
             include_all_blocks: T::Boolean,
             limit: Integer,
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
           )
             .returns(Orb::Internal::Page[Orb::Models::Customers::CreditListResponse])
         end
@@ -58,7 +58,7 @@ module Orb
             cursor: T.nilable(String),
             include_all_blocks: T::Boolean,
             limit: Integer,
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
           )
             .returns(Orb::Internal::Page[Orb::Models::Customers::CreditListByExternalIDResponse])
         end

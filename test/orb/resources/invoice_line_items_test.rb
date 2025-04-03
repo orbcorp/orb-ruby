@@ -22,7 +22,7 @@ class Orb::Test::Resources::InvoiceLineItemsTest < Orb::Test::ResourceTest
       response => {
         id: String,
         adjusted_subtotal: String,
-        adjustments: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLineItemCreateResponse::Adjustment]),
+        adjustments: ^(Orb::Internal::Type::ArrayOf[union: Orb::Models::InvoiceLineItemCreateResponse::Adjustment]),
         amount: String,
         credits_applied: String,
         discount: Orb::Models::Discount | nil,
@@ -38,10 +38,10 @@ class Orb::Test::Resources::InvoiceLineItemsTest < Orb::Test::ResourceTest
         price: Orb::Models::Price | nil,
         quantity: Float,
         start_date: Time,
-        sub_line_items: ^(Orb::ArrayOf[union: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem]),
+        sub_line_items: ^(Orb::Internal::Type::ArrayOf[union: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem]),
         subtotal: String,
-        tax_amounts: ^(Orb::ArrayOf[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount]),
-        usage_customer_ids: ^(Orb::ArrayOf[String]) | nil
+        tax_amounts: ^(Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount]),
+        usage_customer_ids: ^(Orb::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end

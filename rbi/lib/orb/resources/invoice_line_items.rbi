@@ -13,7 +13,7 @@ module Orb
           name: String,
           quantity: Float,
           start_date: Date,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::InvoiceLineItemCreateResponse)
       end

@@ -20,7 +20,7 @@ module Orb
         discounts: ::Array[Orb::Models::CreditNote::Discount]
       }
 
-    class CreditNote < Orb::BaseModel
+    class CreditNote < Orb::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor created_at: Time
@@ -80,7 +80,7 @@ module Orb
 
       type customer = { id: String, external_customer_id: String? }
 
-      class Customer < Orb::BaseModel
+      class Customer < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor external_customer_id: String?
@@ -102,7 +102,7 @@ module Orb
           discounts: ::Array[Orb::Models::CreditNote::LineItem::Discount]
         }
 
-      class LineItem < Orb::BaseModel
+      class LineItem < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor amount: String
@@ -143,7 +143,7 @@ module Orb
             tax_rate_percentage: String?
           }
 
-        class TaxAmount < Orb::BaseModel
+        class TaxAmount < Orb::Internal::Type::BaseModel
           attr_accessor amount: String
 
           attr_accessor tax_rate_description: String
@@ -170,7 +170,7 @@ module Orb
             reason: String?
           }
 
-        class Discount < Orb::BaseModel
+        class Discount < Orb::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor amount_applied: String
@@ -200,7 +200,7 @@ module Orb
           type discount_type = :percentage | :amount
 
           module DiscountType
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             PERCENTAGE: :percentage
             AMOUNT: :amount
@@ -219,7 +219,7 @@ module Orb
           reason: String?
         }
 
-      class MaximumAmountAdjustment < Orb::BaseModel
+      class MaximumAmountAdjustment < Orb::Internal::Type::BaseModel
         attr_accessor amount_applied: String
 
         attr_accessor discount_type: Orb::Models::CreditNote::MaximumAmountAdjustment::discount_type
@@ -243,7 +243,7 @@ module Orb
         type discount_type = :percentage
 
         module DiscountType
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           PERCENTAGE: :percentage
 
@@ -252,7 +252,7 @@ module Orb
 
         type applies_to_price = { id: String, name: String }
 
-        class AppliesToPrice < Orb::BaseModel
+        class AppliesToPrice < Orb::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor name: String
@@ -267,7 +267,7 @@ module Orb
         :Duplicate | :Fraudulent | :"Order change" | :"Product unsatisfactory"
 
       module Reason
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         DUPLICATE: :Duplicate
         FRAUDULENT: :Fraudulent
@@ -280,7 +280,7 @@ module Orb
       type type_ = :refund | :adjustment
 
       module Type
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         REFUND: :refund
         ADJUSTMENT: :adjustment
@@ -297,7 +297,7 @@ module Orb
           reason: String?
         }
 
-      class Discount < Orb::BaseModel
+      class Discount < Orb::Internal::Type::BaseModel
         attr_accessor amount_applied: String
 
         attr_accessor discount_type: Orb::Models::CreditNote::Discount::discount_type
@@ -321,7 +321,7 @@ module Orb
         type discount_type = :percentage
 
         module DiscountType
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           PERCENTAGE: :percentage
 
@@ -330,7 +330,7 @@ module Orb
 
         type applies_to_price = { id: String, name: String }
 
-        class AppliesToPrice < Orb::BaseModel
+        class AppliesToPrice < Orb::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor name: String

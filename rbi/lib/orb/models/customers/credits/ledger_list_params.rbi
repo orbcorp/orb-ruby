@@ -4,7 +4,7 @@ module Orb
   module Models
     module Customers
       module Credits
-        class LedgerListParams < Orb::BaseModel
+        class LedgerListParams < Orb::Internal::Type::BaseModel
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
@@ -57,7 +57,7 @@ module Orb
               entry_type: T.nilable(Orb::Models::Customers::Credits::LedgerListParams::EntryType::OrSymbol),
               limit: Integer,
               minimum_amount: T.nilable(String),
-              request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+              request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
             )
               .returns(T.attached_class)
           end
@@ -98,7 +98,7 @@ module Orb
           end
 
           module EntryStatus
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryStatus) }
@@ -115,7 +115,7 @@ module Orb
           end
 
           module EntryType
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryType) }

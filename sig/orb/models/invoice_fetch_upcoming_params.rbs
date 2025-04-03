@@ -3,7 +3,7 @@ module Orb
     type invoice_fetch_upcoming_params =
       { subscription_id: String } & Orb::Internal::Type::request_parameters
 
-    class InvoiceFetchUpcomingParams < Orb::BaseModel
+    class InvoiceFetchUpcomingParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 

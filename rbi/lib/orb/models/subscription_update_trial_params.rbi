@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class SubscriptionUpdateTrialParams < Orb::BaseModel
+    class SubscriptionUpdateTrialParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -23,7 +23,7 @@ module Orb
         params(
           trial_end_date: T.any(Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol),
           shift: T::Boolean,
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -46,7 +46,7 @@ module Orb
       # The new date that the trial should end, or the literal string `immediate` to end
       #   the trial immediately.
       module TrialEndDate
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
         sig { override.returns([Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol]) }
         def self.variants

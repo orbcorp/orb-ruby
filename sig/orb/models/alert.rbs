@@ -14,7 +14,7 @@ module Orb
         type: Orb::Models::Alert::type_
       }
 
-    class Alert < Orb::BaseModel
+    class Alert < Orb::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor created_at: Time
@@ -52,7 +52,7 @@ module Orb
 
       type customer = { id: String, external_customer_id: String? }
 
-      class Customer < Orb::BaseModel
+      class Customer < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor external_customer_id: String?
@@ -64,7 +64,7 @@ module Orb
 
       type metric = { id: String }
 
-      class Metric < Orb::BaseModel
+      class Metric < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         def initialize: (id: String) -> void
@@ -80,7 +80,7 @@ module Orb
           plan_version: String
         }
 
-      class Plan < Orb::BaseModel
+      class Plan < Orb::Internal::Type::BaseModel
         attr_accessor id: String?
 
         attr_accessor external_plan_id: String?
@@ -101,7 +101,7 @@ module Orb
 
       type subscription = { id: String }
 
-      class Subscription < Orb::BaseModel
+      class Subscription < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         def initialize: (id: String) -> void
@@ -111,7 +111,7 @@ module Orb
 
       type threshold = { value: Float }
 
-      class Threshold < Orb::BaseModel
+      class Threshold < Orb::Internal::Type::BaseModel
         attr_accessor value: Float
 
         def initialize: (value: Float) -> void
@@ -127,7 +127,7 @@ module Orb
         | :cost_exceeded
 
       module Type
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         CREDIT_BALANCE_DEPLETED: :credit_balance_depleted
         CREDIT_BALANCE_DROPPED: :credit_balance_dropped

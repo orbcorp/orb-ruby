@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class InvoiceIssueParams < Orb::BaseModel
+    class InvoiceIssueParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -18,10 +18,7 @@ module Orb
       attr_writer :synchronous
 
       sig do
-        params(
-          synchronous: T::Boolean,
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
-        )
+        params(synchronous: T::Boolean, request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
           .returns(T.attached_class)
       end
       def self.new(synchronous: nil, request_options: {})

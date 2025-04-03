@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Invoices#create
-    class Invoice < Orb::BaseModel
+    class Invoice < Orb::Internal::Type::BaseModel
       # @!attribute id
       #
       #   @return [String]
@@ -36,7 +36,7 @@ module Orb
       #   A list of credit notes associated with the invoice
       #
       #   @return [Array<Orb::Models::Invoice::CreditNote>]
-      required :credit_notes, -> { Orb::ArrayOf[Orb::Models::Invoice::CreditNote] }
+      required :credit_notes, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Invoice::CreditNote] }
 
       # @!attribute currency
       #   An ISO 4217 currency string or `credits`
@@ -53,7 +53,7 @@ module Orb
       #
       #   @return [Array<Orb::Models::Invoice::CustomerBalanceTransaction>]
       required :customer_balance_transactions,
-               -> { Orb::ArrayOf[Orb::Models::Invoice::CustomerBalanceTransaction] }
+               -> { Orb::Internal::Type::ArrayOf[Orb::Models::Invoice::CustomerBalanceTransaction] }
 
       # @!attribute customer_tax_id
       #   Tax IDs are commonly required to be displayed on customer invoices, which are
@@ -171,12 +171,12 @@ module Orb
       #     `None` will be returned.
       #
       #   @return [Object]
-      required :discount, Orb::Unknown
+      required :discount, Orb::Internal::Type::Unknown
 
       # @!attribute discounts
       #
       #   @return [Array<Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount>]
-      required :discounts, -> { Orb::ArrayOf[union: Orb::Models::InvoiceLevelDiscount] }
+      required :discounts, -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::InvoiceLevelDiscount] }
 
       # @!attribute due_date
       #   When the invoice payment is due. The due date is null if the invoice is not yet
@@ -243,7 +243,7 @@ module Orb
       #   The breakdown of prices in this invoice.
       #
       #   @return [Array<Orb::Models::Invoice::LineItem>]
-      required :line_items, -> { Orb::ArrayOf[Orb::Models::Invoice::LineItem] }
+      required :line_items, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Invoice::LineItem] }
 
       # @!attribute maximum
       #
@@ -268,7 +268,7 @@ module Orb
       #     `null`.
       #
       #   @return [Hash{Symbol=>String}]
-      required :metadata, Orb::HashOf[String]
+      required :metadata, Orb::Internal::Type::HashOf[String]
 
       # @!attribute minimum
       #
@@ -291,7 +291,7 @@ module Orb
       #   A list of payment attempts associated with the invoice
       #
       #   @return [Array<Orb::Models::Invoice::PaymentAttempt>]
-      required :payment_attempts, -> { Orb::ArrayOf[Orb::Models::Invoice::PaymentAttempt] }
+      required :payment_attempts, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Invoice::PaymentAttempt] }
 
       # @!attribute payment_failed_at
       #   If payment was attempted on this invoice but failed, this will be the time of
@@ -362,7 +362,7 @@ module Orb
       #     false otherwise.
       #
       #   @return [Boolean]
-      required :will_auto_issue, Orb::BooleanModel
+      required :will_auto_issue, Orb::Internal::Type::BooleanModel
 
       # @!parse
       #   # An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity,
@@ -460,15 +460,15 @@ module Orb
       #     super
       #   end
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # @see Orb::Models::Invoice#auto_collection
-      class AutoCollection < Orb::BaseModel
+      class AutoCollection < Orb::Internal::Type::BaseModel
         # @!attribute enabled
         #   True only if auto-collection is enabled for this invoice.
         #
         #   @return [Boolean, nil]
-        required :enabled, Orb::BooleanModel, nil?: true
+        required :enabled, Orb::Internal::Type::BooleanModel, nil?: true
 
         # @!attribute next_attempt_at
         #   If the invoice is scheduled for auto-collection, this field will reflect when
@@ -503,11 +503,11 @@ module Orb
         #   #
         #   def initialize(enabled:, next_attempt_at:, num_attempts:, previously_attempted_at:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       # @see Orb::Models::Invoice#billing_address
-      class BillingAddress < Orb::BaseModel
+      class BillingAddress < Orb::Internal::Type::BaseModel
         # @!attribute city
         #
         #   @return [String, nil]
@@ -548,10 +548,10 @@ module Orb
         #   #
         #   def initialize(city:, country:, line1:, line2:, postal_code:, state:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
-      class CreditNote < Orb::BaseModel
+      class CreditNote < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String]
@@ -601,11 +601,11 @@ module Orb
         #   #
         #   def initialize(id:, credit_note_number:, memo:, reason:, total:, type:, voided_at:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       # @see Orb::Models::Invoice#customer
-      class Customer < Orb::BaseModel
+      class Customer < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String]
@@ -622,10 +622,10 @@ module Orb
         #   #
         #   def initialize(id:, external_customer_id:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
-      class CustomerBalanceTransaction < Orb::BaseModel
+      class CustomerBalanceTransaction < Orb::Internal::Type::BaseModel
         # @!attribute id
         #   A unique id for this transaction.
         #
@@ -712,11 +712,11 @@ module Orb
         #     super
         #   end
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # @see Orb::Models::Invoice::CustomerBalanceTransaction#action
         module Action
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           APPLIED_TO_INVOICE = :applied_to_invoice
           MANUAL_ADJUSTMENT = :manual_adjustment
@@ -736,7 +736,7 @@ module Orb
         end
 
         # @see Orb::Models::Invoice::CustomerBalanceTransaction#credit_note
-        class CreditNote < Orb::BaseModel
+        class CreditNote < Orb::Internal::Type::BaseModel
           # @!attribute id
           #   The id of the Credit note
           #
@@ -748,11 +748,11 @@ module Orb
           #   #
           #   def initialize(id:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
         # @see Orb::Models::Invoice::CustomerBalanceTransaction#invoice
-        class Invoice < Orb::BaseModel
+        class Invoice < Orb::Internal::Type::BaseModel
           # @!attribute id
           #   The Invoice id
           #
@@ -764,12 +764,12 @@ module Orb
           #   #
           #   def initialize(id:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
         # @see Orb::Models::Invoice::CustomerBalanceTransaction#type
         module Type
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           INCREMENT = :increment
           DECREMENT = :decrement
@@ -783,7 +783,7 @@ module Orb
       end
 
       # @see Orb::Models::Invoice#customer_tax_id
-      class CustomerTaxID < Orb::BaseModel
+      class CustomerTaxID < Orb::Internal::Type::BaseModel
         # @!attribute country
         #
         #   @return [Symbol, Orb::Models::Invoice::CustomerTaxID::Country]
@@ -912,11 +912,11 @@ module Orb
         #   #
         #   def initialize(country:, type:, value:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # @see Orb::Models::Invoice::CustomerTaxID#country
         module Country
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           AD = :AD
           AE = :AE
@@ -1006,7 +1006,7 @@ module Orb
 
         # @see Orb::Models::Invoice::CustomerTaxID#type
         module Type
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           AD_NRT = :ad_nrt
           AE_TRN = :ae_trn
@@ -1090,7 +1090,7 @@ module Orb
 
       # @see Orb::Models::Invoice#invoice_source
       module InvoiceSource
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         SUBSCRIPTION = :subscription
         PARTIAL = :partial
@@ -1103,7 +1103,7 @@ module Orb
         #   def self.values; end
       end
 
-      class LineItem < Orb::BaseModel
+      class LineItem < Orb::Internal::Type::BaseModel
         # @!attribute id
         #   A unique ID for this line item.
         #
@@ -1123,7 +1123,8 @@ module Orb
         #     discounts -> minimums -> maximums).
         #
         #   @return [Array<Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment>]
-        required :adjustments, -> { Orb::ArrayOf[union: Orb::Models::Invoice::LineItem::Adjustment] }
+        required :adjustments,
+                 -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::Invoice::LineItem::Adjustment] }
 
         # @!attribute amount
         #   The final amount for a line item after all adjustments and pre paid credits have
@@ -1231,7 +1232,8 @@ module Orb
         #     `sub_line_items`.
         #
         #   @return [Array<Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem>]
-        required :sub_line_items, -> { Orb::ArrayOf[union: Orb::Models::Invoice::LineItem::SubLineItem] }
+        required :sub_line_items,
+                 -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::Invoice::LineItem::SubLineItem] }
 
         # @!attribute subtotal
         #   The line amount before before any adjustments.
@@ -1244,13 +1246,13 @@ module Orb
         #     integration is configured.
         #
         #   @return [Array<Orb::Models::Invoice::LineItem::TaxAmount>]
-        required :tax_amounts, -> { Orb::ArrayOf[Orb::Models::Invoice::LineItem::TaxAmount] }
+        required :tax_amounts, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Invoice::LineItem::TaxAmount] }
 
         # @!attribute usage_customer_ids
         #   A list of customer ids that were used to calculate the usage for this line item.
         #
         #   @return [Array<String>, nil]
-        required :usage_customer_ids, Orb::ArrayOf[String], nil?: true
+        required :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
         # @!parse
         #   # @param id [String]
@@ -1304,10 +1306,10 @@ module Orb
         #     super
         #   end
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         module Adjustment
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           discriminator :adjustment_type
 
@@ -1324,7 +1326,7 @@ module Orb
 
           variant :maximum, -> { Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment }
 
-          class MonetaryUsageDiscountAdjustment < Orb::BaseModel
+          class MonetaryUsageDiscountAdjustment < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -1345,14 +1347,14 @@ module Orb
             #   The price IDs that this adjustment applies to.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
             #     that apply to only one price.
             #
             #   @return [Boolean]
-            required :is_invoice_level, Orb::BooleanModel
+            required :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!attribute reason
             #   The reason for the adjustment.
@@ -1389,10 +1391,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class MonetaryAmountDiscountAdjustment < Orb::BaseModel
+          class MonetaryAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -1420,14 +1422,14 @@ module Orb
             #   The price IDs that this adjustment applies to.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
             #     that apply to only one price.
             #
             #   @return [Boolean]
-            required :is_invoice_level, Orb::BooleanModel
+            required :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!attribute reason
             #   The reason for the adjustment.
@@ -1457,10 +1459,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class MonetaryPercentageDiscountAdjustment < Orb::BaseModel
+          class MonetaryPercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -1481,14 +1483,14 @@ module Orb
             #   The price IDs that this adjustment applies to.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
             #     that apply to only one price.
             #
             #   @return [Boolean]
-            required :is_invoice_level, Orb::BooleanModel
+            required :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!attribute percentage_discount
             #   The percentage (as a value between 0 and 1) by which to discount the price
@@ -1525,10 +1527,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class MonetaryMinimumAdjustment < Orb::BaseModel
+          class MonetaryMinimumAdjustment < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -1549,14 +1551,14 @@ module Orb
             #   The price IDs that this adjustment applies to.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
             #     that apply to only one price.
             #
             #   @return [Boolean]
-            required :is_invoice_level, Orb::BooleanModel
+            required :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!attribute item_id
             #   The item ID that revenue from this minimum will be attributed to.
@@ -1601,10 +1603,10 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
-          class MonetaryMaximumAdjustment < Orb::BaseModel
+          class MonetaryMaximumAdjustment < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -1625,14 +1627,14 @@ module Orb
             #   The price IDs that this adjustment applies to.
             #
             #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::ArrayOf[String]
+            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
             #     that apply to only one price.
             #
             #   @return [Boolean]
-            required :is_invoice_level, Orb::BooleanModel
+            required :is_invoice_level, Orb::Internal::Type::BooleanModel
 
             # @!attribute maximum_amount
             #   The maximum amount to charge in a given billing period for the prices this
@@ -1669,7 +1671,7 @@ module Orb
             #     super
             #   end
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
           # @!parse
@@ -1680,13 +1682,13 @@ module Orb
         # @deprecated
         #
         # @see Orb::Models::Invoice::LineItem#maximum
-        class Maximum < Orb::BaseModel
+        class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #     maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::ArrayOf[String]
+          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -1702,19 +1704,19 @@ module Orb
           #   #
           #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
         # @deprecated
         #
         # @see Orb::Models::Invoice::LineItem#minimum
-        class Minimum < Orb::BaseModel
+        class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #     minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::ArrayOf[String]
+          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -1730,11 +1732,11 @@ module Orb
           #   #
           #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
         module SubLineItem
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           discriminator :type
 
@@ -1744,7 +1746,7 @@ module Orb
 
           variant :"'null'", -> { Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem }
 
-          class MatrixSubLineItem < Orb::BaseModel
+          class MatrixSubLineItem < Orb::Internal::Type::BaseModel
             # @!attribute amount
             #   The total amount for this sub line item.
             #
@@ -1789,10 +1791,10 @@ module Orb
             #   #
             #   def initialize(amount:, grouping:, matrix_config:, name:, quantity:, type: :matrix, **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # @see Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem#grouping
-            class Grouping < Orb::BaseModel
+            class Grouping < Orb::Internal::Type::BaseModel
               # @!attribute key
               #
               #   @return [String]
@@ -1810,27 +1812,27 @@ module Orb
               #   #
               #   def initialize(key:, value:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem#matrix_config
-            class MatrixConfig < Orb::BaseModel
+            class MatrixConfig < Orb::Internal::Type::BaseModel
               # @!attribute dimension_values
               #   The ordered dimension values for this line item.
               #
               #   @return [Array<String, nil>]
-              required :dimension_values, Orb::ArrayOf[String, nil?: true]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String, nil?: true]
 
               # @!parse
               #   # @param dimension_values [Array<String, nil>]
               #   #
               #   def initialize(dimension_values:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
           end
 
-          class TierSubLineItem < Orb::BaseModel
+          class TierSubLineItem < Orb::Internal::Type::BaseModel
             # @!attribute amount
             #   The total amount for this sub line item.
             #
@@ -1874,10 +1876,10 @@ module Orb
             #   #
             #   def initialize(amount:, grouping:, name:, quantity:, tier_config:, type: :tier, **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # @see Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem#grouping
-            class Grouping < Orb::BaseModel
+            class Grouping < Orb::Internal::Type::BaseModel
               # @!attribute key
               #
               #   @return [String]
@@ -1895,11 +1897,11 @@ module Orb
               #   #
               #   def initialize(key:, value:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
 
             # @see Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem#tier_config
-            class TierConfig < Orb::BaseModel
+            class TierConfig < Orb::Internal::Type::BaseModel
               # @!attribute first_unit
               #
               #   @return [Float]
@@ -1922,11 +1924,11 @@ module Orb
               #   #
               #   def initialize(first_unit:, last_unit:, unit_amount:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
           end
 
-          class OtherSubLineItem < Orb::BaseModel
+          class OtherSubLineItem < Orb::Internal::Type::BaseModel
             # @!attribute amount
             #   The total amount for this sub line item.
             #
@@ -1964,10 +1966,10 @@ module Orb
             #   #
             #   def initialize(amount:, grouping:, name:, quantity:, type: :"'null'", **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
             # @see Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem#grouping
-            class Grouping < Orb::BaseModel
+            class Grouping < Orb::Internal::Type::BaseModel
               # @!attribute key
               #
               #   @return [String]
@@ -1985,7 +1987,7 @@ module Orb
               #   #
               #   def initialize(key:, value:, **) = super
 
-              # def initialize: (Hash | Orb::BaseModel) -> void
+              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
             end
           end
 
@@ -1994,7 +1996,7 @@ module Orb
           #   def self.variants; end
         end
 
-        class TaxAmount < Orb::BaseModel
+        class TaxAmount < Orb::Internal::Type::BaseModel
           # @!attribute amount
           #   The amount of additional tax incurred by this tax rate.
           #
@@ -2020,18 +2022,18 @@ module Orb
           #   #
           #   def initialize(amount:, tax_rate_description:, tax_rate_percentage:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
       end
 
       # @see Orb::Models::Invoice#maximum
-      class Maximum < Orb::BaseModel
+      class Maximum < Orb::Internal::Type::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this maximum amount applies to. For plan/plan phase
         #     maximums, this can be a subset of prices.
         #
         #   @return [Array<String>]
-        required :applies_to_price_ids, Orb::ArrayOf[String]
+        required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
         # @!attribute maximum_amount
         #   Maximum amount applied
@@ -2045,17 +2047,17 @@ module Orb
         #   #
         #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       # @see Orb::Models::Invoice#minimum
-      class Minimum < Orb::BaseModel
+      class Minimum < Orb::Internal::Type::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this minimum amount applies to. For plan/plan phase
         #     minimums, this can be a subset of prices.
         #
         #   @return [Array<String>]
-        required :applies_to_price_ids, Orb::ArrayOf[String]
+        required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
         # @!attribute minimum_amount
         #   Minimum amount applied
@@ -2069,10 +2071,10 @@ module Orb
         #   #
         #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
-      class PaymentAttempt < Orb::BaseModel
+      class PaymentAttempt < Orb::Internal::Type::BaseModel
         # @!attribute id
         #   The ID of the payment attempt.
         #
@@ -2107,7 +2109,7 @@ module Orb
         #   Whether the payment attempt succeeded.
         #
         #   @return [Boolean]
-        required :succeeded, Orb::BooleanModel
+        required :succeeded, Orb::Internal::Type::BooleanModel
 
         # @!parse
         #   # @param id [String]
@@ -2119,13 +2121,13 @@ module Orb
         #   #
         #   def initialize(id:, amount:, created_at:, payment_provider:, payment_provider_id:, succeeded:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # The payment provider that attempted to collect the payment.
         #
         # @see Orb::Models::Invoice::PaymentAttempt#payment_provider
         module PaymentProvider
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           STRIPE = :stripe
 
@@ -2138,7 +2140,7 @@ module Orb
       end
 
       # @see Orb::Models::Invoice#shipping_address
-      class ShippingAddress < Orb::BaseModel
+      class ShippingAddress < Orb::Internal::Type::BaseModel
         # @!attribute city
         #
         #   @return [String, nil]
@@ -2179,12 +2181,12 @@ module Orb
         #   #
         #   def initialize(city:, country:, line1:, line2:, postal_code:, state:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       # @see Orb::Models::Invoice#status
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         ISSUED = :issued
         PAID = :paid
@@ -2200,7 +2202,7 @@ module Orb
       end
 
       # @see Orb::Models::Invoice#subscription
-      class Subscription < Orb::BaseModel
+      class Subscription < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String]
@@ -2211,7 +2213,7 @@ module Orb
         #   #
         #   def initialize(id:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
     end
   end

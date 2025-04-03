@@ -3,7 +3,7 @@ module Orb
     type price_evaluate_response =
       { data: ::Array[Orb::Models::EvaluatePriceGroup] }
 
-    class PriceEvaluateResponse < Orb::BaseModel
+    class PriceEvaluateResponse < Orb::Internal::Type::BaseModel
       attr_accessor data: ::Array[Orb::Models::EvaluatePriceGroup]
 
       def initialize: (data: ::Array[Orb::Models::EvaluatePriceGroup]) -> void

@@ -16,11 +16,11 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         created_at: Time,
         currency: String | nil,
         customer: Orb::Models::Alert::Customer | nil,
-        enabled: Orb::BooleanModel,
+        enabled: Orb::Internal::Type::BooleanModel,
         metric: Orb::Models::Alert::Metric | nil,
         plan: Orb::Models::Alert::Plan | nil,
         subscription: Orb::Models::Alert::Subscription | nil,
-        thresholds: ^(Orb::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
+        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
         type: Orb::Models::Alert::Type
       }
     end
@@ -39,11 +39,11 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         created_at: Time,
         currency: String | nil,
         customer: Orb::Models::Alert::Customer | nil,
-        enabled: Orb::BooleanModel,
+        enabled: Orb::Internal::Type::BooleanModel,
         metric: Orb::Models::Alert::Metric | nil,
         plan: Orb::Models::Alert::Plan | nil,
         subscription: Orb::Models::Alert::Subscription | nil,
-        thresholds: ^(Orb::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
+        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
         type: Orb::Models::Alert::Type
       }
     end
@@ -71,11 +71,11 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         created_at: Time,
         currency: String | nil,
         customer: Orb::Models::Alert::Customer | nil,
-        enabled: Orb::BooleanModel,
+        enabled: Orb::Internal::Type::BooleanModel,
         metric: Orb::Models::Alert::Metric | nil,
         plan: Orb::Models::Alert::Plan | nil,
         subscription: Orb::Models::Alert::Subscription | nil,
-        thresholds: ^(Orb::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
+        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
         type: Orb::Models::Alert::Type
       }
     end
@@ -95,11 +95,11 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         created_at: Time,
         currency: String | nil,
         customer: Orb::Models::Alert::Customer | nil,
-        enabled: Orb::BooleanModel,
+        enabled: Orb::Internal::Type::BooleanModel,
         metric: Orb::Models::Alert::Metric | nil,
         plan: Orb::Models::Alert::Plan | nil,
         subscription: Orb::Models::Alert::Subscription | nil,
-        thresholds: ^(Orb::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
+        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
         type: Orb::Models::Alert::Type
       }
     end
@@ -123,11 +123,11 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         created_at: Time,
         currency: String | nil,
         customer: Orb::Models::Alert::Customer | nil,
-        enabled: Orb::BooleanModel,
+        enabled: Orb::Internal::Type::BooleanModel,
         metric: Orb::Models::Alert::Metric | nil,
         plan: Orb::Models::Alert::Plan | nil,
         subscription: Orb::Models::Alert::Subscription | nil,
-        thresholds: ^(Orb::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
+        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
         type: Orb::Models::Alert::Type
       }
     end
@@ -147,11 +147,11 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         created_at: Time,
         currency: String | nil,
         customer: Orb::Models::Alert::Customer | nil,
-        enabled: Orb::BooleanModel,
+        enabled: Orb::Internal::Type::BooleanModel,
         metric: Orb::Models::Alert::Metric | nil,
         plan: Orb::Models::Alert::Plan | nil,
         subscription: Orb::Models::Alert::Subscription | nil,
-        thresholds: ^(Orb::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
+        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
         type: Orb::Models::Alert::Type
       }
     end
@@ -170,11 +170,11 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         created_at: Time,
         currency: String | nil,
         customer: Orb::Models::Alert::Customer | nil,
-        enabled: Orb::BooleanModel,
+        enabled: Orb::Internal::Type::BooleanModel,
         metric: Orb::Models::Alert::Metric | nil,
         plan: Orb::Models::Alert::Plan | nil,
         subscription: Orb::Models::Alert::Subscription | nil,
-        thresholds: ^(Orb::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
+        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
         type: Orb::Models::Alert::Type
       }
     end
@@ -193,11 +193,11 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         created_at: Time,
         currency: String | nil,
         customer: Orb::Models::Alert::Customer | nil,
-        enabled: Orb::BooleanModel,
+        enabled: Orb::Internal::Type::BooleanModel,
         metric: Orb::Models::Alert::Metric | nil,
         plan: Orb::Models::Alert::Plan | nil,
         subscription: Orb::Models::Alert::Subscription | nil,
-        thresholds: ^(Orb::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
+        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
         type: Orb::Models::Alert::Type
       }
     end

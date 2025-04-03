@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class BillableMetric < Orb::BaseModel
+    class BillableMetric < Orb::Internal::Type::BaseModel
       sig { returns(String) }
       attr_accessor :id
 
@@ -15,7 +15,7 @@ module Orb
       sig { returns(Orb::Models::Item) }
       attr_reader :item
 
-      sig { params(item: T.any(Orb::Models::Item, Orb::Internal::Util::AnyHash)).void }
+      sig { params(item: T.any(Orb::Models::Item, Orb::Internal::AnyHash)).void }
       attr_writer :item
 
       # User specified key-value pairs for the resource. If not present, this defaults
@@ -38,7 +38,7 @@ module Orb
         params(
           id: String,
           description: T.nilable(String),
-          item: T.any(Orb::Models::Item, Orb::Internal::Util::AnyHash),
+          item: T.any(Orb::Models::Item, Orb::Internal::AnyHash),
           metadata: T::Hash[Symbol, String],
           name: String,
           status: Orb::Models::BillableMetric::Status::OrSymbol
@@ -65,7 +65,7 @@ module Orb
       end
 
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::BillableMetric::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::BillableMetric::Status::TaggedSymbol) }

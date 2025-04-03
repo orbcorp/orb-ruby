@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class Alert < Orb::BaseModel
+    class Alert < Orb::Internal::Type::BaseModel
       # Also referred to as alert_id in this documentation.
       sig { returns(String) }
       attr_accessor :id
@@ -19,7 +19,7 @@ module Orb
       sig { returns(T.nilable(Orb::Models::Alert::Customer)) }
       attr_reader :customer
 
-      sig { params(customer: T.nilable(T.any(Orb::Models::Alert::Customer, Orb::Internal::Util::AnyHash))).void }
+      sig { params(customer: T.nilable(T.any(Orb::Models::Alert::Customer, Orb::Internal::AnyHash))).void }
       attr_writer :customer
 
       # Whether the alert is enabled or disabled.
@@ -30,21 +30,21 @@ module Orb
       sig { returns(T.nilable(Orb::Models::Alert::Metric)) }
       attr_reader :metric
 
-      sig { params(metric: T.nilable(T.any(Orb::Models::Alert::Metric, Orb::Internal::Util::AnyHash))).void }
+      sig { params(metric: T.nilable(T.any(Orb::Models::Alert::Metric, Orb::Internal::AnyHash))).void }
       attr_writer :metric
 
       # The plan the alert applies to.
       sig { returns(T.nilable(Orb::Models::Alert::Plan)) }
       attr_reader :plan
 
-      sig { params(plan: T.nilable(T.any(Orb::Models::Alert::Plan, Orb::Internal::Util::AnyHash))).void }
+      sig { params(plan: T.nilable(T.any(Orb::Models::Alert::Plan, Orb::Internal::AnyHash))).void }
       attr_writer :plan
 
       # The subscription the alert applies to.
       sig { returns(T.nilable(Orb::Models::Alert::Subscription)) }
       attr_reader :subscription
 
-      sig { params(subscription: T.nilable(T.any(Orb::Models::Alert::Subscription, Orb::Internal::Util::AnyHash))).void }
+      sig { params(subscription: T.nilable(T.any(Orb::Models::Alert::Subscription, Orb::Internal::AnyHash))).void }
       attr_writer :subscription
 
       # The thresholds that define the conditions under which the alert will be
@@ -66,12 +66,12 @@ module Orb
           id: String,
           created_at: Time,
           currency: T.nilable(String),
-          customer: T.nilable(T.any(Orb::Models::Alert::Customer, Orb::Internal::Util::AnyHash)),
+          customer: T.nilable(T.any(Orb::Models::Alert::Customer, Orb::Internal::AnyHash)),
           enabled: T::Boolean,
-          metric: T.nilable(T.any(Orb::Models::Alert::Metric, Orb::Internal::Util::AnyHash)),
-          plan: T.nilable(T.any(Orb::Models::Alert::Plan, Orb::Internal::Util::AnyHash)),
-          subscription: T.nilable(T.any(Orb::Models::Alert::Subscription, Orb::Internal::Util::AnyHash)),
-          thresholds: T.nilable(T::Array[T.any(Orb::Models::Alert::Threshold, Orb::Internal::Util::AnyHash)]),
+          metric: T.nilable(T.any(Orb::Models::Alert::Metric, Orb::Internal::AnyHash)),
+          plan: T.nilable(T.any(Orb::Models::Alert::Plan, Orb::Internal::AnyHash)),
+          subscription: T.nilable(T.any(Orb::Models::Alert::Subscription, Orb::Internal::AnyHash)),
+          thresholds: T.nilable(T::Array[T.any(Orb::Models::Alert::Threshold, Orb::Internal::AnyHash)]),
           type: Orb::Models::Alert::Type::OrSymbol
         )
           .returns(T.attached_class)
@@ -110,7 +110,7 @@ module Orb
       def to_hash
       end
 
-      class Customer < Orb::BaseModel
+      class Customer < Orb::Internal::Type::BaseModel
         sig { returns(String) }
         attr_accessor :id
 
@@ -127,7 +127,7 @@ module Orb
         end
       end
 
-      class Metric < Orb::BaseModel
+      class Metric < Orb::Internal::Type::BaseModel
         sig { returns(String) }
         attr_accessor :id
 
@@ -141,7 +141,7 @@ module Orb
         end
       end
 
-      class Plan < Orb::BaseModel
+      class Plan < Orb::Internal::Type::BaseModel
         sig { returns(T.nilable(String)) }
         attr_accessor :id
 
@@ -185,7 +185,7 @@ module Orb
         end
       end
 
-      class Subscription < Orb::BaseModel
+      class Subscription < Orb::Internal::Type::BaseModel
         sig { returns(String) }
         attr_accessor :id
 
@@ -199,7 +199,7 @@ module Orb
         end
       end
 
-      class Threshold < Orb::BaseModel
+      class Threshold < Orb::Internal::Type::BaseModel
         # The value at which an alert will fire. For credit balance alerts, the alert will
         #   fire at or below this value. For usage and cost alerts, the alert will fire at
         #   or above this value.
@@ -219,7 +219,7 @@ module Orb
 
       # The type of alert. This must be a valid alert type.
       module Type
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Alert::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Alert::Type::TaggedSymbol) }

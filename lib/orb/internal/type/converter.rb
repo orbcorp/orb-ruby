@@ -31,10 +31,10 @@ module Orb
         def dump(value)
           case value
           in Array
-            value.map { Orb::Unknown.dump(_1) }
+            value.map { Orb::Internal::Type::Unknown.dump(_1) }
           in Hash
-            value.transform_values { Orb::Unknown.dump(_1) }
-          in Orb::BaseModel
+            value.transform_values { Orb::Internal::Type::Unknown.dump(_1) }
+          in Orb::Internal::Type::BaseModel
             value.class.dump(value)
           else
             value
@@ -64,7 +64,7 @@ module Orb
             in Hash
               type_info(spec.slice(:const, :enum, :union).first&.last)
             in true | false
-              -> { Orb::BooleanModel }
+              -> { Orb::Internal::Type::BooleanModel }
             in Orb::Internal::Type::Converter | Class | Symbol
               -> { spec }
             in NilClass | Integer | Float
@@ -209,7 +209,7 @@ module Orb
           #
           # @return [Object]
           def dump(target, value)
-            target.is_a?(Orb::Internal::Type::Converter) ? target.dump(value) : Orb::Unknown.dump(value)
+            target.is_a?(Orb::Internal::Type::Converter) ? target.dump(value) : Orb::Internal::Type::Unknown.dump(value)
           end
         end
       end

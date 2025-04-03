@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::CreditNotes#create
-    class CreditNote < Orb::BaseModel
+    class CreditNote < Orb::Internal::Type::BaseModel
       # @!attribute id
       #   The Orb id of this credit note.
       #
@@ -43,7 +43,7 @@ module Orb
       #   All of the line items associated with this credit note.
       #
       #   @return [Array<Orb::Models::CreditNote::LineItem>]
-      required :line_items, -> { Orb::ArrayOf[Orb::Models::CreditNote::LineItem] }
+      required :line_items, -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote::LineItem] }
 
       # @!attribute maximum_amount_adjustment
       #   The maximum amount applied on the original invoice
@@ -95,7 +95,7 @@ module Orb
       #   Any discounts applied on the original invoice.
       #
       #   @return [Array<Orb::Models::CreditNote::Discount>, nil]
-      optional :discounts, -> { Orb::ArrayOf[Orb::Models::CreditNote::Discount] }
+      optional :discounts, -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote::Discount] }
 
       # @!parse
       #   # @return [Array<Orb::Models::CreditNote::Discount>]
@@ -144,10 +144,10 @@ module Orb
       #     super
       #   end
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # @see Orb::Models::CreditNote#customer
-      class Customer < Orb::BaseModel
+      class Customer < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String]
@@ -164,10 +164,10 @@ module Orb
         #   #
         #   def initialize(id:, external_customer_id:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
-      class LineItem < Orb::BaseModel
+      class LineItem < Orb::Internal::Type::BaseModel
         # @!attribute id
         #   The Orb id of this resource.
         #
@@ -208,13 +208,13 @@ module Orb
         #   Any tax amounts applied onto the line item.
         #
         #   @return [Array<Orb::Models::CreditNote::LineItem::TaxAmount>]
-        required :tax_amounts, -> { Orb::ArrayOf[Orb::Models::CreditNote::LineItem::TaxAmount] }
+        required :tax_amounts, -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote::LineItem::TaxAmount] }
 
         # @!attribute [r] discounts
         #   Any line item discounts from the invoice's line item.
         #
         #   @return [Array<Orb::Models::CreditNote::LineItem::Discount>, nil]
-        optional :discounts, -> { Orb::ArrayOf[Orb::Models::CreditNote::LineItem::Discount] }
+        optional :discounts, -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote::LineItem::Discount] }
 
         # @!parse
         #   # @return [Array<Orb::Models::CreditNote::LineItem::Discount>]
@@ -232,9 +232,9 @@ module Orb
         #   #
         #   def initialize(id:, amount:, item_id:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-        class TaxAmount < Orb::BaseModel
+        class TaxAmount < Orb::Internal::Type::BaseModel
           # @!attribute amount
           #   The amount of additional tax incurred by this tax rate.
           #
@@ -260,10 +260,10 @@ module Orb
           #   #
           #   def initialize(amount:, tax_rate_description:, tax_rate_percentage:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
-        class Discount < Orb::BaseModel
+        class Discount < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -277,7 +277,7 @@ module Orb
           # @!attribute applies_to_price_ids
           #
           #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::ArrayOf[String]
+          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
           # @!attribute discount_type
           #
@@ -321,11 +321,11 @@ module Orb
           #     super
           #   end
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
           # @see Orb::Models::CreditNote::LineItem::Discount#discount_type
           module DiscountType
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             PERCENTAGE = :percentage
             AMOUNT = :amount
@@ -340,7 +340,7 @@ module Orb
       end
 
       # @see Orb::Models::CreditNote#maximum_amount_adjustment
-      class MaximumAmountAdjustment < Orb::BaseModel
+      class MaximumAmountAdjustment < Orb::Internal::Type::BaseModel
         # @!attribute amount_applied
         #
         #   @return [String]
@@ -360,7 +360,7 @@ module Orb
         #
         #   @return [Array<Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice>, nil]
         optional :applies_to_prices,
-                 -> { Orb::ArrayOf[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice] },
                  nil?: true
 
         # @!attribute reason
@@ -379,11 +379,11 @@ module Orb
         #   #
         #   def initialize(amount_applied:, discount_type:, percentage_discount:, applies_to_prices: nil, reason: nil, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # @see Orb::Models::CreditNote::MaximumAmountAdjustment#discount_type
         module DiscountType
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           PERCENTAGE = :percentage
 
@@ -394,7 +394,7 @@ module Orb
           #   def self.values; end
         end
 
-        class AppliesToPrice < Orb::BaseModel
+        class AppliesToPrice < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -411,13 +411,13 @@ module Orb
           #   #
           #   def initialize(id:, name:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
       end
 
       # @see Orb::Models::CreditNote#reason
       module Reason
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         DUPLICATE = :Duplicate
         FRAUDULENT = :Fraudulent
@@ -433,7 +433,7 @@ module Orb
 
       # @see Orb::Models::CreditNote#type
       module Type
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         REFUND = :refund
         ADJUSTMENT = :adjustment
@@ -445,7 +445,7 @@ module Orb
         #   def self.values; end
       end
 
-      class Discount < Orb::BaseModel
+      class Discount < Orb::Internal::Type::BaseModel
         # @!attribute amount_applied
         #
         #   @return [String]
@@ -465,7 +465,7 @@ module Orb
         #
         #   @return [Array<Orb::Models::CreditNote::Discount::AppliesToPrice>, nil]
         optional :applies_to_prices,
-                 -> { Orb::ArrayOf[Orb::Models::CreditNote::Discount::AppliesToPrice] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote::Discount::AppliesToPrice] },
                  nil?: true
 
         # @!attribute reason
@@ -482,11 +482,11 @@ module Orb
         #   #
         #   def initialize(amount_applied:, discount_type:, percentage_discount:, applies_to_prices: nil, reason: nil, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # @see Orb::Models::CreditNote::Discount#discount_type
         module DiscountType
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           PERCENTAGE = :percentage
 
@@ -497,7 +497,7 @@ module Orb
           #   def self.values; end
         end
 
-        class AppliesToPrice < Orb::BaseModel
+        class AppliesToPrice < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -514,7 +514,7 @@ module Orb
           #   #
           #   def initialize(id:, name:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
       end
     end

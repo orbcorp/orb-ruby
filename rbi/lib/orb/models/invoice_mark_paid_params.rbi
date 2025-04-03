@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class InvoiceMarkPaidParams < Orb::BaseModel
+    class InvoiceMarkPaidParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -23,7 +23,7 @@ module Orb
           payment_received_date: Date,
           external_id: T.nilable(String),
           notes: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

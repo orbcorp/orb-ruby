@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class EventIngestParams < Orb::BaseModel
+    class EventIngestParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -23,10 +23,10 @@ module Orb
 
       sig do
         params(
-          events: T::Array[T.any(Orb::Models::EventIngestParams::Event, Orb::Internal::Util::AnyHash)],
+          events: T::Array[T.any(Orb::Models::EventIngestParams::Event, Orb::Internal::AnyHash)],
           backfill_id: T.nilable(String),
           debug: T::Boolean,
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -47,7 +47,7 @@ module Orb
       def to_hash
       end
 
-      class Event < Orb::BaseModel
+      class Event < Orb::Internal::Type::BaseModel
         # A name to meaningfully identify the action or event type.
         sig { returns(String) }
         attr_accessor :event_name

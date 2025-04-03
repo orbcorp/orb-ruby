@@ -55,7 +55,7 @@ class OrbTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     orb.requester = requester
 
-    assert_raises(Orb::InternalServerError) do
+    assert_raises(Orb::Errors::InternalServerError) do
       orb.customers.create(email: "dev@stainless.com", name: "x")
     end
 
@@ -67,7 +67,7 @@ class OrbTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     orb.requester = requester
 
-    assert_raises(Orb::InternalServerError) do
+    assert_raises(Orb::Errors::InternalServerError) do
       orb.customers.create(email: "dev@stainless.com", name: "x")
     end
 
@@ -79,7 +79,7 @@ class OrbTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     orb.requester = requester
 
-    assert_raises(Orb::InternalServerError) do
+    assert_raises(Orb::Errors::InternalServerError) do
       orb.customers.create(email: "dev@stainless.com", name: "x", request_options: {max_retries: 3})
     end
 
@@ -91,7 +91,7 @@ class OrbTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     orb.requester = requester
 
-    assert_raises(Orb::InternalServerError) do
+    assert_raises(Orb::Errors::InternalServerError) do
       orb.customers.create(email: "dev@stainless.com", name: "x", request_options: {max_retries: 4})
     end
 
@@ -103,7 +103,7 @@ class OrbTest < Minitest::Test
     requester = MockRequester.new(500, {"retry-after" => "1.3"}, {})
     orb.requester = requester
 
-    assert_raises(Orb::InternalServerError) do
+    assert_raises(Orb::Errors::InternalServerError) do
       orb.customers.create(email: "dev@stainless.com", name: "x")
     end
 
@@ -116,7 +116,7 @@ class OrbTest < Minitest::Test
     requester = MockRequester.new(500, {"retry-after" => (Time.now + 10).httpdate}, {})
     orb.requester = requester
 
-    assert_raises(Orb::InternalServerError) do
+    assert_raises(Orb::Errors::InternalServerError) do
       Thread.current.thread_variable_set(:time_now, Time.now)
       orb.customers.create(email: "dev@stainless.com", name: "x")
       Thread.current.thread_variable_set(:time_now, nil)
@@ -131,7 +131,7 @@ class OrbTest < Minitest::Test
     requester = MockRequester.new(500, {"retry-after-ms" => "1300"}, {})
     orb.requester = requester
 
-    assert_raises(Orb::InternalServerError) do
+    assert_raises(Orb::Errors::InternalServerError) do
       orb.customers.create(email: "dev@stainless.com", name: "x")
     end
 
@@ -144,7 +144,7 @@ class OrbTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     orb.requester = requester
 
-    assert_raises(Orb::InternalServerError) do
+    assert_raises(Orb::Errors::InternalServerError) do
       orb.customers.create(email: "dev@stainless.com", name: "x")
     end
 
@@ -157,7 +157,7 @@ class OrbTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     orb.requester = requester
 
-    assert_raises(Orb::InternalServerError) do
+    assert_raises(Orb::Errors::InternalServerError) do
       orb.customers.create(
         email: "dev@stainless.com",
         name: "x",
@@ -174,7 +174,7 @@ class OrbTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     orb.requester = requester
 
-    assert_raises(Orb::InternalServerError) do
+    assert_raises(Orb::Errors::InternalServerError) do
       orb.customers.create(
         email: "dev@stainless.com",
         name: "x",
@@ -259,7 +259,7 @@ class OrbTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     orb.requester = requester
 
-    assert_raises(Orb::InternalServerError) do
+    assert_raises(Orb::Errors::InternalServerError) do
       orb.customers.create(email: "dev@stainless.com", name: "x", request_options: {max_retries: 1})
     end
 
@@ -275,7 +275,7 @@ class OrbTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     orb.requester = requester
 
-    assert_raises(Orb::InternalServerError) do
+    assert_raises(Orb::Errors::InternalServerError) do
       orb.customers.create(
         email: "dev@stainless.com",
         name: "x",

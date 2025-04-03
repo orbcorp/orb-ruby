@@ -13,7 +13,7 @@ module Orb
             other_external_plan_id: String,
             external_plan_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
           )
             .returns(Orb::Models::Plan)
         end
@@ -50,7 +50,7 @@ module Orb
         sig do
           params(
             external_plan_id: String,
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
           )
             .returns(Orb::Models::Plan)
         end

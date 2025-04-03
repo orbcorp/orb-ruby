@@ -17,11 +17,11 @@ module Orb
         sig(:final) do
           params(
             type_info: T.any(
-              Orb::Internal::Util::AnyHash,
+              Orb::Internal::AnyHash,
               T.proc.returns(Orb::Internal::Type::Converter::Input),
               Orb::Internal::Type::Converter::Input
             ),
-            spec: Orb::Internal::Util::AnyHash
+            spec: Orb::Internal::AnyHash
           )
             .returns(T.attached_class)
         end
@@ -43,7 +43,7 @@ module Orb
               value: T.any(T::Hash[T.anything, T.anything], T.anything),
               state: Orb::Internal::Type::Converter::State
             )
-            .returns(T.any(Orb::Internal::Util::AnyHash, T.anything))
+            .returns(T.any(Orb::Internal::AnyHash, T.anything))
         end
         def coerce(value, state:)
         end
@@ -52,7 +52,7 @@ module Orb
         sig(:final) do
           override
             .params(value: T.any(T::Hash[T.anything, T.anything], T.anything))
-            .returns(T.any(Orb::Internal::Util::AnyHash, T.anything))
+            .returns(T.any(Orb::Internal::AnyHash, T.anything))
         end
         def dump(value)
         end
@@ -71,11 +71,11 @@ module Orb
         sig(:final) do
           params(
             type_info: T.any(
-              Orb::Internal::Util::AnyHash,
+              Orb::Internal::AnyHash,
               T.proc.returns(Orb::Internal::Type::Converter::Input),
               Orb::Internal::Type::Converter::Input
             ),
-            spec: Orb::Internal::Util::AnyHash
+            spec: Orb::Internal::AnyHash
           )
             .void
         end

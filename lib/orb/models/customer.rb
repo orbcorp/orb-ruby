@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Customers#create
-    class Customer < Orb::BaseModel
+    class Customer < Orb::Internal::Type::BaseModel
       # @!attribute id
       #
       #   @return [String]
@@ -12,12 +12,12 @@ module Orb
       # @!attribute additional_emails
       #
       #   @return [Array<String>]
-      required :additional_emails, Orb::ArrayOf[String]
+      required :additional_emails, Orb::Internal::Type::ArrayOf[String]
 
       # @!attribute auto_collection
       #
       #   @return [Boolean]
-      required :auto_collection, Orb::BooleanModel
+      required :auto_collection, Orb::Internal::Type::BooleanModel
 
       # @!attribute balance
       #   The customer's current balance in their currency.
@@ -51,12 +51,12 @@ module Orb
       # @!attribute email_delivery
       #
       #   @return [Boolean]
-      required :email_delivery, Orb::BooleanModel
+      required :email_delivery, Orb::Internal::Type::BooleanModel
 
       # @!attribute exempt_from_automated_tax
       #
       #   @return [Boolean, nil]
-      required :exempt_from_automated_tax, Orb::BooleanModel, nil?: true
+      required :exempt_from_automated_tax, Orb::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute external_customer_id
       #   An optional user-defined ID for this customer resource, used throughout the
@@ -79,7 +79,7 @@ module Orb
       #     `null`.
       #
       #   @return [Hash{Symbol=>String}]
-      required :metadata, Orb::HashOf[String]
+      required :metadata, Orb::Internal::Type::HashOf[String]
 
       # @!attribute name
       #   The full name of the customer
@@ -313,10 +313,10 @@ module Orb
       #     super
       #   end
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # @see Orb::Models::Customer#billing_address
-      class BillingAddress < Orb::BaseModel
+      class BillingAddress < Orb::Internal::Type::BaseModel
         # @!attribute city
         #
         #   @return [String, nil]
@@ -357,15 +357,15 @@ module Orb
         #   #
         #   def initialize(city:, country:, line1:, line2:, postal_code:, state:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       # @see Orb::Models::Customer#hierarchy
-      class Hierarchy < Orb::BaseModel
+      class Hierarchy < Orb::Internal::Type::BaseModel
         # @!attribute children
         #
         #   @return [Array<Orb::Models::Customer::Hierarchy::Child>]
-        required :children, -> { Orb::ArrayOf[Orb::Models::Customer::Hierarchy::Child] }
+        required :children, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Customer::Hierarchy::Child] }
 
         # @!attribute parent
         #
@@ -380,9 +380,9 @@ module Orb
         #   #
         #   def initialize(children:, parent:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-        class Child < Orb::BaseModel
+        class Child < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -399,11 +399,11 @@ module Orb
           #   #
           #   def initialize(id:, external_customer_id:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
         # @see Orb::Models::Customer::Hierarchy#parent
-        class Parent < Orb::BaseModel
+        class Parent < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -420,7 +420,7 @@ module Orb
           #   #
           #   def initialize(id:, external_customer_id:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
       end
 
@@ -430,7 +430,7 @@ module Orb
       #
       # @see Orb::Models::Customer#payment_provider
       module PaymentProvider
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         QUICKBOOKS = :quickbooks
         BILL_COM = :"bill.com"
@@ -446,7 +446,7 @@ module Orb
       end
 
       # @see Orb::Models::Customer#shipping_address
-      class ShippingAddress < Orb::BaseModel
+      class ShippingAddress < Orb::Internal::Type::BaseModel
         # @!attribute city
         #
         #   @return [String, nil]
@@ -487,11 +487,11 @@ module Orb
         #   #
         #   def initialize(city:, country:, line1:, line2:, postal_code:, state:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       # @see Orb::Models::Customer#tax_id
-      class TaxID < Orb::BaseModel
+      class TaxID < Orb::Internal::Type::BaseModel
         # @!attribute country
         #
         #   @return [Symbol, Orb::Models::Customer::TaxID::Country]
@@ -620,11 +620,11 @@ module Orb
         #   #
         #   def initialize(country:, type:, value:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # @see Orb::Models::Customer::TaxID#country
         module Country
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           AD = :AD
           AE = :AE
@@ -714,7 +714,7 @@ module Orb
 
         # @see Orb::Models::Customer::TaxID#type
         module Type
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           AD_NRT = :ad_nrt
           AE_TRN = :ae_trn
@@ -797,17 +797,17 @@ module Orb
       end
 
       # @see Orb::Models::Customer#accounting_sync_configuration
-      class AccountingSyncConfiguration < Orb::BaseModel
+      class AccountingSyncConfiguration < Orb::Internal::Type::BaseModel
         # @!attribute accounting_providers
         #
         #   @return [Array<Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider>]
         required :accounting_providers,
-                 -> { Orb::ArrayOf[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider] }
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider] }
 
         # @!attribute excluded
         #
         #   @return [Boolean]
-        required :excluded, Orb::BooleanModel
+        required :excluded, Orb::Internal::Type::BooleanModel
 
         # @!parse
         #   # @param accounting_providers [Array<Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider>]
@@ -815,9 +815,9 @@ module Orb
         #   #
         #   def initialize(accounting_providers:, excluded:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-        class AccountingProvider < Orb::BaseModel
+        class AccountingProvider < Orb::Internal::Type::BaseModel
           # @!attribute external_provider_id
           #
           #   @return [String, nil]
@@ -835,11 +835,11 @@ module Orb
           #   #
           #   def initialize(external_provider_id:, provider_type:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
           # @see Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider#provider_type
           module ProviderType
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             QUICKBOOKS = :quickbooks
             NETSUITE = :netsuite
@@ -854,18 +854,18 @@ module Orb
       end
 
       # @see Orb::Models::Customer#reporting_configuration
-      class ReportingConfiguration < Orb::BaseModel
+      class ReportingConfiguration < Orb::Internal::Type::BaseModel
         # @!attribute exempt
         #
         #   @return [Boolean]
-        required :exempt, Orb::BooleanModel
+        required :exempt, Orb::Internal::Type::BooleanModel
 
         # @!parse
         #   # @param exempt [Boolean]
         #   #
         #   def initialize(exempt:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
     end
   end

@@ -3,7 +3,7 @@ module Orb
     type dimensional_price_group_retrieve_params =
       {  } & Orb::Internal::Type::request_parameters
 
-    class DimensionalPriceGroupRetrieveParams < Orb::BaseModel
+    class DimensionalPriceGroupRetrieveParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 

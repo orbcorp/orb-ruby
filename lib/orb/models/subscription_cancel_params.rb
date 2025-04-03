@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Subscriptions#cancel
-    class SubscriptionCancelParams < Orb::BaseModel
+    class SubscriptionCancelParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -20,7 +20,7 @@ module Orb
       #     existing invoices to be changed.
       #
       #   @return [Boolean, nil]
-      optional :allow_invoice_credit_or_void, Orb::BooleanModel, nil?: true
+      optional :allow_invoice_credit_or_void, Orb::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute cancellation_date
       #   The date that the cancellation should take effect. This parameter can only be
@@ -37,11 +37,11 @@ module Orb
       #   #
       #   def initialize(cancel_option:, allow_invoice_credit_or_void: nil, cancellation_date: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # Determines the timing of subscription cancellation
       module CancelOption
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         END_OF_SUBSCRIPTION_TERM = :end_of_subscription_term
         IMMEDIATE = :immediate

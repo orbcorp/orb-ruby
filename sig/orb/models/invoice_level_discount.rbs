@@ -6,7 +6,7 @@ module Orb
       | Orb::Models::TrialDiscount
 
     module InvoiceLevelDiscount
-      extend Orb::Union
+      extend Orb::Internal::Type::Union
 
       def self?.variants: -> [Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount]
     end

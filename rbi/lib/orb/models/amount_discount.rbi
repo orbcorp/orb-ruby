@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class AmountDiscount < Orb::BaseModel
+    class AmountDiscount < Orb::Internal::Type::BaseModel
       # Only available if discount_type is `amount`.
       sig { returns(String) }
       attr_accessor :amount_discount
@@ -45,7 +45,7 @@ module Orb
       end
 
       module DiscountType
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::AmountDiscount::DiscountType) }
         OrSymbol =

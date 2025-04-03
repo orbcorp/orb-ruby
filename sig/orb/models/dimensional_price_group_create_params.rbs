@@ -10,7 +10,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class DimensionalPriceGroupCreateParams < Orb::BaseModel
+    class DimensionalPriceGroupCreateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 

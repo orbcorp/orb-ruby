@@ -12,7 +12,7 @@ class Orb::Test::Resources::Events::VolumeTest < Orb::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Orb::ArrayOf[Orb::Models::Events::EventVolumes::Data])
+        data: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Events::EventVolumes::Data])
       }
     end
   end

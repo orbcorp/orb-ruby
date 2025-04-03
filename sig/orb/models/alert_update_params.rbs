@@ -4,7 +4,7 @@ module Orb
       { thresholds: ::Array[Orb::Models::AlertUpdateParams::Threshold] }
       & Orb::Internal::Type::request_parameters
 
-    class AlertUpdateParams < Orb::BaseModel
+    class AlertUpdateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -19,7 +19,7 @@ module Orb
 
       type threshold = { value: Float }
 
-      class Threshold < Orb::BaseModel
+      class Threshold < Orb::Internal::Type::BaseModel
         attr_accessor value: Float
 
         def initialize: (value: Float) -> void

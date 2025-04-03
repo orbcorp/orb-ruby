@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class AmountDiscount < Orb::BaseModel
+    class AmountDiscount < Orb::Internal::Type::BaseModel
       # @!attribute amount_discount
       #   Only available if discount_type is `amount`.
       #
@@ -14,7 +14,7 @@ module Orb
       #     this can be a subset of prices.
       #
       #   @return [Array<String>]
-      required :applies_to_price_ids, Orb::ArrayOf[String]
+      required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
       # @!attribute discount_type
       #
@@ -34,11 +34,11 @@ module Orb
       #   #
       #   def initialize(amount_discount:, applies_to_price_ids:, discount_type:, reason: nil, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # @see Orb::Models::AmountDiscount#discount_type
       module DiscountType
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         AMOUNT = :amount
 

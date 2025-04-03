@@ -4,7 +4,7 @@ module Orb
       type external_price_id_fetch_params =
         {  } & Orb::Internal::Type::request_parameters
 
-      class ExternalPriceIDFetchParams < Orb::BaseModel
+      class ExternalPriceIDFetchParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 

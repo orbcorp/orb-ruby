@@ -8,7 +8,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class SubscriptionCancelParams < Orb::BaseModel
+    class SubscriptionCancelParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -31,7 +31,7 @@ module Orb
         :end_of_subscription_term | :immediate | :requested_date
 
       module CancelOption
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         END_OF_SUBSCRIPTION_TERM: :end_of_subscription_term
         IMMEDIATE: :immediate

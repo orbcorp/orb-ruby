@@ -9,7 +9,7 @@ module Orb
         }
         & Orb::Internal::Type::request_parameters
 
-      class BalanceTransactionCreateParams < Orb::BaseModel
+      class BalanceTransactionCreateParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
@@ -31,7 +31,7 @@ module Orb
         type type_ = :increment | :decrement
 
         module Type
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           INCREMENT: :increment
           DECREMENT: :decrement

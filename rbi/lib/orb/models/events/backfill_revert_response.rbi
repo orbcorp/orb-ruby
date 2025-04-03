@@ -3,7 +3,7 @@
 module Orb
   module Models
     module Events
-      class BackfillRevertResponse < Orb::BaseModel
+      class BackfillRevertResponse < Orb::Internal::Type::BaseModel
         sig { returns(String) }
         attr_accessor :id
 
@@ -106,7 +106,7 @@ module Orb
 
         # The status of the backfill.
         module Status
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Events::BackfillRevertResponse::Status) }
           OrSymbol =

@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Events#deprecate
-    class EventDeprecateResponse < Orb::BaseModel
+    class EventDeprecateResponse < Orb::Internal::Type::BaseModel
       # @!attribute deprecated
       #   event_id of the deprecated event, if successfully updated
       #
@@ -15,7 +15,7 @@ module Orb
       #   #
       #   def initialize(deprecated:, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
     end
   end
 end

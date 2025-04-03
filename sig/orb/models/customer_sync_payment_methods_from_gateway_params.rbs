@@ -3,7 +3,7 @@ module Orb
     type customer_sync_payment_methods_from_gateway_params =
       {  } & Orb::Internal::Type::request_parameters
 
-    class CustomerSyncPaymentMethodsFromGatewayParams < Orb::BaseModel
+    class CustomerSyncPaymentMethodsFromGatewayParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 

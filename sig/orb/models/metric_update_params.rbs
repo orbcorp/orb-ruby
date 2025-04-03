@@ -4,7 +4,7 @@ module Orb
       { metadata: ::Hash[Symbol, String?]? }
       & Orb::Internal::Type::request_parameters
 
-    class MetricUpdateParams < Orb::BaseModel
+    class MetricUpdateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 

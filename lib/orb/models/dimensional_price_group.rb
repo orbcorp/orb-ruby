@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::DimensionalPriceGroups#create
-    class DimensionalPriceGroup < Orb::BaseModel
+    class DimensionalPriceGroup < Orb::Internal::Type::BaseModel
       # @!attribute id
       #
       #   @return [String]
@@ -21,7 +21,7 @@ module Orb
       #   The dimensions that this dimensional price group is defined over
       #
       #   @return [Array<String>]
-      required :dimensions, Orb::ArrayOf[String]
+      required :dimensions, Orb::Internal::Type::ArrayOf[String]
 
       # @!attribute external_dimensional_price_group_id
       #   An alias for the dimensional price group
@@ -36,7 +36,7 @@ module Orb
       #     `null`.
       #
       #   @return [Hash{Symbol=>String}]
-      required :metadata, Orb::HashOf[String]
+      required :metadata, Orb::Internal::Type::HashOf[String]
 
       # @!attribute name
       #   The name of the dimensional price group
@@ -58,7 +58,7 @@ module Orb
       #   #
       #   def initialize(id:, billable_metric_id:, dimensions:, external_dimensional_price_group_id:, metadata:, name:, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
     end
   end
 end

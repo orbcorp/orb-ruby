@@ -12,7 +12,7 @@ module Orb
           | Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry
 
         module LedgerListResponse
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           type increment_ledger_entry =
             {
@@ -31,7 +31,7 @@ module Orb
               starting_balance: Float
             }
 
-          class IncrementLedgerEntry < Orb::BaseModel
+          class IncrementLedgerEntry < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor amount: Float
@@ -79,7 +79,7 @@ module Orb
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor expiry_date: Time?
@@ -97,7 +97,7 @@ module Orb
 
             type customer = { id: String, external_customer_id: String? }
 
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor external_customer_id: String?
@@ -113,7 +113,7 @@ module Orb
             type entry_status = :committed | :pending
 
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               COMMITTED: :committed
               PENDING: :pending
@@ -142,7 +142,7 @@ module Orb
               price_id: String?
             }
 
-          class DecrementLedgerEntry < Orb::BaseModel
+          class DecrementLedgerEntry < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor amount: Float
@@ -199,7 +199,7 @@ module Orb
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor expiry_date: Time?
@@ -217,7 +217,7 @@ module Orb
 
             type customer = { id: String, external_customer_id: String? }
 
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor external_customer_id: String?
@@ -233,7 +233,7 @@ module Orb
             type entry_status = :committed | :pending
 
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               COMMITTED: :committed
               PENDING: :pending
@@ -260,7 +260,7 @@ module Orb
               starting_balance: Float
             }
 
-          class ExpirationChangeLedgerEntry < Orb::BaseModel
+          class ExpirationChangeLedgerEntry < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor amount: Float
@@ -311,7 +311,7 @@ module Orb
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor expiry_date: Time?
@@ -329,7 +329,7 @@ module Orb
 
             type customer = { id: String, external_customer_id: String? }
 
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor external_customer_id: String?
@@ -345,7 +345,7 @@ module Orb
             type entry_status = :committed | :pending
 
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               COMMITTED: :committed
               PENDING: :pending
@@ -371,7 +371,7 @@ module Orb
               starting_balance: Float
             }
 
-          class CreditBlockExpiryLedgerEntry < Orb::BaseModel
+          class CreditBlockExpiryLedgerEntry < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor amount: Float
@@ -419,7 +419,7 @@ module Orb
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor expiry_date: Time?
@@ -437,7 +437,7 @@ module Orb
 
             type customer = { id: String, external_customer_id: String? }
 
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor external_customer_id: String?
@@ -453,7 +453,7 @@ module Orb
             type entry_status = :committed | :pending
 
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               COMMITTED: :committed
               PENDING: :pending
@@ -481,7 +481,7 @@ module Orb
               void_reason: String?
             }
 
-          class VoidLedgerEntry < Orb::BaseModel
+          class VoidLedgerEntry < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor amount: Float
@@ -535,7 +535,7 @@ module Orb
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor expiry_date: Time?
@@ -553,7 +553,7 @@ module Orb
 
             type customer = { id: String, external_customer_id: String? }
 
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor external_customer_id: String?
@@ -569,7 +569,7 @@ module Orb
             type entry_status = :committed | :pending
 
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               COMMITTED: :committed
               PENDING: :pending
@@ -598,7 +598,7 @@ module Orb
               void_reason: String?
             }
 
-          class VoidInitiatedLedgerEntry < Orb::BaseModel
+          class VoidInitiatedLedgerEntry < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor amount: Float
@@ -655,7 +655,7 @@ module Orb
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor expiry_date: Time?
@@ -673,7 +673,7 @@ module Orb
 
             type customer = { id: String, external_customer_id: String? }
 
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor external_customer_id: String?
@@ -689,7 +689,7 @@ module Orb
             type entry_status = :committed | :pending
 
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               COMMITTED: :committed
               PENDING: :pending
@@ -715,7 +715,7 @@ module Orb
               starting_balance: Float
             }
 
-          class AmendmentLedgerEntry < Orb::BaseModel
+          class AmendmentLedgerEntry < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor amount: Float
@@ -763,7 +763,7 @@ module Orb
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor expiry_date: Time?
@@ -781,7 +781,7 @@ module Orb
 
             type customer = { id: String, external_customer_id: String? }
 
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor external_customer_id: String?
@@ -797,7 +797,7 @@ module Orb
             type entry_status = :committed | :pending
 
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               COMMITTED: :committed
               PENDING: :pending

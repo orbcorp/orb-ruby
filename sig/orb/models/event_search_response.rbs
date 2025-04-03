@@ -3,7 +3,7 @@ module Orb
     type event_search_response =
       { data: ::Array[Orb::Models::EventSearchResponse::Data] }
 
-    class EventSearchResponse < Orb::BaseModel
+    class EventSearchResponse < Orb::Internal::Type::BaseModel
       attr_accessor data: ::Array[Orb::Models::EventSearchResponse::Data]
 
       def initialize: (
@@ -23,7 +23,7 @@ module Orb
           timestamp: Time
         }
 
-      class Data < Orb::BaseModel
+      class Data < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor customer_id: String?

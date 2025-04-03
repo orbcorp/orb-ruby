@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class AlertCreateForExternalCustomerParams < Orb::BaseModel
+    class AlertCreateForExternalCustomerParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -23,9 +23,9 @@ module Orb
           currency: String,
           type: Orb::Models::AlertCreateForExternalCustomerParams::Type::OrSymbol,
           thresholds: T.nilable(
-            T::Array[T.any(Orb::Models::AlertCreateForExternalCustomerParams::Threshold, Orb::Internal::Util::AnyHash)]
+            T::Array[T.any(Orb::Models::AlertCreateForExternalCustomerParams::Threshold, Orb::Internal::AnyHash)]
           ),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -48,7 +48,7 @@ module Orb
 
       # The type of alert to create. This must be a valid alert type.
       module Type
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::AlertCreateForExternalCustomerParams::Type) }
         OrSymbol =
@@ -66,7 +66,7 @@ module Orb
         end
       end
 
-      class Threshold < Orb::BaseModel
+      class Threshold < Orb::Internal::Type::BaseModel
         # The value at which an alert will fire. For credit balance alerts, the alert will
         #   fire at or below this value. For usage and cost alerts, the alert will fire at
         #   or above this value.

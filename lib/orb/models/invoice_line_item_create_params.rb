@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::InvoiceLineItems#create
-    class InvoiceLineItemCreateParams < Orb::BaseModel
+    class InvoiceLineItemCreateParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -56,7 +56,7 @@ module Orb
       #   #
       #   def initialize(amount:, end_date:, invoice_id:, name:, quantity:, start_date:, request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
     end
   end
 end

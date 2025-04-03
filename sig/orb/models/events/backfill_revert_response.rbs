@@ -16,7 +16,7 @@ module Orb
           deprecation_filter: String?
         }
 
-      class BackfillRevertResponse < Orb::BaseModel
+      class BackfillRevertResponse < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor close_time: Time?
@@ -58,7 +58,7 @@ module Orb
         type status = :pending | :reflected | :pending_revert | :reverted
 
         module Status
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           PENDING: :pending
           REFLECTED: :reflected

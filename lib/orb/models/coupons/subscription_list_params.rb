@@ -4,7 +4,7 @@ module Orb
   module Models
     module Coupons
       # @see Orb::Resources::Coupons::Subscriptions#list
-      class SubscriptionListParams < Orb::BaseModel
+      class SubscriptionListParams < Orb::Internal::Type::BaseModel
         # @!parse
         #   extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
@@ -33,7 +33,7 @@ module Orb
         #   #
         #   def initialize(cursor: nil, limit: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
     end
   end

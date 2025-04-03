@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class SubscriptionUpdateFixedFeeQuantityResponse < Orb::BaseModel
+    class SubscriptionUpdateFixedFeeQuantityResponse < Orb::Internal::Type::BaseModel
       sig { returns(String) }
       attr_accessor :id
 
@@ -29,7 +29,7 @@ module Orb
         params(
           billing_cycle_anchor_configuration: T.any(
             Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::BillingCycleAnchorConfiguration,
-            Orb::Internal::Util::AnyHash
+            Orb::Internal::AnyHash
           )
         )
           .void
@@ -79,7 +79,7 @@ module Orb
       sig { returns(Orb::Models::Customer) }
       attr_reader :customer
 
-      sig { params(customer: T.any(Orb::Models::Customer, Orb::Internal::Util::AnyHash)).void }
+      sig { params(customer: T.any(Orb::Models::Customer, Orb::Internal::AnyHash)).void }
       attr_writer :customer
 
       # Determines the default memo on this subscriptions' invoices. Note that if this
@@ -140,7 +140,7 @@ module Orb
       sig { returns(Orb::Models::Plan) }
       attr_reader :plan
 
-      sig { params(plan: T.any(Orb::Models::Plan, Orb::Internal::Util::AnyHash)).void }
+      sig { params(plan: T.any(Orb::Models::Plan, Orb::Internal::AnyHash)).void }
       attr_writer :plan
 
       # The price intervals for this subscription.
@@ -153,10 +153,7 @@ module Orb
       sig do
         params(
           redeemed_coupon: T.nilable(
-            T.any(
-              Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::RedeemedCoupon,
-              Orb::Internal::Util::AnyHash
-            )
+            T.any(Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::RedeemedCoupon, Orb::Internal::AnyHash)
           )
         )
           .void
@@ -175,7 +172,7 @@ module Orb
 
       sig do
         params(
-          trial_info: T.any(Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::TrialInfo, Orb::Internal::Util::AnyHash)
+          trial_info: T.any(Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::TrialInfo, Orb::Internal::AnyHash)
         )
           .void
       end
@@ -185,27 +182,22 @@ module Orb
         params(
           id: String,
           active_plan_phase_order: T.nilable(Integer),
-          adjustment_intervals: T::Array[
-          T.any(
-            Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::AdjustmentInterval,
-            Orb::Internal::Util::AnyHash
-          )
-          ],
+          adjustment_intervals: T::Array[T.any(Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::AdjustmentInterval, Orb::Internal::AnyHash)],
           auto_collection: T.nilable(T::Boolean),
           billing_cycle_anchor_configuration: T.any(
             Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::BillingCycleAnchorConfiguration,
-            Orb::Internal::Util::AnyHash
+            Orb::Internal::AnyHash
           ),
           billing_cycle_day: Integer,
           created_at: Time,
           current_billing_period_end_date: T.nilable(Time),
           current_billing_period_start_date: T.nilable(Time),
-          customer: T.any(Orb::Models::Customer, Orb::Internal::Util::AnyHash),
+          customer: T.any(Orb::Models::Customer, Orb::Internal::AnyHash),
           default_invoice_memo: T.nilable(String),
           discount_intervals: T::Array[
           T.any(
             Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::AmountDiscountInterval,
-            Orb::Internal::Util::AnyHash,
+            Orb::Internal::AnyHash,
             Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::PercentageDiscountInterval,
             Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::UsageDiscountInterval
           )
@@ -214,40 +206,22 @@ module Orb
           fixed_fee_quantity_schedule: T::Array[
           T.any(
             Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::FixedFeeQuantitySchedule,
-            Orb::Internal::Util::AnyHash
+            Orb::Internal::AnyHash
           )
           ],
           invoicing_threshold: T.nilable(String),
-          maximum_intervals: T::Array[
-          T.any(
-            Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::MaximumInterval,
-            Orb::Internal::Util::AnyHash
-          )
-          ],
+          maximum_intervals: T::Array[T.any(Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::MaximumInterval, Orb::Internal::AnyHash)],
           metadata: T::Hash[Symbol, String],
-          minimum_intervals: T::Array[
-          T.any(
-            Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::MinimumInterval,
-            Orb::Internal::Util::AnyHash
-          )
-          ],
+          minimum_intervals: T::Array[T.any(Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::MinimumInterval, Orb::Internal::AnyHash)],
           net_terms: Integer,
-          plan: T.any(Orb::Models::Plan, Orb::Internal::Util::AnyHash),
-          price_intervals: T::Array[
-          T.any(
-            Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::PriceInterval,
-            Orb::Internal::Util::AnyHash
-          )
-          ],
+          plan: T.any(Orb::Models::Plan, Orb::Internal::AnyHash),
+          price_intervals: T::Array[T.any(Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::PriceInterval, Orb::Internal::AnyHash)],
           redeemed_coupon: T.nilable(
-            T.any(
-              Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::RedeemedCoupon,
-              Orb::Internal::Util::AnyHash
-            )
+            T.any(Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::RedeemedCoupon, Orb::Internal::AnyHash)
           ),
           start_date: Time,
           status: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::Status::OrSymbol,
-          trial_info: T.any(Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::TrialInfo, Orb::Internal::Util::AnyHash)
+          trial_info: T.any(Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::TrialInfo, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -321,7 +295,7 @@ module Orb
       def to_hash
       end
 
-      class AdjustmentInterval < Orb::BaseModel
+      class AdjustmentInterval < Orb::Internal::Type::BaseModel
         sig { returns(String) }
         attr_accessor :id
 
@@ -355,7 +329,7 @@ module Orb
             id: String,
             adjustment: T.any(
               Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment,
-              Orb::Internal::Util::AnyHash,
+              Orb::Internal::AnyHash,
               Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment,
               Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment,
               Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment,
@@ -392,9 +366,9 @@ module Orb
         end
 
         module Adjustment
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
-          class PlanPhaseUsageDiscountAdjustment < Orb::BaseModel
+          class PlanPhaseUsageDiscountAdjustment < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -464,7 +438,7 @@ module Orb
             end
           end
 
-          class PlanPhaseAmountDiscountAdjustment < Orb::BaseModel
+          class PlanPhaseAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -534,7 +508,7 @@ module Orb
             end
           end
 
-          class PlanPhasePercentageDiscountAdjustment < Orb::BaseModel
+          class PlanPhasePercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -604,7 +578,7 @@ module Orb
             end
           end
 
-          class PlanPhaseMinimumAdjustment < Orb::BaseModel
+          class PlanPhaseMinimumAdjustment < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -681,7 +655,7 @@ module Orb
             end
           end
 
-          class PlanPhaseMaximumAdjustment < Orb::BaseModel
+          class PlanPhaseMaximumAdjustment < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -762,7 +736,7 @@ module Orb
         end
       end
 
-      class BillingCycleAnchorConfiguration < Orb::BaseModel
+      class BillingCycleAnchorConfiguration < Orb::Internal::Type::BaseModel
         # The day of the month on which the billing cycle is anchored. If the maximum
         #   number of days in a month is greater than this value, the last day of the month
         #   is the billing cycle day (e.g. billing_cycle_day=31 for April means the billing
@@ -793,9 +767,9 @@ module Orb
       end
 
       module DiscountInterval
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
-        class AmountDiscountInterval < Orb::BaseModel
+        class AmountDiscountInterval < Orb::Internal::Type::BaseModel
           # Only available if discount_type is `amount`.
           sig { returns(String) }
           attr_accessor :amount_discount
@@ -857,7 +831,7 @@ module Orb
           end
         end
 
-        class PercentageDiscountInterval < Orb::BaseModel
+        class PercentageDiscountInterval < Orb::Internal::Type::BaseModel
           # The price ids that this discount interval applies to.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
@@ -920,7 +894,7 @@ module Orb
           end
         end
 
-        class UsageDiscountInterval < Orb::BaseModel
+        class UsageDiscountInterval < Orb::Internal::Type::BaseModel
           # The price ids that this discount interval applies to.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
@@ -993,7 +967,7 @@ module Orb
         end
       end
 
-      class FixedFeeQuantitySchedule < Orb::BaseModel
+      class FixedFeeQuantitySchedule < Orb::Internal::Type::BaseModel
         sig { returns(T.nilable(Time)) }
         attr_accessor :end_date
 
@@ -1020,7 +994,7 @@ module Orb
         end
       end
 
-      class MaximumInterval < Orb::BaseModel
+      class MaximumInterval < Orb::Internal::Type::BaseModel
         # The price ids that this maximum interval applies to.
         sig { returns(T::Array[String]) }
         attr_accessor :applies_to_price_ids
@@ -1077,7 +1051,7 @@ module Orb
         end
       end
 
-      class MinimumInterval < Orb::BaseModel
+      class MinimumInterval < Orb::Internal::Type::BaseModel
         # The price ids that this minimum interval applies to.
         sig { returns(T::Array[String]) }
         attr_accessor :applies_to_price_ids
@@ -1134,7 +1108,7 @@ module Orb
         end
       end
 
-      class PriceInterval < Orb::BaseModel
+      class PriceInterval < Orb::Internal::Type::BaseModel
         sig { returns(String) }
         attr_accessor :id
 
@@ -1245,13 +1219,13 @@ module Orb
               T::Array[
               T.any(
                 Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::PriceInterval::FixedFeeQuantityTransition,
-                Orb::Internal::Util::AnyHash
+                Orb::Internal::AnyHash
               )
               ]
             ),
             price: T.any(
               Orb::Models::Price::UnitPrice,
-              Orb::Internal::Util::AnyHash,
+              Orb::Internal::AnyHash,
               Orb::Models::Price::PackagePrice,
               Orb::Models::Price::MatrixPrice,
               Orb::Models::Price::TieredPrice,
@@ -1350,7 +1324,7 @@ module Orb
         def to_hash
         end
 
-        class FixedFeeQuantityTransition < Orb::BaseModel
+        class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
           sig { returns(Time) }
           attr_accessor :effective_date
 
@@ -1370,7 +1344,7 @@ module Orb
         end
       end
 
-      class RedeemedCoupon < Orb::BaseModel
+      class RedeemedCoupon < Orb::Internal::Type::BaseModel
         sig { returns(String) }
         attr_accessor :coupon_id
 
@@ -1392,7 +1366,7 @@ module Orb
       end
 
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::Status) }
@@ -1409,7 +1383,7 @@ module Orb
         end
       end
 
-      class TrialInfo < Orb::BaseModel
+      class TrialInfo < Orb::Internal::Type::BaseModel
         sig { returns(T.nilable(Time)) }
         attr_accessor :end_date
 

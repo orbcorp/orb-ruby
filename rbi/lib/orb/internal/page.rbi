@@ -17,7 +17,7 @@ module Orb
       def inspect
       end
 
-      class PaginationMetadata < Orb::BaseModel
+      class PaginationMetadata < Orb::Internal::Type::BaseModel
         sig { returns(T::Boolean) }
         attr_accessor :has_more
 

@@ -6,7 +6,7 @@ module Orb
         debug: Orb::Models::EventIngestResponse::Debug?
       }
 
-    class EventIngestResponse < Orb::BaseModel
+    class EventIngestResponse < Orb::Internal::Type::BaseModel
       attr_accessor validation_failed: ::Array[Orb::Models::EventIngestResponse::ValidationFailed]
 
       attr_accessor debug: Orb::Models::EventIngestResponse::Debug?
@@ -21,7 +21,7 @@ module Orb
       type validation_failed =
         { idempotency_key: String, validation_errors: ::Array[String] }
 
-      class ValidationFailed < Orb::BaseModel
+      class ValidationFailed < Orb::Internal::Type::BaseModel
         attr_accessor idempotency_key: String
 
         attr_accessor validation_errors: ::Array[String]
@@ -36,7 +36,7 @@ module Orb
 
       type debug = { duplicate: ::Array[String], ingested: ::Array[String] }
 
-      class Debug < Orb::BaseModel
+      class Debug < Orb::Internal::Type::BaseModel
         attr_accessor duplicate: ::Array[String]
 
         attr_accessor ingested: ::Array[String]

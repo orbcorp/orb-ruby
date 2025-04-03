@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class InvoiceCreateParams < Orb::BaseModel
+    class InvoiceCreateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -73,13 +73,13 @@ module Orb
         params(
           currency: String,
           invoice_date: Time,
-          line_items: T::Array[T.any(Orb::Models::InvoiceCreateParams::LineItem, Orb::Internal::Util::AnyHash)],
+          line_items: T::Array[T.any(Orb::Models::InvoiceCreateParams::LineItem, Orb::Internal::AnyHash)],
           net_terms: Integer,
           customer_id: T.nilable(String),
           discount: T.nilable(
             T.any(
               Orb::Models::PercentageDiscount,
-              Orb::Internal::Util::AnyHash,
+              Orb::Internal::AnyHash,
               Orb::Models::TrialDiscount,
               Orb::Models::UsageDiscount,
               Orb::Models::AmountDiscount
@@ -89,7 +89,7 @@ module Orb
           memo: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           will_auto_issue: T::Boolean,
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -136,7 +136,7 @@ module Orb
       def to_hash
       end
 
-      class LineItem < Orb::BaseModel
+      class LineItem < Orb::Internal::Type::BaseModel
         # A date string to specify the line item's end date in the customer's timezone.
         sig { returns(Date) }
         attr_accessor :end_date
@@ -163,9 +163,7 @@ module Orb
         attr_reader :unit_config
 
         sig do
-          params(
-            unit_config: T.any(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig, Orb::Internal::Util::AnyHash)
-          )
+          params(unit_config: T.any(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig, Orb::Internal::AnyHash))
             .void
         end
         attr_writer :unit_config
@@ -178,7 +176,7 @@ module Orb
             name: String,
             quantity: Float,
             start_date: Date,
-            unit_config: T.any(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig, Orb::Internal::Util::AnyHash)
+            unit_config: T.any(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig, Orb::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -203,7 +201,7 @@ module Orb
         end
 
         module ModelType
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::InvoiceCreateParams::LineItem::ModelType) }
           OrSymbol =
@@ -216,7 +214,7 @@ module Orb
           end
         end
 
-        class UnitConfig < Orb::BaseModel
+        class UnitConfig < Orb::Internal::Type::BaseModel
           # Rate per unit of usage
           sig { returns(String) }
           attr_accessor :unit_amount

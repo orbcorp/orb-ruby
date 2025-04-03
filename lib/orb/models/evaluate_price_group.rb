@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class EvaluatePriceGroup < Orb::BaseModel
+    class EvaluatePriceGroup < Orb::Internal::Type::BaseModel
       # @!attribute amount
       #   The price's output for the group
       #
@@ -13,7 +13,8 @@ module Orb
       #   The values for the group in the order specified by `grouping_keys`
       #
       #   @return [Array<String, Float, Boolean>]
-      required :grouping_values, -> { Orb::ArrayOf[union: Orb::Models::EvaluatePriceGroup::GroupingValue] }
+      required :grouping_values,
+               -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::EvaluatePriceGroup::GroupingValue] }
 
       # @!attribute quantity
       #   The price's usage quantity for the group
@@ -28,16 +29,16 @@ module Orb
       #   #
       #   def initialize(amount:, grouping_values:, quantity:, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       module GroupingValue
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
         variant String
 
         variant Float
 
-        variant Orb::BooleanModel
+        variant Orb::Internal::Type::BooleanModel
 
         # @!parse
         #   # @return [Array(String, Float, Boolean)]

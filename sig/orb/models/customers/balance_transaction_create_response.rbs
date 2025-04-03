@@ -15,7 +15,7 @@ module Orb
           type: Orb::Models::Customers::BalanceTransactionCreateResponse::type_
         }
 
-      class BalanceTransactionCreateResponse < Orb::BaseModel
+      class BalanceTransactionCreateResponse < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor action: Orb::Models::Customers::BalanceTransactionCreateResponse::action
@@ -63,7 +63,7 @@ module Orb
           | :external_payment
 
         module Action
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           APPLIED_TO_INVOICE: :applied_to_invoice
           MANUAL_ADJUSTMENT: :manual_adjustment
@@ -80,7 +80,7 @@ module Orb
 
         type credit_note = { id: String }
 
-        class CreditNote < Orb::BaseModel
+        class CreditNote < Orb::Internal::Type::BaseModel
           attr_accessor id: String
 
           def initialize: (id: String) -> void
@@ -90,7 +90,7 @@ module Orb
 
         type invoice = { id: String }
 
-        class Invoice < Orb::BaseModel
+        class Invoice < Orb::Internal::Type::BaseModel
           attr_accessor id: String
 
           def initialize: (id: String) -> void
@@ -101,7 +101,7 @@ module Orb
         type type_ = :increment | :decrement
 
         module Type
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           INCREMENT: :increment
           DECREMENT: :decrement

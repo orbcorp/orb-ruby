@@ -4,7 +4,7 @@ module Orb
   module Models
     module Customers
       # @see Orb::Resources::Customers::BalanceTransactions#create
-      class BalanceTransactionCreateParams < Orb::BaseModel
+      class BalanceTransactionCreateParams < Orb::Internal::Type::BaseModel
         # @!parse
         #   extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
@@ -33,10 +33,10 @@ module Orb
         #   #
         #   def initialize(amount:, type:, description: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         module Type
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           INCREMENT = :increment
           DECREMENT = :decrement
