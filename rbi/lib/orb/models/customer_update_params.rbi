@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class CustomerUpdateParams < Orb::BaseModel
+    class CustomerUpdateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -11,9 +11,7 @@ module Orb
 
       sig do
         params(
-          accounting_sync_configuration: T.nilable(
-            T.any(Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration, Orb::Internal::Util::AnyHash)
-          )
+          accounting_sync_configuration: T.nilable(T.any(Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration, Orb::Internal::AnyHash))
         )
           .void
       end
@@ -35,7 +33,7 @@ module Orb
 
       sig do
         params(
-          billing_address: T.nilable(T.any(Orb::Models::CustomerUpdateParams::BillingAddress, Orb::Internal::Util::AnyHash))
+          billing_address: T.nilable(T.any(Orb::Models::CustomerUpdateParams::BillingAddress, Orb::Internal::AnyHash))
         )
           .void
       end
@@ -63,9 +61,7 @@ module Orb
       attr_reader :hierarchy
 
       sig do
-        params(
-          hierarchy: T.nilable(T.any(Orb::Models::CustomerUpdateParams::Hierarchy, Orb::Internal::Util::AnyHash))
-        )
+        params(hierarchy: T.nilable(T.any(Orb::Models::CustomerUpdateParams::Hierarchy, Orb::Internal::AnyHash)))
           .void
       end
       attr_writer :hierarchy
@@ -100,7 +96,7 @@ module Orb
 
       sig do
         params(
-          reporting_configuration: T.nilable(T.any(Orb::Models::CustomerUpdateParams::ReportingConfiguration, Orb::Internal::Util::AnyHash))
+          reporting_configuration: T.nilable(T.any(Orb::Models::CustomerUpdateParams::ReportingConfiguration, Orb::Internal::AnyHash))
         )
           .void
       end
@@ -111,7 +107,7 @@ module Orb
 
       sig do
         params(
-          shipping_address: T.nilable(T.any(Orb::Models::CustomerUpdateParams::ShippingAddress, Orb::Internal::Util::AnyHash))
+          shipping_address: T.nilable(T.any(Orb::Models::CustomerUpdateParams::ShippingAddress, Orb::Internal::AnyHash))
         )
           .void
       end
@@ -237,40 +233,35 @@ module Orb
       sig { returns(T.nilable(Orb::Models::CustomerUpdateParams::TaxID)) }
       attr_reader :tax_id
 
-      sig do
-        params(tax_id: T.nilable(T.any(Orb::Models::CustomerUpdateParams::TaxID, Orb::Internal::Util::AnyHash)))
-          .void
-      end
+      sig { params(tax_id: T.nilable(T.any(Orb::Models::CustomerUpdateParams::TaxID, Orb::Internal::AnyHash))).void }
       attr_writer :tax_id
 
       sig do
         params(
-          accounting_sync_configuration: T.nilable(
-            T.any(Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration, Orb::Internal::Util::AnyHash)
-          ),
+          accounting_sync_configuration: T.nilable(T.any(Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration, Orb::Internal::AnyHash)),
           additional_emails: T.nilable(T::Array[String]),
           auto_collection: T.nilable(T::Boolean),
-          billing_address: T.nilable(T.any(Orb::Models::CustomerUpdateParams::BillingAddress, Orb::Internal::Util::AnyHash)),
+          billing_address: T.nilable(T.any(Orb::Models::CustomerUpdateParams::BillingAddress, Orb::Internal::AnyHash)),
           currency: T.nilable(String),
           email: T.nilable(String),
           email_delivery: T.nilable(T::Boolean),
           external_customer_id: T.nilable(String),
-          hierarchy: T.nilable(T.any(Orb::Models::CustomerUpdateParams::Hierarchy, Orb::Internal::Util::AnyHash)),
+          hierarchy: T.nilable(T.any(Orb::Models::CustomerUpdateParams::Hierarchy, Orb::Internal::AnyHash)),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           name: T.nilable(String),
           payment_provider: T.nilable(Orb::Models::CustomerUpdateParams::PaymentProvider::OrSymbol),
           payment_provider_id: T.nilable(String),
-          reporting_configuration: T.nilable(T.any(Orb::Models::CustomerUpdateParams::ReportingConfiguration, Orb::Internal::Util::AnyHash)),
-          shipping_address: T.nilable(T.any(Orb::Models::CustomerUpdateParams::ShippingAddress, Orb::Internal::Util::AnyHash)),
+          reporting_configuration: T.nilable(T.any(Orb::Models::CustomerUpdateParams::ReportingConfiguration, Orb::Internal::AnyHash)),
+          shipping_address: T.nilable(T.any(Orb::Models::CustomerUpdateParams::ShippingAddress, Orb::Internal::AnyHash)),
           tax_configuration: T.nilable(
             T.any(
               Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration,
-              Orb::Internal::Util::AnyHash,
+              Orb::Internal::AnyHash,
               Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration
             )
           ),
-          tax_id: T.nilable(T.any(Orb::Models::CustomerUpdateParams::TaxID, Orb::Internal::Util::AnyHash)),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          tax_id: T.nilable(T.any(Orb::Models::CustomerUpdateParams::TaxID, Orb::Internal::AnyHash)),
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -329,7 +320,7 @@ module Orb
       def to_hash
       end
 
-      class AccountingSyncConfiguration < Orb::BaseModel
+      class AccountingSyncConfiguration < Orb::Internal::Type::BaseModel
         sig do
           returns(
             T.nilable(T::Array[Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider])
@@ -346,7 +337,7 @@ module Orb
               T::Array[
               T.any(
                 Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider,
-                Orb::Internal::Util::AnyHash
+                Orb::Internal::AnyHash
               )
               ]
             ),
@@ -369,7 +360,7 @@ module Orb
         def to_hash
         end
 
-        class AccountingProvider < Orb::BaseModel
+        class AccountingProvider < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :external_provider_id
 
@@ -386,7 +377,7 @@ module Orb
         end
       end
 
-      class BillingAddress < Orb::BaseModel
+      class BillingAddress < Orb::Internal::Type::BaseModel
         sig { returns(T.nilable(String)) }
         attr_accessor :city
 
@@ -436,7 +427,7 @@ module Orb
         end
       end
 
-      class Hierarchy < Orb::BaseModel
+      class Hierarchy < Orb::Internal::Type::BaseModel
         # A list of child customer IDs to add to the hierarchy. The desired child
         #   customers must not already be part of another hierarchy.
         sig { returns(T.nilable(T::Array[String])) }
@@ -473,7 +464,7 @@ module Orb
       #     `bill.com`, `netsuite`), any product mappings must first be configured with
       #     the Orb team.
       module PaymentProvider
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CustomerUpdateParams::PaymentProvider) }
         OrSymbol =
@@ -490,7 +481,7 @@ module Orb
         end
       end
 
-      class ReportingConfiguration < Orb::BaseModel
+      class ReportingConfiguration < Orb::Internal::Type::BaseModel
         sig { returns(T::Boolean) }
         attr_accessor :exempt
 
@@ -503,7 +494,7 @@ module Orb
         end
       end
 
-      class ShippingAddress < Orb::BaseModel
+      class ShippingAddress < Orb::Internal::Type::BaseModel
         sig { returns(T.nilable(String)) }
         attr_accessor :city
 
@@ -554,9 +545,9 @@ module Orb
       end
 
       module TaxConfiguration
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
-        class NewAvalaraTaxConfiguration < Orb::BaseModel
+        class NewAvalaraTaxConfiguration < Orb::Internal::Type::BaseModel
           sig { returns(T::Boolean) }
           attr_accessor :tax_exempt
 
@@ -586,7 +577,7 @@ module Orb
           end
         end
 
-        class NewTaxJarConfiguration < Orb::BaseModel
+        class NewTaxJarConfiguration < Orb::Internal::Type::BaseModel
           sig { returns(T::Boolean) }
           attr_accessor :tax_exempt
 
@@ -612,7 +603,7 @@ module Orb
         end
       end
 
-      class TaxID < Orb::BaseModel
+      class TaxID < Orb::Internal::Type::BaseModel
         sig { returns(Orb::Models::CustomerUpdateParams::TaxID::Country::OrSymbol) }
         attr_accessor :country
 
@@ -752,7 +743,7 @@ module Orb
         end
 
         module Country
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CustomerUpdateParams::TaxID::Country) }
           OrSymbol =
@@ -843,7 +834,7 @@ module Orb
         end
 
         module Type
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CustomerUpdateParams::TaxID::Type) }
           OrSymbol =

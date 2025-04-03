@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Invoices#issue
-    class InvoiceIssueParams < Orb::BaseModel
+    class InvoiceIssueParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -16,7 +16,7 @@ module Orb
       #     present in the provider.
       #
       #   @return [Boolean, nil]
-      optional :synchronous, Orb::BooleanModel
+      optional :synchronous, Orb::Internal::Type::BooleanModel
 
       # @!parse
       #   # @return [Boolean]
@@ -28,7 +28,7 @@ module Orb
       #   #
       #   def initialize(synchronous: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
     end
   end
 end

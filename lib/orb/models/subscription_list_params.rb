@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Subscriptions#list
-    class SubscriptionListParams < Orb::BaseModel
+    class SubscriptionListParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -38,12 +38,12 @@ module Orb
       # @!attribute customer_id
       #
       #   @return [Array<String>, nil]
-      optional :customer_id, Orb::ArrayOf[String], nil?: true
+      optional :customer_id, Orb::Internal::Type::ArrayOf[String], nil?: true
 
       # @!attribute external_customer_id
       #
       #   @return [Array<String>, nil]
-      optional :external_customer_id, Orb::ArrayOf[String], nil?: true
+      optional :external_customer_id, Orb::Internal::Type::ArrayOf[String], nil?: true
 
       # @!attribute [r] limit
       #   The number of items to fetch. Defaults to 20.
@@ -88,10 +88,10 @@ module Orb
       #     super
       #   end
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         ACTIVE = :active
         ENDED = :ended

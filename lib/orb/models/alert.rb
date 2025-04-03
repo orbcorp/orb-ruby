@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Alerts#retrieve
-    class Alert < Orb::BaseModel
+    class Alert < Orb::Internal::Type::BaseModel
       # @!attribute id
       #   Also referred to as alert_id in this documentation.
       #
@@ -32,7 +32,7 @@ module Orb
       #   Whether the alert is enabled or disabled.
       #
       #   @return [Boolean]
-      required :enabled, Orb::BooleanModel
+      required :enabled, Orb::Internal::Type::BooleanModel
 
       # @!attribute metric
       #   The metric the alert applies to.
@@ -57,7 +57,7 @@ module Orb
       #     triggered.
       #
       #   @return [Array<Orb::Models::Alert::Threshold>, nil]
-      required :thresholds, -> { Orb::ArrayOf[Orb::Models::Alert::Threshold] }, nil?: true
+      required :thresholds, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold] }, nil?: true
 
       # @!attribute type
       #   The type of alert. This must be a valid alert type.
@@ -85,10 +85,10 @@ module Orb
       #   #
       #   def initialize(id:, created_at:, currency:, customer:, enabled:, metric:, plan:, subscription:, thresholds:, type:, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # @see Orb::Models::Alert#customer
-      class Customer < Orb::BaseModel
+      class Customer < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String]
@@ -107,11 +107,11 @@ module Orb
         #   #
         #   def initialize(id:, external_customer_id:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       # @see Orb::Models::Alert#metric
-      class Metric < Orb::BaseModel
+      class Metric < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String]
@@ -124,11 +124,11 @@ module Orb
         #   #
         #   def initialize(id:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       # @see Orb::Models::Alert#plan
-      class Plan < Orb::BaseModel
+      class Plan < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String, nil]
@@ -162,11 +162,11 @@ module Orb
         #   #
         #   def initialize(id:, external_plan_id:, name:, plan_version:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       # @see Orb::Models::Alert#subscription
-      class Subscription < Orb::BaseModel
+      class Subscription < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String]
@@ -179,10 +179,10 @@ module Orb
         #   #
         #   def initialize(id:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
-      class Threshold < Orb::BaseModel
+      class Threshold < Orb::Internal::Type::BaseModel
         # @!attribute value
         #   The value at which an alert will fire. For credit balance alerts, the alert will
         #     fire at or below this value. For usage and cost alerts, the alert will fire at
@@ -199,14 +199,14 @@ module Orb
         #   #
         #   def initialize(value:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       # The type of alert. This must be a valid alert type.
       #
       # @see Orb::Models::Alert#type
       module Type
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         CREDIT_BALANCE_DEPLETED = :credit_balance_depleted
         CREDIT_BALANCE_DROPPED = :credit_balance_dropped

@@ -7,10 +7,10 @@ module Orb
       #   [`Credit Note`](/invoicing/credit-notes).
       sig do
         params(
-          line_items: T::Array[T.any(Orb::Models::CreditNoteCreateParams::LineItem, Orb::Internal::Util::AnyHash)],
+          line_items: T::Array[T.any(Orb::Models::CreditNoteCreateParams::LineItem, Orb::Internal::AnyHash)],
           memo: T.nilable(String),
           reason: T.nilable(Orb::Models::CreditNoteCreateParams::Reason::OrSymbol),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::CreditNote)
       end
@@ -35,7 +35,7 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           limit: Integer,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Internal::Page[Orb::Models::CreditNote])
       end
@@ -58,7 +58,7 @@ module Orb
       sig do
         params(
           credit_note_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::CreditNote)
       end

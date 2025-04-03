@@ -12,13 +12,13 @@ module Orb
         params(
           discount: T.any(
             Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
-            Orb::Internal::Util::AnyHash,
+            Orb::Internal::AnyHash,
             Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
           ),
           redemption_code: String,
           duration_in_months: T.nilable(Integer),
           max_redemptions: T.nilable(Integer),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::Coupon)
       end
@@ -48,7 +48,7 @@ module Orb
           limit: Integer,
           redemption_code: T.nilable(String),
           show_archived: T.nilable(T::Boolean),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Internal::Page[Orb::Models::Coupon])
       end
@@ -73,7 +73,7 @@ module Orb
       sig do
         params(
           coupon_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::Coupon)
       end
@@ -86,7 +86,7 @@ module Orb
       sig do
         params(
           coupon_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::Coupon)
       end

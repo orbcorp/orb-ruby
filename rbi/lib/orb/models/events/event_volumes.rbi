@@ -3,12 +3,12 @@
 module Orb
   module Models
     module Events
-      class EventVolumes < Orb::BaseModel
+      class EventVolumes < Orb::Internal::Type::BaseModel
         sig { returns(T::Array[Orb::Models::Events::EventVolumes::Data]) }
         attr_accessor :data
 
         sig do
-          params(data: T::Array[T.any(Orb::Models::Events::EventVolumes::Data, Orb::Internal::Util::AnyHash)])
+          params(data: T::Array[T.any(Orb::Models::Events::EventVolumes::Data, Orb::Internal::AnyHash)])
             .returns(T.attached_class)
         end
         def self.new(data:)
@@ -18,7 +18,7 @@ module Orb
         def to_hash
         end
 
-        class Data < Orb::BaseModel
+        class Data < Orb::Internal::Type::BaseModel
           # The number of events ingested with a timestamp between the timeframe
           sig { returns(Integer) }
           attr_accessor :count

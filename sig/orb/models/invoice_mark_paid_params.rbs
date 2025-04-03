@@ -4,7 +4,7 @@ module Orb
       { payment_received_date: Date, external_id: String?, notes: String? }
       & Orb::Internal::Type::request_parameters
 
-    class InvoiceMarkPaidParams < Orb::BaseModel
+    class InvoiceMarkPaidParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 

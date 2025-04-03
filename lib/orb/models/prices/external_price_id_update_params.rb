@@ -4,7 +4,7 @@ module Orb
   module Models
     module Prices
       # @see Orb::Resources::Prices::ExternalPriceID#update
-      class ExternalPriceIDUpdateParams < Orb::BaseModel
+      class ExternalPriceIDUpdateParams < Orb::Internal::Type::BaseModel
         # @!parse
         #   extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
@@ -15,7 +15,7 @@ module Orb
         #     by setting `metadata` to `null`.
         #
         #   @return [Hash{Symbol=>String, nil}, nil]
-        optional :metadata, Orb::HashOf[String, nil?: true], nil?: true
+        optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
         # @!parse
         #   # @param metadata [Hash{Symbol=>String, nil}, nil]
@@ -23,7 +23,7 @@ module Orb
         #   #
         #   def initialize(metadata: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
     end
   end

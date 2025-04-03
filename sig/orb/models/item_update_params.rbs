@@ -7,7 +7,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class ItemUpdateParams < Orb::BaseModel
+    class ItemUpdateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -29,7 +29,7 @@ module Orb
           external_entity_id: String
         }
 
-      class ExternalConnection < Orb::BaseModel
+      class ExternalConnection < Orb::Internal::Type::BaseModel
         attr_accessor external_connection_name: Orb::Models::ItemUpdateParams::ExternalConnection::external_connection_name
 
         attr_accessor external_entity_id: String
@@ -51,7 +51,7 @@ module Orb
           | :anrok
 
         module ExternalConnectionName
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           STRIPE: :stripe
           QUICKBOOKS: :quickbooks

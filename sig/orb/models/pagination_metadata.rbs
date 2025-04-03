@@ -2,7 +2,7 @@ module Orb
   module Models
     type pagination_metadata = { has_more: bool, next_cursor: String? }
 
-    class PaginationMetadata < Orb::BaseModel
+    class PaginationMetadata < Orb::Internal::Type::BaseModel
       attr_accessor has_more: bool
 
       attr_accessor next_cursor: String?

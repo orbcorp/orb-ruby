@@ -12,7 +12,7 @@ module Orb
           status: Orb::Models::Customers::CreditListResponse::status
         }
 
-      class CreditListResponse < Orb::BaseModel
+      class CreditListResponse < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor balance: Float
@@ -42,7 +42,7 @@ module Orb
         type status = :active | :pending_payment
 
         module Status
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           ACTIVE: :active
           PENDING_PAYMENT: :pending_payment

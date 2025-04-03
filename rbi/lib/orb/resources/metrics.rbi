@@ -13,7 +13,7 @@ module Orb
           name: String,
           sql: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::BillableMetric)
       end
@@ -41,7 +41,7 @@ module Orb
         params(
           metric_id: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::BillableMetric)
       end
@@ -66,7 +66,7 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           limit: Integer,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Internal::Page[Orb::Models::BillableMetric])
       end
@@ -89,7 +89,7 @@ module Orb
       sig do
         params(
           metric_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .returns(Orb::Models::BillableMetric)
       end

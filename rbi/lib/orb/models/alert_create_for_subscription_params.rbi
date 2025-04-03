@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class AlertCreateForSubscriptionParams < Orb::BaseModel
+    class AlertCreateForSubscriptionParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -20,10 +20,10 @@ module Orb
 
       sig do
         params(
-          thresholds: T::Array[T.any(Orb::Models::AlertCreateForSubscriptionParams::Threshold, Orb::Internal::Util::AnyHash)],
+          thresholds: T::Array[T.any(Orb::Models::AlertCreateForSubscriptionParams::Threshold, Orb::Internal::AnyHash)],
           type: Orb::Models::AlertCreateForSubscriptionParams::Type::OrSymbol,
           metric_id: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -44,7 +44,7 @@ module Orb
       def to_hash
       end
 
-      class Threshold < Orb::BaseModel
+      class Threshold < Orb::Internal::Type::BaseModel
         # The value at which an alert will fire. For credit balance alerts, the alert will
         #   fire at or below this value. For usage and cost alerts, the alert will fire at
         #   or above this value.
@@ -64,7 +64,7 @@ module Orb
 
       # The type of alert to create. This must be a valid alert type.
       module Type
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type) }
         OrSymbol =

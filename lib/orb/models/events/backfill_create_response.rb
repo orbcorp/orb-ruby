@@ -4,7 +4,7 @@ module Orb
   module Models
     module Events
       # @see Orb::Resources::Events::Backfills#create
-      class BackfillCreateResponse < Orb::BaseModel
+      class BackfillCreateResponse < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String]
@@ -41,7 +41,7 @@ module Orb
         #     events will be added to the existing events.
         #
         #   @return [Boolean]
-        required :replace_existing_events, Orb::BooleanModel
+        required :replace_existing_events, Orb::Internal::Type::BooleanModel
 
         # @!attribute reverted_at
         #   The time at which this backfill was reverted.
@@ -106,13 +106,13 @@ module Orb
         #     super
         #   end
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # The status of the backfill.
         #
         # @see Orb::Models::Events::BackfillCreateResponse#status
         module Status
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           PENDING = :pending
           REFLECTED = :reflected

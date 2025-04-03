@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class MetricCreateParams < Orb::BaseModel
+    class MetricCreateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -35,7 +35,7 @@ module Orb
           name: String,
           sql: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

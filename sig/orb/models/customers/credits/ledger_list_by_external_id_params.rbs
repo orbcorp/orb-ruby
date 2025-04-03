@@ -17,7 +17,7 @@ module Orb
           }
           & Orb::Internal::Type::request_parameters
 
-        class LedgerListByExternalIDParams < Orb::BaseModel
+        class LedgerListByExternalIDParams < Orb::Internal::Type::BaseModel
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
@@ -62,7 +62,7 @@ module Orb
           type entry_status = :committed | :pending
 
           module EntryStatus
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             COMMITTED: :committed
             PENDING: :pending
@@ -80,7 +80,7 @@ module Orb
             | :amendment
 
           module EntryType
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             INCREMENT: :increment
             DECREMENT: :decrement

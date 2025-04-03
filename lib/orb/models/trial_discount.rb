@@ -2,13 +2,13 @@
 
 module Orb
   module Models
-    class TrialDiscount < Orb::BaseModel
+    class TrialDiscount < Orb::Internal::Type::BaseModel
       # @!attribute applies_to_price_ids
       #   List of price_ids that this discount applies to. For plan/plan phase discounts,
       #     this can be a subset of prices.
       #
       #   @return [Array<String>]
-      required :applies_to_price_ids, Orb::ArrayOf[String]
+      required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
       # @!attribute discount_type
       #
@@ -50,11 +50,11 @@ module Orb
       #     super
       #   end
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # @see Orb::Models::TrialDiscount#discount_type
       module DiscountType
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TRIAL = :trial
 

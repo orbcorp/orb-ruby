@@ -4,7 +4,7 @@ module Orb
       type external_plan_id_fetch_params =
         {  } & Orb::Internal::Type::request_parameters
 
-      class ExternalPlanIDFetchParams < Orb::BaseModel
+      class ExternalPlanIDFetchParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 

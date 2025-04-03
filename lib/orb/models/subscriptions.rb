@@ -2,11 +2,11 @@
 
 module Orb
   module Models
-    class SubscriptionsAPI < Orb::BaseModel
+    class SubscriptionsAPI < Orb::Internal::Type::BaseModel
       # @!attribute data
       #
       #   @return [Array<Orb::Models::Subscription>]
-      required :data, -> { Orb::ArrayOf[Orb::Models::Subscription] }
+      required :data, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Subscription] }
 
       # @!attribute pagination_metadata
       #
@@ -19,7 +19,7 @@ module Orb
       #   #
       #   def initialize(data:, pagination_metadata:, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
     end
   end
 end

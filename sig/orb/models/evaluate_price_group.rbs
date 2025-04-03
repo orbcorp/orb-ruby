@@ -7,7 +7,7 @@ module Orb
         quantity: Float
       }
 
-    class EvaluatePriceGroup < Orb::BaseModel
+    class EvaluatePriceGroup < Orb::Internal::Type::BaseModel
       attr_accessor amount: String
 
       attr_accessor grouping_values: ::Array[Orb::Models::EvaluatePriceGroup::grouping_value]
@@ -25,7 +25,7 @@ module Orb
       type grouping_value = String | Float | bool
 
       module GroupingValue
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
         def self?.variants: -> [String, Float, bool]
       end

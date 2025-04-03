@@ -2,7 +2,7 @@ module Orb
   module Models
     type invoice_void_params = {  } & Orb::Internal::Type::request_parameters
 
-    class InvoiceVoidParams < Orb::BaseModel
+    class InvoiceVoidParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 

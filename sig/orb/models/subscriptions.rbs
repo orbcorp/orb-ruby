@@ -6,7 +6,7 @@ module Orb
         pagination_metadata: Orb::Models::PaginationMetadata
       }
 
-    class SubscriptionsAPI < Orb::BaseModel
+    class SubscriptionsAPI < Orb::Internal::Type::BaseModel
       attr_accessor data: ::Array[Orb::Models::Subscription]
 
       attr_accessor pagination_metadata: Orb::Models::PaginationMetadata

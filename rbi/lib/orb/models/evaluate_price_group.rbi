@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class EvaluatePriceGroup < Orb::BaseModel
+    class EvaluatePriceGroup < Orb::Internal::Type::BaseModel
       # The price's output for the group
       sig { returns(String) }
       attr_accessor :amount
@@ -34,7 +34,7 @@ module Orb
       end
 
       module GroupingValue
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
         sig { override.returns([String, Float, T::Boolean]) }
         def self.variants

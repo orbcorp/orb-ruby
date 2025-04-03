@@ -3,7 +3,7 @@
 module Orb
   module Models
     module Customers
-      class BalanceTransactionListResponse < Orb::BaseModel
+      class BalanceTransactionListResponse < Orb::Internal::Type::BaseModel
         # A unique id for this transaction.
         sig { returns(String) }
         attr_accessor :id
@@ -25,7 +25,7 @@ module Orb
         sig do
           params(
             credit_note: T.nilable(
-              T.any(Orb::Models::Customers::BalanceTransactionListResponse::CreditNote, Orb::Internal::Util::AnyHash)
+              T.any(Orb::Models::Customers::BalanceTransactionListResponse::CreditNote, Orb::Internal::AnyHash)
             )
           )
             .void
@@ -46,9 +46,7 @@ module Orb
 
         sig do
           params(
-            invoice: T.nilable(
-              T.any(Orb::Models::Customers::BalanceTransactionListResponse::Invoice, Orb::Internal::Util::AnyHash)
-            )
+            invoice: T.nilable(T.any(Orb::Models::Customers::BalanceTransactionListResponse::Invoice, Orb::Internal::AnyHash))
           )
             .void
         end
@@ -69,13 +67,11 @@ module Orb
             amount: String,
             created_at: Time,
             credit_note: T.nilable(
-              T.any(Orb::Models::Customers::BalanceTransactionListResponse::CreditNote, Orb::Internal::Util::AnyHash)
+              T.any(Orb::Models::Customers::BalanceTransactionListResponse::CreditNote, Orb::Internal::AnyHash)
             ),
             description: T.nilable(String),
             ending_balance: String,
-            invoice: T.nilable(
-              T.any(Orb::Models::Customers::BalanceTransactionListResponse::Invoice, Orb::Internal::Util::AnyHash)
-            ),
+            invoice: T.nilable(T.any(Orb::Models::Customers::BalanceTransactionListResponse::Invoice, Orb::Internal::AnyHash)),
             starting_balance: String,
             type: Orb::Models::Customers::BalanceTransactionListResponse::Type::OrSymbol
           )
@@ -116,7 +112,7 @@ module Orb
         end
 
         module Action
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Customers::BalanceTransactionListResponse::Action) }
@@ -150,7 +146,7 @@ module Orb
           end
         end
 
-        class CreditNote < Orb::BaseModel
+        class CreditNote < Orb::Internal::Type::BaseModel
           # The id of the Credit note
           sig { returns(String) }
           attr_accessor :id
@@ -164,7 +160,7 @@ module Orb
           end
         end
 
-        class Invoice < Orb::BaseModel
+        class Invoice < Orb::Internal::Type::BaseModel
           # The Invoice id
           sig { returns(String) }
           attr_accessor :id
@@ -179,7 +175,7 @@ module Orb
         end
 
         module Type
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Customers::BalanceTransactionListResponse::Type) }

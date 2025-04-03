@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class EventIngestResponse < Orb::BaseModel
+    class EventIngestResponse < Orb::Internal::Type::BaseModel
       # Contains all failing validation events. In the case of a 200, this array will
       #   always be empty. This field will always be present.
       sig { returns(T::Array[Orb::Models::EventIngestResponse::ValidationFailed]) }
@@ -13,13 +13,13 @@ module Orb
       sig { returns(T.nilable(Orb::Models::EventIngestResponse::Debug)) }
       attr_reader :debug
 
-      sig { params(debug: T.nilable(T.any(Orb::Models::EventIngestResponse::Debug, Orb::Internal::Util::AnyHash))).void }
+      sig { params(debug: T.nilable(T.any(Orb::Models::EventIngestResponse::Debug, Orb::Internal::AnyHash))).void }
       attr_writer :debug
 
       sig do
         params(
-          validation_failed: T::Array[T.any(Orb::Models::EventIngestResponse::ValidationFailed, Orb::Internal::Util::AnyHash)],
-          debug: T.nilable(T.any(Orb::Models::EventIngestResponse::Debug, Orb::Internal::Util::AnyHash))
+          validation_failed: T::Array[T.any(Orb::Models::EventIngestResponse::ValidationFailed, Orb::Internal::AnyHash)],
+          debug: T.nilable(T.any(Orb::Models::EventIngestResponse::Debug, Orb::Internal::AnyHash))
         )
           .returns(T.attached_class)
       end
@@ -38,7 +38,7 @@ module Orb
       def to_hash
       end
 
-      class ValidationFailed < Orb::BaseModel
+      class ValidationFailed < Orb::Internal::Type::BaseModel
         # The passed idempotency_key corresponding to the validation_errors
         sig { returns(String) }
         attr_accessor :idempotency_key
@@ -57,7 +57,7 @@ module Orb
         end
       end
 
-      class Debug < Orb::BaseModel
+      class Debug < Orb::Internal::Type::BaseModel
         sig { returns(T::Array[String]) }
         attr_accessor :duplicate
 

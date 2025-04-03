@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class InvoiceFetchUpcomingParams < Orb::BaseModel
+    class InvoiceFetchUpcomingParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -10,10 +10,7 @@ module Orb
       attr_accessor :subscription_id
 
       sig do
-        params(
-          subscription_id: String,
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
-        )
+        params(subscription_id: String, request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
           .returns(T.attached_class)
       end
       def self.new(subscription_id:, request_options: {})

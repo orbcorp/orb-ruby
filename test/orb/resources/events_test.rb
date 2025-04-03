@@ -56,7 +56,7 @@ class Orb::Test::Resources::EventsTest < Orb::Test::ResourceTest
 
     assert_pattern do
       response => {
-        validation_failed: ^(Orb::ArrayOf[Orb::Models::EventIngestResponse::ValidationFailed]),
+        validation_failed: ^(Orb::Internal::Type::ArrayOf[Orb::Models::EventIngestResponse::ValidationFailed]),
         debug: Orb::Models::EventIngestResponse::Debug | nil
       }
     end
@@ -71,7 +71,7 @@ class Orb::Test::Resources::EventsTest < Orb::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Orb::ArrayOf[Orb::Models::EventSearchResponse::Data])
+        data: ^(Orb::Internal::Type::ArrayOf[Orb::Models::EventSearchResponse::Data])
       }
     end
   end

@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Events#update
-    class EventUpdateParams < Orb::BaseModel
+    class EventUpdateParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -19,7 +19,7 @@ module Orb
       #     boolean, or strings. Nested dictionaries are disallowed.
       #
       #   @return [Object]
-      required :properties, Orb::Unknown
+      required :properties, Orb::Internal::Type::Unknown
 
       # @!attribute timestamp
       #   An ISO 8601 format date with no timezone offset (i.e. UTC). This should
@@ -52,7 +52,7 @@ module Orb
       #   #
       #   def initialize(event_name:, properties:, timestamp:, customer_id: nil, external_customer_id: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
     end
   end
 end

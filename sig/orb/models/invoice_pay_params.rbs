@@ -2,7 +2,7 @@ module Orb
   module Models
     type invoice_pay_params = {  } & Orb::Internal::Type::request_parameters
 
-    class InvoicePayParams < Orb::BaseModel
+    class InvoicePayParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 

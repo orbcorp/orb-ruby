@@ -4,7 +4,7 @@ module Orb
   module Models
     module Customers
       module Credits
-        class LedgerCreateEntryByExternalIDParams < Orb::BaseModel
+        class LedgerCreateEntryByExternalIDParams < Orb::Internal::Type::BaseModel
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
@@ -48,7 +48,7 @@ module Orb
               invoice_settings: T.nilable(
                 T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
             )
@@ -98,13 +98,13 @@ module Orb
               invoice_settings: T.nilable(
                 T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               ),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               per_unit_cost_basis: T.nilable(String),
               void_reason: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason::OrSymbol),
-              request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+              request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
             )
               .returns(T.attached_class)
           end
@@ -149,7 +149,7 @@ module Orb
           end
 
           module EntryType
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType) }
@@ -178,7 +178,7 @@ module Orb
             end
           end
 
-          class InvoiceSettings < Orb::BaseModel
+          class InvoiceSettings < Orb::Internal::Type::BaseModel
             # Whether the credits purchase invoice should auto collect with the customer's
             #   saved payment method.
             sig { returns(T::Boolean) }
@@ -235,7 +235,7 @@ module Orb
 
           # Can only be specified when `entry_type=void`. The reason for the void.
           module VoidReason
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason) }

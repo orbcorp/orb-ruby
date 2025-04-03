@@ -7,9 +7,9 @@ module Orb
         # The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid
         #   credits within Orb.
         module LedgerCreateEntryByExternalIDResponse
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
-          class IncrementLedgerEntry < Orb::BaseModel
+          class IncrementLedgerEntry < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -30,7 +30,7 @@ module Orb
               params(
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry::CreditBlock,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -51,7 +51,7 @@ module Orb
               params(
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry::Customer,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -94,12 +94,12 @@ module Orb
                 created_at: Time,
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry::CreditBlock,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 currency: String,
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry::Customer,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 description: T.nilable(String),
                 ending_balance: Float,
@@ -151,7 +151,7 @@ module Orb
             def to_hash
             end
 
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :id
 
@@ -181,7 +181,7 @@ module Orb
               end
             end
 
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :id
 
@@ -198,7 +198,7 @@ module Orb
             end
 
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -237,7 +237,7 @@ module Orb
             end
           end
 
-          class DecrementLedgerEntry < Orb::BaseModel
+          class DecrementLedgerEntry < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -258,7 +258,7 @@ module Orb
               params(
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry::CreditBlock,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -279,7 +279,7 @@ module Orb
               params(
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry::Customer,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -331,12 +331,12 @@ module Orb
                 created_at: Time,
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry::CreditBlock,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 currency: String,
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry::Customer,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 description: T.nilable(String),
                 ending_balance: Float,
@@ -397,7 +397,7 @@ module Orb
             def to_hash
             end
 
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :id
 
@@ -427,7 +427,7 @@ module Orb
               end
             end
 
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :id
 
@@ -444,7 +444,7 @@ module Orb
             end
 
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -483,7 +483,7 @@ module Orb
             end
           end
 
-          class ExpirationChangeLedgerEntry < Orb::BaseModel
+          class ExpirationChangeLedgerEntry < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -504,7 +504,7 @@ module Orb
               params(
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry::CreditBlock,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -525,7 +525,7 @@ module Orb
               params(
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry::Customer,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -571,12 +571,12 @@ module Orb
                 created_at: Time,
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry::CreditBlock,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 currency: String,
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry::Customer,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 description: T.nilable(String),
                 ending_balance: Float,
@@ -631,7 +631,7 @@ module Orb
             def to_hash
             end
 
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :id
 
@@ -661,7 +661,7 @@ module Orb
               end
             end
 
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :id
 
@@ -678,7 +678,7 @@ module Orb
             end
 
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -717,7 +717,7 @@ module Orb
             end
           end
 
-          class CreditBlockExpiryLedgerEntry < Orb::BaseModel
+          class CreditBlockExpiryLedgerEntry < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -738,7 +738,7 @@ module Orb
               params(
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry::CreditBlock,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -759,7 +759,7 @@ module Orb
               params(
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry::Customer,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -802,12 +802,12 @@ module Orb
                 created_at: Time,
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry::CreditBlock,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 currency: String,
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry::Customer,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 description: T.nilable(String),
                 ending_balance: Float,
@@ -859,7 +859,7 @@ module Orb
             def to_hash
             end
 
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :id
 
@@ -889,7 +889,7 @@ module Orb
               end
             end
 
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :id
 
@@ -906,7 +906,7 @@ module Orb
             end
 
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -945,7 +945,7 @@ module Orb
             end
           end
 
-          class VoidLedgerEntry < Orb::BaseModel
+          class VoidLedgerEntry < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -966,7 +966,7 @@ module Orb
               params(
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry::CreditBlock,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -983,7 +983,7 @@ module Orb
               params(
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry::Customer,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -1032,12 +1032,12 @@ module Orb
                 created_at: Time,
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry::CreditBlock,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 currency: String,
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry::Customer,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 description: T.nilable(String),
                 ending_balance: Float,
@@ -1095,7 +1095,7 @@ module Orb
             def to_hash
             end
 
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :id
 
@@ -1125,7 +1125,7 @@ module Orb
               end
             end
 
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :id
 
@@ -1142,7 +1142,7 @@ module Orb
             end
 
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -1181,7 +1181,7 @@ module Orb
             end
           end
 
-          class VoidInitiatedLedgerEntry < Orb::BaseModel
+          class VoidInitiatedLedgerEntry < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -1202,7 +1202,7 @@ module Orb
               params(
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry::CreditBlock,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -1223,7 +1223,7 @@ module Orb
               params(
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry::Customer,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -1275,12 +1275,12 @@ module Orb
                 created_at: Time,
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry::CreditBlock,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 currency: String,
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry::Customer,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 description: T.nilable(String),
                 ending_balance: Float,
@@ -1341,7 +1341,7 @@ module Orb
             def to_hash
             end
 
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :id
 
@@ -1371,7 +1371,7 @@ module Orb
               end
             end
 
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :id
 
@@ -1388,7 +1388,7 @@ module Orb
             end
 
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -1427,7 +1427,7 @@ module Orb
             end
           end
 
-          class AmendmentLedgerEntry < Orb::BaseModel
+          class AmendmentLedgerEntry < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -1448,7 +1448,7 @@ module Orb
               params(
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry::CreditBlock,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -1469,7 +1469,7 @@ module Orb
               params(
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry::Customer,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 )
               )
                 .void
@@ -1512,12 +1512,12 @@ module Orb
                 created_at: Time,
                 credit_block: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry::CreditBlock,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 currency: String,
                 customer: T.any(
                   Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry::Customer,
-                  Orb::Internal::Util::AnyHash
+                  Orb::Internal::AnyHash
                 ),
                 description: T.nilable(String),
                 ending_balance: Float,
@@ -1569,7 +1569,7 @@ module Orb
             def to_hash
             end
 
-            class CreditBlock < Orb::BaseModel
+            class CreditBlock < Orb::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :id
 
@@ -1599,7 +1599,7 @@ module Orb
               end
             end
 
-            class Customer < Orb::BaseModel
+            class Customer < Orb::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :id
 
@@ -1616,7 +1616,7 @@ module Orb
             end
 
             module EntryStatus
-              extend Orb::Enum
+              extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do

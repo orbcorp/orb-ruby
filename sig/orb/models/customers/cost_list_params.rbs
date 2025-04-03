@@ -10,7 +10,7 @@ module Orb
         }
         & Orb::Internal::Type::request_parameters
 
-      class CostListParams < Orb::BaseModel
+      class CostListParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
@@ -35,7 +35,7 @@ module Orb
         type view_mode = :periodic | :cumulative
 
         module ViewMode
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           PERIODIC: :periodic
           CUMULATIVE: :cumulative

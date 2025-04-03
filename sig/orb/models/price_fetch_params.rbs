@@ -2,7 +2,7 @@ module Orb
   module Models
     type price_fetch_params = {  } & Orb::Internal::Type::request_parameters
 
-    class PriceFetchParams < Orb::BaseModel
+    class PriceFetchParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 

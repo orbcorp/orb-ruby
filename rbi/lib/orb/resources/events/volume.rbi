@@ -23,7 +23,7 @@ module Orb
             cursor: T.nilable(String),
             limit: Integer,
             timeframe_end: Time,
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
           )
             .returns(Orb::Models::Events::EventVolumes)
         end

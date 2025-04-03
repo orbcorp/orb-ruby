@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Invoices#list
-    class InvoiceListParams < Orb::BaseModel
+    class InvoiceListParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -92,7 +92,7 @@ module Orb
       # @!attribute is_recurring
       #
       #   @return [Boolean, nil]
-      optional :is_recurring, Orb::BooleanModel, nil?: true
+      optional :is_recurring, Orb::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute [r] limit
       #   The number of items to fetch. Defaults to 20.
@@ -107,7 +107,9 @@ module Orb
       # @!attribute status
       #
       #   @return [Array<Symbol, Orb::Models::InvoiceListParams::Status>, nil]
-      optional :status, -> { Orb::ArrayOf[enum: Orb::Models::InvoiceListParams::Status] }, nil?: true
+      optional :status,
+               -> { Orb::Internal::Type::ArrayOf[enum: Orb::Models::InvoiceListParams::Status] },
+               nil?: true
 
       # @!attribute subscription_id
       #
@@ -162,10 +164,10 @@ module Orb
       #     super
       #   end
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       module DateType
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         DUE_DATE = :due_date
         INVOICE_DATE = :invoice_date
@@ -178,7 +180,7 @@ module Orb
       end
 
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         DRAFT = :draft
         ISSUED = :issued

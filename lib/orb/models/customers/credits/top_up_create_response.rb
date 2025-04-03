@@ -5,7 +5,7 @@ module Orb
     module Customers
       module Credits
         # @see Orb::Resources::Customers::Credits::TopUps#create
-        class TopUpCreateResponse < Orb::BaseModel
+        class TopUpCreateResponse < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -82,16 +82,16 @@ module Orb
           #     super
           #   end
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
           # @see Orb::Models::Customers::Credits::TopUpCreateResponse#invoice_settings
-          class InvoiceSettings < Orb::BaseModel
+          class InvoiceSettings < Orb::Internal::Type::BaseModel
             # @!attribute auto_collection
             #   Whether the credits purchase invoice should auto collect with the customer's
             #     saved payment method.
             #
             #   @return [Boolean]
-            required :auto_collection, Orb::BooleanModel
+            required :auto_collection, Orb::Internal::Type::BooleanModel
 
             # @!attribute net_terms
             #   The net terms determines the difference between the invoice date and the issue
@@ -112,7 +112,7 @@ module Orb
             #     corresponding invoice is paid before they can be drawn down from.
             #
             #   @return [Boolean, nil]
-            optional :require_successful_payment, Orb::BooleanModel
+            optional :require_successful_payment, Orb::Internal::Type::BooleanModel
 
             # @!parse
             #   # @return [Boolean]
@@ -128,14 +128,14 @@ module Orb
             #   #
             #   def initialize(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil, **) = super
 
-            # def initialize: (Hash | Orb::BaseModel) -> void
+            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
           end
 
           # The unit of expires_after.
           #
           # @see Orb::Models::Customers::Credits::TopUpCreateResponse#expires_after_unit
           module ExpiresAfterUnit
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             DAY = :day
             MONTH = :month

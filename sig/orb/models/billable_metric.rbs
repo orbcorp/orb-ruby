@@ -10,7 +10,7 @@ module Orb
         status: Orb::Models::BillableMetric::status
       }
 
-    class BillableMetric < Orb::BaseModel
+    class BillableMetric < Orb::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor description: String?
@@ -37,7 +37,7 @@ module Orb
       type status = :active | :draft | :archived
 
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         ACTIVE: :active
         DRAFT: :draft

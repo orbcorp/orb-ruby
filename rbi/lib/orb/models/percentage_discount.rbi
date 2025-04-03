@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class PercentageDiscount < Orb::BaseModel
+    class PercentageDiscount < Orb::Internal::Type::BaseModel
       # List of price_ids that this discount applies to. For plan/plan phase discounts,
       #   this can be a subset of prices.
       sig { returns(T::Array[String]) }
@@ -46,7 +46,7 @@ module Orb
       end
 
       module DiscountType
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::PercentageDiscount::DiscountType) }
         OrSymbol =

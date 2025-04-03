@@ -17,9 +17,9 @@ class Orb::Test::Resources::DimensionalPriceGroups::ExternalDimensionalPriceGrou
       response => {
         id: String,
         billable_metric_id: String,
-        dimensions: ^(Orb::ArrayOf[String]),
+        dimensions: ^(Orb::Internal::Type::ArrayOf[String]),
         external_dimensional_price_group_id: String | nil,
-        metadata: ^(Orb::HashOf[String]),
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
         name: String
       }
     end

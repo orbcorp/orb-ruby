@@ -11,7 +11,7 @@ module Orb
         times_redeemed: Integer
       }
 
-    class Coupon < Orb::BaseModel
+    class Coupon < Orb::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor archived_at: Time?
@@ -42,7 +42,7 @@ module Orb
         Orb::Models::PercentageDiscount | Orb::Models::AmountDiscount
 
       module Discount
-        extend Orb::Union
+        extend Orb::Internal::Type::Union
 
         def self?.variants: -> [Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount]
       end

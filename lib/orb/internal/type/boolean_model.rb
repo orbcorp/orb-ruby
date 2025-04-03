@@ -19,7 +19,7 @@ module Orb
         # @param other [Object]
         #
         # @return [Boolean]
-        def self.==(other) = other.is_a?(Class) && other <= Orb::BooleanModel
+        def self.==(other) = other.is_a?(Class) && other <= Orb::Internal::Type::BooleanModel
 
         class << self
           # @api private

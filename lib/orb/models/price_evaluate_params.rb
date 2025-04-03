@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Prices#evaluate
-    class PriceEvaluateParams < Orb::BaseModel
+    class PriceEvaluateParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -46,7 +46,7 @@ module Orb
       #     to group the underlying billable metric
       #
       #   @return [Array<String>, nil]
-      optional :grouping_keys, Orb::ArrayOf[String]
+      optional :grouping_keys, Orb::Internal::Type::ArrayOf[String]
 
       # @!parse
       #   # @return [Array<String>]
@@ -74,7 +74,7 @@ module Orb
       #     super
       #   end
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
     end
   end
 end

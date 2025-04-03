@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class EventUpdateResponse < Orb::BaseModel
+    class EventUpdateResponse < Orb::Internal::Type::BaseModel
       # event_id of the amended event, if successfully ingested
       sig { returns(String) }
       attr_accessor :amended

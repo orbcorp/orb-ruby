@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    class SubscriptionFetchScheduleParams < Orb::BaseModel
+    class SubscriptionFetchScheduleParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -38,7 +38,7 @@ module Orb
           start_date_gte: T.nilable(Time),
           start_date_lt: T.nilable(Time),
           start_date_lte: T.nilable(Time),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

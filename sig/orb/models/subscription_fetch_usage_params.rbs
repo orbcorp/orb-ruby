@@ -15,7 +15,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class SubscriptionFetchUsageParams < Orb::BaseModel
+    class SubscriptionFetchUsageParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -58,7 +58,7 @@ module Orb
       type granularity = :day
 
       module Granularity
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         DAY: :day
 
@@ -68,7 +68,7 @@ module Orb
       type view_mode = :periodic | :cumulative
 
       module ViewMode
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         PERIODIC: :periodic
         CUMULATIVE: :cumulative

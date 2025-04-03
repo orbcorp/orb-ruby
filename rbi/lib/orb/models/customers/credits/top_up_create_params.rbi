@@ -4,7 +4,7 @@ module Orb
   module Models
     module Customers
       module Credits
-        class TopUpCreateParams < Orb::BaseModel
+        class TopUpCreateParams < Orb::Internal::Type::BaseModel
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
@@ -23,7 +23,7 @@ module Orb
 
           sig do
             params(
-              invoice_settings: T.any(Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings, Orb::Internal::Util::AnyHash)
+              invoice_settings: T.any(Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings, Orb::Internal::AnyHash)
             )
               .void
           end
@@ -56,13 +56,13 @@ module Orb
             params(
               amount: String,
               currency: String,
-              invoice_settings: T.any(Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings, Orb::Internal::Util::AnyHash),
+              invoice_settings: T.any(Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings, Orb::Internal::AnyHash),
               per_unit_cost_basis: String,
               threshold: String,
               active_from: T.nilable(Time),
               expires_after: T.nilable(Integer),
               expires_after_unit: T.nilable(Orb::Models::Customers::Credits::TopUpCreateParams::ExpiresAfterUnit::OrSymbol),
-              request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+              request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
             )
               .returns(T.attached_class)
           end
@@ -98,7 +98,7 @@ module Orb
           def to_hash
           end
 
-          class InvoiceSettings < Orb::BaseModel
+          class InvoiceSettings < Orb::Internal::Type::BaseModel
             # Whether the credits purchase invoice should auto collect with the customer's
             #   saved payment method.
             sig { returns(T::Boolean) }
@@ -152,7 +152,7 @@ module Orb
 
           # The unit of expires_after.
           module ExpiresAfterUnit
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::TopUpCreateParams::ExpiresAfterUnit) }

@@ -4,7 +4,7 @@ module Orb
   module Models
     module Customers
       module Credits
-        class TopUpListParams < Orb::BaseModel
+        class TopUpListParams < Orb::Internal::Type::BaseModel
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
@@ -24,7 +24,7 @@ module Orb
             params(
               cursor: T.nilable(String),
               limit: Integer,
-              request_options: T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash)
+              request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
             )
               .returns(T.attached_class)
           end

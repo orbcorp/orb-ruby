@@ -26,7 +26,7 @@ module Orb
         reporting_configuration: Orb::Models::Customer::ReportingConfiguration?
       }
 
-    class Customer < Orb::BaseModel
+    class Customer < Orb::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor additional_emails: ::Array[String]
@@ -108,7 +108,7 @@ module Orb
           state: String?
         }
 
-      class BillingAddress < Orb::BaseModel
+      class BillingAddress < Orb::Internal::Type::BaseModel
         attr_accessor city: String?
 
         attr_accessor country: String?
@@ -139,7 +139,7 @@ module Orb
           parent: Orb::Models::Customer::Hierarchy::Parent?
         }
 
-      class Hierarchy < Orb::BaseModel
+      class Hierarchy < Orb::Internal::Type::BaseModel
         attr_accessor children: ::Array[Orb::Models::Customer::Hierarchy::Child]
 
         attr_accessor parent: Orb::Models::Customer::Hierarchy::Parent?
@@ -153,7 +153,7 @@ module Orb
 
         type child = { id: String, external_customer_id: String? }
 
-        class Child < Orb::BaseModel
+        class Child < Orb::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor external_customer_id: String?
@@ -165,7 +165,7 @@ module Orb
 
         type parent = { id: String, external_customer_id: String? }
 
-        class Parent < Orb::BaseModel
+        class Parent < Orb::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor external_customer_id: String?
@@ -180,7 +180,7 @@ module Orb
         :quickbooks | :"bill.com" | :stripe_charge | :stripe_invoice | :netsuite
 
       module PaymentProvider
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         QUICKBOOKS: :quickbooks
         BILL_COM: :"bill.com"
@@ -201,7 +201,7 @@ module Orb
           state: String?
         }
 
-      class ShippingAddress < Orb::BaseModel
+      class ShippingAddress < Orb::Internal::Type::BaseModel
         attr_accessor city: String?
 
         attr_accessor country: String?
@@ -233,7 +233,7 @@ module Orb
           value: String
         }
 
-      class TaxID < Orb::BaseModel
+      class TaxID < Orb::Internal::Type::BaseModel
         attr_accessor country: Orb::Models::Customer::TaxID::country
 
         attr_accessor type: Orb::Models::Customer::TaxID::type_
@@ -329,7 +329,7 @@ module Orb
           | :ZA
 
         module Country
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           AD: :AD
           AE: :AE
@@ -487,7 +487,7 @@ module Orb
           | :za_vat
 
         module Type
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           AD_NRT: :ad_nrt
           AE_TRN: :ae_trn
@@ -571,7 +571,7 @@ module Orb
           excluded: bool
         }
 
-      class AccountingSyncConfiguration < Orb::BaseModel
+      class AccountingSyncConfiguration < Orb::Internal::Type::BaseModel
         attr_accessor accounting_providers: ::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider]
 
         attr_accessor excluded: bool
@@ -589,7 +589,7 @@ module Orb
             provider_type: Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type
           }
 
-        class AccountingProvider < Orb::BaseModel
+        class AccountingProvider < Orb::Internal::Type::BaseModel
           attr_accessor external_provider_id: String?
 
           attr_accessor provider_type: Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type
@@ -604,7 +604,7 @@ module Orb
           type provider_type = :quickbooks | :netsuite
 
           module ProviderType
-            extend Orb::Enum
+            extend Orb::Internal::Type::Enum
 
             QUICKBOOKS: :quickbooks
             NETSUITE: :netsuite
@@ -616,7 +616,7 @@ module Orb
 
       type reporting_configuration = { exempt: bool }
 
-      class ReportingConfiguration < Orb::BaseModel
+      class ReportingConfiguration < Orb::Internal::Type::BaseModel
         attr_accessor exempt: bool
 
         def initialize: (exempt: bool) -> void

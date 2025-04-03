@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::Coupons#list
-    class CouponListParams < Orb::BaseModel
+    class CouponListParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -36,7 +36,7 @@ module Orb
       #     coupons).
       #
       #   @return [Boolean, nil]
-      optional :show_archived, Orb::BooleanModel, nil?: true
+      optional :show_archived, Orb::Internal::Type::BooleanModel, nil?: true
 
       # @!parse
       #   # @param cursor [String, nil]
@@ -47,7 +47,7 @@ module Orb
       #   #
       #   def initialize(cursor: nil, limit: nil, redemption_code: nil, show_archived: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
     end
   end
 end

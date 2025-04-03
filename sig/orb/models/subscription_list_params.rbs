@@ -14,7 +14,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class SubscriptionListParams < Orb::BaseModel
+    class SubscriptionListParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -56,7 +56,7 @@ module Orb
       type status = :active | :ended | :upcoming
 
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         ACTIVE: :active
         ENDED: :ended

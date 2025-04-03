@@ -8,7 +8,7 @@ module Orb
         reason: String?
       }
 
-    class AmountDiscount < Orb::BaseModel
+    class AmountDiscount < Orb::Internal::Type::BaseModel
       attr_accessor amount_discount: String
 
       attr_accessor applies_to_price_ids: ::Array[String]
@@ -29,7 +29,7 @@ module Orb
       type discount_type = :amount
 
       module DiscountType
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         AMOUNT: :amount
 

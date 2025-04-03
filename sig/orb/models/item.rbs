@@ -8,7 +8,7 @@ module Orb
         name: String
       }
 
-    class Item < Orb::BaseModel
+    class Item < Orb::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor created_at: Time
@@ -32,7 +32,7 @@ module Orb
           external_entity_id: String
         }
 
-      class ExternalConnection < Orb::BaseModel
+      class ExternalConnection < Orb::Internal::Type::BaseModel
         attr_accessor external_connection_name: Orb::Models::Item::ExternalConnection::external_connection_name
 
         attr_accessor external_entity_id: String
@@ -54,7 +54,7 @@ module Orb
           | :anrok
 
         module ExternalConnectionName
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           STRIPE: :stripe
           QUICKBOOKS: :quickbooks

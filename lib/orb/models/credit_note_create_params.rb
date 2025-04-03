@@ -3,7 +3,7 @@
 module Orb
   module Models
     # @see Orb::Resources::CreditNotes#create
-    class CreditNoteCreateParams < Orb::BaseModel
+    class CreditNoteCreateParams < Orb::Internal::Type::BaseModel
       # @!parse
       #   extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
@@ -11,7 +11,7 @@ module Orb
       # @!attribute line_items
       #
       #   @return [Array<Orb::Models::CreditNoteCreateParams::LineItem>]
-      required :line_items, -> { Orb::ArrayOf[Orb::Models::CreditNoteCreateParams::LineItem] }
+      required :line_items, -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNoteCreateParams::LineItem] }
 
       # @!attribute memo
       #   An optional memo to attach to the credit note.
@@ -33,9 +33,9 @@ module Orb
       #   #
       #   def initialize(line_items:, memo: nil, reason: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Orb::BaseModel) -> void
+      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
-      class LineItem < Orb::BaseModel
+      class LineItem < Orb::Internal::Type::BaseModel
         # @!attribute amount
         #   The total amount in the invoice's currency to credit this line item.
         #
@@ -54,12 +54,12 @@ module Orb
         #   #
         #   def initialize(amount:, invoice_line_item_id:, **) = super
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
       # An optional reason for the credit note.
       module Reason
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         DUPLICATE = :duplicate
         FRAUDULENT = :fraudulent

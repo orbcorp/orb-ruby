@@ -45,7 +45,7 @@ module Orb
         will_auto_issue: bool
       }
 
-    class InvoiceFetchUpcomingResponse < Orb::BaseModel
+    class InvoiceFetchUpcomingResponse < Orb::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor amount_due: String
@@ -182,7 +182,7 @@ module Orb
           previously_attempted_at: Time?
         }
 
-      class AutoCollection < Orb::BaseModel
+      class AutoCollection < Orb::Internal::Type::BaseModel
         attr_accessor enabled: bool?
 
         attr_accessor next_attempt_at: Time?
@@ -211,7 +211,7 @@ module Orb
           state: String?
         }
 
-      class BillingAddress < Orb::BaseModel
+      class BillingAddress < Orb::Internal::Type::BaseModel
         attr_accessor city: String?
 
         attr_accessor country: String?
@@ -247,7 +247,7 @@ module Orb
           voided_at: Time?
         }
 
-      class CreditNote < Orb::BaseModel
+      class CreditNote < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor credit_note_number: String
@@ -277,7 +277,7 @@ module Orb
 
       type customer = { id: String, external_customer_id: String? }
 
-      class Customer < Orb::BaseModel
+      class Customer < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor external_customer_id: String?
@@ -301,7 +301,7 @@ module Orb
           type: Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::type_
         }
 
-      class CustomerBalanceTransaction < Orb::BaseModel
+      class CustomerBalanceTransaction < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor action: Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::action
@@ -349,7 +349,7 @@ module Orb
           | :external_payment
 
         module Action
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           APPLIED_TO_INVOICE: :applied_to_invoice
           MANUAL_ADJUSTMENT: :manual_adjustment
@@ -366,7 +366,7 @@ module Orb
 
         type credit_note = { id: String }
 
-        class CreditNote < Orb::BaseModel
+        class CreditNote < Orb::Internal::Type::BaseModel
           attr_accessor id: String
 
           def initialize: (id: String) -> void
@@ -376,7 +376,7 @@ module Orb
 
         type invoice = { id: String }
 
-        class Invoice < Orb::BaseModel
+        class Invoice < Orb::Internal::Type::BaseModel
           attr_accessor id: String
 
           def initialize: (id: String) -> void
@@ -387,7 +387,7 @@ module Orb
         type type_ = :increment | :decrement
 
         module Type
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           INCREMENT: :increment
           DECREMENT: :decrement
@@ -403,7 +403,7 @@ module Orb
           value: String
         }
 
-      class CustomerTaxID < Orb::BaseModel
+      class CustomerTaxID < Orb::Internal::Type::BaseModel
         attr_accessor country: Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::country
 
         attr_accessor type: Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::type_
@@ -499,7 +499,7 @@ module Orb
           | :ZA
 
         module Country
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           AD: :AD
           AE: :AE
@@ -657,7 +657,7 @@ module Orb
           | :za_vat
 
         module Type
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           AD_NRT: :ad_nrt
           AE_TRN: :ae_trn
@@ -738,7 +738,7 @@ module Orb
       type invoice_source = :subscription | :partial | :one_off
 
       module InvoiceSource
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         SUBSCRIPTION: :subscription
         PARTIAL: :partial
@@ -773,7 +773,7 @@ module Orb
           usage_customer_ids: ::Array[String]?
         }
 
-      class LineItem < Orb::BaseModel
+      class LineItem < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor adjusted_subtotal: String
@@ -853,7 +853,7 @@ module Orb
           | Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::MonetaryMaximumAdjustment
 
         module Adjustment
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           type monetary_usage_discount_adjustment =
             {
@@ -866,7 +866,7 @@ module Orb
               usage_discount: Float
             }
 
-          class MonetaryUsageDiscountAdjustment < Orb::BaseModel
+          class MonetaryUsageDiscountAdjustment < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :usage_discount
@@ -905,7 +905,7 @@ module Orb
               reason: String?
             }
 
-          class MonetaryAmountDiscountAdjustment < Orb::BaseModel
+          class MonetaryAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :amount_discount
@@ -944,7 +944,7 @@ module Orb
               reason: String?
             }
 
-          class MonetaryPercentageDiscountAdjustment < Orb::BaseModel
+          class MonetaryPercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :percentage_discount
@@ -984,7 +984,7 @@ module Orb
               reason: String?
             }
 
-          class MonetaryMinimumAdjustment < Orb::BaseModel
+          class MonetaryMinimumAdjustment < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :minimum
@@ -1026,7 +1026,7 @@ module Orb
               reason: String?
             }
 
-          class MonetaryMaximumAdjustment < Orb::BaseModel
+          class MonetaryMaximumAdjustment < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :maximum
@@ -1060,7 +1060,7 @@ module Orb
         type maximum =
           { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
-        class Maximum < Orb::BaseModel
+        class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor maximum_amount: String
@@ -1076,7 +1076,7 @@ module Orb
         type minimum =
           { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
-        class Minimum < Orb::BaseModel
+        class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor minimum_amount: String
@@ -1095,7 +1095,7 @@ module Orb
           | Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem
 
         module SubLineItem
-          extend Orb::Union
+          extend Orb::Internal::Type::Union
 
           type matrix_sub_line_item =
             {
@@ -1107,7 +1107,7 @@ module Orb
               type: :matrix
             }
 
-          class MatrixSubLineItem < Orb::BaseModel
+          class MatrixSubLineItem < Orb::Internal::Type::BaseModel
             attr_accessor amount: String
 
             attr_accessor grouping: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::MatrixSubLineItem::Grouping?
@@ -1133,7 +1133,7 @@ module Orb
 
             type grouping = { key: String, value: String? }
 
-            class Grouping < Orb::BaseModel
+            class Grouping < Orb::Internal::Type::BaseModel
               attr_accessor key: String
 
               attr_accessor value: String?
@@ -1145,7 +1145,7 @@ module Orb
 
             type matrix_config = { dimension_values: ::Array[String?] }
 
-            class MatrixConfig < Orb::BaseModel
+            class MatrixConfig < Orb::Internal::Type::BaseModel
               attr_accessor dimension_values: ::Array[String?]
 
               def initialize: (dimension_values: ::Array[String?]) -> void
@@ -1164,7 +1164,7 @@ module Orb
               type: :tier
             }
 
-          class TierSubLineItem < Orb::BaseModel
+          class TierSubLineItem < Orb::Internal::Type::BaseModel
             attr_accessor amount: String
 
             attr_accessor grouping: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::TierSubLineItem::Grouping?
@@ -1190,7 +1190,7 @@ module Orb
 
             type grouping = { key: String, value: String? }
 
-            class Grouping < Orb::BaseModel
+            class Grouping < Orb::Internal::Type::BaseModel
               attr_accessor key: String
 
               attr_accessor value: String?
@@ -1203,7 +1203,7 @@ module Orb
             type tier_config =
               { first_unit: Float, last_unit: Float?, unit_amount: String }
 
-            class TierConfig < Orb::BaseModel
+            class TierConfig < Orb::Internal::Type::BaseModel
               attr_accessor first_unit: Float
 
               attr_accessor last_unit: Float?
@@ -1229,7 +1229,7 @@ module Orb
               type: :"'null'"
             }
 
-          class OtherSubLineItem < Orb::BaseModel
+          class OtherSubLineItem < Orb::Internal::Type::BaseModel
             attr_accessor amount: String
 
             attr_accessor grouping: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::OtherSubLineItem::Grouping?
@@ -1252,7 +1252,7 @@ module Orb
 
             type grouping = { key: String, value: String? }
 
-            class Grouping < Orb::BaseModel
+            class Grouping < Orb::Internal::Type::BaseModel
               attr_accessor key: String
 
               attr_accessor value: String?
@@ -1273,7 +1273,7 @@ module Orb
             tax_rate_percentage: String?
           }
 
-        class TaxAmount < Orb::BaseModel
+        class TaxAmount < Orb::Internal::Type::BaseModel
           attr_accessor amount: String
 
           attr_accessor tax_rate_description: String
@@ -1293,7 +1293,7 @@ module Orb
       type maximum =
         { applies_to_price_ids: ::Array[String], maximum_amount: String }
 
-      class Maximum < Orb::BaseModel
+      class Maximum < Orb::Internal::Type::BaseModel
         attr_accessor applies_to_price_ids: ::Array[String]
 
         attr_accessor maximum_amount: String
@@ -1309,7 +1309,7 @@ module Orb
       type minimum =
         { applies_to_price_ids: ::Array[String], minimum_amount: String }
 
-      class Minimum < Orb::BaseModel
+      class Minimum < Orb::Internal::Type::BaseModel
         attr_accessor applies_to_price_ids: ::Array[String]
 
         attr_accessor minimum_amount: String
@@ -1332,7 +1332,7 @@ module Orb
           succeeded: bool
         }
 
-      class PaymentAttempt < Orb::BaseModel
+      class PaymentAttempt < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor amount: String
@@ -1359,7 +1359,7 @@ module Orb
         type payment_provider = :stripe
 
         module PaymentProvider
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           STRIPE: :stripe
 
@@ -1377,7 +1377,7 @@ module Orb
           state: String?
         }
 
-      class ShippingAddress < Orb::BaseModel
+      class ShippingAddress < Orb::Internal::Type::BaseModel
         attr_accessor city: String?
 
         attr_accessor country: String?
@@ -1405,7 +1405,7 @@ module Orb
       type status = :issued | :paid | :synced | :void | :draft
 
       module Status
-        extend Orb::Enum
+        extend Orb::Internal::Type::Enum
 
         ISSUED: :issued
         PAID: :paid
@@ -1418,7 +1418,7 @@ module Orb
 
       type subscription = { id: String }
 
-      class Subscription < Orb::BaseModel
+      class Subscription < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         def initialize: (id: String) -> void

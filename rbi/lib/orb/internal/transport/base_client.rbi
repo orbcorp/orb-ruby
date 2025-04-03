@@ -25,10 +25,10 @@ module Orb
               ),
               body: T.nilable(T.anything),
               unwrap: T.nilable(Symbol),
-              page: T.nilable(T::Class[Orb::Internal::Type::BasePage[Orb::BaseModel]]),
+              page: T.nilable(T::Class[Orb::Internal::Type::BasePage[Orb::Internal::Type::BaseModel]]),
               stream: T.nilable(T::Class[T.anything]),
               model: T.nilable(Orb::Internal::Type::Converter::Input),
-              options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+              options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
             }
           end
 
@@ -134,10 +134,7 @@ module Orb
         # @api private
         sig do
           overridable
-            .params(
-              req: Orb::Internal::Transport::BaseClient::RequestComponentsShape,
-              opts: Orb::Internal::Util::AnyHash
-            )
+            .params(req: Orb::Internal::Transport::BaseClient::RequestComponentsShape, opts: Orb::Internal::AnyHash)
             .returns(Orb::Internal::Transport::BaseClient::RequestInputShape)
         end
         private def build_request(req, opts)
@@ -180,10 +177,10 @@ module Orb
             ),
             body: T.nilable(T.anything),
             unwrap: T.nilable(Symbol),
-            page: T.nilable(T::Class[Orb::Internal::Type::BasePage[Orb::BaseModel]]),
+            page: T.nilable(T::Class[Orb::Internal::Type::BasePage[Orb::Internal::Type::BaseModel]]),
             stream: T.nilable(T::Class[T.anything]),
             model: T.nilable(Orb::Internal::Type::Converter::Input),
-            options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::Util::AnyHash))
+            options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
           )
             .returns(T.anything)
         end
@@ -196,7 +193,7 @@ module Orb
           unwrap: nil,
           page: nil,
           stream: nil,
-          model: Orb::Unknown,
+          model: Orb::Internal::Type::Unknown,
           options: {}
         )
         end

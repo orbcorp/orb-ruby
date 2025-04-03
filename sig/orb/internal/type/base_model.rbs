@@ -7,10 +7,10 @@ module Orb
         type known_field =
           { mode: (:coerce | :dump)?, required: bool, nilable: bool }
 
-        def self.known_fields: -> ::Hash[Symbol, (Orb::BaseModel::known_field
+        def self.known_fields: -> ::Hash[Symbol, (Orb::Internal::Type::BaseModel::known_field
         & { type_fn: (^-> Orb::Internal::Type::Converter::input) })]
 
-        def self.fields: -> ::Hash[Symbol, (Orb::BaseModel::known_field
+        def self.fields: -> ::Hash[Symbol, (Orb::Internal::Type::BaseModel::known_field
         & { type: Orb::Internal::Type::Converter::input })]
 
         private def self.add_field: (
@@ -52,7 +52,7 @@ module Orb
         def ==: (top other) -> bool
 
         def self.coerce: (
-          Orb::BaseModel | ::Hash[top, top] | top value,
+          Orb::Internal::Type::BaseModel | ::Hash[top, top] | top value,
           state: Orb::Internal::Type::Converter::state
         ) -> (instance | top)
 

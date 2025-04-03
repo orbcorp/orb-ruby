@@ -2,7 +2,7 @@ module Orb
   module Models
     type event_deprecate_response = { deprecated: String }
 
-    class EventDeprecateResponse < Orb::BaseModel
+    class EventDeprecateResponse < Orb::Internal::Type::BaseModel
       attr_accessor deprecated: String
 
       def initialize: (deprecated: String) -> void

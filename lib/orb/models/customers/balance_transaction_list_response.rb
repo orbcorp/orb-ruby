@@ -4,7 +4,7 @@ module Orb
   module Models
     module Customers
       # @see Orb::Resources::Customers::BalanceTransactions#list
-      class BalanceTransactionListResponse < Orb::BaseModel
+      class BalanceTransactionListResponse < Orb::Internal::Type::BaseModel
         # @!attribute id
         #   A unique id for this transaction.
         #
@@ -93,11 +93,11 @@ module Orb
         #     super
         #   end
 
-        # def initialize: (Hash | Orb::BaseModel) -> void
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # @see Orb::Models::Customers::BalanceTransactionListResponse#action
         module Action
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           APPLIED_TO_INVOICE = :applied_to_invoice
           MANUAL_ADJUSTMENT = :manual_adjustment
@@ -117,7 +117,7 @@ module Orb
         end
 
         # @see Orb::Models::Customers::BalanceTransactionListResponse#credit_note
-        class CreditNote < Orb::BaseModel
+        class CreditNote < Orb::Internal::Type::BaseModel
           # @!attribute id
           #   The id of the Credit note
           #
@@ -129,11 +129,11 @@ module Orb
           #   #
           #   def initialize(id:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
         # @see Orb::Models::Customers::BalanceTransactionListResponse#invoice
-        class Invoice < Orb::BaseModel
+        class Invoice < Orb::Internal::Type::BaseModel
           # @!attribute id
           #   The Invoice id
           #
@@ -145,12 +145,12 @@ module Orb
           #   #
           #   def initialize(id:, **) = super
 
-          # def initialize: (Hash | Orb::BaseModel) -> void
+          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
         end
 
         # @see Orb::Models::Customers::BalanceTransactionListResponse#type
         module Type
-          extend Orb::Enum
+          extend Orb::Internal::Type::Enum
 
           INCREMENT = :increment
           DECREMENT = :decrement

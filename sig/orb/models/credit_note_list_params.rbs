@@ -11,7 +11,7 @@ module Orb
       }
       & Orb::Internal::Type::request_parameters
 
-    class CreditNoteListParams < Orb::BaseModel
+    class CreditNoteListParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
