@@ -147,9 +147,9 @@ Due to limitations with the Sorbet type system, where a method otherwise can tak
 Please follow Sorbet's [setup guides](https://sorbet.org/docs/adopting) for best experience.
 
 ```ruby
-model = Orb::Models::CustomerCreateParams.new(email: "example-customer@withorb.com", name: "My Customer")
+params = Orb::Models::CustomerCreateParams.new(email: "example-customer@withorb.com", name: "My Customer")
 
-orb.customers.create(**model)
+orb.customers.create(**params)
 ```
 
 ## Advanced
