@@ -209,7 +209,9 @@ module Orb
           #
           # @return [Object]
           def dump(target, value)
+            # rubocop:disable Layout/LineLength
             target.is_a?(Orb::Internal::Type::Converter) ? target.dump(value) : Orb::Internal::Type::Unknown.dump(value)
+            # rubocop:enable Layout/LineLength
           end
         end
       end
