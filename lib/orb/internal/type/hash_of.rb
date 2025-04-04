@@ -7,6 +7,8 @@ module Orb
       #
       # @abstract
       #
+      # @generic Elem
+      #
       # Hash of items of a given type.
       class HashOf
         include Orb::Internal::Type::Converter
@@ -111,7 +113,7 @@ module Orb
 
         # @api private
         #
-        # @return [Orb::Internal::Type::Converter, Class]
+        # @return [generic<Elem>]
         protected def item_type = @item_type_fn.call
 
         # @api private

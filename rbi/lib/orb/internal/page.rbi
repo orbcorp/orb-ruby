@@ -3,9 +3,9 @@
 module Orb
   module Internal
     class Page
-      include Orb::Internal::Type::BasePage
-
       Elem = type_member
+
+      include Orb::Internal::Type::BasePage
 
       sig { returns(T.nilable(T::Array[Elem])) }
       attr_accessor :data
