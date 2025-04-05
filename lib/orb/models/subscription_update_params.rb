@@ -14,7 +14,7 @@ module Orb
       #     the plan's behavior.
       #
       #   @return [Boolean, nil]
-      optional :auto_collection, Orb::Internal::Type::BooleanModel, nil?: true
+      optional :auto_collection, Orb::Internal::Type::Boolean, nil?: true
 
       # @!attribute default_invoice_memo
       #   Determines the default memo on this subscription's invoices. Note that if this

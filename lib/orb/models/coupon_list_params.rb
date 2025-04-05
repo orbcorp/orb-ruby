@@ -36,7 +36,7 @@ module Orb
       #     coupons).
       #
       #   @return [Boolean, nil]
-      optional :show_archived, Orb::Internal::Type::BooleanModel, nil?: true
+      optional :show_archived, Orb::Internal::Type::Boolean, nil?: true
 
       # @!parse
       #   # @param cursor [String, nil]

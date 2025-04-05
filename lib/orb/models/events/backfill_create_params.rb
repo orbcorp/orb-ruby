@@ -60,7 +60,7 @@ module Orb
         #     events. If false, adds the newly ingested events to the existing events.
         #
         #   @return [Boolean, nil]
-        optional :replace_existing_events, Orb::Internal::Type::BooleanModel
+        optional :replace_existing_events, Orb::Internal::Type::Boolean
 
         # @!parse
         #   # @return [Boolean]

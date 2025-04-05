@@ -255,7 +255,7 @@ module Orb
           #     that apply to only one price.
           #
           #   @return [Boolean]
-          required :is_invoice_level, Orb::Internal::Type::BooleanModel
+          required :is_invoice_level, Orb::Internal::Type::Boolean
 
           # @!attribute reason
           #   The reason for the adjustment.
@@ -330,7 +330,7 @@ module Orb
           #     that apply to only one price.
           #
           #   @return [Boolean]
-          required :is_invoice_level, Orb::Internal::Type::BooleanModel
+          required :is_invoice_level, Orb::Internal::Type::Boolean
 
           # @!attribute reason
           #   The reason for the adjustment.
@@ -391,7 +391,7 @@ module Orb
           #     that apply to only one price.
           #
           #   @return [Boolean]
-          required :is_invoice_level, Orb::Internal::Type::BooleanModel
+          required :is_invoice_level, Orb::Internal::Type::Boolean
 
           # @!attribute percentage_discount
           #   The percentage (as a value between 0 and 1) by which to discount the price
@@ -459,7 +459,7 @@ module Orb
           #     that apply to only one price.
           #
           #   @return [Boolean]
-          required :is_invoice_level, Orb::Internal::Type::BooleanModel
+          required :is_invoice_level, Orb::Internal::Type::Boolean
 
           # @!attribute item_id
           #   The item ID that revenue from this minimum will be attributed to.
@@ -535,7 +535,7 @@ module Orb
           #     that apply to only one price.
           #
           #   @return [Boolean]
-          required :is_invoice_level, Orb::Internal::Type::BooleanModel
+          required :is_invoice_level, Orb::Internal::Type::Boolean
 
           # @!attribute maximum_amount
           #   The maximum amount to charge in a given billing period for the prices this

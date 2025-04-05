@@ -20,7 +20,7 @@ module Orb
       #     durations, but adjusting their absolute dates).
       #
       #   @return [Boolean, nil]
-      optional :shift, Orb::Internal::Type::BooleanModel
+      optional :shift, Orb::Internal::Type::Boolean
 
       # @!parse
       #   # @return [Boolean]
