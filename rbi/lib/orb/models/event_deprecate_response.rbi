@@ -8,12 +8,10 @@ module Orb
       attr_accessor :deprecated
 
       sig { params(deprecated: String).returns(T.attached_class) }
-      def self.new(deprecated:)
-      end
+      def self.new(deprecated:); end
 
       sig { override.returns({deprecated: String}) }
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

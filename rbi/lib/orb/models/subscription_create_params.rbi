@@ -239,9 +239,7 @@ module Orb
         trial_duration_days: nil,
         usage_customer_ids: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -281,8 +279,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class AddAdjustment < Orb::Internal::Type::BaseModel
         # The definition of a new adjustment to create and add to the subscription.
@@ -330,8 +327,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(adjustment:, end_date: nil, plan_phase_order: nil, start_date: nil)
-        end
+        def self.new(adjustment:, end_date: nil, plan_phase_order: nil, start_date: nil); end
 
         sig do
           override
@@ -350,8 +346,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The definition of a new adjustment to create and add to the subscription.
         module Adjustment
@@ -404,8 +399,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class NewUsageDiscount < Orb::Internal::Type::BaseModel
@@ -455,8 +449,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class NewAmountDiscount < Orb::Internal::Type::BaseModel
@@ -506,8 +499,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class NewMinimum < Orb::Internal::Type::BaseModel
@@ -564,8 +556,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class NewMaximum < Orb::Internal::Type::BaseModel
@@ -615,8 +606,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           sig do
@@ -625,8 +615,7 @@ module Orb
                 [Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionCreateParams::AddAdjustment::Adjustment::NewMaximum]
               )
           end
-          def self.variants
-          end
+          def self.variants; end
         end
       end
 
@@ -775,9 +764,7 @@ module Orb
           price: nil,
           price_id: nil,
           start_date: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -823,8 +810,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class AllocationPrice < Orb::Internal::Type::BaseModel
           # An amount of the currency to allocate to the customer at the specified cadence.
@@ -855,8 +841,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, cadence:, currency:, expires_at_end_of_cadence:)
-          end
+          def self.new(amount:, cadence:, currency:, expires_at_end_of_cadence:); end
 
           sig do
             override
@@ -869,8 +854,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The cadence at which to allocate the amount to the customer.
           module Cadence
@@ -907,8 +891,7 @@ module Orb
               override
                 .returns(T::Array[Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice::Cadence::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -953,8 +936,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DiscountType
             extend Orb::Internal::Type::Enum
@@ -981,8 +963,7 @@ module Orb
               override
                 .returns(T::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Discount::DiscountType::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -1166,9 +1147,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :unit
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -1196,8 +1175,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -1251,8 +1229,7 @@ module Orb
                     T::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class UnitConfig < Orb::Internal::Type::BaseModel
@@ -1261,12 +1238,10 @@ module Orb
               attr_accessor :unit_amount
 
               sig { params(unit_amount: String).returns(T.attached_class) }
-              def self.new(unit_amount:)
-              end
+              def self.new(unit_amount:); end
 
               sig { override.returns({unit_amount: String}) }
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -1291,8 +1266,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -1303,8 +1277,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -1338,12 +1311,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -1369,8 +1341,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -1381,8 +1352,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -1416,12 +1386,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -1606,9 +1575,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :package
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -1636,8 +1603,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -1693,8 +1659,7 @@ module Orb
                     T::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class PackageConfig < Orb::Internal::Type::BaseModel
@@ -1708,12 +1673,10 @@ module Orb
               attr_accessor :package_size
 
               sig { params(package_amount: String, package_size: Integer).returns(T.attached_class) }
-              def self.new(package_amount:, package_size:)
-              end
+              def self.new(package_amount:, package_size:); end
 
               sig { override.returns({package_amount: String, package_size: Integer}) }
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -1738,8 +1701,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -1750,8 +1712,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -1785,12 +1746,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -1816,8 +1776,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -1828,8 +1787,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -1863,12 +1821,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -2049,9 +2006,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :matrix
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -2079,8 +2034,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -2134,8 +2088,7 @@ module Orb
                     T::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class MatrixConfig < Orb::Internal::Type::BaseModel
@@ -2151,7 +2104,7 @@ module Orb
               sig do
                 returns(
                   T::Array[
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
+                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
                   ]
                 )
               end
@@ -2162,16 +2115,15 @@ module Orb
                   default_unit_amount: String,
                   dimensions: T::Array[T.nilable(String)],
                   matrix_values: T::Array[
-                  T.any(
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue,
-                    Orb::Internal::AnyHash
-                  )
+                    T.any(
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue,
+                      Orb::Internal::AnyHash
+                    )
                   ]
                 )
                   .returns(T.attached_class)
               end
-              def self.new(default_unit_amount:, dimensions:, matrix_values:)
-              end
+              def self.new(default_unit_amount:, dimensions:, matrix_values:); end
 
               sig do
                 override
@@ -2180,13 +2132,12 @@ module Orb
                       default_unit_amount: String,
                       dimensions: T::Array[T.nilable(String)],
                       matrix_values: T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
                       ]
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class MatrixValue < Orb::Internal::Type::BaseModel
                 # One or two matrix keys to filter usage to this Matrix value by. For example,
@@ -2205,12 +2156,10 @@ module Orb
                     unit_amount: String
                   ).returns(T.attached_class)
                 end
-                def self.new(dimension_values:, unit_amount:)
-                end
+                def self.new(dimension_values:, unit_amount:); end
 
                 sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -2236,8 +2185,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -2248,8 +2196,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -2283,12 +2230,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -2314,8 +2260,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -2326,8 +2271,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -2361,12 +2305,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -2547,9 +2490,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :tiered
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -2577,8 +2518,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -2632,8 +2572,7 @@ module Orb
                     T::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class TieredConfig < Orb::Internal::Type::BaseModel
@@ -2648,16 +2587,15 @@ module Orb
               sig do
                 params(
                   tiers: T::Array[
-                  T.any(
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier,
-                    Orb::Internal::AnyHash
-                  )
+                    T.any(
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
                   ]
                 )
                   .returns(T.attached_class)
               end
-              def self.new(tiers:)
-              end
+              def self.new(tiers:); end
 
               sig do
                 override
@@ -2667,8 +2605,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Tier < Orb::Internal::Type::BaseModel
                 # Inclusive tier starting value
@@ -2690,14 +2627,12 @@ module Orb
                     last_unit: T.nilable(Float)
                   ).returns(T.attached_class)
                 end
-                def self.new(first_unit:, unit_amount:, last_unit: nil)
-                end
+                def self.new(first_unit:, unit_amount:, last_unit: nil); end
 
                 sig do
                   override.returns({first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)})
                 end
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -2723,8 +2658,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -2735,8 +2669,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -2770,12 +2703,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -2801,8 +2733,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -2813,8 +2744,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -2848,12 +2778,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -3038,9 +2967,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :tiered_bps
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -3068,8 +2995,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -3123,12 +3049,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class TieredBpsConfig < Orb::Internal::Type::BaseModel
@@ -3137,7 +3062,7 @@ module Orb
               sig do
                 returns(
                   T::Array[
-                  Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
+                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
                   ]
                 )
               end
@@ -3146,29 +3071,27 @@ module Orb
               sig do
                 params(
                   tiers: T::Array[
-                  T.any(
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier,
-                    Orb::Internal::AnyHash
-                  )
+                    T.any(
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
                   ]
                 )
                   .returns(T.attached_class)
               end
-              def self.new(tiers:)
-              end
+              def self.new(tiers:); end
 
               sig do
                 override
                   .returns(
                     {
                       tiers: T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
                       ]
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Tier < Orb::Internal::Type::BaseModel
                 # Per-event basis point rate
@@ -3196,8 +3119,7 @@ module Orb
                   )
                     .returns(T.attached_class)
                 end
-                def self.new(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil)
-                end
+                def self.new(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil); end
 
                 sig do
                   override
@@ -3210,8 +3132,7 @@ module Orb
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -3237,8 +3158,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -3249,8 +3169,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -3284,12 +3203,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -3315,8 +3233,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -3327,8 +3244,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -3362,12 +3278,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -3548,9 +3463,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :bps
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -3578,8 +3491,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class BpsConfig < Orb::Internal::Type::BaseModel
               # Basis point take rate per event
@@ -3591,12 +3503,10 @@ module Orb
               attr_accessor :per_unit_maximum
 
               sig { params(bps: Float, per_unit_maximum: T.nilable(String)).returns(T.attached_class) }
-              def self.new(bps:, per_unit_maximum: nil)
-              end
+              def self.new(bps:, per_unit_maximum: nil); end
 
               sig { override.returns({bps: Float, per_unit_maximum: T.nilable(String)}) }
-              def to_hash
-              end
+              def to_hash; end
             end
 
             # The cadence to bill for this price on.
@@ -3651,8 +3561,7 @@ module Orb
                     T::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -3677,8 +3586,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -3689,8 +3597,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -3724,12 +3631,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -3755,8 +3661,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -3767,8 +3672,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -3802,12 +3706,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -3992,9 +3895,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :bulk_bps
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -4022,8 +3923,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class BulkBpsConfig < Orb::Internal::Type::BaseModel
               # Tiers for a bulk BPS pricing model where all usage is aggregated to a single
@@ -4038,16 +3938,15 @@ module Orb
               sig do
                 params(
                   tiers: T::Array[
-                  T.any(
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier,
-                    Orb::Internal::AnyHash
-                  )
+                    T.any(
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
                   ]
                 )
                   .returns(T.attached_class)
               end
-              def self.new(tiers:)
-              end
+              def self.new(tiers:); end
 
               sig do
                 override
@@ -4057,8 +3956,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Tier < Orb::Internal::Type::BaseModel
                 # Basis points to rate on
@@ -4077,8 +3975,7 @@ module Orb
                   params(bps: Float, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String))
                     .returns(T.attached_class)
                 end
-                def self.new(bps:, maximum_amount: nil, per_unit_maximum: nil)
-                end
+                def self.new(bps:, maximum_amount: nil, per_unit_maximum: nil); end
 
                 sig do
                   override.returns(
@@ -4089,8 +3986,7 @@ module Orb
                     }
                   )
                 end
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -4148,8 +4044,7 @@ module Orb
                     T::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -4174,8 +4069,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -4186,8 +4080,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -4221,12 +4114,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -4252,8 +4144,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -4264,8 +4155,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -4299,12 +4189,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -4485,9 +4374,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :bulk
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -4515,8 +4402,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class BulkConfig < Orb::Internal::Type::BaseModel
               # Bulk tiers for rating based on total usage volume
@@ -4530,16 +4416,15 @@ module Orb
               sig do
                 params(
                   tiers: T::Array[
-                  T.any(
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier,
-                    Orb::Internal::AnyHash
-                  )
+                    T.any(
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
                   ]
                 )
                   .returns(T.attached_class)
               end
-              def self.new(tiers:)
-              end
+              def self.new(tiers:); end
 
               sig do
                 override
@@ -4549,8 +4434,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Tier < Orb::Internal::Type::BaseModel
                 # Amount per unit
@@ -4562,12 +4446,10 @@ module Orb
                 attr_accessor :maximum_units
 
                 sig { params(unit_amount: String, maximum_units: T.nilable(Float)).returns(T.attached_class) }
-                def self.new(unit_amount:, maximum_units: nil)
-                end
+                def self.new(unit_amount:, maximum_units: nil); end
 
                 sig { override.returns({unit_amount: String, maximum_units: T.nilable(Float)}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -4623,8 +4505,7 @@ module Orb
                     T::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -4649,8 +4530,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -4661,8 +4541,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -4696,12 +4575,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -4727,8 +4605,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -4739,8 +4616,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -4774,12 +4650,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -4946,9 +4821,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :threshold_total_amount
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -4976,8 +4849,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -5031,12 +4903,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -5061,8 +4932,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -5073,8 +4943,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -5108,12 +4977,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -5139,8 +5007,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -5151,8 +5018,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -5186,12 +5052,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -5358,9 +5223,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :tiered_package
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -5388,8 +5251,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -5443,12 +5305,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -5473,8 +5334,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -5485,8 +5345,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -5520,12 +5379,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -5551,8 +5409,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -5563,8 +5420,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -5598,12 +5454,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -5770,9 +5625,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :tiered_with_minimum
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -5800,8 +5653,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -5855,12 +5707,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -5885,8 +5736,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -5897,8 +5747,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -5932,12 +5781,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -5963,8 +5811,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -5975,8 +5822,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -6010,12 +5856,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -6182,9 +6027,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :unit_with_percent
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -6212,8 +6055,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -6267,12 +6109,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -6297,8 +6138,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -6309,8 +6149,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -6344,12 +6183,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -6375,8 +6213,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -6387,8 +6224,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -6422,12 +6258,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -6594,9 +6429,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :package_with_allocation
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -6624,8 +6457,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -6679,12 +6511,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -6709,8 +6540,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -6721,8 +6551,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -6756,12 +6585,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -6787,8 +6615,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -6799,8 +6626,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -6834,12 +6660,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -7006,9 +6831,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :tiered_with_proration
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -7036,8 +6859,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -7091,12 +6913,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -7121,8 +6942,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -7133,8 +6953,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -7168,12 +6987,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -7199,8 +7017,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -7211,8 +7028,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -7246,12 +7062,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -7418,9 +7233,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :unit_with_proration
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -7448,8 +7261,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -7503,12 +7315,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -7533,8 +7344,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -7545,8 +7355,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -7580,12 +7389,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -7611,8 +7419,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -7623,8 +7430,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -7658,12 +7464,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -7830,9 +7635,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :grouped_allocation
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -7860,8 +7663,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -7915,12 +7717,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -7945,8 +7746,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -7957,8 +7757,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -7992,12 +7791,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -8023,8 +7821,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -8035,8 +7832,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -8070,12 +7866,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -8242,9 +8037,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :grouped_with_prorated_minimum
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -8272,8 +8065,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -8327,12 +8119,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -8357,8 +8148,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -8369,8 +8159,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -8404,12 +8193,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -8435,8 +8223,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -8447,8 +8234,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -8482,12 +8268,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -8654,9 +8439,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :bulk_with_proration
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -8684,8 +8467,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -8739,12 +8521,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -8769,8 +8550,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -8781,8 +8561,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -8816,12 +8595,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -8847,8 +8625,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -8859,8 +8636,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -8894,12 +8670,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -9066,9 +8841,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :scalable_matrix_with_unit_pricing
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -9096,8 +8869,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -9151,12 +8923,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -9181,8 +8952,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -9193,8 +8963,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -9228,12 +8997,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -9259,8 +9027,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -9271,8 +9038,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -9306,12 +9072,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -9478,9 +9243,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :scalable_matrix_with_tiered_pricing
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -9508,8 +9271,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -9563,12 +9325,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -9593,8 +9354,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -9605,8 +9365,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -9640,12 +9399,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -9671,8 +9429,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -9683,8 +9440,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -9718,12 +9474,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -9890,9 +9645,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :cumulative_grouped_bulk
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -9920,8 +9673,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -9975,12 +9727,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -10005,8 +9756,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -10017,8 +9767,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -10052,12 +9801,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -10083,8 +9831,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -10095,8 +9842,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -10130,12 +9876,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -10302,9 +10047,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :max_group_tiered_package
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -10332,8 +10075,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -10387,12 +10129,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -10417,8 +10158,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -10429,8 +10169,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -10464,12 +10203,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -10495,8 +10233,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -10507,8 +10244,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -10542,12 +10278,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -10714,9 +10449,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :grouped_with_metered_minimum
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -10744,8 +10477,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -10799,12 +10531,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -10829,8 +10560,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -10841,8 +10571,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -10876,12 +10605,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -10907,8 +10635,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -10919,8 +10646,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -10954,12 +10680,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -11126,9 +10851,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :matrix_with_display_name
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -11156,8 +10879,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -11211,12 +10933,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -11241,8 +10962,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -11253,8 +10973,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -11288,12 +11007,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -11319,8 +11037,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -11331,8 +11048,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -11366,12 +11082,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -11538,9 +11253,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :grouped_tiered_package
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -11568,8 +11281,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -11623,12 +11335,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -11653,8 +11364,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -11665,8 +11375,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -11700,12 +11409,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -11731,8 +11439,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -11743,8 +11450,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -11778,12 +11484,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -11794,8 +11499,7 @@ module Orb
                 [Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice]
               )
           end
-          def self.variants
-          end
+          def self.variants; end
         end
       end
 
@@ -11821,12 +11525,10 @@ module Orb
         sig do
           params(day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)).returns(T.attached_class)
         end
-        def self.new(day:, month: nil, year: nil)
-        end
+        def self.new(day:, month: nil, year: nil); end
 
         sig { override.returns({day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       module ExternalMarketplace
@@ -11841,8 +11543,7 @@ module Orb
         AZURE = T.let(:azure, Orb::Models::SubscriptionCreateParams::ExternalMarketplace::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::SubscriptionCreateParams::ExternalMarketplace::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class RemoveAdjustment < Orb::Internal::Type::BaseModel
@@ -11851,12 +11552,10 @@ module Orb
         attr_accessor :adjustment_id
 
         sig { params(adjustment_id: String).returns(T.attached_class) }
-        def self.new(adjustment_id:)
-        end
+        def self.new(adjustment_id:); end
 
         sig { override.returns({adjustment_id: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class RemovePrice < Orb::Internal::Type::BaseModel
@@ -11871,12 +11570,10 @@ module Orb
         sig do
           params(external_price_id: T.nilable(String), price_id: T.nilable(String)).returns(T.attached_class)
         end
-        def self.new(external_price_id: nil, price_id: nil)
-        end
+        def self.new(external_price_id: nil, price_id: nil); end
 
         sig { override.returns({external_price_id: T.nilable(String), price_id: T.nilable(String)}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class ReplaceAdjustment < Orb::Internal::Type::BaseModel
@@ -11912,8 +11609,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(adjustment:, replaces_adjustment_id:)
-        end
+        def self.new(adjustment:, replaces_adjustment_id:); end
 
         sig do
           override
@@ -11930,8 +11626,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The definition of a new adjustment to create and add to the subscription.
         module Adjustment
@@ -11984,8 +11679,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class NewUsageDiscount < Orb::Internal::Type::BaseModel
@@ -12035,8 +11729,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class NewAmountDiscount < Orb::Internal::Type::BaseModel
@@ -12086,8 +11779,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class NewMinimum < Orb::Internal::Type::BaseModel
@@ -12144,8 +11836,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class NewMaximum < Orb::Internal::Type::BaseModel
@@ -12195,8 +11886,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           sig do
@@ -12205,8 +11895,7 @@ module Orb
                 [Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::NewMaximum]
               )
           end
-          def self.variants
-          end
+          def self.variants; end
         end
       end
 
@@ -12349,9 +12038,7 @@ module Orb
           minimum_amount: nil,
           price: nil,
           price_id: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -12396,8 +12083,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class AllocationPrice < Orb::Internal::Type::BaseModel
           # An amount of the currency to allocate to the customer at the specified cadence.
@@ -12428,8 +12114,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, cadence:, currency:, expires_at_end_of_cadence:)
-          end
+          def self.new(amount:, cadence:, currency:, expires_at_end_of_cadence:); end
 
           sig do
             override
@@ -12442,8 +12127,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The cadence at which to allocate the amount to the customer.
           module Cadence
@@ -12497,8 +12181,7 @@ module Orb
                   T::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice::Cadence::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -12543,8 +12226,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DiscountType
             extend Orb::Internal::Type::Enum
@@ -12576,8 +12258,7 @@ module Orb
                   T::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Discount::DiscountType::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -12761,9 +12442,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :unit
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -12791,8 +12470,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -12846,12 +12524,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class UnitConfig < Orb::Internal::Type::BaseModel
@@ -12860,12 +12537,10 @@ module Orb
               attr_accessor :unit_amount
 
               sig { params(unit_amount: String).returns(T.attached_class) }
-              def self.new(unit_amount:)
-              end
+              def self.new(unit_amount:); end
 
               sig { override.returns({unit_amount: String}) }
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -12890,8 +12565,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -12902,8 +12576,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -12937,12 +12610,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -12968,8 +12640,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -12980,8 +12651,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -13015,12 +12685,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -13205,9 +12874,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :package
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -13235,8 +12902,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -13290,12 +12956,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class PackageConfig < Orb::Internal::Type::BaseModel
@@ -13309,12 +12974,10 @@ module Orb
               attr_accessor :package_size
 
               sig { params(package_amount: String, package_size: Integer).returns(T.attached_class) }
-              def self.new(package_amount:, package_size:)
-              end
+              def self.new(package_amount:, package_size:); end
 
               sig { override.returns({package_amount: String, package_size: Integer}) }
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -13339,8 +13002,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -13351,8 +13013,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -13386,12 +13047,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -13417,8 +13077,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -13429,8 +13088,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -13464,12 +13122,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -13654,9 +13311,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :matrix
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -13684,8 +13339,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -13739,12 +13393,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class MatrixConfig < Orb::Internal::Type::BaseModel
@@ -13760,7 +13413,7 @@ module Orb
               sig do
                 returns(
                   T::Array[
-                  Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
+                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
                   ]
                 )
               end
@@ -13771,16 +13424,15 @@ module Orb
                   default_unit_amount: String,
                   dimensions: T::Array[T.nilable(String)],
                   matrix_values: T::Array[
-                  T.any(
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue,
-                    Orb::Internal::AnyHash
-                  )
+                    T.any(
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue,
+                      Orb::Internal::AnyHash
+                    )
                   ]
                 )
                   .returns(T.attached_class)
               end
-              def self.new(default_unit_amount:, dimensions:, matrix_values:)
-              end
+              def self.new(default_unit_amount:, dimensions:, matrix_values:); end
 
               sig do
                 override
@@ -13789,13 +13441,12 @@ module Orb
                       default_unit_amount: String,
                       dimensions: T::Array[T.nilable(String)],
                       matrix_values: T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
                       ]
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class MatrixValue < Orb::Internal::Type::BaseModel
                 # One or two matrix keys to filter usage to this Matrix value by. For example,
@@ -13814,12 +13465,10 @@ module Orb
                     unit_amount: String
                   ).returns(T.attached_class)
                 end
-                def self.new(dimension_values:, unit_amount:)
-                end
+                def self.new(dimension_values:, unit_amount:); end
 
                 sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -13845,8 +13494,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -13857,8 +13505,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -13892,12 +13539,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -13923,8 +13569,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -13935,8 +13580,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -13970,12 +13614,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -14160,9 +13803,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :tiered
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -14190,8 +13831,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -14245,12 +13885,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class TieredConfig < Orb::Internal::Type::BaseModel
@@ -14265,16 +13904,15 @@ module Orb
               sig do
                 params(
                   tiers: T::Array[
-                  T.any(
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier,
-                    Orb::Internal::AnyHash
-                  )
+                    T.any(
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
                   ]
                 )
                   .returns(T.attached_class)
               end
-              def self.new(tiers:)
-              end
+              def self.new(tiers:); end
 
               sig do
                 override
@@ -14284,8 +13922,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Tier < Orb::Internal::Type::BaseModel
                 # Inclusive tier starting value
@@ -14307,14 +13944,12 @@ module Orb
                     last_unit: T.nilable(Float)
                   ).returns(T.attached_class)
                 end
-                def self.new(first_unit:, unit_amount:, last_unit: nil)
-                end
+                def self.new(first_unit:, unit_amount:, last_unit: nil); end
 
                 sig do
                   override.returns({first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)})
                 end
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -14340,8 +13975,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -14352,8 +13986,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -14387,12 +14020,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -14418,8 +14050,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -14430,8 +14061,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -14465,12 +14095,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -14655,9 +14284,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :tiered_bps
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -14685,8 +14312,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -14740,12 +14366,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class TieredBpsConfig < Orb::Internal::Type::BaseModel
@@ -14754,7 +14379,7 @@ module Orb
               sig do
                 returns(
                   T::Array[
-                  Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
+                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
                   ]
                 )
               end
@@ -14763,29 +14388,27 @@ module Orb
               sig do
                 params(
                   tiers: T::Array[
-                  T.any(
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier,
-                    Orb::Internal::AnyHash
-                  )
+                    T.any(
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
                   ]
                 )
                   .returns(T.attached_class)
               end
-              def self.new(tiers:)
-              end
+              def self.new(tiers:); end
 
               sig do
                 override
                   .returns(
                     {
                       tiers: T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
                       ]
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Tier < Orb::Internal::Type::BaseModel
                 # Per-event basis point rate
@@ -14813,8 +14436,7 @@ module Orb
                   )
                     .returns(T.attached_class)
                 end
-                def self.new(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil)
-                end
+                def self.new(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil); end
 
                 sig do
                   override
@@ -14827,8 +14449,7 @@ module Orb
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -14854,8 +14475,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -14866,8 +14486,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -14901,12 +14520,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -14932,8 +14550,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -14944,8 +14561,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -14979,12 +14595,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -15165,9 +14780,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :bps
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -15195,8 +14808,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class BpsConfig < Orb::Internal::Type::BaseModel
               # Basis point take rate per event
@@ -15208,12 +14820,10 @@ module Orb
               attr_accessor :per_unit_maximum
 
               sig { params(bps: Float, per_unit_maximum: T.nilable(String)).returns(T.attached_class) }
-              def self.new(bps:, per_unit_maximum: nil)
-              end
+              def self.new(bps:, per_unit_maximum: nil); end
 
               sig { override.returns({bps: Float, per_unit_maximum: T.nilable(String)}) }
-              def to_hash
-              end
+              def to_hash; end
             end
 
             # The cadence to bill for this price on.
@@ -15270,8 +14880,7 @@ module Orb
                     T::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -15296,8 +14905,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -15308,8 +14916,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -15343,12 +14950,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -15374,8 +14980,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -15386,8 +14991,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -15421,12 +15025,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -15611,9 +15214,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :bulk_bps
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -15641,8 +15242,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class BulkBpsConfig < Orb::Internal::Type::BaseModel
               # Tiers for a bulk BPS pricing model where all usage is aggregated to a single
@@ -15650,7 +15250,7 @@ module Orb
               sig do
                 returns(
                   T::Array[
-                  Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier
+                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier
                   ]
                 )
               end
@@ -15659,29 +15259,27 @@ module Orb
               sig do
                 params(
                   tiers: T::Array[
-                  T.any(
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier,
-                    Orb::Internal::AnyHash
-                  )
+                    T.any(
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
                   ]
                 )
                   .returns(T.attached_class)
               end
-              def self.new(tiers:)
-              end
+              def self.new(tiers:); end
 
               sig do
                 override
                   .returns(
                     {
                       tiers: T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier
                       ]
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Tier < Orb::Internal::Type::BaseModel
                 # Basis points to rate on
@@ -15700,8 +15298,7 @@ module Orb
                   params(bps: Float, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String))
                     .returns(T.attached_class)
                 end
-                def self.new(bps:, maximum_amount: nil, per_unit_maximum: nil)
-                end
+                def self.new(bps:, maximum_amount: nil, per_unit_maximum: nil); end
 
                 sig do
                   override.returns(
@@ -15712,8 +15309,7 @@ module Orb
                     }
                   )
                 end
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -15769,12 +15365,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -15799,8 +15394,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -15811,8 +15405,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -15846,12 +15439,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -15877,8 +15469,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -15889,8 +15480,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -15924,12 +15514,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -16110,9 +15699,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :bulk
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -16140,8 +15727,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class BulkConfig < Orb::Internal::Type::BaseModel
               # Bulk tiers for rating based on total usage volume
@@ -16155,16 +15741,15 @@ module Orb
               sig do
                 params(
                   tiers: T::Array[
-                  T.any(
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier,
-                    Orb::Internal::AnyHash
-                  )
+                    T.any(
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
                   ]
                 )
                   .returns(T.attached_class)
               end
-              def self.new(tiers:)
-              end
+              def self.new(tiers:); end
 
               sig do
                 override
@@ -16174,8 +15759,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Tier < Orb::Internal::Type::BaseModel
                 # Amount per unit
@@ -16187,12 +15771,10 @@ module Orb
                 attr_accessor :maximum_units
 
                 sig { params(unit_amount: String, maximum_units: T.nilable(Float)).returns(T.attached_class) }
-                def self.new(unit_amount:, maximum_units: nil)
-                end
+                def self.new(unit_amount:, maximum_units: nil); end
 
                 sig { override.returns({unit_amount: String, maximum_units: T.nilable(Float)}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -16248,12 +15830,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -16278,8 +15859,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -16290,8 +15870,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -16325,12 +15904,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -16356,8 +15934,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -16368,8 +15945,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -16403,12 +15979,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -16575,9 +16150,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :threshold_total_amount
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -16605,8 +16178,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -16660,12 +16232,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -16690,8 +16261,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -16702,8 +16272,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -16737,12 +16306,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -16768,8 +16336,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -16780,8 +16347,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -16815,12 +16381,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -16987,9 +16552,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :tiered_package
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -17017,8 +16580,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -17072,12 +16634,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -17102,8 +16663,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -17114,8 +16674,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -17149,12 +16708,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -17180,8 +16738,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -17192,8 +16749,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -17227,12 +16783,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -17399,9 +16954,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :tiered_with_minimum
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -17429,8 +16982,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -17484,12 +17036,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -17514,8 +17065,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -17526,8 +17076,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -17561,12 +17110,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -17592,8 +17140,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -17604,8 +17151,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -17639,12 +17185,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -17811,9 +17356,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :unit_with_percent
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -17841,8 +17384,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -17896,12 +17438,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -17926,8 +17467,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -17938,8 +17478,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -17973,12 +17512,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -18004,8 +17542,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -18016,8 +17553,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -18051,12 +17587,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -18223,9 +17758,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :package_with_allocation
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -18253,8 +17786,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -18308,12 +17840,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -18338,8 +17869,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -18350,8 +17880,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -18385,12 +17914,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -18416,8 +17944,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -18428,8 +17955,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -18463,12 +17989,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -18635,9 +18160,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :tiered_with_proration
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -18665,8 +18188,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -18720,12 +18242,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -18750,8 +18271,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -18762,8 +18282,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -18797,12 +18316,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -18828,8 +18346,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -18840,8 +18357,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -18875,12 +18391,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -19047,9 +18562,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :unit_with_proration
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -19077,8 +18590,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -19132,12 +18644,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -19162,8 +18673,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -19174,8 +18684,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -19209,12 +18718,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -19240,8 +18748,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -19252,8 +18759,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -19287,12 +18793,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -19459,9 +18964,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :grouped_allocation
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -19489,8 +18992,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -19544,12 +19046,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -19574,8 +19075,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -19586,8 +19086,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -19621,12 +19120,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -19652,8 +19150,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -19664,8 +19161,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -19699,12 +19195,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -19871,9 +19366,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :grouped_with_prorated_minimum
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -19901,8 +19394,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -19956,12 +19448,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -19986,8 +19477,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -19998,8 +19488,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -20033,12 +19522,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -20064,8 +19552,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -20076,8 +19563,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -20111,12 +19597,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -20283,9 +19768,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :bulk_with_proration
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -20313,8 +19796,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -20368,12 +19850,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -20398,8 +19879,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -20410,8 +19890,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -20445,12 +19924,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -20476,8 +19954,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -20488,8 +19965,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -20523,12 +19999,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -20695,9 +20170,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :scalable_matrix_with_unit_pricing
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -20725,8 +20198,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -20780,12 +20252,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -20810,8 +20281,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -20822,8 +20292,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -20857,12 +20326,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -20888,8 +20356,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -20900,8 +20367,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -20935,12 +20401,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -21107,9 +20572,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :scalable_matrix_with_tiered_pricing
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -21137,8 +20600,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -21192,12 +20654,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -21222,8 +20683,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -21234,8 +20694,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -21269,12 +20728,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -21300,8 +20758,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -21312,8 +20769,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -21347,12 +20803,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -21519,9 +20974,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :cumulative_grouped_bulk
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -21549,8 +21002,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -21604,12 +21056,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -21634,8 +21085,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -21646,8 +21096,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -21681,12 +21130,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -21712,8 +21160,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -21724,8 +21171,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -21759,12 +21205,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -21931,9 +21376,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :max_group_tiered_package
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -21961,8 +21404,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -22016,12 +21458,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -22046,8 +21487,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -22058,8 +21498,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -22093,12 +21532,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -22124,8 +21562,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -22136,8 +21573,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -22171,12 +21607,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -22343,9 +21778,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :grouped_with_metered_minimum
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -22373,8 +21806,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -22428,12 +21860,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -22458,8 +21889,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -22470,8 +21900,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -22505,12 +21934,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -22536,8 +21964,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -22548,8 +21975,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -22583,12 +22009,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -22755,9 +22180,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :matrix_with_display_name
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -22785,8 +22208,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -22840,12 +22262,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -22870,8 +22291,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -22882,8 +22302,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -22917,12 +22336,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -22948,8 +22366,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -22960,8 +22377,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -22995,12 +22411,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -23167,9 +22582,7 @@ module Orb
               metadata: nil,
               reference_id: nil,
               model_type: :grouped_tiered_package
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -23197,8 +22610,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The cadence to bill for this price on.
             module Cadence
@@ -23252,12 +22664,11 @@ module Orb
                 override
                   .returns(
                     T::Array[
-                    Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -23282,8 +22693,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -23294,8 +22704,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -23329,12 +22738,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -23360,8 +22768,7 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:)
-              end
+              def self.new(duration:, duration_unit:); end
 
               sig do
                 override
@@ -23372,8 +22779,7 @@ module Orb
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The unit of billing period duration.
               module DurationUnit
@@ -23407,12 +22813,11 @@ module Orb
                   override
                     .returns(
                       T::Array[
-                      Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -23423,8 +22828,7 @@ module Orb
                 [Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice]
               )
           end
-          def self.variants
-          end
+          def self.variants; end
         end
       end
     end

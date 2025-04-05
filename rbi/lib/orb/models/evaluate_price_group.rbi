@@ -19,8 +19,7 @@ module Orb
         params(amount: String, grouping_values: T::Array[T.any(String, Float, T::Boolean)], quantity: Float)
           .returns(T.attached_class)
       end
-      def self.new(amount:, grouping_values:, quantity:)
-      end
+      def self.new(amount:, grouping_values:, quantity:); end
 
       sig do
         override
@@ -30,15 +29,13 @@ module Orb
                      quantity: Float
                    })
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module GroupingValue
         extend Orb::Internal::Type::Union
 
         sig { override.returns([String, Float, T::Boolean]) }
-        def self.variants
-        end
+        def self.variants; end
       end
     end
   end

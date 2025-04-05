@@ -46,8 +46,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(timeframe_start:, cursor: nil, limit: nil, timeframe_end: nil, request_options: {})
-        end
+        def self.new(timeframe_start:, cursor: nil, limit: nil, timeframe_end: nil, request_options: {}); end
 
         sig do
           override
@@ -61,8 +60,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

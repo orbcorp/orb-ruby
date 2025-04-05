@@ -49,8 +49,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Determines the timing of subscription cancellation
       module CancelOption
@@ -67,8 +66,7 @@ module Orb
           T.let(:requested_date, Orb::Models::SubscriptionCancelParams::CancelOption::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::SubscriptionCancelParams::CancelOption::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

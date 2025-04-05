@@ -297,9 +297,7 @@ module Orb
         timezone:,
         accounting_sync_configuration: nil,
         reporting_configuration: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -329,8 +327,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class BillingAddress < Orb::Internal::Type::BaseModel
         sig { returns(T.nilable(String)) }
@@ -362,8 +359,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(city:, country:, line1:, line2:, postal_code:, state:)
-        end
+        def self.new(city:, country:, line1:, line2:, postal_code:, state:); end
 
         sig do
           override
@@ -378,8 +374,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class Hierarchy < Orb::Internal::Type::BaseModel
@@ -400,8 +395,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(children:, parent:)
-        end
+        def self.new(children:, parent:); end
 
         sig do
           override
@@ -412,8 +406,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Child < Orb::Internal::Type::BaseModel
           sig { returns(String) }
@@ -423,12 +416,10 @@ module Orb
           attr_accessor :external_customer_id
 
           sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
-          def self.new(id:, external_customer_id:)
-          end
+          def self.new(id:, external_customer_id:); end
 
           sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Parent < Orb::Internal::Type::BaseModel
@@ -439,12 +430,10 @@ module Orb
           attr_accessor :external_customer_id
 
           sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
-          def self.new(id:, external_customer_id:)
-          end
+          def self.new(id:, external_customer_id:); end
 
           sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -464,8 +453,7 @@ module Orb
         NETSUITE = T.let(:netsuite, Orb::Models::Customer::PaymentProvider::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::Customer::PaymentProvider::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class ShippingAddress < Orb::Internal::Type::BaseModel
@@ -498,8 +486,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(city:, country:, line1:, line2:, postal_code:, state:)
-        end
+        def self.new(city:, country:, line1:, line2:, postal_code:, state:); end
 
         sig do
           override
@@ -514,8 +501,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class TaxID < Orb::Internal::Type::BaseModel
@@ -641,8 +627,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(country:, type:, value:)
-        end
+        def self.new(country:, type:, value:); end
 
         sig do
           override
@@ -654,8 +639,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module Country
           extend Orb::Internal::Type::Enum
@@ -743,8 +727,7 @@ module Orb
           ZA = T.let(:ZA, Orb::Models::Customer::TaxID::Country::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Customer::TaxID::Country::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         module Type
@@ -826,8 +809,7 @@ module Orb
           ZA_VAT = T.let(:za_vat, Orb::Models::Customer::TaxID::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Customer::TaxID::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -845,8 +827,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(accounting_providers:, excluded:)
-        end
+        def self.new(accounting_providers:, excluded:); end
 
         sig do
           override
@@ -857,8 +838,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class AccountingProvider < Orb::Internal::Type::BaseModel
           sig { returns(T.nilable(String)) }
@@ -878,8 +858,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(external_provider_id:, provider_type:)
-          end
+          def self.new(external_provider_id:, provider_type:); end
 
           sig do
             override
@@ -890,8 +869,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module ProviderType
             extend Orb::Internal::Type::Enum
@@ -924,8 +902,7 @@ module Orb
                   T::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end
@@ -935,12 +912,10 @@ module Orb
         attr_accessor :exempt
 
         sig { params(exempt: T::Boolean).returns(T.attached_class) }
-        def self.new(exempt:)
-        end
+        def self.new(exempt:); end
 
         sig { override.returns({exempt: T::Boolean}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

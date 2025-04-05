@@ -15,12 +15,10 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(data:)
-        end
+        def self.new(data:); end
 
         sig { override.returns({data: T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data]}) }
-        def to_hash
-        end
+        def to_hash; end
 
         class Data < Orb::Internal::Type::BaseModel
           sig { returns(Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric) }
@@ -54,8 +52,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(billable_metric:, usage:, view_mode:)
-          end
+          def self.new(billable_metric:, usage:, view_mode:); end
 
           sig do
             override
@@ -67,8 +64,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class BillableMetric < Orb::Internal::Type::BaseModel
             sig { returns(String) }
@@ -78,12 +74,10 @@ module Orb
             attr_accessor :name
 
             sig { params(id: String, name: String).returns(T.attached_class) }
-            def self.new(id:, name:)
-            end
+            def self.new(id:, name:); end
 
             sig { override.returns({id: String, name: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class Usage < Orb::Internal::Type::BaseModel
@@ -99,12 +93,10 @@ module Orb
             sig do
               params(quantity: Float, timeframe_end: Time, timeframe_start: Time).returns(T.attached_class)
             end
-            def self.new(quantity:, timeframe_end:, timeframe_start:)
-            end
+            def self.new(quantity:, timeframe_end:, timeframe_start:); end
 
             sig { override.returns({quantity: Float, timeframe_end: Time, timeframe_start: Time}) }
-            def to_hash
-            end
+            def to_hash; end
           end
 
           module ViewMode
@@ -135,8 +127,7 @@ module Orb
                   T::Array[Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end
@@ -148,7 +139,9 @@ module Orb
         sig { returns(T.nilable(Orb::Models::PaginationMetadata)) }
         attr_reader :pagination_metadata
 
-        sig { params(pagination_metadata: T.nilable(T.any(Orb::Models::PaginationMetadata, Orb::Internal::AnyHash))).void }
+        sig do
+          params(pagination_metadata: T.nilable(T.any(Orb::Models::PaginationMetadata, Orb::Internal::AnyHash))).void
+        end
         attr_writer :pagination_metadata
 
         sig do
@@ -158,8 +151,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(data:, pagination_metadata: nil)
-        end
+        def self.new(data:, pagination_metadata: nil); end
 
         sig do
           override
@@ -170,8 +162,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Data < Orb::Internal::Type::BaseModel
           sig { returns(Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric) }
@@ -217,8 +208,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(billable_metric:, metric_group:, usage:, view_mode:)
-          end
+          def self.new(billable_metric:, metric_group:, usage:, view_mode:); end
 
           sig do
             override
@@ -231,8 +221,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class BillableMetric < Orb::Internal::Type::BaseModel
             sig { returns(String) }
@@ -242,12 +231,10 @@ module Orb
             attr_accessor :name
 
             sig { params(id: String, name: String).returns(T.attached_class) }
-            def self.new(id:, name:)
-            end
+            def self.new(id:, name:); end
 
             sig { override.returns({id: String, name: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class MetricGroup < Orb::Internal::Type::BaseModel
@@ -258,12 +245,10 @@ module Orb
             attr_accessor :property_value
 
             sig { params(property_key: String, property_value: String).returns(T.attached_class) }
-            def self.new(property_key:, property_value:)
-            end
+            def self.new(property_key:, property_value:); end
 
             sig { override.returns({property_key: String, property_value: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class Usage < Orb::Internal::Type::BaseModel
@@ -279,12 +264,10 @@ module Orb
             sig do
               params(quantity: Float, timeframe_end: Time, timeframe_start: Time).returns(T.attached_class)
             end
-            def self.new(quantity:, timeframe_end:, timeframe_start:)
-            end
+            def self.new(quantity:, timeframe_end:, timeframe_start:); end
 
             sig { override.returns({quantity: Float, timeframe_end: Time, timeframe_start: Time}) }
-            def to_hash
-            end
+            def to_hash; end
           end
 
           module ViewMode
@@ -310,8 +293,7 @@ module Orb
               override
                 .returns(T::Array[Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end
@@ -322,8 +304,7 @@ module Orb
             [Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]
           )
       end
-      def self.variants
-      end
+      def self.variants; end
     end
   end
 end

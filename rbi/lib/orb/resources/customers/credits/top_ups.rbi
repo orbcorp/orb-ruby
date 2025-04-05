@@ -50,9 +50,7 @@ module Orb
             # The unit of expires_after.
             expires_after_unit: nil,
             request_options: {}
-          )
-          end
-
+          ); end
           # List top-ups
           sig do
             params(
@@ -71,9 +69,7 @@ module Orb
             # The number of items to fetch. Defaults to 20.
             limit: nil,
             request_options: {}
-          )
-          end
-
+          ); end
           # This deactivates the top-up and voids any invoices associated with pending
           #   credit blocks purchased through the top-up.
           sig do
@@ -84,8 +80,7 @@ module Orb
             )
               .void
           end
-          def delete(top_up_id, customer_id:, request_options: {})
-          end
+          def delete(top_up_id, customer_id:, request_options: {}); end
 
           # This endpoint allows you to create a new top-up for a specified customer's
           #   balance. While this top-up is active, the customer's balance will added in
@@ -135,9 +130,7 @@ module Orb
             # The unit of expires_after.
             expires_after_unit: nil,
             request_options: {}
-          )
-          end
-
+          ); end
           # This deactivates the top-up and voids any invoices associated with pending
           #   credit blocks purchased through the top-up.
           sig do
@@ -148,8 +141,7 @@ module Orb
             )
               .void
           end
-          def delete_by_external_id(top_up_id, external_customer_id:, request_options: {})
-          end
+          def delete_by_external_id(top_up_id, external_customer_id:, request_options: {}); end
 
           # List top-ups by external ID
           sig do
@@ -169,13 +161,10 @@ module Orb
             # The number of items to fetch. Defaults to 20.
             limit: nil,
             request_options: {}
-          )
-          end
-
+          ); end
           # @api private
           sig { params(client: Orb::Client).returns(T.attached_class) }
-          def self.new(client:)
-          end
+          def self.new(client:); end
         end
       end
     end

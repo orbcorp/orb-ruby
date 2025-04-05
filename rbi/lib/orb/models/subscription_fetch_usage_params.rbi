@@ -75,9 +75,7 @@ module Orb
         timeframe_start: nil,
         view_mode: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -96,8 +94,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # This determines the windowing of usage reporting.
       module Granularity
@@ -110,8 +107,7 @@ module Orb
         DAY = T.let(:day, Orb::Models::SubscriptionFetchUsageParams::Granularity::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::SubscriptionFetchUsageParams::Granularity::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Controls whether Orb returns cumulative usage since the start of the billing
@@ -129,8 +125,7 @@ module Orb
         CUMULATIVE = T.let(:cumulative, Orb::Models::SubscriptionFetchUsageParams::ViewMode::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::SubscriptionFetchUsageParams::ViewMode::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

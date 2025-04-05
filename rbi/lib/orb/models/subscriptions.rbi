@@ -19,15 +19,13 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(data:, pagination_metadata:)
-      end
+      def self.new(data:, pagination_metadata:); end
 
       sig do
         override
           .returns({data: T::Array[Orb::Models::Subscription], pagination_metadata: Orb::Models::PaginationMetadata})
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

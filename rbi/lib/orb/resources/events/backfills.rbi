@@ -81,9 +81,7 @@ module Orb
           #   events. If false, adds the newly ingested events to the existing events.
           replace_existing_events: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # This endpoint returns a list of all backfills in a list format.
         #
         #   The list of backfills is ordered starting from the most recently created
@@ -106,9 +104,7 @@ module Orb
           # The number of items to fetch. Defaults to 20.
           limit: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Closing a backfill makes the updated usage visible in Orb. Upon closing a
         #   backfill, Orb will asynchronously reflect the updated usage in invoice amounts
         #   and usage graphs. Once all of the updates are complete, the backfill's status
@@ -120,8 +116,7 @@ module Orb
           )
             .returns(Orb::Models::Events::BackfillCloseResponse)
         end
-        def close(backfill_id, request_options: {})
-        end
+        def close(backfill_id, request_options: {}); end
 
         # This endpoint is used to fetch a backfill given an identifier.
         sig do
@@ -131,8 +126,7 @@ module Orb
           )
             .returns(Orb::Models::Events::BackfillFetchResponse)
         end
-        def fetch(backfill_id, request_options: {})
-        end
+        def fetch(backfill_id, request_options: {}); end
 
         # Reverting a backfill undoes all the effects of closing the backfill. If the
         #   backfill is reflected, the status will transition to `pending_revert` while the
@@ -148,13 +142,11 @@ module Orb
           )
             .returns(Orb::Models::Events::BackfillRevertResponse)
         end
-        def revert(backfill_id, request_options: {})
-        end
+        def revert(backfill_id, request_options: {}); end
 
         # @api private
         sig { params(client: Orb::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

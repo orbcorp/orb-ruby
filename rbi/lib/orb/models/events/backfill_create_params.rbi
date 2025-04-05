@@ -71,9 +71,7 @@ module Orb
           external_customer_id: nil,
           replace_existing_events: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -89,8 +87,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

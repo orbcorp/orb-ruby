@@ -32,13 +32,10 @@ module Orb
         # A date string to specify the line item's start date in the customer's timezone.
         start_date:,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

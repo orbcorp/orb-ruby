@@ -23,8 +23,7 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(validation_failed:, debug: nil)
-      end
+      def self.new(validation_failed:, debug: nil); end
 
       sig do
         override
@@ -35,8 +34,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class ValidationFailed < Orb::Internal::Type::BaseModel
         # The passed idempotency_key corresponding to the validation_errors
@@ -49,12 +47,10 @@ module Orb
         attr_accessor :validation_errors
 
         sig { params(idempotency_key: String, validation_errors: T::Array[String]).returns(T.attached_class) }
-        def self.new(idempotency_key:, validation_errors:)
-        end
+        def self.new(idempotency_key:, validation_errors:); end
 
         sig { override.returns({idempotency_key: String, validation_errors: T::Array[String]}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class Debug < Orb::Internal::Type::BaseModel
@@ -67,12 +63,10 @@ module Orb
         # Optional debug information (only present when debug=true is passed to the
         #   endpoint). Contains ingested and duplicate event idempotency keys.
         sig { params(duplicate: T::Array[String], ingested: T::Array[String]).returns(T.attached_class) }
-        def self.new(duplicate:, ingested:)
-        end
+        def self.new(duplicate:, ingested:); end
 
         sig { override.returns({duplicate: T::Array[String], ingested: T::Array[String]}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

@@ -386,9 +386,7 @@ module Orb
         #   subscription itself, or any of that customer's children.
         usage_customer_ids: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint can be used to update the `metadata`, `net terms`,
       #   `auto_collection`, `invoicing_threshold`, and `default_invoice_memo` properties
       #   on a subscription.
@@ -427,9 +425,7 @@ module Orb
         #   has a month to pay the invoice.
         net_terms: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint returns a list of all subscriptions for an account as a
       #   [paginated](/api-reference/pagination) list, ordered starting from the most
       #   recently created subscription. For a full discussion of the subscription
@@ -468,9 +464,7 @@ module Orb
         limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint can be used to cancel an existing subscription. It returns the
       #   serialized subscription object with an `end_date` parameter that signifies when
       #   the subscription will transition to an ended state.
@@ -554,9 +548,7 @@ module Orb
         #   passed if the `cancel_option` is `requested_date`.
         cancellation_date: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint is used to fetch a [Subscription](/core-concepts##subscription)
       #   given an identifier.
       sig do
@@ -566,8 +558,7 @@ module Orb
         )
           .returns(Orb::Models::Subscription)
       end
-      def fetch(subscription_id, request_options: {})
-      end
+      def fetch(subscription_id, request_options: {}); end
 
       # This endpoint is used to fetch a day-by-day snapshot of a subscription's costs
       #   in Orb, calculated by applying pricing information to the underlying usage (see
@@ -604,9 +595,7 @@ module Orb
         #   behavior.
         view_mode: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint returns a [paginated](/api-reference/pagination) list of all plans
       #   associated with a subscription along with their start and end dates. This list
       #   contains the subscription's initial plan along with past and future plan
@@ -636,9 +625,7 @@ module Orb
         start_date_lt: nil,
         start_date_lte: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint is used to fetch a subscription's usage in Orb. Especially when
       #   combined with optional query parameters, this endpoint is a powerful way to
       #   build visualizations on top of Orb's event data and metrics.
@@ -879,9 +866,7 @@ module Orb
         #   behavior.
         view_mode: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint is used to add and edit subscription
       #   [price intervals](/api-reference/price-interval/add-or-edit-price-intervals). By
       #   making modifications to a subscription’s price intervals, you can
@@ -981,9 +966,7 @@ module Orb
         # A list of adjustments to edit on the subscription.
         edit_adjustments: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint can be used to change an existing subscription's plan. It returns
       #   the serialized updated subscription object.
       #
@@ -1302,9 +1285,7 @@ module Orb
         #   subscription itself, or any of that customer's children.
         usage_customer_ids: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Manually trigger a phase, effective the given date (or the current time, if not
       #   specified).
       sig do
@@ -1326,9 +1307,7 @@ module Orb
         #   to today in the customer's timezone.
         effective_date: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint can be used to unschedule any pending cancellations for a
       #   subscription.
       #
@@ -1342,8 +1321,7 @@ module Orb
         )
           .returns(Orb::Models::SubscriptionUnscheduleCancellationResponse)
       end
-      def unschedule_cancellation(subscription_id, request_options: {})
-      end
+      def unschedule_cancellation(subscription_id, request_options: {}); end
 
       # This endpoint can be used to clear scheduled updates to the quantity for a fixed
       #   fee.
@@ -1363,9 +1341,7 @@ module Orb
         # Price for which the updates should be cleared. Must be a fixed fee.
         price_id:,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint can be used to unschedule any pending plan changes on an existing
       #   subscription.
       sig do
@@ -1375,8 +1351,7 @@ module Orb
         )
           .returns(Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse)
       end
-      def unschedule_pending_plan_changes(subscription_id, request_options: {})
-      end
+      def unschedule_pending_plan_changes(subscription_id, request_options: {}); end
 
       # This endpoint can be used to update the quantity for a fixed fee.
       #
@@ -1422,9 +1397,7 @@ module Orb
         #   effective according to `change_option`.
         effective_date: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint is used to update the trial end date for a subscription. The new
       #   trial end date must be within the time range of the current plan (i.e. the new
       #   trial end date must be on or after the subscription's start date on the current
@@ -1461,13 +1434,10 @@ module Orb
         #   durations, but adjusting their absolute dates).
         shift: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

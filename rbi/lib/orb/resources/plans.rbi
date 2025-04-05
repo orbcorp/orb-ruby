@@ -12,34 +12,34 @@ module Orb
           currency: String,
           name: String,
           prices: T::Array[
-          T.any(
-            Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice,
-            Orb::Internal::AnyHash,
-            Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice,
-            Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice
-          )
+            T.any(
+              Orb::Models::PlanCreateParams::Price::NewPlanUnitPrice,
+              Orb::Internal::AnyHash,
+              Orb::Models::PlanCreateParams::Price::NewPlanPackagePrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanMatrixPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanTieredPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanTieredBpsPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanBpsPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanBulkBpsPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanBulkPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanThresholdTotalAmountPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanTieredPackagePrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanTieredWithMinimumPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanUnitWithPercentPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanPackageWithAllocationPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanTierWithProrationPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanUnitWithProrationPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanGroupedAllocationPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithProratedMinimumPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanGroupedWithMeteredMinimumPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanMatrixWithDisplayNamePrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanBulkWithProrationPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanGroupedTieredPackagePrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanMaxGroupTieredPackagePrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithUnitPricingPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanScalableMatrixWithTieredPricingPrice,
+              Orb::Models::PlanCreateParams::Price::NewPlanCumulativeGroupedBulkPrice
+            )
           ],
           default_invoice_memo: T.nilable(String),
           external_plan_id: T.nilable(String),
@@ -73,9 +73,7 @@ module Orb
         #   this defaults to active.
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint can be used to update the `external_plan_id`, and `metadata` of an
       #   existing plan.
       #
@@ -100,9 +98,7 @@ module Orb
         #   by setting `metadata` to `null`.
         metadata: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint returns a list of all [plans](/core-concepts#plan-and-price) for
       #   an account in a list format. The list of plans is ordered starting from the most
       #   recently created plan. The response also includes
@@ -134,9 +130,7 @@ module Orb
         # The plan status to filter to ('active', 'archived', or 'draft').
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint is used to fetch [plan](/core-concepts#plan-and-price) details
       #   given a plan identifier. It returns information about the prices included in the
       #   plan and their configuration, as well as the product that the plan is attached
@@ -161,13 +155,11 @@ module Orb
         )
           .returns(Orb::Models::Plan)
       end
-      def fetch(plan_id, request_options: {})
-      end
+      def fetch(plan_id, request_options: {}); end
 
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

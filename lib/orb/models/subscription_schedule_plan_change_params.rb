@@ -1619,7 +1619,7 @@ module Orb
               required :matrix_values,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
+                           Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
                          ]
                        end
 
@@ -1925,7 +1925,7 @@ module Orb
               required :tiers,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier
+                           Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier
                          ]
                        end
 
@@ -2235,7 +2235,7 @@ module Orb
               required :tiers,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
+                           Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
                          ]
                        end
 
@@ -2814,7 +2814,7 @@ module Orb
               required :tiers,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier
+                           Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier
                          ]
                        end
 
@@ -3123,7 +3123,7 @@ module Orb
               required :tiers,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier
+                           Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier
                          ]
                        end
 
@@ -9055,7 +9055,7 @@ module Orb
               required :matrix_values,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
+                           Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
                          ]
                        end
 
@@ -9361,7 +9361,7 @@ module Orb
               required :tiers,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier
+                           Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier
                          ]
                        end
 
@@ -9671,7 +9671,7 @@ module Orb
               required :tiers,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
+                           Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
                          ]
                        end
 
@@ -10250,7 +10250,7 @@ module Orb
               required :tiers,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier
+                           Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier
                          ]
                        end
 
@@ -10559,7 +10559,7 @@ module Orb
               required :tiers,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier
+                           Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier
                          ]
                        end
 

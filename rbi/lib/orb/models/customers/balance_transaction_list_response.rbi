@@ -88,9 +88,7 @@ module Orb
           invoice:,
           starting_balance:,
           type:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -108,8 +106,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module Action
           extend Orb::Internal::Type::Enum
@@ -142,8 +139,7 @@ module Orb
             T.let(:external_payment, Orb::Models::Customers::BalanceTransactionListResponse::Action::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Customers::BalanceTransactionListResponse::Action::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditNote < Orb::Internal::Type::BaseModel
@@ -152,12 +148,10 @@ module Orb
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Invoice < Orb::Internal::Type::BaseModel
@@ -166,12 +160,10 @@ module Orb
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module Type
@@ -186,8 +178,7 @@ module Orb
           DECREMENT = T.let(:decrement, Orb::Models::Customers::BalanceTransactionListResponse::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Customers::BalanceTransactionListResponse::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

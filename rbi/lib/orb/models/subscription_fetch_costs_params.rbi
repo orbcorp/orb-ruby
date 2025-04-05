@@ -56,8 +56,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Controls whether Orb returns cumulative costs since the start of the billing
       #   period, or incremental day-by-day costs. If your customer has minimums or
@@ -74,8 +73,7 @@ module Orb
         CUMULATIVE = T.let(:cumulative, Orb::Models::SubscriptionFetchCostsParams::ViewMode::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::SubscriptionFetchCostsParams::ViewMode::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end
