@@ -33,9 +33,7 @@ module Orb
         #   exhausted;`null` here means "unlimited".
         max_redemptions: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint returns a list of all coupons for an account in a list format.
       #
       #   The list of coupons is ordered starting from the most recently created coupon.
@@ -64,9 +62,7 @@ module Orb
         #   coupons).
         show_archived: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint allows a coupon to be archived. Archived coupons can no longer be
       #   redeemed, and will be hidden from lists of active coupons. Additionally, once a
       #   coupon is archived, its redemption code can be reused for a different coupon.
@@ -77,8 +73,7 @@ module Orb
         )
           .returns(Orb::Models::Coupon)
       end
-      def archive(coupon_id, request_options: {})
-      end
+      def archive(coupon_id, request_options: {}); end
 
       # This endpoint retrieves a coupon by its ID. To fetch coupons by their redemption
       #   code, use the [List coupons](list-coupons) endpoint with the redemption_code
@@ -90,13 +85,11 @@ module Orb
         )
           .returns(Orb::Models::Coupon)
       end
-      def fetch(coupon_id, request_options: {})
-      end
+      def fetch(coupon_id, request_options: {}); end
 
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

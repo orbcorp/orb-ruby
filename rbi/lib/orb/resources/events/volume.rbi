@@ -44,13 +44,10 @@ module Orb
           #   volumecount for the hour the time falls in.
           timeframe_end: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Orb::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

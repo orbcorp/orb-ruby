@@ -1072,7 +1072,7 @@ module Orb
         required :fixed_fee_quantity_transitions,
                  -> do
                    Orb::Internal::Type::ArrayOf[
-                   Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::PriceInterval::FixedFeeQuantityTransition
+                     Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::PriceInterval::FixedFeeQuantityTransition
                    ]
                  end,
                  nil?: true

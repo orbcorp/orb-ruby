@@ -59,9 +59,7 @@ module Orb
         limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -77,8 +75,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The plan status to filter to ('active', 'archived', or 'draft').
       module Status
@@ -92,8 +89,7 @@ module Orb
         DRAFT = T.let(:draft, Orb::Models::PlanListParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::PlanListParams::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

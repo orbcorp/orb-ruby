@@ -73,9 +73,7 @@ module Orb
             limit: nil,
             minimum_amount: nil,
             request_options: {}
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -94,8 +92,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module EntryStatus
             extend Orb::Internal::Type::Enum
@@ -125,8 +122,7 @@ module Orb
                   T::Array[Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryStatus::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           module EntryType
@@ -171,8 +167,7 @@ module Orb
               override
                 .returns(T::Array[Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryType::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end

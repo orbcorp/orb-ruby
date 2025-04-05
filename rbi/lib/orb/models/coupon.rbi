@@ -75,15 +75,13 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module Discount
         extend Orb::Internal::Type::Union
 
         sig { override.returns([Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount]) }
-        def self.variants
-        end
+        def self.variants; end
       end
     end
   end

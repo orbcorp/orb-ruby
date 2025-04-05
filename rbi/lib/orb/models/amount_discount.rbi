@@ -27,8 +27,7 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(amount_discount:, applies_to_price_ids:, discount_type:, reason: nil)
-      end
+      def self.new(amount_discount:, applies_to_price_ids:, discount_type:, reason: nil); end
 
       sig do
         override
@@ -41,8 +40,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module DiscountType
         extend Orb::Internal::Type::Enum
@@ -54,8 +52,7 @@ module Orb
         AMOUNT = T.let(:amount, Orb::Models::AmountDiscount::DiscountType::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::AmountDiscount::DiscountType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

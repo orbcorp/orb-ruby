@@ -19,8 +19,7 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(data:, pagination_metadata:)
-      end
+      def self.new(data:, pagination_metadata:); end
 
       sig do
         override
@@ -28,8 +27,7 @@ module Orb
             {data: T::Array[Orb::Models::DimensionalPriceGroup], pagination_metadata: Orb::Models::PaginationMetadata}
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

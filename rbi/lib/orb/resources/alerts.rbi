@@ -11,8 +11,7 @@ module Orb
         )
           .returns(Orb::Models::Alert)
       end
-      def retrieve(alert_id, request_options: {})
-      end
+      def retrieve(alert_id, request_options: {}); end
 
       # This endpoint updates the thresholds of an alert.
       sig do
@@ -28,9 +27,7 @@ module Orb
         # The thresholds that define the values at which the alert will be triggered.
         thresholds:,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint returns a list of alerts within Orb.
       #
       #   The request must specify one of `customer_id`, `external_customer_id`, or
@@ -74,9 +71,7 @@ module Orb
         # Fetch alerts scoped to this subscription_id
         subscription_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint creates a new alert to monitor a customer's credit balance. There
       #   are three types of alerts that can be scoped to customers:
       #   `credit_balance_depleted`, `credit_balance_dropped`, and
@@ -104,9 +99,7 @@ module Orb
         # The thresholds that define the values at which the alert will be triggered.
         thresholds: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint creates a new alert to monitor a customer's credit balance. There
       #   are three types of alerts that can be scoped to customers:
       #   `credit_balance_depleted`, `credit_balance_dropped`, and
@@ -136,9 +129,7 @@ module Orb
         # The thresholds that define the values at which the alert will be triggered.
         thresholds: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint is used to create alerts at the subscription level.
       #
       #   Subscription level alerts can be one of two types: `usage_exceeded` or
@@ -169,9 +160,7 @@ module Orb
         # The metric to track usage for.
         metric_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint allows you to disable an alert. To disable a plan-level alert for
       #   a specific subscription, you must include the `subscription_id`. The
       #   `subscription_id` is not required for customer or subscription level alerts.
@@ -188,9 +177,7 @@ module Orb
         # Used to update the status of a plan alert scoped to this subscription_id
         subscription_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint allows you to enable an alert. To enable a plan-level alert for a
       #   specific subscription, you must include the `subscription_id`. The
       #   `subscription_id` is not required for customer or subscription level alerts.
@@ -207,13 +194,10 @@ module Orb
         # Used to update the status of a plan alert scoped to this subscription_id
         subscription_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

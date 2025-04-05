@@ -119,9 +119,7 @@ module Orb
         status: nil,
         subscription_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -149,8 +147,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module DateType
         extend Orb::Internal::Type::Enum
@@ -162,8 +159,7 @@ module Orb
         INVOICE_DATE = T.let(:invoice_date, Orb::Models::InvoiceListParams::DateType::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::InvoiceListParams::DateType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module Status
@@ -179,8 +175,7 @@ module Orb
         VOID = T.let(:void, Orb::Models::InvoiceListParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::InvoiceListParams::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

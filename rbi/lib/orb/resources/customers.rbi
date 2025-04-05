@@ -205,9 +205,7 @@ module Orb
         #   This cannot be changed after customer creation.
         timezone: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint can be used to update the `payment_provider`,
       #   `payment_provider_id`, `name`, `email`, `email_delivery`, `tax_id`,
       #   `auto_collection`, `metadata`, `shipping_address`, `billing_address`, and
@@ -392,9 +390,7 @@ module Orb
         #   | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
         tax_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint returns a list of all customers for an account. The list of
       #   customers is ordered starting from the most recently created customer. This
       #   endpoint follows Orb's
@@ -424,9 +420,7 @@ module Orb
         # The number of items to fetch. Defaults to 20.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This performs a deletion of this customer, its subscriptions, and its invoices,
       #   provided the customer does not have any issued invoices. Customers with issued
       #   invoices cannot be deleted. This operation is irreversible. Note that this is a
@@ -449,8 +443,7 @@ module Orb
         )
           .void
       end
-      def delete(customer_id, request_options: {})
-      end
+      def delete(customer_id, request_options: {}); end
 
       # This endpoint is used to fetch customer details given an identifier. If the
       #   `Customer` is in the process of being deleted, only the properties `id` and
@@ -465,8 +458,7 @@ module Orb
         )
           .returns(Orb::Models::Customer)
       end
-      def fetch(customer_id, request_options: {})
-      end
+      def fetch(customer_id, request_options: {}); end
 
       # This endpoint is used to fetch customer details given an `external_customer_id`
       #   (see [Customer ID Aliases](/events-and-metrics/customer-aliases)).
@@ -480,8 +472,7 @@ module Orb
         )
           .returns(Orb::Models::Customer)
       end
-      def fetch_by_external_id(external_customer_id, request_options: {})
-      end
+      def fetch_by_external_id(external_customer_id, request_options: {}); end
 
       # Sync Orb's payment methods for the customer with their gateway.
       #
@@ -496,8 +487,7 @@ module Orb
         )
           .void
       end
-      def sync_payment_methods_from_gateway(external_customer_id, request_options: {})
-      end
+      def sync_payment_methods_from_gateway(external_customer_id, request_options: {}); end
 
       # Sync Orb's payment methods for the customer with their gateway.
       #
@@ -512,8 +502,7 @@ module Orb
         )
           .void
       end
-      def sync_payment_methods_from_gateway_by_external_customer_id(customer_id, request_options: {})
-      end
+      def sync_payment_methods_from_gateway_by_external_customer_id(customer_id, request_options: {}); end
 
       # This endpoint is used to update customer details given an `external_customer_id`
       #   (see [Customer ID Aliases](/events-and-metrics/customer-aliases)). Note that the
@@ -702,13 +691,10 @@ module Orb
         #   | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
         tax_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

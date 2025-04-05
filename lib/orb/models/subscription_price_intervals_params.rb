@@ -1213,7 +1213,7 @@ module Orb
               required :matrix_values,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue
+                           Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue
                          ]
                        end
 
@@ -1527,7 +1527,7 @@ module Orb
               required :matrix_values,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue
+                           Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue
                          ]
                        end
 
@@ -2120,7 +2120,7 @@ module Orb
               required :tiers,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier
+                           Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier
                          ]
                        end
 

@@ -80,9 +80,7 @@ module Orb
           timeframe_end:,
           timeframe_start:,
           deprecation_filter: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -101,8 +99,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The status of the backfill.
         module Status
@@ -118,8 +115,7 @@ module Orb
           REVERTED = T.let(:reverted, Orb::Models::Events::BackfillCloseResponse::Status::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Events::BackfillCloseResponse::Status::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

@@ -122,9 +122,7 @@ module Orb
             per_unit_cost_basis: nil,
             void_reason: nil,
             request_options: {}
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -145,8 +143,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module EntryType
             extend Orb::Internal::Type::Enum
@@ -174,8 +171,7 @@ module Orb
                   T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           class InvoiceSettings < Orb::Internal::Type::BaseModel
@@ -215,8 +211,7 @@ module Orb
               )
                 .returns(T.attached_class)
             end
-            def self.new(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil)
-            end
+            def self.new(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil); end
 
             sig do
               override
@@ -229,8 +224,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           # Can only be specified when `entry_type=void`. The reason for the void.
@@ -260,8 +254,7 @@ module Orb
                   T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end

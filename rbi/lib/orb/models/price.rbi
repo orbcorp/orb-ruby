@@ -217,9 +217,7 @@ module Orb
           unit_config:,
           dimensional_price_configuration: nil,
           model_type: :unit
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -258,20 +256,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -288,8 +283,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -300,8 +294,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -325,8 +318,7 @@ module Orb
               override
                 .returns(T::Array[Orb::Models::Price::UnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -344,8 +336,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::UnitPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::UnitPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -356,12 +347,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -378,8 +367,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -390,8 +378,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -415,8 +402,7 @@ module Orb
               override
                 .returns(T::Array[Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -428,12 +414,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -449,12 +433,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -470,12 +452,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -488,8 +468,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::UnitPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::UnitPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class UnitConfig < Orb::Internal::Type::BaseModel
@@ -498,12 +477,10 @@ module Orb
           attr_accessor :unit_amount
 
           sig { params(unit_amount: String).returns(T.attached_class) }
-          def self.new(unit_amount:)
-          end
+          def self.new(unit_amount:); end
 
           sig { override.returns({unit_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -519,12 +496,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -648,7 +623,9 @@ module Orb
         sig { returns(Orb::Models::Price::PackagePrice::PackageConfig) }
         attr_reader :package_config
 
-        sig { params(package_config: T.any(Orb::Models::Price::PackagePrice::PackageConfig, Orb::Internal::AnyHash)).void }
+        sig do
+          params(package_config: T.any(Orb::Models::Price::PackagePrice::PackageConfig, Orb::Internal::AnyHash)).void
+        end
         attr_writer :package_config
 
         sig { returns(T.nilable(Integer)) }
@@ -730,9 +707,7 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :package
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -771,20 +746,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -801,8 +773,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -813,8 +784,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -839,8 +809,7 @@ module Orb
               override
                 .returns(T::Array[Orb::Models::Price::PackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -859,8 +828,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::PackagePrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::PackagePrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -871,12 +839,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -893,8 +859,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -905,8 +870,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -933,8 +897,7 @@ module Orb
                   T::Array[Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -946,12 +909,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -967,12 +928,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -988,12 +947,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class PackageConfig < Orb::Internal::Type::BaseModel
@@ -1007,12 +964,10 @@ module Orb
           attr_accessor :package_size
 
           sig { params(package_amount: String, package_size: Integer).returns(T.attached_class) }
-          def self.new(package_amount:, package_size:)
-          end
+          def self.new(package_amount:, package_size:); end
 
           sig { override.returns({package_amount: String, package_size: Integer}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -1026,8 +981,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::PackagePrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::PackagePrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -1043,12 +997,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -1254,9 +1206,7 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :matrix
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -1295,20 +1245,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -1325,8 +1272,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -1337,8 +1283,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -1362,8 +1307,7 @@ module Orb
               override
                 .returns(T::Array[Orb::Models::Price::MatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -1381,8 +1325,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::MatrixPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::MatrixPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -1393,12 +1336,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -1415,8 +1356,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -1427,8 +1367,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -1455,8 +1394,7 @@ module Orb
                   T::Array[Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -1468,12 +1406,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class MatrixConfig < Orb::Internal::Type::BaseModel
@@ -1497,8 +1433,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(default_unit_amount:, dimensions:, matrix_values:)
-          end
+          def self.new(default_unit_amount:, dimensions:, matrix_values:); end
 
           sig do
             override
@@ -1510,8 +1445,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class MatrixValue < Orb::Internal::Type::BaseModel
             # One or two matrix keys to filter usage to this Matrix value by. For example,
@@ -1530,12 +1464,10 @@ module Orb
                 unit_amount: String
               ).returns(T.attached_class)
             end
-            def self.new(dimension_values:, unit_amount:)
-            end
+            def self.new(dimension_values:, unit_amount:); end
 
             sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -1552,12 +1484,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -1573,12 +1503,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -1592,8 +1520,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::MatrixPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::MatrixPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -1609,12 +1536,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -1820,9 +1745,7 @@ module Orb
           tiered_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -1861,20 +1784,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -1891,8 +1811,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -1903,8 +1822,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -1928,8 +1846,7 @@ module Orb
               override
                 .returns(T::Array[Orb::Models::Price::TieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -1947,8 +1864,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::TieredPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::TieredPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -1959,12 +1875,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -1981,8 +1895,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -1993,8 +1906,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -2021,8 +1933,7 @@ module Orb
                   T::Array[Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -2034,12 +1945,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -2055,12 +1964,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -2076,12 +1983,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -2095,8 +2000,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::TieredPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class TieredConfig < Orb::Internal::Type::BaseModel
@@ -2110,12 +2014,10 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(tiers:)
-          end
+          def self.new(tiers:); end
 
           sig { override.returns({tiers: T::Array[Orb::Models::Price::TieredPrice::TieredConfig::Tier]}) }
-          def to_hash
-          end
+          def to_hash; end
 
           class Tier < Orb::Internal::Type::BaseModel
             # Inclusive tier starting value
@@ -2137,12 +2039,10 @@ module Orb
                 last_unit: T.nilable(Float)
               ).returns(T.attached_class)
             end
-            def self.new(first_unit:, unit_amount:, last_unit: nil)
-            end
+            def self.new(first_unit:, unit_amount:, last_unit: nil); end
 
             sig { override.returns({first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)}) }
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -2159,12 +2059,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -2257,7 +2155,9 @@ module Orb
         sig { returns(T.nilable(Orb::Models::Price::TieredBpsPrice::Maximum)) }
         attr_reader :maximum
 
-        sig { params(maximum: T.nilable(T.any(Orb::Models::Price::TieredBpsPrice::Maximum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(maximum: T.nilable(T.any(Orb::Models::Price::TieredBpsPrice::Maximum, Orb::Internal::AnyHash))).void
+        end
         attr_writer :maximum
 
         sig { returns(T.nilable(String)) }
@@ -2273,7 +2173,9 @@ module Orb
         sig { returns(T.nilable(Orb::Models::Price::TieredBpsPrice::Minimum)) }
         attr_reader :minimum
 
-        sig { params(minimum: T.nilable(T.any(Orb::Models::Price::TieredBpsPrice::Minimum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(minimum: T.nilable(T.any(Orb::Models::Price::TieredBpsPrice::Minimum, Orb::Internal::AnyHash))).void
+        end
         attr_writer :minimum
 
         sig { returns(T.nilable(String)) }
@@ -2379,9 +2281,7 @@ module Orb
           tiered_bps_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered_bps
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -2420,20 +2320,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -2450,8 +2347,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -2462,8 +2358,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -2490,8 +2385,7 @@ module Orb
                   T::Array[Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -2510,8 +2404,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::TieredBpsPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::TieredBpsPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -2522,12 +2415,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -2544,8 +2435,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -2556,8 +2446,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -2584,8 +2473,7 @@ module Orb
                   T::Array[Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -2597,12 +2485,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -2618,12 +2504,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -2639,12 +2523,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -2658,8 +2540,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredBpsPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::TieredBpsPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class TieredBpsConfig < Orb::Internal::Type::BaseModel
@@ -2674,12 +2555,10 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(tiers:)
-          end
+          def self.new(tiers:); end
 
           sig { override.returns({tiers: T::Array[Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier]}) }
-          def to_hash
-          end
+          def to_hash; end
 
           class Tier < Orb::Internal::Type::BaseModel
             # Per-event basis point rate
@@ -2707,8 +2586,7 @@ module Orb
               )
                 .returns(T.attached_class)
             end
-            def self.new(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil)
-            end
+            def self.new(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil); end
 
             sig do
               override
@@ -2721,8 +2599,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -2739,12 +2616,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -2950,9 +2825,7 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :bps
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -2991,20 +2864,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -3021,8 +2891,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -3033,8 +2902,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -3052,8 +2920,7 @@ module Orb
               override
                 .returns(T::Array[Orb::Models::Price::BpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -3067,12 +2934,10 @@ module Orb
           attr_accessor :per_unit_maximum
 
           sig { params(bps: Float, per_unit_maximum: T.nilable(String)).returns(T.attached_class) }
-          def self.new(bps:, per_unit_maximum: nil)
-          end
+          def self.new(bps:, per_unit_maximum: nil); end
 
           sig { override.returns({bps: Float, per_unit_maximum: T.nilable(String)}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module Cadence
@@ -3089,8 +2954,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::BpsPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::BpsPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -3101,12 +2965,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -3123,8 +2985,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -3135,8 +2996,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -3160,8 +3020,7 @@ module Orb
               override
                 .returns(T::Array[Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -3173,12 +3032,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -3194,12 +3051,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -3215,12 +3070,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -3233,8 +3086,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::BpsPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::BpsPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -3250,12 +3102,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -3464,9 +3314,7 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :bulk_bps
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -3505,20 +3353,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -3535,8 +3380,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -3547,8 +3391,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -3573,8 +3416,7 @@ module Orb
               override
                 .returns(T::Array[Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -3590,12 +3432,10 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(tiers:)
-          end
+          def self.new(tiers:); end
 
           sig { override.returns({tiers: T::Array[Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier]}) }
-          def to_hash
-          end
+          def to_hash; end
 
           class Tier < Orb::Internal::Type::BaseModel
             # Basis points to rate on
@@ -3614,8 +3454,7 @@ module Orb
               params(bps: Float, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String))
                 .returns(T.attached_class)
             end
-            def self.new(bps:, maximum_amount: nil, per_unit_maximum: nil)
-            end
+            def self.new(bps:, maximum_amount: nil, per_unit_maximum: nil); end
 
             sig do
               override.returns(
@@ -3626,8 +3465,7 @@ module Orb
                 }
               )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -3646,8 +3484,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::BulkBpsPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::BulkBpsPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -3658,12 +3495,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -3680,8 +3515,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -3692,8 +3526,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -3720,8 +3553,7 @@ module Orb
                   T::Array[Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -3733,12 +3565,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -3754,12 +3584,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -3775,12 +3603,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -3794,8 +3620,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::BulkBpsPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::BulkBpsPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -3811,12 +3636,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -4022,9 +3845,7 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :bulk
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -4063,20 +3884,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -4093,8 +3911,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -4105,8 +3922,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -4130,8 +3946,7 @@ module Orb
               override
                 .returns(T::Array[Orb::Models::Price::BulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -4144,12 +3959,10 @@ module Orb
             params(tiers: T::Array[T.any(Orb::Models::Price::BulkPrice::BulkConfig::Tier, Orb::Internal::AnyHash)])
               .returns(T.attached_class)
           end
-          def self.new(tiers:)
-          end
+          def self.new(tiers:); end
 
           sig { override.returns({tiers: T::Array[Orb::Models::Price::BulkPrice::BulkConfig::Tier]}) }
-          def to_hash
-          end
+          def to_hash; end
 
           class Tier < Orb::Internal::Type::BaseModel
             # Amount per unit
@@ -4161,12 +3974,10 @@ module Orb
             attr_accessor :maximum_units
 
             sig { params(unit_amount: String, maximum_units: T.nilable(Float)).returns(T.attached_class) }
-            def self.new(unit_amount:, maximum_units: nil)
-            end
+            def self.new(unit_amount:, maximum_units: nil); end
 
             sig { override.returns({unit_amount: String, maximum_units: T.nilable(Float)}) }
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -4184,8 +3995,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::BulkPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::BulkPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -4196,12 +4006,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -4218,8 +4026,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -4230,8 +4037,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -4255,8 +4061,7 @@ module Orb
               override
                 .returns(T::Array[Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -4268,12 +4073,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -4289,12 +4092,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -4310,12 +4111,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -4328,8 +4127,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::BulkPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::BulkPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -4345,12 +4143,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -4577,9 +4373,7 @@ module Orb
           threshold_total_amount_config:,
           dimensional_price_configuration: nil,
           model_type: :threshold_total_amount
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -4618,20 +4412,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -4652,8 +4443,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -4664,8 +4454,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -4698,8 +4487,7 @@ module Orb
                   T::Array[Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -4718,8 +4506,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::ThresholdTotalAmountPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::ThresholdTotalAmountPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -4730,12 +4517,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -4756,8 +4541,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -4768,8 +4552,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -4802,8 +4585,7 @@ module Orb
                   T::Array[Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -4815,12 +4597,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -4836,12 +4616,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -4857,12 +4635,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -4876,8 +4652,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::ThresholdTotalAmountPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::ThresholdTotalAmountPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -4893,12 +4668,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -5115,9 +4888,7 @@ module Orb
           tiered_package_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered_package
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -5156,20 +4927,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -5186,8 +4954,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -5198,8 +4965,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -5229,8 +4995,7 @@ module Orb
                   T::Array[Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -5249,8 +5014,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::TieredPackagePrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::TieredPackagePrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -5261,12 +5025,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -5283,8 +5045,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -5295,8 +5056,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -5329,8 +5089,7 @@ module Orb
                   T::Array[Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -5342,12 +5101,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -5363,12 +5120,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -5384,12 +5139,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -5403,8 +5156,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredPackagePrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::TieredPackagePrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -5420,12 +5172,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -5642,9 +5392,7 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :grouped_tiered
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -5683,20 +5431,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -5713,8 +5458,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -5725,8 +5469,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -5756,8 +5499,7 @@ module Orb
                   T::Array[Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -5776,8 +5518,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::GroupedTieredPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::GroupedTieredPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -5788,12 +5529,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -5810,8 +5549,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -5822,8 +5560,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -5856,8 +5593,7 @@ module Orb
                   T::Array[Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -5869,12 +5605,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -5890,12 +5624,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -5911,12 +5643,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -5930,8 +5660,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::GroupedTieredPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::GroupedTieredPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -5947,12 +5676,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -6173,9 +5900,7 @@ module Orb
           tiered_with_minimum_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered_with_minimum
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -6214,20 +5939,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -6244,8 +5966,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -6256,8 +5977,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -6290,8 +6010,7 @@ module Orb
                   T::Array[Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -6310,8 +6029,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::TieredWithMinimumPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::TieredWithMinimumPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -6322,12 +6040,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -6348,8 +6064,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -6360,8 +6075,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -6394,8 +6108,7 @@ module Orb
                   T::Array[Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -6407,12 +6120,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -6428,12 +6139,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -6449,12 +6158,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -6468,8 +6175,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredWithMinimumPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::TieredWithMinimumPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -6485,12 +6191,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -6737,9 +6441,7 @@ module Orb
           tiered_package_with_minimum_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered_package_with_minimum
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -6778,20 +6480,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -6812,8 +6511,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -6824,8 +6522,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -6858,8 +6555,7 @@ module Orb
                   T::Array[Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -6879,8 +6575,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::TieredPackageWithMinimumPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::TieredPackageWithMinimumPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -6891,12 +6586,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -6917,8 +6610,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -6929,8 +6621,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -6965,8 +6656,7 @@ module Orb
                   T::Array[Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -6978,12 +6668,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -6999,12 +6687,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -7020,12 +6706,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -7042,8 +6726,7 @@ module Orb
             T.let(:fixed_price, Orb::Models::Price::TieredPackageWithMinimumPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::TieredPackageWithMinimumPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -7059,12 +6742,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -7291,9 +6972,7 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :package_with_allocation
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -7332,20 +7011,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -7366,8 +7042,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -7378,8 +7053,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -7412,8 +7086,7 @@ module Orb
                   T::Array[Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -7432,8 +7105,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::PackageWithAllocationPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::PackageWithAllocationPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -7444,12 +7116,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -7470,8 +7140,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -7482,8 +7151,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -7516,8 +7184,7 @@ module Orb
                   T::Array[Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -7529,12 +7196,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -7550,12 +7215,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -7571,12 +7234,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -7592,8 +7253,7 @@ module Orb
             T.let(:fixed_price, Orb::Models::Price::PackageWithAllocationPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::PackageWithAllocationPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -7609,12 +7269,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -7835,9 +7493,7 @@ module Orb
           unit_with_percent_config:,
           dimensional_price_configuration: nil,
           model_type: :unit_with_percent
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -7876,20 +7532,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -7906,8 +7559,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -7918,8 +7570,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -7952,8 +7603,7 @@ module Orb
                   T::Array[Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -7972,8 +7622,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::UnitWithPercentPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::UnitWithPercentPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -7984,12 +7633,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -8006,8 +7653,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -8018,8 +7664,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -8052,8 +7697,7 @@ module Orb
                   T::Array[Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -8065,12 +7709,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -8086,12 +7728,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -8107,12 +7747,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -8126,8 +7764,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::UnitWithPercentPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::UnitWithPercentPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -8143,12 +7780,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -8383,9 +8018,7 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :matrix_with_allocation
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -8424,20 +8057,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -8458,8 +8088,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -8470,8 +8099,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -8504,8 +8132,7 @@ module Orb
                   T::Array[Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -8524,8 +8151,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::MatrixWithAllocationPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::MatrixWithAllocationPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -8536,12 +8162,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -8562,8 +8186,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -8574,8 +8197,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -8608,8 +8230,7 @@ module Orb
                   T::Array[Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -8621,12 +8242,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class MatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
@@ -8652,16 +8271,15 @@ module Orb
               default_unit_amount: String,
               dimensions: T::Array[T.nilable(String)],
               matrix_values: T::Array[
-              T.any(
-                Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue,
-                Orb::Internal::AnyHash
-              )
+                T.any(
+                  Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue,
+                  Orb::Internal::AnyHash
+                )
               ]
             )
               .returns(T.attached_class)
           end
-          def self.new(allocation:, default_unit_amount:, dimensions:, matrix_values:)
-          end
+          def self.new(allocation:, default_unit_amount:, dimensions:, matrix_values:); end
 
           sig do
             override
@@ -8674,8 +8292,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class MatrixValue < Orb::Internal::Type::BaseModel
             # One or two matrix keys to filter usage to this Matrix value by. For example,
@@ -8694,12 +8311,10 @@ module Orb
                 unit_amount: String
               ).returns(T.attached_class)
             end
-            def self.new(dimension_values:, unit_amount:)
-            end
+            def self.new(dimension_values:, unit_amount:); end
 
             sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -8716,12 +8331,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -8737,12 +8350,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -8756,8 +8367,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::MatrixWithAllocationPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::MatrixWithAllocationPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -8773,12 +8383,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -8999,9 +8607,7 @@ module Orb
           tiered_with_proration_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered_with_proration
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -9040,20 +8646,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -9074,8 +8677,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -9086,8 +8688,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -9120,8 +8721,7 @@ module Orb
                   T::Array[Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -9140,8 +8740,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::TieredWithProrationPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::TieredWithProrationPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -9152,12 +8751,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -9178,8 +8775,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -9190,8 +8786,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -9224,8 +8819,7 @@ module Orb
                   T::Array[Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -9237,12 +8831,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -9258,12 +8850,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -9279,12 +8869,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -9298,8 +8886,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredWithProrationPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::TieredWithProrationPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -9315,12 +8902,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -9541,9 +9126,7 @@ module Orb
           unit_with_proration_config:,
           dimensional_price_configuration: nil,
           model_type: :unit_with_proration
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -9582,20 +9165,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -9612,8 +9192,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -9624,8 +9203,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -9658,8 +9236,7 @@ module Orb
                   T::Array[Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -9678,8 +9255,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::UnitWithProrationPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::UnitWithProrationPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -9690,12 +9266,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -9716,8 +9290,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -9728,8 +9301,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -9762,8 +9334,7 @@ module Orb
                   T::Array[Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -9775,12 +9346,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -9796,12 +9365,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -9817,12 +9384,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -9836,8 +9401,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::UnitWithProrationPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::UnitWithProrationPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -9853,12 +9417,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -10079,9 +9641,7 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :grouped_allocation
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -10120,20 +9680,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -10150,8 +9707,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -10162,8 +9718,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -10196,8 +9751,7 @@ module Orb
                   T::Array[Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -10216,8 +9770,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::GroupedAllocationPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::GroupedAllocationPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -10228,12 +9781,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -10254,8 +9805,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -10266,8 +9816,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -10300,8 +9849,7 @@ module Orb
                   T::Array[Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -10313,12 +9861,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -10334,12 +9880,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -10355,12 +9899,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -10374,8 +9916,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::GroupedAllocationPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::GroupedAllocationPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -10391,12 +9932,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -10498,7 +10037,9 @@ module Orb
         sig { returns(Orb::Models::Price::GroupedWithProratedMinimumPrice::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::GroupedWithProratedMinimumPrice::Item, Orb::Internal::AnyHash)).void }
+        sig do
+          params(item: T.any(Orb::Models::Price::GroupedWithProratedMinimumPrice::Item, Orb::Internal::AnyHash)).void
+        end
         attr_writer :item
 
         sig { returns(T.nilable(Orb::Models::Price::GroupedWithProratedMinimumPrice::Maximum)) }
@@ -10643,9 +10184,7 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :grouped_with_prorated_minimum
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -10684,20 +10223,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -10718,8 +10254,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -10730,8 +10265,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -10766,8 +10300,7 @@ module Orb
                   T::Array[Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -10788,8 +10321,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::GroupedWithProratedMinimumPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::GroupedWithProratedMinimumPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -10800,12 +10332,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -10826,8 +10356,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -10838,8 +10367,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -10872,12 +10400,11 @@ module Orb
               override
                 .returns(
                   T::Array[
-                  Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   ]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -10889,12 +10416,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -10910,12 +10435,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -10931,12 +10454,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -10953,8 +10474,7 @@ module Orb
             T.let(:fixed_price, Orb::Models::Price::GroupedWithProratedMinimumPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::GroupedWithProratedMinimumPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -10970,12 +10490,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -11222,9 +10740,7 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :grouped_with_metered_minimum
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -11263,20 +10779,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -11297,8 +10810,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -11309,8 +10821,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -11343,8 +10854,7 @@ module Orb
                   T::Array[Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -11365,8 +10875,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::GroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::GroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -11377,12 +10886,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -11403,8 +10910,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -11415,8 +10921,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -11449,12 +10954,11 @@ module Orb
               override
                 .returns(
                   T::Array[
-                  Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   ]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -11466,12 +10970,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -11487,12 +10989,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -11508,12 +11008,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -11530,8 +11028,7 @@ module Orb
             T.let(:fixed_price, Orb::Models::Price::GroupedWithMeteredMinimumPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::GroupedWithMeteredMinimumPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -11547,12 +11044,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -11779,9 +11274,7 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :matrix_with_display_name
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -11820,20 +11313,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -11854,8 +11344,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -11866,8 +11355,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -11900,8 +11388,7 @@ module Orb
                   T::Array[Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -11920,8 +11407,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::MatrixWithDisplayNamePrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::MatrixWithDisplayNamePrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -11932,12 +11418,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -11958,8 +11442,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -11970,8 +11453,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -12004,8 +11486,7 @@ module Orb
                   T::Array[Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -12017,12 +11498,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -12038,12 +11517,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -12059,12 +11536,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -12080,8 +11555,7 @@ module Orb
             T.let(:fixed_price, Orb::Models::Price::MatrixWithDisplayNamePrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::MatrixWithDisplayNamePrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -12097,12 +11571,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -12323,9 +11795,7 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :bulk_with_proration
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -12364,20 +11834,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -12394,8 +11861,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -12406,8 +11872,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -12440,8 +11905,7 @@ module Orb
                   T::Array[Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -12460,8 +11924,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::BulkWithProrationPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::BulkWithProrationPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -12472,12 +11935,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -12498,8 +11959,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -12510,8 +11970,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -12544,8 +12003,7 @@ module Orb
                   T::Array[Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -12557,12 +12015,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -12578,12 +12034,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -12599,12 +12053,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -12618,8 +12070,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::BulkWithProrationPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::BulkWithProrationPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -12635,12 +12086,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -12867,9 +12316,7 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :grouped_tiered_package
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -12908,20 +12355,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -12942,8 +12386,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -12954,8 +12397,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -12988,8 +12430,7 @@ module Orb
                   T::Array[Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -13008,8 +12449,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::GroupedTieredPackagePrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::GroupedTieredPackagePrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -13020,12 +12460,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -13046,8 +12484,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -13058,8 +12495,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -13092,8 +12528,7 @@ module Orb
                   T::Array[Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -13105,12 +12540,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -13126,12 +12559,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -13147,12 +12578,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -13166,8 +12595,7 @@ module Orb
           FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::GroupedTieredPackagePrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::GroupedTieredPackagePrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -13183,12 +12611,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -13415,9 +12841,7 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :max_group_tiered_package
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -13456,20 +12880,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -13490,8 +12911,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -13502,8 +12922,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -13536,8 +12955,7 @@ module Orb
                   T::Array[Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -13556,8 +12974,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::MaxGroupTieredPackagePrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::MaxGroupTieredPackagePrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -13568,12 +12985,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -13594,8 +13009,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -13606,8 +13020,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -13640,8 +13053,7 @@ module Orb
                   T::Array[Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -13653,12 +13065,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -13674,12 +13084,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -13695,12 +13103,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -13716,8 +13122,7 @@ module Orb
             T.let(:fixed_price, Orb::Models::Price::MaxGroupTieredPackagePrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::MaxGroupTieredPackagePrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -13733,12 +13138,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -13988,9 +13391,7 @@ module Orb
           scalable_matrix_with_unit_pricing_config:,
           dimensional_price_configuration: nil,
           model_type: :scalable_matrix_with_unit_pricing
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -14029,20 +13430,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -14063,8 +13461,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -14075,8 +13472,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -14109,12 +13505,11 @@ module Orb
               override
                 .returns(
                   T::Array[
-                  Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   ]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -14137,8 +13532,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -14149,12 +13543,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -14175,8 +13567,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -14187,8 +13578,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -14221,12 +13611,11 @@ module Orb
               override
                 .returns(
                   T::Array[
-                  Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   ]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -14238,12 +13627,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -14259,12 +13646,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -14280,12 +13665,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -14304,8 +13687,7 @@ module Orb
           sig do
             override.returns(T::Array[Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::PriceType::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -14321,12 +13703,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -14590,9 +13970,7 @@ module Orb
           scalable_matrix_with_tiered_pricing_config:,
           dimensional_price_configuration: nil,
           model_type: :scalable_matrix_with_tiered_pricing
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -14631,20 +14009,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -14665,8 +14040,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -14677,8 +14051,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -14711,12 +14084,11 @@ module Orb
               override
                 .returns(
                   T::Array[
-                  Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   ]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -14742,8 +14114,7 @@ module Orb
           sig do
             override.returns(T::Array[Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -14754,12 +14125,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -14780,8 +14149,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -14792,8 +14160,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -14826,12 +14193,11 @@ module Orb
               override
                 .returns(
                   T::Array[
-                  Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   ]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -14843,12 +14209,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -14864,12 +14228,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -14885,12 +14247,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -14910,8 +14270,7 @@ module Orb
             override
               .returns(T::Array[Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::PriceType::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -14927,12 +14286,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -15159,9 +14516,7 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :cumulative_grouped_bulk
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -15200,20 +14555,17 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
+          def self.new(id:); end
 
           sig { override.returns({id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -15234,8 +14586,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -15246,8 +14597,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -15280,8 +14630,7 @@ module Orb
                   T::Array[Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -15300,8 +14649,7 @@ module Orb
           CUSTOM = T.let(:custom, Orb::Models::Price::CumulativeGroupedBulkPrice::Cadence::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::CumulativeGroupedBulkPrice::Cadence::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
@@ -15312,12 +14660,10 @@ module Orb
           attr_accessor :currency
 
           sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:)
-          end
+          def self.new(allows_rollover:, currency:); end
 
           sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -15338,8 +14684,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:)
-          end
+          def self.new(duration:, duration_unit:); end
 
           sig do
             override
@@ -15350,8 +14695,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
@@ -15384,8 +14728,7 @@ module Orb
                   T::Array[Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -15397,12 +14740,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -15418,12 +14759,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, maximum_amount:)
-          end
+          def self.new(applies_to_price_ids:, maximum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -15439,12 +14778,10 @@ module Orb
           sig do
             params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
           end
-          def self.new(applies_to_price_ids:, minimum_amount:)
-          end
+          def self.new(applies_to_price_ids:, minimum_amount:); end
 
           sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module PriceType
@@ -15460,8 +14797,7 @@ module Orb
             T.let(:fixed_price, Orb::Models::Price::CumulativeGroupedBulkPrice::PriceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Price::CumulativeGroupedBulkPrice::PriceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
@@ -15477,12 +14813,10 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:)
-          end
+          def self.new(dimension_values:, dimensional_price_group_id:); end
 
           sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -15492,8 +14826,7 @@ module Orb
             [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice]
           )
       end
-      def self.variants
-      end
+      def self.variants; end
     end
   end
 end

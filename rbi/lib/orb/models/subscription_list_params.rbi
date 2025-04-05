@@ -65,9 +65,7 @@ module Orb
         limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -85,8 +83,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module Status
         extend Orb::Internal::Type::Enum
@@ -100,8 +97,7 @@ module Orb
         UPCOMING = T.let(:upcoming, Orb::Models::SubscriptionListParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::SubscriptionListParams::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

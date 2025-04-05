@@ -18,12 +18,10 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(external_customer_id:, request_options: {})
-          end
+          def self.new(external_customer_id:, request_options: {}); end
 
           sig { override.returns({external_customer_id: String, request_options: Orb::RequestOptions}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
     end

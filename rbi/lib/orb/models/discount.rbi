@@ -11,8 +11,7 @@ module Orb
             [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount]
           )
       end
-      def self.variants
-      end
+      def self.variants; end
     end
   end
 end

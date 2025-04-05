@@ -118,9 +118,7 @@ module Orb
         type:,
         voided_at:,
         discounts: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -144,8 +142,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Customer < Orb::Internal::Type::BaseModel
         sig { returns(String) }
@@ -155,12 +152,10 @@ module Orb
         attr_accessor :external_customer_id
 
         sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
-        def self.new(id:, external_customer_id:)
-        end
+        def self.new(id:, external_customer_id:); end
 
         sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class LineItem < Orb::Internal::Type::BaseModel
@@ -215,8 +210,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(id:, amount:, item_id:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil)
-        end
+        def self.new(id:, amount:, item_id:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil); end
 
         sig do
           override
@@ -233,8 +227,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class TaxAmount < Orb::Internal::Type::BaseModel
           # The amount of additional tax incurred by this tax rate.
@@ -253,8 +246,7 @@ module Orb
             params(amount: String, tax_rate_description: String, tax_rate_percentage: T.nilable(String))
               .returns(T.attached_class)
           end
-          def self.new(amount:, tax_rate_description:, tax_rate_percentage:)
-          end
+          def self.new(amount:, tax_rate_description:, tax_rate_percentage:); end
 
           sig do
             override.returns(
@@ -265,8 +257,7 @@ module Orb
               }
             )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Discount < Orb::Internal::Type::BaseModel
@@ -311,9 +302,7 @@ module Orb
             percentage_discount:,
             amount_discount: nil,
             reason: nil
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -328,8 +317,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module DiscountType
             extend Orb::Internal::Type::Enum
@@ -342,8 +330,7 @@ module Orb
             AMOUNT = T.let(:amount, Orb::Models::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol)
 
             sig { override.returns(T::Array[Orb::Models::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
       end
@@ -398,8 +385,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module DiscountType
           extend Orb::Internal::Type::Enum
@@ -413,8 +399,7 @@ module Orb
             T.let(:percentage, Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class AppliesToPrice < Orb::Internal::Type::BaseModel
@@ -425,12 +410,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -446,8 +429,7 @@ module Orb
         PRODUCT_UNSATISFACTORY = T.let(:"Product unsatisfactory", Orb::Models::CreditNote::Reason::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::CreditNote::Reason::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module Type
@@ -460,8 +442,7 @@ module Orb
         ADJUSTMENT = T.let(:adjustment, Orb::Models::CreditNote::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::CreditNote::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Discount < Orb::Internal::Type::BaseModel
@@ -511,8 +492,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module DiscountType
           extend Orb::Internal::Type::Enum
@@ -524,8 +504,7 @@ module Orb
           PERCENTAGE = T.let(:percentage, Orb::Models::CreditNote::Discount::DiscountType::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::CreditNote::Discount::DiscountType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class AppliesToPrice < Orb::Internal::Type::BaseModel
@@ -536,12 +515,10 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
+          def self.new(id:, name:); end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
     end

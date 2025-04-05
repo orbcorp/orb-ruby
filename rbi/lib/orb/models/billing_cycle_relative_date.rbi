@@ -12,8 +12,7 @@ module Orb
       END_OF_TERM = T.let(:end_of_term, Orb::Models::BillingCycleRelativeDate::TaggedSymbol)
 
       sig { override.returns(T::Array[Orb::Models::BillingCycleRelativeDate::TaggedSymbol]) }
-      def self.values
-      end
+      def self.values; end
     end
   end
 end

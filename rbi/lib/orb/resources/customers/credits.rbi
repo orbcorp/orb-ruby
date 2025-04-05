@@ -41,9 +41,7 @@ module Orb
           # The number of items to fetch. Defaults to 20.
           limit: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Returns a paginated list of unexpired, non-zero credit blocks for a customer.
         #
         #   If `include_all_blocks` is set to `true`, all credit blocks (including expired
@@ -75,13 +73,10 @@ module Orb
           # The number of items to fetch. Defaults to 20.
           limit: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Orb::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

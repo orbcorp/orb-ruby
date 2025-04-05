@@ -27,8 +27,7 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(thresholds:, type:, metric_id: nil, request_options: {})
-      end
+      def self.new(thresholds:, type:, metric_id: nil, request_options: {}); end
 
       sig do
         override
@@ -41,8 +40,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Threshold < Orb::Internal::Type::BaseModel
         # The value at which an alert will fire. For credit balance alerts, the alert will
@@ -54,12 +52,10 @@ module Orb
         # Thresholds are used to define the conditions under which an alert will be
         #   triggered.
         sig { params(value: Float).returns(T.attached_class) }
-        def self.new(value:)
-        end
+        def self.new(value:); end
 
         sig { override.returns({value: Float}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # The type of alert to create. This must be a valid alert type.
@@ -75,8 +71,7 @@ module Orb
         COST_EXCEEDED = T.let(:cost_exceeded, Orb::Models::AlertCreateForSubscriptionParams::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::AlertCreateForSubscriptionParams::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end
