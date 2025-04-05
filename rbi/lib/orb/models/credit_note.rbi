@@ -79,7 +79,7 @@ module Orb
       attr_writer :discounts
 
       # The [Credit Note](/invoicing/credit-notes) resource represents a credit that has
-      #   been applied to a particular invoice.
+      # been applied to a particular invoice.
       sig do
         params(
           id: String,

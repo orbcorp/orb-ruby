@@ -11,7 +11,7 @@ module Orb
 
       # @!attribute adjustments
       #   Adjustments for this plan. If the plan has phases, this includes adjustments
-      #     across all phases of the plan.
+      #   across all phases of the plan.
       #
       #   @return [Array<Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment>]
       required :adjustments, -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::Plan::Adjustment] }
@@ -23,7 +23,7 @@ module Orb
 
       # @!attribute base_plan_id
       #   The parent plan id if the given plan was created by overriding one or more of
-      #     the parent's prices
+      #   the parent's prices
       #
       #   @return [String, nil]
       required :base_plan_id, String, nil?: true
@@ -35,14 +35,14 @@ module Orb
 
       # @!attribute currency
       #   An ISO 4217 currency string or custom pricing unit (`credits`) for this plan's
-      #     prices.
+      #   prices.
       #
       #   @return [String]
       required :currency, String
 
       # @!attribute default_invoice_memo
       #   The default memo text on the invoices corresponding to subscriptions on this
-      #     plan. Note that each subscription may configure its own memo.
+      #   plan. Note that each subscription may configure its own memo.
       #
       #   @return [String, nil]
       required :default_invoice_memo, String, nil?: true
@@ -59,15 +59,15 @@ module Orb
 
       # @!attribute external_plan_id
       #   An optional user-defined ID for this plan resource, used throughout the system
-      #     as an alias for this Plan. Use this field to identify a plan by an existing
-      #     identifier in your system.
+      #   as an alias for this Plan. Use this field to identify a plan by an existing
+      #   identifier in your system.
       #
       #   @return [String, nil]
       required :external_plan_id, String, nil?: true
 
       # @!attribute invoicing_currency
       #   An ISO 4217 currency string for which this plan is billed in. Matches `currency`
-      #     unless `currency` is a custom pricing unit.
+      #   unless `currency` is a custom pricing unit.
       #
       #   @return [String]
       required :invoicing_currency, String
@@ -84,9 +84,9 @@ module Orb
 
       # @!attribute metadata
       #   User specified key-value pairs for the resource. If not present, this defaults
-      #     to an empty dictionary. Individual keys can be removed by setting the value to
-      #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-      #     `null`.
+      #   to an empty dictionary. Individual keys can be removed by setting the value to
+      #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+      #   `null`.
       #
       #   @return [Hash{Symbol=>String}]
       required :metadata, Orb::Internal::Type::HashOf[String]
@@ -108,10 +108,10 @@ module Orb
 
       # @!attribute net_terms
       #   Determines the difference between the invoice issue date and the due date. A
-      #     value of "0" here signifies that invoices are due on issue, whereas a value of
-      #     "30" means that the customer has a month to pay the invoice before its overdue.
-      #     Note that individual subscriptions or invoices may set a different net terms
-      #     configuration.
+      #   value of "0" here signifies that invoices are due on issue, whereas a value of
+      #   "30" means that the customer has a month to pay the invoice before its overdue.
+      #   Note that individual subscriptions or invoices may set a different net terms
+      #   configuration.
       #
       #   @return [Integer, nil]
       required :net_terms, Integer, nil?: true
@@ -123,7 +123,7 @@ module Orb
 
       # @!attribute prices
       #   Prices for this plan. If the plan has phases, this includes prices across all
-      #     phases of the plan.
+      #   phases of the plan.
       #
       #   @return [Array<Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice>]
       required :prices, -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::Price] }
@@ -150,9 +150,9 @@ module Orb
 
       # @!parse
       #   # The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
-      #   #   subscribed to by a customer. Plans define the billing behavior of the
-      #   #   subscription. You can see more about how to configure prices in the
-      #   #   [Price resource](/reference/price).
+      #   # subscribed to by a customer. Plans define the billing behavior of the
+      #   # subscription. You can see more about how to configure prices in the
+      #   # [Price resource](/reference/price).
       #   #
       #   # @param id [String]
       #   # @param adjustments [Array<Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment>]
@@ -245,7 +245,7 @@ module Orb
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
-          #     that apply to only one price.
+          #   that apply to only one price.
           #
           #   @return [Boolean]
           required :is_invoice_level, Orb::Internal::Type::Boolean
@@ -264,7 +264,7 @@ module Orb
 
           # @!attribute usage_discount
           #   The number of usage units by which to discount the price this adjustment applies
-          #     to in a given billing period.
+          #   to in a given billing period.
           #
           #   @return [Float]
           required :usage_discount, Float
@@ -307,7 +307,7 @@ module Orb
 
           # @!attribute amount_discount
           #   The amount by which to discount the prices this adjustment applies to in a given
-          #     billing period.
+          #   billing period.
           #
           #   @return [String]
           required :amount_discount, String
@@ -320,7 +320,7 @@ module Orb
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
-          #     that apply to only one price.
+          #   that apply to only one price.
           #
           #   @return [Boolean]
           required :is_invoice_level, Orb::Internal::Type::Boolean
@@ -381,14 +381,14 @@ module Orb
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
-          #     that apply to only one price.
+          #   that apply to only one price.
           #
           #   @return [Boolean]
           required :is_invoice_level, Orb::Internal::Type::Boolean
 
           # @!attribute percentage_discount
           #   The percentage (as a value between 0 and 1) by which to discount the price
-          #     intervals this adjustment applies to in a given billing period.
+          #   intervals this adjustment applies to in a given billing period.
           #
           #   @return [Float]
           required :percentage_discount, Float
@@ -449,7 +449,7 @@ module Orb
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
-          #     that apply to only one price.
+          #   that apply to only one price.
           #
           #   @return [Boolean]
           required :is_invoice_level, Orb::Internal::Type::Boolean
@@ -462,7 +462,7 @@ module Orb
 
           # @!attribute minimum_amount
           #   The minimum amount to charge in a given billing period for the prices this
-          #     adjustment applies to.
+          #   adjustment applies to.
           #
           #   @return [String]
           required :minimum_amount, String
@@ -525,14 +525,14 @@ module Orb
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
-          #     that apply to only one price.
+          #   that apply to only one price.
           #
           #   @return [Boolean]
           required :is_invoice_level, Orb::Internal::Type::Boolean
 
           # @!attribute maximum_amount
           #   The maximum amount to charge in a given billing period for the prices this
-          #     adjustment applies to.
+          #   adjustment applies to.
           #
           #   @return [String]
           required :maximum_amount, String
@@ -588,8 +588,8 @@ module Orb
 
         # @!attribute external_plan_id
         #   An optional user-defined ID for this plan resource, used throughout the system
-        #     as an alias for this Plan. Use this field to identify a plan by an existing
-        #     identifier in your system.
+        #   as an alias for this Plan. Use this field to identify a plan by an existing
+        #   identifier in your system.
         #
         #   @return [String, nil]
         required :external_plan_id, String, nil?: true
@@ -613,7 +613,7 @@ module Orb
       class Maximum < Orb::Internal::Type::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this maximum amount applies to. For plan/plan phase
-        #     maximums, this can be a subset of prices.
+        #   maximums, this can be a subset of prices.
         #
         #   @return [Array<String>]
         required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -637,7 +637,7 @@ module Orb
       class Minimum < Orb::Internal::Type::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this minimum amount applies to. For plan/plan phase
-        #     minimums, this can be a subset of prices.
+        #   minimums, this can be a subset of prices.
         #
         #   @return [Array<String>]
         required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -675,7 +675,7 @@ module Orb
 
         # @!attribute duration
         #   How many terms of length `duration_unit` this phase is active for. If null, this
-        #     phase is evergreen and active indefinitely
+        #   phase is evergreen and active indefinitely
         #
         #   @return [Integer, nil]
         required :duration, Integer, nil?: true
@@ -769,7 +769,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -793,7 +793,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]

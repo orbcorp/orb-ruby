@@ -8,13 +8,13 @@ module Orb
       attr_accessor :id
 
       # The line amount after any adjustments and before overage conversion, credits and
-      #   partial invoicing.
+      # partial invoicing.
       sig { returns(String) }
       attr_accessor :adjusted_subtotal
 
       # All adjustments applied to the line item in the order they were applied based on
-      #   invoice calculations (ie. usage discounts -> amount discounts -> percentage
-      #   discounts -> minimums -> maximums).
+      # invoice calculations (ie. usage discounts -> amount discounts -> percentage
+      # discounts -> minimums -> maximums).
       sig do
         returns(
           T::Array[
@@ -31,7 +31,7 @@ module Orb
       attr_accessor :adjustments
 
       # The final amount for a line item after all adjustments and pre paid credits have
-      #   been applied.
+      # been applied.
       sig { returns(String) }
       attr_accessor :amount
 
@@ -62,8 +62,8 @@ module Orb
       attr_accessor :filter
 
       # [DEPRECATED] For configured prices that are split by a grouping key, this will
-      #   be populated with the key and a value. The `amount` and `subtotal` will be the
-      #   values for this particular grouping.
+      # be populated with the key and a value. The `amount` and `subtotal` will be the
+      # values for this particular grouping.
       sig { returns(T.nilable(String)) }
       attr_accessor :grouping
 
@@ -108,15 +108,15 @@ module Orb
       attr_accessor :partially_invoiced_amount
 
       # The Price resource represents a price that can be billed on a subscription,
-      #   resulting in a charge on an invoice in the form of an invoice line item. Prices
-      #   take a quantity and determine an amount to bill.
+      # resulting in a charge on an invoice in the form of an invoice line item. Prices
+      # take a quantity and determine an amount to bill.
       #
-      #   Orb supports a few different pricing models out of the box. Each of these models
-      #   is serialized differently in a given Price object. The model_type field
-      #   determines the key for the configuration object that is present.
+      # Orb supports a few different pricing models out of the box. Each of these models
+      # is serialized differently in a given Price object. The model_type field
+      # determines the key for the configuration object that is present.
       #
-      #   For more on the types of prices, see
-      #   [the core concepts documentation](/core-concepts#plan-and-price)
+      # For more on the types of prices, see
+      # [the core concepts documentation](/core-concepts#plan-and-price)
       sig do
         returns(
           T.nilable(
@@ -164,7 +164,7 @@ module Orb
       attr_accessor :start_date
 
       # For complex pricing structures, the line item can be broken down further in
-      #   `sub_line_items`.
+      # `sub_line_items`.
       sig do
         returns(
           T::Array[
@@ -183,7 +183,7 @@ module Orb
       attr_accessor :subtotal
 
       # An array of tax rates and their incurred tax amounts. Empty if no tax
-      #   integration is configured.
+      # integration is configured.
       sig { returns(T::Array[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount]) }
       attr_accessor :tax_amounts
 
@@ -400,7 +400,7 @@ module Orb
           attr_accessor :applies_to_price_ids
 
           # True for adjustments that apply to an entire invocice, false for adjustments
-          #   that apply to only one price.
+          # that apply to only one price.
           sig { returns(T::Boolean) }
           attr_accessor :is_invoice_level
 
@@ -409,7 +409,7 @@ module Orb
           attr_accessor :reason
 
           # The number of usage units by which to discount the price this adjustment applies
-          #   to in a given billing period.
+          # to in a given billing period.
           sig { returns(Float) }
           attr_accessor :usage_discount
 
@@ -463,7 +463,7 @@ module Orb
           attr_accessor :amount
 
           # The amount by which to discount the prices this adjustment applies to in a given
-          #   billing period.
+          # billing period.
           sig { returns(String) }
           attr_accessor :amount_discount
 
@@ -472,7 +472,7 @@ module Orb
           attr_accessor :applies_to_price_ids
 
           # True for adjustments that apply to an entire invocice, false for adjustments
-          #   that apply to only one price.
+          # that apply to only one price.
           sig { returns(T::Boolean) }
           attr_accessor :is_invoice_level
 
@@ -534,12 +534,12 @@ module Orb
           attr_accessor :applies_to_price_ids
 
           # True for adjustments that apply to an entire invocice, false for adjustments
-          #   that apply to only one price.
+          # that apply to only one price.
           sig { returns(T::Boolean) }
           attr_accessor :is_invoice_level
 
           # The percentage (as a value between 0 and 1) by which to discount the price
-          #   intervals this adjustment applies to in a given billing period.
+          # intervals this adjustment applies to in a given billing period.
           sig { returns(Float) }
           attr_accessor :percentage_discount
 
@@ -601,7 +601,7 @@ module Orb
           attr_accessor :applies_to_price_ids
 
           # True for adjustments that apply to an entire invocice, false for adjustments
-          #   that apply to only one price.
+          # that apply to only one price.
           sig { returns(T::Boolean) }
           attr_accessor :is_invoice_level
 
@@ -610,7 +610,7 @@ module Orb
           attr_accessor :item_id
 
           # The minimum amount to charge in a given billing period for the prices this
-          #   adjustment applies to.
+          # adjustment applies to.
           sig { returns(String) }
           attr_accessor :minimum_amount
 
@@ -675,12 +675,12 @@ module Orb
           attr_accessor :applies_to_price_ids
 
           # True for adjustments that apply to an entire invocice, false for adjustments
-          #   that apply to only one price.
+          # that apply to only one price.
           sig { returns(T::Boolean) }
           attr_accessor :is_invoice_level
 
           # The maximum amount to charge in a given billing period for the prices this
-          #   adjustment applies to.
+          # adjustment applies to.
           sig { returns(String) }
           attr_accessor :maximum_amount
 
@@ -737,7 +737,7 @@ module Orb
 
       class Maximum < Orb::Internal::Type::BaseModel
         # List of price_ids that this maximum amount applies to. For plan/plan phase
-        #   maximums, this can be a subset of prices.
+        # maximums, this can be a subset of prices.
         sig { returns(T::Array[String]) }
         attr_accessor :applies_to_price_ids
 
@@ -757,7 +757,7 @@ module Orb
 
       class Minimum < Orb::Internal::Type::BaseModel
         # List of price_ids that this minimum amount applies to. For plan/plan phase
-        #   minimums, this can be a subset of prices.
+        # minimums, this can be a subset of prices.
         sig { returns(T::Array[String]) }
         attr_accessor :applies_to_price_ids
 

@@ -46,15 +46,15 @@ module Orb
 
       # This endpoint returns a list of alerts within Orb.
       #
-      #   The request must specify one of `customer_id`, `external_customer_id`, or
-      #   `subscription_id`.
+      # The request must specify one of `customer_id`, `external_customer_id`, or
+      # `subscription_id`.
       #
-      #   If querying by subscripion_id, the endpoint will return the subscription level
-      #   alerts as well as the plan level alerts associated with the subscription.
+      # If querying by subscripion_id, the endpoint will return the subscription level
+      # alerts as well as the plan level alerts associated with the subscription.
       #
-      #   The list of alerts is ordered starting from the most recently created alert.
-      #   This endpoint follows Orb's
-      #   [standardized pagination format](/api-reference/pagination).
+      # The list of alerts is ordered starting from the most recently created alert.
+      # This endpoint follows Orb's
+      # [standardized pagination format](/api-reference/pagination).
       #
       # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, customer_id: nil, external_customer_id: nil, limit: nil, subscription_id: nil, request_options: {})
       #
@@ -90,13 +90,13 @@ module Orb
       end
 
       # This endpoint creates a new alert to monitor a customer's credit balance. There
-      #   are three types of alerts that can be scoped to customers:
-      #   `credit_balance_depleted`, `credit_balance_dropped`, and
-      #   `credit_balance_recovered`. Customers can have a maximum of one of each type of
-      #   alert per [credit balance currency](/product-catalog/prepurchase).
-      #   `credit_balance_dropped` alerts require a list of thresholds to be provided
-      #   while `credit_balance_depleted` and `credit_balance_recovered` alerts do not
-      #   require thresholds.
+      # are three types of alerts that can be scoped to customers:
+      # `credit_balance_depleted`, `credit_balance_dropped`, and
+      # `credit_balance_recovered`. Customers can have a maximum of one of each type of
+      # alert per [credit balance currency](/product-catalog/prepurchase).
+      # `credit_balance_dropped` alerts require a list of thresholds to be provided
+      # while `credit_balance_depleted` and `credit_balance_recovered` alerts do not
+      # require thresholds.
       #
       # @overload create_for_customer(customer_id, currency:, type:, thresholds: nil, request_options: {})
       #
@@ -121,13 +121,13 @@ module Orb
       end
 
       # This endpoint creates a new alert to monitor a customer's credit balance. There
-      #   are three types of alerts that can be scoped to customers:
-      #   `credit_balance_depleted`, `credit_balance_dropped`, and
-      #   `credit_balance_recovered`. Customers can have a maximum of one of each type of
-      #   alert per [credit balance currency](/product-catalog/prepurchase).
-      #   `credit_balance_dropped` alerts require a list of thresholds to be provided
-      #   while `credit_balance_depleted` and `credit_balance_recovered` alerts do not
-      #   require thresholds.
+      # are three types of alerts that can be scoped to customers:
+      # `credit_balance_depleted`, `credit_balance_dropped`, and
+      # `credit_balance_recovered`. Customers can have a maximum of one of each type of
+      # alert per [credit balance currency](/product-catalog/prepurchase).
+      # `credit_balance_dropped` alerts require a list of thresholds to be provided
+      # while `credit_balance_depleted` and `credit_balance_recovered` alerts do not
+      # require thresholds.
       #
       # @overload create_for_external_customer(external_customer_id, currency:, type:, thresholds: nil, request_options: {})
       #
@@ -153,15 +153,15 @@ module Orb
 
       # This endpoint is used to create alerts at the subscription level.
       #
-      #   Subscription level alerts can be one of two types: `usage_exceeded` or
-      #   `cost_exceeded`. A `usage_exceeded` alert is scoped to a particular metric and
-      #   is triggered when the usage of that metric exceeds predefined thresholds during
-      #   the current billing cycle. A `cost_exceeded` alert is triggered when the total
-      #   amount due during the current billing cycle surpasses predefined thresholds.
-      #   `cost_exceeded` alerts do not include burndown of pre-purchase credits. Each
-      #   subscription can have one `cost_exceeded` alert and one `usage_exceeded` alert
-      #   per metric that is a part of the subscription. Alerts are triggered based on
-      #   usage or cost conditions met during the current billing cycle.
+      # Subscription level alerts can be one of two types: `usage_exceeded` or
+      # `cost_exceeded`. A `usage_exceeded` alert is scoped to a particular metric and
+      # is triggered when the usage of that metric exceeds predefined thresholds during
+      # the current billing cycle. A `cost_exceeded` alert is triggered when the total
+      # amount due during the current billing cycle surpasses predefined thresholds.
+      # `cost_exceeded` alerts do not include burndown of pre-purchase credits. Each
+      # subscription can have one `cost_exceeded` alert and one `usage_exceeded` alert
+      # per metric that is a part of the subscription. Alerts are triggered based on
+      # usage or cost conditions met during the current billing cycle.
       #
       # @overload create_for_subscription(subscription_id, thresholds:, type:, metric_id: nil, request_options: {})
       #
@@ -186,8 +186,8 @@ module Orb
       end
 
       # This endpoint allows you to disable an alert. To disable a plan-level alert for
-      #   a specific subscription, you must include the `subscription_id`. The
-      #   `subscription_id` is not required for customer or subscription level alerts.
+      # a specific subscription, you must include the `subscription_id`. The
+      # `subscription_id` is not required for customer or subscription level alerts.
       #
       # @overload disable(alert_configuration_id, subscription_id: nil, request_options: {})
       #
@@ -210,8 +210,8 @@ module Orb
       end
 
       # This endpoint allows you to enable an alert. To enable a plan-level alert for a
-      #   specific subscription, you must include the `subscription_id`. The
-      #   `subscription_id` is not required for customer or subscription level alerts.
+      # specific subscription, you must include the `subscription_id`. The
+      # `subscription_id` is not required for customer or subscription level alerts.
       #
       # @overload enable(alert_configuration_id, subscription_id: nil, request_options: {})
       #

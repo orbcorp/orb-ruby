@@ -4,7 +4,7 @@ module Orb
   module Resources
     class InvoiceLineItems
       # This creates a one-off fixed fee invoice line item on an Invoice. This can only
-      #   be done for invoices that are in a `draft` status.
+      # be done for invoices that are in a `draft` status.
       sig do
         params(
           amount: String,
@@ -25,7 +25,7 @@ module Orb
         # The id of the Invoice to add this line item.
         invoice_id:,
         # The item name associated with this line item. If an item with the same name
-        #   exists in Orb, that item will be associated with the line item.
+        # exists in Orb, that item will be associated with the line item.
         name:,
         # The number of units on the line item
         quantity:,

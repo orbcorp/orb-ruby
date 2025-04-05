@@ -8,14 +8,14 @@ module Orb
         include Orb::Internal::Type::RequestParameters
 
         # The start of the timeframe, inclusive, in which to return event volume. All
-        #   datetime values are converted to UTC time. If the specified time isn't
-        #   hour-aligned, the response includes the event volume count for the hour the time
-        #   falls in.
+        # datetime values are converted to UTC time. If the specified time isn't
+        # hour-aligned, the response includes the event volume count for the hour the time
+        # falls in.
         sig { returns(Time) }
         attr_accessor :timeframe_start
 
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
-        #   from the initial request.
+        # from the initial request.
         sig { returns(T.nilable(String)) }
         attr_accessor :cursor
 
@@ -27,9 +27,9 @@ module Orb
         attr_writer :limit
 
         # The end of the timeframe, exclusive, in which to return event volume. If not
-        #   specified, the current time is used. All datetime values are converted to UTC
-        #   time.If the specified time isn't hour-aligned, the response includes the event
-        #   volumecount for the hour the time falls in.
+        # specified, the current time is used. All datetime values are converted to UTC
+        # time.If the specified time isn't hour-aligned, the response includes the event
+        # volumecount for the hour the time falls in.
         sig { returns(T.nilable(Time)) }
         attr_reader :timeframe_end
 

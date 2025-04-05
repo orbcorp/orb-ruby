@@ -43,8 +43,8 @@ module Orb
 
         # @!attribute external_plan_id
         #   An optional user-defined ID for this plan resource, used throughout the system
-        #     as an alias for this Plan. Use this field to identify a plan by an existing
-        #     identifier in your system.
+        #   as an alias for this Plan. Use this field to identify a plan by an existing
+        #   identifier in your system.
         #
         #   @return [String, nil]
         required :external_plan_id, String, nil?: true

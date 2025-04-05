@@ -13,7 +13,7 @@ module Orb
           attr_accessor :amount
 
           # The currency or custom pricing unit to use for this top-up. If this is a
-          #   real-world currency, it must match the customer's invoicing currency.
+          # real-world currency, it must match the customer's invoicing currency.
           sig { returns(String) }
           attr_accessor :currency
 
@@ -37,12 +37,12 @@ module Orb
           attr_accessor :per_unit_cost_basis
 
           # The threshold at which to trigger the top-up. If the balance is at or below this
-          #   threshold, the top-up will be triggered.
+          # threshold, the top-up will be triggered.
           sig { returns(String) }
           attr_accessor :threshold
 
           # The number of days or months after which the top-up expires. If unspecified, it
-          #   does not expire.
+          # does not expire.
           sig { returns(T.nilable(Integer)) }
           attr_accessor :expires_after
 
@@ -99,13 +99,13 @@ module Orb
 
           class InvoiceSettings < Orb::Internal::Type::BaseModel
             # Whether the credits purchase invoice should auto collect with the customer's
-            #   saved payment method.
+            # saved payment method.
             sig { returns(T::Boolean) }
             attr_accessor :auto_collection
 
             # The net terms determines the difference between the invoice date and the issue
-            #   date for the invoice. If you intend the invoice to be due on issue, set this
-            #   to 0.
+            # date for the invoice. If you intend the invoice to be due on issue, set this
+            # to 0.
             sig { returns(Integer) }
             attr_accessor :net_terms
 
@@ -114,7 +114,7 @@ module Orb
             attr_accessor :memo
 
             # If true, new credit blocks created by this top-up will require that the
-            #   corresponding invoice is paid before they can be drawn down from.
+            # corresponding invoice is paid before they can be drawn down from.
             sig { returns(T.nilable(T::Boolean)) }
             attr_reader :require_successful_payment
 

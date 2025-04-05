@@ -5,7 +5,7 @@ module Orb
     class PercentageDiscount < Orb::Internal::Type::BaseModel
       # @!attribute applies_to_price_ids
       #   List of price_ids that this discount applies to. For plan/plan phase discounts,
-      #     this can be a subset of prices.
+      #   this can be a subset of prices.
       #
       #   @return [Array<String>]
       required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -17,7 +17,7 @@ module Orb
 
       # @!attribute percentage_discount
       #   Only available if discount_type is `percentage`. This is a number between 0
-      #     and 1.
+      #   and 1.
       #
       #   @return [Float]
       required :percentage_discount, Float

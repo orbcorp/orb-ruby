@@ -28,9 +28,9 @@ module Orb
 
       # @!attribute view_mode
       #   Controls whether Orb returns cumulative costs since the start of the billing
-      #     period, or incremental day-by-day costs. If your customer has minimums or
-      #     discounts, it's strongly recommended that you use the default cumulative
-      #     behavior.
+      #   period, or incremental day-by-day costs. If your customer has minimums or
+      #   discounts, it's strongly recommended that you use the default cumulative
+      #   behavior.
       #
       #   @return [Symbol, Orb::Models::SubscriptionFetchCostsParams::ViewMode, nil]
       optional :view_mode, enum: -> { Orb::Models::SubscriptionFetchCostsParams::ViewMode }, nil?: true
@@ -47,9 +47,9 @@ module Orb
       # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # Controls whether Orb returns cumulative costs since the start of the billing
-      #   period, or incremental day-by-day costs. If your customer has minimums or
-      #   discounts, it's strongly recommended that you use the default cumulative
-      #   behavior.
+      # period, or incremental day-by-day costs. If your customer has minimums or
+      # discounts, it's strongly recommended that you use the default cumulative
+      # behavior.
       module ViewMode
         extend Orb::Internal::Type::Enum
 

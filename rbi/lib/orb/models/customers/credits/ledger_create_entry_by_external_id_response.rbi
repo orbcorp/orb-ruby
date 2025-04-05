@@ -5,7 +5,7 @@ module Orb
     module Customers
       module Credits
         # The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid
-        #   credits within Orb.
+        # credits within Orb.
         module LedgerCreateEntryByExternalIDResponse
           extend Orb::Internal::Type::Union
 
@@ -78,9 +78,9 @@ module Orb
             attr_accessor :ledger_sequence_number
 
             # User specified key-value pairs for the resource. If not present, this defaults
-            #   to an empty dictionary. Individual keys can be removed by setting the value to
-            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-            #   `null`.
+            # to an empty dictionary. Individual keys can be removed by setting the value to
+            # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            # `null`.
             sig { returns(T::Hash[Symbol, String]) }
             attr_accessor :metadata
 
@@ -298,9 +298,9 @@ module Orb
             attr_accessor :ledger_sequence_number
 
             # User specified key-value pairs for the resource. If not present, this defaults
-            #   to an empty dictionary. Individual keys can be removed by setting the value to
-            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-            #   `null`.
+            # to an empty dictionary. Individual keys can be removed by setting the value to
+            # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            # `null`.
             sig { returns(T::Hash[Symbol, String]) }
             attr_accessor :metadata
 
@@ -536,9 +536,9 @@ module Orb
             attr_accessor :ledger_sequence_number
 
             # User specified key-value pairs for the resource. If not present, this defaults
-            #   to an empty dictionary. Individual keys can be removed by setting the value to
-            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-            #   `null`.
+            # to an empty dictionary. Individual keys can be removed by setting the value to
+            # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            # `null`.
             sig { returns(T::Hash[Symbol, String]) }
             attr_accessor :metadata
 
@@ -762,9 +762,9 @@ module Orb
             attr_accessor :ledger_sequence_number
 
             # User specified key-value pairs for the resource. If not present, this defaults
-            #   to an empty dictionary. Individual keys can be removed by setting the value to
-            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-            #   `null`.
+            # to an empty dictionary. Individual keys can be removed by setting the value to
+            # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            # `null`.
             sig { returns(T::Hash[Symbol, String]) }
             attr_accessor :metadata
 
@@ -978,9 +978,9 @@ module Orb
             attr_accessor :ledger_sequence_number
 
             # User specified key-value pairs for the resource. If not present, this defaults
-            #   to an empty dictionary. Individual keys can be removed by setting the value to
-            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-            #   `null`.
+            # to an empty dictionary. Individual keys can be removed by setting the value to
+            # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            # `null`.
             sig { returns(T::Hash[Symbol, String]) }
             attr_accessor :metadata
 
@@ -1210,9 +1210,9 @@ module Orb
             attr_accessor :ledger_sequence_number
 
             # User specified key-value pairs for the resource. If not present, this defaults
-            #   to an empty dictionary. Individual keys can be removed by setting the value to
-            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-            #   `null`.
+            # to an empty dictionary. Individual keys can be removed by setting the value to
+            # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            # `null`.
             sig { returns(T::Hash[Symbol, String]) }
             attr_accessor :metadata
 
@@ -1448,9 +1448,9 @@ module Orb
             attr_accessor :ledger_sequence_number
 
             # User specified key-value pairs for the resource. If not present, this defaults
-            #   to an empty dictionary. Individual keys can be removed by setting the value to
-            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-            #   `null`.
+            # to an empty dictionary. Individual keys can be removed by setting the value to
+            # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            # `null`.
             sig { returns(T::Hash[Symbol, String]) }
             attr_accessor :metadata
 

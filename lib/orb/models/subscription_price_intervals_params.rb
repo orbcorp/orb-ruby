@@ -31,8 +31,8 @@ module Orb
 
       # @!attribute allow_invoice_credit_or_void
       #   If false, this request will fail if it would void an issued invoice or create a
-      #     credit note. Consider using this as a safety mechanism if you do not expect
-      #     existing invoices to be changed.
+      #   credit note. Consider using this as a safety mechanism if you do not expect
+      #   existing invoices to be changed.
       #
       #   @return [Boolean, nil]
       optional :allow_invoice_credit_or_void, Orb::Internal::Type::Boolean, nil?: true
@@ -83,7 +83,7 @@ module Orb
       class Add < Orb::Internal::Type::BaseModel
         # @!attribute start_date
         #   The start date of the price interval. This is the date that the price will start
-        #     billing on the subscription.
+        #   billing on the subscription.
         #
         #   @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate]
         required :start_date, union: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::StartDate }
@@ -106,7 +106,7 @@ module Orb
 
         # @!attribute end_date
         #   The end date of the price interval. This is the date that the price will stop
-        #     billing on the subscription.
+        #   billing on the subscription.
         #
         #   @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
         optional :end_date, union: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::EndDate }, nil?: true
@@ -119,9 +119,9 @@ module Orb
 
         # @!attribute filter
         #   An additional filter to apply to usage queries. This filter must be expressed as
-        #     a boolean
-        #     [computed property](/extensibility/advanced-metrics#computed-properties). If
-        #     null, usage queries will not include any additional filter.
+        #   a boolean
+        #   [computed property](/extensibility/advanced-metrics#computed-properties). If
+        #   null, usage queries will not include any additional filter.
         #
         #   @return [String, nil]
         optional :filter, String, nil?: true
@@ -136,14 +136,14 @@ module Orb
 
         # @!attribute maximum_amount
         #   The maximum amount that will be billed for this price interval for a given
-        #     billing period.
+        #   billing period.
         #
         #   @return [Float, nil]
         optional :maximum_amount, Float, nil?: true
 
         # @!attribute minimum_amount
         #   The minimum amount that will be billed for this price interval for a given
-        #     billing period.
+        #   billing period.
         #
         #   @return [Float, nil]
         optional :minimum_amount, Float, nil?: true
@@ -162,11 +162,11 @@ module Orb
 
         # @!attribute usage_customer_ids
         #   A list of customer IDs whose usage events will be aggregated and billed under
-        #     this subscription. By default, a subscription only considers usage events
-        #     associated with its attached customer's customer_id. When usage_customer_ids is
-        #     provided, the subscription includes usage events from the specified customers
-        #     only. Provided usage_customer_ids must be either the customer for this
-        #     subscription itself, or any of that customer's children.
+        #   this subscription. By default, a subscription only considers usage events
+        #   associated with its attached customer's customer_id. When usage_customer_ids is
+        #   provided, the subscription includes usage events from the specified customers
+        #   only. Provided usage_customer_ids must be either the customer for this
+        #   subscription itself, or any of that customer's children.
         #
         #   @return [Array<String>, nil]
         optional :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
@@ -206,7 +206,7 @@ module Orb
         # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # The start date of the price interval. This is the date that the price will start
-        #   billing on the subscription.
+        # billing on the subscription.
         #
         # @see Orb::Models::SubscriptionPriceIntervalsParams::Add#start_date
         module StartDate
@@ -238,14 +238,14 @@ module Orb
 
           # @!attribute currency
           #   An ISO 4217 currency string or a custom pricing unit identifier in which to bill
-          #     this price.
+          #   this price.
           #
           #   @return [String]
           required :currency, String
 
           # @!attribute expires_at_end_of_cadence
           #   Whether the allocated amount should expire at the end of the cadence or roll
-          #     over to the next period.
+          #   over to the next period.
           #
           #   @return [Boolean]
           required :expires_at_end_of_cadence, Orb::Internal::Type::Boolean
@@ -326,7 +326,7 @@ module Orb
 
             # @!attribute percentage_discount
             #   Only available if discount_type is `percentage`. This is a number between 0
-            #     and 1.
+            #   and 1.
             #
             #   @return [Float]
             required :percentage_discount, Float
@@ -348,7 +348,7 @@ module Orb
 
             # @!attribute usage_discount
             #   Only available if discount_type is `usage`. Number of usage units that this
-            #     discount is for.
+            #   discount is for.
             #
             #   @return [Float]
             required :usage_discount, Float
@@ -368,7 +368,7 @@ module Orb
         end
 
         # The end date of the price interval. This is the date that the price will stop
-        #   billing on the subscription.
+        # billing on the subscription.
         #
         # @see Orb::Models::SubscriptionPriceIntervalsParams::Add#end_date
         module EndDate
@@ -531,21 +531,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -566,7 +566,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -579,7 +579,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -588,8 +588,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -687,7 +687,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration::DurationUnit]
@@ -730,7 +730,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -796,21 +796,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -831,7 +831,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -844,7 +844,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -853,8 +853,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -929,7 +929,7 @@ module Orb
 
               # @!attribute package_size
               #   An integer amount to represent package size. For example, 1000 here would divide
-              #     usage by 1000 before multiplying by package_amount in rating
+              #   usage by 1000 before multiplying by package_amount in rating
               #
               #   @return [Integer]
               required :package_size, Integer
@@ -960,7 +960,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration::DurationUnit]
@@ -1003,7 +1003,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration::DurationUnit]
@@ -1069,21 +1069,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -1104,7 +1104,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -1117,7 +1117,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -1126,8 +1126,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -1229,8 +1229,8 @@ module Orb
               class MatrixValue < Orb::Internal::Type::BaseModel
                 # @!attribute dimension_values
                 #   One or two matrix keys to filter usage to this Matrix value by. For example,
-                #     ["region", "tier"] could be used to filter cloud usage by a cloud region and an
-                #     instance tier.
+                #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+                #   instance tier.
                 #
                 #   @return [Array<String, nil>]
                 required :dimension_values, Orb::Internal::Type::ArrayOf[String, nil?: true]
@@ -1268,7 +1268,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration::DurationUnit]
@@ -1311,7 +1311,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -1377,21 +1377,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -1412,7 +1412,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -1425,7 +1425,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -1434,8 +1434,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -1544,8 +1544,8 @@ module Orb
               class MatrixValue < Orb::Internal::Type::BaseModel
                 # @!attribute dimension_values
                 #   One or two matrix keys to filter usage to this Matrix value by. For example,
-                #     ["region", "tier"] could be used to filter cloud usage by a cloud region and an
-                #     instance tier.
+                #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+                #   instance tier.
                 #
                 #   @return [Array<String, nil>]
                 required :dimension_values, Orb::Internal::Type::ArrayOf[String, nil?: true]
@@ -1583,7 +1583,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit]
@@ -1626,7 +1626,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -1692,21 +1692,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -1727,7 +1727,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -1740,7 +1740,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -1749,8 +1749,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -1878,7 +1878,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration::DurationUnit]
@@ -1921,7 +1921,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -1987,21 +1987,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -2022,7 +2022,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -2035,7 +2035,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -2044,8 +2044,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -2114,7 +2114,7 @@ module Orb
             class TieredBpsConfig < Orb::Internal::Type::BaseModel
               # @!attribute tiers
               #   Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
-              #     tiers
+              #   tiers
               #
               #   @return [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier>]
               required :tiers,
@@ -2185,7 +2185,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration::DurationUnit]
@@ -2228,7 +2228,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -2294,21 +2294,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -2329,7 +2329,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -2342,7 +2342,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -2351,8 +2351,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -2457,7 +2457,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration::DurationUnit]
@@ -2500,7 +2500,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -2566,21 +2566,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -2601,7 +2601,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -2614,7 +2614,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -2623,8 +2623,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -2673,7 +2673,7 @@ module Orb
             class BulkBpsConfig < Orb::Internal::Type::BaseModel
               # @!attribute tiers
               #   Tiers for a bulk BPS pricing model where all usage is aggregated to a single
-              #     tier based on total volume
+              #   tier based on total volume
               #
               #   @return [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier>]
               required :tiers,
@@ -2753,7 +2753,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration::DurationUnit]
@@ -2796,7 +2796,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -2862,21 +2862,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -2897,7 +2897,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -2910,7 +2910,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -2919,8 +2919,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -3041,7 +3041,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration::DurationUnit]
@@ -3084,7 +3084,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -3149,21 +3149,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -3184,7 +3184,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -3197,7 +3197,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -3206,8 +3206,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -3289,7 +3289,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit]
@@ -3332,7 +3332,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -3397,21 +3397,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -3432,7 +3432,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -3445,7 +3445,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -3454,8 +3454,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -3537,7 +3537,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
@@ -3580,7 +3580,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
@@ -3645,21 +3645,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -3680,7 +3680,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -3693,7 +3693,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -3702,8 +3702,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -3785,7 +3785,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration::DurationUnit]
@@ -3828,7 +3828,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -3894,21 +3894,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -3929,7 +3929,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -3942,7 +3942,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -3951,8 +3951,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -4034,7 +4034,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
@@ -4077,7 +4077,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
@@ -4142,21 +4142,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -4177,7 +4177,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -4190,7 +4190,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -4199,8 +4199,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -4282,7 +4282,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit]
@@ -4325,7 +4325,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -4391,21 +4391,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -4426,7 +4426,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -4439,7 +4439,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -4448,8 +4448,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -4531,7 +4531,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit]
@@ -4574,7 +4574,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -4640,21 +4640,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -4675,7 +4675,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -4688,7 +4688,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -4697,8 +4697,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -4780,7 +4780,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit]
@@ -4823,7 +4823,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -4888,21 +4888,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -4923,7 +4923,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -4936,7 +4936,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -4945,8 +4945,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -5028,7 +5028,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit]
@@ -5071,7 +5071,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -5136,21 +5136,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -5171,7 +5171,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -5184,7 +5184,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -5193,8 +5193,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -5276,7 +5276,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration::DurationUnit]
@@ -5319,7 +5319,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -5384,21 +5384,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -5419,7 +5419,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -5432,7 +5432,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -5441,8 +5441,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -5524,7 +5524,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit]
@@ -5567,7 +5567,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -5632,21 +5632,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -5667,7 +5667,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -5680,7 +5680,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -5689,8 +5689,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -5772,7 +5772,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit]
@@ -5815,7 +5815,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -5881,21 +5881,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -5916,7 +5916,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -5929,7 +5929,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -5938,8 +5938,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -6021,7 +6021,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit]
@@ -6064,7 +6064,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -6130,21 +6130,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -6165,7 +6165,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -6178,7 +6178,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -6187,8 +6187,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -6270,7 +6270,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit]
@@ -6313,7 +6313,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -6379,21 +6379,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -6414,7 +6414,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -6427,7 +6427,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -6436,8 +6436,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -6519,7 +6519,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit]
@@ -6562,7 +6562,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit]
@@ -6627,21 +6627,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -6662,7 +6662,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -6675,7 +6675,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -6684,8 +6684,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -6767,7 +6767,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit]
@@ -6810,7 +6810,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -6875,21 +6875,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -6910,7 +6910,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -6923,7 +6923,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -6932,8 +6932,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -7015,7 +7015,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
@@ -7058,7 +7058,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
@@ -7124,21 +7124,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -7159,7 +7159,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -7172,7 +7172,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -7181,8 +7181,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -7264,7 +7264,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit]
@@ -7307,7 +7307,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -7373,21 +7373,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -7408,7 +7408,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -7421,7 +7421,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -7430,8 +7430,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -7513,7 +7513,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit]
@@ -7556,7 +7556,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -7622,21 +7622,21 @@ module Orb
 
             # @!attribute billable_metric_id
             #   The id of the billable metric for the price. Only needed if the price is
-            #     usage-based.
+            #   usage-based.
             #
             #   @return [String, nil]
             optional :billable_metric_id, String, nil?: true
 
             # @!attribute billed_in_advance
             #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #     this is true, and in-arrears if this is false.
+            #   this is true, and in-arrears if this is false.
             #
             #   @return [Boolean, nil]
             optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
             # @!attribute billing_cycle_configuration
             #   For custom cadence: specifies the duration of the billing period in days or
-            #     months.
+            #   months.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration, nil]
             optional :billing_cycle_configuration,
@@ -7657,7 +7657,7 @@ module Orb
 
             # @!attribute fixed_price_quantity
             #   If the Price represents a fixed cost, this represents the quantity of units
-            #     applied.
+            #   applied.
             #
             #   @return [Float, nil]
             optional :fixed_price_quantity, Float, nil?: true
@@ -7670,7 +7670,7 @@ module Orb
 
             # @!attribute invoicing_cycle_configuration
             #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #     If unspecified, a single invoice is produced per billing cycle.
+            #   If unspecified, a single invoice is produced per billing cycle.
             #
             #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration,
@@ -7679,8 +7679,8 @@ module Orb
 
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #     by setting the value to `null`, and the entire metadata mapping can be cleared
-            #     by setting `metadata` to `null`.
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
             #
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -7762,7 +7762,7 @@ module Orb
 
               # @!parse
               #   # For custom cadence: specifies the duration of the billing period in days or
-              #   #   months.
+              #   # months.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit]
@@ -7805,7 +7805,7 @@ module Orb
 
               # @!parse
               #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   #   If unspecified, a single invoice is produced per billing cycle.
+              #   # If unspecified, a single invoice is produced per billing cycle.
               #   #
               #   # @param duration [Integer]
               #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit]
@@ -7848,9 +7848,9 @@ module Orb
 
         # @!attribute start_date
         #   The start date of the adjustment interval. This is the date that the adjustment
-        #     will start affecting prices on the subscription. The adjustment will apply to
-        #     invoice dates that overlap with this `start_date`. This `start_date` is treated
-        #     as inclusive for in-advance prices, and exclusive for in-arrears prices.
+        #   will start affecting prices on the subscription. The adjustment will apply to
+        #   invoice dates that overlap with this `start_date`. This `start_date` is treated
+        #   as inclusive for in-advance prices, and exclusive for in-arrears prices.
         #
         #   @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate]
         required :start_date,
@@ -7858,9 +7858,9 @@ module Orb
 
         # @!attribute end_date
         #   The end date of the adjustment interval. This is the date that the adjustment
-        #     will stop affecting prices on the subscription. The adjustment will apply to
-        #     invoice dates that overlap with this `end_date`.This `end_date` is treated as
-        #     exclusive for in-advance prices, and inclusive for in-arrears prices.
+        #   will stop affecting prices on the subscription. The adjustment will apply to
+        #   invoice dates that overlap with this `end_date`.This `end_date` is treated as
+        #   exclusive for in-advance prices, and inclusive for in-arrears prices.
         #
         #   @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
         optional :end_date,
@@ -7918,7 +7918,7 @@ module Orb
 
             # @!attribute [r] is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
-            #     will be applied at the invoice level, possibly to multiple prices.
+            #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
@@ -7965,7 +7965,7 @@ module Orb
 
             # @!attribute [r] is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
-            #     will be applied at the invoice level, possibly to multiple prices.
+            #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
@@ -8004,7 +8004,7 @@ module Orb
 
             # @!attribute [r] is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
-            #     will be applied at the invoice level, possibly to multiple prices.
+            #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
@@ -8049,7 +8049,7 @@ module Orb
 
             # @!attribute [r] is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
-            #     will be applied at the invoice level, possibly to multiple prices.
+            #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
@@ -8089,7 +8089,7 @@ module Orb
 
             # @!attribute [r] is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
-            #     will be applied at the invoice level, possibly to multiple prices.
+            #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
@@ -8115,9 +8115,9 @@ module Orb
         end
 
         # The start date of the adjustment interval. This is the date that the adjustment
-        #   will start affecting prices on the subscription. The adjustment will apply to
-        #   invoice dates that overlap with this `start_date`. This `start_date` is treated
-        #   as inclusive for in-advance prices, and exclusive for in-arrears prices.
+        # will start affecting prices on the subscription. The adjustment will apply to
+        # invoice dates that overlap with this `start_date`. This `start_date` is treated
+        # as inclusive for in-advance prices, and exclusive for in-arrears prices.
         #
         # @see Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment#start_date
         module StartDate
@@ -8133,9 +8133,9 @@ module Orb
         end
 
         # The end date of the adjustment interval. This is the date that the adjustment
-        #   will stop affecting prices on the subscription. The adjustment will apply to
-        #   invoice dates that overlap with this `end_date`.This `end_date` is treated as
-        #   exclusive for in-advance prices, and inclusive for in-arrears prices.
+        # will stop affecting prices on the subscription. The adjustment will apply to
+        # invoice dates that overlap with this `end_date`.This `end_date` is treated as
+        # exclusive for in-advance prices, and inclusive for in-arrears prices.
         #
         # @see Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment#end_date
         module EndDate
@@ -8160,32 +8160,32 @@ module Orb
 
         # @!attribute billing_cycle_day
         #   The updated billing cycle day for this price interval. If not specified, the
-        #     billing cycle day will not be updated. Note that overlapping price intervals
-        #     must have the same billing cycle day.
+        #   billing cycle day will not be updated. Note that overlapping price intervals
+        #   must have the same billing cycle day.
         #
         #   @return [Integer, nil]
         optional :billing_cycle_day, Integer, nil?: true
 
         # @!attribute end_date
         #   The updated end date of this price interval. If not specified, the start date
-        #     will not be updated.
+        #   will not be updated.
         #
         #   @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
         optional :end_date, union: -> { Orb::Models::SubscriptionPriceIntervalsParams::Edit::EndDate }, nil?: true
 
         # @!attribute filter
         #   An additional filter to apply to usage queries. This filter must be expressed as
-        #     a boolean
-        #     [computed property](/extensibility/advanced-metrics#computed-properties). If
-        #     null, usage queries will not include any additional filter.
+        #   a boolean
+        #   [computed property](/extensibility/advanced-metrics#computed-properties). If
+        #   null, usage queries will not include any additional filter.
         #
         #   @return [String, nil]
         optional :filter, String, nil?: true
 
         # @!attribute fixed_fee_quantity_transitions
         #   A list of fixed fee quantity transitions to use for this price interval. Note
-        #     that this list will overwrite all existing fixed fee quantity transitions on the
-        #     price interval.
+        #   that this list will overwrite all existing fixed fee quantity transitions on the
+        #   price interval.
         #
         #   @return [Array<Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition>, nil]
         optional :fixed_fee_quantity_transitions,
@@ -8194,7 +8194,7 @@ module Orb
 
         # @!attribute [r] start_date
         #   The updated start date of this price interval. If not specified, the start date
-        #     will not be updated.
+        #   will not be updated.
         #
         #   @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
         optional :start_date, union: -> { Orb::Models::SubscriptionPriceIntervalsParams::Edit::StartDate }
@@ -8205,11 +8205,11 @@ module Orb
 
         # @!attribute usage_customer_ids
         #   A list of customer IDs whose usage events will be aggregated and billed under
-        #     this subscription. By default, a subscription only considers usage events
-        #     associated with its attached customer's customer_id. When usage_customer_ids is
-        #     provided, the subscription includes usage events from the specified customers
-        #     only. Provided usage_customer_ids must be either the customer for this
-        #     subscription itself, or any of that customer's children.
+        #   this subscription. By default, a subscription only considers usage events
+        #   associated with its attached customer's customer_id. When usage_customer_ids is
+        #   provided, the subscription includes usage events from the specified customers
+        #   only. Provided usage_customer_ids must be either the customer for this
+        #   subscription itself, or any of that customer's children.
         #
         #   @return [Array<String>, nil]
         optional :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
@@ -8239,7 +8239,7 @@ module Orb
         # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # The updated end date of this price interval. If not specified, the start date
-        #   will not be updated.
+        # will not be updated.
         #
         # @see Orb::Models::SubscriptionPriceIntervalsParams::Edit#end_date
         module EndDate
@@ -8277,7 +8277,7 @@ module Orb
         end
 
         # The updated start date of this price interval. If not specified, the start date
-        #   will not be updated.
+        # will not be updated.
         #
         # @see Orb::Models::SubscriptionPriceIntervalsParams::Edit#start_date
         module StartDate
@@ -8302,7 +8302,7 @@ module Orb
 
         # @!attribute end_date
         #   The updated end date of this adjustment interval. If not specified, the start
-        #     date will not be updated.
+        #   date will not be updated.
         #
         #   @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
         optional :end_date,
@@ -8311,7 +8311,7 @@ module Orb
 
         # @!attribute [r] start_date
         #   The updated start date of this adjustment interval. If not specified, the start
-        #     date will not be updated.
+        #   date will not be updated.
         #
         #   @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
         optional :start_date,
@@ -8331,7 +8331,7 @@ module Orb
         # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
         # The updated end date of this adjustment interval. If not specified, the start
-        #   date will not be updated.
+        # date will not be updated.
         #
         # @see Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment#end_date
         module EndDate
@@ -8347,7 +8347,7 @@ module Orb
         end
 
         # The updated start date of this adjustment interval. If not specified, the start
-        #   date will not be updated.
+        # date will not be updated.
         #
         # @see Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment#start_date
         module StartDate

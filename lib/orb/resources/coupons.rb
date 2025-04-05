@@ -7,7 +7,7 @@ module Orb
       attr_reader :subscriptions
 
       # This endpoint allows the creation of coupons, which can then be redeemed at
-      #   subscription creation or plan change.
+      # subscription creation or plan change.
       #
       # @overload create(discount:, redemption_code:, duration_in_months: nil, max_redemptions: nil, request_options: {})
       #
@@ -33,10 +33,10 @@ module Orb
 
       # This endpoint returns a list of all coupons for an account in a list format.
       #
-      #   The list of coupons is ordered starting from the most recently created coupon.
-      #   The response also includes `pagination_metadata`, which lets the caller retrieve
-      #   the next page of results if they exist. More information about pagination can be
-      #   found in the Pagination-metadata schema.
+      # The list of coupons is ordered starting from the most recently created coupon.
+      # The response also includes `pagination_metadata`, which lets the caller retrieve
+      # the next page of results if they exist. More information about pagination can be
+      # found in the Pagination-metadata schema.
       #
       # @overload list(cursor: nil, limit: nil, redemption_code: nil, show_archived: nil, request_options: {})
       #
@@ -62,8 +62,8 @@ module Orb
       end
 
       # This endpoint allows a coupon to be archived. Archived coupons can no longer be
-      #   redeemed, and will be hidden from lists of active coupons. Additionally, once a
-      #   coupon is archived, its redemption code can be reused for a different coupon.
+      # redeemed, and will be hidden from lists of active coupons. Additionally, once a
+      # coupon is archived, its redemption code can be reused for a different coupon.
       #
       # @overload archive(coupon_id, request_options: {})
       #
@@ -83,8 +83,8 @@ module Orb
       end
 
       # This endpoint retrieves a coupon by its ID. To fetch coupons by their redemption
-      #   code, use the [List coupons](list-coupons) endpoint with the redemption_code
-      #   parameter.
+      # code, use the [List coupons](list-coupons) endpoint with the redemption_code
+      # parameter.
       #
       # @overload fetch(coupon_id, request_options: {})
       #

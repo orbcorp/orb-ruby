@@ -11,16 +11,16 @@ module Orb
 
         # @!attribute timeframe_start
         #   The start of the timeframe, inclusive, in which to return event volume. All
-        #     datetime values are converted to UTC time. If the specified time isn't
-        #     hour-aligned, the response includes the event volume count for the hour the time
-        #     falls in.
+        #   datetime values are converted to UTC time. If the specified time isn't
+        #   hour-aligned, the response includes the event volume count for the hour the time
+        #   falls in.
         #
         #   @return [Time]
         required :timeframe_start, Time
 
         # @!attribute cursor
         #   Cursor for pagination. This can be populated by the `next_cursor` value returned
-        #     from the initial request.
+        #   from the initial request.
         #
         #   @return [String, nil]
         optional :cursor, String, nil?: true
@@ -37,9 +37,9 @@ module Orb
 
         # @!attribute [r] timeframe_end
         #   The end of the timeframe, exclusive, in which to return event volume. If not
-        #     specified, the current time is used. All datetime values are converted to UTC
-        #     time.If the specified time isn't hour-aligned, the response includes the event
-        #     volumecount for the hour the time falls in.
+        #   specified, the current time is used. All datetime values are converted to UTC
+        #   time.If the specified time isn't hour-aligned, the response includes the event
+        #   volumecount for the hour the time falls in.
         #
         #   @return [Time, nil]
         optional :timeframe_end, Time

@@ -11,14 +11,14 @@ module Orb
 
       # @!attribute active_plan_phase_order
       #   The current plan phase that is active, only if the subscription's plan has
-      #     phases.
+      #   phases.
       #
       #   @return [Integer, nil]
       required :active_plan_phase_order, Integer, nil?: true
 
       # @!attribute adjustment_intervals
       #   The adjustment intervals for this subscription sorted by the start_date of the
-      #     adjustment interval.
+      #   adjustment interval.
       #
       #   @return [Array<Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval>]
       required :adjustment_intervals,
@@ -26,8 +26,8 @@ module Orb
 
       # @!attribute auto_collection
       #   Determines whether issued invoices for this subscription will automatically be
-      #     charged with the saved payment method on the due date. This property defaults to
-      #     the plan's behavior. If null, defaults to the customer's setting.
+      #   charged with the saved payment method on the due date. This property defaults to
+      #   the plan's behavior. If null, defaults to the customer's setting.
       #
       #   @return [Boolean, nil]
       required :auto_collection, Orb::Internal::Type::Boolean, nil?: true
@@ -40,9 +40,9 @@ module Orb
 
       # @!attribute billing_cycle_day
       #   The day of the month on which the billing cycle is anchored. If the maximum
-      #     number of days in a month is greater than this value, the last day of the month
-      #     is the billing cycle day (e.g. billing_cycle_day=31 for April means the billing
-      #     period begins on the 30th.
+      #   number of days in a month is greater than this value, the last day of the month
+      #   is the billing cycle day (e.g. billing_cycle_day=31 for April means the billing
+      #   period begins on the 30th.
       #
       #   @return [Integer]
       required :billing_cycle_day, Integer
@@ -54,46 +54,46 @@ module Orb
 
       # @!attribute current_billing_period_end_date
       #   The end of the current billing period. This is an exclusive timestamp, such that
-      #     the instant returned is not part of the billing period. Set to null for
-      #     subscriptions that are not currently active.
+      #   the instant returned is not part of the billing period. Set to null for
+      #   subscriptions that are not currently active.
       #
       #   @return [Time, nil]
       required :current_billing_period_end_date, Time, nil?: true
 
       # @!attribute current_billing_period_start_date
       #   The start date of the current billing period. This is an inclusive timestamp;
-      #     the instant returned is exactly the beginning of the billing period. Set to null
-      #     if the subscription is not currently active.
+      #   the instant returned is exactly the beginning of the billing period. Set to null
+      #   if the subscription is not currently active.
       #
       #   @return [Time, nil]
       required :current_billing_period_start_date, Time, nil?: true
 
       # @!attribute customer
       #   A customer is a buyer of your products, and the other party to the billing
-      #     relationship.
+      #   relationship.
       #
-      #     In Orb, customers are assigned system generated identifiers automatically, but
-      #     it's often desirable to have these match existing identifiers in your system. To
-      #     avoid having to denormalize Orb ID information, you can pass in an
-      #     `external_customer_id` with your own identifier. See
-      #     [Customer ID Aliases](/events-and-metrics/customer-aliases) for further
-      #     information about how these aliases work in Orb.
+      #   In Orb, customers are assigned system generated identifiers automatically, but
+      #   it's often desirable to have these match existing identifiers in your system. To
+      #   avoid having to denormalize Orb ID information, you can pass in an
+      #   `external_customer_id` with your own identifier. See
+      #   [Customer ID Aliases](/events-and-metrics/customer-aliases) for further
+      #   information about how these aliases work in Orb.
       #
-      #     In addition to having an identifier in your system, a customer may exist in a
-      #     payment provider solution like Stripe. Use the `payment_provider_id` and the
-      #     `payment_provider` enum field to express this mapping.
+      #   In addition to having an identifier in your system, a customer may exist in a
+      #   payment provider solution like Stripe. Use the `payment_provider_id` and the
+      #   `payment_provider` enum field to express this mapping.
       #
-      #     A customer also has a timezone (from the standard
-      #     [IANA timezone database](https://www.iana.org/time-zones)), which defaults to
-      #     your account's timezone. See [Timezone localization](/essentials/timezones) for
-      #     information on what this timezone parameter influences within Orb.
+      #   A customer also has a timezone (from the standard
+      #   [IANA timezone database](https://www.iana.org/time-zones)), which defaults to
+      #   your account's timezone. See [Timezone localization](/essentials/timezones) for
+      #   information on what this timezone parameter influences within Orb.
       #
       #   @return [Orb::Models::Customer]
       required :customer, -> { Orb::Models::Customer }
 
       # @!attribute default_invoice_memo
       #   Determines the default memo on this subscriptions' invoices. Note that if this
-      #     is not provided, it is determined by the plan configuration.
+      #   is not provided, it is determined by the plan configuration.
       #
       #   @return [String, nil]
       required :default_invoice_memo, String, nil?: true
@@ -131,9 +131,9 @@ module Orb
 
       # @!attribute metadata
       #   User specified key-value pairs for the resource. If not present, this defaults
-      #     to an empty dictionary. Individual keys can be removed by setting the value to
-      #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-      #     `null`.
+      #   to an empty dictionary. Individual keys can be removed by setting the value to
+      #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+      #   `null`.
       #
       #   @return [Hash{Symbol=>String}]
       required :metadata, Orb::Internal::Type::HashOf[String]
@@ -147,18 +147,18 @@ module Orb
 
       # @!attribute net_terms
       #   Determines the difference between the invoice issue date for subscription
-      #     invoices as the date that they are due. A value of `0` here represents that the
-      #     invoice is due on issue, whereas a value of `30` represents that the customer
-      #     has a month to pay the invoice.
+      #   invoices as the date that they are due. A value of `0` here represents that the
+      #   invoice is due on issue, whereas a value of `30` represents that the customer
+      #   has a month to pay the invoice.
       #
       #   @return [Integer]
       required :net_terms, Integer
 
       # @!attribute plan
       #   The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
-      #     subscribed to by a customer. Plans define the billing behavior of the
-      #     subscription. You can see more about how to configure prices in the
-      #     [Price resource](/reference/price).
+      #   subscribed to by a customer. Plans define the billing behavior of the
+      #   subscription. You can see more about how to configure prices in the
+      #   [Price resource](/reference/price).
       #
       #   @return [Orb::Models::Plan]
       required :plan, -> { Orb::Models::Plan }
@@ -334,7 +334,7 @@ module Orb
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
-            #     that apply to only one price.
+            #   that apply to only one price.
             #
             #   @return [Boolean]
             required :is_invoice_level, Orb::Internal::Type::Boolean
@@ -353,7 +353,7 @@ module Orb
 
             # @!attribute usage_discount
             #   The number of usage units by which to discount the price this adjustment applies
-            #     to in a given billing period.
+            #   to in a given billing period.
             #
             #   @return [Float]
             required :usage_discount, Float
@@ -396,7 +396,7 @@ module Orb
 
             # @!attribute amount_discount
             #   The amount by which to discount the prices this adjustment applies to in a given
-            #     billing period.
+            #   billing period.
             #
             #   @return [String]
             required :amount_discount, String
@@ -409,7 +409,7 @@ module Orb
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
-            #     that apply to only one price.
+            #   that apply to only one price.
             #
             #   @return [Boolean]
             required :is_invoice_level, Orb::Internal::Type::Boolean
@@ -470,14 +470,14 @@ module Orb
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
-            #     that apply to only one price.
+            #   that apply to only one price.
             #
             #   @return [Boolean]
             required :is_invoice_level, Orb::Internal::Type::Boolean
 
             # @!attribute percentage_discount
             #   The percentage (as a value between 0 and 1) by which to discount the price
-            #     intervals this adjustment applies to in a given billing period.
+            #   intervals this adjustment applies to in a given billing period.
             #
             #   @return [Float]
             required :percentage_discount, Float
@@ -538,7 +538,7 @@ module Orb
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
-            #     that apply to only one price.
+            #   that apply to only one price.
             #
             #   @return [Boolean]
             required :is_invoice_level, Orb::Internal::Type::Boolean
@@ -551,7 +551,7 @@ module Orb
 
             # @!attribute minimum_amount
             #   The minimum amount to charge in a given billing period for the prices this
-            #     adjustment applies to.
+            #   adjustment applies to.
             #
             #   @return [String]
             required :minimum_amount, String
@@ -614,14 +614,14 @@ module Orb
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
-            #     that apply to only one price.
+            #   that apply to only one price.
             #
             #   @return [Boolean]
             required :is_invoice_level, Orb::Internal::Type::Boolean
 
             # @!attribute maximum_amount
             #   The maximum amount to charge in a given billing period for the prices this
-            #     adjustment applies to.
+            #   adjustment applies to.
             #
             #   @return [String]
             required :maximum_amount, String
@@ -673,24 +673,24 @@ module Orb
       class BillingCycleAnchorConfiguration < Orb::Internal::Type::BaseModel
         # @!attribute day
         #   The day of the month on which the billing cycle is anchored. If the maximum
-        #     number of days in a month is greater than this value, the last day of the month
-        #     is the billing cycle day (e.g. billing_cycle_day=31 for April means the billing
-        #     period begins on the 30th.
+        #   number of days in a month is greater than this value, the last day of the month
+        #   is the billing cycle day (e.g. billing_cycle_day=31 for April means the billing
+        #   period begins on the 30th.
         #
         #   @return [Integer]
         required :day, Integer
 
         # @!attribute month
         #   The month on which the billing cycle is anchored (e.g. a quarterly price
-        #     anchored in February would have cycles starting February, May, August, and
-        #     November).
+        #   anchored in February would have cycles starting February, May, August, and
+        #   November).
         #
         #   @return [Integer, nil]
         optional :month, Integer, nil?: true
 
         # @!attribute year
         #   The year on which the billing cycle is anchored (e.g. a 2 year billing cycle
-        #     anchored on 2021 would have cycles starting on 2021, 2023, 2025, etc.).
+        #   anchored on 2021 would have cycles starting on 2021, 2023, 2025, etc.).
         #
         #   @return [Integer, nil]
         optional :year, Integer, nil?: true
@@ -804,7 +804,7 @@ module Orb
 
           # @!attribute percentage_discount
           #   Only available if discount_type is `percentage`.This is a number between 0
-          #     and 1.
+          #   and 1.
           #
           #   @return [Float]
           required :percentage_discount, Float
@@ -870,7 +870,7 @@ module Orb
 
           # @!attribute usage_discount
           #   Only available if discount_type is `usage`. Number of usage units that this
-          #     discount is for
+          #   discount is for
           #
           #   @return [Float]
           required :usage_discount, Float
@@ -956,7 +956,7 @@ module Orb
 
         # @!attribute maximum_amount
         #   The maximum amount to charge in a given billing period for the price intervals
-        #     this transform applies to.
+        #   this transform applies to.
         #
         #   @return [String]
         required :maximum_amount, String
@@ -1000,7 +1000,7 @@ module Orb
 
         # @!attribute minimum_amount
         #   The minimum amount to charge in a given billing period for the price intervals
-        #     this minimum applies to.
+        #   this minimum applies to.
         #
         #   @return [String]
         required :minimum_amount, String
@@ -1037,23 +1037,23 @@ module Orb
 
         # @!attribute current_billing_period_end_date
         #   The end of the current billing period. This is an exclusive timestamp, such that
-        #     the instant returned is exactly the end of the billing period. Set to null if
-        #     this price interval is not currently active.
+        #   the instant returned is exactly the end of the billing period. Set to null if
+        #   this price interval is not currently active.
         #
         #   @return [Time, nil]
         required :current_billing_period_end_date, Time, nil?: true
 
         # @!attribute current_billing_period_start_date
         #   The start date of the current billing period. This is an inclusive timestamp;
-        #     the instant returned is exactly the beginning of the billing period. Set to null
-        #     if this price interval is not currently active.
+        #   the instant returned is exactly the beginning of the billing period. Set to null
+        #   if this price interval is not currently active.
         #
         #   @return [Time, nil]
         required :current_billing_period_start_date, Time, nil?: true
 
         # @!attribute end_date
         #   The end date of the price interval. This is the date that Orb stops billing for
-        #     this price.
+        #   this price.
         #
         #   @return [Time, nil]
         required :end_date, Time, nil?: true
@@ -1066,7 +1066,7 @@ module Orb
 
         # @!attribute fixed_fee_quantity_transitions
         #   The fixed fee quantity transitions for this price interval. This is only
-        #     relevant for fixed fees.
+        #   relevant for fixed fees.
         #
         #   @return [Array<Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval::FixedFeeQuantityTransition>, nil]
         required :fixed_fee_quantity_transitions,
@@ -1075,37 +1075,37 @@ module Orb
 
         # @!attribute price
         #   The Price resource represents a price that can be billed on a subscription,
-        #     resulting in a charge on an invoice in the form of an invoice line item. Prices
-        #     take a quantity and determine an amount to bill.
+        #   resulting in a charge on an invoice in the form of an invoice line item. Prices
+        #   take a quantity and determine an amount to bill.
         #
-        #     Orb supports a few different pricing models out of the box. Each of these models
-        #     is serialized differently in a given Price object. The model_type field
-        #     determines the key for the configuration object that is present.
+        #   Orb supports a few different pricing models out of the box. Each of these models
+        #   is serialized differently in a given Price object. The model_type field
+        #   determines the key for the configuration object that is present.
         #
-        #     For more on the types of prices, see
-        #     [the core concepts documentation](/core-concepts#plan-and-price)
+        #   For more on the types of prices, see
+        #   [the core concepts documentation](/core-concepts#plan-and-price)
         #
         #   @return [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice]
         required :price, union: -> { Orb::Models::Price }
 
         # @!attribute start_date
         #   The start date of the price interval. This is the date that Orb starts billing
-        #     for this price.
+        #   for this price.
         #
         #   @return [Time]
         required :start_date, Time
 
         # @!attribute usage_customer_ids
         #   A list of customer IDs whose usage events will be aggregated and billed under
-        #     this price interval.
+        #   this price interval.
         #
         #   @return [Array<String>, nil]
         required :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
         # @!parse
         #   # The Price Interval resource represents a period of time for which a price will
-        #   #   bill on a subscription. A subscription’s price intervals define its billing
-        #   #   behavior.
+        #   # bill on a subscription. A subscription’s price intervals define its billing
+        #   # behavior.
         #   #
         #   # @param id [String]
         #   # @param billing_cycle_day [Integer]
