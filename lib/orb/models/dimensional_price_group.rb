@@ -11,8 +11,8 @@ module Orb
 
       # @!attribute billable_metric_id
       #   The billable metric associated with this dimensional price group. All prices
-      #     associated with this dimensional price group will be computed using this
-      #     billable metric.
+      #   associated with this dimensional price group will be computed using this
+      #   billable metric.
       #
       #   @return [String]
       required :billable_metric_id, String
@@ -31,9 +31,9 @@ module Orb
 
       # @!attribute metadata
       #   User specified key-value pairs for the resource. If not present, this defaults
-      #     to an empty dictionary. Individual keys can be removed by setting the value to
-      #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-      #     `null`.
+      #   to an empty dictionary. Individual keys can be removed by setting the value to
+      #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+      #   `null`.
       #
       #   @return [Hash{Symbol=>String}]
       required :metadata, Orb::Internal::Type::HashOf[String]
@@ -46,8 +46,8 @@ module Orb
 
       # @!parse
       #   # A dimensional price group is used to partition the result of a billable metric
-      #   #   by a set of dimensions. Prices in a price group must specify the parition used
-      #   #   to derive their usage.
+      #   # by a set of dimensions. Prices in a price group must specify the parition used
+      #   # to derive their usage.
       #   #
       #   # @param id [String]
       #   # @param billable_metric_id [String]

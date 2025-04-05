@@ -7,8 +7,8 @@ module Orb
       attr_accessor :id
 
       # The billable metric associated with this dimensional price group. All prices
-      #   associated with this dimensional price group will be computed using this
-      #   billable metric.
+      # associated with this dimensional price group will be computed using this
+      # billable metric.
       sig { returns(String) }
       attr_accessor :billable_metric_id
 
@@ -21,9 +21,9 @@ module Orb
       attr_accessor :external_dimensional_price_group_id
 
       # User specified key-value pairs for the resource. If not present, this defaults
-      #   to an empty dictionary. Individual keys can be removed by setting the value to
-      #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-      #   `null`.
+      # to an empty dictionary. Individual keys can be removed by setting the value to
+      # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+      # `null`.
       sig { returns(T::Hash[Symbol, String]) }
       attr_accessor :metadata
 
@@ -32,8 +32,8 @@ module Orb
       attr_accessor :name
 
       # A dimensional price group is used to partition the result of a billable metric
-      #   by a set of dimensions. Prices in a price group must specify the parition used
-      #   to derive their usage.
+      # by a set of dimensions. Prices in a price group must specify the parition used
+      # to derive their usage.
       sig do
         params(
           id: String,

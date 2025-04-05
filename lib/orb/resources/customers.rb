@@ -13,17 +13,17 @@ module Orb
       attr_reader :balance_transactions
 
       # This operation is used to create an Orb customer, who is party to the core
-      #   billing relationship. See [Customer](/core-concepts##customer) for an overview
-      #   of the customer resource.
+      # billing relationship. See [Customer](/core-concepts##customer) for an overview
+      # of the customer resource.
       #
-      #   This endpoint is critical in the following Orb functionality:
+      # This endpoint is critical in the following Orb functionality:
       #
-      #   - Automated charges can be configured by setting `payment_provider` and
-      #     `payment_provider_id` to automatically issue invoices
-      #   - [Customer ID Aliases](/events-and-metrics/customer-aliases) can be configured
-      #     by setting `external_customer_id`
-      #   - [Timezone localization](/essentials/timezones) can be configured on a
-      #     per-customer basis by setting the `timezone` parameter
+      # - Automated charges can be configured by setting `payment_provider` and
+      #   `payment_provider_id` to automatically issue invoices
+      # - [Customer ID Aliases](/events-and-metrics/customer-aliases) can be configured
+      #   by setting `external_customer_id`
+      # - [Timezone localization](/essentials/timezones) can be configured on a
+      #   per-customer basis by setting the `timezone` parameter
       #
       # @overload create(email:, name:, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, billing_address: nil, currency: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, timezone: nil, request_options: {})
       #
@@ -62,10 +62,10 @@ module Orb
       end
 
       # This endpoint can be used to update the `payment_provider`,
-      #   `payment_provider_id`, `name`, `email`, `email_delivery`, `tax_id`,
-      #   `auto_collection`, `metadata`, `shipping_address`, `billing_address`, and
-      #   `additional_emails` of an existing customer. Other fields on a customer are
-      #   currently immutable.
+      # `payment_provider_id`, `name`, `email`, `email_delivery`, `tax_id`,
+      # `auto_collection`, `metadata`, `shipping_address`, `billing_address`, and
+      # `additional_emails` of an existing customer. Other fields on a customer are
+      # currently immutable.
       #
       # @overload update(customer_id, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
       #
@@ -104,11 +104,11 @@ module Orb
       end
 
       # This endpoint returns a list of all customers for an account. The list of
-      #   customers is ordered starting from the most recently created customer. This
-      #   endpoint follows Orb's
-      #   [standardized pagination format](/api-reference/pagination).
+      # customers is ordered starting from the most recently created customer. This
+      # endpoint follows Orb's
+      # [standardized pagination format](/api-reference/pagination).
       #
-      #   See [Customer](/core-concepts##customer) for an overview of the customer model.
+      # See [Customer](/core-concepts##customer) for an overview of the customer model.
       #
       # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, request_options: {})
       #
@@ -141,20 +141,20 @@ module Orb
       end
 
       # This performs a deletion of this customer, its subscriptions, and its invoices,
-      #   provided the customer does not have any issued invoices. Customers with issued
-      #   invoices cannot be deleted. This operation is irreversible. Note that this is a
-      #   _soft_ deletion, but the data will be inaccessible through the API and Orb
-      #   dashboard.
+      # provided the customer does not have any issued invoices. Customers with issued
+      # invoices cannot be deleted. This operation is irreversible. Note that this is a
+      # _soft_ deletion, but the data will be inaccessible through the API and Orb
+      # dashboard.
       #
-      #   For a hard-deletion, please reach out to the Orb team directly.
+      # For a hard-deletion, please reach out to the Orb team directly.
       #
-      #   **Note**: This operation happens asynchronously and can be expected to take a
-      #   few minutes to propagate to related resources. However, querying for the
-      #   customer on subsequent GET requests while deletion is in process will reflect
-      #   its deletion with a `deleted: true` property. Once the customer deletion has
-      #   been fully processed, the customer will not be returned in the API.
+      # **Note**: This operation happens asynchronously and can be expected to take a
+      # few minutes to propagate to related resources. However, querying for the
+      # customer on subsequent GET requests while deletion is in process will reflect
+      # its deletion with a `deleted: true` property. Once the customer deletion has
+      # been fully processed, the customer will not be returned in the API.
       #
-      #   On successful processing, this returns an empty dictionary (`{}`) in the API.
+      # On successful processing, this returns an empty dictionary (`{}`) in the API.
       #
       # @overload delete(customer_id, request_options: {})
       #
@@ -174,11 +174,11 @@ module Orb
       end
 
       # This endpoint is used to fetch customer details given an identifier. If the
-      #   `Customer` is in the process of being deleted, only the properties `id` and
-      #   `deleted: true` will be returned.
+      # `Customer` is in the process of being deleted, only the properties `id` and
+      # `deleted: true` will be returned.
       #
-      #   See the [Customer resource](/core-concepts#customer) for a full discussion of
-      #   the Customer model.
+      # See the [Customer resource](/core-concepts#customer) for a full discussion of
+      # the Customer model.
       #
       # @overload fetch(customer_id, request_options: {})
       #
@@ -198,10 +198,10 @@ module Orb
       end
 
       # This endpoint is used to fetch customer details given an `external_customer_id`
-      #   (see [Customer ID Aliases](/events-and-metrics/customer-aliases)).
+      # (see [Customer ID Aliases](/events-and-metrics/customer-aliases)).
       #
-      #   Note that the resource and semantics of this endpoint exactly mirror
-      #   [Get Customer](fetch-customer).
+      # Note that the resource and semantics of this endpoint exactly mirror
+      # [Get Customer](fetch-customer).
       #
       # @overload fetch_by_external_id(external_customer_id, request_options: {})
       #
@@ -222,10 +222,10 @@ module Orb
 
       # Sync Orb's payment methods for the customer with their gateway.
       #
-      #   This method can be called before taking an action that may cause the customer to
-      #   be charged, ensuring that the most up-to-date payment method is charged.
+      # This method can be called before taking an action that may cause the customer to
+      # be charged, ensuring that the most up-to-date payment method is charged.
       #
-      #   **Note**: This functionality is currently only available for Stripe.
+      # **Note**: This functionality is currently only available for Stripe.
       #
       # @overload sync_payment_methods_from_gateway(external_customer_id, request_options: {})
       #
@@ -249,10 +249,10 @@ module Orb
 
       # Sync Orb's payment methods for the customer with their gateway.
       #
-      #   This method can be called before taking an action that may cause the customer to
-      #   be charged, ensuring that the most up-to-date payment method is charged.
+      # This method can be called before taking an action that may cause the customer to
+      # be charged, ensuring that the most up-to-date payment method is charged.
       #
-      #   **Note**: This functionality is currently only available for Stripe.
+      # **Note**: This functionality is currently only available for Stripe.
       #
       # @overload sync_payment_methods_from_gateway_by_external_customer_id(customer_id, request_options: {})
       #
@@ -272,9 +272,9 @@ module Orb
       end
 
       # This endpoint is used to update customer details given an `external_customer_id`
-      #   (see [Customer ID Aliases](/events-and-metrics/customer-aliases)). Note that the
-      #   resource and semantics of this endpoint exactly mirror
-      #   [Update Customer](update-customer).
+      # (see [Customer ID Aliases](/events-and-metrics/customer-aliases)). Note that the
+      # resource and semantics of this endpoint exactly mirror
+      # [Update Customer](update-customer).
       #
       # @overload update_by_external_id(id, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
       #

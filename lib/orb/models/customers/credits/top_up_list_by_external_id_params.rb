@@ -12,7 +12,7 @@ module Orb
 
           # @!attribute cursor
           #   Cursor for pagination. This can be populated by the `next_cursor` value returned
-          #     from the initial request.
+          #   from the initial request.
           #
           #   @return [String, nil]
           optional :cursor, String, nil?: true

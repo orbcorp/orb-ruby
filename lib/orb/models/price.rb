@@ -3,15 +3,15 @@
 module Orb
   module Models
     # The Price resource represents a price that can be billed on a subscription,
-    #   resulting in a charge on an invoice in the form of an invoice line item. Prices
-    #   take a quantity and determine an amount to bill.
+    # resulting in a charge on an invoice in the form of an invoice line item. Prices
+    # take a quantity and determine an amount to bill.
     #
-    #   Orb supports a few different pricing models out of the box. Each of these models
-    #   is serialized differently in a given Price object. The model_type field
-    #   determines the key for the configuration object that is present.
+    # Orb supports a few different pricing models out of the box. Each of these models
+    # is serialized differently in a given Price object. The model_type field
+    # determines the key for the configuration object that is present.
     #
-    #   For more on the types of prices, see
-    #   [the core concepts documentation](/core-concepts#plan-and-price)
+    # For more on the types of prices, see
+    # [the core concepts documentation](/core-concepts#plan-and-price)
     #
     # @see Orb::Resources::Prices#create
     module Price
@@ -156,9 +156,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -414,7 +414,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -438,7 +438,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -590,9 +590,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -848,7 +848,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -872,7 +872,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -902,7 +902,7 @@ module Orb
 
           # @!attribute package_size
           #   An integer amount to represent package size. For example, 1000 here would divide
-          #     usage by 1000 before multiplying by package_amount in rating
+          #   usage by 1000 before multiplying by package_amount in rating
           #
           #   @return [Integer]
           required :package_size, Integer
@@ -1037,9 +1037,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -1319,8 +1319,8 @@ module Orb
           class MatrixValue < Orb::Internal::Type::BaseModel
             # @!attribute dimension_values
             #   One or two matrix keys to filter usage to this Matrix value by. For example,
-            #     ["region", "tier"] could be used to filter cloud usage by a cloud region and an
-            #     instance tier.
+            #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+            #   instance tier.
             #
             #   @return [Array<String, nil>]
             required :dimension_values, Orb::Internal::Type::ArrayOf[String, nil?: true]
@@ -1345,7 +1345,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -1369,7 +1369,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -1505,9 +1505,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -1763,7 +1763,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -1787,7 +1787,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -1969,9 +1969,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -2227,7 +2227,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -2251,7 +2251,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -2289,7 +2289,7 @@ module Orb
         class TieredBpsConfig < Orb::Internal::Type::BaseModel
           # @!attribute tiers
           #   Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
-          #     tiers
+          #   tiers
           #
           #   @return [Array<Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier>]
           required :tiers,
@@ -2446,9 +2446,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -2722,7 +2722,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -2746,7 +2746,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -2887,9 +2887,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -3044,7 +3044,7 @@ module Orb
         class BulkBpsConfig < Orb::Internal::Type::BaseModel
           # @!attribute tiers
           #   Tiers for a bulk BPS pricing model where all usage is aggregated to a single
-          #     tier based on total volume
+          #   tier based on total volume
           #
           #   @return [Array<Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier>]
           required :tiers,
@@ -3187,7 +3187,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -3211,7 +3211,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -3352,9 +3352,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -3643,7 +3643,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -3667,7 +3667,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -3808,9 +3808,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -4066,7 +4066,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -4090,7 +4090,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -4227,9 +4227,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -4485,7 +4485,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -4509,7 +4509,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -4651,9 +4651,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -4904,7 +4904,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -4928,7 +4928,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -5067,9 +5067,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -5325,7 +5325,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -5349,7 +5349,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -5490,9 +5490,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -5749,7 +5749,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -5773,7 +5773,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -5914,9 +5914,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -6172,7 +6172,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -6196,7 +6196,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -6333,9 +6333,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -6591,7 +6591,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -6615,7 +6615,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -6762,9 +6762,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -7051,8 +7051,8 @@ module Orb
           class MatrixValue < Orb::Internal::Type::BaseModel
             # @!attribute dimension_values
             #   One or two matrix keys to filter usage to this Matrix value by. For example,
-            #     ["region", "tier"] could be used to filter cloud usage by a cloud region and an
-            #     instance tier.
+            #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+            #   instance tier.
             #
             #   @return [Array<String, nil>]
             required :dimension_values, Orb::Internal::Type::ArrayOf[String, nil?: true]
@@ -7077,7 +7077,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -7101,7 +7101,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -7240,9 +7240,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -7498,7 +7498,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -7522,7 +7522,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -7661,9 +7661,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -7919,7 +7919,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -7943,7 +7943,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -8087,9 +8087,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -8340,7 +8340,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -8364,7 +8364,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -8511,9 +8511,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -8764,7 +8764,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -8788,7 +8788,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -8935,9 +8935,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -9188,7 +9188,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -9212,7 +9212,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -9358,9 +9358,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -9611,7 +9611,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -9635,7 +9635,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -9779,9 +9779,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -10032,7 +10032,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -10056,7 +10056,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -10202,9 +10202,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -10455,7 +10455,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -10479,7 +10479,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -10625,9 +10625,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -10878,7 +10878,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -10902,7 +10902,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -11043,9 +11043,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -11302,7 +11302,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -11326,7 +11326,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -11467,9 +11467,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -11726,7 +11726,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -11750,7 +11750,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -11896,9 +11896,9 @@ module Orb
 
         # @!attribute metadata
         #   User specified key-value pairs for the resource. If not present, this defaults
-        #     to an empty dictionary. Individual keys can be removed by setting the value to
-        #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #     `null`.
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
         #
         #   @return [Hash{Symbol=>String}]
         required :metadata, Orb::Internal::Type::HashOf[String]
@@ -12149,7 +12149,7 @@ module Orb
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #     maximums, this can be a subset of prices.
+          #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -12173,7 +12173,7 @@ module Orb
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #     minimums, this can be a subset of prices.
+          #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]

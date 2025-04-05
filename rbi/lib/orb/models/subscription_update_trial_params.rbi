@@ -7,12 +7,12 @@ module Orb
       include Orb::Internal::Type::RequestParameters
 
       # The new date that the trial should end, or the literal string `immediate` to end
-      #   the trial immediately.
+      # the trial immediately.
       sig { returns(T.any(Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol)) }
       attr_accessor :trial_end_date
 
       # If true, shifts subsequent price and adjustment intervals (preserving their
-      #   durations, but adjusting their absolute dates).
+      # durations, but adjusting their absolute dates).
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :shift
 
@@ -42,7 +42,7 @@ module Orb
       def to_hash; end
 
       # The new date that the trial should end, or the literal string `immediate` to end
-      #   the trial immediately.
+      # the trial immediately.
       module TrialEndDate
         extend Orb::Internal::Type::Union
 

@@ -7,13 +7,13 @@ module Orb
       include Orb::Internal::Type::RequestParameters
 
       # If false, this request will fail if it would void an issued invoice or create a
-      #   credit note. Consider using this as a safety mechanism if you do not expect
-      #   existing invoices to be changed.
+      # credit note. Consider using this as a safety mechanism if you do not expect
+      # existing invoices to be changed.
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :allow_invoice_credit_or_void
 
       # The date on which the phase change should take effect. If not provided, defaults
-      #   to today in the customer's timezone.
+      # to today in the customer's timezone.
       sig { returns(T.nilable(Date)) }
       attr_accessor :effective_date
 

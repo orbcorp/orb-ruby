@@ -7,8 +7,8 @@ module Orb
       include Orb::Internal::Type::RequestParameters
 
       # When specified in conjunction with `group_by`, this parameter filters usage to a
-      #   single billable metric. Note that both `group_by` and `billable_metric_id` must
-      #   be specified together.
+      # single billable metric. Note that both `group_by` and `billable_metric_id` must
+      # be specified together.
       sig { returns(T.nilable(String)) }
       attr_accessor :billable_metric_id
 
@@ -41,9 +41,9 @@ module Orb
       attr_accessor :timeframe_start
 
       # Controls whether Orb returns cumulative usage since the start of the billing
-      #   period, or incremental day-by-day usage. If your customer has minimums or
-      #   discounts, it's strongly recommended that you use the default cumulative
-      #   behavior.
+      # period, or incremental day-by-day usage. If your customer has minimums or
+      # discounts, it's strongly recommended that you use the default cumulative
+      # behavior.
       sig { returns(T.nilable(Orb::Models::SubscriptionFetchUsageParams::ViewMode::OrSymbol)) }
       attr_accessor :view_mode
 
@@ -111,9 +111,9 @@ module Orb
       end
 
       # Controls whether Orb returns cumulative usage since the start of the billing
-      #   period, or incremental day-by-day usage. If your customer has minimums or
-      #   discounts, it's strongly recommended that you use the default cumulative
-      #   behavior.
+      # period, or incremental day-by-day usage. If your customer has minimums or
+      # discounts, it's strongly recommended that you use the default cumulative
+      # behavior.
       module ViewMode
         extend Orb::Internal::Type::Enum
 

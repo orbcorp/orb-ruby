@@ -7,7 +7,7 @@ module Orb
       include Orb::Internal::Type::RequestParameters
 
       # Cursor for pagination. This can be populated by the `next_cursor` value returned
-      #   from the initial request.
+      # from the initial request.
       sig { returns(T.nilable(String)) }
       attr_accessor :cursor
 
@@ -23,7 +23,7 @@ module Orb
       attr_accessor :redemption_code
 
       # Show archived coupons as well (by default, this endpoint only returns active
-      #   coupons).
+      # coupons).
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :show_archived
 

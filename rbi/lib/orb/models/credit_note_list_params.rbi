@@ -19,7 +19,7 @@ module Orb
       attr_accessor :created_at_lte
 
       # Cursor for pagination. This can be populated by the `next_cursor` value returned
-      #   from the initial request.
+      # from the initial request.
       sig { returns(T.nilable(String)) }
       attr_accessor :cursor
 

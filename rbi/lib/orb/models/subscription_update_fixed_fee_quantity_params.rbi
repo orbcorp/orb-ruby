@@ -14,14 +14,14 @@ module Orb
       attr_accessor :quantity
 
       # If false, this request will fail if it would void an issued invoice or create a
-      #   credit note. Consider using this as a safety mechanism if you do not expect
-      #   existing invoices to be changed.
+      # credit note. Consider using this as a safety mechanism if you do not expect
+      # existing invoices to be changed.
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :allow_invoice_credit_or_void
 
       # Determines when the change takes effect. Note that if `effective_date` is
-      #   specified, this defaults to `effective_date`. Otherwise, this defaults to
-      #   `immediate` unless it's explicitly set to `upcoming_invoice`.
+      # specified, this defaults to `effective_date`. Otherwise, this defaults to
+      # `immediate` unless it's explicitly set to `upcoming_invoice`.
       sig { returns(T.nilable(Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::OrSymbol)) }
       attr_reader :change_option
 
@@ -29,8 +29,8 @@ module Orb
       attr_writer :change_option
 
       # The date that the quantity change should take effect, localized to the
-      #   customer's timezone. Ifthis parameter is not passed in, the quantity change is
-      #   effective according to `change_option`.
+      # customer's timezone. Ifthis parameter is not passed in, the quantity change is
+      # effective according to `change_option`.
       sig { returns(T.nilable(Date)) }
       attr_accessor :effective_date
 
@@ -69,8 +69,8 @@ module Orb
       def to_hash; end
 
       # Determines when the change takes effect. Note that if `effective_date` is
-      #   specified, this defaults to `effective_date`. Otherwise, this defaults to
-      #   `immediate` unless it's explicitly set to `upcoming_invoice`.
+      # specified, this defaults to `effective_date`. Otherwise, this defaults to
+      # `immediate` unless it's explicitly set to `upcoming_invoice`.
       module ChangeOption
         extend Orb::Internal::Type::Enum
 

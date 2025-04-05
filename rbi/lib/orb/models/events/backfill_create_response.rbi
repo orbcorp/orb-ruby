@@ -8,7 +8,7 @@ module Orb
         attr_accessor :id
 
         # If in the future, the time at which the backfill will automatically close. If in
-        #   the past, the time at which the backfill was closed.
+        # the past, the time at which the backfill was closed.
         sig { returns(T.nilable(Time)) }
         attr_accessor :close_time
 
@@ -16,7 +16,7 @@ module Orb
         attr_accessor :created_at
 
         # The Orb-generated ID of the customer to which this backfill is scoped. If
-        #   `null`, this backfill is scoped to all customers.
+        # `null`, this backfill is scoped to all customers.
         sig { returns(T.nilable(String)) }
         attr_accessor :customer_id
 
@@ -25,8 +25,8 @@ module Orb
         attr_accessor :events_ingested
 
         # If `true`, existing events in the backfill's timeframe will be replaced with the
-        #   newly ingested events associated with the backfill. If `false`, newly ingested
-        #   events will be added to the existing events.
+        # newly ingested events associated with the backfill. If `false`, newly ingested
+        # events will be added to the existing events.
         sig { returns(T::Boolean) }
         attr_accessor :replace_existing_events
 
@@ -45,13 +45,13 @@ module Orb
         attr_accessor :timeframe_start
 
         # A boolean
-        #   [computed property](/extensibility/advanced-metrics#computed-properties) used to
-        #   filter the set of events to deprecate
+        # [computed property](/extensibility/advanced-metrics#computed-properties) used to
+        # filter the set of events to deprecate
         sig { returns(T.nilable(String)) }
         attr_accessor :deprecation_filter
 
         # A backfill represents an update to historical usage data, adding or replacing
-        #   events in a timeframe.
+        # events in a timeframe.
         sig do
           params(
             id: String,

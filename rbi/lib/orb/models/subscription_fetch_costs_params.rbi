@@ -19,9 +19,9 @@ module Orb
       attr_accessor :timeframe_start
 
       # Controls whether Orb returns cumulative costs since the start of the billing
-      #   period, or incremental day-by-day costs. If your customer has minimums or
-      #   discounts, it's strongly recommended that you use the default cumulative
-      #   behavior.
+      # period, or incremental day-by-day costs. If your customer has minimums or
+      # discounts, it's strongly recommended that you use the default cumulative
+      # behavior.
       sig { returns(T.nilable(Orb::Models::SubscriptionFetchCostsParams::ViewMode::OrSymbol)) }
       attr_accessor :view_mode
 
@@ -59,9 +59,9 @@ module Orb
       def to_hash; end
 
       # Controls whether Orb returns cumulative costs since the start of the billing
-      #   period, or incremental day-by-day costs. If your customer has minimums or
-      #   discounts, it's strongly recommended that you use the default cumulative
-      #   behavior.
+      # period, or incremental day-by-day costs. If your customer has minimums or
+      # discounts, it's strongly recommended that you use the default cumulative
+      # behavior.
       module ViewMode
         extend Orb::Internal::Type::Enum
 

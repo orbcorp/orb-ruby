@@ -48,7 +48,7 @@ module Orb
       attr_writer :subscription
 
       # The thresholds that define the conditions under which the alert will be
-      #   triggered.
+      # triggered.
       sig { returns(T.nilable(T::Array[Orb::Models::Alert::Threshold])) }
       attr_accessor :thresholds
 
@@ -57,10 +57,10 @@ module Orb
       attr_accessor :type
 
       # [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
-      #   usage, or credit balance and trigger webhooks when a threshold is exceeded.
+      # usage, or credit balance and trigger webhooks when a threshold is exceeded.
       #
-      #   Alerts created through the API can be scoped to either customers or
-      #   subscriptions.
+      # Alerts created through the API can be scoped to either customers or
+      # subscriptions.
       sig do
         params(
           id: String,
@@ -141,8 +141,8 @@ module Orb
         attr_accessor :id
 
         # An optional user-defined ID for this plan resource, used throughout the system
-        #   as an alias for this Plan. Use this field to identify a plan by an existing
-        #   identifier in your system.
+        # as an alias for this Plan. Use this field to identify a plan by an existing
+        # identifier in your system.
         sig { returns(T.nilable(String)) }
         attr_accessor :external_plan_id
 
@@ -192,13 +192,13 @@ module Orb
 
       class Threshold < Orb::Internal::Type::BaseModel
         # The value at which an alert will fire. For credit balance alerts, the alert will
-        #   fire at or below this value. For usage and cost alerts, the alert will fire at
-        #   or above this value.
+        # fire at or below this value. For usage and cost alerts, the alert will fire at
+        # or above this value.
         sig { returns(Float) }
         attr_accessor :value
 
         # Thresholds are used to define the conditions under which an alert will be
-        #   triggered.
+        # triggered.
         sig { params(value: Float).returns(T.attached_class) }
         def self.new(value:); end
 

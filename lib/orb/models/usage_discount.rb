@@ -5,7 +5,7 @@ module Orb
     class UsageDiscount < Orb::Internal::Type::BaseModel
       # @!attribute applies_to_price_ids
       #   List of price_ids that this discount applies to. For plan/plan phase discounts,
-      #     this can be a subset of prices.
+      #   this can be a subset of prices.
       #
       #   @return [Array<String>]
       required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -17,7 +17,7 @@ module Orb
 
       # @!attribute usage_discount
       #   Only available if discount_type is `usage`. Number of usage units that this
-      #     discount is for
+      #   discount is for
       #
       #   @return [Float]
       required :usage_discount, Float

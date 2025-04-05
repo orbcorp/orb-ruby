@@ -36,7 +36,7 @@ module Orb
 
           # @!parse
           #   # An EventVolume contains the event volume ingested in an hourly window. The
-          #   #   timestamp used for the aggregation is the `timestamp` datetime field on events.
+          #   # timestamp used for the aggregation is the `timestamp` datetime field on events.
           #   #
           #   # @param count [Integer]
           #   # @param timeframe_end [Time]

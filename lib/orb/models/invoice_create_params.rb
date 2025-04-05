@@ -10,14 +10,14 @@ module Orb
 
       # @!attribute currency
       #   An ISO 4217 currency string. Must be the same as the customer's currency if it
-      #     is set.
+      #   is set.
       #
       #   @return [String]
       required :currency, String
 
       # @!attribute invoice_date
       #   Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
-      #     set to the current time in the customer's timezone.
+      #   set to the current time in the customer's timezone.
       #
       #   @return [Time]
       required :invoice_date, Time
@@ -29,16 +29,16 @@ module Orb
 
       # @!attribute net_terms
       #   Determines the difference between the invoice issue date for subscription
-      #     invoices as the date that they are due. A value of '0' here represents that the
-      #     invoice is due on issue, whereas a value of 30 represents that the customer has
-      #     30 days to pay the invoice.
+      #   invoices as the date that they are due. A value of '0' here represents that the
+      #   invoice is due on issue, whereas a value of 30 represents that the customer has
+      #   30 days to pay the invoice.
       #
       #   @return [Integer]
       required :net_terms, Integer
 
       # @!attribute customer_id
       #   The id of the `Customer` to create this invoice for. One of `customer_id` and
-      #     `external_customer_id` are required.
+      #   `external_customer_id` are required.
       #
       #   @return [String, nil]
       optional :customer_id, String, nil?: true
@@ -51,7 +51,7 @@ module Orb
 
       # @!attribute external_customer_id
       #   The `external_customer_id` of the `Customer` to create this invoice for. One of
-      #     `customer_id` and `external_customer_id` are required.
+      #   `customer_id` and `external_customer_id` are required.
       #
       #   @return [String, nil]
       optional :external_customer_id, String, nil?: true
@@ -64,15 +64,15 @@ module Orb
 
       # @!attribute metadata
       #   User-specified key/value pairs for the resource. Individual keys can be removed
-      #     by setting the value to `null`, and the entire metadata mapping can be cleared
-      #     by setting `metadata` to `null`.
+      #   by setting the value to `null`, and the entire metadata mapping can be cleared
+      #   by setting `metadata` to `null`.
       #
       #   @return [Hash{Symbol=>String, nil}, nil]
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
       # @!attribute [r] will_auto_issue
       #   When true, this invoice will automatically be issued upon creation. When false,
-      #     the resulting invoice will require manual review to issue. Defaulted to false.
+      #   the resulting invoice will require manual review to issue. Defaulted to false.
       #
       #   @return [Boolean, nil]
       optional :will_auto_issue, Orb::Internal::Type::Boolean

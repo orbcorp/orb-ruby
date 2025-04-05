@@ -11,13 +11,13 @@ module Orb
       attr_accessor :event_name
 
       # A dictionary of custom properties. Values in this dictionary must be numeric,
-      #   boolean, or strings. Nested dictionaries are disallowed.
+      # boolean, or strings. Nested dictionaries are disallowed.
       sig { returns(T.anything) }
       attr_accessor :properties
 
       # An ISO 8601 format date with no timezone offset (i.e. UTC). This should
-      #   represent the time that usage was recorded, and is particularly important to
-      #   attribute usage to a given billing period.
+      # represent the time that usage was recorded, and is particularly important to
+      # attribute usage to a given billing period.
       sig { returns(Time) }
       attr_accessor :timestamp
 
@@ -26,7 +26,7 @@ module Orb
       attr_accessor :customer_id
 
       # An alias for the Orb customer, whose mapping is specified when creating the
-      #   customer
+      # customer
       sig { returns(T.nilable(String)) }
       attr_accessor :external_customer_id
 

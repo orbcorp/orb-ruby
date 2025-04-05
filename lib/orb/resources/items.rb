@@ -42,7 +42,7 @@ module Orb
       end
 
       # This endpoint returns a list of all Items, ordered in descending order by
-      #   creation time.
+      # creation time.
       #
       # @overload list(cursor: nil, limit: nil, request_options: {})
       #

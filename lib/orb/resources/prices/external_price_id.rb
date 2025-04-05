@@ -5,8 +5,8 @@ module Orb
     class Prices
       class ExternalPriceID
         # This endpoint allows you to update the `metadata` property on a price. If you
-        #   pass null for the metadata value, it will clear any existing metadata for that
-        #   price.
+        # pass null for the metadata value, it will clear any existing metadata for that
+        # price.
         #
         # @overload update(external_price_id, metadata: nil, request_options: {})
         #
@@ -29,8 +29,8 @@ module Orb
         end
 
         # This endpoint returns a price given an external price id. See the
-        #   [price creation API](/api-reference/price/create-price) for more information
-        #   about external price aliases.
+        # [price creation API](/api-reference/price/create-price) for more information
+        # about external price aliases.
         #
         # @overload fetch(external_price_id, request_options: {})
         #

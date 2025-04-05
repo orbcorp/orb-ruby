@@ -3,15 +3,15 @@
 module Orb
   module Models
     # The Price resource represents a price that can be billed on a subscription,
-    #   resulting in a charge on an invoice in the form of an invoice line item. Prices
-    #   take a quantity and determine an amount to bill.
+    # resulting in a charge on an invoice in the form of an invoice line item. Prices
+    # take a quantity and determine an amount to bill.
     #
-    #   Orb supports a few different pricing models out of the box. Each of these models
-    #   is serialized differently in a given Price object. The model_type field
-    #   determines the key for the configuration object that is present.
+    # Orb supports a few different pricing models out of the box. Each of these models
+    # is serialized differently in a given Price object. The model_type field
+    # determines the key for the configuration object that is present.
     #
-    #   For more on the types of prices, see
-    #   [the core concepts documentation](/core-concepts#plan-and-price)
+    # For more on the types of prices, see
+    # [the core concepts documentation](/core-concepts#plan-and-price)
     module Price
       extend Orb::Internal::Type::Union
 
@@ -111,9 +111,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -422,7 +422,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -441,7 +441,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -599,9 +599,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -917,7 +917,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -936,7 +936,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -959,7 +959,7 @@ module Orb
           attr_accessor :package_amount
 
           # An integer amount to represent package size. For example, 1000 here would divide
-          #   usage by 1000 before multiplying by package_amount in rating
+          # usage by 1000 before multiplying by package_amount in rating
           sig { returns(Integer) }
           attr_accessor :package_size
 
@@ -1106,9 +1106,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -1449,8 +1449,8 @@ module Orb
 
           class MatrixValue < Orb::Internal::Type::BaseModel
             # One or two matrix keys to filter usage to this Matrix value by. For example,
-            #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
-            #   instance tier.
+            # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+            # instance tier.
             sig { returns(T::Array[T.nilable(String)]) }
             attr_accessor :dimension_values
 
@@ -1473,7 +1473,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -1492,7 +1492,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -1639,9 +1639,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -1953,7 +1953,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -1972,7 +1972,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -2164,9 +2164,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -2493,7 +2493,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -2512,7 +2512,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -2545,7 +2545,7 @@ module Orb
 
         class TieredBpsConfig < Orb::Internal::Type::BaseModel
           # Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
-          #   tiers
+          # tiers
           sig { returns(T::Array[Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier]) }
           attr_accessor :tiers
 
@@ -2725,9 +2725,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -3040,7 +3040,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -3059,7 +3059,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -3214,9 +3214,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -3422,7 +3422,7 @@ module Orb
 
         class BulkBpsConfig < Orb::Internal::Type::BaseModel
           # Tiers for a bulk BPS pricing model where all usage is aggregated to a single
-          #   tier based on total volume
+          # tier based on total volume
           sig { returns(T::Array[Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier]) }
           attr_accessor :tiers
 
@@ -3573,7 +3573,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -3592,7 +3592,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -3745,9 +3745,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -4081,7 +4081,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -4100,7 +4100,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -4253,9 +4253,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -4605,7 +4605,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -4624,7 +4624,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -4776,9 +4776,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -5109,7 +5109,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -5128,7 +5128,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -5283,9 +5283,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -5613,7 +5613,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -5632,7 +5632,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -5786,9 +5786,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -6128,7 +6128,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -6147,7 +6147,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -6311,9 +6311,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -6676,7 +6676,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -6695,7 +6695,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -6852,9 +6852,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -7204,7 +7204,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -7223,7 +7223,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -7379,9 +7379,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -7717,7 +7717,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -7736,7 +7736,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -7901,9 +7901,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -8296,8 +8296,8 @@ module Orb
 
           class MatrixValue < Orb::Internal::Type::BaseModel
             # One or two matrix keys to filter usage to this Matrix value by. For example,
-            #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
-            #   instance tier.
+            # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+            # instance tier.
             sig { returns(T::Array[T.nilable(String)]) }
             attr_accessor :dimension_values
 
@@ -8320,7 +8320,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -8339,7 +8339,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -8493,9 +8493,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -8839,7 +8839,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -8858,7 +8858,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -9012,9 +9012,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -9354,7 +9354,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -9373,7 +9373,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -9530,9 +9530,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -9869,7 +9869,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -9888,7 +9888,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -10057,9 +10057,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -10424,7 +10424,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -10443,7 +10443,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -10613,9 +10613,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -10978,7 +10978,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -10997,7 +10997,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -11157,9 +11157,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -11506,7 +11506,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -11525,7 +11525,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -11684,9 +11684,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -12023,7 +12023,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -12042,7 +12042,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -12199,9 +12199,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -12548,7 +12548,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -12567,7 +12567,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -12724,9 +12724,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -13073,7 +13073,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -13092,7 +13092,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -13261,9 +13261,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -13635,7 +13635,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -13654,7 +13654,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -13830,9 +13830,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -14217,7 +14217,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -14236,7 +14236,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -14399,9 +14399,9 @@ module Orb
         attr_accessor :maximum_amount
 
         # User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
@@ -14748,7 +14748,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -14767,7 +14767,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 

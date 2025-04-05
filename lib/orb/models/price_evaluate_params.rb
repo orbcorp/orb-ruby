@@ -34,16 +34,16 @@ module Orb
 
       # @!attribute filter
       #   A boolean
-      #     [computed property](/extensibility/advanced-metrics#computed-properties) used to
-      #     filter the underlying billable metric
+      #   [computed property](/extensibility/advanced-metrics#computed-properties) used to
+      #   filter the underlying billable metric
       #
       #   @return [String, nil]
       optional :filter, String, nil?: true
 
       # @!attribute [r] grouping_keys
       #   Properties (or
-      #     [computed properties](/extensibility/advanced-metrics#computed-properties)) used
-      #     to group the underlying billable metric
+      #   [computed properties](/extensibility/advanced-metrics#computed-properties)) used
+      #   to group the underlying billable metric
       #
       #   @return [Array<String>, nil]
       optional :grouping_keys, Orb::Internal::Type::ArrayOf[String]

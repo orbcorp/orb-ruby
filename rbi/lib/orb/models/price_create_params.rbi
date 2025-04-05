@@ -32,17 +32,17 @@ module Orb
       attr_writer :unit_config
 
       # The id of the billable metric for the price. Only needed if the price is
-      #   usage-based.
+      # usage-based.
       sig { returns(T.nilable(String)) }
       attr_accessor :billable_metric_id
 
       # If the Price represents a fixed cost, the price will be billed in-advance if
-      #   this is true, and in-arrears if this is false.
+      # this is true, and in-arrears if this is false.
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :billed_in_advance
 
       # For custom cadence: specifies the duration of the billing period in days or
-      #   months.
+      # months.
       sig { returns(T.nilable(Orb::Models::PriceCreateParams::BillingCycleConfiguration)) }
       attr_reader :billing_cycle_configuration
 
@@ -63,7 +63,7 @@ module Orb
       attr_accessor :external_price_id
 
       # If the Price represents a fixed cost, this represents the quantity of units
-      #   applied.
+      # applied.
       sig { returns(T.nilable(Float)) }
       attr_accessor :fixed_price_quantity
 
@@ -72,7 +72,7 @@ module Orb
       attr_accessor :invoice_grouping_key
 
       # Within each billing cycle, specifies the cadence at which invoices are produced.
-      #   If unspecified, a single invoice is produced per billing cycle.
+      # If unspecified, a single invoice is produced per billing cycle.
       sig { returns(T.nilable(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration)) }
       attr_reader :invoicing_cycle_configuration
 
@@ -85,8 +85,8 @@ module Orb
       attr_writer :invoicing_cycle_configuration
 
       # User-specified key/value pairs for the resource. Individual keys can be removed
-      #   by setting the value to `null`, and the entire metadata mapping can be cleared
-      #   by setting `metadata` to `null`.
+      # by setting the value to `null`, and the entire metadata mapping can be cleared
+      # by setting `metadata` to `null`.
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
       attr_accessor :metadata
 
@@ -402,7 +402,7 @@ module Orb
         attr_accessor :duration_unit
 
         # For custom cadence: specifies the duration of the billing period in days or
-        #   months.
+        # months.
         sig do
           params(
             duration: Integer,
@@ -460,7 +460,7 @@ module Orb
         attr_accessor :duration_unit
 
         # Within each billing cycle, specifies the cadence at which invoices are produced.
-        #   If unspecified, a single invoice is produced per billing cycle.
+        # If unspecified, a single invoice is produced per billing cycle.
         sig do
           params(
             duration: Integer,
@@ -515,7 +515,7 @@ module Orb
         attr_accessor :package_amount
 
         # An integer amount to represent package size. For example, 1000 here would divide
-        #   usage by 1000 before multiplying by package_amount in rating
+        # usage by 1000 before multiplying by package_amount in rating
         sig { returns(Integer) }
         attr_accessor :package_size
 
@@ -563,8 +563,8 @@ module Orb
 
         class MatrixValue < Orb::Internal::Type::BaseModel
           # One or two matrix keys to filter usage to this Matrix value by. For example,
-          #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
-          #   instance tier.
+          # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+          # instance tier.
           sig { returns(T::Array[T.nilable(String)]) }
           attr_accessor :dimension_values
 
@@ -628,8 +628,8 @@ module Orb
 
         class MatrixValue < Orb::Internal::Type::BaseModel
           # One or two matrix keys to filter usage to this Matrix value by. For example,
-          #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
-          #   instance tier.
+          # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+          # instance tier.
           sig { returns(T::Array[T.nilable(String)]) }
           attr_accessor :dimension_values
 
@@ -693,7 +693,7 @@ module Orb
 
       class TieredBpsConfig < Orb::Internal::Type::BaseModel
         # Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
-        #   tiers
+        # tiers
         sig { returns(T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]) }
         attr_accessor :tiers
 
@@ -769,7 +769,7 @@ module Orb
 
       class BulkBpsConfig < Orb::Internal::Type::BaseModel
         # Tiers for a bulk BPS pricing model where all usage is aggregated to a single
-        #   tier based on total volume
+        # tier based on total volume
         sig { returns(T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]) }
         attr_accessor :tiers
 

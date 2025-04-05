@@ -21,14 +21,14 @@ module Orb
 
       # @!attribute duration_in_months
       #   This allows for a coupon's discount to apply for a limited time (determined in
-      #     months); a `null` value here means "unlimited time".
+      #   months); a `null` value here means "unlimited time".
       #
       #   @return [Integer, nil]
       optional :duration_in_months, Integer, nil?: true
 
       # @!attribute max_redemptions
       #   The maximum number of redemptions allowed for this coupon before it is
-      #     exhausted;`null` here means "unlimited".
+      #   exhausted;`null` here means "unlimited".
       #
       #   @return [Integer, nil]
       optional :max_redemptions, Integer, nil?: true
