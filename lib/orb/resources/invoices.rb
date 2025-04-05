@@ -104,7 +104,16 @@ module Orb
         @client.request(
           method: :get,
           path: "invoices",
-          query: parsed,
+          query: parsed.transform_keys(
+            amount_gt: :"amount[gt]",
+            amount_lt: :"amount[lt]",
+            due_date_gt: :"due_date[gt]",
+            due_date_lt: :"due_date[lt]",
+            invoice_date_gt: :"invoice_date[gt]",
+            invoice_date_gte: :"invoice_date[gte]",
+            invoice_date_lt: :"invoice_date[lt]",
+            invoice_date_lte: :"invoice_date[lte]"
+          ),
           page: Orb::Internal::Page,
           model: Orb::Models::Invoice,
           options: options
