@@ -110,7 +110,12 @@ module Orb
             @client.request(
               method: :get,
               path: ["customers/%1$s/credits/ledger", customer_id],
-              query: parsed,
+              query: parsed.transform_keys(
+                created_at_gt: :"created_at[gt]",
+                created_at_gte: :"created_at[gte]",
+                created_at_lt: :"created_at[lt]",
+                created_at_lte: :"created_at[lte]"
+              ),
               page: Orb::Internal::Page,
               model: Orb::Models::Customers::Credits::LedgerListResponse,
               options: options
@@ -507,7 +512,12 @@ module Orb
             @client.request(
               method: :get,
               path: ["customers/external_customer_id/%1$s/credits/ledger", external_customer_id],
-              query: parsed,
+              query: parsed.transform_keys(
+                created_at_gt: :"created_at[gt]",
+                created_at_gte: :"created_at[gte]",
+                created_at_lt: :"created_at[lt]",
+                created_at_lte: :"created_at[lte]"
+              ),
               page: Orb::Internal::Page,
               model: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse,
               options: options
