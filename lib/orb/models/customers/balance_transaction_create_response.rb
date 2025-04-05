@@ -43,7 +43,7 @@ module Orb
 
         # @!attribute ending_balance
         #   The new value of the customer's balance prior to the transaction, in the
-        #     customer's currency.
+        #   customer's currency.
         #
         #   @return [String]
         required :ending_balance, String
@@ -55,7 +55,7 @@ module Orb
 
         # @!attribute starting_balance
         #   The original value of the customer's balance prior to the transaction, in the
-        #     customer's currency.
+        #   customer's currency.
         #
         #   @return [String]
         required :starting_balance, String

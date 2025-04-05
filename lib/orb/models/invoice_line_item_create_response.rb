@@ -12,15 +12,15 @@ module Orb
 
       # @!attribute adjusted_subtotal
       #   The line amount after any adjustments and before overage conversion, credits and
-      #     partial invoicing.
+      #   partial invoicing.
       #
       #   @return [String]
       required :adjusted_subtotal, String
 
       # @!attribute adjustments
       #   All adjustments applied to the line item in the order they were applied based on
-      #     invoice calculations (ie. usage discounts -> amount discounts -> percentage
-      #     discounts -> minimums -> maximums).
+      #   invoice calculations (ie. usage discounts -> amount discounts -> percentage
+      #   discounts -> minimums -> maximums).
       #
       #   @return [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment>]
       required :adjustments,
@@ -28,7 +28,7 @@ module Orb
 
       # @!attribute amount
       #   The final amount for a line item after all adjustments and pre paid credits have
-      #     been applied.
+      #   been applied.
       #
       #   @return [String]
       required :amount, String
@@ -58,8 +58,8 @@ module Orb
 
       # @!attribute grouping
       #   [DEPRECATED] For configured prices that are split by a grouping key, this will
-      #     be populated with the key and a value. The `amount` and `subtotal` will be the
-      #     values for this particular grouping.
+      #   be populated with the key and a value. The `amount` and `subtotal` will be the
+      #   values for this particular grouping.
       #
       #   @return [String, nil]
       required :grouping, String, nil?: true
@@ -102,15 +102,15 @@ module Orb
 
       # @!attribute price
       #   The Price resource represents a price that can be billed on a subscription,
-      #     resulting in a charge on an invoice in the form of an invoice line item. Prices
-      #     take a quantity and determine an amount to bill.
+      #   resulting in a charge on an invoice in the form of an invoice line item. Prices
+      #   take a quantity and determine an amount to bill.
       #
-      #     Orb supports a few different pricing models out of the box. Each of these models
-      #     is serialized differently in a given Price object. The model_type field
-      #     determines the key for the configuration object that is present.
+      #   Orb supports a few different pricing models out of the box. Each of these models
+      #   is serialized differently in a given Price object. The model_type field
+      #   determines the key for the configuration object that is present.
       #
-      #     For more on the types of prices, see
-      #     [the core concepts documentation](/core-concepts#plan-and-price)
+      #   For more on the types of prices, see
+      #   [the core concepts documentation](/core-concepts#plan-and-price)
       #
       #   @return [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice, nil]
       required :price, union: -> { Orb::Models::Price }, nil?: true
@@ -129,7 +129,7 @@ module Orb
 
       # @!attribute sub_line_items
       #   For complex pricing structures, the line item can be broken down further in
-      #     `sub_line_items`.
+      #   `sub_line_items`.
       #
       #   @return [Array<Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem>]
       required :sub_line_items,
@@ -143,7 +143,7 @@ module Orb
 
       # @!attribute tax_amounts
       #   An array of tax rates and their incurred tax amounts. Empty if no tax
-      #     integration is configured.
+      #   integration is configured.
       #
       #   @return [Array<Orb::Models::InvoiceLineItemCreateResponse::TaxAmount>]
       required :tax_amounts,
@@ -252,7 +252,7 @@ module Orb
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
-          #     that apply to only one price.
+          #   that apply to only one price.
           #
           #   @return [Boolean]
           required :is_invoice_level, Orb::Internal::Type::Boolean
@@ -265,7 +265,7 @@ module Orb
 
           # @!attribute usage_discount
           #   The number of usage units by which to discount the price this adjustment applies
-          #     to in a given billing period.
+          #   to in a given billing period.
           #
           #   @return [Float]
           required :usage_discount, Float
@@ -314,7 +314,7 @@ module Orb
 
           # @!attribute amount_discount
           #   The amount by which to discount the prices this adjustment applies to in a given
-          #     billing period.
+          #   billing period.
           #
           #   @return [String]
           required :amount_discount, String
@@ -327,7 +327,7 @@ module Orb
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
-          #     that apply to only one price.
+          #   that apply to only one price.
           #
           #   @return [Boolean]
           required :is_invoice_level, Orb::Internal::Type::Boolean
@@ -388,14 +388,14 @@ module Orb
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
-          #     that apply to only one price.
+          #   that apply to only one price.
           #
           #   @return [Boolean]
           required :is_invoice_level, Orb::Internal::Type::Boolean
 
           # @!attribute percentage_discount
           #   The percentage (as a value between 0 and 1) by which to discount the price
-          #     intervals this adjustment applies to in a given billing period.
+          #   intervals this adjustment applies to in a given billing period.
           #
           #   @return [Float]
           required :percentage_discount, Float
@@ -456,7 +456,7 @@ module Orb
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
-          #     that apply to only one price.
+          #   that apply to only one price.
           #
           #   @return [Boolean]
           required :is_invoice_level, Orb::Internal::Type::Boolean
@@ -469,7 +469,7 @@ module Orb
 
           # @!attribute minimum_amount
           #   The minimum amount to charge in a given billing period for the prices this
-          #     adjustment applies to.
+          #   adjustment applies to.
           #
           #   @return [String]
           required :minimum_amount, String
@@ -532,14 +532,14 @@ module Orb
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
-          #     that apply to only one price.
+          #   that apply to only one price.
           #
           #   @return [Boolean]
           required :is_invoice_level, Orb::Internal::Type::Boolean
 
           # @!attribute maximum_amount
           #   The maximum amount to charge in a given billing period for the prices this
-          #     adjustment applies to.
+          #   adjustment applies to.
           #
           #   @return [String]
           required :maximum_amount, String
@@ -586,7 +586,7 @@ module Orb
       class Maximum < Orb::Internal::Type::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this maximum amount applies to. For plan/plan phase
-        #     maximums, this can be a subset of prices.
+        #   maximums, this can be a subset of prices.
         #
         #   @return [Array<String>]
         required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
@@ -614,7 +614,7 @@ module Orb
       class Minimum < Orb::Internal::Type::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this minimum amount applies to. For plan/plan phase
-        #     minimums, this can be a subset of prices.
+        #   minimums, this can be a subset of prices.
         #
         #   @return [Array<String>]
         required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]

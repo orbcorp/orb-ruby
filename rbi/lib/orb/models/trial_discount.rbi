@@ -4,7 +4,7 @@ module Orb
   module Models
     class TrialDiscount < Orb::Internal::Type::BaseModel
       # List of price_ids that this discount applies to. For plan/plan phase discounts,
-      #   this can be a subset of prices.
+      # this can be a subset of prices.
       sig { returns(T::Array[String]) }
       attr_accessor :applies_to_price_ids
 

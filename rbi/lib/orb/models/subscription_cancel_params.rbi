@@ -11,13 +11,13 @@ module Orb
       attr_accessor :cancel_option
 
       # If false, this request will fail if it would void an issued invoice or create a
-      #   credit note. Consider using this as a safety mechanism if you do not expect
-      #   existing invoices to be changed.
+      # credit note. Consider using this as a safety mechanism if you do not expect
+      # existing invoices to be changed.
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :allow_invoice_credit_or_void
 
       # The date that the cancellation should take effect. This parameter can only be
-      #   passed if the `cancel_option` is `requested_date`.
+      # passed if the `cancel_option` is `requested_date`.
       sig { returns(T.nilable(Time)) }
       attr_accessor :cancellation_date
 

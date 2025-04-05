@@ -16,7 +16,7 @@ module Orb
       attr_accessor :amount_lt
 
       # Cursor for pagination. This can be populated by the `next_cursor` value returned
-      #   from the initial request.
+      # from the initial request.
       sig { returns(T.nilable(String)) }
       attr_accessor :cursor
 
@@ -30,9 +30,9 @@ module Orb
       attr_accessor :due_date
 
       # Filters invoices by their due dates within a specific time range in the past.
-      #   Specify the range as a number followed by 'd' (days) or 'm' (months). For
-      #   example, '7d' filters invoices due in the last 7 days, and '2m' filters those
-      #   due in the last 2 months.
+      # Specify the range as a number followed by 'd' (days) or 'm' (months). For
+      # example, '7d' filters invoices due in the last 7 days, and '2m' filters those
+      # due in the last 2 months.
       sig { returns(T.nilable(String)) }
       attr_accessor :due_date_window
 

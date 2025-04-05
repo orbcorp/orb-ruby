@@ -7,18 +7,18 @@ module Orb
       attr_accessor :id
 
       # The current plan phase that is active, only if the subscription's plan has
-      #   phases.
+      # phases.
       sig { returns(T.nilable(Integer)) }
       attr_accessor :active_plan_phase_order
 
       # The adjustment intervals for this subscription sorted by the start_date of the
-      #   adjustment interval.
+      # adjustment interval.
       sig { returns(T::Array[Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval]) }
       attr_accessor :adjustment_intervals
 
       # Determines whether issued invoices for this subscription will automatically be
-      #   charged with the saved payment method on the due date. This property defaults to
-      #   the plan's behavior. If null, defaults to the customer's setting.
+      # charged with the saved payment method on the due date. This property defaults to
+      # the plan's behavior. If null, defaults to the customer's setting.
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :auto_collection
 
@@ -37,9 +37,9 @@ module Orb
       attr_writer :billing_cycle_anchor_configuration
 
       # The day of the month on which the billing cycle is anchored. If the maximum
-      #   number of days in a month is greater than this value, the last day of the month
-      #   is the billing cycle day (e.g. billing_cycle_day=31 for April means the billing
-      #   period begins on the 30th.
+      # number of days in a month is greater than this value, the last day of the month
+      # is the billing cycle day (e.g. billing_cycle_day=31 for April means the billing
+      # period begins on the 30th.
       sig { returns(Integer) }
       attr_accessor :billing_cycle_day
 
@@ -47,35 +47,35 @@ module Orb
       attr_accessor :created_at
 
       # The end of the current billing period. This is an exclusive timestamp, such that
-      #   the instant returned is not part of the billing period. Set to null for
-      #   subscriptions that are not currently active.
+      # the instant returned is not part of the billing period. Set to null for
+      # subscriptions that are not currently active.
       sig { returns(T.nilable(Time)) }
       attr_accessor :current_billing_period_end_date
 
       # The start date of the current billing period. This is an inclusive timestamp;
-      #   the instant returned is exactly the beginning of the billing period. Set to null
-      #   if the subscription is not currently active.
+      # the instant returned is exactly the beginning of the billing period. Set to null
+      # if the subscription is not currently active.
       sig { returns(T.nilable(Time)) }
       attr_accessor :current_billing_period_start_date
 
       # A customer is a buyer of your products, and the other party to the billing
-      #   relationship.
+      # relationship.
       #
-      #   In Orb, customers are assigned system generated identifiers automatically, but
-      #   it's often desirable to have these match existing identifiers in your system. To
-      #   avoid having to denormalize Orb ID information, you can pass in an
-      #   `external_customer_id` with your own identifier. See
-      #   [Customer ID Aliases](/events-and-metrics/customer-aliases) for further
-      #   information about how these aliases work in Orb.
+      # In Orb, customers are assigned system generated identifiers automatically, but
+      # it's often desirable to have these match existing identifiers in your system. To
+      # avoid having to denormalize Orb ID information, you can pass in an
+      # `external_customer_id` with your own identifier. See
+      # [Customer ID Aliases](/events-and-metrics/customer-aliases) for further
+      # information about how these aliases work in Orb.
       #
-      #   In addition to having an identifier in your system, a customer may exist in a
-      #   payment provider solution like Stripe. Use the `payment_provider_id` and the
-      #   `payment_provider` enum field to express this mapping.
+      # In addition to having an identifier in your system, a customer may exist in a
+      # payment provider solution like Stripe. Use the `payment_provider_id` and the
+      # `payment_provider` enum field to express this mapping.
       #
-      #   A customer also has a timezone (from the standard
-      #   [IANA timezone database](https://www.iana.org/time-zones)), which defaults to
-      #   your account's timezone. See [Timezone localization](/essentials/timezones) for
-      #   information on what this timezone parameter influences within Orb.
+      # A customer also has a timezone (from the standard
+      # [IANA timezone database](https://www.iana.org/time-zones)), which defaults to
+      # your account's timezone. See [Timezone localization](/essentials/timezones) for
+      # information on what this timezone parameter influences within Orb.
       sig { returns(Orb::Models::Customer) }
       attr_reader :customer
 
@@ -83,7 +83,7 @@ module Orb
       attr_writer :customer
 
       # Determines the default memo on this subscriptions' invoices. Note that if this
-      #   is not provided, it is determined by the plan configuration.
+      # is not provided, it is determined by the plan configuration.
       sig { returns(T.nilable(String)) }
       attr_accessor :default_invoice_memo
 
@@ -116,9 +116,9 @@ module Orb
       attr_accessor :maximum_intervals
 
       # User specified key-value pairs for the resource. If not present, this defaults
-      #   to an empty dictionary. Individual keys can be removed by setting the value to
-      #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-      #   `null`.
+      # to an empty dictionary. Individual keys can be removed by setting the value to
+      # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+      # `null`.
       sig { returns(T::Hash[Symbol, String]) }
       attr_accessor :metadata
 
@@ -127,16 +127,16 @@ module Orb
       attr_accessor :minimum_intervals
 
       # Determines the difference between the invoice issue date for subscription
-      #   invoices as the date that they are due. A value of `0` here represents that the
-      #   invoice is due on issue, whereas a value of `30` represents that the customer
-      #   has a month to pay the invoice.
+      # invoices as the date that they are due. A value of `0` here represents that the
+      # invoice is due on issue, whereas a value of `30` represents that the customer
+      # has a month to pay the invoice.
       sig { returns(Integer) }
       attr_accessor :net_terms
 
       # The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
-      #   subscribed to by a customer. Plans define the billing behavior of the
-      #   subscription. You can see more about how to configure prices in the
-      #   [Price resource](/reference/price).
+      # subscribed to by a customer. Plans define the billing behavior of the
+      # subscription. You can see more about how to configure prices in the
+      # [Price resource](/reference/price).
       sig { returns(Orb::Models::Plan) }
       attr_reader :plan
 
@@ -375,7 +375,7 @@ module Orb
             attr_accessor :applies_to_price_ids
 
             # True for adjustments that apply to an entire invocice, false for adjustments
-            #   that apply to only one price.
+            # that apply to only one price.
             sig { returns(T::Boolean) }
             attr_accessor :is_invoice_level
 
@@ -388,7 +388,7 @@ module Orb
             attr_accessor :reason
 
             # The number of usage units by which to discount the price this adjustment applies
-            #   to in a given billing period.
+            # to in a given billing period.
             sig { returns(Float) }
             attr_accessor :usage_discount
 
@@ -438,7 +438,7 @@ module Orb
             attr_accessor :adjustment_type
 
             # The amount by which to discount the prices this adjustment applies to in a given
-            #   billing period.
+            # billing period.
             sig { returns(String) }
             attr_accessor :amount_discount
 
@@ -447,7 +447,7 @@ module Orb
             attr_accessor :applies_to_price_ids
 
             # True for adjustments that apply to an entire invocice, false for adjustments
-            #   that apply to only one price.
+            # that apply to only one price.
             sig { returns(T::Boolean) }
             attr_accessor :is_invoice_level
 
@@ -509,12 +509,12 @@ module Orb
             attr_accessor :applies_to_price_ids
 
             # True for adjustments that apply to an entire invocice, false for adjustments
-            #   that apply to only one price.
+            # that apply to only one price.
             sig { returns(T::Boolean) }
             attr_accessor :is_invoice_level
 
             # The percentage (as a value between 0 and 1) by which to discount the price
-            #   intervals this adjustment applies to in a given billing period.
+            # intervals this adjustment applies to in a given billing period.
             sig { returns(Float) }
             attr_accessor :percentage_discount
 
@@ -576,7 +576,7 @@ module Orb
             attr_accessor :applies_to_price_ids
 
             # True for adjustments that apply to an entire invocice, false for adjustments
-            #   that apply to only one price.
+            # that apply to only one price.
             sig { returns(T::Boolean) }
             attr_accessor :is_invoice_level
 
@@ -585,7 +585,7 @@ module Orb
             attr_accessor :item_id
 
             # The minimum amount to charge in a given billing period for the prices this
-            #   adjustment applies to.
+            # adjustment applies to.
             sig { returns(String) }
             attr_accessor :minimum_amount
 
@@ -650,12 +650,12 @@ module Orb
             attr_accessor :applies_to_price_ids
 
             # True for adjustments that apply to an entire invocice, false for adjustments
-            #   that apply to only one price.
+            # that apply to only one price.
             sig { returns(T::Boolean) }
             attr_accessor :is_invoice_level
 
             # The maximum amount to charge in a given billing period for the prices this
-            #   adjustment applies to.
+            # adjustment applies to.
             sig { returns(String) }
             attr_accessor :maximum_amount
 
@@ -717,20 +717,20 @@ module Orb
 
       class BillingCycleAnchorConfiguration < Orb::Internal::Type::BaseModel
         # The day of the month on which the billing cycle is anchored. If the maximum
-        #   number of days in a month is greater than this value, the last day of the month
-        #   is the billing cycle day (e.g. billing_cycle_day=31 for April means the billing
-        #   period begins on the 30th.
+        # number of days in a month is greater than this value, the last day of the month
+        # is the billing cycle day (e.g. billing_cycle_day=31 for April means the billing
+        # period begins on the 30th.
         sig { returns(Integer) }
         attr_accessor :day
 
         # The month on which the billing cycle is anchored (e.g. a quarterly price
-        #   anchored in February would have cycles starting February, May, August, and
-        #   November).
+        # anchored in February would have cycles starting February, May, August, and
+        # November).
         sig { returns(T.nilable(Integer)) }
         attr_accessor :month
 
         # The year on which the billing cycle is anchored (e.g. a 2 year billing cycle
-        #   anchored on 2021 would have cycles starting on 2021, 2023, 2025, etc.).
+        # anchored on 2021 would have cycles starting on 2021, 2023, 2025, etc.).
         sig { returns(T.nilable(Integer)) }
         attr_accessor :year
 
@@ -822,7 +822,7 @@ module Orb
           attr_accessor :end_date
 
           # Only available if discount_type is `percentage`.This is a number between 0
-          #   and 1.
+          # and 1.
           sig { returns(Float) }
           attr_accessor :percentage_discount
 
@@ -886,7 +886,7 @@ module Orb
           attr_accessor :start_date
 
           # Only available if discount_type is `usage`. Number of usage units that this
-          #   discount is for
+          # discount is for
           sig { returns(Float) }
           attr_accessor :usage_discount
 
@@ -973,7 +973,7 @@ module Orb
         attr_accessor :end_date
 
         # The maximum amount to charge in a given billing period for the price intervals
-        #   this transform applies to.
+        # this transform applies to.
         sig { returns(String) }
         attr_accessor :maximum_amount
 
@@ -1029,7 +1029,7 @@ module Orb
         attr_accessor :end_date
 
         # The minimum amount to charge in a given billing period for the price intervals
-        #   this minimum applies to.
+        # this minimum applies to.
         sig { returns(String) }
         attr_accessor :minimum_amount
 
@@ -1080,19 +1080,19 @@ module Orb
         attr_accessor :billing_cycle_day
 
         # The end of the current billing period. This is an exclusive timestamp, such that
-        #   the instant returned is exactly the end of the billing period. Set to null if
-        #   this price interval is not currently active.
+        # the instant returned is exactly the end of the billing period. Set to null if
+        # this price interval is not currently active.
         sig { returns(T.nilable(Time)) }
         attr_accessor :current_billing_period_end_date
 
         # The start date of the current billing period. This is an inclusive timestamp;
-        #   the instant returned is exactly the beginning of the billing period. Set to null
-        #   if this price interval is not currently active.
+        # the instant returned is exactly the beginning of the billing period. Set to null
+        # if this price interval is not currently active.
         sig { returns(T.nilable(Time)) }
         attr_accessor :current_billing_period_start_date
 
         # The end date of the price interval. This is the date that Orb stops billing for
-        #   this price.
+        # this price.
         sig { returns(T.nilable(Time)) }
         attr_accessor :end_date
 
@@ -1101,7 +1101,7 @@ module Orb
         attr_accessor :filter
 
         # The fixed fee quantity transitions for this price interval. This is only
-        #   relevant for fixed fees.
+        # relevant for fixed fees.
         sig do
           returns(
             T.nilable(
@@ -1112,15 +1112,15 @@ module Orb
         attr_accessor :fixed_fee_quantity_transitions
 
         # The Price resource represents a price that can be billed on a subscription,
-        #   resulting in a charge on an invoice in the form of an invoice line item. Prices
-        #   take a quantity and determine an amount to bill.
+        # resulting in a charge on an invoice in the form of an invoice line item. Prices
+        # take a quantity and determine an amount to bill.
         #
-        #   Orb supports a few different pricing models out of the box. Each of these models
-        #   is serialized differently in a given Price object. The model_type field
-        #   determines the key for the configuration object that is present.
+        # Orb supports a few different pricing models out of the box. Each of these models
+        # is serialized differently in a given Price object. The model_type field
+        # determines the key for the configuration object that is present.
         #
-        #   For more on the types of prices, see
-        #   [the core concepts documentation](/core-concepts#plan-and-price)
+        # For more on the types of prices, see
+        # [the core concepts documentation](/core-concepts#plan-and-price)
         sig do
           returns(
             T.any(
@@ -1158,18 +1158,18 @@ module Orb
         attr_accessor :price
 
         # The start date of the price interval. This is the date that Orb starts billing
-        #   for this price.
+        # for this price.
         sig { returns(Time) }
         attr_accessor :start_date
 
         # A list of customer IDs whose usage events will be aggregated and billed under
-        #   this price interval.
+        # this price interval.
         sig { returns(T.nilable(T::Array[String])) }
         attr_accessor :usage_customer_ids
 
         # The Price Interval resource represents a period of time for which a price will
-        #   bill on a subscription. A subscription’s price intervals define its billing
-        #   behavior.
+        # bill on a subscription. A subscription’s price intervals define its billing
+        # behavior.
         sig do
           params(
             id: String,

@@ -4,7 +4,7 @@ module Orb
   module Resources
     class CreditNotes
       # This endpoint is used to create a single
-      #   [`Credit Note`](/invoicing/credit-notes).
+      # [`Credit Note`](/invoicing/credit-notes).
       #
       # @overload create(line_items:, memo: nil, reason: nil, request_options: {})
       #
@@ -28,8 +28,8 @@ module Orb
       end
 
       # Get a paginated list of CreditNotes. Users can also filter by customer_id,
-      #   subscription_id, or external_customer_id. The credit notes will be returned in
-      #   reverse chronological order by `creation_time`.
+      # subscription_id, or external_customer_id. The credit notes will be returned in
+      # reverse chronological order by `creation_time`.
       #
       # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, request_options: {})
       #
@@ -62,7 +62,7 @@ module Orb
       end
 
       # This endpoint is used to fetch a single [`Credit Note`](/invoicing/credit-notes)
-      #   given an identifier.
+      # given an identifier.
       #
       # @overload fetch(credit_note_id, request_options: {})
       #

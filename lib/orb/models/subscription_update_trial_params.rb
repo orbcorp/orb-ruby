@@ -10,14 +10,14 @@ module Orb
 
       # @!attribute trial_end_date
       #   The new date that the trial should end, or the literal string `immediate` to end
-      #     the trial immediately.
+      #   the trial immediately.
       #
       #   @return [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate]
       required :trial_end_date, union: -> { Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate }
 
       # @!attribute [r] shift
       #   If true, shifts subsequent price and adjustment intervals (preserving their
-      #     durations, but adjusting their absolute dates).
+      #   durations, but adjusting their absolute dates).
       #
       #   @return [Boolean, nil]
       optional :shift, Orb::Internal::Type::Boolean
@@ -36,7 +36,7 @@ module Orb
       # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # The new date that the trial should end, or the literal string `immediate` to end
-      #   the trial immediately.
+      # the trial immediately.
       module TrialEndDate
         extend Orb::Internal::Type::Union
 

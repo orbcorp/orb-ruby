@@ -17,14 +17,14 @@ module Orb
 
         # @!attribute cursor
         #   Cursor for pagination. This can be populated by the `next_cursor` value returned
-        #     from the initial request.
+        #   from the initial request.
         #
         #   @return [String, nil]
         optional :cursor, String, nil?: true
 
         # @!attribute [r] include_all_blocks
         #   If set to True, all expired and depleted blocks, as well as active block will be
-        #     returned.
+        #   returned.
         #
         #   @return [Boolean, nil]
         optional :include_all_blocks, Orb::Internal::Type::Boolean

@@ -9,7 +9,7 @@ module Orb
           include Orb::Internal::Type::RequestParameters
 
           # Cursor for pagination. This can be populated by the `next_cursor` value returned
-          #   from the initial request.
+          # from the initial request.
           sig { returns(T.nilable(String)) }
           attr_accessor :cursor
 

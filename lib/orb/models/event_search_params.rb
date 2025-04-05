@@ -10,23 +10,23 @@ module Orb
 
       # @!attribute event_ids
       #   This is an explicit array of IDs to filter by. Note that an event's ID is the
-      #     idempotency_key that was originally used for ingestion, and this only supports
-      #     events that have not been amended. Values in this array will be treated case
-      #     sensitively.
+      #   idempotency_key that was originally used for ingestion, and this only supports
+      #   events that have not been amended. Values in this array will be treated case
+      #   sensitively.
       #
       #   @return [Array<String>]
       required :event_ids, Orb::Internal::Type::ArrayOf[String]
 
       # @!attribute timeframe_end
       #   The end of the timeframe, exclusive, in which to search events. If not
-      #     specified, the current time is used.
+      #   specified, the current time is used.
       #
       #   @return [Time, nil]
       optional :timeframe_end, Time, nil?: true
 
       # @!attribute timeframe_start
       #   The start of the timeframe, inclusive, in which to search events. If not
-      #     specified, the one week ago is used.
+      #   specified, the one week ago is used.
       #
       #   @return [Time, nil]
       optional :timeframe_start, Time, nil?: true

@@ -26,7 +26,7 @@ module Orb
       def update(item_id, external_connections: nil, name: nil, request_options: {}); end
 
       # This endpoint returns a list of all Items, ordered in descending order by
-      #   creation time.
+      # creation time.
       sig do
         params(
           cursor: T.nilable(String),
@@ -37,7 +37,7 @@ module Orb
       end
       def list(
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
-        #   from the initial request.
+        # from the initial request.
         cursor: nil,
         # The number of items to fetch. Defaults to 20.
         limit: nil,

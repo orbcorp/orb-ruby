@@ -16,8 +16,8 @@ module Orb
       attr_accessor :name
 
       # The Item resource represents a sellable product or good. Items are associated
-      #   with all line items, billable metrics, and prices and are used for defining
-      #   external sync behavior for invoices and tax calculation purposes.
+      # with all line items, billable metrics, and prices and are used for defining
+      # external sync behavior for invoices and tax calculation purposes.
       sig do
         params(
           id: String,

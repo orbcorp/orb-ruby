@@ -103,7 +103,7 @@ module Orb
 
       # @!parse
       #   # The [Credit Note](/invoicing/credit-notes) resource represents a credit that has
-      #   #   been applied to a particular invoice.
+      #   # been applied to a particular invoice.
       #   #
       #   # @param id [String]
       #   # @param created_at [Time]

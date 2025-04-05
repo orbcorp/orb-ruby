@@ -16,15 +16,15 @@ module Orb
 
       # @!attribute properties
       #   A dictionary of custom properties. Values in this dictionary must be numeric,
-      #     boolean, or strings. Nested dictionaries are disallowed.
+      #   boolean, or strings. Nested dictionaries are disallowed.
       #
       #   @return [Object]
       required :properties, Orb::Internal::Type::Unknown
 
       # @!attribute timestamp
       #   An ISO 8601 format date with no timezone offset (i.e. UTC). This should
-      #     represent the time that usage was recorded, and is particularly important to
-      #     attribute usage to a given billing period.
+      #   represent the time that usage was recorded, and is particularly important to
+      #   attribute usage to a given billing period.
       #
       #   @return [Time]
       required :timestamp, Time
@@ -37,7 +37,7 @@ module Orb
 
       # @!attribute external_customer_id
       #   An alias for the Orb customer, whose mapping is specified when creating the
-      #     customer
+      #   customer
       #
       #   @return [String, nil]
       optional :external_customer_id, String, nil?: true

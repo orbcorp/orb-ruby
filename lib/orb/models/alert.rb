@@ -54,7 +54,7 @@ module Orb
 
       # @!attribute thresholds
       #   The thresholds that define the conditions under which the alert will be
-      #     triggered.
+      #   triggered.
       #
       #   @return [Array<Orb::Models::Alert::Threshold>, nil]
       required :thresholds, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold] }, nil?: true
@@ -67,10 +67,10 @@ module Orb
 
       # @!parse
       #   # [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
-      #   #   usage, or credit balance and trigger webhooks when a threshold is exceeded.
+      #   # usage, or credit balance and trigger webhooks when a threshold is exceeded.
       #   #
-      #   #   Alerts created through the API can be scoped to either customers or
-      #   #   subscriptions.
+      #   # Alerts created through the API can be scoped to either customers or
+      #   # subscriptions.
       #   #
       #   # @param id [String]
       #   # @param created_at [Time]
@@ -136,8 +136,8 @@ module Orb
 
         # @!attribute external_plan_id
         #   An optional user-defined ID for this plan resource, used throughout the system
-        #     as an alias for this Plan. Use this field to identify a plan by an existing
-        #     identifier in your system.
+        #   as an alias for this Plan. Use this field to identify a plan by an existing
+        #   identifier in your system.
         #
         #   @return [String, nil]
         required :external_plan_id, String, nil?: true
@@ -185,15 +185,15 @@ module Orb
       class Threshold < Orb::Internal::Type::BaseModel
         # @!attribute value
         #   The value at which an alert will fire. For credit balance alerts, the alert will
-        #     fire at or below this value. For usage and cost alerts, the alert will fire at
-        #     or above this value.
+        #   fire at or below this value. For usage and cost alerts, the alert will fire at
+        #   or above this value.
         #
         #   @return [Float]
         required :value, Float
 
         # @!parse
         #   # Thresholds are used to define the conditions under which an alert will be
-        #   #   triggered.
+        #   # triggered.
         #   #
         #   # @param value [Float]
         #   #

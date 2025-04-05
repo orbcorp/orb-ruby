@@ -10,7 +10,7 @@ module Orb
 
       # @!attribute cursor
       #   Cursor for pagination. This can be populated by the `next_cursor` value returned
-      #     from the initial request.
+      #   from the initial request.
       #
       #   @return [String, nil]
       optional :cursor, String, nil?: true
@@ -33,7 +33,7 @@ module Orb
 
       # @!attribute show_archived
       #   Show archived coupons as well (by default, this endpoint only returns active
-      #     coupons).
+      #   coupons).
       #
       #   @return [Boolean, nil]
       optional :show_archived, Orb::Internal::Type::Boolean, nil?: true

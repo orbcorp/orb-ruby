@@ -12,7 +12,7 @@ module Orb
 
       # @!attribute archived_at
       #   An archived coupon can no longer be redeemed. Active coupons will have a value
-      #     of null for `archived_at`; this field will be non-null for archived coupons.
+      #   of null for `archived_at`; this field will be non-null for archived coupons.
       #
       #   @return [Time, nil]
       required :archived_at, Time, nil?: true
@@ -24,14 +24,14 @@ module Orb
 
       # @!attribute duration_in_months
       #   This allows for a coupon's discount to apply for a limited time (determined in
-      #     months); a `null` value here means "unlimited time".
+      #   months); a `null` value here means "unlimited time".
       #
       #   @return [Integer, nil]
       required :duration_in_months, Integer, nil?: true
 
       # @!attribute max_redemptions
       #   The maximum number of redemptions allowed for this coupon before it is
-      #     exhausted; `null` here means "unlimited".
+      #   exhausted; `null` here means "unlimited".
       #
       #   @return [Integer, nil]
       required :max_redemptions, Integer, nil?: true
@@ -50,10 +50,10 @@ module Orb
 
       # @!parse
       #   # A coupon represents a reusable discount configuration that can be applied either
-      #   #   as a fixed or percentage amount to an invoice or subscription. Coupons are
-      #   #   activated using a redemption code, which applies the discount to a subscription
-      #   #   or invoice. The duration of a coupon determines how long it remains available
-      #   #   for use by end users.
+      #   # as a fixed or percentage amount to an invoice or subscription. Coupons are
+      #   # activated using a redemption code, which applies the discount to a subscription
+      #   # or invoice. The duration of a coupon determines how long it remains available
+      #   # for use by end users.
       #   #
       #   # @param id [String]
       #   # @param archived_at [Time, nil]

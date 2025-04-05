@@ -5,7 +5,7 @@ module Orb
     module Customers
       module Credits
         # The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid
-        #   credits within Orb.
+        # credits within Orb.
         #
         # @see Orb::Resources::Customers::Credits::Ledger#list_by_external_id
         module LedgerListByExternalIDResponse
@@ -94,9 +94,9 @@ module Orb
 
             # @!attribute metadata
             #   User specified key-value pairs for the resource. If not present, this defaults
-            #     to an empty dictionary. Individual keys can be removed by setting the value to
-            #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-            #     `null`.
+            #   to an empty dictionary. Individual keys can be removed by setting the value to
+            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            #   `null`.
             #
             #   @return [Hash{Symbol=>String}]
             required :metadata, Orb::Internal::Type::HashOf[String]
@@ -266,9 +266,9 @@ module Orb
 
             # @!attribute metadata
             #   User specified key-value pairs for the resource. If not present, this defaults
-            #     to an empty dictionary. Individual keys can be removed by setting the value to
-            #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-            #     `null`.
+            #   to an empty dictionary. Individual keys can be removed by setting the value to
+            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            #   `null`.
             #
             #   @return [Hash{Symbol=>String}]
             required :metadata, Orb::Internal::Type::HashOf[String]
@@ -459,9 +459,9 @@ module Orb
 
             # @!attribute metadata
             #   User specified key-value pairs for the resource. If not present, this defaults
-            #     to an empty dictionary. Individual keys can be removed by setting the value to
-            #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-            #     `null`.
+            #   to an empty dictionary. Individual keys can be removed by setting the value to
+            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            #   `null`.
             #
             #   @return [Hash{Symbol=>String}]
             required :metadata, Orb::Internal::Type::HashOf[String]
@@ -638,9 +638,9 @@ module Orb
 
             # @!attribute metadata
             #   User specified key-value pairs for the resource. If not present, this defaults
-            #     to an empty dictionary. Individual keys can be removed by setting the value to
-            #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-            #     `null`.
+            #   to an empty dictionary. Individual keys can be removed by setting the value to
+            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            #   `null`.
             #
             #   @return [Hash{Symbol=>String}]
             required :metadata, Orb::Internal::Type::HashOf[String]
@@ -810,9 +810,9 @@ module Orb
 
             # @!attribute metadata
             #   User specified key-value pairs for the resource. If not present, this defaults
-            #     to an empty dictionary. Individual keys can be removed by setting the value to
-            #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-            #     `null`.
+            #   to an empty dictionary. Individual keys can be removed by setting the value to
+            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            #   `null`.
             #
             #   @return [Hash{Symbol=>String}]
             required :metadata, Orb::Internal::Type::HashOf[String]
@@ -996,9 +996,9 @@ module Orb
 
             # @!attribute metadata
             #   User specified key-value pairs for the resource. If not present, this defaults
-            #     to an empty dictionary. Individual keys can be removed by setting the value to
-            #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-            #     `null`.
+            #   to an empty dictionary. Individual keys can be removed by setting the value to
+            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            #   `null`.
             #
             #   @return [Hash{Symbol=>String}]
             required :metadata, Orb::Internal::Type::HashOf[String]
@@ -1189,9 +1189,9 @@ module Orb
 
             # @!attribute metadata
             #   User specified key-value pairs for the resource. If not present, this defaults
-            #     to an empty dictionary. Individual keys can be removed by setting the value to
-            #     `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-            #     `null`.
+            #   to an empty dictionary. Individual keys can be removed by setting the value to
+            #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+            #   `null`.
             #
             #   @return [Hash{Symbol=>String}]
             required :metadata, Orb::Internal::Type::HashOf[String]

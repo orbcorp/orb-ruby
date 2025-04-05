@@ -19,7 +19,7 @@ module Orb
 
           # @!attribute currency
           #   The currency or custom pricing unit to use for this top-up. If this is a
-          #     real-world currency, it must match the customer's invoicing currency.
+          #   real-world currency, it must match the customer's invoicing currency.
           #
           #   @return [String]
           required :currency, String
@@ -38,14 +38,14 @@ module Orb
 
           # @!attribute threshold
           #   The threshold at which to trigger the top-up. If the balance is at or below this
-          #     threshold, the top-up will be triggered.
+          #   threshold, the top-up will be triggered.
           #
           #   @return [String]
           required :threshold, String
 
           # @!attribute expires_after
           #   The number of days or months after which the top-up expires. If unspecified, it
-          #     does not expire.
+          #   does not expire.
           #
           #   @return [Integer, nil]
           optional :expires_after, Integer, nil?: true
@@ -88,15 +88,15 @@ module Orb
           class InvoiceSettings < Orb::Internal::Type::BaseModel
             # @!attribute auto_collection
             #   Whether the credits purchase invoice should auto collect with the customer's
-            #     saved payment method.
+            #   saved payment method.
             #
             #   @return [Boolean]
             required :auto_collection, Orb::Internal::Type::Boolean
 
             # @!attribute net_terms
             #   The net terms determines the difference between the invoice date and the issue
-            #     date for the invoice. If you intend the invoice to be due on issue, set this
-            #     to 0.
+            #   date for the invoice. If you intend the invoice to be due on issue, set this
+            #   to 0.
             #
             #   @return [Integer]
             required :net_terms, Integer
@@ -109,7 +109,7 @@ module Orb
 
             # @!attribute [r] require_successful_payment
             #   If true, new credit blocks created by this top-up will require that the
-            #     corresponding invoice is paid before they can be drawn down from.
+            #   corresponding invoice is paid before they can be drawn down from.
             #
             #   @return [Boolean, nil]
             optional :require_successful_payment, Orb::Internal::Type::Boolean

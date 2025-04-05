@@ -16,15 +16,15 @@ module Orb
 
       # @!attribute allow_invoice_credit_or_void
       #   If false, this request will fail if it would void an issued invoice or create a
-      #     credit note. Consider using this as a safety mechanism if you do not expect
-      #     existing invoices to be changed.
+      #   credit note. Consider using this as a safety mechanism if you do not expect
+      #   existing invoices to be changed.
       #
       #   @return [Boolean, nil]
       optional :allow_invoice_credit_or_void, Orb::Internal::Type::Boolean, nil?: true
 
       # @!attribute cancellation_date
       #   The date that the cancellation should take effect. This parameter can only be
-      #     passed if the `cancel_option` is `requested_date`.
+      #   passed if the `cancel_option` is `requested_date`.
       #
       #   @return [Time, nil]
       optional :cancellation_date, Time, nil?: true

@@ -44,21 +44,21 @@ module Orb
 
       # @!attribute billable_metric_id
       #   The id of the billable metric for the price. Only needed if the price is
-      #     usage-based.
+      #   usage-based.
       #
       #   @return [String, nil]
       optional :billable_metric_id, String, nil?: true
 
       # @!attribute billed_in_advance
       #   If the Price represents a fixed cost, the price will be billed in-advance if
-      #     this is true, and in-arrears if this is false.
+      #   this is true, and in-arrears if this is false.
       #
       #   @return [Boolean, nil]
       optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
       # @!attribute billing_cycle_configuration
       #   For custom cadence: specifies the duration of the billing period in days or
-      #     months.
+      #   months.
       #
       #   @return [Orb::Models::PriceCreateParams::BillingCycleConfiguration, nil]
       optional :billing_cycle_configuration,
@@ -79,7 +79,7 @@ module Orb
 
       # @!attribute fixed_price_quantity
       #   If the Price represents a fixed cost, this represents the quantity of units
-      #     applied.
+      #   applied.
       #
       #   @return [Float, nil]
       optional :fixed_price_quantity, Float, nil?: true
@@ -92,7 +92,7 @@ module Orb
 
       # @!attribute invoicing_cycle_configuration
       #   Within each billing cycle, specifies the cadence at which invoices are produced.
-      #     If unspecified, a single invoice is produced per billing cycle.
+      #   If unspecified, a single invoice is produced per billing cycle.
       #
       #   @return [Orb::Models::PriceCreateParams::InvoicingCycleConfiguration, nil]
       optional :invoicing_cycle_configuration,
@@ -101,8 +101,8 @@ module Orb
 
       # @!attribute metadata
       #   User-specified key/value pairs for the resource. Individual keys can be removed
-      #     by setting the value to `null`, and the entire metadata mapping can be cleared
-      #     by setting `metadata` to `null`.
+      #   by setting the value to `null`, and the entire metadata mapping can be cleared
+      #   by setting `metadata` to `null`.
       #
       #   @return [Hash{Symbol=>String, nil}, nil]
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
@@ -402,7 +402,7 @@ module Orb
 
         # @!parse
         #   # For custom cadence: specifies the duration of the billing period in days or
-        #   #   months.
+        #   # months.
         #   #
         #   # @param duration [Integer]
         #   # @param duration_unit [Symbol, Orb::Models::PriceCreateParams::BillingCycleConfiguration::DurationUnit]
@@ -444,7 +444,7 @@ module Orb
 
         # @!parse
         #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-        #   #   If unspecified, a single invoice is produced per billing cycle.
+        #   # If unspecified, a single invoice is produced per billing cycle.
         #   #
         #   # @param duration [Integer]
         #   # @param duration_unit [Symbol, Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::DurationUnit]
@@ -479,7 +479,7 @@ module Orb
 
         # @!attribute package_size
         #   An integer amount to represent package size. For example, 1000 here would divide
-        #     usage by 1000 before multiplying by package_amount in rating
+        #   usage by 1000 before multiplying by package_amount in rating
         #
         #   @return [Integer]
         required :package_size, Integer
@@ -525,8 +525,8 @@ module Orb
         class MatrixValue < Orb::Internal::Type::BaseModel
           # @!attribute dimension_values
           #   One or two matrix keys to filter usage to this Matrix value by. For example,
-          #     ["region", "tier"] could be used to filter cloud usage by a cloud region and an
-          #     instance tier.
+          #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+          #   instance tier.
           #
           #   @return [Array<String, nil>]
           required :dimension_values, Orb::Internal::Type::ArrayOf[String, nil?: true]
@@ -586,8 +586,8 @@ module Orb
         class MatrixValue < Orb::Internal::Type::BaseModel
           # @!attribute dimension_values
           #   One or two matrix keys to filter usage to this Matrix value by. For example,
-          #     ["region", "tier"] could be used to filter cloud usage by a cloud region and an
-          #     instance tier.
+          #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+          #   instance tier.
           #
           #   @return [Array<String, nil>]
           required :dimension_values, Orb::Internal::Type::ArrayOf[String, nil?: true]
@@ -655,7 +655,7 @@ module Orb
       class TieredBpsConfig < Orb::Internal::Type::BaseModel
         # @!attribute tiers
         #   Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
-        #     tiers
+        #   tiers
         #
         #   @return [Array<Orb::Models::PriceCreateParams::TieredBpsConfig::Tier>]
         required :tiers,
@@ -730,7 +730,7 @@ module Orb
       class BulkBpsConfig < Orb::Internal::Type::BaseModel
         # @!attribute tiers
         #   Tiers for a bulk BPS pricing model where all usage is aggregated to a single
-        #     tier based on total volume
+        #   tier based on total volume
         #
         #   @return [Array<Orb::Models::PriceCreateParams::BulkBpsConfig::Tier>]
         required :tiers, -> { Orb::Internal::Type::ArrayOf[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier] }

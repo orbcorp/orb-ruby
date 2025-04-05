@@ -28,7 +28,7 @@ module Orb
 
       # @!attribute name
       #   The item name associated with this line item. If an item with the same name
-      #     exists in Orb, that item will be associated with the line item.
+      #   exists in Orb, that item will be associated with the line item.
       #
       #   @return [String]
       required :name, String
