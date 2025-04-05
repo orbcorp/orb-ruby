@@ -37,7 +37,7 @@ module Orb
         attr_accessor :description
 
         # The new value of the customer's balance prior to the transaction, in the
-        #   customer's currency.
+        # customer's currency.
         sig { returns(String) }
         attr_accessor :ending_balance
 
@@ -55,7 +55,7 @@ module Orb
         attr_writer :invoice
 
         # The original value of the customer's balance prior to the transaction, in the
-        #   customer's currency.
+        # customer's currency.
         sig { returns(String) }
         attr_accessor :starting_balance
 

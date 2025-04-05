@@ -8,7 +8,7 @@ module Orb
       attr_accessor :id
 
       # An archived coupon can no longer be redeemed. Active coupons will have a value
-      #   of null for `archived_at`; this field will be non-null for archived coupons.
+      # of null for `archived_at`; this field will be non-null for archived coupons.
       sig { returns(T.nilable(Time)) }
       attr_accessor :archived_at
 
@@ -16,12 +16,12 @@ module Orb
       attr_accessor :discount
 
       # This allows for a coupon's discount to apply for a limited time (determined in
-      #   months); a `null` value here means "unlimited time".
+      # months); a `null` value here means "unlimited time".
       sig { returns(T.nilable(Integer)) }
       attr_accessor :duration_in_months
 
       # The maximum number of redemptions allowed for this coupon before it is
-      #   exhausted; `null` here means "unlimited".
+      # exhausted; `null` here means "unlimited".
       sig { returns(T.nilable(Integer)) }
       attr_accessor :max_redemptions
 
@@ -34,10 +34,10 @@ module Orb
       attr_accessor :times_redeemed
 
       # A coupon represents a reusable discount configuration that can be applied either
-      #   as a fixed or percentage amount to an invoice or subscription. Coupons are
-      #   activated using a redemption code, which applies the discount to a subscription
-      #   or invoice. The duration of a coupon determines how long it remains available
-      #   for use by end users.
+      # as a fixed or percentage amount to an invoice or subscription. Coupons are
+      # activated using a redemption code, which applies the discount to a subscription
+      # or invoice. The duration of a coupon determines how long it remains available
+      # for use by end users.
       sig do
         params(
           id: String,

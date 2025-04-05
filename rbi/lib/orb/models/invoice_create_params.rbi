@@ -7,12 +7,12 @@ module Orb
       include Orb::Internal::Type::RequestParameters
 
       # An ISO 4217 currency string. Must be the same as the customer's currency if it
-      #   is set.
+      # is set.
       sig { returns(String) }
       attr_accessor :currency
 
       # Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
-      #   set to the current time in the customer's timezone.
+      # set to the current time in the customer's timezone.
       sig { returns(Time) }
       attr_accessor :invoice_date
 
@@ -20,14 +20,14 @@ module Orb
       attr_accessor :line_items
 
       # Determines the difference between the invoice issue date for subscription
-      #   invoices as the date that they are due. A value of '0' here represents that the
-      #   invoice is due on issue, whereas a value of 30 represents that the customer has
-      #   30 days to pay the invoice.
+      # invoices as the date that they are due. A value of '0' here represents that the
+      # invoice is due on issue, whereas a value of 30 represents that the customer has
+      # 30 days to pay the invoice.
       sig { returns(Integer) }
       attr_accessor :net_terms
 
       # The id of the `Customer` to create this invoice for. One of `customer_id` and
-      #   `external_customer_id` are required.
+      # `external_customer_id` are required.
       sig { returns(T.nilable(String)) }
       attr_accessor :customer_id
 
@@ -47,7 +47,7 @@ module Orb
       attr_accessor :discount
 
       # The `external_customer_id` of the `Customer` to create this invoice for. One of
-      #   `customer_id` and `external_customer_id` are required.
+      # `customer_id` and `external_customer_id` are required.
       sig { returns(T.nilable(String)) }
       attr_accessor :external_customer_id
 
@@ -56,13 +56,13 @@ module Orb
       attr_accessor :memo
 
       # User-specified key/value pairs for the resource. Individual keys can be removed
-      #   by setting the value to `null`, and the entire metadata mapping can be cleared
-      #   by setting `metadata` to `null`.
+      # by setting the value to `null`, and the entire metadata mapping can be cleared
+      # by setting `metadata` to `null`.
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
       attr_accessor :metadata
 
       # When true, this invoice will automatically be issued upon creation. When false,
-      #   the resulting invoice will require manual review to issue. Defaulted to false.
+      # the resulting invoice will require manual review to issue. Defaulted to false.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :will_auto_issue
 

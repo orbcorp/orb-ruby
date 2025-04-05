@@ -21,12 +21,12 @@ module Orb
       attr_accessor :redemption_code
 
       # This allows for a coupon's discount to apply for a limited time (determined in
-      #   months); a `null` value here means "unlimited time".
+      # months); a `null` value here means "unlimited time".
       sig { returns(T.nilable(Integer)) }
       attr_accessor :duration_in_months
 
       # The maximum number of redemptions allowed for this coupon before it is
-      #   exhausted;`null` here means "unlimited".
+      # exhausted;`null` here means "unlimited".
       sig { returns(T.nilable(Integer)) }
       attr_accessor :max_redemptions
 

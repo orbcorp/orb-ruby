@@ -29,8 +29,8 @@ module Orb
       attr_writer :add_adjustments
 
       # If false, this request will fail if it would void an issued invoice or create a
-      #   credit note. Consider using this as a safety mechanism if you do not expect
-      #   existing invoices to be changed.
+      # credit note. Consider using this as a safety mechanism if you do not expect
+      # existing invoices to be changed.
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :allow_invoice_credit_or_void
 
@@ -92,7 +92,7 @@ module Orb
 
       class Add < Orb::Internal::Type::BaseModel
         # The start date of the price interval. This is the date that the price will start
-        #   billing on the subscription.
+        # billing on the subscription.
         sig { returns(T.any(Time, Orb::Models::BillingCycleRelativeDate::OrSymbol)) }
         attr_accessor :start_date
 
@@ -127,7 +127,7 @@ module Orb
         attr_accessor :discounts
 
         # The end date of the price interval. This is the date that the price will stop
-        #   billing on the subscription.
+        # billing on the subscription.
         sig { returns(T.nilable(T.any(Time, Orb::Models::BillingCycleRelativeDate::OrSymbol))) }
         attr_accessor :end_date
 
@@ -136,9 +136,9 @@ module Orb
         attr_accessor :external_price_id
 
         # An additional filter to apply to usage queries. This filter must be expressed as
-        #   a boolean
-        #   [computed property](/extensibility/advanced-metrics#computed-properties). If
-        #   null, usage queries will not include any additional filter.
+        # a boolean
+        # [computed property](/extensibility/advanced-metrics#computed-properties). If
+        # null, usage queries will not include any additional filter.
         sig { returns(T.nilable(String)) }
         attr_accessor :filter
 
@@ -151,12 +151,12 @@ module Orb
         attr_accessor :fixed_fee_quantity_transitions
 
         # The maximum amount that will be billed for this price interval for a given
-        #   billing period.
+        # billing period.
         sig { returns(T.nilable(Float)) }
         attr_accessor :maximum_amount
 
         # The minimum amount that will be billed for this price interval for a given
-        #   billing period.
+        # billing period.
         sig { returns(T.nilable(Float)) }
         attr_accessor :minimum_amount
 
@@ -204,11 +204,11 @@ module Orb
         attr_accessor :price_id
 
         # A list of customer IDs whose usage events will be aggregated and billed under
-        #   this subscription. By default, a subscription only considers usage events
-        #   associated with its attached customer's customer_id. When usage_customer_ids is
-        #   provided, the subscription includes usage events from the specified customers
-        #   only. Provided usage_customer_ids must be either the customer for this
-        #   subscription itself, or any of that customer's children.
+        # this subscription. By default, a subscription only considers usage events
+        # associated with its attached customer's customer_id. When usage_customer_ids is
+        # provided, the subscription includes usage events from the specified customers
+        # only. Provided usage_customer_ids must be either the customer for this
+        # subscription itself, or any of that customer's children.
         sig { returns(T.nilable(T::Array[String])) }
         attr_accessor :usage_customer_ids
 
@@ -354,7 +354,7 @@ module Orb
         def to_hash; end
 
         # The start date of the price interval. This is the date that the price will start
-        #   billing on the subscription.
+        # billing on the subscription.
         module StartDate
           extend Orb::Internal::Type::Union
 
@@ -372,12 +372,12 @@ module Orb
           attr_accessor :cadence
 
           # An ISO 4217 currency string or a custom pricing unit identifier in which to bill
-          #   this price.
+          # this price.
           sig { returns(String) }
           attr_accessor :currency
 
           # Whether the allocated amount should expire at the end of the cadence or roll
-          #   over to the next period.
+          # over to the next period.
           sig { returns(T::Boolean) }
           attr_accessor :expires_at_end_of_cadence
 
@@ -479,7 +479,7 @@ module Orb
             attr_accessor :discount_type
 
             # Only available if discount_type is `percentage`. This is a number between 0
-            #   and 1.
+            # and 1.
             sig { returns(Float) }
             attr_accessor :percentage_discount
 
@@ -495,7 +495,7 @@ module Orb
             attr_accessor :discount_type
 
             # Only available if discount_type is `usage`. Number of usage units that this
-            #   discount is for.
+            # discount is for.
             sig { returns(Float) }
             attr_accessor :usage_discount
 
@@ -516,7 +516,7 @@ module Orb
         end
 
         # The end date of the price interval. This is the date that the price will stop
-        #   billing on the subscription.
+        # billing on the subscription.
         module EndDate
           extend Orb::Internal::Type::Union
 
@@ -583,17 +583,17 @@ module Orb
             attr_writer :unit_config
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -625,7 +625,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -634,7 +634,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -658,8 +658,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -822,7 +822,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -897,7 +897,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -998,17 +998,17 @@ module Orb
             attr_writer :package_config
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -1040,7 +1040,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -1049,7 +1049,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -1073,8 +1073,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -1217,7 +1217,7 @@ module Orb
               attr_accessor :package_amount
 
               # An integer amount to represent package size. For example, 1000 here would divide
-              #   usage by 1000 before multiplying by package_amount in rating
+              # usage by 1000 before multiplying by package_amount in rating
               sig { returns(Integer) }
               attr_accessor :package_size
 
@@ -1242,7 +1242,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -1317,7 +1317,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -1418,17 +1418,17 @@ module Orb
             attr_accessor :name
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -1460,7 +1460,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -1469,7 +1469,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -1493,8 +1493,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -1681,8 +1681,8 @@ module Orb
 
               class MatrixValue < Orb::Internal::Type::BaseModel
                 # One or two matrix keys to filter usage to this Matrix value by. For example,
-                #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
-                #   instance tier.
+                # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+                # instance tier.
                 sig { returns(T::Array[T.nilable(String)]) }
                 attr_accessor :dimension_values
 
@@ -1717,7 +1717,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -1792,7 +1792,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -1897,17 +1897,17 @@ module Orb
             attr_accessor :name
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -1939,7 +1939,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -1948,7 +1948,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -1972,8 +1972,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -2170,8 +2170,8 @@ module Orb
 
               class MatrixValue < Orb::Internal::Type::BaseModel
                 # One or two matrix keys to filter usage to this Matrix value by. For example,
-                #   ["region", "tier"] could be used to filter cloud usage by a cloud region and an
-                #   instance tier.
+                # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+                # instance tier.
                 sig { returns(T::Array[T.nilable(String)]) }
                 attr_accessor :dimension_values
 
@@ -2206,7 +2206,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -2281,7 +2281,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -2382,17 +2382,17 @@ module Orb
             attr_writer :tiered_config
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -2424,7 +2424,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -2433,7 +2433,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -2457,8 +2457,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -2670,7 +2670,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -2745,7 +2745,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -2850,17 +2850,17 @@ module Orb
             attr_writer :tiered_bps_config
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -2892,7 +2892,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -2901,7 +2901,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -2925,8 +2925,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -3069,7 +3069,7 @@ module Orb
 
             class TieredBpsConfig < Orb::Internal::Type::BaseModel
               # Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
-              #   tiers
+              # tiers
               sig do
                 returns(
                   T::Array[
@@ -3161,7 +3161,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -3236,7 +3236,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -3333,17 +3333,17 @@ module Orb
             attr_accessor :name
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -3375,7 +3375,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -3384,7 +3384,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -3408,8 +3408,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -3576,7 +3576,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -3651,7 +3651,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -3752,17 +3752,17 @@ module Orb
             attr_accessor :name
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -3794,7 +3794,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -3803,7 +3803,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -3827,8 +3827,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -3912,7 +3912,7 @@ module Orb
 
             class BulkBpsConfig < Orb::Internal::Type::BaseModel
               # Tiers for a bulk BPS pricing model where all usage is aggregated to a single
-              #   tier based on total volume
+              # tier based on total volume
               sig do
                 returns(
                   T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier]
@@ -4044,7 +4044,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -4119,7 +4119,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -4220,17 +4220,17 @@ module Orb
             attr_accessor :name
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -4262,7 +4262,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -4271,7 +4271,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -4295,8 +4295,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -4496,7 +4496,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -4571,7 +4571,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -4661,17 +4661,17 @@ module Orb
             attr_accessor :threshold_total_amount_config
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -4703,7 +4703,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -4712,7 +4712,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -4736,8 +4736,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -4889,7 +4889,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -4964,7 +4964,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -5054,17 +5054,17 @@ module Orb
             attr_accessor :tiered_package_config
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -5096,7 +5096,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -5105,7 +5105,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -5129,8 +5129,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -5282,7 +5282,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -5357,7 +5357,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -5447,17 +5447,17 @@ module Orb
             attr_accessor :name
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -5489,7 +5489,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -5498,7 +5498,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -5522,8 +5522,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -5675,7 +5675,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -5750,7 +5750,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -5840,17 +5840,17 @@ module Orb
             attr_accessor :name
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -5882,7 +5882,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -5891,7 +5891,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -5915,8 +5915,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -6068,7 +6068,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -6143,7 +6143,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -6233,17 +6233,17 @@ module Orb
             attr_accessor :tiered_with_minimum_config
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -6275,7 +6275,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -6284,7 +6284,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -6308,8 +6308,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -6461,7 +6461,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -6536,7 +6536,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -6626,17 +6626,17 @@ module Orb
             attr_accessor :package_with_allocation_config
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -6668,7 +6668,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -6677,7 +6677,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -6701,8 +6701,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -6854,7 +6854,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -6929,7 +6929,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -7019,17 +7019,17 @@ module Orb
             attr_accessor :tiered_package_with_minimum_config
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -7061,7 +7061,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -7070,7 +7070,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -7094,8 +7094,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -7247,7 +7247,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -7322,7 +7322,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -7412,17 +7412,17 @@ module Orb
             attr_accessor :unit_with_percent_config
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -7454,7 +7454,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -7463,7 +7463,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -7487,8 +7487,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -7640,7 +7640,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -7715,7 +7715,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -7805,17 +7805,17 @@ module Orb
             attr_accessor :tiered_with_proration_config
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -7847,7 +7847,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -7856,7 +7856,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -7880,8 +7880,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -8033,7 +8033,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -8108,7 +8108,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -8198,17 +8198,17 @@ module Orb
             attr_accessor :unit_with_proration_config
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -8240,7 +8240,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -8249,7 +8249,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -8273,8 +8273,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -8426,7 +8426,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -8501,7 +8501,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -8591,17 +8591,17 @@ module Orb
             attr_accessor :name
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -8633,7 +8633,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -8642,7 +8642,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -8666,8 +8666,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -8819,7 +8819,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -8894,7 +8894,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -8984,17 +8984,17 @@ module Orb
             attr_accessor :name
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -9026,7 +9026,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -9035,7 +9035,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -9059,8 +9059,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -9212,7 +9212,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -9287,7 +9287,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -9377,17 +9377,17 @@ module Orb
             attr_accessor :name
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -9419,7 +9419,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -9428,7 +9428,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -9452,8 +9452,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -9605,7 +9605,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -9680,7 +9680,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -9770,17 +9770,17 @@ module Orb
             attr_accessor :name
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -9812,7 +9812,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -9821,7 +9821,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -9845,8 +9845,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -9998,7 +9998,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -10073,7 +10073,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -10163,17 +10163,17 @@ module Orb
             attr_accessor :name
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -10205,7 +10205,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -10214,7 +10214,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -10238,8 +10238,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -10391,7 +10391,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -10466,7 +10466,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -10556,17 +10556,17 @@ module Orb
             attr_accessor :name
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -10598,7 +10598,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -10607,7 +10607,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -10631,8 +10631,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -10784,7 +10784,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -10859,7 +10859,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -10949,17 +10949,17 @@ module Orb
             attr_accessor :scalable_matrix_with_unit_pricing_config
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -10991,7 +10991,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -11000,7 +11000,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -11024,8 +11024,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -11177,7 +11177,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -11252,7 +11252,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -11342,17 +11342,17 @@ module Orb
             attr_accessor :scalable_matrix_with_tiered_pricing_config
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -11384,7 +11384,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -11393,7 +11393,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -11417,8 +11417,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -11570,7 +11570,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -11645,7 +11645,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -11735,17 +11735,17 @@ module Orb
             attr_accessor :name
 
             # The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
+            # usage-based.
             sig { returns(T.nilable(String)) }
             attr_accessor :billable_metric_id
 
             # If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
+            # this is true, and in-arrears if this is false.
             sig { returns(T.nilable(T::Boolean)) }
             attr_accessor :billed_in_advance
 
             # For custom cadence: specifies the duration of the billing period in days or
-            #   months.
+            # months.
             sig do
               returns(
                 T.nilable(
@@ -11777,7 +11777,7 @@ module Orb
             attr_accessor :external_price_id
 
             # If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
+            # applied.
             sig { returns(T.nilable(Float)) }
             attr_accessor :fixed_price_quantity
 
@@ -11786,7 +11786,7 @@ module Orb
             attr_accessor :invoice_grouping_key
 
             # Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
+            # If unspecified, a single invoice is produced per billing cycle.
             sig do
               returns(
                 T.nilable(
@@ -11810,8 +11810,8 @@ module Orb
             attr_writer :invoicing_cycle_configuration
 
             # User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_accessor :metadata
 
@@ -11963,7 +11963,7 @@ module Orb
               attr_accessor :duration_unit
 
               # For custom cadence: specifies the duration of the billing period in days or
-              #   months.
+              # months.
               sig do
                 params(
                   duration: Integer,
@@ -12038,7 +12038,7 @@ module Orb
               attr_accessor :duration_unit
 
               # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   If unspecified, a single invoice is produced per billing cycle.
+              # If unspecified, a single invoice is produced per billing cycle.
               sig do
                 params(
                   duration: Integer,
@@ -12126,16 +12126,16 @@ module Orb
         attr_accessor :adjustment
 
         # The start date of the adjustment interval. This is the date that the adjustment
-        #   will start affecting prices on the subscription. The adjustment will apply to
-        #   invoice dates that overlap with this `start_date`. This `start_date` is treated
-        #   as inclusive for in-advance prices, and exclusive for in-arrears prices.
+        # will start affecting prices on the subscription. The adjustment will apply to
+        # invoice dates that overlap with this `start_date`. This `start_date` is treated
+        # as inclusive for in-advance prices, and exclusive for in-arrears prices.
         sig { returns(T.any(Time, Orb::Models::BillingCycleRelativeDate::OrSymbol)) }
         attr_accessor :start_date
 
         # The end date of the adjustment interval. This is the date that the adjustment
-        #   will stop affecting prices on the subscription. The adjustment will apply to
-        #   invoice dates that overlap with this `end_date`.This `end_date` is treated as
-        #   exclusive for in-advance prices, and inclusive for in-arrears prices.
+        # will stop affecting prices on the subscription. The adjustment will apply to
+        # invoice dates that overlap with this `end_date`.This `end_date` is treated as
+        # exclusive for in-advance prices, and inclusive for in-arrears prices.
         sig { returns(T.nilable(T.any(Time, Orb::Models::BillingCycleRelativeDate::OrSymbol))) }
         attr_accessor :end_date
 
@@ -12190,7 +12190,7 @@ module Orb
             attr_accessor :percentage_discount
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
-            #   will be applied at the invoice level, possibly to multiple prices.
+            # will be applied at the invoice level, possibly to multiple prices.
             sig { returns(T.nilable(T::Boolean)) }
             attr_reader :is_invoice_level
 
@@ -12240,7 +12240,7 @@ module Orb
             attr_accessor :usage_discount
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
-            #   will be applied at the invoice level, possibly to multiple prices.
+            # will be applied at the invoice level, possibly to multiple prices.
             sig { returns(T.nilable(T::Boolean)) }
             attr_reader :is_invoice_level
 
@@ -12290,7 +12290,7 @@ module Orb
             attr_accessor :applies_to_price_ids
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
-            #   will be applied at the invoice level, possibly to multiple prices.
+            # will be applied at the invoice level, possibly to multiple prices.
             sig { returns(T.nilable(T::Boolean)) }
             attr_reader :is_invoice_level
 
@@ -12344,7 +12344,7 @@ module Orb
             attr_accessor :minimum_amount
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
-            #   will be applied at the invoice level, possibly to multiple prices.
+            # will be applied at the invoice level, possibly to multiple prices.
             sig { returns(T.nilable(T::Boolean)) }
             attr_reader :is_invoice_level
 
@@ -12397,7 +12397,7 @@ module Orb
             attr_accessor :maximum_amount
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
-            #   will be applied at the invoice level, possibly to multiple prices.
+            # will be applied at the invoice level, possibly to multiple prices.
             sig { returns(T.nilable(T::Boolean)) }
             attr_reader :is_invoice_level
 
@@ -12445,9 +12445,9 @@ module Orb
         end
 
         # The start date of the adjustment interval. This is the date that the adjustment
-        #   will start affecting prices on the subscription. The adjustment will apply to
-        #   invoice dates that overlap with this `start_date`. This `start_date` is treated
-        #   as inclusive for in-advance prices, and exclusive for in-arrears prices.
+        # will start affecting prices on the subscription. The adjustment will apply to
+        # invoice dates that overlap with this `start_date`. This `start_date` is treated
+        # as inclusive for in-advance prices, and exclusive for in-arrears prices.
         module StartDate
           extend Orb::Internal::Type::Union
 
@@ -12456,9 +12456,9 @@ module Orb
         end
 
         # The end date of the adjustment interval. This is the date that the adjustment
-        #   will stop affecting prices on the subscription. The adjustment will apply to
-        #   invoice dates that overlap with this `end_date`.This `end_date` is treated as
-        #   exclusive for in-advance prices, and inclusive for in-arrears prices.
+        # will stop affecting prices on the subscription. The adjustment will apply to
+        # invoice dates that overlap with this `end_date`.This `end_date` is treated as
+        # exclusive for in-advance prices, and inclusive for in-arrears prices.
         module EndDate
           extend Orb::Internal::Type::Union
 
@@ -12473,26 +12473,26 @@ module Orb
         attr_accessor :price_interval_id
 
         # The updated billing cycle day for this price interval. If not specified, the
-        #   billing cycle day will not be updated. Note that overlapping price intervals
-        #   must have the same billing cycle day.
+        # billing cycle day will not be updated. Note that overlapping price intervals
+        # must have the same billing cycle day.
         sig { returns(T.nilable(Integer)) }
         attr_accessor :billing_cycle_day
 
         # The updated end date of this price interval. If not specified, the start date
-        #   will not be updated.
+        # will not be updated.
         sig { returns(T.nilable(T.any(Time, Orb::Models::BillingCycleRelativeDate::OrSymbol))) }
         attr_accessor :end_date
 
         # An additional filter to apply to usage queries. This filter must be expressed as
-        #   a boolean
-        #   [computed property](/extensibility/advanced-metrics#computed-properties). If
-        #   null, usage queries will not include any additional filter.
+        # a boolean
+        # [computed property](/extensibility/advanced-metrics#computed-properties). If
+        # null, usage queries will not include any additional filter.
         sig { returns(T.nilable(String)) }
         attr_accessor :filter
 
         # A list of fixed fee quantity transitions to use for this price interval. Note
-        #   that this list will overwrite all existing fixed fee quantity transitions on the
-        #   price interval.
+        # that this list will overwrite all existing fixed fee quantity transitions on the
+        # price interval.
         sig do
           returns(
             T.nilable(T::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition])
@@ -12501,7 +12501,7 @@ module Orb
         attr_accessor :fixed_fee_quantity_transitions
 
         # The updated start date of this price interval. If not specified, the start date
-        #   will not be updated.
+        # will not be updated.
         sig { returns(T.nilable(T.any(Time, Orb::Models::BillingCycleRelativeDate::OrSymbol))) }
         attr_reader :start_date
 
@@ -12509,11 +12509,11 @@ module Orb
         attr_writer :start_date
 
         # A list of customer IDs whose usage events will be aggregated and billed under
-        #   this subscription. By default, a subscription only considers usage events
-        #   associated with its attached customer's customer_id. When usage_customer_ids is
-        #   provided, the subscription includes usage events from the specified customers
-        #   only. Provided usage_customer_ids must be either the customer for this
-        #   subscription itself, or any of that customer's children.
+        # this subscription. By default, a subscription only considers usage events
+        # associated with its attached customer's customer_id. When usage_customer_ids is
+        # provided, the subscription includes usage events from the specified customers
+        # only. Provided usage_customer_ids must be either the customer for this
+        # subscription itself, or any of that customer's children.
         sig { returns(T.nilable(T::Array[String])) }
         attr_accessor :usage_customer_ids
 
@@ -12562,7 +12562,7 @@ module Orb
         def to_hash; end
 
         # The updated end date of this price interval. If not specified, the start date
-        #   will not be updated.
+        # will not be updated.
         module EndDate
           extend Orb::Internal::Type::Union
 
@@ -12587,7 +12587,7 @@ module Orb
         end
 
         # The updated start date of this price interval. If not specified, the start date
-        #   will not be updated.
+        # will not be updated.
         module StartDate
           extend Orb::Internal::Type::Union
 
@@ -12602,12 +12602,12 @@ module Orb
         attr_accessor :adjustment_interval_id
 
         # The updated end date of this adjustment interval. If not specified, the start
-        #   date will not be updated.
+        # date will not be updated.
         sig { returns(T.nilable(T.any(Time, Orb::Models::BillingCycleRelativeDate::OrSymbol))) }
         attr_accessor :end_date
 
         # The updated start date of this adjustment interval. If not specified, the start
-        #   date will not be updated.
+        # date will not be updated.
         sig { returns(T.nilable(T.any(Time, Orb::Models::BillingCycleRelativeDate::OrSymbol))) }
         attr_reader :start_date
 
@@ -12637,7 +12637,7 @@ module Orb
         def to_hash; end
 
         # The updated end date of this adjustment interval. If not specified, the start
-        #   date will not be updated.
+        # date will not be updated.
         module EndDate
           extend Orb::Internal::Type::Union
 
@@ -12646,7 +12646,7 @@ module Orb
         end
 
         # The updated start date of this adjustment interval. If not specified, the start
-        #   date will not be updated.
+        # date will not be updated.
         module StartDate
           extend Orb::Internal::Type::Union
 

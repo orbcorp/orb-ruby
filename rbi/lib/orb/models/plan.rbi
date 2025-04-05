@@ -7,7 +7,7 @@ module Orb
       attr_accessor :id
 
       # Adjustments for this plan. If the plan has phases, this includes adjustments
-      #   across all phases of the plan.
+      # across all phases of the plan.
       sig do
         returns(
           T::Array[
@@ -30,7 +30,7 @@ module Orb
       attr_writer :base_plan
 
       # The parent plan id if the given plan was created by overriding one or more of
-      #   the parent's prices
+      # the parent's prices
       sig { returns(T.nilable(String)) }
       attr_accessor :base_plan_id
 
@@ -38,12 +38,12 @@ module Orb
       attr_accessor :created_at
 
       # An ISO 4217 currency string or custom pricing unit (`credits`) for this plan's
-      #   prices.
+      # prices.
       sig { returns(String) }
       attr_accessor :currency
 
       # The default memo text on the invoices corresponding to subscriptions on this
-      #   plan. Note that each subscription may configure its own memo.
+      # plan. Note that each subscription may configure its own memo.
       sig { returns(T.nilable(String)) }
       attr_accessor :default_invoice_memo
 
@@ -65,13 +65,13 @@ module Orb
       attr_accessor :discount
 
       # An optional user-defined ID for this plan resource, used throughout the system
-      #   as an alias for this Plan. Use this field to identify a plan by an existing
-      #   identifier in your system.
+      # as an alias for this Plan. Use this field to identify a plan by an existing
+      # identifier in your system.
       sig { returns(T.nilable(String)) }
       attr_accessor :external_plan_id
 
       # An ISO 4217 currency string for which this plan is billed in. Matches `currency`
-      #   unless `currency` is a custom pricing unit.
+      # unless `currency` is a custom pricing unit.
       sig { returns(String) }
       attr_accessor :invoicing_currency
 
@@ -85,9 +85,9 @@ module Orb
       attr_accessor :maximum_amount
 
       # User specified key-value pairs for the resource. If not present, this defaults
-      #   to an empty dictionary. Individual keys can be removed by setting the value to
-      #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-      #   `null`.
+      # to an empty dictionary. Individual keys can be removed by setting the value to
+      # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+      # `null`.
       sig { returns(T::Hash[Symbol, String]) }
       attr_accessor :metadata
 
@@ -104,10 +104,10 @@ module Orb
       attr_accessor :name
 
       # Determines the difference between the invoice issue date and the due date. A
-      #   value of "0" here signifies that invoices are due on issue, whereas a value of
-      #   "30" means that the customer has a month to pay the invoice before its overdue.
-      #   Note that individual subscriptions or invoices may set a different net terms
-      #   configuration.
+      # value of "0" here signifies that invoices are due on issue, whereas a value of
+      # "30" means that the customer has a month to pay the invoice before its overdue.
+      # Note that individual subscriptions or invoices may set a different net terms
+      # configuration.
       sig { returns(T.nilable(Integer)) }
       attr_accessor :net_terms
 
@@ -115,7 +115,7 @@ module Orb
       attr_accessor :plan_phases
 
       # Prices for this plan. If the plan has phases, this includes prices across all
-      #   phases of the plan.
+      # phases of the plan.
       sig do
         returns(
           T::Array[
@@ -173,9 +173,9 @@ module Orb
       attr_accessor :version
 
       # The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
-      #   subscribed to by a customer. Plans define the billing behavior of the
-      #   subscription. You can see more about how to configure prices in the
-      #   [Price resource](/reference/price).
+      # subscribed to by a customer. Plans define the billing behavior of the
+      # subscription. You can see more about how to configure prices in the
+      # [Price resource](/reference/price).
       sig do
         params(
           id: String,
@@ -374,7 +374,7 @@ module Orb
           attr_accessor :applies_to_price_ids
 
           # True for adjustments that apply to an entire invocice, false for adjustments
-          #   that apply to only one price.
+          # that apply to only one price.
           sig { returns(T::Boolean) }
           attr_accessor :is_invoice_level
 
@@ -387,7 +387,7 @@ module Orb
           attr_accessor :reason
 
           # The number of usage units by which to discount the price this adjustment applies
-          #   to in a given billing period.
+          # to in a given billing period.
           sig { returns(Float) }
           attr_accessor :usage_discount
 
@@ -437,7 +437,7 @@ module Orb
           attr_accessor :adjustment_type
 
           # The amount by which to discount the prices this adjustment applies to in a given
-          #   billing period.
+          # billing period.
           sig { returns(String) }
           attr_accessor :amount_discount
 
@@ -446,7 +446,7 @@ module Orb
           attr_accessor :applies_to_price_ids
 
           # True for adjustments that apply to an entire invocice, false for adjustments
-          #   that apply to only one price.
+          # that apply to only one price.
           sig { returns(T::Boolean) }
           attr_accessor :is_invoice_level
 
@@ -508,12 +508,12 @@ module Orb
           attr_accessor :applies_to_price_ids
 
           # True for adjustments that apply to an entire invocice, false for adjustments
-          #   that apply to only one price.
+          # that apply to only one price.
           sig { returns(T::Boolean) }
           attr_accessor :is_invoice_level
 
           # The percentage (as a value between 0 and 1) by which to discount the price
-          #   intervals this adjustment applies to in a given billing period.
+          # intervals this adjustment applies to in a given billing period.
           sig { returns(Float) }
           attr_accessor :percentage_discount
 
@@ -575,7 +575,7 @@ module Orb
           attr_accessor :applies_to_price_ids
 
           # True for adjustments that apply to an entire invocice, false for adjustments
-          #   that apply to only one price.
+          # that apply to only one price.
           sig { returns(T::Boolean) }
           attr_accessor :is_invoice_level
 
@@ -584,7 +584,7 @@ module Orb
           attr_accessor :item_id
 
           # The minimum amount to charge in a given billing period for the prices this
-          #   adjustment applies to.
+          # adjustment applies to.
           sig { returns(String) }
           attr_accessor :minimum_amount
 
@@ -649,12 +649,12 @@ module Orb
           attr_accessor :applies_to_price_ids
 
           # True for adjustments that apply to an entire invocice, false for adjustments
-          #   that apply to only one price.
+          # that apply to only one price.
           sig { returns(T::Boolean) }
           attr_accessor :is_invoice_level
 
           # The maximum amount to charge in a given billing period for the prices this
-          #   adjustment applies to.
+          # adjustment applies to.
           sig { returns(String) }
           attr_accessor :maximum_amount
 
@@ -718,8 +718,8 @@ module Orb
         attr_accessor :id
 
         # An optional user-defined ID for this plan resource, used throughout the system
-        #   as an alias for this Plan. Use this field to identify a plan by an existing
-        #   identifier in your system.
+        # as an alias for this Plan. Use this field to identify a plan by an existing
+        # identifier in your system.
         sig { returns(T.nilable(String)) }
         attr_accessor :external_plan_id
 
@@ -746,7 +746,7 @@ module Orb
 
       class Maximum < Orb::Internal::Type::BaseModel
         # List of price_ids that this maximum amount applies to. For plan/plan phase
-        #   maximums, this can be a subset of prices.
+        # maximums, this can be a subset of prices.
         sig { returns(T::Array[String]) }
         attr_accessor :applies_to_price_ids
 
@@ -765,7 +765,7 @@ module Orb
 
       class Minimum < Orb::Internal::Type::BaseModel
         # List of price_ids that this minimum amount applies to. For plan/plan phase
-        #   minimums, this can be a subset of prices.
+        # minimums, this can be a subset of prices.
         sig { returns(T::Array[String]) }
         attr_accessor :applies_to_price_ids
 
@@ -804,7 +804,7 @@ module Orb
         attr_accessor :discount
 
         # How many terms of length `duration_unit` this phase is active for. If null, this
-        #   phase is evergreen and active indefinitely
+        # phase is evergreen and active indefinitely
         sig { returns(T.nilable(Integer)) }
         attr_accessor :duration
 
@@ -919,7 +919,7 @@ module Orb
 
         class Maximum < Orb::Internal::Type::BaseModel
           # List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
+          # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
@@ -938,7 +938,7 @@ module Orb
 
         class Minimum < Orb::Internal::Type::BaseModel
           # List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
+          # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 

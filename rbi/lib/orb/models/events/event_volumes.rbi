@@ -28,7 +28,7 @@ module Orb
           attr_accessor :timeframe_start
 
           # An EventVolume contains the event volume ingested in an hourly window. The
-          #   timestamp used for the aggregation is the `timestamp` datetime field on events.
+          # timestamp used for the aggregation is the `timestamp` datetime field on events.
           sig { params(count: Integer, timeframe_end: Time, timeframe_start: Time).returns(T.attached_class) }
           def self.new(count:, timeframe_end:, timeframe_start:); end
 

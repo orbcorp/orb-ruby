@@ -6,12 +6,12 @@ module Orb
       class Credits
         class TopUps
           # This endpoint allows you to create a new top-up for a specified customer's
-          #   balance. While this top-up is active, the customer's balance will added in
-          #   increments of the specified amount whenever the balance reaches the specified
-          #   threshold.
+          # balance. While this top-up is active, the customer's balance will added in
+          # increments of the specified amount whenever the balance reaches the specified
+          # threshold.
           #
-          #   If a top-up already exists for this customer in the same currency, the existing
-          #   top-up will be replaced.
+          # If a top-up already exists for this customer in the same currency, the existing
+          # top-up will be replaced.
           #
           # @overload create(customer_id, amount:, currency:, invoice_settings:, per_unit_cost_basis:, threshold:, active_from: nil, expires_after: nil, expires_after_unit: nil, request_options: {})
           #
@@ -65,7 +65,7 @@ module Orb
           end
 
           # This deactivates the top-up and voids any invoices associated with pending
-          #   credit blocks purchased through the top-up.
+          # credit blocks purchased through the top-up.
           #
           # @overload delete(top_up_id, customer_id:, request_options: {})
           #
@@ -91,12 +91,12 @@ module Orb
           end
 
           # This endpoint allows you to create a new top-up for a specified customer's
-          #   balance. While this top-up is active, the customer's balance will added in
-          #   increments of the specified amount whenever the balance reaches the specified
-          #   threshold.
+          # balance. While this top-up is active, the customer's balance will added in
+          # increments of the specified amount whenever the balance reaches the specified
+          # threshold.
           #
-          #   If a top-up already exists for this customer in the same currency, the existing
-          #   top-up will be replaced.
+          # If a top-up already exists for this customer in the same currency, the existing
+          # top-up will be replaced.
           #
           # @overload create_by_external_id(external_customer_id, amount:, currency:, invoice_settings:, per_unit_cost_basis:, threshold:, active_from: nil, expires_after: nil, expires_after_unit: nil, request_options: {})
           #
@@ -126,7 +126,7 @@ module Orb
           end
 
           # This deactivates the top-up and voids any invoices associated with pending
-          #   credit blocks purchased through the top-up.
+          # credit blocks purchased through the top-up.
           #
           # @overload delete_by_external_id(top_up_id, external_customer_id:, request_options: {})
           #

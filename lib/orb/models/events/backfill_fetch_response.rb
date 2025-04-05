@@ -12,7 +12,7 @@ module Orb
 
         # @!attribute close_time
         #   If in the future, the time at which the backfill will automatically close. If in
-        #     the past, the time at which the backfill was closed.
+        #   the past, the time at which the backfill was closed.
         #
         #   @return [Time, nil]
         required :close_time, Time, nil?: true
@@ -24,7 +24,7 @@ module Orb
 
         # @!attribute customer_id
         #   The Orb-generated ID of the customer to which this backfill is scoped. If
-        #     `null`, this backfill is scoped to all customers.
+        #   `null`, this backfill is scoped to all customers.
         #
         #   @return [String, nil]
         required :customer_id, String, nil?: true
@@ -37,8 +37,8 @@ module Orb
 
         # @!attribute replace_existing_events
         #   If `true`, existing events in the backfill's timeframe will be replaced with the
-        #     newly ingested events associated with the backfill. If `false`, newly ingested
-        #     events will be added to the existing events.
+        #   newly ingested events associated with the backfill. If `false`, newly ingested
+        #   events will be added to the existing events.
         #
         #   @return [Boolean]
         required :replace_existing_events, Orb::Internal::Type::Boolean
@@ -67,15 +67,15 @@ module Orb
 
         # @!attribute deprecation_filter
         #   A boolean
-        #     [computed property](/extensibility/advanced-metrics#computed-properties) used to
-        #     filter the set of events to deprecate
+        #   [computed property](/extensibility/advanced-metrics#computed-properties) used to
+        #   filter the set of events to deprecate
         #
         #   @return [String, nil]
         optional :deprecation_filter, String, nil?: true
 
         # @!parse
         #   # A backfill represents an update to historical usage data, adding or replacing
-        #   #   events in a timeframe.
+        #   # events in a timeframe.
         #   #
         #   # @param id [String]
         #   # @param close_time [Time, nil]

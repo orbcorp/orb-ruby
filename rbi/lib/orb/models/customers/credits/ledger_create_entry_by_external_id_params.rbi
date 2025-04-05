@@ -9,7 +9,7 @@ module Orb
           include Orb::Internal::Type::RequestParameters
 
           # The number of credits to effect. Note that this is required for increment,
-          #   decrement or void operations.
+          # decrement or void operations.
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -17,18 +17,18 @@ module Orb
           attr_accessor :entry_type
 
           # The currency or custom pricing unit to use for this ledger entry. If this is a
-          #   real-world currency, it must match the customer's invoicing currency.
+          # real-world currency, it must match the customer's invoicing currency.
           sig { returns(T.nilable(String)) }
           attr_accessor :currency
 
           # Optional metadata that can be specified when adding ledger results via the API.
-          #   For example, this can be used to note an increment refers to trial credits, or
-          #   for noting corrections as a result of an incident, etc.
+          # For example, this can be used to note an increment refers to trial credits, or
+          # for noting corrections as a result of an incident, etc.
           sig { returns(T.nilable(String)) }
           attr_accessor :description
 
           # An ISO 8601 format date that denotes when this credit balance should become
-          #   available for use.
+          # available for use.
           sig { returns(T.nilable(Time)) }
           attr_accessor :effective_date
 
@@ -37,9 +37,9 @@ module Orb
           attr_accessor :expiry_date
 
           # Passing `invoice_settings` automatically generates an invoice for the newly
-          #   added credits. If `invoice_settings` is passed, you must specify
-          #   per_unit_cost_basis, as the calculation of the invoice total is done on that
-          #   basis.
+          # added credits. If `invoice_settings` is passed, you must specify
+          # per_unit_cost_basis, as the calculation of the invoice total is done on that
+          # basis.
           sig { returns(T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings)) }
           attr_reader :invoice_settings
 
@@ -57,19 +57,19 @@ module Orb
           attr_writer :invoice_settings
 
           # User-specified key/value pairs for the resource. Individual keys can be removed
-          #   by setting the value to `null`, and the entire metadata mapping can be cleared
-          #   by setting `metadata` to `null`.
+          # by setting the value to `null`, and the entire metadata mapping can be cleared
+          # by setting `metadata` to `null`.
           sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
           attr_accessor :metadata
 
           # Can only be specified when entry_type=increment. How much, in the customer's
-          #   currency, a customer paid for a single credit in this block
+          # currency, a customer paid for a single credit in this block
           sig { returns(T.nilable(String)) }
           attr_accessor :per_unit_cost_basis
 
           # A future date (specified in YYYY-MM-DD format) used for expiration change,
-          #   denoting when credits transferred (as part of a partial block expiration) should
-          #   expire.
+          # denoting when credits transferred (as part of a partial block expiration) should
+          # expire.
           sig { returns(Date) }
           attr_accessor :target_expiry_date
 
@@ -176,13 +176,13 @@ module Orb
 
           class InvoiceSettings < Orb::Internal::Type::BaseModel
             # Whether the credits purchase invoice should auto collect with the customer's
-            #   saved payment method.
+            # saved payment method.
             sig { returns(T::Boolean) }
             attr_accessor :auto_collection
 
             # The net terms determines the difference between the invoice date and the issue
-            #   date for the invoice. If you intend the invoice to be due on issue, set this
-            #   to 0.
+            # date for the invoice. If you intend the invoice to be due on issue, set this
+            # to 0.
             sig { returns(Integer) }
             attr_accessor :net_terms
 
@@ -191,7 +191,7 @@ module Orb
             attr_accessor :memo
 
             # If true, the new credit block will require that the corresponding invoice is
-            #   paid before it can be drawn down from.
+            # paid before it can be drawn down from.
             sig { returns(T.nilable(T::Boolean)) }
             attr_reader :require_successful_payment
 
@@ -199,9 +199,9 @@ module Orb
             attr_writer :require_successful_payment
 
             # Passing `invoice_settings` automatically generates an invoice for the newly
-            #   added credits. If `invoice_settings` is passed, you must specify
-            #   per_unit_cost_basis, as the calculation of the invoice total is done on that
-            #   basis.
+            # added credits. If `invoice_settings` is passed, you must specify
+            # per_unit_cost_basis, as the calculation of the invoice total is done on that
+            # basis.
             sig do
               params(
                 auto_collection: T::Boolean,

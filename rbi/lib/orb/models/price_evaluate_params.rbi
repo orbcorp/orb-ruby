@@ -23,14 +23,14 @@ module Orb
       attr_accessor :external_customer_id
 
       # A boolean
-      #   [computed property](/extensibility/advanced-metrics#computed-properties) used to
-      #   filter the underlying billable metric
+      # [computed property](/extensibility/advanced-metrics#computed-properties) used to
+      # filter the underlying billable metric
       sig { returns(T.nilable(String)) }
       attr_accessor :filter
 
       # Properties (or
-      #   [computed properties](/extensibility/advanced-metrics#computed-properties)) used
-      #   to group the underlying billable metric
+      # [computed properties](/extensibility/advanced-metrics#computed-properties)) used
+      # to group the underlying billable metric
       sig { returns(T.nilable(T::Array[String])) }
       attr_reader :grouping_keys
 

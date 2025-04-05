@@ -21,16 +21,16 @@ module Orb
 
       # @!attribute allow_invoice_credit_or_void
       #   If false, this request will fail if it would void an issued invoice or create a
-      #     credit note. Consider using this as a safety mechanism if you do not expect
-      #     existing invoices to be changed.
+      #   credit note. Consider using this as a safety mechanism if you do not expect
+      #   existing invoices to be changed.
       #
       #   @return [Boolean, nil]
       optional :allow_invoice_credit_or_void, Orb::Internal::Type::Boolean, nil?: true
 
       # @!attribute [r] change_option
       #   Determines when the change takes effect. Note that if `effective_date` is
-      #     specified, this defaults to `effective_date`. Otherwise, this defaults to
-      #     `immediate` unless it's explicitly set to `upcoming_invoice`.
+      #   specified, this defaults to `effective_date`. Otherwise, this defaults to
+      #   `immediate` unless it's explicitly set to `upcoming_invoice`.
       #
       #   @return [Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption, nil]
       optional :change_option, enum: -> { Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption }
@@ -41,8 +41,8 @@ module Orb
 
       # @!attribute effective_date
       #   The date that the quantity change should take effect, localized to the
-      #     customer's timezone. Ifthis parameter is not passed in, the quantity change is
-      #     effective according to `change_option`.
+      #   customer's timezone. Ifthis parameter is not passed in, the quantity change is
+      #   effective according to `change_option`.
       #
       #   @return [Date, nil]
       optional :effective_date, Date, nil?: true
@@ -70,8 +70,8 @@ module Orb
       # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
 
       # Determines when the change takes effect. Note that if `effective_date` is
-      #   specified, this defaults to `effective_date`. Otherwise, this defaults to
-      #   `immediate` unless it's explicitly set to `upcoming_invoice`.
+      # specified, this defaults to `effective_date`. Otherwise, this defaults to
+      # `immediate` unless it's explicitly set to `upcoming_invoice`.
       module ChangeOption
         extend Orb::Internal::Type::Enum
 

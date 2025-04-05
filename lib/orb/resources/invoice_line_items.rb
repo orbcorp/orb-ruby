@@ -4,7 +4,7 @@ module Orb
   module Resources
     class InvoiceLineItems
       # This creates a one-off fixed fee invoice line item on an Invoice. This can only
-      #   be done for invoices that are in a `draft` status.
+      # be done for invoices that are in a `draft` status.
       #
       # @overload create(amount:, end_date:, invoice_id:, name:, quantity:, start_date:, request_options: {})
       #

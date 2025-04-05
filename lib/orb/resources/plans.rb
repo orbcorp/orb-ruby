@@ -29,9 +29,9 @@ module Orb
       end
 
       # This endpoint can be used to update the `external_plan_id`, and `metadata` of an
-      #   existing plan.
+      # existing plan.
       #
-      #   Other fields on a customer are currently immutable.
+      # Other fields on a customer are currently immutable.
       #
       # @overload update(plan_id, external_plan_id: nil, metadata: nil, request_options: {})
       #
@@ -55,10 +55,10 @@ module Orb
       end
 
       # This endpoint returns a list of all [plans](/core-concepts#plan-and-price) for
-      #   an account in a list format. The list of plans is ordered starting from the most
-      #   recently created plan. The response also includes
-      #   [`pagination_metadata`](/api-reference/pagination), which lets the caller
-      #   retrieve the next page of results if they exist.
+      # an account in a list format. The list of plans is ordered starting from the most
+      # recently created plan. The response also includes
+      # [`pagination_metadata`](/api-reference/pagination), which lets the caller
+      # retrieve the next page of results if they exist.
       #
       # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, status: nil, request_options: {})
       #
@@ -92,22 +92,22 @@ module Orb
       end
 
       # This endpoint is used to fetch [plan](/core-concepts#plan-and-price) details
-      #   given a plan identifier. It returns information about the prices included in the
-      #   plan and their configuration, as well as the product that the plan is attached
-      #   to.
+      # given a plan identifier. It returns information about the prices included in the
+      # plan and their configuration, as well as the product that the plan is attached
+      # to.
       #
-      #   ## Serialized prices
+      # ## Serialized prices
       #
-      #   Orb supports a few different pricing models out of the box. Each of these models
-      #   is serialized differently in a given [Price](/core-concepts#plan-and-price)
-      #   object. The `model_type` field determines the key for the configuration object
-      #   that is present. A detailed explanation of price types can be found in the
-      #   [Price schema](/core-concepts#plan-and-price).
+      # Orb supports a few different pricing models out of the box. Each of these models
+      # is serialized differently in a given [Price](/core-concepts#plan-and-price)
+      # object. The `model_type` field determines the key for the configuration object
+      # that is present. A detailed explanation of price types can be found in the
+      # [Price schema](/core-concepts#plan-and-price).
       #
-      #   ## Phases
+      # ## Phases
       #
-      #   Orb supports plan phases, also known as contract ramps. For plans with phases,
-      #   the serialized prices refer to all prices across all phases.
+      # Orb supports plan phases, also known as contract ramps. For plans with phases,
+      # the serialized prices refer to all prices across all phases.
       #
       # @overload fetch(plan_id, request_options: {})
       #

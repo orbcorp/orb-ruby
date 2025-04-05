@@ -4,8 +4,8 @@ module Orb
   module Resources
     class Metrics
       # This endpoint is used to create a [metric](/core-concepts###metric) using a SQL
-      #   string. See [SQL support](/extensibility/advanced-metrics#sql-support) for a
-      #   description of constructing SQL queries with examples.
+      # string. See [SQL support](/extensibility/advanced-metrics#sql-support) for a
+      # description of constructing SQL queries with examples.
       #
       # @overload create(description:, item_id:, name:, sql:, metadata: nil, request_options: {})
       #
@@ -31,8 +31,8 @@ module Orb
       end
 
       # This endpoint allows you to update the `metadata` property on a metric. If you
-      #   pass `null` for the metadata value, it will clear any existing metadata for that
-      #   invoice.
+      # pass `null` for the metadata value, it will clear any existing metadata for that
+      # invoice.
       #
       # @overload update(metric_id, metadata: nil, request_options: {})
       #
@@ -55,8 +55,8 @@ module Orb
       end
 
       # This endpoint is used to fetch [metric](/core-concepts##metric) details given a
-      #   metric identifier. It returns information about the metrics including its name,
-      #   description, and item.
+      # metric identifier. It returns information about the metrics including its name,
+      # description, and item.
       #
       # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, request_options: {})
       #
@@ -89,7 +89,7 @@ module Orb
       end
 
       # This endpoint is used to list [metrics](/core-concepts#metric). It returns
-      #   information about the metrics including its name, description, and item.
+      # information about the metrics including its name, description, and item.
       #
       # @overload fetch(metric_id, request_options: {})
       #

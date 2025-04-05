@@ -12,12 +12,12 @@ module Orb
         attr_accessor :currency
 
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
-        #   from the initial request.
+        # from the initial request.
         sig { returns(T.nilable(String)) }
         attr_accessor :cursor
 
         # If set to True, all expired and depleted blocks, as well as active block will be
-        #   returned.
+        # returned.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :include_all_blocks
 

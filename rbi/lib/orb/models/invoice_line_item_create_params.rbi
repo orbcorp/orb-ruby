@@ -19,7 +19,7 @@ module Orb
       attr_accessor :invoice_id
 
       # The item name associated with this line item. If an item with the same name
-      #   exists in Orb, that item will be associated with the line item.
+      # exists in Orb, that item will be associated with the line item.
       sig { returns(String) }
       attr_accessor :name
 
