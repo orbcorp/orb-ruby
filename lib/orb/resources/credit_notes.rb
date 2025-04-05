@@ -49,7 +49,12 @@ module Orb
         @client.request(
           method: :get,
           path: "credit_notes",
-          query: parsed,
+          query: parsed.transform_keys(
+            created_at_gt: :"created_at[gt]",
+            created_at_gte: :"created_at[gte]",
+            created_at_lt: :"created_at[lt]",
+            created_at_lte: :"created_at[lte]"
+          ),
           page: Orb::Internal::Page,
           model: Orb::Models::CreditNote,
           options: options
