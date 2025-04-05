@@ -38,7 +38,7 @@ module Orb
 
         variant Float
 
-        variant Orb::Internal::Type::BooleanModel
+        variant Orb::Internal::Type::Boolean
 
         # @!parse
         #   # @return [Array(String, Float, Boolean)]

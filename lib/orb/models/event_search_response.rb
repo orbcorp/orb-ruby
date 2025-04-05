@@ -35,7 +35,7 @@ module Orb
         #   A boolean indicating whether the event is currently deprecated.
         #
         #   @return [Boolean]
-        required :deprecated, Orb::Internal::Type::BooleanModel
+        required :deprecated, Orb::Internal::Type::Boolean
 
         # @!attribute event_name
         #   A name to meaningfully identify the action or event type.

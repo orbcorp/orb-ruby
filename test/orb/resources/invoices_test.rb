@@ -68,7 +68,7 @@ class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
         sync_failed_at: Time | nil,
         total: String,
         voided_at: Time | nil,
-        will_auto_issue: Orb::Internal::Type::BooleanModel
+        will_auto_issue: Orb::Internal::Type::Boolean
       }
     end
   end
@@ -122,7 +122,7 @@ class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
         sync_failed_at: Time | nil,
         total: String,
         voided_at: Time | nil,
-        will_auto_issue: Orb::Internal::Type::BooleanModel
+        will_auto_issue: Orb::Internal::Type::Boolean
       }
     end
   end
@@ -183,7 +183,7 @@ class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
         sync_failed_at: Time | nil,
         total: String,
         voided_at: Time | nil,
-        will_auto_issue: Orb::Internal::Type::BooleanModel
+        will_auto_issue: Orb::Internal::Type::Boolean
       }
     end
   end
@@ -237,7 +237,7 @@ class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
         sync_failed_at: Time | nil,
         total: String,
         voided_at: Time | nil,
-        will_auto_issue: Orb::Internal::Type::BooleanModel
+        will_auto_issue: Orb::Internal::Type::Boolean
       }
     end
   end
@@ -291,7 +291,7 @@ class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
         target_date: Time,
         total: String,
         voided_at: Time | nil,
-        will_auto_issue: Orb::Internal::Type::BooleanModel
+        will_auto_issue: Orb::Internal::Type::Boolean
       }
     end
   end
@@ -345,7 +345,7 @@ class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
         sync_failed_at: Time | nil,
         total: String,
         voided_at: Time | nil,
-        will_auto_issue: Orb::Internal::Type::BooleanModel
+        will_auto_issue: Orb::Internal::Type::Boolean
       }
     end
   end
@@ -399,7 +399,7 @@ class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
         sync_failed_at: Time | nil,
         total: String,
         voided_at: Time | nil,
-        will_auto_issue: Orb::Internal::Type::BooleanModel
+        will_auto_issue: Orb::Internal::Type::Boolean
       }
     end
   end
@@ -453,7 +453,7 @@ class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
         sync_failed_at: Time | nil,
         total: String,
         voided_at: Time | nil,
-        will_auto_issue: Orb::Internal::Type::BooleanModel
+        will_auto_issue: Orb::Internal::Type::Boolean
       }
     end
   end
@@ -507,7 +507,7 @@ class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
         sync_failed_at: Time | nil,
         total: String,
         voided_at: Time | nil,
-        will_auto_issue: Orb::Internal::Type::BooleanModel
+        will_auto_issue: Orb::Internal::Type::Boolean
       }
     end
   end

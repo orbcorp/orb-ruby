@@ -199,7 +199,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -463,7 +463,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -735,7 +735,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -1038,7 +1038,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -1333,7 +1333,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -1635,7 +1635,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -1906,7 +1906,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -2201,7 +2201,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -2489,7 +2489,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -2737,7 +2737,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -2986,7 +2986,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -3234,7 +3234,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -3483,7 +3483,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -3732,7 +3732,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -3981,7 +3981,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -4230,7 +4230,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -4480,7 +4480,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -4730,7 +4730,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -4979,7 +4979,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -5228,7 +5228,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -5477,7 +5477,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -5726,7 +5726,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -5976,7 +5976,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -6226,7 +6226,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or
@@ -6475,7 +6475,7 @@ module Orb
           #     this is true, and in-arrears if this is false.
           #
           #   @return [Boolean, nil]
-          optional :billed_in_advance, Orb::Internal::Type::BooleanModel, nil?: true
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
 
           # @!attribute billing_cycle_configuration
           #   For custom cadence: specifies the duration of the billing period in days or

@@ -27,7 +27,7 @@ module Orb
         #     returned.
         #
         #   @return [Boolean, nil]
-        optional :include_all_blocks, Orb::Internal::Type::BooleanModel
+        optional :include_all_blocks, Orb::Internal::Type::Boolean
 
         # @!parse
         #   # @return [Boolean]

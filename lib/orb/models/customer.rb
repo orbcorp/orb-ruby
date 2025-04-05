@@ -17,7 +17,7 @@ module Orb
       # @!attribute auto_collection
       #
       #   @return [Boolean]
-      required :auto_collection, Orb::Internal::Type::BooleanModel
+      required :auto_collection, Orb::Internal::Type::Boolean
 
       # @!attribute balance
       #   The customer's current balance in their currency.
@@ -51,12 +51,12 @@ module Orb
       # @!attribute email_delivery
       #
       #   @return [Boolean]
-      required :email_delivery, Orb::Internal::Type::BooleanModel
+      required :email_delivery, Orb::Internal::Type::Boolean
 
       # @!attribute exempt_from_automated_tax
       #
       #   @return [Boolean, nil]
-      required :exempt_from_automated_tax, Orb::Internal::Type::BooleanModel, nil?: true
+      required :exempt_from_automated_tax, Orb::Internal::Type::Boolean, nil?: true
 
       # @!attribute external_customer_id
       #   An optional user-defined ID for this customer resource, used throughout the
@@ -807,7 +807,7 @@ module Orb
         # @!attribute excluded
         #
         #   @return [Boolean]
-        required :excluded, Orb::Internal::Type::BooleanModel
+        required :excluded, Orb::Internal::Type::Boolean
 
         # @!parse
         #   # @param accounting_providers [Array<Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider>]
@@ -858,7 +858,7 @@ module Orb
         # @!attribute exempt
         #
         #   @return [Boolean]
-        required :exempt, Orb::Internal::Type::BooleanModel
+        required :exempt, Orb::Internal::Type::Boolean
 
         # @!parse
         #   # @param exempt [Boolean]

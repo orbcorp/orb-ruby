@@ -92,7 +92,7 @@ module Orb
       # @!attribute is_recurring
       #
       #   @return [Boolean, nil]
-      optional :is_recurring, Orb::Internal::Type::BooleanModel, nil?: true
+      optional :is_recurring, Orb::Internal::Type::Boolean, nil?: true
 
       # @!attribute [r] limit
       #   The number of items to fetch. Defaults to 20.
