@@ -368,7 +368,12 @@ module Orb
         @client.request(
           method: :get,
           path: "subscriptions",
-          query: parsed,
+          query: parsed.transform_keys(
+            created_at_gt: :"created_at[gt]",
+            created_at_gte: :"created_at[gte]",
+            created_at_lt: :"created_at[lt]",
+            created_at_lte: :"created_at[lte]"
+          ),
           page: Orb::Internal::Page,
           model: Orb::Models::Subscription,
           options: options
@@ -537,7 +542,12 @@ module Orb
         @client.request(
           method: :get,
           path: ["subscriptions/%1$s/schedule", subscription_id],
-          query: parsed,
+          query: parsed.transform_keys(
+            start_date_gt: :"start_date[gt]",
+            start_date_gte: :"start_date[gte]",
+            start_date_lt: :"start_date[lt]",
+            start_date_lte: :"start_date[lte]"
+          ),
           page: Orb::Internal::Page,
           model: Orb::Models::SubscriptionFetchScheduleResponse,
           options: options
