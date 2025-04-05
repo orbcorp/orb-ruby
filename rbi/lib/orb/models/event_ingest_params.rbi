@@ -30,8 +30,7 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(events:, backfill_id: nil, debug: nil, request_options: {})
-      end
+      def self.new(events:, backfill_id: nil, debug: nil, request_options: {}); end
 
       sig do
         override
@@ -44,8 +43,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Event < Orb::Internal::Type::BaseModel
         # A name to meaningfully identify the action or event type.
@@ -112,8 +110,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

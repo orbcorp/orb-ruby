@@ -59,9 +59,7 @@ module Orb
         #   the resulting invoice will require manual review to issue. Defaulted to false.
         will_auto_issue: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint allows you to update the `metadata` property on an invoice. If you
       #   pass null for the metadata value, it will clear any existing metadata for that
       #   invoice.
@@ -82,9 +80,7 @@ module Orb
         #   by setting `metadata` to `null`.
         metadata: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint returns a list of all [`Invoice`](/core-concepts#invoice)s for an
       #   account in a list format.
       #
@@ -151,9 +147,7 @@ module Orb
         status: nil,
         subscription_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint is used to fetch an [`Invoice`](/core-concepts#invoice) given an
       #   identifier.
       sig do
@@ -163,8 +157,7 @@ module Orb
         )
           .returns(Orb::Models::Invoice)
       end
-      def fetch(invoice_id, request_options: {})
-      end
+      def fetch(invoice_id, request_options: {}); end
 
       # This endpoint can be used to fetch the upcoming
       #   [invoice](/core-concepts#invoice) for the current billing period given a
@@ -176,8 +169,7 @@ module Orb
         )
           .returns(Orb::Models::InvoiceFetchUpcomingResponse)
       end
-      def fetch_upcoming(subscription_id:, request_options: {})
-      end
+      def fetch_upcoming(subscription_id:, request_options: {}); end
 
       # This endpoint allows an eligible invoice to be issued manually. This is only
       #   possible with invoices where status is `draft`, `will_auto_issue` is false, and
@@ -202,9 +194,7 @@ module Orb
         #   present in the provider.
         synchronous: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint allows an invoice's status to be set the `paid` status. This can
       #   only be done to invoices that are in the `issued` status.
       sig do
@@ -226,9 +216,7 @@ module Orb
         # An optional note to associate with the payment.
         notes: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint collects payment for an invoice using the customer's default
       #   payment method. This action can only be taken on invoices with status "issued".
       sig do
@@ -238,8 +226,7 @@ module Orb
         )
           .returns(Orb::Models::Invoice)
       end
-      def pay(invoice_id, request_options: {})
-      end
+      def pay(invoice_id, request_options: {}); end
 
       # This endpoint allows an invoice's status to be set the `void` status. This can
       #   only be done to invoices that are in the `issued` status.
@@ -259,13 +246,11 @@ module Orb
         )
           .returns(Orb::Models::Invoice)
       end
-      def void(invoice_id, request_options: {})
-      end
+      def void(invoice_id, request_options: {}); end
 
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

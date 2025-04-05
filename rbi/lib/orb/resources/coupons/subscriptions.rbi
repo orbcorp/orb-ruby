@@ -25,13 +25,10 @@ module Orb
           # The number of items to fetch. Defaults to 20.
           limit: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Orb::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

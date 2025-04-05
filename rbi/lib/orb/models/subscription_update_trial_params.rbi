@@ -27,8 +27,7 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(trial_end_date:, shift: nil, request_options: {})
-      end
+      def self.new(trial_end_date:, shift: nil, request_options: {}); end
 
       sig do
         override
@@ -40,8 +39,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The new date that the trial should end, or the literal string `immediate` to end
       #   the trial immediately.
@@ -49,8 +47,7 @@ module Orb
         extend Orb::Internal::Type::Union
 
         sig { override.returns([Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol]) }
-        def self.variants
-        end
+        def self.variants; end
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate) }
         OrSymbol =

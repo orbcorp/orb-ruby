@@ -9,8 +9,7 @@ module Orb
         override
           .returns([Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount])
       end
-      def self.variants
-      end
+      def self.variants; end
     end
   end
 end

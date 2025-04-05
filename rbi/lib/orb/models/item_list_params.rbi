@@ -26,14 +26,12 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(cursor: nil, limit: nil, request_options: {})
-      end
+      def self.new(cursor: nil, limit: nil, request_options: {}); end
 
       sig do
         override.returns({cursor: T.nilable(String), limit: Integer, request_options: Orb::RequestOptions})
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

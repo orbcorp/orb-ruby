@@ -28,9 +28,7 @@ module Orb
           #   by setting `metadata` to `null`.
           metadata: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # This endpoint is used to fetch [plan](/core-concepts##plan-and-price) details
         #   given an external_plan_id identifier. It returns information about the prices
         #   included in the plan and their configuration, as well as the product that the
@@ -54,13 +52,11 @@ module Orb
           )
             .returns(Orb::Models::Plan)
         end
-        def fetch(external_plan_id, request_options: {})
-        end
+        def fetch(external_plan_id, request_options: {}); end
 
         # @api private
         sig { params(client: Orb::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

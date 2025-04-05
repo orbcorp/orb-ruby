@@ -20,8 +20,7 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(external_connections: nil, name: nil, request_options: {})
-      end
+      def self.new(external_connections: nil, name: nil, request_options: {}); end
 
       sig do
         override
@@ -33,8 +32,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class ExternalConnection < Orb::Internal::Type::BaseModel
         sig { returns(Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::OrSymbol) }
@@ -50,8 +48,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(external_connection_name:, external_entity_id:)
-        end
+        def self.new(external_connection_name:, external_entity_id:); end
 
         sig do
           override
@@ -62,8 +59,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module ExternalConnectionName
           extend Orb::Internal::Type::Enum
@@ -104,8 +100,7 @@ module Orb
             override
               .returns(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

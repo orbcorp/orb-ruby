@@ -17,12 +17,10 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(subscription_id: nil, request_options: {})
-      end
+      def self.new(subscription_id: nil, request_options: {}); end
 
       sig { override.returns({subscription_id: T.nilable(String), request_options: Orb::RequestOptions}) }
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

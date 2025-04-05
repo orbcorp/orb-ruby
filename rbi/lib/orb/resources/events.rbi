@@ -83,9 +83,7 @@ module Orb
         #   customer
         external_customer_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint is used to deprecate a single usage event with a given `event_id`.
       #   `event_id` refers to the `idempotency_key` passed in during ingestion.
       #
@@ -133,8 +131,7 @@ module Orb
         )
           .returns(Orb::Models::EventDeprecateResponse)
       end
-      def deprecate(event_id, request_options: {})
-      end
+      def deprecate(event_id, request_options: {}); end
 
       # Orb's event ingestion model and API is designed around two core principles:
       #
@@ -359,9 +356,7 @@ module Orb
         #   response
         debug: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint returns a filtered set of events for an account in a
       #   [paginated list format](/api-reference/pagination).
       #
@@ -399,13 +394,10 @@ module Orb
         #   specified, the one week ago is used.
         timeframe_start: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

@@ -295,9 +295,7 @@ module Orb
         invoicing_cycle_configuration: nil,
         metadata: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -348,8 +346,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The cadence to bill for this price on.
       module Cadence
@@ -366,8 +363,7 @@ module Orb
         CUSTOM = T.let(:custom, Orb::Models::PriceCreateParams::Cadence::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::PriceCreateParams::Cadence::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module ModelType
@@ -381,8 +377,7 @@ module Orb
           T.let(:cumulative_grouped_bulk, Orb::Models::PriceCreateParams::ModelType::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::PriceCreateParams::ModelType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class UnitConfig < Orb::Internal::Type::BaseModel
@@ -391,12 +386,10 @@ module Orb
         attr_accessor :unit_amount
 
         sig { params(unit_amount: String).returns(T.attached_class) }
-        def self.new(unit_amount:)
-        end
+        def self.new(unit_amount:); end
 
         sig { override.returns({unit_amount: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
@@ -417,8 +410,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(duration:, duration_unit:)
-        end
+        def self.new(duration:, duration_unit:); end
 
         sig do
           override
@@ -429,8 +421,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The unit of billing period duration.
         module DurationUnit
@@ -455,8 +446,7 @@ module Orb
             override
               .returns(T::Array[Orb::Models::PriceCreateParams::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -478,8 +468,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(duration:, duration_unit:)
-        end
+        def self.new(duration:, duration_unit:); end
 
         sig do
           override
@@ -490,8 +479,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The unit of billing period duration.
         module DurationUnit
@@ -517,8 +505,7 @@ module Orb
             override
               .returns(T::Array[Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -533,12 +520,10 @@ module Orb
         attr_accessor :package_size
 
         sig { params(package_amount: String, package_size: Integer).returns(T.attached_class) }
-        def self.new(package_amount:, package_size:)
-        end
+        def self.new(package_amount:, package_size:); end
 
         sig { override.returns({package_amount: String, package_size: Integer}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class MatrixConfig < Orb::Internal::Type::BaseModel
@@ -562,8 +547,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(default_unit_amount:, dimensions:, matrix_values:)
-        end
+        def self.new(default_unit_amount:, dimensions:, matrix_values:); end
 
         sig do
           override
@@ -575,8 +559,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class MatrixValue < Orb::Internal::Type::BaseModel
           # One or two matrix keys to filter usage to this Matrix value by. For example,
@@ -595,12 +578,10 @@ module Orb
               unit_amount: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, unit_amount:)
-          end
+          def self.new(dimension_values:, unit_amount:); end
 
           sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -630,8 +611,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(allocation:, default_unit_amount:, dimensions:, matrix_values:)
-        end
+        def self.new(allocation:, default_unit_amount:, dimensions:, matrix_values:); end
 
         sig do
           override
@@ -644,8 +624,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class MatrixValue < Orb::Internal::Type::BaseModel
           # One or two matrix keys to filter usage to this Matrix value by. For example,
@@ -664,12 +643,10 @@ module Orb
               unit_amount: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, unit_amount:)
-          end
+          def self.new(dimension_values:, unit_amount:); end
 
           sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -682,12 +659,10 @@ module Orb
           params(tiers: T::Array[T.any(Orb::Models::PriceCreateParams::TieredConfig::Tier, Orb::Internal::AnyHash)])
             .returns(T.attached_class)
         end
-        def self.new(tiers:)
-        end
+        def self.new(tiers:); end
 
         sig { override.returns({tiers: T::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]}) }
-        def to_hash
-        end
+        def to_hash; end
 
         class Tier < Orb::Internal::Type::BaseModel
           # Inclusive tier starting value
@@ -709,12 +684,10 @@ module Orb
               last_unit: T.nilable(Float)
             ).returns(T.attached_class)
           end
-          def self.new(first_unit:, unit_amount:, last_unit: nil)
-          end
+          def self.new(first_unit:, unit_amount:, last_unit: nil); end
 
           sig { override.returns({first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -730,12 +703,10 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(tiers:)
-        end
+        def self.new(tiers:); end
 
         sig { override.returns({tiers: T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]}) }
-        def to_hash
-        end
+        def to_hash; end
 
         class Tier < Orb::Internal::Type::BaseModel
           # Per-event basis point rate
@@ -763,8 +734,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil)
-          end
+          def self.new(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil); end
 
           sig do
             override
@@ -777,8 +747,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -792,12 +761,10 @@ module Orb
         attr_accessor :per_unit_maximum
 
         sig { params(bps: Float, per_unit_maximum: T.nilable(String)).returns(T.attached_class) }
-        def self.new(bps:, per_unit_maximum: nil)
-        end
+        def self.new(bps:, per_unit_maximum: nil); end
 
         sig { override.returns({bps: Float, per_unit_maximum: T.nilable(String)}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class BulkBpsConfig < Orb::Internal::Type::BaseModel
@@ -812,12 +779,10 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(tiers:)
-        end
+        def self.new(tiers:); end
 
         sig { override.returns({tiers: T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]}) }
-        def to_hash
-        end
+        def to_hash; end
 
         class Tier < Orb::Internal::Type::BaseModel
           # Basis points to rate on
@@ -836,8 +801,7 @@ module Orb
             params(bps: Float, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String))
               .returns(T.attached_class)
           end
-          def self.new(bps:, maximum_amount: nil, per_unit_maximum: nil)
-          end
+          def self.new(bps:, maximum_amount: nil, per_unit_maximum: nil); end
 
           sig do
             override.returns(
@@ -848,8 +812,7 @@ module Orb
               }
             )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -862,12 +825,10 @@ module Orb
           params(tiers: T::Array[T.any(Orb::Models::PriceCreateParams::BulkConfig::Tier, Orb::Internal::AnyHash)])
             .returns(T.attached_class)
         end
-        def self.new(tiers:)
-        end
+        def self.new(tiers:); end
 
         sig { override.returns({tiers: T::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]}) }
-        def to_hash
-        end
+        def to_hash; end
 
         class Tier < Orb::Internal::Type::BaseModel
           # Amount per unit
@@ -879,12 +840,10 @@ module Orb
           attr_accessor :maximum_units
 
           sig { params(unit_amount: String, maximum_units: T.nilable(Float)).returns(T.attached_class) }
-          def self.new(unit_amount:, maximum_units: nil)
-          end
+          def self.new(unit_amount:, maximum_units: nil); end
 
           sig { override.returns({unit_amount: String, maximum_units: T.nilable(Float)}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
     end

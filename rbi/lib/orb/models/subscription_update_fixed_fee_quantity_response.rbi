@@ -91,11 +91,11 @@ module Orb
       sig do
         returns(
           T::Array[
-          T.any(
-            Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::AmountDiscountInterval,
-            Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::PercentageDiscountInterval,
-            Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::UsageDiscountInterval
-          )
+            T.any(
+              Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::AmountDiscountInterval,
+              Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::PercentageDiscountInterval,
+              Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::UsageDiscountInterval
+            )
           ]
         )
       end
@@ -195,19 +195,19 @@ module Orb
           customer: T.any(Orb::Models::Customer, Orb::Internal::AnyHash),
           default_invoice_memo: T.nilable(String),
           discount_intervals: T::Array[
-          T.any(
-            Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::AmountDiscountInterval,
-            Orb::Internal::AnyHash,
-            Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::PercentageDiscountInterval,
-            Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::UsageDiscountInterval
-          )
+            T.any(
+              Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::AmountDiscountInterval,
+              Orb::Internal::AnyHash,
+              Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::PercentageDiscountInterval,
+              Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::UsageDiscountInterval
+            )
           ],
           end_date: T.nilable(Time),
           fixed_fee_quantity_schedule: T::Array[
-          T.any(
-            Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::FixedFeeQuantitySchedule,
-            Orb::Internal::AnyHash
-          )
+            T.any(
+              Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::FixedFeeQuantitySchedule,
+              Orb::Internal::AnyHash
+            )
           ],
           invoicing_threshold: T.nilable(String),
           maximum_intervals: T::Array[T.any(Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::MaximumInterval, Orb::Internal::AnyHash)],
@@ -251,9 +251,7 @@ module Orb
         start_date:,
         status:,
         trial_info:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -270,11 +268,11 @@ module Orb
               customer: Orb::Models::Customer,
               default_invoice_memo: T.nilable(String),
               discount_intervals: T::Array[
-              T.any(
-                Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::AmountDiscountInterval,
-                Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::PercentageDiscountInterval,
-                Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::UsageDiscountInterval
-              )
+                T.any(
+                  Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::AmountDiscountInterval,
+                  Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::PercentageDiscountInterval,
+                  Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::UsageDiscountInterval
+                )
               ],
               end_date: T.nilable(Time),
               fixed_fee_quantity_schedule: T::Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::FixedFeeQuantitySchedule],
@@ -292,8 +290,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class AdjustmentInterval < Orb::Internal::Type::BaseModel
         sig { returns(String) }
@@ -341,8 +338,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(id:, adjustment:, applies_to_price_interval_ids:, end_date:, start_date:)
-        end
+        def self.new(id:, adjustment:, applies_to_price_interval_ids:, end_date:, start_date:); end
 
         sig do
           override
@@ -362,8 +358,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module Adjustment
           extend Orb::Internal::Type::Union
@@ -417,9 +412,7 @@ module Orb
               reason:,
               usage_discount:,
               adjustment_type: :usage_discount
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -434,8 +427,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class PlanPhaseAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
@@ -487,9 +479,7 @@ module Orb
               plan_phase_order:,
               reason:,
               adjustment_type: :amount_discount
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -504,8 +494,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class PlanPhasePercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
@@ -557,9 +546,7 @@ module Orb
               plan_phase_order:,
               reason:,
               adjustment_type: :percentage_discount
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -574,8 +561,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class PlanPhaseMinimumAdjustment < Orb::Internal::Type::BaseModel
@@ -633,9 +619,7 @@ module Orb
               plan_phase_order:,
               reason:,
               adjustment_type: :minimum
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -651,8 +635,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class PlanPhaseMaximumAdjustment < Orb::Internal::Type::BaseModel
@@ -704,9 +687,7 @@ module Orb
               plan_phase_order:,
               reason:,
               adjustment_type: :maximum
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -721,8 +702,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           sig do
@@ -731,8 +711,7 @@ module Orb
                 [Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
               )
           end
-          def self.variants
-          end
+          def self.variants; end
         end
       end
 
@@ -758,12 +737,10 @@ module Orb
         sig do
           params(day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)).returns(T.attached_class)
         end
-        def self.new(day:, month: nil, year: nil)
-        end
+        def self.new(day:, month: nil, year: nil); end
 
         sig { override.returns({day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       module DiscountInterval
@@ -811,9 +788,7 @@ module Orb
             end_date:,
             start_date:,
             discount_type: :amount
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -827,8 +802,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class PercentageDiscountInterval < Orb::Internal::Type::BaseModel
@@ -874,9 +848,7 @@ module Orb
             percentage_discount:,
             start_date:,
             discount_type: :percentage
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -890,8 +862,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class UsageDiscountInterval < Orb::Internal::Type::BaseModel
@@ -937,9 +908,7 @@ module Orb
             start_date:,
             usage_discount:,
             discount_type: :usage
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -953,8 +922,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         sig do
@@ -963,8 +931,7 @@ module Orb
               [Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::DiscountInterval::UsageDiscountInterval]
             )
         end
-        def self.variants
-        end
+        def self.variants; end
       end
 
       class FixedFeeQuantitySchedule < Orb::Internal::Type::BaseModel
@@ -984,14 +951,12 @@ module Orb
           params(end_date: T.nilable(Time), price_id: String, quantity: Float, start_date: Time)
             .returns(T.attached_class)
         end
-        def self.new(end_date:, price_id:, quantity:, start_date:)
-        end
+        def self.new(end_date:, price_id:, quantity:, start_date:); end
 
         sig do
           override.returns({end_date: T.nilable(Time), price_id: String, quantity: Float, start_date: Time})
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class MaximumInterval < Orb::Internal::Type::BaseModel
@@ -1047,8 +1012,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class MinimumInterval < Orb::Internal::Type::BaseModel
@@ -1104,8 +1068,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class PriceInterval < Orb::Internal::Type::BaseModel
@@ -1217,10 +1180,10 @@ module Orb
             filter: T.nilable(String),
             fixed_fee_quantity_transitions: T.nilable(
               T::Array[
-              T.any(
-                Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::PriceInterval::FixedFeeQuantityTransition,
-                Orb::Internal::AnyHash
-              )
+                T.any(
+                  Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::PriceInterval::FixedFeeQuantityTransition,
+                  Orb::Internal::AnyHash
+                )
               ]
             ),
             price: T.any(
@@ -1270,9 +1233,7 @@ module Orb
           price:,
           start_date:,
           usage_customer_ids:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -1321,8 +1282,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
           sig { returns(Time) }
@@ -1335,12 +1295,10 @@ module Orb
           attr_accessor :quantity
 
           sig { params(effective_date: Time, price_id: String, quantity: Integer).returns(T.attached_class) }
-          def self.new(effective_date:, price_id:, quantity:)
-          end
+          def self.new(effective_date:, price_id:, quantity:); end
 
           sig { override.returns({effective_date: Time, price_id: String, quantity: Integer}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -1357,12 +1315,10 @@ module Orb
         sig do
           params(coupon_id: String, end_date: T.nilable(Time), start_date: Time).returns(T.attached_class)
         end
-        def self.new(coupon_id:, end_date:, start_date:)
-        end
+        def self.new(coupon_id:, end_date:, start_date:); end
 
         sig { override.returns({coupon_id: String, end_date: T.nilable(Time), start_date: Time}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       module Status
@@ -1379,8 +1335,7 @@ module Orb
           T.let(:upcoming, Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class TrialInfo < Orb::Internal::Type::BaseModel
@@ -1388,12 +1343,10 @@ module Orb
         attr_accessor :end_date
 
         sig { params(end_date: T.nilable(Time)).returns(T.attached_class) }
-        def self.new(end_date:)
-        end
+        def self.new(end_date:); end
 
         sig { override.returns({end_date: T.nilable(Time)}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

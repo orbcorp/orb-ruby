@@ -27,8 +27,7 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(created_at:, end_date:, plan:, start_date:)
-      end
+      def self.new(created_at:, end_date:, plan:, start_date:); end
 
       sig do
         override
@@ -41,8 +40,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Plan < Orb::Internal::Type::BaseModel
         sig { returns(T.nilable(String)) }
@@ -61,8 +59,7 @@ module Orb
           params(id: T.nilable(String), external_plan_id: T.nilable(String), name: T.nilable(String))
             .returns(T.attached_class)
         end
-        def self.new(id:, external_plan_id:, name:)
-        end
+        def self.new(id:, external_plan_id:, name:); end
 
         sig do
           override.returns(
@@ -73,8 +70,7 @@ module Orb
             }
           )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

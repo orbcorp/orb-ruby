@@ -62,8 +62,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module Status
           extend Orb::Internal::Type::Enum
@@ -77,8 +76,7 @@ module Orb
             T.let(:pending_payment, Orb::Models::Customers::CreditListResponse::Status::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Customers::CreditListResponse::Status::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

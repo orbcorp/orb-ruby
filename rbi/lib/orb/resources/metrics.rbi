@@ -31,9 +31,7 @@ module Orb
         #   by setting `metadata` to `null`.
         metadata: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint allows you to update the `metadata` property on a metric. If you
       #   pass `null` for the metadata value, it will clear any existing metadata for that
       #   invoice.
@@ -52,9 +50,7 @@ module Orb
         #   by setting `metadata` to `null`.
         metadata: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint is used to fetch [metric](/core-concepts##metric) details given a
       #   metric identifier. It returns information about the metrics including its name,
       #   description, and item.
@@ -81,9 +77,7 @@ module Orb
         # The number of items to fetch. Defaults to 20.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint is used to list [metrics](/core-concepts#metric). It returns
       #   information about the metrics including its name, description, and item.
       sig do
@@ -93,13 +87,11 @@ module Orb
         )
           .returns(Orb::Models::BillableMetric)
       end
-      def fetch(metric_id, request_options: {})
-      end
+      def fetch(metric_id, request_options: {}); end
 
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

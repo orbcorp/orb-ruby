@@ -103,15 +103,15 @@ module Orb
             )
               .returns(
                 Orb::Internal::Page[
-                T.any(
-                  Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry
-                )
+                  T.any(
+                    Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry,
+                    Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry,
+                    Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry,
+                    Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry,
+                    Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry,
+                    Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry,
+                    Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry
+                  )
                 ]
               )
           end
@@ -132,9 +132,7 @@ module Orb
             limit: nil,
             minimum_amount: nil,
             request_options: {}
-          )
-          end
-
+          ); end
           # This endpoint allows you to create a new ledger entry for a specified customer's
           #   balance. This can be used to increment balance, deduct credits, and change the
           #   expiry date of existing credits.
@@ -315,9 +313,7 @@ module Orb
             # Can only be specified when `entry_type=void`. The reason for the void.
             void_reason: nil,
             request_options: {}
-          )
-          end
-
+          ); end
           # This endpoint allows you to create a new ledger entry for a specified customer's
           #   balance. This can be used to increment balance, deduct credits, and change the
           #   expiry date of existing credits.
@@ -501,9 +497,7 @@ module Orb
             # Can only be specified when `entry_type=void`. The reason for the void.
             void_reason: nil,
             request_options: {}
-          )
-          end
-
+          ); end
           # The credits ledger provides _auditing_ functionality over Orb's credits system
           #   with a list of actions that have taken place to modify a customer's credit
           #   balance. This [paginated endpoint](/api-reference/pagination) lists these
@@ -602,15 +596,15 @@ module Orb
             )
               .returns(
                 Orb::Internal::Page[
-                T.any(
-                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry,
-                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry
-                )
+                  T.any(
+                    Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry,
+                    Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry,
+                    Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry,
+                    Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry,
+                    Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry,
+                    Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry,
+                    Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry
+                  )
                 ]
               )
           end
@@ -631,13 +625,10 @@ module Orb
             limit: nil,
             minimum_amount: nil,
             request_options: {}
-          )
-          end
-
+          ); end
           # @api private
           sig { params(client: Orb::Client).returns(T.attached_class) }
-          def self.new(client:)
-          end
+          def self.new(client:); end
         end
       end
     end

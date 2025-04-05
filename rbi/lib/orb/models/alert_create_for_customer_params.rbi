@@ -27,8 +27,7 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(currency:, type:, thresholds: nil, request_options: {})
-      end
+      def self.new(currency:, type:, thresholds: nil, request_options: {}); end
 
       sig do
         override
@@ -41,8 +40,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The type of alert to create. This must be a valid alert type.
       module Type
@@ -60,8 +58,7 @@ module Orb
           T.let(:credit_balance_recovered, Orb::Models::AlertCreateForCustomerParams::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::AlertCreateForCustomerParams::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Threshold < Orb::Internal::Type::BaseModel
@@ -74,12 +71,10 @@ module Orb
         # Thresholds are used to define the conditions under which an alert will be
         #   triggered.
         sig { params(value: Float).returns(T.attached_class) }
-        def self.new(value:)
-        end
+        def self.new(value:); end
 
         sig { override.returns({value: Float}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

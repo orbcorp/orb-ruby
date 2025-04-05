@@ -107,8 +107,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Customer < Orb::Internal::Type::BaseModel
         sig { returns(String) }
@@ -119,12 +118,10 @@ module Orb
 
         # The customer the alert applies to.
         sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
-        def self.new(id:, external_customer_id:)
-        end
+        def self.new(id:, external_customer_id:); end
 
         sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class Metric < Orb::Internal::Type::BaseModel
@@ -133,12 +130,10 @@ module Orb
 
         # The metric the alert applies to.
         sig { params(id: String).returns(T.attached_class) }
-        def self.new(id:)
-        end
+        def self.new(id:); end
 
         sig { override.returns({id: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class Plan < Orb::Internal::Type::BaseModel
@@ -167,8 +162,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(id:, external_plan_id:, name:, plan_version:)
-        end
+        def self.new(id:, external_plan_id:, name:, plan_version:); end
 
         sig do
           override
@@ -181,8 +175,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class Subscription < Orb::Internal::Type::BaseModel
@@ -191,12 +184,10 @@ module Orb
 
         # The subscription the alert applies to.
         sig { params(id: String).returns(T.attached_class) }
-        def self.new(id:)
-        end
+        def self.new(id:); end
 
         sig { override.returns({id: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class Threshold < Orb::Internal::Type::BaseModel
@@ -209,12 +200,10 @@ module Orb
         # Thresholds are used to define the conditions under which an alert will be
         #   triggered.
         sig { params(value: Float).returns(T.attached_class) }
-        def self.new(value:)
-        end
+        def self.new(value:); end
 
         sig { override.returns({value: Float}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # The type of alert. This must be a valid alert type.
@@ -231,8 +220,7 @@ module Orb
         COST_EXCEEDED = T.let(:cost_exceeded, Orb::Models::Alert::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::Alert::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

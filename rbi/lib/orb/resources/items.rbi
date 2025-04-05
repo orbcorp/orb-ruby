@@ -12,9 +12,7 @@ module Orb
         # The name of the item.
         name:,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint can be used to update properties on the Item.
       sig do
         params(
@@ -25,8 +23,7 @@ module Orb
         )
           .returns(Orb::Models::Item)
       end
-      def update(item_id, external_connections: nil, name: nil, request_options: {})
-      end
+      def update(item_id, external_connections: nil, name: nil, request_options: {}); end
 
       # This endpoint returns a list of all Items, ordered in descending order by
       #   creation time.
@@ -45,9 +42,7 @@ module Orb
         # The number of items to fetch. Defaults to 20.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint returns an item identified by its item_id.
       sig do
         params(
@@ -56,13 +51,11 @@ module Orb
         )
           .returns(Orb::Models::Item)
       end
-      def fetch(item_id, request_options: {})
-      end
+      def fetch(item_id, request_options: {}); end
 
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

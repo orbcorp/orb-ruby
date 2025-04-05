@@ -1628,7 +1628,7 @@ module Orb
               required :matrix_values,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
+                           Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
                          ]
                        end
 
@@ -2240,7 +2240,7 @@ module Orb
               required :tiers,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
+                           Orb::Models::SubscriptionCreateParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
                          ]
                        end
 
@@ -9042,7 +9042,7 @@ module Orb
               required :matrix_values,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
+                           Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
                          ]
                        end
 
@@ -9654,7 +9654,7 @@ module Orb
               required :tiers,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
+                           Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
                          ]
                        end
 
@@ -10233,7 +10233,7 @@ module Orb
               required :tiers,
                        -> do
                          Orb::Internal::Type::ArrayOf[
-                         Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier
+                           Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier
                          ]
                        end
 

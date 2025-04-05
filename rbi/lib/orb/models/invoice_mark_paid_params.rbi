@@ -27,8 +27,7 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(payment_received_date:, external_id: nil, notes: nil, request_options: {})
-      end
+      def self.new(payment_received_date:, external_id: nil, notes: nil, request_options: {}); end
 
       sig do
         override
@@ -41,8 +40,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

@@ -81,9 +81,7 @@ module Orb
             threshold:,
             expires_after: nil,
             expires_after_unit: nil
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -101,8 +99,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class InvoiceSettings < Orb::Internal::Type::BaseModel
             # Whether the credits purchase invoice should auto collect with the customer's
@@ -138,8 +135,7 @@ module Orb
               )
                 .returns(T.attached_class)
             end
-            def self.new(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil)
-            end
+            def self.new(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil); end
 
             sig do
               override
@@ -152,8 +148,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           # The unit of expires_after.
@@ -188,8 +183,7 @@ module Orb
                   T::Array[Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse::ExpiresAfterUnit::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end
