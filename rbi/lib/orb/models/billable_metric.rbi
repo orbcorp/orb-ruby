@@ -45,8 +45,7 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, description:, item:, metadata:, name:, status:)
-      end
+      def self.new(id:, description:, item:, metadata:, name:, status:); end
 
       sig do
         override
@@ -61,8 +60,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module Status
         extend Orb::Internal::Type::Enum
@@ -75,8 +73,7 @@ module Orb
         ARCHIVED = T.let(:archived, Orb::Models::BillableMetric::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Orb::Models::BillableMetric::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

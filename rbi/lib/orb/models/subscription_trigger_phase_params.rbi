@@ -25,8 +25,7 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(allow_invoice_credit_or_void: nil, effective_date: nil, request_options: {})
-      end
+      def self.new(allow_invoice_credit_or_void: nil, effective_date: nil, request_options: {}); end
 
       sig do
         override
@@ -38,8 +37,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

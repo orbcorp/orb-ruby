@@ -52,9 +52,7 @@ module Orb
         change_option: nil,
         effective_date: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -68,8 +66,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Determines when the change takes effect. Note that if `effective_date` is
       #   specified, this defaults to `effective_date`. Otherwise, this defaults to
@@ -96,8 +93,7 @@ module Orb
           override
             .returns(T::Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::TaggedSymbol])
         end
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

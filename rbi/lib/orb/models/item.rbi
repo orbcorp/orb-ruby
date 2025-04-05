@@ -27,8 +27,7 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, created_at:, external_connections:, name:)
-      end
+      def self.new(id:, created_at:, external_connections:, name:); end
 
       sig do
         override
@@ -41,8 +40,7 @@ module Orb
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class ExternalConnection < Orb::Internal::Type::BaseModel
         sig { returns(Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol) }
@@ -58,8 +56,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(external_connection_name:, external_entity_id:)
-        end
+        def self.new(external_connection_name:, external_entity_id:); end
 
         sig do
           override
@@ -70,8 +67,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module ExternalConnectionName
           extend Orb::Internal::Type::Enum
@@ -92,8 +88,7 @@ module Orb
           ANROK = T.let(:anrok, Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

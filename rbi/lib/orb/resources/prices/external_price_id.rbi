@@ -53,9 +53,7 @@ module Orb
           #   by setting `metadata` to `null`.
           metadata: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # This endpoint returns a price given an external price id. See the
         #   [price creation API](/api-reference/price/create-price) for more information
         #   about external price aliases.
@@ -97,13 +95,11 @@ module Orb
               )
             )
         end
-        def fetch(external_price_id, request_options: {})
-        end
+        def fetch(external_price_id, request_options: {}); end
 
         # @api private
         sig { params(client: Orb::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

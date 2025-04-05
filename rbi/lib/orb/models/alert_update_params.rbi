@@ -17,8 +17,7 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(thresholds:, request_options: {})
-      end
+      def self.new(thresholds:, request_options: {}); end
 
       sig do
         override
@@ -26,8 +25,7 @@ module Orb
             {thresholds: T::Array[Orb::Models::AlertUpdateParams::Threshold], request_options: Orb::RequestOptions}
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Threshold < Orb::Internal::Type::BaseModel
         # The value at which an alert will fire. For credit balance alerts, the alert will
@@ -39,12 +37,10 @@ module Orb
         # Thresholds are used to define the conditions under which an alert will be
         #   triggered.
         sig { params(value: Float).returns(T.attached_class) }
-        def self.new(value:)
-        end
+        def self.new(value:); end
 
         sig { override.returns({value: Float}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

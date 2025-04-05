@@ -15,12 +15,10 @@ module Orb
             params(customer_id: String, request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
               .returns(T.attached_class)
           end
-          def self.new(customer_id:, request_options: {})
-          end
+          def self.new(customer_id:, request_options: {}); end
 
           sig { override.returns({customer_id: String, request_options: Orb::RequestOptions}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
     end

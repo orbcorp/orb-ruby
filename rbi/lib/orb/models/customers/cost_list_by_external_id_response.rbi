@@ -13,12 +13,10 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(data:)
-        end
+        def self.new(data:); end
 
         sig { override.returns({data: T::Array[Orb::Models::Customers::CostListByExternalIDResponse::Data]}) }
-        def to_hash
-        end
+        def to_hash; end
 
         class Data < Orb::Internal::Type::BaseModel
           sig { returns(T::Array[Orb::Models::Customers::CostListByExternalIDResponse::Data::PerPriceCost]) }
@@ -48,8 +46,7 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(per_price_costs:, subtotal:, timeframe_end:, timeframe_start:, total:)
-          end
+          def self.new(per_price_costs:, subtotal:, timeframe_end:, timeframe_start:, total:); end
 
           sig do
             override
@@ -63,8 +60,7 @@ module Orb
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class PerPriceCost < Orb::Internal::Type::BaseModel
             # The price object
@@ -160,8 +156,7 @@ module Orb
               )
                 .returns(T.attached_class)
             end
-            def self.new(price:, price_id:, subtotal:, total:, quantity: nil)
-            end
+            def self.new(price:, price_id:, subtotal:, total:, quantity: nil); end
 
             sig do
               override
@@ -204,8 +199,7 @@ module Orb
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
         end
       end

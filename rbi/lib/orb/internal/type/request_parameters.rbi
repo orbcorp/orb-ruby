@@ -13,8 +13,7 @@ module Orb
         module Converter
           # @api private
           sig { params(params: T.anything).returns([T.anything, Orb::Internal::AnyHash]) }
-          def dump_request(params)
-          end
+          def dump_request(params); end
         end
       end
     end

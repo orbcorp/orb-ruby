@@ -36,9 +36,7 @@ module Orb
         #   by setting `metadata` to `null`.
         metadata: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Fetch dimensional price group
       sig do
         params(
@@ -47,8 +45,7 @@ module Orb
         )
           .returns(Orb::Models::DimensionalPriceGroup)
       end
-      def retrieve(dimensional_price_group_id, request_options: {})
-      end
+      def retrieve(dimensional_price_group_id, request_options: {}); end
 
       # List dimensional price groups
       sig do
@@ -66,13 +63,10 @@ module Orb
         # The number of items to fetch. Defaults to 20.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

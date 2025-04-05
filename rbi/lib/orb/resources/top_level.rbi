@@ -13,13 +13,11 @@ module Orb
         params(request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash)))
           .returns(Orb::Models::TopLevelPingResponse)
       end
-      def ping(request_options: {})
-      end
+      def ping(request_options: {}); end
 
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

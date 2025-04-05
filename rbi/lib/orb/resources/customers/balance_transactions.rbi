@@ -23,9 +23,7 @@ module Orb
           # An optional description that can be specified around this entry.
           description: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # ## The customer balance
         #
         #   The customer balance is an amount in the customer's currency, which Orb
@@ -79,13 +77,10 @@ module Orb
           operation_time_lt: nil,
           operation_time_lte: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Orb::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

@@ -8,12 +8,10 @@ module Orb
       attr_accessor :amended
 
       sig { params(amended: String).returns(T.attached_class) }
-      def self.new(amended:)
-      end
+      def self.new(amended:); end
 
       sig { override.returns({amended: String}) }
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

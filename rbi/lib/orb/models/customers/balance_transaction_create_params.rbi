@@ -26,8 +26,7 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(amount:, type:, description: nil, request_options: {})
-        end
+        def self.new(amount:, type:, description: nil, request_options: {}); end
 
         sig do
           override
@@ -40,8 +39,7 @@ module Orb
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module Type
           extend Orb::Internal::Type::Enum
@@ -55,8 +53,7 @@ module Orb
           DECREMENT = T.let(:decrement, Orb::Models::Customers::BalanceTransactionCreateParams::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[Orb::Models::Customers::BalanceTransactionCreateParams::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

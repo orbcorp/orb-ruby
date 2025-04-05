@@ -146,9 +146,7 @@ module Orb
           #   behavior.
           view_mode: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # This endpoint is used to fetch a day-by-day snapshot of a customer's costs in
         #   Orb, calculated by applying pricing information to the underlying usage (see the
         #   [subscription usage endpoint](/api-reference/subscription/fetch-subscription-usage)
@@ -291,13 +289,10 @@ module Orb
           #   behavior.
           view_mode: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Orb::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

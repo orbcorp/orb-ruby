@@ -21,9 +21,7 @@ module Orb
         # An optional reason for the credit note.
         reason: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get a paginated list of CreditNotes. Users can also filter by customer_id,
       #   subscription_id, or external_customer_id. The credit notes will be returned in
       #   reverse chronological order by `creation_time`.
@@ -50,9 +48,7 @@ module Orb
         # The number of items to fetch. Defaults to 20.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # This endpoint is used to fetch a single [`Credit Note`](/invoicing/credit-notes)
       #   given an identifier.
       sig do
@@ -62,13 +58,11 @@ module Orb
         )
           .returns(Orb::Models::CreditNote)
       end
-      def fetch(credit_note_id, request_options: {})
-      end
+      def fetch(credit_note_id, request_options: {}); end
 
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end
