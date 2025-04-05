@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.1.0-alpha.38 (2025-04-05)
+
+Full Changelog: [v0.1.0-alpha.37...v0.1.0-alpha.38](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.37...v0.1.0-alpha.38)
+
+### Features
+
+* support query, header, and body params that have identical names ([#226](https://github.com/orbcorp/orb-ruby/issues/226)) ([edbbd05](https://github.com/orbcorp/orb-ruby/commit/edbbd057dcfe5cf5eaa12fed6f3cb2f25f56fa19))
+* support solargraph generics ([#220](https://github.com/orbcorp/orb-ruby/issues/220)) ([3db38b4](https://github.com/orbcorp/orb-ruby/commit/3db38b4390902cf97c6942f83f1b5aed4e214041))
+
+
+### Bug Fixes
+
+* converter should transform stringio into string where applicable ([#228](https://github.com/orbcorp/orb-ruby/issues/228)) ([f818391](https://github.com/orbcorp/orb-ruby/commit/f818391228f86c671be20deb723a7570fbcdf18e))
+
+
+### Chores
+
+* document LSP support in read me ([#225](https://github.com/orbcorp/orb-ruby/issues/225)) ([574fdf4](https://github.com/orbcorp/orb-ruby/commit/574fdf455227a604a4e6370cfad093c278c1e6c4))
+* **internal:** codegen related update ([#222](https://github.com/orbcorp/orb-ruby/issues/222)) ([f4b7010](https://github.com/orbcorp/orb-ruby/commit/f4b7010a5f7241a3c3f18ad2dd5000706216f8e9))
+* **internal:** codegen related update ([#223](https://github.com/orbcorp/orb-ruby/issues/223)) ([e25b11c](https://github.com/orbcorp/orb-ruby/commit/e25b11c9a06d7fdca01fea78d0860ae41cdb4c52))
+* **internal:** run rubocop linter in parallel ([#229](https://github.com/orbcorp/orb-ruby/issues/229)) ([7b6cedd](https://github.com/orbcorp/orb-ruby/commit/7b6cedd9f976a634b4f590237e421d3312495672))
+* **internal:** version bump ([#218](https://github.com/orbcorp/orb-ruby/issues/218)) ([906a451](https://github.com/orbcorp/orb-ruby/commit/906a451f0e155d476b227d61d512b5d3cc476e43))
+* misc sdk polish ([#224](https://github.com/orbcorp/orb-ruby/issues/224)) ([f2a6cec](https://github.com/orbcorp/orb-ruby/commit/f2a6cecdfe4a4bc98089ca0a6ea31a95a100f499))
+* rename confusing `Type::BooleanModel` to `Type::Boolean` ([#227](https://github.com/orbcorp/orb-ruby/issues/227)) ([8950333](https://github.com/orbcorp/orb-ruby/commit/89503331236fa01589fe19228b6549d45f29238b))
+
 ## 0.1.0-alpha.37 (2025-04-03)
 
 Full Changelog: [v0.1.0-alpha.36...v0.1.0-alpha.37](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.36...v0.1.0-alpha.37)
